@@ -25,15 +25,13 @@ ActiveRecord::Schema.define(:version => 20110627085200) do
     t.datetime "updated_at"
   end
 
-  create_table "areas_users", :force => true do |t|
-    t.integer  "area_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "contents", :force => true do |t|
     t.string   "name"
+    t.string   "type"
+    t.string   "tags"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,7 +44,8 @@ ActiveRecord::Schema.define(:version => 20110627085200) do
   end
 
   create_table "follows", :force => true do |t|
-    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "content_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62,7 +61,11 @@ ActiveRecord::Schema.define(:version => 20110627085200) do
   end
 
   create_table "participations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "content_id"
     t.string   "name"
+    t.string   "type"
+    t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -82,7 +85,14 @@ ActiveRecord::Schema.define(:version => 20110627085200) do
   end
 
   create_table "users", :force => true do |t|
+    t.integer  "role_id"
     t.string   "name"
+    t.string   "lastname"
+    t.date     "birthday"
+    t.text     "description"
+    t.string   "facebook_token"
+    t.string   "twitter_token"
+    t.datetime "last_connection"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

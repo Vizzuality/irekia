@@ -1,8 +1,8 @@
 class CreateAreasContents < ActiveRecord::Migration
   def self.up
     create_table :areas_contents do |t|
-      t.integer :area_id
-      t.integer :content_id
+      t.references :area
+      t.references :content
 
       t.timestamps
     end

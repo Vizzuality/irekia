@@ -1,7 +1,15 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string :name
+      t.references  :role
+
+      t.string   :name
+      t.string   :lastname
+      t.date     :birthday
+      t.text     :description
+      t.string   :facebook_token
+      t.string   :twitter_token
+      t.datetime :last_connection
 
       t.timestamps
     end

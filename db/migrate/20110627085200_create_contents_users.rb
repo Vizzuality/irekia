@@ -1,8 +1,8 @@
 class CreateContentsUsers < ActiveRecord::Migration
   def self.up
     create_table :contents_users do |t|
-      t.integer :content_id
-      t.integer :user_id
+      t.references :content
+      t.references :user
 
       t.timestamps
     end

@@ -1,7 +1,8 @@
 class CreateFollows < ActiveRecord::Migration
   def self.up
     create_table :follows do |t|
-      t.string :name
+      t.references :user
+      t.references :content
 
       t.timestamps
     end
