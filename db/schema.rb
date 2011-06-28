@@ -115,6 +115,16 @@ ActiveRecord::Schema.define(:version => 20110628171113) do
     t.datetime "updated_at"
   end
 
+  create_table "role_translations", :force => true do |t|
+    t.integer  "role_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "role_translations", ["role_id"], :name => "index_role_translations_on_role_id"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
