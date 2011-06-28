@@ -1,0 +1,3 @@
+class Proposal < Content
+
+end

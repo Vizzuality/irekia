@@ -1,0 +1,3 @@
+class Video < Content
+
+end

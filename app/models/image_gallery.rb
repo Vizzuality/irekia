@@ -1,0 +1,3 @@
+class ImageGallery < Content
+
+end
