@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110628161050) do
+ActiveRecord::Schema.define(:version => 20110628163740) do
 
   create_table "answer_users", :force => true do |t|
     t.integer  "answer_id"
@@ -72,6 +72,12 @@ ActiveRecord::Schema.define(:version => 20110628161050) do
     t.integer "coord_dimension",                  :null => false
     t.integer "srid",                             :null => false
     t.string  "type",              :limit => 30,  :null => false
+  end
+
+  create_table "images", :force => true do |t|
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "participations", :force => true do |t|
