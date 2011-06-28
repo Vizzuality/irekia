@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110628164508) do
+ActiveRecord::Schema.define(:version => 20110628171113) do
 
   create_table "answer_users", :force => true do |t|
     t.integer  "answer_id"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20110628164508) do
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
     t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "area_public_streams", :force => true do |t|
+    t.integer  "area_id"
+    t.string   "message"
+    t.integer  "event_type"
+    t.integer  "event_id"
+    t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -117,6 +127,26 @@ ActiveRecord::Schema.define(:version => 20110628164508) do
     t.integer "auth_srid"
     t.string  "srtext",    :limit => 2048
     t.string  "proj4text", :limit => 2048
+  end
+
+  create_table "user_private_streams", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "message"
+    t.integer  "event_type"
+    t.integer  "event_id"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_public_streams", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "message"
+    t.integer  "event_type"
+    t.integer  "event_id"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
