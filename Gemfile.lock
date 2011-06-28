@@ -90,10 +90,6 @@ GEM
       activesupport (= 3.0.9)
       bundler (~> 1.0)
       railties (= 3.0.9)
-    rails-erd (0.4.5)
-      activerecord (~> 3.0)
-      activesupport (~> 3.0)
-      ruby-graphviz (~> 0.9.18)
     railties (3.0.9)
       actionpack (= 3.0.9)
       activesupport (= 3.0.9)
@@ -123,7 +119,6 @@ GEM
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
       ruby-debug-base19 (>= 0.11.19)
-    ruby-graphviz (0.9.21)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
@@ -151,7 +146,6 @@ DEPENDENCIES
   foreman (~> 0.18.0)
   pg (= 0.11.0)
   rails (= 3.0.9)
-  rails-erd
   rspec-rails (~> 2.4)
   ruby-debug19
   sass (~> 3.1.3)
