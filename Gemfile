@@ -5,6 +5,7 @@ gem 'sass', '~> 3.1.3'
 gem 'pg', '0.11.0'
 
 group :development do
+  gem 'rails-erd'
   gem 'capistrano', '~> 2.6.0'
   gem 'capistrano-ext', '~> 1.2.1'
 end

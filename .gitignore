@@ -1,7 +1,10 @@
 .bundle
-db/*.sqlite3
 bin/
 config/database.yml
 config/app_config.yml
+db/*.sqlite3
+doc/
 log/*.log
 tmp/
+
+ERD.pdf
