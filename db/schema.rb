@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110628163740) do
+ActiveRecord::Schema.define(:version => 20110628164508) do
 
   create_table "answer_users", :force => true do |t|
     t.integer  "answer_id"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(:version => 20110628163740) do
   create_table "areas_contents", :force => true do |t|
     t.integer  "area_id"
     t.integer  "content_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "arguments", :force => true do |t|
+    t.integer  "proposal_id"
+    t.text     "body"
+    t.boolean  "in_favor"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
