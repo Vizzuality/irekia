@@ -1,0 +1,3 @@
+class Argument < Participation
+
+end
