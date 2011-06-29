@@ -4,10 +4,12 @@ module GlobalizeUtils
 
   module ClassMethods
     def where_translation(translations)
-      translations_table = translations_table_name
-      joins("INNER JOIN #{translations_table} ON #{table_name}.id = #{translations_table}.#{table_name.singularize}_id") \
-      .where(translations_table => translations)                                                                         \
-      .readonly(false)                                                                                                   \
+      joins(<<-SQL
+        INNER JOIN #{translations_table_name} ON #{table_name}.id = #{translations_table_name}.#{table_name.singularize}_id
+      SQL
+      )
+      .where(translations_table_name => translations)
+      .readonly(false)
     end
 
     def translations_for(translations, &block)
