@@ -3,11 +3,18 @@
 module Factories
 
   def init_area_data
-    virginia = create_user('Virginia', 'Uriarte Rodríguez')
-    alberto  = create_user('Alberto', 'de Zárate López')
-    user1    = create_user
-    user2    = create_user
-    user3    = create_user
+    consejera      = create_title('Consejera')
+    vice_consejero = create_title('Vice-consejero')
+
+    virginia       = create_user('Virginia', 'Uriarte Rodríguez')
+    virginia.title = consejera
+    virginia.save
+    alberto        = create_user('Alberto', 'de Zárate López')
+    alberto.title  = vice_consejero
+    alberto.save
+    user1          = create_user
+    user2          = create_user
+    user3          = create_user
 
     politic  = create_role 'Político'
     politic.users << virginia
@@ -85,6 +92,12 @@ module Factories
   def create_question
     Question.create(
       :title => '¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?'
+    )
+  end
+
+  def create_title(name)
+    Title.create(
+      :name => name
     )
   end
 

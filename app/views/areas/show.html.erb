@@ -8,7 +8,10 @@
     <h3><%= t('.team.title') %></h3>
     <ul>
       <% @team.slice!(0, 2).each do |user| %>
-        <li><%= "#{user.name} #{user.lastname}" %></li>
+        <li>
+          <%= link_to "#{user.name} #{user.lastname}", '#' %>
+          <span><%= user.title.name %></span>
+        </li>
       <% end %>
       <% if @team.present? %>
         <li><%= t('.team.other_members', :count => @team.length) %></li>

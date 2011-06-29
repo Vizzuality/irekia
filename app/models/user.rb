@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :role
+  belongs_to :sex
+  belongs_to :title
 
   has_many :areas_users, :class_name => 'AreaUser'
   has_many :areas, :through => :areas_users

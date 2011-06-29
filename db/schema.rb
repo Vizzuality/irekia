@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110629162508) do
+ActiveRecord::Schema.define(:version => 20110629170043) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -150,12 +150,44 @@ ActiveRecord::Schema.define(:version => 20110629162508) do
     t.datetime "updated_at"
   end
 
+  create_table "sex_translations", :force => true do |t|
+    t.integer  "sex_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sex_translations", ["sex_id"], :name => "index_sex_translations_on_sex_id"
+
+  create_table "sexes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "spatial_ref_sys", :id => false, :force => true do |t|
     t.integer "srid",                      :null => false
     t.string  "auth_name", :limit => 256
     t.integer "auth_srid"
     t.string  "srtext",    :limit => 2048
     t.string  "proj4text", :limit => 2048
+  end
+
+  create_table "title_translations", :force => true do |t|
+    t.integer  "title_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "title_translations", ["title_id"], :name => "index_title_translations_on_title_id"
+
+  create_table "titles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_private_streams", :force => true do |t|
@@ -189,6 +221,8 @@ ActiveRecord::Schema.define(:version => 20110629162508) do
     t.datetime "last_connection"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sex_id"
+    t.integer  "title_id"
   end
 
 end
