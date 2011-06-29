@@ -1,10 +1,18 @@
 <div id="area_summary">
   <h1><%= @area.name %></h1>
   <div class="description">
-    <h3><%= t('.what_we_do') %></h3>
+    <h3><%= t('.description.title') %></h3>
     <%= simple_format(@area.description) %>
   </div>
   <div class="team">
-    <h3><%= t('.team') %></h3>
+    <h3><%= t('.team.title') %></h3>
+    <ul>
+      <% @team.slice!(0, 2).each do |user| %>
+        <li><%= "#{user.name} #{user.lastname}" %></li>
+      <% end %>
+      <% if @team.present? %>
+        <li><%= t('.team.other_members', :count => @team.length) %></li>
+      <% end %>
+    </ul>
   </div>
 </div>

@@ -1,5 +1,10 @@
 es:
   areas:
     show:
-      what_we_do: Qué hacemos
-      team: 'Equipo principal'
+      description:
+        title: Qué hacemos
+      team:
+        title: 'Equipo principal'
+        other_members:
+          one: '1 persona más en este área'
+          other: '%{count} personas más en este área'

@@ -3,27 +3,49 @@
 module Factories
 
   def init_area_data
-    user     = create_user
-    role     = create_role(user)
-    area     = create_area
+    virginia = create_user('Virginia', 'Uriarte Rodríguez')
+    alberto  = create_user('Alberto', 'de Zárate López')
+    user1    = create_user
+    user2    = create_user
+    user3    = create_user
+
+    politic  = create_role 'Político'
+    politic.users << virginia
+    politic.save
+
+    admin = create_role
+    admin.users << alberto
+    admin.users << user1
+    admin.users << user2
+    admin.users << user3
+    admin.save
+
+    citizen = create_role 'Ciudadano'
+
     question = create_question
-    create_answer(question, user)
+    create_answer question, virginia
+
+    area     = create_area
+    area.users << virginia
+    area.users << alberto
+    area.users << user1
+    area.users << user2
+    area.users << user3
     area.contents << question
     area.contents << create_news
     area.contents << create_proposal
+
     area
   end
 
-  def create_role(name = 'Administrador', user)
-    role = Role.create(:name => name)
-    role.users << user if user.present?
-    role
+  def create_role(name = 'Administrador')
+    Role.create(:name => name)
   end
 
-  def create_user
+  def create_user(name = random_string(rand(12)), lastname = random_string(rand(12)))
     User.create(
-      :name            => 'John',
-      :lastname        => 'Doe',
+      :name            => name,
+      :lastname        => lastname,
       :birthday        => Date.new(1980, 1, 1),
       :description     => lorem,
       :facebook_token  => random_string,

@@ -8,7 +8,7 @@ feature "Areas newsfeed" do
 
   scenario "Browsing areas' newsfeed" do
     visit area_path(@area)
-
+peich
     within '#area_summary' do
       page.should have_css('h1', :text => 'Educación, Universidades e Investigación')
       within '.description' do
@@ -17,6 +17,9 @@ feature "Areas newsfeed" do
       end
       within '.team' do
         page.should have_css('h3', :text => 'Equipo principal')
+        page.should have_css('ul li', :text => 'Virginia Uriarte Rodríguez')
+        page.should have_css('ul li', :text => 'Alberto de Zárate López')
+        page.should have_css('ul li', :text => '3 personas más en este área')
       end
     end
   end
