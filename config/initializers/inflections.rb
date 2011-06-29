@@ -5,6 +5,8 @@ ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.uncountable %w( fish sheep )
   inflect.plural /^area_content$/i, 'areas_contents'
   inflect.singular /^areas_contents$/i, 'area_content'
+  inflect.plural /^area_user$/i, 'areas_users'
+  inflect.singular /^areas_users$/i, 'area_user'
   inflect.plural /^content_user$/i, 'contents_users'
   inflect.singular /^contents_users$/i, 'content_user'
 end
