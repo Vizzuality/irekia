@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110628171113) do
+ActiveRecord::Schema.define(:version => 20110629105718) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"

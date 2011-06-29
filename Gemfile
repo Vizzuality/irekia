@@ -11,8 +11,9 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.4'
+  gem 'rspec-rails', '~> 2.6'
   gem 'capybara', '~> 1.0.0'
+  gem 'database_cleaner', '~> 0.6.7'
   gem 'ruby-debug19', :platforms => :mri_19
   gem 'foreman', '~> 0.18.0'
 end
