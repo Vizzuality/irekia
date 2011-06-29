@@ -1,0 +1,10 @@
+<div id="area_summary">
+  <h1><%= @area.name %></h1>
+  <div class="description">
+    <h3><%= t('.what_we_do') %></h3>
+    <%= simple_format(@area.description) %>
+  </div>
+  <div class="team">
+    <h3><%= t('.team') %></h3>
+  </div>
+</div>

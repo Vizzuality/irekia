@@ -3,19 +3,20 @@
 module Factories
 
   def init_area_data
-    user = create_user
-    role = create_role(user)
-    area = create_area
+    user     = create_user
+    role     = create_role(user)
+    area     = create_area
     question = create_question
     create_answer(question, user)
     area.contents << question
     area.contents << create_news
     area.contents << create_proposal
+    area
   end
 
-  def create_role(user)
-    role = Role.create(:name => 'Administrador')
-    role.users << user
+  def create_role(name = 'Administrador', user)
+    role = Role.create(:name => name)
+    role.users << user if user.present?
     role
   end
 
@@ -41,7 +42,8 @@ module Factories
 
   def create_area
     Area.create(
-      :name => 'Educación, Universidades e Investigación'
+      :name        => 'Educación, Universidades e Investigación',
+      :description => lorem
     )
   end
 
