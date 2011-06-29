@@ -1,6 +1,6 @@
-class CreateQuestions < ActiveRecord::Migration
+class CreatePollQuestions < ActiveRecord::Migration
   def self.up
-    create_table :questions do |t|
+    create_table :poll_questions do |t|
       t.references :poll
       t.string :content
 
@@ -9,6 +9,6 @@ class CreateQuestions < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :questions
+    drop_table :poll_questions
   end
 end

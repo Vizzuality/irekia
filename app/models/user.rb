@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
   has_many :poll_answers, :class_name => 'AnswerUser'
   has_many :user_public_streams
   has_many :user_private_streams
+  has_many :answers
 end

@@ -1,5 +1,3 @@
-class Question < ActiveRecord::Base
-  belongs_to :poll
-
+class Question < Content
   has_many :answers
 end

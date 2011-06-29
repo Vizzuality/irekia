@@ -12,20 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110628171113) do
 
-  create_table "answer_users", :force => true do |t|
-    t.integer  "answer_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "answers", :force => true do |t|
-    t.integer  "question_id"
-    t.string   "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
     t.string   "message"
@@ -108,7 +94,21 @@ ActiveRecord::Schema.define(:version => 20110628171113) do
     t.datetime "updated_at"
   end
 
-  create_table "questions", :force => true do |t|
+  create_table "poll_answer_users", :force => true do |t|
+    t.integer  "poll_answer_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "poll_answers", :force => true do |t|
+    t.integer  "poll_question_id"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "poll_questions", :force => true do |t|
     t.integer  "poll_id"
     t.string   "content"
     t.datetime "created_at"
