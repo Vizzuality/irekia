@@ -29,18 +29,34 @@ module Factories
 
     citizen = create_role 'Ciudadano'
 
-    question = create_question
-    create_answer question, virginia
-
     area     = create_area
+
     area.users << virginia
     area.users << alberto
     area.users << user1
     area.users << user2
     area.users << user3
-    area.contents << question
-    area.contents << create_news
-    area.contents << create_proposal
+
+    question = create_question(:title => '¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?', :area => area)
+    create_answer question, virginia
+    create_news(:title => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo', :area => area)
+    create_proposal(:area => area)
+
+    create_question(:area => area)
+    create_news(:area => area)
+    create_proposal(:area => area)
+    create_question(:area => area)
+    create_news(:area => area)
+    create_proposal(:area => area)
+    create_question(:area => area)
+    create_news(:area => area)
+    create_proposal(:area => area)
+
+    Delorean.time_travel_to "1 week ago" do
+      create_question(:area => area)
+      create_news(:area => area)
+      create_proposal(:area => area)
+    end
 
     area
   end
@@ -76,23 +92,44 @@ module Factories
     )
   end
 
-  def create_news
-    News.create(
-      :title => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo',
+  def create_news(options = {})
+    default_options = {:title => random_string(50)}
+    options = default_options.merge(options)
+
+    news = News.new(
+      :title => options[:title],
       :body  => lorem
     )
+
+    news.areas << options[:area] if options[:area].present?
+    news.save!
+    news
   end
 
-  def create_proposal
-    Proposal.create(
-      :title => ''
+  def create_proposal(options = {})
+    default_options = {:title => random_string(50)}
+    options = default_options.merge(options)
+
+    proposal = Proposal.new(
+      :title => options[:title]
     )
+
+    proposal.areas << options[:area] if options[:area].present?
+    proposal.save!
+    proposal
   end
 
-  def create_question
-    Question.create(
-      :title => '¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?'
+  def create_question(options = {})
+    default_options = {:title => random_string(50)}
+    options = default_options.merge(options)
+
+    question = Question.new(
+      :title => options[:title]
     )
+
+    question.areas << options[:area] if options[:area].present?
+    question.save!
+    question
   end
 
   def create_title(name)

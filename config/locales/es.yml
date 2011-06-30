@@ -4,7 +4,14 @@ es:
       description:
         title: Qué hacemos
       team:
-        title: 'Equipo principal'
+        title: Equipo principal
         other_members:
-          one: '1 persona más en este área'
+          one: 1 persona más en este área
           other: '%{count} personas más en este área'
+      status:
+        area:
+          actions_this_week:
+            zero: Ninguna acción esta semana
+            one: 1 acción esta semana
+            other: '%{count} acciones esta semana'
+          follow_this_area: Sigue a este área

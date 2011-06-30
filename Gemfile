@@ -17,4 +17,5 @@ group :development, :test do
   gem 'capybara', '~> 1.0.0'
   gem 'database_cleaner', '~> 0.6.7'
   gem 'launchy'
+  gem 'delorean'
 end

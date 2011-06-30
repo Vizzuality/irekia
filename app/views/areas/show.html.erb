@@ -1,5 +1,6 @@
 <div id="area_summary">
   <h1><%= @area.name %></h1>
+  <%= link_to '', '#', :class => 'add_to_favorites' %>
   <div class="description">
     <h3><%= t('.description.title') %></h3>
     <%= simple_format(@area.description) %>
@@ -16,6 +17,14 @@
       <% if @team.present? %>
         <li><%= t('.team.other_members', :count => @team.length) %></li>
       <% end %>
+    </ul>
+  </div>
+  <div class="status">
+    <ul>
+      <li class="area">
+        <span><%= t('.status.area.actions_this_week', :count => @area.actions.this_week.count) %></span>
+        <%= link_to t('.status.area.follow_this_area') %>
+      </li>
     </ul>
   </div>
 </div>
