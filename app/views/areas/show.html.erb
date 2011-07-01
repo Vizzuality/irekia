@@ -25,6 +25,14 @@
         <span><%= t('.status.area.actions_this_week', :count => @area.actions.this_week.count) %></span>
         <%= link_to t('.status.area.follow_this_area') %>
       </li>
+      <li class="questions">
+        <span><%= t('.status.questions.answered', :count => @area.questions.answered.count) %></span>
+        <%= link_to t('.status.questions.make_a_question') %>
+      </li>
+      <li class="proposals">
+        <span><%= t('.status.proposals.open', :count => @area.proposals.open.count) %></span>
+        <%= link_to t('.status.proposals.make_a_proposal') %>
+      </li>
     </ul>
   </div>
 </div>

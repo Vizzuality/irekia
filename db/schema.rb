@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110629170043) do
+ActiveRecord::Schema.define(:version => 20110701133040) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -62,6 +62,23 @@ ActiveRecord::Schema.define(:version => 20110629170043) do
     t.datetime "updated_at"
   end
 
+  create_table "content_status_translations", :force => true do |t|
+    t.integer  "content_status_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "content_status_translations", ["content_status_id"], :name => "index_5a30c18a0da0f81b75b3734bb146baf3b3694c32"
+
+  create_table "content_statuses", :force => true do |t|
+    t.string   "name"
+    t.string   "translation_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "contents", :force => true do |t|
     t.string   "name"
     t.string   "type"
@@ -71,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20110629170043) do
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "content_status_id"
   end
 
   create_table "contents_users", :force => true do |t|

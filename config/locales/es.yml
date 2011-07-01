@@ -15,3 +15,15 @@ es:
             one: 1 acción esta semana
             other: '%{count} acciones esta semana'
           follow_this_area: Sigue a este área
+        questions:
+          answered:
+            zero: Ninguna pregunta contestada
+            one: 1 pregunta contestada
+            other: '%{count} preguntas contestadas'
+          make_a_question: Haz una pregunta
+        proposals:
+          open:
+            zero: Ninguna propuesta abierta
+            one: 1 propuesta abierta
+            other: '%{count} propuestas abiertas'
+          make_a_proposal: Lanza tu propuesta

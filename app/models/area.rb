@@ -3,6 +3,8 @@ class Area < ActiveRecord::Base
   has_many :users, :through => :areas_users
   has_many :areas_contents, :class_name => 'AreaContent'
   has_many :contents, :through => :areas_contents
+  has_many :questions, :through => :areas_contents
+  has_many :proposals, :through => :areas_contents
   has_many :actions, :class_name => 'AreaPublicStream'
 
   def team

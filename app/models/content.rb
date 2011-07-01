@@ -1,5 +1,6 @@
 class Content < ActiveRecord::Base
   belongs_to :author, :class_name => 'User'
+  belongs_to :status, :class_name => 'ContentStatus', :foreign_key => :content_status_id
 
   has_many :areas_contents, :class_name => "AreaContent"
   has_many :areas, :through => :areas_contents

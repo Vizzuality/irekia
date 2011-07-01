@@ -43,3 +43,15 @@ Title.translations_for :name => 'Vice-consejero' do |title|
   title.add_translation('eu', :name => '')
 end
 puts '... done!'
+
+# Contents statuses
+puts 'Loading content statuses...'
+ContentStatus.translations_for :name => 'open' do |content_status|
+  content_status.add_translation('es', :name => 'open')
+  content_status.add_translation('eu', :name => '')
+end
+ContentStatus.translations_for :name => 'closed' do |content_status|
+  content_status.add_translation('es', :name => 'closed')
+  content_status.add_translation('eu', :name => '')
+end
+puts '... done!'

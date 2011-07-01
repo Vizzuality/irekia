@@ -37,17 +37,20 @@ module Factories
     area.users << user2
     area.users << user3
 
+    create_content_status('open')
+    create_content_status('closed')
+
     question = create_question(:title => '¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?', :area => area)
     create_answer question, virginia
     create_news(:title => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo', :area => area)
     create_proposal(:area => area)
 
+    create_answer create_question(:area => area), alberto
+    create_news(:area => area)
+    create_proposal(:area => area, :status => ContentStatus.closed_proposal)
     create_question(:area => area)
     create_news(:area => area)
-    create_proposal(:area => area)
-    create_question(:area => area)
-    create_news(:area => area)
-    create_proposal(:area => area)
+    create_proposal(:area => area, :status => ContentStatus.closed_proposal)
     create_question(:area => area)
     create_news(:area => area)
     create_proposal(:area => area)
@@ -115,6 +118,7 @@ module Factories
     )
 
     proposal.areas << options[:area] if options[:area].present?
+    proposal.status = options[:status] if options[:status].present?
     proposal.save!
     proposal
   end
@@ -134,6 +138,12 @@ module Factories
 
   def create_title(name)
     Title.create(
+      :name => name
+    )
+  end
+
+  def create_content_status(name)
+    ContentStatus.create(
       :name => name
     )
   end
