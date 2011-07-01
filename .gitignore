@@ -3,7 +3,6 @@ bin/
 config/database.yml
 config/app_config.yml
 db/*.sqlite3
-doc/
 log/*.log
 tmp/
 

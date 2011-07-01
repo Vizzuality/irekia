@@ -19,4 +19,5 @@ group :development, :test do
   gem 'launchy'
   gem 'delorean'
   gem 'irbtools'
+  gem 'railroady'
 end
