@@ -1,4 +1,33 @@
 es:
+  shared:
+    footer:
+      legal_info: Información legal
+      home:
+        title: Inicio
+        agenda: Agenda
+        proposals: Propuestas
+        sign_up: Regístrate
+        sign_in: Accede a tu cuenta
+      areas:
+        title: Áreas
+        vasque_government: Gobierno Vasco
+        presidence: Presidencia
+        interior: Interior
+        education: Educación e Investigación
+        economy: Economía y Hacienda
+        justice: Justicia y Admon. Pública
+        housing: Vivienda
+        public_works: Obras Públicas y Transportes
+        industry: Industria e Innovación
+        comerce: Comercio y Turismo
+        employment: Empleo y Asuntos Sociales
+        health: Sanidad y Consumo
+        environment: Medio Ambiente
+        culture: Cultura y Deporte
+      about:
+        title: ¿Qué es Irekia?
+        help: Ayuda
+        faq: FAQ
   areas:
     show:
       description:
@@ -61,7 +90,7 @@ es:
          from_politics: Propuestas del gobierno
          from_citizens: Propuestas ciudadanas
         create_proposal: Crea una propuesta
-        more: 'Ver más propuestas'
+        morel: 'Ver más propuestas'
   actions_stream:
     answer:
       title: 'Contestando a "%{question}"'
