@@ -1,5 +1,11 @@
 es:
   shared:
+    header:
+      contact: Contacto
+      help: Ayuda
+      map: Mapa
+      accessibility: Accesibilidad
+      management: Mis gestiones
     footer:
       legal_info: Información legal
       home:
