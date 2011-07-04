@@ -1,0 +1,3 @@
+class ContentRelatedUser < ContentUser
+
+end

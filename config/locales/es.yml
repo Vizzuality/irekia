@@ -27,3 +27,23 @@ es:
             one: 1 propuesta abierta
             other: '%{count} propuestas abiertas'
           make_a_proposal: Lanza tu propuesta
+      last_actions:
+        title: Últimas acciones
+        main_filters:
+          more_recent: Más recientes
+          more_polemic: Más polémicas
+  actions_stream:
+    answer:
+      title: 'Contestando a "%{question}"'
+      author: '%{author} contesto hace %{time}'
+    question:
+      title: 'Pregunta para %{receiver}...'
+      area: 'el área'
+      author: '%{author} hace %{time}'
+    news:
+      author: 'Publicado hace %{time}'
+    argument:
+      title:
+        in_favor: 'A favor de la propuesta "%{proposal}"'
+        against: 'En contra de la propuesta "%{proposal}"'
+      author: '%{author} participó hace %{time}'

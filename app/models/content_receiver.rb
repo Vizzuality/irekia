@@ -1,0 +1,3 @@
+class ContentReceiver < ContentUser
+
+end

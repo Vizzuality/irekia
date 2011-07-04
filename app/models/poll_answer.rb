@@ -1,5 +1,5 @@
-class PollAnswer < ActiveRecord::Base
-  belongs_to :poll_question
+class PollAnswer < Content
+  belongs_to :poll_question,
+             :foreign_key => :related_content_id
 
-  has_many :users, :class_name => 'PollAnswerUser'
 end

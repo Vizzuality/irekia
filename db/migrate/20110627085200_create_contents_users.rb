@@ -4,6 +4,8 @@ class CreateContentsUsers < ActiveRecord::Migration
       t.references :content
       t.references :user
 
+      t.string :type
+
       t.timestamps
     end
   end

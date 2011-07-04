@@ -1,6 +1,9 @@
 class CreateContents < ActiveRecord::Migration
   def self.up
     create_table :contents do |t|
+      t.references :content_status
+
+      t.integer :related_content_id
       t.string   :name
       t.string   :type
       t.string   :tags

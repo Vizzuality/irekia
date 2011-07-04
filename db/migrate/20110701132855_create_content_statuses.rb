@@ -6,11 +6,9 @@ class CreateContentStatuses < ActiveRecord::Migration
 
       t.timestamps
     end
-    ContentStatus.create_translation_table! :name => :string
   end
 
   def self.down
     drop_table :content_statuses
-    ContentStatus.drop_translation_table!
   end
 end

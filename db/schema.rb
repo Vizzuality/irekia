@@ -10,22 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110701133040) do
-
-  create_table "answers", :force => true do |t|
-    t.integer  "question_id"
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "body"
-    t.datetime "published_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20110701132855) do
 
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
     t.string   "message"
-    t.integer  "event_type"
+    t.string   "event_type"
     t.integer  "event_id"
     t.string   "link"
     t.datetime "created_at"
@@ -34,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20110701133040) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "description"
   end
 
   create_table "areas_contents", :force => true do |t|
@@ -49,28 +39,10 @@ ActiveRecord::Schema.define(:version => 20110701133040) do
   create_table "areas_users", :force => true do |t|
     t.integer  "area_id"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "hierarchy"
-  end
-
-  create_table "arguments", :force => true do |t|
-    t.integer  "proposal_id"
-    t.text     "body"
-    t.boolean  "in_favor"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "content_status_translations", :force => true do |t|
-    t.integer  "content_status_id"
-    t.string   "locale"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "content_status_translations", ["content_status_id"], :name => "index_5a30c18a0da0f81b75b3734bb146baf3b3694c32"
 
   create_table "content_statuses", :force => true do |t|
     t.string   "name"
@@ -80,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20110701133040) do
   end
 
   create_table "contents", :force => true do |t|
+    t.integer  "content_status_id"
+    t.integer  "related_content_id"
     t.string   "name"
     t.string   "type"
     t.string   "tags"
@@ -88,12 +62,12 @@ ActiveRecord::Schema.define(:version => 20110701133040) do
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "content_status_id"
   end
 
   create_table "contents_users", :force => true do |t|
     t.integer  "content_id"
     t.integer  "user_id"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -128,27 +102,6 @@ ActiveRecord::Schema.define(:version => 20110701133040) do
     t.string   "name"
     t.string   "type"
     t.datetime "published_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "poll_answer_users", :force => true do |t|
-    t.integer  "poll_answer_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "poll_answers", :force => true do |t|
-    t.integer  "poll_question_id"
-    t.string   "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "poll_questions", :force => true do |t|
-    t.integer  "poll_id"
-    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -212,7 +165,7 @@ ActiveRecord::Schema.define(:version => 20110701133040) do
   create_table "user_private_streams", :force => true do |t|
     t.integer  "user_id"
     t.string   "message"
-    t.integer  "event_type"
+    t.string   "event_type"
     t.integer  "event_id"
     t.string   "link"
     t.datetime "created_at"
@@ -222,7 +175,7 @@ ActiveRecord::Schema.define(:version => 20110701133040) do
   create_table "user_public_streams", :force => true do |t|
     t.integer  "user_id"
     t.string   "message"
-    t.integer  "event_type"
+    t.string   "event_type"
     t.integer  "event_id"
     t.string   "link"
     t.datetime "created_at"
@@ -231,6 +184,8 @@ ActiveRecord::Schema.define(:version => 20110701133040) do
 
   create_table "users", :force => true do |t|
     t.integer  "role_id"
+    t.integer  "sex_id"
+    t.integer  "title_id"
     t.string   "name"
     t.string   "lastname"
     t.date     "birthday"
@@ -240,8 +195,6 @@ ActiveRecord::Schema.define(:version => 20110701133040) do
     t.datetime "last_connection"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "sex_id"
-    t.integer  "title_id"
   end
 
 end

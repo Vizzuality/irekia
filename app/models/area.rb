@@ -12,7 +12,8 @@ class Area < ActiveRecord::Base
   has_many :proposals,
            :through => :areas_contents
   has_many :actions,
-           :class_name => 'AreaPublicStream'
+           :class_name => 'AreaPublicStream',
+           :order => 'updated_at desc'
   has_many :follows,
            :as => :follow_item
   has_many :followers,

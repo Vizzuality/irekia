@@ -3,7 +3,7 @@ class CreateAreaPublicStreams < ActiveRecord::Migration
     create_table :area_public_streams do |t|
       t.references :area
       t.string :message
-      t.integer :event_type
+      t.string :event_type
       t.integer :event_id
       t.string :link
 

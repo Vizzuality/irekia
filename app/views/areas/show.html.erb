@@ -11,7 +11,7 @@
       <% @team.slice!(0, 2).each do |user| %>
         <li>
           <%= link_to "#{user.name} #{user.lastname}", '#' %>
-          <span><%= user.title.name %></span>
+          <span><%= user.title.name if user.title %></span>
         </li>
       <% end %>
       <% if @team.present? %>
@@ -35,4 +35,22 @@
       </li>
     </ul>
   </div>
+</div>
+<div id="last_actions">
+  <h2><%= t('.last_actions.title') %></h2>
+  <ul class="main_filters">
+    <li>
+      <%= link_to t('.last_actions.main_filters.more_recent'), '#', :id => 'more_recent' %>
+    </li>
+    <li>
+      <%= link_to t('.last_actions.main_filters.more_polemic'), '#', :id => 'more_polemic' %>
+    </li>
+  </ul>
+  <ul>
+    <% @area.actions.first(4).each do |action| %>
+      <li class="action">
+        <%= render_action action %>
+      </li>
+    <% end %>
+  </ul>
 </div>

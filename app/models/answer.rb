@@ -1,4 +1,4 @@
-class Answer < ActiveRecord::Base
-  belongs_to :question
-  belongs_to :user
+class Answer < Content
+  belongs_to :question,
+             :foreign_key => :related_content_id
 end

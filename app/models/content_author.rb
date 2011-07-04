@@ -1,0 +1,3 @@
+class ContentAuthor < ContentUser
+
+end

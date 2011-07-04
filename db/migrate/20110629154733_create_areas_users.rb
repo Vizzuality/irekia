@@ -3,6 +3,7 @@ class CreateAreasUsers < ActiveRecord::Migration
     create_table :areas_users do |t|
       t.references :area
       t.references :user
+      t.integer :hierarchy
 
       t.timestamps
     end

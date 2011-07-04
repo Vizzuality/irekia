@@ -3,7 +3,7 @@ class CreateUserPrivateStreams < ActiveRecord::Migration
     create_table :user_private_streams do |t|
       t.references :user
       t.string :message
-      t.integer :event_type
+      t.string :event_type
       t.integer :event_id
       t.string :link
 
