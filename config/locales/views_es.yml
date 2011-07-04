@@ -6,6 +6,11 @@ es:
       map: Mapa
       accessibility: Accesibilidad
       management: Mis gestiones
+    nav_bar:
+      currently_viewing: Estás viendo...
+      search: O busca lo que necesitas...
+      sign_up: Regístrate
+      sign_in: Login
     footer:
       legal_info: Información legal
       home:

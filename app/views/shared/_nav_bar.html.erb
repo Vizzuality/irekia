@@ -1,0 +1,17 @@
+<div id="navigation">
+  <span><%= t('.currently_viewing') %></span>
+  <ul>
+    <% @areas.each do |area| %>
+      <li class="<%= current_area?(area) %>"><%= area.name %></li>
+    <% end %>
+  </ul>
+  <%= form_for :search, :html => {:method => :get} do |search_form| %>
+    <%= search_form.label :query, t('.search') %>
+    <%= search_form.text_field :query %>
+    <%= search_form.submit '' %>
+  <% end %>
+  <ul class="auth">
+    <li><%= link_to t('.sign_up'), '#' %></li>
+    <li><%= link_to t('.sign_in'), '#' %></li>
+  </ul>
+</div>

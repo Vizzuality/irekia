@@ -4,4 +4,5 @@ Irekia::Application.routes.draw do
   resources :users
   resources :questions
   resources :proposals
+  resources :search, :only => :show
 end

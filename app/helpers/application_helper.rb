@@ -99,6 +99,7 @@ module ApplicationHelper
       raw html.join
     end
   end
+
   def render_action_authors(type, authors, updated_at)
     content_tag(:span, :class => 'author') do
       raw t("actions_stream.#{type}.author",
@@ -106,5 +107,9 @@ module ApplicationHelper
         :time => distance_of_time_in_words_to_now(updated_at)
       )
     end
+  end
+
+  def current_area?(area)
+    area.eql?(@area) ? 'selected' : nil
   end
 end
