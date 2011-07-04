@@ -53,4 +53,35 @@
       </li>
     <% end %>
   </ul>
+  <ul class="content_type_filters">
+    <li><%= link_to t('.last_actions.content_type_filters.all'), '#' %></li>
+    <li><%= link_to t('.last_actions.content_type_filters.news'), '#' %></li>
+    <li><%= link_to t('.last_actions.content_type_filters.politics_activity'), '#' %></li>
+    <li><%= link_to t('.last_actions.content_type_filters.questions'), '#' %></li>
+    <li><%= link_to t('.last_actions.content_type_filters.proposals'), '#' %></li>
+    <li><%= link_to t('.last_actions.content_type_filters.images'), '#' %></li>
+    <li><%= link_to t('.last_actions.content_type_filters.videos'), '#' %></li>
+  </ul>
+</div>
+<div id="questions">
+  <h2><%= t('.questions.title') %></h2>
+  <ul class="main_filters">
+    <li>
+      <%= link_to t('.questions.main_filters.more_recent'), '#', :id => 'more_recent' %>
+    </li>
+    <li>
+      <%= link_to t('.questions.main_filters.more_polemic'), '#', :id => 'more_polemic' %>
+    </li>
+  </ul>
+  <ul>
+    <% @area.questions.first(4).each do |question| %>
+      <li class="action">
+        <%= render_question question %>
+      </li>
+    <% end %>
+  </ul>
+  <ul class="content_type_filters">
+    <li><%= link_to t('.questions.content_type_filters.all'), '#' %></li>
+    <li><%= link_to t('.questions.content_type_filters.answered'), '#' %></li>
+  </ul>
 </div>
