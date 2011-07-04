@@ -83,5 +83,30 @@
   <ul class="content_type_filters">
     <li><%= link_to t('.questions.content_type_filters.all'), '#' %></li>
     <li><%= link_to t('.questions.content_type_filters.answered'), '#' %></li>
+    <li class="create"><%= link_to t('.questions.create_question'), new_question_path %></li>
+  </ul>
+</div>
+<div id="proposals">
+  <h2><%= t('.proposals.title') %></h2>
+  <ul class="main_filters">
+    <li>
+      <%= link_to t('.proposals.main_filters.more_recent'), '#', :id => 'more_recent' %>
+    </li>
+    <li>
+      <%= link_to t('.proposals.main_filters.more_polemic'), '#', :id => 'more_polemic' %>
+    </li>
+  </ul>
+  <ul>
+    <% @area.proposals.first(4).each do |proposal| %>
+      <li class="action">
+        <%= render_proposal proposal %>
+      </li>
+    <% end %>
+  </ul>
+  <ul class="content_type_filters">
+    <li><%= link_to t('.proposals.content_type_filters.all'), '#' %></li>
+    <li><%= link_to t('.proposals.content_type_filters.from_politics'), '#' %></li>
+    <li><%= link_to t('.proposals.content_type_filters.from_citizens'), '#' %></li>
+    <li class="create"><%= link_to t('.proposals.create_proposal'), new_proposal_path %></li>
   </ul>
 </div>

@@ -57,6 +57,17 @@ module ApplicationHelper
     html = []
 
     content_tag :div, :class => :proposal do
+      html << content_tag(:p, proposal.title, :class => 'title')
+
+      html << content_tag(:ul) do
+        li = []
+        li << content_tag(:li, t('actions_stream.proposal.in_favor', :count => proposal.arguments.in_favor.count))
+        li << content_tag(:li, t('actions_stream.proposal.against', :count => proposal.arguments.against.count))
+        raw li.join
+      end
+
+      html << render_action_authors('proposal', proposal.authors, proposal.published_at)
+
       raw html.join
     end
   end
@@ -91,7 +102,7 @@ module ApplicationHelper
   def render_action_authors(type, authors, updated_at)
     content_tag(:span, :class => 'author') do
       raw t("actions_stream.#{type}.author",
-        :author => authors.map{|a| link_to(a.name, user_path(a))}.join(', '),
+        :author => authors.map{|a| link_to("#{a.name} #{a.lastname}", user_path(a))}.join(', '),
         :time => distance_of_time_in_words_to_now(updated_at)
       )
     end

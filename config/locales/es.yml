@@ -33,31 +33,49 @@ es:
           more_recent: Más recientes
           more_polemic: Más polémicas
         content_type_filters:
-         all: 'Todos los tipos'
-         news: 'Noticias'
-         politics_activity: 'Actividad de los políticos'
-         questions: 'Preguntas'
-         proposals: 'Propuestas'
-         images: 'Fotos'
-         videos: 'Videos'
+         all: Todos los tipos
+         news: Noticias
+         politics_activity: Actividad de los políticos
+         questions: Preguntas
+         proposals: Propuestas
+         images: Fotos
+         videos: Videos
+        more_actions: 'Ver más acciones'
       questions:
         title: Preguntas de los ciudadanos
         main_filters:
           more_recent: Más recientes
           more_polemic: Más polémicas
         content_type_filters:
-         all: 'Todas'
-         answered: 'Contestadas'
+         all: Todas
+         answered: Contestadas
+        create_question: Haz una pregunta
+        more_questions: 'Ver más preguntas'
+      proposals:
+        title: Propuestas
+        main_filters:
+          more_recent: Más recientes
+          more_polemic: Más polémicas
+        content_type_filters:
+         all: Todas
+         from_politics: Propuestas del gobierno
+         from_citizens: Propuestas ciudadanas
+        create_proposal: Crea una propuesta
+        more_proposals: 'Ver más propuestas'
   actions_stream:
     answer:
       title: 'Contestando a "%{question}"'
       author: '%{author} contesto hace %{time}'
     question:
       title: 'Pregunta para %{receiver}...'
-      area: 'el área'
+      area: el área
       author: '%{author} hace %{time}'
     news:
       author: 'Publicado hace %{time}'
+    proposal:
+      in_favor: '%{count} a favor'
+      against: '%{count} en contra'
+      author: '%{author} hace %{time}'
     argument:
       title:
         in_favor: 'A favor de la propuesta "%{proposal}"'

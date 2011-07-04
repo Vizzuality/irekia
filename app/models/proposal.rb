@@ -1,5 +1,6 @@
 class Proposal < Content
-  has_many :arguments
+  has_many :arguments,
+           :foreign_key => :related_content_id
 
   before_create :assign_opened_status
 
