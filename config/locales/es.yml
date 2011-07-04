@@ -40,7 +40,7 @@ es:
          proposals: Propuestas
          images: Fotos
          videos: Videos
-        more_actions: 'Ver más acciones'
+        more: 'Ver más acciones'
       questions:
         title: Preguntas de los ciudadanos
         main_filters:
@@ -50,7 +50,7 @@ es:
          all: Todas
          answered: Contestadas
         create_question: Haz una pregunta
-        more_questions: 'Ver más preguntas'
+        more: 'Ver más preguntas'
       proposals:
         title: Propuestas
         main_filters:
@@ -61,7 +61,7 @@ es:
          from_politics: Propuestas del gobierno
          from_citizens: Propuestas ciudadanas
         create_proposal: Crea una propuesta
-        more_proposals: 'Ver más propuestas'
+        more: 'Ver más propuestas'
   actions_stream:
     answer:
       title: 'Contestando a "%{question}"'

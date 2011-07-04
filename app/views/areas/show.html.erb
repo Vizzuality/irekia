@@ -62,6 +62,9 @@
     <li><%= link_to t('.last_actions.content_type_filters.images'), '#' %></li>
     <li><%= link_to t('.last_actions.content_type_filters.videos'), '#' %></li>
   </ul>
+  <div class="paginate">
+    <%= link_to t('.last_actions.more'), '#' %>
+  </div>
 </div>
 <div id="questions">
   <h2><%= t('.questions.title') %></h2>
@@ -85,6 +88,9 @@
     <li><%= link_to t('.questions.content_type_filters.answered'), '#' %></li>
     <li class="create"><%= link_to t('.questions.create_question'), new_question_path %></li>
   </ul>
+  <div class="paginate">
+    <%= link_to t('.questions.more'), '#' %>
+  </div>
 </div>
 <div id="proposals">
   <h2><%= t('.proposals.title') %></h2>
@@ -109,4 +115,7 @@
     <li><%= link_to t('.proposals.content_type_filters.from_citizens'), '#' %></li>
     <li class="create"><%= link_to t('.proposals.create_proposal'), new_proposal_path %></li>
   </ul>
+  <div class="paginate">
+    <%= link_to t('.proposals.more'), '#' %>
+  </div>
 </div>
