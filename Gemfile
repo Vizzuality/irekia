@@ -4,6 +4,7 @@ gem 'rails', '3.0.9'
 gem 'sass', '~> 3.1.3'
 gem 'pg', '0.11.0'
 gem 'globalize3', '~> 0.2.0.beta1'
+gem 'devise', '~> 1.4.2'
 
 group :development do
   gem 'capistrano', '~> 2.6.0'
@@ -18,6 +19,6 @@ group :development, :test do
   gem 'database_cleaner', '~> 0.6.7'
   gem 'launchy'
   gem 'delorean'
-  gem 'irbtools'
+  gem 'irbtools', :require => 'irbtools/configure'
   gem 'railroady'
 end

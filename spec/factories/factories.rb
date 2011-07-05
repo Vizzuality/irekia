@@ -68,10 +68,9 @@ module Factories
     Role.create(:name => name)
   end
 
-  def create_user(name = random_string(rand(12)), lastname = random_string(rand(12)))
+  def create_user(name = "#{random_string(rand(12))} #{random_string(rand(12))} #{random_string(rand(12))}" )
     User.create(
-      :name            => name,
-      :lastname        => lastname,
+      :name            => name
       :birthday        => Date.new(1980, 1, 1),
       :description     => lorem,
       :facebook_token  => random_string,

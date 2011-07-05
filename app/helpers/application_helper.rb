@@ -103,7 +103,7 @@ module ApplicationHelper
   def render_action_authors(type, authors, updated_at)
     content_tag(:span, :class => 'author') do
       raw t("actions_stream.#{type}.author",
-        :author => authors.map{|a| link_to("#{a.name} #{a.lastname}", user_path(a))}.join(', '),
+        :author => authors.map{|a| link_to(a.name, user_path(a))}.join(', '),
         :time => distance_of_time_in_words_to_now(updated_at)
       )
     end
@@ -111,5 +111,17 @@ module ApplicationHelper
 
   def current_area?(area)
     area.eql?(@area) ? 'selected' : nil
+  end
+
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
   end
 end

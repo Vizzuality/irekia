@@ -1,10 +1,10 @@
 #encoding: UTF-8
 
 area     = Area.find_by_name('Educación, Universidades e Investigación')
-virginia = User.find_by_name_and_lastname('Virginia', 'Uriarte Rodríguez')
-maria    = User.find_by_name_and_lastname('María', 'González Pérez')
-andres   = User.find_by_name_and_lastname('Andrés', 'Berzoso Rodríguez')
-aritz    = User.find_by_name_and_lastname('Aritz', 'Aranburu')
+virginia = User.find_by_name('Virginia Uriarte Rodríguez')
+maria    = User.find_by_name('María González Pérez')
+andres   = User.find_by_name('Andrés Berzoso Rodríguez')
+aritz    = User.find_by_name('Aritz Aranburu')
 
 puts 'Loading proposals...'
 proposal = Proposal.find_or_initialize_by_title('Actualizar la información publicada sobre las ayudas a familias numerosas')

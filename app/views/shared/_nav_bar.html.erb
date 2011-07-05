@@ -11,7 +11,12 @@
     <%= search_form.submit '' %>
   <% end %>
   <ul class="auth">
-    <li><%= link_to t('.sign_up'), '#' %></li>
-    <li><%= link_to t('.sign_in'), '#' %></li>
+    <li><%= link_to t('.sign_up'), new_user_registration_path %></li>
+    <li><%= link_to t('.sign_in'), new_user_session_path %></li>
   </ul>
+  <% if user_signed_in? %>
+    <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete' %>
+  <% else %>
+    <%= render 'shared/sign_in' %>
+  <% end %>
 </div>

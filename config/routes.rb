@@ -1,4 +1,6 @@
 Irekia::Application.routes.draw do
+  devise_for :users
+
   resources :areas
   resources :politics
   resources :users
@@ -10,4 +12,6 @@ Irekia::Application.routes.draw do
   resources :polls,        :controller => 'contents', :type => 'Poll'
   resources :poll_answers, :controller => 'contents', :type => 'PollAnswer'
   resources :search, :only => :show
+
+  root :to => "home#index"
 end

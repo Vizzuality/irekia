@@ -1,5 +1,8 @@
 class AreasController < ApplicationController
+
+  skip_before_filter :authenticate_user!, :only => [:index, :show]
   before_filter :get_area, :only => :show
+
   def show
     @team = @area.team
   end

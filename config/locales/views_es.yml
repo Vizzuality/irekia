@@ -11,6 +11,19 @@ es:
       search: O busca lo que necesitas...
       sign_up: Regístrate
       sign_in: Login
+      sign_out: Salir
+    sign_in:
+      access_irekia: Accede a Irekia
+      forgotten_password: '¿Olvidaste tu contraseña?'
+      get_it_here: 'Recuperala aquí'
+      remember_me: Recordar mis datos
+      sign_in: Entrar
+    sign_up:
+      new_in_irekia: ¿Nuevo en Irekia?
+      fill_in_your_data: Rellena tus datos y comienza tu participación en Irekia.
+      terms_of_service: 'Acepto las %{use_conditions_link}'
+      terms_of_service_link: Condiciones de uso
+      sign_up: Crear mi cuenta
     footer:
       legal_info: Información legal
       home:

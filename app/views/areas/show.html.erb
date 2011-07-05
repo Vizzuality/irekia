@@ -10,7 +10,7 @@
     <ul>
       <% @team.slice!(0, 2).each do |user| %>
         <li>
-          <%= link_to "#{user.name} #{user.lastname}", '#' %>
+          <%= link_to user.name, '#' %>
           <span><%= user.title.name if user.title %></span>
         </li>
       <% end %>
