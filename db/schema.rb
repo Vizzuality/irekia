@@ -106,34 +106,9 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
     t.datetime "updated_at"
   end
 
-  create_table "role_translations", :force => true do |t|
-    t.integer  "role_id"
-    t.string   "locale"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "role_translations", ["role_id"], :name => "index_role_translations_on_role_id"
-
   create_table "roles", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sex_translations", :force => true do |t|
-    t.integer  "sex_id"
-    t.string   "locale"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sex_translations", ["sex_id"], :name => "index_sex_translations_on_sex_id"
-
-  create_table "sexes", :force => true do |t|
-    t.string   "name"
+    t.string   "translation_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -146,18 +121,9 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
     t.string  "proj4text", :limit => 2048
   end
 
-  create_table "title_translations", :force => true do |t|
-    t.integer  "title_id"
-    t.string   "locale"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "title_translations", ["title_id"], :name => "index_title_translations_on_title_id"
-
   create_table "titles", :force => true do |t|
     t.string   "name"
+    t.string   "translation_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -184,16 +150,16 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
 
   create_table "users", :force => true do |t|
     t.integer  "role_id"
-    t.integer  "sex_id"
     t.integer  "title_id"
     t.string   "name"
     t.date     "birthday"
     t.text     "description"
+    t.boolean  "is_woman",                              :default => false
     t.string   "facebook_token"
     t.string   "twitter_token"
     t.datetime "last_connection"
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

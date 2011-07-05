@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :name
       t.date     :birthday
       t.text     :description
+      t.boolean  :is_woman, :default => false
       t.string   :facebook_token
       t.string   :twitter_token
       t.datetime :last_connection
