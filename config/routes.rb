@@ -1,7 +1,14 @@
 Irekia::Application.routes.draw do
   devise_for :users
 
-  resources :areas
+  resources :areas do
+    member do
+      get 'actions'
+      get 'questions'
+      get 'proposals'
+      get 'agenda'
+    end
+  end
   resources :politics
   resources :users
   resources :proposals,    :controller => 'contents', :type => 'Proposal'

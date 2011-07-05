@@ -1,0 +1,7 @@
+<ul>
+  <li><%= link_to t('.summary'), area_path(@area),             :class => current_action?(:show) %></li>
+  <li><%= link_to t('.actions'), actions_area_path(@area),     :class => current_action?(:actions)  %></li>
+  <li><%= link_to t('.questions'), questions_area_path(@area), :class => current_action?(:questions)  %></li>
+  <li><%= link_to t('.proposals'), proposals_area_path(@area), :class => current_action?(:proposals)  %></li>
+  <li><%= link_to t('.agenda'), agenda_area_path(@area),       :class => current_action?(:agenda) %></li>
+</ul>

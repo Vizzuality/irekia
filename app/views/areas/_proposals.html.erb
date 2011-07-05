@@ -1,0 +1,27 @@
+<div id="proposals">
+  <h2><%= t('.title') %></h2>
+  <ul class="main_filters">
+    <li>
+      <%= link_to t('.main_filters.more_recent'), '#', :id => 'more_recent' %>
+    </li>
+    <li>
+      <%= link_to t('.main_filters.more_polemic'), '#', :id => 'more_polemic' %>
+    </li>
+  </ul>
+  <ul>
+    <% @proposals.first(4).each do |proposal| %>
+      <li class="action">
+        <%= render_proposal proposal %>
+      </li>
+    <% end %>
+  </ul>
+  <ul class="content_type_filters">
+    <li><%= link_to t('.content_type_filters.all'), '#' %></li>
+    <li><%= link_to t('.content_type_filters.from_politics'), '#' %></li>
+    <li><%= link_to t('.content_type_filters.from_citizens'), '#' %></li>
+    <li class="create"><%= link_to t('.create_proposal'), new_proposal_path %></li>
+  </ul>
+  <div class="paginate">
+    <%= link_to t('.more'), '#' %>
+  </div>
+</div>

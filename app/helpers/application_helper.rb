@@ -124,4 +124,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def current_action?(action)
+    'selected' if action_name.eql?(action.to_s)
+  end
 end

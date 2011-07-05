@@ -57,7 +57,13 @@ es:
         help: Ayuda
         faq: FAQ
   areas:
-    show:
+    navigation_menu:
+      summary: Resumen
+      actions: Acciones
+      questions: Preguntas
+      proposals: Propuestas
+      agenda: Agenda
+    summary:
       description:
         title: Qué hacemos
       team:
@@ -84,41 +90,41 @@ es:
             one: 1 propuesta abierta
             other: '%{count} propuestas abiertas'
           make_a_proposal: Lanza tu propuesta
-      last_actions:
-        title: Últimas acciones
-        main_filters:
-          more_recent: Más recientes
-          more_polemic: Más polémicas
-        content_type_filters:
-         all: Todos los tipos
-         news: Noticias
-         politics_activity: Actividad de los políticos
-         questions: Preguntas
-         proposals: Propuestas
-         images: Fotos
-         videos: Videos
-        more: 'Ver más acciones'
-      questions:
-        title: Preguntas de los ciudadanos
-        main_filters:
-          more_recent: Más recientes
-          more_polemic: Más polémicas
-        content_type_filters:
-         all: Todas
-         answered: Contestadas
-        create_question: Haz una pregunta
-        more: 'Ver más preguntas'
-      proposals:
-        title: Propuestas
-        main_filters:
-          more_recent: Más recientes
-          more_polemic: Más polémicas
-        content_type_filters:
-         all: Todas
-         from_politics: Propuestas del gobierno
-         from_citizens: Propuestas ciudadanas
-        create_proposal: Crea una propuesta
-        morel: 'Ver más propuestas'
+    actions:
+      title: Últimas acciones
+      main_filters:
+        more_recent: Más recientes
+        more_polemic: Más polémicas
+      content_type_filters:
+       all: Todos los tipos
+       news: Noticias
+       politics_activity: Actividad de los políticos
+       questions: Preguntas
+       proposals: Propuestas
+       images: Fotos
+       videos: Videos
+      more: 'Ver más acciones'
+    questions:
+      title: Preguntas de los ciudadanos
+      main_filters:
+        more_recent: Más recientes
+        more_polemic: Más polémicas
+      content_type_filters:
+       all: Todas
+       answered: Contestadas
+      create_question: Haz una pregunta
+      more: 'Ver más preguntas'
+    proposals:
+      title: Propuestas
+      main_filters:
+        more_recent: Más recientes
+        more_polemic: Más polémicas
+      content_type_filters:
+       all: Todas
+       from_politics: Propuestas del gobierno
+       from_citizens: Propuestas ciudadanas
+      create_proposal: Crea una propuesta
+      morel: 'Ver más propuestas'
   actions_stream:
     answer:
       title: 'Contestando a "%{question}"'

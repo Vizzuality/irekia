@@ -1,0 +1,30 @@
+<div id="last_actions">
+  <h2><%= link_to t('.title'), actions_area_path(@area) %></h2>
+  <ul class="main_filters">
+    <li>
+      <%= link_to t('.main_filters.more_recent'), '#', :id => 'more_recent' %>
+    </li>
+    <li>
+      <%= link_to t('.main_filters.more_polemic'), '#', :id => 'more_polemic' %>
+    </li>
+  </ul>
+  <ul>
+    <% @actions.first(4).each do |action| %>
+      <li class="action">
+        <%= render_action action %>
+      </li>
+    <% end %>
+  </ul>
+  <ul class="content_type_filters">
+    <li><%= link_to t('.content_type_filters.all'), '#' %></li>
+    <li><%= link_to t('.content_type_filters.news'), '#' %></li>
+    <li><%= link_to t('.content_type_filters.politics_activity'), '#' %></li>
+    <li><%= link_to t('.content_type_filters.questions'), '#' %></li>
+    <li><%= link_to t('.content_type_filters.proposals'), '#' %></li>
+    <li><%= link_to t('.content_type_filters.images'), '#' %></li>
+    <li><%= link_to t('.content_type_filters.videos'), '#' %></li>
+  </ul>
+  <div class="paginate">
+    <%= link_to t('.more'), actions_area_path(@area) %>
+  </div>
+</div>
