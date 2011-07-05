@@ -6,3 +6,13 @@ es:
         email: Email
         password: Contraseña
         password_confirmation: Confirmar contraseña
+    values:
+      role:
+        name:
+          administrator: Administrador
+          politic: Político
+          citizen: Ciudadano
+      title:
+        name:
+          adviser: Consejero
+          co_adviser: Vice-consejero

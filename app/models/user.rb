@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
 
 
   belongs_to :role
-  belongs_to :sex
   belongs_to :title
 
   has_many :areas_users,

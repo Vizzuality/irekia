@@ -2,7 +2,7 @@
 
 puts 'Loading politics...'
 admin = User.find_or_initialize_by_name_and_email('Virginia Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
-admin.role = Role.where_translation(:name => 'Político').first
+admin.role = Role.find_by_name('Político')
 admin.areas.clear
 admin.areas << Area.find_by_name('Educación, Universidades e Investigación')
 admin.save(:validate => false)

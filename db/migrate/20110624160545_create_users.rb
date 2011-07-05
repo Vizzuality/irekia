@@ -2,7 +2,6 @@ class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
       t.references  :role
-      t.references :sex
       t.references :title
 
       t.string   :name
