@@ -23,7 +23,7 @@ class AreasController < ApplicationController
   private
   def get_area_data
     @area = Area.where(:id => params[:id]).first if params[:id].present?
-    @team = @area.team
+    @team = @area.team.includes(:title)
     @actions = @area.actions
   end
 

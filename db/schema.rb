@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
   create_table "areas_users", :force => true do |t|
     t.integer  "area_id"
     t.integer  "user_id"
-    t.integer  "hierarchy"
+    t.integer  "display_order"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "content_statuses", :force => true do |t|
     t.string   "name"
-    t.string   "translation_key"
+    t.string   "name_i18n_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
-    t.string   "translation_key"
+    t.string   "name_i18n_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
 
   create_table "titles", :force => true do |t|
     t.string   "name"
-    t.string   "translation_key"
+    t.string   "name_i18n_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

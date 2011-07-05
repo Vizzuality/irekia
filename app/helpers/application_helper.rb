@@ -128,4 +128,9 @@ module ApplicationHelper
   def current_action?(action)
     'selected' if action_name.eql?(action.to_s)
   end
+
+  def translates_model_value(model, key)
+    translation_key = "#{key}_i18n_key"
+    t("activerecord.values.#{model.class.name.downcase}.#{key}.#{model[translation_key]}")
+  end
 end

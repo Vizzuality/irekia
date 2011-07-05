@@ -2,17 +2,17 @@
 
 # Roles
 puts 'Loading roles...'
-Role.find_or_create_by_name_and_translation_key('Administrador', 'name.administrator')
-Role.find_or_create_by_name_and_translation_key('Político', 'name.politic')
-Role.find_or_create_by_name_and_translation_key('Ciudadano', 'name.citizen')
+Role.find_or_create_by_name_and_name_i18n_key('Administrador', 'administrator')
+Role.find_or_create_by_name_and_name_i18n_key('Político', 'politic')
+Role.find_or_create_by_name_and_name_i18n_key('Ciudadano', 'citizen')
 puts '... done!'
 
 puts ''
 
 # Titles
 puts 'Loading titles...'
-Title.find_or_create_by_name_and_translation_key('Consejero', 'name.adviser')
-Title.find_or_create_by_name_and_translation_key('Vice-consejero', 'name.co_adviser')
+Title.find_or_create_by_name_and_name_i18n_key('Consejero', 'adviser')
+Title.find_or_create_by_name_and_name_i18n_key('Vice-consejero', 'co_adviser')
 puts '... done!'
 
 # Contents statuses

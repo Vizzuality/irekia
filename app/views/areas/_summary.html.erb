@@ -11,7 +11,7 @@
       <% @team.slice!(0, 2).each do |user| %>
         <li>
           <%= link_to user.name, '#' %>
-          <span><%= user.title.name if user.title %></span>
+          <span><%= translates_model_value(user.title, :name) if user.title %></span>
         </li>
       <% end %>
       <% if @team.present? %>

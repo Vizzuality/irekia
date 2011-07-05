@@ -1,11 +1,20 @@
 #encoding: UTF-8
 
 puts 'Loading politics...'
+admin = User.find_or_initialize_by_name_and_email('Alberto de Zárate López', 'alberto.zarate@ej-gv.es')
+admin.role = Role.find_by_name('Político')
+admin.areas.clear
+admin.areas_users << AreaUser.create(:area => Area.find_by_name('Educación, Universidades e Investigación'), :display_order => 2)
+admin.title = Title.find_by_name('Vice-consejero')
+admin.save(:validate => false)
+
 admin = User.find_or_initialize_by_name_and_email('Virginia Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
 admin.role = Role.find_by_name('Político')
 admin.areas.clear
-admin.areas << Area.find_by_name('Educación, Universidades e Investigación')
+admin.areas_users << AreaUser.create(:area => Area.find_by_name('Educación, Universidades e Investigación'), :display_order => 1)
+admin.title = Title.find_by_name('Consejero')
 admin.save(:validate => false)
+
 puts '...done!'
 
 puts ''

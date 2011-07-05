@@ -21,7 +21,7 @@ class Area < ActiveRecord::Base
            :source => :user
 
   def team
-    users.order('hierarchy ASC')
+    users.order('display_order ASC')
   end
 
 end
