@@ -24,6 +24,10 @@ es:
       terms_of_service: 'Acepto las %{use_conditions_link}'
       terms_of_service_link: Condiciones de uso
       sign_up: Crear mi cuenta
+    forgot_password:
+      fill_in_your_email: Introduce tu email
+      will_send_your_data: Y te mandaremos instrucciones para recuperar tu contraseña
+      get_back_password: Recuperar contraseña
     footer:
       legal_info: Información legal
       home:
