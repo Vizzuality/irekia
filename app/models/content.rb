@@ -40,7 +40,7 @@ class Content < ActiveRecord::Base
       area_action = area.actions.new
       area_action.event_id   = self.id
       area_action.event_type = self.class.name.downcase
-      area_action.message = self
+      area_action.message = self.to_html
       area_action.save!
     end
   end

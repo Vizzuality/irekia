@@ -8,6 +8,10 @@ class Argument < Content
 
   scope :against, joins(:status).where('content_statuses.name' => 'against')
 
+  def to_html
+
+  end
+
   def assign_default_status
     self.status = ContentStatus.in_favor if self.status.blank?
   end

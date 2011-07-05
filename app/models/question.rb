@@ -4,6 +4,10 @@ class Question < Content
 
   scope :answered, joins(:answers)
 
+  def to_html
+
+  end
+
   def to_s
     self.title
   end

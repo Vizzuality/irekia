@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
 
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
-    t.string   "message"
+    t.text     "message"
     t.string   "event_type"
     t.integer  "event_id"
     t.string   "link"

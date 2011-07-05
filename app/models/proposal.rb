@@ -6,6 +6,10 @@ class Proposal < Content
 
   scope :open, joins(:status).where('content_statuses.name' => 'open')
 
+  def to_html
+
+  end
+
   def assign_opened_status
     self.status = ContentStatus.open_proposal if self.status.blank?
   end
