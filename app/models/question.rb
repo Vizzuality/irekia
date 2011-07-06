@@ -1,5 +1,6 @@
 class Question < Content
-  has_one :question_data
+  has_one :question_data,
+          :include => :target_user
 
   has_one :answer_data
   has_one :answer,
@@ -7,7 +8,7 @@ class Question < Content
 
   scope :answered, joins(:answer)
 
-  delegate :target_user, :target_area, :question_text, :to => :question_data
+  delegate :question_text, :to => :question_data
 
   def to_html
 

@@ -43,19 +43,22 @@ puts '...done!'
 
 puts ''
 
-# puts 'Loading arguments...'
-# argument = Argument.find_or_initialize_by_title('Argumento a favor de prueba')
-# if argument.new_record?
-#   argument.areas << area
-#   argument.authors << aritz
-#   argument.proposal = proposal
-#   argument.status = ContentStatus.in_favor
-#
-#   argument.save!
-# end
-# puts '...done!'
-#
-# puts ''
+puts 'Loading arguments...'
+
+proposal_data = ProposalData.find_or_initialize_by_proposal_text('Actualizar la información publicada sobre las ayudas a familias numerosas')
+
+proposal = proposal_data.proposal
+proposal.arguments.clear
+
+argument = Argument.new
+argument.user = aritz
+argument.proposal = proposal_data.proposal
+
+argument.save!
+
+puts '...done!'
+
+puts ''
 
 puts 'Loading area questions...'
 
@@ -110,6 +113,7 @@ if answer_data.new_record?
   answer.areas << area
   answer.users << virginia
   answer.answer_data = answer_data
+
   answer.save!
 end
 

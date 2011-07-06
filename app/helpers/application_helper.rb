@@ -3,15 +3,15 @@ module ApplicationHelper
 
     case action.event_type
     when 'question'
-      render_question Question.find(action.event_id)
+      render_question Question.where(:id => action.event_id).first
     when 'answer'
-      render_answer Answer.find(action.event_id)
+      render_answer Answer.where(:id => action.event_id).first
     when 'proposal'
-      render_proposal Proposal.find(action.event_id)
+      render_proposal Proposal.where(:id => action.event_id).first
     when 'argument'
-      render_argument Argument.find(action.event_id)
+      render_argument Argument.where(:id => action.event_id).first
     when 'news'
-      render_news News.find(action.event_id)
+      render_news News.where(:id => action.event_id).first
     end
   end
 
@@ -19,8 +19,9 @@ module ApplicationHelper
     html = []
 
     content_tag :div, :class => :question do
-      receiver = if question.target_user.present?
-        link_to question.target_user.name, user_path(question.target_user)
+      target_user = question.question_data.target_user
+      receiver = if target_user.present?
+        link_to target_user.name, user_path(target_user)
       else
         t('actions_stream.question.area')
       end
@@ -59,12 +60,12 @@ module ApplicationHelper
     content_tag :div, :class => :proposal do
       html << content_tag(:p, proposal.proposal_text, :class => 'title')
 
-      # html << content_tag(:ul) do
-      #   li = []
-      #   li << content_tag(:li, t('actions_stream.proposal.in_favor', :count => proposal.arguments.in_favor.count))
-      #   li << content_tag(:li, t('actions_stream.proposal.against', :count => proposal.arguments.against.count))
-      #   raw li.join
-      # end
+      html << content_tag(:ul) do
+        li = []
+        li << content_tag(:li, t('actions_stream.proposal.in_favor', :count => proposal.arguments.in_favor.count))
+        li << content_tag(:li, t('actions_stream.proposal.against', :count => proposal.arguments.against.count))
+        raw li.join
+      end
 
       html << render_action_authors('proposal', proposal.users, proposal.published_at)
 
@@ -77,10 +78,10 @@ module ApplicationHelper
 
     content_tag :div, :class => :argument do
       html << content_tag(:p, :class => 'title') do
-        raw t("actions_stream.argument.title.#{argument.status.name}", :proposal => content_tag(:span, argument.proposal.title))
+        raw t(argument.argument_data.in_favor ? 'in_favor' : 'against', :proposal => content_tag(:span, argument.proposal.proposal_text), :scope => 'actions_stream.argument.title')
       end
 
-      html << render_action_authors('argument', argument.authors, argument.published_at)
+      html << render_action_authors('argument', [argument.user], argument.published_at)
 
       raw html.join
     end

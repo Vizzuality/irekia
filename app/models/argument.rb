@@ -1,19 +1,21 @@
-class Argument < Content
+class Argument < Participation
   belongs_to :proposal,
-             :foreign_key => :related_content_id
+             :foreign_key => :content_id
 
-  before_create :assign_default_status
+  has_one :argument_data
 
-  scope :in_favor, joins(:status).where('content_statuses.name' => 'in_favor')
+  scope :in_favor, joins(:argument_data).where('argument_data.in_favor' => true)
+  scope :against, joins(:argument_data).where('argument_data.in_favor' => true)
 
-  scope :against, joins(:status).where('content_statuses.name' => 'against')
+  after_initialize :create_argument_data
 
   def to_html
 
   end
 
-  def assign_default_status
-    self.status = ContentStatus.in_favor if self.status.blank?
+  def create_argument_data
+    self.argument_data = ArgumentData.new
+    self.argument_data.in_favor = attributes[:in_favor] if attributes[:in_favor]
   end
-  private :assign_default_status
+  private :create_argument_data
 end
