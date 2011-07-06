@@ -6,8 +6,8 @@ gem 'pg', '0.11.0'
 gem 'devise', '~> 1.4.2'
 
 group :development do
-  gem 'capistrano', '~> 2.6.0'
-  gem 'capistrano-ext', '~> 1.2.1'
+  gem 'capistrano'
+  gem 'capistrano-ext'
 end
 
 group :development, :test do
