@@ -1,0 +1,1 @@
+db/seeds/development/contents.rb
