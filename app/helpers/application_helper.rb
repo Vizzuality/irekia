@@ -19,8 +19,8 @@ module ApplicationHelper
     html = []
 
     content_tag :div, :class => :question do
-      receiver = if question.receivers.present?
-        question.receivers.map{|a| link_to(a.name, user_path(a))}.join(', ')
+      receiver = if question.target_user.present?
+        link_to question.target_user.name, user_path(question.target_user)
       else
         t('actions_stream.question.area')
       end
@@ -29,9 +29,9 @@ module ApplicationHelper
         raw t('actions_stream.question.title', :receiver => receiver)
       end
 
-      html << content_tag(:p, %Q{"#{question.title}"}, :class => 'question')
+      html << content_tag(:p, %Q{"#{question.question_text}"}, :class => 'question')
 
-      html << render_action_authors('question', question.authors, question.published_at)
+      html << render_action_authors('question', question.users, question.published_at)
 
       raw html.join
     end
@@ -42,12 +42,12 @@ module ApplicationHelper
 
     content_tag :div, :class => :answer do
       html << content_tag(:p, :class => 'title') do
-        raw t('actions_stream.answer.title', :question => content_tag(:span, answer.title))
+        raw t('actions_stream.answer.title', :question => content_tag(:span, answer.answer_data.question_text))
       end
 
-      html << content_tag(:p, %Q{"#{answer.body}"}, :class => 'answer')
+      html << content_tag(:p, %Q{"#{answer.answer_text}"}, :class => 'answer')
 
-      html << render_action_authors('answer', answer.authors, answer.published_at)
+      html << render_action_authors('answer', answer.users, answer.published_at)
 
       raw html.join
     end
@@ -57,16 +57,16 @@ module ApplicationHelper
     html = []
 
     content_tag :div, :class => :proposal do
-      html << content_tag(:p, proposal.title, :class => 'title')
+      html << content_tag(:p, proposal.proposal_text, :class => 'title')
 
-      html << content_tag(:ul) do
-        li = []
-        li << content_tag(:li, t('actions_stream.proposal.in_favor', :count => proposal.arguments.in_favor.count))
-        li << content_tag(:li, t('actions_stream.proposal.against', :count => proposal.arguments.against.count))
-        raw li.join
-      end
+      # html << content_tag(:ul) do
+      #   li = []
+      #   li << content_tag(:li, t('actions_stream.proposal.in_favor', :count => proposal.arguments.in_favor.count))
+      #   li << content_tag(:li, t('actions_stream.proposal.against', :count => proposal.arguments.against.count))
+      #   raw li.join
+      # end
 
-      html << render_action_authors('proposal', proposal.authors, proposal.published_at)
+      html << render_action_authors('proposal', proposal.users, proposal.published_at)
 
       raw html.join
     end
@@ -94,7 +94,7 @@ module ApplicationHelper
 
       html << content_tag(:p, %Q{"#{news.body}"}, :class => 'news')
 
-      html << render_action_authors('news', news.authors, news.published_at)
+      html << render_action_authors('news', news.users, news.published_at)
 
       raw html.join
     end
@@ -130,7 +130,6 @@ module ApplicationHelper
   end
 
   def translates_model_value(model, key)
-    translation_key = "#{key}_i18n_key"
-    t("activerecord.values.#{model.class.name.downcase}.#{key}.#{model[translation_key]}")
+    t([model.class.name.downcase, key, model["#{key}_i18n_key"]].join('.'), :scope => 'activerecord.values')
   end
 end

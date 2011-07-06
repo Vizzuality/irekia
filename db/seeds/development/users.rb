@@ -19,7 +19,7 @@ puts '...done!'
 
 puts ''
 
-puts 'Loading regular testing uses...'
+puts 'Loading regular testing users...'
 User.find_or_initialize_by_name_and_email('María González Pérez', 'maria.gonzalez@gmail.com').save(:validate => false)
 User.find_or_initialize_by_name_and_email('Andrés Berzoso Rodríguez', 'andres.berzoso@gmail.com').save(:validate => false)
 User.find_or_initialize_by_name_and_email('Aritz Aranburu', 'aritz.aranburu@gmail.com').save(:validate => false)

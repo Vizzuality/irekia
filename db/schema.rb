@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110701132855) do
+ActiveRecord::Schema.define(:version => 20110706100607) do
+
+  create_table "answer_data", :force => true do |t|
+    t.integer  "answer_id"
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.text     "answer_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
@@ -44,21 +53,10 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
     t.datetime "updated_at"
   end
 
-  create_table "content_statuses", :force => true do |t|
-    t.string   "name"
-    t.string   "name_i18n_key"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "contents", :force => true do |t|
-    t.integer  "content_status_id"
     t.integer  "related_content_id"
-    t.string   "name"
     t.string   "type"
     t.string   "tags"
-    t.string   "title"
-    t.text     "body"
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -67,7 +65,6 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
   create_table "contents_users", :force => true do |t|
     t.integer  "content_id"
     t.integer  "user_id"
-    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,12 +93,39 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
     t.datetime "updated_at"
   end
 
+  create_table "news_data", :force => true do |t|
+    t.integer  "news_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "participations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "content_id"
     t.string   "name"
     t.string   "type"
     t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "proposal_data", :force => true do |t|
+    t.integer  "proposal_id"
+    t.integer  "user_id"
+    t.integer  "area_id"
+    t.text     "proposal_text"
+    t.boolean  "close",         :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "question_data", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.integer  "area_id"
+    t.text     "question_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -130,7 +154,7 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
 
   create_table "user_private_streams", :force => true do |t|
     t.integer  "user_id"
-    t.string   "message"
+    t.text     "message"
     t.string   "event_type"
     t.integer  "event_id"
     t.string   "link"
@@ -140,7 +164,7 @@ ActiveRecord::Schema.define(:version => 20110701132855) do
 
   create_table "user_public_streams", :force => true do |t|
     t.integer  "user_id"
-    t.string   "message"
+    t.text     "message"
     t.string   "event_type"
     t.integer  "event_id"
     t.string   "link"

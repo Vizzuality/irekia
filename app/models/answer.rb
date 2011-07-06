@@ -1,6 +1,7 @@
 class Answer < Content
-  belongs_to :question,
-             :foreign_key => :related_content_id
+  has_one :answer_data
+
+  delegate :answer_text, :to => :answer_data
 
   def to_html
 
