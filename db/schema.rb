@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110706104944) do
+ActiveRecord::Schema.define(:version => 20110707142017) do
 
   create_table "answer_data", :force => true do |t|
     t.integer  "answer_id"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(:version => 20110706104944) do
   create_table "argument_data", :force => true do |t|
     t.integer  "argument_id"
     t.boolean  "in_favor",    :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comment_data", :force => true do |t|
+    t.integer  "comment_id"
+    t.string   "subject"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

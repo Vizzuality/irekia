@@ -68,6 +68,7 @@ if proposal_data.new_record?
   proposal.areas << area
   proposal.users << maria
   proposal.proposal_data = proposal_data
+  proposal.comments << andres.comments.new.create_with_body('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
 
   proposal.save!
 end
@@ -86,6 +87,7 @@ if question_data.new_record?
   question.users << maria
   question_data.target_user = virginia
   question.question_data = question_data
+  question.comments << andres.comments.new.create_with_body('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
 
   question.save!
 end
@@ -96,7 +98,7 @@ puts ''
 
 puts 'Loading arguments...'
 
-proposal_data = ProposalData.find_or_initialize_by_proposal_text('Actualizar la información publicada sobre las ayudas a familias numerosas')
+proposal_data = ProposalData.find_by_proposal_text('Actualizar la información publicada sobre las ayudas a familias numerosas')
 
 proposal = proposal_data.proposal
 proposal.arguments.clear
@@ -164,6 +166,7 @@ if answer_data.new_record?
   answer.areas << area
   answer.users << virginia
   answer.answer_data = answer_data
+  answer.comments << maria.comments.new.create_with_body('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
 
   answer.save!
 end

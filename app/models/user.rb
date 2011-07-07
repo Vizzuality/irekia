@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
 
   has_many :follows
   has_many :participations
+  has_many :comments
 
 
   has_many :actions,

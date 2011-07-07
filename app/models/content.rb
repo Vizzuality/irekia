@@ -12,6 +12,7 @@ class Content < ActiveRecord::Base
 
   has_many      :follows
   has_many      :participations
+  has_many      :comments
 
   before_create :update_published_at
   after_create  :publish_content

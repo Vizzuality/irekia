@@ -183,3 +183,8 @@ es:
         in_favor: 'A favor de la propuesta "%{proposal}"'
         against: 'En contra de la propuesta "%{proposal}"'
       author: '%{author} participó hace %{time}'
+    comments:
+      zero: Ningún comentario
+      one: 1 comentario
+      other: '%{count} comentarios'
+    share: Compartir
