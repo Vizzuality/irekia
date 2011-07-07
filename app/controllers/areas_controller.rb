@@ -1,8 +1,8 @@
 class AreasController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:show, :actions, :questions, :proposals, :agenda]
-  before_filter :get_area_data, :only => [:show, :actions, :questions, :proposals, :agenda]
-  before_filter :get_actions, :only => [:show, :actions]
+  skip_before_filter :authenticate_user!, :only => [:show, :actions, :questions, :proposals, :agenda, :team]
+  before_filter :get_area_data, :only => [:show, :actions, :questions, :proposals, :agenda, :team]
+  before_filter :get_actions, :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_questions, :only => [:show, :questions]
   before_filter :get_proposals, :only => [:show, :proposals]
 
@@ -19,6 +19,10 @@ class AreasController < ApplicationController
   end
 
   def agenda
+  end
+
+  def team
+
   end
 
   private

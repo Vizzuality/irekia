@@ -8,14 +8,14 @@
   <div class="team">
     <h3><%= t('.team.title') %></h3>
     <ul>
-      <% @team.slice!(0, 2).each do |user| %>
+      <% @team.first(2).each do |user| %>
         <li>
           <%= link_to user.name, politic_path(user) %>
           <span><%= translates_model_value(user.title, :name) if user.title %></span>
         </li>
       <% end %>
-      <% if @team.present? %>
-        <li><%= t('.team.other_members', :count => @team.length) %></li>
+      <% if @team.to_a.from(2).present? %>
+        <li><%= link_to t('.team.other_members', :count => @team.to_a.from(2).length), team_area_path(@area) %></li>
       <% end %>
     </ul>
   </div>

@@ -7,6 +7,7 @@ Irekia::Application.routes.draw do
       get 'questions'
       get 'proposals'
       get 'agenda'
+      get 'team'
     end
   end
   resources :politics do

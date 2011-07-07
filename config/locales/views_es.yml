@@ -125,6 +125,15 @@ es:
             one: 1 propuesta abierta
             other: '%{count} propuestas abiertas'
           make_a_proposal: Lanza tu propuesta
+    team:
+      title:
+        zero: Ninguna persona implicada en este área
+        one: Una persona implicada en este área
+        other: '%{count} personas implicadas en este área'
+      actions_this_week:
+        zero: Ninguna acción esta semana
+        one: Una acción esta semana
+        other: '%{count} acciones esta semana'
   politics:
     navigation_menu:
       summary: Resumen
