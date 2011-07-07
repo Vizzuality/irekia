@@ -56,40 +56,6 @@ es:
         title: ¿Qué es Irekia?
         help: Ayuda
         faq: FAQ
-  areas:
-    navigation_menu:
-      summary: Resumen
-      actions: Acciones
-      questions: Preguntas
-      proposals: Propuestas
-      agenda: Agenda
-    summary:
-      description:
-        title: Qué hacemos
-      team:
-        title: Equipo principal
-        other_members:
-          one: 1 persona más en este área
-          other: '%{count} personas más en este área'
-      status:
-        area:
-          actions_this_week:
-            zero: Ninguna acción esta semana
-            one: 1 acción esta semana
-            other: '%{count} acciones esta semana'
-          follow_this_area: Sigue a este área
-        questions:
-          answered:
-            zero: Ninguna pregunta contestada
-            one: 1 pregunta contestada
-            other: '%{count} preguntas contestadas'
-          make_a_question: Haz una pregunta
-        proposals:
-          open:
-            zero: Ninguna propuesta abierta
-            one: 1 propuesta abierta
-            other: '%{count} propuestas abiertas'
-          make_a_proposal: Lanza tu propuesta
     actions:
       title: Últimas acciones
       main_filters:
@@ -125,6 +91,65 @@ es:
        from_citizens: Propuestas ciudadanas
       create_proposal: Crea una propuesta
       morel: 'Ver más propuestas'
+  areas:
+    navigation_menu:
+      summary: Resumen
+      actions: Acciones
+      questions: Preguntas
+      proposals: Propuestas
+      agenda: Agenda
+    summary:
+      description:
+        title: Qué hacemos
+      team:
+        title: Equipo principal
+        other_members:
+          one: 1 persona más en este área
+          other: '%{count} personas más en este área'
+      status:
+        area:
+          actions_this_week:
+            zero: Ninguna acción esta semana
+            one: 1 acción esta semana
+            other: '%{count} acciones esta semana'
+          follow_this_area: Sigue a este área
+        questions:
+          answered:
+            zero: Ninguna pregunta contestada
+            one: 1 pregunta contestada
+            other: '%{count} preguntas contestadas'
+          make_a_question: Haz una pregunta
+        proposals:
+          open:
+            zero: Ninguna propuesta abierta
+            one: 1 propuesta abierta
+            other: '%{count} propuestas abiertas'
+          make_a_proposal: Lanza tu propuesta
+  politics:
+    navigation_menu:
+      summary: Resumen
+      actions: Acciones
+      questions: Preguntas
+      proposals: Propuestas
+      agenda: Agenda
+    summary:
+      title: '%{title} de %{areas}'
+      description:
+        title: Quién es y qué hace
+      actions:
+        this_week:
+          zero: Ninguna acción esta semana
+          one: Una acción esta semana
+          other: '%{count} acciones esta semana'
+        follow: 'Sigue a %{name}'
+      questions:
+        answered:
+          zero: Ninguna pregunta contestada
+          one: Una pregunta contestada
+          other: '%{count} preguntas contestadas'
+        ask: 'Pregunta a %{name}'
+      make_a_question:
+        submit: Preguntar
   actions_stream:
     answer:
       title: 'Contestando a "%{question}"'

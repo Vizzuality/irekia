@@ -1,10 +1,49 @@
 #encoding: UTF-8
 
-area     = Area.find_by_name('Educación, Universidades e Investigación')
-virginia = User.find_by_name('Virginia Uriarte Rodríguez')
-maria    = User.find_by_name('María González Pérez')
-andres   = User.find_by_name('Andrés Berzoso Rodríguez')
-aritz    = User.find_by_name('Aritz Aranburu')
+#############################
+# AREAS
+
+area = Area.find_or_create_by_name('Educación, Universidades e Investigación')
+
+# END - AREAS
+#############################
+
+#############################
+# USERS
+
+puts 'Loading politics...'
+alberto = User.find_or_initialize_by_name_and_email('Alberto de Zárate López', 'alberto.zarate@ej-gv.es')
+alberto.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+alberto.role = Role.find_by_name('Político')
+alberto.areas.clear
+alberto.areas_users << AreaUser.create(:area => Area.find_by_name('Educación, Universidades e Investigación'), :display_order => 2)
+alberto.title = Title.find_by_name('Vice-consejero')
+alberto.save(:validate => false)
+
+virginia = User.find_or_initialize_by_name_and_email('Virginia Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
+virginia.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+virginia.role = Role.find_by_name('Político')
+virginia.areas.clear
+virginia.areas_users << AreaUser.create(:area => Area.find_by_name('Educación, Universidades e Investigación'), :display_order => 1)
+virginia.title = Title.find_by_name('Consejero')
+virginia.save(:validate => false)
+
+puts '...done!'
+
+puts ''
+
+puts 'Loading regular testing users...'
+maria = User.find_or_initialize_by_name_and_email('María González Pérez', 'maria.gonzalez@gmail.com')
+maria.save(:validate => false)
+andres = User.find_or_initialize_by_name_and_email('Andrés Berzoso Rodríguez', 'andres.berzoso@gmail.com')
+andres.save(:validate => false)
+aritz = User.find_or_initialize_by_name_and_email('Aritz Aranburu', 'aritz.aranburu@gmail.com')
+aritz.save(:validate => false)
+puts '...done!'
+
+# END - USERS
+#############################
+
 
 puts 'Loading proposals...'
 

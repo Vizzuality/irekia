@@ -9,7 +9,14 @@ Irekia::Application.routes.draw do
       get 'agenda'
     end
   end
-  resources :politics
+  resources :politics do
+    member do
+      get 'actions'
+      get 'questions'
+      get 'proposals'
+      get 'agenda'
+    end
+  end
   resources :users
   resources :proposals,    :controller => 'contents', :type => 'Proposal'
   resources :arguments,    :controller => 'contents', :type => 'Argument'

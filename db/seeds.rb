@@ -4,10 +4,10 @@
   require Rails.root.join('db', 'seeds', seed)
 end
 
-puts ''
-puts '============================='
-puts "Loading #{Rails.env} test data"
-Dir[Rails.root.join('db', 'seeds', Rails.env, '*')].each do |seed_script|
-  require seed_script
+if Rails.env.development? || Rails.env.staging?
+  puts ''
+  puts '============================='
+  puts "Loading test data"
+  require Rails.root.join('db', 'seeds', 'test_data', 'test_data')
+  puts ''
 end
-puts ''

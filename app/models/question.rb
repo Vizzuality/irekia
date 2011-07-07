@@ -1,6 +1,6 @@
 class Question < Content
   has_one :question_data,
-          :include => :target_user
+          :foreign_key => :question_id
 
   has_one :answer_data
   has_one :answer,
@@ -8,13 +8,12 @@ class Question < Content
 
   scope :answered, joins(:answer)
 
+  accepts_nested_attributes_for :question_data
+
   delegate :question_text, :to => :question_data
 
   def to_html
 
   end
 
-  def to_s
-    self.title
-  end
 end

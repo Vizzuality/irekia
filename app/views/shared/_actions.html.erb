@@ -1,5 +1,5 @@
 <div id="last_actions">
-  <h2><%= link_to t('.title'), actions_area_path(@area) %></h2>
+  <h2><%= link_to t('.title'), link_for_actions(@area) %></h2>
   <ul class="main_filters">
     <li>
       <%= link_to t('.main_filters.more_recent'), '#', :id => 'more_recent' %>
@@ -25,6 +25,6 @@
     <li><%= link_to t('.content_type_filters.videos'), '#' %></li>
   </ul>
   <div class="paginate">
-    <%= link_to t('.more'), actions_area_path(@area) %>
+    <%= link_to t('.more'), link_for_actions(@area) %>
   </div>
 </div>
