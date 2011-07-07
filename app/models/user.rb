@@ -26,22 +26,24 @@ class User < ActiveRecord::Base
            :class_name => 'ContentUser'
   has_many :contents,
            :through => :contents_users
-
   has_many :questions,
            :through => :contents_users
   has_many :proposals_done,
            :through => :contents_users
+
 
   has_many :proposal_data,
            :class_name => 'ProposalData'
   has_many :proposals_received,
            :through => :proposal_data,
            :source => :proposal
-
-
+  has_many :question_data,
+           :class_name => 'QuestionData'
+  has_many :questions_received,
+           :through => :question_data,
+           :source => :question
   has_many :answer_data,
            :class_name => 'AnswerData'
-
   has_many :answers,
            :through => :answer_data
 

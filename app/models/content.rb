@@ -29,6 +29,13 @@ class Content < ActiveRecord::Base
       area_action.message = self.to_html
       area_action.save!
     end
+    users.each do |user|
+      user_action = user.actions.new
+      user_action.event_id   = self.id
+      user_action.event_type = self.class.name.downcase
+      user_action.message = self.to_html
+      user_action.save!
+    end
   end
   private :publish_content
 end

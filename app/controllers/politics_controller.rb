@@ -24,6 +24,7 @@ class PoliticsController < UsersController
   end
 
   def build_questions_for_update
+    return if current_user.blank?
     @question                  = current_user.questions.build
     @question_data             = @question.build_question_data
     @question_data.target_user = @user
@@ -34,7 +35,7 @@ class PoliticsController < UsersController
   end
 
   def get_questions
-    @questions = @politic.questions
+    @questions = @politic.questions_received
   end
 
   def get_proposals
