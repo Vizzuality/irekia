@@ -6,9 +6,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update_attributes(params[:user])
 
-    redirect_to user_path(@user)
+    if @user.update_attributes(params[:user])
+      flash[:notice] = :question_created if params['user']['questions_attributes'].present?
+    else
+      flash[:notice] = :question_failed if params['user']['questions_attributes'].present?
+    end
+
+    redirect_back_or_default user_path(@user)
   end
 
   def get_user

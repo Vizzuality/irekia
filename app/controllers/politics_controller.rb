@@ -6,6 +6,11 @@ class PoliticsController < UsersController
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
 
+  def show
+    super
+    session[:return_to] = politic_path(@politic)
+  end
+
   def actions
   end
 

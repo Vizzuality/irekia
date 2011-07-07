@@ -159,6 +159,11 @@ es:
         ask: 'Pregunta a %{name}'
       make_a_question:
         submit: Preguntar
+      question_sent:
+        success: Tu pregunta se ha enviado correctamente
+        waiting_moderation: 'y será publicada en cuanto nuestro equipo de moderación la haya %{review_link}. También te avisaremos cuando recibas respuesta.'
+        review_link: revisado
+        fail: Hubo un error al enviar tu pregunta
   actions_stream:
     answer:
       title: 'Contestando a "%{question}"'

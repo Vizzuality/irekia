@@ -15,4 +15,14 @@ class ApplicationController < ActionController::Base
     @search = OpenStruct.new(params[:search])
   end
   private :setup_search
+
+  def redirect_back_or_default(*default)
+    if session[:return_to].nil?
+      redirect_to default
+    else
+      redirect_to session[:return_to]
+      session[:return_to] = nil
+    end
+  end
+  private :redirect_back_or_default
 end
