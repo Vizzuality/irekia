@@ -1,20 +1,33 @@
 class AreasController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:show, :actions, :questions, :proposals, :agenda, :team]
-  before_filter :get_area_data,           :only => [:show, :actions, :questions, :proposals, :agenda, :team]
-  before_filter :get_actions,             :only => [:show, :actions, :questions, :proposals, :agenda, :team]
-  before_filter :get_questions,           :only => [:show, :questions]
-  before_filter :get_proposals,           :only => [:show, :proposals]
-  before_filter :get_agenda,              :only => [:show, :agenda]
+  skip_before_filter :authenticate_user!,    :only => [:show, :actions, :questions, :proposals, :agenda, :team]
+  before_filter :get_area_data,              :only => [:show, :update, :actions, :questions, :proposals, :agenda, :team]
+  before_filter :get_actions,                :only => [:show, :actions, :questions, :proposals, :agenda, :team]
+  before_filter :build_questions_for_update, :only => [:questions]
+  before_filter :get_questions,              :only => [:show, :questions]
+  before_filter :get_proposals,              :only => [:show, :proposals]
+  before_filter :get_agenda,                 :only => [:show, :agenda]
 
   def show
+  end
+
+  def update
+
+    if @area.update_attributes(params[:area])
+      flash[:notice] = :question_created if params['area']['questions_attributes'].present?
+    else
+      flash[:notice] = :question_failed if params['area']['questions_attributes'].present?
+    end
+
+    redirect_back_or_default area_path(@area)
   end
 
   def actions
   end
 
   def questions
-    @show_questions_search = true
+    @question_target    = @area
+    session[:return_to] = questions_area_path(@area)
   end
 
   def proposals
@@ -34,6 +47,13 @@ class AreasController < ApplicationController
 
   def get_actions
     @actions = @area.actions
+  end
+
+  def build_questions_for_update
+    return if current_user.blank?
+    @question                  = current_user.questions.build
+    @question_data             = @question.build_question_data
+    @question_data.target_area = @area
   end
 
   def get_questions

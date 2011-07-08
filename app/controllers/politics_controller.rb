@@ -3,7 +3,7 @@ class PoliticsController < UsersController
 
   before_filter :get_user,                   :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_politic,                :only => [:show, :actions, :questions, :proposals, :agenda]
-  before_filter :build_questions_for_update, :only => [:show]
+  before_filter :build_questions_for_update, :only => [:show, :questions]
   before_filter :get_actions,                :only => [:show, :actions]
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
@@ -18,6 +18,8 @@ class PoliticsController < UsersController
   end
 
   def questions
+    @question_target    = @politic
+    session[:return_to] = questions_politic_path(@politic)
   end
 
   def proposals

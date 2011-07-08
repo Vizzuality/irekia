@@ -23,6 +23,8 @@ class Area < ActiveRecord::Base
            :through => :follows,
            :source => :user
 
+  accepts_nested_attributes_for :questions
+
   def team
     users.order('display_order ASC')
   end

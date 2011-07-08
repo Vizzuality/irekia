@@ -79,6 +79,11 @@ es:
        all: Todas
        answered: Contestadas
       create_question: Haz una pregunta
+      make_a_question:
+        title: Haz una pregunta
+        hint: Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo
+        your_question: Tu pregunta
+        submit: Enviar pregunta
       more: Ver más preguntas
     proposals:
       title: Propuestas
