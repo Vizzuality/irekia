@@ -12,6 +12,8 @@ module ApplicationHelper
       render_argument Argument.where(:id => action.event_id).first
     when 'news'
       render_news News.where(:id => action.event_id).first
+    when 'event'
+      render_event Event.where(:id => action.event_id).first
     end
   end
 
@@ -96,6 +98,16 @@ module ApplicationHelper
       html << content_tag(:p, %Q{"#{news.body}"}, :class => 'news')
 
       html << render_action_authors('news', news.users, news.published_at, news.comments)
+
+      raw html.join
+    end
+  end
+
+  def render_event(event)
+    html = []
+
+    content_tag :div, :class => :event do
+      html << content_tag(:p, event.subject, :class => 'subject')
 
       raw html.join
     end
