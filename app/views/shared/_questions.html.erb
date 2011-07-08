@@ -18,6 +18,14 @@
   <ul class="content_type_filters">
     <li><%= link_to t('.content_type_filters.all'), '#' %></li>
     <li><%= link_to t('.content_type_filters.answered'), '#' %></li>
+    <% if @show_questions_search %>
+      <li class="search">
+        <%= form_tag questions_path, :method => :get do %>
+          <%= text_field_tag :query %>
+          <%= submit_tag '' %>
+        <% end %>
+      </li>
+    <% end %>
     <li class="create"><%= link_to t('.create_question'), new_question_path %></li>
   </ul>
   <div class="paginate">

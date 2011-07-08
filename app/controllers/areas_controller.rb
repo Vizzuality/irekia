@@ -14,6 +14,7 @@ class AreasController < ApplicationController
   end
 
   def questions
+    @show_questions_search = true
   end
 
   def proposals
