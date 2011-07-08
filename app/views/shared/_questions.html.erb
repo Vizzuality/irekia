@@ -1,5 +1,5 @@
 <div id="questions">
-  <h2><%= link_to t('.title'), link_for_questions(@area) %></h2>
+  <h2><%= link_to t('.title'), link_for_questions %></h2>
   <ul class="main_filters">
     <li>
       <%= link_to t('.main_filters.more_recent'), '#', :id => 'more_recent' %>
@@ -21,6 +21,6 @@
     <li class="create"><%= link_to t('.create_question'), new_question_path %></li>
   </ul>
   <div class="paginate">
-    <%= link_to t('.more'), link_for_questions(@area) %>
+    <%= link_to t('.more'), link_for_questions %>
   </div>
 </div>

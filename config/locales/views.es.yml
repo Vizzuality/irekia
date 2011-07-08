@@ -14,8 +14,8 @@ es:
       sign_out: Salir
     sign_in:
       access_irekia: Accede a Irekia
-      forgotten_password: '¿Olvidaste tu contraseña?'
-      get_it_here: 'Recuperala aquí'
+      forgotten_password: ¿Olvidaste tu contraseña?
+      get_it_here: Recuperala aquí
       remember_me: Recordar mis datos
       sign_in: Entrar
     sign_up:
@@ -69,7 +69,7 @@ es:
        proposals: Propuestas
        images: Fotos
        videos: Videos
-      more: 'Ver más acciones'
+      more: Ver más acciones
     questions:
       title: Preguntas de los ciudadanos
       main_filters:
@@ -79,7 +79,7 @@ es:
        all: Todas
        answered: Contestadas
       create_question: Haz una pregunta
-      more: 'Ver más preguntas'
+      more: Ver más preguntas
     proposals:
       title: Propuestas
       main_filters:
@@ -90,7 +90,11 @@ es:
        from_politics: Propuestas del gobierno
        from_citizens: Propuestas ciudadanas
       create_proposal: Crea una propuesta
-      morel: 'Ver más propuestas'
+      morel: Ver más propuestas
+    agenda:
+      view_calendar: Ver calendario
+      view_map: Ver mapa
+
   areas:
     navigation_menu:
       summary: Resumen
@@ -125,6 +129,8 @@ es:
             one: 1 propuesta abierta
             other: '%{count} propuestas abiertas'
           make_a_proposal: Lanza tu propuesta
+    agenda:
+      title: Agenda del área
     team:
       title:
         zero: Ninguna persona implicada en este área
@@ -134,6 +140,10 @@ es:
         zero: Ninguna acción esta semana
         one: Una acción esta semana
         other: '%{count} acciones esta semana'
+    show:
+      agenda:
+        title: Agenda del área
+
   politics:
     navigation_menu:
       summary: Resumen
@@ -164,6 +174,12 @@ es:
         waiting_moderation: 'y será publicada en cuanto nuestro equipo de moderación la haya %{review_link}. También te avisaremos cuando recibas respuesta.'
         review_link: revisado
         fail: Hubo un error al enviar tu pregunta
+    agenda:
+      title: 'Agenda de %{name}'
+    show:
+      agenda:
+        title: 'Agenda de %{name}'
+
   actions_stream:
     answer:
       title: 'Contestando a "%{question}"'

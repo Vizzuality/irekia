@@ -3,6 +3,7 @@ class ContentUser < ActiveRecord::Base
   belongs_to :user
   belongs_to :question, :foreign_key => :content_id
   belongs_to :proposal, :foreign_key => :content_id
+  belongs_to :event, :foreign_key => :content_id
 
   accepts_nested_attributes_for :question
 end

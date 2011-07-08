@@ -30,6 +30,9 @@ class User < ActiveRecord::Base
            :through => :contents_users
   has_many :proposals_done,
            :through => :contents_users
+  has_many :events,
+           :through => :contents_users,
+           :include => :event_data
 
 
   has_many :proposal_data,
@@ -46,14 +49,12 @@ class User < ActiveRecord::Base
            :class_name => 'AnswerData'
   has_many :answers,
            :through => :answer_data
-
   has_many :poll_answers,
            :class_name => 'AnswerUser'
 
   has_many :follows
   has_many :participations
   has_many :comments
-
 
   has_many :actions,
            :class_name => 'UserPublicStream',

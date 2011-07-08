@@ -1,0 +1,25 @@
+<div id="agenda">
+  <h2><%= link_to title, link_for_agenda %></h2>
+  <ul class="main_filters">
+    <li>
+      <%= link_to t('.view_calendar'), '#', :id => 'view_calendar' %>
+    </li>
+    <li>
+      <%= link_to t('.view_map'), '#', :id => 'view_map' %>
+    </li>
+  </ul>
+  <ul class="calendar">
+    <% @days.to_a.each do |day| %>
+      <li>
+        <div class="date">
+          <span class="day"><%= day.day %></span>
+          <span class="month"><%= l day, :format => '%b' %></span>
+        </div>
+        <%= raw agenda_for_day(@agenda, day) %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="paginate">
+    <%= link_to t('.more'), link_for_agenda %>
+  </div>
+</div>

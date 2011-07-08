@@ -11,6 +11,9 @@ class Area < ActiveRecord::Base
            :through => :areas_contents
   has_many :proposals,
            :through => :areas_contents
+  has_many :events,
+           :through => :areas_contents,
+           :include => :event_data
   has_many :actions,
            :class_name => 'AreaPublicStream',
            :order => 'updated_at desc'
