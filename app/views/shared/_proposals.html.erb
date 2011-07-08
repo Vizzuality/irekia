@@ -11,7 +11,7 @@
   <ul>
     <% @proposals.first(4).each do |proposal| %>
       <li class="action">
-        <%= render_proposal proposal %>
+        <%= render_proposal proposal, footer_for_proposal(proposal) %>
       </li>
     <% end %>
   </ul>

@@ -56,11 +56,36 @@ es:
         title: ¿Qué es Irekia?
         help: Ayuda
         faq: FAQ
+
     actions:
       title: Últimas acciones
       main_filters:
         more_recent: Más recientes
         more_polemic: Más polémicas
+      list_item:
+        answer:
+          title: 'Contestando a "%{question}"'
+          author: '%{author} contesto hace %{time}'
+        question:
+          title: 'Pregunta para %{receiver}...'
+          area: el área
+          author: '%{author} hace %{time}'
+        news:
+          author: 'Publicado hace %{time}'
+        proposal:
+          in_favor: '%{count} a favor'
+          against: '%{count} en contra'
+          author: '%{author} hace %{time}'
+        argument:
+          title:
+            in_favor: 'A favor de la propuesta "%{proposal}"'
+            against: 'En contra de la propuesta "%{proposal}"'
+          author: '%{author} participó hace %{time}'
+        comments:
+          zero: Ningún comentario
+          one: 1 comentario
+          other: '%{count} comentarios'
+        share: Compartir
       content_type_filters:
        all: Todos los tipos
        news: Noticias
@@ -70,11 +95,18 @@ es:
        images: Fotos
        videos: Videos
       more: Ver más acciones
+
     questions:
       title: Preguntas de los ciudadanos
       main_filters:
         more_recent: Más recientes
         more_polemic: Más polémicas
+      list_item:
+        title: 'Pregunta para %{receiver}...'
+        area: el área
+        author: '%{author} hace %{time}'
+        answered: 'Contestada hace %{time}'
+        not_answered: 'Aún no contestada'
       content_type_filters:
        all: Todas
        answered: Contestadas
@@ -85,17 +117,39 @@ es:
         your_question: Tu pregunta
         submit: Enviar pregunta
       more: Ver más preguntas
+
+    answers:
+      list_item:
+        title: 'Contestando a "%{question}"'
+        author: '%{author} contesto hace %{time}'
+    news:
+      list_item:
+        author: 'Publicado hace %{time}'
+
     proposals:
       title: Propuestas
       main_filters:
         more_recent: Más recientes
         more_polemic: Más polémicas
+      list_item:
+        in_favor: '%{count} a favor'
+        against: '%{count} en contra'
+        author: '%{author} hace %{time}'
       content_type_filters:
        all: Todas
        from_politics: Propuestas del gobierno
        from_citizens: Propuestas ciudadanas
       create_proposal: Crea una propuesta
       morel: Ver más propuestas
+
+    arguments:
+      list_item:
+        title:
+          in_favor: 'A favor de la propuesta "%{proposal}"'
+          against: 'En contra de la propuesta "%{proposal}"'
+        author: '%{author} participó hace %{time}'
+
+
     agenda:
       view_calendar: Ver calendario
       view_map: Ver mapa
@@ -184,28 +238,3 @@ es:
     show:
       agenda:
         title: 'Agenda de %{name}'
-
-  actions_stream:
-    answer:
-      title: 'Contestando a "%{question}"'
-      author: '%{author} contesto hace %{time}'
-    question:
-      title: 'Pregunta para %{receiver}...'
-      area: el área
-      author: '%{author} hace %{time}'
-    news:
-      author: 'Publicado hace %{time}'
-    proposal:
-      in_favor: '%{count} a favor'
-      against: '%{count} en contra'
-      author: '%{author} hace %{time}'
-    argument:
-      title:
-        in_favor: 'A favor de la propuesta "%{proposal}"'
-        against: 'En contra de la propuesta "%{proposal}"'
-      author: '%{author} participó hace %{time}'
-    comments:
-      zero: Ningún comentario
-      one: 1 comentario
-      other: '%{count} comentarios'
-    share: Compartir

@@ -1,23 +1,23 @@
 module ApplicationHelper
-  def render_action(action)
+  def render_action(action, footer)
 
     case action.event_type
     when 'question'
-      render_question Question.where(:id => action.event_id).first
+      render_question Question.where(:id => action.event_id).first, footer, action.event_type
     when 'answer'
-      render_answer Answer.where(:id => action.event_id).first
+      render_answer Answer.where(:id => action.event_id).first, footer, action.event_type
     when 'proposal'
-      render_proposal Proposal.where(:id => action.event_id).first
+      render_proposal Proposal.where(:id => action.event_id).first, footer, action.event_type
     when 'argument'
-      render_argument Argument.where(:id => action.event_id).first
+      render_argument Argument.where(:id => action.event_id).first, footer, action.event_type
     when 'news'
-      render_news News.where(:id => action.event_id).first
+      render_news News.where(:id => action.event_id).first, footer, action.event_type
     when 'event'
-      render_event Event.where(:id => action.event_id).first
+      render_event Event.where(:id => action.event_id).first, footer, action.event_type
     end
   end
 
-  def render_question(question)
+  def render_question(question, footer, locale_scope = nil)
     html = []
 
     content_tag :div, :class => :question do
@@ -25,38 +25,40 @@ module ApplicationHelper
       receiver = if target_user.present?
         link_to target_user.name, user_path(target_user)
       else
-        t('actions_stream.question.area')
+        t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.area")
       end
 
       html << content_tag(:p, :class => 'title') do
-        raw t('actions_stream.question.title', :receiver => receiver)
+        raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.title", :receiver => receiver)
       end
 
       html << content_tag(:p, %Q{"#{question.question_text}"}, :class => 'question')
 
-      html << render_action_authors('question', question.users, question.published_at, question.comments)
+      html << footer
 
       raw html.join
     end
   end
 
-  def render_answer(answer)
+  def render_answer(answer, footer, locale_scope = nil)
     html = []
-
     content_tag :div, :class => :answer do
       html << content_tag(:p, :class => 'title') do
-        raw t('actions_stream.answer.title', :question => content_tag(:span, answer.answer_data.question_text))
+        raw t(
+          ".#{(['list_item'] + [locale_scope]).compact.join('.')}.title",
+          :question => content_tag(:span, answer.answer_data.question_text)
+        )
       end
 
       html << content_tag(:p, %Q{"#{answer.answer_text}"}, :class => 'answer')
 
-      html << render_action_authors('answer', answer.users, answer.published_at, answer.comments)
+      html << footer
 
       raw html.join
     end
   end
 
-  def render_proposal(proposal)
+  def render_proposal(proposal, footer, locale_scope = nil)
     html = []
 
     content_tag :div, :class => :proposal do
@@ -64,32 +66,32 @@ module ApplicationHelper
 
       html << content_tag(:ul) do
         li = []
-        li << content_tag(:li, t('actions_stream.proposal.in_favor', :count => proposal.arguments.in_favor.count))
-        li << content_tag(:li, t('actions_stream.proposal.against', :count => proposal.arguments.against.count))
+        li << content_tag(:li, t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.in_favor", :count => proposal.arguments.in_favor.count))
+        li << content_tag(:li, t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.against", :count => proposal.arguments.against.count))
         raw li.join
       end
 
-      html << render_action_authors('proposal', proposal.users, proposal.published_at, proposal.comments)
+      html << footer
 
       raw html.join
     end
   end
 
-  def render_argument(argument)
+  def render_argument(argument, footer, locale_scope = nil)
     html = []
 
     content_tag :div, :class => :argument do
       html << content_tag(:p, :class => 'title') do
-        raw t(argument.argument_data.in_favor ? 'in_favor' : 'against', :proposal => content_tag(:span, argument.proposal.proposal_text), :scope => 'actions_stream.argument.title')
+        raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.title.#{argument.argument_data.in_favor ? 'in_favor' : 'against'}", :proposal => content_tag(:span, argument.proposal.proposal_text))
       end
 
-      html << render_action_authors('argument', [argument.user], argument.published_at, nil)
+      html << footer
 
       raw html.join
     end
   end
 
-  def render_news(news)
+  def render_news(news, footer, locale_scope = nil)
     html = []
 
     content_tag :div, :class => :news do
@@ -97,13 +99,13 @@ module ApplicationHelper
 
       html << content_tag(:p, %Q{"#{news.body}"}, :class => 'news')
 
-      html << render_action_authors('news', news.users, news.published_at, news.comments)
+      html << footer
 
       raw html.join
     end
   end
 
-  def render_event(event)
+  def render_event(event, footer, locale_scope = nil)
     html = []
 
     content_tag :div, :class => :event do
@@ -113,18 +115,81 @@ module ApplicationHelper
     end
   end
 
-  def render_action_authors(type, authors, updated_at, comments = [])
+  def footer_for_action(action)
+    case action.event_type
+    when 'question'
+      content  = Question.where(:id => action.event_id).first
+      comments = content.comments
+      users    = content.users
+    when 'answer'
+      content = Answer.where(:id => action.event_id).first
+      comments = content.comments
+      users    = content.users
+    when 'proposal'
+      content = Proposal.where(:id => action.event_id).first
+      comments = content.comments
+      users    = content.users
+    when 'argument'
+      content = Argument.where(:id => action.event_id).first
+      comments = []
+      users    = [content.user]
+    when 'news'
+      content = News.where(:id => action.event_id).first
+      comments = content.comments
+      users    = content.users
+    when 'event'
+      content = Event.where(:id => action.event_id).first
+      comments = content.comments
+      users    = content.users
+    end
+
     html = []
-    html << content_tag(:span, :class => 'author') do
-      raw t("actions_stream.#{type}.author",
+    html << content_author(users, content.published_at, comments, action.event_type)
+    html << link_to(t('.list_item.comments', :count => comments.count), '#') unless comments.nil?
+    html << link_to(t('.list_item.share'), '#')
+
+    html.join('&nbsp;&middot;&nbsp;')
+  end
+
+  def footer_for_question(question)
+    html = []
+    html << content_author(question.users, question.published_at, question.comments)
+    if question.answer.present?
+      html << link_to(t('.list_item.answered', :time => distance_of_time_in_words_to_now(question.answer.updated_at)), '#')
+    else
+      html << link_to(t('.list_item.not_answered'), '#', :class => :not_answered)
+    end
+    html << link_to(t('actions_stream.comments', :count => question.comments.count), '#') unless question.comments.nil?
+
+    html.join('&nbsp;&middot;&nbsp;')
+  end
+
+  def footer_for_answer(answer)
+
+  end
+
+  def footer_for_proposal(proposal)
+
+  end
+
+  def footer_for_argument(argument)
+
+  end
+
+  def footer_for_news(news)
+
+  end
+
+  def footer_for_event(event)
+  end
+
+  def content_author(authors, updated_at, comments = [], locale_scope = nil)
+    content_tag(:span, :class => 'author') do
+      raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.author",
         :author => authors.map{|a| link_to(a.name, user_path(a))}.join(', '),
         :time => distance_of_time_in_words_to_now(updated_at)
       )
     end
-    html << link_to(t('actions_stream.comments', :count => comments.count), '#') unless comments.nil?
-    html << link_to(t('actions_stream.share'), '#')
-
-    html.join('&nbsp;&middot;&nbsp;')
   end
 
   def current_area?(area)

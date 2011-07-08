@@ -16,7 +16,7 @@
   <ul>
     <% @questions.first(4).each do |question| %>
       <li class="action">
-        <%= render_question question %>
+        <%= render_question question, footer_for_question(question) %>
       </li>
     <% end %>
   </ul>
