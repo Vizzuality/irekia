@@ -227,6 +227,7 @@ es:
         zero: Ninguna acción esta semana
         one: Una acción esta semana
         other: '%{count} acciones esta semana'
+      inactive: No está registrado en Irekia
     show:
       agenda:
         title: Agenda del área

@@ -102,4 +102,8 @@ class User < ActiveRecord::Base
     @profile_image_thumb_url ||= self.profile_pictures.first.image.thumb.url
   end
 
+  def active?
+    !inactive?
+  end
+
 end

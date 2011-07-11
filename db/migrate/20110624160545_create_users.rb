@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :facebook_token
       t.string   :twitter_token
       t.datetime :last_connection
+      t.boolean  :inactive, :default => false
 
       t.database_authenticatable :null => false
       t.recoverable

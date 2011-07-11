@@ -36,6 +36,7 @@ virginia.save(:validate => false)
 3.times do
   name = "#{String.random(20)} #{String.random(20)} #{String.random(20)}"
   user = User.find_or_initialize_by_name_and_email(name, "#{name.downcase.split(' ').join('.')}@ej-gv.es")
+  user.inactive = [true, false].sample
   user.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   user.role = Role.find_by_name('Político')
   user.areas.clear

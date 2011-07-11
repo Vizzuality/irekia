@@ -209,6 +209,7 @@ ActiveRecord::Schema.define(:version => 20110708084816) do
     t.string   "facebook_token"
     t.string   "twitter_token"
     t.datetime "last_connection"
+    t.boolean  "inactive",                              :default => false
     t.string   "email",                                 :default => "",    :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
