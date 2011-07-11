@@ -144,7 +144,7 @@ module ApplicationHelper
     end
 
     html = []
-    html << content_author(users, content.published_at, comments, action.event_type)
+    html << content_author(users, content.published_at, action.event_type)
     html << link_to(t('.list_item.comments', :count => comments.count), '#') unless comments.nil?
     html << link_to(t('.list_item.share'), '#')
 
@@ -153,7 +153,7 @@ module ApplicationHelper
 
   def footer_for_question(question)
     html = []
-    html << content_author(question.users, question.published_at, question.comments)
+    html << content_author(question.users, question.published_at)
     if question.answer.present?
       html << link_to(t('.list_item.answered', :time => distance_of_time_in_words_to_now(question.answer.updated_at)), '#')
     else
@@ -169,7 +169,13 @@ module ApplicationHelper
   end
 
   def footer_for_proposal(proposal)
+    html = []
+    html << content_author(proposal.users, proposal.published_at)
+    if proposal.arguments.present?
+      html << link_to(t('.list_item.participation', :count => proposal.arguments.count), '#')
+    end
 
+    html.join('&nbsp;&middot;&nbsp;')
   end
 
   def footer_for_argument(argument)
@@ -183,7 +189,7 @@ module ApplicationHelper
   def footer_for_event(event)
   end
 
-  def content_author(authors, updated_at, comments = [], locale_scope = nil)
+  def content_author(authors, updated_at, locale_scope = nil)
     content_tag(:span, :class => 'author') do
       raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.author",
         :author => authors.map{|a| link_to(a.name, user_path(a))}.join(', '),

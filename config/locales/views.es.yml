@@ -135,6 +135,10 @@ es:
         in_favor: '%{count} a favor'
         against: '%{count} en contra'
         author: '%{author} hace %{time}'
+        participation:
+          zero: Ningún usuario ha participado
+          one: Un usuario ha participado
+          other: '%{count} usuarios han participado'
       content_type_filters:
        all: Todas
        from_politics: Propuestas del gobierno
