@@ -61,6 +61,9 @@ class User < ActiveRecord::Base
            :order => 'updated_at desc'
   has_many :user_private_streams
 
+  has_many :profile_pictures,
+           :class_name => 'Image'
+
 
   ###
   ## Follows associations
@@ -89,6 +92,14 @@ class User < ActiveRecord::Base
 
   def first_name
     self.name.split(' ').first if self.name.present?
+  end
+
+  def profile_image_url
+    @profile_image_url ||= self.profile_pictures.first.image.url
+  end
+
+  def profile_image_thumb_url
+    @profile_image_thumb_url ||= self.profile_pictures.first.image.thumb.url
   end
 
 end

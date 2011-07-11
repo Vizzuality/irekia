@@ -18,6 +18,9 @@ alberto.role = Role.find_by_name('Político')
 alberto.areas.clear
 alberto.areas_users << AreaUser.create(:area => area, :display_order => 2)
 alberto.title = Title.find_by_name('Vice-consejero')
+alberto.profile_pictures << Image.create(
+  :image => File.open(Rails.root.join('db', 'seeds', 'test_data', 'images', 'man.jpeg'))
+)
 alberto.save(:validate => false)
 
 virginia = User.find_or_initialize_by_name_and_email('Virginia Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
@@ -26,6 +29,9 @@ virginia.role = Role.find_by_name('Político')
 virginia.areas.clear
 virginia.areas_users << AreaUser.create(:area => area, :display_order => 1)
 virginia.title = Title.find_by_name('Consejero')
+virginia.profile_pictures << Image.create(
+  :image => File.open(Rails.root.join('db', 'seeds', 'test_data', 'images', 'woman.jpeg'))
+)
 virginia.save(:validate => false)
 
 
