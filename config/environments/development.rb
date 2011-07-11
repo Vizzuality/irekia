@@ -23,14 +23,5 @@ Irekia::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
-  # Bullet configuration
-  config.after_initialize do
-    Bullet.enable                = true
-    Bullet.alert                 = false
-    Bullet.bullet_logger         = true
-    Bullet.console               = false
-    Bullet.rails_logger          = false
-    Bullet.disable_browser_cache = true
-  end
 end
 

@@ -37,8 +37,6 @@ GEM
       alias (>= 0.2.2)
       hirb (>= 0.3.5)
     builder (2.1.2)
-    bullet (2.0.1)
-      uniform_notifier (~> 1.0.0)
     capistrano (2.6.0)
       highline
       net-scp (>= 1.0.0)
@@ -190,7 +188,6 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.29)
     unicode-display_width (0.1.1)
-    uniform_notifier (1.0.1)
     warden (1.0.4)
       rack (>= 1.0)
     wirb (0.3.2)
@@ -202,7 +199,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bullet (~> 2.0.1)
   capistrano
   capistrano-ext
   capybara (~> 1.0.0)

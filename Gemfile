@@ -14,7 +14,6 @@ end
 
 group :development, :test do
   gem 'ruby-debug19', :platforms => :mri_19
-  gem 'bullet', '~> 2.0.1'
   gem 'rspec-rails', '~> 2.6'
   gem 'capybara', '~> 1.0.0'
   gem 'database_cleaner', '~> 0.6.7'
