@@ -120,31 +120,31 @@ module ApplicationHelper
     when 'question'
       content  = Question.where(:id => action.event_id).first
       comments = content.comments
-      users    = content.users
+      user     = content.users.present?? content.users.first : nil
     when 'answer'
-      content = Answer.where(:id => action.event_id).first
+      content  = Answer.where(:id => action.event_id).first
       comments = content.comments
-      users    = content.users
+      user     = content.users.present?? content.users.first : nil
     when 'proposal'
-      content = Proposal.where(:id => action.event_id).first
+      content  = Proposal.where(:id => action.event_id).first
       comments = content.comments
-      users    = content.users
+      user     = content.users.present?? content.users.first : nil
     when 'argument'
-      content = Argument.where(:id => action.event_id).first
+      content  = Argument.where(:id => action.event_id).first
       comments = []
-      users    = [content.user]
+      user     = content.user
     when 'news'
-      content = News.where(:id => action.event_id).first
+      content  = News.where(:id => action.event_id).first
       comments = content.comments
-      users    = content.users
+      user     = content.users.present?? content.users.first : nil
     when 'event'
-      content = Event.where(:id => action.event_id).first
+      content  = Event.where(:id => action.event_id).first
       comments = content.comments
-      users    = content.users
+      user     = content.users.present?? content.users.first : nil
     end
 
     html = []
-    html << content_author(users, content.published_at, action.event_type)
+    html << content_author(user, content.published_at, action.event_type)
     html << link_to(t('.list_item.comments', :count => comments.count), '#') unless comments.nil?
     html << link_to(t('.list_item.share'), '#')
 
@@ -153,7 +153,7 @@ module ApplicationHelper
 
   def footer_for_question(question)
     html = []
-    html << content_author(question.users, question.published_at)
+    html << content_author(question.users.first, question.published_at)
     if question.answer.present?
       html << link_to(t('.list_item.answered', :time => distance_of_time_in_words_to_now(question.answer.updated_at)), '#')
     else
@@ -170,7 +170,7 @@ module ApplicationHelper
 
   def footer_for_proposal(proposal)
     html = []
-    html << content_author(proposal.users, proposal.published_at)
+    html << content_author(proposal.users.first, proposal.published_at)
     if proposal.arguments.present?
       html << link_to(t('.list_item.participation', :count => proposal.arguments.count), '#')
     end
@@ -189,13 +189,16 @@ module ApplicationHelper
   def footer_for_event(event)
   end
 
-  def content_author(authors, updated_at, locale_scope = nil)
-    content_tag(:span, :class => 'author') do
+  def content_author(author, updated_at, locale_scope = nil)
+    html = []
+    html << image_tag(author.profile_image_thumb_url) if author.profile_pictures.present?
+    html << content_tag(:span, :class => 'author') do
       raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.author",
-        :author => authors.map{|a| link_to(a.name, user_path(a))}.join(', '),
+        :author => link_to(author.name, user_path(author)),
         :time => distance_of_time_in_words_to_now(updated_at)
       )
     end
+    raw html.join
   end
 
   def current_area?(area)

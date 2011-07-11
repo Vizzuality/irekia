@@ -10,6 +10,8 @@ area = Area.find_or_create_by_name('Educación, Universidades e Investigación')
 
 #############################
 # USERS
+women_images = %w(woman.jpeg).map{|image_name| File.open(Rails.root.join('db', 'seeds', 'test_data', 'images', image_name))}
+men_images   = %w(man.jpeg).map{|image_name| File.open(Rails.root.join('db', 'seeds', 'test_data', 'images', image_name))}
 
 puts 'Loading politics...'
 alberto = User.find_or_initialize_by_name_and_email('Alberto de Zárate López', 'alberto.zarate@ej-gv.es')
@@ -18,9 +20,7 @@ alberto.role = Role.find_by_name('Político')
 alberto.areas.clear
 alberto.areas_users << AreaUser.create(:area => area, :display_order => 2)
 alberto.title = Title.find_by_name('Vice-consejero')
-alberto.profile_pictures << Image.create(
-  :image => File.open(Rails.root.join('db', 'seeds', 'test_data', 'images', 'man.jpeg'))
-)
+alberto.profile_pictures << Image.create(:image => men_images.sample)
 alberto.save(:validate => false)
 
 virginia = User.find_or_initialize_by_name_and_email('Virginia Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
@@ -29,9 +29,7 @@ virginia.role = Role.find_by_name('Político')
 virginia.areas.clear
 virginia.areas_users << AreaUser.create(:area => area, :display_order => 1)
 virginia.title = Title.find_by_name('Consejero')
-virginia.profile_pictures << Image.create(
-  :image => File.open(Rails.root.join('db', 'seeds', 'test_data', 'images', 'woman.jpeg'))
-)
+virginia.profile_pictures << Image.create(:image => women_images.sample)
 virginia.save(:validate => false)
 
 
@@ -43,6 +41,7 @@ virginia.save(:validate => false)
   user.areas.clear
   user.areas << area
   user.title = Title.find_by_name('Vice-consejero')
+  user.profile_pictures << Image.create(:image => (men_images + women_images).sample)
   user.save(:validate => false)
 end
 
@@ -52,10 +51,13 @@ puts ''
 
 puts 'Loading regular testing users...'
 maria = User.find_or_initialize_by_name_and_email('María González Pérez', 'maria.gonzalez@gmail.com')
+maria.profile_pictures << Image.create(:image => women_images.sample)
 maria.save(:validate => false)
 andres = User.find_or_initialize_by_name_and_email('Andrés Berzoso Rodríguez', 'andres.berzoso@gmail.com')
+andres.profile_pictures << Image.create(:image => men_images.sample)
 andres.save(:validate => false)
 aritz = User.find_or_initialize_by_name_and_email('Aritz Aranburu', 'aritz.aranburu@gmail.com')
+aritz.profile_pictures << Image.create(:image => men_images.sample)
 aritz.save(:validate => false)
 puts '...done!'
 
