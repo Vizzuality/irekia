@@ -158,6 +158,30 @@ es:
       view_calendar: Ver calendario
       view_map: Ver mapa
 
+  contents:
+    news:
+      date_area_and_comments:
+        comments:
+          zero: Ningún comentario
+          one: Un comentario
+          other: '%{count} comentarios'
+      news_content:
+        comments:
+          time: 'hace %{time}'
+          new:
+            submit: Comentar
+      sidebar:
+        sharing_links:
+          mail: Mail
+          twitter: Twitter
+          facebook: Facebook
+        tags:
+          title: Tags
+        related_politics:
+          title: Políticos relacionados
+        related_content:
+          title: Contenidos similares
+
   areas:
     navigation_menu:
       summary: Resumen

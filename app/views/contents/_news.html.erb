@@ -1,0 +1,67 @@
+<div id="news" class="content">
+  <div class="date_area_and_comments">
+    <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
+    &middot;
+    <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+    &middot;
+    <%= link_to t('.date_area_and_comments.comments', :count => @content.comments.count), '#' %>
+  </div>
+  <div class="news_content">
+    <h1><%= @content.title %></h1>
+    <h4><%= @content.subtitle %></h4>
+    <%= simple_format @content.body %>
+    <ul class="comments">
+      <% @content.comments.reject{|c| c.new_record?}.each do |comment| %>
+      <li>
+        <%= simple_format comment.body %>
+        <%= link_to comment.user.name, user_path(comment.user), :class => :author %>
+        <span><%= t('.news_content.comments.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %></span>
+      </li>
+      <% end %>
+      <% if user_signed_in? %>
+      <li>
+        <%= form_for @content do |form| %>
+          <%= form.fields_for :comments, @comment do |comments| %>
+            <%= comments.hidden_field :user_id %>
+            <%= comments.fields_for :comment_data do |comment_data| %>
+              <%= comment_data.text_area :body %>
+            <% end %>
+          <% end %>
+          <%= form.submit t('.news_content.comments.new.submit') %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="sidebar">
+    <ul class="sharing_links">
+      <li><%= link_to t('.sidebar.sharing_links.mail'), '#' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.twitter'), '#' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.facebook'), '#' %></li>
+    </ul>
+    <div class="tags">
+      <h3><%= t('.sidebar.tags.title') %></h3>
+      <ul>
+        <% @content.tags.split(',').each do |tag| %>
+        <li><%= tag.strip %></li>
+        <% end if @content.tags.present? %>
+      </ul>
+    </div>
+    <div class="related_politics">
+      <h3><%= t('.sidebar.related_politics.title') %></h3>
+      <ul>
+        <% @content.users.each do |user| %>
+        <li>
+          <%= link_to user.name, politic_path(user) %>
+          <span><%= translates_model_value(user.title, :name) if user.title %></span>
+        </li>
+        <% end if @content.users.present? %>
+      </ul>
+    </div>
+    <div class="related_content">
+      <h3><%= t('.sidebar.related_content.title') %></h3>
+      <ul>
+      </ul>
+    </div>
+  </div>
+</div>

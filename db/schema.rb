@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20110708084816) do
   create_table "news_data", :force => true do |t|
     t.integer  "news_id"
     t.string   "title"
+    t.string   "subtitle"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"

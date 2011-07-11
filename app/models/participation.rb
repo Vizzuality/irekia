@@ -5,6 +5,8 @@ class Participation < ActiveRecord::Base
   before_create :update_published_at
   after_create  :publish_participation
 
+  accepts_nested_attributes_for :user
+
   def update_published_at
     self.published_at = DateTime.now
   end

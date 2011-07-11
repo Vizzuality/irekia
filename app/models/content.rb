@@ -17,6 +17,8 @@ class Content < ActiveRecord::Base
   before_create :update_published_at
   after_create  :publish_content
 
+  accepts_nested_attributes_for :comments
+
   def update_published_at
     self.published_at = DateTime.now
   end

@@ -187,12 +187,21 @@ puts 'Loading news...'
 news_data = NewsData.find_or_initialize_by_title('Inauguración del nuevo complejo deportivo en la localidad de Getxo')
 
 if news_data.new_record?
+  news_data.subtitle = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
   news_data.body = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-
   news = News.new
+  news.tags = %w(Comisión Transporte Gobierno\ Vasco Transporte).join(',')
   news.areas << area
   news.users << virginia
   news.news_data = news_data
+  news.comments << maria.comments.new.create_with_body(<<-EOF
+    Me encantaría que realmente esta gente fuera siempre a los eventos y nos lo comunicaran como en esta ocasión. La verdad que fue un buen momento para hablar con ellos y conocerlos en persona.
+  EOF
+  )
+  news.comments << alberto.comments.new.create_with_body(<<-EOF
+    Yo estuve allí y la verdad es que no fue gran cosa...
+  EOF
+  )
 
   news.save!
 end

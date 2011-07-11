@@ -4,6 +4,7 @@ class CreateNewsData < ActiveRecord::Migration
       t.references :news
 
       t.string :title
+      t.string :subtitle
       t.text :body
 
       t.timestamps
