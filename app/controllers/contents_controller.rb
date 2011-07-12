@@ -22,7 +22,9 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @content = params[:type].constantize.where(:id => params[:id]).first
+    content_class = params[:type].constantize
+    @content = content_class.where(:id => params[:id]).first
+    @last_contents = content_class.order('published_at desc').where('id <> ?', @content.id).first(5)
     if current_user.present?
       @comment = @content.comments.build
       @comment.build_comment_data
