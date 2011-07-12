@@ -45,11 +45,11 @@ class PoliticsController < UsersController
   end
 
   def get_questions
-    @questions = @politic.questions_received
+    @questions = @politic.questions_received.moderated
   end
 
   def get_proposals
-    @proposals = @politic.proposals_received
+    @proposals = @politic.proposals_received.moderated
   end
 
   def get_agenda
@@ -59,10 +59,10 @@ class PoliticsController < UsersController
       @end_of_calendar       = Date.current.next_week.end_of_week
     when 'agenda'
       @beginning_of_calendar = Date.current.beginning_of_week
-      @end_of_calendar       = Date.current.advance(:weeks => 3).end_of_week
+      @end_of_calendar       = Date.current.advance(:weeks => 4).end_of_week
     end
 
-    @agenda = @politic.events.where('event_data.event_date >= ? AND event_data.event_date <= ?', @beginning_of_calendar, @end_of_calendar)
+    @agenda = @politic.events.moderated.where('event_data.event_date >= ? AND event_data.event_date <= ?', @beginning_of_calendar, @end_of_calendar)
     @days   = @beginning_of_calendar..@end_of_calendar
   end
 end

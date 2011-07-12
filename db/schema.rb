@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20110708084816) do
     t.string   "type"
     t.string   "tags"
     t.datetime "published_at"
+    t.boolean  "moderated",          :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -134,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20110708084816) do
     t.string   "name"
     t.string   "type"
     t.datetime "published_at"
+    t.boolean  "moderated",    :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

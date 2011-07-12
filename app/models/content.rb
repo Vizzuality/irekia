@@ -15,9 +15,12 @@ class Content < ActiveRecord::Base
   has_many      :comments
 
   before_create :update_published_at
-  after_create  :publish_content
+  after_save  :publish_content
 
   accepts_nested_attributes_for :comments
+
+  scope :moderated,     where(:moderated => true)
+  scope :not_moderated, where(:moderated => false)
 
   def update_published_at
     self.published_at = DateTime.now
@@ -25,6 +28,8 @@ class Content < ActiveRecord::Base
   private :update_published_at
 
   def publish_content
+    return unless self.moderated?
+
     areas.each do |area|
       area_action = area.actions.new
       area_action.event_id   = self.id

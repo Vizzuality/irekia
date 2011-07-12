@@ -57,11 +57,11 @@ class AreasController < ApplicationController
   end
 
   def get_questions
-    @questions = @area.questions
+    @questions = @area.questions.moderated
   end
 
   def get_proposals
-    @proposals = @area.proposals
+    @proposals = @area.proposals.moderated
   end
 
   def get_agenda
@@ -74,7 +74,7 @@ class AreasController < ApplicationController
       @end_of_calendar       = Date.current.advance(:weeks => 3).end_of_week
     end
 
-    @agenda = @area.events.where('event_data.event_date >= ? AND event_data.event_date <= ?', @beginning_of_calendar, @end_of_calendar)
+    @agenda = @area.events.moderated.where('event_data.event_date >= ? AND event_data.event_date <= ?', @beginning_of_calendar, @end_of_calendar)
     @days   = @beginning_of_calendar..@end_of_calendar
   end
 end

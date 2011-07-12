@@ -2,7 +2,7 @@ class ContentsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:index, :show]
 
   def index
-    contents = params[:type].constantize.scoped
+    contents = params[:type].constantize.moderated
 
     if params[:query]
       case params[:type]
@@ -23,8 +23,8 @@ class ContentsController < ApplicationController
 
   def show
     content_class = params[:type].constantize
-    @content = content_class.where(:id => params[:id]).first
-    @last_contents = content_class.order('published_at desc').where('id <> ?', @content.id).first(5)
+    @content = content_class.moderated.where(:id => params[:id]).first
+    @last_contents = content_class.moderated.order('published_at desc').where('id <> ?', @content.id).first(5)
     if current_user.present?
       @comment = @content.comments.build
       @comment.build_comment_data
@@ -33,7 +33,7 @@ class ContentsController < ApplicationController
   end
 
   def update
-    @content = params[:type].constantize.where(:id => params[:id]).first
+    @content = params[:type].constantize.moderated.where(:id => params[:id]).first
     content_type = params[:type].downcase
     @content.update_attributes(params[content_type])
     redirect_to @content

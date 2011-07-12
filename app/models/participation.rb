@@ -3,9 +3,12 @@ class Participation < ActiveRecord::Base
   belongs_to :content
 
   before_create :update_published_at
-  after_create  :publish_participation
+  after_save  :publish_participation
 
   accepts_nested_attributes_for :user
+
+  scope :moderated,     where(:moderated => true)
+  scope :not_moderated, where(:moderated => false)
 
   def update_published_at
     self.published_at = DateTime.now
@@ -13,7 +16,7 @@ class Participation < ActiveRecord::Base
   private :update_published_at
 
   def publish_participation
-    return if content.blank?
+    return unless content.present? && self.moderated?
 
     content.areas.each do |area|
       area_action = area.actions.new

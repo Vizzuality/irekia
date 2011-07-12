@@ -4,9 +4,10 @@ class CreateParticipations < ActiveRecord::Migration
       t.references :user
       t.references :content
 
-      t.string :name
-      t.string :type
+      t.string   :name
+      t.string   :type
       t.datetime :published_at
+      t.boolean  :moderated, :default => false
 
       t.timestamps
     end
