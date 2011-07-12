@@ -9,7 +9,8 @@ default_run_options[:pty] = true
 set :application, 'irekia'
 
 set :scm, :git
-set :git_shallow_clone, 1
+#set :git_shallow_clone, 1
+set :deploy_via, :remote_cache
 set :scm_user, 'ubuntu'
 set :use_sudo, false
 set :repository, "git@github.com:Vizzuality/irekia.git"
