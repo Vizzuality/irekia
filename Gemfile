@@ -6,6 +6,7 @@ gem 'pg', '0.11.0'
 gem 'devise', '~> 1.4.2'
 gem 'carrierwave', '~> 0.5.5'
 gem 'mini_magick', '~> 3.3'
+gem 'kaminari', '~> 0.12.4'
 
 group :development do
   gem 'capistrano'

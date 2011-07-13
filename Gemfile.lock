@@ -100,6 +100,8 @@ GEM
       wirb (>= 0.3.0)
       zucker (>= 11)
     json_pure (1.5.3)
+    kaminari (0.12.4)
+      rails (>= 3.0.0)
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -207,6 +209,7 @@ DEPENDENCIES
   delorean
   devise (~> 1.4.2)
   irbtools
+  kaminari (~> 0.12.4)
   launchy
   mini_magick (~> 3.3)
   pg (= 0.11.0)

@@ -1,0 +1,20 @@
+es:
+  admin:
+    shared:
+      navigation:
+        admin_users: Administrar usuarios
+    users:
+      form:
+        random_password: Generar contraseña aleatoria
+      new:
+        submit: Crear usuario
+      create:
+        submit: Crear usuario
+      edit:
+        submit: Editar usuario
+      update:
+        submit: Editar usuario
+      index:
+        new_user: Nuevo usuario
+        edit_user: Editar usuario
+        delete_user: Eliminar usuario

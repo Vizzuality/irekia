@@ -4,8 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  attr_reader :random_password
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :questions_attributes
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :random_password, :role_id, :title_id, :profile_pictures_attributes, :questions_attributes, :areas_users_attributes
 
   attr_accessor :terms_of_service
 
@@ -88,22 +90,44 @@ class User < ActiveRecord::Base
            :through => :follows,
            :source => :user
 
-  accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :profile_pictures, :questions, :areas_users
 
   def first_name
     self.name.split(' ').first if self.name.present?
   end
 
   def profile_image_url
-    @profile_image_url ||= self.profile_pictures.first.image.url
+    @profile_image_url ||= self.profile_pictures.first.image.url if self.profile_pictures.present?
   end
 
   def profile_image_thumb_url
-    @profile_image_thumb_url ||= self.profile_pictures.first.image.thumb.url
+    @profile_image_thumb_url ||= self.profile_pictures.first.image.thumb.url if self.profile_pictures.present?
   end
 
   def active?
     !inactive?
+  end
+
+  def politic?
+    role.politic? if role.present?
+  end
+
+  def administrator?
+    role.administrator? if role.present?
+  end
+
+  def citizen?
+    role.citizen? if role.present?
+  end
+
+  def random_password=(random_password)
+    return unless random_password == 'yes'
+
+    generated_password = User.send(:generate_token, 'encrypted_password')
+    # change randomly password length in range 8..13 characters
+    generated_password.slice!(13 - rand(5)..generated_password.length)
+    self.password = generated_password
+    self.password_confirmation = generated_password
   end
 
 end

@@ -1,0 +1,46 @@
+<%= form_for [:admin, @user], :html => {:multipart => true} do |f| %>
+
+  <p><%= f.label :name %><br />
+  <%= f.text_field :name %></p>
+
+  <p><%= f.label :email %><br />
+  <%= f.email_field :email %></p>
+
+  <p><%= f.label :password %><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.label :random_password %><br />
+  <%= f.check_box :random_password, {}, 'yes', 'no' %></p>
+
+  <p>
+    <%= f.label :role_id %><br />
+    <%= f.select :role_id, @roles.map{|r| [r.name, r.id]}, :include_blank => true %>
+  </p>
+
+  <p>
+    <%= f.label :title_id %><br />
+    <%= f.select :title_id, @titles.map{|r| [r.name, r.id]}, :include_blank => true %>
+  </p>
+
+  <%= f.fields_for :areas_users, @user.areas_users.first do |area_user_field| %>
+    <p>
+      <%= area_user_field.hidden_field :user_id %>
+      <%= area_user_field.label :area_id,  %><br />
+      <%= area_user_field.select :area_id, @areas.map{|r| [r.name, r.id]}, :include_blank => true %>
+    </p>
+  <% end %>
+
+  <%= f.fields_for :profile_pictures, @user.profile_pictures.first do |profile_picture_field| %>
+    <% if @user.profile_image_thumb_url %>
+      <%= image_tag @user.profile_image_thumb_url %><br />
+    <% end %>
+    <%= profile_picture_field.label :image %>
+    <%= profile_picture_field.file_field :image %>
+  <% end %>
+
+  <p><%= f.submit t('submit', :scope => "admin.#{controller_name}.#{action_name}") %></p>
+
+<% end %>

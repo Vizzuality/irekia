@@ -1,6 +1,11 @@
 Irekia::Application.routes.draw do
   devise_for :users
 
+  namespace :admin do
+    match '/' => 'admin#index'
+    resources :users
+  end
+
   resources :areas do
     member do
       get 'actions'
