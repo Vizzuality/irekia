@@ -45,3 +45,7 @@ or
 	http://localhost:3000/politics/1
 	
 From the politic page, you would be able to make a question to that politic.
+
+*__IMPORTANT:__*
+-
+*You will need to validate all test contents and participation the first time you install the app. To do so, go to the moderation page (from the admin url) and from here, you will be able to moderate all contents/participations.*
