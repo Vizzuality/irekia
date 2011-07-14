@@ -1,5 +1,25 @@
 es:
   activerecord:
+    models:
+      answer: Respuesta
+      area: Area
+      argument: Argumento
+      comment: Comentario
+      content: Contenido
+      document: Documento
+      event: Evento
+      image: Imagen
+      like: Me gusta
+      news: Noticia
+      participation: Participación
+      poll: Encuesta
+      proposal: Propuesta
+      question: Pregunta
+      Role: Rol
+      Title: Título
+      user: Usuario
+      vide: Vídeo
+
     attributes:
       user:
         name: Nombre y apellidos

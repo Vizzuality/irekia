@@ -13,6 +13,14 @@ area = Area.find_or_create_by_name('Educación, Universidades e Investigación')
 women_images = %w(woman.jpeg).map{|image_name| File.open(Rails.root.join('db', 'seeds', 'test_data', 'images', image_name))}
 men_images   = %w(man.jpeg).map{|image_name| File.open(Rails.root.join('db', 'seeds', 'test_data', 'images', image_name))}
 
+puts 'Loading administrator user...'
+admin = User.find_or_initialize_by_name_and_email('Administrator', 'admin@example.com')
+admin.password = 'example'
+admin.password_confirmation = 'example'
+admin.role = Role.find_by_name('Administrador')
+admin.save!
+puts '... loading administrator user done!'
+
 puts 'Loading politics...'
 alberto = User.find_or_initialize_by_name_and_email('Alberto de Zárate López', 'alberto.zarate@ej-gv.es')
 alberto.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'

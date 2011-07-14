@@ -3,6 +3,7 @@ es:
     shared:
       navigation:
         admin_users: Administrar usuarios
+        moderate_contents: Moderar contenidos
     users:
       form:
         random_password: Generar contraseña aleatoria
@@ -18,3 +19,33 @@ es:
         new_user: Nuevo usuario
         edit_user: Editar usuario
         delete_user: Eliminar usuario
+    moderation:
+      index:
+        contents: Contenidos
+        participations: Participación
+        list_item:
+          answer:
+            title: 'Contestando a "%{question}"'
+            author: '%{author} contesto hace %{time}'
+          question:
+            title: 'Pregunta para %{receiver}...'
+            area: el área
+            author: '%{author} hace %{time}'
+          news:
+            author: 'Publicado hace %{time}'
+          proposal:
+            in_favor: '%{count} a favor'
+            against: '%{count} en contra'
+            author: '%{author} hace %{time}'
+          argument:
+            title:
+              in_favor: 'A favor de la propuesta "%{proposal}"'
+              against: 'En contra de la propuesta "%{proposal}"'
+            author: '%{author} participó hace %{time}'
+          comment:
+            author: 'Comentado por %{author} hace %{time}'
+          comments:
+            zero: Ningún comentario
+            one: 1 comentario
+            other: '%{count} comentarios'
+        validate: 'Validar %{type}'

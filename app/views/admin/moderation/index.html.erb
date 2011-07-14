@@ -1,0 +1,24 @@
+<h1><%= t('.contents') %></h1>
+<ul>
+  <% @contents[:not_moderated].each do |content| %>
+  <li>
+    <%= render_item_for_moderation content %>
+    <%= form_for [:admin, content] do |form| %>
+      <%= form.hidden_field :moderated, :value => true %>
+      <%= form.submit t('.validate', :type => content.class.model_name.human)%>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<h1><%= t('.participations') %></h1>
+<ul>
+  <% @participations[:not_moderated].each do |participation| %>
+  <li>
+    <%= render_item_for_moderation participation %>
+    <%= form_for [:admin, participation] do |form| %>
+      <%= form.hidden_field :moderated, :value => true %>
+      <%= form.submit t('.validate', :type => participation.class.model_name.human)%>
+    <% end %>
+  </li>
+  <% end %>
+</ul>

@@ -115,6 +115,17 @@ module ApplicationHelper
     end
   end
 
+  def render_comment(comment, footer, locale_scope = nil)
+    html = []
+
+    content_tag :div, :class => :comment do
+      html << content_tag(:p, comment.body)
+      html << footer
+
+      raw html.join
+    end
+  end
+
   def footer_for_action(action)
     case action.event_type
     when 'question'

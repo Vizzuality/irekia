@@ -3,7 +3,21 @@ Irekia::Application.routes.draw do
 
   namespace :admin do
     match '/' => 'admin#index'
+    match '/moderation' => 'moderation#index'
     resources :users
+    # resources :contents
+    resources :proposals,    :controller => 'contents',       :type => 'Proposal'
+    resources :arguments,    :controller => 'contents',       :type => 'Argument'
+    resources :questions,    :controller => 'contents',       :type => 'Question'
+    resources :answers,      :controller => 'contents',       :type => 'Answer'
+    resources :news,         :controller => 'contents',       :type => 'News'
+    resources :polls,        :controller => 'contents',       :type => 'Poll'
+    resources :poll_answers, :controller => 'contents',       :type => 'PollAnswer'
+    resources :events,       :controller => 'contents',       :type => 'Event'
+    # resources :participations
+    resources :comments,     :controller => 'participations', :type => 'Comment'
+    resources :arguments,    :controller => 'participations', :type => 'Argument'
+    resources :likes,        :controller => 'participations', :type => 'Like'
   end
 
   resources :areas do
@@ -15,6 +29,7 @@ Irekia::Application.routes.draw do
       get 'team'
     end
   end
+
   resources :politics do
     member do
       get 'actions'
@@ -23,6 +38,7 @@ Irekia::Application.routes.draw do
       get 'agenda'
     end
   end
+
   resources :users
   resources :proposals,    :controller => 'contents', :type => 'Proposal'
   resources :arguments,    :controller => 'contents', :type => 'Argument'

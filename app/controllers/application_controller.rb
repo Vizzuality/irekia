@@ -25,4 +25,14 @@ class ApplicationController < ActionController::Base
     end
   end
   private :redirect_back_or_default
+
+  def redirect_back_or_render_action(action)
+    if session[:return_to].nil?
+      render action
+    else
+      redirect_to session[:return_to]
+      session[:return_to] = nil
+    end
+  end
+  private :redirect_back_or_render_action
 end
