@@ -49,3 +49,4 @@ es:
             one: 1 comentario
             other: '%{count} comentarios'
         validate: 'Validar %{type}'
+        delete: 'Eliminar %{type}'

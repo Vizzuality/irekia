@@ -7,6 +7,7 @@
       <%= form.hidden_field :moderated, :value => true %>
       <%= form.submit t('.validate', :type => content.class.model_name.human)%>
     <% end %>
+    <%= button_to t('.delete', :type => content.class.model_name.human), url_for([:admin, content]), :method => :delete %>
   </li>
   <% end %>
 </ul>
@@ -19,6 +20,7 @@
       <%= form.hidden_field :moderated, :value => true %>
       <%= form.submit t('.validate', :type => participation.class.model_name.human)%>
     <% end %>
+    <%= button_to t('.delete', :type => participation.class.model_name.human), url_for([:admin, participation]), :method => :delete %>
   </li>
   <% end %>
 </ul>
