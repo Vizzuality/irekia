@@ -5,6 +5,7 @@ class Admin::ParticipationsController < Admin::AdminController
     participation_type = params[:type].downcase.to_sym
 
     if @participation.update_attributes(params[participation_type])
+      ModerationMailer.accepted(@participation).deliver if params[participation_type][:moderated] == 'true'
       redirect_back_or_default url_for [:admin, @participation]
     else
       redirect_back_or_render_action :edit

@@ -5,6 +5,7 @@ class Admin::ContentsController < Admin::AdminController
     content_type = params[:type].downcase.to_sym
 
     if @content.update_attributes(params[content_type])
+      ModerationMailer.accepted(@content).deliver if params[content_type][:moderated] == 'true'
       redirect_back_or_default url_for [:admin, @content]
     else
       redirect_back_or_render_action :edit
