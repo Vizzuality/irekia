@@ -1,5 +1,6 @@
 <h1><%= t('.contents') %></h1>
 <ul>
+  <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'contents') %></li>
   <% @contents[:not_moderated].each do |content| %>
   <li>
     <%= render_item_for_moderation content %>
@@ -13,6 +14,7 @@
 </ul>
 <h1><%= t('.participations') %></h1>
 <ul>
+  <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'participations') %></li>
   <% @participations[:not_moderated].each do |participation| %>
   <li>
     <%= render_item_for_moderation participation %>

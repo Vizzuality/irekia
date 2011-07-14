@@ -19,7 +19,9 @@ admin.password = 'example'
 admin.password_confirmation = 'example'
 admin.role = Role.find_by_name('Administrador')
 admin.save!
-puts '... loading administrator user done!'
+puts '... done!'
+
+puts ''
 
 puts 'Loading politics...'
 alberto = User.find_or_initialize_by_name_and_email('Alberto de Zárate López', 'alberto.zarate@ej-gv.es')

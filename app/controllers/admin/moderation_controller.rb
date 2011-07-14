@@ -15,4 +15,12 @@ class Admin::ModerationController < Admin::AdminController
     session[:return_to] = admin_moderation_path
   end
 
+  def validate_all
+    item_type_to_validate = params[:type].singularize.capitalize.constantize
+
+    item_type_to_validate.validate_all_not_moderated
+
+    redirect_to admin_moderation_path
+  end
+
 end

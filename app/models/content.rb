@@ -22,6 +22,13 @@ class Content < ActiveRecord::Base
   scope :moderated,     where(:moderated => true)
   scope :not_moderated, where(:moderated => false)
 
+  def self.validate_all_not_moderated
+    ActiveRecord::Base.connection.execute(<<-SQL
+      UPDATE contents SET moderated = true WHERE moderated = false;
+    SQL
+    )
+  end
+
   def update_published_at
     self.published_at = DateTime.now
   end

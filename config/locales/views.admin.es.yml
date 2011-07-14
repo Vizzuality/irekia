@@ -48,5 +48,6 @@ es:
             zero: Ningún comentario
             one: 1 comentario
             other: '%{count} comentarios'
+        validate_all: Validar todos
         validate: 'Validar %{type}'
         delete: 'Eliminar %{type}'

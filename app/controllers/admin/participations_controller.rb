@@ -4,7 +4,7 @@ class Admin::ParticipationsController < Admin::AdminController
     @participation     = Participation.where(:id => params[:id]).first
     participation_type = params[:type].downcase.to_sym
 
-    if @content.update_attributes(params[participation_type])
+    if @participation.update_attributes(params[participation_type])
       redirect_back_or_default url_for [:admin, @participation]
     else
       redirect_back_or_render_action :edit
@@ -12,7 +12,7 @@ class Admin::ParticipationsController < Admin::AdminController
   end
 
   def destroy
-    @participation     = Content.where(:id => params[:id]).first
+    @participation     = Participation.where(:id => params[:id]).first
     participation_type = params[:type].downcase
 
     @participation.destroy
