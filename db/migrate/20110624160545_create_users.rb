@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :twitter_token
       t.datetime :last_connection
       t.boolean  :inactive, :default => false
+      t.string   :locale, :default => 'es'
 
       t.database_authenticatable :null => false
       t.recoverable

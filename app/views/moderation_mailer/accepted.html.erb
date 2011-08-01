@@ -1,3 +1,6 @@
-El <%= link_to 'contenido que has enviado', send("#{@item.class.name.downcase}_url", @item) %> ha sido aceptado.
-
-Gracias por participar en Irekia.
+<p>
+  <%= raw t '.accepted', :link => link_to(t('.content_link'), send("#{@item.class.name.downcase}_url", @item)) %>
+</p>
+<p>
+  <%= t '.thanks' %>
+</p>
