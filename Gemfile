@@ -7,6 +7,8 @@ gem 'devise', '~> 1.4.2'
 gem 'carrierwave', '~> 0.5.5'
 gem 'mini_magick', '~> 3.3'
 gem 'kaminari', '~> 0.12.4'
+gem 'activerecord-postgis-adapter', '~> 0.3.5'
+gem 'geocoder', '~> 1.0.2'
 
 group :development do
   gem 'capistrano'

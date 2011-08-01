@@ -73,7 +73,8 @@ ActiveRecord::Schema.define(:version => 20110708084816) do
     t.string   "type"
     t.string   "tags"
     t.datetime "published_at"
-    t.boolean  "moderated",          :default => false
+    t.boolean  "moderated",                                                                      :default => false
+    t.spatial  "the_geom",           :limit => {:srid=>4326, :type=>"point", :geographic=>true}
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -102,16 +103,6 @@ ActiveRecord::Schema.define(:version => 20110708084816) do
     t.datetime "updated_at"
   end
 
-  create_table "geometry_columns", :id => false, :force => true do |t|
-    t.string  "f_table_catalog",   :limit => 256, :null => false
-    t.string  "f_table_schema",    :limit => 256, :null => false
-    t.string  "f_table_name",      :limit => 256, :null => false
-    t.string  "f_geometry_column", :limit => 256, :null => false
-    t.integer "coord_dimension",                  :null => false
-    t.integer "srid",                             :null => false
-    t.string  "type",              :limit => 30,  :null => false
-  end
-
   create_table "images", :force => true do |t|
     t.integer  "image_gallery_id"
     t.integer  "user_id"
@@ -135,7 +126,8 @@ ActiveRecord::Schema.define(:version => 20110708084816) do
     t.string   "name"
     t.string   "type"
     t.datetime "published_at"
-    t.boolean  "moderated",    :default => false
+    t.boolean  "moderated",                                                                :default => false
+    t.spatial  "the_geom",     :limit => {:srid=>4326, :type=>"point", :geographic=>true}
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -164,14 +156,6 @@ ActiveRecord::Schema.define(:version => 20110708084816) do
     t.string   "name_i18n_key"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "spatial_ref_sys", :id => false, :force => true do |t|
-    t.integer "srid",                      :null => false
-    t.string  "auth_name", :limit => 256
-    t.integer "auth_srid"
-    t.string  "srtext",    :limit => 2048
-    t.string  "proj4text", :limit => 2048
   end
 
   create_table "titles", :force => true do |t|
@@ -207,18 +191,19 @@ ActiveRecord::Schema.define(:version => 20110708084816) do
     t.string   "name"
     t.date     "birthday"
     t.text     "description"
-    t.boolean  "is_woman",                              :default => false
+    t.boolean  "is_woman",                                                                           :default => false
     t.string   "facebook_token"
     t.string   "twitter_token"
     t.datetime "last_connection"
-    t.boolean  "inactive",                              :default => false
-    t.string   "locale",                                :default => "es"
-    t.string   "email",                                 :default => "",    :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
+    t.boolean  "inactive",                                                                           :default => false
+    t.string   "locale",                                                                             :default => "es"
+    t.spatial  "the_geom",               :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.string   "email",                                                                              :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128,                                              :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",                                                                      :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

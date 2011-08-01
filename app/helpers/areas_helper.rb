@@ -22,6 +22,16 @@ module AreasHelper
     html= []
     day_events.each do |event|
       html << content_tag(:div, event.subject)
+
+      event_detail = []
+      html << content_tag(:div, :class => 'detail') do
+        event_detail << content_tag(:h4, event.event_date.strftime('%d,%B de %Y'))
+        event_detail << content_tag(:h3, event.subject)
+        event_detail << content_tag(:div, event.reverse_geocode, :class => 'location')
+        event_detail << content_tag(:div, event.event_date.strftime('%H:%M'), :class => 'time')
+
+        raw event_detail.join
+      end
     end
     html.join
   end

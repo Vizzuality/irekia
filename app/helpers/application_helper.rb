@@ -152,6 +152,8 @@ module ApplicationHelper
       content  = Event.where(:id => action.event_id).first
       comments = content.comments
       user     = content.users.present?? content.users.first : nil
+    when 'comment'
+      return nil
     end
 
     html = []

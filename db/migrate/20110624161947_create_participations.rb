@@ -8,6 +8,7 @@ class CreateParticipations < ActiveRecord::Migration
       t.string   :type
       t.datetime :published_at
       t.boolean  :moderated, :default => false
+      t.point    :the_geom, :geographic => true
 
       t.timestamps
     end

@@ -22,6 +22,19 @@ class Content < ActiveRecord::Base
   scope :moderated,     where(:moderated => true)
   scope :not_moderated, where(:moderated => false)
 
+  reverse_geocoded_by :latitude, :longitude, :address => :location
+
+  after_validation :geocode
+  after_validation :reverse_geocode
+
+  def latitude
+    self.the_geom.try(:latitude)
+  end
+
+  def longitude
+    self.the_geom.try(:longitude)
+  end
+
   def self.validate_all_not_moderated
     self.not_moderated.find_each do |content|
       content.update_attribute('moderated', true)

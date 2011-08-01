@@ -13,6 +13,7 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :last_connection
       t.boolean  :inactive, :default => false
       t.string   :locale, :default => 'es'
+      t.point    :the_geom, :geographic => true
 
       t.database_authenticatable :null => false
       t.recoverable

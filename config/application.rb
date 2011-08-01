@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'active_record/connection_adapters/postgis_adapter/railtie'
 require 'ostruct'
 
 # If you have a Gemfile, require the gems listed there, including any gems
