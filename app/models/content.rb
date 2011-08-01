@@ -23,10 +23,9 @@ class Content < ActiveRecord::Base
   scope :not_moderated, where(:moderated => false)
 
   def self.validate_all_not_moderated
-    ActiveRecord::Base.connection.execute(<<-SQL
-      UPDATE contents SET moderated = true WHERE moderated = false;
-    SQL
-    )
+    self.not_moderated.find_each do |content|
+      content.update_attribute('moderated', true)
+    end
   end
 
   def update_published_at
