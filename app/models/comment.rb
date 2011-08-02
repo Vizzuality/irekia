@@ -16,4 +16,8 @@ class Comment < Participation
 
   end
 
+  def publish_participation
+
+  end
+
 end

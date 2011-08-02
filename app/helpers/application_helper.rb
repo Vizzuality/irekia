@@ -147,7 +147,7 @@ module ApplicationHelper
     when 'news'
       content  = News.where(:id => action.event_id).first
       comments = content.comments
-      user     = content.users.present?? content.users.first : nil
+      user     = nil
     when 'event'
       content  = Event.where(:id => action.event_id).first
       comments = content.comments
@@ -204,13 +204,23 @@ module ApplicationHelper
 
   def content_author(author, updated_at, locale_scope = nil)
     html = []
-    html << image_tag(author.profile_image_thumb_url) if author.profile_pictures.present?
-    html << content_tag(:span, :class => 'author') do
-      raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.author",
-        :author => link_to(author.name, user_path(author)),
-        :time => distance_of_time_in_words_to_now(updated_at)
-      )
+
+    if author
+      html << image_tag(author.profile_image_thumb_url) if author.profile_pictures.present?
+      html << content_tag(:span, :class => 'author') do
+        raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.author",
+          :author => link_to(author.name, user_path(author)),
+          :time => distance_of_time_in_words_to_now(updated_at)
+        )
+      end
+    else
+      html << content_tag(:span, :class => 'author') do
+        raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.author",
+          :time => distance_of_time_in_words_to_now(updated_at)
+        )
+      end
     end
+
     raw html.join
   end
 

@@ -3,7 +3,9 @@
 module Factories
 
   def init_area_data
-    load Rails.root.join('db', 'seeds.rb')
+    silence_stream(STDOUT) do
+      load Rails.root.join('db', 'seeds.rb')
+    end
 
     Content.validate_all_not_moderated
     Participation.validate_all_not_moderated
