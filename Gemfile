@@ -9,6 +9,7 @@ gem 'mini_magick', '~> 3.3'
 gem 'kaminari', '~> 0.12.4'
 gem 'activerecord-postgis-adapter', '~> 0.3.5'
 gem 'geocoder', '~> 1.0.2'
+gem 'colored', '~> 1.2'
 
 group :development do
   gem 'capistrano'

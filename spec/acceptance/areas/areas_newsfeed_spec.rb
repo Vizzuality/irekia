@@ -26,7 +26,6 @@ feature "Areas newsfeed" do
       within '.status' do
         page.should have_css('ul li.area span',      :text => '27 acciones esta semana')
         page.should have_css('ul li.area a',         :text => 'Sigue a este área')
-peich
         page.should have_css('ul li.questions span', :text => '1 pregunta contestada')
         page.should have_css('ul li.questions a',    :text => 'Haz una pregunta')
         page.should have_css('ul li.proposals span', :text => '1 propuesta abierta')
