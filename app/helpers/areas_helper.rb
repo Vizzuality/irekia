@@ -35,4 +35,8 @@ module AreasHelper
     end
     html.join
   end
+
+  def get_politic_title(user)
+    translates_model_value(user.title, :name)[user.is_woman?? :female : :male] if user.title
+  end
 end

@@ -34,5 +34,9 @@ es:
           citizen: Ciudadano
       title:
         name:
-          adviser: Consejero
-          co_adviser: Vice-consejero
+          adviser:
+            male: Consejero
+            female: Consejera
+          co_adviser:
+            male: Vice-consejero
+            female: Vice-consejera

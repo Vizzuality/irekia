@@ -4,6 +4,7 @@
 # AREAS
 
 area = Area.find_or_create_by_name('Educación, Universidades e Investigación')
+area.update_attribute(:description, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
 
 # END - AREAS
 #############################
@@ -34,6 +35,7 @@ alberto.profile_pictures << Image.create(:image => men_images.sample)
 alberto.save(:validate => false)
 
 virginia = User.find_or_initialize_by_name_and_email('Virginia Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
+virginia.is_woman = true
 virginia.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 virginia.role = Role.find_by_name('Político')
 virginia.areas.clear
@@ -46,6 +48,7 @@ virginia.save(:validate => false)
 3.times do
   name = "#{String.random(20)} #{String.random(20)} #{String.random(20)}"
   user = User.find_or_initialize_by_name_and_email(name, "#{name.downcase.split(' ').join('.')}@ej-gv.es")
+  user.is_woman = [true, false].sample
   user.inactive = [true, false].sample
   user.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   user.role = Role.find_by_name('Político')

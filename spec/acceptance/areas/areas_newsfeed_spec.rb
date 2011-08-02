@@ -24,11 +24,12 @@ feature "Areas newsfeed" do
         page.should have_css('ul li span', :text => 'Vice-consejero')
       end
       within '.status' do
-        page.should have_css('ul li.area span',      :text => '12 acciones esta semana')
+        page.should have_css('ul li.area span',      :text => '27 acciones esta semana')
         page.should have_css('ul li.area a',         :text => 'Sigue a este área')
-        page.should have_css('ul li.questions span', :text => '2 preguntas contestadas')
+peich
+        page.should have_css('ul li.questions span', :text => '1 pregunta contestada')
         page.should have_css('ul li.questions a',    :text => 'Haz una pregunta')
-        page.should have_css('ul li.proposals span', :text => '3 propuestas abiertas')
+        page.should have_css('ul li.proposals span', :text => '1 propuesta abierta')
         page.should have_css('ul li.proposals a',    :text => 'Lanza tu propuesta')
       end
     end

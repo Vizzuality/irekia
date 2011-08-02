@@ -4,7 +4,7 @@
   require Rails.root.join('db', 'seeds', seed)
 end
 
-if Rails.env.development? || Rails.env.staging?
+if Rails.env.development? || Rails.env.test? || Rails.env.staging?
   puts ''
   puts '============================='
   puts "Loading test data"
