@@ -1,6 +1,6 @@
 <div id="navigation">
   <span><%= t('.currently_viewing') %></span>
-  <ul>
+  <ul class="areas">
     <% @areas.each do |area| %>
       <li class="<%= current_area?(area) %>"><%= area.name %></li>
     <% end %>
@@ -16,7 +16,7 @@
     <ul class="auth">
       <li><%= link_to t('.sign_up'), new_user_registration_path %></li>
       <li><%= link_to t('.sign_in'), new_user_session_path %></li>
+      <li><%= render 'shared/sign_in' %></li>
     </ul>
-    <%= render 'shared/sign_in' %>
   <% end %>
 </div>
