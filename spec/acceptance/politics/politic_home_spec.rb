@@ -35,7 +35,7 @@ feature "Politic's home" do
     end
   end
 
-  scenario 'shows a list of last actions related to that politic' do
+  scenario 'shows a list of last actions related to this politic' do
 
     visit politic_path(@politic)
 
