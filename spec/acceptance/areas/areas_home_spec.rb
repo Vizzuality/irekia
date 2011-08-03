@@ -197,11 +197,11 @@ feature "Area's home" do
           page.should have_no_css '.detail'
         end
 
-        page.should have_css 'li.ago_02 div', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
-        page.should have_css 'li.ago_03 div', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
-        page.should have_css 'li.ago_04 div', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 2
-        page.should have_css 'li.ago_10 div', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 3
-        page.should have_css 'li.ago_12 div', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+        page.should have_css 'li.ago_02 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+        page.should have_css 'li.ago_03 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+        page.should have_css 'li.ago_04 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 2
+        page.should have_css 'li.ago_10 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 3
+        page.should have_css 'li.ago_12 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
       end
 
       page.should have_css '.pagination', :text => 'Ver calendario completo'

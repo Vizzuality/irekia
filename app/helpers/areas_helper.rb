@@ -21,7 +21,7 @@ module AreasHelper
     day_events = agenda.select{|e| e.event_date.to_date.eql?(day.to_date)}
     html= []
     day_events.each do |event|
-      html << content_tag(:div, event.subject)
+      html << content_tag(:div, event.subject, :class => 'title')
 
       if action_name == 'agenda'
         event_detail = []
