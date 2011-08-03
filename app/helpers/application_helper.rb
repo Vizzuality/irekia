@@ -64,7 +64,7 @@ module ApplicationHelper
     content_tag :div, :class => :proposal do
       html << content_tag(:p, proposal.proposal_text, :class => 'title')
 
-      html << content_tag(:ul) do
+      html << content_tag(:ul, :class => :arguments) do
         li = []
         li << content_tag(:li, t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.in_favor", :count => proposal.arguments.in_favor.count))
         li << content_tag(:li, t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.against", :count => proposal.arguments.against.count))
@@ -172,7 +172,7 @@ module ApplicationHelper
     else
       html << link_to(t('.list_item.not_answered'), '#', :class => :not_answered)
     end
-    html << link_to(t('actions_stream.comments', :count => question.comments.count), '#') unless question.comments.nil?
+    html << link_to(t('.list_item.comments', :count => question.comments.count), '#') unless question.comments.nil?
 
     html.join('&nbsp;&middot;&nbsp;')
   end

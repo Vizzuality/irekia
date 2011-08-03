@@ -7,10 +7,10 @@
   <h2><%= link_to t('.title'), link_for_questions %></h2>
   <ul class="main_filters">
     <li>
-      <%= link_to t('.main_filters.more_recent'), '#', :id => 'more_recent' %>
+      <%= link_to t('.main_filters.more_recent'), '#', :class => 'more_recent' %>
     </li>
     <li>
-      <%= link_to t('.main_filters.more_polemic'), '#', :id => 'more_polemic' %>
+      <%= link_to t('.main_filters.more_polemic'), '#', :class => 'more_polemic' %>
     </li>
   </ul>
   <ul>
@@ -50,7 +50,7 @@
       <% end %>
     </div>
   <% end %>
-  <div class="paginate">
+  <div class="pagination">
     <%= link_to t('.more'), link_for_questions %>
   </div>
 </div>

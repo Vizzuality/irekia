@@ -93,7 +93,7 @@ es:
        questions: Preguntas
        proposals: Propuestas
        images: Fotos
-       videos: Videos
+       videos: Vídeos
       more: Ver más acciones
 
     questions:
@@ -107,6 +107,10 @@ es:
         author: '%{author} hace %{time}'
         answered: 'Contestada hace %{time}'
         not_answered: 'Aún no contestada'
+        comments:
+          zero: Ningún comentario
+          one: 1 comentario
+          other: '%{count} comentarios'
       content_type_filters:
        all: Todas
        answered: Contestadas
@@ -144,7 +148,7 @@ es:
        from_politics: Propuestas del gobierno
        from_citizens: Propuestas ciudadanas
       create_proposal: Crea una propuesta
-      morel: Ver más propuestas
+      more: Ver más propuestas
 
     arguments:
       list_item:
@@ -153,10 +157,10 @@ es:
           against: 'En contra de la propuesta "%{proposal}"'
         author: '%{author} participó hace %{time}'
 
-
     agenda:
       view_calendar: Ver calendario
       view_map: Ver mapa
+      more: Ver calendario completo
 
   contents:
     news:

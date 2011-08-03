@@ -2,10 +2,10 @@
   <h2><%= link_to t('.title'), link_for_proposals %></h2>
   <ul class="main_filters">
     <li>
-      <%= link_to t('.main_filters.more_recent'), '#', :id => 'more_recent' %>
+      <%= link_to t('.main_filters.more_recent'), '#', :class => 'more_recent' %>
     </li>
     <li>
-      <%= link_to t('.main_filters.more_polemic'), '#', :id => 'more_polemic' %>
+      <%= link_to t('.main_filters.more_polemic'), '#', :class => 'more_polemic' %>
     </li>
   </ul>
   <ul>
@@ -21,7 +21,7 @@
     <li><%= link_to t('.content_type_filters.from_citizens'), '#' %></li>
     <li class="create"><%= link_to t('.create_proposal'), new_proposal_path %></li>
   </ul>
-  <div class="paginate">
+  <div class="pagination">
     <%= link_to t('.more'), link_for_proposals %>
   </div>
 </div>
