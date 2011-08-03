@@ -24,6 +24,7 @@ group :development, :test do
   gem 'launchy'
   gem 'irbtools', :require => 'irbtools/configure'
   gem 'railroady'
+  gem 'escape_utils'
 end
 
 group :development, :test, :staging do
