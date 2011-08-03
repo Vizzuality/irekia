@@ -53,7 +53,7 @@ feature "Area's agenda page" do
     end
   end
 
-  scenario "shows that area's agenda" do
+  scenario "shows this area's agenda in detail" do
 
     visit agenda_area_path(@area)
 

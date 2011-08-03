@@ -143,7 +143,7 @@ feature "Politic's home" do
     end
   end
 
-  scenario "shows that area's agenda" do
+  scenario "shows this politic's agenda" do
 
     visit politic_path(@politic)
 
