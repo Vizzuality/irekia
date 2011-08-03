@@ -1,6 +1,6 @@
 <div id="politic_summary">
   <h1><%= @politic.name %></h1>
-  <span class="title"><%= raw t('.title', :title => translates_model_value(@politic.title, :name), :areas => @politic.areas.map{|a| link_to a.name, area_path(a)}.join(',')) %></span>
+  <span class="title"><%= raw t('.title', :title => get_politic_title(@politic), :areas => @politic.areas.map{|a| link_to a.name, area_path(a)}.join(',')) %></span>
   <div class="picture">
     <%= image_tag @politic.profile_image_url %>
   </div>
