@@ -10,7 +10,7 @@ feature "Area's proposals page" do
 
   scenario "shows a summary of that area's politics, actions and generated contents" do
 
-    visit actions_area_path(@area)
+    visit proposals_area_path(@area)
 
     within '#area_summary' do
       page.should have_css 'h1', :text => 'Educación, Universidades e Investigación'
@@ -41,7 +41,7 @@ feature "Area's proposals page" do
   end
 
   scenario 'shows a navigation menu with "proposals" selected' do
-    visit actions_area_path(@area)
+    visit proposals_area_path(@area)
 
     within '.navigation' do
       page.should have_link 'Resumen'
@@ -55,7 +55,7 @@ feature "Area's proposals page" do
 
   scenario "shows the list of proposals sent to that area" do
 
-    visit area_path(@area)
+    visit proposals_area_path(@area)
 
     within '#proposals' do
       page.should have_css 'h2', :text => 'Propuestas'
