@@ -1,15 +1,17 @@
-<h1><%= t('.title', :count => @team.count) %></h1>
-<ul>
-  <% @team.each do |user| %>
-  <li>
-    <%= link_to image_tag(user.profile_image_thumb_url), politic_path(user) if user.profile_image_thumb_url.present? %>
-    <%= link_to user.name, politic_path(user) %>
-    <span class="title"><%= translates_model_value(user.title, :name) if user.title %></span>
-    <% if user.active? %>
-    <span class="actions_this_week"><%= t('.actions_this_week', :count => user.actions.this_week.count) %></span>
-    <% else %>
-    <span class="inactive"><%= t('.inactive') %></span>
+<div id="team">
+  <h1><%= t('.title', :count => @team.count) %></h1>
+  <ul>
+    <% @team.each do |user| %>
+    <li>
+      <%= link_to image_tag(user.profile_image_thumb_url), politic_path(user) if user.profile_image_thumb_url.present? %>
+      <%= link_to user.name, politic_path(user) %>
+      <span class="title"><%= get_politic_title(user) %></span>
+      <% if user.active? %>
+      <span class="actions_this_week"><%= t('.actions_this_week', :count => user.actions.this_week.count) %></span>
+      <% else %>
+      <span class="inactive"><%= t('.inactive') %></span>
+      <% end %>
+    </li>
     <% end %>
-  </li>
-  <% end %>
-</ul>
+  </ul>
+</div>

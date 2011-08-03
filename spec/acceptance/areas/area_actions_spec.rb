@@ -49,7 +49,7 @@ feature "Area's actions page" do
       page.should have_link 'Preguntas'
       page.should have_link 'Propuestas'
       page.should have_link 'Agenda'
-      page.should have_link 'Team'
+      page.should have_link 'Equipo'
     end
   end
 

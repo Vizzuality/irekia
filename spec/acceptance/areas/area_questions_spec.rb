@@ -49,7 +49,7 @@ feature "Area's questions page" do
       page.should have_link 'Preguntas', :class => 'selected'
       page.should have_link 'Propuestas'
       page.should have_link 'Agenda'
-      page.should have_link 'Team'
+      page.should have_link 'Equipo'
     end
   end
 
