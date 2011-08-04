@@ -35,6 +35,41 @@ feature "Area's questions page" do
     end
   end
 
+  context 'being a signed-in user' do
+    before do
+      login_as_anonymous_user
+    end
+
+    scenario "allows to send a question to this politic" do
+      visit questions_politic_path(@politic)
+
+      within '#questions' do
+
+        within '.send_a_question' do
+          page.should have_css 'h1', :text => 'Haz una pregunta'
+          page.should have_content 'Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo'
+          fill_in 'Tu pregunta', :with => 'Test question'
+          expect{ click_button 'Enviar pregunta'}.to change{ Question.count }.by(1)
+        end
+      end
+
+      page.should have_content 'Tu pregunta se ha enviado correctamente y será publicada en cuanto nuestro equipo de moderación la haya revisado. También te avisaremos cuando recibas respuesta.'
+
+    end
+  end
+
+  context 'not being a signed-in user' do
+
+    scenario "doesn't allow to send a question to this politic" do
+      visit questions_politic_path(@politic)
+
+      within '#questions' do
+        page.should have_no_css '.send_a_question'
+      end
+
+    end
+  end
+
   scenario 'shows a navigation menu with "actions" selected' do
     visit questions_politic_path(@politic)
 

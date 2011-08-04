@@ -34,7 +34,7 @@
     <li class="create"><%= link_to t('.create_question'), new_question_path %></li>
   </ul>
   <% if user_signed_in? && @question_target.present? %>
-    <div class="make_a_question">
+    <div class="send_a_question">
       <h1><%= t('.make_a_question.title') %></h1>
       <p><%= t('.make_a_question.hint') %></p>
       <%= form_for @question_target do |form| %>
