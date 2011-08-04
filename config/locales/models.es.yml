@@ -26,6 +26,12 @@ es:
         email: Email
         password: Contraseña
         password_confirmation: Confirmar contraseña
+        role_id: Rol
+        title_id: Título
+      area_user:
+        area_id: Área
+      image:
+        image: Imagen
     values:
       role:
         name:

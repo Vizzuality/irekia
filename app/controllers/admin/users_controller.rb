@@ -5,7 +5,7 @@ class Admin::UsersController < Admin::AdminController
   before_filter :get_titles, :only => [:new, :create, :edit, :update]
 
   def index
-    @users = User.all
+    @users = User.oldest_first
   end
 
   def new

@@ -92,6 +92,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile_pictures, :questions, :areas_users
 
+  scope :oldest_first, order('created_at asc')
+
   def first_name
     self.name.split(' ').first if self.name.present?
   end
