@@ -82,10 +82,10 @@ aritz.save(:validate => false)
 
 print '.'.blue
 
-user = User.find_or_create_by_name :name => 'José López Pérez',
-                                   :email => 'pepito@irekia.com',
-                                   :password => 'irekia1234',
-                                   :password_confirmation => 'irekia1234'
+User.find_or_create_by_name :name                  => 'José López Pérez',
+                            :email                 => 'pepito@irekia.com',
+                            :password              => 'irekia1234',
+                            :password_confirmation => 'irekia1234'
 
 print '.'.blue
 

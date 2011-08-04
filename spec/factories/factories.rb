@@ -2,6 +2,12 @@
 
 module Factories
 
+  def init_admin_data
+    silence_stream(STDOUT) do
+      load Rails.root.join('db', 'seeds.rb')
+    end
+  end
+
   def init_area_data
     silence_stream(STDOUT) do
       load Rails.root.join('db', 'seeds.rb')

@@ -24,7 +24,7 @@ feature "Users" do
                        :password => 'irekia1234',
                        :password_confirmation => 'irekia1234'
 
-    login_as_anonymous_user
+    login_as_regular_user
 
     page.should have_link 'Salir'
   end

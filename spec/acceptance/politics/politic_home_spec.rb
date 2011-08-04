@@ -37,7 +37,7 @@ feature "Politic's home" do
 
   context 'being a signed-in user' do
     before do
-      login_as_anonymous_user
+      login_as_regular_user
     end
 
     scenario "allows to send a question to this politic" do
