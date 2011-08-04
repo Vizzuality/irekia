@@ -265,6 +265,7 @@ es:
           other: '%{count} preguntas contestadas'
         ask: 'Pregunta a %{name}'
       make_a_question:
+        label: 'Haz una pregunta a %{name}...'
         submit: Preguntar
       question_sent:
         success: Tu pregunta se ha enviado correctamente

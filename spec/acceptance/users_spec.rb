@@ -24,15 +24,7 @@ feature "Users" do
                        :password => 'irekia1234',
                        :password_confirmation => 'irekia1234'
 
-    visit root_path
-    click_link 'Login'
-
-    within '#sign_in' do
-      fill_in 'Email', :with => 'pepito@irekia.com'
-      fill_in 'Contraseña', :with => 'irekia1234'
-
-      click_button 'Entrar'
-    end
+    login_as_anonymous_user
 
     page.should have_link 'Salir'
   end

@@ -35,6 +35,40 @@ feature "Politic's home" do
     end
   end
 
+  context 'being a signed-in user' do
+    before do
+      login_as_anonymous_user
+    end
+
+    scenario "allows to send a question to this politic" do
+      visit politic_path(@politic)
+
+      within '#politic_summary' do
+        within '.make_a_question' do
+          page.should have_css 'h3', :text => 'Pregunta a Virginia'
+          fill_in 'Haz una pregunta a Virginia...', :with => 'Test question'
+          expect{ click_button 'Preguntar'}.to change{ Question.count }.by(1)
+        end
+      end
+
+      page.should have_content 'Tu pregunta se ha enviado correctamente y será publicada en cuanto nuestro equipo de moderación la haya revisado. También te avisaremos cuando recibas respuesta.'
+
+    end
+  end
+
+  context 'not being a signed-in user' do
+
+    scenario "doesn't allow to send a question to this politic" do
+      visit politic_path(@politic)
+
+      within '#politic_summary' do
+        page.should have_no_css '.make_a_question'
+      end
+
+    end
+  end
+
+
   scenario 'shows a list of last actions related to this politic' do
 
     visit politic_path(@politic)
