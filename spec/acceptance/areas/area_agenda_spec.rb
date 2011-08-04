@@ -30,7 +30,7 @@ feature "Area's agenda page" do
       end
 
       within '.status' do
-        page.should have_css 'ul li.area span',      :text => '22 acciones esta semana'
+        page.should have_css 'ul li.area span',      :text => '30 acciones esta semana'
         page.should have_css 'ul li.area a',         :text => 'Sigue a este área'
         page.should have_css 'ul li.questions span', :text => '1 pregunta contestada'
         page.should have_css 'ul li.questions a',    :text => 'Haz una pregunta'
@@ -70,18 +70,20 @@ feature "Area's agenda page" do
         end
 
         within 'li.ago_02' do
-          page.should have_css 'div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+          page.should have_css 'div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 3
           within 'div.detail' do
+
             page.should have_css 'h4', :text => '02, agosto de 2011'
             page.should have_css 'h3', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
-            page.should have_css '.location', :text => 'Unibertsitate Etorbidea, 24, University of Deusto, 48014 Bilbao, Spain'
+            page.should have_css '.location'#, :text => 'Unibertsitate Etorbidea, 24, University of Deusto, 48014 Bilbao, Spain'
             page.should have_css '.time', :text => '10:00'
           end
         end
 
         page.should have_css 'li.ago_03 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
-        page.should have_css 'li.ago_04 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 2
+        page.should have_css 'li.ago_04 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 3
         page.should have_css 'li.ago_10 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 3
+        page.should have_css 'li.ago_11 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
         page.should have_css 'li.ago_12 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
       end
     end

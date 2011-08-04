@@ -30,7 +30,7 @@ feature "Area's team page" do
       end
 
       within '.status' do
-        page.should have_css 'ul li.area span',      :text => '22 acciones esta semana'
+        page.should have_css 'ul li.area span',      :text => '30 acciones esta semana'
         page.should have_css 'ul li.area a',         :text => 'Sigue a este área'
         page.should have_css 'ul li.questions span', :text => '1 pregunta contestada'
         page.should have_css 'ul li.questions a',    :text => 'Haz una pregunta'
@@ -66,7 +66,7 @@ feature "Area's team page" do
         page.should have_css 'a img'
         page.should have_link 'Virginia Uriarte Rodríguez'
         page.should have_css '.title', :text => 'Consejera'
-        page.should have_css '.actions_this_week', :text => '2 acciones esta semana'
+        page.should have_css '.actions_this_week', :text => '6 acciones esta semana'
       end
     end
   end

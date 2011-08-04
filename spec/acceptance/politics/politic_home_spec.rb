@@ -24,7 +24,7 @@ feature "Politic's home" do
       end
 
       within '.actions' do
-        page.should have_css 'span', :text => '2 acciones esta semana'
+        page.should have_css 'span', :text => '6 acciones esta semana'
         page.should have_link 'Sigue a Virginia'
       end
 
@@ -159,6 +159,10 @@ feature "Politic's home" do
           page.should have_css '.date .month', :text => 'ago'
           page.should have_no_css '.detail'
         end
+
+        page.should have_css 'li.ago_02 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 2
+        page.should have_css 'li.ago_04 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+        page.should have_css 'li.ago_11 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
 
       end
 

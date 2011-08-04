@@ -84,6 +84,41 @@ print '.'.blue
 
 # END - USERS
 #############################
+Event.create(
+  :users => [virginia],
+  :areas => [area],
+  :the_geom => 'POINT(-2.937952 43.270214)',
+  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 1, :hours => 10)}
+)
+
+print '.'.blue
+
+Event.create(
+  :users => [virginia],
+  :areas => [area],
+  :the_geom => 'POINT(-2.937952 43.270214)',
+  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 1, :hours => 12)}
+)
+
+print '.'.blue
+
+Event.create(
+  :users => [virginia],
+  :areas => [area],
+  :the_geom => 'POINT(-2.937952 43.270214)',
+  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 3, :hours => 15)}
+)
+
+print '.'.blue
+
+Event.create(
+  :users => [virginia],
+  :areas => [area],
+  :the_geom => 'POINT(-2.937952 43.270214)',
+  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 10, :hours => 9)}
+)
+
+print '.'.blue
 
 Event.create(
   :users => [alberto],

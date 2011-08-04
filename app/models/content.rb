@@ -22,10 +22,9 @@ class Content < ActiveRecord::Base
   scope :moderated,     where(:moderated => true)
   scope :not_moderated, where(:moderated => false)
 
-  reverse_geocoded_by :latitude, :longitude, :address => :location
+  reverse_geocoded_by :latitude, :longitude
 
-  after_validation :geocode
-  after_validation :reverse_geocode
+  # after_validation :reverse_geocode
 
   def latitude
     self.the_geom.try(:latitude)
@@ -33,6 +32,10 @@ class Content < ActiveRecord::Base
 
   def longitude
     self.the_geom.try(:longitude)
+  end
+
+  def location
+    reverse_geocode if Rails.env.staging? || Rails.env.production?
   end
 
   def self.validate_all_not_moderated
