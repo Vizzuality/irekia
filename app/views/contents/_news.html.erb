@@ -32,7 +32,7 @@
         <% @content.users.each do |user| %>
         <li>
           <%= link_to user.name, politic_path(user) %>
-          <span><%= translates_model_value(user.title, :name) if user.title %></span>
+          <span><%= get_politic_title(user) %></span>
         </li>
         <% end if @content.users.present? %>
       </ul>

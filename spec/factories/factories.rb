@@ -30,5 +30,14 @@ module Factories
     User.where(:name => 'Virginia Uriarte Rodríguez').first
   end
 
+  def init_contents_data
+    silence_stream(STDOUT) do
+      load Rails.root.join('db', 'seeds.rb')
+    end
+
+    Content.validate_all_not_moderated
+    Participation.validate_all_not_moderated
+  end
+
 end
 RSpec.configure {|config| config.include Factories}
