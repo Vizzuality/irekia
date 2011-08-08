@@ -9,7 +9,6 @@ feature "Area's actions page" do
   end
 
   scenario "shows a summary of that area's politics, actions and generated contents" do
-
     visit actions_area_path(@area)
 
     within '#area_summary' do

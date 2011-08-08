@@ -1,28 +1,32 @@
-<h1><%= t('.contents') %></h1>
-<ul>
-  <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'contents') %></li>
-  <% @contents[:not_moderated].each do |content| %>
-  <li>
-    <%= render_item_for_moderation content %>
-    <%= form_for [:admin, content] do |form| %>
-      <%= form.hidden_field :moderated, :value => true %>
-      <%= form.submit t('.validate', :type => content.class.model_name.human)%>
+<div class="contents">
+  <h1><%= t('.contents') %></h1>
+  <ul>
+    <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'contents') %></li>
+    <% @contents[:not_moderated].each do |content| %>
+    <li class="content">
+      <%= render_item_for_moderation content %>
+      <%= form_for [:admin, content] do |form| %>
+        <%= form.hidden_field :moderated, :value => true %>
+        <%= form.submit t('.validate', :type => content.class.model_name.human)%>
+      <% end %>
+      <%= button_to t('.delete', :type => content.class.model_name.human), url_for([:admin, content]), :method => :delete %>
+    </li>
     <% end %>
-    <%= button_to t('.delete', :type => content.class.model_name.human), url_for([:admin, content]), :method => :delete %>
-  </li>
-  <% end %>
-</ul>
-<h1><%= t('.participations') %></h1>
-<ul>
-  <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'participations') %></li>
-  <% @participations[:not_moderated].each do |participation| %>
-  <li>
-    <%= render_item_for_moderation participation %>
-    <%= form_for [:admin, participation] do |form| %>
-      <%= form.hidden_field :moderated, :value => true %>
-      <%= form.submit t('.validate', :type => participation.class.model_name.human)%>
+  </ul>
+</div>
+<div class="participations">
+  <h1><%= t('.participations') %></h1>
+  <ul>
+    <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'participations') %></li>
+    <% @participations[:not_moderated].each do |participation| %>
+    <li class="participation">
+      <%= render_item_for_moderation participation %>
+      <%= form_for [:admin, participation] do |form| %>
+        <%= form.hidden_field :moderated, :value => true %>
+        <%= form.submit t('.validate', :type => participation.class.model_name.human)%>
+      <% end %>
+      <%= button_to t('.delete', :type => participation.class.model_name.human), url_for([:admin, participation]), :method => :delete %>
+    </li>
     <% end %>
-    <%= button_to t('.delete', :type => participation.class.model_name.human), url_for([:admin, participation]), :method => :delete %>
-  </li>
-  <% end %>
-</ul>
+  </ul>
+</div>

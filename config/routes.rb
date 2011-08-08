@@ -48,6 +48,10 @@ Irekia::Application.routes.draw do
   resources :news,         :controller => 'contents', :type => 'News'
   resources :polls,        :controller => 'contents', :type => 'Poll'
   resources :poll_answers, :controller => 'contents', :type => 'PollAnswer'
+  resources :events,       :controller => 'contents', :type => 'Event'
+
+  resources :comments,     :controller => 'participations', :type => 'Comment'
+
   resources :search, :only => :show
 
   root :to => "home#index"
