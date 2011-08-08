@@ -32,7 +32,7 @@ module ApplicationHelper
         raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.title", :receiver => receiver)
       end
 
-      html << content_tag(:p, %Q{"#{question.question_text}"}, :class => 'question')
+      html << content_tag(:p, link_to(%Q{"#{question.question_text}"}, question_path(question)), :class => 'question')
 
       html << footer
 

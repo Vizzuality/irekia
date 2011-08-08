@@ -5,7 +5,7 @@ class Argument < Participation
   has_one :argument_data
 
   scope :in_favor, joins(:argument_data).where('argument_data.in_favor' => true)
-  scope :against, joins(:argument_data).where('argument_data.in_favor' => true)
+  scope :against, joins(:argument_data).where('argument_data.in_favor' => false)
 
   after_initialize :create_argument_data
 

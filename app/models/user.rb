@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
   has_many :follows
   has_many :participations
   has_many :comments
+  has_many :answer_requests
 
   has_many :actions,
            :class_name => 'UserPublicStream',
@@ -130,6 +131,14 @@ class User < ActiveRecord::Base
     generated_password.slice!(13 - rand(5)..generated_password.length)
     self.password = generated_password
     self.password_confirmation = generated_password
+  end
+
+  def has_not_requested_answer(question)
+    AnswerRequest.joins(:content, :user).where('contents.id = ? AND users.id = ?', question.id, self.id).count == 0
+  end
+
+  def has_not_give_his_opinion(answer)
+    AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', answer.id, self.id).count == 0
   end
 
 end

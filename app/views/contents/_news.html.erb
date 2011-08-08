@@ -10,29 +10,7 @@
     <h1><%= @content.title %></h1>
     <h4><%= @content.subtitle %></h4>
     <%= simple_format @content.body %>
-    <ul class="comments">
-      <% @content.comments.reject{|c| c.new_record?}.each do |comment| %>
-      <li>
-        <%= simple_format comment.body %>
-        <%= link_to image_tag(comment.user.profile_image_thumb_url), user_path(comment.user), :class => :author_image if comment.user.profile_image_thumb_url.present? %>
-        <%= link_to comment.user.name, user_path(comment.user), :class => :author %>
-        <span><%= t('.news_content.comments.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %></span>
-      </li>
-      <% end %>
-      <% if user_signed_in? %>
-      <li>
-        <%= form_for @content do |form| %>
-          <%= form.fields_for :comments, @comment do |comments| %>
-            <%= comments.hidden_field :user_id %>
-            <%= comments.fields_for :comment_data do |comment_data| %>
-              <%= comment_data.text_area :body %>
-            <% end %>
-          <% end %>
-          <%= form.submit t('.news_content.comments.new.submit') %>
-        <% end %>
-      </li>
-      <% end %>
-    </ul>
+    <%= render 'comments' %>
   </div>
   <div class="sidebar">
     <ul class="sharing_links">
@@ -64,7 +42,7 @@
       <ul>
         <% @last_contents.each do |content| %>
         <li>
-          <p>content.title</p>
+          <p><%= content.title %></p>
           <span class="when"><%= distance_of_time_in_words_to_now(content.published_at) %></span>
           <%= link_to t('.sidebar.related_content.comments', :count => content.comments.count), '#' %>
         </li>

@@ -1,0 +1,23 @@
+<ul class="comments">
+  <% @content.comments.reject{|c| c.new_record?}.each do |comment| %>
+  <li>
+    <%= simple_format comment.body %>
+    <%= link_to image_tag(comment.user.profile_image_thumb_url), user_path(comment.user), :class => :author_image if comment.user.profile_image_thumb_url.present? %>
+    <%= link_to comment.user.name, user_path(comment.user), :class => :author %>
+    <span><%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %></span>
+  </li>
+  <% end %>
+  <% if user_signed_in? %>
+  <li>
+    <%= form_for @content do |form| %>
+      <%= form.fields_for :comments, @comment do |comments| %>
+        <%= comments.hidden_field :user_id %>
+        <%= comments.fields_for :comment_data do |comment_data| %>
+          <%= comment_data.text_area :body %>
+        <% end %>
+      <% end %>
+      <%= form.submit t('.new.submit') %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>

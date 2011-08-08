@@ -27,11 +27,15 @@ class Content < ActiveRecord::Base
   # after_validation :reverse_geocode
 
   def latitude
-    self.the_geom.try(:latitude)
+    the_geom.try(:latitude)
   end
 
   def longitude
-    self.the_geom.try(:longitude)
+    the_geom.try(:longitude)
+  end
+
+  def author
+    users.first if users.present?
   end
 
   def location
