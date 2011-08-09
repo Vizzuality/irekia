@@ -35,7 +35,7 @@ feature "Contents' comments section" do
 
       page.should have_css 'ul.comments li', :count => 3
       within '.comments li' do
-peich
+
         page.should have_content 'Me encantaría que realmente esta gente fuera siempre a los eventos y nos lo comunicaran como en esta ocasión. La verdad que fue un buen momento para hablar con ellos y conocerlos en persona.'
         page.should have_css 'img'
         page.should have_content 'María González Pérez hace menos de 1 minuto'
