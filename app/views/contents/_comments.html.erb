@@ -13,6 +13,7 @@
       <%= form.fields_for :comments, @comment do |comments| %>
         <%= comments.hidden_field :user_id %>
         <%= comments.fields_for :comment_data do |comment_data| %>
+          <%= comment_data.label :body, t(params[:type].downcase, :scope => 'contents.comments.label') %>
           <%= comment_data.text_area :body %>
         <% end %>
       <% end %>

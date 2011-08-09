@@ -222,6 +222,8 @@ es:
       time: 'hace %{time}'
       new:
         submit: Comentar
+      label:
+        news: ¿Algo que decir?... comenta esta noticia
 
 
   areas:

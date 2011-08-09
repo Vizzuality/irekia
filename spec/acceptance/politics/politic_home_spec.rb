@@ -158,7 +158,7 @@ feature "Politic's home" do
       within 'ul li.action div.proposal' do
         page.should have_css 'p.title', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
         page.should have_css 'ul.arguments li', :text => '1 a favor'
-        page.should have_css 'ul.arguments li', :text => '1 en contra'
+        page.should have_css 'ul.arguments li', :text => '0 en contra'
 
         page.should have_css 'img'
         page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
