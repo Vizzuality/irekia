@@ -11,6 +11,9 @@ require 'database_cleaner'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 Dir[Rails.root.join("spec/factories/**/*.rb")].each {|f| require f}
 
+Capybara.server_port = 3001
+Capybara.app_host = "http://www.example.com:#{Capybara.server_port}"
+
 RSpec.configure do |config|
   # == Mock Framework
   #

@@ -1,8 +1,13 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :validatable,
+         :omniauthable
 
   attr_reader :random_password
 
@@ -94,6 +99,17 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile_pictures, :questions, :areas_users
 
   scope :oldest_first, order('created_at asc')
+
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+    data = access_token['user_info']
+    if user = User.find_by_email(data['email'])
+      user
+    else
+      User.create :name     => data['name'],
+                  :email    => data['email'],
+                  :password => Devise.friendly_token[0,20]
+    end
+  end
 
   def first_name
     self.name.split(' ').first if self.name.present?

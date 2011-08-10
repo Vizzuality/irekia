@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.9'
 gem 'sass', '~> 3.1.3'
 gem 'pg', '0.11.0'
+gem 'oa-oauth', '0.2.6', :require => "omniauth/oauth"
 gem 'devise', '~> 1.4.2'
 gem 'carrierwave', '~> 0.5.5'
 gem 'mini_magick', '~> 3.3'
