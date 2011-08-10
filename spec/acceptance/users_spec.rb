@@ -60,4 +60,35 @@ feature "Users" do
     end
 
   end
+
+  context 'with twitter account' do
+    background do
+      OmniAuth.config.test_mode = true
+
+      OmniAuth.config.mock_auth[:twitter] = {
+        "provider"  => "twitter",
+        "uid"       => '12345',
+        "user_info" => {
+          "email" => "email@email.com",
+          "first_name" => "John",
+          "last_name"  => "Doe",
+          "name"       => "John Doe"
+          # any other attributes you want to stub out for testing
+        }
+      }
+    end
+
+    scenario "can sign-in in Irekia" do
+      visit root_path
+
+      click_link 'Login'
+
+      within '#sign_in' do
+
+        expect{ click_link 'twitter_signin' }.to change{ User.count }.by(1)
+
+      end
+      page.should have_link 'Salir'
+    end
+  end
 end
