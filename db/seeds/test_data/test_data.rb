@@ -4,7 +4,7 @@
 # AREAS
 
 area = Area.find_or_create_by_name('Educación, Universidades e Investigación')
-area.update_attribute(:description, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+area.update_attribute(:description, String.lorem)
 
 print '.'.blue
 
@@ -25,7 +25,7 @@ admin.save!
 print '.'.blue
 
 alberto = User.find_or_initialize_by_name_and_email('Alberto de Zárate López', 'alberto.zarate@ej-gv.es')
-alberto.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+alberto.description = String.lorem
 alberto.role = Role.find_by_name('Político')
 alberto.areas.clear
 alberto.areas_users << AreaUser.create(:area => area, :display_order => 2)
@@ -37,7 +37,7 @@ print '.'.blue
 
 virginia = User.find_or_initialize_by_name_and_email('Virginia Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
 virginia.is_woman = true
-virginia.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+virginia.description = String.lorem
 virginia.role = Role.find_by_name('Político')
 virginia.areas.clear
 virginia.areas_users << AreaUser.create(:area => area, :display_order => 1)
@@ -52,7 +52,7 @@ print '.'.blue
   user = User.find_or_initialize_by_name_and_email(name, "#{name.downcase.split(' ').join('.')}@ej-gv.es")
   user.is_woman = [true, false].sample
   user.inactive = [true, false].sample
-  user.description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+  user.description = String.lorem
   user.role = Role.find_by_name('Político')
   user.areas.clear
   user.areas << area
@@ -210,7 +210,7 @@ if proposal_data.new_record?
   proposal.areas << area
   proposal.users << maria
   proposal.proposal_data = proposal_data
-  proposal.comments << andres.comments.new.create_with_body('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+  proposal.comments << andres.comments.new.create_with_body(String.lorem)
 
   proposal.save!
 end
@@ -225,7 +225,7 @@ if question_data.new_record?
   question.users << maria
   question_data.target_user = virginia
   question.question_data = question_data
-  question.comments << andres.comments.new.create_with_body('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+  question.comments << andres.comments.new.create_with_body(String.lorem)
 
   question.save!
 end
@@ -277,7 +277,7 @@ news_data = NewsData.find_or_initialize_by_title('Inauguración del nuevo comple
 
 if news_data.new_record?
   news_data.subtitle = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-  news_data.body = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+  news_data.body = String.lorem
   news = News.new
   news.tags = %w(Comisión Transporte Gobierno\ Vasco Transporte).join(',')
   news.areas << area
@@ -308,7 +308,7 @@ if answer_data.new_record?
   answer.areas << area
   answer.users << virginia
   answer.answer_data = answer_data
-  answer.comments << maria.comments.new.create_with_body('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+  answer.comments << maria.comments.new.create_with_body(String.lorem)
 
   answer.save!
 end

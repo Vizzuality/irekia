@@ -62,7 +62,7 @@ module ApplicationHelper
     html = []
 
     content_tag :div, :class => :proposal do
-      html << content_tag(:p, proposal.proposal_text, :class => 'title')
+      html << content_tag(:p, proposal.title, :class => 'title')
 
       html << content_tag(:ul, :class => :arguments) do
         li = []
@@ -82,7 +82,7 @@ module ApplicationHelper
 
     content_tag :div, :class => :argument do
       html << content_tag(:p, :class => 'title') do
-        raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.title.#{argument.argument_data.in_favor ? 'in_favor' : 'against'}", :proposal => content_tag(:span, argument.proposal.proposal_text))
+        raw t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.title.#{argument.argument_data.in_favor ? 'in_favor' : 'against'}", :proposal => content_tag(:span, argument.proposal.title))
       end
 
       html << footer
