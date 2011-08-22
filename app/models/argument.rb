@@ -6,16 +6,13 @@ class Argument < Participation
 
   scope :in_favor, joins(:argument_data).where('argument_data.in_favor' => true)
   scope :against, joins(:argument_data).where('argument_data.in_favor' => false)
+  scope :with_reason, joins(:argument_data).where('argument_data.reason IS NOT NULL')
 
-  after_initialize :create_argument_data
+  delegate :reason, :to => :argument_data
+
+  accepts_nested_attributes_for :argument_data
 
   def to_html
 
   end
-
-  def create_argument_data
-    self.argument_data = ArgumentData.new
-    self.argument_data.in_favor = attributes[:in_favor] if attributes[:in_favor]
-  end
-  private :create_argument_data
 end

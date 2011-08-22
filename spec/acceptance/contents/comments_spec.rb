@@ -14,6 +14,7 @@ feature "Contents' comments section" do
     scenario "shows content's comments list" do
       visit news_path(@news)
 
+      page.should have_content '2 comentarios'
       page.should have_css 'ul.comments li', :count => 2
       within '.comments li' do
 
@@ -33,6 +34,7 @@ feature "Contents' comments section" do
     scenario "shows content's comments list and allows to post new comments" do
       visit news_path(@news)
 
+      page.should have_content '2 comentarios'
       page.should have_css 'ul.comments li', :count => 3
       within '.comments li' do
 

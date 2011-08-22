@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20110808093232) do
 
   create_table "answer_opinion_data", :force => true do |t|
     t.integer  "answer_opinion_id"
-    t.boolean  "satisfactory"
+    t.boolean  "satisfactory",      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20110808093232) do
   create_table "argument_data", :force => true do |t|
     t.integer  "argument_id"
     t.boolean  "in_favor",    :default => true
+    t.string   "reason"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -143,8 +144,9 @@ ActiveRecord::Schema.define(:version => 20110808093232) do
     t.integer  "proposal_id"
     t.integer  "user_id"
     t.integer  "area_id"
-    t.text     "proposal_text"
-    t.boolean  "close",         :default => false
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "close",       :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

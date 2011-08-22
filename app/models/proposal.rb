@@ -6,7 +6,15 @@ class Proposal < Content
   scope :open, joins(:proposal_data).where('proposal_data.close' => false)
   scope :close, joins(:proposal_data).where('proposal_data.close' => true)
 
-  delegate :proposal_text, :to => :proposal_data
+  accepts_nested_attributes_for :proposal_data, :arguments
+
+  delegate :title, :body, :to => :proposal_data
+
+  def percent_in_favor
+    total_arguments = arguments.count
+    return 0 if total_arguments.zero?
+    (arguments.in_favor.count * 100 / arguments.count).round
+  end
 
   def to_html
 

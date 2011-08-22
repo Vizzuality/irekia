@@ -137,8 +137,14 @@ class User < ActiveRecord::Base
     AnswerRequest.joins(:content, :user).where('contents.id = ? AND users.id = ?', question.id, self.id).count == 0
   end
 
-  def has_not_give_his_opinion(answer)
-    AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', answer.id, self.id).count == 0
+  def has_not_give_his_opinion(content)
+    case content
+    when Answer
+      AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', answer.id, id).count == 0
+    when Proposal
+      content.arguments.where('user_id = ?', id).count == 0
+    end
+
   end
 
 end

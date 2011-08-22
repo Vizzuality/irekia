@@ -52,6 +52,14 @@ class ContentsController < ApplicationController
         end
       end
 
+    when Proposal
+      @new_in_favor = @content.arguments.in_favor.build
+      @new_in_favor.argument_data = ArgumentData.new :in_favor => true
+      @new_in_favor.user = current_user if current_user.present? && current_user.has_not_give_his_opinion(@content)
+
+      @new_against = @content.arguments.against.build
+      @new_against.argument_data = ArgumentData.new :in_favor => false
+      @new_against.user = current_user if current_user.present? && current_user.has_not_give_his_opinion(@content)
     end
   end
 

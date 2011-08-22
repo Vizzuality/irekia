@@ -199,12 +199,14 @@ Event.create(
 
 print '.'.blue
 
-proposal_data = ProposalData.find_or_initialize_by_proposal_text('Actualizar la información publicada sobre las ayudas a familias numerosas')
+proposal_data = ProposalData.find_or_initialize_by_title('Actualizar la información publicada sobre las ayudas a familias numerosas')
 
 if proposal_data.new_record?
+  proposal_data.body = String.lorem
   proposal_data.target_user = virginia
 
   proposal = Proposal.new
+  proposal.tags = %w(Comisión Transporte Gobierno\ Vasco Transporte).join(',')
   proposal.areas << area
   proposal.users << maria
   proposal.proposal_data = proposal_data
@@ -230,16 +232,28 @@ end
 
 print '.'.blue
 
-proposal_data = ProposalData.find_by_proposal_text('Actualizar la información publicada sobre las ayudas a familias numerosas')
+proposal_data = ProposalData.find_by_title('Actualizar la información publicada sobre las ayudas a familias numerosas')
 
 proposal = proposal_data.proposal
 proposal.arguments.clear
 
-argument = Argument.new
-argument.user = aritz
-argument.proposal = proposal_data.proposal
+66.times do
+  argument = Argument.new
+  argument.user     = [andres, aritz, maria].sample
+  argument.proposal = proposal_data.proposal
+  argument.argument_data = ArgumentData.create :reason => String.lorem.truncate(255)
 
-argument.save!
+  argument.save!
+end
+
+57.times do
+  argument = Argument.new
+  argument.user     = [andres, aritz, maria].sample
+  argument.proposal = proposal_data.proposal
+  argument.argument_data = ArgumentData.create :in_favor => false,  :reason => String.lorem.truncate(255)
+
+  argument.save!
+end
 
 print '.'.blue
 

@@ -3,7 +3,7 @@
     <h1><%= @content.question_text %></h1>
     <div class="author_and_comments">
       <span>
-        <%= link_to @content.users.try(:first).try(:name), user_path(@content.users.first)  %>
+        <%= link_to @content.author.try(:name), user_path(@content.users.first)  %>
         <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
       </span>
       &middot;

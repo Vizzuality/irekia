@@ -218,7 +218,43 @@ es:
             one: Un comentario
             other: '%{count} comentarios'
 
+    proposal:
+      title_author_and_comments:
+        time: 'hace %{time}'
+        comments:
+          zero: Ningún comentario
+          one: Un comentario
+          other: '%{count} comentarios'
+        total_in_favor: '%{percent}% a favor (de %{total})'
+      content:
+        in_favor: A favor
+        against: En contra
+        add: Añadir
+        your_opinion:
+          title: ¿Qué opinas tú?
+          subtitle: Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión.
+          vote_in_favor: Votar a favor
+          vote_against: Votar en contra
+      sidebar:
+        sharing_links:
+          mail: Mail
+          twitter: Twitter
+          facebook: Facebook
+        tags:
+          title: Tags
+        related_content:
+          title: Últimos contenidos
+          comments:
+            zero: Ningún comentario
+            one: Un comentario
+            other: '%{count} comentarios'
+
+
     comments:
+      title:
+        zero: Ningún comentario
+        one: Un comentario
+        other: '%{count} comentarios'
       time: 'hace %{time}'
       new:
         submit: Comentar

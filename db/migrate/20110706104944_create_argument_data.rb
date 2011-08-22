@@ -4,6 +4,7 @@ class CreateArgumentData < ActiveRecord::Migration
       t.references :argument
 
       t.boolean :in_favor, :default => true
+      t.string :reason
 
       t.timestamps
     end

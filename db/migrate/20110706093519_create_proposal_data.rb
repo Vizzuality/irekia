@@ -5,7 +5,8 @@ class CreateProposalData < ActiveRecord::Migration
       t.references :user
       t.references :area
 
-      t.text :proposal_text
+      t.string :title
+      t.text :body
       t.boolean :close, :default => false
 
       t.timestamps
