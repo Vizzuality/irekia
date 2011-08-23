@@ -5,6 +5,7 @@ class CreateAreaPublicStreams < ActiveRecord::Migration
       t.text :message
       t.string :event_type
       t.integer :event_id
+      t.datetime :published_at
       t.string :link
 
       t.timestamps

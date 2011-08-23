@@ -7,18 +7,19 @@ Irekia::Application.routes.draw do
     match '/moderation/validate_all/:type' => 'moderation#validate_all', :as => :moderate_all
     resources :users
     # resources :contents
-    resources :proposals,    :controller => 'contents',       :type => 'Proposal'
-    resources :arguments,    :controller => 'contents',       :type => 'Argument'
-    resources :questions,    :controller => 'contents',       :type => 'Question'
-    resources :answers,      :controller => 'contents',       :type => 'Answer'
-    resources :news,         :controller => 'contents',       :type => 'News'
-    resources :polls,        :controller => 'contents',       :type => 'Poll'
-    resources :poll_answers, :controller => 'contents',       :type => 'PollAnswer'
-    resources :events,       :controller => 'contents',       :type => 'Event'
+    resources :proposals,      :controller => 'contents',       :type => 'Proposal'
+    resources :arguments,      :controller => 'contents',       :type => 'Argument'
+    resources :questions,      :controller => 'contents',       :type => 'Question'
+    resources :answers,        :controller => 'contents',       :type => 'Answer'
+    resources :news,           :controller => 'contents',       :type => 'News'
+    resources :polls,          :controller => 'contents',       :type => 'Poll'
+    resources :poll_answers,   :controller => 'contents',       :type => 'PollAnswer'
+    resources :events,         :controller => 'contents',       :type => 'Event'
     # resources :participations
-    resources :comments,     :controller => 'participations', :type => 'Comment'
-    resources :arguments,    :controller => 'participations', :type => 'Argument'
-    resources :likes,        :controller => 'participations', :type => 'Like'
+    resources :comments,       :controller => 'participations', :type => 'Comment'
+    resources :arguments,      :controller => 'participations', :type => 'Argument'
+    resources :likes,          :controller => 'participations', :type => 'Like'
+    resources :answer_request, :controller => 'participations', :type => 'AnswerRequest'
   end
 
   resources :areas do

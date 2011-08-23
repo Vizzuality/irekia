@@ -4,7 +4,6 @@ require 'spec_helper'
 
 feature "Users admin page" do
   background do
-    init_admin_data
     login_as_administrator
   end
 

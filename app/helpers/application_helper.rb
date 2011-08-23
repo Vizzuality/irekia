@@ -154,6 +154,8 @@ module ApplicationHelper
       user     = content.users.present?? content.users.first : nil
     when 'comment'
       return nil
+    when 'answerrequest'
+      return nil
     end
 
     html = []

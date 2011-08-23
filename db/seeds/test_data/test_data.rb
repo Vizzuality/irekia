@@ -91,6 +91,51 @@ print '.'.blue
 
 # END - USERS
 #############################
+proposal_data = ProposalData.find_or_initialize_by_title('Actualizar la información publicada sobre las ayudas a familias numerosas')
+
+if proposal_data.new_record?
+  proposal_data.body = String.lorem
+  proposal_data.target_user = virginia
+
+  proposal = Proposal.new
+  proposal.tags = %w(Comisión Transporte Gobierno\ Vasco Transporte).join(',')
+  proposal.areas << area
+  proposal.users << maria
+  proposal.proposal_data = proposal_data
+  proposal.comments << andres.comments.new.create_with_body(String.lorem)
+
+  proposal.save!
+
+  65.times do
+
+    argument = Argument.new
+    argument.user     = [andres, aritz, maria].sample
+    argument.proposal = proposal_data.proposal
+    argument.argument_data = ArgumentData.create :reason => String.lorem.truncate(255)
+
+    argument.save!
+
+    print '.'.blue
+  end
+
+  57.times do
+    argument = Argument.new
+    argument.user     = [andres, aritz, maria].sample
+    argument.proposal = proposal_data.proposal
+    argument.argument_data = ArgumentData.create :in_favor => false,  :reason => String.lorem.truncate(255)
+
+    argument.save!
+
+    print '.'.blue
+  end
+
+  proposal.update_attribute('updated_at', Time.now)
+
+end
+
+print '.'.blue
+
+
 Event.create(
   :users => [virginia],
   :areas => [area],
@@ -199,24 +244,6 @@ Event.create(
 
 print '.'.blue
 
-proposal_data = ProposalData.find_or_initialize_by_title('Actualizar la información publicada sobre las ayudas a familias numerosas')
-
-if proposal_data.new_record?
-  proposal_data.body = String.lorem
-  proposal_data.target_user = virginia
-
-  proposal = Proposal.new
-  proposal.tags = %w(Comisión Transporte Gobierno\ Vasco Transporte).join(',')
-  proposal.areas << area
-  proposal.users << maria
-  proposal.proposal_data = proposal_data
-  proposal.comments << andres.comments.new.create_with_body(String.lorem)
-
-  proposal.save!
-end
-
-print '.'.blue
-
 question_data = QuestionData.find_or_initialize_by_question_text('¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?')
 
 if question_data.new_record?
@@ -226,37 +253,16 @@ if question_data.new_record?
   question_data.target_user = virginia
   question.question_data = question_data
   question.comments << andres.comments.new.create_with_body(String.lorem)
+  question.tags = %w(Comisión Transporte Gobierno\ Vasco Transporte).join(',')
 
   question.save!
+
+  [andres, aritz, maria].each do |user|
+    question.answer_requests.create :user => user
+  end
 end
 
 print '.'.blue
-
-proposal_data = ProposalData.find_by_title('Actualizar la información publicada sobre las ayudas a familias numerosas')
-
-proposal = proposal_data.proposal
-proposal.arguments.clear
-
-66.times do
-  argument = Argument.new
-  argument.user     = [andres, aritz, maria].sample
-  argument.proposal = proposal_data.proposal
-  argument.argument_data = ArgumentData.create :reason => String.lorem.truncate(255)
-
-  argument.save!
-end
-
-57.times do
-  argument = Argument.new
-  argument.user     = [andres, aritz, maria].sample
-  argument.proposal = proposal_data.proposal
-  argument.argument_data = ArgumentData.create :in_favor => false,  :reason => String.lorem.truncate(255)
-
-  argument.save!
-end
-
-print '.'.blue
-
 
 area_question_data = QuestionData.find_or_initialize_by_question_text('Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos.')
 
@@ -267,6 +273,7 @@ if area_question_data.new_record?
   question.areas << area
   question.users << maria
   question.question_data = area_question_data
+  question.tags = %w(Comisión Transporte Gobierno\ Vasco Transporte).join(',')
 
   question.save!
 end
@@ -312,5 +319,14 @@ if answer_data.new_record?
 
   answer.save!
 end
+
+print '.'.blue
+
+argument = Argument.new
+argument.user     = aritz
+argument.proposal = ProposalData.find_by_title('Actualizar la información publicada sobre las ayudas a familias numerosas').proposal
+argument.argument_data = ArgumentData.create :reason => String.lorem.truncate(255)
+
+argument.save!
 
 print '.'.blue

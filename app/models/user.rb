@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
 
   has_many :actions,
            :class_name => 'UserPublicStream',
-           :order => 'updated_at desc'
+           :order => 'published_at desc'
   has_many :user_private_streams
 
   has_many :profile_pictures,
@@ -156,9 +156,18 @@ class User < ActiveRecord::Base
   def has_not_give_his_opinion(content)
     case content
     when Answer
-      AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', answer.id, id).count == 0
+      AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', content.id, id).count == 0
     when Proposal
       content.arguments.where('user_id = ?', id).count == 0
+    end
+  end
+
+  def has_give_his_opinion(content)
+    case content
+    when Answer
+      AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', content.id, id).count > 0
+    when Proposal
+      content.arguments.where('user_id = ?', id).count > 0
     end
 
   end

@@ -4,7 +4,7 @@ require 'spec_helper'
 
 feature "Proposal page" do
   background do
-    init_contents_data
+    validate_all_not_moderated
     @proposal = Proposal.first
   end
 
@@ -14,10 +14,12 @@ feature "Proposal page" do
     within '#proposal' do
       within '.title_author_and_comments' do
         page.should have_css 'blockquote h1', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
-        page.should have_content 'María González Pérez hace menos de 1 minuto · Un comentario · 53% a favor (de 123)'
+        page.should have_content 'María González Pérez'
+        page.should have_content 'Un comentario · 53% a favor (de 123)'
         page.should have_link 'María González Pérez'
         page.should have_link 'Un comentario'
       end
+      page.should have_css '.title_author_and_comments', :text => /hace (menos de )?\d+ minuto(s)?/
       within '.content' do
         page.should have_content lorem
         within '.in_favor' do
@@ -45,6 +47,7 @@ feature "Proposal page" do
       within '#your_opinion' do
         page.should have_css 'h3', :text => '¿Qué opinas tú?'
         page.should have_content 'Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión.'
+
         page.should have_button 'Votar a favor'
         page.should have_button 'Votar en contra'
         expect{ click_button 'Votar en contra'}.to change{ @proposal.arguments.against.count }.by(1)

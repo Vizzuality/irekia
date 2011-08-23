@@ -5,7 +5,7 @@ require 'spec_helper'
 feature "Area's proposals page" do
 
   background do
-    @politic = init_politic_data
+    @politic = get_politic_data
   end
 
   scenario "shows a summary with that politic's description, actions and questions answered" do
@@ -59,13 +59,13 @@ feature "Area's proposals page" do
 
       within 'ul li.action div.proposal' do
         page.should have_css 'p.title', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
-        page.should have_css 'ul.arguments li', :text => '1 a favor'
-        page.should have_css 'ul.arguments li', :text => '0 en contra'
+        page.should have_css 'ul.arguments li', :text => '66 a favor'
+        page.should have_css 'ul.arguments li', :text => '57 en contra'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
+        page.should have_css 'span.author', :text => /María González Pérez hace (menos de )?\d+ minuto(s)?/
         page.should have_css 'span.author a', :text => 'María González Pérez'
-        page.should have_css 'a', :text => 'Un usuario ha participado'
+        page.should have_css 'a', :text => '123 usuarios han participado'
       end
 
       within '.content_type_filters' do

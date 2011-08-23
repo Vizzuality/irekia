@@ -21,7 +21,7 @@ feature "Home" do
     within '#navigation' do
       page.should have_content 'Estás viendo...'
       page.should have_css 'ul.areas'
-      page.should have_no_css 'ul.areas li'
+      page.should have_css 'ul.areas li', :text => 'Educación, Universidades e Investigación'
       page.should have_no_css 'ul.areas li.selected'
 
       within 'form' do

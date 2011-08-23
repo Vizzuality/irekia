@@ -5,7 +5,7 @@ require 'spec_helper'
 feature "Area's agenda page" do
 
   background do
-    @politic = init_politic_data
+    @politic = get_politic_data
   end
 
   scenario "shows a summary with that politic's description, actions and questions answered" do

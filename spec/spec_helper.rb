@@ -35,10 +35,14 @@ RSpec.configure do |config|
   config.before :suite do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+    Delorean.time_travel_to '08/03/2011'
+
+    silence_stream(STDOUT) do
+      load Rails.root.join('db', 'seeds.rb')
+    end
   end
 
   config.before :each do
-    Delorean.time_travel_to '08/03/2011'
     if Capybara.current_driver == :rack_test
       DatabaseCleaner.strategy = :transaction
     else
@@ -49,6 +53,9 @@ RSpec.configure do |config|
 
   config.after do
     DatabaseCleaner.clean
+  end
+
+  config.after :suite do
     Delorean.back_to_the_present
   end
 end

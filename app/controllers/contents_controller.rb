@@ -36,20 +36,22 @@ class ContentsController < ApplicationController
 
       if @content.answer.blank?
 
+        @new_request = @content.answer_requests.build
+
         if current_user.present? && current_user.has_not_requested_answer(@content)
-          @new_request = @content.answer_requests.build
           @new_request.user = current_user
         end
 
       else
-        if current_user.present? && current_user.has_not_give_his_opinion(@content.answer)
-          @answer_opinion = @content.answer.answer_opinions.build
-          @answer_opinion.user = current_user
-          @answer_opinion.answer_opinion_data = AnswerOpinionData.new
+        return if current_user && current_user.has_give_his_opinion(@content.answer)
 
-          @answer_opinion_data_satisfactory = AnswerOpinionData.new(:satisfactory => true)
-          @answer_opinion_data_not_satisfactory = AnswerOpinionData.new(:satisfactory => false)
-        end
+        @answer_opinion = @content.answer.answer_opinions.build
+        @answer_opinion.user = current_user if current_user.present?
+        @answer_opinion.answer_opinion_data = AnswerOpinionData.new
+
+        @answer_opinion_data_satisfactory = AnswerOpinionData.new(:satisfactory => true)
+        @answer_opinion_data_not_satisfactory = AnswerOpinionData.new(:satisfactory => false)
+
       end
 
     when Proposal

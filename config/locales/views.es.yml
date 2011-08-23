@@ -191,16 +191,15 @@ es:
         author_and_comments:
           time: 'hace %{time}'
           answered: 'Contestada tras %{time}'
-          not_answered: 'No contestada'
+          not_answered:
+            zero: No contestada
+            one: 'No contestada, solicitada por 1'
+            other: 'No contestada, solicitada por %{count}'
           comments:
             zero: Ningún comentario
             one: Un comentario
             other: '%{count} comentarios'
         answer_requests:
-          count:
-            zero: Ninguna solicitud
-            one: Solicitada por 1 persona
-            other: 'Solicitada por %{count} personas'
           do_request: Solicitar respuesta
         answer:
           has_answered: 'Ha contestado %{name}'
@@ -212,6 +211,8 @@ es:
           mail: Mail
           twitter: Twitter
           facebook: Facebook
+        tags:
+          title: Tags
         related_questions:
           title: 'Otras preguntas similares'
           time: 'Hace %{time}'

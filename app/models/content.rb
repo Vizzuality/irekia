@@ -49,7 +49,7 @@ class Content < ActiveRecord::Base
   end
 
   def update_published_at
-    self.published_at = DateTime.now
+    self.published_at = Time.now
   end
   private :update_published_at
 
@@ -60,6 +60,7 @@ class Content < ActiveRecord::Base
       area_action = area.actions.new
       area_action.event_id   = self.id
       area_action.event_type = self.class.name.downcase
+      area_action.published_at = self.published_at
       area_action.message = self.to_html
       area_action.save!
     end
@@ -67,6 +68,7 @@ class Content < ActiveRecord::Base
       user_action = user.actions.new
       user_action.event_id   = self.id
       user_action.event_type = self.class.name.downcase
+      user_action.published_at = self.published_at
       user_action.message = self.to_html
       user_action.save!
     end

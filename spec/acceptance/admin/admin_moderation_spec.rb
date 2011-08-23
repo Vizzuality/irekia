@@ -4,7 +4,6 @@ require 'spec_helper'
 
 feature "Moderation admin page" do
   background do
-    init_admin_data
     login_as_administrator
   end
 
@@ -16,20 +15,20 @@ feature "Moderation admin page" do
 
       page.should have_css 'ul li.content', :count => 17
       within 'ul li.content' do
-        page.should have_css 'div.event p.subject', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
-        page.should have_button 'Validar Evento'
-        page.should have_button 'Eliminar Evento'
+        page.should have_css 'div.proposal p.title', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
+        page.should have_button 'Validar Propuesta'
+        page.should have_button 'Eliminar Propuesta'
       end
     end
     within 'div.participations' do
       page.should have_css 'h1', :text => 'Participación'
       page.should have_button 'Validar todos'
 
-      page.should have_css 'ul li.participation', :count => 6
+      page.should have_css 'ul li.participation', :count => 131
       within 'ul li.participation' do
         page.should have_css 'div.comment p', :text => lorem
         page.should have_css 'img'
-        page.should have_css 'span', :text => 'Comentado por Andrés Berzoso Rodríguez hace menos de 1 minuto'
+        page.should have_css 'span', :text => /Comentado por Andrés Berzoso Rodríguez hace (menos de )?\d+ minuto(s)?/
         page.should have_link 'Andrés Berzoso Rodríguez'
         page.should have_button 'Validar Comentario'
         page.should have_button 'Eliminar Comentario'
@@ -42,7 +41,7 @@ feature "Moderation admin page" do
 
     within 'div.contents' do
       within 'ul li.content' do
-        expect{ click_button 'Validar Evento'}.to change{ Content.not_moderated.count }.by(-1)
+        expect{ click_button 'Validar Propuesta'}.to change{ Content.not_moderated.count }.by(-1)
       end
     end
 
@@ -70,7 +69,7 @@ feature "Moderation admin page" do
 
     within 'div.contents' do
       within 'ul li.content' do
-        expect{ click_button 'Eliminar Evento'}.to change{ Content.count }.by(-1)
+        expect{ click_button 'Eliminar Propuesta'}.to change{ Content.count }.by(-1)
       end
     end
 

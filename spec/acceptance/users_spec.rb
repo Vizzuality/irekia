@@ -8,7 +8,7 @@ feature "Users" do
     click_link 'Regístrate'
 
     within '#sign_up' do
-      fill_in 'Email', :with => 'pepito@irekia.com'
+      fill_in 'Email', :with => 'juanito@irekia.com'
       fill_in 'Contraseña', :with => 'irekia1234'
       fill_in 'Confirmar contraseña', :with => 'irekia1234'
       fill_in 'Nombre y apellidos', :with => 'Jose López Pérez'

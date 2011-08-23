@@ -4,7 +4,7 @@ require 'spec_helper'
 
 feature "News page" do
   background do
-    init_contents_data
+    validate_all_not_moderated
     @news = News.first
   end
 

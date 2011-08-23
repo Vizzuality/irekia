@@ -3,9 +3,6 @@
 require 'spec_helper'
 
 feature "Admin section" do
-  background do
-    init_admin_data
-  end
 
   context 'as an administrator' do
     background do

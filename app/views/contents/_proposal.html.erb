@@ -35,8 +35,7 @@
     <div id="your_opinion">
       <h3><%= t('.content.your_opinion.title') %></h3>
       <p><%= t('.content.your_opinion.subtitle') %></p>
-
-      <% unless user_signed_in? && current_user.has_not_give_his_opinion(@content) %>
+      <% if user_signed_in? && current_user.has_not_give_his_opinion(@content) %>
         <%= form_for @content do |f| %>
           <%= f.fields_for :arguments, @new_in_favor do |paf| %>
             <%= paf.hidden_field :user_id %>
