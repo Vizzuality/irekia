@@ -37,9 +37,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
     Delorean.time_travel_to '08/03/2011'
 
-    silence_stream(STDOUT) do
+    # silence_stream(STDOUT) do
       load Rails.root.join('db', 'seeds.rb')
-    end
+    # end
   end
 
   config.before :each do

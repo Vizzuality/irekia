@@ -252,6 +252,16 @@ es:
             one: Un comentario
             other: '%{count} comentarios'
 
+    tweet:
+      author: 'Twitteado por %{name} hace %{time}'
+      sidebar:
+        sharing_links:
+          mail: Mail
+          twitter: Twitter
+          facebook: Facebook
+        last_tweets:
+          title: 'Últimos tweets de %{name}'
+          time: 'hace %{time}'
 
     comments:
       title:

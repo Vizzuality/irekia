@@ -50,6 +50,7 @@ Irekia::Application.routes.draw do
   resources :polls,        :controller => 'contents', :type => 'Poll'
   resources :poll_answers, :controller => 'contents', :type => 'PollAnswer'
   resources :events,       :controller => 'contents', :type => 'Event'
+  resources :tweets,       :controller => 'contents', :type => 'Tweet'
 
   resources :comments,     :controller => 'participations', :type => 'Comment'
 

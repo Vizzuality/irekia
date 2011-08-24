@@ -244,6 +244,17 @@ Event.create(
 
 print '.'.blue
 
+
+# Tweets
+Tweet.create :users => [maria],
+             :tweet_data => TweetData.find_or_create_by_message('Saliendo para el Euskal Encounter. Muchas ganas de asistir la charla de @alorza sobre Open Data', :status_id => '000000000000000000000', :username => 'magope')
+Tweet.create :users => [maria],
+             :tweet_data => TweetData.find_or_create_by_message('Preparando lo de mañana en el Euskal Encounter', :status_id => '111111111111111111111', :username => 'magope')
+Tweet.create :users => [maria],
+             :tweet_data => TweetData.find_or_create_by_message('Vuelta de vacaciones. Grr.', :status_id => '222222222222222222222', :username => 'magope')
+Tweet.create :users => [maria],
+             :tweet_data => TweetData.find_or_create_by_message('#dearlazyweb, ¿un restaurante en Puerto de Santa María?', :status_id => '333333333333333333333', :username => 'magope')
+
 question_data = QuestionData.find_or_initialize_by_question_text('¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?')
 
 if question_data.new_record?
