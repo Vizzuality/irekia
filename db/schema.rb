@@ -98,7 +98,8 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
   create_table "event_data", :force => true do |t|
     t.integer  "event_id"
     t.datetime "event_date"
-    t.string   "subject"
+    t.string   "title"
+    t.string   "subtitle"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"

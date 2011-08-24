@@ -109,7 +109,7 @@ module ApplicationHelper
     html = []
 
     content_tag :div, :class => :event do
-      html << content_tag(:p, event.subject, :class => 'subject')
+      html << content_tag(:p, event.title, :class => 'title')
 
       raw html.join
     end

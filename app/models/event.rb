@@ -1,7 +1,7 @@
 class Event < Content
   has_one :event_data
 
-  delegate :event_date, :subject, :body, :to => :event_data
+  delegate :event_date, :title, :subtitle, :body, :to => :event_data
 
   before_save :update_areas_agenda
 

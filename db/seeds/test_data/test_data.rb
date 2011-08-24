@@ -137,7 +137,7 @@ Event.create(
   :users => [virginia],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 1, :hours => 10)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 1, :hours => 10)}
 )
 
 print '.'.blue
@@ -146,7 +146,7 @@ Event.create(
   :users => [virginia],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 1, :hours => 12)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 1, :hours => 12)}
 )
 
 print '.'.blue
@@ -155,7 +155,7 @@ Event.create(
   :users => [virginia],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 3, :hours => 15)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 3, :hours => 15)}
 )
 
 print '.'.blue
@@ -164,7 +164,7 @@ Event.create(
   :users => [virginia],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 10, :hours => 9)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 10, :hours => 9)}
 )
 
 print '.'.blue
@@ -173,7 +173,7 @@ Event.create(
   :users => [alberto],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 1, :hours => 10)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 1, :hours => 10)}
 )
 
 print '.'.blue
@@ -182,7 +182,7 @@ Event.create(
   :users => [alberto],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 2, :hours => 12)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 2, :hours => 12)}
 )
 
 print '.'.blue
@@ -191,7 +191,7 @@ Event.create(
   :users => [alberto],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 3, :hours => 15)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 3, :hours => 15)}
 )
 
 print '.'.blue
@@ -200,7 +200,7 @@ Event.create(
   :users => [alberto],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 3, :hours => 18)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 3, :hours => 18)}
 )
 
 print '.'.blue
@@ -209,7 +209,7 @@ Event.create(
   :users => [alberto],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 9, :hours => 9)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 9, :hours => 9)}
 )
 
 print '.'.blue
@@ -218,7 +218,7 @@ Event.create(
   :users => [alberto],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 9, :hours => 11)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 9, :hours => 11)}
 )
 
 print '.'.blue
@@ -227,7 +227,7 @@ Event.create(
   :users => [alberto],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 9, :hours => 16)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 9, :hours => 16)}
 )
 
 print '.'.blue
@@ -236,7 +236,7 @@ Event.create(
   :users => [alberto],
   :areas => [area],
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:subject => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 11, :hours => 12)}
+  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 11, :hours => 12)}
 )
 
 print '.'.blue
