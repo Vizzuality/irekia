@@ -19,7 +19,7 @@ feature "Proposal page" do
         page.should have_link 'María González Pérez'
         page.should have_link 'Un comentario'
       end
-      page.should have_css '.title_author_and_comments', :text => /hace (menos de )?\d+ minuto(s)?/
+      page.should have_css '.title_author_and_comments', :text => /hace menos de 1 minuto/
       within '.content' do
         page.should have_content lorem
         within '.in_favor' do

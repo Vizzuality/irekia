@@ -14,7 +14,7 @@ IREKIA
 		
 - And finally, set up the database:
 
-		$ rake db:setup
+		$ rake irekia:setup_database
 		
 Notes (only for development/staging environments)
 -------------------------------------------------

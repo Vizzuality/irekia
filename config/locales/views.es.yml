@@ -186,6 +186,27 @@ es:
             zero: Ningún comentario
             one: Un comentario
             other: '%{count} comentarios'
+    photo:
+      title:
+        comments:
+          zero: Ningún comentario
+          one: Un comentario
+          other: '%{count} comentarios'
+      sidebar:
+        sharing_links:
+          mail: Mail
+          twitter: Twitter
+          facebook: Facebook
+        tags:
+          title: Tags
+        related_politics:
+          title: Políticos relacionados
+        related_photos:
+          title: Últimas fotos
+          comments:
+            zero: Ningún comentario
+            one: Un comentario
+            other: '%{count} comentarios'
     question:
       question_content:
         author_and_comments:

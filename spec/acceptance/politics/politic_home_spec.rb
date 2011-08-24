@@ -84,7 +84,7 @@ feature "Politic's home" do
         page.should have_css 'p.answer', :text => '"Hola María, en realidad no va a haber ayuda este año. El recorte este"'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => /Virginia Uriarte Rodríguez contesto hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'Virginia Uriarte Rodríguez contesto hace menos de 1 minuto'
         page.should have_css 'span.author a', :text => 'Virginia Uriarte Rodríguez'
         page.should have_css 'a', :text => '1 comentario'
         page.should have_css 'a', :text => 'Compartir'
@@ -95,7 +95,7 @@ feature "Politic's home" do
         page.should have_css 'p.news', :text => %{"#{lorem}"}
 
         page.should have_no_css 'img'
-        page.should have_css 'span.author', :text => /Publicado hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'Publicado hace menos de 1 minuto'
         page.should have_css 'a', :text => '2 comentarios'
         page.should have_css 'a', :text => 'Compartir'
       end
@@ -129,7 +129,7 @@ feature "Politic's home" do
         page.should have_css 'p.question', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => /María González Pérez hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
         page.should have_css 'span.author a', :text => 'María González Pérez'
         page.should have_css 'a', :text => 'Aún no contestada'
         page.should have_css 'a', :text => '1 comentario'
@@ -161,7 +161,7 @@ feature "Politic's home" do
         page.should have_css 'ul.arguments li', :text => '57 en contra'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => /María González Pérez hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
         page.should have_css 'span.author a', :text => 'María González Pérez'
         page.should have_css 'a', :text => '123 usuarios han participado'
       end

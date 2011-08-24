@@ -12,7 +12,7 @@ feature "News page" do
     visit news_path(@news)
     within '#news' do
       within '.date_area_and_comments' do
-        page.should have_content '03 de agosto de 2011 · Educación, Universidades e Investigación · 2 comentarios'
+        page.should have_content '3 de agosto de 2011 · Educación, Universidades e Investigación · 2 comentarios'
         page.should have_link 'Educación, Universidades e Investigación'
         page.should have_link '2 comentarios'
       end

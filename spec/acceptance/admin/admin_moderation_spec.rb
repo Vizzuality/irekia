@@ -13,7 +13,7 @@ feature "Moderation admin page" do
       page.should have_css 'h1', :text => 'Contenidos'
       page.should have_button 'Validar todos'
 
-      page.should have_css 'ul li.content', :count => 17
+      page.should have_css 'ul li.content', :count => 22
       within 'ul li.content' do
         page.should have_css 'div.proposal p.title', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
         page.should have_button 'Validar Propuesta'
@@ -28,7 +28,7 @@ feature "Moderation admin page" do
       within 'ul li.participation' do
         page.should have_css 'div.comment p', :text => lorem
         page.should have_css 'img'
-        page.should have_css 'span', :text => /Comentado por Andrés Berzoso Rodríguez hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span', :text => 'Comentado por Andrés Berzoso Rodríguez hace menos de 1 minuto'
         page.should have_link 'Andrés Berzoso Rodríguez'
         page.should have_button 'Validar Comentario'
         page.should have_button 'Eliminar Comentario'

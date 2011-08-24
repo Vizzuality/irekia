@@ -63,7 +63,7 @@ feature "Area's proposals page" do
         page.should have_css 'ul.arguments li', :text => '57 en contra'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => /María González Pérez hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
         page.should have_css 'span.author a', :text => 'María González Pérez'
         page.should have_css 'a', :text => '123 usuarios han participado'
       end

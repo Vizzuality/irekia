@@ -97,7 +97,7 @@ feature "Area's questions page" do
         page.should have_css 'p.question', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => /María González Pérez hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
         page.should have_css 'span.author a', :text => 'María González Pérez'
         page.should have_css 'a', :text => 'Aún no contestada'
         page.should have_css 'a', :text => '1 comentario'

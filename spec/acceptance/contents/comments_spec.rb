@@ -20,7 +20,7 @@ feature "Contents' comments section" do
 
         page.should have_content 'Me encantaría que realmente esta gente fuera siempre a los eventos y nos lo comunicaran como en esta ocasión. La verdad que fue un buen momento para hablar con ellos y conocerlos en persona.'
         page.should have_css 'img'
-        page.should have_css 'span', :text => /hace (menos de )?\d+ minuto(s)?/
+        page.should have_content 'María González Pérez hace menos de 1 minuto'
         page.should have_link 'María González Pérez'
       end
     end
@@ -40,7 +40,7 @@ feature "Contents' comments section" do
 
         page.should have_content 'Me encantaría que realmente esta gente fuera siempre a los eventos y nos lo comunicaran como en esta ocasión. La verdad que fue un buen momento para hablar con ellos y conocerlos en persona.'
         page.should have_css 'img'
-        page.should have_css 'span', :text => /hace (menos de )?\d+ minuto(s)?/
+        page.should have_content 'María González Pérez hace menos de 1 minuto'
         page.should have_link 'María González Pérez'
       end
       within '.comments li form' do

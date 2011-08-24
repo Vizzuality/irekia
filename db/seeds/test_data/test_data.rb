@@ -2,7 +2,6 @@
 
 #############################
 # AREAS
-
 area = Area.find_or_create_by_name('Educación, Universidades e Investigación')
 area.update_attribute(:description, String.lorem)
 
@@ -129,8 +128,6 @@ if proposal_data.new_record?
     print '.'.blue
   end
 
-  proposal.update_attribute('updated_at', Time.now)
-
 end
 
 print '.'.blue
@@ -254,6 +251,29 @@ Tweet.create :users => [maria],
              :tweet_data => TweetData.find_or_create_by_message('Vuelta de vacaciones. Grr.', :status_id => '222222222222222222222', :username => 'magope')
 Tweet.create :users => [maria],
              :tweet_data => TweetData.find_or_create_by_message('#dearlazyweb, ¿un restaurante en Puerto de Santa María?', :status_id => '333333333333333333333', :username => 'magope')
+
+# Photos
+image = Image.create :image => men_images.sample,
+                     :title => 'Presentación del Gobierno Vasco 2010',
+                     :description => 'Presentación del Nuevo Gobierno Vasco, formado tras las elecciones de 2010'
+
+Photo.create :image    => image,
+             :tags     => %w(Comisión Transporte Gobierno\ Vasco Transporte).join(','),
+             :users    => [virginia],
+             :comments => [
+                maria.comments.new.create_with_body(<<-EOF
+                  Me encantaría que realmente esta gente fuera siempre a los eventos y nos lo comunicaran como en esta ocasión. La verdad que fue un buen momento para hablar con ellos y conocerlos en persona.
+                EOF
+                ),
+                alberto.comments.new.create_with_body(<<-EOF
+                  Yo estuve allí y la verdad es que no fue gran cosa...
+                EOF
+                )
+             ]
+
+print '.'.blue
+
+# Question
 
 question_data = QuestionData.find_or_initialize_by_question_text('¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?')
 

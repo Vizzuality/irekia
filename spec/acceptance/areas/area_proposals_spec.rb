@@ -30,7 +30,7 @@ feature "Area's proposals page" do
       end
 
       within '.status' do
-        page.should have_css 'ul li.area span',      :text => '159 acciones esta semana'
+        page.should have_css 'ul li.area span',      :text => '155 acciones esta semana'
         page.should have_css 'ul li.area a',         :text => 'Sigue a este área'
         page.should have_css 'ul li.questions span', :text => '1 pregunta contestada'
         page.should have_css 'ul li.questions a',    :text => 'Haz una pregunta'
@@ -69,7 +69,7 @@ feature "Area's proposals page" do
         page.should have_css 'ul.arguments li', :text => '57 en contra'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => /María González Pérez hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
         page.should have_css 'span.author a', :text => 'María González Pérez'
         page.should have_css 'a', :text => '123 usuarios han participado'
       end

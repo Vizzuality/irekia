@@ -1,10 +1,12 @@
 class CreateImages < ActiveRecord::Migration
   def self.up
     create_table :images do |t|
-      t.references :image_gallery
+      t.references :photo
       t.references :user
 
       t.string :image
+      t.string :title
+      t.string :description
 
       t.timestamps
     end

@@ -1,0 +1,58 @@
+<div id="photo">
+  <div class="title">
+    <span><%= l @content.published_at.to_date, :format => :long %></span>
+    &middot;
+    <%= link_to @content.title, photo_path(@content) %>
+    &middot;
+    <%= link_to t('.title.comments', :count => @content.comments.count), '#' %>
+    <h1><%= @content.title %></h1>
+  </div>
+  <div class="content">
+    <%= image_tag @content.content_url %>
+    <%= simple_format @content.description %>
+  </div>
+  <div class="sidebar">
+    <ul class="sharing_links">
+      <li><%= link_to t('.sidebar.sharing_links.mail'), '#' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.twitter'), '#' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.facebook'), '#' %></li>
+    </ul>
+    <div class="tags">
+      <h3><%= t('.sidebar.tags.title') %></h3>
+      <ul>
+        <% @content.tags.split(',').each do |tag| %>
+        <li><%= tag.strip %></li>
+        <% end if @content.tags.present? %>
+      </ul>
+    </div>
+    <div class="location">
+      <h3><%= t('.sidebar.location.title') %></h3>
+      <div id="map">
+      </div>
+      <span class="place"></span>
+    </div>
+    <div class="related_politics">
+      <h3><%= t('.sidebar.related_politics.title') %></h3>
+      <ul>
+        <% @content.users.each do |user| %>
+        <li>
+          <%= link_to user.name, politic_path(user) %>
+          <span><%= get_politic_title(user) %></span>
+        </li>
+        <% end if @content.users.present? %>
+      </ul>
+    </div>
+    <div class="related_photos">
+      <h3><%= t('.sidebar.related_photos.title') %></h3>
+      <ul>
+        <% @last_contents.each do |question| %>
+        <li>
+          <p><%= link_to question.question_text, question_path(question) %></p>
+          <span class="when"><%= t('.sidebar.related_questions.time', :time => distance_of_time_in_words_to_now(question.published_at)) %></span>
+          <%= link_to t('.sidebar.related_questions.comments', :count => question.comments.count), '#' %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

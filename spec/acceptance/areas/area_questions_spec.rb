@@ -30,7 +30,7 @@ feature "Area's questions page" do
       end
 
       within '.status' do
-        page.should have_css 'ul li.area span',      :text => '159 acciones esta semana'
+        page.should have_css 'ul li.area span',      :text => '155 acciones esta semana'
         page.should have_css 'ul li.area a',         :text => 'Sigue a este área'
         page.should have_css 'ul li.questions span', :text => '1 pregunta contestada'
         page.should have_css 'ul li.questions a',    :text => 'Haz una pregunta'
@@ -68,7 +68,7 @@ feature "Area's questions page" do
         page.should have_css 'p.question', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => /María González Pérez hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
         page.should have_css 'span.author a', :text => 'María González Pérez'
         page.should have_css 'a', :text => 'Aún no contestada'
         page.should have_css 'a', :text => '1 comentario'
@@ -79,9 +79,9 @@ feature "Area's questions page" do
         page.should have_css 'p.question', :text => '"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => /María González Pérez hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
         page.should have_css 'span.author a', :text => 'María González Pérez'
-        page.should have_css 'a', :text => /Contestada hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'a', :text => 'Contestada hace menos de 1 minuto'
         page.should have_css 'a', :text => 'Ningún comentario'
       end
 

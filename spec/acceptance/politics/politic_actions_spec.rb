@@ -62,7 +62,7 @@ feature "Politic's actions page" do
         page.should have_css 'p.answer', :text => '"Hola María, en realidad no va a haber ayuda este año. El recorte este"'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => /Virginia Uriarte Rodríguez contesto hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'Virginia Uriarte Rodríguez contesto hace menos de 1 minuto'
         page.should have_css 'span.author a', :text => 'Virginia Uriarte Rodríguez'
         page.should have_css 'a', :text => '1 comentario'
         page.should have_css 'a', :text => 'Compartir'
@@ -73,7 +73,7 @@ feature "Politic's actions page" do
         page.should have_css 'p.news', :text => %{"#{lorem}"}
 
         page.should have_no_css 'img'
-        page.should have_css 'span.author', :text => /Publicado hace (menos de )?\d+ minuto(s)?/
+        page.should have_css 'span.author', :text => 'Publicado hace menos de 1 minuto'
         page.should have_css 'a', :text => '2 comentarios'
         page.should have_css 'a', :text => 'Compartir'
       end

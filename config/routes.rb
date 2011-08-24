@@ -15,6 +15,8 @@ Irekia::Application.routes.draw do
     resources :polls,          :controller => 'contents',       :type => 'Poll'
     resources :poll_answers,   :controller => 'contents',       :type => 'PollAnswer'
     resources :events,         :controller => 'contents',       :type => 'Event'
+    resources :tweets,         :controller => 'contents',       :type => 'Tweet'
+    resources :photos,         :controller => 'contents',       :type => 'Photo'
     # resources :participations
     resources :comments,       :controller => 'participations', :type => 'Comment'
     resources :arguments,      :controller => 'participations', :type => 'Argument'
@@ -51,6 +53,7 @@ Irekia::Application.routes.draw do
   resources :poll_answers, :controller => 'contents', :type => 'PollAnswer'
   resources :events,       :controller => 'contents', :type => 'Event'
   resources :tweets,       :controller => 'contents', :type => 'Tweet'
+  resources :photos,       :controller => 'contents', :type => 'Photo'
 
   resources :comments,     :controller => 'participations', :type => 'Comment'
 
