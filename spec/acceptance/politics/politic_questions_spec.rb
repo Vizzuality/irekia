@@ -24,7 +24,7 @@ feature "Area's questions page" do
       end
 
       within '.actions' do
-        page.should have_css 'span', :text => '6 acciones esta semana'
+        page.should have_css 'span', :text => '7 acciones esta semana'
         page.should have_link 'Sigue a Virginia'
       end
 

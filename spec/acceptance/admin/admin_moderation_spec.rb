@@ -24,7 +24,7 @@ feature "Moderation admin page" do
       page.should have_css 'h1', :text => 'Participación'
       page.should have_button 'Validar todos'
 
-      page.should have_css 'ul li.participation', :count => 131
+      page.should have_css 'ul li.participation', :count => 133
       within 'ul li.participation' do
         page.should have_css 'div.comment p', :text => lorem
         page.should have_css 'img'

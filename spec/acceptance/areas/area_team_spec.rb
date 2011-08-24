@@ -66,7 +66,7 @@ feature "Area's team page" do
         page.should have_css 'a img'
         page.should have_link 'Virginia Uriarte Rodríguez'
         page.should have_css '.title', :text => 'Consejera'
-        page.should have_css '.actions_this_week', :text => '6 acciones esta semana'
+        page.should have_css '.actions_this_week', :text => '7 acciones esta semana'
       end
     end
   end
