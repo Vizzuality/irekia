@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
   create_table "event_data", :force => true do |t|
     t.integer  "event_id"
     t.datetime "event_date"
+    t.integer  "duration"
     t.string   "title"
     t.string   "subtitle"
     t.text     "body"

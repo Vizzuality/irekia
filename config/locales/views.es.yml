@@ -207,6 +207,28 @@ es:
             zero: Ningún comentario
             one: Un comentario
             other: '%{count} comentarios'
+    event:
+      title:
+        time: '%{day} a partir de las %{hour}'
+        comments:
+          zero: Ningún comentario
+          one: Un comentario
+          other: '%{count} comentarios'
+      sidebar:
+        sharing_links:
+          mail: Mail
+          twitter: Twitter
+          facebook: Facebook
+        tags:
+          title: Tags
+        related_politics:
+          title: Políticos relacionados
+        related_events:
+          title: Últimos eventos
+          comments:
+            zero: Ningún comentario
+            one: Un comentario
+            other: '%{count} comentarios'
     question:
       question_content:
         author_and_comments:

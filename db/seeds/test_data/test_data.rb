@@ -235,8 +235,14 @@ print '.'.blue
 Event.create(
   :users => [alberto],
   :areas => [area],
+  :tags => %w(Comisión Transporte Gobierno\ Vasco Transporte).join(','),
   :the_geom => 'POINT(-2.937952 43.270214)',
-  :event_data_attributes => {:title => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :event_date => Time.current.beginning_of_week.advance(:days => 11, :hours => 12)}
+  :event_data_attributes => {
+    :title      => 'Reunión con el Sindicato de Estudiantes Universitarios',
+    :subtitle   => 'Un jurado internacional ha decidido que San Sebastián - Donostia sea designada como Capital Europea de la Cultura 2016',
+    :body       => String.lorem,
+    :event_date => Time.current.beginning_of_week.advance(:days => 11, :hours => 12)
+  }
 )
 
 print '.'.blue

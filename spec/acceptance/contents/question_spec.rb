@@ -73,7 +73,6 @@ feature "Question page" do
         within '.question_content' do
           page.should have_css 'h1', :text => 'Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos.'
           within '.author_and_comments' do
-            page.should have_content ''
             page.should have_content 'María González Pérez hace menos de 1 minuto · Ningún comentario · Contestada tras menos de 1 minuto'
             page.should have_link 'María González Pérez'
             page.should have_link 'Ningún comentario'

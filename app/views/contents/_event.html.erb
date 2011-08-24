@@ -1,0 +1,56 @@
+<div id="event">
+  <div class="title">
+    <span><%= t('.title.time', :day => l(@content.event_date.to_date, :format => :long), :hour => l(@content.event_date.to_time, :format => '%H')) %></span>
+    &middot;
+    <%= link_to t('.title.comments', :count => @content.comments.count), '#' %>
+  </div>
+  <div class="content">
+    <h1><%= @content.title %></h1>
+    <h4><%= @content.subtitle %></h4>
+    <%= simple_format @content.body %>
+  </div>
+  <div class="sidebar">
+    <ul class="sharing_links">
+      <li><%= link_to t('.sidebar.sharing_links.mail'), '#' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.twitter'), '#' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.facebook'), '#' %></li>
+    </ul>
+    <div class="tags">
+      <h3><%= t('.sidebar.tags.title') %></h3>
+      <ul>
+        <% @content.tags.split(',').each do |tag| %>
+        <li><%= tag.strip %></li>
+        <% end if @content.tags.present? %>
+      </ul>
+    </div>
+    <div class="location">
+      <h3><%= t('.sidebar.location.title') %></h3>
+      <div id="map">
+      </div>
+      <span class="place"></span>
+    </div>
+    <div class="related_politics">
+      <h3><%= t('.sidebar.related_politics.title') %></h3>
+      <ul>
+        <% @content.users.each do |user| %>
+        <li>
+          <%= link_to user.name, politic_path(user) %>
+          <span><%= get_politic_title(user) %></span>
+        </li>
+        <% end if @content.users.present? %>
+      </ul>
+    </div>
+    <div class="related_events">
+      <h3><%= t('.sidebar.related_events.title') %></h3>
+      <ul>
+        <% @last_contents.each do |event| %>
+        <li>
+          <p><%= link_to event.title, event_path(event) %></p>
+          <span class="when"><%= t('.sidebar.related_questions.time', :time => distance_of_time_in_words_to_now(event.published_at)) %></span>
+          <%= link_to t('.sidebar.related_questions.comments', :count => event.comments.count), '#' %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

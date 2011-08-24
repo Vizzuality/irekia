@@ -84,7 +84,7 @@ feature "Area's agenda page" do
         page.should have_css 'li.ago_04 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 3
         page.should have_css 'li.ago_10 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 3
         page.should have_css 'li.ago_11 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
-        page.should have_css 'li.ago_12 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+        page.should have_css 'li.ago_12 div.title', :text => 'Reunión con el Sindicato de Estudiantes Universitarios'
       end
     end
   end

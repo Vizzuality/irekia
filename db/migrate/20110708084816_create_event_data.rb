@@ -4,6 +4,7 @@ class CreateEventData < ActiveRecord::Migration
       t.references :event
 
       t.datetime :event_date
+      t.integer :duration
       t.string :title
       t.string :subtitle
       t.text :body
