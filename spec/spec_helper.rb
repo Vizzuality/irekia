@@ -4,15 +4,11 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
-require 'database_cleaner'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 Dir[Rails.root.join("spec/factories/**/*.rb")].each {|f| require f}
-
-Capybara.server_port = 3001
-Capybara.app_host = "http://www.example.com:#{Capybara.server_port}"
 
 RSpec.configure do |config|
   # == Mock Framework
@@ -30,24 +26,13 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = false
-
-  config.before :suite do
-    DatabaseCleaner.strategy = :transaction
-  end
+  config.use_transactional_fixtures = true
 
   config.before :each do
     Delorean.time_travel_to '08/03/2011'
-    if Capybara.current_driver == :rack_test
-      DatabaseCleaner.strategy = :transaction
-    else
-      DatabaseCleaner.strategy = :truncation
-    end
-    DatabaseCleaner.start
   end
 
-  config.after do
-    DatabaseCleaner.clean
+  config.after :each do
     Delorean.back_to_the_present
   end
 
