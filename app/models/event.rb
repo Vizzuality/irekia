@@ -14,8 +14,20 @@ class Event < Content
     event
   end
 
-  def to_html
-
+  def as_json(options = {})
+    {
+      :author          => {
+        :id            => author.id,
+        :name          => author.name,
+        :profile_image => author.profile_image_thumb_url
+      },
+      :published_at    => published_at,
+      :event_date      => event_date,
+      :title           => title,
+      :subtitle        => subtitle,
+      :body            => body,
+      :comments        => comments.count
+    }
   end
 
   private

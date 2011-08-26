@@ -3,17 +3,17 @@ module ApplicationHelper
 
     case action.event_type
     when 'question'
-      render_question Question.where(:id => action.event_id).first, footer, action.event_type
+      render_question action.item, footer, action.event_type
     when 'answer'
-      render_answer Answer.where(:id => action.event_id).first, footer, action.event_type
+      render_answer action.item, footer, action.event_type
     when 'proposal'
-      render_proposal Proposal.where(:id => action.event_id).first, footer, action.event_type
+      render_proposal action.item, footer, action.event_type
     when 'argument'
-      render_argument Argument.where(:id => action.event_id).first, footer, action.event_type
+      render_argument action.item, footer, action.event_type
     when 'news'
-      render_news News.where(:id => action.event_id).first, footer, action.event_type
+      render_news action.item, footer, action.event_type
     when 'event'
-      render_event Event.where(:id => action.event_id).first, footer, action.event_type
+      render_event action.item, footer, action.event_type
     end
   end
 
@@ -21,9 +21,9 @@ module ApplicationHelper
     html = []
 
     content_tag :div, :class => :question do
-      target_user = question.question_data.target_user
+      target_user = question.target_user
       receiver = if target_user.present?
-        link_to target_user.name, user_path(target_user)
+        link_to target_user.name, user_path(target_user.id)
       else
         t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.area")
       end
@@ -46,11 +46,11 @@ module ApplicationHelper
       html << content_tag(:p, :class => 'title') do
         raw t(
           ".#{(['list_item'] + [locale_scope]).compact.join('.')}.title",
-          :question => content_tag(:span, answer.answer_data.question_text)
+          :question => content_tag(:span, answer.question)
         )
       end
 
-      html << content_tag(:p, %Q{"#{answer.answer_text}"}, :class => 'answer')
+      html << content_tag(:p, %Q{"#{answer.answer}"}, :class => 'answer')
 
       html << footer
 
@@ -66,8 +66,8 @@ module ApplicationHelper
 
       html << content_tag(:ul, :class => :arguments) do
         li = []
-        li << content_tag(:li, t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.in_favor", :count => proposal.arguments.in_favor.count))
-        li << content_tag(:li, t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.against", :count => proposal.arguments.against.count))
+        li << content_tag(:li, t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.in_favor", :count => proposal.arguments_in_favor))
+        li << content_tag(:li, t(".#{(['list_item'] + [locale_scope]).compact.join('.')}.against", :count => proposal.arguments_against))
         raw li.join
       end
 

@@ -7,8 +7,17 @@ class Answer < Content
   delegate :answer_text, :to => :answer_data
 
   accepts_nested_attributes_for :answer_opinions
-
-  def to_html
-
+  def as_json(options = {})
+    {
+      :author          => {
+        :id            => author.id,
+        :name          => author.name,
+        :profile_image => author.profile_image_thumb_url
+      },
+      :published_at    => published_at,
+      :question_text   => answer_data.question_text,
+      :answer_text     => answer_text,
+      :comments        => comments.count
+    }
   end
 end

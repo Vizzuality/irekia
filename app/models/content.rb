@@ -48,28 +48,37 @@ class Content < ActiveRecord::Base
     end
   end
 
+  def as_json(options = {})
+    {
+      :author          => {
+        :id            => author.id,
+        :name          => author.name,
+        :profile_image => author.profile_image_thumb_url
+      },
+      :published_at    => published_at,
+      :comments => comments.count
+    }
+  end
+
   def update_published_at
     self.published_at = Time.now
   end
   private :update_published_at
 
   def publish_content
+
     return unless self.moderated?
 
     areas.each do |area|
-      area_action = area.actions.new
-      area_action.event_id   = self.id
-      area_action.event_type = self.class.name.downcase
+      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
       area_action.published_at = self.published_at
-      area_action.message = self.to_html
+      area_action.message      = self.to_json
       area_action.save!
     end
     users.each do |user|
-      user_action = user.actions.new
-      user_action.event_id   = self.id
-      user_action.event_type = self.class.name.downcase
+      user_action              = user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
       user_action.published_at = self.published_at
-      user_action.message = self.to_html
+      user_action.message      = self.to_json
       user_action.save!
     end
   end

@@ -3,7 +3,17 @@ class Tweet < Content
 
   delegate :message, :status_id, :username, :to => :tweet_data
 
-  def to_html
-
+  def as_json(options = {})
+    {
+      :author          => {
+        :id            => author.id,
+        :name          => author.name,
+        :profile_image => author.profile_image_thumb_url
+      },
+      :published_at    => published_at,
+      :message         => message,
+      :status_id       => status_id,
+      :username        => username
+    }
   end
 end

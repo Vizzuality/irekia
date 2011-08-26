@@ -2,7 +2,7 @@ class Comment < Participation
   belongs_to :content
   has_one :comment_data
 
-  delegate :body, :to => :comment_data
+  delegate :subject, :body, :to => :comment_data
 
   accepts_nested_attributes_for :comment_data
 
@@ -12,12 +12,17 @@ class Comment < Participation
     self
   end
 
-  def to_html
-
-  end
-
-  def publish_participation
-
+  def as_json(options = {})
+    {
+      :user            => {
+        :id            => user.id,
+        :name          => user.name,
+        :profile_image => user.profile_image_thumb_url
+      },
+      :published_at    => published_at,
+      :subject         => subject,
+      :body            => body
+    }
   end
 
 end

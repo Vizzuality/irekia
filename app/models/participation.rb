@@ -25,11 +25,9 @@ class Participation < ActiveRecord::Base
     return unless content.present? && self.moderated?
 
     content.areas.each do |area|
-      area_action = area.actions.new
-      area_action.event_id   = self.id
-      area_action.event_type = self.class.name.downcase
+      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
       area_action.published_at = self.published_at
-      area_action.message = self.to_html
+      area_action.message      = self.to_json
       area_action.save!
     end
   end
