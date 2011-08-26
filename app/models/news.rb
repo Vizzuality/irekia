@@ -8,13 +8,13 @@ class News < Content
       :author          => {
         :id            => author.id,
         :name          => author.name,
-        :profile_image => author.profile_image_thumb_url
+        :profile_image => author.profile_image
       },
       :published_at    => published_at,
       :title           => title,
       :subtitle        => subtitle,
       :body            => body,
-      :comments        => comments.count
+      :comments_count  => comments_count
     }
   end
 end

@@ -92,7 +92,7 @@ feature "Politic's home" do
 
       within 'ul li.action div.news' do
         page.should have_css 'p.title', :text => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
-        page.should have_css 'p.news', :text => %{"#{lorem}"}
+        page.should have_css 'p.news', :text => lorem
 
         page.should have_no_css 'img'
         page.should have_css 'span.author', :text => 'Publicado hace menos de 1 minuto'

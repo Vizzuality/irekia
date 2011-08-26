@@ -10,7 +10,7 @@
     <ul>
       <% @team.first(2).each do |user| %>
         <li>
-          <%= link_to image_tag(user.profile_image_thumb_url), politic_path(user) if user.profile_image_thumb_url %>
+          <%= link_to image_tag(user.profile_image), politic_path(user) if user.profile_image %>
           <%= link_to user.name, politic_path(user) %>
           <span><%= get_politic_title(user) %></span>
         </li>

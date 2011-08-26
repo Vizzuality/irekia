@@ -9,20 +9,23 @@ class Argument < Participation
   scope :with_reason, joins(:argument_data).where('argument_data.reason IS NOT NULL')
 
   delegate :in_favor, :against, :reason, :to => :argument_data
+  delegate :title, :to => :proposal
 
   accepts_nested_attributes_for :argument_data
 
   def as_json(options = {})
     {
-      :user            => {
+      :author          => {
         :id            => user.id,
         :name          => user.name,
-        :profile_image => user.profile_image_thumb_url
+        :profile_image => user.profile_image
       },
       :published_at    => published_at,
+      :title            => title,
       :reason          => reason,
       :in_favor        => in_favor,
-      :against         => against
+      :against         => against,
+      :comments_count  => comments_count
     }
   end
 end

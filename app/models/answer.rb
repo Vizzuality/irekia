@@ -4,7 +4,7 @@ class Answer < Content
            :foreign_key => :content_id
 
 
-  delegate :answer_text, :to => :answer_data
+  delegate :question_text, :answer_text, :to => :answer_data
 
   accepts_nested_attributes_for :answer_opinions
   def as_json(options = {})
@@ -12,12 +12,12 @@ class Answer < Content
       :author          => {
         :id            => author.id,
         :name          => author.name,
-        :profile_image => author.profile_image_thumb_url
+        :profile_image => author.profile_image
       },
       :published_at    => published_at,
       :question_text   => answer_data.question_text,
       :answer_text     => answer_text,
-      :comments        => comments.count
+      :comments_count  => comments_count
     }
   end
 end

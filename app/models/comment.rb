@@ -14,10 +14,10 @@ class Comment < Participation
 
   def as_json(options = {})
     {
-      :user            => {
+      :author          => {
         :id            => user.id,
         :name          => user.name,
-        :profile_image => user.profile_image_thumb_url
+        :profile_image => user.profile_image
       },
       :published_at    => published_at,
       :subject         => subject,

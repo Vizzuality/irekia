@@ -11,7 +11,7 @@
   <ul>
     <% @actions.first(4).each do |action| %>
       <li class="action">
-        <%= render_action action, footer_for_action(action) %>
+        <%= render "shared/lists_elements/#{action.event_type}", :data => action.item %>
       </li>
     <% end %>
   </ul>

@@ -1,5 +1,8 @@
 class Participation < ActiveRecord::Base
   belongs_to :user
+  belongs_to :author,
+             :class_name => 'User',
+             :foreign_key => :user_id
   belongs_to :content
 
   before_create :update_published_at
@@ -14,6 +17,10 @@ class Participation < ActiveRecord::Base
     self.not_moderated.find_each do |participation|
       participation.update_attribute('moderated', true)
     end
+  end
+
+  def comments_count
+    [].count
   end
 
   def update_published_at

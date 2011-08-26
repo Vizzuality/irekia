@@ -1,6 +1,8 @@
 class Question < Content
   has_one :question_data,
           :foreign_key => :question_id
+  has_one :target_user,
+          :through => :question_data
 
   has_one :answer_data
   has_one :answer,
@@ -16,28 +18,22 @@ class Question < Content
   delegate :question_text, :to => :question_data
 
   def as_json(options = {})
+    target_user = {
+      :id   => question_data.try(:target_user).try(:id),
+      :name => question_data.try(:target_user).try(:name)
+    } if question_data.target_user
+
     {
       :author          => {
         :id            => author.id,
         :name          => author.name,
-        :profile_image => author.profile_image_thumb_url
+        :profile_image => author.profile_image
       },
       :published_at    => published_at,
       :question_text   => question_text,
-      :target_user     => {
-        :id   => question_data.try(:target_user).try(:id),
-        :name => question_data.try(:target_user).try(:name)
-      },
+      :target_user     => target_user,
       :answered_at     => try(:answer).try(:published_at),
-      :comments        => comments.count
+      :comments_count  => comments_count
     }
-
-    {
-      :question     => self.question_text,
-      :published_at => self.published_at,
-      :authors      => self.users.map{|u| {:id => u.id, :name => u.name}},
-      :target_area  => target_area_json,
-      :target_user  => target_user_json
-    }.to_json
   end
 end

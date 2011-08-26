@@ -1,0 +1,13 @@
+<div class="news">
+  <p class="title">
+    <%= data.title %>
+  </p>
+  <%= simple_format data.body, :class => 'news' %>
+  <span class="author">
+    <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
+  </span>
+  &middot;
+  <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#' %>
+  &middot;
+  <%= link_to t('shared.lists_elements.share'), '#' %>
+</div>

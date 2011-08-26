@@ -9,6 +9,7 @@ feature "Moderation admin page" do
 
   scenario "shows a list of not-moderated contents and participations" do
     visit admin_moderation_path
+
     within 'div.contents' do
       page.should have_css 'h1', :text => 'Contenidos'
       page.should have_button 'Validar todos'

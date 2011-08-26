@@ -20,7 +20,7 @@ end
 group :development, :test do
   gem 'ruby-debug19', :platforms => :mri_19
   gem 'rspec-rails', '~> 2.6'
-  gem 'capybara', '~> 1.0.0'
+  gem 'capybara', '~> 1.0.1'
   gem 'launchy'
   gem 'irbtools', :require => 'irbtools/configure'
   gem 'railroady'

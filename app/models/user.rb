@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include PgSearch
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -103,8 +102,6 @@ class User < ActiveRecord::Base
   scope :politics, joins(:role).where('roles.name = ?', 'Politic')
   scope :citizens, joins(:role).where('roles.name = ?', 'Citizen')
 
-  pg_search_scope :search_by_name_description_province_and_city, :against => [:name, :description, :province, :city]
-
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['user_info']
     if user = User.find_by_email(data['email'])
@@ -120,12 +117,12 @@ class User < ActiveRecord::Base
     self.name.split(' ').first if self.name.present?
   end
 
-  def profile_image_url
-    @profile_image_url ||= self.profile_pictures.first.image.url if self.profile_pictures.present?
+  def profile_image
+    @profile_image ||= self.profile_pictures.first.image.thumb.url if self.profile_pictures.present?
   end
 
-  def profile_image_thumb_url
-    @profile_image_thumb_url ||= self.profile_pictures.first.image.thumb.url if self.profile_pictures.present?
+  def profile_image_big
+    @profile_image ||= self.profile_pictures.first.image.url if self.profile_pictures.present?
   end
 
   def active?

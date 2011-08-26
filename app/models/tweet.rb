@@ -8,7 +8,7 @@ class Tweet < Content
       :author          => {
         :id            => author.id,
         :name          => author.name,
-        :profile_image => author.profile_image_thumb_url
+        :profile_image => author.profile_image
       },
       :published_at    => published_at,
       :message         => message,

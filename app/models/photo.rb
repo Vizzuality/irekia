@@ -8,13 +8,13 @@ class Photo < Content
       :author          => {
         :id            => author.id,
         :name          => author.name,
-        :profile_image => author.profile_image_thumb_url
+        :profile_image => author.profile_image
       },
       :published_at    => published_at,
       :title           => title,
       :description     => description,
       :content_url     => content_url,
-      :comments        => comments.count
+      :comments_count  => comments_count
     }
   end
 end

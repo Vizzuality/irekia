@@ -26,6 +26,12 @@ class Content < ActiveRecord::Base
 
   # after_validation :reverse_geocode
 
+  def self.validate_all_not_moderated
+    self.not_moderated.find_each do |content|
+      content.update_attribute('moderated', true)
+    end
+  end
+
   def latitude
     the_geom.try(:latitude)
   end
@@ -42,10 +48,8 @@ class Content < ActiveRecord::Base
     reverse_geocode if Rails.env.staging? || Rails.env.production?
   end
 
-  def self.validate_all_not_moderated
-    self.not_moderated.find_each do |content|
-      content.update_attribute('moderated', true)
-    end
+  def comments_count
+    comments.count if comments
   end
 
   def as_json(options = {})
@@ -53,7 +57,7 @@ class Content < ActiveRecord::Base
       :author          => {
         :id            => author.id,
         :name          => author.name,
-        :profile_image => author.profile_image_thumb_url
+        :profile_image => author.profile_image
       },
       :published_at    => published_at,
       :comments => comments.count

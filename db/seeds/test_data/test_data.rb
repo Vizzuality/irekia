@@ -367,3 +367,8 @@ argument.argument_data = ArgumentData.create :reason => String.lorem.truncate(25
 argument.save!
 
 print '.'.blue
+
+question.update_attribute('published_at', Time.now)
+news.update_attribute('published_at', Time.now)
+answer.update_attribute('published_at', Time.now)
+argument.update_attribute('published_at', Time.now)

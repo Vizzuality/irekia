@@ -29,7 +29,7 @@ feature "Area's actions page" do
       end
 
       within '.status' do
-        page.should have_css 'ul li.area span',      :text => '155 acciones esta semana'
+        page.should have_css 'ul li.area span',      :text => '148 acciones esta semana'
         page.should have_css 'ul li.area a',         :text => 'Sigue a este área'
         page.should have_css 'ul li.questions span', :text => '1 pregunta contestada'
         page.should have_css 'ul li.questions a',    :text => 'Haz una pregunta'
@@ -85,7 +85,7 @@ feature "Area's actions page" do
 
       within 'ul li.action div.news' do
         page.should have_css 'p.title', :text => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
-        page.should have_css 'p.news', :text => %{"#{lorem}"}
+        page.should have_css 'p.news', :text => lorem
 
         page.should have_no_css 'img'
         page.should have_css 'span.author', :text => 'Publicado hace menos de 1 minuto'
