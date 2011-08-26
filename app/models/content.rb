@@ -64,6 +64,30 @@ class Content < ActiveRecord::Base
     }
   end
 
+  def as_json(options = {})
+    {
+      :author          => {
+        :id            => author.id,
+        :name          => author.name,
+        :profile_image => author.profile_image_thumb_url
+      },
+      :published_at    => published_at,
+      :comments => comments.count
+    }
+  end
+
+  def as_json(options = {})
+    {
+      :author          => {
+        :id            => author.id,
+        :name          => author.name,
+        :profile_image => author.profile_image_thumb_url
+      },
+      :published_at    => published_at,
+      :comments => comments.count
+    }
+  end
+
   def update_published_at
     self.published_at = Time.now
   end
