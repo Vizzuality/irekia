@@ -10,6 +10,7 @@ class Proposal < Content
   accepts_nested_attributes_for :proposal_data, :arguments
 
   delegate :title, :body, :to => :proposal_data
+
   def percent_in_favor
     total_arguments = arguments.count
     return 0 if total_arguments.zero?
@@ -23,9 +24,11 @@ class Proposal < Content
   def in_favor_count
     arguments.in_favor.count
   end
+
   def against_count
     arguments.against.count
   end
+
   def as_json(options = {})
     {
       :author          => {

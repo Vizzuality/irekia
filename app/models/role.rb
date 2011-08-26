@@ -3,20 +3,20 @@
 class Role < ActiveRecord::Base
   has_many :users
 
-  scope :politic, where(:name => 'Politic')
-  scope :administrator, where(:name => 'Administrator')
-  scope :citizen, where(:name => 'Citizen')
+  scope :politic, where(:name => 'Político')
+  scope :administrator, where(:name => 'Administrador')
+  scope :citizen, where(:name => 'Ciudadano')
 
   def politic?
-    self.name.eql?('Politic')
+    self.name.eql?('Político')
   end
 
   def administrator?
-    self.name.eql?('Administrator')
+    self.name.eql?('Administrador')
   end
 
   def citizen?
-    self.name.eql?('Citizen')
+    self.name.eql?('Ciudadano')
   end
 
 end

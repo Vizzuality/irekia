@@ -1,6 +1,4 @@
 class AreaPublicStream < ActiveRecord::Base
-  include PgSearch
-
   belongs_to :area
 
   scope :this_week, lambda{ where('EXTRACT(WEEK FROM created_at) = ?', DateTime.now.cweek) }
