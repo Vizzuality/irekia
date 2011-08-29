@@ -57,8 +57,7 @@ Irekia::Application.routes.draw do
 
   resources :comments,     :controller => 'participations', :type => 'Comment'
 
-  match '/search(/:type)/:q' => 'search#show', :as => :search_by_type_and_query
-  resources :search, :only => :show
+  match '/search' => 'search#show'
 
   root :to => "home#index"
 end

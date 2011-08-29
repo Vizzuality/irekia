@@ -5,10 +5,11 @@
       <li class="<%= current_area?(area) %>"><%= area.name %></li>
     <% end %>
   </ul>
-  <%= form_for :search, :html => {:method => :get} do |search_form| %>
-    <%= search_form.label :query, t('.search') %>
-    <%= search_form.text_field :query %>
+  <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get} do |search_form| %>
+    <%= search_form.label :q, t('.search') %>
+    <%= search_form.text_field :q %>
     <%= search_form.submit '' %>
+    <div class="autocomplete"></div>
   <% end %>
   <% if user_signed_in? %>
     <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete' %>

@@ -1,2 +1,7 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(function() {
+
+  $('#navigation form').bind('ajax:success', function(evt, xhr, status){
+    $(this).find('.autocomplete').html(xhr);
+  });
+
+});

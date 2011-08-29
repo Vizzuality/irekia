@@ -450,6 +450,33 @@ es:
           more_recent: Más recientes
           more_active: Más activos
         look_city: Buscar un municipio
+    autocomplete:
+      politics:
+        summary:
+          title: Políticos
+          count:
+            zero: Ninguno encontrado
+            one: 1 encontrado
+            other: '%{count} encontrados'
+        title_area: '%{title} de %{area}'
+      areas:
+        summary:
+          title: Áreas
+      users:
+        summary:
+          title: Usuarios
+          count:
+            zero: Ninguno encontrado
+            one: 1 encontrado
+            other: '%{count} encontrados'
+      contents:
+        summary:
+          title: Contenidos
+        count:
+            zero: Ninguno contenido encontrado
+            one: 1 contenido encontrado
+            other: '%{count} contenidos encontrados'
+
 
 
 

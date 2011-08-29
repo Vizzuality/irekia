@@ -1,16 +1,16 @@
 <div id="search">
   <div class="search_box">
     <h1><%= t('.your_search_results') %></h1>
-    <%= form_for :search, :url => {:action => :show}, :html => {:method => :get} do |f| %>
+    <%= form_for :search, :url => search_path, :html => {:method => :get} do |f| %>
       <%= f.text_field :q %>
       <%= f.submit 'Search' %>
     <% end %>
   </div>
   <ul class="tabs">
-    <li class="<%= current_type? %>"><%= link_to t('.tabs.summary'), search_by_type_and_query_path(nil, params[:q]) %></li>
-    <li class="<%= current_type? 'contents' %>"><%= link_to t('.tabs.contents', :count => @contents.count), search_by_type_and_query_path('contents', params[:q]) %></li>
-    <li class="<%= current_type? 'politics' %>"><%= link_to t('.tabs.politics', :count => @politics.count), search_by_type_and_query_path('politics', params[:q]) %></li>
-    <li class="<%= current_type? 'users' %>"><%= link_to t('.tabs.users',       :count => @citizens.count), search_by_type_and_query_path('users', params[:q]) %></li>
+    <li class="<%= current_type? %>"><%= link_to t('.tabs.summary'), search_path(:search => {:q => params[:search][:q]}) %></li>
+    <li class="<%= current_type? 'contents' %>"><%= link_to t('.tabs.contents', :count => @contents.count), search_path(:search => {:q => params[:search][:q], :type => 'contents'}) %></li>
+    <li class="<%= current_type? 'politics' %>"><%= link_to t('.tabs.politics', :count => @politics.count), search_path(:search => {:q => params[:search][:q], :type => 'politics'}) %></li>
+    <li class="<%= current_type? 'users' %>"><%= link_to t('.tabs.users',       :count => @citizens.count), search_path(:search => {:q => params[:search][:q], :type => 'users'}) %></li>
   </ul>
   <% if show_contents? %>
     <div class="contents_results">
@@ -22,7 +22,7 @@
         </li>
         <% end %>
       </ul>
-      <% if params[:type].blank? %>
+      <% if params[:search][:type].blank? %>
         <% if @contents.count > 5 %>
           <div class="pagination">
             <%= link_to t('.contents_results.all', :count => @contents.count), '#' %>
@@ -65,7 +65,7 @@
         </li>
         <% end %>
       </ul>
-      <% if params[:type].blank? %>
+      <% if params[:search][:type].blank? %>[:search]
         <% if @politics.count > how_many_users_to_show? %>
           <div class="pagination">
             <%= link_to t('.politics_results.all', :count => @politics.count), '#' %>
@@ -87,8 +87,8 @@
         </ul>
         <ul class="area_filters">
           <li><%= link_to t('.politics_results.area_filters.all'), '#', :class => 'selected' %></li>
-          <% @areas.each do |area| %>
-            <li><%= link_to area.name, search_by_type_and_query_path('politics', params[:q], :filter => area.id) %></li>
+          <% @politics_areas.each do |area| %>
+            <li><%= link_to area.name, search_path(:search => {:q => params[:search][:q], :type => 'politics', :filter => area.id}) %></li>
           <% end %>
         </ul>
       <% end %>
@@ -107,7 +107,7 @@
         </li>
         <% end %>
       </ul>
-      <% if params[:type].blank? %>
+      <% if params[:search][:type].blank? %>
         <% if @citizens.count > how_many_users_to_show? %>
           <div class="pagination">
             <%= link_to t('.users_results.all', :count => @citizens.count), '#' %>
@@ -127,7 +127,7 @@
             <%= link_to t('.users_results.main_filters.more_active'), '#', :class => 'more_active' %>
           </li>
         </ul>
-        <%= form_tag search_by_type_and_query_path('users', params[:q]), :class => 'location_filters'  do %>
+        <%= form_tag search_path(:search => {:q => params[:search][:q], :type => 'users'}), :class => 'location_filters'  do %>
           <%= label_tag t('.users_results.look_city') %>
           <%= text_field_tag 'city', t('.users_results.look_city') %>
         <% end %>

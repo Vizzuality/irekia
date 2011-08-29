@@ -2,7 +2,7 @@ class SearchController < ApplicationController
   skip_before_filter :authenticate_user!,    :only => [:show]
 
   def show
-    @search = OpenStruct.new(:q => params[:q])
+    @search = OpenStruct.new(params[:search])
 
     @contents = AreaPublicStream.only_contents.search @search.q
 
@@ -10,7 +10,12 @@ class SearchController < ApplicationController
     @citizens = users.citizens
     @politics = users.politics
 
-    @areas = @politics.inject([]){|arr, x| arr + x.areas}.uniq! if params[:type].present? && params[:type] == 'politics'
+    @contents_areas = @contents.inject([]){|arr, content| arr + [content.area]}.uniq!
+    @citizens_areas = @citizens.inject([]){|arr, citizen| arr + citizen.areas}.uniq!
+    @politics_areas = @politics.inject([]){|arr, politic| arr + politic.areas}.uniq!
+
+    render :autocomplete, :layout => false and return if request.xhr?
 
   end
+
 end

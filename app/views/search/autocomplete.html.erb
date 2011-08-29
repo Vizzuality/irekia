@@ -1,0 +1,48 @@
+<div class="politics">
+  <div class="summary">
+    <span><%= t('.politics.summary.title') %></span>
+    <%= link_to t('.politics.summary.count', :count => @politics.count) %>
+  </div>
+  <ul>
+    <% @politics.first(2).each do |politic| %>
+      <li>
+        <%= link_to image_tag(politic.profile_image), politic_path(politic) if politic.profile_image %>
+        <%= link_to politic.name, politic_path(politic) %>
+        <span><%= t('.politics.title_area', :title => get_politic_title(politic), :area => politic.areas.map(&:name).join(', ')) %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class="areas">
+  <div class="summary">
+    <span><%= t('.areas.summary.title') %></span>
+  </div>
+  <ul>
+    <% @areas.first(2).each do |area| %>
+      <li>
+        <%= link_to area.name, area_path(area) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class="users">
+  <div class="summary">
+    <span><%= t('.users.summary.title') %></span>
+    <%= link_to t('.users.summary.count', :count => @citizens.count) %>
+  </div>
+  <ul>
+    <% @citizens.first(2).each do |user| %>
+      <li>
+        <%= link_to image_tag(user.profile_image), user_path(user) if user.profile_image %>
+        <%= link_to user.name, user_path(user) %>
+        <span><%= "#{user.city}, #{user.province}" %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div class="contents">
+  <div class="summary">
+    <span><%= t('.contents.summary.title') %></span>
+  </div>
+  <%= link_to t('.contents.count', :count => @contents.count), '#' %>
+</div>

@@ -8,7 +8,7 @@ feature "Search" do
   end
 
   scenario "shows a summary of search results in its main tab" do
-    visit search_by_type_and_query_path(nil, 'lorem')
+    visit search_path(:search => {:q => 'lorem'})
 
     within '#search' do
 
@@ -82,7 +82,7 @@ feature "Search" do
   end
 
   scenario "shows a detail page for content type results" do
-    visit search_by_type_and_query_path(nil, 'lorem')
+    visit search_path(:search => {:q => 'lorem'})
 
     within '#search' do
 
@@ -142,7 +142,7 @@ feature "Search" do
   end
 
   scenario "shows a detail page for politics type results" do
-    visit search_by_type_and_query_path(nil, 'lorem')
+    visit search_path(:search => {:q => 'lorem'})
 
     within '#search' do
 
@@ -196,7 +196,7 @@ feature "Search" do
   end
 
   scenario "shows a detail page for users type results" do
-    visit search_by_type_and_query_path(nil, 'lorem')
+    visit search_path(:search => {:q => 'lorem'})
 
     within '#search' do
 
@@ -244,6 +244,64 @@ feature "Search" do
       end
 
     end
+
+  end
+
+  scenario "shows an autocomplete dialog using the main search box in application layout", :js => true do
+    visit root_path
+
+    within '#navigation form' do
+      fill_in 'O busca lo que necesitas...', :with => 'lorem'
+      click_button 'search_submit'
+    end
+
+    within '.autocomplete' do
+      within '.politics' do
+        within '.summary' do
+          page.should have_content 'Políticos 5 encontrados'
+          page.should have_link '5 encontrados'
+        end
+        page.should have_css 'ul li', :count => 2
+        within 'ul li' do
+          page.should have_css 'img'
+          page.should have_link 'Alberto de Zárate López'
+          page.should have_content 'Vice-consejero de Educación, Universidades e Investigación'
+        end
+      end
+
+      within '.areas' do
+        within '.summary' do
+          page.should have_content 'Áreas'
+        end
+        page.should have_css 'ul li', :count => 1
+        within 'ul li' do
+          page.should have_link 'Educación, Universidades e Investigación'
+        end
+      end
+
+
+      within '.users' do
+        within '.summary' do
+          page.should have_content 'Usuarios 3 encontrados'
+          page.should have_link '3 encontrados'
+        end
+        page.should have_css 'ul li', :count => 2
+        within 'ul li' do
+          page.should have_css 'img'
+          page.should have_link 'María González Pérez'
+          page.should have_content 'Ondarroa, Vizcaya'
+        end
+      end
+
+      within '.contents' do
+        within '.summary' do
+          page.should have_content 'Contenidos'
+        end
+        page.should have_link '137 contenidos encontrados'
+      end
+
+    end
+
 
   end
 
