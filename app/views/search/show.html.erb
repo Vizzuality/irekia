@@ -56,7 +56,7 @@
     <div class="politics_results">
       <h2><%= t('.politics_results.title', :count => @politics.count) %></h2>
       <ul>
-        <% @politics.first(9).each do |politic| %>
+        <% @politics.first(how_many_users_to_show?).each do |politic| %>
         <li>
           <%= link_to image_tag(politic.profile_image), politic_path(politic) if politic.profile_image %>
           <%= link_to politic.name, politic_path(politic) %>
@@ -65,10 +65,32 @@
         </li>
         <% end %>
       </ul>
-      <% if @politics.count > 9 %>
-        <div class="pagination">
-          <%= link_to t('.politics_results.more', :count => @politics.count), '#' %>
-        </div>
+      <% if params[:type].blank? %>
+        <% if @politics.count > how_many_users_to_show? %>
+          <div class="pagination">
+            <%= link_to t('.politics_results.all', :count => @politics.count), '#' %>
+          </div>
+        <% end %>
+      <% else %>
+        <% if @politics.count > how_many_users_to_show? %>
+          <div class="pagination">
+            <%= link_to t('.politics_results.more'), '#' %>
+          </div>
+        <% end %>
+        <ul class="main_filters">
+          <li>
+            <%= link_to t('.politics_results.main_filters.more_recent'), '#', :class => 'more_recent selected' %>
+          </li>
+          <li>
+            <%= link_to t('.politics_results.main_filters.more_active'), '#', :class => 'more_active' %>
+          </li>
+        </ul>
+        <ul class="area_filters">
+          <li><%= link_to t('.politics_results.area_filters.all'), '#', :class => 'selected' %></li>
+          <% @areas.each do |area| %>
+            <li><%= link_to area.name, search_by_type_and_query_path('politics', params[:q], :filter => area.id) %></li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   <% end %>
@@ -76,7 +98,7 @@
     <div class="users_results">
       <h2><%= t('.users_results.title', :count => @citizens.count) %></h2>
       <ul>
-        <% @citizens.first(9).each do |user| %>
+        <% @citizens.first(how_many_users_to_show?).each do |user| %>
         <li>
           <%= link_to image_tag(user.profile_image), user_path(user) if user.profile_image %>
           <%= link_to user.name, user_path(user) %>
@@ -85,10 +107,30 @@
         </li>
         <% end %>
       </ul>
-      <% if @citizens.count > 9 %>
-        <div class="pagination">
-          <%= link_to t('.users_results.more', :count => @citizens.count), '#' %>
-        </div>
+      <% if params[:type].blank? %>
+        <% if @citizens.count > how_many_users_to_show? %>
+          <div class="pagination">
+            <%= link_to t('.users_results.all', :count => @citizens.count), '#' %>
+          </div>
+        <% end %>
+      <% else %>
+        <% if @politics.count > how_many_users_to_show? %>
+          <div class="pagination">
+            <%= link_to t('.users_results.more'), '#' %>
+          </div>
+        <% end %>
+        <ul class="main_filters">
+          <li>
+            <%= link_to t('.users_results.main_filters.more_recent'), '#', :class => 'more_recent selected' %>
+          </li>
+          <li>
+            <%= link_to t('.users_results.main_filters.more_active'), '#', :class => 'more_active' %>
+          </li>
+        </ul>
+        <%= form_tag search_by_type_and_query_path('users', params[:q]), :class => 'location_filters'  do %>
+          <%= label_tag t('.users_results.look_city') %>
+          <%= text_field_tag 'city', t('.users_results.look_city') %>
+        <% end %>
       <% end %>
     </div>
   <% end %>

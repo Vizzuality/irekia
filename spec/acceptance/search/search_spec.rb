@@ -141,4 +141,110 @@ feature "Search" do
 
   end
 
+  scenario "shows a detail page for politics type results" do
+    visit search_by_type_and_query_path(nil, 'lorem')
+
+    within '#search' do
+
+      within '.search_box' do
+        page.should have_field 'search_q', :with => 'lorem'
+      end
+
+      click_link '5 políticos'
+    end
+
+    within '#search' do
+
+      within '.search_box' do
+        page.should have_css 'h1', 'Resultados de tu búsqueda'
+        page.should have_field 'search_q', :with => 'lorem'
+      end
+
+      within 'ul.tabs' do
+        page.should have_css 'li', :text => 'Resumen'
+        page.should have_css 'li', :text => '137 contenidos'
+        page.should have_css 'li.selected', :text => '5 políticos'
+        page.should have_css 'li', :text => '3 usuarios'
+      end
+
+      within '.politics_results' do
+        page.should have_css 'h2', :text => '5 políticos'
+        within 'ul' do
+          page.should have_css 'li', :count => 5
+          within 'li' do
+            page.should have_css 'img'
+            page.should have_link 'Alberto de Zárate López'
+            page.should have_content 'Vice-consejero de Educación, Universidades e Investigación'
+            page.should have_link 'Seguir'
+          end
+        end
+        page.should_not have_link 'ver más resultados'
+
+        within '.main_filters' do
+          page.should have_css 'a.more_recent.selected', :text => 'Más recientes'
+          page.should have_css 'a.more_active', :text => 'Más activos'
+        end
+
+        within '.area_filters' do
+          page.should have_css 'a.selected', :text => 'Todas las áreas'
+          page.should have_link 'Educación, Universidades e Investigación'
+        end
+      end
+
+    end
+
+  end
+
+  scenario "shows a detail page for users type results" do
+    visit search_by_type_and_query_path(nil, 'lorem')
+
+    within '#search' do
+
+      within '.search_box' do
+        page.should have_field 'search_q', :with => 'lorem'
+      end
+
+      click_link '3 usuarios'
+    end
+
+    within '#search' do
+
+      within '.search_box' do
+        page.should have_css 'h1', 'Resultados de tu búsqueda'
+        page.should have_field 'search_q', :with => 'lorem'
+      end
+
+      within 'ul.tabs' do
+        page.should have_css 'li', :text => 'Resumen'
+        page.should have_css 'li', :text => '137 contenidos'
+        page.should have_css 'li', :text => '5 políticos'
+        page.should have_css 'li.selected', :text => '3 usuarios'
+      end
+
+      within '.users_results' do
+        page.should have_css 'h2', :text => '3 usuarios'
+
+        within 'ul li' do
+          page.should have_css 'img'
+          page.should have_link 'María González Pérez'
+          page.should have_content 'Ondarroa, Vizcaya'
+          page.should have_link 'Seguir'
+        end
+        page.should_not have_link 'ver más resultados'
+
+        within '.main_filters' do
+          page.should have_css 'a.more_recent.selected', :text => 'Más recientes'
+          page.should have_css 'a.more_active', :text => 'Más activos'
+        end
+
+        within '.location_filters' do
+          page.should have_content 'Buscar un municipio'
+          page.should have_field 'city', :with => 'Buscar un municipio'
+        end
+      end
+
+    end
+
+  end
+
 end

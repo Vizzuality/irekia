@@ -429,16 +429,27 @@ es:
           zero: Ningún político
           one: 1 político
           other: '%{count} políticos'
-        more: 'ver los %{count} político encontrados'
+        all: 'ver los %{count} político encontrados'
+        more: ver más resultados
         title_area: '%{title} de %{area}'
         follow: Seguir
+        main_filters:
+          more_recent: Más recientes
+          more_active: Más activos
+        area_filters:
+         all: Todas las áreas
       users_results:
         title:
           zero: Ningún usuario
           one: 1 usuario
           other: '%{count} usuarios'
-        more: 'ver los %{count} usuarios encontrados'
+        all: 'ver los %{count} usuarios encontrados'
+        more: ver más resultados
         follow: Seguir
+        main_filters:
+          more_recent: Más recientes
+          more_active: Más activos
+        look_city: Buscar un municipio
 
 
 

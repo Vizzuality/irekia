@@ -10,5 +10,7 @@ class SearchController < ApplicationController
     @citizens = users.citizens
     @politics = users.politics
 
+    @areas = @politics.inject([]){|arr, x| arr + x.areas}.uniq! if params[:type].present? && params[:type] == 'politics'
+
   end
 end

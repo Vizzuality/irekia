@@ -19,4 +19,8 @@ module SearchHelper
   def how_many_contents_to_show?
     params[:type].blank?? 5 : 10
   end
+
+  def how_many_users_to_show?
+    params[:type].blank?? 9 : 20
+  end
 end
