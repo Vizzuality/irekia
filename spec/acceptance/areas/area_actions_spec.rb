@@ -17,7 +17,7 @@ feature "Area's actions page" do
 
       within '.description' do
         page.should have_css 'h3', :text => 'Qué hacemos'
-        page.should have_css 'p',  :text => lorem
+        page.should have_css 'p',  :text => String.lorem
       end
 
       within '.team' do
@@ -85,7 +85,7 @@ feature "Area's actions page" do
 
       within 'ul li.action div.news' do
         page.should have_css 'p.title', :text => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
-        page.should have_css 'p.news', :text => lorem
+        page.should have_css 'p.news', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d...'
 
         page.should have_no_css 'img'
         page.should have_css 'span.author', :text => 'Publicado hace menos de 1 minuto'

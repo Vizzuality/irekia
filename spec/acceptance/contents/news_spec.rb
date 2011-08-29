@@ -19,7 +19,7 @@ feature "News page" do
       within '.news_content' do
         page.should have_css 'h1', :text => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
         page.should have_css 'h4', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-        page.should have_content lorem
+        page.should have_content String.lorem
       end
     end
   end

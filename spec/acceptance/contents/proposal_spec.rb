@@ -21,7 +21,7 @@ feature "Proposal page" do
       end
       page.should have_css '.title_author_and_comments', :text => /hace menos de 1 minuto/
       within '.content' do
-        page.should have_content lorem
+        page.should have_content String.lorem
         within '.in_favor' do
           page.should have_css 'h4', :text => 'A favor'
           page.should have_css 'ul li', :count => 5, :text => String.lorem.truncate(255)

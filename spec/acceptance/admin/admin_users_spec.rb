@@ -26,13 +26,13 @@ feature "Users admin page" do
     visit admin_users_path
 
     click_link 'Nuevo usuario'
-
+peich
     fill_in 'Nombre y apellidos',   :with => 'Fernando Espinosa Jiménez'
     fill_in 'Email',                :with => 'ferdev@vizzuality.com'
     fill_in 'Contraseña',           :with => 'wadus1234'
     fill_in 'Confirmar contraseña', :with => 'wadus1234'
     select 'Político',                                 :from => 'Rol'
-    select 'Consejero',                                :from => 'Título'
+    select 'Consejero/Consejera',                      :from => 'Título'
     select 'Educación, Universidades e Investigación', :from => 'Área'
     attach_file 'Imagen', Rails.root.join('db', 'seeds', 'test_data', 'images', 'man.jpeg')
 

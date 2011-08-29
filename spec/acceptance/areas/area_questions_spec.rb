@@ -18,7 +18,7 @@ feature "Area's questions page" do
 
       within '.description' do
         page.should have_css 'h3', :text => 'Qué hacemos'
-        page.should have_css 'p',  :text => lorem
+        page.should have_css 'p',  :text => String.lorem
       end
 
       within '.team' do

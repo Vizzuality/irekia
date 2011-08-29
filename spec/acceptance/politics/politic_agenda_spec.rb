@@ -20,7 +20,7 @@ feature "Area's agenda page" do
 
       within '.description' do
         page.should have_css 'h3', :text => 'Quién es y qué hace'
-        page.should have_css 'p',  :text => lorem
+        page.should have_css 'p',  :text => String.lorem
       end
 
       within '.actions' do
