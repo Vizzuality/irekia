@@ -9,5 +9,6 @@ class SearchController < ApplicationController
     users     = User.search_by_name_description_province_and_city @search.q
     @citizens = users.citizens
     @politics = users.politics
+
   end
 end

@@ -411,7 +411,8 @@ es:
           zero: Ningún contenido
           one: 1 contenido
           other: '%{count} contenidos'
-        more: 'ver los %{count} contenidos encontrados'
+        all: 'ver los %{count} contenidos encontrados'
+        more: ver más resultados
         main_filters:
           more_recent: Más recientes
           more_polemic: Más polémicas
