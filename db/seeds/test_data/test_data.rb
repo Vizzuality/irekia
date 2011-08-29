@@ -18,17 +18,19 @@ men_images   = %w(man.jpeg).map{|image_name| File.open(Rails.root.join('db', 'se
 admin = User.find_or_initialize_by_name_and_email('Administrator', 'admin@example.com')
 admin.password = 'example'
 admin.password_confirmation = 'example'
-admin.role = Role.find_by_name('Administrador')
+admin.role = Role.find_by_name('Administrator')
 admin.save!
 
 print '.'.blue
 
 alberto = User.find_or_initialize_by_name_and_email('Alberto de Zárate López', 'alberto.zarate@ej-gv.es')
 alberto.description = String.lorem
-alberto.role = Role.find_by_name('Político')
+alberto.province = 'Vizcaya'
+alberto.city = 'Ondarroa'
+alberto.role = Role.find_by_name('Politic')
 alberto.areas.clear
 alberto.areas_users << AreaUser.create(:area => area, :display_order => 2)
-alberto.title = Title.find_by_name('Vice-consejero')
+alberto.title = Title.find_by_name('Co-adviser')
 alberto.profile_pictures << Image.create(:image => men_images.sample)
 alberto.save(:validate => false)
 
@@ -37,10 +39,12 @@ print '.'.blue
 virginia = User.find_or_initialize_by_name_and_email('Virginia Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
 virginia.is_woman = true
 virginia.description = String.lorem
-virginia.role = Role.find_by_name('Político')
+virginia.province = 'Vizcaya'
+virginia.city = 'Ondarroa'
+virginia.role = Role.find_by_name('Politic')
 virginia.areas.clear
 virginia.areas_users << AreaUser.create(:area => area, :display_order => 1)
-virginia.title = Title.find_by_name('Consejero')
+virginia.title = Title.find_by_name('Adviser')
 virginia.profile_pictures << Image.create(:image => women_images.sample)
 virginia.save(:validate => false)
 
@@ -52,10 +56,12 @@ print '.'.blue
   user.is_woman = [true, false].sample
   user.inactive = [true, false].sample
   user.description = String.lorem
-  user.role = Role.find_by_name('Político')
+  user.province = 'Vizcaya'
+  user.city = 'Ondarroa'
+  user.role = Role.find_by_name('Politic')
   user.areas.clear
   user.areas << area
-  user.title = Title.find_by_name('Vice-consejero')
+  user.title = Title.find_by_name('Co-adviser')
   user.profile_pictures << Image.create(:image => (men_images + women_images).sample)
   user.save(:validate => false)
 
@@ -64,18 +70,30 @@ print '.'.blue
 end
 
 maria = User.find_or_initialize_by_name_and_email('María González Pérez', 'maria.gonzalez@gmail.com')
+maria.description = String.lorem
+maria.province = 'Vizcaya'
+maria.city = 'Ondarroa'
+maria.role = Role.find_by_name('Citizen')
 maria.profile_pictures << Image.create(:image => women_images.sample)
 maria.save(:validate => false)
 
 print '.'.blue
 
 andres = User.find_or_initialize_by_name_and_email('Andrés Berzoso Rodríguez', 'andres.berzoso@gmail.com')
+andres.description = String.lorem
+andres.province = 'Vizcaya'
+andres.city = 'Ondarroa'
+andres.role = Role.find_by_name('Citizen')
 andres.profile_pictures << Image.create(:image => men_images.sample)
 andres.save(:validate => false)
 
 print '.'.blue
 
 aritz = User.find_or_initialize_by_name_and_email('Aritz Aranburu', 'aritz.aranburu@gmail.com')
+aritz.description = String.lorem
+aritz.province = 'Vizcaya'
+aritz.city = 'Ondarroa'
+aritz.role = Role.find_by_name('Citizen')
 aritz.profile_pictures << Image.create(:image => men_images.sample)
 aritz.save(:validate => false)
 
@@ -84,7 +102,8 @@ print '.'.blue
 User.find_or_create_by_name :name                  => 'José López Pérez',
                             :email                 => 'pepito@irekia.com',
                             :password              => 'irekia1234',
-                            :password_confirmation => 'irekia1234'
+                            :password_confirmation => 'irekia1234',
+                            :role                  => Role.find_by_name('Citizen')
 
 print '.'.blue
 

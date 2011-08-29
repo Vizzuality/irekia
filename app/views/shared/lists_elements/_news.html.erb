@@ -2,7 +2,10 @@
   <p class="title">
     <%= data.title %>
   </p>
-  <%= simple_format data.body, :class => 'news' %>
+  <p class="news">
+    <%= truncate(data.body, :length => 66) %>
+    <%= link_to t('.read_more'), '#' %>
+  </p>
   <span class="author">
     <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
   </span>

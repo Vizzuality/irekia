@@ -17,4 +17,10 @@ namespace :irekia do
       puts ''
     end
   end
+
+  desc "Accepts all non moderated contents/participations"
+  task :validate_all_not_moderated => :environment do
+    Content.validate_all_not_moderated
+    Participation.validate_all_not_moderated
+  end
 end

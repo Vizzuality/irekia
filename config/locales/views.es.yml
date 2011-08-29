@@ -91,6 +91,7 @@ es:
         not_answered: 'Aún no contestada'
       news:
         author: 'Publicado hace %{time}'
+        read_more: 'Leer más'
       proposal:
         in_favor: '%{count} a favor'
         against: '%{count} en contra'
@@ -388,3 +389,55 @@ es:
     show:
       agenda:
         title: 'Agenda de %{name}'
+  search:
+    show:
+      your_search_results: Resultados de tu búsqueda
+      tabs:
+        summary: Resumen
+        contents:
+          zero: Ningún contenido
+          one: 1 contenido
+          other: '%{count} contenidos'
+        politics:
+          zero: Ningún político
+          one: 1 político
+          other: '%{count} políticos'
+        users:
+          zero: Ningún usuario
+          one: 1 usuario
+          other: '%{count} usuarios'
+      contents_results:
+        title:
+          zero: Ningún contenido
+          one: 1 contenido
+          other: '%{count} contenidos'
+        more: 'ver los %{count} contenidos encontrados'
+        main_filters:
+          more_recent: Más recientes
+          more_polemic: Más polémicas
+        content_type_filters:
+         all: Todos los tipos
+         news: Noticias
+         politics_activity: Actividad de los políticos
+         questions: Preguntas
+         proposals: Propuestas
+         images: Fotos
+         videos: Vídeos
+      politics_results:
+        title:
+          zero: Ningún político
+          one: 1 político
+          other: '%{count} políticos'
+        more: 'ver los %{count} político encontrados'
+        title_area: '%{title} de %{area}'
+        follow: Seguir
+      users_results:
+        title:
+          zero: Ningún usuario
+          one: 1 usuario
+          other: '%{count} usuarios'
+        more: 'ver los %{count} usuarios encontrados'
+        follow: Seguir
+
+
+

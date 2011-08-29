@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include PgSearch
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -101,6 +103,8 @@ class User < ActiveRecord::Base
   scope :oldest_first, order('created_at asc')
   scope :politics, joins(:role).where('roles.name = ?', 'Politic')
   scope :citizens, joins(:role).where('roles.name = ?', 'Citizen')
+
+  pg_search_scope :search_by_name_description_province_and_city, :against => [:name, :description, :province, :city]
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['user_info']
