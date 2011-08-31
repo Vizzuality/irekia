@@ -91,4 +91,27 @@ feature "Users" do
       page.should have_link 'Salir'
     end
   end
+
+  context 'being logged in' do
+    background do
+      login_as_regular_user
+    end
+
+    scenario "can sing-out whenever he wants" do
+      visit root_path
+
+      within '#navigation' do
+        page.should_not have_link 'Regístrate'
+        page.should_not have_link 'Login'
+      end
+
+      click_link 'Salir'
+
+      within '#navigation' do
+        page.should have_link 'Regístrate'
+        page.should have_link 'Login'
+      end
+
+    end
+  end
 end

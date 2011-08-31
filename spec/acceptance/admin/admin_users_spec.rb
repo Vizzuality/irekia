@@ -26,7 +26,7 @@ feature "Users admin page" do
     visit admin_users_path
 
     click_link 'Nuevo usuario'
-peich
+
     fill_in 'Nombre y apellidos',   :with => 'Fernando Espinosa Jiménez'
     fill_in 'Email',                :with => 'ferdev@vizzuality.com'
     fill_in 'Contraseña',           :with => 'wadus1234'
