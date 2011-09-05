@@ -1,4 +1,6 @@
 class Question < Content
+  include PgSearch
+
   has_one :question_data,
           :foreign_key => :question_id
   has_one :target_user,
@@ -12,6 +14,13 @@ class Question < Content
 
   scope :answered, joins(:answer)
   scope :not_answered, includes(:answer_data).where('answer_data.question_id IS NULL')
+
+  pg_search_scope :search_existing_questions, :associated_against => {
+    :question_data => :question_text
+  },
+  :using => {
+    :tsearch => {:prefix => true, :dictionary => 'spanish', :any_word => true}
+  }
 
   accepts_nested_attributes_for :question_data, :answer_requests, :answer
 

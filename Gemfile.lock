@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/Casecommons/pg_search.git
+  revision: fc72793e516e4b9e71952d1e44277254dabbba43
+  specs:
+    pg_search (0.2)
+      activerecord (>= 3)
+      activesupport (>= 3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -152,7 +160,6 @@ GEM
     orm_adapter (0.0.5)
     paint (0.8.3)
     pg (0.11.0)
-    pg_search (0.2)
     polyglot (0.3.2)
     rack (1.2.3)
     rack-mount (0.6.14)
@@ -249,7 +256,7 @@ DEPENDENCIES
   mini_magick (~> 3.3)
   oa-oauth (= 0.2.6)
   pg (= 0.11.0)
-  pg_search (~> 0.2)
+  pg_search!
   railroady
   rails (= 3.0.9)
   rspec-rails (~> 2.6)

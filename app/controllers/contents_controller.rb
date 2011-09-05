@@ -7,7 +7,7 @@ class ContentsController < ApplicationController
     if params[:query]
       case params[:type]
       when 'Question'
-        contents = contents.joins(:question_data).where('question_text ilike ?', "%#{params[:query]}%")
+        contents = Question.search_existing_questions params[:query]
       end
 
     end
