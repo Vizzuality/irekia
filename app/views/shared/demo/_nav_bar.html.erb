@@ -1,0 +1,27 @@
+<div class="content">
+  <span><%= t('.currently_viewing') %></span>
+  <ul class="areas">
+    <% @areas.each do |area| %>
+      <li class="<%= current_area?(area) %>"><%= truncate(area.name, :length => 18) %></li>
+    <% end %>
+  </ul>
+  <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get} do |search_form| %>
+    <%= search_form.text_field :query, :placeholder => "o busca lo que necesitas..." %>
+    <%= search_form.submit '' %>
+    <div class="autocomplete"></div>
+  <% end %>
+  <% if user_signed_in? %>
+    <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => "sign_out blue_button" %>
+  <% else %>
+    <ul class="auth">
+      <li><%= link_to t('.sign_up'), new_user_registration_path, :class => :blue_button %></li>
+      <li>
+      <div class="blue_button">
+        <%= link_to t('.sign_in'), new_user_session_path, :class => :login %>
+        <%= link_to t('.facebook'), user_omniauth_authorize_path(:facebook), :class => :facebook %>
+        <%= link_to t('.twitter'), user_omniauth_authorize_path(:twitter), :class => :twitter %>
+      </div>
+      </li>
+    </ul>
+  <% end %>
+</div>
