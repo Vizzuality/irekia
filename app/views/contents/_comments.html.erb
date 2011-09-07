@@ -4,7 +4,7 @@
   <li>
     <%= simple_format comment.body %>
     <%= link_to image_tag(comment.user.profile_image), user_path(comment.user), :class => :author_image if comment.user.profile_image %>
-    <%= link_to comment.user.name, user_path(comment.user), :class => :author %>
+    <%= link_to comment.user.fullname, user_path(comment.user), :class => :author %>
     <span><%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %></span>
   </li>
   <% end %>

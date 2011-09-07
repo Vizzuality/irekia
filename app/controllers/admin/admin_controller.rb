@@ -1,5 +1,6 @@
 class Admin::AdminController < ApplicationController
   before_filter :admin_signed_in?
+
   layout 'administration'
 
   def index

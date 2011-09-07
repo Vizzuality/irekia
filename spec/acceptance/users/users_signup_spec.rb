@@ -177,19 +177,6 @@ feature "Users" do
 
     end
 
-    scenario "can sign-in in Irekia" do
-      visit root_path
-
-      click_link 'Login'
-
-      within '#sign_in' do
-
-        expect{ click_link 'facebook_signin' }.to change{ User.count }.by(1)
-
-      end
-      page.should have_link 'Salir'
-    end
-
   end
 
   context 'with twitter account' do
@@ -248,41 +235,6 @@ feature "Users" do
 
     end
 
-    scenario "can sign-in in Irekia" do
-      visit root_path
-
-      click_link 'Login'
-
-      within '#sign_in' do
-
-        expect{ click_link 'twitter_signin' }.to change{ User.count }.by(1)
-
-      end
-      page.should have_link 'Salir'
-    end
-
   end
 
-  context 'being logged in' do
-    background do
-      login_as_regular_user
-    end
-
-    scenario "can sing-out whenever he wants" do
-      visit root_path
-
-      within '#navigation' do
-        page.should_not have_link 'Regístrate'
-        page.should_not have_link 'Login'
-      end
-
-      click_link 'Salir'
-
-      within '#navigation' do
-        page.should have_link 'Regístrate'
-        page.should have_link 'Login'
-      end
-
-    end
-  end
 end

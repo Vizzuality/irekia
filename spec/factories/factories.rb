@@ -3,20 +3,19 @@
 module Factories
 
   def get_area_data
-    validate_all_not_moderated
-
     Area.where(:name => 'Educación, Universidades e Investigación').first
   end
 
   def get_politic_data
-    validate_all_not_moderated
-
-    User.where(:name => 'Virginia Uriarte Rodríguez').first
+    User.where(:name => 'Virginia', :lastname => 'Uriarte Rodríguez').first
   end
 
-  def validate_all_not_moderated
-    Content.validate_all_not_moderated
-    Participation.validate_all_not_moderated
+  def set_all_items_as_not_moderated
+    %w(Content Participation).map(&:constantize).each do |item_type|
+      item_type.moderated.find_each do |content|
+        content.update_attribute('moderated', false)
+      end
+    end
   end
 
   def create_similar_questions

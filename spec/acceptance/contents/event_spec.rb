@@ -4,7 +4,6 @@ require 'spec_helper'
 
 feature "Event page" do
   background do
-    validate_all_not_moderated
     @event = Event.last
   end
 

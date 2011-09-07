@@ -3,9 +3,6 @@
 require 'spec_helper'
 
 feature "Question page" do
-  background do
-    validate_all_not_moderated
-  end
 
   context 'for not answered questions' do
     before do

@@ -15,9 +15,11 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def create
-    @user = User.create(params[:user])
+    @user = User.new(params[:user])
+    @user.password              = params[:user][:password]
+    @user.password_confirmation = params[:user][:password_confirmation]
 
-    if @user.valid?
+    if @user.save
       redirect_to admin_user_path(@user)
     else
       render :new

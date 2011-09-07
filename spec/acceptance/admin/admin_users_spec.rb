@@ -27,10 +27,11 @@ feature "Users admin page" do
 
     click_link 'Nuevo usuario'
 
-    fill_in 'Nombre y apellidos',   :with => 'Fernando Espinosa Jiménez'
-    fill_in 'Email',                :with => 'ferdev@vizzuality.com'
-    fill_in 'Contraseña',           :with => 'wadus1234'
-    fill_in 'Confirmar contraseña', :with => 'wadus1234'
+    fill_in 'Nombre',               :with => 'Fernando'              
+    fill_in 'Apellidos',            :with => 'Espinosa Jiménez'     
+    fill_in 'Email',                :with => 'ferdev@vizzuality.com' 
+    fill_in 'Contraseña',           :with => 'wadus1234'             
+    fill_in 'Repetir contraseña', :with => 'wadus1234'             
     select 'Político',                                 :from => 'Rol'
     select 'Consejero/Consejera',                      :from => 'Título'
     select 'Educación, Universidades e Investigación', :from => 'Área'
@@ -49,7 +50,8 @@ feature "Users admin page" do
 
     click_link 'Alberto de Zárate López'
 
-    fill_in 'Nombre y apellidos',   :with => 'Alberto López de Zárate'
+    fill_in 'Nombre', :with => 'Alberto'           
+    fill_in 'Apellidos',          :with => 'López de Zárate' 
 
     click_button 'Editar usuario'
 

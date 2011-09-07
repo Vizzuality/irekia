@@ -1,7 +1,7 @@
 <div id="tweet">
   <h1><%= @content.message %></h1>
   <span class="author">
-    <%= raw t('.author', :name => link_to(@content.author.name, user_path(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+    <%= raw t('.author', :name => link_to(@content.author.fullname, user_path(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
   </span>
   <%= render 'comments' %>
   <div class="sidebar">
@@ -11,7 +11,7 @@
       <li><%= link_to t('.sidebar.sharing_links.facebook'), '#' %></li>
     </ul>
     <div class="last_tweets">
-      <h3><%= t('.sidebar.last_tweets.title', :name => @content.author.first_name) %></h3>
+      <h3><%= t('.sidebar.last_tweets.title', :name => @content.author.name) %></h3>
       <ul>
         <% @last_contents.each do |tweet| %>
         <li>

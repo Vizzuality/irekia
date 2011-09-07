@@ -4,7 +4,6 @@ require 'spec_helper'
 
 feature "Photo page" do
   background do
-    validate_all_not_moderated
     @photo = Photo.first
   end
 

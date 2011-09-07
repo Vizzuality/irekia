@@ -7,6 +7,7 @@ class PollAnswer < Content
       :author          => {
         :id            => author.id,
         :name          => author.name,
+        :fullname      => author.fullname,
         :profile_image => author.profile_image
       },
       :published_at    => published_at,

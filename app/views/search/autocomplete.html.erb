@@ -7,7 +7,7 @@
     <% @politics.first(2).each do |politic| %>
       <li>
         <%= link_to image_tag(politic.profile_image), politic_path(politic) if politic.profile_image %>
-        <%= link_to politic.name, politic_path(politic) %>
+        <%= link_to politic.fullname, politic_path(politic) %>
         <span><%= t('.politics.title_area', :title => get_politic_title(politic), :area => politic.areas.map(&:name).join(', ')) %></span>
       </li>
     <% end %>
@@ -34,7 +34,7 @@
     <% @citizens.first(2).each do |user| %>
       <li>
         <%= link_to image_tag(user.profile_image), user_path(user) if user.profile_image %>
-        <%= link_to user.name, user_path(user) %>
+        <%= link_to user.fullname, user_path(user) %>
         <span><%= "#{user.city}, #{user.province}" %></span>
       </li>
     <% end %>

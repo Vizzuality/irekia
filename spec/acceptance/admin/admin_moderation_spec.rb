@@ -4,6 +4,7 @@ require 'spec_helper'
 
 feature "Moderation admin page" do
   background do
+    set_all_items_as_not_moderated
     login_as_administrator
   end
 

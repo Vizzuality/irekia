@@ -4,7 +4,7 @@
   </li>
   <% @users.each do |user| %>
   <li class="user">
-  <%= link_to user.name, edit_admin_user_path(user) %>
+  <%= link_to user.fullname, edit_admin_user_path(user) %>
   &middot;
   <%= link_to t('.edit_user'), edit_admin_user_path(user) %>
   |

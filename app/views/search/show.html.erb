@@ -59,7 +59,7 @@
         <% @politics.first(how_many_users_to_show?).each do |politic| %>
         <li>
           <%= link_to image_tag(politic.profile_image), politic_path(politic) if politic.profile_image %>
-          <%= link_to politic.name, politic_path(politic) %>
+          <%= link_to politic.fullname, politic_path(politic) %>
           <span class="title"><%= t('.politics_results.title_area', :title => get_politic_title(politic), :area => politic.areas.map(&:name).join(', ')) %></span>
           <%= link_to t('.politics_results.follow'), '#' %>
         </li>
@@ -101,7 +101,7 @@
         <% @citizens.first(how_many_users_to_show?).each do |user| %>
         <li>
           <%= link_to image_tag(user.profile_image), user_path(user) if user.profile_image %>
-          <%= link_to user.name, user_path(user) %>
+          <%= link_to user.fullname, user_path(user) %>
           <span class="location"><%= "#{user.city}, #{user.province}" %></span>
           <%= link_to t('.users_results.follow'), '#' %>
         </li>
