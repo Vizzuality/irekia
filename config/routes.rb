@@ -55,6 +55,8 @@ Irekia::Application.routes.draw do
   resources :tweets,       :controller => 'contents', :type => 'Tweet'
   resources :photos,       :controller => 'contents', :type => 'Photo'
 
+  resources :demo
+
   resources :comments,     :controller => 'participations', :type => 'Comment'
 
   match '/search' => 'search#show'
