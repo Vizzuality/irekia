@@ -1,3 +1,6 @@
+desc "Setup Irekia Project for first time"
+task :setup => ['irekia:setup_database', 'irekia:validate_all_not_moderated']
+
 namespace :irekia do
   desc "Setup Irekia Database"
   task :setup_database => %w(db:drop:all db:create db:migrate db:test:prepare) do
