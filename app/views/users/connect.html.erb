@@ -1,0 +1,20 @@
+<div id="connect">
+  <h1><%= t('.connect') %></h1>
+  <h4><%= t('.works_better') %></h4>
+
+  <% if @user.connected_with_facebook? %>
+  <span id="facebook"><%= t('.facebook') %></span>
+  <% else %>
+  <%= link_to t('.facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook %>
+  <% end %>
+
+  <% if @user.connected_with_twitter? %>
+  <span id="twitter"><%= t('.twitter') %></span>
+  <% else %>
+  <%= link_to t('.twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter %>
+  <% end %>
+
+  <%= link_to t('.continue'), user_path(@user) %>
+
+  <%= link_to t('.discover'), '#' %>
+</div>

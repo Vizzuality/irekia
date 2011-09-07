@@ -1,0 +1,21 @@
+<div id="sign_up">
+  <h1><%= t('.new_in_irekia') %></h1>
+  <h4><%= t('.fill_in_your_data') %></h4>
+
+  <%= form_for @user do |f| %>
+
+    <p><%= f.label :email %><br />
+    <%= f.email_field :email %></p>
+
+    <p><%= f.label :password %><br />
+    <%= f.password_field :password %></p>
+
+    <p><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %></p>
+
+    <p><%= f.check_box :terms_of_service %><%= f.label :terms_of_service, raw(t('.terms_of_service', :link => link_to(t('.terms_of_service_link'), '#'))) %></p>
+
+    <p><%= f.submit t('.sign_up') %></p>
+  <% end %>
+
+</div>

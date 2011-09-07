@@ -23,13 +23,6 @@ es:
       facebook_signin: Facebook
       twitter_signin: Twitter
 
-    sign_up:
-      new_in_irekia: ¿Nuevo en Irekia?
-      fill_in_your_data: Rellena tus datos y comienza tu participación en Irekia.
-      terms_of_service: 'Acepto las %{use_conditions_link}'
-      terms_of_service_link: Condiciones de uso
-      sign_up: Crear mi cuenta
-
     forgot_password:
       fill_in_your_email: Introduce tu email
       will_send_your_data: Y te mandaremos instrucciones para recuperar tu contraseña
@@ -477,6 +470,28 @@ es:
             one: 1 contenido encontrado
             other: '%{count} contenidos encontrados'
 
-
-
-
+  users:
+    intro:
+      new_in_irekia: ¿Nuevo en Irekia?
+      fill_in_your_data: Utiliza Facebook o Twitter para registrarte.
+      facebook_signin: Conectar con Facebook
+      twitter_signin: Conectar con Twitter
+      create_user: ¿No tienes cuenta de Facebook ni de Twitter?
+    new:
+      new_in_irekia: ¿Nuevo en Irekia?
+      fill_in_your_data: Rellena tus datos y comienza a participar.
+      terms_of_service: 'Acepto las %{link}'
+      terms_of_service_link: condiciones de uso
+      sign_up: Continuar
+    edit:
+      tell_us_more_about_you: Cuéntanos más de tí.
+      we_want_to_know_you_better: Queremos conocerte mejor.
+      continue: Continuar
+      with_this_data: ¿Qué vamos a hacer con estos datos?
+    connect:
+      connect: Conéctate.
+      works_better: Irekia funciona mucho mejor conectándola con tus redes sociales.
+      facebook: Conectar con Facebook
+      twitter: Conectar con Twitter
+      continue: Continuar
+      discover: Descubre por qué queremos que te conectes.

@@ -22,12 +22,16 @@ es:
 
     attributes:
       user:
-        name: Nombre y apellidos
+        name: Nombre
+        lastname: Apellidos
         email: Email
         password: Contraseña
-        password_confirmation: Confirmar contraseña
+        password_confirmation: Repetir contraseña
         role_id: Rol
         title_id: Título
+        province_id: Territorio
+        city_id: Municipio
+        birtday: Fecha de nacimiento
       area_user:
         area_id: Área
       image:

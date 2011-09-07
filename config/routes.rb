@@ -1,5 +1,16 @@
 Irekia::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  devise_for :users, :controllers => { :registrations => 'users', :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  resources :users do
+    collection do
+      get 'intro'
+    end
+    member do
+      get 'connect'
+    end
+  end
+
 
   namespace :admin do
     match '/' => 'admin#index'
@@ -43,7 +54,6 @@ Irekia::Application.routes.draw do
     end
   end
 
-  resources :users
   resources :proposals,    :controller => 'contents', :type => 'Proposal'
   resources :arguments,    :controller => 'contents', :type => 'Argument'
   resources :questions,    :controller => 'contents', :type => 'Question'

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
   private :setup_search
 
-  def redirect_back_or_default(*default)
+  def redirect_back_or_default(default)
     if session[:return_to].nil?
       redirect_to default
     else

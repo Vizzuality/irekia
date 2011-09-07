@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.references :title
 
       t.string   :name
+      t.string   :lastname
       t.date     :birthday
       t.text     :description
       t.boolean  :is_woman, :default => false
@@ -13,8 +14,10 @@ class CreateUsers < ActiveRecord::Migration
       t.integer  :city_id
       t.string   :city
       t.string   :postal_code
-      t.string   :facebook_token
-      t.string   :twitter_token
+      t.string   :facebook_oauth_token
+      t.string   :facebook_oauth_token_secret
+      t.string   :twitter_oauth_token
+      t.string   :twitter_oauth_token_secret
       t.datetime :last_connection
       t.boolean  :inactive, :default => false
       t.string   :locale, :default => 'es'
