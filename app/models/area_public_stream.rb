@@ -3,7 +3,7 @@ class AreaPublicStream < ActiveRecord::Base
 
   belongs_to :area
 
-  scope :this_week, lambda{ where('EXTRACT(WEEK FROM created_at) = ?', DateTime.now.cweek) }
+  scope :this_week, lambda{ where('EXTRACT(WEEK FROM published_at) = ?', DateTime.now.cweek) }
 
   scope :only_contents, where(:event_type => [:proposal, :argument, :question, :answer, :news, :poll, :pollanswer, :event, :tweet, :photo])
 

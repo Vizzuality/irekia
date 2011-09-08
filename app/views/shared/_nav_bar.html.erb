@@ -15,7 +15,7 @@
     <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete' %>
   <% else %>
     <ul class="auth">
-      <li><%= link_to t('.sign_up'), new_user_registration_path %></li>
+      <li><%= link_to t('.sign_up'), intro_users_path %></li>
       <li><%= link_to t('.sign_in'), new_user_session_path %></li>
       <li><%= render 'shared/sign_in' %></li>
     </ul>

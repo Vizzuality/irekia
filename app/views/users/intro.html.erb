@@ -1,0 +1,9 @@
+<div id="sign_up">
+  <h1><%= t('.new_in_irekia') %></h1>
+  <h4><%= t('.fill_in_your_data') %></h4>
+
+  <%= link_to t('.facebook_signin'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %>
+  <%= link_to t('.twitter_signin'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %>
+
+  <%= link_to t('.create_user'), new_user_path %>
+</div>

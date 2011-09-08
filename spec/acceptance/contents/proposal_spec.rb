@@ -4,7 +4,6 @@ require 'spec_helper'
 
 feature "Proposal page" do
   background do
-    validate_all_not_moderated
     @proposal = Proposal.first
   end
 

@@ -3,9 +3,6 @@
 require 'spec_helper'
 
 feature "Search" do
-  background do
-    validate_all_not_moderated
-  end
 
   scenario "shows a summary of search results in its main tab" do
     visit search_path(:search => {:q => 'lorem'})

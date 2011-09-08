@@ -33,7 +33,7 @@ feature "Admin section" do
 
     scenario "does not grant access to any of its sections" do
       visit admin_path
-
+puts admin_path
       current_path.should == root_path
     end
   end

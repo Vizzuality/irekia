@@ -28,12 +28,15 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-  config.before :each do
+  config.before :all do
+    DeferredGarbageCollection.start
     Delorean.time_travel_to '08/03/2011'
+    Content.validate_all_not_moderated
+    Participation.validate_all_not_moderated
   end
-
-  config.after :each do
+  
+  config.after :all do
     Delorean.back_to_the_present
+    DeferredGarbageCollection.reconsider
   end
-
 end

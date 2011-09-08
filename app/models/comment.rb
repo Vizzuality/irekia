@@ -17,6 +17,7 @@ class Comment < Participation
       :author          => {
         :id            => user.id,
         :name          => user.name,
+        :fullname      => user.fullname,
         :profile_image => user.profile_image
       },
       :published_at    => published_at,

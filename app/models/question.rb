@@ -29,13 +29,14 @@ class Question < Content
   def as_json(options = {})
     target_user = {
       :id   => question_data.try(:target_user).try(:id),
-      :name => question_data.try(:target_user).try(:name)
+      :name => question_data.try(:target_user).try(:fullname)
     } if question_data.target_user
 
     {
       :author          => {
         :id            => author.id,
         :name          => author.name,
+        :fullname      => author.fullname,
         :profile_image => author.profile_image
       },
       :published_at    => published_at,

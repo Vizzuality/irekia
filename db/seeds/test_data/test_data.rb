@@ -23,7 +23,7 @@ admin.save!
 
 print '.'.blue
 
-alberto = User.find_or_initialize_by_name_and_email('Alberto de Zárate López', 'alberto.zarate@ej-gv.es')
+alberto = User.find_or_initialize_by_name_and_lastname_and_email('Alberto', 'de Zárate López', 'alberto.zarate@ej-gv.es')
 alberto.description = String.lorem
 alberto.province = 'Vizcaya'
 alberto.city = 'Ondarroa'
@@ -36,7 +36,7 @@ alberto.save(:validate => false)
 
 print '.'.blue
 
-virginia = User.find_or_initialize_by_name_and_email('Virginia Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
+virginia = User.find_or_initialize_by_name_and_lastname_and_email('Virginia', 'Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
 virginia.is_woman = true
 virginia.description = String.lorem
 virginia.province = 'Vizcaya'
@@ -51,8 +51,10 @@ virginia.save(:validate => false)
 print '.'.blue
 
 3.times do
-  name = "#{String.random(20)} #{String.random(20)} #{String.random(20)}"
-  user = User.find_or_initialize_by_name_and_email(name, "#{name.downcase.split(' ').join('.')}@ej-gv.es")
+  name = "#{String.random(20)}"
+  lastname = "#{String.random(20)} #{String.random(20)}"
+  email = "#{name} #{lastname}".downcase.split(' ').join('.') + '@ej-gv.es'
+  user = User.find_or_initialize_by_name_and_lastname_and_email(name, lastname, email)
   user.is_woman = [true, false].sample
   user.inactive = [true, false].sample
   user.description = String.lorem
@@ -69,7 +71,7 @@ print '.'.blue
 
 end
 
-maria = User.find_or_initialize_by_name_and_email('María González Pérez', 'maria.gonzalez@gmail.com')
+maria = User.find_or_initialize_by_name_and_lastname_and_email('María', 'González Pérez', 'maria.gonzalez@gmail.com')
 maria.description = String.lorem
 maria.province = 'Vizcaya'
 maria.city = 'Ondarroa'
@@ -79,7 +81,7 @@ maria.save(:validate => false)
 
 print '.'.blue
 
-andres = User.find_or_initialize_by_name_and_email('Andrés Berzoso Rodríguez', 'andres.berzoso@gmail.com')
+andres = User.find_or_initialize_by_name_and_lastname_and_email('Andrés', 'Berzoso Rodríguez', 'andres.berzoso@gmail.com')
 andres.description = String.lorem
 andres.province = 'Vizcaya'
 andres.city = 'Ondarroa'
@@ -89,7 +91,7 @@ andres.save(:validate => false)
 
 print '.'.blue
 
-aritz = User.find_or_initialize_by_name_and_email('Aritz Aranburu', 'aritz.aranburu@gmail.com')
+aritz = User.find_or_initialize_by_name_and_lastname_and_email('Aritz', 'Aranburu', 'aritz.aranburu@gmail.com')
 aritz.description = String.lorem
 aritz.province = 'Vizcaya'
 aritz.city = 'Ondarroa'
@@ -99,11 +101,14 @@ aritz.save(:validate => false)
 
 print '.'.blue
 
-User.find_or_create_by_name :name                  => 'José López Pérez',
-                            :email                 => 'pepito@irekia.com',
-                            :password              => 'irekia1234',
-                            :password_confirmation => 'irekia1234',
-                            :role                  => Role.find_by_name('Citizen')
+pepito = User.find_or_initialize_by_name :name  => 'José López Pérez',       
+                                         :email => 'pepito@irekia.com',         
+                                         :role  => Role.find_by_name('Citizen') 
+
+pepito.password              = 'irekia1234'
+pepito.password_confirmation = 'irekia1234'
+pepito.save!
+
 
 print '.'.blue
 

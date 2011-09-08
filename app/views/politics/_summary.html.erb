@@ -1,5 +1,5 @@
 <div id="politic_summary">
-  <h1><%= @politic.name %></h1>
+  <h1><%= @politic.fullname %></h1>
   <span class="title"><%= raw t('.title', :title => get_politic_title(@politic), :areas => @politic.areas.map{|a| link_to a.name, area_path(a)}.join(',')) %></span>
   <div class="picture">
     <%= image_tag @politic.profile_image_big %>
@@ -10,20 +10,20 @@
   </div>
   <div class="actions">
     <span><%= t('.actions.this_week', :count => @politic.actions.count) %></span>
-    <%= link_to t('.actions.follow', :name => @politic.first_name) %>
+    <%= link_to t('.actions.follow', :name => @politic.name) %>
   </div>
   <div class="questions">
     <span><%= t('.questions.answered', :count => @politic.answers.count) %></span>
-    <%= link_to t('.questions.ask', :name => @politic.first_name) %>
+    <%= link_to t('.questions.ask', :name => @politic.name) %>
   </div>
   <% if user_signed_in? %>
     <div class="make_a_question">
-      <h3><%= t('.questions.ask', :name => @politic.first_name) %></h3>
+      <h3><%= t('.questions.ask', :name => @politic.name) %></h3>
       <%= form_for current_user do |form| %>
         <%= form.fields_for :questions, @question do |questions| %>
           <%= questions.fields_for :question_data, @question_data do |question_data| %>
             <%= question_data.hidden_field :user_id %>
-            <%= question_data.label :question_text, t('.make_a_question.label', :name => @politic.first_name) %>
+            <%= question_data.label :question_text, t('.make_a_question.label', :name => @politic.name) %>
             <%= question_data.text_field :question_text %>
           <% end %>
         <% end %>

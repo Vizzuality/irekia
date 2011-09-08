@@ -214,26 +214,29 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.integer  "role_id"
     t.integer  "title_id"
     t.string   "name"
+    t.string   "lastname"
     t.date     "birthday"
     t.text     "description"
-    t.boolean  "is_woman",                                                                           :default => false
+    t.boolean  "is_woman",                                                                                :default => false
     t.integer  "province_id"
     t.string   "province"
     t.integer  "city_id"
     t.string   "city"
     t.string   "postal_code"
-    t.string   "facebook_token"
-    t.string   "twitter_token"
+    t.string   "facebook_oauth_token"
+    t.string   "facebook_oauth_token_secret"
+    t.string   "twitter_oauth_token"
+    t.string   "twitter_oauth_token_secret"
     t.datetime "last_connection"
-    t.boolean  "inactive",                                                                           :default => false
-    t.string   "locale",                                                                             :default => "es"
-    t.spatial  "the_geom",               :limit => {:srid=>4326, :type=>"point", :geographic=>true}
-    t.string   "email",                                                                              :default => "",    :null => false
-    t.string   "encrypted_password",     :limit => 128,                                              :default => "",    :null => false
+    t.boolean  "inactive",                                                                                :default => false
+    t.string   "locale",                                                                                  :default => "es"
+    t.spatial  "the_geom",                    :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.string   "email",                                                                                   :default => "",    :null => false
+    t.string   "encrypted_password",          :limit => 128,                                              :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                                                      :default => 0
+    t.integer  "sign_in_count",                                                                           :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
