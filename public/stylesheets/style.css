@@ -701,6 +701,7 @@ input.xlInput {
   display:block;
   width:152px;
   padding:18px 0;
+  height:16px;
   text-align:center;
   color:#1D79B0;
   font-size:17px;
@@ -722,7 +723,9 @@ input.xlInput {
 
 #main ul.menu li.publish a {
   display:block;
-  width:152px; padding:16px 0; text-align:center;
+  width:152px; text-align:center;
+  padding:16px 0;
+  height:17px;
   color:#F10063;
   font-weight:bold;
   border:1px solid #ccc;
@@ -751,7 +754,9 @@ input.xlInput {
 
 #main ul.menu li.active a {
   display:block;
-  width:152px; padding:17px 0; text-align:center;
+  width:152px; text-align:center;
+  padding:16px 0;
+  height:18px;
   color:#fff;
   text-shadow:1px 1px 1px #0F4869;
   font-weight:bold;
