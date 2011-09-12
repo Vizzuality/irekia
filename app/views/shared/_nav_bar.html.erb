@@ -14,7 +14,7 @@
     <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => "sign_out blue_button" %>
   <% else %>
     <ul class="auth">
-      <li><%= link_to t('.sign_up'), new_user_registration_path, :class => :blue_button %></li>
+      <li><%= link_to t('.sign_up'), intro_users_path, :class => :blue_button %></li>
       <li>
       <div class="blue_button">
         <%= link_to t('.sign_in'), new_user_session_path, :class => :login %>
