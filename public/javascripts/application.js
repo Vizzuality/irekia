@@ -2,7 +2,7 @@ $(function() {
   // Preloading of popover assets
   $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
 
-  $('#navigation form').bind('ajax:success', function(evt, xhr, status){
+  $('nav form').bind('ajax:success', function(evt, xhr, status){
     $(this).find('.autocomplete').html(xhr);
   });
 
