@@ -57,7 +57,7 @@ feature "Users" do
   end
 
   context 'with facebook account' do
-    
+
     scenario "can sign-in in Irekia" do
       visit root_path
 
@@ -98,14 +98,14 @@ feature "Users" do
     scenario "can sing-out whenever he wants" do
       visit root_path
 
-      within '#navigation' do
+      within 'nav' do
         page.should_not have_link 'Regístrate'
         page.should_not have_link 'Login'
       end
 
       click_link 'Salir'
 
-      within '#navigation' do
+      within 'nav' do
         page.should have_link 'Regístrate'
         page.should have_link 'Login'
       end
