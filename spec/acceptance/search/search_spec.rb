@@ -247,8 +247,8 @@ feature "Search" do
   scenario "shows an autocomplete dialog using the main search box in application layout", :js => true do
     visit root_path
 
-    within '#navigation form' do
-      fill_in 'O busca lo que necesitas...', :with => 'lorem'
+    within 'nav form' do
+      fill_in 'search_query', :with => 'lorem'
       click_button 'search_submit'
     end
 
