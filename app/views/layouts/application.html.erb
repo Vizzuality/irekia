@@ -3,6 +3,7 @@
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
 <!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
@@ -37,14 +38,28 @@
 </head>
 
 <body>
-<%= render 'shared/header' %>
-<%= render 'shared/nav_bar' %>
 
-<div id="content">
-  <%= yield %>
-</div>
+  <%= render 'shared/sign_in' %>
 
-<%= render 'shared/footer' %>
+  <div id="container">
+    <header>
+      <%= render 'shared/header' %>
+    <nav>
+      <%= render 'shared/nav_bar' %>
+    </nav>
+    </header>
+
+    <div id="main" role="main">
+      <div class="content">
+        <%= yield %>
+      </div>
+    </div>
+
+    <footer> <%= render 'shared/footer' %>
+    </footer>
+  </div>
+
+
   <!-- JavaScript at the bottom for fast page loading -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->

@@ -8,6 +8,8 @@ es:
     publish: Publicar
     configure_your_account: Configura tu cuenta
   shared:
+    welcome:
+      configure_your_account: Configura tu cuenta
     demo:
       footer:
         legal_info: Información legal
@@ -78,6 +80,8 @@ es:
       sign_up: Regístrate
       sign_in: Login
       sign_out: Salir
+      facebook: facebook
+      twitter: twitter
 
     sign_in:
       access_irekia: Accede a Irekia
@@ -536,6 +540,13 @@ es:
             other: '%{count} contenidos encontrados'
 
   users:
+    show:
+      dashboard: Dashboard
+      your_questions: Tus preguntas
+      your_proposals: Tus propuestas
+      your_activity: Tu actividad
+      what_to_follow: ¿Qué seguir?
+      publish: Publicar
     intro:
       new_in_irekia: ¿Nuevo en Irekia?
       fill_in_your_data: Utiliza Facebook o Twitter para registrarte.
