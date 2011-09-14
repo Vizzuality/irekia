@@ -16,6 +16,7 @@ gem 'pg_search', :git => 'git://github.com/Casecommons/pg_search.git'
 group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
+  gem 'compass'
 end
 
 group :development, :test do

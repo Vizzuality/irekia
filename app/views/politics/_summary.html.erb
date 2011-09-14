@@ -1,8 +1,19 @@
+<%= render :partial => "shared/profile", :locals => {:user => @politic}  %>
+
+<%= menu [
+  { :link => (link_to t(".menu.summary"), "#"), :class => :active},
+  { :link => (link_to t(".menu.actions"), "#") },
+  { :link => (link_to t(".menu.questions"), "#") },
+  { :link => (link_to t(".menu.proposals"), "#") },
+  { :link => (link_to t(".menu.agenda"), "#") },
+  { :link => (link_to t(".menu.documents"), "#")},
+] %>
+
 <div id="politic_summary">
   <h1><%= @politic.fullname %></h1>
   <span class="title"><%= raw t('.title', :title => get_politic_title(@politic), :areas => @politic.areas.map{|a| link_to a.name, area_path(a)}.join(',')) %></span>
   <div class="picture">
-    <%= image_tag @politic.profile_image_big %>
+    <%= image_tag @politic.profile_image_big if @politic.profile_image %>
   </div>
   <div class="description">
     <h3><%= t('.description.title') %></h3>

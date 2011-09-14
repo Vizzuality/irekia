@@ -426,6 +426,13 @@ es:
       title: '%{title} de %{areas}'
       description:
         title: Quién es y qué hace
+      menu:
+        proposals: Propuestas
+        agenda: Agenda
+        actions: Acciones
+        questions: Preguntas
+        documents: Documentos
+        summary: Resumen
       actions:
         this_week:
           zero: Ninguna acción esta semana

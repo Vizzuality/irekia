@@ -1,25 +1,57 @@
-<div id="area_summary">
-  <h1><%= @area.name %></h1>
-  <%= link_to '', '#', :class => 'add_to_favorites' %>
-  <div class="description">
-    <h3><%= t('.description.title') %></h3>
-    <%= simple_format(@area.description) %>
+<!-- Article -->
+<article class="summary">
+<div class="inner">
+  <div class="content">
+    <header>
+    <h1><%= @area.name %></h1>
+    </header>
+    <div class="left">
+      <h3><%= t('.description.title') %></h3>
+
+      <div class="two_columns">
+        <%= simple_format(@area.description) %>
+        <p><%= link_to raw( "<span class='add'></span>") +"Seguir este área (122)", "#", :class => "white_button add_person add_to_favorites" %></p>
+      </div>
+
+    </div>
+    <div class="right">
+      <ul class="people">
+
+        <% @team.first(2).each do |user| %>
+          <li>
+          <%= link_to (content_tag 'div', image_tag(user.profile_image, :class => :avatar), :class => "frame"), politic_path(user) if user.profile_image %>
+          <%= link_to user.fullname, politic_path(user), :class => :name %>
+          <span><%= get_politic_title(user) %></span>
+          </li>
+        <% end %>
+
+        <% if @team.to_a.from(2).present? %>
+          <li class="more">
+          <%= link_to (image_tag 'icons/more_people_avatar.png', :class => :avatar), "#" %>
+          <%= link_to t('.team.other_members', :count => @team.to_a.from(2).length), team_area_path(@area), :class => :name %>
+          </li>
+        <% end %>
+
+      </ul>
+    </div>
   </div>
+</div>
+<%= link_to "", "#", {:class => :ribbon} %>
+<div class="t"></div><div class="f"></div>
+</article>
+<!-- /Article -->
+
+
+
+
+<article>
+<div id="area_summary">
   <div class="team">
     <h3><%= t('.team.title') %></h3>
     <ul>
-      <% @team.first(2).each do |user| %>
-        <li>
-          <%= link_to image_tag(user.profile_image), politic_path(user) if user.profile_image %>
-          <%= link_to user.fullname, politic_path(user) %>
-          <span><%= get_politic_title(user) %></span>
-        </li>
-      <% end %>
-      <% if @team.to_a.from(2).present? %>
-        <li><%= link_to t('.team.other_members', :count => @team.to_a.from(2).length), team_area_path(@area) %></li>
-      <% end %>
     </ul>
   </div>
+
   <div class="status">
     <ul>
       <li class="area">
@@ -37,3 +69,6 @@
     </ul>
   </div>
 </div>
+</article>
+
+

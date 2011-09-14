@@ -2,15 +2,15 @@
   <div class="search_box">
     <h1><%= t('.your_search_results') %></h1>
     <%= form_for :search, :url => search_path, :html => {:method => :get} do |f| %>
-      <%= f.text_field :q %>
+      <%= f.text_field :query %>
       <%= f.submit 'Search' %>
     <% end %>
   </div>
   <ul class="tabs">
     <li class="<%= current_type? %>"><%= link_to t('.tabs.summary'), search_path(:search => {:q => params[:search][:q]}) %></li>
-    <li class="<%= current_type? 'contents' %>"><%= link_to t('.tabs.contents', :count => @contents.count), search_path(:search => {:q => params[:search][:q], :type => 'contents'}) %></li>
-    <li class="<%= current_type? 'politics' %>"><%= link_to t('.tabs.politics', :count => @politics.count), search_path(:search => {:q => params[:search][:q], :type => 'politics'}) %></li>
-    <li class="<%= current_type? 'users' %>"><%= link_to t('.tabs.users',       :count => @citizens.count), search_path(:search => {:q => params[:search][:q], :type => 'users'}) %></li>
+    <li class="<%= current_type? 'contents' %>"><%= link_to t('.tabs.contents', :count => @contents.count), search_path(:search => {:query => params[:search][:query], :type => 'contents'}) %></li>
+    <li class="<%= current_type? 'politics' %>"><%= link_to t('.tabs.politics', :count => @politics.count), search_path(:search => {:query => params[:search][:query], :type => 'politics'}) %></li>
+    <li class="<%= current_type? 'users' %>"><%= link_to t('.tabs.users',       :count => @citizens.count), search_path(:search => {:query => params[:search][:query], :type => 'users'}) %></li>
   </ul>
   <% if show_contents? %>
     <div class="contents_results">

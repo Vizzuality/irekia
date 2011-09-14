@@ -5,13 +5,13 @@ require 'spec_helper'
 feature "Search" do
 
   scenario "shows a summary of search results in its main tab" do
-    visit search_path(:search => {:q => 'lorem'})
+    visit search_path(:search => {:query => 'lorem'})
 
     within '#search' do
 
       within '.search_box' do
         page.should have_css 'h1', 'Resultados de tu búsqueda'
-        page.should have_field 'search_q', :with => 'lorem'
+        page.should have_field 'search_query', :with => 'lorem'
       end
 
       within 'ul.tabs' do
@@ -79,12 +79,12 @@ feature "Search" do
   end
 
   scenario "shows a detail page for content type results" do
-    visit search_path(:search => {:q => 'lorem'})
+    visit search_path(:search => {:query => 'lorem'})
 
     within '#search' do
 
       within '.search_box' do
-        page.should have_field 'search_q', :with => 'lorem'
+        page.should have_field 'search_query', :with => 'lorem'
       end
 
       click_link '137 contenidos'
@@ -94,7 +94,7 @@ feature "Search" do
 
       within '.search_box' do
         page.should have_css 'h1', 'Resultados de tu búsqueda'
-        page.should have_field 'search_q', :with => 'lorem'
+        page.should have_field 'search_query', :with => 'lorem'
       end
 
       within 'ul.tabs' do
@@ -139,12 +139,12 @@ feature "Search" do
   end
 
   scenario "shows a detail page for politics type results" do
-    visit search_path(:search => {:q => 'lorem'})
+    visit search_path(:search => {:query => 'lorem'})
 
     within '#search' do
 
       within '.search_box' do
-        page.should have_field 'search_q', :with => 'lorem'
+        page.should have_field 'search_query', :with => 'lorem'
       end
 
       click_link '5 políticos'
@@ -154,7 +154,7 @@ feature "Search" do
 
       within '.search_box' do
         page.should have_css 'h1', 'Resultados de tu búsqueda'
-        page.should have_field 'search_q', :with => 'lorem'
+        page.should have_field 'search_query', :with => 'lorem'
       end
 
       within 'ul.tabs' do
@@ -193,12 +193,12 @@ feature "Search" do
   end
 
   scenario "shows a detail page for users type results" do
-    visit search_path(:search => {:q => 'lorem'})
+    visit search_path(:search => {:query => 'lorem'})
 
     within '#search' do
 
       within '.search_box' do
-        page.should have_field 'search_q', :with => 'lorem'
+        page.should have_field 'search_query', :with => 'lorem'
       end
 
       click_link '3 usuarios'
@@ -208,7 +208,7 @@ feature "Search" do
 
       within '.search_box' do
         page.should have_css 'h1', 'Resultados de tu búsqueda'
-        page.should have_field 'search_q', :with => 'lorem'
+        page.should have_field 'search_query', :with => 'lorem'
       end
 
       within 'ul.tabs' do
