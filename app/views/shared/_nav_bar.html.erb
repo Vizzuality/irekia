@@ -11,7 +11,10 @@
     <div class="autocomplete"></div>
   <% end %>
   <% if user_signed_in? %>
-    <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => "sign_out blue_button" %>
+    <ul class="auth">
+      <li><%= link_to "hola, #{current_user.name}", "#", :class => "login blue_button" %></li>
+      <li><%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => "sign_out blue_button" %></li>
+    </ul>
   <% else %>
     <ul class="auth">
       <li><%= link_to t('.sign_up'), intro_users_path, :class => :blue_button %></li>
