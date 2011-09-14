@@ -27,4 +27,8 @@ module ApplicationHelper
   def get_politic_title(user)
     translates_model_value(user.title, :name)[user.is_woman?? :female : :male] if user.title
   end
+
+  def menu(options)
+    render :partial => 'shared/menu', :locals => { :options => options }
+  end
 end

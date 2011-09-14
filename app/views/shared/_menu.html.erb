@@ -1,0 +1,8 @@
+<% if options %>
+  <ul class="menu">
+  <% options.each do |option| %>
+    <li<%=" class='#{option[:class]}'" if option[:class] %>><%= option[:link] %></li>
+  <% end %>
+</ul>
+<% end %>
+

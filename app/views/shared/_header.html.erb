@@ -1,15 +1,12 @@
-<div id="header">
-  <%= image_tag 'irekia_logo.jpg' %>
-  <%= image_tag 'euskadi_net_logo.jpg' %>
-  <ul>
+<div class="content">
+  <%= link_to (image_tag 'logo.png'), root_path, :class => "logo" %>
+  <%= link_to (image_tag 'euskadi_net_logo.png'), "#", :class => :net_logo %>
+
+  <ul class="user_options">
     <li><%= link_to t('.contact'), '#' %></li>
-    <li>|</li>
     <li><%= link_to t('.help'), '#' %></li>
-    <li>|</li>
     <li><%= link_to t('.map'), '#' %></li>
-    <li>|</li>
     <li><%= link_to t('.accessibility'), '#' %></li>
-    <li>|</li>
-    <li><%= link_to t('.management'), '#' %></li>
+    <li class="last"><%= link_to t('.management'), '#' %></li>
   </ul>
 </div>
