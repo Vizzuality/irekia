@@ -443,6 +443,16 @@ header nav .content ul.areas {
 #container article.welcome .inner .content p {margin:0; padding:0;line-height:15px; font-size:15px;}
 #container article.welcome .inner .content a {font-size:15px;}
 
+#container article.welcome .inner .frame{ float:left; }
+#container article.welcome .inner .frame, #container article .inner .right ul.people li .frame>img { width:67px; height:67px; }
+
+/* Rounded avatar */
+.frame{ display:inline-block; position:relative; overflow:hidden; }
+.frame, #container article .inner .right ul.people li .frame>img { width:67px; height:67px; }
+.frame, #container article .inner .right ul.people li .frame:before{ -moz-border-radius:100em; border-radius:100em; }
+.frame>img { -webkit-border-radius:100em; }
+.frame:before{ content:''; display:block; position:absolute; left:0; right:0; width:100%; height:100%; margin:-10em; border:10em solid #fff; }
+
 /* Agenda */
 #container article.agenda .inner {padding:15px 33px 38px 33px;}
 #container article.agenda .inner .content {width:929px; }
@@ -547,40 +557,9 @@ span.when, .map .infowindow ul.details li.when, #container article.agenda .inner
 #container article .inner .right ul.people li a {display:block;}
 #container article .inner .right ul.people li .avatar {float:left; margin:0 9px 0 0;}
 
-#container article .inner .right ul.people li .frame{
-  display:inline-block;
-  position:relative;
-  overflow:hidden;
-  float:left; margin:0 9px 0 0;
-}
-
-
-#container article .inner .right ul.people li .frame,
-#container article .inner .right ul.people li .frame:before{
-    -moz-border-radius:100em;
-    border-radius:100em;
-}
-
-#container article .inner .right ul.people li .frame,
-#container article .inner .right ul.people li .frame>img {
-  width:36px;
-  height:36px;
-}
-
-#container article .inner .right ul.people li .frame>img { -webkit-border-radius:100em; }
-
-#container article .inner .right ul.people li .frame:before{
-    content:'';
-    display:block;
-    position:absolute;
-    left:0;
-    right:0;
-    width:100%;
-    height:100%;
-    margin:-10em;
-    border:10em solid #fff;
-}
-
+/* rounded avatar */
+#container article .inner .right ul.people li .frame{ float:left; margin:0 9px 0 0; }
+#container article .inner .right ul.people li .frame, #container article .inner .right ul.people li .frame>img { width:36px; height:36px; }
 
 /* maps */
 #container article .inner .content .map {width:927px; height:452px; }

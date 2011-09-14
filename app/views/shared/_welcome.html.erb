@@ -1,7 +1,7 @@
 <!-- Welcome article -->
 <article class="welcome">
 <div class="inner">
-  <%= image_tag 'temp/avatar_001.png', :class => :avatar %>
+  <div class="frame"><%= image_tag 'temp/avatar_001.png', :class => :avatar %></div>
   <div class="content">
     <h1>Hola de nuevo <%= current_user.name %>,</h1>
     <p>Actualmente sigues a <%= link_to "34 políticos", "#" %> y <%= link_to "2 áreas", "#" %>.<%= link_to t('.configure_your_account'), "#", :class => :config %></p>
