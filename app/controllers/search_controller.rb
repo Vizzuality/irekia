@@ -4,9 +4,9 @@ class SearchController < ApplicationController
   def show
     @search = OpenStruct.new(params[:search])
 
-    @contents = AreaPublicStream.only_contents.search @search.q
+    @contents = AreaPublicStream.only_contents.search @search.query
 
-    users     = User.search_by_name_description_province_and_city @search.q
+    users     = User.search_by_name_description_province_and_city @search.query
     @citizens = users.citizens
     @politics = users.politics
 

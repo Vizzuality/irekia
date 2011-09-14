@@ -51,34 +51,34 @@ feature "Area's agenda page" do
 
     visit agenda_politic_path(@politic)
 
-    within '#agenda' do
+    within '.agenda' do
       page.should have_css 'h2', :text => 'Agenda de Virginia'
 
       page.should have_css 'a.view_calendar', :text => 'Ver calendario'
       page.should have_css 'a.view_map', :text => 'Ver mapa'
 
-      within '.calendar' do
+      within '.content' do
         (1..28).each do |n|
-          page.should have_css '.date .day', :text => n.to_s
-          page.should have_css '.date .month', :text => 'ago'
+          page.should have_css '.day h3', :text => n.to_s
+          page.should have_css '.month', :text => 'ago'
         end
 
-        within 'li.ago_02' do
-          page.should have_css 'div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 2
-          within 'div.detail' do
+       # within 'li.ago_02' do
+       #   page.should have_css 'div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', :count => 2
+       #   within 'div.detail' do
 
-            page.should have_css 'h4', :text => '02, agosto de 2011'
-            page.should have_css 'h3', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
-            page.should have_css '.location'#, :text => 'Unibertsitate Etorbidea, 24, University of Deusto, 48014 Bilbao, Spain'
-            page.should have_css '.time', :text => '10:00'
-          end
-        end
+       #     page.should have_css 'h4', :text => '02, agosto de 2011'
+       #     page.should have_css 'h3', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+       #     page.should have_css '.location'#, :text => 'Unibertsitate Etorbidea, 24, University of Deusto, 48014 Bilbao, Spain'
+       #     page.should have_css '.time', :text => '10:00'
+       #   end
+       # end
 
-        page.should have_css 'li.ago_04 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
-        page.should have_css 'li.ago_11 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+       # page.should have_css 'li.ago_04 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+       # page.should have_css 'li.ago_11 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
       end
 
-      page.should have_css '.pagination', :text => 'Ver calendario completo'
+      page.should have_css 'footer .right a', :text => 'Ver calendario completo'
     end
   end
 

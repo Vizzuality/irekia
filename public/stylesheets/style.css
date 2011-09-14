@@ -547,6 +547,41 @@ span.when, .map .infowindow ul.details li.when, #container article.agenda .inner
 #container article .inner .right ul.people li a {display:block;}
 #container article .inner .right ul.people li .avatar {float:left; margin:0 9px 0 0;}
 
+#container article .inner .right ul.people li .frame{
+  display:inline-block;
+  position:relative;
+  overflow:hidden;
+  float:left; margin:0 9px 0 0;
+}
+
+
+#container article .inner .right ul.people li .frame,
+#container article .inner .right ul.people li .frame:before{
+    -moz-border-radius:100em;
+    border-radius:100em;
+}
+
+#container article .inner .right ul.people li .frame,
+#container article .inner .right ul.people li .frame>img {
+  width:36px;
+  height:36px;
+}
+
+#container article .inner .right ul.people li .frame>img { -webkit-border-radius:100em; }
+
+#container article .inner .right ul.people li .frame:before{
+    content:'';
+    display:block;
+    position:absolute;
+    left:0;
+    right:0;
+    width:100%;
+    height:100%;
+    margin:-10em;
+    border:10em solid #fff;
+}
+
+
 /* maps */
 #container article .inner .content .map {width:927px; height:452px; }
 #container article .map .zoom_in{cursor:pointer;background:transparent url('/images/maps.png') no-repeat 0 0; width:30px; height:32px; margin-top:15px; margin-left:17px;}
@@ -706,6 +741,7 @@ input.xlInput {
   text-align:center;
   color:#1D79B0;
   font-size:17px;
+  font-weight:bold;
   background:#E8EBEE;
   -webkit-box-shadow: inset 0 -1px 0 #fff, inset 0 1px 10px rgba(100, 100, 100, 0.1);
   -moz-box-shadow: inset 0 -1px 0 #fff, inset 0 1px 10px rgba(100, 100, 100, 0.1);
