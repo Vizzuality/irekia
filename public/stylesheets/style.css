@@ -457,6 +457,7 @@ header nav .content ul.areas {
 #container article.agenda .inner .content ul li.day span {padding:0 0 0 5px; font-size:15px; color:#bbb; color:rgba(70, 88, 102, .3); }
 
 #container article.agenda.with_footer .inner {width:928px;}
+#container article.agenda.with_footer footer .right {right:0;}
 
 /* -- events */
 #container article.agenda .inner .content ul li.day ul.events {margin:9px 0 0 0;}
