@@ -69,10 +69,15 @@ GEM
     childprocess (0.2.2)
       ffi (~> 1.0.6)
     chronic (0.6.4)
+    chunky_png (1.2.2)
     clipboard (0.9.9)
     coderay (0.9.8)
     colored (1.2)
     columnize (0.3.4)
+    compass (0.11.5)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
     delorean (1.1.0)
       chronic
     devise (1.4.5)
@@ -92,6 +97,7 @@ GEM
       multipart-post (~> 1.1.0)
       rack (< 2, >= 1.1.0)
     ffi (1.0.9)
+    fssm (0.2.7)
     g (1.4.0)
       ruby-growl (>= 1.0.1)
     geocoder (1.0.2)
@@ -246,6 +252,7 @@ DEPENDENCIES
   capybara (~> 1.0.1)
   carrierwave (~> 0.5.5)
   colored (~> 1.2)
+  compass
   delorean
   devise (~> 1.4.2)
   escape_utils
