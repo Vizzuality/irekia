@@ -6,6 +6,7 @@ $(function() {
     $(this).find('.autocomplete').html(xhr);
   });
 
+  $('html.ie7 .frame, html.ie8 .frame').append("<div class='ieframe'></div>");
   $('.floating-login').floatingLoginPopover();
 
   $('.two_columns').columnize();
