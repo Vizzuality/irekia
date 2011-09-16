@@ -1,10 +1,10 @@
 <!-- Menu -->
-<ul class="menu">
-  <li class="active"><%= link_to t('.dashboard'), "#"  %></li>
-  <li><%= link_to t('.your_questions'), "#"  %><div class="count">1</div></li>
-  <li><%= link_to t('.your_proposals'), "#"  %><div class="count">21</div></li>
-  <li><%= link_to t('.your_activity'), "#"  %><div class="count">99</div></li>
-  <li><%= link_to t('.what_to_follow'), "#"  %></li>
-  <li class="publish last"><%= link_to t('.publicar'), "#" %></li>
-</ul>
+<%= menu ([
+  { :link => (link_to t(".dashboard"), "#"), :class => :active},
+  { :link => (link_to t(".your_questions"), "#"), :count => 1 },
+  { :link => (link_to t(".your_proposals"), "#"), :count => 21 },
+  { :link => (link_to t(".your_activity"), "#") , :count => 99},
+  { :link => (link_to t(".what_to_follow"), "#") },
+  { :link => (link_to t(".publish"), "#"), :class => "publish last"},
+]) %>
 <!-- /Menu -->
