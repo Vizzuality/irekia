@@ -11,11 +11,11 @@ IREKIA
 - Install bundler gem and install all project's gems:
 
 		$ gem install bundler && bundle install
-		
+
 - And finally, set up the database:
 
-		$ rake irekia:setup_database
-		
+		$ rake setup
+
 Notes (only for development/staging environments)
 -------------------------------------------------
 
@@ -24,6 +24,7 @@ There's a default administrator user. His credentials are:
 email:
 
 	admin@example.com
+
 password:
 
 	example
@@ -33,7 +34,7 @@ password:
 To manage the app data, go to:
 
 	http://localhost:3000/admin
-	
+
 You'll need to be signed in as administrator to be able to enter this zone. From here, you'll be able to manage users (create, edit and delete them), and moderate contents and participation.
 
 Also, you can visit:
@@ -43,7 +44,7 @@ Also, you can visit:
 or
 
 	http://localhost:3000/politics/1
-	
+
 From the politic page, you would be able to make a question to that politic.
 
 *__IMPORTANT:__*
