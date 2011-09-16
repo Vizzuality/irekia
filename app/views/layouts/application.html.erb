@@ -65,10 +65,9 @@
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false" type="text/javascript"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script src="javascripts/libs/jquery-ui-1.8.16.custom.min.js"></script>
   <script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
-    <%= javascript_include_tag 'rails', 'helpers', 'temp', 'widgets', 'map', 'plugins', 'application' %>
+    <%= javascript_include_tag 'rails', 'helpers', 'temp', 'widgets', 'map', 'plugins', 'libs/jquery-ui-1.8.16.custom.min.js', 'application' %>
 
     <!-- Change UA-XXXXX-X to be your site's ID -->
     <script>
