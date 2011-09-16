@@ -108,7 +108,7 @@ class User < ActiveRecord::Base
   pg_search_scope :search_by_name_description_province_and_city, :against => [:name, :description, :province, :city]
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
-    
+
     data        = access_token['user_info']
     credentials = access_token['credentials']
 
@@ -117,16 +117,16 @@ class User < ActiveRecord::Base
       user.facebook_oauth_token        = credentials['token']
       user.facebook_oauth_token_secret = credentials['secret']
       user.save!
-      
+
       user
     else
       user = User.new :name  => data['name'],
                       :email => data['email']
-      
+
       user.password                    = Devise.friendly_token[0,20]
       user.facebook_oauth_token        = credentials['token']
       user.facebook_oauth_token_secret = credentials['secret']
-      
+
       user
     end
   end
@@ -146,17 +146,17 @@ class User < ActiveRecord::Base
     else
       user = User.new :name  => data['name'],
                       :email => data['email']
-      
+
       user.password                   = Devise.friendly_token[0,20]
       user.twitter_oauth_token        = credentials['token']
       user.twitter_oauth_token_secret = credentials['secret']
-      
+
       user
     end
   end
 
   def fullname
-    "#{name} #{lastname}"
+    "#{name} #{lastname}".strip
   end
 
   def profile_image
@@ -220,7 +220,7 @@ class User < ActiveRecord::Base
     params.delete(:current_password)
     self.update_without_password(params)
   end
-  
+
   def connected_with_facebook?
     facebook_oauth_token.present? && facebook_oauth_token_secret.present?
   end
@@ -228,7 +228,7 @@ class User < ActiveRecord::Base
   def connected_with_twitter?
     twitter_oauth_token.present? && twitter_oauth_token_secret.present?
   end
-  
+
   def check_blank_name
     name = email if name.blank?
   end

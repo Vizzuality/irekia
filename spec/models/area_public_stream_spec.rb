@@ -34,6 +34,7 @@ describe 'Area Public Stream' do
       'author'          => {
         'id'            => user1.id,
         'name'          => 'User1',
+        'fullname'      => 'User1',
         'profile_image' => nil
       },
       'published_at'    => '2011-08-03T10:00:00Z',
@@ -52,6 +53,7 @@ describe 'Area Public Stream' do
       'author'          => {
         'id'            => user1.id,
         'name'          => 'User1',
+        'fullname'      => 'User1',
         'profile_image' => nil
       },
       'published_at'    => '2011-08-03T10:00:00Z',
