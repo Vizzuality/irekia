@@ -12,33 +12,33 @@ feature "Area's agenda page" do
 
     visit agenda_politic_path(@politic)
 
-    within '#politic_summary' do
+    within '.summary' do
       page.should have_css 'h1', :text => 'Virginia Uriarte Rodríguez'
-      page.should have_css '.title', :text => 'Consejera de Educación, Universidades e Investigación'
+      page.should have_css '.position', :text => 'Consejera de Educación, Universidades e Investigación'
       page.should have_link 'Educación, Universidades e Investigación'
-      page.should have_css '.picture img'
+      page.should have_css 'img.xlAvatar'
 
-      within '.description' do
+      within '.two_columns' do
         page.should have_css 'h3', :text => 'Quién es y qué hace'
         page.should have_css 'p',  :text => String.lorem
       end
 
-      within '.actions' do
-        page.should have_css 'span', :text => '7 acciones esta semana'
-        page.should have_link 'Sigue a Virginia'
-      end
+     # within '.actions' do
+     #   page.should have_css 'span', :text => '7 acciones esta semana'
+     #   page.should have_link 'Sigue a Virginia'
+     # end
 
-      within '.questions' do
-        page.should have_css 'span', :text => 'Una pregunta contestada'
-        page.should have_link 'Pregunta a Virginia'
-      end
+     # within '.questions' do
+     #   page.should have_css 'span', :text => 'Una pregunta contestada'
+     #   page.should have_link 'Pregunta a Virginia'
+     # end
     end
   end
 
   scenario 'shows a navigation menu with "actions" selected' do
     visit agenda_politic_path(@politic)
 
-    within '.navigation' do
+    within 'ul.menu' do
       page.should have_link 'Resumen'
       page.should have_link 'Acciones'
       page.should have_link 'Preguntas'

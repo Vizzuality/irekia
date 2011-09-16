@@ -1,0 +1,14 @@
+<%= render 'ask_question' %>
+
+<%= menu [
+  { :link => (link_to t(".menu.summary"), "#"), :class => :active},
+  { :link => (link_to t(".menu.actions"), "#") },
+  { :link => (link_to t(".menu.questions"), "#") },
+  { :link => (link_to t(".menu.proposals"), "#") },
+  { :link => (link_to t(".menu.agenda"), "#") },
+  { :link => (link_to t(".menu.documents"), "#")},
+] %>
+
+<%= render 'activity' %>
+<%#= render 'shared/proposals' %>
+<%#= render 'shared/agenda', :title => t('.agenda.title', :name => @politic.name) %>

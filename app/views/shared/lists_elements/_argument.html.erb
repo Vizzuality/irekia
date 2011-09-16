@@ -1,17 +1,20 @@
-<div class="argument">
-  <p class="title">
+<%= content_tag 'div', (image_tag data.author.profile_image), :class => :avatar if data.author.profile_image.present? %>
+<div class="content">
+  <p>
   <% if data.in_favor %>
-    <%= raw t('.title.in_favor', :proposal => content_tag(:span, data.title)) %>
+    <%= raw t('.title.in_favor', :proposal => content_tag(:strong, data.title)) %>
   <% else %>
-    <%= raw t('.title.against', :proposal => content_tag(:span, data.title)) %>
+    <%= raw t('.title.against', :proposal => content_tag(:strong, data.title)) %>
   <% end %>
   </p>
-  <%= image_tag data.author.profile_image if data.author.profile_image.present? %>
-  <span class="author">
+
+  <div class="footer">
+    <span class="published_at">
     <%= raw t('.author', :author => link_to(data.author.fullname, user_path(data.author.id)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
-  </span>
-  &middot;
-  <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#' %>
-  &middot;
-  <%= link_to t('shared.lists_elements.share'), '#' %>
+    </span>
+    &middot;
+    <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#', :class => "comment-count" %>
+    &middot;
+    <%= link_to t('shared.lists_elements.share'), '#' %>
+  </div>
 </div>

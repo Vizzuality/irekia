@@ -12,26 +12,26 @@ feature "Politic's home" do
 
     visit politic_path(@politic)
 
-    within '#politic_summary' do
+    within '.summary' do
       page.should have_css 'h1', :text => 'Virginia Uriarte Rodríguez'
-      page.should have_css '.title', :text => 'Consejera de Educación, Universidades e Investigación'
+      page.should have_css '.position', :text => 'Consejera de Educación, Universidades e Investigación'
       page.should have_link 'Educación, Universidades e Investigación'
-      page.should have_css '.picture img'
+      page.should have_css 'img.xlAvatar'
 
-      within '.description' do
+      within '.two_columns' do
         page.should have_css 'h3', :text => 'Quién es y qué hace'
         page.should have_css 'p',  :text => String.lorem
       end
 
-      within '.actions' do
-        page.should have_css 'span', :text => '7 acciones esta semana'
-        page.should have_link 'Sigue a Virginia'
-      end
+     # within '.actions' do
+     #   page.should have_css 'span', :text => '7 acciones esta semana'
+     #   page.should have_link /Seguir a Virginia (.*)/
+     # end
 
-      within '.questions' do
-        page.should have_css 'span', :text => 'Una pregunta contestada'
-        page.should have_link 'Pregunta a Virginia'
-      end
+     # within '.questions' do
+     #   page.should have_css 'span', :text => 'Una pregunta contestada'
+     #   page.should have_link 'Pregunta a Virginia'
+     # end
     end
   end
 
@@ -43,10 +43,12 @@ feature "Politic's home" do
     scenario "allows to send a question to this politic" do
       visit politic_path(@politic)
 
-      within '#politic_summary' do
-        within '.make_a_question' do
-          page.should have_css 'h3', :text => 'Pregunta a Virginia'
-          fill_in 'Haz una pregunta a Virginia...', :with => 'Test question'
+      within '.summary' do
+        page.should have_css 'h3', :text => 'Pregunta a Virginia'
+        within 'form.make_question' do
+          page.should have_css 'span.holder', :text => 'Haz una pregunta a Virginia...'
+
+          fill_in 'ask-question', :with => 'Test question'
           expect{ click_button 'Preguntar'}.to change{ Question.count }.by(1)
         end
       end
@@ -61,46 +63,45 @@ feature "Politic's home" do
     scenario "doesn't allow to send a question to this politic" do
       visit politic_path(@politic)
 
-      within '#politic_summary' do
-        page.should have_no_css '.make_a_question'
+      within '.summary' do
+        page.should have_no_css 'form.make_question'
       end
 
     end
   end
 
-
   scenario 'shows a list of last actions related to this politic' do
 
     visit politic_path(@politic)
 
-    within '#last_actions' do
+    within '.last_actions' do
       page.should have_css 'h2', :text => 'Últimas acciones'
 
       page.should have_css 'a.more_recent', :text => 'Más recientes'
       page.should have_css 'a.more_polemic', :text => 'Más polémicas'
 
-      within 'ul li.action div.answer' do
-        page.should have_css 'p.title', :text => 'Contestando a "Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
-        page.should have_css 'p.answer', :text => '"Hola María, en realidad no va a haber ayuda este año. El recorte este"'
+      within '.action.answer' do
+        page.should have_css 'p', :text => 'Contestando a "Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
+        page.should have_css 'p.excerpt', :text => '"Hola María, en realidad no va a haber ayuda este año. El recorte este"'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => 'Virginia Uriarte Rodríguez contesto hace menos de 1 minuto'
-        page.should have_css 'span.author a', :text => 'Virginia Uriarte Rodríguez'
-        page.should have_css 'a', :text => '1 comentario'
-        page.should have_css 'a', :text => 'Compartir'
+        page.should have_css '.footer span.published_at', :text => 'Virginia Uriarte Rodríguez contesto hace menos de 1 minuto'
+        page.should have_css '.footer span.published_at a', :text => 'Virginia Uriarte Rodríguez'
+        page.should have_css '.footer a.comment-count', :text => '1 comentario'
+        page.should have_css '.footer a', :text => 'Compartir'
       end
 
-      within 'ul li.action div.news' do
-        page.should have_css 'p.title', :text => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
-        page.should have_css 'p.news', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d...'
+      within '.action.news' do
+        page.should have_css 'p', :text => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
+        page.should have_css 'p.excerpt', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d...'
 
-        page.should have_no_css 'img'
-        page.should have_css 'span.author', :text => 'Publicado hace menos de 1 minuto'
-        page.should have_css 'a', :text => '2 comentarios'
-        page.should have_css 'a', :text => 'Compartir'
+        page.should have_css 'img'
+        page.should have_css '.footer span.published_at', :text => 'Publicado hace menos de 1 minuto'
+        page.should have_css '.footer a.comment-count', :text => '2 comentarios'
+        page.should have_css '.footer a', :text => 'Compartir'
       end
 
-      within '.content_type_filters' do
+      within 'ul.selector' do
         page.should have_link 'Todos los tipos'
         page.should have_link 'Noticias'
         page.should have_link 'Actividad de los políticos'
@@ -110,7 +111,7 @@ feature "Politic's home" do
         page.should have_link 'Vídeos'
       end
 
-      page.should have_css '.pagination', :text => 'Ver más acciones'
+      page.should have_css 'footer .right a', :text => 'ver más acciones'
     end
   end
 
@@ -118,30 +119,30 @@ feature "Politic's home" do
 
     visit politic_path(@politic)
 
-    within '#questions' do
+    within '.questions' do
       page.should have_css 'h2', :text => 'Preguntas de los ciudadanos'
 
       page.should have_css 'a.more_recent', :text => 'Más recientes'
       page.should have_css 'a.more_polemic', :text => 'Más polémicas'
 
-      within 'ul li.action:first-child div.question' do
-        page.should have_css 'p.title', :text => 'Pregunta para Virginia Uriarte Rodríguez...'
-        page.should have_css 'p.question', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
+      within '.action.question:first-child' do
+        #page.should have_css 'p', :text => 'Pregunta para Virginia Uriarte Rodríguez...'
+        page.should have_css 'p.excerpt', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
-        page.should have_css 'span.author a', :text => 'María González Pérez'
-        page.should have_css 'a', :text => 'Aún no contestada'
-        page.should have_css 'a', :text => '1 comentario'
+        page.should have_css '.footer span.published_at', :text => 'María González Pérez hace menos de 1 minuto'
+        page.should have_css '.footer span.published_at a', :text => 'María González Pérez'
+        page.should have_css '.footer .not_answered', :text => 'Aún no contestada'
+        page.should have_css '.footer a.comment-count', :text => '1 comentario'
       end
 
-      within '.content_type_filters' do
+      within 'ul.selector' do
         page.should have_link 'Todas'
         page.should have_link 'Contestadas'
-        page.should have_link 'Haz una pregunta'
       end
+      page.should have_link 'Haz una pregunta'
 
-      page.should have_css '.pagination', :text => 'Ver más preguntas'
+      page.should have_css 'footer .right a', :text => 'ver más preguntas'
     end
   end
 
@@ -173,7 +174,7 @@ feature "Politic's home" do
         page.should have_link 'Crea una propuesta'
       end
 
-      page.should have_css '.pagination', :text => 'Ver más propuestas'
+      page.should have_css '.pagination', :text => 'ver más propuestas'
     end
   end
 

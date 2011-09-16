@@ -1,0 +1,80 @@
+<!-- <div id="agenda">
+  <h2><%= link_to title, link_for_agenda %></h2>
+  <ul class="main_filters">
+    <li>
+      <%= link_to t('.view_calendar'), '#', :class => 'view_calendar' %>
+    </li>
+    <li>
+      <%= link_to t('.view_map'), '#', :class => 'view_map' %>
+    </li>
+  </ul>
+  <ul class="calendar">
+    <% @days.to_a.each do |day| %>
+      <li class="<%= l day, :format => '%b_%d' %>">
+        <div class="date">
+          <span class="day"><%= day.day %></span>
+          <span class="month"><%= l day, :format => '%b' %></span>
+        </div>
+        <%= raw agenda_for_day(@agenda, day) %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="pagination">
+    <%= link_to t('.more'), link_for_agenda %>
+  </div>
+</div>
+-->
+
+
+
+<!-- Agenda -->
+<article class="agenda with_footer">
+<div class="inner">
+  <header>
+  <div class="left"><h2><%= title %></h2></div>
+  <div class="right">
+
+    <ul class="switch">
+      <li class="selected"><%= link_to "Ver calendario", "#", :class => :view_calendar %></li>
+      <li><%= link_to "Ver mapa", "#", :class => :view_map %></li>
+    </ul>
+
+  </div>
+  </header>
+  <div class="content">
+    <ul>
+      <% i = 0 %>
+      <% today = Date.today.day %>
+
+      <% @days.to_a.each do |day| %>
+        <% i = i.succ %>
+        <% day_classes = [] %>
+
+        <% day_classes.push((l day, :format => '%b_%d')) %>
+        <% day_classes.push('disabled') if day.day < today %>
+        <% day_classes.push('today') if day.day == today %>
+        <% day_classes.push('last') if i % 7 == 0 %>
+
+        <li class="day <%= day_classes.join(' ') %>">
+        <h3 class="day"><%= day.day %></h3>
+        <span class="month"><%= l day, :format => '%b' %></span>
+        <%#= raw agenda_for_day(@agenda, day) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<footer>
+<div class="separator"></div>
+<div class="inner">
+
+  <div class="right">
+    <%= link_to t(".more"), "#", :class => "right right_arrow" %>
+  </div>
+
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>
+<!-- Agenda -->

@@ -1,11 +1,11 @@
 <%= render 'summary' %>
 
 <%= menu [
-  { :link => (link_to t(".menu.summary"), "#"), :class => :active},
-  { :link => (link_to t(".menu.actions"), "#") },
-  { :link => (link_to t(".menu.questions"), "#") },
-  { :link => (link_to t(".menu.proposals"), "#") },
-  { :link => (link_to t(".menu.agenda"), "#") },
+  { :link => (link_to t(".menu.summary"), area_path(@area)), :class => :active},
+  { :link => (link_to t(".menu.actions"), actions_area_path(@area)) },
+  { :link => (link_to t(".menu.questions"), questions_area_path(@area)) },
+  { :link => (link_to t(".menu.proposals"), proposals_area_path(@area)) },
+  { :link => (link_to t(".menu.agenda"), agenda_area_path(@area)) },
   { :link => (link_to t(".menu.documents"), "#")},
 ] %>
 

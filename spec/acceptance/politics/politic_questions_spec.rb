@@ -12,26 +12,26 @@ feature "Area's questions page" do
 
     visit questions_politic_path(@politic)
 
-    within '#politic_summary' do
+    within '.summary' do
       page.should have_css 'h1', :text => 'Virginia Uriarte Rodríguez'
-      page.should have_css '.title', :text => 'Consejera de Educación, Universidades e Investigación'
+      page.should have_css '.position', :text => 'Consejera de Educación, Universidades e Investigación'
       page.should have_link 'Educación, Universidades e Investigación'
-      page.should have_css '.picture img'
+      page.should have_css 'img.xlAvatar'
 
-      within '.description' do
+      within '.two_columns' do
         page.should have_css 'h3', :text => 'Quién es y qué hace'
         page.should have_css 'p',  :text => String.lorem
       end
 
-      within '.actions' do
-        page.should have_css 'span', :text => '7 acciones esta semana'
-        page.should have_link 'Sigue a Virginia'
-      end
+     # within '.actions' do
+     #   page.should have_css 'span', :text => '7 acciones esta semana'
+     #   page.should have_link 'Sigue a Virginia'
+     # end
 
-      within '.questions' do
-        page.should have_css 'span', :text => 'Una pregunta contestada'
-        page.should have_link 'Pregunta a Virginia'
-      end
+     # within '.questions' do
+     #   page.should have_css 'span', :text => 'Una pregunta contestada'
+     #   page.should have_link 'Pregunta a Virginia'
+     # end
     end
   end
 
@@ -43,13 +43,13 @@ feature "Area's questions page" do
     scenario "allows to send a question to this politic" do
       visit questions_politic_path(@politic)
 
-      within '#questions' do
+      within '.summary' do
+        page.should have_css 'h3', :text => 'Pregunta a Virginia'
+        within 'form.make_question' do
+          page.should have_css 'span.holder', :text => 'Haz una pregunta a Virginia...'
 
-        within '.send_a_question' do
-          page.should have_css 'h1', :text => 'Haz una pregunta'
-          page.should have_content 'Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo'
-          fill_in 'Tu pregunta', :with => 'Test question'
-          expect{ click_button 'Enviar pregunta'}.to change{ Question.count }.by(1)
+          fill_in 'ask-question', :with => 'Test question'
+          expect{ click_button 'Preguntar'}.to change{ Question.count }.by(1)
         end
       end
 
@@ -63,7 +63,7 @@ feature "Area's questions page" do
     scenario "doesn't allow to send a question to this politic" do
       visit questions_politic_path(@politic)
 
-      within '#questions' do
+      within '.questions' do
         page.should have_no_css '.send_a_question'
       end
 
@@ -73,7 +73,7 @@ feature "Area's questions page" do
   scenario 'shows a navigation menu with "actions" selected' do
     visit questions_politic_path(@politic)
 
-    within '.navigation' do
+    within 'ul.menu' do
       page.should have_link 'Resumen'
       page.should have_link 'Acciones'
       page.should have_link 'Preguntas', :class => 'selected'
@@ -86,30 +86,30 @@ feature "Area's questions page" do
 
     visit questions_politic_path(@politic)
 
-    within '#questions' do
+    within '.questions' do
       page.should have_css 'h2', :text => 'Preguntas de los ciudadanos'
 
       page.should have_css 'a.more_recent', :text => 'Más recientes'
       page.should have_css 'a.more_polemic', :text => 'Más polémicas'
 
-      within 'ul li.action:first-child div.question' do
-        page.should have_css 'p.title', :text => 'Pregunta para Virginia Uriarte Rodríguez...'
-        page.should have_css 'p.question', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
+      within '.action.question:first-child' do
+        #page.should have_css 'p', :text => 'Pregunta para Virginia Uriarte Rodríguez...'
+        page.should have_css 'p.excerpt', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
-        page.should have_css 'span.author a', :text => 'María González Pérez'
-        page.should have_css 'a', :text => 'Aún no contestada'
-        page.should have_css 'a', :text => '1 comentario'
+        page.should have_css '.footer span.published_at', :text => 'María González Pérez hace menos de 1 minuto'
+        page.should have_css '.footer span.published_at a', :text => 'María González Pérez'
+        page.should have_css '.footer .not_answered', :text => 'Aún no contestada'
+        page.should have_css '.footer a.comment-count', :text => '1 comentario'
       end
 
-      within '.content_type_filters' do
+      within 'ul.selector' do
         page.should have_link 'Todas'
         page.should have_link 'Contestadas'
-        page.should have_link 'Haz una pregunta'
       end
+        page.should have_link 'Haz una pregunta'
 
-      page.should have_css '.pagination', :text => 'Ver más preguntas'
+      page.should have_css 'footer .right a', :text => 'ver más preguntas'
     end
   end
 

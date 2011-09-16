@@ -1,0 +1,38 @@
+<div class="activity">
+
+  <%= link_to (image_tag data.author.profile_image), "#" if data.author.profile_image.present? %>
+  <div class="content">
+    <p>Contestando a <strong><%= %Q{"#{data.question_text}"} %></strong></p>
+
+    <% if data.is_a?(Question) %>
+      <% if data.answer.present? %>
+        <p class="excerpt">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..."
+        <%= link_to t(".read-more"), question_path(data.id)%>
+        </p>
+      <% end %>
+    <% end %>
+
+
+
+    <div class="footer">
+      <%= raw t('.author', :author => link_to(data.author.fullname, user_path(data.author.id)), :time => distance_of_time_in_words_to_now(data.published_at)) %> &middot;
+
+      <% if data.is_a?(Question) %>
+        <% if data.answer.present? %>
+          <span class="answered"><%= t('.answered', :time => distance_of_time_in_words_to_now(data.answer.updated_at)) %></span>
+        <% else %>
+          <span class="not_answered"><%= t('.not_answered') %></span>
+        <% end %>
+
+        &middot;
+
+        <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#' %>
+      <% else %>
+        <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#' %>
+        &middot;
+        <%= link_to t('shared.lists_elements.share'), '#' %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

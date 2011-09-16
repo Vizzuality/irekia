@@ -1,15 +1,56 @@
-<%= render :partial => "shared/profile", :locals => {:user => @politic}  %>
+<article class="profile summary with_footer">
+<div class="inner">
+  <header>
+  <h1><%= @politic.fullname %></h1>
+  <p class="position">Consejera de <%= link_to "Educación, Universidades e Investigación", "#" %></p>
+  </header>
 
-<%= menu [
-  { :link => (link_to t(".menu.summary"), "#"), :class => :active},
-  { :link => (link_to t(".menu.actions"), "#") },
-  { :link => (link_to t(".menu.questions"), "#") },
-  { :link => (link_to t(".menu.proposals"), "#") },
-  { :link => (link_to t(".menu.agenda"), "#") },
-  { :link => (link_to t(".menu.documents"), "#")},
-] %>
+  <div class="left">
+    <div class="two_columns">
+      <h3>Quién es y qué hace</h3>
+      <%= simple_format(@politic.description) %>
+      <%= link_to "Leer más", "#" %></p>
+      <p><%=link_to raw( "<span class='add'></span>") +"Seguir a #{@politic.name} (24)", "#", :class => "white_button add_person" %></p>
+    </div>
+  </div>
+</div>
 
-<div id="politic_summary">
+<footer>
+<div class="separator"></div>
+<div class="inner with_avatar with_question">
+
+  <%= image_tag 'temp/avatar_big.png', :class => :xlAvatar %>
+  <% if user_signed_in? %>
+  <h3>Pregunta a <%= @politic.name %></h3>
+
+  <%= form_for current_user, :html => {:class => :make_question } do |form| %>
+    <%= form.fields_for :questions, @question  do |questions| %>
+
+      <div id="counter-124" class="input-counter">
+        <span class="counter">140</span>
+        <%= questions.fields_for :question_data, @question_data do |question_data| %>
+          <%= question_data.hidden_field :user_id %>
+          <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
+        <% end %>
+
+        <span class="holder large">Haz una pregunta a <%= @politic.name %>...</span>
+      </div>
+
+      <input type="submit" value="Preguntar" id="submit-counter-124" class="disabled white_button" disabled="disabled" />
+    <% end %>
+  <% end %>
+  <% end %>
+
+</div>
+</footer>
+<%= link_to "", "#", {:class => :ribbon} %>
+<div class="t"></div><div class="f"></div>
+</article>
+
+
+
+
+<!-- <div id="politic_summary">
   <h1><%= @politic.fullname %></h1>
   <span class="title"><%= raw t('.title', :title => get_politic_title(@politic), :areas => @politic.areas.map{|a| link_to a.name, area_path(a)}.join(',')) %></span>
   <div class="picture">
@@ -56,3 +97,21 @@
     <% end %>
   <% end %>
 </div>
+-->
+
+
+<% if user_signed_in? %>
+  <% if flash[:notice] %>
+    <% if flash[:notice] == :question_created %>
+      <div class="question_sent">
+        <p class="title"><%= t('.question_sent.success') %></p>
+        <p><%= raw t('.question_sent.waiting_moderation', :review_link => link_to(t('.question_sent.review_link'), '#')) %></p>
+      </div>
+    <% elsif flash[:notice] == :question_failed %>
+      <div class="question_failed">
+        <p class="title"><%= t('.question_sent.fail') %></p>
+        <p></p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

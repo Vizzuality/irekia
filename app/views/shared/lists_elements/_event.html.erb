@@ -7,7 +7,7 @@
     <%= raw t('.author', :author => link_to(data.author.fullname, user_path(data.author.id)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
   </span>
   &middot;
-  <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#' %>
+  <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#', :class => "comment-count" %>
   &middot;
   <%= link_to t('shared.lists_elements.share'), '#' %>
 </div>
