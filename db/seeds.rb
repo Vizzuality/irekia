@@ -8,8 +8,12 @@ end
 if Rails.env.development? || Rails.env.test? || Rails.env.staging?
   puts ''
   puts '- Loading test data'.red
-  Delorean.time_travel_to '08/03/2011' do
-    load Rails.root.join('db', 'seeds', 'test_data', 'test_data.rb')
-  end
+
+  Delorean.time_travel_to '08/03/2011' if Rails.env.test?
+
+  load Rails.root.join('db', 'seeds', 'test_data', 'test_data.rb')
+
+  Delorean.back_to_the_present if Rails.env.test?
+
   puts ''
 end
