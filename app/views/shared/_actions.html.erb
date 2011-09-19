@@ -11,7 +11,7 @@
   </ul>
   <ul>
     <% @actions.first(4).each do |action| %>
-      <li class="action">
+      <li>
         <%= render "shared/lists_elements/#{action.event_type}", :data => action.item %>
       </li>
     <% end %>
@@ -48,13 +48,15 @@
   </header>
 
   <div class="left">
-
-    <% @actions.first(4).each do |action| %>
-      <div class="action <%= action.event_type %>">
+    <% if @actions %>
+      <ul>
+      <% @actions.first(4).each do |action| %>
+        <li class="<%= action.event_type %>">
         <%= render "shared/lists_elements/#{action.event_type}", :data => action.item %>
-      </div>
+        </li>
+      <% end %>
+    </ul>
     <% end %>
-
   </div>
 
   <div class="right">

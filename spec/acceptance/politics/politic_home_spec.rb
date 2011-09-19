@@ -80,7 +80,7 @@ feature "Politic's home" do
       page.should have_css 'a.more_recent', :text => 'Más recientes'
       page.should have_css 'a.more_polemic', :text => 'Más polémicas'
 
-      within '.action.answer' do
+      within '.answer' do
         page.should have_css 'p', :text => 'Contestando a "Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
         page.should have_css 'p.excerpt', :text => '"Hola María, en realidad no va a haber ayuda este año. El recorte este"'
 
@@ -91,7 +91,7 @@ feature "Politic's home" do
         page.should have_css '.footer a', :text => 'Compartir'
       end
 
-      within '.action.news' do
+      within '.news' do
         page.should have_css 'p', :text => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
         page.should have_css 'p.excerpt', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d...'
 
@@ -125,7 +125,7 @@ feature "Politic's home" do
       page.should have_css 'a.more_recent', :text => 'Más recientes'
       page.should have_css 'a.more_polemic', :text => 'Más polémicas'
 
-      within '.action.question:first-child' do
+      within '.question:first-child' do
         #page.should have_css 'p', :text => 'Pregunta para Virginia Uriarte Rodríguez...'
         page.should have_css 'p.excerpt', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
 

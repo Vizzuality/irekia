@@ -92,7 +92,7 @@ feature "Area's questions page" do
       page.should have_css 'a.more_recent', :text => 'Más recientes'
       page.should have_css 'a.more_polemic', :text => 'Más polémicas'
 
-      within '.action.question:first-child' do
+      within '.question:first-child' do
         #page.should have_css 'p', :text => 'Pregunta para Virginia Uriarte Rodríguez...'
         page.should have_css 'p.excerpt', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
 

@@ -58,7 +58,7 @@ feature "Area's actions page" do
       page.should have_css 'a.more_recent', :text => 'Más recientes'
       page.should have_css 'a.more_polemic', :text => 'Más polémicas'
 
-      within '.action.argument' do
+      within '.argument' do
         page.should have_css 'p', :text => 'A favor de la propuesta "Actualizar la información publicada sobre las ayudas a familias numerosas"'
 
         page.should have_css 'img'
@@ -68,7 +68,7 @@ feature "Area's actions page" do
         page.should have_css '.footer a', :text => 'Compartir'
       end
 
-      within '.action.answer' do
+      within '.answer' do
         page.should have_css 'p', :text => 'Contestando a "Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
         page.should have_css 'p.excerpt', :text => '"Hola María, en realidad no va a haber ayuda este año. El recorte este"'
 
@@ -79,7 +79,7 @@ feature "Area's actions page" do
         page.should have_css '.footer a', :text => 'Compartir'
       end
 
-      within '.action.news' do
+      within '.news' do
         page.should have_css 'p', :text => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
         page.should have_css 'p.excerpt', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d...'
 
@@ -89,7 +89,7 @@ feature "Area's actions page" do
         page.should have_css '.footer a', :text => 'Compartir'
       end
 
-      within '.action.question' do
+      within '.question' do
         page.should have_css 'p', :text => 'Pregunta para el área...'
         page.should have_css 'p.excerpt', :text => '"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
 

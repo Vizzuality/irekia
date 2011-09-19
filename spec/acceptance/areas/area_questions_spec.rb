@@ -59,7 +59,7 @@ feature "Area's questions page" do
       page.should have_css 'a.more_recent', :text => 'Más recientes'
       page.should have_css 'a.more_polemic', :text => 'Más polémicas'
 
-      within '.action.question' do
+      within '.question' do
         #page.should have_css 'p', :text => 'Pregunta para Virginia Uriarte Rodríguez...'
         page.should have_css 'p.excerpt', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
 
@@ -70,7 +70,7 @@ feature "Area's questions page" do
         page.should have_css '.footer a.comment-count', :text => '1 comentario'
       end
 
-      within '.action.question:last-child' do
+      within '.question:last-child' do
         page.should have_css 'p', :text => 'Pregunta para el área...'
         page.should have_css 'p.excerpt', :text => '"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
 

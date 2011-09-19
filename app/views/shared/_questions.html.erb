@@ -17,7 +17,7 @@
   </ul>
   <ul>
     <% @questions.first(4).each do |question| %>
-      <li class="action">
+      <li>
         <%= render 'shared/lists_elements/question', :data => question %>
       </li>
     <% end %>
@@ -77,7 +77,7 @@
   <div class="left">
 
     <% @questions.first(4).each do |question| %>
-      <div class="action question">
+      <div class="question">
         <%= render 'shared/lists_elements/question', :data => question %>
       </div>
     <% end %>
