@@ -1,68 +1,65 @@
-<div id="autocomplete">
-  <ul class="results">
-    <li class="politicians"><h3>Políticos</h3><a href="#">23 encontrados</a></li>
-    <li class="areas"><h3>Áreas</h3> </li>
-    <li class="users"><h3>Usuarios</h3><a href="#">213 encontrados</a></li>
-    <li class="contents"><h3>Contenidos</h3></li>
-  </ul>
-
-  <ul class="summary">
-    <li class="politicians">
-    <ul>
-      <li><a href="#" class="avatar medium"><img src="/images/temp/avatar_002.png" /></a><a href="#" class="name">Virginia Santana Rodriguez</a><span class="position">Consejera de salud</span> </li>
-      <li><a href="#" class="avatar medium"><img src="/images/temp/avatar_003.png" /></a><a href="#" class="name">Virginia Santana Rodriguez</a><span class="position">Consejera de salud</span></li>
-    </ul>
-
-    </li>
-    <li class="areas">
-    <ul>
-      <li><a href="#" class="avatar medium"><img src="/images/temp/avatar_004.png" /></a><a href="#" class="name">Virginia Santana Rodriguez</a><span class="position">Consejera de salud</span> </li>
-    </ul>
-
-    </li>
-    <li class="users">
-    <ul>
-      <li><a href="#" class="avatar medium"><img src="/images/temp/avatar_005.png" /></a><a href="#" class="name">Virginia Santana Rodriguez</a><span class="position">Consejera de salud</span> </li>
-      <li><a href="#" class="avatar medium"><img src="/images/temp/avatar_006.png" /></a><a href="#" class="name">Virginia Santana Rodriguez</a><span class="position">Consejera de salud</span></li>
-    </ul>
-    </li>
-    <li class="contents">
-    <a href="#">23 contenidos encontrados</a>
-    </li>
-  </ul>
-</div>
-
-
-
-<article class="broken-bottom">
+<article class="activity with_footer">
 <div class="inner">
-  <div class="content"></div>
+  <div class="left">
+
+    <div class="quotation">
+      <blockquote>
+        <span class="quote"> Saliendo para el Euskal Encounter. Muchas ganas de asistir la charla de @alorza sobre Open Data.</span>
+        <span class="bqstart">&#8220;</span> <span class="bqend">&#8221;</span>
+      </blockquote>
+      <div class="author"><a href="#">Nagore de los Rios</a> hace 3 días</div>
+    </div>
+
+
+
+    <div class="comments">
+      <div class="count">2 comentarios</div>
+      <ul>
+        <li>
+        <a href="#"><div class="avatar"><img alt="Avatar_002" src="/images/temp/avatar_002.png?1316444070" /></div></a>
+        <blockquote>¿A quién me tengo que dirigir para obtener mas información sobre las ayudas para estudiantes universitarios?</blockquote>
+        <div class="footer"><a href="#">Virginia Uriarte</a> contestó hace 2 horas</div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+
+
 </div>
 
+<footer>
+<div class="separator"></div>
+<div class="inner">
+
+  <div class="left">
+    <%= link_to "volver", "#", :class => :left_arrow %>
+  </div>
+
+</div>
+</footer>
 <div class="t"></div><div class="f"></div>
 </article>
 
-<article class="broken-top">
-<div class="inner">
-  <div class="content"></div>
-</div>
 
-<div class="t"></div><div class="f"></div>
-</article>
 
-<%= render :partial => "welcome" %>
-<%= render :partial => "proposals" %>
-<%#= render :partial => "floating_question" %>
-<%= render :partial => "micro_box" %>
-<%= render :partial => "password_reset" %>
-<%= render :partial => "floating_login" %>
-<%= render :partial => "questions" %>
-<%= render :partial => "map" %>
-<%= render :partial => "agenda" %>
-<%= render :partial => "intro" %>
-<%= render :partial => "menu" %>
-<%= render :partial => "activity" %>
-<%= render :partial => "suggestions" %>
-<%= render :partial => "profile" %>
-<%= render :partial => "static" %>
+<%= render "autocomplete" %>
+<%= render "broken" %>
+<%= render "welcome" %>
+<%= render "proposals" %>
+<%= render "micro_box" %>
+<%= render "password_reset" %>
+<%= render "floating_login" %>
+<%= render "questions" %>
+<%= render "map" %>
+<%= render "agenda" %>
+<%= render "intro" %>
+<%= render "menu" %>
+<%= render "activity" %>
+<%= render "suggestions" %>
+<%= render "profile" %>
+<%= render "static" %>
 
+
+<%#= render "floating_question" %>

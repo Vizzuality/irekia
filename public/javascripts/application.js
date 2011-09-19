@@ -2,18 +2,27 @@ $(function() {
   // Preloading of popover assets
 
 
-  $(".view_calendar").click(function(e){
-    e.preventDefault();
-    $(".map_agenda").scrollTo("-=1024px", 500);
-    $("article.agenda .map_agenda").animate({height:$(".prueba .agenda").height()}, 500);
-  });
+  //$("article.agenda .map_agenda").animate({height:$(".map_agenda .agenda").height()}, 500);
 
-  $(".view_map").click(function(e){
-    e.preventDefault();
-    $(".map_agenda").scrollTo("+=1024px", 500);
-    console.log($(".map").height());
-    $("article.agenda .map_agenda").animate({height:$(".prueba .map").height()}, 500);
-  });
+  //$(".view_calendar").click(function(e){
+  //  e.preventDefault();
+
+  //  $(".map_agenda").css("position", "none");
+  //  $(this).parent().toggleClass("selected");
+  //  $(".view_calendar").parent().toggleClass("selected");
+  //  $(".map_agenda").scrollTo("-=1024px", {axis: 'x', easing:'easeInOutExpo', duration:500});
+  //  $("article.agenda .map_agenda").animate({height:$(".map_agenda .agenda").height()}, 500);
+  //});
+
+  //$(".view_map").click(function(e){
+  //  $(".map_agenda").css("position", "relative");
+  //  e.preventDefault();
+  //  $(this).parent().toggleClass("selected");
+  //  $(".view_calendar").parent().toggleClass("selected");
+  //  $(".map_agenda").scrollTo("+=1024px", {axis: 'x', easing:'easeInOutExpo', duration:500});
+  //  console.log($(".map").height());
+  //  $("article.agenda .map_agenda").animate({height:$(".map_agenda .map").height()}, 500);
+  //});
 
   $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
 
