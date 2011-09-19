@@ -70,7 +70,9 @@ class User < ActiveRecord::Base
   has_many :actions,
            :class_name => 'UserPublicStream',
            :order => 'published_at desc'
-  has_many :user_private_streams
+  has_many :followings_actions,
+           :class_name => 'UserPrivateStream',
+           :order      => 'published_at desc'
 
   has_many :profile_pictures,
            :class_name => 'Image'

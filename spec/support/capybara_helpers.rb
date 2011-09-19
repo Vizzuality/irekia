@@ -5,17 +5,21 @@ module CapybaraHelpers
     save_and_open_page
   end
 
-  def login_as_regular_user
-    visit root_path
+  def login_as(user)
+     visit root_path
 
     click_link 'Login'
 
     within '#sign_in' do
-      fill_in 'Email', :with => 'pepito@irekia.com'
-      fill_in 'Contraseña', :with => 'irekia1234'
+      fill_in 'Email', :with => user[:email]
+      fill_in 'Contraseña', :with => user[:password]
 
       click_button 'Entrar'
     end
+ end
+
+  def login_as_regular_user
+    login_as :email => 'pepito@irekia.com', :password => 'irekia1234'
   end
 
   def login_as_administrator
@@ -29,6 +33,10 @@ module CapybaraHelpers
 
       click_button 'Entrar'
     end
+  end
+
+  def regular_user
+    @user ||= User.find_by_email('pepito@irekia.com')
   end
 end
 RSpec.configure {|config| config.include CapybaraHelpers}

@@ -8,8 +8,6 @@ es:
     publish: Publicar
     configure_your_account: Configura tu cuenta
   shared:
-    welcome:
-      configure_your_account: Configura tu cuenta
     demo:
       footer:
         legal_info: Información legal
@@ -210,6 +208,17 @@ es:
       view_map: Ver mapa
       more: Ver calendario completo
 
+    welcome:
+      configure_your_account: Configura tu cuenta
+      politics_following:
+        zero: 0 políticos
+        one: 1 político
+        other: '%{count} políticos'
+      areas_following:
+        zero: 0 áreas
+        one: 1 área
+        other: '%{count} áreas'
+
   contents:
     news:
       date_area_and_comments:
@@ -362,7 +371,6 @@ es:
         submit: Comentar
       label:
         news: ¿Algo que decir?... comenta esta noticia
-
 
   areas:
     navigation_menu:

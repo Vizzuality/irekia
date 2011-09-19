@@ -29,6 +29,6 @@ module ApplicationHelper
   end
 
   def menu(options)
-    render :partial => 'shared/menu', :locals => { :options => options }
+    render 'shared/menu', :options => options
   end
 end

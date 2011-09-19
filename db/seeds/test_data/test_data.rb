@@ -24,6 +24,8 @@ admin.save!
 print '.'.blue
 
 alberto = User.find_or_initialize_by_name_and_lastname_and_email('Alberto', 'de Zárate López', 'alberto.zarate@ej-gv.es')
+alberto.password = 'alberto1234'
+alberto.password_confirmation = 'alberto1234'
 alberto.description = String.lorem
 alberto.province = 'Vizcaya'
 alberto.city = 'Ondarroa'
@@ -32,11 +34,13 @@ alberto.areas.clear
 alberto.areas_users << AreaUser.create(:area => area, :display_order => 2)
 alberto.title = Title.find_by_name('Co-adviser')
 alberto.profile_pictures << Image.create(:image => men_images.sample)
-alberto.save(:validate => false)
+alberto.save!
 
 print '.'.blue
 
 virginia = User.find_or_initialize_by_name_and_lastname_and_email('Virginia', 'Uriarte Rodríguez', 'virginia.uriarte@ej-gv.es')
+virginia.password = 'virginia1234'
+virginia.password_confirmation = 'virginia1234'
 virginia.is_woman = true
 virginia.description = String.lorem
 virginia.province = 'Vizcaya'
@@ -46,7 +50,7 @@ virginia.areas.clear
 virginia.areas_users << AreaUser.create(:area => area, :display_order => 1)
 virginia.title = Title.find_by_name('Adviser')
 virginia.profile_pictures << Image.create(:image => women_images.sample)
-virginia.save(:validate => false)
+virginia.save!
 
 print '.'.blue
 
@@ -55,6 +59,8 @@ print '.'.blue
   lastname = "#{String.random(20)} #{String.random(20)}"
   email = "#{name} #{lastname}".downcase.split(' ').join('.') + '@ej-gv.es'
   user = User.find_or_initialize_by_name_and_lastname_and_email(name, lastname, email)
+  user.password = "#{name}1234"
+  user.password_confirmation = "#{name}1234"
   user.is_woman = [true, false].sample
   user.inactive = [true, false].sample
   user.description = String.lorem
@@ -65,50 +71,57 @@ print '.'.blue
   user.areas << area
   user.title = Title.find_by_name('Co-adviser')
   user.profile_pictures << Image.create(:image => (men_images + women_images).sample)
-  user.save(:validate => false)
+  user.save!
 
   print '.'.blue
 
 end
 
-maria = User.find_or_initialize_by_name_and_lastname_and_email('María', 'González Pérez', 'maria.gonzalez@gmail.com')
-maria.description = String.lorem
-maria.province = 'Vizcaya'
-maria.city = 'Ondarroa'
-maria.role = Role.find_by_name('Citizen')
-maria.profile_pictures << Image.create(:image => women_images.sample)
-maria.save(:validate => false)
-
-print '.'.blue
-
 andres = User.find_or_initialize_by_name_and_lastname_and_email('Andrés', 'Berzoso Rodríguez', 'andres.berzoso@gmail.com')
+andres.password = 'andres1234'
+andres.password_confirmation = 'andres1234'
 andres.description = String.lorem
 andres.province = 'Vizcaya'
 andres.city = 'Ondarroa'
 andres.role = Role.find_by_name('Citizen')
 andres.profile_pictures << Image.create(:image => men_images.sample)
-andres.save(:validate => false)
+andres.save!
+
+print '.'.blue
+
+maria = User.find_or_initialize_by_name_and_lastname_and_email('María', 'González Pérez', 'maria.gonzalez@gmail.com')
+maria.password = 'maria1234'
+maria.password_confirmation = 'maria1234'
+maria.description = String.lorem
+maria.province = 'Vizcaya'
+maria.city = 'Ondarroa'
+maria.role = Role.find_by_name('Citizen')
+maria.profile_pictures << Image.create(:image => women_images.sample)
+maria.users_following = User.politics
+maria.areas_following = Area.all
+maria.save!
 
 print '.'.blue
 
 aritz = User.find_or_initialize_by_name_and_lastname_and_email('Aritz', 'Aranburu', 'aritz.aranburu@gmail.com')
+aritz.password = 'aritz1234'
+aritz.password_confirmation = 'aritz1234'
 aritz.description = String.lorem
 aritz.province = 'Vizcaya'
 aritz.city = 'Ondarroa'
 aritz.role = Role.find_by_name('Citizen')
 aritz.profile_pictures << Image.create(:image => men_images.sample)
-aritz.save(:validate => false)
+aritz.save!
 
 print '.'.blue
 
-pepito = User.find_or_initialize_by_name :name  => 'José López Pérez',       
-                                         :email => 'pepito@irekia.com',         
-                                         :role  => Role.find_by_name('Citizen') 
+pepito = User.find_or_initialize_by_name :name  => 'José López Pérez',
+                                         :email => 'pepito@irekia.com',
+                                         :role  => Role.find_by_name('Citizen')
 
 pepito.password              = 'irekia1234'
 pepito.password_confirmation = 'irekia1234'
 pepito.save!
-
 
 print '.'.blue
 
@@ -128,7 +141,7 @@ if proposal_data.new_record?
   proposal.comments << andres.comments.new.create_with_body(String.lorem)
 
   proposal.save!
-
+puts proposal.errors
   65.times do
 
     argument = Argument.new

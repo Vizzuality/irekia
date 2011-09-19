@@ -37,6 +37,19 @@ class Participation < ActiveRecord::Base
       area_action.message      = self.to_json
       area_action.save!
     end
+
+    user_action              = user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+    user_action.published_at = self.published_at
+    user_action.message      = self.to_json
+    user_action.save!
+
+    user.followers.each do |follower|
+      user_action              = follower.followings_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      user_action.published_at = self.published_at
+      user_action.message      = self.to_json
+      user_action.save!
+    end
+
   end
   private :publish_participation
 end

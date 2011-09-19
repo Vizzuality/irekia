@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :get_user, :only => [:show, :edit, :update, :connect]
 
   def show
+    @activity = @user.actions + @user.followings_actions
   end
 
   def intro
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
 
     if @user.save
-      env['warden'].set_user(@user) 
+      env['warden'].set_user(@user)
       redirect_to edit_user_path(@user)
     else
       render :new

@@ -1,4 +1,4 @@
-<%= render :partial => "shared/welcome" %>
+<%= render "shared/welcome" %>
 <%= menu [
   { :link => (link_to t(".dashboard"), "#"), :class => "publish" },
   { :link => (link_to t(".your_questions"), "#") },
@@ -7,3 +7,4 @@
   { :link => (link_to t(".what_to_follow"), "#") },
   { :link => (link_to t(".publish"), "#"), :class => "publish" },
 ] %>
+<%= render 'activity', :actions => @activity %>
