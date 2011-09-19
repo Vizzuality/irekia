@@ -3,13 +3,11 @@
     <h1><%= t('.access_irekia') %></h1>
     <p><%= t('.forgotten_password') %> <%= link_to t('.get_it_here'), new_password_path('user') %></p>
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:novalidate => "novalidate"}) do |f| %>
-      <p><%= f.label :email %><br />
-      <%= f.email_field :email, :class => :mInput %></p>
 
-      <p><%= f.label :password %><br />
-      <%= f.password_field :password, :class => :mInput %></p>
-
+      <p><%= f.label :email %> <%= f.email_field :email, :class => :mInput %></p>
+      <p><%= f.label :password %> <%= f.password_field :password, :class => :mInput %></p>
       <p class="remember_me"><%= f.check_box :remember_me %> <%= f.label :remember_me, t('.remember_me'), :class => :remember_me %></p>
+
       <footer>
       <div class="left">
         <%= link_to t('.facebook_signin'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin, :class => :facebook %>

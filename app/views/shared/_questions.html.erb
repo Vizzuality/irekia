@@ -3,6 +3,8 @@
     var questions = <%= @questions.to_json.html_safe %>;
   </script>
 <% end %>
+
+<!-- <article class="activity with_footer">
 <div id="questions">
   <h2><%= link_to t('.title'), link_for_questions %></h2>
   <ul class="main_filters">
@@ -15,7 +17,7 @@
   </ul>
   <ul>
     <% @questions.first(4).each do |question| %>
-      <li class="action">
+      <li>
         <%= render 'shared/lists_elements/question', :data => question %>
       </li>
     <% end %>
@@ -54,3 +56,53 @@
     <%= link_to t('.more'), link_for_questions %>
   </div>
 </div>
+</article>
+-->
+
+<article class="activity questions with_footer">
+<div class="inner">
+  <header>
+  <div class="left">
+  <h2><%= t(".title") %></h2>
+  </div>
+  <div class="right">
+
+    <ul class="switch">
+      <li class="selected"><%= link_to t('.main_filters.more_recent'), '#', :class => 'more_recent' %></li>
+      <li><%= link_to t('.main_filters.more_polemic'), '#', :class => 'more_polemic' %></li>
+    </ul>
+
+  </div>
+  </header>
+  <div class="left">
+
+    <% @questions.first(4).each do |question| %>
+      <div class="question">
+        <%= render 'shared/lists_elements/question', :data => question %>
+      </div>
+    <% end %>
+
+  </div>
+  <div class="right">
+
+    <ul class="selector">
+      <li class="selected"><%= link_to "Todas", "#" %></li>
+      <li><%= link_to "Contestadas", "#" %></li>
+    </ul>
+
+    <%= link_to "Haz una pregunta", "#", :id => "question-123", :class => "white_button ask_question" %>
+
+  </div>
+</div>
+<footer>
+<div class="separator"></div>
+<div class="inner">
+
+  <div class="right">
+    <%= link_to "ver más preguntas", "#", :class => "right_arrow" %>
+  </div>
+
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>

@@ -77,7 +77,7 @@ feature "Area's proposals page" do
         page.should have_link 'Crea una propuesta'
       end
 
-      page.should have_css '.pagination', :text => 'Ver más propuestas'
+      page.should have_css '.pagination', :text => 'ver más propuestas'
     end
   end
 end

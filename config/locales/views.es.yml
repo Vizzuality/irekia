@@ -139,7 +139,7 @@ es:
        proposals: Propuestas
        images: Fotos
        videos: Vídeos
-      more: Ver más acciones
+      more: ver más acciones
 
     lists_elements:
       answer:
@@ -191,7 +191,7 @@ es:
         hint: Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo
         your_question: Tu pregunta
         submit: Enviar pregunta
-      more: Ver más preguntas
+      more: ver más preguntas
 
     proposals:
       title: Propuestas
@@ -203,7 +203,7 @@ es:
        from_politics: Propuestas del gobierno
        from_citizens: Propuestas ciudadanas
       create_proposal: Crea una propuesta
-      more: Ver más propuestas
+      more: ver más propuestas
 
     agenda:
       view_calendar: Ver calendario
@@ -416,7 +416,7 @@ es:
         title: Agenda del área
 
   politics:
-    navigation_menu:
+    menu:
       summary: Resumen
       actions: Acciones
       questions: Preguntas

@@ -14,9 +14,10 @@
   </header>
   <div class="left">
 
+    <ul>
 
-    <div class="activity">
-      <%=link_to (image_tag 'temp/avatar_004.png', :class => :avatar), "#" %>
+    <li>
+      <%= link_to (content_tag 'div', (image_tag 'temp/avatar_004.png'), :class => "avatar medium"), "#" %>
       <div class="content">
         <p><strong>¿A quién me tengo que dirigir para obtener mas información sobre las ayudas para estudiantes universitarios?</strong></p>
         <div class="footer"><%= link_to "Virginia Uriarte", "#" %> contestó hace 2 horas &middot; <%= link_to "3 comentarios", "#" %> &middot; <%=link_to "Compartir", "#" %></div>
@@ -27,11 +28,11 @@
           </p>
           <ul>
             <li>
-            <%=link_to (image_tag 'temp/avatar_001_small.png', :class => :avatar), "#" %>
+            <%= link_to (image_tag 'temp/avatar_001_small.png', :class => "avatar avatar-small"), "#" %>
             <p><%= link_to "Tú", "#" %> - De todos modos, creo que podéis encontrar mas información sobre esto también en la web oficial del ministerio de educación</p>
             </li>
             <li>
-            <%=link_to (image_tag 'temp/avatar_003_small.png', :class => :avatar), "#" %>
+            <%= link_to (image_tag 'temp/avatar_003_small.png', :class => "avatar avatar-small"), "#" %>
             <p><%= link_to "Nagore de los Ríos", "#" %> - De todos modos, creo que podéis encontrar mas información sobre esto también en la web oficial del ministerio de educación</p>
             </li>
           </ul>
@@ -46,49 +47,50 @@
 
         </div>
       </div>
-    </div>
+    </li>
 
-    <div class="activity">
-      <%=link_to (image_tag 'temp/avatar_002.png', :class => :avatar), "#" %>
+    <li>
+      <%=link_to (content_tag 'div', (image_tag 'temp/avatar_002.png'), :class => "avatar medium"), "#" %>
       <div class="content">
         <p><strong>Hola, últimamente he tenido algún problema para poder completar el formulario de entrega de documentación para la beca de estudios. ¿Quién podría ayudarme con esto?</strong></p>
-        <p class="truncated">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..." <%=link_to "Leer más", "#" %></p>
+        <p class="excerpt">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..." <%=link_to "Leer más", "#" %></p>
         <div class="footer"><%= link_to "Virginia Uriarte", "#" %> contestó hace 2 horas &middot; <%= link_to "3 comentarios", "#" %> &middot; <%=link_to "Compartir", "#" %></div>
       </div>
-    </div>
+    </li>
 
-    <div class="activity">
-      <%=link_to (image_tag 'temp/avatar_003.png', :class => :avatar), "#" %>
+    <li>
+      <%=link_to (content_tag 'div', (image_tag 'temp/avatar_003.png'), :class => "avatar medium"), "#" %>
       <div class="content">
         <p>Pregunta para el área...</p>
-        <p class="truncated">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..." <%=link_to "Leer más", "#" %></p>
+        <p class="excerpt">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..." <%=link_to "Leer más", "#" %></p>
         <div class="footer"><%= link_to "Andrés Berzoso Rodriguez", "#" %> hace 2 horas &middot; <%= link_to "Comentar", "#" %> &middot; <%=link_to "Compartir", "#" %></div>
       </div>
-    </div>
+    </li>
 
-    <div class="activity">
-      <%=link_to (image_tag 'temp/avatar_004.png', :class => :avatar), "#" %>
+    <li>
+      <%=link_to (content_tag 'div', (image_tag 'temp/avatar_004.png'), :class => "avatar medium"), "#" %>
       <div class="content">
         <p>Pregunta para el área...</p>
-        <p class="truncated">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..." <%=link_to "Leer más", "#" %></p>
+        <p class="excerpt">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..." <%=link_to "Leer más", "#" %></p>
         <div class="footer"><%= link_to "Virginia Uriarte", "#" %> contestó hace 2 horas &middot; <span class="positive">+4</span> &middot; <%= link_to "3 comentarios", "#" %> &middot; <span class="answered">Contestada</span> &middot; <%=link_to "Compartir", "#" %></div>
       </div>
-    </div>
+    </li>
 
 
-    <div class="activity">
-      <%=link_to (image_tag 'icons/default_avatar.png', :class => :avatar), "#" %>
+    <li>
+      <%=link_to (content_tag 'div', (image_tag 'icons/news_avatar_medium.png'), :class => "avatar medium"), "#" %>
       <div class="content">
         <p><strong>Inauguración del nuevo complejo deportivo de la localidad de Getxo</strong></p>
-        <p class="truncated">La consejera de Cultura y Deporte del Gobierno Vasco ha asistido hoy a las 19:00 a la inauguración del nuevo complejo deportivo  "Ha sido..." <%=link_to "Leer más", "#" %></p>
-        <div class="footer">Publicado hace 2 horas &middot; <%= link_to "Comentar", "#" %> &middot; <span class="unanswered">No contestada</span> &middot; <%=link_to "Compartir", "#" %></div>
+        <p class="excerpt">La consejera de Cultura y Deporte del Gobierno Vasco ha asistido hoy a las 19:00 a la inauguración del nuevo complejo deportivo  "Ha sido..." <%=link_to "Leer más", "#" %></p>
+        <div class="footer">Publicado hace 2 horas &middot; <%= link_to "Comentar", "#" %> &middot; <span class="not_answered">No contestada</span> &middot; <%=link_to "Compartir", "#" %></div>
       </div>
-    </div>
+    </li>
+  </ul>
 
   </div>
   <div class="right">
 
-    <ul class="selector">
+    <ul class="selector no-margin">
       <li class="selected"><%= link_to "Todas", "#" %></li>
       <li><%= link_to "Contestadas", "#" %></li>
     </ul>

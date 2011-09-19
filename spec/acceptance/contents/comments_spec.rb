@@ -46,9 +46,6 @@ feature "Contents' comments section" do
         fill_in '¿Algo que decir?... comenta esta noticia', :with => 'Prueba comentario'
         expect{ click_button 'Comentar'}.to change{ Comment.not_moderated.count }.by(1)
       end
-
     end
-
   end
-
 end

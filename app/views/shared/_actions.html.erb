@@ -1,3 +1,4 @@
+<!--
 <div id="last_actions">
   <h2><%= link_to t('.title'), link_for_actions %></h2>
   <ul class="main_filters">
@@ -10,7 +11,7 @@
   </ul>
   <ul>
     <% @actions.first(4).each do |action| %>
-      <li class="action">
+      <li>
         <%= render "shared/lists_elements/#{action.event_type}", :data => action.item %>
       </li>
     <% end %>
@@ -29,7 +30,9 @@
   </div>
 </div>
 
-<article class="activity with_footer">
+-->
+
+<article class="activity last_actions with_footer">
 <div class="inner">
   <header>
   <div class="left">
@@ -37,89 +40,26 @@
   </div>
   <div class="right">
     <ul class="switch">
-      <li><%= link_to t('.main_filters.more_recent'), '#', :class => 'more_recent' %></li>
-      <li class="selected"><%= link_to t('.main_filters.more_polemic'), '#', :class => 'more_polemic' %></li>
+      <li class="selected"><%= link_to t('.main_filters.more_recent'), '#', :class => 'more_recent' %></li>
+      <li><%= link_to t('.main_filters.more_polemic'), '#', :class => 'more_polemic' %></li>
     </ul>
 
   </div>
   </header>
+
   <div class="left">
-
-    <div class="activity">
-      <%=link_to (image_tag 'temp/avatar_004.png', :class => :avatar), "#" %>
-      <div class="content">
-        <p>Contestando a <strong>"¿Cúando va a ser efectiva la ayuda para estudiantes universitarios en 2011?"</strong></p>
-        <p class="truncated">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..." <%=link_to "Leer más", "#" %></p>
-        <div class="footer"><%= link_to "Virginia Uriarte", "#" %> contestó hace 2 horas &middot; <%= link_to "3 comentarios", "#" %> &middot; <%=link_to "Compartir", "#" %></div>
-
-        <div class="comments">
-          <p class="previous">
-          <%= link_to "1 comentario anterior", "#" %> de Raúl Otxoa
-          </p>
-          <ul>
-            <li>
-            <%=link_to (image_tag 'temp/avatar_001_small.png', :class => :avatar), "#" %>
-            <p><%= link_to "Tú", "#" %> - De todos modos, creo que podéis encontrar mas información sobre esto también en la web oficial del ministerio de educación</p>
-            </li>
-            <li>
-            <%=link_to (image_tag 'temp/avatar_003_small.png', :class => :avatar), "#" %>
-            <p><%= link_to "Nagore de los Ríos", "#" %> - De todos modos, creo que podéis encontrar mas información sobre esto también en la web oficial del ministerio de educación</p>
-            </li>
-          </ul>
-
-          <form action="#">
-            <div class="input_field">
-              <input type="text" value="" />
-              <span class="holder">Escribe tu comentario</span>
-            </div>
-            <input type="submit" value="Enviar" />
-          </form>
-
-        </div>
-
-      </div>
-    </div>
-
-    <div class="activity">
-      <%=link_to (image_tag 'temp/avatar_002.png', :class => :avatar), "#" %>
-      <div class="content">
-        <p>Contestando a <strong>"¿Cúando va a ser efectiva la ayuda para estudiantes universitarios en 2011?"</strong></p>
-        <p class="truncated">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..." <%=link_to "Leer más", "#" %></p>
-        <div class="footer"><%= link_to "Virginia Uriarte", "#" %> contestó hace 2 horas &middot; <%= link_to "3 comentarios", "#" %> &middot; <%=link_to "Compartir", "#" %></div>
-      </div>
-    </div>
-
-    <div class="activity">
-      <%=link_to (image_tag 'temp/avatar_003.png', :class => :avatar), "#" %>
-      <div class="content">
-        <p>Pregunta para el área...</p>
-        <p class="truncated">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..." <%=link_to "Leer más", "#" %></p>
-        <div class="footer"><%= link_to "Andrés Berzoso Rodriguez", "#" %> hace 2 horas &middot; <%= link_to "Comentar", "#" %> &middot; <%=link_to "Compartir", "#" %></div>
-      </div>
-    </div>
-
-    <div class="activity">
-      <%=link_to (image_tag 'temp/avatar_004.png', :class => :avatar), "#" %>
-      <div class="content">
-        <p>Pregunta para el área...</p>
-        <p class="truncated">"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos..." <%=link_to "Leer más", "#" %></p>
-        <div class="footer"><%= link_to "Virginia Uriarte", "#" %> contestó hace 2 horas &middot; <span class="positive">+4</span> &middot; <%= link_to "3 comentarios", "#" %> &middot; <span class="answered">Contestada</span> &middot; <%=link_to "Compartir", "#" %></div>
-      </div>
-    </div>
-
-
-    <div class="activity">
-      <%=link_to (image_tag 'icons/default_avatar.png', :class => :avatar), "#" %>
-      <div class="content">
-        <p><strong>Inauguración del nuevo complejo deportivo de la localidad de Getxo</strong></p>
-        <p class="truncated">La consejera de Cultura y Deporte del Gobierno Vasco ha asistido hoy a las 19:00 a la inauguración del nuevo complejo deportivo  "Ha sido..." <%=link_to "Leer más", "#" %></p>
-        <div class="footer">Publicado hace 2 horas &middot; <%= link_to "Comentar", "#" %> &middot; <%=link_to "Compartir", "#" %></div>
-      </div>
-    </div>
-
+    <% if @actions %>
+      <ul>
+      <% @actions.first(4).each do |action| %>
+        <li class="<%= action.event_type %>">
+        <%= render "shared/lists_elements/#{action.event_type}", :data => action.item %>
+        </li>
+      <% end %>
+    </ul>
+    <% end %>
   </div>
-  <div class="right">
 
+  <div class="right">
     <ul class="selector">
       <li class="selected"><%= link_to t('.content_type_filters.all'), '#' %></li>
       <li><%= link_to t('.content_type_filters.news'), '#' %></li>
@@ -134,8 +74,8 @@
 <footer>
 <div class="separator"></div>
 <div class="inner">
-  <div class="left">
-    <%= link_to t('.more'), link_for_actions, :class => "down_arrow" %>
+  <div class="right">
+    <%= link_to t('.more'), link_for_actions, :class => "right_arrow" %>
   </div>
 
 </div>

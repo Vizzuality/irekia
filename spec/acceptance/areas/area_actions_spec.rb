@@ -52,55 +52,55 @@ feature "Area's actions page" do
 
     visit actions_area_path(@area)
 
-    within '#last_actions' do
+    within '.last_actions' do
       page.should have_css 'h2', :text => 'Últimas acciones'
 
       page.should have_css 'a.more_recent', :text => 'Más recientes'
       page.should have_css 'a.more_polemic', :text => 'Más polémicas'
 
-      within 'ul li.action div.argument' do
-        page.should have_css 'p.title', :text => 'A favor de la propuesta "Actualizar la información publicada sobre las ayudas a familias numerosas"'
+      within '.argument' do
+        page.should have_css 'p', :text => 'A favor de la propuesta "Actualizar la información publicada sobre las ayudas a familias numerosas"'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => 'Aritz Aranburu participó hace menos de 1 minuto'
-        page.should have_css 'span.author a', :text => 'Aritz Aranburu'
-        page.should have_css 'a', :text => 'Ningún comentario'
-        page.should have_css 'a', :text => 'Compartir'
+        page.should have_css '.footer span.published_at', :text => 'Aritz Aranburu participó hace menos de 1 minuto'
+        page.should have_css '.footer span.published_at a', :text => 'Aritz Aranburu'
+        page.should have_css '.footer a.comment-count', :text => 'Ningún comentario'
+        page.should have_css '.footer a', :text => 'Compartir'
       end
 
-      within 'ul li.action div.answer' do
-        page.should have_css 'p.title', :text => 'Contestando a "Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
-        page.should have_css 'p.answer', :text => '"Hola María, en realidad no va a haber ayuda este año. El recorte este"'
+      within '.answer' do
+        page.should have_css 'p', :text => 'Contestando a "Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
+        page.should have_css 'p.excerpt', :text => '"Hola María, en realidad no va a haber ayuda este año. El recorte este"'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => 'Virginia Uriarte Rodríguez contesto hace menos de 1 minuto'
-        page.should have_css 'span.author a', :text => 'Virginia Uriarte Rodríguez'
-        page.should have_css 'a', :text => '1 comentario'
-        page.should have_css 'a', :text => 'Compartir'
+        page.should have_css '.footer span.published_at', :text => 'Virginia Uriarte Rodríguez contesto hace menos de 1 minuto'
+        page.should have_css '.footer span.published_at a', :text => 'Virginia Uriarte Rodríguez'
+        page.should have_css '.footer a', :text => '1 comentario'
+        page.should have_css '.footer a', :text => 'Compartir'
       end
 
-      within 'ul li.action div.news' do
-        page.should have_css 'p.title', :text => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
-        page.should have_css 'p.news', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d...'
-
-        page.should have_no_css 'img'
-        page.should have_css 'span.author', :text => 'Publicado hace menos de 1 minuto'
-        page.should have_css 'a', :text => '2 comentarios'
-        page.should have_css 'a', :text => 'Compartir'
-      end
-
-      within 'ul li.action div.question' do
-        page.should have_css 'p.title', :text => 'Pregunta para el área...'
-        page.should have_css 'p.question', :text => '"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
+      within '.news' do
+        page.should have_css 'p', :text => 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
+        page.should have_css 'p.excerpt', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d...'
 
         page.should have_css 'img'
-        page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
-        page.should have_css 'span.author a', :text => 'María González Pérez'
-        page.should have_css 'a', :text => 'Ningún comentario'
-        page.should have_css 'a', :text => 'Compartir'
+        page.should have_css '.footer span.published_at', :text => 'Publicado hace menos de 1 minuto'
+        page.should have_css '.footer a', :text => '2 comentarios'
+        page.should have_css '.footer a', :text => 'Compartir'
       end
 
-      within '.content_type_filters' do
+      within '.question' do
+        page.should have_css 'p', :text => 'Pregunta para el área...'
+        page.should have_css 'p.excerpt', :text => '"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
+
+        page.should have_css 'img'
+        page.should have_css '.footer span.published_at', :text => 'María González Pérez hace menos de 1 minuto'
+        page.should have_css '.footer span.published_at a', :text => 'María González Pérez'
+        page.should have_css '.footer a', :text => 'Ningún comentario'
+        page.should have_css '.footer a', :text => 'Compartir'
+      end
+
+      within 'ul.selector' do
         page.should have_link 'Todos los tipos'
         page.should have_link 'Noticias'
         page.should have_link 'Actividad de los políticos'
@@ -110,7 +110,7 @@ feature "Area's actions page" do
         page.should have_link 'Vídeos'
       end
 
-      page.should have_css '.pagination', :text => 'Ver más acciones'
+      page.should have_css 'footer .right a', :text => 'ver más acciones'
     end
   end
 
