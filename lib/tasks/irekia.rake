@@ -5,7 +5,7 @@ end
 namespace :irekia do
   desc "Setup Irekia Database"
   task :setup_database => %w(db:drop:all db:create db:migrate db:test:prepare) do
-    [:development, :test].each do |env|
+    [Rails.env, :test].each do |env|
 
       puts "Loading seed data for #{env} environment:"
       puts '*****************************************'

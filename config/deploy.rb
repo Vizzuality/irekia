@@ -44,10 +44,14 @@ end
 desc "Uploads config yml files to app server's shared config folder"
 task :upload_yml_files, :roles => :app do
   run "mkdir #{deploy_to}/shared/config ; true"
-  upload("config/database.production.yml", "#{deploy_to}/shared/config/database.yml")
-  upload("config/app_config.production.yml", "#{deploy_to}/shared/config/app_config.yml")
+  upload("config/database.#{stage}.yml", "#{deploy_to}/shared/config/database.yml")
+  upload("config/app_config.#{stage}.yml", "#{deploy_to}/shared/config/app_config.yml")
 end
 
+desc "Setup the entire project in the current environment"
+task :setup, :roles => :app do
+  run "cd #{current_release} && RAILS_ENV=#{stage} bundle exec rake setup"
+end
 
 namespace :db do
   desc "Run rake:seed on remote app server"

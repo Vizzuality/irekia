@@ -1,7 +1,11 @@
 .bundle
 bin/
 config/database.yml
+config/database.staging.yml
+config/database.production.yml
 config/app_config.yml
+config/app_config.staging.yml
+config/app_config.production.yml
 db/*.sqlite3
 log/*.log
 tmp/
