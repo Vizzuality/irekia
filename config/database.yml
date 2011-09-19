@@ -7,6 +7,7 @@ development:
   database: irekia_development
   encoding: utf8
   template: template_postgis
+  min_messages: WARNING
 
 test:
   adapter: postgis
@@ -17,24 +18,4 @@ test:
   database: irekia_test
   encoding: utf8
   template: template_postgis
-
-staging:
-  adapter: postgis
-  host: localhost
-  port: 5432
-  username: postgres
-  password:
-  database: irekia_staging
-  encoding: utf8
-  template: template_postgis
-
-production:
-  adapter: postgis
-  host: localhost
-  port: 5432
-  username: postgres
-  password:
-  database: irekia_production
-  encoding: utf8
-  template: template_postgis
-
+  min_messages: WARNING
