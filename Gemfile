@@ -12,6 +12,7 @@ gem 'activerecord-postgis-adapter', '~> 0.3.5'
 gem 'geocoder', '~> 1.0.2'
 gem 'colored', '~> 1.2'
 gem 'pg_search', :git => 'git://github.com/Casecommons/pg_search.git'
+gem 'json', '1.5.3'
 
 group :development do
   gem 'capistrano'

@@ -123,6 +123,7 @@ GEM
       sketches
       wirb (>= 0.4.1)
       zucker (>= 11)
+    json (1.5.3)
     json_pure (1.6.0)
     kaminari (0.12.4)
       rails (>= 3.0.0)
@@ -258,6 +259,7 @@ DEPENDENCIES
   escape_utils
   geocoder (~> 1.0.2)
   irbtools
+  json (= 1.5.3)
   kaminari (~> 0.12.4)
   launchy
   mini_magick (~> 3.3)
