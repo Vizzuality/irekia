@@ -18,7 +18,7 @@ feature "Area's agenda page" do
       page.should have_link 'Educación, Universidades e Investigación'
       page.should have_css 'img.xlAvatar'
 
-      within '.two_columns' do
+      within '.description' do
         page.should have_css 'h3', :text => 'Quién es y qué hace'
         page.should have_css 'p',  :text => String.lorem
       end

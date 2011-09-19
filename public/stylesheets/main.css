@@ -166,7 +166,10 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 /* Agenda */
 #container article.agenda .inner { padding: 15px 33px 38px 33px; }
-#container article.agenda .inner .content { width: 929px; }
+#container article.agenda .inner .content { width: 929px; position: relative; }
+#container article.agenda .inner .content .map { left: 1024px; position: absolute; }
+#container article.agenda .inner .content .agenda { left: 0; position: absolute; }
+#container article.agenda .inner .content .map_agenda { position: relative; clear: both; overflow: hidden; width: 929px; height: 700px; }
 #container article.agenda .inner .content ul { margin: 0; padding: 0; }
 #container article.agenda .inner .content ul li.day { width: 121px; height: 120px; float: left; margin: 0 2px 2px 0; padding: 6px 5px; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; background: #f1f1f1; }
 #container article.agenda .inner .content ul li.day.today { background: #DFEDF5; }
@@ -325,14 +328,14 @@ textarea:-webkit-scrollbar-thumb:horizontal { width: 50px; background-color: #99
 #container article .inner .right ul.selector li { padding: 0 0 0 10px; margin-bottom: 10px; font-size: 15px; }
 #container article .inner .right ul.selector li.selected { padding: 10px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; height: 12px; line-height: 11px; background: url("/images/link_gradient_bkg.png"); }
 #container article .inner .right ul.selector li.selected a { font-weight: bold; color: white; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); }
-#container article .inner header .right ul.switch { clear: both; overflow: hidden; float: right; background: #F6F6F7; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; padding: 3px; }
+#container article .inner header .right ul.switch { clear: both; overflow: hidden; float: right; background: #F6F6F7; padding: 3px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 #container article .inner header .right ul.switch li { float: left; margin: 0; }
 #container article .inner header .right ul.switch li a { display: block; padding: 5px 13px 4px 13px; font-size: 15px; font-weight: 100; }
 #container article .inner header .right ul.switch li.selected { border: 1px solid #ccc; background: white; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 #container article .inner header .right ul.switch li.selected a { padding: 4px 23px; color: #465866; }
-#container article .inner .left .two_columns .column { margin-right: 27px; width: 282px!Important; }
-#container article .inner .left .two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
-#container article .inner .left .two_columns .column.last { margin-right: 0px; width: 280px!Important; }
+#container article .inner .left .description.two_columns .column { margin-right: 27px; width: 282px!Important; }
+#container article .inner .left .description.two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
+#container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
 #container article footer inner.with_avatar { position: relative; }
 #container article footer img.xlAvatar { position: absolute; bottom: 10px; right: 30px; padding: 4px; background: url("/images/circle_bkg.png") no-repeat center center; z-index: 10; }
 #container article .suggestion { width: 275px; padding: 14px 16px 16px 16px; font-size: 15px; color: #7D8A92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
@@ -381,9 +384,24 @@ Menu
 .ie7 #main ul.menu li.selected a, .ie8 #main ul.menu li.selected a, .ie9 #main ul.menu li.selected a { background: url("/images/menu_buttons.png") no-repeat 0 0; filter: none; height: 17px; }
 
 /* =============================================================================
+Autocomplete
+========================================================================== */
+#autocomplete { background: url("/images/popovers_bkg.png") no-repeat -394px 0; width: 456px; height: 371px; z-index: 100; margin-bottom: 20px; clear: both; overflow: hidden; }
+#autocomplete ul { list-style: none; float: left; margin-top: 16px; }
+#autocomplete ul h3 { text-transform: uppercase; font-weight: bold; font-size: 12px; color: #465866; }
+#autocomplete ul.results { width: 122px; padding-right: 11px; text-align: right; }
+#autocomplete ul.results li.politicians { height: 123px; }
+#autocomplete ul.results li.areas { height: 67px; }
+#autocomplete ul.results li.users { height: 125px; }
+#autocomplete ul.summary { width: 300px; margin-left: 12px; }
+#autocomplete ul.summary li { margin-bottom: 5px; }
+#autocomplete ul.summary li .avatar { float: left; }
+#autocomplete ul.summary li .name { display: block; font-size: 17px; }
+
+/* =============================================================================
 Sign in
 ========================================================================== */
-#sign_in { display: none; position: absolute; right: 0; background: url("/images/login_popover_bkg.png") no-repeat; width: 314px; height: 363px; z-index: 100; padding: 51px 38px 0 38px; }
+#sign_in { display: none; position: absolute; right: 0; background: url("/images/popovers_bkg.png") no-repeat; width: 314px; height: 363px; z-index: 100; padding: 51px 38px 0 38px; }
 #sign_in .content { font-size: 15px; }
 #sign_in .content p { margin: 0 0 20px 0; font-size: 15px; }
 #sign_in .content label { display: block; }
