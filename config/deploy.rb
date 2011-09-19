@@ -38,6 +38,10 @@ task :symlinks, :roles => [:app] do
     ln -s #{shared_path}/pdfs #{release_path}/public/;
     ln -s #{shared_path}/cache #{release_path}/public/;
     ln -s #{shared_path}/uploads #{release_path}/public/;
+    rm -f #{release_path}/config/database.yml;
+    rm -f #{release_path}/config/app_config.yml;
+    ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml;
+    ln -s #{shared_path}/config/app_config.yml #{release_path}/config/app_config.yml;
   CMD
 end
 
