@@ -19,7 +19,7 @@
 
         <% @team.first(2).each do |user| %>
           <li>
-          <%= link_to (content_tag 'div', image_tag(user.profile_image), :class => "avatar avatar-small"), politic_path(user) if user.profile_image %>
+          <%= link_to (content_tag 'div', image_tag(user.profile_image), :class => "avatar small"), politic_path(user) if user.profile_image %>
           <%= link_to user.fullname, politic_path(user), :class => :name %>
           <span><%= get_politic_title(user) %></span>
           </li>
@@ -27,7 +27,7 @@
 
         <% if @team.to_a.from(2).present? %>
           <li class="more">
-          <%= link_to (content_tag 'div', (image_tag 'icons/more_people_avatar.png'), :class => "avatar avatar-small"), "#" %>
+          <%= link_to (content_tag 'div', (image_tag 'icons/more_people_avatar.png'), :class => "avatar small"), "#" %>
           <%= link_to t('.team.other_members', :count => @team.to_a.from(2).length), team_area_path(@area), :class => :name %>
           </li>
         <% end %>
