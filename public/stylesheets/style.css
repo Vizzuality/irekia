@@ -540,7 +540,7 @@ ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-alig
 .share.facebook:hover { background-position: -58px -30px; }
 .share.more:hover { background-position: -88px -30px; }
 
-.prueba { border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
+.left-border { border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
 
 /* Previously */
 ul.previously { width: 253px; padding-left: 0px; padding-bottom: 20px; }
