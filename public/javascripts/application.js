@@ -37,8 +37,7 @@ $(function() {
   $('.floating-login').floatingLoginPopover();
 
   $('.two_columns').columnize();
-  $(".input-counter").smartPlaceholder();
-  $(".input_field").smartPlaceholder();
+  $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
 
   // Popovers

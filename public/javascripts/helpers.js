@@ -13,7 +13,7 @@ jQuery.fn.smartPlaceholder = function(opt){
   this.each(function(){
 
     var $span  = $(this).find("span.holder");
-    var $input = $(this).find("input");
+    var $input = $(this).find(":input");
 
     $input.keydown(function(e) {
       setTimeout(function() { (e && e.keyCode == 8 || $input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);

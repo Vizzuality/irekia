@@ -24,7 +24,7 @@
   <%= form_for current_user do |form| %>
     <%= form.fields_for :questions, @question do |questions| %>
 
-      <div id="counter-124" class="input-counter">
+      <div id="counter-124" class="input-counter placeholder">
         <span class="counter">140</span>
         <%= questions.fields_for :question_data, @question_data do |question_data| %>
           <%= question_data.hidden_field :user_id %>
