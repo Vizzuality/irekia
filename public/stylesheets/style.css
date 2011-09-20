@@ -522,18 +522,23 @@ ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-alig
 
 .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
 
-.sharebox { background: url("/images/share_box.png") repeat-x right 0; float: left; height: 57px; position: relative; }
-.sharebox .arrow { background: url("/images/share_box.png") no-repeat 0 -123px; width: 32px; height: 23px; position: absolute; bottom: -19px; left: 50%; margin-left: -21px; }
-.sharebox ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
-.sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+#container article .sharebox { background: url("/images/share_box.png") repeat-x right 0; float: left; height: 57px; position: relative; }
+#container article .sharebox .arrow { width: 32px; height: 23px; position: absolute; bottom: -19px; left: 50%; margin-left: -21px; background: url("/images/share_box.png") no-repeat 0 -123px; }
+#container article .sharebox .input_field { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 47px; padding-left: 10px; padding-top: 15px; width: 245px; }
+#container article .sharebox .input_field input { height: 27px; }
+#container article .sharebox .input_field span.holder { top: 22px; left: 19px; }
+#container article .sharebox input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; height: 20px; border: none; }
+#container article .sharebox ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
+#container article .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 
-.share.email, .share.twitter, .share.facebook, .share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat; cursor: pointer; }
-
-.share.twitter { background-position: -29px; }
-
-.share.facebook { background-position: -58px; }
-
-.share.more { background-position: -88px; }
+.share.email, .share.twitter, .share.facebook, .share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; cursor: pointer; }
+.share.twitter { background-position: -29px 0; }
+.share.facebook { background-position: -58px 0; }
+.share.more { background-position: -88px 0; }
+.share.email:hover { background-position: 0px -30px; }
+.share.twitter:hover { background-position: -29px -30px; }
+.share.facebook:hover { background-position: -58px -30px; }
+.share.more:hover { background-position: -88px -30px; }
 
 .prueba { border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
 

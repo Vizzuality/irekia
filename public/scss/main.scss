@@ -1331,22 +1331,27 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
   .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
 
-  .sharebox {
+  #container article .sharebox {
 
     background:url('/images/share_box.png') repeat-x right 0;
     float:left;
     height:57px;
     position:relative;
 
-    .arrow {
-      background:url('/images/share_box.png') no-repeat 0 -123px;
-      width:32px;
-      height:23px;
-      position:absolute;
-      bottom:-19px;
-      left:50%;
-      margin-left:-21px;
+    .arrow { width:32px; height:23px; position:absolute; bottom:-19px; left:50%; margin-left:-21px; background:url('/images/share_box.png') no-repeat 0 -123px; }
+
+    .input_field {
+      background:url('/images/share_box.png') no-repeat 0 -59px;
+      left:-10px;
+      position:relative;
+      height:47px;
+      padding-left:10px;
+      padding-top:15px;
+      width:245px;
+      input { height:27px;}
+      span.holder { top: 22px; left: 19px; }
     }
+    input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; height: 20px; border: none; }
 
     ul {
       background:url('/images/share_box.png') no-repeat 0 -59px;
@@ -1366,10 +1371,17 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 
   // sharing icons
-  .share.email, .share.twitter, .share.facebook, .share.more { width:28px; height:28px; background:url('/images/icons/share.png') no-repeat; cursor: pointer; }
-  .share.twitter {background-position:-29px }
-  .share.facebook { background-position:-58px; }
-  .share.more { background-position:-88px; }
+  .share {
+    &.email, &.twitter, &.facebook, &.more { width:28px; height:28px; background:url('/images/icons/share.png') no-repeat 0 0; cursor: pointer; }
+    &.twitter {background-position:-29px 0; }
+    &.facebook { background-position:-58px 0; }
+    &.more { background-position:-88px 0; }
+
+    &.email:hover {background-position:0px -30px; }
+    &.twitter:hover {background-position:-29px -30px; }
+    &.facebook:hover { background-position:-58px -30px; }
+    &.more:hover { background-position:-88px -30px; }
+  }
 
   .prueba {border-left:1px solid rgba(70, 88, 102, .12); padding-left:20px;}
   /* Previously */
