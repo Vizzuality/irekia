@@ -1295,6 +1295,50 @@ article .inner { h2, h3 { color: $dark_blue; } }
     }
   }
 
+  /* Sharing */
+  ul.sharing {
+
+    margin-bottom:18px;
+
+    li {
+
+      display: -moz-inline-stack;
+      display: inline-block;
+      vertical-align: top;
+      zoom: 1; *display: inline;
+
+      div {
+        &.email, &.twitter, &.facebook, &.more { width:28px; height:28px; background:url('/images/icons/share.png') no-repeat; cursor: pointer; }
+
+        &.email { }
+        &.twitter {background-position:-29px }
+        &.facebook { background-position:-58px; }
+        &.more { background-position:-88px; }
+      }
+    }
+  }
+
+  /* Previously */
+  .previously {
+
+    width:253px;
+
+    h4 { margin-bottom:14px; font-size:12px; font-weight:bold; color:$dark_blue; text-transform:uppercase;}
+    ul {
+
+      list-style-type:square;
+      padding-left:0px;
+
+      li {
+
+        font-size:13px;
+        margin-bottom:8px;
+        color:$standard_gray;
+        a { margin-bottom:1px; display:block; color:$dark_blue; font-weight:bold; font-size:15px; }
+      }
+    }
+  }
+
   /* Ribbons */
 
   #container article {

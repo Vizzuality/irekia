@@ -346,6 +346,21 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 .textarea-comment span.holder { position: absolute; left: 13px; top: 8px; width: 500px; color: #D7D8DD; }
 .textarea-comment textarea { margin: 7px 10px 10px 11px; resize: none; width: 500px; height: 37px; background: none; border: none; outline: none; }
 
+/* Sharing */
+ul.sharing { margin-bottom: 18px; }
+ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+ul.sharing li div.email, ul.sharing li div.twitter, ul.sharing li div.facebook, ul.sharing li div.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat; cursor: pointer; }
+ul.sharing li div.twitter { background-position: -29px; }
+ul.sharing li div.facebook { background-position: -58px; }
+ul.sharing li div.more { background-position: -88px; }
+
+/* Previously */
+.previously { width: 253px; }
+.previously h4 { margin-bottom: 14px; font-size: 12px; font-weight: bold; color: #465866; text-transform: uppercase; }
+.previously ul { list-style-type: square; padding-left: 0px; }
+.previously ul li { font-size: 13px; margin-bottom: 8px; color: #7d8a92; }
+.previously ul li a { margin-bottom: 1px; display: block; color: #465866; font-weight: bold; font-size: 15px; }
+
 /* Ribbons */
 #container article .ribbon { position: absolute; top: -14px; right: 25px; display: block; width: 37px; height: 85px; background: url("/images/ribbon.png") no-repeat; z-index: 10; }
 #container article footer .inner .right { float: right; }
