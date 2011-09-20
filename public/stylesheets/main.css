@@ -357,8 +357,8 @@ ul.sharing li div.more { background-position: -88px; }
 /* Previously */
 .previously { width: 253px; }
 .previously h4 { margin-bottom: 14px; font-size: 12px; font-weight: bold; color: #465866; text-transform: uppercase; }
-.previously ul { list-style-type: square; padding-left: 0px; }
-.previously ul li { font-size: 13px; margin-bottom: 8px; color: #7d8a92; }
+.previously ul { padding-left: 0px; }
+.previously ul li { background: url("/images/icons/bullet.png") no-repeat 0 7px; padding-left: 7px; font-size: 13px; margin-bottom: 8px; color: #7d8a92; }
 .previously ul li a { margin-bottom: 1px; display: block; color: #465866; font-weight: bold; font-size: 15px; }
 
 /* Ribbons */

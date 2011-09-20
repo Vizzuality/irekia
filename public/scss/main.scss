@@ -1326,10 +1326,12 @@ article .inner { h2, h3 { color: $dark_blue; } }
     h4 { margin-bottom:14px; font-size:12px; font-weight:bold; color:$dark_blue; text-transform:uppercase;}
     ul {
 
-      list-style-type:square;
       padding-left:0px;
 
       li {
+
+        background:url('/images/icons/bullet.png') no-repeat 0 7px;
+        padding-left:7px;
 
         font-size:13px;
         margin-bottom:8px;
