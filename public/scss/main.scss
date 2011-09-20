@@ -1313,6 +1313,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
   } // ul.tags
 
   /* Sharing */
+  .ie7 ul.sharing li { margin: 0 3px 0 3px; }
+
   ul.sharing {
 
     margin-bottom:28px;
@@ -1327,13 +1329,16 @@ article .inner { h2, h3 { color: $dark_blue; } }
   } // ul.sharing
 
 
-  .share-box {
+  .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
+
+  .sharebox {
+
     background:url('/images/share_box.png') repeat-x right 0;
     float:left;
     height:57px;
-      position:relative;
+    position:relative;
 
-    .tri {
+    .arrow {
       background:url('/images/share_box.png') no-repeat 0 -123px;
       width:32px;
       height:23px;

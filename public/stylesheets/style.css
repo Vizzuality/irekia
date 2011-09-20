@@ -515,13 +515,17 @@ ul.tags li { display: block; clear: both; overflow: hidden; margin-bottom: 4px; 
 ul.tags li a { padding: 6px 12px; float: left; display: block; background: #f0f0f0; font-size: 13px; -webkit-border-radius: 14px; -moz-border-radius: 14px; border-radius: 14px; }
 
 /* Sharing */
+.ie7 ul.sharing li { margin: 0 3px 0 3px; }
+
 ul.sharing { margin-bottom: 28px; padding-bottom: 20px; }
 ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 
-.share-box { background: url("/images/share_box.png") repeat-x right 0; float: left; height: 57px; position: relative; }
-.share-box .tri { background: url("/images/share_box.png") no-repeat 0 -123px; width: 32px; height: 23px; position: absolute; bottom: -19px; left: 50%; margin-left: -21px; }
-.share-box ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
-.share-box ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+.ie7 .sharebox ul li { margin: 0 3px 0 3px; }
+
+.sharebox { background: url("/images/share_box.png") repeat-x right 0; float: left; height: 57px; position: relative; }
+.sharebox .arrow { background: url("/images/share_box.png") no-repeat 0 -123px; width: 32px; height: 23px; position: absolute; bottom: -19px; left: 50%; margin-left: -21px; }
+.sharebox ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
+.sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 
 .share.email, .share.twitter, .share.facebook, .share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat; cursor: pointer; }
 
