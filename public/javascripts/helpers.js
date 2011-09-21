@@ -67,7 +67,7 @@ jQuery.fn.inputCounter = function(opt){
 /* Adds sharing capabilities */
 jQuery.fn.share = function(opt){
 
-  var speed  = (opt && opt.speed) || 100;
+  var speed  = (opt && opt.speed) || 150;
 
   function shareWith($service) {
     var $ok = $service.find(".ok");
