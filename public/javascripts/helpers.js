@@ -64,4 +64,26 @@ jQuery.fn.inputCounter = function(opt){
   });
 }
 
+/* Adds sharing capabilities */
+jQuery.fn.share = function(opt){
+
+  var speed  = (opt && opt.speed) || 100;
+
+  function shareWith($service) {
+    var $ok = $service.find(".ok");
+    if ($ok) $ok.animate({opacity:0, top:"20px"}, speed, 'easeInOutExpo', function() { $(this).remove(); })
+
+    $service.append('<div class="ok" />');
+    $ok = $service.find(".ok");
+    $ok.animate({opacity:1, top:"-2px"}, speed, 'easeInOutExpo');
+  }
+
+  this.each(function(){
+    $(this).bind('click', function(e) {
+      e.stopPropagation();
+      shareWith($(this));
+    });
+  });
+}
+
 

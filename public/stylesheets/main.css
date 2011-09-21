@@ -361,9 +361,9 @@ ul.tags li a { padding: 6px 12px; float: left; display: block; background: #f0f0
 /* Sharing */
 .ie7 ul.sharing li { margin: 0 3px 0 3px; }
 
-ul.sharing { margin-bottom: 28px; padding-bottom: 20px; }
-ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
-ul.sharing li .sharebox { display: none; position: absolute!important; top: -60px; margin-left: -16px; z-index: 1000; }
+#container article ul.sharing { margin-bottom: 28px; padding-bottom: 20px; }
+#container article ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+#container article ul.sharing li .sharebox { display: none; position: absolute; top: -60px; margin-left: -16px; z-index: 1000; }
 
 .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
 
@@ -376,14 +376,17 @@ ul.sharing li .sharebox { display: none; position: absolute!important; top: -60p
 #container article .sharebox ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
 #container article .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 
+.share { position: relative; }
 .share.email, .share.twitter, .share.facebook, .share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; cursor: pointer; }
 .share.twitter { background-position: -29px 0; }
 .share.facebook { background-position: -58px 0; }
 .share.more { background-position: -88px 0; }
+.share.share:hover { z-index: 100; }
 .share.email:hover { background-position: 0px -30px; }
 .share.twitter:hover { background-position: -29px -30px; }
 .share.facebook:hover { background-position: -58px -30px; }
 .share.more:hover { background-position: -88px -30px; }
+.share .ok { opacity: 0; position: absolute; top: 20px; right: 2px; background: url("/images/icons/share.png") no-repeat 0 -61px; width: 9px; height: 9px; z-index: 110; }
 
 .left-border { border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
 

@@ -45,6 +45,9 @@ $(function() {
   $(".ask_question").questionPopover();
   $(".auth a.login").loginPopover();
   $(".share.more").sharePopover();
+
+  $(".share.twitter, .share.facebook").share();
+
 });
 
 /*

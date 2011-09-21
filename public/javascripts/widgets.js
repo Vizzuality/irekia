@@ -667,11 +667,12 @@ var GOD = (function() {
         e.stopPropagation();
       });
 
-      $ps.next(".sharebox").find(".share").bind('click', function(e) {
-        e.stopPropagation();
-        var service = $(this).attr('class').replace("share ", "");
-        _shareWith(service);
-      });
+      // $ps.next(".sharebox").find(".share").bind('click', function(e) {
+      //   e.stopPropagation();
+      //   var service = $(this).attr('class').replace("share ", "");
+      //   var $service = $ps.next(".sharebox").find("." + service);
+      //   shareWith($service);
+      // });
 
       $(this).click(_toggle);
 
@@ -700,11 +701,6 @@ var GOD = (function() {
       }
     }
   };
-
-  // TODO: add service binding
-  function _shareWith(service) {
-    alert(service);
-  }
 
   // Toggle popover
   function _toggle(e) {
