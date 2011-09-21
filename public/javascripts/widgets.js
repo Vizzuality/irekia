@@ -603,3 +603,139 @@ var GOD = (function() {
   $(function() {});
 
 })(jQuery, window, document);
+
+
+
+/*
+* =============
+* SHARE POPOVER
+* =============
+*/
+
+(function($, window, document) {
+
+  var ie6 = false;
+
+  // Help prevent flashes of unstyled content
+  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
+    ie6 = true;
+  } else {
+    document.documentElement.className = document.documentElement.className + ' ps_fouc';
+  }
+
+  var
+  store = "share-popover",
+  // Public methods exposed to $.fn.sharePopover()
+  methods = {},
+  // Some nice default values
+  defaults = {
+    transitionSpeed: 250
+  };
+  // Called by using $('foo').sharePopover();
+  methods.init = function(settings) {
+    settings = $.extend({}, defaults, settings);
+
+    return this.each(function() {
+      var
+      // The current <select> element
+      $this = $(this),
+
+      // We store lots of great stuff using jQuery data
+      data = $this.data(store) || {},
+
+      // This gets updated to be equal to the longest <option> element
+      width = settings.width || $this.outerWidth(),
+
+      // The completed ps_container element
+      $ps = false;
+
+      // Dont do anything if we've already setup sharePopover on this element
+      if (data.id) {
+        return $this;
+      } else {
+        data.$this = $this;
+        data.settings = settings;
+      }
+
+      // Hide the <select> list and place our new one in front of it
+      $this.before($ps);
+
+      // Update the reference to $ps
+      $ps = $(this);
+
+      $ps.next(".sharebox").bind('click', function(e) {
+        e.stopPropagation();
+      });
+
+      $ps.next(".sharebox").find(".share").bind('click', function(e) {
+        e.stopPropagation();
+        var service = $(this).attr('class').replace("share ", "");
+        _shareWith(service);
+      });
+
+      $(this).click(_toggle);
+
+      $(window).bind('_close.'+ data.id, function() {
+        _close($this);
+      });
+
+      // Save the updated $ps reference into our data object
+      data.$ps = $ps;
+
+      // Save the sharePopover data onto the <select> element
+      $this.data(store, data);
+
+      // Do the same for the dropdown, but add a few helpers
+      $ps.data(store, data);
+    });
+  };
+
+  // Expose the plugin
+  $.fn.sharePopover = function(method) {
+    if (!ie6) {
+      if (methods[method]) {
+        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+      } else if (typeof method === 'object' || !method) {
+        return methods.init.apply(this, arguments);
+      }
+    }
+  };
+
+  // TODO: add service binding
+  function _shareWith(service) {
+    alert(service);
+  }
+
+  // Toggle popover
+  function _toggle(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    var $this = $(this);
+    var data = $this.data(store);
+    var $ps = data.$ps;
+
+    // setup the close event & signal the other subscribers
+    var event = "_close."+data.id;
+    GOD.subscribe(event);
+    GOD.broadcast(event);
+
+    if (!$ps.hasClass("open")) {
+      $ps.addClass("open");
+      $ps.next(".sharebox").fadeIn(data.settings.transitionSpeed);
+    } else {
+      _close($this);
+    }
+  }
+
+  // Close popover
+  function _close($this) {
+    var data = $this.data(store);
+    GOD.unsubscribe("_close."+data.id);
+    data.$ps.removeClass("open");
+    data.$ps.next(".sharebox").fadeOut(data.settings.transitionSpeed);
+  }
+
+  $(function() {});
+
+})(jQuery, window, document);

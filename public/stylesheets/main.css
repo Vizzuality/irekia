@@ -86,7 +86,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner h2 { margin-bottom: 30px; font-size: 19px; font-weight: 300; }
 #container article .inner h3 { margin-bottom: 7px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
 #container article .inner .left { position: relative; float: left; left: 0; width: 605px; }
-#container article .inner .right { position: relative; margin-left: 29px; float: left; width: 291px; }
+#container article .inner .right { position: none; margin-left: 29px; float: left; width: 291px; }
 #container article .inner header { clear: both; overflow: hidden; height: auto; padding: 0; margin: 0 0 25px 0; background: none; }
 #container article .inner header h1, #container article .inner header h2 { margin: 0; }
 #container article .inner header h3 { font-size: 17px; }
@@ -98,7 +98,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_footer footer .inner { clear: both; overflow: hidden; padding: 20px 0 15px 35px; width: 959px; margin: 0; background: none; border: 0; }
 #container article.with_footer footer .inner h3 { margin: 0 0 5px 0; padding: 0; }
 #container article.with_footer footer .inner a { font-size: 15px; }
-#container article.with_footer footer .right { right: 36px; text-align: right; }
+#container article.with_footer footer .right { position: relative; right: 36px; text-align: right; }
 #container article.with_footer .separator { height: 2px; background: url("/images/box_simple_bkg.png") repeat-x; background-position: 0 -36px; }
 #container article.with_sidebar { position: relative; }
 #container article.with_sidebar .t, #container article.with_sidebar .f { height: 10px; width: 100%; position: absolute; background: url("/images/box_sidebar_bkg.png") no-repeat; }
@@ -363,6 +363,7 @@ ul.tags li a { padding: 6px 12px; float: left; display: block; background: #f0f0
 
 ul.sharing { margin-bottom: 28px; padding-bottom: 20px; }
 ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+ul.sharing li .sharebox { display: none; position: absolute!important; top: -60px; margin-left: -16px; z-index: 1000; }
 
 .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
 
