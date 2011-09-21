@@ -67,23 +67,24 @@ jQuery.fn.inputCounter = function(opt){
 /* Adds sharing capabilities */
 jQuery.fn.share = function(opt){
 
-  var speed  = (opt && opt.speed) || 150;
-
-  function shareWith($service) {
-    var $ok = $service.find(".ok");
-    if ($ok) $ok.animate({opacity:0, top:"20px"}, speed, 'easeInOutExpo', function() { $(this).remove(); })
-
-    $service.append('<div class="ok" />');
-    $ok = $service.find(".ok");
-    $ok.animate({opacity:1, top:"-2px"}, speed, 'easeInOutExpo');
-  }
+  var speed  = (opt && opt.speed) || 200;
+  var easing = (opt && opt.easing) || 'easeInExpo';
 
   this.each(function(){
     $(this).bind('click', function(e) {
       e.stopPropagation();
-      shareWith($(this));
+      var service = $(this).attr('class').replace('share ', '');
+      shareWith($(this), service, speed, easing);
     });
   });
 }
 
+function shareWith($el, service, speed, easing) {
+  var $ok = $el.find(".ok");
+  if ($ok) $ok.animate({opacity:0, top:"20px"}, speed, easing, function() { $(this).remove(); })
+
+  $el.append('<div class="ok" />');
+  $ok = $el.find(".ok");
+  $ok.animate({opacity:1, top:"-2px"}, speed, easing);
+}
 

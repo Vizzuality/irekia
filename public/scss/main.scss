@@ -610,41 +610,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
     }
   }
 
-  .ie7 .avatar,
-  .ie8 .avatar {
-    position: relative;
-    overflow: hidden;
-    width: $avatar_normal_size;
-    height: $avatar_normal_size;
-  }
-
-  .ie7 .avatar .ieframe,
-  .ie8 .avatar .ieframe {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: $avatar_normal_size;
-    height: $avatar_normal_size;
-    background: url('/images/avatar_frame.png') no-repeat;
-    z-index: 100;
-  }
-
-  .ie7 .avatar.medium,
-  .ie8 .avatar.medium,
-  .ie7 .avatar.medium .ieframe,
-  .ie8 .avatar.medium .ieframe {
-    width: $avatar_normal_size;
-    height: $avatar_normal_size;
-  }
-
-  .ie7 .avatar.small,
-  .ie8 .avatar.small,
-  .ie7 .avatar.small .ieframe,
-  .ie8 .avatar.small .ieframe {
-    width: $avatar_small_size;
-    height: $avatar_small_size;
-  }
-
   /* Agenda */
   #container article.agenda .inner {
     padding: 15px 33px 38px 33px;
@@ -682,10 +647,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
         }
       }
     }
-  }
-
-  .ie7 #container article.agenda .inner .content ul li.day {
-    &.disabled h3, span { color: #bbb; }
   }
 
   #container article.agenda {
@@ -1315,6 +1276,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
   /* Sharing */
   .ie7 ul.sharing li { margin: 0 3px 0 3px; }
 
+  .ie7 #container article ul.sharing li .sharebox.email .input_field input,
+  .ie8 #container article ul.sharing li .sharebox.email .input_field input {
+    line-height:23px;
+    position:static;
+    border:1px solid #ccc;
+  }
+
   #container article ul.sharing {
 
     margin-bottom:28px;
@@ -1757,12 +1725,14 @@ Autocomplete
   ul {
     float:left;
     position:relative;
-    margin-top:16px;
     list-style:none;
+    z-index:100;
 
     h3 { text-transform:uppercase; font-weight:bold; font-size:12px; color:$dark_blue; }
 
     &.results {
+      top:16px;
+      height:340px;
       width:133px - 11;
       padding-right:11px;
       text-align:right;
@@ -1778,10 +1748,14 @@ Autocomplete
 
     &.summary {
       width:300px;
-      margin: 0 0 0 12px;
+      top:16px;
+      left:14px;
+      height:340px;
 
       li {
         width:300px;
+        clear:both; overflow:hidden;
+
         margin-bottom:20px;
 
         &.politicians { position:absolute; top:3px;}
@@ -1789,7 +1763,7 @@ Autocomplete
         &.users { position:absolute; top:184px;}
         &.contents {
           position:absolute;
-          top:330px;
+          top:315px;
           text-align:center;
 
           a {font-size:17px;}
@@ -1802,6 +1776,78 @@ Autocomplete
     }
   }
 }
+
+/* =============================================================================
+Explorer fixes
+========================================================================== */
+
+  /* ------------------------------------------------------------------------------ Inputs line-height */
+
+  .ie7 #search_query, .ie8 #search_query,
+  .ie7 .xlInput, .ie8 .xlInput,
+  .ie7 .input_field input[type="email"],
+  .ie7 .input_field input[type="text"],
+  .ie7 article.micro input[type="email"],
+  .ie7 article.micro input[type="text"],
+  .ie7 article.micro input[type="password"],
+  .ie7 #sign_in input[type="email"],
+  .ie7 #sign_in input[type="text"],
+  .ie7 #sign_in input[type="password"],
+  .ie8 .input_field input[type="email"],
+  .ie8 .input_field input[type="text"],
+  .ie8 article.micro input[type="email"],
+  .ie8 article.micro input[type="text"],
+  .ie8 article.micro input[type="password"],
+  .ie8 #sign_in input[type="email"],
+  .ie8 #sign_in input[type="text"],
+  .ie8 #sign_in input[type="password"] {
+    line-height:29px;
+  }
+
+  /* --------------------------------------------------------------------------------------- Avatars */
+
+  .ie7 .avatar,
+  .ie8 .avatar {
+    position: relative;
+    overflow: hidden;
+    width: $avatar_normal_size;
+    height: $avatar_normal_size;
+  }
+
+  .ie7 .avatar .ieframe,
+  .ie8 .avatar .ieframe {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: $avatar_normal_size;
+    height: $avatar_normal_size;
+    background: url('/images/avatar_frame.png') no-repeat;
+    z-index: 100;
+  }
+
+  .ie7 .avatar.medium,
+  .ie8 .avatar.medium,
+  .ie7 .avatar.medium .ieframe,
+  .ie8 .avatar.medium .ieframe {
+    width: $avatar_medium_size;
+    height: $avatar_medium_size;
+    background: url('/images/avatar_frame.png') no-repeat 0 -70px;
+  }
+
+  .ie7 .avatar.small,
+  .ie8 .avatar.small,
+  .ie7 .avatar.small .ieframe,
+  .ie8 .avatar.small .ieframe {
+    width: $avatar_small_size;
+    height: $avatar_small_size;
+    background: url('/images/avatar_frame.png') no-repeat 0 -115px;
+  }
+
+  /* --------------------------------------------------------------------------------- Calendar days */
+  .ie7 #container article.agenda .inner .content ul li.day {
+    &.disabled h3, span { color: #bbb; }
+  }
+
 
 /* =============================================================================
 Sign in

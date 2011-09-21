@@ -163,14 +163,6 @@ article .inner h2, article .inner h3 { color: #465866; }
 .avatar.medium, .avatar.medium > img { width: 40px; height: 40px; }
 .avatar:before { -webkit-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1); -moz-box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1); box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1); -moz-border-radius: 100em; border-radius: 100em; content: ''; display: block; position: absolute; left: 0; right: 0; width: 100%; height: 100%; margin: -10em; border: 10em solid white; }
 
-.ie7 .avatar, .ie8 .avatar { position: relative; overflow: hidden; width: 65px; height: 65px; }
-
-.ie7 .avatar .ieframe, .ie8 .avatar .ieframe { position: absolute; top: 0px; left: 0px; width: 65px; height: 65px; background: url("/images/avatar_frame.png") no-repeat; z-index: 100; }
-
-.ie7 .avatar.medium, .ie8 .avatar.medium, .ie7 .avatar.medium .ieframe, .ie8 .avatar.medium .ieframe { width: 65px; height: 65px; }
-
-.ie7 .avatar.small, .ie8 .avatar.small, .ie7 .avatar.small .ieframe, .ie8 .avatar.small .ieframe { width: 36px; height: 36px; }
-
 /* Agenda */
 #container article.agenda .inner { padding: 15px 33px 38px 33px; }
 #container article.agenda .inner .content { width: 929px; }
@@ -180,8 +172,6 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.agenda .inner .content ul li.day.last { margin-right: 0; }
 #container article.agenda .inner .content ul li.day.disabled { background: #f1f1f1 url("/images/agenda_disabled_bkg.png") no-repeat; }
 #container article.agenda .inner .content ul li.day.disabled h3 { opacity: .5; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); }
-
-.ie7 #container article.agenda .inner .content ul li.day.disabled h3, .ie7 #container article.agenda .inner .content ul li.day span { color: #bbb; }
 
 #container article.agenda .inner .content ul li.day h3 { margin: 0; padding: 5px 0 0 5px; line-height: 20px; font-family: "ClarendonLTMedium", Georgia, serif; font-weight: normal; font-size: 23px; }
 #container article.agenda .inner .content ul li.day span { padding: 0 0 0 5px; font-size: 15px; color: #bbb; color: rgba(70, 88, 102, 0.3); }
@@ -361,6 +351,8 @@ ul.tags li a { padding: 6px 12px; float: left; display: block; background: #f0f0
 /* Sharing */
 .ie7 ul.sharing li { margin: 0 3px 0 3px; }
 
+.ie7 #container article ul.sharing li .sharebox.email .input_field input, .ie8 #container article ul.sharing li .sharebox.email .input_field input { line-height: 23px; position: static; border: 1px solid #ccc; }
+
 #container article ul.sharing { margin-bottom: 28px; padding-bottom: 20px; }
 #container article ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 #container article ul.sharing li .sharebox { display: none; position: absolute; top: -60px; margin-left: -16px; z-index: 1000; }
@@ -464,24 +456,42 @@ Menu
 Autocomplete
 ========================================================================== */
 #autocomplete { background: url("/images/popovers_bkg.png") no-repeat -394px 0; width: 456px; height: 371px; z-index: 100; margin-bottom: 20px; clear: both; overflow: hidden; }
-#autocomplete ul { float: left; position: relative; margin-top: 16px; list-style: none; }
+#autocomplete ul { float: left; position: relative; list-style: none; z-index: 100; }
 #autocomplete ul h3 { text-transform: uppercase; font-weight: bold; font-size: 12px; color: #465866; }
-#autocomplete ul.results { width: 122px; padding-right: 11px; text-align: right; }
+#autocomplete ul.results { top: 16px; height: 340px; width: 122px; padding-right: 11px; text-align: right; }
 #autocomplete ul.results li { position: absolute; right: 12px; }
 #autocomplete ul.results li.politicians { top: 6px; }
 #autocomplete ul.results li.areas { top: 128px; }
 #autocomplete ul.results li.users { top: 188px; }
 #autocomplete ul.results li.contents { top: 314px; }
-#autocomplete ul.summary { width: 300px; margin: 0 0 0 12px; }
-#autocomplete ul.summary li { width: 300px; margin-bottom: 20px; }
+#autocomplete ul.summary { width: 300px; top: 16px; left: 14px; height: 340px; }
+#autocomplete ul.summary li { width: 300px; clear: both; overflow: hidden; margin-bottom: 20px; }
 #autocomplete ul.summary li.politicians { position: absolute; top: 3px; }
 #autocomplete ul.summary li.areas { position: absolute; top: 123px; }
 #autocomplete ul.summary li.users { position: absolute; top: 184px; }
-#autocomplete ul.summary li.contents { position: absolute; top: 330px; text-align: center; }
+#autocomplete ul.summary li.contents { position: absolute; top: 315px; text-align: center; }
 #autocomplete ul.summary li.contents a { font-size: 17px; }
 #autocomplete ul.summary li .avatar { float: left; margin-right: 10px; }
 #autocomplete ul.summary li .name { display: block; font-size: 17px; }
 #autocomplete ul.summary li .position { font-size: 15px; color: #7d8a92; }
+
+/* =============================================================================
+Explorer fixes
+========================================================================== */
+/* ------------------------------------------------------------------------------ Inputs line-height */
+.ie7 #search_query, .ie8 #search_query, .ie7 .xlInput, .ie8 .xlInput, .ie7 .input_field input[type="email"], .ie7 .input_field input[type="text"], .ie7 article.micro input[type="email"], .ie7 article.micro input[type="text"], .ie7 article.micro input[type="password"], .ie7 #sign_in input[type="email"], .ie7 #sign_in input[type="text"], .ie7 #sign_in input[type="password"], .ie8 .input_field input[type="email"], .ie8 .input_field input[type="text"], .ie8 article.micro input[type="email"], .ie8 article.micro input[type="text"], .ie8 article.micro input[type="password"], .ie8 #sign_in input[type="email"], .ie8 #sign_in input[type="text"], .ie8 #sign_in input[type="password"] { line-height: 29px; }
+
+/* --------------------------------------------------------------------------------------- Avatars */
+.ie7 .avatar, .ie8 .avatar { position: relative; overflow: hidden; width: 65px; height: 65px; }
+
+.ie7 .avatar .ieframe, .ie8 .avatar .ieframe { position: absolute; top: 0px; left: 0px; width: 65px; height: 65px; background: url("/images/avatar_frame.png") no-repeat; z-index: 100; }
+
+.ie7 .avatar.medium, .ie8 .avatar.medium, .ie7 .avatar.medium .ieframe, .ie8 .avatar.medium .ieframe { width: 40px; height: 40px; background: url("/images/avatar_frame.png") no-repeat 0 -70px; }
+
+.ie7 .avatar.small, .ie8 .avatar.small, .ie7 .avatar.small .ieframe, .ie8 .avatar.small .ieframe { width: 36px; height: 36px; background: url("/images/avatar_frame.png") no-repeat 0 -115px; }
+
+/* --------------------------------------------------------------------------------- Calendar days */
+.ie7 #container article.agenda .inner .content ul li.day.disabled h3, .ie7 #container article.agenda .inner .content ul li.day span { color: #bbb; }
 
 /* =============================================================================
 Sign in
