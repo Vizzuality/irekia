@@ -643,6 +643,9 @@ var GOD = (function() {
       // We store lots of great stuff using jQuery data
       data = $this.data(store) || {},
 
+      // This gets applied to the 'ps_container' element
+      id = $this.attr('class').replace(" ", "_");
+
       // This gets updated to be equal to the longest <option> element
       width = settings.width || $this.outerWidth(),
 
@@ -653,6 +656,7 @@ var GOD = (function() {
       if (data.id) {
         return $this;
       } else {
+        data.id = id;
         data.$this = $this;
         data.settings = settings;
       }

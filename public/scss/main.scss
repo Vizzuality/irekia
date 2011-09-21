@@ -1334,6 +1334,11 @@ article .inner { h2, h3 { color: $dark_blue; } }
         z-index:1000;
       }
 
+      .sharebox.email {
+        margin-left:-108px;
+        .input_field {margin:0;}
+      }
+
     }
   } // ul.sharing
 

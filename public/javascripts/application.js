@@ -44,7 +44,7 @@ $(function() {
   $(".event").infoEventPopover();
   $(".ask_question").questionPopover();
   $(".auth a.login").loginPopover();
-  $(".share.more").sharePopover();
+  $(".share.more, .share.email").sharePopover();
 
   $(".share.twitter, .share.facebook").share();
 

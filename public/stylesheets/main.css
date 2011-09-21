@@ -364,6 +364,8 @@ ul.tags li a { padding: 6px 12px; float: left; display: block; background: #f0f0
 #container article ul.sharing { margin-bottom: 28px; padding-bottom: 20px; }
 #container article ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 #container article ul.sharing li .sharebox { display: none; position: absolute; top: -60px; margin-left: -16px; z-index: 1000; }
+#container article ul.sharing li .sharebox.email { margin-left: -108px; }
+#container article ul.sharing li .sharebox.email .input_field { margin: 0; }
 
 .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
 
