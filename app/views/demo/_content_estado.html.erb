@@ -2,14 +2,12 @@
 <div class="inner">
   <div class="left">
 
-    <h1>Hola Virginia, ¿Cuando tenéis pensado publicar el nuevo plan de estudios de la Universidad de Deusto?</h1>
-    <p class="info"><%= link_to "Adrián López", "#" %> hace 2 horas &middot; <span class="positive">+4</span> &middot; <%= link_to '1 comentario', "#" %> &middot; <span class="not_answered">No contestada</span></p>
-
-    <div class="answer">
-      <p>Hola Adrián,</p>
-      <p>Por desgracia aún no sabemos cuando vamos a poder liberar el plan de estudios para el próximo curso, puesto que en las organizaciones competentes están trabajando actualmente en ello.
-      De todos modos, te invitaría a que la próxima vez, directamente contactes con ellos directamente (Universidad de Deusto: info@uni.deu.edu) para obtener información de primera mano.</p>
-      <p>Muchas gracias por tu pregunta y un saludo.</p>
+    <div class="quotation">
+      <blockquote>
+        <span class="quote"> Saliendo para el Euskal Encounter. Muchas ganas de asistir la charla de @alorza sobre Open Data.</span>
+        <span class="bqstart">&#8220;</span> <span class="bqend">&#8221;</span>
+      </blockquote>
+      <div class="author"><a href="#">Nagore de los Rios</a> hace 3 días</div>
     </div>
 
     <div class="comments">
@@ -21,7 +19,6 @@
         <div class="footer when"><a href="#">Virginia Uriarte</a> hace 2 horas</div>
         </li>
         <li>
-        <div class="answered">Virginia contesta</div>
         <a href="#"><div class="avatar"><img src="/images/temp/avatar_004.png" /></div></a>
         <blockquote>¿Alguien sabe si habrá streaming del evento?</blockquote>
         <div class="footer when"><a href="#">Alberto Ortiz</a> hace 21 días</div>
@@ -44,9 +41,6 @@
     <div class="content left-border">
 
       <%= render "shared/demo/sharing" %>
-      <%= render "shared/demo/tags" %>
-      <%= render "shared/demo/politicians" %>
-      <%= render "shared/demo/related_events" %>
       <%= render "shared/demo/previously" %>
 
     </div>
@@ -56,16 +50,15 @@
 <footer>
 <div class="separator"></div>
 <div class="inner">
+
   <div class="left">
-    <%= link_to "ver todas las preguntas", "#", :class => :left_arrow %>
-    <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
+    <%= link_to "volver", "#", :class => :left_arrow %>
   </div>
 
-  <div class="right">
-    <%= link_to "siguiente pregunta", "#", :class => :right_arrow %>
-    <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
-  </div>
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>
 </article>
+
+
+

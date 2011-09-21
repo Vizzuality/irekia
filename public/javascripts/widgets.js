@@ -669,7 +669,7 @@ var GOD = (function() {
       // Update the reference to $ps
       $ps = $(this);
 
-      $ps.next(".sharebox.email").find("input").click(function(e) {
+      $ps.next(".sharebox.email").find('input[type="submit"]').click(function(e) {
         e.stopPropagation();
         var $el = $(this).parents("li").find(".share.email");
         shareWith($el, "email", data.settings.transitionSpeed, data.settings.easing);

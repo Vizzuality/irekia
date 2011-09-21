@@ -22,6 +22,8 @@ $white:            #FFFFFF;
 $pink:             #F10063;
 $dark_blue:        #465866; // 70 88 102
 $link_color:       #1D79B0;
+$agree_color:      #669900;
+$against_color:    #FF9933;
 
 
 body {
@@ -111,16 +113,11 @@ article .inner {
 #lock_screen { position: absolute; top: 0; left: 0; display: none; width: 100%; height: 100%; opacity: .5; background: #000; z-index: 99; }
 
 span {
-  &.answered {
-    color: #00AA54;
-  }
-  &.not_answered {
-    color: #FF3300;
-  }
-  &.positive {
-    color: #FF0066;
-    font-style: italic;
-  }
+  &.answered     { color: #00AA54; }
+  &.not_answered { color: #FF3300; }
+  &.positive     { color: #FF0066; font-style: italic; }
+  &.agree        { color: $agree_color; }
+  &.against      { color: $against_color; }
 }
 
 /* =============================================================================
@@ -286,7 +283,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 #container article.static .inner header h3 {text-transform:none; font-size:19px; font-family: "Helvetica", sans-serif; font-weight:normal;}
 #container article {
   .inner {
-    .left h1 { margin-bottom: 10px; line-height: 38px; }
+    .left h1 { margin-bottom: 10px; line-height: 41px; }
 
     header p.position { padding: 0; margin: 0; font-size:17px; color:$standard_gray; }
 
@@ -390,19 +387,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
     }
   }
   &.profile .inner {
-    h1 {
-      font-size: 41px;
-    }
+    h1 { font-size: 41px; }
     .left {
-      h3 {
-        margin-bottom: 5px;
-      }
-      p {
-        width: 292px;
-        display: block-inline;
-        margin: 0 0 10px 0;
-        font-size: 15px;
-      }
+      h3 { margin-bottom: 5px; }
+      p { width: 292px; display: block-inline; margin: 0 0 10px 0; font-size: 15px; }
     }
   }
   &.micro {
@@ -930,8 +918,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
     }
   }
 
-
   /* Article addons */
+  #container article a.more {
+    padding:0 0 0 15px;
+    background:url('/images/icons/read_more.png') no-repeat 0 5px;
+  }
+
+  /* Questions' preview */
   #container article footer .left .question,
   #container article footer .right .question {
     font-size:13px;
@@ -1108,15 +1101,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
           &.more a.name {
             margin-top: 8px;
           }
-          a {
-            display: block;
-          }
-          .avatar {
-            float: left;
-            margin: 0 9px 0 0;
-            float: left;
-            margin: 0 9px 0 0;
-          }
+          a { display: block; font-weight:normal; color: $link_color; }
+          .avatar { float: left; margin: 0 9px 0 0; }
         }
       }
       .content .map {
@@ -1284,11 +1270,14 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
 
   /* Tags */
-  ul.tags {
+  #container article .right .content ul.tags {
     margin-bottom:20px;
     padding-bottom:10px;
+    list-style:none;
 
     li {
+      background:none;
+      padding:0;
       display:block;
       clear:both;
       overflow:hidden;
@@ -1300,6 +1289,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
         display:block;
         background:#f0f0f0;
         font-size:13px;
+        color:$link_color;
+        font-weight:normal;
 
         -webkit-border-radius: 14px;
         -moz-border-radius: 14px;
@@ -1318,16 +1309,18 @@ article .inner { h2, h3 { color: $dark_blue; } }
     border:1px solid #ccc;
   }
 
-  #container article ul.sharing {
+  #container article .right .content ul.sharing {
 
-    margin-bottom:28px;
-    padding-bottom:20px;
+    margin: 0 0 28px 0;
+    padding: 0 0 20px 0;
 
     li {
       display: -moz-inline-stack;
       display: inline-block;
       vertical-align: top;
       zoom: 1; *display: inline;
+      background:none;
+      padding:0;
 
       .sharebox {
         display:none;
@@ -1348,14 +1341,14 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
   .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
 
-  #container article .sharebox {
+  #container article .right .content .sharebox {
 
     background:url('/images/share_box.png') repeat-x right 0;
     float:left;
     height:57px;
     position:relative;
 
-    .arrow { width:32px; height:23px; position:absolute; bottom:-19px; left:50%; margin-left:-21px; background:url('/images/share_box.png') no-repeat 0 -123px; }
+    .arrow { width:32px; height:23px; position:absolute; bottom:-19px; left:50%; margin-left:-21px; background:url('/images/share_box.png') no-repeat 0 -123px!important; }
 
     .input_field {
       background:url('/images/share_box.png') no-repeat 0 -59px;
@@ -1413,11 +1406,12 @@ article .inner { h2, h3 { color: $dark_blue; } }
   .left-border {border-left:1px solid rgba(70, 88, 102, .12); padding-left:20px;}
 
   /* Previously */
-  ul.previously {
+  #container article .right .content ul.proposals,
+  #container article .right .content ul.previously,
+  #container article .right .content ul.events {
 
     width:253px;
-    padding-left:0px;
-    padding-bottom:20px;
+    padding: 0 0 20px 0px;
 
     &.no-bullets li {background:none;}
 
@@ -1904,6 +1898,7 @@ Sign in
     label {display:block;}
 
     h1 { color: $dark_blue; font-weight: 300; line-height: normal; font-size:31px; }
+
     footer {
       clear: both;
       overflow: hidden;

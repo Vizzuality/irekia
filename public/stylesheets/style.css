@@ -193,6 +193,8 @@ article .inner header h2, article .inner h2 { font-family: "ClarendonLTMedium", 
 span.answered { color: #00AA54; }
 span.not_answered { color: #FF3300; }
 span.positive { color: #FF0066; font-style: italic; }
+span.agree { color: #669900; }
+span.against { color: #ff9933; }
 
 /* =============================================================================
 Header
@@ -236,7 +238,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 #container article.static .inner header h3 { text-transform: none; font-size: 19px; font-family: "Helvetica", sans-serif; font-weight: normal; }
 
-#container article .inner .left h1 { margin-bottom: 10px; line-height: 38px; }
+#container article .inner .left h1 { margin-bottom: 10px; line-height: 41px; }
 #container article .inner header p.position { padding: 0; margin: 0; font-size: 17px; color: #7d8a92; }
 #container article .inner h1 { margin-bottom: 5px; font-size: 41px; font-weight: 300; }
 #container article .inner h2 { margin-bottom: 30px; font-size: 19px; font-weight: 300; }
@@ -414,6 +416,9 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.activity .inner .right .input_field { margin-bottom: 28px; }
 
 /* Article addons */
+#container article a.more { padding: 0 0 0 15px; background: url("/images/icons/read_more.png") no-repeat 0 5px; }
+
+/* Questions' preview */
 #container article footer .left .question, #container article footer .right .question { font-size: 13px; color: #7d8a92; color: rgba(125, 138, 146, 0.5); }
 
 /* answer */
@@ -471,8 +476,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner .right ul.people.extra-margin-bottom { margin-bottom: 30px; }
 #container article .inner .right ul.people li { clear: both; overflow: hidden; margin: 0 0 12px 0; padding: 0; font-size: 15px; color: #7d8a92; }
 #container article .inner .right ul.people li.more a.name { margin-top: 8px; }
-#container article .inner .right ul.people li a { display: block; }
-#container article .inner .right ul.people li .avatar { float: left; margin: 0 9px 0 0; float: left; margin: 0 9px 0 0; }
+#container article .inner .right ul.people li a { display: block; font-weight: normal; color: #1d79b0; }
+#container article .inner .right ul.people li .avatar { float: left; margin: 0 9px 0 0; }
 #container article .inner .content .map { width: 927px; height: 452px; }
 #container article .map .zoom_in { cursor: pointer; background: transparent url("/images/maps.png") no-repeat 0 0; width: 30px; height: 32px; margin-top: 15px; margin-left: 17px; }
 #container article .map .zoom_in:hover { background: transparent url("/images/maps.png") no-repeat -31px 0; }
@@ -509,31 +514,31 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 .textarea-comment textarea { margin: 7px 10px 10px 11px; resize: none; width: 500px; height: 37px; background: none; border: none; outline: none; }
 
 /* Tags */
-ul.tags { margin-bottom: 20px; padding-bottom: 10px; }
-ul.tags li { display: block; clear: both; overflow: hidden; margin-bottom: 4px; }
-ul.tags li a { padding: 6px 12px; float: left; display: block; background: #f0f0f0; font-size: 13px; -webkit-border-radius: 14px; -moz-border-radius: 14px; border-radius: 14px; }
+#container article .right .content ul.tags { margin-bottom: 20px; padding-bottom: 10px; list-style: none; }
+#container article .right .content ul.tags li { background: none; padding: 0; display: block; clear: both; overflow: hidden; margin-bottom: 4px; }
+#container article .right .content ul.tags li a { padding: 6px 12px; float: left; display: block; background: #f0f0f0; font-size: 13px; color: #1d79b0; font-weight: normal; -webkit-border-radius: 14px; -moz-border-radius: 14px; border-radius: 14px; }
 
 /* Sharing */
 .ie7 ul.sharing li { margin: 0 3px 0 3px; }
 
 .ie7 #container article ul.sharing li .sharebox.email .input_field input, .ie8 #container article ul.sharing li .sharebox.email .input_field input { line-height: 23px; position: static; border: 1px solid #ccc; }
 
-#container article ul.sharing { margin-bottom: 28px; padding-bottom: 20px; }
-#container article ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
-#container article ul.sharing li .sharebox { display: none; position: absolute; top: -60px; margin-left: -16px; z-index: 1000; }
-#container article ul.sharing li .sharebox.email { margin-left: -108px; }
-#container article ul.sharing li .sharebox.email .input_field { margin: 0; }
+#container article .right .content ul.sharing { margin: 0 0 28px 0; padding: 0 0 20px 0; }
+#container article .right .content ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: none; padding: 0; }
+#container article .right .content ul.sharing li .sharebox { display: none; position: absolute; top: -60px; margin-left: -16px; z-index: 1000; }
+#container article .right .content ul.sharing li .sharebox.email { margin-left: -108px; }
+#container article .right .content ul.sharing li .sharebox.email .input_field { margin: 0; }
 
 .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
 
-#container article .sharebox { background: url("/images/share_box.png") repeat-x right 0; float: left; height: 57px; position: relative; }
-#container article .sharebox .arrow { width: 32px; height: 23px; position: absolute; bottom: -19px; left: 50%; margin-left: -21px; background: url("/images/share_box.png") no-repeat 0 -123px; }
-#container article .sharebox .input_field { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 47px; padding-left: 10px; padding-top: 15px; width: 245px; }
-#container article .sharebox .input_field input { height: 27px; }
-#container article .sharebox .input_field span.holder { top: 22px; left: 19px; }
-#container article .sharebox input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; height: 20px; border: none; }
-#container article .sharebox ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
-#container article .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+#container article .right .content .sharebox { background: url("/images/share_box.png") repeat-x right 0; float: left; height: 57px; position: relative; }
+#container article .right .content .sharebox .arrow { width: 32px; height: 23px; position: absolute; bottom: -19px; left: 50%; margin-left: -21px; background: url("/images/share_box.png") no-repeat 0 -123px !important; }
+#container article .right .content .sharebox .input_field { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 47px; padding-left: 10px; padding-top: 15px; width: 245px; }
+#container article .right .content .sharebox .input_field input { height: 27px; }
+#container article .right .content .sharebox .input_field span.holder { top: 22px; left: 19px; }
+#container article .right .content .sharebox input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; height: 20px; border: none; }
+#container article .right .content .sharebox ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
+#container article .right .content .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 
 .share { position: relative; }
 .share.email, .share.twitter, .share.facebook, .share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; cursor: pointer; }
@@ -550,11 +555,11 @@ ul.tags li a { padding: 6px 12px; float: left; display: block; background: #f0f0
 .left-border { border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
 
 /* Previously */
-ul.previously { width: 253px; padding-left: 0px; padding-bottom: 20px; }
-ul.previously.no-bullets li { background: none; }
-ul.previously li { background: url("/images/icons/bullet.png") no-repeat 0 7px; padding: 0 0 8px 7px; font-size: 13px; color: #7d8a92; }
-ul.previously li a { margin-bottom: 1px; display: block; color: #465866; font-weight: bold; font-size: 15px; }
-ul.previously li .footer a { margin: 0px; display: inline; color: #1d79b0; font-weight: normal; font-size: 13px; }
+#container article .right .content ul.proposals, #container article .right .content ul.previously, #container article .right .content ul.events { width: 253px; padding: 0 0 20px 0px; }
+#container article .right .content ul.proposals.no-bullets li, #container article .right .content ul.previously.no-bullets li, #container article .right .content ul.events.no-bullets li { background: none; }
+#container article .right .content ul.proposals li, #container article .right .content ul.previously li, #container article .right .content ul.events li { background: url("/images/icons/bullet.png") no-repeat 0 7px; padding: 0 0 8px 7px; font-size: 13px; color: #7d8a92; }
+#container article .right .content ul.proposals li a, #container article .right .content ul.previously li a, #container article .right .content ul.events li a { margin-bottom: 1px; display: block; color: #465866; font-weight: bold; font-size: 15px; }
+#container article .right .content ul.proposals li .footer a, #container article .right .content ul.previously li .footer a, #container article .right .content ul.events li .footer a { margin: 0px; display: inline; color: #1d79b0; font-weight: normal; font-size: 13px; }
 
 /* Ribbons */
 #container article .ribbon { position: absolute; top: -14px; right: 25px; display: block; width: 37px; height: 85px; background: url("/images/ribbon.png") no-repeat; z-index: 10; }
