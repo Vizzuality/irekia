@@ -919,6 +919,43 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 
   /* Article addons */
+
+  /* Proposals blocks */
+
+  #container article .proposals {
+    clear:both;
+    overflow:hidden;
+    margin: 0 0 61px 0;
+
+    .proposal {
+      float:left;
+      width:286px;
+      padding:0;
+
+      padding: 5px;
+      h3 { font-size:17px; text-transform: none; }
+      &.against {background:#FFF0D9;}
+      &.agree {background:#E9F0DE; margin-right:33px;}
+
+      ul {
+        li {
+          font-size: 15px;
+          color:$standard_gray;
+          margin: 0 0 5px 0 !Important;
+          a {}
+        }
+      }
+      .footer {
+        background:red;
+        a {}
+        .sparkline {
+        }
+
+      }
+    }
+  }
+
+  /* Complete article / read more link */
   #container article a.more {
     padding:0 0 0 15px;
     background:url('/images/icons/read_more.png') no-repeat 0 5px;
@@ -1418,13 +1455,12 @@ article .inner { h2, h3 { color: $dark_blue; } }
     li {
       background:url('/images/icons/bullet.png') no-repeat 0 7px;
       padding:0 0 8px 7px;
-
       font-size:13px;
       color:$standard_gray;
+
       a { margin-bottom:1px; display:block; color:$dark_blue; font-weight:bold; font-size:15px; }
-      .footer {
-        a { margin: 0px; display:inline; color:$link_color; font-weight:normal; font-size:13px; }
-      }
+
+      .footer a { margin: 0px; display:inline; color:$link_color; font-weight:normal; font-size:13px; }
     }
   }
 

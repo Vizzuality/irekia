@@ -416,6 +416,15 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.activity .inner .right .input_field { margin-bottom: 28px; }
 
 /* Article addons */
+/* Proposals blocks */
+#container article .proposals { clear: both; overflow: hidden; margin: 0 0 61px 0; }
+#container article .proposals .proposal { float: left; width: 286px; padding: 0; padding: 5px; }
+#container article .proposals .proposal h3 { font-size: 17px; text-transform: none; }
+#container article .proposals .proposal.against { background: #FFF0D9; }
+#container article .proposals .proposal.agree { background: #E9F0DE; margin-right: 33px; }
+#container article .proposals .proposal ul li { font-size: 15px; color: #7d8a92; margin: 0 0 5px 0 !Important; }
+
+/* Complete article / read more link */
 #container article a.more { padding: 0 0 0 15px; background: url("/images/icons/read_more.png") no-repeat 0 5px; }
 
 /* Questions' preview */
