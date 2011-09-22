@@ -856,7 +856,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     &.activity .inner {
       .left ul li {
         a { color: #2C8CC5; }
-        .content .comments {
+        .content .comment-box {
           background: rgba(237, 237, 239, 0.7);
           -webkit-border-radius: 5px;
           -moz-border-radius: 5px;
@@ -991,17 +991,36 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
   /* comments */
   #container article .inner .left  .comments {
-    .count { margin:20px 0 33px 0; padding-bottom:8px; border-bottom:1px solid #ddd; font-size:17px; color:$dark_blue; font-weight:bold; }
+    .count { margin:20px 0 0 0; padding:0; font-size:17px; color:$dark_blue; font-weight:bold; }
     .textarea-comment { float:left; }
 
     ul {
+      margin-top:10px;
+
       li {
         color:$standard_gray;
-        padding-bottom:30px;
-        border-bottom:1px solid rgba(70, 88, 102, .12);
-        margin-bottom:30px;
-        .footer {float:left;}
-        &.comment { border:none; }
+        padding:30px 0 20px 0;
+        border-top:1px solid rgba(70, 88, 102, .12);
+        margin-bottom:10px;
+
+        &.answered { margin-top: 0; padding-top:0 ; }
+        &.comment { border:none; background: url('/images/comment_border.png') no-repeat; }
+        &.no-border { border:none; }
+
+        .comment {
+          float:left;
+          width:536px;
+
+          blockquote {
+            width:100%;
+            margin-bottom:5px;
+            font-size:17px;
+            color:$standard_gray;
+            font-family:"Helvetica", sans-serif;
+            line-height:20px;
+          }
+          .footer {float:left;}
+        }
 
         .answered {
           padding: 5px 0 5px 77px;
@@ -1012,14 +1031,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
           text-transform:uppercase;
           font-size:11px; font-family: "Helvetica", sans-serif;
           font-weight:bold;
-        }
-
-        blockquote {
-          margin-bottom:5px;
-          font-size:17px;
-          color:$standard_gray;
-          font-family:"Helvetica", sans-serif;
-          line-height:20px;
         }
       }
     }
