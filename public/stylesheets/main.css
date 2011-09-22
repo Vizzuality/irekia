@@ -260,6 +260,9 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.activity .inner .right .input_field { margin-bottom: 28px; }
 
 /* Article addons */
+/* Editable */
+a.editable { position: absolute; right: 0px; top: -10px; z-index: 100; display: block; width: 38px; height: 38px; background: url("/images/icons/editing_fold.png") no-repeat; }
+
 /* Proposals blocks */
 #container article .inner .left .proposals { clear: both; overflow: hidden; margin: 0 0 61px 0; }
 #container article .inner .left .proposals .proposal { float: left; width: 286px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
@@ -296,7 +299,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 /* comments */
 #container article .inner .left .comments { position: relative; margin: 40px 0 0 0; }
 #container article .inner .left .comments .count { padding: 0; font-size: 17px; color: #465866; font-weight: bold; }
-#container article .inner .left .comments .birdie { width: 185px; height: 87px; position: absolute; right: 0; top: -57px; background: url("/images/bird.png") no-repeat; }
+#container article .inner .left .comments .birdie { width: 185px; height: 87px; position: absolute; right: 0; top: -57px; background: url("/images/twitter_sprite.png") no-repeat; }
 #container article .inner .left .comments .textarea-comment { float: left; }
 #container article .inner .left .comments ul { margin-top: 10px; }
 #container article .inner .left .comments ul li { color: #7d8a92; padding: 30px 0 20px 0; border-top: 1px solid #eaeaea; border-top: 1px solid rgba(70, 88, 102, 0.12); margin-bottom: 10px; }
@@ -347,6 +350,9 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner .right ul.people.extra-margin-bottom { margin-bottom: 30px; }
 #container article .inner .right ul.people li { clear: both; overflow: hidden; margin: 0 0 12px 0; padding: 0; font-size: 15px; color: #7d8a92; }
 #container article .inner .right ul.people li.more a.name { margin-top: 8px; }
+#container article .inner .right ul.people li.add { width: 263px; height: 59px; margin-left: -8px; background: url("/images/tag_sprite.png") no-repeat 0 -133px; }
+#container article .inner .right ul.people li.add a.add { margin-top: 22px; font-size: 13px; color: #f10063; }
+#container article .inner .right ul.people li.add .avatar { margin: 9px 10px 0 8px; }
 #container article .inner .right ul.people li a { display: block; font-weight: normal; color: #1d79b0; }
 #container article .inner .right ul.people li .avatar { float: left; margin: 0 9px 0 0; }
 #container article .inner .content .map { width: 927px; height: 452px; }
@@ -384,11 +390,17 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 .textarea-comment span.holder { position: absolute; left: 13px; top: 8px; width: 500px; color: #D7D8DD; }
 .textarea-comment textarea { margin: 7px 10px 10px 11px; resize: none; width: 500px; height: 37px; background: none; border: none; outline: none; }
 
-/* Tags */
-#container article .right .content ul.tags { margin-bottom: 20px; padding-bottom: 10px; list-style: none; }
-#container article .right .content ul.tags li { background: none; padding: 0; display: block; clear: both; overflow: hidden; margin-bottom: 4px; }
-#container article .right .content ul.tags li a { padding: 6px 12px; float: left; display: block; background: #f0f0f0; font-size: 13px; color: #1d79b0; font-weight: normal; -webkit-border-radius: 14px; -moz-border-radius: 14px; border-radius: 14px; }
+#container article .right .content ul.tags { clear: both; overflow: hidden; list-style: none; margin-bottom: 20px; }
+#container article .right .content ul.tags li { float: left; position: relative; clear: both; margin: 0 0 10px 0; left: 15px; height: 24px; background: url("/images/tag_sprite.png") repeat-x right 0; }
+#container article .right .content ul.tags li.add { background: url("/images/tag_sprite.png") repeat-x left -105px; width: 88px; height: 26px; left: 0; }
+#container article .right .content ul.tags li.add a { background: none; height: 26px; padding: 0; line-height: 26px; float: none; text-align: center; color: #f10063; left: 0; }
+#container article .right .content ul.tags li a { float: left; position: relative; display: block; line-height: 16px; left: -15px; height: 16px; padding: 4px 0 4px 12px; background: url("/images/tag_sprite.png") no-repeat 0 -26px; }
+#container article .right .content ul.tags li:hover { background-position: right -53px; }
+#container article .right .content ul.tags li:hover a { color: #fff; background-position: 0 -79px; }
+#container article .right .content ul.tags li:hover.add { background-position: left -105px; }
+#container article .right .content ul.tags li:hover.add a { background: none; color: #465866; }
 
+/* Tags */
 /* Sharing */
 .ie7 ul.sharing li { margin: 0 3px 0 3px; }
 
@@ -430,6 +442,8 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 #container article .right .content ul.locations.no-bullets li, #container article .right .content ul.proposals.no-bullets li, #container article .right .content ul.previously.no-bullets li, #container article .right .content ul.events.no-bullets li { background: none; }
 #container article .right .content ul.locations li, #container article .right .content ul.proposals li, #container article .right .content ul.previously li, #container article .right .content ul.events li { background: url("/images/icons/bullet.png") no-repeat 0 7px; padding: 0 0 8px 7px; font-size: 13px; color: #7d8a92; }
 #container article .right .content ul.locations li a, #container article .right .content ul.proposals li a, #container article .right .content ul.previously li a, #container article .right .content ul.events li a { margin-bottom: 1px; display: block; color: #465866; font-weight: bold; font-size: 15px; }
+#container article .right .content ul.locations li.twitter-link, #container article .right .content ul.proposals li.twitter-link, #container article .right .content ul.previously li.twitter-link, #container article .right .content ul.events li.twitter-link { margin: 0 0 0 5px; padding: 0 0 0 23px; background: url("/images/twitter_sprite.png") no-repeat 0 -90px; }
+#container article .right .content ul.locations li.twitter-link a, #container article .right .content ul.proposals li.twitter-link a, #container article .right .content ul.previously li.twitter-link a, #container article .right .content ul.events li.twitter-link a { font-weight: normal; font-size: 13px; color: #2c8cc5; }
 #container article .right .content ul.locations li .footer a, #container article .right .content ul.proposals li .footer a, #container article .right .content ul.previously li .footer a, #container article .right .content ul.events li .footer a { margin: 0px; display: inline; color: #1d79b0; font-weight: normal; font-size: 13px; }
 
 #container article .right .content ul.locations li { padding: 0; }
