@@ -380,9 +380,9 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 .footer.when, span.when, .map .infowindow ul.details li.when, #container article.agenda .inner .content ul li.day .info ul.details li.when { padding: 0 0 0 17px; background: url("/images/icons/clock.png") no-repeat 0 1px; }
 
-.map .infowindow ul.details li.where { padding: 0 0 0 17px; background: url("/images/icons/marker.png") no-repeat 0 1px; }
+.footer.where, span.where, ul.locations .footer, .map .infowindow ul.details li.where { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
 
-#container article.agenda .inner .content ul li.day .info ul.details li.where { padding: 0 0 0 17px; background: url("/images/icons/marker.png") no-repeat 0 1px; }
+#container article.agenda .inner .content ul li.day .info ul.details li.where { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
 #container article.activity .inner { width: 934px; padding: 15px 31px 35px 29px; }
 #container article.activity .inner .left { width: 614px; }
 #container article.activity .inner .left ul li { clear: both; overflow: hidden; margin-bottom: 39px; }
@@ -506,14 +506,14 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner .right ul.people li a { display: block; font-weight: normal; color: #1d79b0; }
 #container article .inner .right ul.people li .avatar { float: left; margin: 0 9px 0 0; }
 #container article .inner .content .map { width: 927px; height: 452px; }
-#container article .map .zoom_in { cursor: pointer; background: transparent url("/images/maps.png") no-repeat 0 0; width: 30px; height: 32px; margin-top: 15px; margin-left: 17px; }
-#container article .map .zoom_in:hover { background: transparent url("/images/maps.png") no-repeat -31px 0; }
-#container article .map .zoom_out { cursor: pointer; background: transparent url("/images/maps.png") no-repeat 0 bottom; width: 30px; height: 32px; margin-left: 17px; }
-#container article .map .zoom_out:hover { background: transparent url("/images/maps.png") no-repeat -31px bottom; }
+#container article .map .zoom_in { cursor: pointer; background: transparent url("/images/maps_sprite.png") no-repeat 0 0; width: 30px; height: 32px; margin-top: 15px; margin-left: 17px; }
+#container article .map .zoom_in:hover { background: transparent url("/images/maps_sprite.png") no-repeat -31px 0; }
+#container article .map .zoom_out { cursor: pointer; background: transparent url("/images/maps_sprite.png") no-repeat 0 -32px; width: 30px; height: 32px; margin-left: 17px; }
+#container article .map .zoom_out:hover { background: transparent url("/images/maps_sprite.png") no-repeat -31px -32px; }
 #container article .map .infowindow { display: none; }
 #container article .map .infowindow span.close { right: 10px; }
-#container article .map a.marker { position: relative; display: block; background: url("/images/map_marker.png") no-repeat; width: 25px; height: 34px; cursor: pointer; }
-#container article .map a.marker.with_counter { background-position: -26px 0; }
+#container article .map a.marker { position: relative; display: block; background: url("/images/maps_sprite.png") no-repeat 0 -67px; width: 25px; height: 34px; cursor: pointer; }
+#container article .map a.marker.with_counter { background-position: -26px -67px; }
 #container article .map a.marker .counter { position: absolute; display: block; top: 6px; width: 25px; text-align: center; color: white; font-size: 11px; font-weight: bold; }
 #container article .input_field { position: relative; clear: both; overflow: hidden; height: 39px; }
 #container article .input_field span.holder { position: absolute; left: 11px; top: 8px; width: 200px; color: #D7D8DD; }
@@ -581,12 +581,15 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 
 .left-border { border-left: 1px solid #eaeaea; border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
 
-/* Previously */
-#container article .right .content ul.proposals, #container article .right .content ul.previously, #container article .right .content ul.events { width: 253px; padding: 0 0 20px 0px; }
-#container article .right .content ul.proposals.no-bullets li, #container article .right .content ul.previously.no-bullets li, #container article .right .content ul.events.no-bullets li { background: none; }
-#container article .right .content ul.proposals li, #container article .right .content ul.previously li, #container article .right .content ul.events li { background: url("/images/icons/bullet.png") no-repeat 0 7px; padding: 0 0 8px 7px; font-size: 13px; color: #7d8a92; }
-#container article .right .content ul.proposals li a, #container article .right .content ul.previously li a, #container article .right .content ul.events li a { margin-bottom: 1px; display: block; color: #465866; font-weight: bold; font-size: 15px; }
-#container article .right .content ul.proposals li .footer a, #container article .right .content ul.previously li .footer a, #container article .right .content ul.events li .footer a { margin: 0px; display: inline; color: #1d79b0; font-weight: normal; font-size: 13px; }
+/* Lists */
+#container article .right .content ul.locations, #container article .right .content ul.proposals, #container article .right .content ul.previously, #container article .right .content ul.events { width: 253px; padding: 0 0 20px 0px; }
+#container article .right .content ul.locations.no-bullets li, #container article .right .content ul.proposals.no-bullets li, #container article .right .content ul.previously.no-bullets li, #container article .right .content ul.events.no-bullets li { background: none; }
+#container article .right .content ul.locations li, #container article .right .content ul.proposals li, #container article .right .content ul.previously li, #container article .right .content ul.events li { background: url("/images/icons/bullet.png") no-repeat 0 7px; padding: 0 0 8px 7px; font-size: 13px; color: #7d8a92; }
+#container article .right .content ul.locations li a, #container article .right .content ul.proposals li a, #container article .right .content ul.previously li a, #container article .right .content ul.events li a { margin-bottom: 1px; display: block; color: #465866; font-weight: bold; font-size: 15px; }
+#container article .right .content ul.locations li .footer a, #container article .right .content ul.proposals li .footer a, #container article .right .content ul.previously li .footer a, #container article .right .content ul.events li .footer a { margin: 0px; display: inline; color: #1d79b0; font-weight: normal; font-size: 13px; }
+
+#container article .right .content ul.locations li { padding: 0; }
+#container article .right .content ul.locations li .map { background: #f1f1f1; width: 253px; height: 129px; margin-bottom: 9px; }
 
 /* Ribbons */
 #container article .ribbon { position: absolute; top: -14px; right: 25px; display: block; width: 37px; height: 85px; background: url("/images/ribbon.png") no-repeat; z-index: 10; }
