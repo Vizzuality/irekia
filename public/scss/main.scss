@@ -922,7 +922,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
   /* Proposals blocks */
 
-  #container article .proposals {
+  #container article .inner .left .proposals {
     clear:both;
     overflow:hidden;
     margin: 0 0 61px 0;
@@ -930,26 +930,36 @@ article .inner { h2, h3 { color: $dark_blue; } }
     .proposal {
       float:left;
       width:286px;
-      padding:0;
 
-      padding: 5px;
-      h3 { font-size:17px; text-transform: none; }
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+
+      h3 { margin:0; padding: 16px 0 12px 16px; font-size:17px; text-transform: none; }
       &.against {background:#FFF0D9;}
       &.agree {background:#E9F0DE; margin-right:33px;}
 
       ul {
+        padding: 0 16px;
+
         li {
+          background:url('/images/icons/bullet.png') no-repeat 0 7px;
+          padding:0 0 8px 7px;
           font-size: 15px;
           color:$standard_gray;
-          margin: 0 0 5px 0 !Important;
-          a {}
+          margin: 0 0 5px 0;
+          &.add {
+            background:none;
+            a { font-size:13px; text-decoration:underline; color:rgba(0,0,0,.3); }
+          }
         }
       }
       .footer {
-        background:red;
-        a {}
-        .sparkline {
-        }
+        clear:both; overflow:hidden;
+        padding: 16px;
+        border-top: 1px solid #fff;
+        a {float:left; margin-right:20px;}
+        .sparkline { margin-top:10px; }
 
       }
     }
