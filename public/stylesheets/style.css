@@ -440,6 +440,12 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .answer { margin: 20px 0 0 0; background: url("/images/notebook_bkg.png") repeat-y 0 16px; }
 #container article .answer p { margin: 0 0 20px 0; font-size: 17px; color: #465866; line-height: 20px; }
 
+/* answer placeholder */
+#container article .inner .left .answer_placeholder { margin: 20px 0 0 0; border: 3px dashed #f1f1f1; text-align: center; padding: 55px 0; }
+#container article .inner .left .answer_placeholder p { margin: 0px; padding: 0; color: #7d8a92; font-size: 15px; }
+#container article .inner .left .answer_placeholder p strong { font-size: 17px; color: #465866; font-weight: normal; }
+#container article .inner .left .answer_placeholder p a { font-size: 15px; color: #f10063; font-weight: bold; }
+
 /* info */
 #container article .inner p.info { margin: 0 0 1px 0; padding: 0; font-size: 15px; }
 

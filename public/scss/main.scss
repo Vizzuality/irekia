@@ -986,6 +986,27 @@ article .inner { h2, h3 { color: $dark_blue; } }
     p { margin: 0 0 20px 0; font-size:17px; color:$dark_blue; line-height:20px; }
   }
 
+  /* answer placeholder */
+  #container article .inner .left .answer_placeholder {
+    margin: 20px 0 0 0;
+    border:3px dashed #f1f1f1;
+    text-align:center;
+    padding:55px 0;
+
+    p {
+      margin:0px;
+      padding:0;
+      color:$standard_gray;
+      font-size:15px;
+      strong { font-size:17px; color:$dark_blue; font-weight:normal; }
+      a {
+      font-size:15px;
+        color:$pink;
+        font-weight:bold;
+      }
+    }
+  }
+
   /* info */
   #container article .inner p.info { margin: 0 0 1px 0; padding:0; font-size:15px; }
 
