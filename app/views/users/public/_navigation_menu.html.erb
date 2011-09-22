@@ -1,0 +1,7 @@
+<%= menu [
+  { :link => link_to(t(".his_activity"), actions_user_path(@user)),    :class => current_action?('show')  },
+  { :link => link_to(t(".his_questions"), questions_user_path(@user)), :class => current_action?('questions') },
+  { :link => link_to(t(".his_proposals"), proposals_user_path(@user)), :class => current_action?('proposals') },
+  { :link => link_to(t(".following"), followings_user_path(@user)),    :class => current_action?('followings')  },
+] %>
+

@@ -58,6 +58,8 @@ class Question < Content
       user_action.published_at = self.published_at
       user_action.message      = self.to_json
       user_action.save!
+
+      target_user.update_attribute('questions_count', target_user.questions_count + 1)
     end
     super
   end

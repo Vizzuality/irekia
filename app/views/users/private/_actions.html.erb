@@ -1,0 +1,44 @@
+<article id="actions" class="actions with_filters with_footer">
+<div class="inner">
+  <header>
+  <div class="left">
+  <h2><%= t('.title') %></h2>
+  </div>
+  <div class="right">
+    <ul class="switch">
+      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_actions, :class => 'filter' %></li>
+      <li><%= link_to t('.main_filters.more_polemic'), link_for_actions(:more_polemic => true), :class => 'filter' %></li>
+    </ul>
+
+  </div>
+  </header>
+
+  <div class="left">
+    <div id="listing">
+      <%= render 'shared/actions_list' if @actions %>
+    </div>
+      &nbsp;
+  </div>
+
+  <div class="right">
+    <ul class="selector">
+      <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_actions, :class => "filter" %></li>
+      <li><%= link_to t('.content_type_filters.news'), link_for_actions(:type => :news), :class => "filter" %></li>
+      <li><%= link_to t('.content_type_filters.questions'), link_for_actions(:type => :question), :class => "filter" %></li>
+      <li><%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => :proposal), :class => "filter" %></li>
+      <li><%= link_to t('.content_type_filters.images'), link_for_actions(:type => :image), :class => "filter" %></li>
+      <li><%= link_to t('.content_type_filters.videos'), link_for_actions(:type => :video), :class => "filter" %></li>
+    </ul>
+  </div>
+</div>
+<footer>
+<div class="separator"></div>
+<div class="inner">
+  <div class="right">
+    <%= link_to t('.more'), link_for_actions, :class => "right_arrow" %>
+  </div>
+
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>

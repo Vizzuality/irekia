@@ -32,7 +32,10 @@ class AreasController < ApplicationController
 
   def questions
     @question_target    = @area
-    render :partial => 'shared/questions_list', :layout => nil and return if request.xhr?
+    render :partial => 'shared/questions_list',
+           :locals  => {:questions => @questions},
+           :layout  => nil and return if request.xhr?
+
     session[:return_to] = questions_area_path(@area)
   end
 

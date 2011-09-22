@@ -39,7 +39,8 @@ class User < ActiveRecord::Base
   has_many :questions,
            :through => :contents_users
   has_many :proposals_done,
-           :through => :contents_users
+           :through => :contents_users,
+           :source => :proposal
   has_many :events,
            :through => :contents_users,
            :include => :event_data,
@@ -93,7 +94,7 @@ class User < ActiveRecord::Base
            :source       => :follow_item,
            :source_type  => 'User'
 
-  # Required to get followers if this user
+  # Required to get followers of this user
   has_many :follows,
            :as => :follow_item
   has_many :followers,
@@ -174,6 +175,10 @@ class User < ActiveRecord::Base
     @profile_image ||= self.profile_pictures.first.image.url if self.profile_pictures.present?
   end
 
+  def sex
+    is_woman?? 'woman' : 'man'
+  end
+
   def active?
     !inactive?
   end
@@ -242,6 +247,24 @@ class User < ActiveRecord::Base
 
   def not_following(item)
     followed_item(item).nil? if item.present?
+  end
+
+  def follow_suggestions
+    User.politicians.where('users.id <> ?', id)
+  end
+
+  def notifications_count
+    count = if politician?
+      (questions_count + proposals_count + comments_count + tagged_count) rescue 0
+    else
+      (answers_count + comments_count) rescue 0
+    end
+    count = 99 if count > 99
+    count
+  end
+
+  def reset_counter(counter)
+    update_attribute("#{counter}_count", 0) if counter
   end
 
   def check_blank_name

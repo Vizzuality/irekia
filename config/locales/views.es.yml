@@ -248,21 +248,6 @@ es:
       view_map: Ver mapa
       more: Ver calendario completo
 
-    welcome:
-      configure_your_account: Configura tu cuenta
-      politicians_following:
-        zero: 0 políticos
-        one: 1 político
-        other: '%{count} políticos'
-      areas_following:
-        zero: 0 áreas
-        one: 1 área
-        other: '%{count} áreas'
-    agenda_for_day:
-      and_more:
-        zero: Ninguno más...
-        one: Y uno más...
-        other: 'y %{count} más...'
   contents:
     news:
       date_area_and_comments:
@@ -633,13 +618,134 @@ es:
             other: '%{count} contenidos encontrados'
 
   users:
-    show:
-      dashboard: Dashboard
-      your_questions: Tus preguntas
-      your_proposals: Tus propuestas
-      your_activity: Tu actividad
-      what_to_follow: ¿Qué seguir?
-      publish: Publicar
+    public:
+      welcome:
+        address: 'Residente en %{city}, %{province}.'
+        birthday:
+          man: 'Nacido el %{birthday}.'
+          woman: 'Nacida el %{birthday}.'
+      follow_suggestions:
+        title: ¿Quieres más? Te sugerimos...
+        title_and_area: '%{title} de %{area}'
+        follow: Seguir
+        more: Más sugerencias
+      navigation_menu:
+        his_activity: Su actividad
+        his_questions: Sus preguntas
+        his_proposals: Sus propuestas
+        following: Siguiendo
+      actions:
+        title: Sus últimas acciones
+        main_filters:
+          more_recent: Más recientes
+          more_polemic: Más polémicas
+        content_type_filters:
+         all: Todos los tipos
+         news: Noticias
+         politicians_activity: Actividad de los políticos
+         questions: Preguntas
+         proposals: Propuestas
+         images: Fotos
+         videos: Vídeos
+        more: ver más acciones
+      questions:
+        title: 'Todas las preguntas hechas por %{name}'
+        more_recent: Más recientes
+        more_polemic: Más polémicas
+      proposals:
+        title: 'Todas las propuestas hechas por %{name}'
+        more_recent: Más recientes
+        more_commented: Más comentadas
+      followings:
+        title: 'A quien sigue %{name} en Irekia'
+        all_profiles: 'Ver todos los perfiles a los que sigue %{name}'
+        title_and_area: '%{title} de %{area}'
+        area: Área
+    private:
+      welcome:
+        hello: 'Hola %{name}‚ ¿por dónde empezar?'
+        hi_again: 'Hola de nuevo %{name},'
+        configure_your_account: Configura tu cuenta
+        following_nobody: No estás siguiendo a nadie todavía.
+        currently: 'Actualmente %{politicians} y %{areas}'
+        politicians_following:
+          zero: no sigues a ningún político
+          one: sigues a 1 político
+          other: 'sigues a %{count} políticos'
+        areas_following:
+          zero: no sigues a ningún área
+          one: 1 área
+          other: '%{count} áreas'
+        first_time:
+          follow:
+            title: Sigue lo que te interese
+            text: "Busca los perfiles o áreas que más te interesen y síguelos.
+
+            De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo."
+            link: Ir a un Área cualquiera
+          participate:
+            title: Participa y aprende
+            text: "%{make_questions_link} a los responsables del Gobierno Vasco, %{launch_proposals_link} a los ciudadanos, o participa en las propuestas de otros.
+            Todo con un simple click."
+            make_questions: Haz preguntas
+            launch_proposals: lanza tus propuestas
+            link: Crear una pregunta
+          configure:
+            title: Configura tu cuenta
+            text: "Sube tu ávatar o modifica tus datos.
+            También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia."
+            link: Configura tu cuenta
+      follow_suggestions:
+        title: ¿Quieres más? Te sugerimos...
+        title_and_area: '%{title} de %{area}'
+        follow: Seguir
+        more: Más sugerencias
+      navigation_menu:
+        dashboard: Dashboard
+        your_questions: Tus preguntas
+        your_proposals: Tus propuestas
+        your_activity: Tu actividad
+        what_to_follow: ¿Qué seguir?
+        publish: Publicar
+      questions:
+        answered_title:
+          zero: Ninguna pregunta contestada
+          one: 1 pregunta contestada
+          other: '%{count} preguntas contestadas'
+        not_answered_title: Todas las preguntas hechas por ti
+        more_recent: Más recientes
+        more_polemic: Más polémicas
+      proposals:
+        title:
+          zero: No has hecho ninguna propuesta
+          one: Has hecho 1 propuesta
+          other: 'Has hecho %{count} propuestas'
+        proposal_support: Tus propuestas tienen un apoyo entre los usuarios de Irekia de...
+        proposal_support_count:
+          zero: Ninguna a favor
+          one: 1 a favor
+          other: '%{count} a favor'
+        more_recent: Más recientes
+        more_commented: Más comentadas
+      actions:
+        title: Últimas acciones
+        main_filters:
+          more_recent: Más recientes
+          more_polemic: Más polémicas
+        content_type_filters:
+         all: Todos los tipos
+         news: Noticias
+         politicians_activity: Actividad de los políticos
+         questions: Preguntas
+         proposals: Propuestas
+         images: Fotos
+         videos: Vídeos
+        more: ver más acciones
+      followings:
+        title: A quien sigues en Irekia
+        all_profiles: Ver todos los perfiles a los que sigues
+        title_and_area: '%{title} de %{area}'
+        area: Área
     intro:
       new_in_irekia: ¿Nuevo en Irekia?
       fill_in_your_data: Utiliza Facebook o Twitter para registrarte.

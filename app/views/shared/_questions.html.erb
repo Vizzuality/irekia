@@ -15,7 +15,7 @@
   </header>
   <div class="left">
     <div id="listing">
-      <%= render 'shared/questions_list' if @questions %>
+      <%= render 'shared/questions_list', :questions => @questions if @questions %>
     </div>
 
   </div>

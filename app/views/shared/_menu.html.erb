@@ -2,7 +2,7 @@
   <ul class="menu">
   <% options.each do |option| %>
     <li<%=" class='#{option[:class]}'" if option[:class] %>><%= option[:link] %>
-    <%= content_tag 'div', option[:count], :class => "pending-counter" if option[:count] %>
+      <%= content_tag 'div', option[:count], :class => "pending-counter" if option[:count] && option[:count] > 0 %>
     </li>
   <% end %>
 </ul>

@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :lastname
       t.date     :birthday
       t.text     :description
-      t.boolean  :is_woman, :default => false
+      t.boolean  :is_woman,                   :default => false
       t.integer  :province_id
       t.string   :province
       t.integer  :city_id
@@ -19,9 +19,15 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :twitter_oauth_token
       t.string   :twitter_oauth_token_secret
       t.datetime :last_connection
-      t.boolean  :inactive, :default => false
-      t.string   :locale, :default => 'es'
-      t.point    :the_geom, :geographic => true
+      t.boolean  :inactive,                   :default => false
+      t.boolean  :first_time,                 :default => true
+      t.string   :locale,                     :default => 'es'
+      t.integer  :questions_count,            :default => 0
+      t.integer  :answers_count,              :default => 0
+      t.integer  :proposals_count,            :default => 0
+      t.integer  :comments_count,             :default => 0
+      t.integer  :tagged_count,               :default => 0
+      t.point    :the_geom,                   :geographic => true
 
       t.database_authenticatable :null => false
       t.recoverable

@@ -1,0 +1,47 @@
+<article class="with_footer">
+<div class="inner">
+  <header>
+  <h2><%= t('.title', :name => @user.name) %></h2>
+  </header>
+  <div class="content">
+    <ul class="suggestions">
+      <% @areas_following.each do |follow| %>
+        <li>
+          <%= link_to (image_tag 'icons/news_avatar_medium.png'), area_path(follow.follow_item), :title => follow.follow_item.name, :class => :avatar %>
+          <div class="content">
+            <%= link_to follow.follow_item.name, area_path(follow.follow_item), :class => :name %>
+            <p>
+              <%= t('.area') %>
+            </p>
+            <p><%= render 'follows/destroy_form', :follow => follow, :follow_parent => @user, :button_class => '' %></p>
+          </div>
+        </li>
+      <% end %>
+      <% if @areas_following.present? && @users_following.present? -%>
+        <hr/>
+      <% end -%>
+      <% @users_following.each do |follow| %>
+        <li>
+          <%= link_to avatar(follow.follow_item), user_path(follow.follow_item) %>
+          <div class="content">
+            <%= link_to follow.follow_item.fullname, politician_path(follow.follow_item), :class => :name %>
+            <p>
+              <%= t('.title_and_area', :title => get_politician_title(follow.follow_item), :area => follow.follow_item.areas.map(&:name).to_sentence) %>
+            </p>
+            <p><%= render 'follows/destroy_form', :follow => follow, :follow_parent => @user, :button_class => '' %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<footer>
+<div class="separator"></div>
+<div class="inner">
+  <div class="left">
+    <%= link_to t('.all_profiles', :name => @user.name), 'in_development', :class => "down_arrow" %>
+  </div>
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>

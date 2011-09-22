@@ -230,7 +230,13 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.string   "twitter_oauth_token_secret"
     t.datetime "last_connection"
     t.boolean  "inactive",                                                                                :default => false
+    t.boolean  "first_time",                                                                              :default => true
     t.string   "locale",                                                                                  :default => "es"
+    t.integer  "questions_count",                                                                         :default => 0
+    t.integer  "answers_count",                                                                           :default => 0
+    t.integer  "proposals_count",                                                                         :default => 0
+    t.integer  "comments_count",                                                                          :default => 0
+    t.integer  "tagged_count",                                                                            :default => 0
     t.spatial  "the_geom",                    :limit => {:srid=>4326, :type=>"point", :geographic=>true}
     t.string   "email",                                                                                   :default => "",    :null => false
     t.string   "encrypted_password",          :limit => 128,                                              :default => "",    :null => false

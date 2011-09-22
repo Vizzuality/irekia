@@ -15,6 +15,7 @@ class Content < ActiveRecord::Base
   has_many      :comments
 
   before_create :update_published_at
+  before_save :author_is_politician?
   after_save  :publish_content
 
   accepts_nested_attributes_for :comments, :contents_users
@@ -27,7 +28,7 @@ class Content < ActiveRecord::Base
     participations.content_id = contents.id AND
     participations.type = 'Comment'
   SQL
-  ).select('count(participations.id) as count').group(Content.column_names.map{|c| "contents.#{c}"}).order('count desc')
+  ).select('count(participations.id) as comments_count').group(Content.column_names.map{|c| "contents.#{c}"}).order('comments_count desc')
 
   reverse_geocoded_by :latitude, :longitude
 
@@ -37,6 +38,11 @@ class Content < ActiveRecord::Base
     self.not_moderated.find_each do |content|
       content.update_attribute('moderated', true)
     end
+  end
+
+  def commenters
+    commenters_ids = User.select('DISTINCT(users.id)').joins(:comments).where('content_id = ?', id).map(&:id)
+    User.where('id in (?)', commenters_ids)
   end
 
   def latitude
@@ -93,6 +99,11 @@ class Content < ActiveRecord::Base
   end
   private :update_published_at
 
+  def author_is_politician?
+    self.moderated = true if author.politician?
+  end
+  private :author_is_politician?
+
   def publish_content
 
     return unless self.moderated?
@@ -115,6 +126,7 @@ class Content < ActiveRecord::Base
         user_action.message      = self.to_json
         user_action.save!
       end
+
     end
   end
   private :publish_content

@@ -1,0 +1,37 @@
+<article class="proposals with_filters with_footer">
+<div class="inner">
+  <header>
+  <div class="left">
+    <h2><%= t(".title", :name => @user.name) %></h2>
+  </div>
+  <div class="right">
+
+    <ul class="switch">
+      <li class="selected"><%= link_to t('.more_recent'), link_for_proposals, :class => 'filter' %></li>
+      <li><%= link_to t('.more_commented'), link_for_proposals(:more_polemic => true), :class => 'filter' %></li>
+    </ul>
+
+  </div>
+  </header>
+  <div class="left">
+    <div id="listing">
+      <%= render 'shared/proposals_list' if @proposals %>
+    </div>
+  </div>
+
+  <div class="right">
+    <% if private_profile? -%>
+    <%= simple_format t('.proposal_support') %>
+    <p>
+      <%= t('.proposal_support_count', :count => @proposals_in_favor_count) %>
+    </p>
+    <% end -%>
+  </div>
+</div>
+<footer>
+<div class="separator"></div>
+<div class="inner">
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>
