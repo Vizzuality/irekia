@@ -11,7 +11,7 @@ header .content, header nav .content { width: 996px; margin: auto; }
 /* =============================================================================
 Basics
 ========================================================================== */
-blockquote { padding: 0; margin: 0; font-size: 31px; color: #465866; font-family: "ClarendonLTMedium", Georgia, serif; width: 574px; }
+blockquote { width: 574px; padding: 0; margin: 0; font-size: 31px; color: #465866; font-family: "ClarendonLTMedium", Georgia, serif; }
 
 ul { margin: 0; padding: 0; list-style: none; }
 ul li { margin: 0; padding: 0; }
@@ -254,7 +254,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.activity .inner .left ul li .content .comment-box div.previous p { font-size: 13px; }
 #container article.activity .inner .left ul li .content .comment-box ul li { font-size: 13px; }
 #container article.activity .inner .left ul li .content .comment-box ul li p, #container article.activity .inner .left ul li .content .comment-box ul li a { font-size: 13px; }
-#container article.activity .inner .right ul.selector { margin: 0 0 40px 0; padding-left: 28px; border-left: 1px solid rgba(70, 88, 102, 0.15); }
+#container article.activity .inner .right ul.selector { margin: 0 0 40px 0; padding-left: 28px; border-left: 1px solid #eaeaea; border-left: 1px solid rgba(70, 88, 102, 0.15); }
 #container article.activity .inner .right ul.selector.no-margin { margin: 0; }
 #container article.activity .inner .right .input_field, #container article.activity .inner .right .white_button { margin-left: 28px; }
 #container article.activity .inner .right .input_field { margin-bottom: 28px; }
@@ -278,7 +278,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article a.more { padding: 0 0 0 15px; background: url("/images/icons/read_more.png") no-repeat 0 5px; }
 
 /* Questions' preview */
-#container article footer .left .question, #container article footer .right .question { font-size: 13px; color: #7d8a92; color: rgba(125, 138, 146, 0.5); }
+#container article footer .left .question, #container article footer .right .question { font-size: 13px; color: rgba(125, 138, 146, 0.5); }
 
 /* answer */
 #container article .answer { margin: 20px 0 0 0; background: url("/images/notebook_bkg.png") repeat-y 0 16px; }
@@ -294,22 +294,24 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner p.info { margin: 0 0 1px 0; padding: 0; font-size: 15px; }
 
 /* comments */
-#container article .inner .left .comments .count { margin: 20px 0 0 0; padding: 0; font-size: 17px; color: #465866; font-weight: bold; }
+#container article .inner .left .comments { position: relative; margin: 40px 0 0 0; }
+#container article .inner .left .comments .count { padding: 0; font-size: 17px; color: #465866; font-weight: bold; }
+#container article .inner .left .comments .birdie { width: 185px; height: 87px; position: absolute; right: 0; top: -57px; background: url("/images/bird.png") no-repeat; }
 #container article .inner .left .comments .textarea-comment { float: left; }
 #container article .inner .left .comments ul { margin-top: 10px; }
-#container article .inner .left .comments ul li { color: #7d8a92; padding: 30px 0 20px 0; border-top: 1px solid rgba(70, 88, 102, 0.12); margin-bottom: 10px; }
+#container article .inner .left .comments ul li { color: #7d8a92; padding: 30px 0 20px 0; border-top: 1px solid #eaeaea; border-top: 1px solid rgba(70, 88, 102, 0.12); margin-bottom: 10px; }
 #container article .inner .left .comments ul li.answered { margin-top: 0; padding-top: 0; }
+#container article .inner .left .comments ul li.answered .answered_by { padding: 5px 0 5px 77px; margin: 0 0 30px 0; /* for ie<9 */ background: #F1F8DC; border-top: 1px solid #e4e8da; border-bottom: 1px solid #e4e8da; background: rgba(153, 204, 0, 0.14); border-top: 1px solid rgba(208, 214, 219, 0.4); border-bottom: 1px solid rgba(208, 214, 219, 0.4); font-size: 11px; font-family: "Helvetica", sans-serif; font-weight: bold; text-transform: uppercase; }
 #container article .inner .left .comments ul li.comment { border: none; background: url("/images/comment_border.png") no-repeat; }
 #container article .inner .left .comments ul li.no-border { border: none; }
 #container article .inner .left .comments ul li .comment { float: left; width: 536px; }
 #container article .inner .left .comments ul li .comment blockquote { width: 100%; margin-bottom: 5px; font-size: 17px; color: #7d8a92; font-family: "Helvetica", sans-serif; line-height: 20px; }
 #container article .inner .left .comments ul li .comment .footer { float: left; }
-#container article .inner .left .comments ul li .answered { padding: 5px 0 5px 77px; margin: 0 0 30px 0; background: rgba(153, 204, 0, 0.14); border-top: 1px solid rgba(208, 214, 219, 0.4); border-bottom: 1px solid rgba(208, 214, 219, 0.4); text-transform: uppercase; font-size: 11px; font-family: "Helvetica", sans-serif; font-weight: bold; }
 
 /* quotation */
-.quotation blockquote { margin-bottom: 12px; position: relative; line-height: 34px; letter-spacing: -1px; }
+.quotation blockquote { margin-bottom: 12px; position: relative; line-height: 34px; letter-spacing: -1px; background: none; }
 .quotation blockquote span.quote { position: relative; z-index: 100; }
-.quotation blockquote .bqstart, .quotation blockquote .bqend { font-family: "Times", serif; font-weight: 300; font-size: 90px; color: #465866; opacity: .12; z-index: 0; }
+.quotation blockquote .bqstart, .quotation blockquote .bqend { font-family: "Times", serif; font-weight: 300; font-size: 90px; color: #eaeaea; color: rgba(70, 88, 102, 0.15); z-index: 0; }
 .quotation blockquote .bqstart { position: absolute; left: -20px; top: 10px; }
 .quotation blockquote .bqend { position: absolute; right: 5px; bottom: -30px; }
 .quotation .author { color: #465866; font-size: 15px; }
@@ -339,7 +341,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner .content ul.questions li p { float: left; margin: 0; padding: 0; font-size: 13px; }
 #container article .inner .content ul.questions li p a { display: block; font-size: 15px; color: #465866; font-weight: bold; }
 #container article footer .inner.with_question form div.input-counter { margin-right: 10px; }
-#container article .inner .right ul.people { padding: 10px 0 0 28px; border-left: 1px solid rgba(70, 88, 102, 0.17); }
+#container article .inner .right ul.people { padding: 10px 0 0 28px; border-left: 1px solid #eaeaea; border-left: 1px solid rgba(70, 88, 102, 0.17); }
 #container article .inner .right ul.people.no-border { border: none; }
 #container article .inner .right ul.people.no-padding { margin: 0; padding: 0; }
 #container article .inner .right ul.people.extra-margin-bottom { margin-bottom: 30px; }
@@ -421,7 +423,7 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 .share.more:hover { background-position: -88px -30px; }
 .share .ok { opacity: 0; position: absolute; top: 20px; right: 2px; background: url("/images/icons/share.png") no-repeat 0 -61px; width: 9px; height: 9px; z-index: 110; }
 
-.left-border { border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
+.left-border { border-left: 1px solid #eaeaea; border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
 
 /* Previously */
 #container article .right .content ul.proposals, #container article .right .content ul.previously, #container article .right .content ul.events { width: 253px; padding: 0 0 20px 0px; }
@@ -531,6 +533,9 @@ Explorer fixes
 
 /* --------------------------------------------------------------------------------- Calendar days */
 .ie7 #container article.agenda .inner .content ul li.day.disabled h3, .ie7 #container article.agenda .inner .content ul li.day span { color: #bbb; }
+
+/* --------------------------------------------------------------------------------- Questions' preview */
+.ie7 #container article footer .left .question, .ie7 #container article footer .right .question, .ie8 #container article footer .left .question, .ie8 #container article footer .right .question { color: #cccccc; }
 
 /* =============================================================================
 Sign in
