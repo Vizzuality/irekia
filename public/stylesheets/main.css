@@ -260,8 +260,14 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.activity .inner .right .input_field { margin-bottom: 28px; }
 
 /* Article addons */
+.agenda_map { position: none; clear: both; overflow: hidden; height: 700px; }
+
+.agenda_map .map { top: 90px; left: 30px; position: absolute; height: 700px; width: 929px; }
+
+.agenda_map ul.agenda { background: #fff; position: absolute; left: 30px; width: 929px; }
+
 /* Editable */
-a.editable { position: absolute; right: 0px; top: -10px; z-index: 100; display: block; width: 38px; height: 38px; background: url("/images/icons/editing_fold.png") no-repeat; }
+a.editable { position: absolute; right: 0px; top: -10px; z-index: 50; display: block; width: 38px; height: 38px; background: url("/images/icons/editing_fold.png") no-repeat; }
 
 /* Proposals blocks */
 #container article .inner .left .proposals { clear: both; overflow: hidden; margin: 0 0 61px 0; }

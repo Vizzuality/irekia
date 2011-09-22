@@ -2,6 +2,26 @@ $(function() {
   // Preloading of popover assets
 
 
+  $(".view_calendar").click(function(e){
+    e.preventDefault();
+    $(this).parent().toggleClass("selected");
+    $(".view_map").parent().toggleClass("selected");
+    $(".agenda_map .map").fadeOut("fast");
+    $(".agenda_map .agenda").fadeIn("fast");
+    console.log($(".agenda_map ul.agenda").height());
+    $("article.agenda .agenda_map").animate({height:$(".agenda_map ul.agenda").height()}, 500);
+  });
+
+  $(".view_map").click(function(e){
+    e.preventDefault();
+    $(this).parent().toggleClass("selected");
+    $(".view_calendar").parent().toggleClass("selected");
+
+    $(".agenda_map .map").fadeIn("fast");
+    $(".agenda_map .agenda").fadeOut("fast");
+    $("article.agenda .agenda_map").animate({height:$(".agenda_map .map").height()}, 500);
+  });
+
   //$("article.agenda .map_agenda").animate({height:$(".map_agenda .agenda").height()}, 500);
 
   //$(".view_calendar").click(function(e){
