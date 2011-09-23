@@ -5,23 +5,25 @@ jQuery.preloadImages = function(){
   }
 }
 
+/* Click binding for the 'view calendar' link */
 jQuery.fn.viewCalendar = function(opt){
 
   var speed  = (opt && opt.speed) || 150;
 
   this.each(function(){
     $(this).click(function(e){
-    e.preventDefault();
-    $(this).parent().toggleClass("selected");
-    $(".view_map").parent().toggleClass("selected");
+      e.preventDefault();
+      $(this).parent().toggleClass("selected");
+      $(".view_map").parent().toggleClass("selected");
 
-    $(".agenda_map .map").animate({opacity:0}, speed);
-    $(".agenda_map").animate({height:$(".agenda_map .agenda").height()}, speed);
-    $(".agenda_map .agenda").fadeIn("fast");
+      $(".agenda_map .map").animate({opacity:0}, speed);
+      $(".agenda_map").animate({height:$(".agenda_map .agenda").height()}, speed);
+      $(".agenda_map .agenda").fadeIn("fast");
     });
   });
 }
 
+/* Click binding for the 'view map' link */
 jQuery.fn.viewMap = function(opt){
 
   var speed      = (opt && opt.speed) || 150;
@@ -29,12 +31,12 @@ jQuery.fn.viewMap = function(opt){
 
   this.each(function(){
     $(this).click(function(e) {
-    e.preventDefault();
-    $(this).parent().toggleClass("selected");
-    $(".view_calendar").parent().toggleClass("selected");
-    $(".agenda_map").animate({height:mapHeight}, speed);
-    $(".agenda_map .map").delay(50).animate({opacity:1}, speed);
-    $(".agenda_map .agenda").fadeOut("fast");
+      e.preventDefault();
+      $(this).parent().toggleClass("selected");
+      $(".view_calendar").parent().toggleClass("selected");
+      $(".agenda_map").animate({height:mapHeight}, speed);
+      $(".agenda_map .map").delay(50).animate({opacity:1}, speed);
+      $(".agenda_map .agenda").fadeOut("fast");
     });
   });
 }
@@ -47,7 +49,7 @@ jQuery.fn.smartPlaceholder = function(opt){
   this.each(function(){
 
     var $span  = $(this).find("span.holder");
-    var $input = $(this).find(":input").not("input[type='submit']");
+    var $input = $(this).find(":input").not("input[type='hidden'], input[type='submit']");
 
     $input.keydown(function(e) {
       setTimeout(function() { (e && e.keyCode == 8 || $input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);

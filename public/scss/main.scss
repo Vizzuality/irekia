@@ -820,6 +820,9 @@ article .inner { h2, h3 { color: $dark_blue; } }
       background: url('/images/maps_sprite.png') no-repeat -51px -65px;
     }
 
+    &.actions .inner,
+    &.proposals .inner,
+    &.questions .inner,
     &.activity .inner {
       width: 934px;
       padding: 15px 31px 35px 29px;
@@ -857,6 +860,9 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
     .inner ul li .content .footer a { font-size: 13px; }
 
+    &.actions .inner,
+    &.proposals .inner,
+    &.questions .inner,
     &.activity .inner {
       .left ul li {
         a { color: #2C8CC5; }
