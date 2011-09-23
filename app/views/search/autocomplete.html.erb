@@ -6,7 +6,7 @@
 <div class="inner">
   <ul class="results">
     <% if has_politicians %>
-      <li class="politicians">
+      <li class="politics">
       <div class="summary"><h3><%= t('.politics.summary.title') %></h3><%= link_to t('.politics.summary.count', :count => @politics.count) %></div>
       <ul>
         <% @politics.first(2).each do |politic| %>
