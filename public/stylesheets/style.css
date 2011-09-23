@@ -423,7 +423,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 .agenda_map ul.agenda { background: #fff; position: absolute; left: 30px; width: 929px; }
 
 /* Editable */
-a.editable { position: absolute; right: 0px; top: -10px; z-index: 50; display: block; width: 38px; height: 38px; background: url("/images/icons/editing_fold.png") no-repeat; }
+a.editable { position: absolute; right: 0px; top: -10px; z-index: 50; display: block; width: 38px; height: 38px; background: url("/images/box_simple_bkg.png") no-repeat 0 -70px; }
+a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simple_bkg.png") no-repeat 0 -110px; }
 
 /* Proposals blocks */
 #container article .inner .left .proposals { clear: both; overflow: hidden; margin: 0 0 61px 0; }
