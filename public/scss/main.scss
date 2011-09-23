@@ -991,7 +991,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 
   /* answer */
-  #container article .answer {
+  #container article div.answer {
     margin: 20px 0 0 0;
     background:url('/images/notebook_bkg.png') repeat-y 0 16px;
     p { margin: 0 0 20px 0; font-size:17px; color:$dark_blue; line-height:20px; }
