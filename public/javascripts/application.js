@@ -27,7 +27,16 @@ $(function() {
   $('.sparkline.negative .graph').sparkline('html', {spotRadius: false, fillColor:false, lineColor: '#FF3300', height:"18px", width:"50px"});
 
   $('nav form').bind('ajax:success', function(evt, xhr, status){
-    $(this).find('.autocomplete').html(xhr);
+    var $autocomplete = $(this).find('.autocomplete');
+
+    if ($autocomplete.length > 0) {
+      $autocomplete.fadeOut("fast", function(){});
+    }
+
+    $autocomplete.html(xhr);
+    $autocomplete.css("left", "183px");
+    $autocomplete.css("margin-top", "23px");
+    $autocomplete.fadeIn("fast");
   });
 
   $('.floating-login').floatingLoginPopover();

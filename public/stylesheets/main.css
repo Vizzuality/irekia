@@ -55,7 +55,7 @@ header .content .top_nav ul.user_options li.last, header .content .top_nav ul.us
 header .content .top_nav ul.user_options li a { color: #333; text-transform: lowercase; }
 header nav { height: 55px; background: url("/images/nav_bkg.png") repeat-x; }
 header nav .content { padding: 10px 0 0 0; }
-header nav .content span { float: left; margin: 10px 10px 0 0; font-size: 15px; font-weight: bold; color: #19597A; text-shadow: 1px 1px 1px #2F9CD8; }
+header nav .content span.currently_viewing { float: left; margin: 10px 10px 0 0; font-size: 15px; font-weight: bold; color: #19597A; text-shadow: 1px 1px 1px #2F9CD8; }
 header nav .content form { float: left; width: 290px; }
 header nav .content form .input_field { position: relative; }
 header nav .content form .input_field span.holder { position: absolute; left: 11px; bottom: 8px; width: 200px; font-size: 15px; font-weight: normal; color: #D7DADD; text-shadow: none; }
@@ -523,25 +523,28 @@ Menu
 /* =============================================================================
 Autocomplete
 ========================================================================== */
-#autocomplete { position: absolute; background: url("/images/popovers_bkg.png") no-repeat -394px 0; width: 456px; height: 371px; z-index: 200; margin-bottom: 20px; clear: both; overflow: hidden; }
-#autocomplete ul { float: left; position: relative; list-style: none; z-index: 100; }
-#autocomplete ul h3 { text-transform: uppercase; font-weight: bold; font-size: 12px; color: #465866; }
-#autocomplete ul.results { top: 16px; height: 340px; width: 122px; padding-right: 11px; text-align: right; }
-#autocomplete ul.results li { position: absolute; right: 12px; }
-#autocomplete ul.results li.politicians { top: 6px; }
-#autocomplete ul.results li.areas { top: 128px; }
-#autocomplete ul.results li.users { top: 188px; }
-#autocomplete ul.results li.contents { top: 314px; }
-#autocomplete ul.summary { width: 300px; top: 16px; left: 14px; height: 340px; }
-#autocomplete ul.summary li { width: 300px; clear: both; overflow: hidden; margin-bottom: 20px; }
-#autocomplete ul.summary li.politicians { position: absolute; top: 3px; }
-#autocomplete ul.summary li.areas { position: absolute; top: 123px; }
-#autocomplete ul.summary li.users { position: absolute; top: 184px; }
-#autocomplete ul.summary li.contents { position: absolute; top: 315px; text-align: center; }
-#autocomplete ul.summary li.contents a { font-size: 17px; }
-#autocomplete ul.summary li .avatar { float: left; margin-right: 10px; }
-#autocomplete ul.summary li .name { display: block; font-size: 17px; }
-#autocomplete ul.summary li .position { font-size: 15px; color: #7d8a92; }
+.autocomplete { display: none; position: absolute; width: 451px; z-index: 200; margin-bottom: 30px; }
+.autocomplete .t, .autocomplete .f { height: 10px; width: 100%; position: absolute; background: url("/images/popovers_bkg.png") no-repeat; }
+.autocomplete .t { top: -10px; background-position: -397px 0; }
+.autocomplete .f { bottom: -10px; background-position: -397px -30px; }
+.autocomplete .inner { clear: both; overflow: hidden; background: url("/images/popovers_bkg.png") repeat-y -850px 0; }
+.autocomplete ul.results { margin: 0; padding: 0; list-style: none; z-index: 250; }
+.autocomplete ul.results li { padding: 10px 0 0 0; margin: 0 0 30px 0; background: url("/images/popovers_bkg.png") no-repeat -395px -55px; }
+.autocomplete ul.results li.no-border { background: none; }
+.autocomplete ul.results li h3 { text-transform: uppercase; font-weight: bold; font-size: 12px; color: #465866; }
+.autocomplete ul.results li .summary { margin-top: 10px; width: 120px; text-align: right; }
+.autocomplete ul.results li.politicians { margin-bottom: 0; background: none; }
+.autocomplete ul.results li.areas { margin-bottom: 0; }
+.autocomplete ul.results li.areas ul { margin-top: -27px; }
+.autocomplete ul.results li.users { margin-bottom: 0; }
+.autocomplete ul.results li.users ul { margin-top: -40px; }
+.autocomplete ul.results li.contents { margin: 0; }
+.autocomplete ul.results li.contents a { position: relative; left: 190px; top: -13px; font-size: 17px; }
+.autocomplete ul.results li ul { left: 150px; margin: -40px 0 0 0; padding: 0; z-index: 250; position: relative; }
+.autocomplete ul.results li ul li { width: 260px; text-align: left; margin-bottom: 15px; background: none; }
+.autocomplete ul.results li ul li .avatar { float: left; margin-right: 10px; }
+.autocomplete ul.results li ul li .name { display: block; font-size: 17px; }
+.autocomplete ul.results li ul li .position { font-size: 15px; color: #7d8a92; }
 
 /* =============================================================================
 Explorer fixes

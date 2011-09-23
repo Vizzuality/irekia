@@ -1,5 +1,5 @@
 <div class="content">
-  <span><%= t('.currently_viewing') %></span>
+  <span class="currently_viewing"><%= t('.currently_viewing') %></span>
   <ul class="areas">
     <% @areas.each do |area| %>
       <li class="<%= current_area?(area) %>"><%= truncate(area.name, :length => 18) %></li>

@@ -1,85 +1,62 @@
+<% has_politicians = @politics.size > 0 %>
+<% has_areas       = @areas.size > 0 %>
+<% has_citizens       = @citizens.size > 0 %>
+<% has_contents    = @contents.size > 0 %>
 
-<div id="autocomplete">
+<div class="inner">
   <ul class="results">
-    <li class="politicians"><h3>Políticos</h3><a href="#">23 encontrados</a></li>
-    <li class="areas"><h3>Áreas</h3> </li>
-    <li class="users"><h3>Usuarios</h3><a href="#">213 encontrados</a></li>
-    <li class="contents"><h3>Contenidos</h3></li>
-  </ul>
+    <% if has_politicians %>
+      <li class="politicians">
+      <div class="summary"><h3><%= t('.politics.summary.title') %></h3><%= link_to t('.politics.summary.count', :count => @politics.count) %></div>
+      <ul>
+        <% @politics.first(2).each do |politic| %>
+          <li>
+          <%= link_to (content_tag 'div', (image_tag(politic.profile_image)), :class => "avatar medium"), politic_path(politic) if politic.profile_image %>
+          <%= link_to politic.fullname, politic_path(politic), :class => :name %>
+          <% if title = get_politic_title(politic) %>
+            <span class="position"><%= t('.politics.title_area', :title => title, :area => politic.areas.map(&:name).join(', ')) %></span>
+          <% end %>
+          </li>
+        <% end %>
+      </ul>
+      </li>
+    <% end %>
 
-  <ul class="summary">
-    <li class="politicians">
-    <ul>
-      <li><a href="#" class="avatar medium"><div class="ieframe"></div><img src="/images/temp/avatar_002.png" /></a><a href="#" class="name">Virginia Santana Rodriguez</a><span class="position">Consejera de salud</span> </li>
-      <li><a href="#" class="avatar medium"><div class="ieframe"></div><img src="/images/temp/avatar_003.png" /></a><a href="#" class="name">Virginia Santana Rodriguez</a><span class="position">Consejera de salud</span></li>
-    </ul>
+    <% if has_areas %>
+      <li class="areas<%= ' no-border' if !has_politicians %>">
+      <div class="summary"><h3><%= t('.areas.summary.title') %></h3></div>
+      <ul>
+        <% @areas.first(2).each do |area| %>
+          <li>
+          <a href="#" class="avatar medium"><img src="/images/icons/news_avatar_medium.png" /></a>
+          <%= link_to area.name, area_path(area), :class => :name %>
+          </li>
+        <% end %>
+      </ul>
+      </li>
+    <% end %>
 
-    </li>
-    <li class="areas">
-    <ul>
-      <li><a href="#" class="avatar medium"><div class="ieframe"></div><img src="/images/temp/avatar_004.png" /></a><a href="#" class="name">Virginia Santana Rodriguez</a><span class="position">Consejera de salud</span> </li>
-    </ul>
+    <% if has_citizens %>
+      <li class="users<%= ' no-border' if !has_areas and !has_politicians %>">
+      <div class="summary"><h3><%= t('.users.summary.title') %></h3><%= link_to t('.users.summary.count', :count => @citizens.count) %></div>
+      <ul>
+        <% @citizens.first(2).each do |user| %>
+          <li>
+          <%= link_to (content_tag 'div', (image_tag(user.profile_image)), :class => "avatar medium"), user_path(politic) if user.profile_image %>
+          <%= link_to user.fullname, user_path(user), :class => :name %>
+          <span class="position"><%= "#{user.city}, #{user.province}" %></span>
+          </li>
+        <% end %>
+      </ul>
+      </li>
+    <% end %>
 
-    </li>
-    <li class="users">
-    <ul>
-      <li><a href="#" class="avatar medium"><div class="ieframe"></div><img src="/images/temp/avatar_005.png" /></a><a href="#" class="name">Virginia Santana Rodriguez</a><span class="position">Consejera de salud</span> </li>
-      <li><a href="#" class="avatar medium"><div class="ieframe"></div><img src="/images/temp/avatar_006.png" /></a><a href="#" class="name">Virginia Santana Rodriguez</a><span class="position">Consejera de salud</span></li>
-    </ul>
-    </li>
-    <li class="contents">
-    <a href="#">23 contenidos encontrados</a>
-    </li>
-  </ul>
-</div>
-
-
-<!--<div class="politics">
-  <div class="summary">
-    <span><%= t('.politics.summary.title') %></span>
-    <%= link_to t('.politics.summary.count', :count => @politics.count) %>
-  </div>
-  <ul>
-    <% @politics.first(2).each do |politic| %>
-      <li>
-        <%= link_to image_tag(politic.profile_image), politic_path(politic) if politic.profile_image %>
-        <%= link_to politic.fullname, politic_path(politic) %>
-        <span><%= t('.politics.title_area', :title => get_politic_title(politic), :area => politic.areas.map(&:name).join(', ')) %></span>
+    <% if has_contents %>
+      <li class="contents<%= ' no-border' if !has_citizens and !has_areas and !has_politicians %>">
+      <div class="summary"><h3><%= t('.contents.summary.title') %></h3></div>
+      <%= link_to t('.contents.count', :count => @contents.count), '#' %>
       </li>
     <% end %>
   </ul>
 </div>
-<div class="areas">
-  <div class="summary">
-    <span><%= t('.areas.summary.title') %></span>
-  </div>
-  <ul>
-    <% @areas.first(2).each do |area| %>
-      <li>
-        <%= link_to area.name, area_path(area) %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-<div class="users">
-  <div class="summary">
-    <span><%= t('.users.summary.title') %></span>
-    <%= link_to t('.users.summary.count', :count => @citizens.count) %>
-  </div>
-  <ul>
-    <% @citizens.first(2).each do |user| %>
-      <li>
-        <%= link_to image_tag(user.profile_image), user_path(user) if user.profile_image %>
-        <%= link_to user.fullname, user_path(user) %>
-        <span><%= "#{user.city}, #{user.province}" %></span>
-      </li>
-    <% end %>
-  </ul>
-</div>
-<div class="contents">
-  <div class="summary">
-    <span><%= t('.contents.summary.title') %></span>
-  </div>
-  <%= link_to t('.contents.count', :count => @contents.count), '#' %>
-</div>
--->
+<div class="t"></div><div class="f"></div>

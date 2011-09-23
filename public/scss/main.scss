@@ -162,7 +162,7 @@ header {
 
     .content {
       padding: 10px 0 0 0;
-      span {
+      span.currently_viewing {
         float: left;
         margin: 10px 10px 0 0;
         font-size: 15px;
@@ -1962,71 +1962,65 @@ Menu
 /* =============================================================================
 Autocomplete
 ========================================================================== */
-#autocomplete {
 
-  //display: none;
+.autocomplete {
+  display: none;
   position: absolute;
-  //right: 0;
 
-  background: url('/images/popovers_bkg.png') no-repeat -394px 0;
-  width: 456px;
-  height: 371px;
+  width: 451px;
   z-index: 200;
-  margin-bottom:20px;
+  margin-bottom:30px;
 
-  clear:both;
-  overflow:hidden;
+  .t, .f { height: 10px; width: 100%; position: absolute; background: url('/images/popovers_bkg.png') no-repeat; }
+  .t { top: -10px; background-position: -397px 0; }
+  .f { bottom: -10px; background-position: -397px -30px; }
 
-  ul {
-    float:left;
-    position:relative;
+  .inner{
+    clear:both;
+    overflow:hidden;
+    background: url('/images/popovers_bkg.png') repeat-y -850px 0;
+  }
+
+  ul.results {
+    margin:0; padding:0;
     list-style:none;
-    z-index:100;
+    z-index:250;
 
-    h3 { text-transform:uppercase; font-weight:bold; font-size:12px; color:$dark_blue; }
+    li {
+      padding: 10px 0 0 0;
+      margin: 0 0 30px 0;
+      background: url('/images/popovers_bkg.png') no-repeat -395px -55px;
 
-    &.results {
-      top:16px;
-      height:340px;
-      width:133px - 11;
-      padding-right:11px;
-      text-align:right;
-      li {
-        position:absolute;
-        right:12px;
-        &.politicians {top:6px;}
-        &.areas {top:128px;}
-        &.users {top:188px;}
-        &.contents {top:314px;}
+      &.no-border { background:none; }
+      h3 { text-transform:uppercase; font-weight:bold; font-size:12px; color:$dark_blue; }
+      .summary { margin-top:10px; width:120px; text-align:right; }
+
+      &.politicians { margin-bottom:0; background:none;}
+      &.areas { margin-bottom:0;  ul { margin-top:-27px; }}
+      &.users { margin-bottom:0;  ul { margin-top:-40px; }}
+
+      &.contents {
+        margin: 0;
+        a { position: relative; left: 190px; top: -13px; font-size:17px; }
       }
-    }
 
-    &.summary {
-      width:300px;
-      top:16px;
-      left:14px;
-      height:340px;
+      ul {
+        left:150px;
+        margin:-40px 0 0 0;
+        padding:0;
+        z-index:250;
+        position:relative;
 
-      li {
-        width:300px;
-        clear:both; overflow:hidden;
+        li {
+          width:260px;
+          text-align:left;
+          margin-bottom:15px;
+          background:none;
 
-        margin-bottom:20px;
-
-        &.politicians { position:absolute; top:3px;}
-        &.areas { position:absolute; top:123px;}
-        &.users { position:absolute; top:184px;}
-        &.contents {
-          position:absolute;
-          top:315px;
-          text-align:center;
-
-          a {font-size:17px;}
+          .avatar { float:left; margin-right:10px; }
+          .name { display:block; font-size:17px; }
+          .position { font-size:15px; color: $standard_gray; }
         }
-
-        .avatar { float:left; margin-right:10px; }
-        .name { display:block; font-size:17px; }
-        .position { font-size:15px; color: $standard_gray; }
       }
     }
   }
