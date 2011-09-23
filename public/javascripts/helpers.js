@@ -5,6 +5,40 @@ jQuery.preloadImages = function(){
   }
 }
 
+jQuery.fn.viewCalendar = function(opt){
+
+  var speed  = (opt && opt.speed) || 150;
+
+  this.each(function(){
+    $(this).click(function(e){
+    e.preventDefault();
+    $(this).parent().toggleClass("selected");
+    $(".view_map").parent().toggleClass("selected");
+
+    $(".agenda_map .map").animate({opacity:0}, speed);
+    $(".agenda_map").animate({height:$(".agenda_map .agenda").height()}, speed);
+    $(".agenda_map .agenda").fadeIn("fast");
+    });
+  });
+}
+
+jQuery.fn.viewMap = function(opt){
+
+  var speed      = (opt && opt.speed) || 150;
+  var mapHeight  = (opt && opt.mapHeight) || 465;
+
+  this.each(function(){
+    $(this).click(function(e) {
+    e.preventDefault();
+    $(this).parent().toggleClass("selected");
+    $(".view_calendar").parent().toggleClass("selected");
+    $(".agenda_map").animate({height:mapHeight}, speed);
+    $(".agenda_map .map").delay(50).animate({opacity:1}, speed);
+    $(".agenda_map .agenda").fadeOut("fast");
+    });
+  });
+}
+
 /* Hides/shows input placeholders */
 jQuery.fn.smartPlaceholder = function(opt){
 

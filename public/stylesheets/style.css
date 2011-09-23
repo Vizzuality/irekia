@@ -421,7 +421,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 /* Article addons */
 .agenda_map { position: none; clear: both; overflow: hidden; height: 700px; }
 
-.agenda_map .map { top: 90px; left: 30px; position: absolute; height: 700px; width: 929px; }
+.agenda_map .map { opacity: 0; top: 90px; left: 30px; position: absolute; height: 700px; width: 929px; }
 
 .agenda_map ul.agenda { background: #fff; position: absolute; left: 30px; width: 929px; }
 

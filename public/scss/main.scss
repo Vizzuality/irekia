@@ -927,7 +927,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   /* Article addons */
 
   .agenda_map { position:none; clear: both; overflow: hidden; height:700px; }
-  .agenda_map .map {top:90px; left:30px; position:absolute; height:700px; width:929px;}
+  .agenda_map .map {opacity:0; top:90px; left:30px; position:absolute; height:700px; width:929px;}
   .agenda_map ul.agenda { background:#fff; position:absolute; left:30px; width:929px; }
 
   /* Editable */
@@ -1995,7 +1995,7 @@ Autocomplete
       h3 { text-transform:uppercase; font-weight:bold; font-size:12px; color:$dark_blue; }
       .summary { margin-top:10px; width:120px; text-align:right; }
 
-      &.politics { margin-bottom:0; background:none;}
+      &.politicians { margin-bottom:0; background:none;}
       &.areas { margin-bottom:0;  ul { margin-top:-27px; }}
       &.users { margin-bottom:0;  ul { margin-top:-40px; }}
 

@@ -2,24 +2,11 @@ $(function() {
   // Preloading of popover assets
 
 
-  $(".view_calendar").click(function(e){
-    e.preventDefault();
-    $(this).parent().toggleClass("selected");
-    $(".view_map").parent().toggleClass("selected");
-    $("article.agenda .agenda_map").animate({height:$(".agenda_map ul.agenda").height()}, 250, function(){
-      $(".agenda_map .map").fadeOut("fast");
-      $(".agenda_map .agenda").fadeIn("fast");
-    });
-  });
+  // reisze agenda_map container
+  $("article.agenda .agenda_map").animate({height:$(".agenda_map ul.agenda").height() }, 0);
 
-  $(".view_map").click(function(e){
-    e.preventDefault();
-    $(this).parent().toggleClass("selected");
-    $(".view_calendar").parent().toggleClass("selected");
-      $(".agenda_map .map").fadeIn("fast");
-      $(".agenda_map .agenda").fadeOut("fast");
-      $("article.agenda .agenda_map").animate({height:$(".agenda_map .map").height()}, 250);
-  });
+  $(".view_calendar").viewCalendar();
+  $(".view_map").viewMap();
 
   $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
 

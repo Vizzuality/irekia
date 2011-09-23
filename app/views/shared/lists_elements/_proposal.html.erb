@@ -1,22 +1,38 @@
-<div class="proposal">
-  <p class="title">
-    <%= data.title %>
-  </p>
-  <ul class="arguments">
+<%= (content_tag 'div', (image_tag data.author.profile_image), :class => :avatar) if data.author.profile_image.present? %>
+
+<div class="content">
+  <p><strong><%= data.title %></strong></p>
+
+  <!--  <ul class="arguments">
     <li><%= t('.in_favor', :count => data.in_favor_count) %></li>
     <li><%= t('.against', :count => data.against_count) %></li>
   </ul>
-  <%= (content_tag 'div', (image_tag data.author.profile_image), :class => :avatar) if data.author.profile_image.present? %>
-  <span class="author">
-    <%= raw t('.author', :author => link_to(data.author.fullname, user_path(data.author.id)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
-  </span>
-  <% if data.is_a?(Proposal) %>
-    &middot;
-    <%= link_to(t('.participation', :count => data.participation), '#') %>
-  <% else %>
-    &middot;
-    <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#' %>
-    &middot;
-    <%= link_to t('shared.lists_elements.share'), '#' %>
-  <% end %>
+  -->
+
+  <div class="graphs">
+    <div class="sparkline positive">
+      <div class="graph" values="1,1,1,1,1,1,1,4,2,3,1,1,1,2,1,3,1,1,1,1"></div>
+      <span class="legend"><div class="count">33</div> a favor</span>
+    </div>
+
+    <div class="sparkline negative">
+      <div class="graph" values="1,2,1,1,1,1,1,3,1,1,1,4,1,1,4,2,1,1,1,1"></div>
+      <span class="legend"><div class="count">3</div> en contra</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="author">
+      <%= raw t('.author', :author => link_to(data.author.fullname, user_path(data.author.id)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
+    </span>
+    <% if data.is_a?(Proposal) %>
+      &middot;
+      <%= link_to(t('.participation', :count => data.participation), '#', :class => "comment-count") %>
+    <% else %>
+      &middot;
+      <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#', :class => "comment-count" %>
+      &middot;
+      <%= link_to t('shared.lists_elements.share'), '#' %>
+    <% end %>
+  </div>
 </div>

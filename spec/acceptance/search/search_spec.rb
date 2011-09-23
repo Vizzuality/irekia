@@ -223,8 +223,8 @@ feature "Search" do
       click_button 'search_submit'
     end
 
-    within '.autocomplete' do
-      within '.politics' do
+    within '.autocomplete .inner' do
+      within '.politicians' do
         within '.summary' do
           page.should have_content 'Políticos 5 encontrados'
           page.should have_link '5 encontrados'
