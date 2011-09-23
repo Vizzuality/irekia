@@ -44,20 +44,23 @@ span.against { color: #ff9933; }
 Header
 ========================================================================== */
 header { padding-top: 44px; margin-bottom: 53px; background: white; }
-header .content { clear: both; overflow: hidden; position: relative; height: 74px; }
-header .content .logo { left: 0; bottom: 18px; position: absolute; display: block; }
-header .content .net_logo { float: right; display: block; }
-header .content ul.user_options { right: 0; bottom: 18px; position: absolute; }
-header .content ul.user_options li { float: left; font-size: 13px; }
-header .content ul.user_options li:after { content: "|"; padding: 0 5px; }
-header .content ul.user_options li.last, header .content ul.user_options li:last-child:after { content: ""; padding: 0; }
-header .content ul.user_options li a { color: #333; text-transform: lowercase; }
+header .content { clear: both; overflow: hidden; height: 74px; }
+header .content .top_nav { position: relative; clear: both; overflow: hidden; }
+header .content .top_nav .logo { float: left; left: 0; top: 0; position: relative; display: block; }
+header .content .top_nav .net_logo { float: right; right: 0; position: absolute; display: block; }
+header .content .top_nav ul.user_options { right: 0; bottom: 0; float: right; position: absolute; clear: both; overflow: hidden; }
+header .content .top_nav ul.user_options li { float: left; font-size: 13px; }
+header .content .top_nav ul.user_options li:after { content: "|"; padding: 0 5px; }
+header .content .top_nav ul.user_options li.last, header .content .top_nav ul.user_options li:last-child:after { content: ""; padding: 0; }
+header .content .top_nav ul.user_options li a { color: #333; text-transform: lowercase; }
 header nav { height: 55px; background: url("/images/nav_bkg.png") repeat-x; }
 header nav .content { padding: 10px 0 0 0; }
 header nav .content span { float: left; margin: 10px 10px 0 0; font-size: 15px; font-weight: bold; color: #19597A; text-shadow: 1px 1px 1px #2F9CD8; }
-header nav .content form { position: relative; float: left; width: 290px; }
-header nav .content form input[type="text"] { height: 33px; padding: 0 36px 0 9px; width: 245px; font-size: 15px; border: 1px solid #13587f; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); outline: none; }
-header nav .content form input[type="submit"] { right: 10px; top: 10px; position: absolute; width: 14px; height: 14px; background: url("/images/icons/magnifier.png") no-repeat; border: 0; z-index: 100; }
+header nav .content form { float: left; width: 290px; }
+header nav .content form .input_field { position: relative; }
+header nav .content form .input_field span.holder { position: absolute; left: 11px; bottom: 8px; width: 200px; font-size: 15px; font-weight: normal; color: #D7DADD; text-shadow: none; }
+header nav .content form .input_field input[type="text"] { height: 33px; padding: 0 36px 0 9px; width: 245px; font-size: 15px; border: 1px solid #13587f; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); outline: none; }
+header nav .content form .input_field input[type="submit"] { right: 10px; top: 10px; position: absolute; width: 14px; height: 14px; background: url("/images/icons/magnifier.png") no-repeat; border: 0; z-index: 100; }
 header nav .content .sign_out { float: right; }
 header nav .content ul.auth { float: right; }
 header nav .content ul.auth li { position: relative; margin: 0 0 0 10px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
@@ -520,7 +523,7 @@ Menu
 /* =============================================================================
 Autocomplete
 ========================================================================== */
-#autocomplete { background: url("/images/popovers_bkg.png") no-repeat -394px 0; width: 456px; height: 371px; z-index: 100; margin-bottom: 20px; clear: both; overflow: hidden; }
+#autocomplete { position: absolute; background: url("/images/popovers_bkg.png") no-repeat -394px 0; width: 456px; height: 371px; z-index: 200; margin-bottom: 20px; clear: both; overflow: hidden; }
 #autocomplete ul { float: left; position: relative; list-style: none; z-index: 100; }
 #autocomplete ul h3 { text-transform: uppercase; font-weight: bold; font-size: 12px; color: #465866; }
 #autocomplete ul.results { top: 16px; height: 340px; width: 122px; padding-right: 11px; text-align: right; }

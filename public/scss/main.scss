@@ -125,24 +125,33 @@ header {
   .content {
     clear: both;
     overflow: hidden;
-    position: relative;
+    //position: relative;
     height: 74px;
 
-    .logo { left: 0; bottom: 18px; position: absolute; display: block; }
-    .net_logo { float: right; display: block; }
+    .top_nav {
+      position:relative;
+      clear:both;
+      overflow:hidden;
 
-    ul.user_options {
-      right: 0;
-      bottom: 18px;
-      position: absolute;
+      .logo { float:left; left: 0; top: 0; position: relative; display: block; }
+      .net_logo { float: right;right:0; position:absolute; display: block; }
 
-      li {
-        float: left;
-        font-size: 13px;
+      ul.user_options {
+        right: 0;
+        bottom:0;
+        float:right;
+        position: absolute;
+        clear:both;
+        overflow:hidden;
 
-        &:after { content: "|"; padding: 0 5px; }
-        &.last, &:last-child:after { content: ""; padding: 0; }
-        a { color: #333; text-transform: lowercase; }
+        li {
+          float: left;
+          font-size: 13px;
+
+          &:after { content: "|"; padding: 0 5px; }
+          &.last, &:last-child:after { content: ""; padding: 0; }
+          a { color: #333; text-transform: lowercase; }
+        }
       }
     }
   }
@@ -150,6 +159,7 @@ header {
   nav {
     height: 55px;
     background: url('/images/nav_bkg.png') repeat-x;
+
     .content {
       padding: 10px 0 0 0;
       span {
@@ -161,31 +171,36 @@ header {
         text-shadow: 1px 1px 1px #2F9CD8;
       }
       form {
-        position: relative;
         float: left;
         width: 290px;
-        input {
-          &[type="text"] {
-            height: 33px;
-            padding: 0 36px 0 9px;
-            width: 245px;
-            font-size: 15px;
-            border: 1px solid #13587f;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
-            -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
-            outline: none;
-          }
-          &[type="submit"] {
-            right: 10px;
-            top: 10px;
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background: url('/images/icons/magnifier.png') no-repeat;
-            border: 0;
-            z-index: 100;
+        .input_field {
+          position:relative;
+
+          span.holder { position: absolute; left: 11px; bottom: 8px; width: 200px; font-size:15px; font-weight:normal; color: #D7DADD; text-shadow:none; }
+
+          input {
+            &[type="text"] {
+              height: 33px;
+              padding: 0 36px 0 9px;
+              width: 245px;
+              font-size: 15px;
+              border: 1px solid #13587f;
+              -webkit-border-radius: 5px;
+              -moz-border-radius: 5px;
+              border-radius: 5px;
+              -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2);
+              outline: none;
+            }
+            &[type="submit"] {
+              right: 10px;
+              top: 10px;
+              position: absolute;
+              width: 14px;
+              height: 14px;
+              background: url('/images/icons/magnifier.png') no-repeat;
+              border: 0;
+              z-index: 100;
+            }
           }
         }
       }
@@ -1950,13 +1965,13 @@ Autocomplete
 #autocomplete {
 
   //display: none;
-  //position: absolute;
+  position: absolute;
   //right: 0;
 
   background: url('/images/popovers_bkg.png') no-repeat -394px 0;
   width: 456px;
   height: 371px;
-  z-index: 100;
+  z-index: 200;
   margin-bottom:20px;
 
   clear:both;

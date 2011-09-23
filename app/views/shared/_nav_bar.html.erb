@@ -6,8 +6,12 @@
     <% end %>
   </ul>
   <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get} do |search_form| %>
-    <%= search_form.text_field :query, :placeholder => "o busca lo que necesitas..." %>
-    <%= search_form.submit '' %>
+    <div class="input_field placeholder">
+        <%= search_form.text_field :query %>
+        <%= search_form.submit '' %>
+        <span class="holder">o busca lo que necesites…</span>
+    </div>
+    <field></field>
     <div class="autocomplete"></div>
   <% end %>
   <% if user_signed_in? %>
