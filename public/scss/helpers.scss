@@ -1,0 +1,34 @@
+// Basics
+$background_color: #EFEFEF;
+$avatar_normal_size: 65px;
+$avatar_medium_size: 40px;
+$avatar_small_size: 36px;
+
+// Dark levels
+$darkest:          #000000;
+$uber_dark:        #222222;
+$ultra_dark:       #333333;
+$medium_dark:      #666666;
+$dark:             #999999;
+$gray:             #cccccc;
+$subtle_gray: 		 #dedede;
+$light_gray:       #f1f1f1;
+$error_color:      #FF3300;
+
+$standard_gray:    #7D8A92; // 125, 138, 146
+
+// Colors
+$white:            #FFFFFF;
+$pink:             #F10063;
+$dark_blue:        #465866; // 70 88 102 - #eaeaea
+$link_color:       #1D79B0;
+$twitter_blue:     #2C8CC5;
+$agree_color:      #669900;
+$against_color:    #FF9933;
+
+@mixin inline-block {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1; *display: inline;
+}

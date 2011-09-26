@@ -24,9 +24,14 @@
 
         <div class="comment-box">
           <p class="previous">
-          <%= link_to "1 comentario anterior", "#" %> de Raúl Otxoa
+          <%= link_to "1 comentario anterior", "#", :class => "show-hidden-comments" %> de Raúl Otxoa
           </p>
           <ul>
+            <li class="hidden">
+            <%= link_to (image_tag 'temp/avatar_003_small.png', :class => "avatar small"), "#" %>
+            <p><%= link_to "Raúl Otxoa", "#" %> - Creo que podéis encontrar mas información sobre esto también en la web oficial del ministerio de educación</p>
+            </li>
+
             <li>
             <%= link_to (image_tag 'temp/avatar_001_small.png', :class => "avatar small"), "#" %>
             <p><%= link_to "Tú", "#" %> - De todos modos, creo que podéis encontrar mas información sobre esto también en la web oficial del ministerio de educación</p>
@@ -100,7 +105,7 @@
       <span class="holder">Busca una pregunta</span>
     </div>
 
-    <%= link_to "Haz una pregunta", "#", :id => "question-123", :class => "white_button ask_question" %>
+    <%= link_to (raw "<span>Haz una pregunta</span>"), "#", :id => "question-123", :class => "white_button ask_question" %>
 
   </div>
 </div>
