@@ -49,6 +49,7 @@ class AreasController < ApplicationController
   def get_actions
     @actions = @area.actions
     @actions = @actions.where(:event_type => params[:type]) if params[:type].present?
+    @actions = @actions.page params[:page]
   end
 
   def build_questions_for_update

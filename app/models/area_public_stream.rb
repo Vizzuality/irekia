@@ -1,6 +1,8 @@
 class AreaPublicStream < ActiveRecord::Base
   include PgSearch
 
+  paginates_per 4
+
   belongs_to :area
 
   scope :this_week, lambda{ where('EXTRACT(WEEK FROM published_at) = ?', DateTime.now.cweek) }
