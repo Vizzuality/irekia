@@ -37,7 +37,7 @@ Irekia::Application.routes.draw do
 
   resources :areas do
     member do
-      get 'actions'
+      get 'actions', :path => 'actions(/:type)(.:format)'
       get 'questions'
       get 'proposals'
       get 'agenda'
