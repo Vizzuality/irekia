@@ -28,6 +28,9 @@
 
       <div id="counter-124" class="input-counter placeholder">
         <span class="counter">140</span>
+        <%= questions.fields_for :contents_users, @question.contents_users.last do |content_user| %>
+          <%= content_user.hidden_field :user_id %>
+        <% end -%>
         <%= questions.fields_for :question_data, @question_data do |question_data| %>
           <%= question_data.hidden_field :user_id %>
           <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
