@@ -42,8 +42,15 @@ class PoliticsController < UsersController
   end
 
   def get_actions
-    @actions = @area.actions
+    @actions = @politic.actions
     @actions = @actions.where(:event_type => params[:type]) if params[:type].present?
+
+    @actions = if params[:more_polemic]
+      @actions.more_polemic
+    else
+      @actions.more_recent
+    end
+
     @actions = @actions.page params[:page]
  end
 

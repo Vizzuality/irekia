@@ -17,7 +17,7 @@ feature "Moderation admin page" do
 
       page.should have_css 'ul li.content', :count => 22
       within 'ul li.content' do
-        page.should have_css 'div.proposal p.title', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
+        page.should have_css 'div.content p strong', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
         page.should have_button 'Validar Propuesta'
         page.should have_button 'Eliminar Propuesta'
       end

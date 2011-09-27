@@ -1,6 +1,6 @@
 <% has_politicians = @politics.size > 0 %>
-<% has_areas       = @areas.size > 0 %>
-<% has_citizens       = @citizens.size > 0 %>
+<% has_areas       = @areas.size    > 0 %>
+<% has_citizens    = @citizens.size > 0 %>
 <% has_contents    = @contents.size > 0 %>
 
 <div class="inner">
@@ -42,7 +42,7 @@
       <ul>
         <% @citizens.first(2).each do |user| %>
           <li>
-          <%= link_to (content_tag 'div', (image_tag(user.profile_image)), :class => "avatar medium"), user_path(politic) if user.profile_image %>
+          <%= link_to (content_tag 'div', (image_tag(user.profile_image)), :class => "avatar medium"), user_path(user) if user.profile_image %>
           <%= link_to user.fullname, user_path(user), :class => :name %>
           <span class="position"><%= "#{user.city}, #{user.province}" %></span>
           </li>

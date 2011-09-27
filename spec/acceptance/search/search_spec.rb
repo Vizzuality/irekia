@@ -66,7 +66,8 @@ feature "Search" do
       page.should have_css 'div.content .suggestion', :count => 3
       within 'div.content .suggestion' do
         page.should have_css 'img'
-        page.should have_link 'María González Pérez'
+        peich
+        page.should have_link 'Andrés Berzoso Rodríguez'
         page.should have_content 'Ondarroa, Vizcaya'
         page.should have_link 'Seguir'
       end
@@ -197,7 +198,7 @@ feature "Search" do
 
       within 'div.content div.suggestion' do
         page.should have_css 'img'
-        page.should have_link 'María González Pérez'
+        page.should have_link 'Andrés Berzoso Rodríguez'
         page.should have_content 'Ondarroa, Vizcaya'
         page.should have_link 'Seguir'
       end
@@ -226,7 +227,7 @@ feature "Search" do
     within '.autocomplete .inner' do
       within '.politicians' do
         within '.summary' do
-          page.should have_content 'Políticos 5 encontrados'
+          page.should have_css 'h3', :text => 'POLÍTICOS'
           page.should have_link '5 encontrados'
         end
         page.should have_css 'ul li', :count => 2
@@ -250,13 +251,13 @@ feature "Search" do
 
       within '.users' do
         within '.summary' do
-          page.should have_content 'Usuarios 3 encontrados'
+          page.should have_css 'h3', :text => 'USUARIOS'
           page.should have_link '3 encontrados'
         end
         page.should have_css 'ul li', :count => 2
         within 'ul li' do
           page.should have_css 'img'
-          page.should have_link 'María González Pérez'
+          page.should have_link 'Andrés Berzoso Rodríguez'
           page.should have_content 'Ondarroa, Vizcaya'
         end
       end

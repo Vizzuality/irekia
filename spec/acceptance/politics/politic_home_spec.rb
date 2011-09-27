@@ -150,31 +150,31 @@ feature "Politic's home" do
 
     visit politic_path(@politic)
 
-    within '#proposals' do
+    within '.proposals' do
       page.should have_css 'h2', :text => 'Propuestas'
 
       page.should have_css 'a.more_recent', :text => 'Más recientes'
       page.should have_css 'a.more_polemic', :text => 'Más polémicas'
 
-      within 'ul li.action div.proposal' do
-        page.should have_css 'p.title', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
-        page.should have_css 'ul.arguments li', :text => '66 a favor'
-        page.should have_css 'ul.arguments li', :text => '57 en contra'
+      page.should have_css 'ul li.proposal div.avatar img'
+      within 'ul li.proposal div.content' do
+        page.should have_css 'p strong', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
+        page.should have_css 'div.graphs span.legend', :text => '33 a favor'
+        page.should have_css 'div.graphs span.legend', :text => '3 en contra'
 
-        page.should have_css 'img'
         page.should have_css 'span.author', :text => 'María González Pérez hace menos de 1 minuto'
         page.should have_css 'span.author a', :text => 'María González Pérez'
         page.should have_css 'a', :text => '123 usuarios han participado'
       end
 
-      within '.content_type_filters' do
-        page.should have_link 'Todas'
-        page.should have_link 'Propuestas del gobierno'
-        page.should have_link 'Propuestas ciudadanas'
-        page.should have_link 'Crea una propuesta'
-      end
+#       within '.content_type_filters' do
+#         page.should have_link 'Todas'
+#         page.should have_link 'Propuestas del gobierno'
+#         page.should have_link 'Propuestas ciudadanas'
+#         page.should have_link 'Crea una propuesta'
+#       end
 
-      page.should have_css '.pagination', :text => 'ver más propuestas'
+      page.should have_css 'footer', :text => 'ver más propuestas'
     end
   end
 
