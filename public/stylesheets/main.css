@@ -140,6 +140,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.micro.with_footer footer .inner div.right { right: 0; margin: 0; width: 50%; }
 #container article.mini { width: 610px; margin: 0 auto 0 auto; }
 #container article.mini .inner header { margin: 0; }
+#container article.mini .inner header h2 { line-height: normal; }
 #container article.mini .inner .content p { margin: 0 0 20px 0; padding: 0; font-size: 15px; color: #7d8a92; }
 #container article.mini .t, #container article.mini .f { height: 10px; background: url("/images/box_mini_bkg.png") no-repeat; }
 #container article.mini .t { top: -10px; background-position: 0 0; }

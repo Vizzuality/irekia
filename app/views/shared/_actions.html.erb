@@ -42,26 +42,21 @@
   </header>
 
   <div class="left">
-    <% if @actions %>
-      <ul>
-      <% @actions.first(4).each do |action| %>
-        <li class="<%= action.event_type %>">
-        <%= render "shared/lists_elements/#{action.event_type}", :data => action.item %>
-        </li>
-      <% end %>
-    </ul>
-    <% end %>
+    <div id="actions">
+      <%= render 'shared/actions_list' if @actions %>
+    </div>
+      &nbsp;
   </div>
 
   <div class="right">
     <ul class="selector">
-      <li class="selected"><%= link_to t('.content_type_filters.all'), '#' %></li>
-      <li><%= link_to t('.content_type_filters.news'), '#' %></li>
-      <li><%= link_to t('.content_type_filters.politics_activity'), '#' %></li>
-      <li><%= link_to t('.content_type_filters.questions'), '#' %></li>
-      <li><%= link_to t('.content_type_filters.proposals'), '#' %></li>
-      <li><%= link_to t('.content_type_filters.images'), '#' %></li>
-      <li><%= link_to t('.content_type_filters.videos'), '#' %></li>
+      <li class="selected"><%= link_to t('.content_type_filters.all'), actions_area_path(@area), :class => :filter %></li>
+      <li><%= link_to t('.content_type_filters.news'), actions_area_path(@area, :type => :news), :class => :filter %></li>
+      <li><%= link_to t('.content_type_filters.politics_activity'), actions_area_path(@area, :type => :activity), :class => :filter %></li>
+      <li><%= link_to t('.content_type_filters.questions'), actions_area_path(@area, :type => :questions), :class => :filter %></li>
+      <li><%= link_to t('.content_type_filters.proposals'), actions_area_path(@area, :type => :proposals), :class => :filter %></li>
+      <li><%= link_to t('.content_type_filters.images'), actions_area_path(@area, :type => :images), :class => :filter %></li>
+      <li><%= link_to t('.content_type_filters.videos'), actions_area_path(@area, :type => :videos), :class => :filter %></li>
     </ul>
   </div>
 </div>

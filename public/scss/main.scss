@@ -492,6 +492,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     .inner {
       header {
         margin: 0;
+        h2 { line-height:normal; }
       }
       .content p {
         margin: 0 0 20px 0;

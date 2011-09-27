@@ -1,6 +1,6 @@
 <ul>
   <% @actions.each do |action| %>
-    <li>
+    <li class="<%= action.event_type %>">
       <%= render "shared/lists_elements/#{action.event_type}", :data => action.item %>
     </li>
   <% end %>

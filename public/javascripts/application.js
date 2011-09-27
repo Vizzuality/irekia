@@ -43,5 +43,18 @@ $(function() {
   $(".share.more, .share.email").sharePopover();
 
   //$('.avatar').prepend("<div class='ieframe'></div>");
-});
 
+  $(".filter").click(function(e) {
+    e.preventDefault();
+
+    $(this).parents("ul").find("li").removeClass("selected");
+    $(this).parent().addClass("selected");
+
+    $.ajax({ url: $(this).attr("href") , global: false, type: "GET", success: function(data){
+      $("#actions").slideUp(250, function() {
+        $("#actions").html(data);
+        $("#actions").slideDown(250);
+      });
+    }});
+  });
+});
