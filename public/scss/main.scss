@@ -63,6 +63,8 @@ Basics
 
 blockquote { width:574px; padding:0; margin:0; font-size:31px; color:$dark_blue; font-family: "ClarendonLTMedium", Georgia, serif; }
 
+.comment blockquote p { padding:0; margin:0; }
+
 ul {
   margin: 0;
   padding: 0;
@@ -304,7 +306,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     header p.position { padding: 0; margin: 0; font-size:17px; color:$standard_gray; }
 
     h1 { margin-bottom: 5px;  font-size: 41px; font-weight: 300; }
-    h2 { margin-bottom: 30px; font-size: 19px; font-weight: 300; }
+    h2 { margin-bottom: 5px; font-size: 31px; line-height:31px; font-weight: 300; }
     h3 { margin-bottom: 7px;  font-size: 12px; font-weight: bold; text-transform: uppercase; }
 
     .left { position: relative; float: left; left: 0; width: 605px; }
@@ -322,7 +324,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       h3 { font-size: 17px; }
       h2 { font-size: 31px; }
     }
-    h2 { margin: 0; font-size: 31px; }
+
   }
 
   &.with_footer {
