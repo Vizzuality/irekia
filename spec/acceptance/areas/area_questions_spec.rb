@@ -8,7 +8,7 @@ feature "Area's questions page" do
     @area = get_area_data
   end
 
-  scenario "shows a summary of that area's politics, actions and generated contents" do
+  scenario "shows a summary of that area's politicians, actions and generated contents" do
 
     visit questions_area_path(@area)
 
@@ -39,7 +39,7 @@ feature "Area's questions page" do
   scenario 'shows a navigation menu with "questions" selected' do
     visit questions_area_path(@area)
 
-    within '.navigation' do
+    within '.menu' do
       page.should have_link 'Resumen'
       page.should have_link 'Acciones'
       page.should have_link 'Preguntas', :class => 'selected'

@@ -73,42 +73,39 @@
           <% end if @content.tags.present? %>
         </ul>
       </div>
-      <div class="related_politics">
-        <h3><%= t('.sidebar.related_politics.title') %></h3>
+      <div class="related_politicians">
+        <h3><%= t('.sidebar.related_politicians.title') %></h3>
         <ul>
           <% @content.users.each do |user| %>
             <li>
-            <%= link_to user.fullname, politic_path(user) %>
-            <span><%= get_politic_title(user) %></span>
+            <%= link_to user.fullname, politicians_path(user) %>
+            <span><%= get_politician_title(user) %></span>
             </li>
             <% end if @content.users.present? %>
           </ul>
         </div>
       </div>
-    </div>
 
 
-    -->
+      -->
 
 
-    <article class="activity with_footer">
-    <div class="inner">
-      <div class="left">
+      <article class="activity with_footer">
+      <div class="inner">
+        <div class="left">
 
-        <h1><%= @content.title %></h1>
+          <h1><%= @content.title %></h1>
 
-        <p class="info">
-        <%= link_to @content.author.try(:fullname), user_path(@content.author)  %>
-        <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
-        &middot;
-        <%= link_to t('.title_author_and_comments.comments', :count => @content.comments.count), '#' %>
-        &middot;
-        </p>
+          <p class="info">
+          <%= link_to @content.author.try(:fullname), user_path(@content.author)  %>
+          <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+          &middot;
+          <%= link_to t('.title_author_and_comments.comments', :count => @content.comments.count), '#' %> </p>
 
 
-        <%= simple_format @content.body %>
+          <%= simple_format @content.body %>
 
-        <div class="proposals">
+       <div class="proposals">
           <div class="proposal agree">
             <h3>A favor</h3>
             <ul>
@@ -118,7 +115,6 @@
               <li class="add"><%= link_to "Añadir", "#" %></li>
             </ul>
             <div class="footer">
-
               <%= link_to (raw "<span>A favor</span>"), "#", :class => "white_button blue" %>
 
               <div class="sparkline positive">
@@ -144,32 +140,46 @@
           </div>
         </div>
 
-        <%= render "comments" %>
-      </div>
-      <div class="right">
-        <div class="content left-border">
-
-          <%= render "shared/demo/sharing" %>
-          <%= render "shared/tags" %>
-          <%= render "shared/related_content" %>
-
+          <%= render "comments" %>
         </div>
-      </div>
-    </div>
+        <div class="right">
+          <div class="content left-border">
 
-    <footer>
-    <div class="separator"></div>
-    <div class="inner">
-      <div class="left">
-        <%= link_to "ver todas las preguntas", "#", :class => :left_arrow %>
-        <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
-      </div>
+            <%= render "shared/demo/sharing" %>
+            <%= render "shared/tags" %>
+            <%= render "shared/related_content" %>
 
-      <div class="right">
-        <%= link_to "siguiente pregunta", "#", :class => :right_arrow %>
-        <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
-      </div>
-    </div>
-    </footer>
-    <div class="t"></div><div class="f"></div>
-    </article>
+        <!--
+        <div class="related_politicians">
+          <h3><%= t('.sidebar.related_politicians.title') %></h3>
+          <ul>
+            <% @content.users.each do |user| %>
+              <li>
+              <%= link_to user.fullname, politician_path(user) %>
+              <span><%= get_politician_title(user) %></span>
+              </li>
+              <% end if @content.users.present? %>
+            </ul>
+          </div>
+
+        -->
+        </div>
+        </div>
+
+          <footer>
+          <div class="separator"></div>
+
+          <div class="inner">
+            <div class="left">
+              <%= link_to "ver todas las preguntas", "#", :class => :left_arrow %>
+              <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
+            </div>
+
+            <div class="right">
+              <%= link_to "siguiente pregunta", "#", :class => :right_arrow %>
+              <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
+            </div>
+          </div>
+          </footer>
+          <div class="t"></div><div class="f"></div>
+          </article>

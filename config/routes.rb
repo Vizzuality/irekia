@@ -45,7 +45,7 @@ Irekia::Application.routes.draw do
     end
   end
 
-  resources :politics do
+  resources :politicians do
     member do
       get 'actions'
       get 'questions'

@@ -1,20 +1,20 @@
-<% has_politicians = @politics.size > 0 %>
-<% has_areas       = @areas.size > 0 %>
-<% has_citizens       = @citizens.size > 0 %>
+<% has_politicians = @politicians.size > 0 %>
+<% has_areas       = @areas.size    > 0 %>
+<% has_citizens    = @citizens.size > 0 %>
 <% has_contents    = @contents.size > 0 %>
 
 <div class="inner">
   <ul class="results">
     <% if has_politicians %>
       <li class="politicians">
-      <div class="summary"><h3><%= t('.politics.summary.title') %></h3><%= link_to t('.politics.summary.count', :count => @politics.count) %></div>
+      <div class="summary"><h3><%= t('.politicians.summary.title') %></h3><%= link_to t('.politicians.summary.count', :count => @politicians.count) %></div>
       <ul>
-        <% @politics.first(2).each do |politic| %>
+        <% @politicians.first(2).each do |politician| %>
           <li>
-          <%= link_to (content_tag 'div', (image_tag(politic.profile_image)), :class => "avatar medium"), politic_path(politic) if politic.profile_image %>
-          <%= link_to politic.fullname, politic_path(politic), :class => :name %>
-          <% if title = get_politic_title(politic) %>
-            <span class="position"><%= t('.politics.title_area', :title => title, :area => politic.areas.map(&:name).join(', ')) %></span>
+          <%= link_to (content_tag 'div', (image_tag(politician.profile_image)), :class => "avatar medium"), politician_path(politician) if politician.profile_image %>
+          <%= link_to politician.fullname, politician_path(politician), :class => :name %>
+          <% if title = get_politician_title(politician) %>
+            <span class="position"><%= t('.politicians.title_area', :title => title, :area => politician.areas.map(&:name).join(', ')) %></span>
           <% end %>
           </li>
         <% end %>
@@ -42,7 +42,7 @@
       <ul>
         <% @citizens.first(2).each do |user| %>
           <li>
-          <%= link_to (content_tag 'div', (image_tag(user.profile_image)), :class => "avatar medium"), user_path(politic) if user.profile_image %>
+          <%= link_to (content_tag 'div', (image_tag(user.profile_image)), :class => "avatar medium"), user_path(user) if user.profile_image %>
           <%= link_to user.fullname, user_path(user), :class => :name %>
           <span class="position"><%= "#{user.city}, #{user.province}" %></span>
           </li>

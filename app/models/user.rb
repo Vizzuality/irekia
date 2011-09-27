@@ -104,7 +104,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile_pictures, :questions, :areas_users
 
   scope :oldest_first, order('created_at asc')
-  scope :politics, joins(:role).where('roles.name = ?', 'Politic')
+  scope :politicians, joins(:role).where('roles.name = ?', 'Politician')
   scope :citizens, joins(:role).where('roles.name = ?', 'Citizen')
 
   pg_search_scope :search_by_name_description_province_and_city, :against => [:name, :description, :province, :city]
@@ -173,8 +173,8 @@ class User < ActiveRecord::Base
     !inactive?
   end
 
-  def politic?
-    role.politic? if role.present?
+  def politician?
+    role.politician? if role.present?
   end
 
   def administrator?

@@ -41,7 +41,7 @@ feature "Photo page" do
         page.should have_content 'Transporte'
       end
     end
-    within '.related_politics' do
+    within '.related_politicians' do
       page.should have_css 'h3', :text => 'Políticos relacionados'
       within 'ul' do
         page.should have_content 'Virginia Uriarte Rodríguez Consejera'

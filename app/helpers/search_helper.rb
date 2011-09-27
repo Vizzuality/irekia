@@ -8,8 +8,8 @@ module SearchHelper
     params[:search][:type].blank? || params[:search][:type] == 'contents'
   end
 
-  def show_politics?
-    params[:search][:type].blank? || params[:search][:type] == 'politics'
+  def show_politicians?
+    params[:search][:type].blank? || params[:search][:type] == 'politicians'
   end
 
   def show_users?

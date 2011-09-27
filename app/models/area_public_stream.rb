@@ -9,6 +9,19 @@ class AreaPublicStream < ActiveRecord::Base
 
   scope :only_contents, where(:event_type => [:proposal, :argument, :question, :answer, :news, :poll, :pollanswer, :event, :tweet, :photo])
 
+  scope :more_recent, order('published_at desc')
+
+  scope :more_polemic, joins(<<-SQL
+    INNER JOIN (
+      SELECT p.content_id, count(p.content_id) AS count
+      FROM contents c
+      INNER JOIN participations p ON p.content_id = c.id AND p.type = 'Comment'
+      GROUP BY p.content_id
+    ) comments_count ON comments_count.content_id = area_public_streams.event_id
+                     AND area_public_streams.event_type IN ('question', 'answer', 'proposal', 'event', 'news', 'tweet')
+  SQL
+  ).order('comments_count.count desc')
+
   pg_search_scope :search, :against => :message
 
   def item

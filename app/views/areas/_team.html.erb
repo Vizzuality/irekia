@@ -3,40 +3,41 @@
   <h1><%= t('.title', :count => @team.count) %></h1>
   <ul>
     <% @team.each do |user| %>
-    <li>
-      <%= link_to image_tag(user.profile_image), politic_path(user) if user.profile_image %>
-      <%= link_to user.fullname, politic_path(user) %>
-      <span class="title"><%= get_politic_title(user) %></span>
+      <li>
+      <%= link_to image_tag(user.profile_image), politician_path(user) if user.profile_image %>
+      <%= link_to user.fullname, politician_path(user) %>
+      <span class="title"><%= get_politician_title(user) %></span>
       <% if user.active? %>
-      <span class="actions_this_week"><%= t('.actions_this_week', :count => user.actions.this_week.count) %></span>
+        <span class="actions_this_week"><%= t('.actions_this_week', :count => user.actions.this_week.count) %></span>
       <% else %>
-      <span class="inactive"><%= t('.inactive') %></span>
+        <span class="inactive"><%= t('.inactive') %></span>
       <% end %>
-    </li>
+      </li>
     <% end %>
   </ul>
 </div>
 
 -->
 
-<article class="with_footer">
+<article class="team with_footer">
 <div class="inner">
   <header>
   <h2><%= t('.title', :count => @team.count) %></h2>
   </header>
   <div class="content">
 
-    <% @team.each do |user| %>
-    <div class="suggestion">
-      <%= link_to (image_tag user.profile_image), politic_path(user), :title => user.fullname, :class => :avatar %>
-      <div class="content">
-        <%= link_to user.fullname, politic_path(user), :title => user.fullname, :class => :name %>
-        <p><%= get_politic_title(user) %></p>
-        <%= link_to "Seguir", "#" %>
-      </div>
-    </div>
-  <% end %>
-
+    <ul class="suggestions">
+      <% @team.each do |user| %>
+        <li>
+        <%= link_to (image_tag user.profile_image), politicians_path(user), :title => user.fullname, :class => :avatar %>
+        <div class="content">
+          <%= link_to user.fullname, politicians_path(user), :title => user.fullname, :class => :name %>
+          <p class="title"><%= get_politician_title(user) %></p>
+          <%= link_to "Seguir", "#" %>
+        </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
 <footer>

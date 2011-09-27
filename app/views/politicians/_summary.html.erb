@@ -1,16 +1,16 @@
 <article class="profile summary with_footer">
 <div class="inner">
   <header>
-  <h1><%= @politic.fullname %></h1>
+  <h1><%= @politician.fullname %></h1>
   <p class="position">Consejera de <%= link_to "Educación, Universidades e Investigación", "#" %></p>
   </header>
 
   <div class="left">
     <div class="description two_columns">
       <h3>Quién es y qué hace</h3>
-      <%= simple_format(@politic.description) %>
+      <%= simple_format(@politician.description) %>
       <%= link_to "Leer más", "#" %></p>
-      <p><%=link_to raw( "<span class='add'></span>") +"Seguir a #{@politic.name} (24)", "#", :class => "white_button add_person" %></p>
+      <p><%=link_to raw( "<span class='add'></span>") +"Seguir a #{@politician.name} (24)", "#", :class => "white_button add_person" %></p>
     </div>
   </div>
 </div>
@@ -21,19 +21,22 @@
 
   <%= image_tag 'temp/avatar_big.png', :class => :xlAvatar %>
   <% if user_signed_in? %>
-  <h3>Pregunta a <%= @politic.name %></h3>
+  <h3>Pregunta a <%= @politician.name %></h3>
 
   <%= form_for current_user, :html => {:class => :make_question } do |form| %>
     <%= form.fields_for :questions, @question  do |questions| %>
 
       <div id="counter-124" class="input-counter placeholder">
         <span class="counter">140</span>
+        <%= questions.fields_for :contents_users, @question.contents_users.last do |content_user| %>
+          <%= content_user.hidden_field :user_id %>
+        <% end -%>
         <%= questions.fields_for :question_data, @question_data do |question_data| %>
           <%= question_data.hidden_field :user_id %>
           <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
         <% end %>
 
-        <span class="holder large">Haz una pregunta a <%= @politic.name %>...</span>
+        <span class="holder large">Haz una pregunta a <%= @politician.name %>...</span>
       </div>
 
       <input type="submit" value="Preguntar" id="submit-counter-124" class="disabled white_button" disabled="disabled" />
@@ -50,32 +53,32 @@
 
 
 
-<!-- <div id="politic_summary">
-  <h1><%= @politic.fullname %></h1>
-  <span class="title"><%= raw t('.title', :title => get_politic_title(@politic), :areas => @politic.areas.map{|a| link_to a.name, area_path(a)}.join(',')) %></span>
+<!-- <div id="politician_summary">
+  <h1><%= @politician.fullname %></h1>
+  <span class="title"><%= raw t('.title', :title => get_politician_title(@politician), :areas => @politician.areas.map{|a| link_to a.name, area_path(a)}.join(',')) %></span>
   <div class="picture">
-    <%= image_tag @politic.profile_image_big if @politic.profile_image %>
+    <%= image_tag @politician.profile_image_big if @politician.profile_image %>
   </div>
   <div class="description">
     <h3><%= t('.description.title') %></h3>
-    <%= simple_format(@politic.description) %>
+    <%= simple_format(@politician.description) %>
   </div>
   <div class="actions">
-    <span><%= t('.actions.this_week', :count => @politic.actions.count) %></span>
-    <%= link_to t('.actions.follow', :name => @politic.name) %>
+    <span><%= t('.actions.this_week', :count => @politician.actions.count) %></span>
+    <%= link_to t('.actions.follow', :name => @politician.name) %>
   </div>
   <div class="questions">
-    <span><%= t('.questions.answered', :count => @politic.answers.count) %></span>
-    <%= link_to t('.questions.ask', :name => @politic.name) %>
+    <span><%= t('.questions.answered', :count => @politician.answers.count) %></span>
+    <%= link_to t('.questions.ask', :name => @politician.name) %>
   </div>
   <% if user_signed_in? %>
     <div class="make_a_question">
-      <h3><%= t('.questions.ask', :name => @politic.name) %></h3>
+      <h3><%= t('.questions.ask', :name => @politician.name) %></h3>
       <%= form_for current_user do |form| %>
         <%= form.fields_for :questions, @question do |questions| %>
           <%= questions.fields_for :question_data, @question_data do |question_data| %>
             <%= question_data.hidden_field :user_id %>
-            <%= question_data.label :question_text, t('.make_a_question.label', :name => @politic.name) %>
+            <%= question_data.label :question_text, t('.make_a_question.label', :name => @politician.name) %>
             <%= question_data.text_field :question_text %>
           <% end %>
         <% end %>

@@ -8,7 +8,7 @@ feature "Area's home" do
     @area = get_area_data
   end
 
-  scenario "shows a summary of that area's politics, actions and generated contents" do
+  scenario "shows a summary of that area's politicians, actions and generated contents" do
 
     visit area_path(@area)
 
@@ -104,15 +104,16 @@ feature "Area's home" do
     within 'article.last_actions' do
       click_link 'Noticias'
     end
-    within 'article.last_actions' do
+    within 'article.last_actions #actions' do
       page.should have_css 'ul li', :count => 1
     end
 
     within 'article.last_actions' do
       click_link 'Preguntas'
     end
-    within 'article.last_actions' do
-      page.should have_css 'ul li', :count => 1
+
+    within 'article.last_actions #actions' do
+      page.should have_css 'ul li', :count => 2
     end
 
  end

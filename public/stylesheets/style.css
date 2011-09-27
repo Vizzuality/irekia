@@ -253,7 +253,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner header { clear: both; overflow: hidden; height: auto; padding: 0; margin: 0 0 25px 0; background: none; }
 #container article .inner header h1, #container article .inner header h2 { margin: 0; }
 #container article .inner header h3 { font-size: 17px; }
-#container article .inner header h2 { font-size: 31px; }
+#container article .inner header h2 { font-size: 31px; line-height: normal; }
 #container article.with_footer .inner { width: 933px; padding: 15px 31px 35px 30px; }
 #container article.with_footer .f { bottom: -10px; background-position: 0 -22px; }
 #container article.with_footer footer { padding: 0; border: none; clear: both; border-left: 1px solid #b4bdc4; border-right: 1px solid #b4bdc4; background: #f8f8f9; }
@@ -658,16 +658,16 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
 #container article footer inner.with_avatar { position: relative; }
 #container article footer img.xlAvatar { position: absolute; bottom: 10px; right: 30px; padding: 4px; background: url("/images/circle_bkg.png") no-repeat center center; z-index: 10; }
-#container article .suggestion { width: 275px; padding: 14px 16px 16px 16px; font-size: 15px; color: #7d8a92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
-#container article .suggestion .avatar { float: left; margin: 0 8px 0 0; }
-#container article .suggestion .content { float: left; width: 200px; }
-#container article .suggestion .content p { padding: 0; margin: 0 0 13px 0; font-size: 15px; line-height: 15px; }
-#container article .suggestion .content a { display: block; font-weight: 300; font-size: 13px; color: #FF0066; }
-#container article .suggestion .content a.name { margin-bottom: 3px; color: #1d79b0; font-size: 17px; font-weight: 300; }
-#container article .suggestion .content a.follow { display: block; margin-top: 16px; font-weight: 300; font-size: 13px; }
-#container article .suggestion.selected { background: #F2F5F8; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
-#container article .suggestion.selected .avatar:before { border-color: #F2F5F8; }
-#container article .suggestion.selected .content a { color: #1d79b0; }
+#container article ul.suggestions li { width: 275px; padding: 14px 16px 16px 16px; font-size: 15px; color: #7d8a92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+#container article ul.suggestions li .avatar { float: left; margin: 0 8px 0 0; }
+#container article ul.suggestions li .content { float: left; width: 200px; }
+#container article ul.suggestions li .content p { padding: 0; margin: 0 0 13px 0; font-size: 15px; line-height: 15px; }
+#container article ul.suggestions li .content a { display: block; font-weight: 300; font-size: 13px; color: #FF0066; }
+#container article ul.suggestions li .content a.name { margin-bottom: 3px; color: #1d79b0; font-size: 17px; font-weight: 300; }
+#container article ul.suggestions li .content a.follow { display: block; margin-top: 16px; font-weight: 300; font-size: 13px; }
+#container article ul.suggestions li.selected { background: #F2F5F8; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+#container article ul.suggestions li.selected .avatar:before { border-color: #F2F5F8; }
+#container article ul.suggestions li.selected .content a { color: #1d79b0; }
 #container article.with_footer footer .inner a.facebook, #container article.with_footer footer .inner a.twitter { width: 37px; height: 35px; margin-right: 3px; text-indent: -99999px; background: url("/images/icons/social_icons.png") no-repeat; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; -webkit-transition: all 300ms; -moz-transition: all 300ms; -o-transition: all 300ms; transition: all 300ms; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 
 .content footer a.facebook, .content footer a.twitter { width: 37px; height: 35px; margin-right: 3px; text-indent: -99999px; background: url("/images/icons/social_icons.png") no-repeat; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; -webkit-transition: all 300ms; -moz-transition: all 300ms; -o-transition: all 300ms; transition: all 300ms; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }

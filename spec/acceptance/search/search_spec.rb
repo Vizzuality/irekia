@@ -14,6 +14,7 @@ feature "Search" do
     within 'ul.menu' do
       page.should have_css 'li.selected', :text => 'Resumen'
       page.should have_css 'li', :text => '137 contenidos'
+      peich
       page.should have_css 'li', :text => '5 políticos'
       page.should have_css 'li', :text => '3 usuarios'
     end
@@ -49,10 +50,10 @@ feature "Search" do
       end
     end
 
-    within '.politics_results' do
+    within '.politicians_results' do
       page.should have_css 'h2', :text => '5 políticos'
-      page.should have_css 'div.content .suggestion', :count => 5
-      within 'div.content .suggestion' do
+      page.should have_css 'div.content .suggestions li', :count => 5
+      within 'div.content .suggestions li' do
         page.should have_css 'img'
         page.should have_link 'Alberto de Zárate López'
         page.should have_content 'Vice-consejero de Educación, Universidades e Investigación'
@@ -63,10 +64,11 @@ feature "Search" do
 
     within '.users_results' do
       page.should have_css 'h2', :text => '3 usuarios'
-      page.should have_css 'div.content .suggestion', :count => 3
-      within 'div.content .suggestion' do
+      page.should have_css 'div.content ul.suggestions li', :count => 3
+      within 'div.content .suggestions li' do
         page.should have_css 'img'
-        page.should have_link 'María González Pérez'
+        peich
+        page.should have_link 'Andrés Berzoso Rodríguez'
         page.should have_content 'Ondarroa, Vizcaya'
         page.should have_link 'Seguir'
       end
@@ -126,7 +128,7 @@ feature "Search" do
     end
   end
 
-  scenario "shows a detail page for politics type results" do
+  scenario "shows a detail page for politicians type results" do
     visit search_path(:search => {:query => 'lorem'})
 
     page.should have_field 'search_query', :with => 'lorem'
@@ -146,11 +148,11 @@ feature "Search" do
       page.should have_css 'li', :text => '3 usuarios'
     end
 
-    within '.politics_results' do
+    within '.politicians_results' do
       page.should have_css 'h2', :text => '5 políticos'
       within 'div.content' do
-        page.should have_css '.suggestion', :count => 5
-        within '.suggestion' do
+        page.should have_css '.suggestions li', :count => 5
+        within '.suggestions li' do
           page.should have_css 'img'
           page.should have_link 'Alberto de Zárate López'
           page.should have_content 'Vice-consejero de Educación, Universidades e Investigación'
@@ -195,9 +197,9 @@ feature "Search" do
     within '.users_results' do
       page.should have_css 'h2', :text => '3 usuarios'
 
-      within 'div.content div.suggestion' do
+      within 'div.content .suggestions li' do
         page.should have_css 'img'
-        page.should have_link 'María González Pérez'
+        page.should have_link 'Andrés Berzoso Rodríguez'
         page.should have_content 'Ondarroa, Vizcaya'
         page.should have_link 'Seguir'
       end
@@ -226,7 +228,7 @@ feature "Search" do
     within '.autocomplete' do
       within '.politicians' do
         within '.summary' do
-          page.should have_content 'Políticos 5 encontrados'
+          page.should have_css 'h3', :text => 'POLÍTICOS'
           page.should have_link '5 encontrados'
         end
         page.should have_css 'ul li', :count => 2
@@ -250,13 +252,13 @@ feature "Search" do
 
       within '.users' do
         within '.summary' do
-          page.should have_content 'Usuarios 3 encontrados'
+          page.should have_css 'h3', :text => 'USUARIOS'
           page.should have_link '3 encontrados'
         end
         page.should have_css 'ul li', :count => 2
         within 'ul li' do
           page.should have_css 'img'
-          page.should have_link 'María González Pérez'
+          page.should have_link 'Andrés Berzoso Rodríguez'
           page.should have_content 'Ondarroa, Vizcaya'
         end
       end

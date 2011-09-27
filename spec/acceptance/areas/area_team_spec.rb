@@ -8,7 +8,7 @@ feature "Area's team page" do
     @area = get_area_data
   end
 
-  scenario "shows a summary of that area's politics, actions and generated contents" do
+  scenario "shows a summary of that area's politicians, actions and generated contents" do
 
     visit team_area_path(@area)
 
@@ -39,7 +39,7 @@ feature "Area's team page" do
   scenario 'shows a navigation menu with "team" selected' do
     visit team_area_path(@area)
 
-    within '.navigation' do
+    within '.menu' do
       page.should have_link 'Resumen'
       page.should have_link 'Acciones'
       page.should have_link 'Preguntas'
@@ -53,8 +53,8 @@ feature "Area's team page" do
 
     visit team_area_path(@area)
 
-    within '#team' do
-      page.should have_css 'h1', :text => '5 personas implicadas en este área'
+    within '.team' do
+      page.should have_css 'h2', :text => '5 personas implicadas en este área'
 
       page.should have_css 'ul li', :count => 5
 
@@ -62,7 +62,6 @@ feature "Area's team page" do
         page.should have_css 'a img'
         page.should have_link 'Virginia Uriarte Rodríguez'
         page.should have_css '.title', :text => 'Consejera'
-        page.should have_css '.actions_this_week', :text => '7 acciones esta semana'
       end
     end
   end

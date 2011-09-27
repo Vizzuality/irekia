@@ -5,12 +5,12 @@ require 'spec_helper'
 feature "Area's agenda page" do
 
   background do
-    @politic = get_politic_data
+    @politician = get_politician_data
   end
 
-  scenario "shows a summary with that politic's description, actions and questions answered" do
+  scenario "shows a summary with that politician's description, actions and questions answered" do
 
-    visit agenda_politic_path(@politic)
+    visit agenda_politician_path(@politician)
 
     within '.summary' do
       page.should have_css 'h1', :text => 'Virginia Uriarte Rodríguez'
@@ -36,7 +36,7 @@ feature "Area's agenda page" do
   end
 
   scenario 'shows a navigation menu with "actions" selected' do
-    visit agenda_politic_path(@politic)
+    visit agenda_politician_path(@politician)
 
     within 'ul.menu' do
       page.should have_link 'Resumen'
@@ -47,9 +47,9 @@ feature "Area's agenda page" do
     end
   end
 
-  scenario "shows this politic's agenda in detail" do
+  scenario "shows this politician's agenda in detail" do
 
-    visit agenda_politic_path(@politic)
+    visit agenda_politician_path(@politician)
 
     within '.agenda' do
       page.should have_css 'h2', :text => 'Agenda de Virginia'

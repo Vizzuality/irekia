@@ -24,8 +24,8 @@
           <div class="textarea-comment placeholder">
 
             <%= comments.fields_for :comment_data do |comment_data| %>
-              <%= comment_data.text_area :body %>
-              <span class="holder">¿Algo que decir?... comenta este tweet</span>
+              <%= comment_data.text_area :body, :id => :comment %>
+              <span class="holder">¿Algo que decir?... comenta esta noticia</span>
             <% end %>
 
           </div>

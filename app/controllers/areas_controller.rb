@@ -49,12 +49,20 @@ class AreasController < ApplicationController
   def get_actions
     @actions = @area.actions
     @actions = @actions.where(:event_type => params[:type]) if params[:type].present?
+
+    @actions = if params[:more_polemic]
+      @actions.more_polemic
+    else
+      @actions.more_recent
+    end
+
     @actions = @actions.page params[:page]
   end
 
   def build_questions_for_update
     return if current_user.blank?
-    @question                  = current_user.questions.build
+    @question                  = Question.new
+    @question.contents_users   << ContentUser.new(:user => current_user)
     @question_data             = @question.build_question_data
     @question_data.target_area = @area
   end
