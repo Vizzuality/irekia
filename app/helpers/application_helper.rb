@@ -31,4 +31,8 @@ module ApplicationHelper
   def menu(options)
     render 'shared/menu', :options => options
   end
+
+  def avatar(user, size = nil)
+    render "shared/avatar", :user => user, :size => size
+  end
 end

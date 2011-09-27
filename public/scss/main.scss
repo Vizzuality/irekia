@@ -63,8 +63,6 @@ Basics
 
 blockquote { width:574px; padding:0; margin:0; font-size:31px; color:$dark_blue; font-family: "ClarendonLTMedium", Georgia, serif; }
 
-.comment blockquote p { padding:0; margin:0; }
-
 ul {
   margin: 0;
   padding: 0;
@@ -1221,6 +1219,7 @@ a.editable {
           color:$standard_gray;
           font-family:"Helvetica", sans-serif;
           line-height:20px;
+          p { margin:0; padding:0; } // fix for the simple_format helper
         }
         .footer {float:left;}
       }

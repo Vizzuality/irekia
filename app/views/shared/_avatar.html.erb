@@ -1,0 +1,5 @@
+<% if user.profile_pictures.present? %>
+  <%= link_to (image_tag user.profile_image, :class => "avatar#{ ' ' + size.to_s if size }"), user_path(user) %>
+<% else %>
+  <%= link_to (image_tag 'icons/faceless_avatar.png', :class => "avatar#{ ' ' + size.to_s if size }"), user_path(user) %>
+<% end %>

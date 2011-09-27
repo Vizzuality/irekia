@@ -169,8 +169,6 @@ Basics
 ========================================================================== */
 blockquote { width: 574px; padding: 0; margin: 0; font-size: 31px; color: #465866; font-family: "ClarendonLTMedium", Georgia, serif; }
 
-.comment blockquote p { padding: 0; margin: 0; }
-
 ul { margin: 0; padding: 0; list-style: none; }
 ul li { margin: 0; padding: 0; }
 
@@ -502,6 +500,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .comments ul li.no-border { border: none; }
 #container article .inner .left .comments ul li .comment { float: left; width: 536px; }
 #container article .inner .left .comments ul li .comment blockquote { width: 100%; margin-bottom: 5px; font-size: 17px; color: #7d8a92; font-family: "Helvetica", sans-serif; line-height: 20px; }
+#container article .inner .left .comments ul li .comment blockquote p { margin: 0; padding: 0; }
 #container article .inner .left .comments ul li .comment .footer { float: left; }
 
 /* quotation */

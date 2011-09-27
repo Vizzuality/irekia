@@ -1,83 +1,39 @@
 <div class="comments">
   <div class="count"><%= t('.title', :count => @content.comments.count) %></div>
   <ul>
-
-
-
-<% @content.comments.reject{|c| c.new_record?}.each do |comment| %>
-  <li>
-  <%= link_to (content_tag 'div', (image_tag(comment.user.profile_image)), :class => :avatar), user_path(comment.user) if comment.user.profile_image %>
-  <div class="comment">
-  <blockquote><%= simple_format comment.body %></blockquote>
-
-  <div class="footer when">
-  <%= link_to comment.user.fullname, user_path(comment.user), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
-</div>
-</div>
-  </li>
-<% end %>
-
-    <li>
-    <a href="#"><div class="avatar"><img src="/images/temp/avatar_004.png" /></div></a>
-    <div class="comment">
-      <blockquote>Me encantaría que realmente esta gente fuera siempre a los eventos y nos lo comunicaran como en esta ocasión. La verdad que fue un buen momento para hablar con ellos y conocerlos en persona.</blockquote>
-      <div class="footer when"><a href="#">Alberto Ortiz</a> hace 21 días</div>
-    </div>
-    </li>
-
-<!--    <li class="answered no-border">
-    <div class="answered_by">Virginia contesta</div>
-    <a href="#"><div class="avatar"><img alt="Avatar_002" src="/images/temp/avatar_002.png" /></div></a>
-    <div class="comment">
-      <blockquote>¿A quién me tengo que dirigir para obtener mas información sobre las ayudas para estudiantes universitarios?</blockquote>
-      <div class="footer when"><a href="#">Virginia Uriarte</a> hace 2 horas</div>
-    </div>
-    </li>
-    -->
-
-<!--    <li>
-    <a href="#"><div class="avatar"><img src="/images/temp/avatar_004.png" /></div></a>
-    <div class="comment">
-      <blockquote>¿Alguien sabe si habrá streaming del evento?</blockquote>
-      <div class="footer when"><a href="#">Alberto Ortiz</a> hace 21 días</div>
-    </div>
-    </li>
-    -->
-
-    <li class="comment">
-    <form action="" method="get" accept-charset="utf-8">
-      <a href="#"><div class="avatar"><img src="/images/temp/avatar_004.png" /></div></a>
-      <div class="textarea-comment placeholder">
-        <textarea></textarea>
-        <span class="holder">¿Algo que decir?... comenta este tweet</span>
+    <% @content.comments.reject{|c| c.new_record?}.each do |comment| %>
+      <li>
+      <%= avatar comment.user %>
+      <div class="comment">
+        <blockquote><%= simple_format comment.body %></blockquote>
+        <div class="footer when">
+          <%= link_to comment.user.fullname, user_path(comment.user), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
+        </div>
       </div>
-      <button type="submit" class="white_button blue right"><span>Comentar</span></button>
-    </form>
-    </li>
-
-  </ul>
-</div>
-
-
-<% @content.comments.reject{|c| c.new_record?}.each do |comment| %>
-  <li>
-  <%= simple_format comment.body %>
-  <%= link_to image_tag(comment.user.profile_image), user_path(comment.user), :class => :author_image if comment.user.profile_image %>
-  <%= link_to comment.user.fullname, user_path(comment.user), :class => :author %>
-  <span><%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %></span>
-  </li>
-<% end %>
-<% if user_signed_in? %>
-  <li>
-  <%= form_for @content do |form| %>
-    <%= form.fields_for :comments, @comment do |comments| %>
-      <%= comments.hidden_field :user_id %>
-      <%= comments.fields_for :comment_data do |comment_data| %>
-        <%= comment_data.label :body, t(params[:type].downcase, :scope => 'contents.comments.label') %>
-        <%= comment_data.text_area :body %>
-      <% end %>
+      </li>
     <% end %>
-    <%= form.submit t('.new.submit') %>
-  <% end %>
-  </li>
+
+    <% if user_signed_in? %>
+      <li class="comment">
+      <%= form_for @content do |form| %>
+        <%= form.fields_for :comments, @comment do |comments| %>
+          <%= comments.hidden_field :user_id %>
+
+          <%= avatar current_user %>
+
+          <div class="textarea-comment placeholder">
+
+            <%= comments.fields_for :comment_data do |comment_data| %>
+              <%= comment_data.text_area :body %>
+              <span class="holder">¿Algo que decir?... comenta este tweet</span>
+            <% end %>
+
+          </div>
+        <% end %>
+        <button type="submit" class="white_button blue right"><span><%= t('.new.submit') %></span></button>
+        </li>
+      <% end %>
+
+    </ul>
+  </div>
 <% end %>
