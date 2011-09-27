@@ -17,7 +17,7 @@ class Content < ActiveRecord::Base
   before_create :update_published_at
   after_save  :publish_content
 
-  accepts_nested_attributes_for :comments
+  accepts_nested_attributes_for :comments, :contents_users
 
   scope :moderated,     where(:moderated => true)
   scope :not_moderated, where(:moderated => false)

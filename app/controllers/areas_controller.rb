@@ -61,7 +61,8 @@ class AreasController < ApplicationController
 
   def build_questions_for_update
     return if current_user.blank?
-    @question                  = current_user.questions.build
+    @question                  = Question.new
+    @question.contents_users   << ContentUser.new(:user => current_user)
     @question_data             = @question.build_question_data
     @question_data.target_area = @area
   end
