@@ -24,9 +24,19 @@
 
         <div class="comment-box">
           <p class="previous">
-          <%= link_to "1 comentario anterior", "#" %> de Raúl Otxoa
+          <%= link_to "2 comentarios anteriores", "#", :class => "show-hidden-comments" %> de Raúl Otxoa
           </p>
           <ul>
+            <li class="previous">
+            <%=link_to (content_tag 'div', (image_tag 'temp/avatar_001_small.png'), :class => "avatar small"), "#" %>
+            <p><%= link_to "Raúl Otxoa", "#" %> - De todos modos, creo que podéis encontrar mas información sobre esto también en la web oficial del ministerio de educación</p>
+            </li>
+            <li>
+            <li class="previous">
+            <%=link_to (content_tag 'div', (image_tag 'temp/avatar_001_small.png'), :class => "avatar small"), "#" %>
+            <p><%= link_to "Raúl Otxoa", "#" %> - De todos modos, creo que podéis encontrar mas información sobre esto también en la web oficial del ministerio de educación</p>
+            </li>
+            <li>
             <li>
             <%=link_to (content_tag 'div', (image_tag 'temp/avatar_001_small.png'), :class => "avatar small"), "#" %>
             <p><%= link_to "Tú", "#" %> - De todos modos, creo que podéis encontrar mas información sobre esto también en la web oficial del ministerio de educación</p>

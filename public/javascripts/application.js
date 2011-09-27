@@ -33,20 +33,15 @@ $(function() {
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
 
+  $(".share.twitter, .share.facebook").share();
+  $(".show-hidden-comments").showHiddenComments();
+
   // Popovers
   $(".event").infoEventPopover();
   $(".ask_question").questionPopover();
   $(".auth a.login").loginPopover();
   $(".share.more, .share.email").sharePopover();
 
-  $(".share.twitter, .share.facebook").share();
-
   //$('.avatar').prepend("<div class='ieframe'></div>");
-  //
-  $(".show-hidden-comments").click(function(e) {
-    e.preventDefault();
-    console.log($(this).closest("ul").find("li.hidden"));
-    $(this).closest("ul").find("li.hidden").fadeIn("fast");
-  });
 });
 

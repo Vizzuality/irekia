@@ -902,20 +902,27 @@ article .inner { h2, h3 { color: $dark_blue; } }
     .left ul li {
       a { color: #2C8CC5; }
       .content .comment-box {
+        border-radius: 5px;
+
         background: rgba(237, 237, 239, 0.7);
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
-        border-radius: 5px;
+
         .avatar {
           margin: 0 9px 0 0;
           &:before { border-color: rgba(237, 237, 239, 0.7); }
         }
+
         p { line-height: 16px; }
         ul {
           padding: 10px;
           border-bottom: 1px solid $white;
-          li { margin-bottom: 15px; }
+          li {
+            margin-bottom: 15px;
+            &.previous { padding:0; border:none; display:none; }
+          }
         }
+
         .previous { padding: 10px 13px 10px 13px; border-bottom: 1px solid $white; color: $standard_gray; font-size: 13px; }
 
         form {

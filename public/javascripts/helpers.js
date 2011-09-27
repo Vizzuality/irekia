@@ -5,6 +5,22 @@ jQuery.preloadImages = function(){
   }
 }
 
+/* Show previous hidden comments */
+jQuery.fn.showHiddenComments = function(opt){
+
+  var delay  = (opt && opt.delay) || 300;
+  var speed  = (opt && opt.speed) || 200;
+
+  this.each(function(){
+    $(this).click(function(e){
+      e.preventDefault();
+      $(this).closest("ul").find("li.previous").each(function(i, comment) {
+        $(comment).delay(i * delay).slideDown(speed);
+      })
+    });
+  });
+}
+
 /* Click binding for the 'view calendar' link */
 jQuery.fn.viewCalendar = function(opt){
 
