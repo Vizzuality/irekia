@@ -9,13 +9,7 @@
       <%= link_to t('.main_filters.more_polemic'), '#', :class => 'more_polemic' %>
     </li>
   </ul>
-  <ul>
-    <% @actions.first(4).each do |action| %>
-      <li>
-        <%= render "shared/lists_elements/#{action.event_type}", :data => action.item %>
-      </li>
-    <% end %>
-  </ul>
+  <%= render 'shared/actions_list' %>
   <ul class="content_type_filters">
     <li><%= link_to t('.content_type_filters.all'), '#' %></li>
     <li><%= link_to t('.content_type_filters.news'), '#' %></li>

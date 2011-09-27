@@ -15,6 +15,7 @@ class PoliticsController < UsersController
   end
 
   def actions
+    render :partial => 'shared/actions_list', :layout => nil if request.xhr?
   end
 
   def questions
@@ -41,8 +42,10 @@ class PoliticsController < UsersController
   end
 
   def get_actions
-    @actions = @politic.actions
-  end
+    @actions = @area.actions
+    @actions = @actions.where(:event_type => params[:type]) if params[:type].present?
+    @actions = @actions.page params[:page]
+ end
 
   def get_questions
     @questions = @politic.questions_received.moderated

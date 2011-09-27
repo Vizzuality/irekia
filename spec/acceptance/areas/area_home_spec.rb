@@ -100,7 +100,22 @@ feature "Area's home" do
 
       page.should have_css 'footer .right a', :text => 'ver más acciones'
     end
-  end
+
+    within 'article.last_actions' do
+      click_link 'Noticias'
+    end
+    within 'article.last_actions' do
+      page.should have_css 'ul li', :count => 1
+    end
+
+    within 'article.last_actions' do
+      click_link 'Preguntas'
+    end
+    within 'article.last_actions' do
+      page.should have_css 'ul li', :count => 1
+    end
+
+ end
 
   scenario "shows the list of questions made to that area" do
 
