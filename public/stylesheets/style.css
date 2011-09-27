@@ -527,7 +527,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 
 /* close */
 #container article { /* Maps */ }
-#container article span.close { position: absolute; top: 0px; right: 7px; display: block; width: 9px; height: 8px; background: url("/images/icons/close.png") no-repeat; cursor: pointer; }
+#container article span.close { position: absolute; top: 3px; right: 10px; display: block; width: 9px; height: 8px; background: url("/images/icons/close.png") no-repeat; cursor: pointer; }
 #container article .map span.close { top: 11px; }
 #container article .inner .content ul.questions li { clear: both; overflow: hidden; margin: 0 0 13px 0; padding: 10px; background: #F2F5F8; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 #container article .inner .content ul.questions li:last-child, #container article .inner .content ul.questions li.last { margin-bottom: 0; }
@@ -572,7 +572,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 
 /* Textarea scrollbar */
 textarea::-webkit-scrollbar { width: 6px; height: 6px; }
-textarea::-webkit-scrollbar-button:start:decrement textarea::-webkit-scrollbar-button:end:increment { display: block; height: 0; background-color: transparent; }
+textarea::-webkit-scrollbar-button:start:decrement, textarea::-webkit-scrollbar-button:end:increment { display: block; height: 0; background-color: transparent; }
 textarea::-webkit-scrollbar-track-piece { background-color: #FAFAFA; -webkit-border-radius: 0; -webkit-border-bottom-right-radius: 8px; -webkit-border-bottom-left-radius: 8px; }
 textarea::-webkit-scrollbar-thumb:vertical { height: 20px; background-color: #999; -webkit-border-radius: 8px; }
 textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #999; -webkit-border-radius: 8px; }

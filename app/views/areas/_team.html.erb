@@ -1,3 +1,4 @@
+<!--
 <div id="team">
   <h1><%= t('.title', :count => @team.count) %></h1>
   <ul>
@@ -15,3 +16,35 @@
     <% end %>
   </ul>
 </div>
+
+-->
+
+<article class="with_footer">
+<div class="inner">
+  <header>
+  <h2><%= t('.title', :count => @team.count) %></h2>
+  </header>
+  <div class="content">
+
+    <% @team.each do |user| %>
+    <div class="suggestion">
+      <%= link_to (image_tag user.profile_image), politic_path(user), :title => user.fullname, :class => :avatar %>
+      <div class="content">
+        <%= link_to user.fullname, politic_path(user), :title => user.fullname, :class => :name %>
+        <p><%= get_politic_title(user) %></p>
+        <%= link_to "Seguir", "#" %>
+      </div>
+    </div>
+  <% end %>
+
+  </div>
+</div>
+<footer>
+<div class="separator"></div>
+<div class="inner">
+  <div class="right">
+  </div>
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>

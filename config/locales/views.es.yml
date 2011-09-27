@@ -374,12 +374,13 @@ es:
 
   areas:
     navigation_menu:
-      summary: Resumen
-      actions: Acciones
-      questions: Preguntas
-      proposals: Propuestas
-      agenda: Agenda
-      team: Equipo
+      menu:
+        summary: Resumen
+        actions: Acciones
+        questions: Preguntas
+        proposals: Propuestas
+        agenda: Agenda
+        team: Equipo
     summary:
       description:
         title: Qué hacemos
