@@ -325,7 +325,7 @@ es:
         comments:
           zero: Ningún comentario
           one: Un comentario
-          other: '%{count} comentario'
+          other: '%{count} comentarios'
         total_in_favor: '%{percent}% a favor (de %{total})'
       content:
         in_favor: A favor

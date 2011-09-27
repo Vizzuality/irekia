@@ -10,15 +10,18 @@ feature "Proposal page" do
   scenario "shows proposal's title, subtitle and body" do
     visit proposal_path(@proposal)
 
-    within '#proposal' do
-      within '.title_author_and_comments' do
-        page.should have_css 'blockquote h1', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
-        page.should have_content 'María González Pérez'
-        page.should have_content 'Un comentario · 53% a favor (de 123)'
-        page.should have_link 'María González Pérez'
-        page.should have_link 'Un comentario'
+    within '.proposal' do
+      within '.inner .left' do
+        page.should have_css 'h1', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
+        within 'p.info' do
+          page.should have_content 'María González Pérez'
+      #    page.should have_content 'Un comentario · 53% a favor (de 123)'
+          page.should have_link 'María González Pérez'
+          page.should have_link 'Un comentario'
+          page.should have_content /hace menos de 1 minuto/
+        end
       end
-      page.should have_css '.title_author_and_comments', :text => /hace menos de 1 minuto/
+
       within '.content' do
         page.should have_content String.lorem
         within '.in_favor' do
@@ -62,10 +65,10 @@ feature "Proposal page" do
 
   scenario "has a sidebar with sharing links, a list of tags and related people and news" do
     visit proposal_path(@proposal)
-    within '.sharing_links' do
-      page.should have_link 'Mail'
-      page.should have_link 'Twitter'
-      page.should have_link 'Facebook'
+    within '.sharing' do
+      page.should have_css 'li div.share.email'
+      page.should have_css 'li div.share.twitter'
+      page.should have_css 'li div.share.facebook'
     end
     within '.tags' do
       page.should have_css 'h3', :text => 'Tags'
