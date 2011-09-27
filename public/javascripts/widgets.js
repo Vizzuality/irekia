@@ -407,7 +407,7 @@ var GOD = (function() {
   var
   store = "question-popover",
   // Public methods
-  methods = {},
+  methods = { },
   // Default values
   defaults = {
     easingMethod:'easeInOutQuad',
@@ -416,6 +416,10 @@ var GOD = (function() {
   };
 
   // Called by using $('foo').questionPopover();
+  //
+  //
+
+
   methods.init = function(settings) {
     settings = $.extend({}, defaults, settings);
 
@@ -452,6 +456,7 @@ var GOD = (function() {
       $ps = $('#' + store + "_" + id);
 
       $(this).click(_toggle);
+
       $(window).bind(data.event, function() { _close(data, true); });
 
       // Save the updated $ps reference into our data object
@@ -462,6 +467,13 @@ var GOD = (function() {
 
       // Do the same for the dropdown, but add a few helpers
       $ps.data(store, data);
+
+      // Autolaunch of the widget
+      if (settings.open == true) {
+        var $ps   = $('#' + data.name + "_" + data.id);
+        _open(data);
+      }
+
     });
   };
 
@@ -499,8 +511,10 @@ var GOD = (function() {
 
   // Toggle popover
   function _toggle(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
 
     var data  = $(this).data(store);
     var $ps   = $('#' + data.name + "_" + data.id);
@@ -600,7 +614,7 @@ var GOD = (function() {
     $ps.find(".input-counter").inputCounter();
   }
 
-  $(function() {});
+  $(function() { });
 
 })(jQuery, window, document);
 
@@ -781,7 +795,7 @@ var GOD = (function() {
       '          <a href="/users/auth/twitter" class="twitter" id="twitter_signin">Twitter</a>',
       '        </div>',
       '        <div class="right">',
-      '          <input type="submit" value="Entra" class="white_button right" />',
+      '          <input type="submit" value="Entra" id="login" class="login white_button right" />',
       '        </div>',
       '      </div>',
       '      </footer>',
@@ -857,6 +871,8 @@ var GOD = (function() {
       // Update the reference to $ps
       $ps = $('#' + store + "_" + id);
 
+      _setupCallback(data, $this.attr('class'));
+
       $(this).click(_toggle);
       $(window).bind(data.event, function() { _close(data, true); });
 
@@ -916,6 +932,12 @@ var GOD = (function() {
     });
   }
 
+  function _setupCallback(data, classes) {
+    if (classes.indexOf("question") != -1) {
+      data.callback = "question";
+    }
+  }
+
   function _open(data) {
     data.$ps = _build(data, "main", {title:"Haz una pregunta", description:"Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo.", your_question:"Tu pregunta", maxLimit:data.settings.maxLimit});
     var $ps = data.$ps;
@@ -970,7 +992,18 @@ var GOD = (function() {
     data.$ps.find('input[type="submit"]').bind('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      _close(data, true);
+
+      var $el = $(this);
+
+      if (data.callback) {
+        _close(data, false, function() {
+          $el.questionPopover({open:true});
+        });
+
+      } else {
+        _close(data, true);
+      }
+
     });
   }
 

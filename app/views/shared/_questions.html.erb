@@ -1,3 +1,6 @@
+
+
+
 <%= content_for :javascripts do %>
   <script type="text/javascript" charset="utf-8">
     var questions = <%= @questions.to_json.html_safe %>;
@@ -21,6 +24,7 @@
   </div>
   </header>
   <div class="left">
+
     <ul>
     <% @questions.first(4).each do |question| %>
       <li class="question">
@@ -37,7 +41,11 @@
       <li><%= link_to "Contestadas", "#" %></li>
     </ul>
 
-    <%= link_to "Haz una pregunta", "#", :id => "question-123", :class => "white_button ask_question" %>
+    <% if user_signed_in? && @question_target.present? %>
+      <%= link_to "Haz una pregunta", "#", :id => "question-123", :class => "white_button ask_question" %>
+    <% elsif !user_signed_in? %>
+      <%= link_to "Haz una pregunta", "#", :class => "white_button floating-login question" %>
+    <% end %>
 
   </div>
 </div>
