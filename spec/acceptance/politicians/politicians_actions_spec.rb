@@ -2,15 +2,15 @@
 
 require 'spec_helper'
 
-feature "Politic's actions page" do
+feature "Politician's actions page" do
 
   background do
-    @politic = get_politic_data
+    @politician = get_politician_data
   end
 
-  scenario "shows a summary with that politic's description, actions and questions answered" do
+  scenario "shows a summary with that politician's description, actions and questions answered" do
 
-    visit actions_politic_path(@politic)
+    visit actions_politician_path(@politician)
 
     within '.summary' do
       page.should have_css 'h1', :text => 'Virginia Uriarte Rodríguez'
@@ -36,7 +36,7 @@ feature "Politic's actions page" do
   end
 
   scenario 'shows a navigation menu with "actions" selected' do
-    visit actions_politic_path(@politic)
+    visit actions_politician_path(@politician)
 
     within 'ul.menu' do
       page.should have_link 'Resumen'
@@ -47,9 +47,9 @@ feature "Politic's actions page" do
     end
   end
 
-  scenario 'shows a list of last actions related to this politic' do
+  scenario 'shows a list of last actions related to this politician' do
 
-    visit actions_politic_path(@politic)
+    visit actions_politician_path(@politician)
 
     within '.last_actions' do
       page.should have_css 'h2', :text => 'Últimas acciones'

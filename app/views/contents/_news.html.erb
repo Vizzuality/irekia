@@ -26,13 +26,13 @@
         <% end if @content.tags.present? %>
       </ul>
     </div>
-    <div class="related_politics">
-      <h3><%= t('.sidebar.related_politics.title') %></h3>
+    <div class="related_politicians">
+      <h3><%= t('.sidebar.related_politicians.title') %></h3>
       <ul>
         <% @content.users.each do |user| %>
         <li>
-          <%= link_to user.fullname, politic_path(user) %>
-          <span><%= get_politic_title(user) %></span>
+          <%= link_to user.fullname, politician_path(user) %>
+          <span><%= get_politician_title(user) %></span>
         </li>
         <% end if @content.users.present? %>
       </ul>

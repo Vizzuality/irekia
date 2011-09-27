@@ -5,12 +5,12 @@ require 'spec_helper'
 feature "Area's questions page" do
 
   background do
-    @politic = get_politic_data
+    @politician = get_politician_data
   end
 
-  scenario "shows a summary with that politic's description, actions and questions answered" do
+  scenario "shows a summary with that politician's description, actions and questions answered" do
 
-    visit questions_politic_path(@politic)
+    visit questions_politician_path(@politician)
 
     within '.summary' do
       page.should have_css 'h1', :text => 'Virginia Uriarte Rodríguez'
@@ -40,8 +40,8 @@ feature "Area's questions page" do
       login_as_regular_user
     end
 
-    scenario "allows to send a question to this politic" do
-      visit questions_politic_path(@politic)
+    scenario "allows to send a question to this politician" do
+      visit questions_politician_path(@politician)
 
       within '.summary' do
         page.should have_css 'h3', :text => 'Pregunta a Virginia'
@@ -60,8 +60,8 @@ feature "Area's questions page" do
 
   context 'not being a signed-in user' do
 
-    scenario "doesn't allow to send a question to this politic" do
-      visit questions_politic_path(@politic)
+    scenario "doesn't allow to send a question to this politician" do
+      visit questions_politician_path(@politician)
 
       within '.questions' do
         page.should have_no_css '.send_a_question'
@@ -71,7 +71,7 @@ feature "Area's questions page" do
   end
 
   scenario 'shows a navigation menu with "actions" selected' do
-    visit questions_politic_path(@politic)
+    visit questions_politician_path(@politician)
 
     within 'ul.menu' do
       page.should have_link 'Resumen'
@@ -82,9 +82,9 @@ feature "Area's questions page" do
     end
   end
 
-  scenario "shows the list of questions made to that politic" do
+  scenario "shows the list of questions made to that politician" do
 
-    visit questions_politic_path(@politic)
+    visit questions_politician_path(@politician)
 
     within '.questions' do
       page.should have_css 'h2', :text => 'Preguntas de los ciudadanos'

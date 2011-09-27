@@ -1,16 +1,16 @@
 <article class="profile with_footer">
 <div class="inner">
   <header>
-  <h1><%= @politic.fullname %></h1>
+  <h1><%= @politician.fullname %></h1>
   <p class="position">Consejera de <%= link_to "Educación, Universidades e Investigación", "#" %></p>
   </header>
 
   <div class="left">
     <div class="description two_columns">
       <h3>Quién es y qué hace</h3>
-      <%= simple_format(@politic.description) %>
+      <%= simple_format(@politician.description) %>
       <%= link_to "Leer más", "#" %></p>
-      <p><%=link_to raw( "<span class='add'></span>") +"Seguir a #{@politic.name} (24)", "#", :class => "white_button add_person" %></p>
+      <p><%=link_to raw( "<span class='add'></span>") +"Seguir a #{@politician.name} (24)", "#", :class => "white_button add_person" %></p>
     </div>
   </div>
 </div>
@@ -18,7 +18,7 @@
 <footer>
 <div class="separator"></div>
 <div class="inner with_avatar with_question">
-  <h3>Pregunta a <%= @politic.name %></h3>
+  <h3>Pregunta a <%= @politician.name %></h3>
   <%= image_tag 'temp/avatar_big.png', :class => :xlAvatar %>
 
   <%= form_for current_user do |form| %>
@@ -31,7 +31,7 @@
           <%= question_data.text_field :question_text, :class => :xlInput %>
         <% end %>
 
-        <span class="holder large">Haz una pregunta a <%= @politic.name %>...</span>
+        <span class="holder large">Haz una pregunta a <%= @politician.name %>...</span>
       </div>
 
       <input type="submit" value="Preguntar" id="submit-counter-124" class="disabled white_button" disabled="disabled" />

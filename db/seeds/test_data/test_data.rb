@@ -29,7 +29,7 @@ alberto.password_confirmation = 'alberto1234'
 alberto.description = String.lorem
 alberto.province = 'Vizcaya'
 alberto.city = 'Ondarroa'
-alberto.role = Role.find_by_name('Politic')
+alberto.role = Role.find_by_name('Politician')
 alberto.areas.clear
 alberto.areas_users << AreaUser.create(:area => area, :display_order => 2)
 alberto.title = Title.find_by_name('Co-adviser')
@@ -45,7 +45,7 @@ virginia.is_woman = true
 virginia.description = String.lorem
 virginia.province = 'Vizcaya'
 virginia.city = 'Ondarroa'
-virginia.role = Role.find_by_name('Politic')
+virginia.role = Role.find_by_name('Politician')
 virginia.areas.clear
 virginia.areas_users << AreaUser.create(:area => area, :display_order => 1)
 virginia.title = Title.find_by_name('Adviser')
@@ -66,7 +66,7 @@ print '.'.blue
   user.description = String.lorem
   user.province = 'Vizcaya'
   user.city = 'Ondarroa'
-  user.role = Role.find_by_name('Politic')
+  user.role = Role.find_by_name('Politician')
   user.areas.clear
   user.areas << area
   user.title = Title.find_by_name('Co-adviser')
@@ -97,7 +97,7 @@ maria.province = 'Vizcaya'
 maria.city = 'Ondarroa'
 maria.role = Role.find_by_name('Citizen')
 maria.profile_pictures << Image.create(:image => women_images.sample)
-maria.users_following = User.politics
+maria.users_following = User.politicians
 maria.areas_following = Area.all
 maria.save!
 

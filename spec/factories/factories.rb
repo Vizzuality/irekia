@@ -6,7 +6,7 @@ module Factories
     Area.where(:name => 'Educación, Universidades e Investigación').first
   end
 
-  def get_politic_data
+  def get_politician_data
     User.where(:name => 'Virginia', :lastname => 'Uriarte Rodríguez').first
   end
 

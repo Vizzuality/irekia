@@ -14,6 +14,7 @@ feature "Search" do
     within 'ul.menu' do
       page.should have_css 'li.selected', :text => 'Resumen'
       page.should have_css 'li', :text => '137 contenidos'
+      peich
       page.should have_css 'li', :text => '5 políticos'
       page.should have_css 'li', :text => '3 usuarios'
     end
@@ -49,7 +50,7 @@ feature "Search" do
       end
     end
 
-    within '.politics_results' do
+    within '.politicians_results' do
       page.should have_css 'h2', :text => '5 políticos'
       page.should have_css 'div.content .suggestion', :count => 5
       within 'div.content .suggestion' do
@@ -127,7 +128,7 @@ feature "Search" do
     end
   end
 
-  scenario "shows a detail page for politics type results" do
+  scenario "shows a detail page for politicians type results" do
     visit search_path(:search => {:query => 'lorem'})
 
     page.should have_field 'search_query', :with => 'lorem'
@@ -147,7 +148,7 @@ feature "Search" do
       page.should have_css 'li', :text => '3 usuarios'
     end
 
-    within '.politics_results' do
+    within '.politicians_results' do
       page.should have_css 'h2', :text => '5 políticos'
       within 'div.content' do
         page.should have_css '.suggestion', :count => 5

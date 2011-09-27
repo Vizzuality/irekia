@@ -132,7 +132,7 @@ es:
       content_type_filters:
        all: Todos los tipos
        news: Noticias
-       politics_activity: Actividad de los políticos
+       politicians_activity: Actividad de los políticos
        questions: Preguntas
        proposals: Propuestas
        images: Fotos
@@ -198,7 +198,7 @@ es:
         more_polemic: Más polémicas
       content_type_filters:
        all: Todas
-       from_politics: Propuestas del gobierno
+       from_politicians: Propuestas del gobierno
        from_citizens: Propuestas ciudadanas
       create_proposal: Crea una propuesta
       more: ver más propuestas
@@ -210,7 +210,7 @@ es:
 
     welcome:
       configure_your_account: Configura tu cuenta
-      politics_following:
+      politicians_following:
         zero: 0 políticos
         one: 1 político
         other: '%{count} políticos'
@@ -233,7 +233,7 @@ es:
           facebook: Facebook
         tags:
           title: Tags
-        related_politics:
+        related_politicians:
           title: Políticos relacionados
         related_content:
           title: Últimos contenidos
@@ -254,7 +254,7 @@ es:
           facebook: Facebook
         tags:
           title: Tags
-        related_politics:
+        related_politicians:
           title: Políticos relacionados
         related_photos:
           title: Últimas fotos
@@ -276,7 +276,7 @@ es:
           facebook: Facebook
         tags:
           title: Tags
-        related_politics:
+        related_politicians:
           title: Políticos relacionados
         related_events:
           title: Últimos eventos
@@ -423,7 +423,7 @@ es:
       agenda:
         title: Agenda del área
 
-  politics:
+  politicians:
     menu:
       summary: Resumen
       actions: Acciones
@@ -475,7 +475,7 @@ es:
           zero: Ningún contenido
           one: 1 contenido
           other: '%{count} contenidos'
-        politics:
+        politicians:
           zero: Ningún político
           one: 1 político
           other: '%{count} políticos'
@@ -496,12 +496,12 @@ es:
         content_type_filters:
          all: Todos los tipos
          news: Noticias
-         politics_activity: Actividad de los políticos
+         politicians_activity: Actividad de los políticos
          questions: Preguntas
          proposals: Propuestas
          images: Fotos
          videos: Vídeos
-      politics_results:
+      politicians_results:
         title:
           zero: Ningún político
           one: 1 político
@@ -528,7 +528,7 @@ es:
           more_active: Más activos
         look_city: Buscar un municipio
     autocomplete:
-      politics:
+      politicians:
         summary:
           title: Políticos
           count:

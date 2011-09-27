@@ -24,7 +24,7 @@ module ApplicationHelper
     t([model.class.name.downcase, key, model["#{key}_i18n_key"]].join('.'), :scope => 'activerecord.values')
   end
 
-  def get_politic_title(user)
+  def get_politician_title(user)
     translates_model_value(user.title, :name)[user.is_woman?? :female : :male] if user.title
   end
 

@@ -19,9 +19,9 @@
 
         <% @team.first(2).each do |user| %>
           <li>
-          <%= link_to (content_tag 'div', image_tag(user.profile_image), :class => "avatar small"), politic_path(user) if user.profile_image %>
-          <%= link_to user.fullname, politic_path(user), :class => :name %>
-          <span><%= get_politic_title(user) %></span>
+          <%= link_to (content_tag 'div', image_tag(user.profile_image), :class => "avatar small"), politician_path(user) if user.profile_image %>
+          <%= link_to user.fullname, politician_path(user), :class => :name %>
+          <span><%= get_politician_title(user) %></span>
           </li>
         <% end %>
 

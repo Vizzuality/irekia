@@ -8,11 +8,11 @@ class SearchController < ApplicationController
 
     users     = User.search_by_name_description_province_and_city @search.query
     @citizens = users.citizens
-    @politics = users.politics
+    @politicians = users.politicians
 
     @contents_areas = @contents.inject([]){|arr, content| arr + [content.area]}.uniq!
     @citizens_areas = @citizens.inject([]){|arr, citizen| arr + citizen.areas}.uniq!
-    @politics_areas = @politics.inject([]){|arr, politic| arr + politic.areas}.uniq!
+    @politicians_areas = @politicians.inject([]){|arr, politician| arr + politician.areas}.uniq!
 
     render :autocomplete, :layout => false and return if request.xhr?
 

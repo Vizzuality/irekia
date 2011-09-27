@@ -8,7 +8,7 @@ feature "Area's questions page" do
     @area = get_area_data
   end
 
-  scenario "shows a summary of that area's politics, actions and generated contents" do
+  scenario "shows a summary of that area's politicians, actions and generated contents" do
 
     visit questions_area_path(@area)
 

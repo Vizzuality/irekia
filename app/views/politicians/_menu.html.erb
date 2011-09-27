@@ -1,0 +1,8 @@
+<%= menu ([
+  { :link => (link_to t(".summary"),   politician_path(@politician)), :class => current_action?(:show)},
+  { :link => (link_to t(".actions"),   actions_politician_path(@politician)),  :class => current_action?(:actions) },
+  { :link => (link_to t(".questions"), questions_politician_path(@politician)), :class => current_action?(:questions) },
+  { :link => (link_to t(".proposals"), proposals_politician_path(@politician)), :class => current_action?(:proposals) },
+  { :link => (link_to t(".agenda"),    agenda_politician_path(@politician)),  :class => current_action?(:agenda) },
+  { :link => (link_to t(".documents"), "#")}
+]) %>

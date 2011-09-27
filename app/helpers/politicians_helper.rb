@@ -1,20 +1,20 @@
-module PoliticsHelper
+module PoliticiansHelper
   include ApplicationHelper
 
   def link_for_actions
-    actions_politic_path(@politic)
+    actions_politician_path(@politician)
   end
 
   def link_for_proposals
-    proposals_politic_path(@politic)
+    proposals_politician_path(@politician)
   end
 
   def link_for_questions
-    questions_politic_path(@politic)
+    questions_politician_path(@politician)
   end
 
   def link_for_agenda
-    agenda_politic_path(@politic)
+    agenda_politician_path(@politician)
   end
 
   def agenda_for_day(agenda, day)

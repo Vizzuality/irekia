@@ -2,15 +2,15 @@
 
 require 'spec_helper'
 
-feature "Politic's home" do
+feature "Politician's home" do
 
   background do
-    @politic = get_politic_data
+    @politician = get_politician_data
   end
 
-  scenario "shows a summary with that politic's description, actions and questions answered" do
+  scenario "shows a summary with that politician's description, actions and questions answered" do
 
-    visit politic_path(@politic)
+    visit politician_path(@politician)
 
     within '.summary' do
       page.should have_css 'h1', :text => 'Virginia Uriarte Rodríguez'
@@ -40,8 +40,8 @@ feature "Politic's home" do
       login_as_regular_user
     end
 
-    scenario "allows to send a question to this politic" do
-      visit politic_path(@politic)
+    scenario "allows to send a question to this politician" do
+      visit politician_path(@politician)
 
       within '.summary' do
         page.should have_css 'h3', :text => 'Pregunta a Virginia'
@@ -60,8 +60,8 @@ feature "Politic's home" do
 
   context 'not being a signed-in user' do
 
-    scenario "doesn't allow to send a question to this politic" do
-      visit politic_path(@politic)
+    scenario "doesn't allow to send a question to this politician" do
+      visit politician_path(@politician)
 
       within '.summary' do
         page.should have_no_css 'form.make_question'
@@ -70,9 +70,9 @@ feature "Politic's home" do
     end
   end
 
-  scenario 'shows a list of last actions related to this politic' do
+  scenario 'shows a list of last actions related to this politician' do
 
-    visit politic_path(@politic)
+    visit politician_path(@politician)
 
     within '.last_actions' do
       page.should have_css 'h2', :text => 'Últimas acciones'
@@ -115,9 +115,9 @@ feature "Politic's home" do
     end
   end
 
-  scenario "shows the list of questions made to that politic" do
+  scenario "shows the list of questions made to that politician" do
 
-    visit politic_path(@politic)
+    visit politician_path(@politician)
 
     within '.questions' do
       page.should have_css 'h2', :text => 'Preguntas de los ciudadanos'
@@ -146,9 +146,9 @@ feature "Politic's home" do
     end
   end
 
-  scenario "shows the list of proposals sent to that politic" do
+  scenario "shows the list of proposals sent to that politician" do
 
-    visit politic_path(@politic)
+    visit politician_path(@politician)
 
     within '.proposals' do
       page.should have_css 'h2', :text => 'Propuestas'
@@ -178,9 +178,9 @@ feature "Politic's home" do
     end
   end
 
-  scenario "shows this politic's agenda" do
+  scenario "shows this politician's agenda" do
 
-    visit politic_path(@politic)
+    visit politician_path(@politician)
 
     within '.agenda' do
       page.should have_css 'h2', :text => 'Agenda de Virginia'
