@@ -52,11 +52,11 @@ feature "Area's actions page" do
 
     visit actions_area_path(@area)
 
-    within '.last_actions' do
+    within '.actions' do
       page.should have_css 'h2', :text => 'Últimas acciones'
 
-      page.should have_css 'a.more_recent', :text => 'Más recientes'
-      page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter.recent', :text => 'Más recientes'
+      page.should have_css 'a.filter.polemic', :text => 'Más polémicas'
 
       within '.argument' do
         page.should have_css 'p', :text => 'A favor de la propuesta "Actualizar la información publicada sobre las ayudas a familias numerosas"'

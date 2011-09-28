@@ -40,11 +40,11 @@ feature "Area's home" do
 
     visit area_path(@area)
 
-    within 'article.last_actions' do
+    within '.actions' do
       page.should have_css 'h2', :text => 'Últimas acciones'
 
-      page.should have_css 'a.more_recent', :text => 'Más recientes'
-      page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter.recent', :text => 'Más recientes'
+      page.should have_css 'a.filter.polemic', :text => 'Más polémicas'
 
       within '.argument' do
         page.should have_css 'p', :text => 'A favor de la propuesta "Actualizar la información publicada sobre las ayudas a familias numerosas"'
@@ -101,18 +101,18 @@ feature "Area's home" do
       page.should have_css 'footer .right a', :text => 'ver más acciones'
     end
 
-    within 'article.last_actions' do
+    within 'article.actions' do
       click_link 'Noticias'
     end
-    within 'article.last_actions #actions' do
+    within 'article.actions #actions' do
       page.should have_css 'ul li', :count => 1
     end
 
-    within 'article.last_actions' do
+    within 'article.actions' do
       click_link 'Preguntas'
     end
 
-    within 'article.last_actions #actions' do
+    within 'article.actions #actions' do
       page.should have_css 'ul li', :count => 2
     end
 

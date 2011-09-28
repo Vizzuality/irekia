@@ -2,7 +2,7 @@ class PoliticiansController < UsersController
   skip_before_filter :authenticate_user!, :only => [:show, :actions, :questions, :proposals, :agenda]
 
   before_filter :get_user,                   :only => [:show, :actions, :questions, :proposals, :agenda]
-  before_filter :get_politician,                :only => [:show, :actions, :questions, :proposals, :agenda]
+  before_filter :get_politician,             :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :build_questions_for_update, :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_actions,                :only => [:show, :actions]
   before_filter :get_questions,              :only => [:show, :questions]

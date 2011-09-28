@@ -74,11 +74,11 @@ feature "Politician's home" do
 
     visit politician_path(@politician)
 
-    within '.last_actions' do
+    within '.actions' do
       page.should have_css 'h2', :text => 'Últimas acciones'
 
-      page.should have_css 'a.more_recent', :text => 'Más recientes'
-      page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter.recent', :text => 'Más recientes'
+      page.should have_css 'a.filter.polemic', :text => 'Más polémicas'
 
       within '.answer' do
         page.should have_css 'p', :text => 'Contestando a "Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'

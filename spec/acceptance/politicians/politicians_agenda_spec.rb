@@ -78,7 +78,7 @@ feature "Area's agenda page" do
        # page.should have_css 'li.ago_11 div.title', :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
       end
 
-      page.should have_css 'footer .right a', :text => 'Ver calendario completo'
+      page.should_not have_css 'footer .right a', :text => 'Ver calendario completo'
     end
   end
 
