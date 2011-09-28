@@ -1,4 +1,4 @@
-<%= content_tag 'div', (image_tag "icons/news_avatar_medium.png"), :class => :avatar if data.author.profile_image.present? %>
+<%= avatar data.author %>
 <div class="content">
   <p><strong><%= data.title %></strong></p>
   <p class="excerpt"><%= truncate(data.body, :length => 66) %><%= link_to t('.read_more'), '#' %></p>

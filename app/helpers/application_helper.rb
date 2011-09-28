@@ -33,6 +33,13 @@ module ApplicationHelper
   end
 
   def avatar(user, size = nil)
-    render "shared/avatar", :user => user, :size => size
+
+    if user.politician?
+      path = politician_path(user.id)
+    else
+      path = user_path(user.id)
+    end
+
+    render "shared/avatar", :user => user, :size => size, :path => path
   end
 end

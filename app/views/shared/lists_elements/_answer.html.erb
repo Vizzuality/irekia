@@ -1,4 +1,4 @@
-<%= content_tag 'div', (image_tag data.author.profile_image), :class => :avatar if data.author.profile_image.present? %>
+<%= avatar data.author %>
 <div class="content">
   <p><%= raw t('.title', :question => content_tag(:strong, data.question_text)) %></p>
 

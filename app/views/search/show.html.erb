@@ -95,7 +95,7 @@
            <ul class="suggestions">
       <% @politicians.first(how_many_users_to_show?).each do |politician| %>
         <li>
-        <%= link_to (content_tag 'div', (image_tag(politician.profile_image)), :class => :avatar), politician_path(politician) if politician.profile_image %>
+        <%= avatar politician %>
           <div class="content">
             <%= link_to politician.fullname, politician_path(politician), :class => :name %>
             <p><%= t('.politicians_results.title_area', :title => get_politician_title(politician), :area => politician.areas.map(&:name).join(', ')) %></p>
@@ -140,7 +140,7 @@
         <ul class="suggestions">
         <% @citizens.first(how_many_users_to_show?).each do |user| %>
           <li>
-            <%= link_to (content_tag 'div', (image_tag(user.profile_image)), :class => :avatar), user_path(user) if user.profile_image %>
+          <%= avatar user %>
             <div class="content">
               <%= link_to user.fullname, user_path(user), :class => :name %>
               <p><%= "#{user.city}, #{user.province}" %></p>

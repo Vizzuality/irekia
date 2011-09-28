@@ -29,7 +29,7 @@
     <ul class="suggestions">
       <% @team.each do |user| %>
         <li>
-        <%= link_to (image_tag user.profile_image), politicians_path(user), :title => user.fullname, :class => :avatar %>
+        <%= avatar user %>
         <div class="content">
           <%= link_to user.fullname, politicians_path(user), :title => user.fullname, :class => :name %>
           <p class="title"><%= get_politician_title(user) %></p>
