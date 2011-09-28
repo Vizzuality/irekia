@@ -1,7 +1,8 @@
 class AreasController < ApplicationController
 
   skip_before_filter :authenticate_user!,    :only => [:show, :actions, :questions, :proposals, :agenda, :team]
-  before_filter :get_area_data,              :only => [:show, :update, :actions, :questions, :proposals, :agenda, :team]
+  before_filter :get_area,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda, :team]
+  before_filter :get_area_data,              :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_actions,                :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :build_questions_for_update, :only => [:questions]
   before_filter :get_questions,              :only => [:show, :questions]
@@ -41,9 +42,20 @@ class AreasController < ApplicationController
   end
 
   private
+  def get_area
+    @area            = Area.where(:id => params[:id]).first if params[:id].present?
+  end
+
   def get_area_data
-    @area = Area.where(:id => params[:id]).first if params[:id].present?
-    @team = @area.team.includes(:title)
+    @team            = @area.team.includes(:title)
+    @followers_count = @area.followers.count
+
+    if current_user.blank? || current_user.not_following(@area)
+      @new_follow      = @area.follows.build
+      @new_follow.user = current_user
+    else
+      @remove_follow = @area.follows.where(:user_id => current_user.id).first
+    end
   end
 
   def get_actions

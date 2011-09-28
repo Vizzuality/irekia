@@ -24,6 +24,7 @@ class Area < ActiveRecord::Base
            :source => :user
 
   accepts_nested_attributes_for :questions
+  accepts_nested_attributes_for :follows, :allow_destroy => true
 
   def team
     users.order('display_order ASC')

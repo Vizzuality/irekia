@@ -389,6 +389,11 @@ es:
     summary:
       description:
         title: Qué hacemos
+        follow:
+          zero: Seguir este área (0)
+          one: Seguir este área (1)
+          other: 'Seguir este área (%{count})'
+        stop_follow: Dejar de seguir
       team:
         title: Equipo principal
         other_members:

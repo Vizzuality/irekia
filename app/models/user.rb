@@ -231,6 +231,10 @@ class User < ActiveRecord::Base
     twitter_oauth_token.present? && twitter_oauth_token_secret.present?
   end
 
+  def not_following(item)
+    followed_items.where(:follow_item_type => item.class.name, :follow_item_id => item.id).count == 0 if item.present?
+  end
+
   def check_blank_name
     name = email if name.blank?
   end
