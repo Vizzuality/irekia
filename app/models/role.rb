@@ -8,7 +8,7 @@ class Role < ActiveRecord::Base
   scope :citizen, where(:name => 'Citizen')
 
   def politician?
-    self.name.eql?('politician')
+    self.name.eql?('Politician')
   end
 
   def administrator?
