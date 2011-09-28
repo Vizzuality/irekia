@@ -8,6 +8,11 @@ es:
     publish: Publicar
     configure_your_account: Configura tu cuenta
   shared:
+    sidebar:
+      tags:
+        title: Tags
+      related_content:
+        title: Otras propuestas similares
     demo:
       footer:
         legal_info: Información legal

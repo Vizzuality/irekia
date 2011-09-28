@@ -15,26 +15,26 @@ feature "Proposal page" do
         page.should have_css 'h1', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'
         within 'p.info' do
           page.should have_content 'María González Pérez'
-      #    page.should have_content 'Un comentario · 53% a favor (de 123)'
+          #   page.should have_content 'Un comentario · 53% a favor (de 123)'
           page.should have_link 'María González Pérez'
           page.should have_link 'Un comentario'
-          page.should have_content /hace menos de 1 minuto/
+          page.should have_content "hace menos de 1 minuto"
         end
       end
 
-      within '.content' do
-        page.should have_content String.lorem
-        within '.in_favor' do
-          page.should have_css 'h4', :text => 'A favor'
-          page.should have_css 'ul li', :count => 5, :text => String.lorem.truncate(255)
-          page.should have_link 'Añadir'
-        end
-        within '.against' do
-          page.should have_css 'h4', :text => 'En contra'
-          page.should have_css 'ul li', :count => 5, :text => String.lorem.truncate(255)
-          page.should have_link 'Añadir'
-        end
-      end
+      # within '.content' do
+      #   page.should have_content String.lorem
+      #   within '.in_favor' do
+      #     page.should have_css 'h4', :text => 'A favor'
+      #     page.should have_css 'ul li', :count => 5, :text => String.lorem.truncate(255)
+      #     page.should have_link 'Añadir'
+      #   end
+      #   within '.against' do
+      #     page.should have_css 'h4', :text => 'En contra'
+      #     page.should have_css 'ul li', :count => 5, :text => String.lorem.truncate(255)
+      #     page.should have_link 'Añadir'
+      #   end
+      # end
     end
   end
 
@@ -43,18 +43,18 @@ feature "Proposal page" do
       login_as_regular_user
     end
 
-    scenario "allows me to vote for a proposal" do
-      visit proposal_path(@proposal)
+    #scenario "allows me to vote for a proposal" do
+    #  visit proposal_path(@proposal)
 
-      within '#your_opinion' do
-        page.should have_css 'h3', :text => '¿Qué opinas tú?'
-        page.should have_content 'Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión.'
+    #  within '#your_opinion' do
+    #    page.should have_css 'h3', :text => '¿Qué opinas tú?'
+    #    page.should have_content 'Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión.'
 
-        page.should have_button 'Votar a favor'
-        page.should have_button 'Votar en contra'
-        expect{ click_button 'Votar en contra'}.to change{ @proposal.arguments.against.count }.by(1)
-      end
-    end
+    #    page.should have_button 'Votar a favor'
+    #    page.should have_button 'Votar en contra'
+    #    expect{ click_button 'Votar en contra'}.to change{ @proposal.arguments.against.count }.by(1)
+    #  end
+    #end
   end
 
   context 'not being a registered user' do
@@ -65,25 +65,25 @@ feature "Proposal page" do
 
   scenario "has a sidebar with sharing links, a list of tags and related people and news" do
     visit proposal_path(@proposal)
+
     within '.sharing' do
       page.should have_css 'li div.share.email'
       page.should have_css 'li div.share.twitter'
       page.should have_css 'li div.share.facebook'
     end
-    within '.tags' do
-      page.should have_css 'h3', :text => 'Tags'
-      within 'ul' do
+
+    within '.right .content' do
+      page.should have_css 'h4', :text => 'Tags'
+      within 'ul.tags' do
         page.should have_content 'Comisión'
         page.should have_content 'Transporte'
         page.should have_content 'Gobierno Vasco'
         page.should have_content 'Transporte'
       end
-    end
-    within '.related_content' do
-      page.should have_css 'h3', :text => 'Últimos contenidos'
-      within 'ul' do
-      end
+
+      # page.should have_css 'h4', :text => 'Otras propuestas similares'
+      # within 'ul.related' do
+      # end
     end
   end
-
 end

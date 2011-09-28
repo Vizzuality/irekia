@@ -1,0 +1,10 @@
+<% if @last_contents.size > 0 %>
+  <h4><%= t('.title') %></h4>
+  <ul class="related no-bullets">
+    <% @last_contents.each do |content| %>
+      <li><%= link_to content_title, content_path(content) %>
+      <div class="footer"><%= distance_of_time_in_words_to_now(content.published_at) %> &middot; <%= link_to t('.sidebar.related_content.comments', :count => content.comments.count), '#' %></div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
