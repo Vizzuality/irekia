@@ -1,8 +1,0 @@
-<% if @content.tags.present? %>
-  <h4><%= t('.sidebar.tags.title') %></h4>
-  <ul class="tags">
-    <% @content.tags.split(',').each do |tag| %>
-      <li><%= link_to tag.strip, '#' %></li>
-    <% end %>
-  </ul>
-<% end %>
