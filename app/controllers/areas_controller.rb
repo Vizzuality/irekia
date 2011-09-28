@@ -9,7 +9,10 @@ class AreasController < ApplicationController
   before_filter :get_proposals,              :only => [:show, :proposals]
   before_filter :get_agenda,                 :only => [:show, :agenda]
 
+  respond_to :html, :json
+
   def show
+    respond_with @area
   end
 
   def update
