@@ -489,9 +489,10 @@ var GOD = (function() {
   };
 
   function _build(data, templateName, extraParams) {
-    var params = _.extend({id:data.id, name:data.name}, extraParams);
+    var params = _.extend({id:data.id + "_success", name:data.name}, extraParams);
 
     var $ps = $(_.template(data.templates[templateName], params ));
+
     return $ps;
   }
 
@@ -525,7 +526,7 @@ var GOD = (function() {
   }
 
   function _open(data) {
-    data.$ps = _build(data, "main", {title:"Haz una pregunta", description:"Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo.", your_question:"Tu pregunta", maxLimit:data.settings.maxLimit});
+    data.$ps = $(document).find("article#" + data.id);
     var $ps = data.$ps;
 
     // bindings
@@ -533,7 +534,7 @@ var GOD = (function() {
     _addSubmitAction(data);
     _addDefaultAction(data);
 
-    $("#container").prepend($ps);
+    //$("#container").prepend($ps);
 
     _subscribeToEvent(data.event);
     _triggerOpenAnimation($ps, data);
@@ -544,6 +545,7 @@ var GOD = (function() {
     var top  = _getTopPosition($ps);
     var left = _getLeftPosition($ps);
 
+    console.log("open", data, $ps);
     $ps.css({"top":(top + 100) + "px", "left": left + "px"});
 
     $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
@@ -557,12 +559,20 @@ var GOD = (function() {
     return (($(window).width() - $ps.width()) / 2);
   }
 
+  function _close2(data, hideLockScreen, callback) {
+    GOD.unsubscribe(data.event);
+
+    data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+      $(this).remove();
+      hideLockScreen && _toggleLockScreen();
+      callback && callback();
+    }});
+  }
   // Close popover
   function _close(data, hideLockScreen, callback) {
     GOD.unsubscribe(data.event);
 
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
-      data.$ps.remove();
       hideLockScreen && _toggleLockScreen();
       callback && callback();
     }});
@@ -575,17 +585,27 @@ var GOD = (function() {
   }
 
   function _addSubmitAction(data) {
-    data.$ps.find('input[type="submit"]').bind('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
 
+    data.$ps.find("form").die();
+    data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
+      //$(this).append(xhr.responseText)
       _close(data, false, function() {
         _gotoSuccess(data);
       });
     });
   }
 
+  function _addCloseAction2(data) {
+    data.$ps.find(".close").unbind("click");
+    data.$ps.find(".close").bind('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      _close2(data, true);
+    });
+  }
+
   function _addCloseAction(data) {
+    data.$ps.find(".close").unbind("click");
     data.$ps.find(".close").bind('click', function(e) {
       e.stopPropagation();
       e.preventDefault();
@@ -594,6 +614,7 @@ var GOD = (function() {
   }
 
   function _addDefaultAction(data){
+    data.$ps.unbind("click");
     data.$ps.bind('click', function(e) {
       e.stopPropagation();
     });
@@ -602,9 +623,10 @@ var GOD = (function() {
   function _gotoSuccess(data) {
 
     data.$ps = _build(data, "success");
-    var $ps = data.$ps;
+    var $ps  = data.$ps;
 
-    _addCloseAction(data);
+
+    _addCloseAction2(data);
     _addDefaultAction(data);
 
     $("#container").prepend($ps);
@@ -617,8 +639,6 @@ var GOD = (function() {
   $(function() { });
 
 })(jQuery, window, document);
-
-
 
 /*
 * =============

@@ -14,7 +14,6 @@
   </div>
   </header>
   <div class="left">
-
     <div id="questions">
       <ul>
         <% @questions.first(4).each do |question| %>
@@ -114,3 +113,5 @@
 </div>
 </article>
 -->
+
+<%= render "/shared/question_form" %>

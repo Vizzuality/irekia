@@ -5,5 +5,5 @@
     <%= raw t('.author', :author => link_to(data.author.fullname, user_path(data.author.id)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
   </span>
   &middot;
-      <%= render "shared/inline-sharing" %>
+  <%= render "/shared/inline_sharing" %>
 </div>

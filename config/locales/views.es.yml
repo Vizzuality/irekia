@@ -13,6 +13,9 @@ es:
         title: Tags
       related_content:
         title: Otras propuestas similares
+    question_form:
+      make_a_question:
+        submit: Enviar
     demo:
       footer:
         legal_info: Información legal

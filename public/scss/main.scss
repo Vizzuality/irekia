@@ -448,6 +448,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     }
   }
   &.mini {
+    &.initialy_hidden { opacity:0;}
     width: 610px;
     margin: 0 auto 0 auto;
     .inner {

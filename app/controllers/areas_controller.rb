@@ -8,7 +8,10 @@ class AreasController < ApplicationController
   before_filter :get_proposals,              :only => [:show, :proposals]
   before_filter :get_agenda,                 :only => [:show, :agenda]
 
+  respond_to :html, :json
+
   def show
+    respond_with @area
   end
 
   def update
@@ -29,6 +32,7 @@ class AreasController < ApplicationController
   def questions
     @question_target    = @area
     session[:return_to] = questions_area_path(@area)
+    respond_with @area.questions
   end
 
   def proposals
