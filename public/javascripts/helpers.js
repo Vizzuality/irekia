@@ -124,7 +124,9 @@ jQuery.fn.share = function(opt){
 
   this.each(function(){
     $(this).bind('click', function(e) {
+      e.preventDefault();
       e.stopPropagation();
+
       var service = $(this).attr('class').replace('share ', '');
       shareWith($(this), service, speed, easing);
     });

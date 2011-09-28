@@ -599,22 +599,27 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 
 .ie7 #container article ul.sharing li .sharebox.email .input_field input, .ie8 #container article ul.sharing li .sharebox.email .input_field input { line-height: 23px; position: static; border: 1px solid #ccc; }
 
+#container article .inner .left .content .inline-sharing { display: inline; }
+#container article .inner .left .content .inline-sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; overflow: visible; padding: 0; margin: 0; }
+#container article .inner .left .content .inline-sharing .sharebox { position: absolute; top: -86px; }
+
+#container article .left .content .sharebox, #container article .right .content ul.sharing li .sharebox { display: none; position: absolute; top: -60px; margin-left: -16px; z-index: 1000; }
+#container article .left .content .sharebox.email, #container article .right .content ul.sharing li .sharebox.email { margin-left: -108px; }
+#container article .left .content .sharebox.email .input_field, #container article .right .content ul.sharing li .sharebox.email .input_field { margin: 0; }
+
 #container article .right .content ul.sharing { margin: 0 0 28px 0; padding: 0 0 20px 0; }
 #container article .right .content ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: none; padding: 0; }
-#container article .right .content ul.sharing li .sharebox { display: none; position: absolute; top: -60px; margin-left: -16px; z-index: 1000; }
-#container article .right .content ul.sharing li .sharebox.email { margin-left: -108px; }
-#container article .right .content ul.sharing li .sharebox.email .input_field { margin: 0; }
 
 .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
 
-#container article .right .content .sharebox { background: url("/images/share_box.png") repeat-x right 0; float: left; height: 57px; position: relative; }
-#container article .right .content .sharebox .arrow { width: 32px; height: 23px; position: absolute; bottom: -19px; left: 50%; margin-left: -21px; background: url("/images/share_box.png") no-repeat 0 -123px !important; }
-#container article .right .content .sharebox .input_field { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 47px; padding-left: 10px; padding-top: 15px; width: 245px; }
-#container article .right .content .sharebox .input_field input { height: 27px; }
-#container article .right .content .sharebox .input_field span.holder { top: 22px; left: 19px; }
-#container article .right .content .sharebox input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; height: 20px; border: none; }
-#container article .right .content .sharebox ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
-#container article .right .content .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+#container article .left .content .sharebox, #container article .right .content .sharebox { background: url("/images/share_box.png") repeat-x right 0; float: left; height: 57px; position: relative; }
+#container article .left .content .sharebox .arrow, #container article .right .content .sharebox .arrow { width: 32px; height: 23px; position: absolute; bottom: -19px; left: 50%; margin-left: -21px; background: url("/images/share_box.png") no-repeat 0 -123px !important; }
+#container article .left .content .sharebox .input_field, #container article .right .content .sharebox .input_field { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 47px; padding-left: 10px; padding-top: 15px; width: 245px; }
+#container article .left .content .sharebox .input_field input, #container article .right .content .sharebox .input_field input { height: 27px; }
+#container article .left .content .sharebox .input_field span.holder, #container article .right .content .sharebox .input_field span.holder { top: 22px; left: 19px; }
+#container article .left .content .sharebox input[type="submit"], #container article .right .content .sharebox input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; height: 20px; border: none; }
+#container article .left .content .sharebox ul, #container article .right .content .sharebox ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
+#container article .left .content .sharebox ul li, #container article .right .content .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 
 .share { position: relative; }
 .share.email, .share.twitter, .share.facebook, .share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; cursor: pointer; }
@@ -626,7 +631,7 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 .share.twitter:hover { background-position: -29px -30px; }
 .share.facebook:hover { background-position: -58px -30px; }
 .share.more:hover { background-position: -88px -30px; }
-.share .ok { opacity: 0; position: absolute; top: 20px; right: 2px; background: url("/images/icons/share.png") no-repeat 0 -61px; width: 9px; height: 9px; z-index: 110; }
+.share .ok { opacity: 0; position: absolute; top: 20px; right: 2px; width: 9px; height: 9px; background: url("/images/icons/share.png") no-repeat 0 -61px; z-index: 110; }
 
 .left-border { border-left: 1px solid #eaeaea; border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
 

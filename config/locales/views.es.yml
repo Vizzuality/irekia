@@ -154,6 +154,7 @@ es:
         author: '%{author} hace %{time}'
         answered: 'Contestada hace %{time}'
         not_answered: 'Aún no contestada'
+        read_more: 'Leer más'
       news:
         author: 'Publicado hace %{time}'
         read_more: 'Leer más'

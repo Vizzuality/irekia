@@ -188,11 +188,7 @@ header {
           li {
             position: relative;
             margin: 0 0 0 10px;
-            display: -moz-inline-stack;
-            display: inline-block;
-            vertical-align: top;
-            zoom: 1;
-                  *display: inline;
+    @include inline-block;
 
                   .pending-counter { right: 5px; }
 
@@ -1575,38 +1571,42 @@ textarea {
   border:1px solid #ccc;
 }
 
-#container article .right .content ul.sharing {
+#container article .inner .left .content .inline-sharing {
+  //position:absolute;
+  display:inline;
+  //@include inline-block;
 
+  li {
+    @include inline-block;
+    overflow:visible;
+    padding:0;
+    margin:0;
+  }
+
+  .sharebox { position:absolute; top:-86px; }
+}
+
+#container article .left .content,
+#container article .right .content ul.sharing li {
+  .sharebox { display:none; position:absolute; top:-60px; margin-left:-16px; z-index:1000; }
+
+  .sharebox.email {
+    margin-left:-108px;
+    .input_field { margin:0; }
+  }
+}
+
+#container article .right .content ul.sharing {
   margin: 0 0 28px 0;
   padding: 0 0 20px 0;
 
-  li {
-    display: -moz-inline-stack;
-    display: inline-block;
-    vertical-align: top;
-    zoom: 1; *display: inline;
-    background:none;
-    padding:0;
-
-    .sharebox {
-      display:none;
-      position:absolute;
-      top:-60px;
-      margin-left:-16px;
-      z-index:1000;
-    }
-
-    .sharebox.email {
-      margin-left:-108px;
-      .input_field {margin:0;}
-    }
-
-  }
+  li { @include inline-block; background:none; padding:0; }
 } // ul.sharing
 
 
 .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
 
+#container article .left .content .sharebox,
 #container article .right .content .sharebox {
 
   background:url('/images/share_box.png') repeat-x right 0;
@@ -1627,6 +1627,7 @@ textarea {
     input { height:27px;}
     span.holder { top: 22px; left: 19px; }
   }
+
   input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; height: 20px; border: none; }
 
   ul {
@@ -1637,12 +1638,7 @@ textarea {
     padding-left:10px;
     padding-top:15px;
 
-    li {
-      display: -moz-inline-stack;
-      display: inline-block;
-      vertical-align: top;
-      zoom: 1; *display: inline;
-    }
+    li { @include inline-block; }
   }
 }
 
@@ -1665,7 +1661,9 @@ textarea {
     opacity:0;
     position:absolute;
     top:20px; right:2px;
-    background:url('/images/icons/share.png') no-repeat 0 -61px;  width:9px; height:9px; z-index:110;
+    width:9px; height:9px;
+    background:url('/images/icons/share.png') no-repeat 0 -61px;
+    z-index:110;
   }
 }
 
@@ -1785,10 +1783,7 @@ textarea {
       padding: 14px 16px 16px 16px;
       font-size: 15px;
       color: $standard_gray;
-      display: -moz-inline-stack;
-      display: inline-block;
-      vertical-align: top;
-      zoom: 1; *display: inline;
+    @include inline-block;
       .avatar { float: left; margin: 0 8px 0 0; }
       .content {
         float: left;
@@ -1822,11 +1817,7 @@ textarea {
       margin-right: 3px;
       text-indent: -99999px;
       background: url('/images/icons/social_icons.png') no-repeat;
-      display: -moz-inline-stack;
-      display: inline-block;
-      vertical-align: top;
-      zoom: 1;
-            *display: inline;
+    @include inline-block;
             @include transition-property(all);
             @include transition-duration(300ms);
             @include border-radius(5px);
@@ -1842,11 +1833,7 @@ textarea {
           margin-right: 3px;
           text-indent: -99999px;
           background: url('/images/icons/social_icons.png') no-repeat;
-          display: -moz-inline-stack;
-          display: inline-block;
-          vertical-align: top;
-          zoom: 1;
-                *display: inline;
+    @include inline-block;
                 @include transition-property(all);
                 @include transition-duration(300ms);
                 @include border-radius(5px);
@@ -1912,7 +1899,9 @@ Menu
   margin:0 auto 45px auto;
   padding:0;
 
-  li { position:relative; margin-right:12px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline;
+  li { position:relative; margin-right:12px;
+    @include inline-block;
+
     &.last {margin-right:0;}
     &:last-child {margin-right:0;}
     a {

@@ -5,7 +5,7 @@
 
   <p class="excerpt">
   <%= %Q{"#{data.question_text}"} %>
-  <%= link_to t(".read_more"), question_path(data.id)%>
+  <%= link_to t(".read-more"), question_path(data.id)%>
   </p>
 
   <div class="footer">
@@ -26,7 +26,17 @@
     <% else %>
       <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#', :class => "comment-count" %>
       &middot;
-      <%= render "shared/inline_sharing" %>
+      <div class="share inline-sharing">
+      <%= link_to t('shared.lists_elements.share'), '#', :class => "share-inline" %>
+
+        <div class="sharebox">
+          <ul>
+            <li><div class="share twitter"></div></li>
+            <li><div class="share facebook"></div></li>
+          </ul>
+          <div class="arrow"></div>
+        </div>
+        </div>
       <% end %>
 
     </div>

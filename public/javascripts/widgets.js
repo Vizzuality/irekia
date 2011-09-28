@@ -677,9 +677,6 @@ var GOD = (function() {
         data.settings = settings;
       }
 
-      // Hide the <select> list and place our new one in front of it
-      $this.before($ps);
-
       // Update the reference to $ps
       $ps = $(this);
 
@@ -721,6 +718,12 @@ var GOD = (function() {
     }
   };
 
+  function _resize($ps) {
+    var $sharebox = $ps.next(".sharebox");
+    var items = $sharebox.find("li").length;
+    $sharebox.width(items * 34);
+  }
+
   // Toggle popover
   function _toggle(e) {
     e.preventDefault();
@@ -729,6 +732,8 @@ var GOD = (function() {
     var $this = $(this);
     var data = $this.data(store);
     var $ps = data.$ps;
+
+    _resize($ps);
 
     // setup the close event & signal the other subscribers
     var event = "_close."+data.id;
@@ -1093,8 +1098,6 @@ var GOD = (function() {
       var id = $this.attr('id');
       var data = $this.data(store + "_" + id) || {};
 
-      console.log(data);
-
       // Dont do anything if we've already setup filterWidget on this element
       if (data.id) {
         return $this;
@@ -1123,7 +1126,6 @@ var GOD = (function() {
         else if (classes.indexOf("type") != -1) {
           data.filter = $(this).attr("href");
         }
-
 
         $(this).parents("ul").find("li").removeClass("selected");
         $(this).parent().addClass("selected");
