@@ -1106,6 +1106,8 @@ var GOD = (function() {
         data.sort = {recent:true};
       }
 
+      var $ps = $(this);
+
       $(this).find(".filter").bind('click', function(e) {
         e.preventDefault();
 
@@ -1127,9 +1129,9 @@ var GOD = (function() {
         $(this).parent().addClass("selected");
 
         $.ajax({ url: data.filter, data: data.sort, type: "GET", success: function(data){
-          $("#actions").slideUp(250, function() {
-            $("#actions").html(data);
-            $("#actions").slideDown(250);
+          $ps.find("#listing").slideUp(250, function() {
+            $ps.find("#listing").html(data);
+            $ps.find("#listing").slideDown(250);
           });
         }});
       });
