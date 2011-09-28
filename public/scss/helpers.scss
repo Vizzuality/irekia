@@ -25,6 +25,8 @@ $link_color:       #1D79B0;
 $twitter_blue:     #2C8CC5;
 $agree_color:      #669900;
 $against_color:    #FF9933;
+$orange:           #FF6600;
+$green:            #75B100;
 
 @mixin inline-block {
   display: -moz-inline-stack;
@@ -32,3 +34,4 @@ $against_color:    #FF9933;
   vertical-align: top;
   zoom: 1; *display: inline;
 }
+

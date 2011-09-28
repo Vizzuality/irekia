@@ -65,7 +65,6 @@ feature "Search" do
       page.should have_css 'div.content ul.suggestions li', :count => 3
       within 'div.content .suggestions li' do
         page.should have_css 'img'
-        peich
         page.should have_link 'Andrés Berzoso Rodríguez'
         page.should have_content 'Ondarroa, Vizcaya'
         page.should have_link 'Seguir'
