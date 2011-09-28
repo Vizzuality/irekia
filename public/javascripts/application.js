@@ -43,18 +43,58 @@ $(function() {
   $(".share.more, .share.email").sharePopover();
 
   //$('.avatar').prepend("<div class='ieframe'></div>");
+  var current_filter = "";
+  var current_sort_filter = {};
 
-  $(".filter").click(function(e) {
-    e.preventDefault();
+  $(".with_filters").filterWidget();
 
-    $(this).parents("ul").find("li").removeClass("selected");
-    $(this).parent().addClass("selected");
-
-    $.ajax({ url: $(this).attr("href") , global: false, type: "GET", success: function(data){
-      $("#actions").slideUp(250, function() {
-        $("#actions").html(data);
-        $("#actions").slideDown(250);
-      });
-    }});
-  });
+//   $(".sort-filter").click(function(e) {
+//     e.preventDefault();
+//
+//
+//     if ($(this).attr('class').indexOf("more_polemic") != -1) {
+//       current_sort_filter = { more_polemic: true };
+//     } else {
+//       current_sort_filter = { more_recent: true };
+//     }
+//
+//     $(this).parents("ul").find("li").removeClass("selected");
+//     $(this).parent().addClass("selected");
+//
+//     if (current_filter) {
+//       href = current_filter;
+//     } else {
+//     href = $(this).attr("href");
+//     current_filter = href;
+//
+//     }
+//
+//     console.log(current_filter, current_sort_filter);
+//
+//     $.ajax({ url: href, data: current_sort_filter, type: "GET", success: function(data){
+//       $("#actions").slideUp(250, function() {
+//         $("#actions").html(data);
+//         $("#actions").slideDown(250);
+//       });
+//     }});
+//   });
+//
+//   $(".filter").click(function(e) {
+//     e.preventDefault();
+//
+//     $(this).parents("ul").find("li").removeClass("selected");
+//     $(this).parent().addClass("selected");
+//
+//     href = $(this).attr("href");
+//     current_filter = href;
+//
+//     console.log(current_filter, current_sort_filter);
+//
+//     $.ajax({ url: href, data: current_sort_filter, type: "GET", success: function(data){
+//       $("#actions").slideUp(250, function() {
+//         $("#actions").html(data);
+//         $("#actions").slideDown(250);
+//       });
+//     }});
+//   });
 });

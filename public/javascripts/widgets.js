@@ -1061,3 +1061,97 @@ var GOD = (function() {
 
 })(jQuery, window, document);
 
+
+
+
+(function($, window, document) {
+
+  var ie6 = false;
+
+  // Help prevent flashes of unstyled content
+  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
+    ie6 = true;
+  } else {
+    document.documentElement.className = document.documentElement.className + ' ps_fouc';
+  }
+
+  var
+  store = "filter-widget",
+  // Public methods exposed to $.fn.filterWidget()
+  methods = {},
+  // Some nice default values
+  defaults = {
+    transitionSpeed: 250
+  };
+  // Called by using $('foo').filterWidget();
+  methods.init = function(settings) {
+    settings = $.extend({}, defaults, settings);
+
+    return this.each(function() {
+      var $this = $(this);
+
+      var id = $this.attr('id');
+      var data = $this.data(store + "_" + id) || {};
+
+      console.log(data);
+
+      // Dont do anything if we've already setup filterWidget on this element
+      if (data.id) {
+        return $this;
+      } else {
+        data.id = id;
+        data.$this = $this;
+        data.settings = settings;
+        data.filter = "";
+        data.sort = {recent:true};
+      }
+
+      $(this).find(".filter").bind('click', function(e) {
+        e.preventDefault();
+
+        var classes = $(this).attr("class");
+          data.filter = $(this).attr("href");
+
+        if (classes.indexOf("recent") != -1) {
+          data.sort = { more_recent:true };
+        }
+        else if (classes.indexOf("polemic") != -1) {
+          data.sort = { more_polemic:true };
+        }
+        else if (classes.indexOf("type") != -1) {
+          data.filter = $(this).attr("href");
+        }
+
+
+        $(this).parents("ul").find("li").removeClass("selected");
+        $(this).parent().addClass("selected");
+
+        $.ajax({ url: data.filter, data: data.sort, type: "GET", success: function(data){
+          $("#actions").slideUp(250, function() {
+            $("#actions").html(data);
+            $("#actions").slideDown(250);
+          });
+        }});
+      });
+
+      // Save the filterWidget data onto the <select> element
+      $this.data(store, data);
+
+    });
+  };
+
+  // Expose the plugin
+  $.fn.filterWidget = function(method) {
+    if (!ie6) {
+      if (methods[method]) {
+        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+      } else if (typeof method === 'object' || !method) {
+        return methods.init.apply(this, arguments);
+      }
+    }
+  };
+
+  $(function() {});
+
+})(jQuery, window, document);
+
