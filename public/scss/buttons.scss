@@ -83,7 +83,6 @@ White buttons
 
   @include border-radius(5px);
   @include box-shadow(0 1px 1px 0 #fff);
-
   @include transition-property(all);
   @include transition-duration(300ms);
 
@@ -181,14 +180,10 @@ article .white_button:active {
   background:url('/images/icons/add_person.png') no-repeat;
 }
 
-
-
-
 /* Hacks & fixes */
 .ie9 .white_button:active, .ie9 article .white_button:active {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2f4f6f9', endColorstr='#c2ffffff',GradientType=0 ); /* IE6-9 */
 }
-
 
 .ie7 #container article .inner .right button,
 .ie8 #container article .inner .right button,

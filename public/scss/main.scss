@@ -815,6 +815,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 
   &.actions .inner,
+  &.proposals .inner,
   &.proposal .inner,
   &.questions .inner,
   &.activity .inner {
@@ -855,6 +856,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   .inner ul li .content .footer a { font-size: 13px; }
 
   &.actions .inner,
+  &.proposal .inner,
   &.proposals .inner,
   &.questions .inner,
   &.activity .inner {
@@ -1729,18 +1731,17 @@ textarea {
     background: url('/images/ribbon.png') no-repeat;
     z-index: 10;
   }
+
   footer .inner .right { float: right; }
   .inner {
     .right ul.selector li {
-      padding: 0 0 0 10px;
-      margin-bottom: 10px;
+      padding: 10px;
       font-size: 15px;
+      height: 12px;
+      line-height: 11px;
       &.selected {
         a { font-weight: bold; color: $white; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); }
-        padding: 10px;
         @include border-radius(4px);
-        height: 12px;
-        line-height: 11px;
         background: url('/images/link_gradient_bkg.png');
       }
     }
