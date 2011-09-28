@@ -1,13 +1,3 @@
-
-
-
-<%= content_for :javascripts do %>
-  <script type="text/javascript" charset="utf-8">
-    var questions = <%= @questions.to_json.html_safe %>;
-  </script>
-<% end %>
-
-
 <article class="questions with_footer">
 <div class="inner">
   <header>
@@ -56,7 +46,7 @@
 <div class="inner">
 
   <div class="right">
-    <%= link_to "ver más preguntas", "#", :class => "right_arrow" %>
+    <%= link_to t('.more'), link_for_questions, :class => :right_arrow %>
   </div>
 
 </div>
