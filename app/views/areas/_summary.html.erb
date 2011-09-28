@@ -25,9 +25,6 @@
           <% elsif @remove_follow -%>
             <%= form_for @area do |form| %>
               <%= form.fields_for :follows, @remove_follow do |follows_form| %>
-                <%= follows_form.hidden_field :user_id %>
-                <%= follows_form.hidden_field :follow_item_id %>
-                <%= follows_form.hidden_field :follow_item_type %>
                 <%= follows_form.hidden_field :_destroy, :value => true %>
               <% end -%>
               <%= content_tag :button, :type => 'submit', :class => 'white_button add_person add_to_favorites' do %>

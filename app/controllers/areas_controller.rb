@@ -28,20 +28,25 @@ class AreasController < ApplicationController
 
   def actions
     render :partial => 'shared/actions_list', :layout => nil if request.xhr?
+    respond_with @actions
   end
 
   def questions
     @question_target    = @area
     session[:return_to] = questions_area_path(@area)
+    respond_with @questions
   end
 
   def proposals
+    respond_with @proposals
   end
 
   def agenda
+    respond_with @agenda
   end
 
   def team
+    respond_with @team
   end
 
   private

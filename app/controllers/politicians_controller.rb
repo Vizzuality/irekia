@@ -1,17 +1,32 @@
 class PoliticiansController < UsersController
   skip_before_filter :authenticate_user!, :only => [:show, :actions, :questions, :proposals, :agenda]
 
-  before_filter :get_user,                   :only => [:show, :actions, :questions, :proposals, :agenda]
+  before_filter :get_user,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :get_politician,             :only => [:show, :actions, :questions, :proposals, :agenda]
+  before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :build_questions_for_update, :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_actions,                :only => [:show, :actions]
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
   before_filter :get_agenda,                 :only => [:show, :agenda]
 
+  respond_to :html, :json
+
   def show
     super
     session[:return_to] = politician_path(@politician)
+    respond_with @politician
+  end
+
+  def update
+
+    if @politician.update_attributes(params[:user])
+      flash[:notice] = :question_created if params['user']['questions_attributes'].present?
+    else
+      flash[:notice] = :question_failed if params['user']['questions_attributes'].present?
+    end
+
+    redirect_back_or_default area_path(@politician)
   end
 
   def actions
@@ -21,17 +36,30 @@ class PoliticiansController < UsersController
   def questions
     @question_target    = @politician
     session[:return_to] = questions_politician_path(@politician)
+    respond_with @questions
   end
 
   def proposals
+    respond_with @proposals
   end
 
   def agenda
+    respond_with @agenda
   end
 
   private
   def get_politician
     @politician = @user
+  end
+
+  def get_politician_data
+    @followers_count = @politician.followers.count
+    if current_user.blank? || current_user.not_following(@politician)
+      @new_follow      = @politician.follows.build
+      @new_follow.user = current_user
+    else
+      @remove_follow = @politician.follows.where(:user_id => current_user.id).first
+    end
   end
 
   def build_questions_for_update
