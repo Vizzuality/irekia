@@ -2,9 +2,7 @@
 
 
 <div class="content">
-  <% if !data.target_user or (data.question_data and data.question_data.target_area) %>
-    <p><%= t(".title", :receiver => t('.area')) %></p>
-  <% end %>
+  <%= content_tag 'p', t(".title", :receiver => t('.area')) if data.target_user.blank? %>
 
   <p class="excerpt">
   <%= %Q{"#{data.question_text}"} %>
