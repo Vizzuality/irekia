@@ -1,7 +1,7 @@
 <%= avatar data.author %>
 
 <div class="content">
-  <%= content_tag 'p', "Pregunta para el área" if data.question_data.target_area %>
+  <%= content_tag 'p', t(".title", :receiver => t('.area')) if data.question_data.target_area %>
 
   <p class="excerpt">
   <%= %Q{"#{data.question_text}"} %>
