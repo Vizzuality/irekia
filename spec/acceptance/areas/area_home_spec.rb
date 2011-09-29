@@ -121,18 +121,14 @@ feature "Area's home" do
     within 'article.actions' do
       click_link 'Noticias'
     end
-    peich
-    within 'article.actions #listing' do
-      page.should have_css 'ul li', :count => 1
-    end
 
-    within 'article.actions' do
+    page.should have_css 'article#actions div#listing ul li', :count => 1
+
+    within 'article#actions' do
       click_link 'Preguntas'
     end
 
-    within 'article.actions #listing' do
-      page.should have_css 'ul li', :count => 2
-    end
+    page.should have_css 'article#actions div#listing ul li', :count => 2
 
  end
 

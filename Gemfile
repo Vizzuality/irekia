@@ -11,7 +11,7 @@ gem 'kaminari', '~> 0.12.4'
 gem 'activerecord-postgis-adapter', '~> 0.3.5'
 gem 'geocoder', '~> 1.0.2'
 gem 'colored', '~> 1.2'
-gem 'pg_search', :git => 'git://github.com/Casecommons/pg_search.git'
+gem 'pg_search', '~> 0.3.1'
 gem 'json', '1.5.3'
 
 group :development do
@@ -23,7 +23,7 @@ end
 group :development, :test do
   gem 'ruby-debug19', :platforms => :mri_19
   gem 'rspec-rails', '~> 2.6'
-  gem 'capybara', '~> 1.0.1'
+  gem 'capybara', '~> 1.1.0'
   gem 'launchy'
   gem 'irbtools', :require => 'irbtools/configure'
   gem 'railroady'
