@@ -24,7 +24,10 @@ group :development, :test do
   #gem 'ruby-debug19', :platforms => :mri_19
   gem 'rspec-rails', '~> 2.6'
   gem 'capybara', '~> 1.0.1'
-  gem 'selenium-webdriver', '2.6.0'
+  gem 'selenium-webdriver', '2.5.0'
+  gem 'spork'
+  gem 'guard-rspec'
+  gem 'guard-spork'
   gem 'launchy'
   gem 'irbtools', :require => 'irbtools/configure'
   gem 'railroady'
