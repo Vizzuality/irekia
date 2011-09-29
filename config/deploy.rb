@@ -15,7 +15,7 @@ set :scm_user, 'ubuntu'
 set :use_sudo, false
 set :repository, "git@github.com:Vizzuality/irekia.git"
 ssh_options[:forward_agent] = true
-set :keep_releases, 3
+set :keep_releases, 2
 
 set :appserver_staging, '178.79.131.104'
 set :appserver_production, '178.79.131.104'
