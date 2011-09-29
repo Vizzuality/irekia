@@ -153,7 +153,7 @@ es:
         author: '%{author} contesto hace %{time}'
       question:
         title: 'Pregunta para %{receiver}...'
-        area: el área
+        area: "el área"
         author: '%{author} hace %{time}'
         answered: 'Contestada hace %{time}'
         not_answered: 'Aún no contestada'

@@ -1,7 +1,10 @@
 <%= avatar data.author %>
 
+
 <div class="content">
-  <%= content_tag 'p', t(".title", :receiver => t('.area')) if data.question_data and data.question_data.target_area %>
+  <% if !data.target_user or (data.question_data and data.question_data.target_area) %>
+    <p><%= t(".title", :receiver => t('.area')) %></p>
+  <% end %>
 
   <p class="excerpt">
   <%= %Q{"#{data.question_text}"} %>
@@ -28,6 +31,5 @@
       &middot;
       <%= render "/shared/inline_sharing" %>
     <% end %>
-
   </div>
 </div>

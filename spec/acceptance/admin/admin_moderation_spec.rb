@@ -28,7 +28,7 @@ feature "Moderation admin page" do
 
       page.should have_css 'ul li.participation', :count => 133
       within 'ul li.participation' do
-        page.should have_css 'div.comment p', :text => String.lorem
+        page.should have_css 'p', :text => String.lorem
         page.should have_css 'img'
         page.should have_css 'span', :text => 'Comentado por Andrés Berzoso Rodríguez hace menos de 1 minuto'
         page.should have_link 'Andrés Berzoso Rodríguez'
