@@ -14,9 +14,10 @@ feature "Area's home" do
 
     within '.summary' do
       page.should have_css 'h1', :text => 'Educación, Universidades e Investigación'
-      page.should have_css 'a.add_to_favorites'
+      page.should have_css 'a.ribbon'
       page.should have_css 'h3', :text => 'Qué hacemos'
       page.should have_css 'p',  :text => String.lorem
+      page.should have_button 'Seguir este área (1)'
 
       within 'ul.people' do
         page.should have_css 'li a',    :text => 'Virginia Uriarte Rodríguez'
@@ -34,6 +35,22 @@ feature "Area's home" do
      #   page.should have_css 'ul li.proposals a',    :text => 'Lanza tu propuesta'
      # end
     end
+  end
+
+  scenario 'can be followed by a registered user' do
+    login_as_regular_user
+
+    visit area_path(@area)
+
+    expect{ click_button 'Seguir este área (1)' }.to change{ @area.followers.count }.by(1)
+
+    page.should_not have_button 'Seguir este área (2)'
+    page.should have_button 'Dejar de seguir'
+
+    expect{ click_button 'Dejar de seguir' }.to change{ @area.followers.count }.by(-1)
+
+    page.should_not have_button 'Dejar de seguir'
+    page.should have_button 'Seguir este área (1)'
   end
 
   scenario 'shows a list of last actions related to that area' do
@@ -104,7 +121,8 @@ feature "Area's home" do
     within 'article.actions' do
       click_link 'Noticias'
     end
-    within 'article.actions #actions' do
+    peich
+    within 'article.actions #listing' do
       page.should have_css 'ul li', :count => 1
     end
 
@@ -112,7 +130,7 @@ feature "Area's home" do
       click_link 'Preguntas'
     end
 
-    within 'article.actions #actions' do
+    within 'article.actions #listing' do
       page.should have_css 'ul li', :count => 2
     end
 

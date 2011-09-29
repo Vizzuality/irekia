@@ -14,7 +14,7 @@ feature "Area's team page" do
 
     within '.summary' do
       page.should have_css 'h1', :text => 'Educación, Universidades e Investigación'
-      page.should have_css 'a.add_to_favorites'
+      page.should have_css 'a.ribbon'
       page.should have_css 'h3', :text => 'Qué hacemos'
       page.should have_css 'p',  :text => String.lorem
 

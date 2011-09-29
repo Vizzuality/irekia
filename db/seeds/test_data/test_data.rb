@@ -141,7 +141,7 @@ if proposal_data.new_record?
   proposal.comments << andres.comments.new.create_with_body(String.lorem)
 
   proposal.save!
-puts proposal.errors
+
   65.times do
 
     argument = Argument.new

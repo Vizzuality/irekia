@@ -1,3 +1,4 @@
+ <% if user_signed_in? && @question_target.present? %>
 <article id="question-123" class="mini popover with_footer initialy_hidden">
 <%= form_for @question_target, :remote => true, :format => :json do |form| %>
   <div class="inner">
@@ -5,7 +6,6 @@
     <div class="content">
       <p>Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo.</p>
       <h3>Tu pregunta</h3>
-
 
       <%= form.fields_for :questions, @question do |questions| %>
         <%= questions.fields_for :contents_users, @question.contents_users.last do |content_user| %>
@@ -35,3 +35,4 @@
   <div class="t"></div><div class="f"></div>
 <% end %>
 </article>
+<% end %>

@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_reader :random_password
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :lastname, :email, :remember_me, :role_id, :title_id, :birthday, :description, :is_woman, :province_id, :city_id, :postal_code, :profile_pictures_attributes, :questions_attributes, :areas_users_attributes
+  attr_accessible :name, :lastname, :email, :remember_me, :role_id, :title_id, :birthday, :description, :is_woman, :province_id, :city_id, :postal_code, :profile_pictures_attributes, :questions_attributes, :areas_users_attributes, :follows_attributes
 
   attr_accessor :terms_of_service
 
@@ -62,7 +62,6 @@ class User < ActiveRecord::Base
   has_many :poll_answers,
            :class_name => 'AnswerUser'
 
-  has_many :follows
   has_many :participations
   has_many :comments
   has_many :answer_requests
@@ -102,6 +101,7 @@ class User < ActiveRecord::Base
            :source => :user
 
   accepts_nested_attributes_for :profile_pictures, :questions, :areas_users
+  accepts_nested_attributes_for :follows, :allow_destroy => true
 
   scope :oldest_first, order('created_at asc')
   scope :politicians, joins(:role).where('roles.name = ?', 'Politician')
@@ -229,6 +229,10 @@ class User < ActiveRecord::Base
 
   def connected_with_twitter?
     twitter_oauth_token.present? && twitter_oauth_token_secret.present?
+  end
+
+  def not_following(item)
+    followed_items.where(:follow_item_type => item.class.name, :follow_item_id => item.id).count == 0 if item.present?
   end
 
   def check_blank_name

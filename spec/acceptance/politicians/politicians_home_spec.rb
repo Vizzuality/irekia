@@ -56,6 +56,20 @@ feature "Politician's home" do
       page.should have_content 'Tu pregunta se ha enviado correctamente y será publicada en cuanto nuestro equipo de moderación la haya revisado. También te avisaremos cuando recibas respuesta.'
 
     end
+
+    scenario 'allows to follow this politician' do
+      visit politician_path(@politician)
+
+      expect{ click_button 'Seguir a Virginia (1)' }.to change{ @politician.followers.count }.by(1)
+
+      page.should_not have_button 'Seguir a Virginia (2)'
+      page.should have_button 'Dejar de seguir'
+
+      expect{ click_button 'Dejar de seguir' }.to change{ @politician.followers.count }.by(-1)
+
+      page.should_not have_button 'Dejar de seguir'
+      page.should have_button 'Seguir a Virginia (1)'
+    end
   end
 
   context 'not being a signed-in user' do

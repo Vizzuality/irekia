@@ -740,8 +740,10 @@ var GOD = (function() {
 
   function _resize($ps) {
     var $sharebox = $ps.next(".sharebox");
-    var items = $sharebox.find("li").length;
-    $sharebox.width(items * 34);
+    if (!$sharebox.hasClass("email")) {
+      var items = $sharebox.find("li").length;
+      $sharebox.width(items * 35);
+    }
   }
 
   // Toggle popover
@@ -1126,7 +1128,7 @@ var GOD = (function() {
         data.$this = $this;
         data.settings = settings;
         data.filter = "";
-        data.sort = {recent:true};
+        data.sort = {more_polemic:false};
       }
 
       var $ps = $(this);
@@ -1138,7 +1140,7 @@ var GOD = (function() {
           data.filter = $(this).attr("href");
 
         if (classes.indexOf("recent") != -1) {
-          data.sort = { more_recent:true };
+          data.sort = { more_polemic:false };
         }
         else if (classes.indexOf("polemic") != -1) {
           data.sort = { more_polemic:true };

@@ -1,9 +1,11 @@
-<div class="comment">
-  <%= simple_format data.body %>
-  <%= image_tag data.author.profile_image if data.author.profile_image.present? %>
-  <span class="author">
+<%= avatar data.author %>
+<div class="content">
+  <p><%= simple_format data.body %></p>
+  <div class="footer">
+    <span class="published_at">
     <%= raw t('.author', :author => link_to(data.author.fullname, user_path(data.author.id)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
-  </span>
-  &middot;
-  <%= render "/shared/inline_sharing" %>
+    </span>
+    &middot;
+      <%= render "/shared/inline_sharing" %>
+  </div>
 </div>

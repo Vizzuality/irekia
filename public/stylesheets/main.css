@@ -610,7 +610,7 @@ Sign in
 #sign_in .content h1 { color: #465866; font-weight: 300; line-height: normal; font-size: 31px; }
 #sign_in .content footer { clear: both; overflow: hidden; border: 0; padding: 0; position: absolute; bottom: 30px; width: 315px; background: none; }
 #sign_in .content footer .left { float: left; width: 50%; }
-#sign_in .content footer .right { float: right; text-align: right; width: 50%; }
+#sign_in .content footer .right { float: right; width: 50%; }
 #sign_in .content footer .white_button { margin: 3px; }
 
 p label, .content form p label { font-size: 12px; font-weight: bold; color: #465866; text-transform: uppercase; }
