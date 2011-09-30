@@ -1,9 +1,8 @@
 desc "Setup Irekia Project for first time"
 task :setup do
-    [Rails.env, :test].each do |env|
-      system "rake irekia:setup_database RAILS_ENV=#{env.to_s}"
-    end
+    system "rake irekia:setup_database"
     system "rake irekia:validate_all_not_moderated"
+    system "rake irekia:setup_database RAILS_ENV=test" if Rails.env.development?
 end
 
 namespace :irekia do
