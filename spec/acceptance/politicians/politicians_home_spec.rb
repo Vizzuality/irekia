@@ -68,7 +68,15 @@ feature "Politician's home" do
       expect{ click_button 'Dejar de seguir' }.to change{ @politician.followers.count }.by(-1)
 
       page.should_not have_button 'Dejar de seguir'
-      page.should have_button 'Seguir a Virginia (1)'
+
+      click_button 'Seguir a Virginia (1)'
+
+      visit politician_path(@politician)
+
+      page.should_not have_button 'Seguir a Virginia (1)'
+      page.should_not have_button 'Seguir a Virginia (2)'
+
+      page.should have_button 'Dejar de seguir'
     end
   end
 

@@ -17,7 +17,7 @@ feature "Area's home" do
       page.should have_css 'a.ribbon'
       page.should have_css 'h3', :text => 'Qué hacemos'
       page.should have_css 'p',  :text => String.lorem
-      page.should have_button 'Seguir este área (1)'
+      page.should have_button 'Seguir a este área (1)'
 
       within 'ul.people' do
         page.should have_css 'li a',    :text => 'Virginia Uriarte Rodríguez'
@@ -42,15 +42,23 @@ feature "Area's home" do
 
     visit area_path(@area)
 
-    expect{ click_button 'Seguir este área (1)' }.to change{ @area.followers.count }.by(1)
+    expect{ click_button 'Seguir a este área (1)' }.to change{ @area.followers.count }.by(1)
 
-    page.should_not have_button 'Seguir este área (2)'
+    page.should_not have_button 'Seguir a este área (2)'
     page.should have_button 'Dejar de seguir'
 
     expect{ click_button 'Dejar de seguir' }.to change{ @area.followers.count }.by(-1)
 
     page.should_not have_button 'Dejar de seguir'
-    page.should have_button 'Seguir este área (1)'
+
+    click_button 'Seguir a este área (1)'
+
+    visit area_path(@area)
+
+    page.should_not have_button 'Seguir a este área (1)'
+    page.should_not have_button 'Seguir a este área (2)'
+
+    page.should have_button 'Dejar de seguir'
   end
 
   scenario 'shows a list of last actions related to that area' do

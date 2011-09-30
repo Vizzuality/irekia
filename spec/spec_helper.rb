@@ -32,7 +32,6 @@ Spork.prefork do
     config.use_transactional_fixtures = true
 
     config.before :all do
-      DeferredGarbageCollection.start
       Delorean.time_travel_to '08/03/2011'
       Content.validate_all_not_moderated
       Participation.validate_all_not_moderated
@@ -40,12 +39,10 @@ Spork.prefork do
 
     config.after :all do
       Delorean.back_to_the_present
-      DeferredGarbageCollection.reconsider
     end
   end
 end
 
 Spork.each_run do
-  # This code will be run each time you run your specs.
-
+  Irekia::Application.reload_routes!
 end

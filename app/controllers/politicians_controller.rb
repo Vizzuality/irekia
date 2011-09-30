@@ -53,13 +53,14 @@ class PoliticiansController < UsersController
   end
 
   def get_politician_data
-    @followers_count = @politician.followers.count
     if current_user.blank? || current_user.not_following(@politician)
-      @new_follow      = @politician.follows.build
-      @new_follow.user = current_user
+      @follow          = @politician.follows.build
+      @follow.user     = current_user
     else
-      @remove_follow = @politician.follows.where(:user_id => current_user.id).first
+      @follow = current_user.followed_item(@politician)
     end
+    @follow_parent   = @politician
+    @followers_count = @follow_parent.followers.count
   end
 
   def build_questions_for_update
