@@ -27,10 +27,10 @@
     </span>
     <% if data.is_a?(Proposal) %>
       &middot;
-      <%= link_to(t('.participation', :count => data.participation), '#', :class => "participants-count") %>
+      <%= link_to(t('.participation', :count => data.participation), '/in_development', :class => "participants-count") %>
     <% else %>
       &middot;
-      <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#', :class => "participants-count" %>
+      <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '/in_development', :class => "participants-count" %>
       &middot;
       <%= render "/shared/inline_sharing" %>
     <% end %>

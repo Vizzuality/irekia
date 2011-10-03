@@ -2,7 +2,7 @@
   <h4><%= t('.title') %></h4>
   <ul class="tags">
     <% @content.tags.split(',').each do |tag| %>
-      <li><%= link_to tag.strip, '#' %></li>
+      <li><%= link_to tag.strip, '/in_development' %></li>
     <% end %>
   </ul>
 <% end %>

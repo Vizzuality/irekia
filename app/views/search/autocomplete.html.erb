@@ -54,7 +54,7 @@
     <% if has_contents %>
       <li class="contents<%= ' no-border' if !has_citizens and !has_areas and !has_politicians %>">
       <div class="summary"><h3><%= t('.contents.summary.title') %></h3></div>
-      <%= link_to t('.contents.count', :count => @contents.count), '#' %>
+      <%= link_to t('.contents.count', :count => @contents.count), '/in_development' %>
       </li>
     <% end %>
   </ul>

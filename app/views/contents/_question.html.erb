@@ -7,7 +7,7 @@
         <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
       </span>
       &middot;
-      <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments.count), '#' %>
+      <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments.count), '/in_development' %>
       &middot;
       <% if @content.answer.blank? %>
         <span><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests.count) %></span>
@@ -76,9 +76,9 @@
   </div>
   <div class="sidebar">
     <ul class="sharing_links">
-      <li><%= link_to t('.sidebar.sharing_links.mail'), '#' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.twitter'), '#' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.facebook'), '#' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.mail'), '/in_development' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.twitter'), '/in_development' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.facebook'), '/in_development' %></li>
     </ul>
     <div class="tags">
       <h3><%= t('.sidebar.tags.title') %></h3>
@@ -95,7 +95,7 @@
         <li>
           <p><%= link_to question.question_text, question_path(question) %></p>
           <span class="when"><%= t('.sidebar.related_questions.time', :time => distance_of_time_in_words_to_now(question.published_at)) %></span>
-          <%= link_to t('.sidebar.related_questions.comments', :count => question.comments.count), '#' %>
+          <%= link_to t('.sidebar.related_questions.comments', :count => question.comments.count), '/in_development' %>
         </li>
         <% end %>
       </ul>

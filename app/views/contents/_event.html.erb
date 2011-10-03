@@ -2,7 +2,7 @@
   <div class="title">
     <span><%= t('.title.time', :day => l(@content.event_date.to_date, :format => :long), :hour => l(@content.event_date.to_time, :format => '%H')) %></span>
     &middot;
-    <%= link_to t('.title.comments', :count => @content.comments.count), '#' %>
+    <%= link_to t('.title.comments', :count => @content.comments.count), '/in_development' %>
   </div>
   <div class="content">
     <h1><%= @content.title %></h1>
@@ -11,9 +11,9 @@
   </div>
   <div class="sidebar">
     <ul class="sharing_links">
-      <li><%= link_to t('.sidebar.sharing_links.mail'), '#' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.twitter'), '#' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.facebook'), '#' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.mail'), '/in_development' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.twitter'), '/in_development' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.facebook'), '/in_development' %></li>
     </ul>
     <div class="tags">
       <h3><%= t('.sidebar.tags.title') %></h3>
@@ -47,7 +47,7 @@
         <li>
           <p><%= link_to event.title, event_path(event) %></p>
           <span class="when"><%= t('.sidebar.related_questions.time', :time => distance_of_time_in_words_to_now(event.published_at)) %></span>
-          <%= link_to t('.sidebar.related_questions.comments', :count => event.comments.count), '#' %>
+          <%= link_to t('.sidebar.related_questions.comments', :count => event.comments.count), '/in_development' %>
         </li>
         <% end %>
       </ul>

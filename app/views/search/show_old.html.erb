@@ -25,30 +25,30 @@
       <% if params[:search][:type].blank? %>
         <% if @contents.count > 5 %>
           <div class="pagination">
-            <%= link_to t('.contents_results.all', :count => @contents.count), '#' %>
+            <%= link_to t('.contents_results.all', :count => @contents.count), '/in_development' %>
           </div>
         <% end %>
       <% else %>
           <div class="pagination">
-            <%= link_to t('.contents_results.more'), '#' %>
+            <%= link_to t('.contents_results.more'), '/in_development' %>
           </div>
       <% end %>
       <ul class="main_filters">
         <li>
-          <%= link_to t('.contents_results.main_filters.more_recent'), '#', :class => 'more_recent selected' %>
+          <%= link_to t('.contents_results.main_filters.more_recent'), '/in_development', :class => 'more_recent selected' %>
         </li>
         <li>
-          <%= link_to t('.contents_results.main_filters.more_polemic'), '#', :class => 'more_polemic' %>
+          <%= link_to t('.contents_results.main_filters.more_polemic'), '/in_development', :class => 'more_polemic' %>
         </li>
       </ul>
       <ul class="content_type_filters">
-        <li><%= link_to t('.contents_results.content_type_filters.all'), '#', :class => 'selected' %></li>
-        <li><%= link_to t('.contents_results.content_type_filters.news'), '#' %></li>
-        <li><%= link_to t('.contents_results.content_type_filters.politicians_activity'), '#' %></li>
-        <li><%= link_to t('.contents_results.content_type_filters.questions'), '#' %></li>
-        <li><%= link_to t('.contents_results.content_type_filters.proposals'), '#' %></li>
-        <li><%= link_to t('.contents_results.content_type_filters.images'), '#' %></li>
-        <li><%= link_to t('.contents_results.content_type_filters.videos'), '#' %></li>
+        <li><%= link_to t('.contents_results.content_type_filters.all'), '/in_development', :class => 'selected' %></li>
+        <li><%= link_to t('.contents_results.content_type_filters.news'), '/in_development' %></li>
+        <li><%= link_to t('.contents_results.content_type_filters.politicians_activity'), '/in_development' %></li>
+        <li><%= link_to t('.contents_results.content_type_filters.questions'), '/in_development' %></li>
+        <li><%= link_to t('.contents_results.content_type_filters.proposals'), '/in_development' %></li>
+        <li><%= link_to t('.contents_results.content_type_filters.images'), '/in_development' %></li>
+        <li><%= link_to t('.contents_results.content_type_filters.videos'), '/in_development' %></li>
       </ul>
     </div>
   <% end %>
@@ -61,32 +61,32 @@
           <%= link_to image_tag(politician.profile_image), politician_path(politician) if politician.profile_image %>
           <%= link_to politician.fullname, politician_path(politician) %>
           <span class="title"><%= t('.politicians_results.title_area', :title => get_politician_title(politician), :area => politician.areas.map(&:name).join(', ')) %></span>
-          <%= link_to t('.politicians_results.follow'), '#' %>
+          <%= link_to t('.politicians_results.follow'), '/in_development' %>
         </li>
         <% end %>
       </ul>
       <% if params[:search][:type].blank? %>[:search]
         <% if @politicians.count > how_many_users_to_show? %>
           <div class="pagination">
-            <%= link_to t('.politicians_results.all', :count => @politicians.count), '#' %>
+            <%= link_to t('.politicians_results.all', :count => @politicians.count), '/in_development' %>
           </div>
         <% end %>
       <% else %>
         <% if @politicians.count > how_many_users_to_show? %>
           <div class="pagination">
-            <%= link_to t('.politicians_results.more'), '#' %>
+            <%= link_to t('.politicians_results.more'), '/in_development' %>
           </div>
         <% end %>
         <ul class="main_filters">
           <li>
-            <%= link_to t('.politicians_results.main_filters.more_recent'), '#', :class => 'more_recent selected' %>
+            <%= link_to t('.politicians_results.main_filters.more_recent'), '/in_development', :class => 'more_recent selected' %>
           </li>
           <li>
-            <%= link_to t('.politicians_results.main_filters.more_active'), '#', :class => 'more_active' %>
+            <%= link_to t('.politicians_results.main_filters.more_active'), '/in_development', :class => 'more_active' %>
           </li>
         </ul>
         <ul class="area_filters">
-          <li><%= link_to t('.politicians_results.area_filters.all'), '#', :class => 'selected' %></li>
+          <li><%= link_to t('.politicians_results.area_filters.all'), '/in_development', :class => 'selected' %></li>
           <% @politicians_areas.each do |area| %>
             <li><%= link_to area.name, search_path(:search => {:q => params[:search][:q], :type => 'politicians', :filter => area.id}) %></li>
           <% end %>
@@ -103,28 +103,28 @@
           <%= link_to image_tag(user.profile_image), user_path(user) if user.profile_image %>
           <%= link_to user.fullname, user_path(user) %>
           <span class="location"><%= "#{user.city}, #{user.province}" %></span>
-          <%= link_to t('.users_results.follow'), '#' %>
+          <%= link_to t('.users_results.follow'), '/in_development' %>
         </li>
         <% end %>
       </ul>
       <% if params[:search][:type].blank? %>
         <% if @citizens.count > how_many_users_to_show? %>
           <div class="pagination">
-            <%= link_to t('.users_results.all', :count => @citizens.count), '#' %>
+            <%= link_to t('.users_results.all', :count => @citizens.count), '/in_development' %>
           </div>
         <% end %>
       <% else %>
         <% if @politicians.count > how_many_users_to_show? %>
           <div class="pagination">
-            <%= link_to t('.users_results.more'), '#' %>
+            <%= link_to t('.users_results.more'), '/in_development' %>
           </div>
         <% end %>
         <ul class="main_filters">
           <li>
-            <%= link_to t('.users_results.main_filters.more_recent'), '#', :class => 'more_recent selected' %>
+            <%= link_to t('.users_results.main_filters.more_recent'), '/in_development', :class => 'more_recent selected' %>
           </li>
           <li>
-            <%= link_to t('.users_results.main_filters.more_active'), '#', :class => 'more_active' %>
+            <%= link_to t('.users_results.main_filters.more_active'), '/in_development', :class => 'more_active' %>
           </li>
         </ul>
         <%= form_tag search_path(:search => {:q => params[:search][:q], :type => 'users'}), :class => 'location_filters'  do %>

@@ -1,13 +1,13 @@
 <%= avatar data.author %>
 <div class="content">
   <p><strong><%= data.title %></strong></p>
-  <p class="excerpt"><%= truncate(data.body, :length => 66) %><%= link_to t('.read_more'), '#' %></p>
+  <p class="excerpt"><%= truncate(data.body, :length => 66) %><%= link_to t('.read_more'), '/in_development' %></p>
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
     </span>
     &middot;
-    <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '#', :class => "comment-count" %>
+    <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '/in_development', :class => "comment-count" %>
     &middot;
       <%= render "/shared/inline_sharing" %>
   </div>

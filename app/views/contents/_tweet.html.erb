@@ -6,9 +6,9 @@
   <%= render 'comments' %>
   <div class="sidebar">
     <ul class="sharing_links">
-      <li><%= link_to t('.sidebar.sharing_links.mail'), '#' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.twitter'), '#' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.facebook'), '#' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.mail'), '/in_development' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.twitter'), '/in_development' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.facebook'), '/in_development' %></li>
     </ul>
     <div class="last_tweets">
       <h3><%= t('.sidebar.last_tweets.title', :name => @content.author.name) %></h3>
@@ -20,7 +20,7 @@
         </li>
         <% end %>
       </ul>
-      <%= link_to "@#{@content.username}", '#' %>
+      <%= link_to "@#{@content.username}", '/in_development' %>
     </div>
   </div>
 </div>

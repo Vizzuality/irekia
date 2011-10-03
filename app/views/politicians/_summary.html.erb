@@ -2,14 +2,14 @@
 <div class="inner">
   <header>
   <h1><%= @politician.fullname %></h1>
-  <p class="position">Consejera de <%= link_to "Educación, Universidades e Investigación", "#" %></p>
+  <p class="position">Consejera de <%= link_to "Educación, Universidades e Investigación", '/in_development' %></p>
   </header>
 
   <div class="left">
     <div class="description two_columns">
       <h3>Quién es y qué hace</h3>
       <%= simple_format(@politician.description) %>
-      <%= link_to "Leer más", "#" %></p>
+      <%= link_to "Leer más", '/in_development' %></p>
       <% if @follow.new_record? -%>
       <p><%= render 'follows/create_form' %></p>
       <% else -%>
@@ -50,7 +50,7 @@
 
 </div>
 </footer>
-<%= link_to "", "#", {:class => :ribbon} %>
+<%= link_to "", '/in_development', {:class => :ribbon} %>
 <div class="t"></div><div class="f"></div>
 </article>
 

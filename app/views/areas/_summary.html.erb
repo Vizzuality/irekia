@@ -33,7 +33,7 @@
 
         <% if @team.to_a.from(2).present? %>
           <li class="more">
-          <%= link_to (content_tag 'div', (image_tag 'icons/more_people_avatar.png'), :class => "avatar small"), "#" %>
+          <%= link_to (content_tag 'div', (image_tag 'icons/more_people_avatar.png'), :class => "avatar small"), '/in_development' %>
           <%= link_to t('.team.other_members', :count => @team.to_a.from(2).length), team_area_path(@area), :class => :name %>
           </li>
         <% end %>
@@ -42,7 +42,7 @@
     </div>
   </div>
 </div>
-<%= link_to "", "#", {:class => :ribbon} %>
+<%= link_to "", '/in_development', {:class => :ribbon} %>
 <div class="t"></div><div class="f"></div>
 </article>
 <!-- /Article -->

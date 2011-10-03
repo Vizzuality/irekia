@@ -1,10 +1,10 @@
 <%= render "shared/welcome" %>
 <%= menu [
-  { :link => (link_to t(".dashboard"), "#"), :class => "publish" },
-  { :link => (link_to t(".your_questions"), "#") },
-  { :link => (link_to t(".your_proposals"), "#") },
-  { :link => (link_to t(".your_activity"), "#") },
-  { :link => (link_to t(".what_to_follow"), "#") },
-  { :link => (link_to t(".publish"), "#"), :class => "publish" },
+  { :link => (link_to t(".dashboard"), '/in_development'), :class => "publish" },
+  { :link => (link_to t(".your_questions"), '/in_development') },
+  { :link => (link_to t(".your_proposals"), '/in_development') },
+  { :link => (link_to t(".your_activity"), '/in_development') },
+  { :link => (link_to t(".what_to_follow"), '/in_development') },
+  { :link => (link_to t(".publish"), '/in_development'), :class => "publish" },
 ] %>
 <%= render 'activity', :actions => @activity %>

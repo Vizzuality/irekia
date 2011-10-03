@@ -2,15 +2,15 @@
 <div class="inner">
   <header>
   <h1><%= @politician.fullname %></h1>
-  <p class="position">Consejera de <%= link_to "Educación, Universidades e Investigación", "#" %></p>
+  <p class="position">Consejera de <%= link_to "Educación, Universidades e Investigación", '/in_development' %></p>
   </header>
 
   <div class="left">
     <div class="description two_columns">
       <h3>Quién es y qué hace</h3>
       <%= simple_format(@politician.description) %>
-      <%= link_to "Leer más", "#" %></p>
-      <p><%=link_to raw( "<span class='add'></span>") +"Seguir a #{@politician.name} (24)", "#", :class => "white_button add_person" %></p>
+      <%= link_to "Leer más", '/in_development' %></p>
+      <p><%=link_to raw( "<span class='add'></span>") +"Seguir a #{@politician.name} (24)", '/in_development', :class => "white_button add_person" %></p>
     </div>
   </div>
 </div>
@@ -40,6 +40,6 @@
 
 </div>
 </footer>
-<%= link_to "", "#", {:class => :ribbon} %>
+<%= link_to "", '/in_development', {:class => :ribbon} %>
 <div class="t"></div><div class="f"></div>
 </article>

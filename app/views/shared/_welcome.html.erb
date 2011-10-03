@@ -6,7 +6,7 @@
   </div>
   <div class="content">
     <h1>Hola de nuevo <%= current_user.name %>,</h1>
-    <p>Actualmente sigues a <%= link_to t('.politicians_following', :count => current_user.users_following.politicians.count), "#" %> y <%= link_to t('.areas_following', :count => current_user.areas_following.count), "#" %>.<%= link_to t('.configure_your_account'), "#", :class => :config %></p>
+    <p>Actualmente sigues a <%= link_to t('.politicians_following', :count => current_user.users_following.politicians.count), '/in_development' %> y <%= link_to t('.areas_following', :count => current_user.areas_following.count), '/in_development' %>.<%= link_to t('.configure_your_account'), '/in_development', :class => :config %></p>
   </div>
 </div>
 

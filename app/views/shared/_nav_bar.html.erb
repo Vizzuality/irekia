@@ -16,7 +16,7 @@
   <% end %>
   <% if user_signed_in? %>
     <ul class="auth">
-      <li><%= link_to "hola, #{current_user.name}", "#", :class => "blue_button" %></li>
+      <li><%= link_to "hola, #{current_user.name}", '/in_development', :class => "blue_button" %></li>
       <li><%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => "sign_out blue_button" %></li>
     </ul>
   <% else %>

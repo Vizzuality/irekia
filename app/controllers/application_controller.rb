@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   clear_helpers
   protect_from_forgery
-  before_filter :authenticate_user!, :except => [:render_error, :render_not_found]
+  before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
 
   before_filter :get_areas
   before_filter :setup_search
