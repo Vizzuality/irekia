@@ -68,7 +68,7 @@
     <div class="left">
       <% if params[:search][:type].blank? %>
         <% if @contents.count > 5 %>
-          <%= link_to t('.contents_results.all', :count => @contents.count), '/in_development', :class => :right_arrow %>
+          <%= link_to t('.contents_results.all', :count => @contents.count), '/in_development', :class => 'right_arrow' %>
         <% end %>
       <% else %>
         <%= link_to t('.contents_results.more'), '/in_development', :class => :right_arrow %>

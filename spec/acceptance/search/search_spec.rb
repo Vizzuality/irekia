@@ -6,8 +6,8 @@ feature "Search" do
 
   scenario "shows a summary of search results in its main tab" do
     visit search_path(:search => {:query => 'lorem'})
-
-    page.should have_css 'h2', 'Resultados de tu búsqueda'
+peich
+    page.should have_css 'h2', :text => 'Resultados de tu búsqueda'
     page.should have_field 'search_query', :with => 'lorem'
 
     within 'ul.menu' do
@@ -76,6 +76,7 @@ feature "Search" do
   scenario "shows a detail page for content type results" do
     visit search_path(:search => {:query => 'lorem'})
 
+    peich
     page.should have_field 'search_query', :with => 'lorem'
 
     within 'ul.menu' do
