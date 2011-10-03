@@ -1,10 +1,29 @@
 class ApplicationController < ActionController::Base
+  rescue_from Exception,                           :with => :render_error
+  rescue_from ActiveRecord::RecordNotFound,        :with => :render_not_found
+  rescue_from ActionController::RoutingError,      :with => :render_not_found
+  rescue_from ActionController::UnknownController, :with => :render_not_found
+  rescue_from ActionController::UnknownAction,     :with => :render_not_found
+
   clear_helpers
   protect_from_forgery
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:render_error, :render_not_found]
 
   before_filter :get_areas
   before_filter :setup_search
+
+  def render_error(exception)
+    logger.error exception
+    render :partial => 'shared/error', :status => 500
+  end
+
+  def render_not_found
+    render :partial => 'shared/not_found', :status => 404
+  end
+
+  def in_development
+    render :partial => 'shared/in_development'
+  end
 
   def get_areas
     @areas = Area.all

@@ -75,4 +75,7 @@ Irekia::Application.routes.draw do
   match '/search' => 'search#show'
 
   root :to => "home#index"
+
+  match '/in_development', :to => 'application#in_development'
+  match '*a', :to => 'application#render_not_found'
 end

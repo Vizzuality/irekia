@@ -2296,3 +2296,29 @@ footer {
     }
   }
 }
+
+/* =============================================================================
+Error pages
+========================================================================== */
+
+#container{
+  .error, .not_found{
+    padding: 125px 0;
+    article.with_footer{
+      margin: 0 auto;
+      & > .inner{
+        width: 610px;
+        padding: 42px 0;
+        text-align: center;
+        h1{
+          margin: 20px;
+        }
+        p{
+          width: 400px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
