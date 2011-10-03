@@ -393,11 +393,6 @@ es:
     summary:
       description:
         title: Qué hacemos
-        follow:
-          zero: Seguir este área (0)
-          one: Seguir este área (1)
-          other: 'Seguir este área (%{count})'
-        stop_follow: Dejar de seguir
       team:
         title: Equipo principal
         other_members:
@@ -449,11 +444,6 @@ es:
       title: '%{title} de %{areas}'
       description:
         title: Quién es y qué hace
-        follow:
-          zero: Seguir a %{name} (0)
-          one: Seguir a %{name} (1)
-          other: 'Seguir a %{name} (%{count})'
-        stop_follow: Dejar de seguir
       menu:
         proposals: Propuestas
         agenda: Agenda
@@ -606,3 +596,17 @@ es:
       twitter: Conectar con Twitter
       continue: Continuar
       discover: Descubre por qué queremos que te conectes.
+  follows:
+    create_form:
+      area:
+        follow:
+          zero: Seguir a este área (0)
+          one: Seguir a este área (1)
+          other: 'Seguir este a área (%{count})'
+      user:
+        follow:
+          zero: Seguir a %{name} (0)
+          one: Seguir a %{name} (1)
+          other: 'Seguir a %{name} (%{count})'
+    destroy_form:
+      stop_follow: Dejar de seguir

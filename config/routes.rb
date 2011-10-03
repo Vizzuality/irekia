@@ -3,6 +3,7 @@ Irekia::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'users', :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :users do
+    resources :follows
     collection do
       get 'intro'
     end
@@ -36,6 +37,7 @@ Irekia::Application.routes.draw do
   end
 
   resources :areas do
+    resources :follows
     member do
       get 'actions', :path => 'actions(/:type)(.:format)'
       get 'questions'
@@ -46,6 +48,7 @@ Irekia::Application.routes.draw do
   end
 
   resources :politicians do
+    resources :follows
     member do
       get 'actions'
       get 'questions'

@@ -1,0 +1,6 @@
+<%= form_for [@follow_parent, @follow], :html => {:method => :delete} do |form| %>
+  <%= form.hidden_field :id %>
+  <%= content_tag :button, :type => 'submit', :class => 'white_button add_person add_to_favorites' do %>
+    <%= raw (content_tag(:span, '', :class => 'add') + t('.stop_follow')) %>
+  <% end -%>
+<% end -%>

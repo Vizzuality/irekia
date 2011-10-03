@@ -1,26 +1,13 @@
 desc "Setup Irekia Project for first time"
-task :setup => ['irekia:setup_database', 'irekia:validate_all_not_moderated'] do
+task :setup do
+    system "rake irekia:setup_database"
+    system "rake irekia:validate_all_not_moderated"
+    system "rake irekia:setup_database RAILS_ENV=test" if Rails.env.development?
 end
 
 namespace :irekia do
   desc "Setup Irekia Database"
-  task :setup_database => %w(db:drop:all db:create db:migrate db:test:prepare) do
-    [Rails.env, :test].each do |env|
-
-      puts "Loading seed data for #{env} environment:"
-      puts '*****************************************'
-      begin
-        ActiveRecord::Base.establish_connection(env.to_s)
-        Rake::Task['db:seed'].reenable
-        Rake::Task['db:seed'].execute
-        ActiveRecord::Base.establish_connection(ENV['RAILS_ENV'])
-      rescue Exception => e
-        puts e
-      end
-
-      puts ''
-    end
-  end
+  task :setup_database => %w(db:drop db:create db:migrate db:test:prepare db:seed)
 
   desc "Accepts all non moderated contents/participations"
   task :validate_all_not_moderated => :environment do

@@ -51,19 +51,19 @@ class AreasController < ApplicationController
 
   private
   def get_area
-    @area            = Area.where(:id => params[:id]).first if params[:id].present?
+    @area = Area.where(:id => params[:id]).first if params[:id].present?
   end
 
   def get_area_data
     @team            = @area.team.includes(:title)
-    @followers_count = @area.followers.count
-
     if current_user.blank? || current_user.not_following(@area)
-      @new_follow      = @area.follows.build
-      @new_follow.user = current_user
+      @follow          = @area.follows.build
+      @follow.user     = current_user
     else
-      @remove_follow = @area.follows.where(:user_id => current_user.id).first
+      @follow = current_user.followed_item(@area)
     end
+    @follow_parent   = @area
+    @followers_count = @follow_parent.followers.count
   end
 
   def get_actions
