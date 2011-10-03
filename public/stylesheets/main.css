@@ -652,6 +652,6 @@ Error pages
 ========================================================================== */
 #container .error, #container .not_found { padding: 125px 0; }
 #container .error article.with_footer, #container .not_found article.with_footer { margin: 0 auto; }
-#container .error article.with_footer > .inner, #container .not_found article.with_footer > .inner { width: 610px; padding: 42px 0; text-align: center; }
+#container .error article.with_footer > .inner, #container .not_found article.with_footer > .inner { width: 636px; padding: 42px 0; text-align: center; }
 #container .error article.with_footer > .inner h1, #container .not_found article.with_footer > .inner h1 { margin: 20px; }
 #container .error article.with_footer > .inner p, #container .not_found article.with_footer > .inner p { width: 400px; margin: 0 auto; }
