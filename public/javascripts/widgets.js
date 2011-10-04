@@ -1128,7 +1128,7 @@ var GOD = (function() {
         data.$this = $this;
         data.settings = settings;
         data.filter = "";
-        data.sort = {more_polemic:false};
+        data.sort = {};
       }
 
       var $ps = $(this);
@@ -1140,7 +1140,7 @@ var GOD = (function() {
           data.filter = $(this).attr("href");
 
         if (classes.indexOf("recent") != -1) {
-          data.sort = { more_polemic:false };
+          data.sort = {};
         }
         else if (classes.indexOf("polemic") != -1) {
           data.sort = { more_polemic:true };
