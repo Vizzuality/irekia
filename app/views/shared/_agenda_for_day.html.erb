@@ -1,0 +1,23 @@
+<ul class="events">
+  <% day_events.each do |event| -%>
+    <li>
+      <%= link_to event.title.truncate(19), '#', :id => "event-#{event.id}", :class => 'event' %>
+    </li>
+  <% end -%>
+</ul>
+
+<% day_events.each do |event| -%>
+  <div id="info-event-<%= event.id %>" class="info">
+    <ul>
+      <li>
+      <strong class="date"><%= l(event.event_date, :format => '%d, %B de %Y') %></strong>
+      <a href="#" class="event"><%= event.title %></a>
+      <ul class="details">
+        <li class="where"><%= event.location %></li>
+        <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
+      </ul>
+      </li>
+    </ul>
+    <span class="close"></span>
+  </div>
+<% end -%>

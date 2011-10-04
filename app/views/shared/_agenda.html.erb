@@ -32,7 +32,7 @@
           <li class="day <%= day_classes.join(' ') %>">
           <h3 class="day"><%= day.day %></h3>
           <span class="month"><%= l day, :format => '%b' %></span>
-          <%#= raw agenda_for_day(@agenda, day) %>
+          <%= render 'shared/agenda_for_day', :day_events => @agenda.select{|e| e.event_date.to_date.eql?(day.to_date)} %>
           </li>
         <% end %>
       </ul>
@@ -46,7 +46,7 @@
 <div class="inner">
 
   <div class="right">
-    <%= link_to t(".more"), agenda_area_path(@area), :class => "right right_arrow" if more %>
+    <%= link_to t(".more"), link_for_agenda, :class => "right right_arrow" if more %>
   </div>
 
 </div>
