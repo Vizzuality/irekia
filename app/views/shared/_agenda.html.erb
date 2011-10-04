@@ -1,4 +1,9 @@
 <!-- Agenda -->
+<% content_for :js_data do %>
+  <script>
+    var events = <%= @agenda_json %>;
+  </script>
+<% end %>
 <article class="agenda with_footer">
 <div class="inner">
   <header>

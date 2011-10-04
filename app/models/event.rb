@@ -14,6 +14,13 @@ class Event < Content
     event
   end
 
+  def date
+  end
+
+  def time
+    event_date.strftime('%H:%M')
+  end
+
   def as_json(options = {})
     {
       :author          => {
@@ -27,6 +34,9 @@ class Event < Content
       :title           => title,
       :subtitle        => subtitle,
       :body            => body,
+      :location        => location,
+      :latitude        => latitude,
+      :longitude       => longitude,
       :comments_count  => comments_count
     }
   end

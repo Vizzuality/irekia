@@ -107,5 +107,13 @@ class AreasController < ApplicationController
 
     @agenda = @area.events.moderated.where('event_data.event_date >= ? AND event_data.event_date <= ?', @beginning_of_calendar, @end_of_calendar)
     @days   = @beginning_of_calendar..@end_of_calendar
+    @agenda_json = @agenda.map{|event| {
+      :title => event.title,
+      :date  => l(event.event_date, :format => '%d, %B de %Y'),
+      :when  => event.event_date.strftime('%H:%M'),
+      :where => event.location,
+      :lat   => event.latitude,
+      :lon   => event.longitude
+    }}.group_by{|event| [event[:lat], event[:lon]]}.values.to_json.html_safe
   end
 end

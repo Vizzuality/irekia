@@ -60,25 +60,20 @@ function startMap () {
   zoomOutControlDiv.index = 2;
   map.controls[google.maps.ControlPosition.LEFT].push(zoomOutControlDiv);
 
-  function addExamplePoints() { // TODO: replace with real points
-    var center = new google.maps.LatLng(59.327383, 18.07747);
-    var events = [
-      {title:"Reunión con el sindicato de Estudiantes Universitarios", date:"31, AGOSTO 2011", where:"Universidad de Deusto", when:"13:00"},
-      {title:"Reunión con el sindicato de Estudiantes Universitarios", date:"13, SEPTIEMBRE 2011", where:"Universidad de Deusto", when:"13:00"},
-      {title:"Reunión con el sindicato de Estudiantes Universitarios", date:"1, AGOSTO 2011", where:"Universidad de Deusto", when:"12:00"},
-      {title:"Reunión con el sindicato de Estudiantes Universitarios", date:"3, AGOSTO 2011", where:"Universidad de Deusto", when:"17:00"}
-    ];
+	var mapBounds = new google.maps.LatLngBounds();
 
-    new IrekiaMarker(center, events, map);
-
-    var center = new google.maps.LatLng(59.327383, 18.07947);
-    var events = [
-      {title:"Reunión con el sindicato de Estudiantes Universitarios", date:"31, AGOSTO 2011", where:"Universidad de Deusto", when:"13:00"}
-    ];
-    new IrekiaMarker(center, events, map);
+  function addPoints() {
+		for (var i = 0; i < events.length; i++) {
+			var event = events[i][0];
+			var events_data = events[i];
+			var center = new google.maps.LatLng(event.lat, event.lon);
+			new IrekiaMarker(center, events_data, map);
+			mapBounds.extend(center);
+		};
   }
 
-  addExamplePoints();
+  addPoints();
+	map.fitBounds(mapBounds);
 }
 
 function IrekiaMarker(_latlng, _info, _map) {
