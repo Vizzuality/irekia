@@ -6,10 +6,9 @@
   </header>
 
   <div class="left">
+    <h3>Quién es y qué hace</h3>
     <div class="description two_columns">
-      <h3>Quién es y qué hace</h3>
-      <%= simple_format(@politician.description) %>
-      <%= link_to "Leer más", '/in_development' %></p>
+      <%= simple_format(@politician.description.truncate(258) + ' ' + link_to(t('.description.read_more'), 'in_development')) %>
       <% if @follow.new_record? -%>
       <p><%= render 'follows/create_form' %></p>
       <% else -%>
@@ -24,28 +23,29 @@
 <div class="inner with_avatar with_question">
 
   <%= image_tag 'temp/avatar_big.png', :class => :xlAvatar %>
-  <% if user_signed_in? %>
   <h3>Pregunta a <%= @politician.name %></h3>
 
-  <%= form_for current_user, :html => {:class => :make_question } do |form| %>
-    <%= form.fields_for :questions, @question  do |questions| %>
+  <%= form_for @politician, :url => politician_path(@politician), :html => {:class => [:make_question, only_logged_class] } do |form| %>
+    <%= form.fields_for :question_data, @question_data  do |question_data| %>
+      <%= question_data.hidden_field :user_id %>
+      <%= question_data.fields_for :question, @question do |questions| %>
+        <div id="counter-124" class="input-counter placeholder">
+          <span class="counter">140</span>
+          <% if @question_author -%>
+            <%= questions.fields_for :contents_users, @question_author do |content_user| %>
+              <%= content_user.hidden_field :user_id %>
+            <% end -%>
+          <% end -%>
+          <%= questions.fields_for :question_data, @question_data do |question_data| %>
+            <%= question_data.hidden_field :user_id %>
+            <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
+          <% end %>
 
-      <div id="counter-124" class="input-counter placeholder">
-        <span class="counter">140</span>
-        <%= questions.fields_for :contents_users, @question.contents_users.last do |content_user| %>
-          <%= content_user.hidden_field :user_id %>
-        <% end -%>
-        <%= questions.fields_for :question_data, @question_data do |question_data| %>
-          <%= question_data.hidden_field :user_id %>
-          <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
-        <% end %>
-
-        <span class="holder large">Haz una pregunta a <%= @politician.name %>...</span>
-      </div>
-
+          <span class="holder large">Haz una pregunta a <%= @politician.name %>...</span>
+        </div>
+      <% end -%>
       <input type="submit" value="Preguntar" id="submit-counter-124" class="disabled white_button" disabled="disabled" />
     <% end %>
-  <% end %>
   <% end %>
 
 </div>

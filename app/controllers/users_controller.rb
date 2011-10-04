@@ -32,9 +32,9 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:user])
-      flash[:notice] = :question_created if params['user']['questions_attributes'].present?
+      flash[:notice] = :question_created if params['user']['question_data_attributes'].present?
     else
-      flash[:notice] = :question_failed if params['user']['questions_attributes'].present?
+      flash[:notice] = :question_failed if params['user']['question_data_attributes'].present?
     end
 
     redirect_back_or_default user_path(@user)

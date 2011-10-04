@@ -42,7 +42,9 @@ virginia = User.find_or_initialize_by_name_and_lastname_and_email('Virginia', 'U
 virginia.password = 'virginia1234'
 virginia.password_confirmation = 'virginia1234'
 virginia.is_woman = true
-virginia.description = String.lorem
+virginia.description = <<-EOF
+Virginia es Licenciada en Ciencias del Deporte y en Ciencias políticas por la Universidad Complutense de Madrid. En el Gobierno Vasco, Virgnia ha invertido grandes esfuerzos en la mejora de la Investigación, y en solo un año, ha conseguido que su papel se...
+EOF
 virginia.province = 'Vizcaya'
 virginia.city = 'Ondarroa'
 virginia.role = Role.find_by_name('Politician')

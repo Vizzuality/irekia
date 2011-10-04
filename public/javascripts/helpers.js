@@ -43,7 +43,7 @@ jQuery.fn.viewCalendar = function(opt){
 jQuery.fn.viewMap = function(opt){
 
   var speed      = (opt && opt.speed) || 150;
-  var mapHeight  = (opt && opt.mapHeight) || 465;
+  var mapHeight  = (opt && opt.mapHeight) || 454;
 
   this.each(function(){
     $(this).click(function(e) {

@@ -393,6 +393,7 @@ es:
     summary:
       description:
         title: Qué hacemos
+        read_more: Leer más
       team:
         title: Equipo principal
         other_members:
@@ -444,6 +445,7 @@ es:
       title: '%{title} de %{areas}'
       description:
         title: Quién es y qué hace
+        read_more: Leer más
       menu:
         proposals: Propuestas
         agenda: Agenda

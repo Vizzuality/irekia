@@ -2,7 +2,7 @@ class PoliticiansController < UsersController
   skip_before_filter :authenticate_user!, :only => [:show, :actions, :questions, :proposals, :agenda]
 
   before_filter :get_user,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda]
-  before_filter :get_politician,             :only => [:show, :actions, :questions, :proposals, :agenda]
+  before_filter :get_politician,             :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :build_questions_for_update, :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_actions,                :only => [:show, :actions]
@@ -19,11 +19,10 @@ class PoliticiansController < UsersController
   end
 
   def update
-
     if @politician.update_attributes(params[:user])
-      flash[:notice] = :question_created if params['user']['questions_attributes'].present?
+      flash[:notice] = :question_created if params['user']['question_data_attributes'].present?
     else
-      flash[:notice] = :question_failed if params['user']['questions_attributes'].present?
+      flash[:notice] = :question_failed if params['user']['question_data_attributes'].present?
     end
 
     redirect_back_or_default area_path(@politician)
@@ -64,11 +63,10 @@ class PoliticiansController < UsersController
   end
 
   def build_questions_for_update
-    return if current_user.blank?
     @question                  = Question.new
-    @question.contents_users   << ContentUser.new(:user => current_user)
     @question_data             = @question.build_question_data
     @question_data.target_user = @user
+    @question_author           = ContentUser.new(:user => current_user) if current_user
   end
 
   def get_actions

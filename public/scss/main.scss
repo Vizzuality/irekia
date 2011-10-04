@@ -246,7 +246,7 @@ header {
     clear: both;
     overflow: hidden;
     width: 928px;
-    padding: 15px 31px 35px 35px;
+    padding: 15px 31px 10px 35px;
     background: $white;
     border-left: 1px solid #b4bdc4;
     border-right: 1px solid #b4bdc4;
@@ -287,7 +287,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 
   &.with_footer {
-    .inner { width: 933px; padding: 15px 31px 35px 30px; }
+    .inner { width: 933px; padding: 15px 31px 5px 30px; }
     .f { bottom: -10px; background-position: 0 -22px; }
     footer {
       padding: 0;
@@ -914,7 +914,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
             }
           }
           .avatar { float: left; margin: 0 13px 0 0; }
-          .content .footer { margin-bottom: 13px; padding-left: 16px; background: url('/images/icons/clock.png') no-repeat left 1px; color: $standard_gray; font-size: 13px; }
+          .content .footer { margin-bottom: 3px; padding-left: 16px; background: url('/images/icons/clock.png') no-repeat left 1px; color: $standard_gray; font-size: 13px; }
         }
       }
     }
@@ -1070,7 +1070,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 }
 
 .agenda_map { position:none; clear: both; overflow: hidden; height:700px; }
-.agenda_map .map {opacity:0; top:80px; left:30px; position:absolute; height:700px; width:929px;}
+.agenda_map .map {opacity:0; top:76px; left:35px; position:absolute; height:700px; width:929px;}
 .agenda_map ul.agenda { background:#fff; position:absolute; left:30px; width:929px; }
 
 /* Editable */
@@ -1387,8 +1387,8 @@ a.editable {
       }
     }
     .content .map {
-      width: 927px;
-      height: 452px;
+      width: 929px;
+      height: 454px;
     }
   }
 
@@ -1845,7 +1845,7 @@ textarea {
   }
   footer {
     inner.with_avatar { position: relative; }
-    img.xlAvatar { position: absolute; bottom: 10px; right: 30px; padding: 4px; background: url('/images/circle_bkg.png') no-repeat center center; z-index: 10; }
+    img.xlAvatar { position: absolute; bottom: 34px; right: 30px; padding: 4px; background: url('/images/circle_bkg.png') no-repeat center center; z-index: 10; }
   }
 
   ul.suggestions {
@@ -2235,13 +2235,13 @@ Sign in
       border: 0;
       padding: 0;
       position: absolute;
-      bottom: 30px;
+      bottom: 34px;
       width: 315px;
       background: none;
 
       .left { float: left; width: 50%; }
       .right { float: right; width: 50%; }
-      .white_button { margin: 3px; }
+      .white_button { margin: 0 3px; }
     }
   }
 }

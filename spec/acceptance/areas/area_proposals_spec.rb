@@ -16,7 +16,7 @@ feature "Area's proposals page" do
       page.should have_css 'h1', :text => 'Educación, Universidades e Investigación'
       page.should have_css 'a.ribbon'
       page.should have_css 'h3', :text => 'Qué hacemos'
-      page.should have_css 'p',  :text => String.lorem
+      page.should have_css 'p',  :text => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor'
 
       within 'ul.people' do
         page.should have_css 'li a',    :text => 'Virginia Uriarte Rodríguez'

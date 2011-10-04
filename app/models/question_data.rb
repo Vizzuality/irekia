@@ -11,5 +11,5 @@ class QuestionData < ActiveRecord::Base
              :class_name => 'Area',
              :foreign_key => :area_id
 
-  accepts_nested_attributes_for :target_user
+  accepts_nested_attributes_for :question, :target_user
 end

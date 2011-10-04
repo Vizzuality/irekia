@@ -42,4 +42,8 @@ module ApplicationHelper
 
     render "shared/avatar", :user => user, :size => size, :path => path
   end
+
+  def only_logged_class
+    :only_logged unless user_signed_in?
+  end
 end

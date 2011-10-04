@@ -18,9 +18,9 @@ feature "Area's questions page" do
       page.should have_link 'Educación, Universidades e Investigación'
       page.should have_css 'img.xlAvatar'
 
+      page.should have_css 'h3', :text => 'Quién es y qué hace'
       within '.description' do
-        page.should have_css 'h3', :text => 'Quién es y qué hace'
-        page.should have_css 'p',  :text => String.lorem
+        page.should have_css 'p',  :text => 'Virginia es Licenciada en Ciencias del Deporte y en Ciencias políticas por la Universidad Complutense de Madrid. En el Gobierno Vasco, Virgnia ha invertido grandes esfuerzos en la mejora de la Investigación, y en solo un año, ha conseguido que su papel se...'
       end
 
      # within '.actions' do

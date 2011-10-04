@@ -29,7 +29,7 @@ $(function() {
 
   $('.floating-login').floatingLoginPopover();
 
-  $('.two_columns').columnize();
+  $('.two_columns').columnize({height: 125});
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
 

@@ -235,7 +235,7 @@ Article
 #container article .t, #container article .f { height: 10px; width: 100%; position: absolute; background: url("/images/box_simple_bkg.png") no-repeat; }
 #container article .t { top: -10px; background-position: 0 0; }
 #container article .f { bottom: -10px; background-position: 0 -10px; }
-#container article .inner { clear: both; overflow: hidden; width: 928px; padding: 15px 31px 35px 35px; background: white; border-left: 1px solid #b4bdc4; border-right: 1px solid #b4bdc4; }
+#container article .inner { clear: both; overflow: hidden; width: 928px; padding: 15px 31px 10px 35px; background: white; border-left: 1px solid #b4bdc4; border-right: 1px solid #b4bdc4; }
 #container article .inner p { margin-bottom: 20px; color: #465866; }
 #container article .inner h1 { color: #465866; }
 
@@ -254,7 +254,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner header h1, #container article .inner header h2 { margin: 0; }
 #container article .inner header h3 { font-size: 17px; }
 #container article .inner header h2 { font-size: 31px; line-height: normal; }
-#container article.with_footer .inner { width: 933px; padding: 15px 31px 35px 30px; }
+#container article.with_footer .inner { width: 933px; padding: 15px 31px 5px 30px; }
 #container article.with_footer .f { bottom: -10px; background-position: 0 -22px; }
 #container article.with_footer footer { padding: 0; border: none; clear: both; border-left: 1px solid #b4bdc4; border-right: 1px solid #b4bdc4; background: #f8f8f9; }
 #container article.with_footer footer .inner { clear: both; overflow: hidden; padding: 20px 0 15px 35px; width: 959px; margin: 0; background: none; border: 0; }
@@ -420,7 +420,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.actions .inner .left ul li .content p, #container article.proposals .inner .left ul li .content p, #container article.proposal .inner .left ul li .content p, #container article.questions .inner .left ul li .content p, #container article.activity .inner .left ul li .content p { font-size: 17px; padding: 0; margin: 0 0 8px 0; line-height: 19px; }
 #container article.actions .inner .left ul li .content p.excerpt, #container article.proposals .inner .left ul li .content p.excerpt, #container article.proposal .inner .left ul li .content p.excerpt, #container article.questions .inner .left ul li .content p.excerpt, #container article.activity .inner .left ul li .content p.excerpt { font-size: 15px; padding: 0; margin: 0 0 12px 0; line-height: 19px; color: #7d8a92; }
 #container article.actions .inner .left ul li .avatar, #container article.proposals .inner .left ul li .avatar, #container article.proposal .inner .left ul li .avatar, #container article.questions .inner .left ul li .avatar, #container article.activity .inner .left ul li .avatar { float: left; margin: 0 13px 0 0; }
-#container article.actions .inner .left ul li .content .footer, #container article.proposals .inner .left ul li .content .footer, #container article.proposal .inner .left ul li .content .footer, #container article.questions .inner .left ul li .content .footer, #container article.activity .inner .left ul li .content .footer { margin-bottom: 13px; padding-left: 16px; background: url("/images/icons/clock.png") no-repeat left 1px; color: #7d8a92; font-size: 13px; }
+#container article.actions .inner .left ul li .content .footer, #container article.proposals .inner .left ul li .content .footer, #container article.proposal .inner .left ul li .content .footer, #container article.questions .inner .left ul li .content .footer, #container article.activity .inner .left ul li .content .footer { margin-bottom: 3px; padding-left: 16px; background: url("/images/icons/clock.png") no-repeat left 1px; color: #7d8a92; font-size: 13px; }
 #container article .inner ul li .content .footer a { font-size: 13px; }
 #container article.actions .inner .left ul li a, #container article.proposal .inner .left ul li a, #container article.proposals .inner .left ul li a, #container article.questions .inner .left ul li a, #container article.activity .inner .left ul li a { color: #2C8CC5; }
 #container article.actions .inner .left ul li .content .comment-box, #container article.proposal .inner .left ul li .content .comment-box, #container article.proposals .inner .left ul li .content .comment-box, #container article.questions .inner .left ul li .content .comment-box, #container article.activity .inner .left ul li .content .comment-box { -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; background: rgba(237, 237, 239, 0.7); }
@@ -462,7 +462,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 .agenda_map { position: none; clear: both; overflow: hidden; height: 700px; }
 
-.agenda_map .map { opacity: 0; top: 80px; left: 30px; position: absolute; height: 700px; width: 929px; }
+.agenda_map .map { opacity: 0; top: 76px; left: 35px; position: absolute; height: 700px; width: 929px; }
 
 .agenda_map ul.agenda { background: #fff; position: absolute; left: 30px; width: 929px; }
 
@@ -563,7 +563,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .right ul.people li.add .avatar { margin: 9px 10px 0 8px; }
 #container article .inner .right ul.people li a { display: block; font-weight: normal; color: #1d79b0; }
 #container article .inner .right ul.people li .avatar { float: left; margin: 0 9px 0 0; }
-#container article .inner .content .map { width: 927px; height: 452px; }
+#container article .inner .content .map { width: 929px; height: 454px; }
 #container article .map .zoom_in { cursor: pointer; background: transparent url("/images/maps_sprite.png") no-repeat 0 0; width: 30px; height: 32px; margin-top: 15px; margin-left: 17px; }
 #container article .map .zoom_in:hover { background: transparent url("/images/maps_sprite.png") no-repeat -31px 0; }
 #container article .map .zoom_out { cursor: pointer; background: transparent url("/images/maps_sprite.png") no-repeat 0 -32px; width: 30px; height: 32px; margin-left: 17px; }
@@ -677,7 +677,7 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 #container article .inner .left .description.two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
 #container article footer inner.with_avatar { position: relative; }
-#container article footer img.xlAvatar { position: absolute; bottom: 10px; right: 30px; padding: 4px; background: url("/images/circle_bkg.png") no-repeat center center; z-index: 10; }
+#container article footer img.xlAvatar { position: absolute; bottom: 34px; right: 30px; padding: 4px; background: url("/images/circle_bkg.png") no-repeat center center; z-index: 10; }
 #container article ul.suggestions li { width: 275px; padding: 14px 16px 16px 16px; font-size: 15px; color: #7d8a92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 #container article ul.suggestions li .avatar { float: left; margin: 0 8px 0 0; }
 #container article ul.suggestions li .content { float: left; width: 200px; }
@@ -778,10 +778,10 @@ Sign in
 #sign_in .content p { margin: 0 0 20px 0; font-size: 15px; }
 #sign_in .content label { display: block; }
 #sign_in .content h1 { color: #465866; font-weight: 300; line-height: normal; font-size: 31px; }
-#sign_in .content footer { clear: both; overflow: hidden; border: 0; padding: 0; position: absolute; bottom: 30px; width: 315px; background: none; }
+#sign_in .content footer { clear: both; overflow: hidden; border: 0; padding: 0; position: absolute; bottom: 34px; width: 315px; background: none; }
 #sign_in .content footer .left { float: left; width: 50%; }
 #sign_in .content footer .right { float: right; width: 50%; }
-#sign_in .content footer .white_button { margin: 3px; }
+#sign_in .content footer .white_button { margin: 0 3px; }
 
 p label, .content form p label { font-size: 12px; font-weight: bold; color: #465866; text-transform: uppercase; }
 

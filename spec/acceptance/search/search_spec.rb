@@ -6,21 +6,21 @@ feature "Search" do
 
   scenario "shows a summary of search results in its main tab" do
     visit search_path(:search => {:query => 'lorem'})
-peich
+
     page.should have_css 'h2', :text => 'Resultados de tu búsqueda'
     page.should have_field 'search_query', :with => 'lorem'
 
     within 'ul.menu' do
       page.should have_css 'li.selected', :text => 'Resumen'
       page.should have_css 'li', :text => '137 contenidos'
-      page.should have_css 'li', :text => '5 políticos'
+      page.should have_css 'li', :text => '4 políticos'
       page.should have_css 'li', :text => '3 usuarios'
     end
 
     within '.contents_results' do
       page.should have_css 'h2', :text => '137 contenidos'
 
-      #page.should have_css '.left ul li', :count => 5
+      #page.should have_css '.left ul li', :count => 4
 
       within '.left ul li' do
         page.should have_content 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
@@ -49,15 +49,15 @@ peich
     end
 
     within '.politicians_results' do
-      page.should have_css 'h2', :text => '5 políticos'
-      page.should have_css 'div.content .suggestions li', :count => 5
+      page.should have_css 'h2', :text => '4 políticos'
+      page.should have_css 'div.content .suggestions li', :count => 4
       within 'div.content .suggestions li' do
         page.should have_css 'img'
         page.should have_link 'Alberto de Zárate López'
         page.should have_content 'Vice-consejero de Educación, Universidades e Investigación'
         page.should have_link 'Seguir'
       end
-      page.should_not have_link 'ver los 5 políticos encontrados'
+      page.should_not have_link 'ver los 4 políticos encontrados'
     end
 
     within '.users_results' do
@@ -76,7 +76,6 @@ peich
   scenario "shows a detail page for content type results" do
     visit search_path(:search => {:query => 'lorem'})
 
-    peich
     page.should have_field 'search_query', :with => 'lorem'
 
     within 'ul.menu' do
@@ -90,7 +89,7 @@ peich
     within 'ul.menu' do
       page.should have_css 'li', :text => 'Resumen'
       page.should have_css 'li.selected', :text => '137 contenidos'
-      page.should have_css 'li', :text => '5 políticos'
+      page.should have_css 'li', :text => '4 políticos'
       page.should have_css 'li', :text => '3 usuarios'
     end
 
@@ -132,7 +131,7 @@ peich
     page.should have_field 'search_query', :with => 'lorem'
 
     within 'ul.menu' do
-      click_link '5 políticos'
+      click_link '4 políticos'
     end
 
 
@@ -142,14 +141,14 @@ peich
     within 'ul.menu' do
       page.should have_css 'li', :text => 'Resumen'
       page.should have_css 'li', :text => '137 contenidos'
-      page.should have_css 'li.selected', :text => '5 políticos'
+      page.should have_css 'li.selected', :text => '4 políticos'
       page.should have_css 'li', :text => '3 usuarios'
     end
 
     within '.politicians_results' do
-      page.should have_css 'h2', :text => '5 políticos'
+      page.should have_css 'h2', :text => '4 políticos'
       within 'div.content' do
-        page.should have_css '.suggestions li', :count => 5
+        page.should have_css '.suggestions li', :count => 4
         within '.suggestions li' do
           page.should have_css 'img'
           page.should have_link 'Alberto de Zárate López'
@@ -188,7 +187,7 @@ peich
     within 'ul.menu' do
       page.should have_css 'li', :text => 'Resumen'
       page.should have_css 'li', :text => '137 contenidos'
-      page.should have_css 'li', :text => '5 políticos'
+      page.should have_css 'li', :text => '4 políticos'
       page.should have_css 'li.selected', :text => '3 usuarios'
     end
 
@@ -227,7 +226,7 @@ peich
       within '.politicians' do
         within '.summary' do
           page.should have_css 'h3', :text => 'POLÍTICOS'
-          page.should have_link '5 encontrados'
+          page.should have_link '4 encontrados'
         end
         page.should have_css 'ul li', :count => 2
         within 'ul li' do

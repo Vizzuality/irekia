@@ -15,8 +15,7 @@ class Area < ActiveRecord::Base
            :through => :areas_contents,
            :include => :event_data
   has_many :actions,
-           :class_name => 'AreaPublicStream',
-           :order => 'published_at desc'
+           :class_name => 'AreaPublicStream'
   has_many :follows,
            :as => :follow_item
   has_many :followers,

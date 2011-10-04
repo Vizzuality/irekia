@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_reader :random_password
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :lastname, :email, :remember_me, :role_id, :title_id, :birthday, :description, :is_woman, :province_id, :city_id, :postal_code, :profile_pictures_attributes, :questions_attributes, :areas_users_attributes, :follows_attributes
+  attr_accessible :name, :lastname, :email, :remember_me, :role_id, :title_id, :birthday, :description, :is_woman, :province_id, :city_id, :postal_code, :profile_pictures_attributes, :questions_attributes, :question_data_attributes, :areas_users_attributes, :follows_attributes
 
   attr_accessor :terms_of_service
 
@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
            :through => :follows,
            :source => :user
 
-  accepts_nested_attributes_for :profile_pictures, :questions, :areas_users
+  accepts_nested_attributes_for :profile_pictures, :questions, :question_data, :areas_users
   accepts_nested_attributes_for :follows, :allow_destroy => true
 
   scope :oldest_first, order('created_at asc')
