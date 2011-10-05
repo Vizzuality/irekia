@@ -96,6 +96,8 @@ class AreasController < ApplicationController
 
   def get_proposals
     @proposals = @area.proposals.moderated
+    @proposals = @proposals.from_politicians if params[:from_politicians]
+    @proposals = @proposals.from_citizens if params[:from_citizens]
 
     @proposals = if params[:more_polemic]
       @proposals.more_polemic

@@ -93,6 +93,8 @@ class PoliticiansController < UsersController
 
   def get_proposals
     @proposals = @politician.proposals_received.moderated
+    @proposals = @proposals.from_politicians if params[:from_politicians]
+    @proposals = @proposals.from_citizens if params[:from_citizens]
 
     @proposals = if params[:more_polemic]
       @proposals.more_polemic

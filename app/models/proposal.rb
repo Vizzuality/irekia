@@ -6,6 +6,8 @@ class Proposal < Content
 
   scope :open, joins(:proposal_data).where('proposal_data.close' => false)
   scope :close, joins(:proposal_data).where('proposal_data.close' => true)
+  scope :from_politicians, joins(:users => :role).where('roles.name = ?', 'Politician')
+  scope :from_citizens, joins(:users => :role).where('roles.name = ?', 'Citizen')
 
   accepts_nested_attributes_for :proposal_data, :arguments
 
