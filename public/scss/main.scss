@@ -304,7 +304,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       .inner {
         clear: both;
         overflow: hidden;
-        padding: 20px 0 15px 35px;
+        padding: 20px 0 3px 35px;
         width: 959px;
         margin: 0;
         background: none;
@@ -2276,7 +2276,7 @@ Sign in
 
       .left { float: left; width: 50%; }
       .right { float: right; width: 50%; }
-      .white_button { margin: 0 3px; }
+      .white_button { margin: 0 1px; }
     }
   }
 }
