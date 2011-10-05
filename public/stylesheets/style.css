@@ -682,12 +682,13 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 #container article ul.suggestions li .avatar { float: left; margin: 0 8px 0 0; }
 #container article ul.suggestions li .content { float: left; width: 200px; }
 #container article ul.suggestions li .content p { padding: 0; margin: 0 0 13px 0; font-size: 15px; line-height: 15px; }
-#container article ul.suggestions li .content a { display: block; font-weight: 300; font-size: 13px; color: #FF0066; }
-#container article ul.suggestions li .content a.name { margin-bottom: 3px; color: #1d79b0; font-size: 17px; font-weight: 300; }
-#container article ul.suggestions li .content a.follow { display: block; margin-top: 16px; font-weight: 300; font-size: 13px; }
+#container article ul.suggestions li .content a, #container article ul.suggestions li .content button { display: block; font-weight: 300; font-size: 13px; color: #FF0066; background-color: transparent; border: 0 none; }
+#container article ul.suggestions li .content a.name, #container article ul.suggestions li .content button.name { margin-bottom: 3px; color: #1d79b0; font-size: 17px; font-weight: 300; }
+#container article ul.suggestions li .content a.follow, #container article ul.suggestions li .content button.follow { display: block; margin-top: 16px; font-weight: 300; font-size: 13px; }
 #container article ul.suggestions li.selected { background: #F2F5F8; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container article ul.suggestions li.selected .avatar:before { border-color: #F2F5F8; }
 #container article ul.suggestions li.selected .content a { color: #1d79b0; }
+#container article ul.suggestions li.selected .content button { color: #1d79b0; }
 #container article.with_footer footer .inner a.facebook, #container article.with_footer footer .inner a.twitter { width: 37px; height: 35px; margin-right: 3px; text-indent: -99999px; background: url("/images/icons/social_icons.png") no-repeat; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 
 .content footer a.facebook, .content footer a.twitter { width: 37px; height: 35px; margin-right: 3px; text-indent: -99999px; background: url("/images/icons/social_icons.png") no-repeat; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }

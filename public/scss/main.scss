@@ -1861,11 +1861,13 @@ textarea {
         width: 200px;
 
         p { padding: 0; margin: 0 0 13px 0; font-size: 15px; line-height: 15px; }
-        a {
+        a, button {
           display: block;
           font-weight: 300;
           font-size: 13px;
           color: #FF0066;
+          background-color: transparent;
+          border: 0 none;
 
           &.name { margin-bottom: 3px; color: $link_color; font-size: 17px; font-weight: 300; }
           &.follow { display: block; margin-top: 16px; font-weight: 300; font-size: 13px; }
@@ -1877,6 +1879,7 @@ textarea {
 
         .avatar:before { border-color: #F2F5F8; }
         .content a { color: $link_color; }
+        .content button { color: $link_color; }
       }
     }
   } // ul.suggestions

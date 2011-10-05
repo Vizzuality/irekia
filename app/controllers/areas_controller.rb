@@ -51,7 +51,6 @@ class AreasController < ApplicationController
   end
 
   def get_area_data
-    @team            = @area.team.includes(:title)
     if current_user.blank? || current_user.not_following(@area)
       @follow          = @area.follows.build
       @follow.user     = current_user
@@ -60,6 +59,18 @@ class AreasController < ApplicationController
     end
     @follow_parent   = @area
     @followers_count = @follow_parent.followers.count
+
+    @team            = @area.team.includes(:title)
+    @team_follows    = @team.inject({}) do |team_follows, user|
+      team_follows[user.id] = if current_user.blank? || current_user.not_following(user)
+        @follow          = user.follows.build
+        @follow.user     = current_user
+        @follow
+      else
+        @follow = current_user.followed_item(user)
+      end
+      team_follows
+    end
   end
 
   def get_actions

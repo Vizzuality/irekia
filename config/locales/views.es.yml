@@ -425,6 +425,7 @@ es:
         zero: Ninguna persona implicada en este área
         one: Una persona implicada en este área
         other: '%{count} personas implicadas en este área'
+      follow: Seguir
       actions_this_week:
         zero: Ninguna acción esta semana
         one: Una acción esta semana

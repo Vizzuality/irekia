@@ -1,24 +1,3 @@
-<!--
-<div id="team">
-  <h1><%= t('.title', :count => @team.count) %></h1>
-  <ul>
-    <% @team.each do |user| %>
-      <li>
-      <%= link_to image_tag(user.profile_image), politician_path(user) if user.profile_image %>
-      <%= link_to user.fullname, politician_path(user) %>
-      <span class="title"><%= get_politician_title(user) %></span>
-      <% if user.active? %>
-        <span class="actions_this_week"><%= t('.actions_this_week', :count => user.actions.this_week.count) %></span>
-      <% else %>
-        <span class="inactive"><%= t('.inactive') %></span>
-      <% end %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
--->
-
 <article class="team with_footer">
 <div class="inner">
   <header>
@@ -28,12 +7,16 @@
 
     <ul class="suggestions">
       <% @team.each do |user| %>
-        <li>
+        <li class="<%= 'selected' unless @team_follows[user.id] && @team_follows[user.id].new_record? %>">
         <%= avatar user %>
         <div class="content">
           <%= link_to user.fullname, politicians_path(user), :title => user.fullname, :class => :name %>
           <p class="title"><%= get_politician_title(user) %></p>
-          <%= link_to "Seguir", '/in_development' %>
+          <% if @team_follows[user.id] && @team_follows[user.id].new_record? -%>
+            <p><%= render 'follows/create_form', :follow => @team_follows[user.id], :follow_parent => user, :button_class => '', :button_label => t('.follow') %></p>
+          <% else -%>
+            <p><%= render 'follows/destroy_form', :follow => @team_follows[user.id], :follow_parent => user, :button_class => '' %></p>
+          <% end -%>
         </div>
         </li>
       <% end %>

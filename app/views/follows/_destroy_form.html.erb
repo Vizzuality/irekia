@@ -1,6 +1,13 @@
+<%
+@follow        = follow if defined?(follow)
+@follow_parent = follow_parent if defined?(follow_parent)
+@button_class  = 'white_button'
+@button_class  = button_class if defined?(button_class)
+%>
+
 <%= form_for [@follow_parent, @follow], :html => {:method => :delete} do |form| %>
   <%= form.hidden_field :id %>
-  <%= content_tag :button, :type => 'submit', :class => 'white_button add_person add_to_favorites' do %>
+  <%= content_tag :button, :type => 'submit', :class => "#{@button_class} add_person add_to_favorites" do %>
     <%= raw (content_tag(:span, '', :class => 'add') + t('.stop_follow')) %>
   <% end -%>
 <% end -%>
