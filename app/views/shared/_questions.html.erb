@@ -22,14 +22,14 @@
   <div class="right">
 
     <ul class="selector">
-      <li class="selected"><%= link_to "Todas", '/in_development' %></li>
-      <li><%= link_to "Contestadas", '/in_development' %></li>
+      <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_questions, :class => 'filter' %></li>
+      <li><%= link_to t('.content_type_filters.answered'), link_for_questions(:answered => true), :class => 'filter' %></li>
     </ul>
 
     <% if user_signed_in? && @question_target.present? %>
-      <%= link_to "Haz una pregunta", '/in_development', :id => "question-123", :class => "white_button ask_question" %>
+      <%= link_to t('.create_question'), '/in_development', :id => "question-123", :class => "white_button ask_question" %>
     <% elsif !user_signed_in? %>
-      <%= link_to "Haz una pregunta", '/in_development', :class => "white_button floating-login question" %>
+      <%= link_to t('.create_question'), '/in_development', :class => "white_button floating-login question" %>
     <% end %>
 
   </div>

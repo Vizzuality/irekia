@@ -85,6 +85,7 @@ class AreasController < ApplicationController
 
   def get_questions
     @questions = @area.questions.moderated
+    @questions = @questions.answered if params[:answered]
 
     @questions = if params[:more_polemic]
       @questions.more_polemic

@@ -82,6 +82,7 @@ class PoliticiansController < UsersController
 
   def get_questions
     @questions = @politician.questions_received.moderated
+    @questions = @questions.answered if params[:answered]
 
     @questions = if params[:more_polemic]
       @questions.more_polemic
