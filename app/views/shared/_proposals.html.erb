@@ -14,17 +14,12 @@
   </div>
   </header>
   <div class="left">
-    <ul>
-    <% @proposals.first(4).each do |proposal| %>
-      <li class="proposal">
-        <%= render 'shared/lists_elements/proposal', :data => proposal %>
-      </li>
-    <% end %>
-  </ul>
-
+    <div id="listing">
+      <%= render 'shared/proposals_list' if @proposals %>
+    </div>
   </div>
-  <div class="right">
 
+  <div class="right">
     <ul class="selector">
       <li class="selected"><%= link_to "Todas", '/in_development' %></li>
       <li><%= link_to "Propuestas del gobierno", '/in_development' %></li>

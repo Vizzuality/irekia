@@ -14,14 +14,8 @@
   </div>
   </header>
   <div class="left">
-    <div id="questions">
-      <ul>
-        <% @questions.first(4).each do |question| %>
-          <li class="question">
-          <%= render 'shared/lists_elements/question', :data => question %>
-          </li>
-        <% end %>
-      </ul>
+    <div id="listing">
+      <%= render 'shared/questions_list' if @questions %>
     </div>
 
   </div>
