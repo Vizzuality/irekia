@@ -12,6 +12,7 @@ class AreasController < ApplicationController
   respond_to :html, :json
 
   def show
+    @actions = @actions.page(1).per(4)
   end
 
   def update
@@ -26,6 +27,7 @@ class AreasController < ApplicationController
   end
 
   def actions
+    @actions = @actions.page(params[:page]).per(10)
     render :partial => 'shared/actions_list', :layout => nil if request.xhr?
   end
 
@@ -82,8 +84,6 @@ class AreasController < ApplicationController
     else
       @actions.more_recent
     end
-
-    @actions = @actions.page params[:page]
   end
 
   def build_questions_for_update
