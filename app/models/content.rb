@@ -27,10 +27,7 @@ class Content < ActiveRecord::Base
     participations.content_id = contents.id AND
     participations.type = 'Comment'
   SQL
-  )
-  .select('count(participations.id) as count')
-  .group(Content.column_names.map{|c| "contents.#{c}"})
-  .order('count desc')
+  ).select('count(participations.id) as count').group(Content.column_names.map{|c| "contents.#{c}"}).order('count desc')
 
   reverse_geocoded_by :latitude, :longitude
 
