@@ -12,7 +12,6 @@ class AreasController < ApplicationController
   respond_to :html, :json
 
   def show
-    respond_with @area
   end
 
   def update
@@ -27,26 +26,23 @@ class AreasController < ApplicationController
   end
 
   def actions
-    render :partial => 'shared/actions_list', :layout => nil if request.xhr?
-    #respond_with @actions
+    render :partial => 'shared/items_list', :layout => nil if request.xhr?
   end
 
   def questions
+    render :partial => 'shared/questions_list', :layout => nil and return if request.xhr?
     @question_target    = @area
     session[:return_to] = questions_area_path(@area)
-    respond_with @questions
   end
 
   def proposals
-    respond_with @proposals
+    render :partial => 'shared/proposals_list', :layout => nil and return if request.xhr?
   end
 
   def agenda
-    respond_with @agenda
   end
 
   def team
-    respond_with @team
   end
 
   private
@@ -89,10 +85,22 @@ class AreasController < ApplicationController
 
   def get_questions
     @questions = @area.questions.moderated
+
+    @questions = if params[:more_polemic]
+      @questions.more_polemic
+    else
+      @questions.more_recent
+    end
   end
 
   def get_proposals
     @proposals = @area.proposals.moderated
+
+    @proposals = if params[:more_polemic]
+      @proposals.more_polemic
+    else
+      @proposals.more_recent
+    end
   end
 
   def get_agenda

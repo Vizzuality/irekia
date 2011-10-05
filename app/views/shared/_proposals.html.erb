@@ -1,4 +1,4 @@
-<article class="proposals with_footer">
+<article class="proposals with_filters with_footer">
 <div class="inner">
   <header>
   <div class="left">
@@ -7,8 +7,8 @@
   <div class="right">
 
     <ul class="switch">
-      <li class="selected"><%= link_to t('.main_filters.more_recent'), '/in_development', :class => 'more_recent' %></li>
-      <li><%= link_to t('.main_filters.more_polemic'), '/in_development', :class => 'more_polemic' %></li>
+      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_proposals, :class => 'filter' %></li>
+      <li><%= link_to t('.main_filters.more_polemic'), link_for_proposals(:more_polemic => true), :class => 'filter' %></li>
     </ul>
 
   </div>

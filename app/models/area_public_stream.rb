@@ -15,12 +15,12 @@ class AreaPublicStream < ActiveRecord::Base
     INNER JOIN (
       SELECT p.content_id, count(p.content_id) AS count
       FROM contents c
-      INNER JOIN participations p ON p.content_id = c.id AND p.type = 'Comment'
+      LEFT JOIN participations p ON p.content_id = c.id AND p.type = 'Comment'
       GROUP BY p.content_id
     ) comments_count ON comments_count.content_id = area_public_streams.event_id
                      AND area_public_streams.event_type IN ('question', 'answer', 'proposal', 'event', 'news', 'tweet')
   SQL
-  ).order('comments_count.count desc')
+  ).order('comments_count.count desc, published_at desc')
 
   pg_search_scope :search, :against => :message
 

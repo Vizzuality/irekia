@@ -1,0 +1,7 @@
+<ul>
+  <% @proposals.each do |proposal| %>
+    <li class="proposal">
+      <%= render "shared/lists_elements/proposal", :data => proposal %>
+    </li>
+  <% end %>
+</ul>

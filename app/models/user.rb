@@ -67,8 +67,7 @@ class User < ActiveRecord::Base
   has_many :answer_requests
 
   has_many :actions,
-           :class_name => 'UserPublicStream',
-           :order => 'published_at desc'
+           :class_name => 'UserPublicStream'
   has_many :followings_actions,
            :class_name => 'UserPrivateStream',
            :order      => 'published_at desc'

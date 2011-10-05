@@ -21,6 +21,16 @@ class Content < ActiveRecord::Base
 
   scope :moderated,     where(:moderated => true)
   scope :not_moderated, where(:moderated => false)
+  scope :more_recent, order('published_at desc')
+  scope :more_polemic, joins(<<-SQL
+    LEFT JOIN participations ON
+    participations.content_id = contents.id AND
+    participations.type = 'Comment'
+  SQL
+  )
+  .select('count(participations.id) as count')
+  .group(Content.column_names.map{|c| "contents.#{c}"})
+  .order('count desc')
 
   reverse_geocoded_by :latitude, :longitude
 
