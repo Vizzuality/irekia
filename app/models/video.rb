@@ -8,7 +8,9 @@ class Video < Content
         :fullname      => author.fullname,
         :profile_image => author.profile_image
       },
-      :published_at    => published_at
+      :id              => id,
+      :published_at    => published_at,
+      :last_comments   => comments.last(2)
     }
   end
 

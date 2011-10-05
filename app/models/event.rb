@@ -29,6 +29,7 @@ class Event < Content
         :fullname      => author.fullname,
         :profile_image => author.profile_image
       },
+      :id              => id,
       :published_at    => published_at,
       :event_date      => event_date,
       :title           => title,
@@ -37,7 +38,8 @@ class Event < Content
       :location        => location,
       :latitude        => latitude,
       :longitude       => longitude,
-      :comments_count  => comments_count
+      :comments_count  => comments_count,
+      :last_comments   => comments.last(2)
     }
   end
 

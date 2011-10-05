@@ -78,6 +78,13 @@ class PoliticiansController < UsersController
     end
 
     @actions = @actions.page params[:page]
+
+    case action_name
+    when 'show'
+      @actions = @actions.page(1).per(4)
+    when 'actions'
+      @actions = @actions.page(params[:page]).per(10)
+    end
  end
 
   def get_questions

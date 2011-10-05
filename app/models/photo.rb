@@ -11,11 +11,13 @@ class Photo < Content
         :fullname      => author.fullname,
         :profile_image => author.profile_image
       },
+      :id              => id,
       :published_at    => published_at,
       :title           => title,
       :description     => description,
       :content_url     => content_url,
-      :comments_count  => comments_count
+      :comments_count  => comments_count,
+      :last_comments   => comments.last(2)
     }
   end
 end

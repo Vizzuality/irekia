@@ -10,4 +10,5 @@
   <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '/in_development', :class => "comment-count" %>
   &middot;
   <%= render "/shared/inline_sharing" %>
+  <%= render 'shared/lists_elements/last_comments', :data => data %>
 </div>

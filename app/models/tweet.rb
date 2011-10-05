@@ -11,10 +11,12 @@ class Tweet < Content
         :fullname      => author.fullname,
         :profile_image => author.profile_image
       },
+      :id              => id,
       :published_at    => published_at,
       :message         => message,
       :status_id       => status_id,
-      :username        => username
+      :username        => username,
+      :last_comments   => comments.last(2)
     }
   end
 end

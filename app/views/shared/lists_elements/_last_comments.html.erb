@@ -1,0 +1,32 @@
+<% if data.last_comments.present? -%>
+  <div class="comment-box">
+    <% if data.last_comments.size == 2 -%>
+    <p class="previous">
+      <%= raw t('.previous', :previous_link => link_to(t('.previous_link', :count => 1), '/in_development'), :authors => data.last_comments.first.author.fullname ) %>
+    </p>
+    <% end -%>
+    <% if data.last_comments.size >= 1 -%>
+    <ul>
+      <li>
+        <%= avatar data.author, 'small' %>
+        <p>
+        <%= link_to data.last_comments.last.author.fullname, user_path(data.last_comments.last.author.id) %> - <%= truncate(data.last_comments.last.body, :length => 150) %>
+        </p>
+      </li>
+    </ul>
+    <% end -%>
+    <%= form_for Comment.new, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+      <div class="input_field placeholder">
+        <% if user_signed_in? -%>
+          <%= form.hidden_field :user_id, :value => current_user.id %>
+        <% end -%>
+        <%= form.hidden_field :content_id, :value => data.id %>
+        <%= form.fields_for :comment_data, CommentData.new do |comment_data_form| %>
+          <%= comment_data_form.text_field :body %>
+          <span class="holder"><%= t('.write_your_comment')%></span>
+        <% end -%>
+      </div>
+      <%= form.submit 'Enviar' %>
+    <% end -%>
+  </div>
+<% end -%>

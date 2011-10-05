@@ -940,6 +940,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       .content .comment-box {
         @include border-radius(5px);
         background: rgba(237, 237, 239, 0.7);
+        margin-top: 12px;
 
         .avatar {
           margin: 0 9px 0 0;

@@ -39,11 +39,13 @@ class Question < Content
         :fullname      => author.fullname,
         :profile_image => author.profile_image
       },
+      :id              => id,
       :published_at    => published_at,
       :question_text   => question_text,
       :target_user     => target_user,
       :answered_at     => try(:answer).try(:published_at),
-      :comments_count  => comments_count
+      :comments_count  => comments_count,
+      :last_comments   => comments.last(2)
     }
   end
 end

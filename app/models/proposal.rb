@@ -39,13 +39,15 @@ class Proposal < Content
         :fullname      => author.fullname,
         :profile_image => author.profile_image
       },
+      :id              => id,
       :published_at    => published_at,
       :title           => title,
       :body            => body,
       :participation   => participation,
       :in_favor_count  => in_favor_count,
       :against_count   => against_count,
-      :comments_count  => comments_count
+      :comments_count  => comments_count,
+      :last_comments   => comments.last(2)
     }
   end
 end

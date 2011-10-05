@@ -12,7 +12,6 @@ class AreasController < ApplicationController
   respond_to :html, :json
 
   def show
-    @actions = @actions.page(1).per(4)
   end
 
   def update
@@ -83,6 +82,13 @@ class AreasController < ApplicationController
       @actions.more_polemic
     else
       @actions.more_recent
+    end
+
+    case action_name
+    when 'show'
+      @actions = @actions.page(1).per(4)
+    when 'actions'
+      @actions = @actions.page(params[:page]).per(10)
     end
   end
 

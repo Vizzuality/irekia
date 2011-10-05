@@ -1,5 +1,16 @@
 class Admin::ParticipationsController < Admin::AdminController
 
+  def create
+    participation_type = params[:type].downcase.to_sym
+    @participation = Participation.new params[participation_type]
+
+    if @participation.save
+      head :sucess
+    else
+      head :error
+    end
+  end
+
   def update
     @participation     = Participation.where(:id => params[:id]).first
     participation_type = params[:type].downcase.to_sym

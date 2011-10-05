@@ -7,6 +7,7 @@ class Answer < Content
   delegate :question_text, :answer_text, :to => :answer_data
 
   accepts_nested_attributes_for :answer_opinions
+
   def as_json(options = {})
     {
       :author          => {
@@ -15,10 +16,12 @@ class Answer < Content
         :fullname      => author.fullname,
         :profile_image => author.profile_image
       },
+      :id              => id,
       :published_at    => published_at,
       :question_text   => answer_data.question_text,
       :answer_text     => answer_text,
-      :comments_count  => comments_count
+      :comments_count  => comments_count,
+      :last_comments   => comments.last(2)
     }
   end
 end

@@ -59,6 +59,10 @@ class Content < ActiveRecord::Base
     comments.count if comments
   end
 
+  def last_comments
+    comments.last(2)
+  end
+
   def as_json(options = {})
     {
       :author          => {

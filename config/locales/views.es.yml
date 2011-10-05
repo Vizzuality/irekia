@@ -183,6 +183,13 @@ es:
         one: 1 comentario
         other: '%{count} comentarios'
       share: Compartir
+      last_comments:
+        previous: '%{previous_link} de %{authors}'
+        previous_link:
+          zero: Ningún comentario anterior
+          one: 1 comentario anterior
+          other: '%{count} comentarios anteriores'
+        write_your_comment: 'Escribe tu comentario...'
 
     questions:
       title: Preguntas de los ciudadanos
