@@ -145,9 +145,10 @@ article .white_button.disabled:hover {
 
 .white_button:hover, article .white_button:hover {
   color:#333;
-  background:rgba(244,246,249,0.76);
-
+  background-color:rgba(244,246,249,0.76);
   @include box-shadow(0 0 7px rgba(43, 140, 194, .3));
+
+  span {background-position:0 -15px;}
 }
 
 .white_button:active,
@@ -167,6 +168,8 @@ article .white_button:active {
   background: -o-linear-gradient(top, rgba(244,246,249,0.76) 0%, rgba(255,255,255,0.76) 100%); /* Opera11.10+ */
   background: -ms-linear-gradient(top, rgba(244,246,249,0.76) 0%, rgba(255,255,255,0.76) 100%); /* IE10+ */
   background: linear-gradient(top,rgba(244,246,249,0.76) 0%,rgba(255,255,255,0.76)  100%); /* W3C */
+
+  span {background-position:0 0;}
 }
 
 /* add person icon */
