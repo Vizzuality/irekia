@@ -54,8 +54,8 @@ feature "Area's proposals page" do
     within '.proposals' do
       page.should have_css 'h2', :text => 'Propuestas'
 
-      page.should have_css 'a.more_recent', :text => 'Más recientes'
-      page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter', :text => 'Más recientes'
+      page.should have_css 'a.filter', :text => 'Más polémicas'
 
       within 'ul li.proposal' do
         page.should have_css 'p', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'

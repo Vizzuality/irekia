@@ -68,8 +68,8 @@ feature "Area's home" do
     within '.actions' do
       page.should have_css 'h2', :text => 'Últimas acciones'
 
-      page.should have_css 'a.filter.recent', :text => 'Más recientes'
-      page.should have_css 'a.filter.polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter', :text => 'Más recientes'
+      page.should have_css 'a.filter', :text => 'Más polémicas'
 
       within '.argument' do
         page.should have_css 'p', :text => 'A favor de la propuesta "Actualizar la información publicada sobre las ayudas a familias numerosas"'
@@ -116,7 +116,6 @@ feature "Area's home" do
       within '.right .selector' do
         page.should have_link 'Todos los tipos'
         page.should have_link 'Noticias'
-        page.should have_link 'Actividad de los políticos'
         page.should have_link 'Preguntas'
         page.should have_link 'Propuestas'
         page.should have_link 'Fotos'
@@ -147,21 +146,10 @@ feature "Area's home" do
     within '.questions' do
       page.should have_css 'h2', :text => 'Preguntas de los ciudadanos'
 
-      page.should have_css 'a.more_recent', :text => 'Más recientes'
-      page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter', :text => 'Más recientes'
+      page.should have_css 'a.filter', :text => 'Más polémicas'
 
       within '.question' do
-        #page.should have_css 'p', :text => 'Pregunta para Virginia Uriarte Rodríguez...'
-        page.should have_css 'p.excerpt', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
-
-        page.should have_css 'img'
-        page.should have_css '.footer span.published_at', :text => 'María González Pérez hace menos de 1 minuto'
-        page.should have_css '.footer span.published_at a', :text => 'María González Pérez'
-        page.should have_css '.footer span.not_answered', :text => 'Aún no contestada'
-        page.should have_css '.footer a', :text => '1 comentario'
-      end
-
-      within '.question:last-child' do
         page.should have_css 'p', :text => 'Pregunta para el área...'
         page.should have_css 'p.excerpt', :text => '"Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
 
@@ -170,6 +158,17 @@ feature "Area's home" do
         page.should have_css '.footer span.published_at a', :text => 'María González Pérez'
         page.should have_css '.footer span.published_at span.answered', :text => 'Contestada hace menos de 1 minuto'
         page.should have_css '.footer a.comment-count', :text => 'Ningún comentario'
+      end
+
+      within '.question:last-child' do
+        pending 'Check for label "Pregunta para Virginia Uriarte Rodríguez..."' #page.should have_css 'p', :text => 'Pregunta para Virginia Uriarte Rodríguez...'
+        page.should have_css 'p.excerpt', :text => '"¿Cuándo va a ser efectiva la ayuda para estudiantes universitarios en 2011?"'
+
+        page.should have_css 'img'
+        page.should have_css '.footer span.published_at', :text => 'María González Pérez hace menos de 1 minuto'
+        page.should have_css '.footer span.published_at a', :text => 'María González Pérez'
+        page.should have_css '.footer span.not_answered', :text => 'Aún no contestada'
+        page.should have_css '.footer a', :text => '1 comentario'
       end
 
       within 'ul.selector' do
@@ -189,8 +188,8 @@ feature "Area's home" do
     within '.proposals' do
       page.should have_css 'h2', :text => 'Propuestas'
 
-      page.should have_css 'a.more_recent', :text => 'Más recientes'
-      page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter', :text => 'Más recientes'
+      page.should have_css 'a.filter', :text => 'Más polémicas'
 
       within 'ul li.proposal' do
         page.should have_css 'p', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'

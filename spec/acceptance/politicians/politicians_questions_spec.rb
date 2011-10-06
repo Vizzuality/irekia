@@ -89,8 +89,8 @@ feature "Area's questions page" do
     within '.questions' do
       page.should have_css 'h2', :text => 'Preguntas de los ciudadanos'
 
-      page.should have_css 'a.more_recent', :text => 'Más recientes'
-      page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter', :text => 'Más recientes'
+      page.should have_css 'a.filter', :text => 'Más polémicas'
 
       within '.question:first-child' do
         #page.should have_css 'p', :text => 'Pregunta para Virginia Uriarte Rodríguez...'

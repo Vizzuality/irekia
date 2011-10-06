@@ -99,8 +99,8 @@ feature "Politician's home" do
     within '.actions' do
       page.should have_css 'h2', :text => 'Últimas acciones'
 
-      page.should have_css 'a.filter.recent', :text => 'Más recientes'
-      page.should have_css 'a.filter.polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter', :text => 'Más recientes'
+      page.should have_css 'a.filter', :text => 'Más polémicas'
 
       within '.answer' do
         page.should have_css 'p', :text => 'Contestando a "Hola Virginia, llevo algún tiempo queriendo saber por qué no se pueden llevar perros, gatos u otros animales domésticos a los actos públicos."'
@@ -126,7 +126,6 @@ feature "Politician's home" do
       within 'ul.selector' do
         page.should have_link 'Todos los tipos'
         page.should have_link 'Noticias'
-        page.should have_link 'Actividad de los políticos'
         page.should have_link 'Preguntas'
         page.should have_link 'Propuestas'
         page.should have_link 'Fotos'
@@ -144,8 +143,8 @@ feature "Politician's home" do
     within '.questions' do
       page.should have_css 'h2', :text => 'Preguntas de los ciudadanos'
 
-      page.should have_css 'a.more_recent', :text => 'Más recientes'
-      page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter', :text => 'Más recientes'
+      page.should have_css 'a.filter', :text => 'Más polémicas'
 
       within '.question:first-child' do
         #page.should have_css 'p', :text => 'Pregunta para Virginia Uriarte Rodríguez...'
@@ -175,8 +174,8 @@ feature "Politician's home" do
     within '.proposals' do
       page.should have_css 'h2', :text => 'Propuestas'
 
-      page.should have_css 'a.more_recent', :text => 'Más recientes'
-      page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter', :text => 'Más recientes'
+      page.should have_css 'a.filter', :text => 'Más polémicas'
 
       within 'ul li.proposal' do
         page.should have_css 'p', :text => 'Actualizar la información publicada sobre las ayudas a familias numerosas'

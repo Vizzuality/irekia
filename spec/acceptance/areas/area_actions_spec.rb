@@ -55,8 +55,8 @@ feature "Area's actions page" do
     within '.actions' do
       page.should have_css 'h2', :text => 'Últimas acciones'
 
-      page.should have_css 'a.filter.recent', :text => 'Más recientes'
-      page.should have_css 'a.filter.polemic', :text => 'Más polémicas'
+      page.should have_css 'a.filter', :text => 'Más recientes'
+      page.should have_css 'a.filter', :text => 'Más polémicas'
 
       within '.argument' do
         page.should have_css 'p', :text => 'A favor de la propuesta "Actualizar la información publicada sobre las ayudas a familias numerosas"'
@@ -103,7 +103,6 @@ feature "Area's actions page" do
       within 'ul.selector' do
         page.should have_link 'Todos los tipos'
         page.should have_link 'Noticias'
-        page.should have_link 'Actividad de los políticos'
         page.should have_link 'Preguntas'
         page.should have_link 'Propuestas'
         page.should have_link 'Fotos'

@@ -12,35 +12,34 @@ feature "Search" do
 
     within 'ul.menu' do
       page.should have_css 'li.selected', :text => 'Resumen'
-      page.should have_css 'li', :text => '137 contenidos'
+
+      page.should have_css 'li', :text => '139 contenidos'
       page.should have_css 'li', :text => '4 políticos'
       page.should have_css 'li', :text => '3 usuarios'
     end
 
     within '.contents_results' do
-      page.should have_css 'h2', :text => '137 contenidos'
+      page.should have_css 'h2', :text => '139 contenidos'
 
       #page.should have_css '.left ul li', :count => 4
 
       within '.left ul li' do
-        page.should have_content 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
-        page.should have_content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d...'
-        page.should have_link 'Leer más'
-        page.should have_content 'Publicado hace menos de 1 minuto · 2 comentarios · Compartir'
-        page.should have_link '2 comentarios'
+        page.should have_content 'Actualizar la información publicada sobre las ayudas a familias numerosas'
+        page.should have_content 'María González Pérez hace menos de 1 minuto · 1 comentario · Compartir'
+        page.should have_link 'María González Pérez'
+        page.should have_link '1 comentario'
         page.should have_link 'Compartir'
       end
-      page.should have_link 'ver los 137 contenidos encontrados'
+      page.should have_link 'ver los 139 contenidos encontrados'
 
       within '.switch' do
-        page.should have_css 'a.more_recent.selected', :text => 'Más recientes'
-        page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+        page.should have_css 'a.filter.selected', :text => 'Más recientes'
+        page.should have_css 'a.filter', :text => 'Más polémicas'
       end
 
       within '.selector' do
         page.should have_css 'a.selected', :text => 'Todos los tipos'
         page.should have_link 'Noticias'
-        page.should have_link 'Actividad de los políticos'
         page.should have_link 'Preguntas'
         page.should have_link 'Propuestas'
         page.should have_link 'Fotos'
@@ -79,7 +78,7 @@ feature "Search" do
     page.should have_field 'search_query', :with => 'lorem'
 
     within 'ul.menu' do
-      click_link '137 contenidos'
+      click_link '139 contenidos'
     end
 
 
@@ -88,35 +87,33 @@ feature "Search" do
 
     within 'ul.menu' do
       page.should have_css 'li', :text => 'Resumen'
-      page.should have_css 'li.selected', :text => '137 contenidos'
+      page.should have_css 'li.selected', :text => '139 contenidos'
       page.should have_css 'li', :text => '4 políticos'
       page.should have_css 'li', :text => '3 usuarios'
     end
 
     within '.contents_results' do
-      page.should have_css 'h2', :text => '137 contenidos'
+      page.should have_css 'h2', :text => '139 contenidos'
 
       #page.should have_css '.left ul li', :count => 10
 
       within '.left ul li' do
-        page.should have_content 'Inauguración del nuevo complejo deportivo en la localidad de Getxo'
-        page.should have_content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed d...'
-        page.should have_link 'Leer más'
-        page.should have_content 'Publicado hace menos de 1 minuto · 2 comentarios · Compartir'
-        page.should have_link '2 comentarios'
+        page.should have_content 'Actualizar la información publicada sobre las ayudas a familias numerosas'
+        page.should have_content 'María González Pérez hace menos de 1 minuto · 1 comentario · Compartir'
+        page.should have_link 'María González Pérez'
+        page.should have_link '1 comentario'
         page.should have_link 'Compartir'
       end
       page.should have_link 'ver más resultados'
 
       within '.switch' do
-        page.should have_css 'a.more_recent.selected', :text => 'Más recientes'
-        page.should have_css 'a.more_polemic', :text => 'Más polémicas'
+        page.should have_css 'a.filter.selected', :text => 'Más recientes'
+        page.should have_css 'a.filter', :text => 'Más polémicas'
       end
 
       within '.selector' do
         page.should have_css 'a.selected', :text => 'Todos los tipos'
         page.should have_link 'Noticias'
-        page.should have_link 'Actividad de los políticos'
         page.should have_link 'Preguntas'
         page.should have_link 'Propuestas'
         page.should have_link 'Fotos'
@@ -140,7 +137,7 @@ feature "Search" do
 
     within 'ul.menu' do
       page.should have_css 'li', :text => 'Resumen'
-      page.should have_css 'li', :text => '137 contenidos'
+      page.should have_css 'li', :text => '139 contenidos'
       page.should have_css 'li.selected', :text => '4 políticos'
       page.should have_css 'li', :text => '3 usuarios'
     end
@@ -159,8 +156,8 @@ feature "Search" do
       page.should_not have_link 'ver más resultados'
 
       #within '.switch' do
-      #  page.should have_css 'a.more_recent.selected', :text => 'Más recientes'
-      #  page.should have_css 'a.more_active', :text => 'Más activos'
+      #  page.should have_css 'a.filter.selected', :text => 'Más recientes'
+      #  page.should have_css 'a.filter', :text => 'Más activos'
       #end
 
       #within '.area_filters' do
@@ -186,7 +183,7 @@ feature "Search" do
 
     within 'ul.menu' do
       page.should have_css 'li', :text => 'Resumen'
-      page.should have_css 'li', :text => '137 contenidos'
+      page.should have_css 'li', :text => '139 contenidos'
       page.should have_css 'li', :text => '4 políticos'
       page.should have_css 'li.selected', :text => '3 usuarios'
     end
@@ -203,8 +200,8 @@ feature "Search" do
       page.should_not have_link 'ver más resultados'
 
      # within '.switch' do
-     #   page.should have_css 'a.more_recent.selected', :text => 'Más recientes'
-     #   page.should have_css 'a.more_active', :text => 'Más activos'
+     #   page.should have_css 'a.filter.selected', :text => 'Más recientes'
+     #   page.should have_css 'a.filter', :text => 'Más activos'
      # end
 
      # within '.location_filters' do
@@ -264,7 +261,7 @@ feature "Search" do
         within '.summary' do
           page.should have_content 'Contenidos'
         end
-        page.should have_link '137 contenidos encontrados'
+        page.should have_link '139 contenidos encontrados'
       end
 
     end
