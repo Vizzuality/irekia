@@ -48,4 +48,18 @@ class Question < Content
       :last_comments   => comments.last(2)
     }
   end
+
+  def publish_content
+
+    return unless self.moderated?
+
+    if target_user
+      user_action              = target_user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      user_action.published_at = self.published_at
+      user_action.message      = self.to_json
+      user_action.save!
+    end
+    super
+  end
+  private :publish_content
 end
