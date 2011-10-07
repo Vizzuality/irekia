@@ -96,6 +96,13 @@ class PoliticiansController < UsersController
     else
       @questions.more_recent
     end
+
+    case action_name
+    when 'show'
+      @questions = @questions.page(1).per(4)
+    when 'questions'
+      @questions = @questions.page(params[:page]).per(10)
+    end
   end
 
   def get_proposals
@@ -107,6 +114,13 @@ class PoliticiansController < UsersController
       @proposals.more_polemic
     else
       @proposals.more_recent
+    end
+
+    case action_name
+    when 'show'
+      @proposals = @proposals.page(1).per(4)
+    when 'proposals'
+      @proposals = @proposals.page(params[:page]).per(10)
     end
   end
 

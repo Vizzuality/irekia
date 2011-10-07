@@ -30,6 +30,7 @@ group :development, :test do
   gem 'irbtools', :require => 'irbtools/configure'
   gem 'railroady'
   gem 'escape_utils'
+  gem 'ffaker'
 end
 
 group :development, :test, :staging do

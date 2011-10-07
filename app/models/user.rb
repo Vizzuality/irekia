@@ -103,8 +103,13 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :follows, :allow_destroy => true
 
   scope :oldest_first, order('created_at asc')
-  scope :politicians, joins(:role).where('roles.name = ?', 'Politician')
-  scope :citizens, joins(:role).where('roles.name = ?', 'Citizen')
+  #scope :politicians, joins(:role).where('roles.name = ?', 'Politician')
+  scope :politicians, :joins      => :role,
+                      :conditions => ['roles.name = ?', 'Politician'],
+                      :readonly   => false
+  scope :citizens, :joins      => :role,
+                   :conditions => ['roles.name = ?', 'Citizen'],
+                   :readonly   => false
 
   pg_search_scope :search_by_name_description_province_and_city, :against => [:name, :description, :province, :city]
 
