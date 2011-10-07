@@ -3,14 +3,14 @@
     <% @info_div_id = (@info_div_id || 0 ) + 1 -%>
     <% day_events.first(2).each do |event| -%>
       <li>
-        <%= link_to event.title.truncate(19), '#', :id => "event-#{@info_div_id}", :class => 'event' %>
+        <%= link_to event.title.truncate(18), '#', :id => "event-#{@info_div_id}", :class => 'event' %>
       </li>
     <% end -%>
     <li class="more"><a href="#" class="event"><%= t('.and_more', :count => day_events.count - 2)%></a></li>
   <% else -%>
     <% day_events.each do |event| -%>
       <li>
-        <%= link_to event.title.truncate(19), '#', :id => "event-#{event.id}", :class => 'event' %>
+        <%= link_to event.title.truncate(18), '#', :id => "event-#{event.id}", :class => 'event' %>
       </li>
     <% end -%>
   <% end -%>
