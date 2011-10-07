@@ -7,8 +7,8 @@
   <div class="right">
 
     <ul class="switch">
-      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_questions, :class => 'filter' %></li>
-      <li><%= link_to t('.main_filters.more_polemic'), link_for_questions(:more_polemic => true), :class => 'filter' %></li>
+      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_questions(:referer => action_name), :class => 'filter' %></li>
+      <li><%= link_to t('.main_filters.more_polemic'), link_for_questions(:more_polemic => true, :referer => action_name), :class => 'filter' %></li>
     </ul>
 
   </div>
@@ -22,8 +22,8 @@
   <div class="right">
 
     <ul class="selector">
-      <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_questions, :class => 'filter' %></li>
-      <li><%= link_to t('.content_type_filters.answered'), link_for_questions(:answered => true), :class => 'filter' %></li>
+      <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_questions(:referer => action_name), :class => 'filter' %></li>
+      <li><%= link_to t('.content_type_filters.answered'), link_for_questions(:answered => true, :referer => action_name), :class => 'filter' %></li>
     </ul>
 
     <% if user_signed_in? && @question_target.present? %>

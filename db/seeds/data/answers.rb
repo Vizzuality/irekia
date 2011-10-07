@@ -9,6 +9,7 @@ puts '==================='.green
                         :question => @question,
                         :areas    => [@area],
                         :comments => random_comments
+
 Question.where('id <> ?', @question.id).each do |question|
   next if [true, false].sample
 

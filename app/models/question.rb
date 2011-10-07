@@ -12,7 +12,7 @@ class Question < Content
   has_many :answer_requests,
            :foreign_key => :content_id
 
-  scope :answered, joins(:answer)
+  scope :answered, joins(:answer_data)
   scope :not_answered, includes(:answer_data).where('answer_data.question_id IS NULL')
 
   pg_search_scope :search_existing_questions, :associated_against => {

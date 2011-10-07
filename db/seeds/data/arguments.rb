@@ -19,13 +19,13 @@ end
 end
 
 Proposal.where('id <> ?', proposal.id).each do |proposal|
-  rand(20).times do
+  rand(5).times do
     create_argument :author => User.citizens.sample,
                     :proposal => proposal.id
 
   end
 
-  rand(20).times do
+  rand(5).times do
     create_argument :author => User.citizens.sample,
                     :in_favor => false,
                     :proposal => proposal.id

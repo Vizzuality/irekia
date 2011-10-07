@@ -9,6 +9,7 @@ class PoliticiansController < UsersController
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
   before_filter :get_agenda,                 :only => [:show, :agenda]
+  before_filter :paginate,                   :only => [:show, :actions, :questions, :proposals]
 
   respond_to :html, :json
 
@@ -76,15 +77,6 @@ class PoliticiansController < UsersController
     else
       @actions.more_recent
     end
-
-    @actions = @actions.page params[:page]
-
-    case action_name
-    when 'show'
-      @actions = @actions.page(1).per(4)
-    when 'actions'
-      @actions = @actions.page(params[:page]).per(10)
-    end
  end
 
   def get_questions
@@ -95,13 +87,6 @@ class PoliticiansController < UsersController
       @questions.more_polemic
     else
       @questions.more_recent
-    end
-
-    case action_name
-    when 'show'
-      @questions = @questions.page(1).per(4)
-    when 'questions'
-      @questions = @questions.page(params[:page]).per(10)
     end
   end
 
@@ -114,13 +99,6 @@ class PoliticiansController < UsersController
       @proposals.more_polemic
     else
       @proposals.more_recent
-    end
-
-    case action_name
-    when 'show'
-      @proposals = @proposals.page(1).per(4)
-    when 'proposals'
-      @proposals = @proposals.page(params[:page]).per(10)
     end
   end
 
@@ -144,5 +122,17 @@ class PoliticiansController < UsersController
       :lat   => event.latitude,
       :lon   => event.longitude
     }}.group_by{|event| [event[:lat], event[:lon]]}.values.to_json.html_safe
+  end
+
+  def paginate
+    if action_name == 'show' || params[:referer] == 'show'
+      @actions   = @actions.page(1).per(4)   if @actions
+      @questions = @questions.page(1).per(4) if @questions
+      @proposals = @proposals.page(1).per(4) if @proposals
+    else
+      @actions   = @actions.page(params[:page]).per(10)   if @actions
+      @questions = @questions.page(params[:page]).per(10) if @questions
+      @proposals = @proposals.page(params[:page]).per(10) if @proposals
+    end
   end
 end

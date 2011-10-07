@@ -6,8 +6,8 @@
   </div>
   <div class="right">
     <ul class="switch">
-      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_actions, :class => 'filter' %></li>
-      <li><%= link_to t('.main_filters.more_polemic'), link_for_actions(:more_polemic => true), :class => 'filter' %></li>
+      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_actions(:referer => action_name), :class => 'filter' %></li>
+      <li><%= link_to t('.main_filters.more_polemic'), link_for_actions(:more_polemic => true, :referer => action_name), :class => 'filter' %></li>
     </ul>
 
   </div>
@@ -22,12 +22,12 @@
 
   <div class="right">
     <ul class="selector">
-      <li class="selected"><%= link_to t('.content_type_filters.all'), actions_area_path(@area), :class => "filter" %></li>
-      <li><%= link_to t('.content_type_filters.news'), actions_area_path(@area, :type => :news), :class => "filter" %></li>
-      <li><%= link_to t('.content_type_filters.questions'), actions_area_path(@area, :type => :question), :class => "filter" %></li>
-      <li><%= link_to t('.content_type_filters.proposals'), actions_area_path(@area, :type => :proposal), :class => "filter" %></li>
-      <li><%= link_to t('.content_type_filters.images'), actions_area_path(@area, :type => :image), :class => "filter" %></li>
-      <li><%= link_to t('.content_type_filters.videos'), actions_area_path(@area, :type => :video), :class => "filter" %></li>
+      <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_actions, :class => "filter" %></li>
+      <li><%= link_to t('.content_type_filters.news'), link_for_actions(:type => :news, :referer => action_name), :class => "filter" %></li>
+      <li><%= link_to t('.content_type_filters.questions'), link_for_actions(:type => :question, :referer => action_name), :class => "filter" %></li>
+      <li><%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => :proposal, :referer => action_name), :class => "filter" %></li>
+      <li><%= link_to t('.content_type_filters.images'), link_for_actions(:type => :image, :referer => action_name), :class => "filter" %></li>
+      <li><%= link_to t('.content_type_filters.videos'), link_for_actions(:type => :video, :referer => action_name), :class => "filter" %></li>
     </ul>
   </div>
 </div>

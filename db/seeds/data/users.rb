@@ -19,7 +19,7 @@ puts '================='.green
                        :email                 => 'alberto.zarate@ej-gv.es',
                        :role                  => Role.find_by_name('Politician'),
                        :area_user             => AreaUser.create(:area  => @area, :display_order => 2),
-                       :profile_image         => Image.create(:image => @men_images.sample)
+                       :profile_picture       => Image.create(:image => @men_images.sample)
 
 @virginia = create_user :name                  => 'Virginia',
                         :lastname              => 'Uriarte Rodríguez',
@@ -27,7 +27,7 @@ puts '================='.green
                         :role                  => Role.find_by_name('Politician'),
                         :title                 => Title.find_by_name('Adviser'),
                         :area_user             => AreaUser.create(:area  => @area, :display_order => 1),
-                        :profile_image         => Image.create(:image => @women_images.sample)
+                        :profile_picture       => Image.create(:image => @women_images.sample)
 
 3.times do
   name = "#{String.random(20)}"

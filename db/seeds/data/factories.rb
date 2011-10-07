@@ -74,7 +74,7 @@ def create_event(params)
   defaults = {
     :title    => Faker::Lorem.sentence(10),
     :area     => @area,
-    :the_geom => "POINT(#{(-180..180).to_a.sample} #{(-90..90).to_a.sample})"
+    :the_geom => "POINT(#{(-95..33).to_a.sample/10} #{(360..438).to_a.sample/10})"
   }
   params = defaults.merge(params)
 
@@ -205,8 +205,9 @@ def create_question(params)
     print '.'.blue
 
     question
+  else
+    question_data.question
   end
-
 end
 
 def create_tweet(params)
@@ -236,8 +237,8 @@ def create_user(params)
     :title                 => Title.find_by_name('Co-adviser'),
     :profile_picture       => Image.create(:image => (@men_images + @women_images).sample)
   }
-
   params = defaults.merge(params)
+
   user = User.find_or_initialize_by_name_and_lastname_and_email(params[:name], params[:lastname], params[:email])
   user.password              = params[:password]
   user.password_confirmation = params[:password_confirmation]

@@ -8,6 +8,7 @@ class AreasController < ApplicationController
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
   before_filter :get_agenda,                 :only => [:show, :agenda]
+  before_filter :paginate,                   :only => [:show, :actions, :questions, :proposals]
 
   respond_to :html, :json
 
@@ -26,13 +27,12 @@ class AreasController < ApplicationController
   end
 
   def actions
-    @actions = @actions.page(params[:page]).per(10)
     render :partial => 'shared/actions_list', :layout => nil if request.xhr?
   end
 
   def questions
-    render :partial => 'shared/questions_list', :layout => nil and return if request.xhr?
     @question_target    = @area
+    render :partial => 'shared/questions_list', :layout => nil and return if request.xhr?
     session[:return_to] = questions_area_path(@area)
   end
 
@@ -83,13 +83,6 @@ class AreasController < ApplicationController
     else
       @actions.more_recent
     end
-
-    case action_name
-    when 'show'
-      @actions = @actions.page(1).per(4)
-    when 'actions'
-      @actions = @actions.page(params[:page]).per(10)
-    end
   end
 
   def build_questions_for_update
@@ -109,18 +102,6 @@ class AreasController < ApplicationController
     else
       @questions.more_recent
     end
-
-    case action_name
-    when 'show'
-      @questions = @questions.page(1).per(4)
-    when 'questions'
-      case params[:referer]
-      when 'show'
-        @questions = @questions.page(1).per(4)
-      when 'questions'
-        @questions = @questions.page(params[:page]).per(10)
-      end
-    end
   end
 
   def get_proposals
@@ -134,12 +115,7 @@ class AreasController < ApplicationController
       @proposals.more_recent
     end
 
-    case action_name
-    when 'show'
-      @proposals = @proposals.page(1).per(4)
-    when 'proposals'
-      @proposals = @proposals.page(params[:page]).per(10)
-    end
+    @proposals = @proposals.page(1).per(4)
   end
 
   def get_agenda
@@ -162,5 +138,17 @@ class AreasController < ApplicationController
       :lat   => event.latitude,
       :lon   => event.longitude
     }}.group_by{|event| [event[:lat], event[:lon]]}.values.to_json.html_safe
+  end
+
+  def paginate
+    if action_name == 'show' || params[:referer] == 'show'
+      @actions   = @actions.page(1).per(4)   if @actions
+      @questions = @questions.page(1).per(4) if @questions
+      @proposals = @proposals.page(1).per(4) if @proposals
+    else
+      @actions   = @actions.page(params[:page]).per(10)   if @actions
+      @questions = @questions.page(params[:page]).per(10) if @questions
+      @proposals = @proposals.page(params[:page]).per(10) if @proposals
+    end
   end
 end

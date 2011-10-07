@@ -7,8 +7,8 @@
   <div class="right">
 
     <ul class="switch">
-      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_proposals, :class => 'filter' %></li>
-      <li><%= link_to t('.main_filters.more_polemic'), link_for_proposals(:more_polemic => true), :class => 'filter' %></li>
+      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_proposals(:referer => action_name), :class => 'filter' %></li>
+      <li><%= link_to t('.main_filters.more_polemic'), link_for_proposals(:more_polemic => true, :referer => action_name), :class => 'filter' %></li>
     </ul>
 
   </div>
@@ -21,9 +21,9 @@
 
   <div class="right">
     <ul class="selector">
-      <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_proposals, :class => 'filter' %></li>
-      <li><%= link_to t('.content_type_filters.from_politicians'), link_for_proposals(:from_politicians => true), :class => 'filter' %></li>
-      <li><%= link_to t('.content_type_filters.from_citizens'), link_for_proposals(:from_citizens => true), :class => 'filter' %></li>
+      <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_proposals(:referer => action_name), :class => 'filter' %></li>
+      <li><%= link_to t('.content_type_filters.from_politicians'), link_for_proposals(:from_politicians => true, :referer => action_name), :class => 'filter' %></li>
+      <li><%= link_to t('.content_type_filters.from_citizens'), link_for_proposals(:from_citizens => true, :referer => action_name), :class => 'filter' %></li>
     </ul>
 
     <%= link_to t('.create_proposal'), '/in_development', :id => "question-123", :class => "white_button ask_question" %>
