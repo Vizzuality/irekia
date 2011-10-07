@@ -254,7 +254,7 @@ DEPENDENCIES
   delorean
   devise (~> 1.4.7)
   escape_utils
-  ffaker
+  ffaker (= 1.8.1)
   geocoder (~> 1.0.4)
   irbtools
   json (= 1.5.3)

@@ -13,6 +13,7 @@ gem 'geocoder', '~> 1.0.4'
 gem 'colored', '~> 1.2'
 gem 'pg_search', '~> 0.3.1'
 gem 'json', '1.5.3'
+gem 'ffaker', '1.8.1'
 
 group :development do
   gem 'capistrano'
@@ -30,7 +31,6 @@ group :development, :test do
   gem 'irbtools', :require => 'irbtools/configure'
   gem 'railroady'
   gem 'escape_utils'
-  gem 'ffaker'
 end
 
 group :development, :test, :staging do
