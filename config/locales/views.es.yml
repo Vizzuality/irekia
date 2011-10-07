@@ -234,6 +234,11 @@ es:
         zero: 0 áreas
         one: 1 área
         other: '%{count} áreas'
+    agenda_for_day:
+      and_more:
+        zero: Ninguno más...
+        one: Y uno más...
+        other: 'y %{count} más...'
 
   contents:
     news:

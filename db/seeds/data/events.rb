@@ -8,5 +8,5 @@ this_week = Time.current.beginning_of_week
 
 100.times do
   create_event :user => @virginia,
-               :date => this_week.advance(:days => rand(21), :hours => rand(24))
+               :date => this_week.advance(:days => rand(35), :hours => rand(24))
 end
