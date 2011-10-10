@@ -19,7 +19,7 @@
 <% if day_events.count > 3 -%>
     <div id="info-event-<%= @info_div_id %>" class="info large">
       <div class="scroll-pane">
-        <ul>
+            <ul class="events">
           <% day_events.each do |event| -%>
             <li>
             <strong class="date"><%= l(event.event_date, :format => '%d, %B de %Y') %></strong>
@@ -28,9 +28,13 @@
               <li class="where"><%= event.location %></li>
               <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
             </ul>
+            <% if event != day_events.last %>
+              <div class="separator"></div>
+            <% end %>
             </li>
           <% end -%>
         </ul>
+
       </div>
       <span class="close"></span>
     </div>
