@@ -17,7 +17,7 @@ class Photo < Content
       :description     => description,
       :content_url     => content_url,
       :comments_count  => comments_count,
-      :last_comments   => comments.last(2)
+      :last_comments   => last_comments
     }
   end
 end

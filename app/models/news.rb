@@ -17,7 +17,7 @@ class News < Content
       :subtitle        => subtitle,
       :body            => body,
       :comments_count  => comments_count,
-      :last_comments   => comments.last(2)
+      :last_comments   => last_comments
     }
   end
 end

@@ -45,7 +45,7 @@ class Question < Content
       :target_user     => target_user,
       :answered_at     => try(:answer).try(:published_at),
       :comments_count  => comments_count,
-      :last_comments   => comments.last(2)
+      :last_comments   => last_comments
     }
   end
 

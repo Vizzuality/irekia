@@ -16,7 +16,7 @@ class Tweet < Content
       :message         => message,
       :status_id       => status_id,
       :username        => username,
-      :last_comments   => comments.last(2)
+      :last_comments   => last_comments
     }
   end
 end
