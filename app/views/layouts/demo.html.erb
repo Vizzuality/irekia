@@ -66,6 +66,7 @@
   <script src="javascripts/libs/jquery-ui-1.8.16.custom.min.js"></script>
   <script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
+    <%= yield :js_data %>
     <%= javascript_include_tag 'rails', 'helpers', 'temp', 'widgets', 'map', 'plugins', 'application' %>
 
     <!-- Change UA-XXXXX-X to be your site's ID -->
