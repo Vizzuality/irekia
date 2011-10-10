@@ -13,7 +13,8 @@ class Area < ActiveRecord::Base
            :through => :areas_contents
   has_many :events,
            :through => :areas_contents,
-           :include => :event_data
+           :include => :event_data,
+           :order => 'event_data.event_date asc'
   has_many :actions,
            :class_name => 'AreaPublicStream'
   has_many :follows,
