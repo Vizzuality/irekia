@@ -1483,7 +1483,7 @@ a.editable {
     position: relative;
     margin-bottom: 24px;
     float: left;
-    span.counter {
+    .counter {
       top: -20px;
       right: 0;
       position: absolute;
@@ -1491,8 +1491,10 @@ a.editable {
       color: rgba(70, 88, 102, 0.3);
       @include transition-property(color);
       @include transition-duration(300ms);
+
       &.error {
-        color: #FF3300;
+        padding:0;
+        color: #FF3300!important;
         opacity: 1;
       }
     }

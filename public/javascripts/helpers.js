@@ -89,7 +89,6 @@ jQuery.fn.inputCounter = function(opt){
       if (count < 0 || count == limit) {
         if (count < 0) $counter.addClass("error");
         if (count == limit) $counter.removeClass("error");
-
         $("#submit-" + id).addClass("disabled");
         $("#submit-" + id).attr('disabled', 'disabled');
       } else {
