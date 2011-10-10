@@ -42,7 +42,8 @@ class User < ActiveRecord::Base
            :through => :contents_users
   has_many :events,
            :through => :contents_users,
-           :include => :event_data
+           :include => :event_data,
+           :order => 'event_data.event_date asc'
 
 
   has_many :proposal_data,
