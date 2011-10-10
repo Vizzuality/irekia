@@ -9,6 +9,13 @@ es:
     configure_your_account: Configura tu cuenta
   shared:
     sidebar:
+      related_questions:
+        title: 'Otras preguntas similares'
+        time: 'Hace %{time}'
+        comments:
+          zero: Ningún comentario
+          one: Un comentario
+          other: '%{count} comentarios'
       tags:
         title: Tags
       related_content:
