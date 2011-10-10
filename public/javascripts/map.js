@@ -39,6 +39,7 @@ function startMap () {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     navigationControl: false,
     disableDefaultUI: false,
+    scrollwheel: false,
     streetViewControl: false,
     mapTypeControl: false,
     navigationControlOptions: {
