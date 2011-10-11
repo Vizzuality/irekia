@@ -44,7 +44,8 @@ function startMap () {
     mapTypeControl: false,
     navigationControlOptions: {
       style: google.maps.NavigationControlStyle.SMALL
-    }
+    },
+    maxZoom: 158
   };
 
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);

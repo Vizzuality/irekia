@@ -13,12 +13,22 @@ $(function() {
   $('.sparkline.positive .graph').sparkline('html', {spotRadius: false, fillColor:false, lineColor: '#5E8821', height:"18px", width:"50px"});
   $('.sparkline.negative .graph').sparkline('html', {spotRadius: false, fillColor:false, lineColor: '#FF3300', height:"18px", width:"50px"});
 
+  // If user types more than 2 letters, submit form
+  $('nav form input[type="text"]').keyup(function(ev){
+    if ($(this).val().length>2) {
+      $('nav form').submit();
+    } else {
+      var $autocomplete = $(this).closest('form').find('.autocomplete');
+      $autocomplete.fadeOut("fast");
+    }
+  });
+
   $('nav form').bind('ajax:success', function(evt, xhr, status){
     var $autocomplete = $(this).find('.autocomplete');
     $autocomplete.addClass("visible");
 
     if ($autocomplete.length > 0) {
-      $autocomplete.fadeOut("fast", function(){});
+      $autocomplete.fadeOut("fast");
     }
 
     $autocomplete.html(xhr);
