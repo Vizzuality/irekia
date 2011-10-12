@@ -333,7 +333,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       .inner {
         clear: both;
         overflow: hidden;
-        padding: 20px 0 3px 35px;
+        padding: 20px 0 17px 35px;
         width: 959px;
         margin: 0;
         background: none;
@@ -1803,6 +1803,7 @@ textarea {
     padding:0 0 8px 7px;
     font-size:13px;
     color:$standard_gray;
+    margin: 0 0 7px 0;
 
     a { margin-bottom:1px; display:block; color:$dark_blue; font-weight:bold; font-size:15px; }
 

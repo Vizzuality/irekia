@@ -1,6 +1,13 @@
 <div class="comments">
+  <% if defined?(birdie) %>
+    <div class="birdie"></div>
+  <% end %>
+
   <div class="count"><%= t('.title', :count => @content.comments.count) %></div>
   <ul>
+    <% if @content.comments.count.zero? %>
+      <li></li>
+    <% end %>
     <% @content.comments.reject{|c| c.new_record?}.each do |comment| %>
       <li>
       <%= avatar comment.user %>
@@ -25,7 +32,7 @@
 
             <%= comments.fields_for :comment_data do |comment_data| %>
               <%= comment_data.text_area :body, :id => :comment %>
-              <span class="holder">¿Algo que decir?... comenta esta noticia</span>
+              <span class="holder"><%= t(".answer_this.#{@content.class.to_s.downcase}") %></span>
             <% end %>
 
           </div>

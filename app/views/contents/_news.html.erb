@@ -1,3 +1,55 @@
+
+<article class="activity with_footer">
+<div class="inner">
+  <div class="left">
+
+    <p class="info">
+    <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
+    &middot;
+    <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+    &middot;
+    <%= link_to t('.date_area_and_comments.comments', :count => @content.comments.count), '/in_development' %>
+    </p>
+
+
+    <h1><%= @content.title %></h1>
+    <p><strong><%= @content.subtitle %></strong></p>
+
+    <%= simple_format @content.body %>
+    <p><%= link_to 'Leer noticia completa', '#', :class => :more %></p>
+
+    <%= render "comments" %>
+
+  </div>
+  <div class="right">
+    <div class="content left-border">
+
+      <%= render "shared/demo/sharing" %>
+      <%= render "shared/demo/tags" %>
+      <%= render "shared/demo/location" %>
+      <%= render "shared/demo/politicians" %>
+      <%= render "shared/demo/related_events" %>
+      <%= render "shared/demo/previously" %>
+      <%= render "shared/demo/similar_proposals" %>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+<div class="separator"></div>
+<div class="inner">
+
+  <div class="left">
+    <%= link_to "volver", "#", :class => :left_arrow %>
+  </div>
+
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>
+
+    <!--
 <div id="news" class="content">
   <div class="date_area_and_comments">
     <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
@@ -51,3 +103,4 @@
     </div>
   </div>
 </div>
+-->

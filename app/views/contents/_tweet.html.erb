@@ -1,4 +1,42 @@
-<div id="tweet">
+<article class="activity with_footer">
+<!--<a href="#" class="editable"></a>-->
+<div class="inner">
+  <div class="left">
+
+    <div class="quotation">
+      <blockquote>
+        <span class="quote"><%= @content.message %></span>
+        <span class="bqstart">&#8220;</span> <span class="bqend">&#8221;</span>
+      </blockquote>
+      <div class="author">
+        <%= raw t('.author', :name => link_to(@content.author.fullname, user_path(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+      </div>
+    </div>
+    <%= render 'comments', { :birdie => true} %>
+  </div>
+  <div class="right">
+    <div class="content left-border">
+
+      <%= render "shared/demo/sharing" %>
+      <%= render "shared/sidebar/previous_tweets" %>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+<div class="separator"></div>
+<div class="inner">
+  <div class="left">
+    <%= link_to "volver", politician_path(@content.author.id), :class => :left_arrow %>
+  </div>
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>
+
+<!--
+<article><div id="tweet">
   <h1><%= @content.message %></h1>
   <span class="author">
     <%= raw t('.author', :name => link_to(@content.author.fullname, user_path(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
@@ -14,13 +52,15 @@
       <h3><%= t('.sidebar.last_tweets.title', :name => @content.author.name) %></h3>
       <ul>
         <% @last_contents.each do |tweet| %>
-        <li>
+          <li>
           <p class="tweet"><%= link_to tweet.message, tweet_path(tweet) %></p>
           <span class="when"><%= t('.sidebar.last_tweets.time', :time => distance_of_time_in_words_to_now(tweet.published_at)) %></span>
-        </li>
+          </li>
         <% end %>
       </ul>
       <%= link_to "@#{@content.username}", '/in_development' %>
     </div>
   </div>
 </div>
+</article>
+-->
