@@ -86,24 +86,18 @@
         </div>
       </div>
     </div>
-
-
     -->
-
 
     <article class="proposal with_footer">
     <div class="inner">
       <div class="left">
-
         <h1><%= @content.title %></h1>
-
         <p class="info">
         <%= link_to @content.author.try(:fullname), user_path(@content.author)  %>
         <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
         &middot;
         <%= link_to t('.title_author_and_comments.comments', :count => @content.comments.count), '/in_development' %>
         </p>
-
 
         <%= simple_format @content.body %>
 

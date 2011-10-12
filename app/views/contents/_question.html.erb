@@ -22,18 +22,17 @@
       </div>
     <% else %>
       <div class="answer_placeholder">
-        <p><strong>Esta pregunta aún no ha sido contestada.</strong></p>
-        <p>3 personas quieren que sea contestada, <%= link_to "súmate a ellos", "#" %></p>
+        <p><strong><%= t('.not_answered_yet') %></strong></p>
+        <p><%= t('.people_demanding_answer', :count => 3) %>, <%= link_to t('.join_them', :count => 3), "#" %></p>
       </div>
     <% end %>
     <%= render "comments" %>
   </div>
   <div class="right">
     <div class="content left-border">
-
       <%= render "shared/demo/sharing" %>
       <%= render "shared/sidebar/tags" %>
-      <%= render "shared/sidebar/answered_by" %>
+      <%= render "shared/sidebar/answered_by" if @content.answer %>
       <%= render "shared/sidebar/related_questions" %>
     </div>
   </div>
