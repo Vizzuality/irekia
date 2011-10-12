@@ -1,6 +1,8 @@
 class ContentsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:index, :show]
 
+  respond_to :html
+
   def index
     contents = params[:type].constantize.moderated
 
@@ -14,16 +16,13 @@ class ContentsController < ApplicationController
 
     @contents = contents.all
 
-    respond_to do |format|
-      format.json {render :json => @contents.to_json}
-      format.html
-    end
-
+    respond_with(@contents, :layout => !request.xhr? )
   end
 
   def show
     content_class = params[:type].constantize
     @content = content_class.moderated.where(:id => params[:id]).first
+    @comments = @content.comments
     @last_contents = content_class.moderated.order('published_at desc').where('id <> ?', @content.id).first(5)
     if current_user.present?
       @comment = @content.comments.build

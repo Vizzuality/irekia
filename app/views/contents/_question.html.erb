@@ -26,7 +26,7 @@
         <p><%= t('.people_demanding_answer', :count => 3) %>, <%= link_to t('.join_them', :count => 3), "#" %></p>
       </div>
     <% end %>
-    <%= render "comments" %>
+    <%= render "participations/comments" %>
   </div>
   <div class="right">
     <div class="content left-border">
@@ -131,7 +131,7 @@
         </p>
       </div>
     <% end %>
-    <%= render 'comments' %>
+    <%= render 'participations/comments' %>
   </div>
   <div class="sidebar">
     <ul class="sharing_links">
