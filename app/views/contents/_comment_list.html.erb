@@ -1,0 +1,14 @@
+<% if @content.comments.count.zero? %>
+  <li></li>
+<% end %>
+<% @content.comments.reject{|c| c.new_record?}.each do |comment| %>
+  <li>
+  <%= avatar comment.user %>
+  <div class="comment">
+    <blockquote><%= simple_format comment.body %></blockquote>
+    <div class="footer when">
+      <%= link_to comment.user.fullname, user_path(comment.user), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
+    </div>
+  </div>
+  </li>
+<% end %>

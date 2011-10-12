@@ -9,9 +9,18 @@ es:
     configure_your_account: Configura tu cuenta
   shared:
     sidebar:
+      location:
+        title: "Localización del evento"
       previous_tweets:
         title: 'Tweets anteriores de %{name}'
         time: 'Hace %{time}'
+      related_events:
+        title: 'Otros eventos de este área'
+        time: 'Hace %{time}'
+        comments:
+          zero: Ningún comentario
+          one: Un comentario
+          other: '%{count} comentarios'
       related_questions:
         title: 'Otras preguntas similares'
         time: 'Hace %{time}'
@@ -293,8 +302,15 @@ es:
             one: Un comentario
             other: '%{count} comentarios'
     event:
+      back: volver
+      back_to_the_agenda: "volver a la agenda"
       title:
         time: '%{day} a partir de las %{hour}'
+        comments:
+          zero: Ningún comentario
+          one: Un comentario
+          other: '%{count} comentarios'
+      date_area_and_comments:
         comments:
           zero: Ningún comentario
           one: Un comentario
@@ -408,8 +424,9 @@ es:
         other: '%{count} comentarios'
       answer_this:
         question: '¿Algo que decir?... comenta esta pregunta'
-        news: '¿Algo que decir?... comenta esta noticia'
+        news:  '¿Algo que decir?... comenta esta noticia'
         tweet: '¿Algo que decir?... comenta este tweet'
+        event: '¿Algo que decir?... comenta este evento'
       time: 'hace %{time}'
       new:
         submit: Comentar

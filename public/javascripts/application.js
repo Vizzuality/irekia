@@ -35,6 +35,7 @@ $(function() {
     }
   });
 
+
   $('nav form').bind('ajax:success', function(evt, xhr, status){
     var $autocomplete = $(this).find('.autocomplete');
     $autocomplete.addClass("visible");
@@ -45,15 +46,19 @@ $(function() {
     $('#autocomplete_spinner').hide();
     $('#search_submit').show();
   });
-  
+
   $('nav form').bind('ajax:error', function(e){
     $(this).find('.autocomplete').fadeOut();
     $('#autocomplete_spinner').hide();
     $('#search_submit').show();
   });
-  
 
- 
+  $('form.add_comment').bind('ajax:success', function(evt, xhr, status) {
+    var $ul = $(this).parents("ul");
+    console.log($ul, evt, xhr);
+    $ul.append(xhr);
+  });
+
   $('.floating-login').floatingLoginPopover();
 
   $('.two_columns').columnize({width:302, height:125});

@@ -1,3 +1,48 @@
+<article class="activity with_footer">
+<div class="inner">
+  <div class="left">
+
+    <p class="info">
+    <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
+    &middot;
+    <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+    &middot;
+    <%= link_to t('.date_area_and_comments.comments', :count => @content.comments.count), '/in_development' %>
+    </p>
+
+    <h1><%= @content.title %></h1>
+    <p><strong><%= @content.subtitle %></strong></p>
+
+    <%= simple_format @content.body %>
+
+    <%= render "comments" %>
+  </div>
+  <div class="right">
+    <div class="content left-border">
+
+      <%= render "shared/demo/sharing" %>
+      <%= render "shared/sidebar/tags" %>
+      <%= render "shared/sidebar/location" %>
+      <%= render "shared/sidebar/related_events" %>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+<div class="separator"></div>
+<div class="inner">
+
+  <div class="left">
+    <%= link_to t('.back_to_the_agenda'), "#", :class => :left_arrow %>
+  </div>
+
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>
+
+<!--
 <div id="event">
   <div class="title">
     <span><%= t('.title.time', :day => l(@content.event_date.to_date, :format => :long), :hour => l(@content.event_date.to_time, :format => '%H')) %></span>
@@ -54,3 +99,4 @@
     </div>
   </div>
 </div>
+-->

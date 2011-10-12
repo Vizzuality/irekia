@@ -1,0 +1,11 @@
+<% if @last_contents and @last_contents.size > 0 %>
+  <h4><%= t('.title') %></h4>
+  <ul class="previously no-bullets">
+    <% @last_contents.each do |event| %>
+      <li><%= link_to event.title, event_path(event) %>
+      <div class="footer"><%= t('.time', :time => distance_of_time_in_words_to_now(event.published_at)) %> <%= link_to t('.comments', :count => event.comments.count), '/in_development' %>
+      </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
