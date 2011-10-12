@@ -810,7 +810,7 @@ var GOD = (function() {
       '            <input class="mInput" id="user_email" name="user[email]" size="30" type="email" value="" /></p>',
       '          <p><label for="user_password">Contraseña</label><br />',
       '            <input class="mInput" id="user_password" name="user[password]" size="30" type="password" /></p>',
-      '          <p class="remember_me"><input name="user[remember_me]" type="hidden" value="0" /><input id="floating_user_remember_me" name="user[remember_me]" type="checkbox" value="1" /> <label class="remember_me" for="floating_user_remember_me">Recordar mis datos</label></p>',
+      '          <p class="remember_me"><input name="user[remember_me]" type="hidden" value="0" /><a class="selected checkbox">Recordar mis datos</a></p>',
       '        </div>',
       '      </div>',
       '      <span class="close"></span>',

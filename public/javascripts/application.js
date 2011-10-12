@@ -53,6 +53,16 @@ $(function() {
     $('#search_submit').show();
   });
   
+  // Checkbox binding
+  $('a.checkbox').click(function(ev){
+    if (!$(this).hasClass('selected')) {
+      $(this).addClass('selected');
+      $(this).closest('p').find('input[type="checkbox"]').val(1);
+    } else {
+      $(this).removeClass('selected');
+      $(this).closest('p').find('input[type="checkbox"]').val(0);      
+    }
+  });
 
  
   $('.floating-login').floatingLoginPopover();

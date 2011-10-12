@@ -249,3 +249,25 @@ article .white_button:active {
   }
 }
 
+
+/*Checkboxs, radiobuttons, ...*/
+a.checkbox {
+  padding:0 0 0 17px;
+  background:url('/images/special_buttons.png') no-repeat 0 3px;
+  color:#666666;
+
+  &:hover {
+   cursor:pointer;
+  }
+
+  &.selected {
+    background-position:0 -11px;
+
+    &:hover {
+     cursor:pointer;
+     text-decoration:none;
+    }
+  }
+}
+
+
