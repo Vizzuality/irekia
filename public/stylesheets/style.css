@@ -220,7 +220,7 @@ header nav .content form .input_field { position: relative; }
 header nav .content form .input_field span.holder { position: absolute; left: 11px; bottom: 8px; width: 200px; font-size: 15px; font-weight: normal; color: #D7DADD; text-shadow: none; }
 header nav .content form .input_field input[type="text"] { height: 33px; padding: 0 36px 0 9px; width: 245px; font-size: 15px; border: 1px solid #13587f; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); outline: none; }
 header nav .content form .input_field input[type="submit"] { right: 10px; top: 10px; position: absolute; width: 14px; height: 14px; background: url("/images/icons/magnifier.png") no-repeat; border: 0; z-index: 100; }
-header nav .content form .input_field span#autocomplete_spinner { position: absolute; right: 17px; top: 17px; display: none; }
+header nav .content form .input_field span#autocomplete_spinner { position: absolute; right: 17px; top: 17px; }
 header nav .content .sign_out { float: right; }
 header nav .content ul.auth { float: right; }
 header nav .content ul.auth li { position: relative; margin: 0 0 0 10px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
@@ -256,6 +256,9 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner header h1, #container article .inner header h2 { margin: 0; }
 #container article .inner header h3 { font-size: 17px; }
 #container article .inner header h2 { font-size: 31px; line-height: normal; }
+#container article.with_filters div.left span.empty { display: block; width: 100%; margin: 80px 0 0 0; color: #7D8A92; font: normal 17px Arial; text-align: center; }
+#container article.with_filters div.right { position: relative; }
+#container article.with_filters div.right span.spinner { position: absolute; display: block; right: 7px; top: 7px; width: 20px; height: 20px; background: red; z-index: 10; }
 #container article.with_footer .inner { width: 933px; padding: 15px 31px 5px 30px; }
 #container article.with_footer .f { bottom: -10px; background-position: 0 -22px; }
 #container article.with_footer footer { padding: 0; border: none; clear: both; border-left: 1px solid #b4bdc4; border-right: 1px solid #b4bdc4; background: #f8f8f9; }
@@ -878,6 +881,12 @@ White buttons
 .ie8 .white_button:hover, .ie8 .white_button:hover span, .ie7 .white_button:hover, .ie7 .white_button:hover span { color: #333; }
 .ie8 .white_button.blue span, .ie7 .white_button.blue span { color: #1d79b0; }
 .ie8 .white_button span, .ie7 .white_button span { display: block; left: 10px; height: 19px; padding: 9px 14px; margin: 0 0 0 -10px; line-height: 18px; background: url("/images/buttons_sprite.png") no-repeat left -40px; color: #f10063; font-weight: bold; font-size: 15px; cursor: pointer; }
+
+/*Checkboxs, radiobuttons, ...*/
+a.checkbox { padding: 0 0 0 17px; background: url("/images/special_buttons.png") no-repeat 0 3px; color: #666666; }
+a.checkbox:hover { cursor: pointer; }
+a.checkbox.selected { background-position: 0 -11px; }
+a.checkbox.selected:hover { cursor: pointer; text-decoration: none; }
 
 /* CSS Styles that are needed by jScrollPane for it to operate correctly.  Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane may not operate correctly without them. */
 .jspContainer { overflow: hidden; position: relative; }
