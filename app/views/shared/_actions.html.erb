@@ -15,9 +15,13 @@
 
   <div class="left">
     <div id="listing">
-      <%= render 'shared/actions_list' if @actions %>
+      <% if @actions %>
+        <%= render 'shared/actions_list' %>
+      <% else %>
+        <span class="empty">No hay contenido en este area</span>
+      <% end %>
     </div>
-      &nbsp;
+    &nbsp;
   </div>
 
   <div class="right">

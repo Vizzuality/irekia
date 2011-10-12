@@ -182,7 +182,7 @@ header {
             }
           }
 
-          span#autocomplete_spinner {position:absolute; right:17px; top:17px; display:none;}
+          span#autocomplete_spinner {position:absolute; right:17px; top:17px;}
         }
       }
 
@@ -194,7 +194,7 @@ header {
           li {
             position: relative;
             margin: 0 0 0 10px;
-    @include inline-block;
+            @include inline-block;
 
                   .pending-counter { right: 5px; }
 
@@ -290,6 +290,33 @@ article .inner { h2, h3 { color: $dark_blue; } }
       h2 { font-size: 31px; line-height:normal; }
     }
 
+  }
+
+  &.with_filters {
+
+    div.left span.empty{
+      display:block;
+      width:100%;
+      margin:80px 0 0 0;
+      color:#7D8A92;
+      font:normal 17px Arial;
+      text-align:center;
+    }
+
+    div.right {
+      position:relative;
+
+      span.spinner {
+        position:absolute;
+        display:block;
+        right:7px;
+        top:7px;
+        width:20px;
+        height:20px;
+        background:red;
+        z-index:10;
+      }
+    }
   }
 
   &.with_footer {
