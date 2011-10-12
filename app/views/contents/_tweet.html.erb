@@ -1,5 +1,4 @@
 <article class="activity with_footer">
-<!--<a href="#" class="editable"></a>-->
 <div class="inner">
   <div class="left">
 
@@ -16,10 +15,8 @@
   </div>
   <div class="right">
     <div class="content left-border">
-
       <%= render "shared/demo/sharing" %>
       <%= render "shared/sidebar/previous_tweets" %>
-
     </div>
   </div>
 </div>
@@ -28,7 +25,7 @@
 <div class="separator"></div>
 <div class="inner">
   <div class="left">
-    <%= link_to "volver", politician_path(@content.author.id), :class => :left_arrow %>
+    <%= link_to t(".back"), politician_path(@content.author.id), :class => :left_arrow %>
   </div>
 </div>
 </footer>

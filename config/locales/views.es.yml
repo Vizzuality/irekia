@@ -249,7 +249,6 @@ es:
         zero: Ninguno más...
         one: Y uno más...
         other: 'y %{count} más...'
-
   contents:
     news:
       date_area_and_comments:
@@ -392,6 +391,7 @@ es:
 
     tweet:
       author: 'Twitteado por %{name} hace %{time}'
+      back: volver
       sidebar:
         sharing_links:
           mail: Mail
