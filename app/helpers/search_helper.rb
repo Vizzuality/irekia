@@ -4,6 +4,22 @@ module SearchHelper
     'selected' if params[:search][:type].eql?(type)
   end
 
+  def has_politicians?
+    @politicians.size > 0
+  end
+
+  def has_areas?
+    @areas.size > 0
+  end
+
+  def has_citizens?
+    @citizens.size > 0
+  end
+
+  def has_contents?
+    @contents.size > 0
+  end
+
   def show_contents?
     params[:search][:type].blank? || params[:search][:type] == 'contents'
   end

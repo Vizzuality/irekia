@@ -9,10 +9,14 @@
     <div class="input_field placeholder">
         <%= search_form.text_field :query %>
         <%= search_form.submit '' %>
+        <span id="autocomplete_spinner"></span>
         <span class="holder">o busca lo que necesites…</span>
     </div>
     <field></field>
-    <div class="autocomplete"></div>
+    <div class="autocomplete">
+      <div class="inner"></div>
+      <div class="t"></div><div class="f"></div>
+    </div>
   <% end %>
   <% if user_signed_in? %>
     <ul class="auth">

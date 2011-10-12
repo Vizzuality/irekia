@@ -173,6 +173,7 @@ IrekiaMarker.prototype.draw = function() {
 
                 var panes = this.getPanes();
                 panes.floatPane.appendChild(div);
+
   }
 
   var pixPosition = me.getProjection().fromLatLngToDivPixel(me.latlng);

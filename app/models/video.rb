@@ -10,7 +10,7 @@ class Video < Content
       },
       :id              => id,
       :published_at    => published_at,
-      :last_comments   => comments.last(2)
+      :last_comments   => last_comments
     }
   end
 

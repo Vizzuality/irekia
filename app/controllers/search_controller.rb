@@ -10,11 +10,15 @@ class SearchController < ApplicationController
     @citizens = users.citizens
     @politicians = users.politicians
 
-    @contents_areas = @contents.inject([]){|arr, content| arr + [content.area]}.uniq!
-    @citizens_areas = @citizens.inject([]){|arr, citizen| arr + citizen.areas}.uniq!
-    @politicians_areas = @politicians.inject([]){|arr, politician| arr + politician.areas}.uniq!
+    contents_areas    = @contents.inject([]){|arr, content| arr + [content.area]}.uniq! || []
+    citizens_areas    = @citizens.inject([]){|arr, citizen| arr + citizen.areas}.uniq! || []
+    politicians_areas = @politicians.inject([]){|arr, politician| arr + politician.areas}.uniq! || []
+    @areas = contents_areas + citizens_areas + politicians_areas
 
-    render :autocomplete, :layout => false and return if request.xhr?
+    if request.xhr?
+      head(:not_found) and return if @areas.blank? && @contents.blank? && @citizens.blank? && @politicians.blank?
+      render :autocomplete, :layout => false and return
+    end
 
   end
 

@@ -12,7 +12,7 @@ class Poll < Content
       :id              => id,
       :published_at    => published_at,
       :comments_count  => comments_count,
-      :last_comments   => comments.last(2)
+      :last_comments   => last_comments
     }
   end
 end

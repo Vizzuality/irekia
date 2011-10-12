@@ -181,6 +181,8 @@ header {
               z-index: 100;
             }
           }
+
+          span#autocomplete_spinner {position:absolute; right:17px; top:17px; display:none;}
         }
       }
 
@@ -980,6 +982,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
             span { top: 9px; color: #ccc; }
           }
           input[type="submit"] { position: absolute; top: 13px; right: 17px; color: #FF0066; background: none; height: 30px; border: none; }
+
         }
         div.previous p { font-size: 13px; }
         ul li {

@@ -56,11 +56,11 @@ class Content < ActiveRecord::Base
   end
 
   def comments_count
-    comments.count if comments
+    comments.moderated.count if comments
   end
 
   def last_comments
-    comments.last(2)
+    comments.moderated.last(2)
   end
 
   def as_json(options = {})
@@ -71,7 +71,7 @@ class Content < ActiveRecord::Base
         :profile_image => author.profile_image
       },
       :published_at    => published_at,
-      :comments => comments.count
+      :comments => comments_count
     }
   end
 
@@ -84,7 +84,7 @@ class Content < ActiveRecord::Base
         :profile_image => author.profile_image
       },
       :published_at    => published_at,
-      :comments => comments.count
+      :comments => comments_count
     }
   end
 

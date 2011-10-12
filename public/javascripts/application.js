@@ -13,10 +13,22 @@ $(function() {
   $('.sparkline.positive .graph').sparkline('html', {spotRadius: false, fillColor:false, lineColor: '#5E8821', height:"18px", width:"50px"});
   $('.sparkline.negative .graph').sparkline('html', {spotRadius: false, fillColor:false, lineColor: '#FF3300', height:"18px", width:"50px"});
 
+  // Autocomplete spinner
+  var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
+  var target = document.getElementById('autocomplete_spinner');
+  var spinner = new Spinner(opts).spin(target);
+
+  // Autocomplete
+  var interval;
   // If user types more than 2 letters, submit form
   $('nav form input[type="text"]').keyup(function(ev){
     if ($(this).val().length>2) {
-      $('nav form').submit();
+      clearTimeout(interval);
+      $('#autocomplete_spinner').show();
+      $('#search_submit').hide();
+      interval = setTimeout(function(){
+        $('nav form').submit();
+      },300);
     } else {
       var $autocomplete = $(this).closest('form').find('.autocomplete');
       $autocomplete.fadeOut("fast");
@@ -26,17 +38,22 @@ $(function() {
   $('nav form').bind('ajax:success', function(evt, xhr, status){
     var $autocomplete = $(this).find('.autocomplete');
     $autocomplete.addClass("visible");
-
-    if ($autocomplete.length > 0) {
-      $autocomplete.fadeOut("fast");
-    }
-
-    $autocomplete.html(xhr);
+    $autocomplete.find('div.inner').html(xhr);
     $autocomplete.css("margin-left", "-158px");
     $autocomplete.css("margin-top", "23px");
     $autocomplete.fadeIn("fast");
+    $('#autocomplete_spinner').hide();
+    $('#search_submit').show();
   });
+  
+  $('nav form').bind('ajax:error', function(e){
+    $(this).find('.autocomplete').fadeOut();
+    $('#autocomplete_spinner').hide();
+    $('#search_submit').show();
+  });
+  
 
+ 
   $('.floating-login').floatingLoginPopover();
 
   $('.two_columns').columnize({width:302, height:125});

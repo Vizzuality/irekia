@@ -21,7 +21,7 @@ class Answer < Content
       :question_text   => answer_data.question_text,
       :answer_text     => answer_text,
       :comments_count  => comments_count,
-      :last_comments   => comments.last(2)
+      :last_comments   => last_comments
     }
   end
 end
