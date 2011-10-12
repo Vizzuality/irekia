@@ -1,61 +1,54 @@
-<% has_politicians = @politicians.size > 0 %>
-<% has_areas       = @areas.size    > 0 %>
-<% has_citizens    = @citizens.size > 0 %>
-<% has_contents    = @contents.size > 0 %>
-
-
 <ul class="results">
-    <% if has_politicians %>
-      <li class="politicians">
-      <div class="summary"><h3><%= t('.politicians.summary.title') %></h3><%= link_to t('.politicians.summary.count', :count => @politicians.count) %></div>
-      <ul>
-        <% @politicians.first(2).each do |politician| %>
-          <li>
-          <%= link_to (content_tag 'div', (image_tag(politician.profile_image)), :class => "avatar medium"), politician_path(politician) if politician.profile_image %>
-          <%= link_to politician.fullname, politician_path(politician), :class => :name %>
-          <% if title = get_politician_title(politician) %>
-            <span class="position"><%= t('.politicians.title_area', :title => title, :area => politician.areas.map(&:name).join(', ')) %></span>
-          <% end %>
-          </li>
+  <% if has_politicians? %>
+    <li class="politicians">
+    <div class="summary"><h3><%= t('.politicians.summary.title') %></h3><%= link_to t('.politicians.summary.count', :count => @politicians.count) %></div>
+    <ul>
+      <% @politicians.first(2).each do |politician| %>
+        <li>
+        <%= link_to (content_tag 'div', (image_tag(politician.profile_image)), :class => "avatar medium"), politician_path(politician) if politician.profile_image %>
+        <%= link_to politician.fullname, politician_path(politician), :class => :name %>
+        <% if title = get_politician_title(politician) %>
+          <span class="position"><%= t('.politicians.title_area', :title => title, :area => politician.areas.map(&:name).join(', ')) %></span>
         <% end %>
-      </ul>
-      </li>
-    <% end %>
+        </li>
+      <% end %>
+    </ul>
+    </li>
+  <% end %>
 
-    <% if has_areas %>
-      <li class="areas<%= ' no-border' if !has_politicians %>">
-      <div class="summary"><h3><%= t('.areas.summary.title') %></h3></div>
-      <ul>
-        <% @areas.first(2).each do |area| %>
-          <li>
-          <a href="#" class="avatar medium"><img src="/images/icons/news_avatar_medium.png" /></a>
-          <%= link_to area.name, area_path(area), :class => :name %>
-          </li>
-        <% end %>
-      </ul>
-      </li>
-    <% end %>
+  <% if has_areas? %>
+    <li class="areas<%= ' no-border' unless has_politicians? %>">
+    <div class="summary"><h3><%= t('.areas.summary.title') %></h3></div>
+    <ul>
+      <% @areas.first(2).each do |area| %>
+        <li>
+        <a href="#" class="avatar medium"><img src="/images/icons/news_avatar_medium.png" /></a>
+        <%= link_to area.name, area_path(area), :class => :name %>
+        </li>
+      <% end %>
+    </ul>
+    </li>
+  <% end %>
 
-    <% if has_citizens %>
-      <li class="users<%= ' no-border' if !has_areas and !has_politicians %>">
-      <div class="summary"><h3><%= t('.users.summary.title') %></h3><%= link_to t('.users.summary.count', :count => @citizens.count) %></div>
-      <ul>
-        <% @citizens.first(2).each do |user| %>
-          <li>
-          <%= link_to (content_tag 'div', (image_tag(user.profile_image)), :class => "avatar medium"), user_path(user) if user.profile_image %>
-          <%= link_to user.fullname, user_path(user), :class => :name %>
-          <span class="position"><%= "#{user.city}, #{user.province}" %></span>
-          </li>
-        <% end %>
-      </ul>
-      </li>
-    <% end %>
+  <% if has_citizens? %>
+    <li class="users<%= ' no-border' unless has_areas? && has_politicians? %>">
+    <div class="summary"><h3><%= t('.users.summary.title') %></h3><%= link_to t('.users.summary.count', :count => @citizens.count) %></div>
+    <ul>
+      <% @citizens.first(2).each do |user| %>
+        <li>
+        <%= link_to (content_tag 'div', (image_tag(user.profile_image)), :class => "avatar medium"), user_path(user) if user.profile_image %>
+        <%= link_to user.fullname, user_path(user), :class => :name %>
+        <span class="position"><%= "#{user.city}, #{user.province}" %></span>
+        </li>
+      <% end %>
+    </ul>
+    </li>
+  <% end %>
 
-    <% if has_contents %>
-      <li class="contents<%= ' no-border' if !has_citizens and !has_areas and !has_politicians %>">
-      <div class="summary"><h3><%= t('.contents.summary.title') %></h3></div>
-      <%= link_to t('.contents.count', :count => @contents.count), '/in_development' %>
-      </li>
-    <% end %>
-  </ul>
-
+  <% if has_contents? %>
+    <li class="contents<%= ' no-border' unless has_citizens? && has_areas? && has_politicians? %>">
+    <div class="summary"><h3><%= t('.contents.summary.title') %></h3></div>
+    <%= link_to t('.contents.count', :count => @contents.count), '/in_development' %>
+    </li>
+  <% end %>
+</ul>

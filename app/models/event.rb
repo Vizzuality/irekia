@@ -39,7 +39,7 @@ class Event < Content
       :latitude        => latitude,
       :longitude       => longitude,
       :comments_count  => comments_count,
-      :last_comments   => comments.last(2)
+      :last_comments   => last_comments
     }
   end
 
