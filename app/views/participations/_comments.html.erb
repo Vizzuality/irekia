@@ -5,10 +5,10 @@
 
   <div class="count"><%= t('.title', :count => @content.comments.count) %></div>
   <ul>
-    <% if @content.comments.count.zero? %>
+    <% if @comments.count.zero? %>
       <li></li>
     <% end %>
-    <% @content.comments.reject{|c| c.new_record?}.each do |comment| %>
+    <% @comments.reject{|c| c.new_record?}.each do |comment| %>
       <li>
       <%= avatar comment.user %>
       <div class="comment">
@@ -20,26 +20,21 @@
       </li>
     <% end %>
 
-    <% if user_signed_in? %>
       <li class="comment">
-      <%= form_for @content do |form| %>
-        <%= form.fields_for :comments, @comment do |comments| %>
-          <%= comments.hidden_field :user_id %>
-
+        <%= form_for @comment, :remote => true, :html => {:'data-type' => 'html'}  do |form| %>
+          <%= form.hidden_field :content_id %>
+          <%= form.hidden_field :user_id %>
           <%= avatar current_user %>
-
           <div class="textarea-comment placeholder">
 
-            <%= comments.fields_for :comment_data do |comment_data| %>
+            <%= form.fields_for :comment_data do |comment_data| %>
               <%= comment_data.text_area :body, :id => :comment %>
               <span class="holder"><%= t(".answer_this.#{@content.class.to_s.downcase}") %></span>
             <% end %>
 
           </div>
-        <% end %>
-        <button type="submit" class="white_button blue right"><span><%= t('.new.submit') %></span></button>
-        </li>
-      <% end %>
+          <button type="submit" class="white_button blue right"><span><%= t('.new.submit') %></span></button>
+        <% end -%>
+      </li>
     </ul>
-  <% end %>
 </div>

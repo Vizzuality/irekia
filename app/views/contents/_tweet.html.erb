@@ -41,7 +41,7 @@
   <span class="author">
     <%= raw t('.author', :name => link_to(@content.author.fullname, user_path(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
   </span>
-  <%= render 'comments' %>
+  <%= render 'participations/comments' %>
   <div class="sidebar">
     <ul class="sharing_links">
       <li><%= link_to t('.sidebar.sharing_links.mail'), '/in_development' %></li>
