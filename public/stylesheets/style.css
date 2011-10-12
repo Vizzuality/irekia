@@ -618,9 +618,9 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 
 .ie7 #container article ul.sharing li .sharebox.email .input_field input, .ie8 #container article ul.sharing li .sharebox.email .input_field input { line-height: 23px; position: static; border: 1px solid #ccc; }
 
-#container article .inner .left .content .inline-sharing { display: inline; }
-#container article .inner .left .content .inline-sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; overflow: visible; padding: 0; margin: 0; }
-#container article .inner .left .content .inline-sharing .sharebox { position: absolute; top: -86px; }
+#container article .inner .left .inline-sharing { display: inline-block; }
+#container article .inner .left .inline-sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; overflow: visible; padding: 0; margin: 0; }
+#container article .inner .left .inline-sharing .sharebox { position: absolute; top: -86px; }
 
 #container article .left .content .sharebox, #container article .right .content ul.sharing li .sharebox { display: none; position: absolute; top: -60px; margin-left: -16px; z-index: 1000; }
 #container article .left .content .sharebox.email, #container article .right .content ul.sharing li .sharebox.email { margin-left: -108px; }
