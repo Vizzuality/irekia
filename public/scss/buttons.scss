@@ -66,6 +66,7 @@ White buttons
 
 .white_button, article.white_button {
 /* ------------------------------------------------------------------------------ Colors */
+  &.pink   { color:$pink; }
   &.blue   { color:$link_color; }
   &.orange { color:$orange; }
   &.green  { color:$green; }
@@ -85,7 +86,6 @@ White buttons
   @include box-shadow(0 1px 1px 0 #fff);
   @include transition-property(all);
   @include transition-duration(300ms);
-
 
   background: rgb(255,255,255); /* Old browsers */
   background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(244,246,249,1) 100%); /* FF3.6+ */
