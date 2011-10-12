@@ -26,14 +26,13 @@ $(function() {
   $('nav form').bind('ajax:success', function(evt, xhr, status){
     var $autocomplete = $(this).find('.autocomplete');
     $autocomplete.addClass("visible");
-
-    if ($autocomplete.length > 0) {
-      $autocomplete.fadeOut("fast");
-    }
-
-    $autocomplete.html(xhr);
+    $autocomplete.find('div.inner').html(xhr);
     $autocomplete.css("margin-left", "-158px");
     $autocomplete.css("margin-top", "23px");
+    $autocomplete.fadeIn("fast");
+  });
+  
+  $('nav form').bind('ajax:error', function(e){
     $autocomplete.fadeIn("fast");
   });
 

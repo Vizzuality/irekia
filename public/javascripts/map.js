@@ -171,8 +171,18 @@ IrekiaMarker.prototype.draw = function() {
                   $('.scroll-pane').jScrollPane();
                 });
 
+                $(div).live("mouseenter", function(){
+                  console.log('jamon');
+              		me.map.setOptions( {draggable:false} ); 
+              	})
+              	$(div).live("mouseleave" , function(){
+              	                    console.log('jamon2');
+              		me.map.setOptions( {draggable:true} ); 
+              	});
+
                 var panes = this.getPanes();
                 panes.floatPane.appendChild(div);
+
   }
 
   var pixPosition = me.getProjection().fromLatLngToDivPixel(me.latlng);
