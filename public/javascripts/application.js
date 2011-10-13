@@ -20,6 +20,7 @@ $(function() {
 
   // Autocomplete
   var interval;
+
   // If user types more than 2 letters, submit form
   $('nav form input[type="text"]').keyup(function(ev){
     if ($(this).val().length>2) {
@@ -35,7 +36,6 @@ $(function() {
       $autocomplete.fadeOut("fast");
     }
   });
-
 
   $('nav form').bind('ajax:success', function(evt, xhr, status){
     var $autocomplete = $(this).find('.autocomplete');
@@ -65,7 +65,14 @@ $(function() {
     }
   });
 
+  if (hash = window.location.hash) {
+    if (hash == "#comments") {
+      $('html, body').delay(500).animate({scrollTop:$(".comments").offset().top}, 250);
+    }
+  }
+
   $('form.add_comment').enableComments();
+  $(".goto_comments").enableGotoComments();
   $('.floating-login').floatingLoginPopover();
 
   $('.two_columns').columnize({width:302, height:125});

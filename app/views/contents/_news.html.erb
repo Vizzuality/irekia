@@ -8,7 +8,7 @@
     &middot;
     <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
     &middot;
-    <%= link_to t('.date_area_and_comments.comments', :count => @content.comments.count), '/in_development' %>
+    <%= link_to t('.date_area_and_comments.comments', :count => @content.comments.count), '#', :class => :goto_comments %>
     </p>
 
 
@@ -56,7 +56,7 @@
     &middot;
     <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
     &middot;
-    <%= link_to t('.date_area_and_comments.comments', :count => @content.comments.count), '/in_development' %>
+    <%= link_to t('.date_area_and_comments.comments', :count => @content.comments.count), '#', :class => :goto_comments %>
   </div>
   <div class="news_content">
     <h1><%= @content.title %></h1>

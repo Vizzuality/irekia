@@ -417,6 +417,8 @@ es:
           title: 'Últimos tweets de %{name}'
           time: 'hace %{time}'
   participations:
+    show:
+      time: 'hace %{time}'
     comments:
       title:
         zero: Ningún comentario

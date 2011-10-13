@@ -1,11 +1,21 @@
-
-
-
 /* Preloading of images */
 jQuery.preloadImages = function(){
   for(var i = 0; i < arguments.length; i++){
     jQuery("<img>").attr("src", arguments[i]);
   }
+}
+
+/* Moves the page to the comments area */
+jQuery.fn.enableGotoComments = function(opt){
+
+  var speed  = (opt && opt.speed) || 200;
+
+  this.each(function(){
+    $(this).click(function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop:$(".comments").offset().top}, speed);
+    });
+  });
 }
 
 /* Enables comment submission */
