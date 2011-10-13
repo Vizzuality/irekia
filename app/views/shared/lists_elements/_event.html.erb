@@ -5,7 +5,7 @@
     <%= raw t('.author', :author => link_to(data.author.fullname, user_path(data.author.id)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
   </span>
   &middot;
-  <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), event_path(data.id), :class => "comment-count", :anchor => "comments" %>
+  <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), event_path(data.id, :anchor => :comments), :class => "comment-count" %>
   &middot;
   <%= render "/shared/inline_sharing" %>
   <%= render 'shared/lists_elements/last_comments', :data => data %>
