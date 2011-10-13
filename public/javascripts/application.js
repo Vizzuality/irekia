@@ -18,6 +18,13 @@ $(function() {
   var spin_element = document.getElementById('autocomplete_spinner');
   var spinner = new Spinner(opts);
 
+  $(window).bind('close.autocomplete',function(ev){
+    $('.autocomplete').fadeOut();
+  });
+
+
+
+
   // Autocomplete
   var interval;
 
@@ -43,16 +50,26 @@ $(function() {
     $autocomplete.find('div.inner').html(xhr);
     $autocomplete.css("margin-left", "-158px");
     $autocomplete.css("margin-top", "23px");
+    spinner.stop();
+    $('#search_submit').show();
     $autocomplete.fadeIn("fast");
+    GOD.subscribe('close.autocomplete');
+  });
+
+  $('nav form').bind('ajax:error', function(e){
+    GOD.broadcast('close.autocomplete');
     spinner.stop();
     $('#search_submit').show();
   });
 
-  $('nav form').bind('ajax:error', function(e){
-    $(this).find('.autocomplete').fadeOut();
-    spinner.stop();
-    $('#search_submit').show();
+  $('.autocomplete').click(function(ev){
+    ev.stopPropagation();
   });
+  // End autocomplete
+
+
+
+
 
   // Checkbox binding
   $('a.checkbox').click(function(ev){

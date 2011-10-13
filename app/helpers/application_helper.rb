@@ -46,4 +46,9 @@ module ApplicationHelper
   def only_logged_class
     :only_logged unless user_signed_in?
   end
+
+  def within_the_day?(comments)
+    last_comment = comments.last
+    last_comment.published_at > 1.day.ago
+  end
 end
