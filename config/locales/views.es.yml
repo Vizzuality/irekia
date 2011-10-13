@@ -532,9 +532,10 @@ es:
     show:
       agenda:
         title: 'Agenda de %{name}'
-  search:
+  searches:
     show:
       your_search_results: Resultados de tu búsqueda
+    navigation_menu:
       tabs:
         summary: Resumen
         contents:

@@ -72,7 +72,13 @@ Irekia::Application.routes.draw do
 
   resources :comments,     :controller => 'participations', :type => 'Comment'
 
-  match '/search' => 'search#show'
+  resource :search do
+    member do
+      get :contents
+      get :politicians
+      get :citizens
+    end
+  end
 
   root :to => "home#index"
 

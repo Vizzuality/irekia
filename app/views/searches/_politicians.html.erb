@@ -5,7 +5,7 @@
   </header>
   <div class="content">
     <ul class="suggestions">
-      <% @politicians.first(how_many_users_to_show?).each do |politician| %>
+      <% @politicians.each do |politician| %>
         <li>
         <%= avatar politician %>
         <div class="content">
@@ -23,13 +23,13 @@
 <div class="inner">
   <div class="left">
 
-    <% if params[:search][:type].blank? %>
-      <% if @politicians.count > how_many_users_to_show? %>
+    <% if action_name == 'show' %>
+      <% if @politicians.count > 10 %>
         <%= link_to t('.results.all', :count => @politicians.count), '/in_development', :right_arrow %>
       <% end %>
     <% else %>
-      <% if @politicians.count > how_many_users_to_show? %>
-        <%= link_to t('.results.more'), '/in_development', :class => :right_arrow %>
+      <% if @politicians.count > 10 %>
+        <%= link_to t('.results.more'), '/in_development', :class => :down_arrow %>
       <% end %>
     <% end %>
 

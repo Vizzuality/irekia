@@ -1,0 +1,7 @@
+<ul>
+  <% @contents.each do |content| %>
+    <li class="<%= content.event_type %>">
+      <%= render "shared/lists_elements/#{content.event_type}", :data => content.item %>
+    </li>
+  <% end %>
+</ul>
