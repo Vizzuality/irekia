@@ -18,8 +18,18 @@ $(function() {
   var spin_element = document.getElementById('autocomplete_spinner');
   var spinner = new Spinner(opts);
 
+
+
+
+
+
   // Autocomplete
   var interval;
+  
+  $(window).bind('close.autocomplete',function(ev){
+    $('.autocomplete').fadeOut();
+  });
+  
   // If user types more than 2 letters, submit form
   $('nav form input[type="text"]').keyup(function(ev){
     if ($(this).val().length>2) {
@@ -36,23 +46,32 @@ $(function() {
     }
   });
 
-
   $('nav form').bind('ajax:success', function(evt, xhr, status){
     var $autocomplete = $(this).find('.autocomplete');
     $autocomplete.addClass("visible");
     $autocomplete.find('div.inner').html(xhr);
     $autocomplete.css("margin-left", "-158px");
     $autocomplete.css("margin-top", "23px");
-    $autocomplete.fadeIn("fast");
     spinner.stop();
     $('#search_submit').show();
+    $autocomplete.fadeIn("fast");
+    GOD.subscribe('close.autocomplete');
   });
 
   $('nav form').bind('ajax:error', function(e){
-    $(this).find('.autocomplete').fadeOut();
+    GOD.broadcast('close.autocomplete');
     spinner.stop();
     $('#search_submit').show();
   });
+  
+  $('.autocomplete').click(function(ev){
+    ev.stopPropagation();
+  });
+  // End autocomplete
+
+
+
+
 
   // Checkbox binding
   $('a.checkbox').click(function(ev){
