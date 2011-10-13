@@ -2012,6 +2012,38 @@ input {
   }
 }
 
+.search_box {
+  float:left;
+  background:url('/images/inputs_sprite.png') no-repeat left -112px;
+  padding-left:10px;
+  position:relative;
+  margin-top:10px;
+
+  input[type="submit"] {
+    position:absolute;
+    right:10px;
+    top:11px;
+    width:14px;
+    height:14px;
+    border:none;
+    text-indent: -999em;
+    background:url('/images/icons/magnifier.png') no-repeat 0 bottom;
+  }
+
+  input[type="text"] {
+    width:638px;
+    display:block;
+    border:none;
+    height:35px;
+    background:url('/images/inputs_sprite.png') no-repeat right -75px;
+    font-size:15px;
+    color:$medium_dark;
+    outline:none;
+  }
+}
+
+
+
 /* =============================================================================
 Menu
 ========================================================================== */
@@ -2277,7 +2309,6 @@ Explorer fixes
   color:$gray;
 }
 
-
 /* =============================================================================
 Sign in
 ========================================================================== */
@@ -2391,4 +2422,3 @@ Error pages
     }
   }
 }
-

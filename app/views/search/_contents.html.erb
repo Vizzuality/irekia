@@ -1,0 +1,61 @@
+<article class="activity contents_results with_footer with_filters">
+<div class="inner">
+  <header>
+  <div class="left">
+    <h2><%= t('.contents_results.title', :count => @contents.count) %></h2>
+  </div>
+  <div class="right">
+
+    <ul class="switch">
+      <li class="selected"><%= link_to t('.contents_results.main_filters.more_recent'), '/in_development', :class => 'filter selected' %></li>
+      <li><%= link_to t('.contents_results.main_filters.more_polemic'), '/in_development', :class => 'filter' %></li>
+    </ul>
+
+  </div>
+  </header>
+  <div class="left">
+
+    <ul>
+      <% if @contents and @contents.size > 0 %>
+        <% @contents.first(how_many_contents_to_show?).each do |content| %>
+          <li class="<%= content.event_type %>">
+          <%= render "shared/lists_elements/#{content.event_type}", :data => content.item %>
+          </li>
+        <% end %>
+      <% else %>
+        <li>&nbsp;</li>
+      <% end %>
+    </ul>
+
+  </div>
+  <div class="right">
+    <ul class="selector no-margin">
+      <li><%= link_to t('.contents_results.content_type_filters.all'), '/in_development', :class => 'selected' %></li>
+      <li><%= link_to t('.contents_results.content_type_filters.news'), '/in_development' %></li>
+      <li><%= link_to t('.contents_results.content_type_filters.politicians_activity'), '/in_development' %></li>
+      <li><%= link_to t('.contents_results.content_type_filters.questions'), '/in_development' %></li>
+      <li><%= link_to t('.contents_results.content_type_filters.proposals'), '/in_development' %></li>
+      <li><%= link_to t('.contents_results.content_type_filters.images'), '/in_development' %></li>
+      <li><%= link_to t('.contents_results.content_type_filters.videos'), '/in_development' %></li>
+    </ul>
+  </div>
+</div>
+<footer>
+<div class="separator"></div>
+<div class="inner">
+
+  <div class="left">
+    <% if params[:search][:type].blank? %>
+      <% if @contents.count > 5 %>
+        <%= link_to t('.contents_results.all', :count => @contents.count), '/in_development', :class => 'right_arrow' %>
+      <% end %>
+    <% else %>
+      <%= link_to t('.contents_results.more'), '/in_development', :class => :right_arrow %>
+    <% end %>
+</div>
+
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>
+

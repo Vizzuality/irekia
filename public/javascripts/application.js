@@ -65,13 +65,7 @@ $(function() {
     }
   });
 
-  $('form.add_comment').bind('ajax:success', function(evt, xhr, status) {
-    var $ul = $(this).parents("ul").find("li.comment");
-    var $comment = $('<li style="display:none">' + xhr + '</li>');
-    $ul.before($comment);
-    $comment.slideDown(250);
-  });
-
+  $('form.add_comment').enableComments();
   $('.floating-login').floatingLoginPopover();
 
   $('.two_columns').columnize({width:302, height:125});

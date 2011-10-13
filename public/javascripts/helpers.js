@@ -1,8 +1,27 @@
+
+
+
 /* Preloading of images */
 jQuery.preloadImages = function(){
   for(var i = 0; i < arguments.length; i++){
     jQuery("<img>").attr("src", arguments[i]);
   }
+}
+
+/* Enables comment submission */
+jQuery.fn.enableComments = function(opt){
+
+  var speed  = (opt && opt.speed) || 200;
+
+  this.each(function(){
+
+    $(this).bind('ajax:success', function(evt, xhr, status) {
+      var $el = $(this).parents("ul").find("li.comment");
+      var $comment = $('<li style="display:none">' + xhr + '</li>');
+      $el.before($comment);
+      $comment.slideDown(speed);
+    });
+  });
 }
 
 /* Show previous hidden comments */
