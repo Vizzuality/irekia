@@ -1,7 +1,7 @@
-<article class="politicians_results with_footer">
+<article class="results with_footer">
 <div class="inner">
   <header>
-  <h2><%= t('.politicians_results.title', :count => @politicians.count) %></h2>
+  <h2><%= t('.results.title', :count => @politicians.count) %></h2>
   </header>
   <div class="content">
     <ul class="suggestions">
@@ -10,8 +10,8 @@
         <%= avatar politician %>
         <div class="content">
           <%= link_to politician.fullname, politician_path(politician), :class => :name %>
-          <p><%= t('.politicians_results.title_area', :title => get_politician_title(politician), :area => politician.areas.map(&:name).join(', ')) %></p>
-          <%= link_to t('.politicians_results.follow'), '/in_development' %>
+          <p><%= t('.results.title_area', :title => get_politician_title(politician), :area => politician.areas.map(&:name).join(', ')) %></p>
+          <%= link_to t('.results.follow'), '/in_development' %>
         </div>
         </li>
       <% end %>
@@ -25,11 +25,11 @@
 
     <% if params[:search][:type].blank? %>
       <% if @politicians.count > how_many_users_to_show? %>
-        <%= link_to t('.politicians_results.all', :count => @politicians.count), '/in_development', :right_arrow %>
+        <%= link_to t('.results.all', :count => @politicians.count), '/in_development', :right_arrow %>
       <% end %>
     <% else %>
       <% if @politicians.count > how_many_users_to_show? %>
-        <%= link_to t('.politicians_results.more'), '/in_development', :class => :right_arrow %>
+        <%= link_to t('.results.more'), '/in_development', :class => :right_arrow %>
       <% end %>
     <% end %>
 

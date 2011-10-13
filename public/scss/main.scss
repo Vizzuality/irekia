@@ -2014,10 +2014,10 @@ input {
 
 .search_box {
   float:left;
-  background:url('/images/inputs_sprite.png') no-repeat left -112px;
   padding-left:10px;
   position:relative;
   margin-top:10px;
+  background:url('/images/inputs_sprite.png') no-repeat left -112px;
 
   input[type="submit"] {
     position:absolute;
@@ -2030,19 +2030,21 @@ input {
     background:url('/images/icons/magnifier.png') no-repeat 0 bottom;
   }
 
+  /*input[type="submit"]:hover {
+    background:url('/images/icons/magnifier.png') no-repeat 0 top;
+  } */
+
   input[type="text"] {
-    width:638px;
     display:block;
-    border:none;
+    width:638px;
     height:35px;
     background:url('/images/inputs_sprite.png') no-repeat right -75px;
+    border:none;
     font-size:15px;
     color:$medium_dark;
     outline:none;
   }
 }
-
-
 
 /* =============================================================================
 Menu

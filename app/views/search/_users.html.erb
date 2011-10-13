@@ -1,10 +1,9 @@
-<article class="users_results with_footer">
+<article class="results with_footer">
 <div class="inner">
   <header>
-  <h2><%= t('.users_results.title', :count => @citizens.count) %></h2>
+  <h2><%= t('.results.title', :count => @citizens.count) %></h2>
   </header>
   <div class="content">
-
     <ul class="suggestions">
       <% @citizens.first(how_many_users_to_show?).each do |user| %>
         <li>
@@ -12,7 +11,7 @@
         <div class="content">
           <%= link_to user.fullname, user_path(user), :class => :name %>
           <p><%= "#{user.city}, #{user.province}" %></p>
-          <%= link_to t('.users_results.follow'), '/in_development' %>
+          <%= link_to t('.results.follow'), '/in_development' %>
         </div>
         </li>
       <% end %>
@@ -23,17 +22,15 @@
 <div class="separator"></div>
 <div class="inner">
   <div class="left">
-
     <% if params[:search][:type].blank? %>
       <% if @citizens.count > how_many_users_to_show? %>
-        <%= link_to t('.users_results.all', :count => @citizens.count), '/in_development', :class => :right_arrow %>
+        <%= link_to t('.results.all', :count => @citizens.count), '/in_development', :class => :right_arrow %>
       <% end %>
     <% else %>
       <% if @politicians.count > how_many_users_to_show? %>
-        <%= link_to t('.users_results.more'), '/in_development', :class => :right_arrow %>
+        <%= link_to t('.results.more'), '/in_development', :class => :right_arrow %>
       <% end %>
     <% end %>
-
   </div>
 </div>
 </footer>

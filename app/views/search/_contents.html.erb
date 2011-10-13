@@ -1,14 +1,14 @@
-<article class="activity contents_results with_footer with_filters">
+<article class="activity results with_footer with_filters">
 <div class="inner">
   <header>
   <div class="left">
-    <h2><%= t('.contents_results.title', :count => @contents.count) %></h2>
+    <h2><%= t('.results.title', :count => @contents.count) %></h2>
   </div>
   <div class="right">
 
     <ul class="switch">
-      <li class="selected"><%= link_to t('.contents_results.main_filters.more_recent'), '/in_development', :class => 'filter selected' %></li>
-      <li><%= link_to t('.contents_results.main_filters.more_polemic'), '/in_development', :class => 'filter' %></li>
+      <li class="selected"><%= link_to t('.results.main_filters.more_recent'), '/in_development', :class => 'filter selected' %></li>
+      <li><%= link_to t('.results.main_filters.more_polemic'), '/in_development', :class => 'filter' %></li>
     </ul>
 
   </div>
@@ -30,13 +30,13 @@
   </div>
   <div class="right">
     <ul class="selector no-margin">
-      <li><%= link_to t('.contents_results.content_type_filters.all'), '/in_development', :class => 'selected' %></li>
-      <li><%= link_to t('.contents_results.content_type_filters.news'), '/in_development' %></li>
-      <li><%= link_to t('.contents_results.content_type_filters.politicians_activity'), '/in_development' %></li>
-      <li><%= link_to t('.contents_results.content_type_filters.questions'), '/in_development' %></li>
-      <li><%= link_to t('.contents_results.content_type_filters.proposals'), '/in_development' %></li>
-      <li><%= link_to t('.contents_results.content_type_filters.images'), '/in_development' %></li>
-      <li><%= link_to t('.contents_results.content_type_filters.videos'), '/in_development' %></li>
+      <li><%= link_to t('.results.content_type_filters.all'), '/in_development', :class => 'selected' %></li>
+      <li><%= link_to t('.results.content_type_filters.news'), '/in_development' %></li>
+      <li><%= link_to t('.results.content_type_filters.politicians_activity'), '/in_development' %></li>
+      <li><%= link_to t('.results.content_type_filters.questions'), '/in_development' %></li>
+      <li><%= link_to t('.results.content_type_filters.proposals'), '/in_development' %></li>
+      <li><%= link_to t('.results.content_type_filters.images'), '/in_development' %></li>
+      <li><%= link_to t('.results.content_type_filters.videos'), '/in_development' %></li>
     </ul>
   </div>
 </div>
@@ -47,10 +47,10 @@
   <div class="left">
     <% if params[:search][:type].blank? %>
       <% if @contents.count > 5 %>
-        <%= link_to t('.contents_results.all', :count => @contents.count), '/in_development', :class => 'right_arrow' %>
+        <%= link_to t('.results.all', :count => @contents.count), '/in_development', :class => 'right_arrow' %>
       <% end %>
     <% else %>
-      <%= link_to t('.contents_results.more'), '/in_development', :class => :right_arrow %>
+      <%= link_to t('.results.more'), '/in_development', :class => :right_arrow %>
     <% end %>
 </div>
 
@@ -58,4 +58,3 @@
 </footer>
 <div class="t"></div><div class="f"></div>
 </article>
-
