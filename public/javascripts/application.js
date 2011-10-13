@@ -66,9 +66,10 @@ $(function() {
   });
 
   $('form.add_comment').bind('ajax:success', function(evt, xhr, status) {
-    var $ul = $(this).parents("ul");
-    console.log($ul, evt, xhr);
-    $ul.append(xhr);
+    var $ul = $(this).parents("ul").find("li.comment");
+    var $comment = $('<li style="display:none">' + xhr + '</li>');
+    $ul.before($comment);
+    $comment.slideDown(250);
   });
 
   $('.floating-login').floatingLoginPopover();

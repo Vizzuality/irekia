@@ -22,7 +22,7 @@
 
     <% if current_user %>
       <li class="comment">
-      <%= form_for @comment, :remote => true, :html => {:'data-type' => 'html'}  do |form| %>
+      <%= form_for @comment, :remote => true, :html => {:'data-type' => 'html', :class => :add_comment }  do |form| %>
         <%= form.hidden_field :content_id %>
         <%= form.hidden_field :user_id %>
         <%= avatar current_user %>
