@@ -70,7 +70,6 @@ $(function() {
 
 
 
-
   // Checkbox binding
   $('a.checkbox').click(function(ev){
     if (!$(this).hasClass('selected')) {
@@ -100,7 +99,7 @@ $(function() {
   $(".show-hidden-comments").showHiddenComments();
 
   // Popovers
-  $(".event").infoEventPopover();
+  $(".show_event").infoEventPopover();
   $(".ask_question").questionPopover();
   $(".auth a.login").loginPopover();
   $(".share.inline, .share.more, .share.email").sharePopover();
