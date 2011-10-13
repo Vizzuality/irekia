@@ -16,10 +16,10 @@
 </article>
 
 <%= menu([
-         { :link => (link_to t('.tabs.summary'), search_path(:search => {:q => params[:search][:q]})), :class => current_type?},
-         { :link => (link_to t('.tabs.contents', :count => @contents.count), search_path(:search => {:query => params[:search][:query], :type => 'contents'})), :class => current_type?("contents") },
-         { :link => (link_to t('.tabs.politicians', :count => @politicians.count), search_path(:search => {:query => params[:search][:query], :type => 'politicians'})), :class => current_type?("politicians") },
-         { :link => (link_to t('.tabs.users', :count => @citizens.count), search_path(:search => {:query => params[:search][:query], :type => 'users'})), :class => "#{current_type?("users")} last"},
+         { :link => (link_to t('.tabs.summary'), search_path(:search => {:query => @search.query})), :class => current_type?},
+         { :link => (link_to t('.tabs.contents', :count => @contents.count), search_path(:search => {:query => @search.query, :type => 'contents'})), :class => current_type?("contents") },
+         { :link => (link_to t('.tabs.politicians', :count => @politicians.count), search_path(:search => {:query => @search.query, :type => 'politicians'})), :class => current_type?("politicians") },
+         { :link => (link_to t('.tabs.users', :count => @citizens.count), search_path(:search => {:query => @search.query, :type => 'users'})), :class => "#{current_type?("users")} last"},
 ]) %>
 
 <%= render "contents" if show_contents? %>
