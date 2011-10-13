@@ -3,6 +3,6 @@
   <% @last_contents.each do |tweet| %>
     <li><%= link_to tweet.message, tweet_path(tweet) %><%= t('.time', :time => distance_of_time_in_words_to_now(tweet.published_at)) %></li>
   <% end %>
-  <li class="twitter-link"><%= link_to "@#{@content.username}", '/in_development' %></li>
+  <li class="twitter-link"><%= link_to "@#{@content.username}", "https://twitter.com/#!/#{@content.username}" %></li>
 </ul>
 
