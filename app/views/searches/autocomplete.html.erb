@@ -1,7 +1,7 @@
 <ul class="results">
   <% if has_politicians? %>
     <li class="politicians">
-    <div class="summary"><h3><%= t('.politicians.summary.title') %></h3><%= link_to t('.politicians.summary.count', :count => @politicians.count), search_path(:search => {:query => @search.query, :type => 'politicians'}) %></div>
+      <div class="summary"><h3><%= t('.politicians.summary.title') %></h3><%= link_to t('.politicians.summary.count', :count => @politicians.count), politicians_search_path(search_params) %></div>
     <ul>
       <% @politicians.first(2).each do |politician| %>
         <li>
@@ -32,7 +32,7 @@
 
   <% if has_citizens? %>
     <li class="users<%= ' no-border' unless has_areas? && has_politicians? %>">
-    <div class="summary"><h3><%= t('.users.summary.title') %></h3><%= link_to t('.users.summary.count', :count => @citizens.count), search_path(:search => {:query => @search.query, :type => 'users'}) %></div>
+    <div class="summary"><h3><%= t('.users.summary.title') %></h3><%= link_to t('.users.summary.count', :count => @citizens.count), citizens_search_path(search_params) %></div>
     <ul>
       <% @citizens.first(2).each do |user| %>
         <li>
@@ -48,7 +48,7 @@
   <% if has_contents? %>
     <li class="contents<%= ' no-border' unless has_citizens? && has_areas? && has_politicians? %>">
     <div class="summary"><h3><%= t('.contents.summary.title') %></h3></div>
-    <%= link_to t('.contents.count', :count => @contents.count), search_path(:search => {:query => @search.query, :type => 'contents'}) %>
+    <%= link_to t('.contents.count', :count => @contents.count), contents_search_path(search_params) %>
     </li>
   <% end %>
 </ul>

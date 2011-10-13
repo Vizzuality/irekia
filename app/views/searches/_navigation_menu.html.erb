@@ -1,0 +1,7 @@
+<%= menu([
+         { :link => (link_to t('.tabs.summary'), search_path(search_params)), :class => current_action?('show')},
+         { :link => (link_to t('.tabs.contents', :count => @contents_count), contents_search_path(search_params)), :class => current_action?("contents") },
+         { :link => (link_to t('.tabs.politicians', :count => @politicians_count), politicians_search_path(search_params)), :class => current_action?("politicians") },
+         { :link => (link_to t('.tabs.users', :count => @citizens_count), citizens_search_path(search_params)), :class => "#{current_action?("citizens")} last"}
+]) %>
+
