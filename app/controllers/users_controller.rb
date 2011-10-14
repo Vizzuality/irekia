@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def questions
-    if current_user && current_user.answers_count > 0 && not(request.xhr?)
+    if current_user && current_user.answers_count > 0 && !request.xhr?
       current_user.reset_counter('answers')
       @answers_count = 0
     end
