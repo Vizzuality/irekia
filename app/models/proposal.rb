@@ -11,12 +11,12 @@ class Proposal < Content
 
   accepts_nested_attributes_for :proposal_data, :arguments
 
-  delegate :title, :body, :to => :proposal_data
+  delegate :title, :body, :target_user, :target_area, :to => :proposal_data
 
   def percent_in_favor
     total_arguments = arguments.count
     return 0 if total_arguments.zero?
-    (arguments.in_favor.count * 100 / arguments.count).round
+    (arguments.in_favor.count * 100 / total_arguments).round
   end
 
   def percent_against
@@ -54,4 +54,14 @@ class Proposal < Content
       :last_comments   => last_comments
     }
   end
+
+  def publish_content
+
+    return unless self.moderated?
+
+    User.where('id in (?)', target_area.user_ids).update_all('proposals_count = (proposals_count + 1)') if target_area
+
+    super
+  end
+  private :publish_content
 end

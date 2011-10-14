@@ -30,8 +30,8 @@ puts '================='.green
                         :profile_picture       => Image.create(:image => @women_images.sample)
 
 3.times do
-  name = "#{String.random(20)}"
-  lastname = "#{String.random(20)} #{String.random(20)}"
+  name = Faker::Name.first_name
+  lastname = "#{Faker::Name.last_name} #{Faker::Name.last_name}"
   email = "#{name} #{lastname}".downcase.split(' ').join('.') + '@ej-gv.es'
   create_user :name     => name,
               :lastname => lastname,

@@ -6,6 +6,7 @@ class Participation < ActiveRecord::Base
   belongs_to :content
 
   before_create :update_published_at
+  before_save :author_is_politician?
   after_save  :publish_participation
 
   accepts_nested_attributes_for :user
@@ -27,6 +28,11 @@ class Participation < ActiveRecord::Base
     self.published_at = Time.now
   end
   private :update_published_at
+
+  def author_is_politician?
+    self.moderated = true if author.politician?
+  end
+  private :author_is_politician?
 
   def publish_participation
     return unless content.present? && self.moderated?

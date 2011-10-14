@@ -155,7 +155,13 @@ def create_proposal(params)
 
   if proposal_data.new_record?
     proposal_data.body = params[:body]
-    proposal_data.target_user = params[:target]
+
+    case params[:target]
+    when Area
+      proposal_data.target_area = params[:target]
+    when User
+      proposal_data.target_user = params[:target]
+    end
 
     proposal = Proposal.new
     proposal.tags = params[:tags]
@@ -233,6 +239,7 @@ def create_user(params)
     :description           => Faker::Lorem.paragraphs(10).join("\n\n"),
     :province              => 'Vizcaya',
     :city                  => 'Ondarroa',
+    :birthday              => rand(100).years.ago,
     :role                  => Role.find_by_name('Citizen'),
     :title                 => Title.find_by_name('Co-adviser'),
     :profile_picture       => Image.create(:image => (@men_images + @women_images).sample)
@@ -247,6 +254,7 @@ def create_user(params)
   user.description           = params[:description]
   user.province              = params[:province]
   user.city                  = params[:city]
+  user.birthday              = params[:birthday]
   user.role                  = params[:role]
   user.title                 = params[:title]
   user.areas.clear

@@ -1,10 +1,11 @@
 class Answer < Content
-  has_one :answer_data
+  has_one :answer_data,
+          :dependent => :destroy
   has_many :answer_opinions,
            :foreign_key => :content_id
 
 
-  delegate :question_text, :answer_text, :to => :answer_data
+  delegate :question, :question_text, :answer_text, :to => :answer_data
 
   accepts_nested_attributes_for :answer_opinions
 
@@ -24,4 +25,14 @@ class Answer < Content
       :last_comments   => last_comments
     }
   end
+
+  def publish_content
+
+    return unless self.moderated?
+
+    author = question.author
+    author.update_attribute('answers_count', author.answers_count + 1)
+    super
+  end
+  private :publish_content
 end

@@ -14,7 +14,6 @@ class PoliticiansController < UsersController
   respond_to :html, :json
 
   def show
-    super
     session[:return_to] = politician_path(@politician)
   end
 
@@ -33,8 +32,11 @@ class PoliticiansController < UsersController
   end
 
   def questions
-    render :partial => 'shared/questions_list', :layout => nil and return if request.xhr?
     @question_target    = @politician
+    render :partial => 'shared/questions_list',
+           :locals  => {:questions => @questions},
+           :layout  => nil and return if request.xhr?
+
     session[:return_to] = questions_politician_path(@politician)
   end
 
