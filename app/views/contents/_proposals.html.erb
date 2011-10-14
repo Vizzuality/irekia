@@ -1,0 +1,32 @@
+<div class="proposals">
+  <div class="proposal agree">
+    <h3>A favor <%= content_tag :sup, "(#{@content.arguments.with_reason.in_favor.count})" if @content.arguments.with_reason.in_favor > 0 %></h3>
+    <ul>
+      <% @content.arguments.with_reason.in_favor.each do |argument| %>
+        <li><%= argument.reason %></li>
+      <% end %>
+    </ul>
+    <div class="footer">
+      <div class="input_text">
+        <input type="text" />
+        <%= submit_tag "Añadir" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="proposal against">
+    <h3>En contra <%= content_tag :sup, "(#{@content.arguments.with_reason.against.count})" if @content.arguments.with_reason.against > 0 %></h3>
+    <ul>
+      <ul>
+        <% @content.arguments.with_reason.against.each do |argument| %>
+          <li><%= argument.reason %></li>
+        <% end %>
+      </ul>
+      <div class="footer">
+        <div class="input_text">
+          <input type="text" />
+          <%= submit_tag "Añadir" %>
+        </div>
+      </div>
+    </div>
+  </div>

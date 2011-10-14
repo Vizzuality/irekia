@@ -86,6 +86,7 @@ span {
   &.not_answered { color: #FF3300; }
   &.positive     { color: #FF0066; font-style: italic; }
   &.agree        { color: $agree_color; }
+  &.disagree,
   &.against      { color: $against_color; }
 }
 
@@ -1035,6 +1036,26 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
 /* Article addons */
 
+
+.my_opinion {
+  padding:10px;
+  margin: 0 0 10px 0;
+  background:#EDF3E5;
+  clear:both; overflow:hidden;
+  @include border-radius(4px);
+  .result {
+    float:left;
+    width:200px;
+    margin-top:10px;
+    font-size:15px;
+  }
+
+  a {
+    float:right;
+    margin-left:10px;
+  }
+}
+
 #container article .inner .content ul.notifications {
   float:left;
   margin:10px 0 20px 0;
@@ -1167,7 +1188,29 @@ a.editable {
       border-top: 1px solid #fff;
       a {float:left; margin-right:20px;}
       .sparkline { margin-top:10px; }
+      .input_text {
+        @include border-radius(5px);
+        border:1px solid #B3B6AE;
+        background:#fff;
+        -webkit-appearance:none;
 
+        input[type="text"] {
+          border:none;
+          outline:none;
+          padding:7px 7px;
+          margin: 0 0 0 3px;
+          width:177px;
+        }
+
+        input[type="submit"] {
+          border:none;
+          color:$pink;
+          background:none;
+          float:right;
+          margin-top:5px;
+          margin-right:5px;
+        }
+      }
     }
   }
 }

@@ -14,6 +14,11 @@ es:
       previous_tweets:
         title: 'Tweets anteriores de %{name}'
         time: 'Hace %{time}'
+      related_proposals:
+        time: 'Hace %{time}'
+        title: Políticos relacionados
+        in_favor: '%{percentage}% a favor (%{count} votos)'
+        against: '%{percentage}% en contra (%{count} votos)'
       related_events:
         title: 'Otros eventos de este área'
         time: 'Hace %{time}'
@@ -181,8 +186,6 @@ es:
         author: 'Publicado hace %{time}'
         read_more: 'Leer más'
       proposal:
-        in_favor: '%{count} a favor'
-        against: '%{count} en contra'
         author: '%{author} hace %{time}'
         participation:
           zero: Ningún usuario ha participado
@@ -228,6 +231,8 @@ es:
 
     proposals:
       title: Propuestas
+      in_favor: '%{percentage}% a favor (%{count} votos)'
+      against: '%{percentage}% en contra (%{count} votos)'
       main_filters:
         more_recent: Más recientes
         more_polemic: Más polémicas
@@ -375,6 +380,8 @@ es:
             other: '%{count} comentarios'
 
     proposal:
+      in_favor: '%{percentage}% a favor (%{count} votos)'
+      against: '%{percentage}% en contra (%{count} votos)'
       title_author_and_comments:
         time: 'hace %{time}'
         comments:
@@ -429,6 +436,7 @@ es:
         news:  '¿Algo que decir?... comenta esta noticia'
         tweet: '¿Algo que decir?... comenta este tweet'
         event: '¿Algo que decir?... comenta este evento'
+        proposal: '¿Algo que decir?... comenta esta propuesta'
       time: 'hace %{time}'
       new:
         submit: Comentar

@@ -70,6 +70,9 @@ White buttons
   &.blue   { color:$link_color; }
   &.orange { color:$orange; }
   &.green  { color:$green; }
+  &.agree        { color: $agree_color; }
+  &.disagree,
+  &.against      { color: $against_color; }
 /* ------------------------------------------------------------------------------ Icons */
   &.add_person, &.add_person:active { position:relative; padding-left:33px; color:$pink; }
 /* ------------------------------------------------------------------------------ Definition */

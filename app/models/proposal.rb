@@ -19,6 +19,10 @@ class Proposal < Content
     (arguments.in_favor.count * 100 / arguments.count).round
   end
 
+  def percent_against
+    100 - percent_in_favor
+  end
+
   def participation
     arguments.count
   end

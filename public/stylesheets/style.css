@@ -196,7 +196,7 @@ span.answered { color: #00AA54; }
 span.not_answered { color: #FF3300; }
 span.positive { color: #FF0066; font-style: italic; }
 span.agree { color: #669900; }
-span.against { color: #ff9933; }
+span.disagree, span.against { color: #ff9933; }
 
 /* =============================================================================
 Header
@@ -451,6 +451,10 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.actions .inner .right .input_field, #container article.proposal .inner .right .input_field, #container article.proposals .inner .right .input_field, #container article.questions .inner .right .input_field, #container article.activity .inner .right .input_field { margin-bottom: 28px; }
 
 /* Article addons */
+.my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EDF3E5; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
+.my_opinion .result { float: left; width: 200px; margin-top: 10px; font-size: 15px; }
+.my_opinion a { float: right; margin-left: 10px; }
+
 #container article .inner .content ul.notifications { float: left; margin: 10px 0 20px 0; }
 #container article .inner .content ul.notifications li { padding: 20px; width: 249px; height: 175px; margin-right: 16px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: #fff; border: 1px solid #E2E5E8; opacity: .6; cursor: pointer; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; position: relative; }
 #container article .inner .content ul.notifications li:hover, #container article .inner .content ul.notifications li.selected { opacity: 1; background: #F2F7F9; border: 1px solid #CCCCCC; -moz-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); -o-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); }
@@ -489,6 +493,9 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .proposals .proposal .footer { clear: both; overflow: hidden; padding: 16px; border-top: 1px solid #fff; }
 #container article .inner .left .proposals .proposal .footer a { float: left; margin-right: 20px; }
 #container article .inner .left .proposals .proposal .footer .sparkline { margin-top: 10px; }
+#container article .inner .left .proposals .proposal .footer .input_text { -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; border: 1px solid #B3B6AE; background: #fff; -webkit-appearance: none; }
+#container article .inner .left .proposals .proposal .footer .input_text input[type="text"] { border: none; outline: none; padding: 7px 7px; margin: 0 0 0 3px; width: 177px; }
+#container article .inner .left .proposals .proposal .footer .input_text input[type="submit"] { border: none; color: #f10063; background: none; float: right; margin-top: 5px; margin-right: 5px; }
 
 /* Complete article / read more link */
 #container article a.more { padding: 0 0 0 15px; background: url("/images/icons/read_more.png") no-repeat 0 5px; }
@@ -855,6 +862,8 @@ White buttons
 .white_button.blue, article.white_button.blue { color: #1d79b0; }
 .white_button.orange, article.white_button.orange { color: #ff6600; }
 .white_button.green, article.white_button.green { color: #75b100; }
+.white_button.agree, article.white_button.agree { color: #669900; }
+.white_button.disagree, .white_button.against, article.white_button.disagree, article.white_button.against { color: #ff9933; }
 .white_button.add_person, .white_button.add_person:active, article.white_button.add_person, article.white_button.add_person:active { position: relative; padding-left: 33px; color: #f10063; }
 
 #container article footer .white_button.right, #container article .white_button.right, #container article article .white_button.right { float: right; right: 0; width: auto; }
