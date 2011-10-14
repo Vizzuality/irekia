@@ -5,6 +5,67 @@ jQuery.preloadImages = function(){
   }
 }
 
+/* Autocomplete */
+jQuery.fn.autocomplete = function(opt){
+
+  var speed  = (opt && opt.speed) || 200;
+  var interval;
+  var id = "autocomplete";
+
+  // Autocomplete spinner
+  var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
+  var spin_element = document.getElementById('autocomplete_spinner');
+  var spinner = new Spinner(opts);
+
+  function _close(e) {
+    GOD.broadcast('close.' + id);
+    $('.autocomplete').fadeOut();
+  }
+
+  this.each(function(){
+    $(window).bind('close.autocomplete', _close);
+
+    $('.autocomplete').click(function(e){
+      e.stopPropagation();
+    });
+
+    $(this).bind('ajax:error', function(e){
+      spinner.stop();
+      $('#search_submit').show();
+    });
+
+    $(this).bind('ajax:success', function(evt, xhr, status){
+      var $autocomplete = $(this).find('.autocomplete');
+      $autocomplete.addClass("visible");
+      $autocomplete.find('div.inner').html(xhr);
+      $autocomplete.css("margin-left", "-158px");
+      $autocomplete.css("margin-top", "23px");
+      spinner.stop();
+      $('#search_submit').show();
+      $autocomplete.fadeIn("fast");
+      GOD.subscribe('close.' + id);
+    });
+
+    $(this).click(function() {
+      // If user types more than 2 letters, submit form
+      $(this).find('input[type="text"]').keyup(function(ev){
+        if ($(this).val().length>2) {
+          clearTimeout(interval);
+          spinner.stop();
+          interval = setTimeout(function(){
+            spinner.spin(spin_element);
+            $('#search_submit').hide();
+            $('nav form').submit();
+          },speed);
+        } else {
+          var $autocomplete = $(this).closest('form').find('.autocomplete');
+          $autocomplete.fadeOut("fast");
+        }
+      });
+    });
+  });
+}
+
 /* Moves the page to the comments area */
 jQuery.fn.enableGotoComments = function(opt){
 
@@ -85,6 +146,7 @@ jQuery.fn.viewMap = function(opt){
     });
   });
 }
+
 
 /* Hides/shows input placeholders */
 jQuery.fn.smartPlaceholder = function(opt){

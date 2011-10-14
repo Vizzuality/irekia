@@ -13,62 +13,7 @@ $(function() {
   $('.sparkline.positive .graph').sparkline('html', {spotRadius: false, fillColor:false, lineColor: '#5E8821', height:"18px", width:"50px"});
   $('.sparkline.negative .graph').sparkline('html', {spotRadius: false, fillColor:false, lineColor: '#FF3300', height:"18px", width:"50px"});
 
-  // Autocomplete spinner
-  var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
-  var spin_element = document.getElementById('autocomplete_spinner');
-  var spinner = new Spinner(opts);
-
-  $(window).bind('close.autocomplete',function(ev){
-    $('.autocomplete').fadeOut();
-  });
-
-
-
-
-  // Autocomplete
-  var interval;
-
-  // If user types more than 2 letters, submit form
-  $('nav form input[type="text"]').keyup(function(ev){
-    if ($(this).val().length>2) {
-      clearTimeout(interval);
-      spinner.stop();
-      interval = setTimeout(function(){
-        spinner.spin(spin_element);
-        $('#search_submit').hide();
-        $('nav form').submit();
-      },200);
-    } else {
-      var $autocomplete = $(this).closest('form').find('.autocomplete');
-      $autocomplete.fadeOut("fast");
-    }
-  });
-
-  $('nav form').bind('ajax:success', function(evt, xhr, status){
-    var $autocomplete = $(this).find('.autocomplete');
-    $autocomplete.addClass("visible");
-    $autocomplete.find('div.inner').html(xhr);
-    $autocomplete.css("margin-left", "-158px");
-    $autocomplete.css("margin-top", "23px");
-    spinner.stop();
-    $('#search_submit').show();
-    $autocomplete.fadeIn("fast");
-    GOD.subscribe('close.autocomplete');
-  });
-
-  $('nav form').bind('ajax:error', function(e){
-    GOD.broadcast('close.autocomplete');
-    spinner.stop();
-    $('#search_submit').show();
-  });
-
-  $('.autocomplete').click(function(ev){
-    ev.stopPropagation();
-  });
-  // End autocomplete
-
-
-
+  $('nav form').autocomplete();
 
   // Checkbox binding
   $('a.checkbox').click(function(ev){
