@@ -209,7 +209,7 @@ class User < ActiveRecord::Base
     AnswerRequest.joins(:content, :user).where('contents.id = ? AND users.id = ?', question.id, self.id).count == 0
   end
 
-  def has_not_give_his_opinion(content)
+  def has_not_given_his_opinion(content)
     case content
     when Answer
       AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', content.id, id).count == 0
@@ -218,7 +218,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def has_give_his_opinion(content)
+  def has_given_his_opinion(content)
     case content
     when Answer
       AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', content.id, id).count > 0

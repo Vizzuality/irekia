@@ -411,6 +411,9 @@ es:
   participations:
     show:
       time: 'hace %{time}'
+    argument:
+      in_favor: '%{percentage}% a favor (%{count} votos)'
+      against: '%{percentage}% en contra (%{count} votos)'
     comments:
       title:
         zero: Ningún comentario

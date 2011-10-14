@@ -1,0 +1,5 @@
+<% if @participation.reason -%>
+<li><%= @participation.reason %></li>
+<% else -%>
+<%= content_tag :span, t(".in_favor", :percentage => @participation.content.percent_in_favor, :count => @participation.content.participation), :class => :agree %>
+<% end -%>

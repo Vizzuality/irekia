@@ -1,9 +1,10 @@
 class ParticipationsController < ApplicationController
+  before_filter :get_participation_class
 
   respond_to :html
 
   def show
-    @participation = Participation.where(:id => params[:id]).first
+    @participation = @participation_class.where(:id => params[:id]).first
 
     respond_with(@participation) do |format|
       format.html { render :layout => !request.xhr? }
@@ -12,9 +13,7 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    participation_class = params[:type].constantize
-    participation_type = params[:type].downcase.to_sym
-    @participation = participation_class.new params[participation_type]
+    @participation = @participation_class.new params[@participation_type]
 
     if @participation.save
       redirect_to @participation
@@ -23,4 +22,9 @@ class ParticipationsController < ApplicationController
     end
   end
 
+  def get_participation_class
+    @participation_class = params[:type].constantize
+    @participation_type = params[:type].downcase
+  end
+  private :get_participation_class
 end

@@ -30,7 +30,7 @@ class Participation < ActiveRecord::Base
   private :update_published_at
 
   def author_is_politician?
-    self.moderated = true if author.politician?
+    self.moderated = true if author && author.politician?
   end
   private :author_is_politician?
 

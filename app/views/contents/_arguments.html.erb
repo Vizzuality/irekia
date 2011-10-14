@@ -6,12 +6,21 @@
         <li><%= argument.reason %></li>
       <% end %>
     </ul>
-    <div class="footer">
-      <div class="input_text">
-        <input type="text" />
-        <%= submit_tag "Añadir" %>
+    <% if @new_in_favor -%>
+      <div class="footer">
+        <%= form_for @new_in_favor, :remote => true do |form| %>
+          <%= form.hidden_field :content_id %>
+          <%= form.hidden_field :user_id %>
+          <div class="input_text">
+            <%= form.fields_for :argument_data do |argument_data_form| %>
+              <%= argument_data_form.text_field :reason %>
+              <%= argument_data_form.hidden_field :in_favor %>
+            <% end -%>
+            <%= form.submit 'Añadir' %>
+          </div>
+        <% end -%>
       </div>
-    </div>
+    <% end -%>
   </div>
 
   <div class="proposal against">
@@ -21,11 +30,20 @@
         <li><%= argument.reason %></li>
       <% end %>
     </ul>
-    <div class="footer">
-      <div class="input_text">
-        <input type="text" />
-        <%= submit_tag "Añadir" %>
+    <% if @new_against -%>
+      <div class="footer">
+        <%= form_for @new_against, :remote => true do |form| %>
+          <%= form.hidden_field :content_id %>
+          <%= form.hidden_field :user_id %>
+          <div class="input_text">
+            <%= form.fields_for :argument_data do |argument_data_form| %>
+              <%= argument_data_form.text_field :reason %>
+              <%= argument_data_form.hidden_field :in_favor %>
+            <% end -%>
+            <%= form.submit 'Añadir' %>
+          </div>
+        <% end -%>
       </div>
-    </div>
+    <% end -%>
   </div>
 </div>

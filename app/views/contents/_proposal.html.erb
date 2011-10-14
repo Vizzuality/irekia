@@ -10,9 +10,35 @@
     </p>
 
     <div class="my_opinion">
-      <div class="result">      <%= content_tag :span, t(".in_favor", :percentage => @content.percent_in_favor, :count => @content.in_favor_count), :class => :agree %></div>
-      <a href="#" class="white_button agree">Estoy a favor</a>
-      <a href="#" class="white_button disagree">Estoy en contra</a>
+      <div class="result">      <%= content_tag :span, t(".in_favor", :percentage => @content.percent_in_favor, :count => @content.participation), :class => :agree %></div>
+        <% if @new_against -%>
+          <div class="footer">
+            <%= form_for @new_against, :remote => true do |form| %>
+              <%= form.hidden_field :content_id %>
+              <%= form.hidden_field :user_id %>
+              <div class="input_text">
+                <%= form.fields_for :argument_data do |argument_data_form| %>
+                  <%= argument_data_form.hidden_field :in_favor %>
+                <% end -%>
+                <%= form.submit 'Estoy en contra', :class => 'white_button disagree' %>
+              </div>
+            <% end -%>
+          </div>
+        <% end -%>
+        <% if @new_in_favor -%>
+          <div class="footer">
+            <%= form_for @new_in_favor, :remote => true do |form| %>
+              <%= form.hidden_field :content_id %>
+              <%= form.hidden_field :user_id %>
+              <div class="input_text">
+                <%= form.fields_for :argument_data do |argument_data_form| %>
+                  <%= argument_data_form.hidden_field :in_favor %>
+                <% end -%>
+                <%= form.submit 'Estoy a favor', :class => 'white_button agree' %>
+              </div>
+            <% end -%>
+          </div>
+        <% end -%>
     </div>
 
     <%= simple_format @content.body %>
@@ -84,7 +110,7 @@
     <div id="your_opinion">
       <h3><%= t('.content.your_opinion.title') %></h3>
       <p><%= t('.content.your_opinion.subtitle') %></p>
-      <% if user_signed_in? && current_user.has_not_give_his_opinion(@content) %>
+      <% if user_signed_in? && current_user.has_not_given_his_opinion(@content) %>
         <%= form_for @content do |f| %>
           <%= f.fields_for :arguments, @new_in_favor do |paf| %>
             <%= paf.hidden_field :user_id %>

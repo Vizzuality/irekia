@@ -63,7 +63,6 @@ Irekia::Application.routes.draw do
   end
 
   resources :proposals,    :controller => 'contents', :type => 'Proposal'
-  resources :arguments,    :controller => 'contents', :type => 'Argument'
   resources :questions,    :controller => 'contents', :type => 'Question'
   resources :answers,      :controller => 'contents', :type => 'Answer'
   resources :news,         :controller => 'contents', :type => 'News'
@@ -75,6 +74,7 @@ Irekia::Application.routes.draw do
 
   resources :demo
 
+  resources :arguments,    :controller => 'participations', :type => 'Argument'
   resources :comments,     :controller => 'participations', :type => 'Comment'
 
   resource :search do
