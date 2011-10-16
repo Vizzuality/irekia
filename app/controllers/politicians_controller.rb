@@ -4,6 +4,7 @@ class PoliticiansController < UsersController
   before_filter :get_user,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :get_politician,             :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda]
+  before_filter :get_counters,               :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :build_new_question,         :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_actions,                :only => [:show, :actions]
   before_filter :get_questions,              :only => [:show, :questions]
@@ -45,10 +46,10 @@ class PoliticiansController < UsersController
   def agenda
   end
 
-  private
   def get_politician
     @politician = @user
   end
+  private :get_politician
 
   def get_politician_data
     if current_user.blank? || current_user.not_following(@politician)
@@ -58,14 +59,22 @@ class PoliticiansController < UsersController
       @follow = current_user.followed_item(@politician)
     end
     @follow_parent   = @politician
-    @followers_count = @follow_parent.followers.count
   end
+  private :get_politician_data
+
+  def get_counters
+    @followers_count = @follow_parent.followers.count
+    @news_count      = @politician.news.count
+    @questions_count = @politician.questions.count
+  end
+  private :get_counters
 
   def build_new_question
     @question                  = Question.new
     @question_data             = @question.build_question_data
     @question_data.target_user = @user
   end
+  private :build_new_question
 
   def get_actions
     @actions = @politician.actions
@@ -76,7 +85,8 @@ class PoliticiansController < UsersController
     else
       @actions.more_recent
     end
- end
+  end
+  private :get_actions
 
   def get_questions
     @questions = @politician.questions_received.moderated
@@ -88,6 +98,7 @@ class PoliticiansController < UsersController
       @questions.more_recent
     end
   end
+  private :get_questions
 
   def get_proposals
     @proposals = @politician.proposals_received.moderated
@@ -104,6 +115,7 @@ class PoliticiansController < UsersController
     @proposal_data             = @proposal.build_proposal_data
     @proposal_data.target_area = @politician.areas.first
   end
+  private :get_proposals
 
   def get_agenda
     case action_name
@@ -126,16 +138,18 @@ class PoliticiansController < UsersController
       :lon   => event.longitude
     }}.group_by{|event| [event[:lat], event[:lon]]}.values.to_json.html_safe
   end
+  private :get_agenda
 
   def paginate
     if action_name == 'show' || params[:referer] == 'show'
-      @actions   = @actions.page(1).per(4)   if @actions
-      @questions = @questions.page(1).per(4) if @questions
-      @proposals = @proposals.page(1).per(4) if @proposals
+      @actions   = @actions.page(1).per(4).all   if @actions
+      @questions = @questions.page(1).per(4).all if @questions
+      @proposals = @proposals.page(1).per(4).all if @proposals
     else
-      @actions   = @actions.page(params[:page]).per(10)   if @actions
-      @questions = @questions.page(params[:page]).per(10) if @questions
-      @proposals = @proposals.page(params[:page]).per(10) if @proposals
+      @actions   = @actions.page(params[:page]).per(10).all   if @actions
+      @questions = @questions.page(params[:page]).per(10).all if @questions
+      @proposals = @proposals.page(params[:page]).per(10).all if @proposals
     end
   end
+  private :paginate
 end

@@ -49,7 +49,12 @@ module ApplicationHelper
 
   def within_the_day?(comments)
     last_comment = comments.last
-    last_comment.published_at > 1.day.ago
+    # Since last_comment is a deserialized JSON object using the JSON.parse method, dates aren't
+    # parsed as Date objects but Strings. We could use ActiveSupport::JSON.decode method, but since it
+    # is 20.000x slower than JSON.parse, we prefer to just convert values as need
+    comment_date = last_comment.published_at
+    comment_date = DateTime.parse(comment_date) if comment_date.is_a?(String)
+    comment_date > 1.day.ago
   end
 
   def link_to_with_login(*args)

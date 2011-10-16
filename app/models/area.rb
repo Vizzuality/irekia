@@ -4,21 +4,27 @@ class Area < ActiveRecord::Base
   has_many :areas_users,
            :class_name => 'AreaUser'
   has_many :users,
-           :through => :areas_users
+           :through => :areas_users,
+           :include => [:role, :profile_pictures]
   has_many :areas_contents,
            :class_name => 'AreaContent'
   has_many :contents,
            :through => :areas_contents
   has_many :questions,
-           :through => :areas_contents
+           :through => :areas_contents,
+           :include => [{:users => [:role, :profile_pictures]}, :question_data, :comments]
   has_many :proposals,
-           :through => :areas_contents
+           :through => :areas_contents,
+           :include => [{:users => [:role, :profile_pictures]}, :proposal_data, :arguments, :comments]
   has_many :news,
-           :through => :areas_contents
+           :through => :areas_contents,
+           :include => [{:users => [:role, :profile_pictures]}, :news_data, :comments]
   has_many :videos,
-           :through => :areas_contents
+           :through => :areas_contents,
+           :include => [{:users => [:role, :profile_pictures]}, :comments]
   has_many :photos,
-           :through => :areas_contents
+           :through => :areas_contents,
+           :include => [{:users => [:role, :profile_pictures]}, :comments]
   has_many :events,
            :through => :areas_contents,
            :include => :event_data,

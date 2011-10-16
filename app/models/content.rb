@@ -12,7 +12,9 @@ class Content < ActiveRecord::Base
 
   has_many      :follows
   has_many      :participations
-  has_many      :comments
+  has_many      :comments,
+                :include => [:author, :comment_data],
+                :conditions => {:moderated => true}
 
   attr_protected :moderated
 
@@ -47,7 +49,7 @@ class Content < ActiveRecord::Base
   end
 
   def commenters
-    commenters_ids = User.select('DISTINCT(users.id)').joins(:comments).where('content_id = ?', id).map(&:id)
+    commenters_ids = User.select('DISTINCT(users.id)').includes().joins(:comments).where('content_id = ?', id).map(&:id)
     User.where('id in (?)', commenters_ids)
   end
 
@@ -68,11 +70,11 @@ class Content < ActiveRecord::Base
   end
 
   def comments_count
-    comments.moderated.count if comments
+    comments.size if comments
   end
 
   def last_comments
-    comments.moderated.last(2)
+    comments.last(2)
   end
 
   def as_json(options = {})

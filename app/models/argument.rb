@@ -5,6 +5,7 @@ class Argument < Participation
   has_one :argument_data
 
   before_create :set_as_moderated
+  after_save :update_proposal
 
   scope :in_favor, joins(:argument_data).where('argument_data.in_favor' => true)
   scope :against, joins(:argument_data).where('argument_data.in_favor' => false)
@@ -36,5 +37,10 @@ class Argument < Participation
     moderated = true
   end
   private :set_as_moderated
+
+  def update_proposal
+    proposal.update_statistics
+  end
+  private :update_proposal
 
 end

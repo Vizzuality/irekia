@@ -152,7 +152,10 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.integer  "area_id"
     t.string   "title"
     t.text     "body"
-    t.boolean  "close",       :default => false
+    t.boolean  "close",         :default => false
+    t.integer  "participation"
+    t.integer  "in_favor"
+    t.integer  "against"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -162,6 +165,7 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.integer  "user_id"
     t.integer  "area_id"
     t.text     "question_text"
+    t.datetime "answered_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -218,7 +222,7 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.string   "lastname"
     t.date     "birthday"
     t.text     "description"
-    t.boolean  "is_woman",                                                                                :default => false
+    t.boolean  "is_woman",                                   :default => false
     t.integer  "province_id"
     t.string   "province"
     t.integer  "city_id"
@@ -228,21 +232,20 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.string   "facebook_oauth_token_secret"
     t.string   "twitter_oauth_token"
     t.string   "twitter_oauth_token_secret"
-    t.boolean  "inactive",                                                                                :default => false
-    t.boolean  "first_time",                                                                              :default => true
-    t.string   "locale",                                                                                  :default => "es"
-    t.integer  "questions_count",                                                                         :default => 0
-    t.integer  "answers_count",                                                                           :default => 0
-    t.integer  "proposals_count",                                                                         :default => 0
-    t.integer  "comments_count",                                                                          :default => 0
-    t.integer  "tagged_count",                                                                            :default => 0
-    t.spatial  "the_geom",                    :limit => {:srid=>4326, :type=>"point", :geographic=>true}
-    t.string   "email",                                                                                   :default => "",    :null => false
-    t.string   "encrypted_password",          :limit => 128,                                              :default => "",    :null => false
+    t.boolean  "inactive",                                   :default => false
+    t.boolean  "first_time",                                 :default => true
+    t.string   "locale",                                     :default => "es"
+    t.integer  "questions_count",                            :default => 0
+    t.integer  "answers_count",                              :default => 0
+    t.integer  "proposals_count",                            :default => 0
+    t.integer  "comments_count",                             :default => 0
+    t.integer  "tagged_count",                               :default => 0
+    t.string   "email",                                      :default => "",    :null => false
+    t.string   "encrypted_password",          :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                                                                           :default => 0
+    t.integer  "sign_in_count",                              :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

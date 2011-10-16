@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :store_user_path
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
-
+  before_filter :notifications_count
   before_filter :get_areas
   before_filter :setup_search
 
@@ -36,6 +36,12 @@ class ApplicationController < ActionController::Base
   def in_development
     render :partial => 'shared/in_development'
   end
+
+  def notifications_count
+    @notifications_count = 0
+    @notifications_count = current_user.notifications_count if user_signed_in?
+  end
+  private :notifications_count
 
   def get_areas
     @areas = Area.all

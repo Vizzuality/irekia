@@ -4,7 +4,8 @@ class Proposal < Content
   has_one :proposal_data
   has_many :arguments,
            :foreign_key => :content_id,
-           :dependent => :destroy
+           :dependent   => :destroy,
+           :include     => :argument_data
 
   scope :open, joins(:proposal_data).where('proposal_data.close' => false)
   scope :close, joins(:proposal_data).where('proposal_data.close' => true)
@@ -20,12 +21,11 @@ class Proposal < Content
 
   accepts_nested_attributes_for :proposal_data, :arguments
 
-  delegate :title, :body, :target_user, :target_area, :to => :proposal_data
+  delegate :in_favor, :against, :participation, :title, :body, :target_user, :target_area, :to => :proposal_data
 
   def percent_in_favor
-    total_arguments = arguments.count
-    return 0 if total_arguments.zero?
-    (arguments.in_favor.count * 100 / total_arguments).round
+    return 0 if participation.zero?
+    (in_favor * 100 / participation).round
   end
 
   def percent_against
@@ -34,18 +34,6 @@ class Proposal < Content
 
   def moderated_participation
     arguments.moderated.count
-  end
-
-  def participation
-    arguments.count
-  end
-
-  def in_favor_count
-    arguments.in_favor.count
-  end
-
-  def against_count
-    arguments.against.count
   end
 
   def as_json(options = {})
@@ -61,13 +49,20 @@ class Proposal < Content
       :title           => title,
       :body            => body,
       :participation   => participation,
-      :in_favor_count  => in_favor_count,
-      :against_count   => against_count,
+      :in_favor_count  => in_favor,
+      :against_count   => against,
       :comments_count  => comments_count,
       :last_comments   => last_comments,
       :percent_in_favor=> percent_in_favor,
       :percent_against => percent_against
     }
+  end
+
+  def update_statistics
+    proposal_data.in_favor = arguments.in_favor.count
+    proposal_data.against = arguments.against.count
+    proposal_data.participation = arguments.count
+    proposal_data.save!
   end
 
   def publish_content

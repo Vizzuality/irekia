@@ -3,8 +3,8 @@
     <%= data.title %>
   </p>
   <ul class="arguments">
-    <li><%= t('.in_favor', :count => data.in_favor_count) %></li>
-    <li><%= t('.against', :count => data.against_count) %></li>
+    <li><%= t('.in_favor', :count => data.in_favor) %></li>
+    <li><%= t('.against', :count => data.against) %></li>
   </ul>
   <%= image_tag data.author.profile_image if data.author.profile_image.present? %>
   <span class="author">

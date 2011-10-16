@@ -14,8 +14,8 @@
       <%= raw t('.author', :author => link_to(data.author.fullname, user_path(data.author.id)), :time => distance_of_time_in_words_to_now(data.published_at)) %> &middot;
 
       <% if data.is_a?(Question) %>
-        <% if data.answer.present? %>
-          <span class="answered"><%= t('.answered', :time => distance_of_time_in_words_to_now(data.answer.updated_at)) %></span>
+        <% if data.answered_at.present? %>
+          <span class="answered"><%= t('.answered', :time => distance_of_time_in_words_to_now(data.answered_at)) %></span>
         <% else %>
           <span class="not_answered"><%= t('.not_answered') %></span>
         <% end %>

@@ -8,6 +8,9 @@ class CreateProposalData < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.boolean :close, :default => false
+      t.integer :participation
+      t.integer :in_favor
+      t.integer :against
 
       t.timestamps
     end

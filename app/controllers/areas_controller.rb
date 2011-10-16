@@ -3,6 +3,7 @@ class AreasController < ApplicationController
   skip_before_filter :authenticate_user!,    :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_area,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_area_data,              :only => [:show, :actions, :questions, :proposals, :agenda, :team]
+  before_filter :get_counters,               :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_actions,                :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
@@ -46,10 +47,10 @@ class AreasController < ApplicationController
   def team
   end
 
-  private
   def get_area
     @area = Area.where(:id => params[:id]).first if params[:id].present?
   end
+  private :get_area
 
   def get_area_data
     if current_user.blank? || current_user.not_following(@area)
@@ -59,20 +60,21 @@ class AreasController < ApplicationController
       @follow = current_user.followed_item(@area)
     end
     @follow_parent   = @area
-    @followers_count = @follow_parent.followers.count
 
-    @team            = @area.team.includes(:title)
-    @team_follows    = @team.inject({}) do |team_follows, user|
-      team_follows[user.id] = if current_user.blank? || current_user.not_following(user)
-        follow          = user.follows.build
-        follow.user     = current_user
-        follow
-      else
-        follow = current_user.followed_item(user)
-      end
-      team_follows
-    end
+    @team            = @area.team.includes(:title).all
+    @team_first_two  = @team.first(2)
   end
+  private :get_area_data
+
+  def get_counters
+    @followers_count = @follow_parent.followers.count
+    @news_count      = @area.news.count
+    @questions_count = @area.questions.count
+    @proposals_count = @area.proposals.count
+    @photos_count    = @area.photos.count
+    @videos_count    = @area.videos.count
+  end
+  private :get_counters
 
   def get_actions
     @actions = @area.actions
@@ -84,6 +86,7 @@ class AreasController < ApplicationController
       @actions.more_recent
     end
   end
+  private :get_actions
 
   def get_questions
     @questions = @area.questions.moderated
@@ -99,6 +102,7 @@ class AreasController < ApplicationController
     @question_data             = @question.build_question_data
     @question_data.target_area = @area
   end
+  private :get_questions
 
   def get_proposals
     @proposals = @area.proposals.moderated
@@ -117,6 +121,7 @@ class AreasController < ApplicationController
     @proposal_data             = @proposal.build_proposal_data
     @proposal_data.target_area = @area
   end
+  private :get_proposals
 
   def get_agenda
     case action_name
@@ -139,16 +144,19 @@ class AreasController < ApplicationController
       :lon   => event.longitude
     }}.group_by{|event| [event[:lat], event[:lon]]}.values.to_json.html_safe
   end
+  private :get_agenda
 
   def paginate
     if action_name == 'show' || params[:referer] == 'show'
-      @actions   = @actions.page(1).per(4)   if @actions
-      @questions = @questions.page(1).per(4) if @questions
-      @proposals = @proposals.page(1).per(4) if @proposals
+      @actions   = @actions.page(1).per(4).all   if @actions
+      @questions = @questions.page(1).per(4).all if @questions
+      @proposals = @proposals.page(1).per(4).all if @proposals
     else
-      @actions   = @actions.page(params[:page]).per(10)   if @actions
-      @questions = @questions.page(params[:page]).per(10) if @questions
-      @proposals = @proposals.page(params[:page]).per(10) if @proposals
+      @actions   = @actions.page(params[:page]).per(10).all   if @actions
+      @questions = @questions.page(params[:page]).per(10).all if @questions
+      @proposals = @proposals.page(params[:page]).per(10).all if @proposals
     end
   end
+  private :paginate
+
 end

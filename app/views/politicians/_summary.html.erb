@@ -29,25 +29,14 @@
   <%= image_tag 'temp/avatar_big.png', :class => :xlAvatar %>
   <h3>Pregunta a <%= @politician.name %></h3>
 
-  <%= form_for @politician, :url => politician_path(@politician), :remote => true, :html => {:class => [:make_question, only_logged_class] } do |form| %>
-    <%= form.fields_for :question_data, @question_data  do |question_data| %>
+  <%= form_for @question, :remote => true, :html => {:'data-type' => 'html', :class => [:make_question, only_logged_class]} do |form| %>
+    <%= form.fields_for :question_data, @question_data do |question_data| %>
       <%= question_data.hidden_field :user_id %>
-      <%= question_data.fields_for :question, @question do |questions| %>
-        <div id="counter-124" class="input-counter placeholder">
-          <span class="counter">140</span>
-          <% if @question_author -%>
-            <%= questions.fields_for :contents_users, @question_author do |content_user| %>
-              <%= content_user.hidden_field :user_id %>
-            <% end -%>
-          <% end -%>
-          <%= questions.fields_for :question_data, @question_data do |question_data| %>
-            <%= question_data.hidden_field :user_id %>
-            <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
-          <% end %>
-
-          <span class="holder large">Haz una pregunta a <%= @politician.name %>...</span>
-        </div>
-      <% end -%>
+      <div id="counter-124" class="input-counter placeholder">
+        <span class="counter">140</span>
+        <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
+        <span class="holder large">Haz una pregunta a <%= @politician.name %>...</span>
+      </div>
       <input type="submit" value="Preguntar" id="submit-counter-124" class="disabled white_button" disabled="disabled" />
     <% end %>
   <% end %>
@@ -57,59 +46,6 @@
 <%= link_to "", '/in_development', {:class => :ribbon} %>
 <div class="t"></div><div class="f"></div>
 </article>
-
-
-
-
-<!-- <div id="politician_summary">
-  <h1><%= @politician.fullname %></h1>
-  <span class="title"><%= raw t('.title', :title => get_politician_title(@politician), :areas => @politician.areas.map{|a| link_to a.name, area_path(a)}.join(',')) %></span>
-  <div class="picture">
-    <%= image_tag @politician.profile_image_big if @politician.profile_image %>
-  </div>
-  <div class="description">
-    <h3><%= t('.description.title') %></h3>
-    <%= simple_format(@politician.description) %>
-  </div>
-  <div class="actions">
-    <span><%= t('.actions.this_week', :count => @politician.actions.count) %></span>
-    <%= link_to t('.actions.follow', :name => @politician.name) %>
-  </div>
-  <div class="questions">
-    <span><%= t('.questions.answered', :count => @politician.answers.count) %></span>
-    <%= link_to t('.questions.ask', :name => @politician.name) %>
-  </div>
-  <% if user_signed_in? %>
-    <div class="make_a_question">
-      <h3><%= t('.questions.ask', :name => @politician.name) %></h3>
-      <%= form_for current_user do |form| %>
-        <%= form.fields_for :questions, @question do |questions| %>
-          <%= questions.fields_for :question_data, @question_data do |question_data| %>
-            <%= question_data.hidden_field :user_id %>
-            <%= question_data.label :question_text, t('.make_a_question.label', :name => @politician.name) %>
-            <%= question_data.text_field :question_text %>
-          <% end %>
-        <% end %>
-        <%= form.submit t('.make_a_question.submit') %>
-      <% end %>
-    </div>
-    <% if flash[:notice] %>
-      <% if flash[:notice] == :question_created %>
-        <div class="question_sent">
-          <p class="title"><%= t('.question_sent.success') %></p>
-          <p><%= raw t('.question_sent.waiting_moderation', :review_link => link_to(t('.question_sent.review_link'), '#')) %></p>
-        </div>
-      <% elsif flash[:notice] == :question_failed %>
-        <div class="question_failed">
-          <p class="title"><%= t('.question_sent.fail') %></p>
-          <p></p>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
--->
-
 
 <% if user_signed_in? %>
   <% if flash[:notice] %>

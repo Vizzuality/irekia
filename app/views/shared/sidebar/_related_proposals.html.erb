@@ -5,9 +5,9 @@
       <li><%= link_to proposal.title, url_for(proposal) %>
       <div class="footer"><%= distance_of_time_in_words_to_now(proposal.published_at) %> &middot;
         <% if proposal.percent_in_favor >= proposal.percent_against %>
-          <%= content_tag :span, t(".in_favor", :percentage => proposal.percent_in_favor, :count => proposal.in_favor_count), :class => :agree %>
+          <%= content_tag :span, t(".in_favor", :percentage => proposal.percent_in_favor, :count => proposal.in_favor), :class => :agree %>
         <% else %>
-          <%= content_tag :span, t(".against", :percentage => proposal.percent_against, :count => proposal.against_count), :class => :disagree %>
+          <%= content_tag :span, t(".against", :percentage => proposal.percent_against, :count => proposal.against), :class => :disagree %>
         <% end %>
       </div>
       </li>

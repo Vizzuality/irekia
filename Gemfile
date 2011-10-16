@@ -8,7 +8,7 @@ gem 'devise', '~> 1.4.7'
 gem 'carrierwave', '~> 0.5.7'
 gem 'mini_magick', '~> 3.3'
 gem 'kaminari', '~> 0.12.4'
-gem 'activerecord-postgis-adapter', '~> 0.3.5'
+gem 'activerecord-postgis-adapter'
 gem 'geocoder', '~> 1.0.4'
 gem 'colored', '~> 1.2'
 gem 'pg_search', '~> 0.3.1'
@@ -18,7 +18,6 @@ gem 'ffaker', '1.8.1'
 group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
-  gem 'compass'
 end
 
 group :development, :test do
@@ -31,6 +30,10 @@ group :development, :test do
   gem 'irbtools', :require => 'irbtools/configure'
   gem 'railroady'
   gem 'escape_utils'
+  gem 'compass'
+  gem 'rails-footnotes', '>= 3.7.5.rc4'
+  gem 'bullet'
+  # gem 'slowgrowl'
 end
 
 group :development, :test, :staging do

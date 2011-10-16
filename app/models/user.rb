@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
 
   validates :terms_of_service, :acceptance => true
 
-
   belongs_to :role
   belongs_to :title
 
@@ -43,10 +42,12 @@ class User < ActiveRecord::Base
   has_many :videos,
            :through => :contents_users
   has_many :questions,
-           :through => :contents_users
+           :through => :contents_users,
+           :include => [{:users => [:role, :profile_pictures]}, :question_data, :comments]
   has_many :proposals_done,
            :through => :contents_users,
-           :source => :proposal
+           :source => :proposal,
+           :include => [{:users => [:role, :profile_pictures]}, :proposal_data, :comments]
   has_many :events,
            :through => :contents_users,
            :include => :event_data,
@@ -62,7 +63,8 @@ class User < ActiveRecord::Base
            :class_name => 'QuestionData'
   has_many :questions_received,
            :through => :question_data,
-           :source => :question
+           :source => :question,
+           :include => [{:users => [:role, :profile_pictures]}, :question_data, :comments]
   has_many :answer_data,
            :class_name => 'AnswerData'
   has_many :answers,
@@ -98,7 +100,8 @@ class User < ActiveRecord::Base
   has_many :users_following,
            :through      => :followed_items,
            :source       => :follow_item,
-           :source_type  => 'User'
+           :source_type  => 'User',
+           :include => [:profile_pictures, :areas]
 
   # Required to get followers of this user
   has_many :follows,
@@ -111,7 +114,6 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :follows, :allow_destroy => true
 
   scope :oldest_first, order('created_at asc')
-  #scope :politicians, joins(:role).where('roles.name = ?', 'Politician')
   scope :politicians, :joins      => :role,
                       :conditions => ['roles.name = ?', 'Politician'],
                       :readonly   => false
@@ -120,6 +122,10 @@ class User < ActiveRecord::Base
                    :readonly   => false
 
   pg_search_scope :search_by_name_description_province_and_city, :against => [:name, :description, :province, :city]
+
+  def self.by_id(id)
+    User.includes(:role, :profile_pictures, :title, :areas).find(id)
+  end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
 
@@ -265,7 +271,7 @@ class User < ActiveRecord::Base
   end
 
   def follow_suggestions
-    User.politicians.where('users.id <> ?', id)
+    User.includes(:role, :profile_pictures, :title, :areas).politicians.where('users.id <> ?', id)
   end
 
   def new_followers(last_seen_at)
@@ -284,6 +290,16 @@ class User < ActiveRecord::Base
 
   def reset_counter(counter)
     update_attribute("#{counter}_count", 0) if counter
+  end
+
+  def follow_for_user(user)
+    if not_following(user)
+      follow          = user.follows.build
+      follow.user     = self
+      follow
+    else
+      followed_item(user)
+    end
   end
 
   def check_blank_name

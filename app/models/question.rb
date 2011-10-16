@@ -2,9 +2,8 @@ class Question < Content
   include PgSearch
 
   has_one :question_data,
-          :foreign_key => :question_id
-  has_one :target_user,
-          :through => :question_data
+          :foreign_key => :question_id,
+          :include => :target_user
 
   has_one :answer_data
   has_one :answer,
@@ -12,8 +11,8 @@ class Question < Content
   has_many :answer_requests,
            :foreign_key => :content_id
 
-  scope :answered, joins(:answer_data)
-  scope :not_answered, includes(:answer_data).where('answer_data.question_id IS NULL')
+  scope :answered, joins(:question_data).where('question_data.answered_at IS NOT NULL')
+  scope :not_answered, includes(:question_data).where('question_data.answered_at IS NULL')
 
   pg_search_scope :search_existing_questions, :associated_against => {
     :question_data => :question_text
@@ -24,7 +23,11 @@ class Question < Content
 
   accepts_nested_attributes_for :question_data, :answer_requests, :answer
 
-  delegate :question_text, :to => :question_data
+  delegate :target_user, :question_text, :answered_at, :to => :question_data
+
+  def mark_as_answered(answered_at)
+    question_data.update_attribute('answered_at', answered_at)
+  end
 
   def as_json(options = {})
     target_user = {
@@ -64,4 +67,5 @@ class Question < Content
     super
   end
   private :publish_content
+
 end

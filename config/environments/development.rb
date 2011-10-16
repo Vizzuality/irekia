@@ -38,5 +38,13 @@ Irekia::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
+  Bullet.enable = false
+  Bullet.bullet_logger = true
+  Bullet.console = true
+  Bullet.rails_logger = true
+  Bullet.disable_browser_cache = true
+
+  # config.slowgrowl.warn = 500    # growl any action which takes > 1000ms (1s)
+  # config.slowgrowl.sticky = true  # make really slow (2x warn) alerts sticky
 end
 

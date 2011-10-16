@@ -26,7 +26,6 @@ class CreateUsers < ActiveRecord::Migration
       t.integer  :proposals_count,            :default => 0
       t.integer  :comments_count,             :default => 0
       t.integer  :tagged_count,               :default => 0
-      t.point    :the_geom,                   :geographic => true
 
       t.database_authenticatable :null => false
       t.recoverable

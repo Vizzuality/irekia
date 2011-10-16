@@ -30,7 +30,7 @@
       <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_actions, :class => "filter" %></li>
 
       <li>
-      <% if data.news.count > 0 %>
+      <% if @news_count > 0 %>
         <%= link_to t('.content_type_filters.news'), link_for_actions(:type => :news, :referer => action_name), :class => "filter" %>
       <% else %>
         <em>No hay noticias</em>
@@ -38,7 +38,7 @@
       </li>
 
       <li>
-      <% if data.questions.count > 0 %>
+      <% if @questions_count > 0 %>
       <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => :question, :referer => action_name), :class => "filter" %>
       <% else %>
         <em>No hay preguntas</em>
@@ -46,7 +46,7 @@
       </li>
 
       <li>
-      <% if data.class != User and data.proposals.count > 0 %>
+      <% if @proposals_count and @proposals_count > 0 %>
       <%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => :proposal, :referer => action_name), :class => "filter" %>
       <% else %>
         <em>No hay propuestas</em>
@@ -54,7 +54,7 @@
       </li>
 
       <li>
-      <% if data.class != User and data.photos.count > 0 %>
+      <% if @photos_count && @photos_count > 0 %>
         <%= link_to t('.content_type_filters.images'), link_for_actions(:type => :image, :referer => action_name), :class => "filter" %>
       <% else %>
         <em>No hay fotos</em>
@@ -62,7 +62,7 @@
       </li>
 
       <li>
-      <% if data.class != User and data.videos.count > 0 %>
+      <% if @videos_count && @videos_count > 0 %>
         <%= link_to t('.content_type_filters.videos'), link_for_actions(:type => :video, :referer => action_name), :class => "filter" %>
       <% else %>
         <em>No hay vídeos</em>

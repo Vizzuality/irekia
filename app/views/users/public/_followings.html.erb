@@ -5,30 +5,28 @@
   </header>
   <div class="content">
     <ul class="suggestions">
-      <% @areas_following.each do |follow| %>
+      <% @areas_following.each do |area| %>
         <li>
-          <%= link_to (image_tag 'icons/news_avatar_medium.png'), area_path(follow.follow_item), :title => follow.follow_item.name, :class => :avatar %>
+          <%= link_to (image_tag 'icons/news_avatar_medium.png'), area_path(area), :title => area.name, :class => :avatar %>
           <div class="content">
-            <%= link_to follow.follow_item.name, area_path(follow.follow_item), :class => :name %>
+            <%= link_to area.name, area_path(area), :class => :name %>
             <p>
               <%= t('.area') %>
             </p>
-            <p><%= render 'follows/destroy_form', :follow => follow, :follow_parent => @user, :button_class => '' %></p>
           </div>
         </li>
       <% end %>
       <% if @areas_following.present? && @users_following.present? -%>
         <hr/>
       <% end -%>
-      <% @users_following.each do |follow| %>
+      <% @users_following.each do |user| %>
         <li>
-          <%= link_to avatar(follow.follow_item), user_path(follow.follow_item) %>
+          <%= link_to avatar(user), user_path(user) %>
           <div class="content">
-            <%= link_to follow.follow_item.fullname, politician_path(follow.follow_item), :class => :name %>
+            <%= link_to user.fullname, politician_path(user), :class => :name %>
             <p>
-              <%= t('.title_and_area', :title => get_politician_title(follow.follow_item), :area => follow.follow_item.areas.map(&:name).to_sentence) %>
+              <%= t('.title_and_area', :title => get_politician_title(user), :area => user.areas.map(&:name).to_sentence) %>
             </p>
-            <p><%= render 'follows/destroy_form', :follow => follow, :follow_parent => @user, :button_class => '' %></p>
           </div>
         </li>
       <% end %>

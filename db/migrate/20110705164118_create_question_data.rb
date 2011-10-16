@@ -5,7 +5,8 @@ class CreateQuestionData < ActiveRecord::Migration
       t.references :user
       t.references :area
 
-      t.text :question_text
+      t.text     :question_text
+      t.datetime :answered_at
 
       t.timestamps
     end

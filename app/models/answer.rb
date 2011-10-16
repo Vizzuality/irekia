@@ -4,6 +4,7 @@ class Answer < Content
   has_many :answer_opinions,
            :foreign_key => :content_id
 
+  before_create :mark_question_as_answered
 
   delegate :question, :question_text, :answer_text, :to => :answer_data
 
@@ -35,4 +36,9 @@ class Answer < Content
     super
   end
   private :publish_content
+
+  def mark_question_as_answered
+    question.mark_as_answered(published_at) if question
+  end
+  private :mark_question_as_answered
 end

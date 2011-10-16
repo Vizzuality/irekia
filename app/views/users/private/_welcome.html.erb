@@ -2,7 +2,7 @@
 <article class="welcome">
 <div class="inner">
   <div class="avatar">
-    <%= avatar current_user %>
+    <%= avatar @user %>
   </div>
   <div class="content">
     <% if  @first_time -%>
@@ -10,10 +10,10 @@
     <% else -%>
       <h1><%= t('.hi_again', :name => current_user.name) %></h1>
     <% end -%>
-    <% if @politicians_following.blank? && @areas_following.blank? -%>
+    <% if @users_following.blank? && @areas_following.blank? -%>
       <p><%= t('.following_nobody') %></p>
     <% else -%>
-      <p><%= raw t('.currently', :politicians => link_to(t('.politicians_following', :count => @politicians_following.count), "#") , :areas => link_to(t('.areas_following', :count => @areas_following.count), "#")) %></p>
+      <p><%= raw t('.currently', :politicians => link_to(t('.politicians_following', :count => @users_following.count), "#") , :areas => link_to(t('.areas_following', :count => @areas_following.count), "#")) %></p>
     <% end -%>
   </div>
   <% if @first_time -%>

@@ -48,8 +48,13 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @areas_following = @user.followed_items.areas
-    @users_following = @user.followed_items.users
+    @areas_following = @user.areas_following.all
+    @users_following = @user.users_following.all
+
+    unless public_profile?
+      @areas_follows   = Hash[@user.followed_items.areas.map{|follow| [follow.follow_item_id, follow]}]
+      @users_follows   = Hash[@user.followed_items.users.map{|follow| [follow.follow_item_id, follow]}]
+    end
   end
 
   def agenda
@@ -114,9 +119,11 @@ class UsersController < ApplicationController
   private :get_section
 
   def get_user
-    @user                  = User.where(:id => params[:id]).first if params[:id].present?
-    @users_following = @user.users_following.politicians
-    @areas_following       = @user.areas_following
+    return unless params[:id].present?
+
+    @user                  = User.by_id(params[:id])
+    @users_following       = @user.users_following.politicians.all
+    @areas_following       = @user.areas_following.all
     @answers_count         = current_user.answers_count if current_user
     @followers_count       = @user.followers.count
     @new_followers_count   = @user.new_followers(last_seen_at).count
@@ -151,6 +158,8 @@ class UsersController < ApplicationController
         @questions.more_recent
       end
     end
+    @questions = @questions.all if @questions
+    @questions_top = @questions_top.all if @questions_top
   end
   private :get_questions
 
@@ -164,6 +173,7 @@ class UsersController < ApplicationController
     end
     @proposals_count = @proposals.count
     @proposals_in_favor_count = 0
+    @proposals = @proposals.all if @proposals
   end
   private :get_proposals
 
@@ -180,7 +190,7 @@ class UsersController < ApplicationController
       else
         @actions.more_recent
       end
-      @actions = @actions.page(params[:page]).per(10)
+      @actions = @actions.page(params[:page]).per(10).all
     end
   end
   private :get_actions
