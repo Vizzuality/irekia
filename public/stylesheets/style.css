@@ -451,6 +451,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.actions .inner .right .input_field, #container article.proposal .inner .right .input_field, #container article.proposals .inner .right .input_field, #container article.questions .inner .right .input_field, #container article.activity .inner .right .input_field { margin-bottom: 28px; }
 
 /* Article addons */
+#container article .inner .right .map a { font-size: 10px!important; }
+
 .my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EDF3E5; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
 .my_opinion .result { float: left; width: 200px; margin-top: 10px; font-size: 15px; }
 .my_opinion a { float: right; margin-left: 10px; }

@@ -2,7 +2,15 @@
 
 <ul class="locations no-bullets">
   <li>
-  <div class="map" id="content_<%= @content.id %>"></div>
+  <div class="map" id="map_<%= @content.id %>"></div>
   <div class="footer"><%= @content.location %></div>
+
+
+<%= content_for :js_data do %>
+  <script type="text/javascript" charset="utf-8">
+    loadMap("map_<%= @content.id %>", <%= @content.latitude %>, <%= @content.longitude %>);
+  </script>
+<% end %>
+
   </li>
 </ul>

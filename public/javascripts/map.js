@@ -28,17 +28,67 @@ function toggleBounce() {
   }
 }
 
-function startMap () {
-  var center = new google.maps.LatLng(59.327383, 18.07747);
+
+function startMap() {
+    var center = new google.maps.LatLng(59.327383, 18.07747);
+    var defaultZoom = 15;
+    var latlng = center;
+    var myOptions = {
+        zoom: defaultZoom,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        navigationControl: false,
+        disableDefaultUI: false,
+        scrollwheel: false,
+        streetViewControl: false,
+        mapTypeControl: false,
+        navigationControlOptions: {
+            style: google.maps.NavigationControlStyle.SMALL
+        },
+        maxZoom: 158
+    };
+
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+    // zoomIn
+    var zoomInControlDiv = document.createElement('DIV');
+    var zoomInControl = new ZoomInControl(zoomInControlDiv, map);
+    zoomInControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(zoomInControlDiv);
+
+    // zoomOut
+    var zoomOutControlDiv = document.createElement('DIV');
+    var zoomOutControl = new ZoomOutControl(zoomOutControlDiv, map);
+    zoomOutControlDiv.index = 2;
+    map.controls[google.maps.ControlPosition.LEFT].push(zoomOutControlDiv);
+
+    var mapBounds = new google.maps.LatLngBounds();
+
+    function addPoints() {
+        for (var i = 0; i < events.length; i++) {
+            var event = events[i][0];
+            var events_data = events[i];
+            var center = new google.maps.LatLng(event.lat, event.lon);
+            new IrekiaMarker(center, events_data, map);
+            mapBounds.extend(center);
+        };
+    }
+
+    addPoints();
+    map.fitBounds(mapBounds);
+}
+
+function loadMap (mapID, lat, lng) {
+  var center = new google.maps.LatLng(lat, lng);
   var defaultZoom = 15;
   var latlng = center;
   var myOptions = {
     zoom: defaultZoom,
+    zoomControl:false,
     center: latlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     navigationControl: false,
     disableDefaultUI: false,
-    scrollwheel: false,
     streetViewControl: false,
     mapTypeControl: false,
     navigationControlOptions: {
@@ -47,33 +97,13 @@ function startMap () {
     maxZoom: 158
   };
 
-  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  map = new google.maps.Map(document.getElementById(mapID), myOptions);
 
-  // zoomIn
-  var zoomInControlDiv = document.createElement('DIV');
-  var zoomInControl = new ZoomInControl(zoomInControlDiv, map);
-  zoomInControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(zoomInControlDiv);
-
-  // zoomOut
-  var zoomOutControlDiv = document.createElement('DIV');
-  var zoomOutControl = new ZoomOutControl(zoomOutControlDiv, map);
-  zoomOutControlDiv.index = 2;
-  map.controls[google.maps.ControlPosition.LEFT].push(zoomOutControlDiv);
+  var center = new google.maps.LatLng(lat, lng);
+  var marker = new google.maps.Marker({ position: center, map: map });
 
   var mapBounds = new google.maps.LatLngBounds();
-
-  function addPoints() {
-    for (var i = 0; i < events.length; i++) {
-      var event = events[i][0];
-      var events_data = events[i];
-      var center = new google.maps.LatLng(event.lat, event.lon);
-      new IrekiaMarker(center, events_data, map);
-      mapBounds.extend(center);
-    };
-  }
-
-  addPoints();
+  mapBounds.extend(center);
   map.fitBounds(mapBounds);
 }
 
