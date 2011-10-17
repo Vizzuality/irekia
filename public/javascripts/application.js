@@ -28,7 +28,9 @@ $(function() {
 
   if (hash = window.location.hash) {
     if (hash == "#comments") {
-      $('html, body').delay(500).animate({scrollTop:$(".comments").offset().top}, 250);
+      $('html, body').delay(500).animate({scrollTop:$(".comments").offset().top}, 250, function() {
+        window.location.hash = '';
+      });
     }
   }
 

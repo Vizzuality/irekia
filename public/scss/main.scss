@@ -1301,7 +1301,17 @@ a.editable {
         }
       }
 
-      &.comment { border:none; background: url('/images/comment_border.png') no-repeat; }
+      &.comment { border:none; background: url('/images/comment_border.png') no-repeat;
+
+        span.spinner {
+          float:right;
+          width:33px;
+          height:33px;
+        }
+
+        button { margin-left:5px; }
+      }
+
       &.no-border { border:none; }
 
       .comment {

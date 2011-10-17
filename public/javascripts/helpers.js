@@ -86,10 +86,23 @@ jQuery.fn.enableComments = function(opt){
 
   this.each(function(){
 
+    var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
+    var spin_element = document.getElementById('comment_spinner');
+    var spinner = new Spinner(opts);
+
+    $(this).submit(function(e) {
+      spinner.spin(spin_element);
+    });
+
     $(this).bind('ajax:success', function(evt, xhr, status) {
       var $el = $(this).parents("ul").find("li.comment");
       var $comment = $('<li style="display:none">' + xhr + '</li>');
       $el.before($comment);
+      spinner.stop();
+
+      // Reset textarea
+      $(this).find("textarea").val("");
+      $(this).find(".holder").fadeIn(speed);
       $comment.slideDown(speed);
     });
   });
