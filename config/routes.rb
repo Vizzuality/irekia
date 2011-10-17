@@ -9,7 +9,6 @@ Irekia::Application.routes.draw do
     end
     member do
       get 'connect'
-      get 'show'
       get 'questions'
       get 'proposals'
       get 'actions'
