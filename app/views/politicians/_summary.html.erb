@@ -8,9 +8,9 @@
   </header>
 
   <div class="left">
-    <h3>Quién es y qué hace</h3>
+    <h3><%= t(".who_is_and_what_does_she_does") %></h3>
     <div class="description two_columns">
-      <%= simple_format(@politician.description.truncate(258) + ' ' + link_to(t('.description.read_more'), 'in_development')) %>
+      <%= simple_format(@politician.description.truncate(258) + ' ' + link_to(t('.description.read_more'), '/in_development')) %>
       <div id="follow">
         <% if @follow.new_record? -%>
           <%= render 'follows/create_form' %>
