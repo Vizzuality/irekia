@@ -43,7 +43,11 @@ a {
   text-decoration: none;
   color: $link_color;
 
-  &:active, &:hover, &:visited {
+  &:active, &:visited {
+    color: $link_color;
+  }
+
+  &:hover {
     text-decoration: underline;
     color: $link_color_hover;
   }
