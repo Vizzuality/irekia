@@ -331,6 +331,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
       border-right: 1px solid #b4bdc4;
       background: #f8f8f9;
 
+      .inner.with_avatar {
+        padding:20px 0 0 35px;
+      }
+
       .inner {
         clear: both;
         overflow: hidden;
@@ -1959,7 +1963,7 @@ textarea {
   }
   footer {
     inner.with_avatar { position: relative; }
-    img.xlAvatar { position: absolute; bottom: 34px; right: 30px; padding: 4px; background: url('/images/circle_bkg.png') no-repeat center center; z-index: 10; }
+    img.xlAvatar { position: absolute; bottom: 22px; right: 30px; padding: 4px; background: url('/images/circle_bkg.png') no-repeat center center; z-index: 10; }
   }
 
   ul.suggestions {
@@ -2006,52 +2010,52 @@ textarea {
       margin-right: 3px;
       text-indent: -99999px;
       background: url('/images/icons/social_icons.png') no-repeat;
+      @include inline-block;
+      @include transition-property(all);
+      @include transition-duration(300ms);
+      @include border-radius(5px);
+    }
+  }
+}
+
+
+.content footer a {
+  &.facebook, &.twitter {
+    width: 37px;
+    height: 35px;
+    margin-right: 3px;
+    text-indent: -99999px;
+    background: url('/images/icons/social_icons.png') no-repeat;
     @include inline-block;
-            @include transition-property(all);
-            @include transition-duration(300ms);
-            @include border-radius(5px);
-          }
-        }
-      }
+    @include transition-property(all);
+    @include transition-duration(300ms);
+    @include border-radius(5px);
+  }
+}
 
+#container article.with_footer footer .inner a {
+  &.facebook:hover, &.twitter:hover {
+    @include box-shadow(0 0 7px rgba(43, 140, 194, 0.7));
+  }
+}
 
-      .content footer a {
-        &.facebook, &.twitter {
-          width: 37px;
-          height: 35px;
-          margin-right: 3px;
-          text-indent: -99999px;
-          background: url('/images/icons/social_icons.png') no-repeat;
-    @include inline-block;
-                @include transition-property(all);
-                @include transition-duration(300ms);
-                @include border-radius(5px);
-              }
-            }
+.content footer a {
+  &.facebook:hover, &.twitter:hover {
+    @include box-shadow(0 0 7px rgba(43, 140, 194, 0.7));
+  }
+}
 
-            #container article.with_footer footer .inner a {
-              &.facebook:hover, &.twitter:hover {
-                @include box-shadow(0 0 7px rgba(43, 140, 194, 0.7));
-              }
-            }
+#container article.with_footer footer .inner a.facebook, .content footer a.facebook {
+  background-position: 0 0;
+}
 
-            .content footer a {
-              &.facebook:hover, &.twitter:hover {
-                @include box-shadow(0 0 7px rgba(43, 140, 194, 0.7));
-              }
-            }
+#container article.with_footer footer .inner a.twitter, .content footer a.twitter {
+  background-position: -40px 0;
+}
 
-            #container article.with_footer footer .inner a.facebook, .content footer a.facebook {
-              background-position: 0 0;
-            }
-
-            #container article.with_footer footer .inner a.twitter, .content footer a.twitter {
-              background-position: -40px 0;
-            }
-
-            /* =============================================================================
-            Forms
-            ========================================================================== */
+/* =============================================================================
+Forms
+========================================================================== */
 
 input {
   &.mInput {
@@ -2098,19 +2102,19 @@ input {
   }
 
   /*input[type="submit"]:hover {
-    background:url('/images/icons/magnifier.png') no-repeat 0 top;
+  background:url('/images/icons/magnifier.png') no-repeat 0 top;
   } */
 
-  input[type="text"] {
-    display:block;
-    width:638px;
-    height:35px;
-    background:url('/images/inputs_sprite.png') no-repeat right -75px;
-    border:none;
-    font-size:15px;
-    color:$medium_dark;
-    outline:none;
-  }
+input[type="text"] {
+  display:block;
+  width:638px;
+  height:35px;
+  background:url('/images/inputs_sprite.png') no-repeat right -75px;
+  border:none;
+  font-size:15px;
+  color:$medium_dark;
+  outline:none;
+}
 }
 
 /* =============================================================================

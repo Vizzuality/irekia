@@ -106,6 +106,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_footer .inner { width: 933px; padding: 15px 31px 5px 30px; }
 #container article.with_footer .f { bottom: -10px; background-position: 0 -22px; }
 #container article.with_footer footer { padding: 0; border: none; clear: both; border-left: 1px solid #b4bdc4; border-right: 1px solid #b4bdc4; background: #f8f8f9; }
+#container article.with_footer footer .inner.with_avatar { padding: 20px 0 0 35px; }
 #container article.with_footer footer .inner { clear: both; overflow: hidden; padding: 20px 0 17px 35px; width: 959px; margin: 0; background: none; border: 0; }
 #container article.with_footer footer .inner h3 { margin: 0 0 5px 0; padding: 0; }
 #container article.with_footer footer .inner a { font-size: 15px; }
@@ -544,7 +545,7 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 #container article .inner .left .description.two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
 #container article footer inner.with_avatar { position: relative; }
-#container article footer img.xlAvatar { position: absolute; bottom: 34px; right: 30px; padding: 4px; background: url("/images/circle_bkg.png") no-repeat center center; z-index: 10; }
+#container article footer img.xlAvatar { position: absolute; bottom: 21px; right: 30px; padding: 4px; background: url("/images/circle_bkg.png") no-repeat center center; z-index: 10; }
 #container article ul.suggestions li { width: 275px; padding: 14px 16px 16px 16px; font-size: 15px; color: #7d8a92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 #container article ul.suggestions li .avatar { float: left; margin: 0 8px 0 0; }
 #container article ul.suggestions li .content { float: left; width: 200px; }
@@ -575,7 +576,8 @@ Forms
 input.mInput { width: 294px; height: 32px; padding: 0 9px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); outline: none; font-size: 15px; font-weight: 300; }
 input.xlInput { width: 508px; height: 32px; padding: 0 9px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); outline: none; color: #666666; font-size: 15px; }
 
-.search_box { float: left; padding-left: 10px; position: relative; margin-top: 10px; background: url("/images/inputs_sprite.png") no-repeat left -112px; /*input[type="submit"]:hover { background:url('/images/icons/magnifier.png') no-repeat 0 top;
+.search_box { float: left; padding-left: 10px; position: relative; margin-top: 10px; background: url("/images/inputs_sprite.png") no-repeat left -112px; /*input[type="submit"]:hover {
+background:url('/images/icons/magnifier.png') no-repeat 0 top;
 } */ }
 .search_box input[type="submit"] { position: absolute; right: 10px; top: 11px; width: 14px; height: 14px; border: none; text-indent: -999em; background: url("/images/icons/magnifier.png") no-repeat 0 bottom; }
 .search_box input[type="text"] { display: block; width: 638px; height: 35px; background: url("/images/inputs_sprite.png") no-repeat right -75px; border: none; font-size: 15px; color: #666666; outline: none; }
