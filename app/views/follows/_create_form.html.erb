@@ -8,7 +8,7 @@
 %>
 
 <p class="form">
-<%= form_for [@follow_parent, @follow], :remote => true, :html => {:'data-type' => 'html', :class => "follow"} do |form| %>
+<%= form_for [@follow_parent, @follow], :remote => true, :html => {:'data-type' => 'html', :class => :follow } do |form| %>
   <%= form.hidden_field :user_id %>
   <%= form.hidden_field :follow_item_id %>
   <%= form.hidden_field :follow_item_type %>

@@ -10,11 +10,13 @@
 
       <div class="description two_columns">
         <%= simple_format(@area.description.truncate(258) + ' ' + link_to(t('.description.read_more'), 'in_development')) %>
-        <% if @follow.new_record? -%>
-        <%= render 'follows/create_form' %>
-        <% else -%>
-        <%= render 'follows/destroy_form' %>
-        <% end -%>
+        <div id="follow">
+          <% if @follow.new_record? -%>
+            <%= render 'follows/create_form' %>
+          <% else -%>
+            <%= render 'follows/destroy_form' %>
+          <% end -%>
+        </div>
       </div>
 
     </div>
@@ -61,16 +63,16 @@
   <div class="status">
     <ul>
       <li class="area">
-        <span><%= t('.status.area.actions_this_week', :count => @actions.this_week.count) %></span>
-        <%= link_to t('.status.area.follow_this_area') %>
+      <span><%= t('.status.area.actions_this_week', :count => @actions.this_week.count) %></span>
+      <%= link_to t('.status.area.follow_this_area') %>
       </li>
       <li class="questions">
-        <span><%= t('.status.questions.answered', :count => @area.questions.answered.count) %></span>
-        <%= link_to t('.status.questions.make_a_question') %>
+      <span><%= t('.status.questions.answered', :count => @area.questions.answered.count) %></span>
+      <%= link_to t('.status.questions.make_a_question') %>
       </li>
       <li class="proposals">
-        <span><%= t('.status.proposals.open', :count => @area.proposals.open.count) %></span>
-        <%= link_to t('.status.proposals.make_a_proposal') %>
+      <span><%= t('.status.proposals.open', :count => @area.proposals.open.count) %></span>
+      <%= link_to t('.status.proposals.make_a_proposal') %>
       </li>
     </ul>
   </div>
