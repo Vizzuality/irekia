@@ -44,7 +44,7 @@
       <ul>
         <li>
         <strong class="date"><%= l(event.event_date, :format => '%d, %B de %Y') %></strong>
-        <a href="#" class="event"><%= event.title %></a>
+        <a href="#" class="event"><%= event.title.truncate(80) %></a>
         <ul class="details">
           <li class="where"><%= event.location %></li>
           <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
