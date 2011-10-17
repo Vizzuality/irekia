@@ -62,8 +62,8 @@ jQuery.fn.autocomplete = function(opt){
     $(this).click(function() {
       // If user types more than 2 letters, submit form
       $(this).find('input[type="text"]').keyup(function(ev){
+        clearTimeout(interval);
         if ($(this).val().length>2) {
-          clearTimeout(interval);
           spinner.stop();
           interval = setTimeout(function(){
             spinner.spin(spin_element);
