@@ -107,7 +107,7 @@ class UsersController < ApplicationController
     @user                  = User.where(:id => params[:id]).first if params[:id].present?
     @politicians_following = @user.users_following.politicians
     @areas_following       = @user.areas_following
-    @answers_count = current_user.answers_count if current_user
+    @answers_count         = current_user.answers_count if current_user
   end
   private :get_user
 

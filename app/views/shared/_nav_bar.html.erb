@@ -22,7 +22,7 @@
     <ul class="auth">
       <li>
         <%= link_to "hola, #{current_user.name}", user_path(current_user), :class => "blue_button" %>
-        <%= content_tag 'div', current_user.notifications_count, :class => "pending-counter" if user_signed_in? %>
+        <%= content_tag 'div', current_user.notifications_count, :class => "pending-counter" if user_signed_in? and current_user.notifications_count > 0 %>
       </li>
       <li><%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => "sign_out blue_button" %></li>
     </ul>
