@@ -45,7 +45,7 @@ span.disagree, span.against { color: #ff9933; }
 /* =============================================================================
 Header
 ========================================================================== */
-header { padding-top: 44px; margin-bottom: 53px; background: white; }
+header { padding-top: 34px; margin-bottom: 53px; background: white; }
 header .content { clear: both; overflow: hidden; height: 74px; }
 header .content .top_nav { position: relative; clear: both; overflow: hidden; }
 header .content .top_nav .logo { float: left; left: 0; top: 0; position: relative; display: block; }
