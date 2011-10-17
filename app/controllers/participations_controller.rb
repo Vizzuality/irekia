@@ -5,15 +5,18 @@ class ParticipationsController < ApplicationController
 
   def show
     @participation = @participation_class.where(:id => params[:id]).first
+    @moderation_status = @participation.moderated?? 'moderated' : 'not_moderated'
 
     respond_with(@participation) do |format|
       format.html { render :layout => !request.xhr? }
     end
 
+
   end
 
   def create
     @participation = @participation_class.new params[@participation_type]
+debugger
 
     if @participation.save
       redirect_to @participation

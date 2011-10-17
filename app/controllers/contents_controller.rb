@@ -22,6 +22,8 @@ class ContentsController < ApplicationController
   def show
     content_class = params[:type].constantize
     @content = content_class.moderated.where(:id => params[:id]).first
+    @moderation_status = @content.moderated?? 'moderated' : 'not_moderated'
+
     @comments = @content.comments
     @last_contents = content_class.moderated.order('published_at desc').where('id <> ?', @content.id).first(5)
     if current_user.present?
@@ -54,7 +56,11 @@ class ContentsController < ApplicationController
       end
 
     when Proposal
+      @in_favor_count = @content.arguments.moderated.with_reason.in_favor.count
+      @against_count = @content.arguments.moderated.with_reason.against.count
       return if current_user && current_user.has_given_his_opinion(@content)
+
+
 
       @new_in_favor = @content.arguments.in_favor.build
       @new_in_favor.argument_data = ArgumentData.new :in_favor => true
@@ -64,6 +70,7 @@ class ContentsController < ApplicationController
       @new_against.argument_data = ArgumentData.new :in_favor => false
       @new_against.user = current_user if current_user.present?
     end
+
   end
 
   def update

@@ -249,177 +249,185 @@ es:
       more: Ver calendario completo
 
   contents:
-    news:
-      date_area_and_comments:
-        comments:
-          zero: Ningún comentario
-          one: Un comentario
-          other: '%{count} comentarios'
-      sidebar:
-        sharing_links:
-          mail: Mail
-          twitter: Twitter
-          facebook: Facebook
-        tags:
-          title: Tags
-        related_politicians:
-          title: Políticos relacionados
-        related_content:
-          title: Últimos contenidos
-          comments:
-            zero: Ningún comentario
-            one: Un comentario
-            other: '%{count} comentarios'
-    photo:
-      title:
-        comments:
-          zero: Ningún comentario
-          one: Un comentario
-          other: '%{count} comentarios'
-      sidebar:
-        sharing_links:
-          mail: Mail
-          twitter: Twitter
-          facebook: Facebook
-        tags:
-          title: Tags
-        related_politicians:
-          title: Políticos relacionados
-        related_photos:
-          title: Últimas fotos
-          comments:
-            zero: Ningún comentario
-            one: Un comentario
-            other: '%{count} comentarios'
-    event:
-      back: volver
-      back_to_the_agenda: "volver a la agenda"
-      title:
-        time: '%{day} a partir de las %{hour}'
-        comments:
-          zero: Ningún comentario
-          one: Un comentario
-          other: '%{count} comentarios'
-      date_area_and_comments:
-        comments:
-          zero: Ningún comentario
-          one: Un comentario
-          other: '%{count} comentarios'
-      sidebar:
-        sharing_links:
-          mail: Mail
-          twitter: Twitter
-          facebook: Facebook
-        tags:
-          title: Tags
-        related_politicians:
-          title: Políticos relacionados
-        related_events:
-          title: Últimos eventos
-          comments:
-            zero: Ningún comentario
-            one: Un comentario
-            other: '%{count} comentarios'
-    question:
-      not_answered_yet: Esta pregunta aún no ha sido contestada.
-      people_demanding_answer:
-        zero: Nadie más quiere que sea contestada
-        one: 1 persona quiere que sea contestada
-        other: '%{count} personas quieren que sea contestada'
-      join_them:
-        zero: sé el primero
-        one: únete a ella
-        other: sumáte a ellos
-      question_content:
-        author_and_comments:
-          time: 'hace %{time}'
-          answered: 'Contestada tras %{time}'
-          not_answered:
-            zero: No contestada
-            one: 'No contestada, solicitada por 1'
-            other: 'No contestada, solicitada por %{count}'
-          comments:
-            zero: Ningún comentario
-            one: Un comentario
-            other: '%{count} comentarios'
-        answer_requests:
-          do_request: Solicitar respuesta
-        answer:
-          has_answered: 'Ha contestado %{name}'
-        answer_opinion: ¿Qué te parece la respuesta?
-        answer_satisfactory: 'Satisfactoria'
-        answer_not_satisfactory: 'No satisfactoria'
-      sidebar:
-        sharing_links:
-          mail: Mail
-          twitter: Twitter
-          facebook: Facebook
-        tags:
-          title: Tags
-        related_questions:
-          title: 'Otras preguntas similares'
-          time: 'Hace %{time}'
-          comments:
-            zero: Ningún comentario
-            one: Un comentario
-            other: '%{count} comentarios'
     arguments:
       in_favor: A favor
       against: En contra
       add: Añadir
-    proposal:
-      back: volver
-      in_favor: '%{percentage}% a favor (%{count} votos)'
-      against: '%{percentage}% en contra (%{count} votos)'
-      title_author_and_comments:
-        time: 'hace %{time}'
-        comments:
-          zero: Ningún comentario
-          one: Un comentario
-          other: '%{count} comentarios'
-        total_in_favor: '%{percent}% a favor (de %{total})'
-      content:
-        in_favor: A favor
-        against: En contra
-        add: Añadir
-        your_opinion:
-          title: ¿Qué opinas tú?
-          subtitle: Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión.
-          vote_in_favor: Votar a favor
-          vote_against: Votar en contra
-      sidebar:
-        sharing_links:
-          mail: Mail
-          twitter: Twitter
-          facebook: Facebook
-        tags:
-          title: Tags
-        related_content:
-          title: Últimos contenidos
+    not_moderated:
+      event:
+        moderation_pending: Evento pendiente de moderación
+      news:
+        moderation_pending: Noticia pendiente de moderación
+      photo:
+        moderation_pending: Imagen pendiente de moderación
+      proposal:
+        moderation_pending: Propuesta pendiente de moderación
+      question:
+        moderation_pending: Pregunta pendiente de moderación
+      tweet:
+        moderation_pending: Tweet pendiente de moderación
+    moderated:
+      news:
+        date_area_and_comments:
           comments:
             zero: Ningún comentario
             one: Un comentario
             other: '%{count} comentarios'
-
-    tweet:
-      author: 'Twitteado por %{name} hace %{time}'
-      back: volver
-      sidebar:
-        sharing_links:
-          mail: Mail
-          twitter: Twitter
-          facebook: Facebook
-        last_tweets:
-          title: 'Últimos tweets de %{name}'
+        sidebar:
+          sharing_links:
+            mail: Mail
+            twitter: Twitter
+            facebook: Facebook
+          tags:
+            title: Tags
+          related_politicians:
+            title: Políticos relacionados
+          related_content:
+            title: Últimos contenidos
+            comments:
+              zero: Ningún comentario
+              one: Un comentario
+              other: '%{count} comentarios'
+      photo:
+        title:
+          comments:
+            zero: Ningún comentario
+            one: Un comentario
+            other: '%{count} comentarios'
+        sidebar:
+          sharing_links:
+            mail: Mail
+            twitter: Twitter
+            facebook: Facebook
+          tags:
+            title: Tags
+          related_politicians:
+            title: Políticos relacionados
+          related_photos:
+            title: Últimas fotos
+            comments:
+              zero: Ningún comentario
+              one: Un comentario
+              other: '%{count} comentarios'
+      event:
+        back: volver
+        back_to_the_agenda: "volver a la agenda"
+        title:
+          time: '%{day} a partir de las %{hour}'
+          comments:
+            zero: Ningún comentario
+            one: Un comentario
+            other: '%{count} comentarios'
+        date_area_and_comments:
+          comments:
+            zero: Ningún comentario
+            one: Un comentario
+            other: '%{count} comentarios'
+        sidebar:
+          sharing_links:
+            mail: Mail
+            twitter: Twitter
+            facebook: Facebook
+          tags:
+            title: Tags
+          related_politicians:
+            title: Políticos relacionados
+          related_events:
+            title: Últimos eventos
+            comments:
+              zero: Ningún comentario
+              one: Un comentario
+              other: '%{count} comentarios'
+      question:
+        not_answered_yet: Esta pregunta aún no ha sido contestada.
+        people_demanding_answer:
+          zero: Nadie más quiere que sea contestada
+          one: 1 persona quiere que sea contestada
+          other: '%{count} personas quieren que sea contestada'
+        join_them:
+          zero: sé el primero
+          one: únete a ella
+          other: sumáte a ellos
+        question_content:
+          author_and_comments:
+            time: 'hace %{time}'
+            answered: 'Contestada tras %{time}'
+            not_answered:
+              zero: No contestada
+              one: 'No contestada, solicitada por 1'
+              other: 'No contestada, solicitada por %{count}'
+            comments:
+              zero: Ningún comentario
+              one: Un comentario
+              other: '%{count} comentarios'
+          answer_requests:
+            do_request: Solicitar respuesta
+          answer:
+            has_answered: 'Ha contestado %{name}'
+          answer_opinion: ¿Qué te parece la respuesta?
+          answer_satisfactory: 'Satisfactoria'
+          answer_not_satisfactory: 'No satisfactoria'
+        sidebar:
+          sharing_links:
+            mail: Mail
+            twitter: Twitter
+            facebook: Facebook
+          tags:
+            title: Tags
+          related_questions:
+            title: 'Otras preguntas similares'
+            time: 'Hace %{time}'
+            comments:
+              zero: Ningún comentario
+              one: Un comentario
+              other: '%{count} comentarios'
+      proposal:
+        back: volver
+        in_favor: '%{percentage}% a favor (%{count} votos)'
+        against: '%{percentage}% en contra (%{count} votos)'
+        title_author_and_comments:
           time: 'hace %{time}'
+          comments:
+            zero: Ningún comentario
+            one: Un comentario
+            other: '%{count} comentarios'
+          total_in_favor: '%{percent}% a favor (de %{total})'
+        content:
+          in_favor: A favor
+          against: En contra
+          add: Añadir
+          your_opinion:
+            title: ¿Qué opinas tú?
+            subtitle: Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión.
+            vote_in_favor: Votar a favor
+            vote_against: Votar en contra
+        sidebar:
+          sharing_links:
+            mail: Mail
+            twitter: Twitter
+            facebook: Facebook
+          tags:
+            title: Tags
+          related_content:
+            title: Últimos contenidos
+            comments:
+              zero: Ningún comentario
+              one: Un comentario
+              other: '%{count} comentarios'
+      tweet:
+        author: 'Twitteado por %{name} hace %{time}'
+        back: volver
+        sidebar:
+          sharing_links:
+            mail: Mail
+            twitter: Twitter
+            facebook: Facebook
+          last_tweets:
+            title: 'Últimos tweets de %{name}'
+            time: 'hace %{time}'
   participations:
-    comment:
-      time: 'hace %{time}'
     show:
       time: 'hace %{time}'
-    argument:
-      in_favor: '%{percentage}% a favor (%{count} votos)'
-      against: '%{percentage}% en contra (%{count} votos)'
     comments:
       title:
         zero: Ningún comentario
@@ -436,6 +444,17 @@ es:
         submit: Comentar
       label:
         news: ¿Algo que decir?... comenta esta noticia
+    not_moderated:
+      comment:
+        moderation_pending: Comentario pendiente de moderación
+      argument:
+        moderation_pending: Argumento pendiente de moderación
+    moderated:
+      comment:
+        time: 'hace %{time}'
+      argument:
+        in_favor: '%{percentage}% a favor (%{count} votos)'
+        against: '%{percentage}% en contra (%{count} votos)'
   areas:
     navigation_menu:
       menu:
