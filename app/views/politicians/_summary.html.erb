@@ -11,11 +11,13 @@
     <h3>Quién es y qué hace</h3>
     <div class="description two_columns">
       <%= simple_format(@politician.description.truncate(258) + ' ' + link_to(t('.description.read_more'), 'in_development')) %>
-      <% if @follow.new_record? -%>
-      <p><%= render 'follows/create_form' %></p>
-      <% else -%>
-      <p><%= render 'follows/destroy_form' %></p>
-      <% end -%>
+      <div id="follow">
+        <% if @follow.new_record? -%>
+          <%= render 'follows/create_form' %>
+        <% else -%>
+          <%= render 'follows/destroy_form' %>
+        <% end -%>
+      </div>
     </div>
   </div>
 </div>
