@@ -10,10 +10,10 @@ class SearchesController < ApplicationController
       render :partial => 'contents_list' and return
     end
 
-    contents_areas    = @contents.inject([]){|arr, content| arr + [content.area]}.uniq! || []
-    citizens_areas    = @citizens.inject([]){|arr, citizen| arr + citizen.areas}.uniq! || []
-    politicians_areas = @politicians.inject([]){|arr, politician| arr + politician.areas}.uniq! || []
-    @areas = contents_areas + citizens_areas + politicians_areas
+    contents_areas    = @contents.inject([]){|arr, content| arr + [content.area]} || []
+    citizens_areas    = @citizens.inject([]){|arr, citizen| arr + citizen.areas} || []
+    politicians_areas = @politicians.inject([]){|arr, politician| arr + politician.areas} || []
+    @areas = (@areas + contents_areas + citizens_areas + politicians_areas).uniq
 
     if request.xhr?
       head(:not_found) and return if @areas.blank? && @contents.blank? && @citizens.blank? && @politicians.blank?
@@ -36,6 +36,7 @@ class SearchesController < ApplicationController
   def get_common_data
     @search = OpenStruct.new(params[:search])
 
+    @areas    = Area.search_by_name_and_description @search.query
     @contents = AreaPublicStream.only_contents.search @search.query
 
     users     = User.search_by_name_description_province_and_city @search.query
