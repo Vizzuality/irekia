@@ -10,7 +10,14 @@
     </p>
 
     <div class="my_opinion">
-      <div class="result">      <%= content_tag :span, t(".in_favor", :percentage => @content.percent_in_favor, :count => @content.participation), :class => :agree %></div>
+      <div class="result">
+        <% if @content.percent_in_favor >= 50 %>
+          <%= content_tag :span, t(".in_favor", :percentage => @content.percent_in_favor, :count => @content.participation), :class => :agree %>
+        <% else %>
+          <%= content_tag :span, t(".against", :percentage => @content.percent_against, :count => @content.participation), :class => :disagree %>
+        <% end %>
+      </div>
+
         <% if current_user and @new_against -%>
           <div class="footer">
             <%= form_for @new_against, :remote => true do |form| %>
@@ -60,9 +67,8 @@
 <div class="separator"></div>
 <div class="inner">
   <div class="left">
-    <%= link_to t('.back'), "#", :class => :left_arrow %>
+    <%= link_to t('.back'), @content.author, :class => :left_arrow %>
   </div>
-
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>

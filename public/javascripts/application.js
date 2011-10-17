@@ -27,6 +27,14 @@ $(function() {
 
   watchHash();
 
+  $(".my_opinion form").bind('ajax:success', function(evt, xhr, status) {
+    $(this).parents(".my_opinion").find("form").fadeOut(250);
+    $(this).parents(".my_opinion").find(".result").fadeOut(250, function() {
+      $(this).html(xhr);
+      $(this).fadeIn(250);
+    });
+  });
+
   $('.proposal .new_argument').enableArguments();
   $('form.add_comment').enableComments();
   $(".goto_comments").enableGotoComments();
