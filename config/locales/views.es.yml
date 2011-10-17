@@ -365,6 +365,7 @@ es:
             other: '%{count} comentarios'
 
     proposal:
+      back: volver
       in_favor: '%{percentage}% a favor (%{count} votos)'
       against: '%{percentage}% en contra (%{count} votos)'
       title_author_and_comments:

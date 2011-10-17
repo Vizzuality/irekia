@@ -60,105 +60,10 @@
 <div class="separator"></div>
 <div class="inner">
   <div class="left">
-    <%= link_to "ver todas las preguntas", '/in_development', :class => :left_arrow %>
-    <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
+    <%= link_to t('.back'), "#", :class => :left_arrow %>
   </div>
 
-  <div class="right">
-    <%= link_to "siguiente pregunta", '/in_development', :class => :right_arrow %>
-    <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
-  </div>
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>
 </article>
-
-<!-- <div id="proposal" class="content">
-  <div class="title_author_and_comments">
-    <blockquote>
-      <h1><%= @content.title %></h1>
-    </blockquote>
-    <span>
-      <%= link_to @content.author.try(:fullname), user_path(@content.author)  %>
-      <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
-    </span>
-    &middot;
-    <%= link_to t('.title_author_and_comments.comments', :count => @content.comments.count), '#', :class => :goto_comments %>
-    &middot;
-    <span class="arguments"><%= t('.title_author_and_comments.total_in_favor', :percent => @content.percent_in_favor, :total => @content.arguments.count ) %></span>
-  </div>
-  <div class="content">
-    <%= simple_format @content.body %>
-    <div class="in_favor">
-      <h4><%= t('.content.in_favor') %></h4>
-      <ul>
-        <% @content.arguments.in_favor.with_reason.first(5).each do |argument| %>
-          <li><%= argument.reason %></li>
-        <% end %>
-      </ul>
-      <%= link_to t('.content.add') %>
-    </div>
-    <div class="against">
-      <h4><%= t('.content.against') %></h4>
-      <ul>
-        <% @content.arguments.against.with_reason.first(5).each do |argument| %>
-          <li><%= argument.reason %></li>
-        <% end %>
-      </ul>
-      <%= link_to t('.content.add') %>
-    </div>
-    <div id="your_opinion">
-      <h3><%= t('.content.your_opinion.title') %></h3>
-      <p><%= t('.content.your_opinion.subtitle') %></p>
-      <% if user_signed_in? && current_user.has_not_given_his_opinion(@content) %>
-        <%= form_for @content do |f| %>
-          <%= f.fields_for :arguments, @new_in_favor do |paf| %>
-            <%= paf.hidden_field :user_id %>
-            <%= paf.fields_for :argument_data do |paadf| %>
-              <%= paadf.hidden_field :in_favor %>
-            <% end %>
-          <% end %>
-          <%= f.submit t('.content.your_opinion.vote_in_favor') %>
-        <% end %>
-
-        <%= form_for @content do |f| %>
-          <%= f.fields_for :arguments, @new_against do |paf| %>
-            <%= paf.hidden_field :user_id %>
-            <%= paf.fields_for :argument_data do |paadf| %>
-              <%= paadf.hidden_field :in_favor %>
-            <% end %>
-          <% end %>
-          <%= f.submit t('.content.your_opinion.vote_against') %>
-        <% end %>
-      <% end %>
-    </div>
-    <%= render 'participations/comments' %>
-  </div>
-  <div class="sidebar">
-    <ul class="sharing_links">
-      <li><%= link_to t('.sidebar.sharing_links.mail'), '/in_development' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.twitter'), '/in_development' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.facebook'), '/in_development' %></li>
-    </ul>
-    <div class="tags">
-      <h3><%= t('.sidebar.tags.title') %></h3>
-      <ul>
-        <% @content.tags.split(',').each do |tag| %>
-          <li><%= tag.strip %></li>
-          <% end if @content.tags.present? %>
-        </ul>
-      </div>
-      <div class="related_politicians">
-        <h3><%= t('.sidebar.related_politicians.title') %></h3>
-        <ul>
-          <% @content.users.each do |user| %>
-            <li>
-            <%= link_to user.fullname, politician_path(user) %>
-            <span><%= get_politician_title(user) %></span>
-            </li>
-            <% end if @content.users.present? %>
-          </ul>
-        </div>
-      </div>
-    </div>
-    -->
