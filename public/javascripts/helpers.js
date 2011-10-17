@@ -138,8 +138,10 @@ jQuery.fn.enableComments = function(opt){
     });
 
     $(this).bind('ajax:success', function(evt, xhr, status) {
+      console.log(xhr);
       var $el = $(this).parents("ul").find("li.comment");
-      var $comment = $('<li style="display:none">' + xhr + '</li>');
+      var $comment = $(xhr);
+      $comment.hide();
       $el.before($comment);
       spinner.stop();
 
