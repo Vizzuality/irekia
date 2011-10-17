@@ -1,4 +1,6 @@
 class Area < ActiveRecord::Base
+  include PgSearch
+
   has_many :areas_users,
            :class_name => 'AreaUser'
   has_many :users,
@@ -25,6 +27,11 @@ class Area < ActiveRecord::Base
 
   accepts_nested_attributes_for :questions
   accepts_nested_attributes_for :follows, :allow_destroy => true
+
+  pg_search_scope :search_by_name_and_description, :against => [:name, :description],
+                                                   :using => {
+                                                     :tsearch => {:prefix => true}
+                                                   }
 
   def team
     users.order('display_order ASC')
