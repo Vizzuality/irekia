@@ -1,7 +1,11 @@
 <ul>
-  <% @contents.each do |content| %>
-    <li class="<%= content.event_type %>">
+  <% if @contents.size > 0 %>
+    <% @contents.each do |content| %>
+      <li class="<%= content.event_type %>">
       <%= render "shared/lists_elements/#{content.event_type}", :data => content.item %>
-    </li>
+      </li>
+    <% end %>
+  <% else %>
+    <li>&nbsp;</li>
   <% end %>
 </ul>

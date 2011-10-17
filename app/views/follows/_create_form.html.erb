@@ -1,10 +1,10 @@
 <%
-@follow        = follow if defined?(follow)
-@follow_parent = follow_parent if defined?(follow_parent)
-@button_class  = 'white_button'
-@button_class  = button_class if defined?(button_class)
-@label         = t(".#{@follow_parent.class.name.downcase}.follow", :name => @follow_parent.name, :count => @followers_count)
-@label         = button_label if defined?(button_label)
+  @follow        = follow if defined?(follow)
+  @follow_parent = follow_parent if defined?(follow_parent)
+  @button_class  = 'white_button'
+  @button_class  = button_class if defined?(button_class)
+  @label         = t(".#{@follow_parent.class.name.downcase}.follow", :name => @follow_parent.name, :count => @followers_count)
+  @label         = button_label if defined?(button_label)
 %>
 
 <p class="form">

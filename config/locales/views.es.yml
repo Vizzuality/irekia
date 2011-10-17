@@ -554,6 +554,8 @@ es:
       agenda:
         title: 'Agenda de %{name}'
   searches:
+    header:
+      your_search_results: Resultados de tu búsqueda
     show:
       your_search_results: Resultados de tu búsqueda
     navigation_menu:
