@@ -216,6 +216,10 @@ jQuery.fn.smartPlaceholder = function(opt){
     var $span  = $(this).find("span.holder");
     var $input = $(this).find(":input").not("input[type='hidden'], input[type='submit']");
 
+    if ($input.val()) {
+      $span.hide();
+    }
+
     $input.keydown(function(e) {
       setTimeout(function() { (e && e.keyCode == 8 || $input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);
     });
