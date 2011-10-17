@@ -7,7 +7,7 @@
     <%= link_to @content.author.try(:fullname), user_path(@content.users.first) %>
     <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     &middot;
-    <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments.count), '#', :class => :goto_comments %>
+    <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments.moderated.count), '#', :class => :goto_comments %>
     &middot;
     <% if @content.answer.blank? %>
       <span><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests.count) %></span>

@@ -9,7 +9,7 @@
       <h3><%= t('.description.title') %></h3>
 
       <div class="description two_columns">
-        <%= simple_format(@area.description.truncate(258) + ' ' + link_to(t('.description.read_more'), 'in_development')) %>
+        <%= simple_format(@area.description) %>
         <div id="follow">
           <% if @follow.new_record? -%>
             <%= render 'follows/create_form' %>
@@ -25,7 +25,6 @@
 
         <% @team.first(2).each do |user| %>
           <li>
-
           <%= avatar(user, :small) %>
           <%#= link_to (content_tag 'div', image_tag(user.profile_image), :class => "avatar small"), politician_path(user) if user.profile_image %>
           <%= link_to user.fullname, politician_path(user), :class => :name %>

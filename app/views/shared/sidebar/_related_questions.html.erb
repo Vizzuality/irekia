@@ -7,7 +7,7 @@
     <div class="footer">
       <span ><%= t('.time', :time => distance_of_time_in_words_to_now(question.published_at)) %></span>
       &middot;
-      <%= link_to t('.comments', :count => question.comments.count), question_path(question), :anchor => 'comments' %>
+      <%= link_to t('.comments', :count => question.comments.moderated.count), question_path(question), :anchor => 'comments' %>
     </div>
     </li>
   <% end %>
