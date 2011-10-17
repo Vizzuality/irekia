@@ -539,6 +539,7 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 #container article .inner header .right ul.switch li.selected { border: 1px solid #ccc; background: white; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container article .inner header .right ul.switch li.selected a { padding: 4px 23px; color: #465866; }
 #container article .inner header .right ul.switch li.selected a:hover { text-decoration: none; cursor: default; }
+#container article .inner .left .description.two_columns p.form { position: relative; float: left; }
 #container article .inner .left .description.two_columns .column { margin-right: 40px; width: 282px!important; }
 #container article .inner .left .description.two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }

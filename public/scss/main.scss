@@ -1036,6 +1036,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
 /* Article addons */
 
+
 #container article .inner .right .map a {
   font-size:10px!important;
 }
@@ -1943,11 +1944,17 @@ textarea {
         }
       }
     }
-    .left .description.two_columns .column {
-      margin-right: 40px;
-      width: 282px!important;
-      p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
-      &.last { margin-right: 0px; width: 280px!Important; }
+    .left .description.two_columns {
+      p.form {
+        position:relative;
+        float:left;
+      }
+      .column {
+        margin-right: 40px;
+        width: 282px!important;
+        p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
+        &.last { margin-right: 0px; width: 280px!Important; }
+      }
     }
   }
   footer {

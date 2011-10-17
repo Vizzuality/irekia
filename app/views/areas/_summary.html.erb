@@ -11,9 +11,9 @@
       <div class="description two_columns">
         <%= simple_format(@area.description.truncate(258) + ' ' + link_to(t('.description.read_more'), 'in_development')) %>
         <% if @follow.new_record? -%>
-        <p><%= render 'follows/create_form' %></p>
+        <%= render 'follows/create_form' %>
         <% else -%>
-        <p><%= render 'follows/destroy_form' %></p>
+        <%= render 'follows/destroy_form' %>
         <% end -%>
       </div>
 
