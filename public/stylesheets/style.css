@@ -454,8 +454,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner .right .map a { font-size: 10px!important; }
 
 .my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EDF3E5; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
-.my_opinion .result { float: left; width: 200px; margin-top: 10px; font-size: 15px; }
-.my_opinion a { float: right; margin-left: 10px; }
+.my_opinion .result { float: left; padding: 10px 0; width: 200px; font-size: 15px; }
+.my_opinion input[type="submit"] { float: right; margin-left: 10px; }
 
 #container article .inner .content ul.notifications { float: left; margin: 10px 0 20px 0; }
 #container article .inner .content ul.notifications li { padding: 20px; width: 249px; height: 175px; margin-right: 16px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: #fff; border: 1px solid #E2E5E8; opacity: .6; cursor: pointer; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; position: relative; }
@@ -517,6 +517,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 
 /* info */
 #container article .inner p.info { margin: 0 0 1px 0; padding: 0; font-size: 15px; }
+#container article .inner p.info.extra-margin-bottom { margin-bottom: 10px; }
 
 /* comments */
 #container article .inner .left .comments { position: relative; margin: 40px 0 0 0; }

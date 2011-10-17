@@ -54,7 +54,7 @@ class ContentsController < ApplicationController
       end
 
     when Proposal
-      return if current_user && current_user.has_given_his_opinion(@content)
+      #return if current_user && current_user.has_given_his_opinion(@content)
 
       @new_in_favor = @content.arguments.in_favor.build
       @new_in_favor.argument_data = ArgumentData.new :in_favor => true

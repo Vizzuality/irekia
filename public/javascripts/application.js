@@ -27,6 +27,7 @@ $(function() {
 
   watchHash();
 
+  $('.proposal .new_argument').enableArguments();
   $('form.add_comment').enableComments();
   $(".goto_comments").enableGotoComments();
   $('.floating-login').floatingLoginPopover();

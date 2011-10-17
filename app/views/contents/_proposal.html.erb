@@ -2,7 +2,7 @@
 <div class="inner">
   <div class="left">
     <h1><%= @content.title %></h1>
-    <p class="info">
+    <p class="info extra-margin-bottom">
     <%= link_to @content.author.try(:fullname), user_path(@content.author)  %>
     <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     &middot;
@@ -11,7 +11,7 @@
 
     <div class="my_opinion">
       <div class="result">      <%= content_tag :span, t(".in_favor", :percentage => @content.percent_in_favor, :count => @content.participation), :class => :agree %></div>
-        <% if @new_against -%>
+        <% if current_user and @new_against -%>
           <div class="footer">
             <%= form_for @new_against, :remote => true do |form| %>
               <%= form.hidden_field :content_id %>
@@ -25,7 +25,7 @@
             <% end -%>
           </div>
         <% end -%>
-        <% if @new_in_favor -%>
+        <% if current_user and @new_in_favor -%>
           <div class="footer">
             <%= form_for @new_in_favor, :remote => true do |form| %>
               <%= form.hidden_field :content_id %>

@@ -93,6 +93,36 @@ jQuery.fn.enableGotoComments = function(opt){
 }
 
 /* Enables comment submission */
+jQuery.fn.enableArguments = function(opt){
+
+  var speed  = (opt && opt.speed) || 200;
+
+  this.each(function(){
+
+    //var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
+    //var spin_element = document.getElementById('comment_spinner');
+    //var spinner = new Spinner(opts);
+
+    //$(this).submit(function(e) {
+    //  spinner.spin(spin_element);
+    //});
+
+    $(this).bind('ajax:success', function(evt, xhr, status) {
+      var $el = $(this).parent().siblings("ul");
+      var $argument = $(xhr);
+      $argument.hide();
+      $el.append($argument);
+      $argument.slideDown(250);
+      // spinner.stop();
+
+      // Reset input
+      $(this).find('.input_text input[type="text"]').val("");
+    });
+  });
+}
+
+
+/* Enables comment submission */
 jQuery.fn.enableComments = function(opt){
 
   var speed  = (opt && opt.speed) || 200;

@@ -6,7 +6,7 @@
         <li><%= argument.reason %></li>
       <% end %>
     </ul>
-    <% if @new_in_favor -%>
+    <% if current_user and @new_in_favor -%>
       <div class="footer">
         <%= form_for @new_in_favor, :remote => true do |form| %>
           <%= form.hidden_field :content_id %>
@@ -30,7 +30,7 @@
         <li><%= argument.reason %></li>
       <% end %>
     </ul>
-    <% if @new_against -%>
+    <% if current_user  and @new_against -%>
       <div class="footer">
         <%= form_for @new_against, :remote => true do |form| %>
           <%= form.hidden_field :content_id %>

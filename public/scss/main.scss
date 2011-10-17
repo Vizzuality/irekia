@@ -1046,14 +1046,15 @@ article .inner { h2, h3 { color: $dark_blue; } }
   background:#EDF3E5;
   clear:both; overflow:hidden;
   @include border-radius(4px);
+
   .result {
     float:left;
+    padding:10px 0;
     width:200px;
-    margin-top:10px;
     font-size:15px;
   }
 
-  a {
+  input[type="submit"] {
     float:right;
     margin-left:10px;
   }
@@ -1260,7 +1261,10 @@ a.editable {
 }
 
 /* info */
-#container article .inner p.info { margin: 0 0 1px 0; padding:0; font-size:15px; }
+#container article .inner p.info {
+  margin: 0 0 1px 0; padding:0; font-size:15px;
+  &.extra-margin-bottom { margin-bottom:10px; }
+}
 
 /* comments */
 #container article .inner .left .comments {
