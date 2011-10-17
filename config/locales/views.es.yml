@@ -413,6 +413,8 @@ es:
           title: 'Últimos tweets de %{name}'
           time: 'hace %{time}'
   participations:
+    comment:
+      time: 'hace %{time}'
     show:
       time: 'hace %{time}'
     argument:
