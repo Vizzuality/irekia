@@ -16,7 +16,6 @@ Irekia::Application.routes.draw do
     end
   end
 
-
   namespace :admin do
     match '/' => 'admin#index'
     match '/moderation' => 'moderation#index'

@@ -16,7 +16,6 @@ class ParticipationsController < ApplicationController
 
   def create
     @participation = @participation_class.new params[@participation_type]
-debugger
 
     if @participation.save
       redirect_to @participation

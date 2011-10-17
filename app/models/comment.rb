@@ -29,11 +29,6 @@ class Comment < Participation
   def publish_participation
     return unless content.present? && self.moderated?
 
-    #content.commenters.each do |user|
-    #  # require 'ruby-debug'
-    #  # debugger
-    #  user.update_attribute('comments_count', user.comments_count + 1)
-    #end
     content.commenters.update_all('comments_count = (comments_count + 1)')
 
     super

@@ -10,10 +10,19 @@ class ApplicationController < ActionController::Base
 
   clear_helpers
   protect_from_forgery
+  before_filter :store_user_path
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
 
   before_filter :get_areas
   before_filter :setup_search
+
+  def store_user_path
+    session[:"user_return_to"] = request.request_uri if current_user.blank? && request.get?
+  end
+
+  def after_sign_in_path_for(resource)
+    session[:"user_return_to"].nil?? root_path : session[:"user_return_to"].to_s
+  end
 
   def render_error(exception)
     logger.error exception

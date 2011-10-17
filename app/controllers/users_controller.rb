@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:intro, :new, :create, :show]
+  skip_before_filter :authenticate_user!, :only => [:intro, :new, :create, :show, :questions, :proposals, :actions, :followings]
   before_filter :private_or_public?
   before_filter :get_user, :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings]
   before_filter :get_questions, :only => [:questions]
