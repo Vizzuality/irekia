@@ -363,7 +363,10 @@ es:
             zero: Ningún comentario
             one: Un comentario
             other: '%{count} comentarios'
-
+    arguments:
+      in_favor: A favor
+      against: En contra
+      add: Añadir
     proposal:
       back: volver
       in_favor: '%{percentage}% a favor (%{count} votos)'
