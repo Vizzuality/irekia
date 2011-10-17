@@ -457,7 +457,7 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 
 .textarea-comment { font-size: 15px; width: 535px; height: 67px; background: url("/images/textareas.png") no-repeat; overflow: hidden; float: left; margin-bottom: 15px; position: relative; }
 .textarea-comment span.holder { position: absolute; left: 13px; top: 8px; width: 500px; color: #D7D8DD; }
-.textarea-comment textarea { margin: 7px 10px 10px 11px; resize: none; width: 500px; height: 37px; background: none; border: none; outline: none; }
+.textarea-comment textarea { margin: 7px 10px 10px 11px; resize: none; width: 510px; height: 50px; background: none; border: none; outline: none; }
 
 #container article .right .content ul.tags { clear: both; overflow: hidden; list-style: none; margin-bottom: 20px; }
 #container article .right .content ul.tags li { float: left; position: relative; clear: both; margin: 0 0 5px 0; left: 15px; height: 24px; background: url("/images/tag_sprite.png") repeat-x right 0; }

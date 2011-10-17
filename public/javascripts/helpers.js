@@ -1,3 +1,16 @@
+function watchHash(opt) {
+
+  var speed  = (opt && opt.speed) || 200;
+
+  if (hash = window.location.hash) {
+    if (hash == "#comments") {
+      $('html, body').delay(500).animate({scrollTop:$(".comments").offset().top}, speed, function() {
+        window.location.hash = '';
+      });
+    }
+  }
+}
+
 /* Preloading of images */
 jQuery.preloadImages = function(){
   for(var i = 0; i < arguments.length; i++){

@@ -1,5 +1,4 @@
 $(function() {
-
   // Preloading of popover assets
   $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
 
@@ -26,13 +25,7 @@ $(function() {
     }
   });
 
-  if (hash = window.location.hash) {
-    if (hash == "#comments") {
-      $('html, body').delay(500).animate({scrollTop:$(".comments").offset().top}, 250, function() {
-        window.location.hash = '';
-      });
-    }
-  }
+  watchHash();
 
   $('form.add_comment').enableComments();
   $(".goto_comments").enableGotoComments();
