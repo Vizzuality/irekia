@@ -15,7 +15,7 @@ class Content < ActiveRecord::Base
   has_many      :comments
 
   before_create :update_published_at
-  before_save :author_is_politician?
+  after_save :author_is_politician?
   after_save  :publish_content
 
   accepts_nested_attributes_for :comments, :contents_users
@@ -33,6 +33,10 @@ class Content < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
 
   # after_validation :reverse_geocode
+
+  def not_moderated?
+    !moderated
+  end
 
   def self.validate_all_not_moderated
     self.not_moderated.find_each do |content|
@@ -100,7 +104,7 @@ class Content < ActiveRecord::Base
   private :update_published_at
 
   def author_is_politician?
-    self.moderated = true if author.politician?
+    update_attribute('moderated', true) if author.politician? && not_moderated?
   end
   private :author_is_politician?
 

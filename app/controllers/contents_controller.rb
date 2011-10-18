@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:index, :show]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
     contents = params[:type].constantize.moderated
@@ -16,7 +16,10 @@ class ContentsController < ApplicationController
 
     @contents = contents.all
 
-    respond_with(@contents, :layout => !request.xhr? )
+    respond_with(@contents) do |format|
+      format.html{ render :layout => !request.xhr?}
+      format.json
+    end
   end
 
   def show
