@@ -462,7 +462,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.actions .inner .right .input_field, #container article.proposal .inner .right .input_field, #container article.proposals .inner .right .input_field, #container article.questions .inner .right .input_field, #container article.activity .inner .right .input_field { margin-bottom: 28px; }
 
 /* Article addons */
-#follow { overflow: hidden; clear: both; width: 505px; margin: 0 0 10px 0; }
+#follow { overflow: hidden; clear: both; width: 505px; margin: 0 0 10px 0; padding-right: 10px; }
 #follow form { float: right; }
 
 #container article .inner .right .map a { font-size: 10px!important; }
