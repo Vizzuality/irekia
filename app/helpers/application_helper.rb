@@ -51,4 +51,15 @@ module ApplicationHelper
     last_comment = comments.last
     last_comment.published_at > 1.day.ago
   end
+
+  def link_to_with_login(*args)
+    html_options = args[2] || {}
+    html_options[:class] = "floating-login #{html_options[:class]}" unless user_signed_in?
+    args[2] = html_options
+    link_to(*args)
+  end
+
+  def class_for_modal_login
+    'floating-login' unless user_signed_in?
+  end
 end

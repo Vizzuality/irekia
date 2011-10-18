@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:index, :show]
+  before_filter :get_content_class
 
   respond_to :html, :json
 
@@ -23,12 +24,11 @@ class ContentsController < ApplicationController
   end
 
   def show
-    content_class = params[:type].constantize
-    @content = content_class.moderated.where(:id => params[:id]).first
+    @content = @content_class.where(:id => params[:id]).first
     @moderation_status = @content.moderated?? 'moderated' : 'not_moderated'
 
     @comments = @content.comments
-    @last_contents = content_class.moderated.order('published_at desc').where('id <> ?', @content.id).first(5)
+    @last_contents = @content_class.moderated.order('published_at desc').where('id <> ?', @content.id).first(5)
     if current_user.present?
       @comment = @content.comments.build
       @comment.build_comment_data
@@ -74,12 +74,32 @@ class ContentsController < ApplicationController
       @new_against.user = current_user if current_user.present?
     end
 
+    respond_with(@content) do |format|
+      format.html{ render :layout => !request.xhr?}
+      format.json
+    end
+  end
+
+  def create
+    @content = @content_class.new params[@content_type]
+    @content.users << current_user
+
+    if @content.save
+      redirect_to @content
+    else
+      head :error
+    end
   end
 
   def update
-    @content = params[:type].constantize.moderated.where(:id => params[:id]).first
-    content_type = params[:type].downcase
-    @content.update_attributes(params[content_type])
+    @content = @content_class.moderated.where(:id => params[:id]).first
+    @content.update_attributes(params[@content_type])
     redirect_to @content
   end
+
+  def get_content_class
+    @content_class = params[:type].constantize
+    @content_type = params[:type].downcase
+  end
+  private :get_content_class
 end

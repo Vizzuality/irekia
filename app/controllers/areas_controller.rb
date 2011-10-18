@@ -54,7 +54,6 @@ class AreasController < ApplicationController
   end
 
   def get_area_data
-    @question_target    = @area
     if current_user.blank? || current_user.not_following(@area)
       @follow          = @area.follows.build
       @follow.user     = current_user
@@ -93,7 +92,6 @@ class AreasController < ApplicationController
     @question                  = Question.new
     @question_data             = @question.build_question_data
     @question_data.target_area = @area
-    @question_author           = ContentUser.new(:user => current_user) if current_user
   end
 
   def get_questions

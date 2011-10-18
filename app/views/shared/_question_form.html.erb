@@ -1,26 +1,21 @@
-<% if user_signed_in? && @question_target.present? %>
+<% if user_signed_in? %>
   <article id="question-123" class="mini popover with_footer initialy_hidden">
-  <%= form_for @question_target, :remote => true, :format => :json do |form| %>
+  <%= form_for @question, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
     <div class="inner">
       <header><h2>Haz una pregunta</h2></header>
       <div class="content">
         <p>Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo.</p>
         <h3>Tu pregunta</h3>
 
-        <%= form.fields_for :questions, @question do |questions| %>
-          <%= questions.fields_for :contents_users, @question_author do |content_user| %>
-            <%= content_user.hidden_field :user_id %>
-          <% end -%>
-          <%= questions.fields_for :question_data, @question_data do |question_data| %>
-            <%= question_data.hidden_field :user_id %>
-            <%= question_data.hidden_field :area_id %>
+        <%= form.fields_for :question_data, @question_data do |question_data| %>
+          <%= question_data.hidden_field :user_id %>
+          <%= question_data.hidden_field :area_id %>
 
-            <div id="123" class="input-counter">
-              <span class="counter">140</span>
-              <%= question_data.text_area :question_text %>
-            </div>
+          <div id="123" class="input-counter">
+            <span class="counter">140</span>
+            <%= question_data.text_area :question_text %>
+          </div>
 
-          <% end %>
         <% end %>
 
       </div>
@@ -29,7 +24,7 @@
     <footer>
     <div class="separator"></div>
     <div class="inner">
-      <input type="submit" value="<%= t('.make_a_question.submit') %>" id="submit-123" class="disabled white_button right" disabled="disabled" />
+      <%= form.submit t('.make_a_question.submit'), :id => 'submit-123', :class => 'disabled white_button right', :disabled => 'disabled' %>
     </div>
     </footer>
     <div class="t"></div><div class="f"></div>

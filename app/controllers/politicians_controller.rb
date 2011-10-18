@@ -52,7 +52,6 @@ class PoliticiansController < UsersController
   end
 
   def get_politician_data
-    @question_target = @politician
     if current_user.blank? || current_user.not_following(@politician)
       @follow          = @politician.follows.build
       @follow.user     = current_user
@@ -67,7 +66,6 @@ class PoliticiansController < UsersController
     @question                  = Question.new
     @question_data             = @question.build_question_data
     @question_data.target_user = @user
-    @question_author           = ContentUser.new(:user => current_user) if current_user
   end
 
   def get_actions
