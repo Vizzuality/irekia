@@ -4,7 +4,7 @@ class AreasController < ApplicationController
   before_filter :get_area,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_area_data,              :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_actions,                :only => [:show, :actions, :questions, :proposals, :agenda, :team]
-  before_filter :build_questions_for_update, :only => [:questions]
+  before_filter :build_questions_for_update, :only => [:show, :questions]
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
   before_filter :get_agenda,                 :only => [:show, :agenda]
@@ -31,7 +31,6 @@ class AreasController < ApplicationController
   end
 
   def questions
-    @question_target    = @area
     render :partial => 'shared/questions_list',
            :locals  => {:questions => @questions},
            :layout  => nil and return if request.xhr?
@@ -55,6 +54,7 @@ class AreasController < ApplicationController
   end
 
   def get_area_data
+    @question_target    = @area
     if current_user.blank? || current_user.not_following(@area)
       @follow          = @area.follows.build
       @follow.user     = current_user
@@ -91,9 +91,9 @@ class AreasController < ApplicationController
   def build_questions_for_update
     return if current_user.blank?
     @question                  = Question.new
-    @question.contents_users   << ContentUser.new(:user => current_user)
     @question_data             = @question.build_question_data
     @question_data.target_area = @area
+    @question_author           = ContentUser.new(:user => current_user) if current_user
   end
 
   def get_questions
