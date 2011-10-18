@@ -11,6 +11,7 @@
     <h3><%= t(".who_is_and_what_does_she_does") %></h3>
     <div class="description two_columns">
       <%= simple_format(@politician.description.truncate(258) + ' ' + link_to(t('.description.read_more'), '/in_development')) %>
+    </div>
       <div id="follow">
         <% if @follow.new_record? -%>
           <%= render 'follows/create_form' %>
@@ -18,7 +19,6 @@
           <%= render 'follows/destroy_form' %>
         <% end -%>
       </div>
-    </div>
   </div>
 </div>
 

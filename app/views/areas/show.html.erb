@@ -1,7 +1,7 @@
 <%= render 'summary' %>
 <%= render 'navigation_menu' %>
 
-<%= render 'shared/actions' %>
+<%= render 'shared/actions', :data => @area %>
 <%= render 'shared/questions' %>
 <%= render 'shared/proposals' %>
 <%= render 'shared/agenda', :more => true, :title => t('.agenda.title') %>

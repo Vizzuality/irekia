@@ -36,6 +36,12 @@ class User < ActiveRecord::Base
            :class_name => 'ContentUser'
   has_many :contents,
            :through => :contents_users
+  has_many :news,
+           :through => :contents_users
+  has_many :photos,
+           :through => :contents_users
+  has_many :videos,
+           :through => :contents_users
   has_many :questions,
            :through => :contents_users
   has_many :proposals_done,

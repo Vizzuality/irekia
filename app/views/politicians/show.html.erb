@@ -1,6 +1,6 @@
 <%= render 'summary' %>
 <%= render 'menu' %>
-<%= render 'shared/actions' %>
+<%= render 'shared/actions', :data => @politician %>
 <%= render 'shared/questions' %>
 <%= render 'shared/proposals' %>
 <%= render 'shared/agenda', :title => t('.agenda.title', :name => @politician.name), :more => true %>

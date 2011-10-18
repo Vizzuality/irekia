@@ -23,6 +23,10 @@ class Proposal < Content
     100 - percent_in_favor
   end
 
+  def moderated_participation
+    arguments.moderated.count
+  end
+
   def participation
     arguments.count
   end

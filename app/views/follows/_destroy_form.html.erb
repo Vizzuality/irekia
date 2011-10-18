@@ -5,11 +5,9 @@
 @button_class  = button_class if defined?(button_class)
 %>
 
-<p class="form">
 <%= form_for [@follow_parent, @follow], :remote => true, :html => {:'data-type' => 'html', :method => :delete, :class => :follow } do |form| %>
   <%= form.hidden_field :id %>
   <%= content_tag :button, :type => 'submit', :class => "#{@button_class} add_person add_to_favorites" do %>
     <%= raw (content_tag(:span, '', :class => 'add') + t('.stop_follow')) %>
   <% end -%>
 <% end -%>
-</p>

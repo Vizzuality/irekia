@@ -10,6 +10,8 @@
 
       <div class="description two_columns">
         <%= simple_format(@area.description) %>
+      </div>
+
         <div id="follow">
           <% if @follow.new_record? -%>
             <%= render 'follows/create_form' %>
@@ -17,8 +19,6 @@
             <%= render 'follows/destroy_form' %>
           <% end -%>
         </div>
-      </div>
-
     </div>
     <div class="right">
       <ul class="people">

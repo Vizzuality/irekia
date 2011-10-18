@@ -422,6 +422,10 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.actions .inner, #container article.proposals .inner, #container article.proposal .inner, #container article.questions .inner, #container article.activity .inner { width: 934px; padding: 15px 31px 35px 29px; }
 #container article.actions .inner .left, #container article.proposals .inner .left, #container article.proposal .inner .left, #container article.questions .inner .left, #container article.activity .inner .left { width: 614px; }
 #container article.actions .inner .left ul li, #container article.proposals .inner .left ul li, #container article.proposal .inner .left ul li, #container article.questions .inner .left ul li, #container article.activity .inner .left ul li { clear: both; overflow: hidden; margin-bottom: 39px; }
+#container article.actions .inner .left ul li.proposal a.icon, #container article.proposals .inner .left ul li.proposal a.icon, #container article.proposal .inner .left ul li.proposal a.icon, #container article.questions .inner .left ul li.proposal a.icon, #container article.activity .inner .left ul li.proposal a.icon { display: block; float: left; background: url("/images/icons/in_favor_against.png") no-repeat 0 0; width: 65px; height: 65px; margin: 0 13px 0 0; text-align: center; font-size: 11px; color: #669900; text-decoration: none; line-height: 12px; }
+#container article.actions .inner .left ul li.proposal a.icon strong, #container article.proposals .inner .left ul li.proposal a.icon strong, #container article.proposal .inner .left ul li.proposal a.icon strong, #container article.questions .inner .left ul li.proposal a.icon strong, #container article.activity .inner .left ul li.proposal a.icon strong { display: block; margin: 18px 0 0 2px; font-size: 18px; }
+#container article.actions .inner .left ul li.proposal a.icon strong .percentage, #container article.proposals .inner .left ul li.proposal a.icon strong .percentage, #container article.proposal .inner .left ul li.proposal a.icon strong .percentage, #container article.questions .inner .left ul li.proposal a.icon strong .percentage, #container article.activity .inner .left ul li.proposal a.icon strong .percentage { font-size: 11px; }
+#container article.actions .inner .left ul li.proposal a.icon.against, #container article.proposals .inner .left ul li.proposal a.icon.against, #container article.proposal .inner .left ul li.proposal a.icon.against, #container article.questions .inner .left ul li.proposal a.icon.against, #container article.activity .inner .left ul li.proposal a.icon.against { background-position: right 0; color: #ff9933; }
 #container article.actions .inner .left ul li:last-child, #container article.proposals .inner .left ul li:last-child, #container article.proposal .inner .left ul li:last-child, #container article.questions .inner .left ul li:last-child, #container article.activity .inner .left ul li:last-child { margin: 0; }
 #container article.actions .inner .left ul li.last, #container article.proposals .inner .left ul li.last, #container article.proposal .inner .left ul li.last, #container article.questions .inner .left ul li.last, #container article.activity .inner .left ul li.last { margin: 0; }
 #container article.actions .inner .left ul li .content, #container article.proposals .inner .left ul li .content, #container article.proposal .inner .left ul li .content, #container article.questions .inner .left ul li .content, #container article.activity .inner .left ul li .content { width: auto; float: left; width: 535px; }
@@ -458,6 +462,9 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.actions .inner .right .input_field, #container article.proposal .inner .right .input_field, #container article.proposals .inner .right .input_field, #container article.questions .inner .right .input_field, #container article.activity .inner .right .input_field { margin-bottom: 28px; }
 
 /* Article addons */
+#follow { overflow: hidden; clear: both; width: 505px; margin: 0 0 10px 0; }
+#follow form { float: right; }
+
 #container article .inner .right .map a { font-size: 10px!important; }
 
 .my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EDF3E5; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
@@ -492,9 +499,10 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* Proposals blocks */
 #container article .inner .left .proposals { clear: both; overflow: hidden; margin: 0 0 61px 0; }
 #container article .inner .left .proposals .proposal { float: left; width: 286px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
+#container article .inner .left .proposals .proposal.agree { background: #E9F0DE; margin: 0 33px 0 0; }
+#container article .inner .left .proposals .proposal.against { background: #FFF0D9; margin: 0; }
+#container article .inner .left .proposals .proposal a.icon { display: block; float: left; background: red; width: 10px; height: 10px; float: left; margin-right: 20px; }
 #container article .inner .left .proposals .proposal h3 { margin: 0; padding: 16px 0 12px 16px; font-size: 17px; text-transform: none; }
-#container article .inner .left .proposals .proposal.against { background: #FFF0D9; }
-#container article .inner .left .proposals .proposal.agree { background: #E9F0DE; margin-right: 33px; }
 #container article .inner .left .proposals .proposal ul { padding: 0 16px; }
 #container article .inner .left .proposals .proposal ul li { background: url("/images/icons/bullet.png") no-repeat 0 7px; padding: 0 0 8px 7px; font-size: 15px; color: #7d8a92; margin: 0 0 5px 0; }
 #container article .inner .left .proposals .proposal ul li.add { background: none; }
@@ -702,7 +710,6 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 #container article .inner header .right ul.switch li.selected { border: 1px solid #ccc; background: white; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container article .inner header .right ul.switch li.selected a { padding: 4px 23px; color: #465866; }
 #container article .inner header .right ul.switch li.selected a:hover { text-decoration: none; cursor: default; }
-#container article .inner .left .description.two_columns p.form { position: relative; float: left; }
 #container article .inner .left .description.two_columns .column { margin-right: 40px; width: 282px!important; }
 #container article .inner .left .description.two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
