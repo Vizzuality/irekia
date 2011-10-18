@@ -13,6 +13,7 @@ Irekia::Application.routes.draw do
       get 'proposals'
       get 'actions'
       get 'followings'
+      get 'agenda'
     end
   end
 

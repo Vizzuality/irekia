@@ -18,6 +18,6 @@ module UsersHelper
   end
 
   def private_profile?
-    current_user == @user
+    @viewing_access == 'private'
   end
 end

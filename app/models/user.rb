@@ -253,6 +253,10 @@ class User < ActiveRecord::Base
     User.politicians.where('users.id <> ?', id)
   end
 
+  def new_followers(last_seen_at)
+    followers.where('follows.created_at > ?', last_seen_at || last_sign_in_at)
+  end
+
   def notifications_count
     count = if politician?
       (questions_count + proposals_count + comments_count + tagged_count) rescue 0

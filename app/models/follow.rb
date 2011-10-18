@@ -4,4 +4,5 @@ class Follow < ActiveRecord::Base
 
   scope :areas, where("follow_item_type = 'Area'")
   scope :users, where("follow_item_type = 'User'")
+
 end

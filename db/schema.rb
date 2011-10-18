@@ -237,6 +237,7 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.integer  "proposals_count",                                                                         :default => 0
     t.integer  "comments_count",                                                                          :default => 0
     t.integer  "tagged_count",                                                                            :default => 0
+    t.integer  "new_followers",                                                                           :default => 0
     t.spatial  "the_geom",                    :limit => {:srid=>4326, :type=>"point", :geographic=>true}
     t.string   "email",                                                                                   :default => "",    :null => false
     t.string   "encrypted_password",          :limit => 128,                                              :default => "",    :null => false

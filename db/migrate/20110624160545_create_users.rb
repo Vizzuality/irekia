@@ -18,7 +18,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :facebook_oauth_token_secret
       t.string   :twitter_oauth_token
       t.string   :twitter_oauth_token_secret
-      t.datetime :last_connection
       t.boolean  :inactive,                   :default => false
       t.boolean  :first_time,                 :default => true
       t.string   :locale,                     :default => 'es'

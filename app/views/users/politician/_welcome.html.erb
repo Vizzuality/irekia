@@ -1,0 +1,19 @@
+<!-- Welcome article -->
+<article class="welcome">
+<div class="inner">
+  <div class="avatar">
+    <%= avatar current_user %>
+  </div>
+  <div class="content">
+    <h1><%= t('.hi_again', :name => current_user.name) %></h1>
+    <p>
+      <%= t('.followers_count', :count => @followers_count) %>,
+      <%= t('.new_followers_count', :count => @new_followers_count) %>
+    </p>
+  </div>
+  <%= link_to t('.edit_your_profile'), "#", :class => :config %>
+</ul>
+</div>
+
+<div class="t"></div><div class="f"></div>
+</article>

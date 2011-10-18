@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:intro, :new, :create, :show, :questions, :proposals, :actions, :followings]
-  before_filter :private_or_public?
-  before_filter :get_user, :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings]
+  before_filter :private_politician_or_public?
+  before_filter :get_user, :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :get_questions, :only => [:questions]
   before_filter :get_proposals, :only => [:proposals]
   before_filter :get_actions, :only => [:show, :actions]
+  before_filter :get_agenda, :only => [:show, :agenda]
+  before_filter :log_user_connection_time, :only => [:show]
 
   def show
-    redirect_to politician_path(@user) if @user.politician?
+    redirect_to_politician_page?
 
     @first_time = @user.first_time
     @user.update_attribute('first_time', false) if @first_time
@@ -51,6 +53,10 @@ class UsersController < ApplicationController
     @users_following = @user.followed_items.users
   end
 
+  def agenda
+
+  end
+
   def intro
   end
 
@@ -89,14 +95,19 @@ class UsersController < ApplicationController
     session[:return_to] = connect_user_path(@user)
   end
 
-  def private_or_public?
+  def redirect_to_politician_page?
+    redirect_to politician_path(@user) if current_user.blank? || (@user.politician? && current_user != @user)
+  end
+  private :redirect_to_politician_page?
+
+  def private_politician_or_public?
     @viewing_access = if current_user && params[:id].present? && current_user.id == params[:id].to_i
-      'private'
+      current_user.politician?? 'politician' : 'private'
     else
       'public'
     end
   end
-  private :private_or_public?
+  private :private_politician_or_public?
 
   def get_section
     @section = params[:section] || 'dashboard'
@@ -108,23 +119,33 @@ class UsersController < ApplicationController
     @politicians_following = @user.users_following.politicians
     @areas_following       = @user.areas_following
     @answers_count         = current_user.answers_count if current_user
+    @followers_count       = @user.followers.count
+    @new_followers_count   = @user.new_followers(last_seen_at).count
   end
   private :get_user
 
   def get_questions
-    if ( params[:referer].blank? || params[:referer] == 'answered' ) && private_profile?
-      @questions_answered = @user.questions.answered
-      @questions_answered = if params[:more_polemic]
-        @questions_answered.more_polemic
+    if public_profile?
+      @questions = @user.questions
+    elsif private_profile?
+      @questions_top = @user.questions.answered
+      @questions = @user.questions
+    elsif politician_profile?
+      @questions_top = @user.questions_received.not_answered
+      @questions = @user.questions_received
+    end
+
+    if @questions_top && (params[:referer].blank? || params[:referer] == 'answered')
+      @questions_top = if params[:more_polemic]
+        @questions_top.more_polemic
       else
-        @questions_answered.more_recent
+        @questions_top.more_recent
       end
-      @questions_answered_count = @questions_answered.length
-      @questions = @questions_answered if params[:referer] == 'answered'
+      @questions_top_count = @questions_top.length
+      @questions = @questions_top if params[:referer] == 'answered'
     end
 
     if params[:referer].blank? || params[:referer] == 'all'
-      @questions = @user.questions
       @questions = if params[:more_polemic]
         @questions.more_polemic
       else
@@ -132,6 +153,7 @@ class UsersController < ApplicationController
       end
     end
   end
+  private :get_questions
 
   def get_proposals
     @proposals = @user.proposals_done.moderated
@@ -144,6 +166,7 @@ class UsersController < ApplicationController
     @proposals_count = @proposals.count
     @proposals_in_favor_count = 0
   end
+  private :get_proposals
 
   def get_actions
     if action_name == 'show' && private_profile?
@@ -163,8 +186,34 @@ class UsersController < ApplicationController
   end
   private :get_actions
 
+  def get_agenda
+
+  end
+  private :get_agenda
+
   def private_profile?
-    current_user == @user
+    @viewing_access == 'private'
   end
   private :private_profile?
+
+  def public_profile?
+    @viewing_access == 'public'
+  end
+  private :private_profile?
+
+  def politician_profile?
+    @viewing_access == 'politician'
+  end
+  private :private_profile?
+
+  def log_user_connection_time
+    cookies[:last_seen_at] = DateTime.now if user_signed_in?
+  end
+  private :log_user_connection_time
+
+  def last_seen_at
+    DateTime.parse(cookies[:last_seen_at]) rescue nil
+  end
+  private :last_seen_at
+
 end

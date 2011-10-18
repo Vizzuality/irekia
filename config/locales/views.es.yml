@@ -784,6 +784,63 @@ es:
         all_profiles: Ver todos los perfiles a los que sigues
         title_and_area: '%{title} de %{area}'
         area: Área
+    politician:
+      welcome:
+        hi_again: 'Hola de nuevo %{name},'
+        followers_count:
+          zero: No te sigue nadie todavía
+          one: Te sigue 1 usuario
+          other: 'Te siguen %{count} usuarios'
+        new_followers_count:
+          zero: ninguno nuevo desde la última vez que entraste.
+          one: 1 nuevo desde la última vez que entraste.
+          other: '%{count} nuevos desde la última vez que entraste.'
+        edit_your_profile: Edita tu perfil
+      navigation_menu:
+        dashboard: Dashboard
+        your_questions: Preguntas
+        your_proposals: Propuestas
+        your_agenda: Tu agenda
+        publish: Publicar
+      questions:
+        without_answer_title:
+          zero: Ninguna pregunta sin contestar
+          one: 1 pregunta sin contestar
+          other: '%{count} preguntas sin contestar'
+        for_you_title: Todas las preguntas dirigidas a ti
+        more_recent: Más recientes
+        more_polemic: Más polémicas
+      proposals:
+        title:
+          zero: No has hecho ninguna propuesta
+          one: Has hecho 1 propuesta
+          other: 'Has hecho %{count} propuestas'
+        proposal_support: Tus propuestas tienen un apoyo entre los usuarios de Irekia de...
+        proposal_support_count:
+          zero: Ninguna a favor
+          one: 1 a favor
+          other: '%{count} a favor'
+        more_recent: Más recientes
+        more_commented: Más comentadas
+      actions:
+        title: Lo último
+        main_filters:
+          more_recent: Más recientes
+          more_polemic: Más polémicas
+        content_type_filters:
+         all: Todos los tipos
+         news: Noticias
+         politicians_activity: Actividad de los políticos
+         questions: Preguntas
+         proposals: Propuestas
+         images: Fotos
+         videos: Vídeos
+        more: ver más acciones
+      followings:
+        title: A quien sigues en Irekia
+        all_profiles: Ver todos los perfiles a los que sigues
+        title_and_area: '%{title} de %{area}'
+        area: Área
     intro:
       new_in_irekia: ¿Nuevo en Irekia?
       fill_in_your_data: Utiliza Facebook o Twitter para registrarte.

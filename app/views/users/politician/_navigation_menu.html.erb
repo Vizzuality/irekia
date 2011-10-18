@@ -1,0 +1,8 @@
+<%= menu [
+  { :link => link_to(t(".dashboard"), user_path(@user)), :class => current_action?('show') },
+  { :link => link_to(t(".your_questions"), questions_user_path(@user)), :class => current_action?('questions'), :count => @answers_count },
+  { :link => link_to(t(".your_proposals"), proposals_user_path(@user)), :class => current_action?('proposals') },
+  { :link => link_to(t(".your_agenda"), agenda_user_path(@user)), :class => current_action?('agenda')  },
+  { :link => link_to(t(".publish"), user_path(@user, :section => 'publish')), :class => "publish #{current_action?('publish')}" },
+] %>
+
