@@ -32,7 +32,6 @@ class PoliticiansController < UsersController
   end
 
   def questions
-    @question_target    = @politician
     render :partial => 'shared/questions_list',
            :locals  => {:questions => @questions},
            :layout  => nil and return if request.xhr?
@@ -53,6 +52,7 @@ class PoliticiansController < UsersController
   end
 
   def get_politician_data
+    @question_target = @politician
     if current_user.blank? || current_user.not_following(@politician)
       @follow          = @politician.follows.build
       @follow.user     = current_user

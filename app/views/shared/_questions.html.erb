@@ -32,7 +32,7 @@
     </ul>
 
     <% if user_signed_in? && @question_target.present? %>
-      <%= link_to t('.create_question'), '/in_development', :id => "question-123", :class => "white_button " %>
+      <%= link_to t('.create_question'), '/in_development', :id => "question-123", :class => "white_button ask_question" %>
     <% elsif !user_signed_in? %>
       <%= link_to t('.create_question'), '/in_development', :class => "white_button " %>
     <% end %>
