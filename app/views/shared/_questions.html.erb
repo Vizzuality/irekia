@@ -17,7 +17,7 @@
     <div id="listing">
 
       <% if @questions.count > 0 %>
-        <%= render 'shared/questions_list', :questions => @questions if @questions %>
+        <%= render 'shared/questions_list' %>
       <% else %>
         <span class="empty">No hay preguntas en este area</span>
       <% end %>

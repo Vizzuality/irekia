@@ -34,7 +34,6 @@ class UsersController < ApplicationController
     end
 
     render :partial => 'shared/questions_list',
-           :locals  => {:questions => @questions},
            :layout  => nil and return if request.xhr?
   end
 

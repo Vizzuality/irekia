@@ -9,7 +9,7 @@ module ContentsHelper
     end
   end
 
-  def link_for_questions
-    questions_path
+  def link_for_questions(params = {})
+    questions_path(params)
   end
 end

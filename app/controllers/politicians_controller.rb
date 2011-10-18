@@ -33,7 +33,6 @@ class PoliticiansController < UsersController
 
   def questions
     render :partial => 'shared/questions_list',
-           :locals  => {:questions => @questions},
            :layout  => nil and return if request.xhr?
 
     session[:return_to] = questions_politician_path(@politician)

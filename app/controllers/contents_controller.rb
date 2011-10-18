@@ -10,7 +10,8 @@ class ContentsController < ApplicationController
     if params[:query]
       case params[:type]
       when 'Question'
-        contents = Question.search_existing_questions params[:query]
+        @contents = Question.search_existing_questions params[:query]
+        @questions = @contents
       end
 
     end
@@ -18,7 +19,14 @@ class ContentsController < ApplicationController
     @contents = contents.all
 
     respond_with(@contents) do |format|
-      format.html{ render :layout => !request.xhr?}
+      format.html do
+#        if request.xhr?
+          render :partial => "shared/#{@content_type.pluralize}_list",
+                 :layout  => false
+#        else
+#          render
+#        end
+      end
       format.json
     end
   end
