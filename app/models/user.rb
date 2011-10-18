@@ -228,12 +228,17 @@ class User < ActiveRecord::Base
     end
   end
 
-  def has_given_his_opinion(content)
+  def has_given_his_opinion?(content)
+    his_opinion(content).count > 0
+  end
+
+  def his_opinion(content)
+
     case content
     when Answer
-      AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', content.id, id).count > 0
+      AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', content.id, id)
     when Proposal
-      content.arguments.where('user_id = ?', id).count > 0
+      content.arguments.where('user_id = ?', id)
     end
 
   end

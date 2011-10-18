@@ -5,6 +5,8 @@ class Participation < ActiveRecord::Base
              :foreign_key => :user_id
   belongs_to :content
 
+  attr_protected :moderated
+
   before_create :update_published_at
   before_save :author_is_politician?
   after_save  :publish_participation

@@ -21,11 +21,14 @@
         <% if current_user and @new_against -%>
           <div class="footer">
             <%= form_for @new_against, :remote => true do |form| %>
+              <%= form.hidden_field :id %>
               <%= form.hidden_field :content_id %>
               <%= form.hidden_field :user_id %>
               <div class="input_text">
                 <%= form.fields_for :argument_data do |argument_data_form| %>
-                  <%= argument_data_form.hidden_field :in_favor %>
+                  <%= argument_data_form.hidden_field :id, :value => '' %>
+                  <%= argument_data_form.hidden_field :reason, :value => '' %>
+                  <%= argument_data_form.hidden_field :in_favor, :value => false %>
                 <% end -%>
                 <%= form.submit 'Estoy en contra', :class => 'white_button disagree' %>
               </div>
@@ -35,11 +38,14 @@
         <% if current_user and @new_in_favor -%>
           <div class="footer">
             <%= form_for @new_in_favor, :remote => true do |form| %>
+              <%= form.hidden_field :id %>
               <%= form.hidden_field :content_id %>
               <%= form.hidden_field :user_id %>
               <div class="input_text">
                 <%= form.fields_for :argument_data do |argument_data_form| %>
-                  <%= argument_data_form.hidden_field :in_favor %>
+                  <%= argument_data_form.hidden_field :id, :value => '' %>
+                  <%= argument_data_form.hidden_field :reason, :value => '' %>
+                  <%= argument_data_form.hidden_field :in_favor, :value => true %>
                 <% end -%>
                 <%= form.submit 'Estoy a favor', :class => 'white_button agree' %>
               </div>
