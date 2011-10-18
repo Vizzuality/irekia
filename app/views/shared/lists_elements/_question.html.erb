@@ -23,9 +23,9 @@
 
       &middot;
 
-      <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '/in_development', :class => "comment-count" %>
+      <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), question_path(data.id, :anchor => :comments), :class => "comment-count" %>
     <% else %>
-      <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '/in_development', :class => "comment-count" %>
+      <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), question_path(data.id, :anchor => :comments), :class => "comment-count" %>
       &middot;
       <%= render "/shared/inline_sharing" %>
     <% end %>

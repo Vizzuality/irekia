@@ -311,6 +311,11 @@ article .inner { h2, h3 { color: $dark_blue; } }
     div.right {
       position:relative;
 
+      li em {
+        font-size:15px;
+        color: #999999;
+      }
+
       span.spinner {
         position:absolute;
         display:block;

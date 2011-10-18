@@ -13,6 +13,12 @@ class Area < ActiveRecord::Base
            :through => :areas_contents
   has_many :proposals,
            :through => :areas_contents
+  has_many :news,
+           :through => :areas_contents
+  has_many :videos,
+           :through => :areas_contents
+  has_many :photos,
+           :through => :areas_contents
   has_many :events,
            :through => :areas_contents,
            :include => :event_data,

@@ -8,7 +8,7 @@
         <h3>Tu pregunta</h3>
 
         <%= form.fields_for :questions, @question do |questions| %>
-          <%= questions.fields_for :contents_users, @question.contents_users.last do |content_user| %>
+          <%= questions.fields_for :contents_users, @question_author do |content_user| %>
             <%= content_user.hidden_field :user_id %>
           <% end -%>
           <%= questions.fields_for :question_data, @question_data do |question_data| %>

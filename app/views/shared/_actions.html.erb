@@ -26,12 +26,49 @@
 
   <div class="right">
     <ul class="selector">
+
       <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_actions, :class => "filter" %></li>
-      <li><%= link_to t('.content_type_filters.news'), link_for_actions(:type => :news, :referer => action_name), :class => "filter" %></li>
-      <li><%= link_to t('.content_type_filters.questions'), link_for_actions(:type => :question, :referer => action_name), :class => "filter" %></li>
-      <li><%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => :proposal, :referer => action_name), :class => "filter" %></li>
-      <li><%= link_to t('.content_type_filters.images'), link_for_actions(:type => :image, :referer => action_name), :class => "filter" %></li>
-      <li><%= link_to t('.content_type_filters.videos'), link_for_actions(:type => :video, :referer => action_name), :class => "filter" %></li>
+
+      <li>
+      <% if @area.news.count > 0 %>
+        <%= link_to t('.content_type_filters.news'), link_for_actions(:type => :news, :referer => action_name), :class => "filter" %>
+      <% else %>
+        <em>No hay noticias</em>
+      <% end %>
+      </li>
+
+      <li>
+      <% if @area.questions.count > 0 %>
+      <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => :question, :referer => action_name), :class => "filter" %>
+      <% else %>
+        <em>No hay preguntas</em>
+      <% end %>
+      </li>
+
+      <li>
+      <% if @area.proposals.count > 0 %>
+      <%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => :proposal, :referer => action_name), :class => "filter" %>
+      <% else %>
+        <em>No hay propuestas</em>
+      <% end %>
+      </li>
+
+      <li>
+      <% if @area.photos.count > 0 %>
+        <%= link_to t('.content_type_filters.images'), link_for_actions(:type => :image, :referer => action_name), :class => "filter" %>
+      <% else %>
+        <em>No hay fotos</em>
+      <% end %>
+      </li>
+
+      <li>
+      <% if @area.videos.count > 0 %>
+        <%= link_to t('.content_type_filters.videos'), link_for_actions(:type => :video, :referer => action_name), :class => "filter" %>
+      <% else %>
+        <em>No hay vídeos</em>
+      <% end %>
+      </li>
+
     </ul>
   </div>
 </div>

@@ -189,6 +189,10 @@ es:
         read_more: 'Leer más'
       proposal:
         author: '%{author} hace %{time}'
+        votes:
+          zero: 0 votos
+          one: 1 voto
+          other: '%{count} votos'
         participation:
           zero: Ningún usuario ha participado
           one: Un usuario ha participado
