@@ -214,6 +214,7 @@ es:
           one: 1 comentario anterior
           other: '%{count} comentarios anteriores'
         write_your_comment: 'Escribe tu comentario...'
+        Send: Enviar
 
     questions:
       title: Preguntas de los ciudadanos
@@ -448,7 +449,8 @@ es:
         news: ¿Algo que decir?... comenta esta noticia
     not_moderated:
       comment:
-        moderation_pending: Comentario pendiente de moderación
+        comment_sent: "Tu comentario ha sido enviado :)"
+        the_comment_will_be_published_soon: "Será publicado en cuanto nuestros moderadores puedan revisarlo"
       argument:
         moderation_pending: Argumento pendiente de moderación
     moderated:

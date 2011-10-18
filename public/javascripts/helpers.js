@@ -137,8 +137,7 @@ jQuery.fn.enableComments = function(opt){
       spinner.spin(spin_element);
     });
 
-    $(this).bind('ajax:success', function(evt, xhr, status) {
-      console.log(xhr);
+   $(this).bind('ajax:success', function(evt, xhr, status) {
       var $el = $(this).parents("ul").find("li.comment");
       var $comment = $(xhr);
       $comment.hide();
@@ -229,6 +228,57 @@ jQuery.fn.smartPlaceholder = function(opt){
   });
 }
 
+/* Allow to count characters in a input à la Twitter */
+jQuery.fn.enableCommentBox = function(opt){
+
+  this.each(function(){
+
+    $(this).submit(function(e) {
+      var count = $input.val().length;
+      if (count <= 0) {
+        return false;
+      }
+    });
+
+    $(this).bind('ajax:success', function(evt, xhr, status) {
+      var $el = $(this).siblings("ul");
+      var $comment = $(xhr);
+      $comment.hide();
+      $el.append($comment);
+      //  spinner.stop();
+
+      speed = 250;
+      // Reset textarea
+      $(this).find("input").val("");
+      $(this).find(".holder").fadeIn(speed);
+      $comment.slideDown(speed);
+    });
+
+    function textCounter($input) {
+      var count = $input.val().length;
+
+      if (count <= 0) {
+        $submit.fadeOut(250);
+        $submit.attr('disabled', 'disabled');
+      } else {
+        $submit.removeAttr('disabled');
+        $submit.fadeIn(250);
+      }
+    }
+
+    var $input = $(this).find(":text, textarea");
+    var $submit = $(this).find('input[type="submit"]');
+
+    $input.keyup(function(e) {
+      textCounter($input);
+    });
+
+    $input.keydown(function(e) {
+      textCounter($input);
+    });
+
+  });
+}
 /* Allow to count characters in a input à la Twitter */
 jQuery.fn.inputCounter = function(opt){
 

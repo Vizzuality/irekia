@@ -29,7 +29,7 @@
   <%= image_tag 'temp/avatar_big.png', :class => :xlAvatar %>
   <h3>Pregunta a <%= @politician.name %></h3>
 
-  <%= form_for @politician, :url => politician_path(@politician), :html => {:class => [:make_question, only_logged_class] } do |form| %>
+  <%= form_for @politician, :url => politician_path(@politician), :remote => true, :html => {:class => [:make_question, only_logged_class] } do |form| %>
     <%= form.fields_for :question_data, @question_data  do |question_data| %>
       <%= question_data.hidden_field :user_id %>
       <%= question_data.fields_for :question, @question do |questions| %>

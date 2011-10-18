@@ -976,9 +976,9 @@ article .inner { h2, h3 { color: $dark_blue; } }
       a { color: #2C8CC5; }
       .content .comment-box {
         @include border-radius(5px);
-        background: rgba(237, 237, 239, 0.7);
         margin-top: 12px;
-
+        background: rgba(237, 237, 239, 0.7);
+        input[type="submit"] { display:none; }
         .avatar {
           margin: 0 9px 0 0;
           &:before { border-color: rgba(237, 237, 239, 0.7); }
@@ -986,15 +986,29 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
         p { line-height: 16px; }
         ul {
-          padding: 10px;
           border-bottom: 1px solid $white;
           li {
-            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(237, 237, 239, 0.7);
+            margin:0;
             &.previous { padding:0; border:none; display:none; }
+            &.moderated {
+              background:$moderated_color; border-top: 1px solid $white;
+              color:$medium_dark;
+              font-size:13px;
+              .icon.ok {
+                background:url('/images/icons/ok.png') no-repeat;
+                width:37px; height:40px;
+                margin-right:10px;
+                float:left;
+              }
+
+              strong { display:block; }
+            }
           }
         }
 
-        .previous { padding: 10px 13px 10px 13px; border-bottom: 1px solid $white; color: $standard_gray; font-size: 13px; }
+        .previous { margin:0; padding: 10px 13px 10px 13px; border-bottom: 1px solid $white; color: $standard_gray; font-size: 13px; }
 
         form {
           position: relative;
