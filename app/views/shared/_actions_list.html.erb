@@ -1,7 +1,11 @@
 <ul>
-  <% @actions.each do |action| %>
-    <li class="<%= action.event_type %>">
+  <% if @actions.count > 0 %>
+    <% @actions.each do |action| %>
+      <li class="<%= action.event_type %>">
       <%= render "shared/lists_elements/#{action.event_type}", :data => action.item %>
-    </li>
+      </li>
+    <% end %>
+  <% else %>
+    <li>&nbsp;</li>
   <% end %>
 </ul>

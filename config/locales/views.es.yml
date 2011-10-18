@@ -450,7 +450,7 @@ es:
     not_moderated:
       comment:
         comment_sent: "Tu comentario ha sido enviado :)"
-        the_comment_will_be_published_soon: "Será publicado en cuanto nuestros moderadores puedan revisarlo"
+        the_comment_will_be_published_soon: "Será publicado en cuanto nuestros <u>moderadores</u> puedan revisarlo"
       argument:
         moderation_pending: Argumento pendiente de moderación
     moderated:

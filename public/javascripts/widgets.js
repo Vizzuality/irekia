@@ -1111,8 +1111,6 @@ var GOD = (function() {
     transitionSpeed: 250
   };
 
-
-
   // Called by using $('foo').filterWidget();
   methods.init = function(settings) {
     settings = $.extend({}, defaults, settings);
@@ -1136,12 +1134,10 @@ var GOD = (function() {
 
       var $ps = $(this);
 
-
       // Let's create the spinner dom element
       if ($(this).find('div.right ul.selector').length>0) {
         var filter_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: 'white',speed: 1,trail: 100,shadow: false});
       }
-
 
       $(this).find(".filter").bind('click', function(e) {
         e.preventDefault();
@@ -1152,7 +1148,6 @@ var GOD = (function() {
         var top = $(this).position().top;
         $(filter_spinner.el).css({top:top+8+"px",position:"absolute",right:'3px',height:'15px',width:'15px'});
         $(this).closest('div.right').append(filter_spinner.el);
-
 
         var classes = $(this).attr("class");
           data.filter = $(this).attr("href");
@@ -1170,14 +1165,17 @@ var GOD = (function() {
         $(this).parents("ul").find("li").removeClass("selected");
         $(this).parent().addClass("selected");
 
+        var settings = data.settings;
+
         $.ajax({ url: data.filter, data: data.sort, type: "GET", success: function(data){
-          $ps.find("#listing").slideUp(250, function() {
+          $ps.find("#listing").fadeOut(settings.transitionSpeed, function() {
+            console.log(data);
             if (data.length<12) {
               $ps.find("#listing").html('<span class="empty">No hay contenido en este area</span>');
             } else {
               $ps.find("#listing").html(data);
             }
-            $ps.find("#listing").slideDown(250, function() {
+            $ps.find("#listing").slideDown(settings.transitionSpeed, function() {
               filter_spinner.stop();
             });
           });

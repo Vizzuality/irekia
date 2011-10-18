@@ -302,7 +302,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     div.left span.empty{
       display:block;
       width:100%;
-      margin:80px 0 0 0;
+      margin:80px 0 80px 0;
       color:#7D8A92;
       font:normal 17px Arial;
       text-align:center;
@@ -1057,7 +1057,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
 }
 
 /* Article addons */
-
 
 #container article .inner .right .map a {
   font-size:10px!important;

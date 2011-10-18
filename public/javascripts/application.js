@@ -69,8 +69,5 @@ $(function() {
   $(".share.inline, .share.more, .share.email").sharePopover();
 
   //$('.avatar').prepend("<div class='ieframe'></div>");
-  var current_filter = "";
-  var current_sort_filter = {};
-
   $(".with_filters").filterWidget();
 });

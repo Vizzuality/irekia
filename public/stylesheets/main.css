@@ -101,7 +101,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner header h1, #container article .inner header h2 { margin: 0; }
 #container article .inner header h3 { font-size: 17px; }
 #container article .inner header h2 { font-size: 31px; line-height: normal; }
-#container article.with_filters div.left span.empty { display: block; width: 100%; margin: 80px 0 0 0; color: #7D8A92; font: normal 17px Arial; text-align: center; }
+#container article.with_filters div.left span.empty { display: block; width: 100%; margin: 80px 0 80px 0; color: #7D8A92; font: normal 17px Arial; text-align: center; }
 #container article.with_filters div.right { position: relative; }
 #container article.with_filters div.right span.spinner { position: absolute; display: block; right: 7px; top: 7px; width: 20px; height: 20px; background: red; z-index: 10; }
 #container article.with_footer .inner { width: 933px; padding: 15px 31px 5px 30px; }
