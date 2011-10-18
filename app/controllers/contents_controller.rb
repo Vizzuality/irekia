@@ -20,12 +20,12 @@ class ContentsController < ApplicationController
 
     respond_with(@contents) do |format|
       format.html do
-#        if request.xhr?
+        if request.xhr?
           render :partial => "shared/#{@content_type.pluralize}_list",
                  :layout  => false
-#        else
-#          render
-#        end
+        else
+          render
+        end
       end
       format.json
     end
