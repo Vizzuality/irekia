@@ -632,6 +632,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
   &.popover {
     position: absolute;
+    top:-900px;
     z-index: 1000;
   }
   &.broken-top .t {

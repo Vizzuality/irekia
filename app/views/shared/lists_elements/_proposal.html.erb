@@ -1,6 +1,6 @@
 <%
   percentage = data.percent_in_favor
-  percentage = data.percent_against if data.percent_in_favor > data.percent_against
+  percentage = data.percent_against if data.percent_in_favor < data.percent_against
 %>
 
 <%= link_to raw("<strong>#{percentage}<span class='percentage'>%</span></strong><span>a favor</span>"), proposal_path(data.id), :class => "icon #{ data.arguments.moderated.in_favor.count > data.arguments.moderated.against.count ? "in_favor" : "against" }" %>

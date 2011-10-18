@@ -505,7 +505,7 @@ var GOD = (function() {
       $("body").append("<div id='lock_screen'></div>");
       $("#lock_screen").height($(document).height());
       $("#lock_screen").fadeIn(150, function() {
-        callback();
+        callback && callback();
       });
     }
   }
@@ -534,6 +534,22 @@ var GOD = (function() {
     _addSubmitAction(data);
     _addDefaultAction(data);
 
+    console.log($ps);
+    $ps.find("textarea").keyup(function(e) {
+      console.log(e.keyCode);
+      if (e.keyCode == 32) {
+      url = "/proposals";
+        console.log(url);
+
+        $.ajax({ url: url, data: { query: $ps.find("textarea").val(), per_page: 3, mini: true }, type: "GET", success: function(data){
+        console.log(data);
+      }});
+
+      }
+    });
+
+
+
     //$("#container").prepend($ps);
 
     _subscribeToEvent(data.event);
@@ -545,7 +561,6 @@ var GOD = (function() {
     var top  = _getTopPosition($ps);
     var left = _getLeftPosition($ps);
 
-    console.log("open", data, $ps);
     $ps.css({"top":(top + 100) + "px", "left": left + "px"});
 
     $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
