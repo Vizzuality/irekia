@@ -50,8 +50,9 @@
 <div class="separator"></div>
 <div class="inner">
 
+  <%= raw more if defined?(more) %>
   <div class="right">
-    <%= link_to t(".more"), link_for_agenda, :class => "right right_arrow" if more %>
+    <%#= link_to t(".more"), link_for_agenda, :class => "right right_arrow" if more %>
   </div>
 
 </div>

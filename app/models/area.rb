@@ -43,4 +43,8 @@ class Area < ActiveRecord::Base
     users.order('display_order ASC')
   end
 
+  def agenda_between(start_date, end_date)
+    events.moderated.where('event_data.event_date >= ? AND event_data.event_date <= ?', start_date, end_date)
+  end
+
 end

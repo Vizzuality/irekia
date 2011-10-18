@@ -205,6 +205,10 @@ class User < ActiveRecord::Base
     self.password_confirmation = generated_password
   end
 
+  def agenda_between(start_date, end_date)
+    events.moderated.where('event_data.event_date >= ? AND event_data.event_date <= ?', start_date, end_date)
+  end
+
   def has_not_requested_answer(question)
     AnswerRequest.joins(:content, :user).where('contents.id = ? AND users.id = ?', question.id, self.id).count == 0
   end

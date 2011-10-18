@@ -17,6 +17,10 @@ module UsersHelper
     'selected' if params[:section] == section
   end
 
+  def link_for_agenda(params = {})
+    agenda_user_path(@user, params)
+  end
+
   def private_profile?
     @viewing_access == 'private'
   end

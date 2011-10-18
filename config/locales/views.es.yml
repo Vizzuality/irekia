@@ -822,6 +822,9 @@ es:
           other: '%{count} a favor'
         more_recent: Más recientes
         more_commented: Más comentadas
+      agenda:
+        title: Tu agenda
+        next_month: Siguiente mes
       actions:
         title: Lo último
         main_filters:

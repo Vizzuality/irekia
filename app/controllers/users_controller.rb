@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_filter :get_questions, :only => [:questions]
   before_filter :get_proposals, :only => [:proposals]
   before_filter :get_actions, :only => [:show, :actions]
-  before_filter :get_agenda, :only => [:show, :agenda]
+  before_filter :get_agenda, :only => [:agenda]
   before_filter :log_user_connection_time, :only => [:show]
 
   def show
@@ -116,7 +116,7 @@ class UsersController < ApplicationController
 
   def get_user
     @user                  = User.where(:id => params[:id]).first if params[:id].present?
-    @politicians_following = @user.users_following.politicians
+    @users_following = @user.users_following.politicians
     @areas_following       = @user.areas_following
     @answers_count         = current_user.answers_count if current_user
     @followers_count       = @user.followers.count
@@ -126,13 +126,13 @@ class UsersController < ApplicationController
 
   def get_questions
     if public_profile?
-      @questions = @user.questions
+      @questions = @user.questions.moderated
     elsif private_profile?
-      @questions_top = @user.questions.answered
-      @questions = @user.questions
+      @questions     = @user.questions.moderated
+      @questions_top = @questions.answered
     elsif politician_profile?
-      @questions_top = @user.questions_received.not_answered
-      @questions = @user.questions_received
+      @questions     = @user.questions_received.moderated
+      @questions_top = @questions.not_answered
     end
 
     if @questions_top && (params[:referer].blank? || params[:referer] == 'answered')
@@ -187,6 +187,19 @@ class UsersController < ApplicationController
   private :get_actions
 
   def get_agenda
+    @beginning_of_calendar = Date.current.beginning_of_week
+    @end_of_calendar       = Date.current.advance(:weeks => 4).end_of_week
+
+    @agenda = @user.agenda_between(@beginning_of_calendar, @end_of_calendar)
+    @days   = @beginning_of_calendar..@end_of_calendar
+    @agenda_json = @agenda.map{|event| {
+      :title => event.title,
+      :date  => l(event.event_date, :format => '%d, %B de %Y'),
+      :when  => event.event_date.strftime('%H:%M'),
+      :where => event.location,
+      :lat   => event.latitude,
+      :lon   => event.longitude
+    }}.group_by{|event| [event[:lat], event[:lon]]}.values.to_json.html_safe
 
   end
   private :get_agenda

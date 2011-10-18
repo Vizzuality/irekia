@@ -131,7 +131,7 @@ class AreasController < ApplicationController
       @end_of_calendar       = Date.current.advance(:weeks => 3).end_of_week
     end
 
-    @agenda = @area.events.moderated.where('event_data.event_date >= ? AND event_data.event_date <= ?', @beginning_of_calendar, @end_of_calendar)
+    @agenda = @area.agenda_between(@beginning_of_calendar, @end_of_calendar)
     @days   = @beginning_of_calendar..@end_of_calendar
     @agenda_json = @agenda.map{|event| {
       :title => event.title,
