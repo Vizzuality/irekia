@@ -40,6 +40,9 @@ es:
     question_form:
       make_a_question:
         submit: Enviar
+    proposal_form:
+      make_a_proposal:
+        submit: Enviar
     agenda_for_day:
       and_more: "y %{count} más"
     demo:
@@ -184,6 +187,10 @@ es:
         answered: 'Contestada hace %{time}'
         not_answered: 'Aún no contestada'
         read_more: 'Leer más'
+      question_mini:
+        author: '%{author} hace %{time}'
+        answered: 'Contestada hace %{time}'
+        not_answered: 'Aún no contestada'
       news:
         author: 'Publicado hace %{time}'
         read_more: 'Leer más'
@@ -197,6 +204,16 @@ es:
           zero: Ningún usuario ha participado
           one: Un usuario ha participado
           other: '%{count} usuarios han participado'
+      proposal_mini:
+        author: '%{author} hace %{time}'
+        votes_in_favor:
+          zero: '%{percent}% a favor (ningún voto)'
+          one: '%{percent}% a favor (1 voto)'
+          other: '%{percent}% a favor (%{count} votos)'
+        votes_against:
+          zero: '%{percent}% en contra (ningún voto)'
+          one: '%{percent}% en contra (1 voto)'
+          other: '%{percent}% en contra (%{count} votos)'
       argument:
         title:
           in_favor: 'A favor de la propuesta "%{proposal}"'

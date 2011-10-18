@@ -1,4 +1,6 @@
 class Proposal < Content
+  include PgSearch
+
   has_one :proposal_data
   has_many :arguments,
            :foreign_key => :content_id,
@@ -8,6 +10,13 @@ class Proposal < Content
   scope :close, joins(:proposal_data).where('proposal_data.close' => true)
   scope :from_politicians, joins(:users => :role).where('roles.name = ?', 'Politician')
   scope :from_citizens, joins(:users => :role).where('roles.name = ?', 'Citizen')
+
+  pg_search_scope :search_existing_proposals, :associated_against => {
+    :proposal_data => :title
+  },
+  :using => {
+    :tsearch => {:prefix => true, :dictionary => 'spanish', :any_word => true}
+  }
 
   accepts_nested_attributes_for :proposal_data, :arguments
 

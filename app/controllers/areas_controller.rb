@@ -4,7 +4,6 @@ class AreasController < ApplicationController
   before_filter :get_area,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_area_data,              :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_actions,                :only => [:show, :actions, :questions, :proposals, :agenda, :team]
-  before_filter :build_questions_for_update, :only => [:show, :questions]
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
   before_filter :get_agenda,                 :only => [:show, :agenda]
@@ -86,13 +85,6 @@ class AreasController < ApplicationController
     end
   end
 
-  def build_questions_for_update
-    return if current_user.blank?
-    @question                  = Question.new
-    @question_data             = @question.build_question_data
-    @question_data.target_area = @area
-  end
-
   def get_questions
     @questions = @area.questions.moderated
     @questions = @questions.answered if params[:answered]
@@ -102,6 +94,10 @@ class AreasController < ApplicationController
     else
       @questions.more_recent
     end
+
+    @question                  = Question.new
+    @question_data             = @question.build_question_data
+    @question_data.target_area = @area
   end
 
   def get_proposals
@@ -116,6 +112,10 @@ class AreasController < ApplicationController
     end
 
     @proposals = @proposals.page(1).per(4)
+
+    @proposal                  = Proposal.new
+    @proposal_data             = @proposal.build_proposal_data
+    @proposal_data.target_area = @area
   end
 
   def get_agenda
