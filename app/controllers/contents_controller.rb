@@ -60,7 +60,7 @@ class ContentsController < ApplicationController
         end
 
       else
-        return if current_user && current_user.has_given_his_opinion(@content.answer)
+        return if current_user && current_user.has_given_his_opinion?(@content.answer)
 
         @answer_opinion = @content.answer.answer_opinions.build
         @answer_opinion.user = current_user if current_user.present?
@@ -72,19 +72,21 @@ class ContentsController < ApplicationController
       end
 
     when Proposal
-      @in_favor_count = @content.arguments.moderated.with_reason.in_favor.count
-      @against_count = @content.arguments.moderated.with_reason.against.count
-      return if current_user && current_user.has_given_his_opinion(@content)
-
-
+      @in_favor_count = @content.arguments.with_reason.in_favor.count
+      @against_count = @content.arguments.with_reason.against.count
 
       @new_in_favor = @content.arguments.in_favor.build
-      @new_in_favor.argument_data = ArgumentData.new :in_favor => true
       @new_in_favor.user = current_user if current_user.present?
+      @new_in_favor.argument_data = @new_in_favor.build_argument_data
 
       @new_against = @content.arguments.against.build
-      @new_against.argument_data = ArgumentData.new :in_favor => false
       @new_against.user = current_user if current_user.present?
+      @new_against.argument_data = @new_against.build_argument_data
+
+      if current_user && current_user.has_given_his_opinion?(@content)
+        @new_in_favor = current_user.his_opinion(@content).first
+        @new_against = @new_in_favor
+      end
     end
 
     respond_with(@content) do |format|

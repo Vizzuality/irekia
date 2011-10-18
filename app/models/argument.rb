@@ -4,6 +4,8 @@ class Argument < Participation
 
   has_one :argument_data
 
+  before_create :set_as_moderated
+
   scope :in_favor, joins(:argument_data).where('argument_data.in_favor' => true)
   scope :against, joins(:argument_data).where('argument_data.in_favor' => false)
   scope :with_reason, joins(:argument_data).where('argument_data.reason IS NOT NULL')
@@ -29,4 +31,10 @@ class Argument < Participation
       :comments_count  => comments_count
     }
   end
+
+  def set_as_moderated
+    moderated = true
+  end
+  private :set_as_moderated
+
 end

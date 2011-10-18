@@ -14,6 +14,8 @@ class Content < ActiveRecord::Base
   has_many      :participations
   has_many      :comments
 
+  attr_protected :moderated
+
   before_create :update_published_at
   after_save :author_is_politician?
   after_save  :publish_content
