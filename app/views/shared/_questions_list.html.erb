@@ -1,8 +1,7 @@
-<% questions_collection = defined?(questions) ? questions : @questions -%>
 <ul>
-  <% questions_collection.each do |question| %>
+  <% (defined?(questions) ? questions : @questions).each do |question| %>
     <li class="question">
-      <%= render "shared/lists_elements/question", :data => question %>
+      <%= render "shared/lists_elements/question#{'_mini' if defined?(mini)}", :data => question %>
     </li>
   <% end %>
 </ul>

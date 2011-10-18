@@ -4,7 +4,7 @@ class PoliticiansController < UsersController
   before_filter :get_user,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :get_politician,             :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda]
-  before_filter :build_questions_for_update, :only => [:show, :actions, :questions, :proposals, :agenda]
+  before_filter :build_new_question, :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_actions,                :only => [:show, :actions]
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
@@ -61,7 +61,7 @@ class PoliticiansController < UsersController
     @followers_count = @follow_parent.followers.count
   end
 
-  def build_questions_for_update
+  def build_new_question
     @question                  = Question.new
     @question_data             = @question.build_question_data
     @question_data.target_user = @user
@@ -99,6 +99,10 @@ class PoliticiansController < UsersController
     else
       @proposals.more_recent
     end
+
+    @proposal                  = Proposal.new
+    @proposal_data             = @proposal.build_question_data
+    @proposal_data.target_area = @politician.areas.first
   end
 
   def get_agenda

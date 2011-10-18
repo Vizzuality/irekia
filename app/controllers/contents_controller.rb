@@ -12,6 +12,9 @@ class ContentsController < ApplicationController
       when 'Question'
         @contents = Question.search_existing_questions params[:query]
         @questions = @contents
+      when 'Proposal'
+        @contents = Proposal.search_existing_proposals params[:query]
+        @proposals = @contents
       end
 
     end
@@ -21,7 +24,9 @@ class ContentsController < ApplicationController
     respond_with(@contents) do |format|
       format.html do
         if request.xhr?
+          locals = params[:mini] ? {:mini => true} : {}
           render :partial => "shared/#{@content_type.pluralize}_list",
+                 :locals  => locals,
                  :layout  => false
         else
           render
