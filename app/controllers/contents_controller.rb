@@ -10,16 +10,16 @@ class ContentsController < ApplicationController
     if params[:query]
       case params[:type]
       when 'Question'
-        @contents = Question.search_existing_questions params[:query]
+        @contents = Question.search_existing_questions(params[:query]).page(1).per(params[:per_page] || 3)
         @questions = @contents
       when 'Proposal'
-        @contents = Proposal.search_existing_proposals params[:query]
+        @contents = Proposal.search_existing_proposals(params[:query]).page(1).per(params[:per_page] || 3)
+
         @proposals = @contents
       end
-
+    else
+      @contents = contents.all
     end
-
-    @contents = contents.all
 
     respond_with(@contents) do |format|
       format.html do
