@@ -49,7 +49,6 @@ $(function() {
 
 
   $('.proposal .new_argument').enableArguments();
-
   $('form.add_comment').enableComments();
   $(".comment-box form").enableCommentBox();
 

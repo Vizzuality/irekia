@@ -231,6 +231,8 @@ jQuery.fn.smartPlaceholder = function(opt){
 /* Allow to count characters in a input à la Twitter */
 jQuery.fn.enableCommentBox = function(opt){
 
+  var speed  = (opt && opt.speed) || 200;
+
   this.each(function(){
 
     $(this).submit(function(e) {
@@ -247,22 +249,22 @@ jQuery.fn.enableCommentBox = function(opt){
       $el.append($comment);
       //  spinner.stop();
 
-      speed = 250;
       // Reset textarea
-      $(this).find("input").val("");
+      $(this).find('input[type="text"]').val("");
       $(this).find(".holder").fadeIn(speed);
       $comment.slideDown(speed);
+      $submit.fadeOut(speed);
     });
 
     function textCounter($input) {
       var count = $input.val().length;
 
       if (count <= 0) {
-        $submit.fadeOut(250);
+        $submit.fadeOut(speed);
         $submit.attr('disabled', 'disabled');
       } else {
         $submit.removeAttr('disabled');
-        $submit.fadeIn(250);
+        $submit.fadeIn(speed);
       }
     }
 
