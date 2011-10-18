@@ -64,7 +64,9 @@ class Proposal < Content
       :in_favor_count  => in_favor_count,
       :against_count   => against_count,
       :comments_count  => comments_count,
-      :last_comments   => last_comments
+      :last_comments   => last_comments,
+      :percent_in_favor=> percent_in_favor,
+      :percent_against => percent_against
     }
   end
 

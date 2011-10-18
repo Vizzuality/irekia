@@ -1,7 +1,7 @@
 <ul>
   <% @proposals.each do |proposal| %>
     <li class="proposal">
-      <%= render "shared/lists_elements/proposal#{'_mini' if defined?(mini)}", :data => proposal %>
+    <%= render "shared/lists_elements/proposal#{'_mini' if defined?(mini)}", :data => proposal %>
     </li>
   <% end %>
 </ul>

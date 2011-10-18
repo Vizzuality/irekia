@@ -1,9 +1,10 @@
 <%
   percentage = data.percent_in_favor
-  percentage = data.percent_against if data.percent_in_favor < data.percent_against
+  percentage = data.percent_against if data.percent_against > data.percent_in_favor;
+  position   = data.in_favor_count >= data.against_count ? "in_favor" : "against"
 %>
 
-<%= link_to raw("<strong>#{percentage}<span class='percentage'>%</span></strong><span>a favor</span>"), proposal_path(data.id), :class => "icon #{ data.arguments.moderated.in_favor.count > data.arguments.moderated.against.count ? "in_favor" : "against" }" %>
+<%= link_to raw("<strong>#{percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>"), proposal_path(data.id), :class => "icon #{ position }" %>
 <div class="content">
 
   <p><strong><%= data.title %></strong></p>
@@ -15,7 +16,7 @@
     &middot;
     <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), proposal_path(data.id, :anchor => :comments), :class => "participants-count" %>
     &middot;
-    <%= t('.votes', :count => data.moderated_participation) %>
+    <%= t('.votes', :count => data.participation) %>
     &middot;
     <%= render "/shared/inline_sharing" %>
   </div>

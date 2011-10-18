@@ -13,8 +13,7 @@
     <% if @politicians_following.blank? && @areas_following.blank? -%>
       <p><%= t('.following_nobody') %></p>
     <% else -%>
-      <%= @politicians_following %>
-      <p><%#= raw t('.currently', :politicians => link_to(t('.politicians_following', :count => @politicians_following.count), "#") , :areas => link_to(t('.areas_following', :count => @areas_following.count), "#")) %></p>
+      <p><%= raw t('.currently', :politicians => link_to(t('.politicians_following', :count => @politicians_following.count), "#") , :areas => link_to(t('.areas_following', :count => @areas_following.count), "#")) %></p>
     <% end -%>
   </div>
   <% if @first_time -%>
