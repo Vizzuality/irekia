@@ -530,15 +530,13 @@ var GOD = (function() {
     _addSubmitAction(data);
     _addDefaultAction(data);
 
-    $ps.find("textarea").focus();
-
     $ps.find('textarea').keyup(function(ev){
 
       if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
 
       clearTimeout(interval);
 
-      var $related = $ps.find(".related-questions");
+      var $related = $ps.find("div.related");
       var $relatedTitle = $ps.find("h3.related");
 
       if ($(this).val().length > 5) {
@@ -578,7 +576,9 @@ var GOD = (function() {
 
     $ps.css({"top":(top + 100) + "px", "left": left + "px"});
 
-    $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function() {
+      $(this).find("textarea").focus();
+    }});
   }
 
   function _getTopPosition($ps) {
@@ -591,8 +591,7 @@ var GOD = (function() {
 
   function _clearRelated($ps) {
     $ps.find("textarea").val("");
-    $ps.find(".related-questions").hide();
-    $ps.find("h3.related").hide();
+    $ps.find("div.related").hide();
   }
 
   function _close2(data, hideLockScreen, callback) {

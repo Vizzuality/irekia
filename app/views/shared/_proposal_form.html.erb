@@ -1,11 +1,11 @@
 <% if user_signed_in? && @proposal.present? %>
-  <article id="proposal-123" class="mini popover with_footer initialy_hidden">
+  <article id="proposal-popover" class="mini popover with_footer initialy_hidden">
   <%= form_for @proposal, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
     <div class="inner">
-      <header><h2>Haz una pregunta</h2></header>
+      <header><h2>Haz una propuesta</h2></header>
       <div class="content">
         <p>Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo.</p>
-        <h3>Tu pregunta</h3>
+        <h3>Tu propuesta</h3>
 
         <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %>
           <%= proposal_data.hidden_field :user_id %>
@@ -13,10 +13,13 @@
 
           <div id="123" class="input-counter">
             <span class="counter">140</span>
-            <%= proposal_data.text_area :proposal_text %>
+            <%= proposal_data.text_area :title %>
           </div>
 
         <% end %>
+
+        <h3 class="related">Propuestas parecidas</h3>
+        <div class="related"></div>
 
       </div>
       <span class="close"></span>

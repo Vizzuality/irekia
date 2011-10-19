@@ -636,8 +636,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     z-index: 1000;
 
     h3.related { display:none; }
-    .related-questions {
-
+    div.related {
       ul {
         li {
           clear:both;

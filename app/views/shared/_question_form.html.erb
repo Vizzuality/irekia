@@ -1,5 +1,5 @@
 <% if user_signed_in? && @question.present? %>
-  <article id="question-123" class="mini popover with_footer initialy_hidden">
+  <article id="question-popover" class="mini popover with_footer initialy_hidden">
   <%= form_for @question, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
     <div class="inner">
       <header><h2>Haz una pregunta</h2></header>
@@ -19,7 +19,7 @@
         <% end %>
 
         <h3 class="related">PREGUNTAS PARECIDAS</h3>
-        <div class="related-questions"></div>
+        <div class="related"></div>
 
       </div>
       <span class="close"></span>
