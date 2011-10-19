@@ -408,6 +408,7 @@ var GOD = (function() {
   store = "question-popover",
   // Public methods
   methods = { },
+  interval,
   // Default values
   defaults = {
     easingMethod:'easeInOutQuad',
@@ -535,27 +536,50 @@ var GOD = (function() {
     _addDefaultAction(data);
 
     console.log($ps);
-    $ps.find("textarea").keyup(function(e) {
-      console.log(e.keyCode);
-      if (e.keyCode == 32) {
-      url = "/proposals";
-        console.log(url);
+    // $ps.find("textarea").keyup(function(e) {
+    //   console.log(e.keyCode);
 
-        $.ajax({ url: url, data: { query: $ps.find("textarea").val(), per_page: 3, mini: true }, type: "GET", success: function(data){
-        console.log(data);
-      }});
+    //   if (e.keyCode == 32) {
+    //     url = "/proposals";
+    //     console.log(url);
 
+    //     $.ajax({ url: url, data: { query: $ps.find("textarea").val(), per_page: 3, mini: true }, type: "GET", success: function(data){
+    //       console.log(data);
+    //     }});
+
+    //   }
+    // });
+
+
+    $ps.find('textarea').keyup(function(ev){
+      clearTimeout(interval);
+      if ($(this).val().length>2) {
+        //spinner.stop();
+        interval = setTimeout(function(){
+          //spinner.spin(spin_element);
+          //$('#search_submit').hide();
+          //$('nav form').submit();
+          var query = $ps.find("textarea").val();
+          console.log(query);
+          $.ajax({ url: "/questions", data: { query: query, per_page: 2, mini: true }, type: "GET", success: function(data){
+            console.log(data);
+            $ps.find(".related-questions").html(data);
+          }});
+        },250);
+      } else {
+        console.log('end');
+        // var $autocomplete = $(this).closest('form').find('.autocomplete');
+        //$autocomplete.fadeOut("fast");
       }
     });
 
 
+      //$("#container").prepend($ps);
 
-    //$("#container").prepend($ps);
-
-    _subscribeToEvent(data.event);
-    _triggerOpenAnimation($ps, data);
-    $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
-  }
+      _subscribeToEvent(data.event);
+      _triggerOpenAnimation($ps, data);
+      $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
+    }
 
   function _triggerOpenAnimation($ps, data) {
     var top  = _getTopPosition($ps);

@@ -333,6 +333,11 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.mini.with_footer footer .inner { width: 544px; padding: 25px 31px 25px 35px; background: url("/images/box_mini_bkg.png") repeat-y right 0; border: none; }
 #container article.mini.with_footer .separator { height: 2px; background: url("/images/box_mini_bkg.png") repeat-x; background-position: 0 -31px; }
 #container article.popover { position: absolute; top: -900px; z-index: 1000; }
+#container article.popover .related-questions ul li { clear: both; overflow: hidden; margin: 0 0 10px 0; background: #F2F5F8; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; padding: 11px 10px; }
+#container article.popover .related-questions ul li .content { float: left; width: 490px; clear: right; margin: 0; }
+#container article.popover .related-questions ul li .content p { font-size: 15px; margin: 0 0 5px 0; }
+#container article.popover .related-questions ul li .content .footer { color: #7D8A92; }
+#container article.popover .related-questions ul li .avatar { margin: 0 10px 0 0; float: left; }
 #container article.broken-top .t { top: -10px; background-position: 0 -40px; }
 #container article.broken-bottom .f { bottom: -15px; height: 15px; background-position: 0 -51px; }
 #container article.welcome { margin-bottom: 40px; }

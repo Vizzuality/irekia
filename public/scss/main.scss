@@ -634,7 +634,43 @@ article .inner { h2, h3 { color: $dark_blue; } }
     position: absolute;
     top:-900px;
     z-index: 1000;
+    .related-questions {
+
+      ul {
+        li {
+          clear:both;
+          overflow:hidden;
+          margin: 0 0 10px 0;
+          background:#F2F5F8;
+          @include border-radius(4px);
+          padding:11px 10px;
+          .content {
+            float:left;
+            width:490px;
+            clear:right;
+            margin:0;
+            p {
+              font-size:15px;
+              margin: 0 0 5px 0;
+            }
+            .footer {
+              color:#7D8A92;
+
+            }
+          }
+
+
+          .avatar {
+            margin: 0 10px 0 0;
+            float:left;
+          }
+
+        }
+      }
+
+    }
   }
+
   &.broken-top .t {
     top: -10px;
     background-position: 0 -40px;

@@ -39,7 +39,7 @@ es:
         title: Otras propuestas similares
     question_form:
       make_a_question:
-        submit: Enviar
+        submit: Enviar pregunta
     proposal_form:
       make_a_proposal:
         submit: Enviar
