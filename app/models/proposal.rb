@@ -24,6 +24,7 @@ class Proposal < Content
   delegate :in_favor, :against, :participation, :title, :body, :target_user, :target_area, :to => :proposal_data
 
   def percent_in_favor
+    return 0 if participation.blank?
     return 0 if participation == 0
     (in_favor * 100 / participation).round
   end
