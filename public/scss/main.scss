@@ -697,7 +697,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
          display: block;
          width: 17px;
          height: 17px;
-         background: url('/images/icons/close.png') no-repeat -13px 0;
+         background: url('/images/icons/icon_sprite.png') no-repeat -13px 0;
          cursor: pointer;
          &:hover {
            background-position: -31px 0;
@@ -862,7 +862,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   display: block;
   width: 9px;
   height: 8px;
-  background: url('/images/icons/close.png') no-repeat;
+  background: url('/images/icons/icon_sprite.png') no-repeat;
   cursor: pointer;
 }
 
@@ -1138,6 +1138,27 @@ article .inner { h2, h3 { color: $dark_blue; } }
 }
 
 /* Article addons */
+
+
+#container article .inner .right .proposal-support {
+  background:#F6F6F7;
+  p { padding:13px 13px 0 13px; margin:0 0 13px 0; font-size:15px; color: #465866; }
+  .count {
+    padding: 13px;
+    color: #465866;
+    text-transform:uppercase;
+    font-weight:bold;
+    border-top: 1px solid #fff;
+    .icon {
+      float:left;
+      margin: 0 5px 0 0;
+      width:11px; height:12px;
+      background:url('/images/icons/icon_sprite.png') no-repeat 0 -18px;
+    }
+  }
+
+  @include border-radius(4px);
+}
 
 #follow {
   overflow:hidden;
@@ -1538,7 +1559,7 @@ a.editable {
     display: block;
     width: 9px;
     height: 8px;
-    background: url('/images/icons/close.png') no-repeat;
+    background: url('/images/icons/icon_sprite.png') no-repeat;
     cursor: pointer;
   }
   .map span.close {
@@ -1637,9 +1658,7 @@ a.editable {
     }
     .infowindow {
       display: none;
-      span.close {
-        right: 10px;
-      }
+      span.close { right: 10px; }
     }
     a.marker {
       position: relative;
