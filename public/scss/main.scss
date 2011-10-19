@@ -1169,6 +1169,24 @@ article .inner { h2, h3 { color: $dark_blue; } }
   padding-right:10px;
 }
 
+.follow.basic {
+  button {
+    background:none;
+    padding:0;
+    text-shadow:none;
+    @include box-shadow(0 0 0 );
+    span { display:none; }
+  }
+
+  button:active, button:hover {
+    @include box-shadow(0 0 0 );
+    border:none;
+    background:none;
+    padding:0; margin:0;
+  }
+
+}
+
 #container article .inner .right .map a {
   font-size:10px!important;
 }
@@ -2102,6 +2120,7 @@ textarea {
     li {
       width: 275px;
       padding: 14px 16px 16px 16px;
+      margin: 0 0 5px 0;
       font-size: 15px;
       color: $standard_gray;
       @include inline-block;

@@ -6,14 +6,14 @@
   <div class="content">
     <ul class="suggestions">
       <% @areas_following.each do |follow| %>
-        <li>
+        <li class="selected">
           <%= link_to (image_tag 'icons/news_avatar_medium.png'), area_path(follow.follow_item), :title => follow.follow_item.name, :class => :avatar %>
           <div class="content">
             <%= link_to follow.follow_item.name, area_path(follow.follow_item), :class => :name %>
-            <p>
-              <%= t('.area') %>
-            </p>
-            <p><%= render 'follows/destroy_form', :follow => follow, :follow_parent => @user, :button_class => '' %></p>
+            <p><%= t('.area') %></p>
+            <div class="follow basic">
+            <%= render 'follows/destroy_form', :follow => follow, :follow_parent => @user, :button_class => '' %>
+            <div>
           </div>
         </li>
       <% end %>
@@ -21,14 +21,14 @@
         <hr/>
       <% end -%>
       <% @users_following.each do |follow| %>
-        <li>
+        <li class="selected">
           <%= link_to avatar(follow.follow_item), user_path(follow.follow_item) %>
           <div class="content">
             <%= link_to follow.follow_item.fullname, politician_path(follow.follow_item), :class => :name %>
             <p>
               <%= t('.title_and_area', :title => get_politician_title(follow.follow_item), :area => follow.follow_item.areas.map(&:name).to_sentence) %>
             </p>
-            <p><%= render 'follows/destroy_form', :follow => follow, :follow_parent => @user, :button_class => '' %></p>
+            <div class="follow basic"><%= render 'follows/destroy_form', :follow => follow, :follow_parent => @user, :button_class => '' %></div>
           </div>
         </li>
       <% end %>

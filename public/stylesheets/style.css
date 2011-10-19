@@ -478,6 +478,10 @@ article .inner h2, article .inner h3 { color: #465866; }
 #follow { overflow: hidden; clear: both; width: 550px; margin: 0 0 10px 0; padding-right: 10px; }
 #follow form { float: right; }
 
+.follow.basic button { background: none; padding: 0; text-shadow: none; -moz-box-shadow: 0 0 0; -webkit-box-shadow: 0 0 0; -o-box-shadow: 0 0 0; box-shadow: 0 0 0; }
+.follow.basic button span { display: none; }
+.follow.basic button:active, .follow.basic button:hover { -moz-box-shadow: 0 0 0; -webkit-box-shadow: 0 0 0; -o-box-shadow: 0 0 0; box-shadow: 0 0 0; border: none; background: none; padding: 0; margin: 0; }
+
 #container article .inner .right .map a { font-size: 10px!important; }
 
 .my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EDF3E5; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
@@ -728,7 +732,7 @@ textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #9
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
 #container article footer inner.with_avatar { position: relative; }
 #container article footer img.xlAvatar { position: absolute; bottom: 22px; right: 30px; padding: 4px; background: url("/images/circle_bkg.png") no-repeat center center; z-index: 10; }
-#container article ul.suggestions li { width: 275px; padding: 14px 16px 16px 16px; font-size: 15px; color: #7d8a92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+#container article ul.suggestions li { width: 275px; padding: 14px 16px 16px 16px; margin: 0 0 5px 0; font-size: 15px; color: #7d8a92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 #container article ul.suggestions li .avatar { float: left; margin: 0 8px 0 0; }
 #container article ul.suggestions li .content { float: left; width: 200px; }
 #container article ul.suggestions li .content p { padding: 0; margin: 0 0 13px 0; font-size: 15px; line-height: 15px; }

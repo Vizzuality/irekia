@@ -1,4 +1,6 @@
 $(function() {
+  watchHash(); // this function watches the url hashes and acts accordingly
+
   // Preloading of popover assets
   $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
 
@@ -25,7 +27,14 @@ $(function() {
     }
   });
 
-  watchHash();
+  $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
+    var $el = $(this).parent();
+    $el.fadeOut(250, function() {
+      $el.parents("li").toggleClass("selected");
+      $(this).html(xhr);
+      $(this).fadeIn(250);
+    });
+  });
 
   $("#follow form").live('ajax:error', function(evt, xhr, status) {
     $(this).effect("shake", { times:4 }, 100);
@@ -47,11 +56,13 @@ $(function() {
     });
   });
 
+  // This button close welcome message for new users
   $(".close-welcome").click(function(e) {
     e.preventDefault();
     e.stopPropagation();
     $(".welcome .close-welcome").fadeOut(250);
     $(".welcome ul.actions").slideUp(250);
+    // TODO: add ajax function to change the first_time flag
   });
 
   $('.proposal .new_argument').enableArguments();
