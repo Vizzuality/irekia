@@ -416,11 +416,6 @@ var GOD = (function() {
     maxLimit: 140
   };
 
-  // Called by using $('foo').questionPopover();
-  //
-  //
-
-
   methods.init = function(settings) {
     settings = $.extend({}, defaults, settings);
 
@@ -538,6 +533,9 @@ var GOD = (function() {
     $ps.find("textarea").focus();
 
     $ps.find('textarea').keyup(function(ev){
+
+      if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+
       clearTimeout(interval);
 
       var $related = $ps.find(".related-questions");
@@ -556,14 +554,16 @@ var GOD = (function() {
                 $(this).html($data);
                 $(this).slideDown(250);
                 $relatedTitle.fadeIn(250);
+              } else {
+                $relatedTitle.fadeOut(250);
+
               }
             });
           }});
         }, 500);
       } else {
-        $relatedTitle.fadeOut(250);
-        $related.fadeOut(250);
-        $relatedTitle.fadeOut(250);
+        $related.fadeOut(350);
+        $relatedTitle.fadeOut(350);
       }
     });
 
@@ -589,13 +589,18 @@ var GOD = (function() {
     return (($(window).width() - $ps.width()) / 2);
   }
 
+  function _clearRelated($ps) {
+    $ps.find("textarea").val("");
+    $ps.find(".related-questions").hide();
+    $ps.find("h3.related").hide();
+  }
+
   function _close2(data, hideLockScreen, callback) {
     GOD.unsubscribe(data.event);
 
     data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).remove();
-      $(this).find("textarea").val("");
-      $(this).find(".related-questions").hide();
+      _clearRelated($(this));
       hideLockScreen && _toggleLockScreen();
       callback && callback();
     }});
@@ -606,8 +611,7 @@ var GOD = (function() {
 
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).css("top", "-900px");
-      $(this).find("textarea").val("");
-      $(this).find(".related-questions").hide();
+      _clearRelated($(this));
       hideLockScreen && _toggleLockScreen();
       callback && callback();
     }});
@@ -1204,7 +1208,6 @@ var GOD = (function() {
 
         $.ajax({ url: data.filter, data: data.sort, type: "GET", success: function(data){
           $ps.find("#listing").fadeOut(settings.transitionSpeed, function() {
-            console.log(data);
             if (data.length<12) {
               $ps.find("#listing").html('<span class="empty">No hay contenido en este area</span>');
             } else {
