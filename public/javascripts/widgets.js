@@ -535,51 +535,42 @@ var GOD = (function() {
     _addSubmitAction(data);
     _addDefaultAction(data);
 
-    console.log($ps);
-    // $ps.find("textarea").keyup(function(e) {
-    //   console.log(e.keyCode);
-
-    //   if (e.keyCode == 32) {
-    //     url = "/proposals";
-    //     console.log(url);
-
-    //     $.ajax({ url: url, data: { query: $ps.find("textarea").val(), per_page: 3, mini: true }, type: "GET", success: function(data){
-    //       console.log(data);
-    //     }});
-
-    //   }
-    // });
-
+    $ps.find("textarea").focus();
 
     $ps.find('textarea').keyup(function(ev){
       clearTimeout(interval);
-      if ($(this).val().length>2) {
-        //spinner.stop();
+
+      var $related = $ps.find(".related-questions");
+      var $relatedTitle = $ps.find("h3.related");
+
+      if ($(this).val().length > 5) {
         interval = setTimeout(function(){
-          //spinner.spin(spin_element);
-          //$('#search_submit').hide();
-          //$('nav form').submit();
+
           var query = $ps.find("textarea").val();
-          console.log(query);
           $.ajax({ url: "/questions", data: { query: query, per_page: 2, mini: true }, type: "GET", success: function(data){
-            console.log(data);
-            $ps.find(".related-questions").html(data);
+            $related.slideUp(250, function() {
+
+              var $data = $(data);
+
+              if ($data.find("li").length > 0) {
+                $(this).html($data);
+                $(this).slideDown(250);
+                $relatedTitle.fadeIn(250);
+              }
+            });
           }});
-        },250);
+        }, 500);
       } else {
-        console.log('end');
-        // var $autocomplete = $(this).closest('form').find('.autocomplete');
-        //$autocomplete.fadeOut("fast");
+        $relatedTitle.fadeOut(250);
+        $related.fadeOut(250);
+        $relatedTitle.fadeOut(250);
       }
     });
 
-
-      //$("#container").prepend($ps);
-
-      _subscribeToEvent(data.event);
-      _triggerOpenAnimation($ps, data);
-      $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
-    }
+    _subscribeToEvent(data.event);
+    _triggerOpenAnimation($ps, data);
+    $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
+  }
 
   function _triggerOpenAnimation($ps, data) {
     var top  = _getTopPosition($ps);
@@ -603,6 +594,8 @@ var GOD = (function() {
 
     data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).remove();
+      $(this).find("textarea").val("");
+      $(this).find(".related-questions").hide();
       hideLockScreen && _toggleLockScreen();
       callback && callback();
     }});
@@ -612,6 +605,9 @@ var GOD = (function() {
     GOD.unsubscribe(data.event);
 
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+      $(this).css("top", "-900px");
+      $(this).find("textarea").val("");
+      $(this).find(".related-questions").hide();
       hideLockScreen && _toggleLockScreen();
       callback && callback();
     }});
