@@ -591,7 +591,7 @@ var GOD = (function() {
 
   function _clearRelated($ps) {
     $ps.find("textarea").val("");
-    $ps.find("div.related").hide();
+    $ps.find(".related").hide();
   }
 
   function _close2(data, hideLockScreen, callback) {

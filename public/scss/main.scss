@@ -690,7 +690,19 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
       a.config { float: right; }
       img.avatar { position: relative; float: left; }
-
+       span.close {
+         position: absolute;
+         top: 0px;
+         right: 10px;
+         display: block;
+         width: 17px;
+         height: 17px;
+         background: url('/images/icons/close.png') no-repeat -13px 0;
+         cursor: pointer;
+         &:hover {
+           background-position: -31px 0;
+         }
+       }
       .content {
         position: relative;
         float: left;
@@ -709,7 +721,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         margin:10px 0 20px 0;
 
         li {
-          padding:20px;
+          padding:17px 20px 20px 20px;
           background:#F2F7F9;
           width:289px - 40;
           margin-right:16px;

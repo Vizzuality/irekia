@@ -5,7 +5,7 @@
     <%= avatar current_user %>
   </div>
   <div class="content">
-    <% if @first_time -%>
+    <% if  @first_time -%>
       <h1><%= t('.hello', :name => current_user.name) %></h1>
     <% else -%>
       <h1><%= t('.hi_again', :name => current_user.name) %></h1>
@@ -37,6 +37,9 @@
     <%= link_to t('.configure_your_account'), "#", :class => :config %>
   <% end -%>
 </ul>
+  <% if @first_time %>
+    <span class="close close-welcome"></span>
+  <% end %>
 </div>
 
 <div class="t"></div><div class="f"></div>

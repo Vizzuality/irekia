@@ -42,7 +42,8 @@ es:
         submit: Enviar pregunta
     proposal_form:
       make_a_proposal:
-        submit: Enviar
+        continue: Continuar
+        submit: Enviar propuesta
     agenda_for_day:
       and_more: "y %{count} más"
     demo:
@@ -739,7 +740,7 @@ es:
             text: "Busca los perfiles o áreas que más te interesen y síguelos.
 
             De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo."
-            link: Ir a un Área cualquiera
+            link: Ir a un área cualquiera
           participate:
             title: Participa y aprende
             text: "%{make_questions_link} a los responsables del Gobierno Vasco, %{launch_proposals_link} a los ciudadanos, o participa en las propuestas de otros.

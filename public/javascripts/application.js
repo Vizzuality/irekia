@@ -47,6 +47,12 @@ $(function() {
     });
   });
 
+  $(".close-welcome").click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(".welcome .close-welcome").fadeOut(250);
+    $(".welcome ul.actions").slideUp(250);
+  });
 
   $('.proposal .new_argument').enableArguments();
   $('form.add_comment').enableComments();

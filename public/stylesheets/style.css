@@ -345,13 +345,15 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.welcome .inner { width: 933px; padding: 15px 31px 5px 30px; }
 #container article.welcome .inner a.config { float: right; }
 #container article.welcome .inner img.avatar { position: relative; float: left; }
+#container article.welcome .inner span.close { position: absolute; top: 0px; right: 10px; display: block; width: 17px; height: 17px; background: url("/images/icons/close.png") no-repeat -13px 0; cursor: pointer; }
+#container article.welcome .inner span.close:hover { background-position: -31px 0; }
 #container article.welcome .inner .content { position: relative; float: left; margin: 3px 0 18px 14px; width: 851px; }
 #container article.welcome .inner .content a { font-size: 15px; }
 #container article.welcome .inner .content h1 { margin-bottom: 5px; line-height: 40px; }
 #container article.welcome .inner .content p { margin: 0; padding: 0; line-height: 15px; font-size: 15px; }
 #container article.welcome .inner .avatar { float: left; }
 #container article.welcome .inner ul.actions { float: left; margin: 10px 0 20px 0; }
-#container article.welcome .inner ul.actions li { padding: 20px; background: #F2F7F9; width: 249px; margin-right: 16px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
+#container article.welcome .inner ul.actions li { padding: 17px 20px 20px 20px; background: #F2F7F9; width: 249px; margin-right: 16px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
 #container article.welcome .inner ul.actions li.collaborate { width: 275px; }
 #container article.welcome .inner ul.actions li.last { margin-right: 0; }
 #container article.welcome .inner ul.actions li:last-child { margin-right: 0; }

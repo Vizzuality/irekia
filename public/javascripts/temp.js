@@ -42,7 +42,7 @@
    '  <div class="inner">',
    '    <div class="icon success"></div>',
    '    <div class="content">',
-   '      <h2>Tu pregunta ha sido enviada</h2>',
+   '      <h2>Tu propuesta ha sido enviada</h2>',
    '      <p>En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.</p>',
    '    </div>',
    '    <span class="close"></span>',
@@ -187,7 +187,6 @@
     $ps.find('textarea').keyup(function(ev){
 
       if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
-      console.log(ev.keyCode);
 
       clearTimeout(interval);
 
