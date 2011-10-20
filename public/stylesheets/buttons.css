@@ -60,3 +60,8 @@ a.checkbox { padding: 0 0 0 17px; background: url("/images/special_buttons.png")
 a.checkbox:hover { cursor: pointer; }
 a.checkbox.selected { background-position: 0 -11px; }
 a.checkbox.selected:hover { cursor: pointer; text-decoration: none; }
+
+a.radio { padding: 0 0 0 17px; background: url("/images/special_buttons.png") no-repeat 0 -26px; color: #666666; }
+a.radio:hover { cursor: pointer; background-position: 0 -44px; }
+a.radio.selected { background-position: 0 -62px; }
+a.radio.selected:hover { cursor: pointer; text-decoration: none; }

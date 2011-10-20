@@ -16,6 +16,17 @@ $(function() {
 
   $('nav form').autocomplete();
 
+  // Radio binding
+  $('a.radio').click(function(ev){
+    $("a.radio").removeClass("selected");
+    $(this).addClass('selected');
+    $(this).closest('input[type="radio"]').val(0);
+
+    if (!$(this).hasClass('selected')) {
+      $(this).addClass('selected');
+      $(this).closest('input[type="radio"]').val(1);
+    }
+  });
   // Checkbox binding
   $('a.checkbox').click(function(ev){
     if (!$(this).hasClass('selected')) {

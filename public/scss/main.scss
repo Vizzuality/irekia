@@ -75,6 +75,7 @@ h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
 h1 { letter-spacing: -1px; font-family: "ClarendonLTMedium", Georgia, serif; }
 h2 { letter-spacing: -1px; }
 
+article h4 { margin-bottom:14px; font-size:15px; font-weight:normal; color:#7D8A92; }
 article .right h4 { margin-bottom:14px; font-size:12px; font-weight:bold; color:$dark_blue; text-transform:uppercase;}
 
 article .inner {
@@ -347,7 +348,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       .inner {
         clear: both;
         overflow: hidden;
-        padding: 20px 0 17px 35px;
+        padding: 20px 0 17px 27px;
         width: 959px;
         margin: 0;
         background: none;
@@ -364,11 +365,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
         a { display:block; clear:both; }
       }
       .left {
+        padding:3px;
         a { display:block; clear:both; }
       }
     }
     .separator { height: 2px; background: url('/images/box_simple_bkg.png') repeat-x; background-position: 0 -36px; }
   }
+
   &.with_sidebar {
     position: relative;
     .t, .f { height: 10px; width: 100%; position: absolute; background: url('/images/box_sidebar_bkg.png') no-repeat; }
@@ -386,6 +389,67 @@ article .inner { h2, h3 { color: $dark_blue; } }
       .right { position: relative; float: left; left: 30px; width: 262px; }
     }
   }
+
+  &.with_form {
+
+    clear:both;
+
+    .inner .left {
+      width:641px;
+    }
+
+    form .inner .left {
+      clear:both;
+      overflow:hidden;
+
+    .field {
+      margin: 0 0 20px 0;
+      width:200px;
+
+      font-size:15px;
+      a:hover { text-decoration:none; }
+
+      &.left { float:left; margin-right:6px; }
+      &.right { float:left;  }
+
+      &.email {
+        background:red;
+        width:410px;
+        .input_field {
+          width:410px;
+          input[type="text"] { width:383px; }
+        }
+      }
+
+      &.lastname {
+        width:410px;
+        .input_field {
+          width:410px;
+          input[type="text"] { width:383px; }
+        }
+      }
+
+      .input_field {
+        width:200px;
+        input[type="text"] {
+          width:178px;
+          color: #7D8A92;
+          font-size:15px;
+        }
+      }
+
+      label {
+        display:block;
+        margin: 0 0 7px 0;
+        text-transform: uppercase;
+        font-size:12px;
+        color:#465866;
+        font-weight:bold;
+      }
+    }
+  }
+  }
+
   &.mini {
     &.with_icon .inner, &.with_footer.with_icon .inner {
       padding-top: 35px;
@@ -690,19 +754,19 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
       a.config { float: right; }
       img.avatar { position: relative; float: left; }
-       span.close {
-         position: absolute;
-         top: 0px;
-         right: 10px;
-         display: block;
-         width: 17px;
-         height: 17px;
-         background: url('/images/icons/icon_sprite.png') no-repeat -13px 0;
-         cursor: pointer;
-         &:hover {
-           background-position: -31px 0;
-         }
-       }
+      span.close {
+        position: absolute;
+        top: 0px;
+        right: 10px;
+        display: block;
+        width: 17px;
+        height: 17px;
+        background: url('/images/icons/icon_sprite.png') no-repeat -13px 0;
+        cursor: pointer;
+        &:hover {
+          background-position: -31px 0;
+        }
+      }
       .content {
         position: relative;
         float: left;

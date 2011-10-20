@@ -273,4 +273,24 @@ a.checkbox {
   }
 }
 
+a.radio {
+  padding:0 0 0 17px;
+  background:url('/images/special_buttons.png') no-repeat 0 -26px;
+  color:#666666;
+
+  &:hover {
+   cursor:pointer;
+    background-position:0 -44px;
+  }
+
+  &.selected {
+    background-position:0 -62px;
+
+    &:hover {
+     cursor:pointer;
+     text-decoration:none;
+    }
+  }
+}
+
 
