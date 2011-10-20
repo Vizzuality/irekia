@@ -11,7 +11,7 @@ class Proposal < Content
   scope :close, joins(:proposal_data).where('proposal_data.close' => true)
   scope :from_politicians, joins(:users => :role).where('roles.name = ?', 'Politician')
   scope :from_citizens, joins(:users => :role).where('roles.name = ?', 'Citizen')
-  scope :aproved_by_majority, joins(:proposal_data).where('proposal_data.in_favor > proposal_data.against')
+  scope :approved_by_majority, joins(:proposal_data).where('proposal_data.in_favor > proposal_data.against')
 
   pg_search_scope :search_existing_proposals,
                   :associated_against => {
@@ -28,11 +28,15 @@ class Proposal < Content
   def percent_in_favor
     return 0 if participation.blank?
     return 0 if participation == 0
-    (in_favor * 100 / participation).round
+    (in_favor * 100 / participation).round || 0
   end
 
   def percent_against
     100 - percent_in_favor
+  end
+
+  def percentage
+    [percent_in_favor, percent_against].sort.last
   end
 
   def moderated_participation

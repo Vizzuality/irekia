@@ -172,7 +172,7 @@ class UsersController < ApplicationController
     @proposals.more_recent
     end
     @proposals_count          = @proposals.count
-    @proposals_in_favor_count = @proposals.aproved_by_majority.count
+    @proposals_in_favor_count = @proposals.approved_by_majority.count
     @proposals                = @proposals.all if @proposals
   end
   private :get_proposals

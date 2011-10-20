@@ -1,13 +1,8 @@
 <%
-  percent_in_favor = data.percent_in_favor || 0
-  percent_against = data.percent_against || 0
-  percentage = data.percent_against if percent_in_favor < percent_against
-  in_favor = data.in_favor || 0
-  against = data.against || 0
-  position = in_favor >= against ? "in_favor" : "against"
+  position = data.percent_in_favor >= data.percent_against ? "in_favor" : "against"
 %>
 
-<%= link_to raw("<strong>#{percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>"), proposal_path(data.id), :class => "icon #{ position }" %>
+<%= link_to raw("<strong>#{data.percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>"), proposal_path(data.id), :class => "icon #{ position }" %>
 <div class="content">
 
   <p><strong><%= data.title %></strong></p>
