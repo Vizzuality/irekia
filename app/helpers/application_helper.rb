@@ -40,7 +40,13 @@ module ApplicationHelper
       path = user_path(user.id)
     end
 
-    render "shared/avatar", :user => user, :size => size, :path => path
+    size = size.present?? size.to_s : ''
+
+    if user.profile_pictures.present?
+      link_to image_tag(user.profile_image, :class => "avatar #{size}"), path, :title => user.fullname
+    else
+      link_to image_tag('icons/faceless_avatar.png', :class => "avatar #{size}"), path, :title => user.fullname
+    end
   end
 
   def only_logged_class

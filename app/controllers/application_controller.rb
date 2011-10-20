@@ -44,7 +44,8 @@ class ApplicationController < ActionController::Base
   private :notifications_count
 
   def get_areas
-    @areas = Area.all
+    @areas = Area.names_and_ids.all
+    @areas = []
   end
   private :get_areas
 

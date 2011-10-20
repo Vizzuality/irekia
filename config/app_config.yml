@@ -13,3 +13,8 @@ staging:
   facebook_app_secret:
   twitter_app_id:
   twitter_app_secret:
+production:
+  facebook_app_id:
+  facebook_app_secret:
+  twitter_app_id:
+  twitter_app_secret:

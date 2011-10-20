@@ -19,3 +19,14 @@ test:
   encoding: utf8
   template: template_postgis
   min_messages: WARNING
+
+production:
+  adapter: postgis
+  host: localhost
+  port: 5432
+  username: postgres
+  password:
+  database: irekia_development
+  encoding: utf8
+  template: template_postgis
+  min_messages: WARNING

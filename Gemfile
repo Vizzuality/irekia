@@ -33,7 +33,8 @@ group :development, :test do
   gem 'compass'
   gem 'rails-footnotes', '>= 3.7.5.rc4'
   gem 'bullet'
-  # gem 'slowgrowl'
+  gem 'ruby-prof'
+  gem 'newrelic_rpm'
 end
 
 group :development, :test, :staging do

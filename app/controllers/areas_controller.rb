@@ -1,5 +1,6 @@
 class AreasController < ApplicationController
 
+  around_filter :benchmark_area, :only => :show
   skip_before_filter :authenticate_user!,    :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_area,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_area_data,              :only => [:show, :actions, :questions, :proposals, :agenda, :team]
@@ -11,6 +12,12 @@ class AreasController < ApplicationController
   before_filter :paginate,                   :only => [:show, :actions, :questions, :proposals]
 
   respond_to :html, :json
+
+  def benchmark_area
+    self.class.benchmark("Area loading benchmark...") do
+      yield
+    end
+  end
 
   def show
   end
