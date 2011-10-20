@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_reader :random_password
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :lastname, :email, :remember_me, :role_id, :title_id, :birthday, :description, :is_woman, :province_id, :city_id, :postal_code, :profile_pictures_attributes, :questions_attributes, :question_data_attributes, :areas_users_attributes, :follows_attributes
+  attr_accessible :name, :lastname, :email, :remember_me, :role_id, :title_id, :birthday, :description, :is_woman, :province_id, :city_id, :postal_code, :first_time, :profile_pictures_attributes, :questions_attributes, :question_data_attributes, :areas_users_attributes, :follows_attributes
 
   attr_accessor :terms_of_service
 
@@ -121,7 +121,11 @@ class User < ActiveRecord::Base
                    :conditions => ['roles.name = ?', 'Citizen'],
                    :readonly   => false
 
-  pg_search_scope :search_by_name_description_province_and_city, :against => [:name, :description, :province, :city]
+  pg_search_scope :search_by_name_description_province_and_city,
+                  :against => [:name, :description, :province, :city],
+                  :using => {
+                    :tsearch => {:prefix => true, :any_word => true}
+                  }
 
   def self.by_id(id)
     User.includes(:role, :profile_pictures, :title, :areas).find(id)

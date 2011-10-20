@@ -33,13 +33,15 @@
       <%= simple_format t('.first_time.configure.text') %>
       <%= link_to t('.first_time.configure.link'), '/in_development', :class => 'white_button blue' %>
     </li>
+  </ul>
+  <%= form_for @user, :remote => true, :html => {:class => 'close-welcome'} do |form| %>
+    <%= form.hidden_field :first_time, :value => false %>
+    <%= form.submit '', :class => 'close' %>
+  <% end -%>
+  <%= link_to t('.configure_your_account'), "/settings", :class => 'config first-time' %>
   <% else -%>
     <%= link_to t('.configure_your_account'), settings_user_path, :class => :config %>
   <% end -%>
-</ul>
-  <% if @first_time %>
-    <span class="close close-welcome"></span>
-  <% end %>
 </div>
 
 <div class="t"></div><div class="f"></div>

@@ -20,7 +20,11 @@ class AreaPublicStream < ActiveRecord::Base
   SQL
   ).order('comments_count.count desc, published_at desc')
 
-  pg_search_scope :search, :against => :message
+  pg_search_scope :search,
+                  :against => :message,
+                  :using => {
+                    :tsearch => {:prefix => true, :any_word => true}
+                  }
 
   def item
     JSON.parse(self.message).hashes2ostruct if self.message.present?

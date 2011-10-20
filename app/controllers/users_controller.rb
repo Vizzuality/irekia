@@ -8,11 +8,12 @@ class UsersController < ApplicationController
   before_filter :get_agenda, :only => [:agenda]
   before_filter :log_user_connection_time, :only => [:show]
 
+  respond_to :html, :json
+
   def show
     redirect_to_politician_page?
 
     @first_time = @user.first_time
-    @user.update_attribute('first_time', false) if @first_time
 
     @suggestions         = @user.follow_suggestions.limit(6)
     @suggestions_follows = @suggestions.inject({}) do |suggestions_follows, user|
@@ -167,13 +168,13 @@ class UsersController < ApplicationController
     @proposals = @user.proposals_done.moderated
 
     @proposals = if params[:more_polemic]
-      @proposals.more_polemic
+    @proposals.more_polemic
     else
-      @proposals.more_recent
+    @proposals.more_recent
     end
-    @proposals_count = @proposals.count
-    @proposals_in_favor_count = 0
-    @proposals = @proposals.all if @proposals
+    @proposals_count          = @proposals.count
+    @proposals_in_favor_count = @proposals.approved_by_majority.count
+    @proposals                = @proposals.all if @proposals
   end
   private :get_proposals
 

@@ -752,21 +752,26 @@ article .inner { h2, h3 { color: $dark_blue; } }
       width: 933px;
       padding: 15px 31px 5px 30px;
 
-      a.config { float: right; }
-      img.avatar { position: relative; float: left; }
-      span.close {
-        position: absolute;
-        top: 0px;
-        right: 10px;
-        display: block;
-        width: 17px;
-        height: 17px;
-        background: url('/images/icons/icon_sprite.png') no-repeat -13px 0;
-        cursor: pointer;
-        &:hover {
-          background-position: -31px 0;
-        }
+      a.config { float: right;
+        &.first-time { display: none; visibility: vivible;}
       }
+      img.avatar { position: relative; float: left; }
+
+       .close {
+         position: absolute;
+         top: 0px;
+         right: 10px;
+         display: block;
+         width: 17px;
+         height: 17px;
+         background: url('/images/icons/icon_sprite.png') no-repeat -13px 0;
+         border: 0 none;
+         cursor: pointer;
+         &:hover {
+           background-position: -31px 0;
+         }
+       }
+
       .content {
         position: relative;
         float: left;

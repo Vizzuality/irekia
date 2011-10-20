@@ -154,8 +154,8 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.text     "body"
     t.boolean  "close",         :default => false
     t.integer  "participation"
-    t.integer  "in_favor"
-    t.integer  "against"
+    t.integer  "in_favor",      :default => 0
+    t.integer  "against",       :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
