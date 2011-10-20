@@ -57,12 +57,14 @@ $(function() {
   });
 
   // This button close welcome message for new users
-  $(".close-welcome").click(function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $(".welcome .close-welcome").fadeOut(250);
-    $(".welcome ul.actions").slideUp(250);
-    // TODO: add ajax function to change the first_time flag
+  $(".close-welcome").submit(function(e) {
+    $(".welcome .close-welcome").fadeOut(250, function(){
+			$(this).remove();
+		});
+    $(".welcome ul.actions").slideUp(250, function(){
+			$(this).remove();
+			$('.welcome a.config.first-time').fadeIn(250);
+		});
   });
 
   $('.proposal .new_argument').enableArguments();

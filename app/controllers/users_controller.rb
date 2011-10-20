@@ -8,11 +8,12 @@ class UsersController < ApplicationController
   before_filter :get_agenda, :only => [:agenda]
   before_filter :log_user_connection_time, :only => [:show]
 
+  respond_to :html, :json
+
   def show
     redirect_to_politician_page?
 
     @first_time = @user.first_time
-    @user.update_attribute('first_time', false) if @first_time
 
     @suggestions         = @user.follow_suggestions.limit(6)
     @suggestions_follows = @suggestions.inject({}) do |suggestions_follows, user|

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 git checkout staging
 git pull origin staging
 git merge master
