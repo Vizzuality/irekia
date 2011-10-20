@@ -1,6 +1,6 @@
 #!/bin/sh
 git checkout staging
-git pull --rebase origin staging
+git pull origin staging
 git merge master
 git push origin staging
 git checkout master
