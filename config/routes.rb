@@ -14,6 +14,7 @@ Irekia::Application.routes.draw do
       get 'actions'
       get 'followings'
       get 'agenda'
+      get 'settings'
     end
   end
 
