@@ -12,11 +12,13 @@
         <div class="content">
           <%= link_to user.fullname, politician_path(user.id), :title => user.fullname, :class => :name %>
           <p class="title"><%= get_politician_title(user) %></p>
+          <div class="follow basic">
           <% if follow.new_record? -%>
-            <p><%= render 'follows/create_form', :follow => follow, :follow_parent => user, :button_class => '', :button_label => t('.follow') %></p>
+            <%= render 'follows/create_form', :follow => follow, :follow_parent => user, :button_class => '', :button_label => t('.follow') %>
           <% else -%>
-            <p><%= render 'follows/destroy_form', :follow => follow, :follow_parent => user, :button_class => '' %></p>
+            <%= render 'follows/destroy_form', :follow => follow, :follow_parent => user, :button_class => '' %>
           <% end -%>
+          </div>
         </div>
         </li>
       <% end %>
