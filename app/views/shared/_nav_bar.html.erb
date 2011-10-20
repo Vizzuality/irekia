@@ -7,10 +7,10 @@
   </ul>
   <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get, :autocomplete => :off } do |search_form| %>
     <div class="input_field placeholder">
-        <%= search_form.text_field :query %>
-        <%= search_form.submit '' %>
-        <span id="autocomplete_spinner"></span>
-        <span class="holder">o busca lo que necesites…</span>
+      <%= search_form.text_field :query %>
+      <%= search_form.submit '' %>
+      <span id="autocomplete_spinner"></span>
+      <span class="holder">o busca lo que necesites…</span>
     </div>
     <field></field>
     <div class="autocomplete">
@@ -18,11 +18,11 @@
       <div class="t"></div><div class="f"></div>
     </div>
   <% end %>
-  <% if false #user_signed_in? %>
+  <% if user_signed_in? %>
     <ul class="auth">
       <li>
-        <%= link_to "hola, #{current_user.name}", user_path(current_user), :class => "blue_button" %>
-        <%= content_tag 'div', @notifications_count, :class => "pending-counter" if @notifications_count > 0 %>
+      <%= link_to "hola, #{current_user.name}", user_path(current_user), :class => "blue_button" %>
+      <%= content_tag 'div', @notifications_count, :class => "pending-counter" if @notifications_count > 0 %>
       </li>
       <li><%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => "sign_out blue_button" %></li>
     </ul>
