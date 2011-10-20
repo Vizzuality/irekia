@@ -11,13 +11,15 @@ class Proposal < Content
   scope :close, joins(:proposal_data).where('proposal_data.close' => true)
   scope :from_politicians, joins(:users => :role).where('roles.name = ?', 'Politician')
   scope :from_citizens, joins(:users => :role).where('roles.name = ?', 'Citizen')
+  scope :aproved_by_majority, joins(:proposal_data).where('proposal_data.in_favor > proposal_data.against')
 
-  pg_search_scope :search_existing_proposals, :associated_against => {
-    :proposal_data => :title
-  },
-  :using => {
-    :tsearch => {:prefix => true, :dictionary => 'spanish', :any_word => true}
-  }
+  pg_search_scope :search_existing_proposals,
+                  :associated_against => {
+                    :proposal_data => :title
+                  },
+                  :using => {
+                    :tsearch => {:prefix => true, :any_word => true}
+                  }
 
   accepts_nested_attributes_for :proposal_data, :arguments
 

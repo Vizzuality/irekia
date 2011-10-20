@@ -14,12 +14,13 @@ class Question < Content
   scope :answered, joins(:question_data).where('question_data.answered_at IS NOT NULL')
   scope :not_answered, includes(:question_data).where('question_data.answered_at IS NULL')
 
-  pg_search_scope :search_existing_questions, :associated_against => {
-    :question_data => :question_text
-  },
-  :using => {
-    :tsearch => {:prefix => true, :dictionary => 'spanish', :any_word => true}
-  }
+  pg_search_scope :search_existing_questions,
+                  :associated_against => {
+                    :question_data => :question_text
+                  },
+                  :using => {
+                    :tsearch => {:prefix => true, :any_word => true}
+                  }
 
   accepts_nested_attributes_for :question_data, :answer_requests, :answer
 

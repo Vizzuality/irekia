@@ -121,7 +121,11 @@ class User < ActiveRecord::Base
                    :conditions => ['roles.name = ?', 'Citizen'],
                    :readonly   => false
 
-  pg_search_scope :search_by_name_description_province_and_city, :against => [:name, :description, :province, :city]
+  pg_search_scope :search_by_name_description_province_and_city,
+                  :against => [:name, :description, :province, :city],
+                  :using => {
+                    :tsearch => {:prefix => true, :any_word => true}
+                  }
 
   def self.by_id(id)
     User.includes(:role, :profile_pictures, :title, :areas).find(id)

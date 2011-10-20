@@ -41,10 +41,11 @@ class Area < ActiveRecord::Base
   accepts_nested_attributes_for :follows, :allow_destroy => true
 
   scope :names_and_ids, select([:id, :name])
-  pg_search_scope :search_by_name_and_description, :against => [:name, :description],
-                                                   :using => {
-                                                     :tsearch => {:prefix => true}
-                                                   }
+  pg_search_scope :search_by_name_and_description,
+                  :against => [:name, :description],
+                  :using => {
+                    :tsearch => {:prefix => true, :any_word => true}
+                  }
 
   def team
     users.order('display_order ASC')

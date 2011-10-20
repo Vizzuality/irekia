@@ -167,13 +167,13 @@ class UsersController < ApplicationController
     @proposals = @user.proposals_done.moderated
 
     @proposals = if params[:more_polemic]
-      @proposals.more_polemic
+    @proposals.more_polemic
     else
-      @proposals.more_recent
+    @proposals.more_recent
     end
-    @proposals_count = @proposals.count
-    @proposals_in_favor_count = 0
-    @proposals = @proposals.all if @proposals
+    @proposals_count          = @proposals.count
+    @proposals_in_favor_count = @proposals.aproved_by_majority.count
+    @proposals                = @proposals.all if @proposals
   end
   private :get_proposals
 
