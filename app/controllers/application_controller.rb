@@ -45,7 +45,6 @@ class ApplicationController < ActionController::Base
 
   def get_areas
     @areas = Area.names_and_ids.all
-    @areas = []
   end
   private :get_areas
 
