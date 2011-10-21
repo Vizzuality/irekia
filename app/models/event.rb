@@ -35,7 +35,7 @@ class Event < Content
       :title           => title,
       :subtitle        => subtitle,
       :body            => body,
-      :location        => location,
+      :location        => nil,
       :latitude        => latitude,
       :longitude       => longitude,
       :comments_count  => comments_count,

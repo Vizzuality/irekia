@@ -10,6 +10,10 @@ class CreateAreaPublicStreams < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :area_public_streams, :event_type
+    add_index :area_public_streams, :event_id
+    add_index :area_public_streams, :published_at
   end
 
   def self.down

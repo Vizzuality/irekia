@@ -8,6 +8,9 @@ class CreateFollows < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :follows, :follow_item_id
+    add_index :follows, :follow_item_type
   end
 
   def self.down

@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   before_filter :setup_search
 
   def store_user_path
-    session[:"user_return_to"] = request.request_uri if current_user.blank? && request.get?
+    session[:"user_return_to"] = request.fullpath if current_user.blank? && request.get?
   end
 
   def after_sign_in_path_for(resource)

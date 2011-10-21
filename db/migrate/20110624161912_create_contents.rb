@@ -7,10 +7,16 @@ class CreateContents < ActiveRecord::Migration
       t.string   :tags
       t.datetime :published_at
       t.boolean  :moderated, :default => false
-      t.point    :the_geom, :geographic => true
+      t.float    :latitude
+      t.float    :longitude
 
       t.timestamps
     end
+
+    add_index :contents, [:id, :type]
+    add_index :contents, [:id, :type, :moderated]
+    add_index :contents, [:id, :type, :published_at]
+
   end
 
   def self.down

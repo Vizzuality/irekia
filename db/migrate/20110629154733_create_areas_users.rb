@@ -7,6 +7,8 @@ class CreateAreasUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :areas_users, :display_order
   end
 
   def self.down

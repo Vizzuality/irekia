@@ -24,9 +24,6 @@ GEM
       activesupport (= 3.0.10)
       arel (~> 2.0.10)
       tzinfo (~> 0.3.23)
-    activerecord-postgis-adapter (0.4.0)
-      pg (>= 0.11.0)
-      rgeo-activerecord (~> 0.4.0)
     activeresource (3.0.10)
       activemodel (= 3.0.10)
       activesupport (= 3.0.10)
@@ -95,7 +92,6 @@ GEM
     fssm (0.2.7)
     g (1.4.0)
       ruby-growl (>= 1.0.1)
-    geocoder (1.0.4)
     highline (1.6.2)
     hirb (0.5.0)
     i18n (0.5.0)
@@ -192,11 +188,6 @@ GEM
     rake (0.9.2)
     rdoc (3.11)
       json (~> 1.4)
-    rgeo (0.3.2)
-    rgeo-activerecord (0.4.0)
-      activerecord (>= 3.0.3)
-      arel (>= 2.0.6)
-      rgeo (>= 0.3.2)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -252,7 +243,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-postgis-adapter
   bullet
   capistrano
   capistrano-ext
@@ -264,7 +254,6 @@ DEPENDENCIES
   devise (~> 1.4.7)
   escape_utils
   ffaker (= 1.8.1)
-  geocoder (~> 1.0.4)
   irbtools
   json (= 1.5.3)
   kaminari (~> 0.12.4)

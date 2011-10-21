@@ -47,4 +47,3 @@ Irekia::Application.configure do
   # config.slowgrowl.warn = 500    # growl any action which takes > 1000ms (1s)
   # config.slowgrowl.sticky = true  # make really slow (2x warn) alerts sticky
 end
-

@@ -1,32 +1,23 @@
 development:
-  adapter: postgis
-  host: localhost
-  port: 5432
+  adapter: postgresql
+  encoding: unicode
+  database: irekia_development
+  pool: 5
   username: postgres
   password:
-  database: irekia_development
-  encoding: utf8
-  template: template_postgis
-  min_messages: WARNING
 
 test:
-  adapter: postgis
-  host: localhost
-  port: 5432
+  adapter: postgresql
   username: postgres
   password:
   database: irekia_test
-  encoding: utf8
-  template: template_postgis
-  min_messages: WARNING
+  pool: 5
+  encoding: unicode
 
 production:
-  adapter: postgis
-  host: localhost
-  port: 5432
+  adapter: postgresql
   username: postgres
   password:
   database: irekia_development
-  encoding: utf8
-  template: template_postgis
-  min_messages: WARNING
+  pool: 5
+  encoding: unicode

@@ -8,15 +8,15 @@ class Role < ActiveRecord::Base
   scope :citizen, where(:name => 'Citizen')
 
   def politician?
-    self.name.eql?('Politician')
+    self.name_i18n_key.eql?('politician')
   end
 
   def administrator?
-    self.name.eql?('Administrator')
+    self.name_i18n_key.eql?('administrator')
   end
 
   def citizen?
-    self.name.eql?('Citizen')
+    self.name_i18n_key.eql?('citizen')
   end
 
 end

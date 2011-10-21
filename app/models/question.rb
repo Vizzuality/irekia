@@ -3,11 +3,9 @@ class Question < Content
 
   has_one :question_data,
           :foreign_key => :question_id,
-          :include => :target_user
+          :include => :target_user,
+          :select => 'question_id, user_id, area_id, question_text, answered_at'
 
-  has_one :answer_data
-  has_one :answer,
-          :through => :answer_data
   has_many :answer_requests,
            :foreign_key => :content_id
 
@@ -22,9 +20,13 @@ class Question < Content
                     :tsearch => {:prefix => true, :any_word => true}
                   }
 
-  accepts_nested_attributes_for :question_data, :answer_requests, :answer
+  accepts_nested_attributes_for :question_data, :answer_requests
 
   delegate :target_user, :question_text, :answered_at, :to => :question_data
+
+  def target_is_a_user?
+    question_data.present? && question_data.user_id.present?
+  end
 
   def mark_as_answered(answered_at)
     question_data.update_attribute('answered_at', answered_at)
@@ -47,7 +49,7 @@ class Question < Content
       :published_at    => published_at,
       :question_text   => question_text,
       :target_user     => target_user,
-      :answered_at     => try(:answer).try(:published_at),
+      :answered_at     => answered_at,
       :comments_count  => comments_count,
       :last_comments   => last_comments
     }
@@ -62,8 +64,6 @@ class Question < Content
       user_action.published_at = self.published_at
       user_action.message      = self.to_json
       user_action.save!
-
-      target_user.update_attribute('questions_count', target_user.questions_count + 1)
     end
     super
   end

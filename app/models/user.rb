@@ -22,8 +22,10 @@ class User < ActiveRecord::Base
 
   validates :terms_of_service, :acceptance => true
 
-  belongs_to :role
-  belongs_to :title
+  belongs_to :role,
+             :select => 'name_i18n_key'
+  belongs_to :title,
+             :select => 'name_i18n_key'
 
   has_many :areas_users,
            :class_name => 'AreaUser'
@@ -53,12 +55,6 @@ class User < ActiveRecord::Base
            :include => :event_data,
            :order => 'event_data.event_date asc'
 
-
-  has_many :proposal_data,
-           :class_name => 'ProposalData'
-  has_many :proposals_received,
-           :through => :proposal_data,
-           :source => :proposal
   has_many :question_data,
            :class_name => 'QuestionData'
   has_many :questions_received,
@@ -83,7 +79,8 @@ class User < ActiveRecord::Base
            :order      => 'published_at desc'
 
   has_many :profile_pictures,
-           :class_name => 'Image'
+           :class_name => 'Image',
+           :select => 'id, photo_id, user_id, image'
 
 
   ###
@@ -177,6 +174,10 @@ class User < ActiveRecord::Base
 
       user
     end
+  end
+
+  def proposals_received
+    areas.first.proposals_received
   end
 
   def fullname

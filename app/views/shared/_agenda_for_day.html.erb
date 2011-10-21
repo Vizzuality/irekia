@@ -1,5 +1,5 @@
-<ul class="events">
-  <% if day_events.count > 3 -%>
+<% if day_events.count > 3 -%>
+  <ul class="events">
     <% @info_div_id = (@info_div_id || 0 ) + 1 -%>
     <% day_events.first(2).each do |event| -%>
       <li>
@@ -7,16 +7,8 @@
       </li>
     <% end -%>
     <li class="more"><%= link_to (t('.and_more', :count => day_events.count - 2)), '#', :id => "event-more-#{@info_div_id}", :class => :show_event %></li>
-  <% else -%>
-    <% day_events.each do |event| -%>
-      <li>
-      <%= link_to event.title.truncate(17), event, :id => "event-#{event.id}", :class => :show_event %>
-      </li>
-    <% end -%>
-  <% end -%>
-</ul>
+  </ul>
 
-<% if day_events.count > 3 -%>
 
   <% day_events.first(2).each do |event| -%>
     <div id="info-event-<%= event.id %>" class="info">
@@ -55,7 +47,17 @@
     </div>
     <span class="close"></span>
   </div>
-<% else -%>
+
+  <% else -%>
+  <ul class="events">
+    <% day_events.each do |event| -%>
+      <li>
+      <%= link_to event.title.truncate(17), event, :id => "event-#{event.id}", :class => :show_event %>
+      </li>
+    <% end -%>
+  </ul>
+
+
   <% day_events.each do |event| -%>
     <div id="info-event-<%= event.id %>" class="info">
       <ul>
@@ -71,4 +73,5 @@
       <span class="close"></span>
     </div>
   <% end -%>
+
 <% end -%>
