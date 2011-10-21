@@ -26,7 +26,7 @@
         <div class="content">
 
           <h1><%= t('.new_in_irekia') %></h1>
-          <p><%= t('.new.fill_in_your_data') %></p>
+          <p><%= t('.fill_in_your_data') %></p>
 
           <fieldset>
             <div class="field email">
@@ -45,7 +45,7 @@
             </div>
 
             <div class="field legal">
-              <a href="#" class="checkbox"> Acepto las</a> <a href="#">condiciones de uso </a>
+              <a href="#" class="checkbox"> <%= t(".i_accept") %></a> <a href="#"><%= t(".terms_of_service") %></a>
             </div>
           </fieldset>
 
@@ -71,29 +71,29 @@
           <p><%= t('.we_want_to_know_you_better') %></p>
 
           <fieldset>
-            <div class="field email">
+
+            <div class="field name">
               <label for=""><%= t(".name") %></label>
-              <div class="input_field"> <input type="text" name="email"  /> </div>
+              <div class="input_field"> <input type="text" name="name"  /> </div>
+              <span class="mandatory">obligatorio</span>
             </div>
 
-            <div class="field">
+            <div class="field lastname">
               <label for=""><%= t(".lastname") %></label>
               <div class="input_field"> <input type="text" name="lastname"  /> </div>
+              <span class="mandatory">obligatorio</span>
             </div>
 
             <div class="field territory left">
               <label for=""><%= t(".territory") %></label>
-              <div class="input_field"> <input type="text" name="territory"  /> </div>
             </div>
 
             <div class="field municipality right">
               <label for=""><%= t(".municipality") %></label>
-              <div class="input_field"> <input type="text" name="municipality"  /> </div>
             </div>
 
             <div class="field born_at">
               <label for=""><%= t(".born_at") %></label>
-              <div class="input_field"> <input type="text" name="born_at"  /> </div>
             </div>
 
           </fieldset>
@@ -113,7 +113,6 @@
         <div class="remark"><a href="#">¿Qué vamos a hacer con estos datos?</a></div>
       <div class="t"></div><div class="f"></div>
       </article>
-
 
 
       <article class="thin with_footer with_remark signup">

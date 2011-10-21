@@ -873,8 +873,17 @@ es:
       tell_us_more_about_you: Cuéntanos más de tí.
       we_want_to_know_you_better: Queremos conocerte mejor.
       fill_in_your_data: Rellena tus datos y comienza a participar.
-      terms_of_service: 'Acepto las %{link}'
-      terms_of_service_link: condiciones de uso
+      name: nombre
+      lastname: apellidos
+      territory: territorio
+      municipality: municipio
+      born_at: fecha de nacimiento
+      mandatory: obligatorio
+      your_email: Tu email
+      your_current_password: Tu contraseña actual
+      your_new_password: Tu nueva contraseña
+      i_accept: Acepto las
+      terms_of_service: condiciones de uso
       continue: Continuar
     new:
       new_in_irekia: ¿Nuevo en Irekia?

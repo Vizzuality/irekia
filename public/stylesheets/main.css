@@ -186,7 +186,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.thin.with_footer footer .inner { width: 613px; background: url("/images/box_thin_bkg.png") repeat-y -1287px 0; border: none; }
 #container article.thin.with_footer .separator { height: 2px; background: url("/images/box_thin_bkg.png") repeat-x; background-position: 0 -40px; }
 #container article.thin.signup { text-align: center; }
-#container article.thin.signup footer .inner .white_button { padding-left: 20px; padding-right: 20px; }
+#container article.thin.signup footer .inner .white_button { padding-left: 40px; padding-right: 40px; }
 #container article.thin.signup footer .inner div.center { padding: 17px 0; }
 #container article.thin.signup .inner .content { padding: 30px 0 0 0; }
 #container article.thin.signup .inner .content a { font-size: 15px; }
@@ -364,7 +364,11 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container .cycle .inner-cycle { position: relative; overflow: hidden; clear: both; width: 9000px; height: 332px; }
 #container .cycle .inner-cycle form { overflow: hidden; clear: both; padding: 10px 0; }
 #container .cycle .inner-cycle form article { float: left; clear: none; margin: 0 100px 0 0; }
-#container .cycle .inner-cycle form article fieldset { margin: auto; width: 406px; border: none!important; }
+#container .cycle .inner-cycle form article .inner fieldset { margin: auto; width: 415px; border: none!important; }
+#container .cycle .inner-cycle form article .inner fieldset .field span.mandatory { float: left; color: #7D8A92; font-size: 13px; margin-top: 10px; margin-left: 5px; }
+#container .cycle .inner-cycle form article .inner fieldset .field.name, #container .cycle .inner-cycle form article .inner fieldset .field.lastname { clear: both; overflow: hidden; width: 415px; }
+#container .cycle .inner-cycle form article .inner fieldset .field.name .input_field, #container .cycle .inner-cycle form article .inner fieldset .field.lastname .input_field { float: left; clear: none; width: 350px; }
+#container .cycle .inner-cycle form article .inner fieldset .field.name .input_field input[type="text"], #container .cycle .inner-cycle form article .inner fieldset .field.lastname .input_field input[type="text"] { width: 328px; }
 #container .cycle .inner-cycle form article.thin { margin-left: 164px!important; }
 
 #container article .inner .avatar-uploader { clear: both; overflow: hidden; border-right: 1px solid #e3e6e8; width: 634px; margin: 15px 0 20px 0; }

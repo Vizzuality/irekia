@@ -641,8 +641,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
       text-align: center;
       footer .inner {
         .white_button {
-          padding-left: 20px;
-          padding-right: 20px;
+          padding-left: 40px;
+          padding-right: 40px;
         }
         div.center {
           padding: 17px 0;
@@ -1309,11 +1309,37 @@ article .inner { h2, h3 { color: $dark_blue; } }
         float:left;
         clear:none;
         margin: 0 100px 0 0;
+        .inner {
+          fieldset {
+            margin:auto;
+            width: 415px;
+            border:none!important;
 
-        fieldset {
-          margin:auto;
-          width: 406px;
-          border:none!important;
+            .field {
+
+              span.mandatory {
+                float:left;
+                color: #7D8A92;
+                font-size:13px;
+                margin-top:10px;
+                margin-left:5px;
+              }
+
+              &.name,
+              &.lastname {
+                clear:both;
+                overflow:hidden;
+                width:415px;
+
+                .input_field {
+                  float:left;
+                  clear:none;
+                  width:350px;
+                  input[type="text"] { width:328px; }
+                }
+              }
+            }
+          }
         }
 
         &.thin {
