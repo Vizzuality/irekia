@@ -265,15 +265,16 @@ article .white_button:active {
 /*Checkboxs, radiobuttons, ...*/
 a.checkbox {
   padding:0 0 0 17px;
-  background:url('/images/special_buttons.png') no-repeat 0 3px;
+  background:url('/images/special_buttons.png') no-repeat 0 4px;
   color:#666666;
+  line-height:normal;
 
   &:hover {
    cursor:pointer;
   }
 
   &.selected {
-    background-position:0 -11px;
+    background-position:0 -14px;
 
     &:hover {
      cursor:pointer;
@@ -284,16 +285,16 @@ a.checkbox {
 
 a.radio {
   padding:0 0 0 17px;
-  background:url('/images/special_buttons.png') no-repeat 0 -26px;
+  background:url('/images/special_buttons.png') no-repeat 0 -33px;
   color:#666666;
 
   &:hover {
    cursor:pointer;
-    background-position:0 -44px;
+    background-position:0 -53px;
   }
 
   &.selected {
-    background-position:0 -62px;
+    background-position:0 -73px;
 
     &:hover {
      cursor:pointer;

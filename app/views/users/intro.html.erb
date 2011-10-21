@@ -13,6 +13,11 @@
             <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
           </div>
 
+          <div class="links">
+            <div class="facebook disabled"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+            <div class="twitter disabled"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
+          </div>
+
           <%= link_to t('.dont_you_have_fb_or_twitter'), new_user_path, :class => :advance %>
 
         </div>

@@ -655,7 +655,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
         .links {
           margin: 0 auto 40px auto;
-          width: 440px;
+          width: 447px;
           clear:both;
           overflow: hidden;
 
@@ -663,15 +663,29 @@ article .inner { h2, h3 { color: $dark_blue; } }
           .facebook,
           .twitter {
             float:left;
-            height:35px;
+            height:36px;
             background:url('/images/icons/share.png') no-repeat left -154px;
 
             a { display:block; height:35px; margin-left:35px; padding: 9px 10px 0 10px; line-height:normal; color:#fff; font-size:15px; text-shadow: 1px 1px 1px rgba(0,0,0,.3); background:url('/images/icons/share.png') repeat-x right -192px; }
+
+            &.disabled {
+              background-position: 0 -306px;
+              a {
+              background-position: right -344px;
+              }
+            }
           }
 
           .twitter {
-            background-position:left -306px;
-            a { background-position:right -344px; }
+            background-position:left -382px;
+            a { background-position:right -420px; }
+
+            &.disabled {
+              background-position: 0 -534px;
+              a {
+              background-position: right -572px;
+              }
+            }
           }
         }
 
