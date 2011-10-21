@@ -123,7 +123,7 @@
           <h1><%= t('.new_in_irekia') %></h1>
           <p><%= t('.fill_in_your_data') %></p>
 
-          <div class="links">
+          <div class="social-links">
             <div class="facebook"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
             <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
           </div>
