@@ -165,7 +165,9 @@ header {
           span.holder { position: absolute; left: 11px; bottom: 8px; width: 200px; font-size:15px; font-weight:normal; color: #D7DADD; text-shadow:none; }
 
           input {
-            &[type="text"] {
+            &[type="text"],
+            &[type="email"],
+            &[type="password"] {
               height: 33px;
               padding: 0 36px 0 9px;
               width: 245px;
@@ -324,7 +326,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
         top:7px;
         width:20px;
         height:20px;
-        background:red;
         z-index:10;
       }
     }
@@ -413,11 +414,11 @@ article .inner { h2, h3 { color: $dark_blue; } }
       &.right { float:left;  }
 
       &.email {
-        background:red;
         width:410px;
         .input_field {
           width:410px;
-          input[type="text"] { width:383px; }
+          input[type="text"],
+          input[type="email"] { width:384px; }
         }
       }
 
@@ -431,7 +432,9 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
       .input_field {
         width:200px;
-        input[type="text"] {
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
           width:178px;
           color: #7D8A92;
           font-size:15px;
@@ -567,7 +570,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
       header {
         margin: 0;
         width:635px;
-        background:red;
         h2 { line-height:normal; }
       }
       .content p {
@@ -1392,7 +1394,6 @@ a.editable {
     a.icon {
       display:block;
       float:left;
-      background:red;
       width:10px;
       height:10px;
       float: left;
@@ -1428,7 +1429,9 @@ a.editable {
         background:#fff;
         -webkit-appearance:none;
 
-        input[type="text"] {
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
           border:none;
           outline:none;
           padding:7px 7px;
@@ -1786,7 +1789,9 @@ a.editable {
   .input_field input {
     position: absolute;
     background: $white;
-    &[type="text"] {
+    &[type="text"] ,
+    &[type="email"] ,
+    &[type="password"] {
       width: 222px;
       height: 29px;
       padding: 0 9px;
@@ -2325,7 +2330,9 @@ input {
   background:url('/images/icons/magnifier.png') no-repeat 0 top;
   } */
 
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   display:block;
   width:638px;
   height:35px;

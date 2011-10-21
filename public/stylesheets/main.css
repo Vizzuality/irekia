@@ -65,7 +65,7 @@ header nav .content span.currently_viewing { float: left; margin: 10px 10px 0 0;
 header nav .content form { float: left; width: 290px; }
 header nav .content form .input_field { position: relative; }
 header nav .content form .input_field span.holder { position: absolute; left: 11px; bottom: 8px; width: 200px; font-size: 15px; font-weight: normal; color: #D7DADD; text-shadow: none; }
-header nav .content form .input_field input[type="text"] { height: 33px; padding: 0 36px 0 9px; width: 245px; font-size: 15px; border: 1px solid #13587f; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); outline: none; }
+header nav .content form .input_field input[type="text"], header nav .content form .input_field input[type="email"], header nav .content form .input_field input[type="password"] { height: 33px; padding: 0 36px 0 9px; width: 245px; font-size: 15px; border: 1px solid #13587f; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); outline: none; }
 header nav .content form .input_field input[type="submit"] { right: 10px; top: 10px; position: absolute; width: 14px; height: 14px; background: url("/images/icons/magnifier.png") no-repeat; border: 0; z-index: 100; }
 header nav .content form .input_field span#autocomplete_spinner { position: absolute; right: 17px; top: 17px; }
 header nav .content .sign_out { float: right; }
@@ -106,7 +106,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_filters div.left span.empty { display: block; width: 100%; margin: 80px 0 80px 0; color: #7D8A92; font: normal 17px Arial; text-align: center; }
 #container article.with_filters div.right { position: relative; }
 #container article.with_filters div.right li em { font-size: 15px; color: #999999; }
-#container article.with_filters div.right span.spinner { position: absolute; display: block; right: 7px; top: 7px; width: 20px; height: 20px; background: red; z-index: 10; }
+#container article.with_filters div.right span.spinner { position: absolute; display: block; right: 7px; top: 7px; width: 20px; height: 20px; z-index: 10; }
 #container article.with_footer .inner { width: 933px; padding: 15px 31px 5px 30px; }
 #container article.with_footer .f { bottom: -10px; background-position: 0 -22px; }
 #container article.with_footer footer { padding: 0; border: none; clear: both; border-left: 1px solid #b4bdc4; border-right: 1px solid #b4bdc4; background: #f8f8f9; }
@@ -133,14 +133,14 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_form form .inner .left .field a:hover { text-decoration: none; }
 #container article.with_form form .inner .left .field.left { float: left; margin-right: 6px; }
 #container article.with_form form .inner .left .field.right { float: left; }
-#container article.with_form form .inner .left .field.email { background: red; width: 410px; }
+#container article.with_form form .inner .left .field.email { width: 410px; }
 #container article.with_form form .inner .left .field.email .input_field { width: 410px; }
-#container article.with_form form .inner .left .field.email .input_field input[type="text"] { width: 383px; }
+#container article.with_form form .inner .left .field.email .input_field input[type="text"], #container article.with_form form .inner .left .field.email .input_field input[type="email"] { width: 384px; }
 #container article.with_form form .inner .left .field.lastname { width: 410px; }
 #container article.with_form form .inner .left .field.lastname .input_field { width: 410px; }
 #container article.with_form form .inner .left .field.lastname .input_field input[type="text"] { width: 383px; }
 #container article.with_form form .inner .left .field .input_field { width: 200px; }
-#container article.with_form form .inner .left .field .input_field input[type="text"] { width: 178px; color: #7D8A92; font-size: 15px; }
+#container article.with_form form .inner .left .field .input_field input[type="text"], #container article.with_form form .inner .left .field .input_field input[type="email"], #container article.with_form form .inner .left .field .input_field input[type="password"] { width: 178px; color: #7D8A92; font-size: 15px; }
 #container article.with_form form .inner .left .field label { display: block; margin: 0 0 7px 0; text-transform: uppercase; font-size: 12px; color: #465866; font-weight: bold; }
 #container article.mini.with_icon .inner, #container article.mini.with_footer.with_icon .inner { padding-top: 35px; padding-bottom: 10px; }
 #container article.mini.with_icon footer .inner, #container article.mini.with_icon.with_footer footer .inner { padding-top: 25px; padding-bottom: 25px; }
@@ -167,7 +167,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.micro.with_footer footer .inner div.right { right: 0; margin: 0; width: 50%; }
 #container article.thin { width: 636px; margin: 0 auto 40px auto; }
 #container article.thin.initialy_hidden { opacity: 0; }
-#container article.thin .inner header { margin: 0; width: 635px; background: red; }
+#container article.thin .inner header { margin: 0; width: 635px; }
 #container article.thin .inner header h2 { line-height: normal; }
 #container article.thin .inner .content p { margin: 0 0 20px 0; padding: 0; font-size: 15px; color: #7d8a92; }
 #container article.thin .t, #container article.thin .f { height: 10px; background: url("/images/box_thin_bkg.png") no-repeat; }
@@ -382,7 +382,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .proposals .proposal { float: left; width: 286px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container article .inner .left .proposals .proposal.agree { background: #E9F0DE; margin: 0 33px 0 0; }
 #container article .inner .left .proposals .proposal.against { background: #FFF0D9; margin: 0; }
-#container article .inner .left .proposals .proposal a.icon { display: block; float: left; background: red; width: 10px; height: 10px; float: left; margin-right: 20px; }
+#container article .inner .left .proposals .proposal a.icon { display: block; float: left; width: 10px; height: 10px; float: left; margin-right: 20px; }
 #container article .inner .left .proposals .proposal h3 { margin: 0; padding: 16px 0 12px 16px; font-size: 17px; text-transform: none; }
 #container article .inner .left .proposals .proposal ul { padding: 0 16px; }
 #container article .inner .left .proposals .proposal ul li { background: url("/images/icons/bullet.png") no-repeat 0 7px; padding: 0 0 8px 7px; font-size: 15px; color: #7d8a92; margin: 0 0 5px 0; }
@@ -392,7 +392,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .proposals .proposal .footer a { float: left; margin-right: 20px; }
 #container article .inner .left .proposals .proposal .footer .sparkline { margin-top: 10px; }
 #container article .inner .left .proposals .proposal .footer .input_text { -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; border: 1px solid #B3B6AE; background: #fff; -webkit-appearance: none; }
-#container article .inner .left .proposals .proposal .footer .input_text input[type="text"] { border: none; outline: none; padding: 7px 7px; margin: 0 0 0 3px; width: 177px; }
+#container article .inner .left .proposals .proposal .footer .input_text input[type="text"], #container article .inner .left .proposals .proposal .footer .input_text input[type="password"], #container article .inner .left .proposals .proposal .footer .input_text input[type="email"] { border: none; outline: none; padding: 7px 7px; margin: 0 0 0 3px; width: 177px; }
 #container article .inner .left .proposals .proposal .footer .input_text input[type="submit"] { border: none; color: #f10063; background: none; float: right; margin-top: 5px; margin-right: 5px; }
 
 /* Complete article / read more link */
@@ -494,7 +494,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .input_field span.holder.large { width: 100%; color: #666666; font-size: 15px; }
 #container article .input-counter span.holder.large { width: 100%; top: 8px; color: #666666; font-size: 15px; }
 #container article .input_field input { position: absolute; background: white; }
-#container article .input_field input[type="text"] { width: 222px; height: 29px; padding: 0 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); outline: none; }
+#container article .input_field input[type="text"], #container article .input_field input[type="email"], #container article .input_field input[type="password"] { width: 222px; height: 29px; padding: 0 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); outline: none; }
 #container article .input-counter { position: relative; margin-bottom: 24px; float: left; }
 #container article .input-counter .counter { top: -20px; right: 0; position: absolute; color: #465866; color: rgba(70, 88, 102, 0.3); -moz-transition-property: color; -webkit-transition-property: color; -o-transition-property: color; transition-property: color; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; }
 #container article .input-counter .counter.error { padding: 0; color: #FF3300!important; opacity: 1; }
@@ -630,7 +630,7 @@ input.xlInput { width: 508px; height: 32px; padding: 0 9px; border: 1px solid rg
 background:url('/images/icons/magnifier.png') no-repeat 0 top;
 } */ }
 .search_box input[type="submit"] { position: absolute; right: 10px; top: 11px; width: 14px; height: 14px; border: none; text-indent: -999em; background: url("/images/icons/magnifier.png") no-repeat 0 bottom; }
-.search_box input[type="text"] { display: block; width: 638px; height: 35px; background: url("/images/inputs_sprite.png") no-repeat right -75px; border: none; font-size: 15px; color: #666666; outline: none; }
+.search_box input[type="text"], .search_box input[type="email"], .search_box input[type="password"] { display: block; width: 638px; height: 35px; background: url("/images/inputs_sprite.png") no-repeat right -75px; border: none; font-size: 15px; color: #666666; outline: none; }
 
 /* =============================================================================
 Menu

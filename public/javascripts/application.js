@@ -17,7 +17,8 @@ $(function() {
   $('nav form').autocomplete();
 
   // Radio binding
-  $('a.radio').click(function(ev){
+  $('a.radio').click(function(e){
+    e.preventDefault();
     $("a.radio").removeClass("selected");
     $(this).addClass('selected');
     $(this).closest('input[type="radio"]').val(0);
@@ -27,8 +28,10 @@ $(function() {
       $(this).closest('input[type="radio"]').val(1);
     }
   });
+
   // Checkbox binding
-  $('a.checkbox').click(function(ev){
+  $('a.checkbox').click(function(e){
+    e.preventDefault();
     if (!$(this).hasClass('selected')) {
       $(this).addClass('selected');
       $(this).closest('p').find('input[type="checkbox"]').val(1);
