@@ -408,12 +408,15 @@ article .inner { h2, h3 { color: $dark_blue; } }
     .field {
       margin: 0 0 20px 0;
       width:200px;
-
+      color: #7D8A92;
       font-size:15px;
+
       a:hover { text-decoration:none; }
 
       &.left { float:left; margin-right:6px; }
       &.right { float:left;  }
+
+      .gender.male { margin-right:25px; }
 
       &.email {
         width:410px;
@@ -1217,6 +1220,9 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
   clear: both;
   overflow: hidden;
+  border-right: 1px solid #e3e6e8;
+  width:634px;
+  margin: 15px 0 20px 0;
 
   .xlAvatar { padding: 4px; background: url('/images/circle_bkg.png') no-repeat -293px center; z-index: 10; }
   .avatar {
@@ -1234,7 +1240,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     margin: 43px 0 0 0;
 
     h3 { margin: 0 0 3px 0; }
-    p { margin: 0 0 20px 0; padding: 0; font-size:15px; }
+    p { margin: 0 0 20px 0; padding: 0; color: #7D8A92; line-height:19px; font-size:15px; }
     input[type="submit"] { margin: 0 0 7px 0; float:none; }
     .small { display:block; font-size:13px; color: #b1b9be; }
     h3 { font-size:12px; }
@@ -1318,9 +1324,9 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
   li {
     padding:20px;
-    width:289px - 40;
+    width:281px - 40;
     height:215px - 40;
-    margin-right:16px;
+    margin-right:30px;
     @include inline-block;
     background:#fff;
     border: 1px solid #E2E5E8;
