@@ -8,7 +8,7 @@ header .content, header nav .content { width: 996px; margin: auto; }
 
 #main.content { margin: 60px; }
 
-#main.users.intro { background: url("/images/bubbles.png") no-repeat center center; padding: 112px 0; }
+#main.users.intro { background: url("/images/bubbles.png") no-repeat center top; padding: 20px 0 104px 0; }
 
 /* =============================================================================
 Basics
@@ -130,22 +130,23 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_sidebar .inner .right { position: relative; float: left; left: 30px; width: 262px; }
 #container article.with_form { clear: both; }
 #container article.with_form .inner .left { width: 641px; }
-#container article.with_form form .inner .left { clear: both; overflow: hidden; }
-#container article.with_form form .inner .left fieldset { border-right: 1px solid #e3e6e8; }
-#container article.with_form form .inner .left .field { margin: 0 0 20px 0; width: 200px; color: #7D8A92; font-size: 15px; }
-#container article.with_form form .inner .left .field a:hover { text-decoration: none; }
-#container article.with_form form .inner .left .field.left { float: left; margin-right: 6px; }
-#container article.with_form form .inner .left .field.right { float: left; }
-#container article.with_form form .inner .left .field .gender.male { margin-right: 25px; }
-#container article.with_form form .inner .left .field.email { width: 410px; }
-#container article.with_form form .inner .left .field.email .input_field { width: 410px; }
-#container article.with_form form .inner .left .field.email .input_field input[type="text"], #container article.with_form form .inner .left .field.email .input_field input[type="email"] { width: 384px; }
-#container article.with_form form .inner .left .field.lastname { width: 410px; }
-#container article.with_form form .inner .left .field.lastname .input_field { width: 410px; }
-#container article.with_form form .inner .left .field.lastname .input_field input[type="text"] { width: 383px; }
-#container article.with_form form .inner .left .field .input_field { width: 200px; }
-#container article.with_form form .inner .left .field .input_field input[type="text"], #container article.with_form form .inner .left .field .input_field input[type="email"], #container article.with_form form .inner .left .field .input_field input[type="password"] { width: 178px; color: #7D8A92; font-size: 15px; }
-#container article.with_form form .inner .left .field label { display: block; margin: 0 0 7px 0; text-transform: uppercase; font-size: 12px; color: #465866; font-weight: bold; }
+#container article.with_form .inner .content, #container article.with_form .inner .left { clear: both; overflow: hidden; }
+#container article.with_form .inner .content fieldset, #container article.with_form .inner .left fieldset { text-align: left; border-right: 1px solid #e3e6e8; }
+#container article.with_form .inner .content .field, #container article.with_form .inner .left .field { margin: 0 0 20px 0; width: 200px; color: #7D8A92; font-size: 15px; }
+#container article.with_form .inner .content .field a:hover, #container article.with_form .inner .left .field a:hover { text-decoration: none; }
+#container article.with_form .inner .content .field.left, #container article.with_form .inner .left .field.left { float: left; margin-right: 6px; }
+#container article.with_form .inner .content .field.right, #container article.with_form .inner .left .field.right { float: left; }
+#container article.with_form .inner .content .field .gender.male, #container article.with_form .inner .left .field .gender.male { margin-right: 25px; }
+#container article.with_form .inner .content .field.legal, #container article.with_form .inner .left .field.legal { width: 410px; }
+#container article.with_form .inner .content .field.email, #container article.with_form .inner .left .field.email { width: 410px; }
+#container article.with_form .inner .content .field.email .input_field, #container article.with_form .inner .left .field.email .input_field { width: 410px; }
+#container article.with_form .inner .content .field.email .input_field input[type="text"], #container article.with_form .inner .content .field.email .input_field input[type="email"], #container article.with_form .inner .left .field.email .input_field input[type="text"], #container article.with_form .inner .left .field.email .input_field input[type="email"] { width: 384px; }
+#container article.with_form .inner .content .field.lastname, #container article.with_form .inner .left .field.lastname { width: 410px; }
+#container article.with_form .inner .content .field.lastname .input_field, #container article.with_form .inner .left .field.lastname .input_field { width: 410px; }
+#container article.with_form .inner .content .field.lastname .input_field input[type="text"], #container article.with_form .inner .left .field.lastname .input_field input[type="text"] { width: 383px; }
+#container article.with_form .inner .content .field .input_field, #container article.with_form .inner .left .field .input_field { width: 200px; }
+#container article.with_form .inner .content .field .input_field input[type="text"], #container article.with_form .inner .content .field .input_field input[type="email"], #container article.with_form .inner .content .field .input_field input[type="password"], #container article.with_form .inner .left .field .input_field input[type="text"], #container article.with_form .inner .left .field .input_field input[type="email"], #container article.with_form .inner .left .field .input_field input[type="password"] { width: 178px; color: #7D8A92; font-size: 15px; }
+#container article.with_form .inner .content .field label, #container article.with_form .inner .left .field label { display: block; margin: 0 0 7px 0; text-transform: uppercase; font-size: 12px; color: #465866; font-weight: bold; }
 #container article.mini.with_icon .inner, #container article.mini.with_footer.with_icon .inner { padding-top: 35px; padding-bottom: 10px; }
 #container article.mini.with_icon footer .inner, #container article.mini.with_icon.with_footer footer .inner { padding-top: 25px; padding-bottom: 25px; }
 #container article.mini.with_icon .inner .content p { line-height: 20px; }
@@ -181,18 +182,20 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.thin .inner .content { margin: 3px 0 18px 0px; width: 556px; }
 #container article.thin.with_footer .f { bottom: -10px; background-position: 0 -24px; }
 #container article.thin.with_footer footer { padding: 0; border: none; background: none; }
-#container article.thin.with_footer footer .inner { width: 601px; background: url("/images/box_thin_bkg.png") repeat-y -1287px 0; border: none; }
+#container article.thin.with_footer footer .inner { width: 613px; background: url("/images/box_thin_bkg.png") repeat-y -1287px 0; border: none; }
 #container article.thin.with_footer .separator { height: 2px; background: url("/images/box_thin_bkg.png") repeat-x; background-position: 0 -40px; }
-#container article.thin.thin.signup { text-align: center; }
-#container article.thin.thin.signup .inner .content { padding: 20px 0 0 0; }
-#container article.thin.thin.signup .inner .content a { font-size: 15px; }
-#container article.thin.thin.signup .inner .content .links { margin: 0 auto 40px auto; width: 440px; clear: both; overflow: hidden; }
-#container article.thin.thin.signup .inner .content .links .facebook { margin: 0 29px 0 0; }
-#container article.thin.thin.signup .inner .content .links .facebook, #container article.thin.thin.signup .inner .content .links .twitter { float: left; height: 35px; background: url("/images/icons/share.png") no-repeat left -154px; }
-#container article.thin.thin.signup .inner .content .links .facebook a, #container article.thin.thin.signup .inner .content .links .twitter a { display: block; height: 35px; margin-left: 35px; padding: 9px 10px 0 10px; line-height: normal; color: #fff; font-size: 15px; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); background: url("/images/icons/share.png") repeat-x right -192px; }
-#container article.thin.thin.signup .inner .content .links .twitter { background-position: left -306px; }
-#container article.thin.thin.signup .inner .content .links .twitter a { background-position: right -344px; }
-#container article.thin.thin.signup .inner .content p { margin: 0 0 46px 0; padding: 0; font-size: 17px; }
+#container article.thin.signup { text-align: center; }
+#container article.thin.signup footer .inner .white_button { padding-left: 20px; padding-right: 20px; }
+#container article.thin.signup footer .inner div.center { padding: 17px 0; }
+#container article.thin.signup .inner .content { padding: 30px 0 0 0; }
+#container article.thin.signup .inner .content a { font-size: 15px; }
+#container article.thin.signup .inner .content .links { margin: 0 auto 40px auto; width: 440px; clear: both; overflow: hidden; }
+#container article.thin.signup .inner .content .links .facebook { margin: 0 29px 0 0; }
+#container article.thin.signup .inner .content .links .facebook, #container article.thin.signup .inner .content .links .twitter { float: left; height: 35px; background: url("/images/icons/share.png") no-repeat left -154px; }
+#container article.thin.signup .inner .content .links .facebook a, #container article.thin.signup .inner .content .links .twitter a { display: block; height: 35px; margin-left: 35px; padding: 9px 10px 0 10px; line-height: normal; color: #fff; font-size: 15px; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); background: url("/images/icons/share.png") repeat-x right -192px; }
+#container article.thin.signup .inner .content .links .twitter { background-position: left -306px; }
+#container article.thin.signup .inner .content .links .twitter a { background-position: right -344px; }
+#container article.thin.signup .inner .content p { margin: 0 0 46px 0; padding: 0; font-size: 17px; }
 #container article.mini { width: 610px; margin: 0 auto 0 auto; }
 #container article.mini.initialy_hidden { opacity: 0; }
 #container article.mini .inner header { margin: 0; }
@@ -348,6 +351,16 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.actions .inner .right .input_field, #container article.proposal .inner .right .input_field, #container article.proposals .inner .right .input_field, #container article.questions .inner .right .input_field, #container article.activity .inner .right .input_field { margin-bottom: 28px; }
 
 /* Article addons */
+#container article.with_remark { margin-bottom: 40px!important; }
+#container article.with_remark .remark { text-align: center; width: 100%; position: absolute; bottom: -35px; }
+
+#container .cycle { overflow: hidden; clear: both; }
+#container .cycle .inner-cycle { position: relative; overflow: hidden; clear: both; width: 9000px; height: 332px; }
+#container .cycle .inner-cycle form { overflow: hidden; clear: both; padding: 10px 0; }
+#container .cycle .inner-cycle form article { float: left; clear: none; margin: 0 100px 0 0; }
+#container .cycle .inner-cycle form article fieldset { margin: auto; width: 406px; border: none!important; }
+#container .cycle .inner-cycle form article.thin { margin-left: 164px!important; }
+
 #container article .inner .avatar-uploader { clear: both; overflow: hidden; border-right: 1px solid #e3e6e8; width: 634px; margin: 15px 0 20px 0; }
 #container article .inner .avatar-uploader .xlAvatar { padding: 4px; background: url("/images/circle_bkg.png") no-repeat -293px center; z-index: 10; }
 #container article .inner .avatar-uploader .avatar { float: left; width: 281px; height: 281px; margin: 0 25px 0 0; }

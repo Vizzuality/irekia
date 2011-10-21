@@ -1,20 +1,149 @@
-<article class="thin signup">
-<div class="inner">
-  <div class="content">
+<div class="cycle">
+  <div class="inner-cycle">
+    <form action="" method="get" novalidate>
+      <article class="thin signup">
+      <div class="inner">
+        <div class="content">
 
-  <h1><%= t('.new_in_irekia') %></h1>
-  <p><%= t('.fill_in_your_data') %></p>
+          <h1><%= t('.new_in_irekia') %></h1>
+          <p><%= t('.use_facebook_or_twitter') %></p>
 
-  <div class="links">
-    <div class="facebook"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
-    <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
-  </div>
+          <div class="links">
+            <div class="facebook"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+            <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
+          </div>
 
-  <%= link_to t('.create_user'), new_user_path %>
+          <%= link_to t('.dont_you_have_fb_or_twitter'), new_user_path, :class => :advance %>
+
+        </div>
+      </div>
+
+      <div class="t"></div><div class="f"></div>
+      </article>
+
+      <article class="thin with_footer with_form signup">
+      <div class="inner">
+        <div class="content">
+
+          <h1><%= t('.new_in_irekia') %></h1>
+          <p><%= t('.new.fill_in_your_data') %></p>
+
+          <fieldset>
+            <div class="field email">
+              <label for=""><%= t('.your_email') %></label>
+              <div class="input_field"> <input type="email" /> </div>
+            </div>
+
+            <div class="field password left">
+              <label for=""><%= t('.your_current_password') %></label>
+              <div class="input_field"> <input type="password" /> </div>
+            </div>
+
+            <div class="field confirm_password right">
+              <label for=""><%= t('.your_new_password') %></label>
+              <div class="input_field"> <input type="password" /> </div>
+            </div>
+
+            <div class="field legal">
+              <a href="#" class="checkbox"> Acepto las</a> <a href="#">condiciones de uso </a>
+            </div>
+          </fieldset>
+
+        </div>
+      </div>
+
+      <footer>
+      <div class="separator"></div>
+      <div class="inner">
+        <div class="center">
+          <%= link_to t('.continue'), new_user_path, :class => "white_button pink center advance" %>
+        </div>
+      </div>
+      </footer>
+      <div class="t"></div><div class="f"></div>
+      </article>
+
+      <article class="thin with_footer with_remark with_form signup">
+      <div class="inner">
+        <div class="content">
+
+          <h1><%= t('.tell_us_more_about_you') %></h1>
+          <p><%= t('.we_want_to_know_you_better') %></p>
+
+          <fieldset>
+            <div class="field email">
+              <label for=""><%= t(".name") %></label>
+              <div class="input_field"> <input type="text" name="email"  /> </div>
+            </div>
+
+            <div class="field">
+              <label for=""><%= t(".lastname") %></label>
+              <div class="input_field"> <input type="text" name="lastname"  /> </div>
+            </div>
+
+            <div class="field territory left">
+              <label for=""><%= t(".territory") %></label>
+              <div class="input_field"> <input type="text" name="territory"  /> </div>
+            </div>
+
+            <div class="field municipality right">
+              <label for=""><%= t(".municipality") %></label>
+              <div class="input_field"> <input type="text" name="municipality"  /> </div>
+            </div>
+
+            <div class="field born_at">
+              <label for=""><%= t(".born_at") %></label>
+              <div class="input_field"> <input type="text" name="born_at"  /> </div>
+            </div>
+
+          </fieldset>
 
 
+        </div>
+      </div>
+
+      <footer>
+      <div class="separator"></div>
+      <div class="inner">
+        <div class="center">
+          <%= link_to t('.continue'), new_user_path, :class => "white_button pink center advance" %>
+        </div>
+      </div>
+      </footer>
+        <div class="remark"><a href="#">¿Qué vamos a hacer con estos datos?</a></div>
+      <div class="t"></div><div class="f"></div>
+      </article>
+
+
+
+      <article class="thin with_footer with_remark signup">
+      <div class="inner">
+        <div class="content">
+
+          <h1><%= t('.new_in_irekia') %></h1>
+          <p><%= t('.fill_in_your_data') %></p>
+
+          <div class="links">
+            <div class="facebook"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+            <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+      <div class="separator"></div>
+      <div class="inner">
+        <div class="center">
+          <%= submit_tag t('.continue'), :class => "white_button pink center" %>
+        </div>
+      </div>
+      </footer>
+
+        <div class="remark"><a href="#">Descubre por qué queremos que te conectes.</a></div>
+      <div class="t"></div><div class="f"></div>
+      </article>
+
+
+    </form>
   </div>
 </div>
-
-<div class="t"></div><div class="f"></div>
-</article>

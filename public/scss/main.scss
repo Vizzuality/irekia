@@ -26,8 +26,8 @@ header {
 }
 
 #main.users.intro {
-  background:url('/images/bubbles.png') no-repeat center center;
-  padding:112px 0;
+  background:url('/images/bubbles.png') no-repeat center top;
+  padding: 20px 0 104px 0;
 }
 
 /* =============================================================================
@@ -400,15 +400,14 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
     clear:both;
 
-    .inner .left {
-      width:641px;
-    }
+    .inner .left { width:641px; }
 
-    form .inner .left {
+    .inner .content,
+    .inner .left {
       clear:both;
       overflow:hidden;
 
-      fieldset { border-right: 1px solid #e3e6e8; }
+      fieldset { text-align:left; border-right: 1px solid #e3e6e8; }
 
     .field {
       margin: 0 0 20px 0;
@@ -422,6 +421,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
       &.right { float:left;  }
 
       .gender.male { margin-right:25px; }
+
+      &.legal { width:410px; }
 
       &.email {
         width:410px;
@@ -623,7 +624,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         border: none;
         background: none;
         .inner {
-          width: 601px;
+          width: 613px;
           background: url('/images/box_thin_bkg.png') repeat-y -1287px 0;
           border: none;
         }
@@ -635,8 +636,18 @@ article .inner { h2, h3 { color: $dark_blue; } }
       }
     } // thin
 
-    &.thin.signup {
+    &.signup {
       text-align: center;
+      footer .inner {
+        .white_button {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        div.center {
+          padding: 17px 0;
+        }
+      }
+
       .inner .content {
         padding: 30px 0 0 0;
 
@@ -1249,6 +1260,51 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
 /* Article addons */
 
+#container article.with_remark {
+
+  margin-bottom: 40px!important;
+
+  .remark {
+    text-align:center;
+    width:100%;
+    position:absolute;
+    bottom:-35px;
+  }
+}
+#container .cycle {
+  overflow:hidden;
+  clear:both;
+
+  .inner-cycle {
+    position:relative;
+    overflow:hidden;
+    clear:both;
+    width:9000px;
+    height:332px;
+
+    form {
+      overflow:hidden;
+      clear:both;
+      padding: 10px 0;
+
+      article {
+        float:left;
+        clear:none;
+        margin: 0 100px 0 0;
+
+        fieldset {
+          margin:auto;
+          width: 406px;
+          border:none!important;
+        }
+
+        &.thin {
+          margin-left:164px!important;
+        }
+      }
+    }
+  }
+}
 
 #container article .inner .avatar-uploader {
 

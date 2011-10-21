@@ -1,6 +1,33 @@
 $(function() {
   watchHash(); // this function watches the url hashes and acts accordingly
 
+
+  var z = 0;
+
+  $(".advance").click(function(e) {
+    e.preventDefault();
+
+    $(".cycle form").submit(function(e) {
+      event.preventDefault();
+      return false;
+    });
+
+    var $article = $(this).parents("article");
+    var $nextArticle = $(this).parents(".inner-cycle").find("article:eq("+(++z)+")");
+
+    if (z == 1) {
+      $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
+    }
+    else if (z == 3) {
+      $(".cycle form").unbind("submit");
+    }
+
+    $(".cycle .inner-cycle").animate({height:$nextArticle.height() + 45}, 350, "easeInOutQuad");
+    $(".cycle").animate({scrollLeft:$article.position().left + 850}, 350, "easeInOutQuad", function() {
+    });
+
+  });
+
   // Preloading of popover assets
   $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
 

@@ -118,6 +118,15 @@ White buttons
 }
 
 
+// white button left-aligned
+#container article footer .white_button.center,
+#container article .white_button.center,
+#container article article .white_button.center {
+  float:none;
+  margin:auto;
+}
+
+
 .white_button.disabled,
 article .white_button.disabled {
   color:#bbb; border: 1px solid #eee;
