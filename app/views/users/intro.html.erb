@@ -1,9 +1,20 @@
-<div id="sign_up">
-  <h1><%= t('.new_in_irekia') %></h1>
-  <h4><%= t('.fill_in_your_data') %></h4>
+<article class="thin signup">
+<div class="inner">
+  <div class="content">
 
-  <%= link_to t('.facebook_signin'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %>
-  <%= link_to t('.twitter_signin'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %>
+  <h1><%= t('.new_in_irekia') %></h1>
+  <p><%= t('.fill_in_your_data') %></p>
+
+  <div class="links">
+    <div class="facebook"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+    <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
+  </div>
 
   <%= link_to t('.create_user'), new_user_path %>
+
+
+  </div>
 </div>
+
+<div class="t"></div><div class="f"></div>
+</article>

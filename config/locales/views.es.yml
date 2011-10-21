@@ -866,9 +866,8 @@ es:
         area: Área
     intro:
       new_in_irekia: ¿Nuevo en Irekia?
-      fill_in_your_data: Utiliza Facebook o Twitter para registrarte.
-      facebook_signin: Conectar con Facebook
-      twitter_signin: Conectar con Twitter
+      fill_in_your_data: Utiliza Facebook o Twitter para registrarte
+      signin: "Conectar con <strong>%{name}</strong>"
       create_user: ¿No tienes cuenta de Facebook ni de Twitter?
     new:
       new_in_irekia: ¿Nuevo en Irekia?
