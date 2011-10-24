@@ -117,7 +117,6 @@ White buttons
   width:auto;
 }
 
-
 // white button left-aligned
 #container article footer .white_button.center,
 #container article .white_button.center,
@@ -125,7 +124,6 @@ White buttons
   float:none;
   margin:auto;
 }
-
 
 .white_button.disabled,
 article .white_button.disabled {
@@ -159,8 +157,8 @@ article .white_button.disabled:hover {
   color:#333;
   background-color:rgba(244,246,249,0.76);
   @include box-shadow(0 0 7px rgba(43, 140, 194, .3));
+  text-decoration: underline;
 
-  span {background-position:0 -15px;}
 }
 
 .white_button:active,
@@ -185,14 +183,19 @@ article .white_button:active {
 }
 
 /* add person icon */
-.white_button.add_person span{
-  position:absolute;
-  display:block-inline;
-  width:18px;
-  height:15px;
-  top:8px;
-  left:10px;
-  background:url('/images/icons/add_person.png') no-repeat;
+.white_button.add_person {
+
+  &:hover span {background-position:0 -15px;}
+
+  span {
+    position:absolute;
+    display:block-inline;
+    width:18px;
+    height:15px;
+    top:8px;
+    left:10px;
+    background:url('/images/icons/add_person.png') no-repeat;
+  }
 }
 
 /* Hacks & fixes */

@@ -35,13 +35,13 @@ White buttons
 
 .white_button.disabled:hover, article .white_button.disabled:hover { color: #bbb; border: 1px solid #eee; background: white; /* Old browsers */ background: -moz-linear-gradient(top, white 0%, #f4f6f9 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #f4f6f9)); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top, white 0%, #f4f6f9 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top, white 0%, #f4f6f9 100%); /* Opera11.10+ */ background: -ms-linear-gradient(top, white 0%, #f4f6f9 100%); /* IE10+ */ background: linear-gradient(top, #ffffff 0%, #f4f6f9 100%); /* W3C */ -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
 
-.white_button:hover, article .white_button:hover { color: #333; background-color: rgba(244, 246, 249, 0.76); -moz-box-shadow: 0 0 7px rgba(43, 140, 194, 0.3); -webkit-box-shadow: 0 0 7px rgba(43, 140, 194, 0.3); -o-box-shadow: 0 0 7px rgba(43, 140, 194, 0.3); box-shadow: 0 0 7px rgba(43, 140, 194, 0.3); }
-.white_button:hover span, article .white_button:hover span { background-position: 0 -15px; }
+.white_button:hover, article .white_button:hover { color: #333; background-color: rgba(244, 246, 249, 0.76); -moz-box-shadow: 0 0 7px rgba(43, 140, 194, 0.3); -webkit-box-shadow: 0 0 7px rgba(43, 140, 194, 0.3); -o-box-shadow: 0 0 7px rgba(43, 140, 194, 0.3); box-shadow: 0 0 7px rgba(43, 140, 194, 0.3); text-decoration: underline; }
 
 .white_button:active, article .white_button:active { color: #333; font-weight: bold; font-size: 15px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 1px 0 white; -webkit-box-shadow: 0 1px 1px 0 white; -o-box-shadow: 0 1px 1px 0 white; box-shadow: 0 1px 1px 0 white; background: -moz-linear-gradient(top, rgba(244, 246, 249, 0.76) 0%, rgba(255, 255, 255, 0.76) 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(244, 246, 249, 0.76)), color-stop(100%, rgba(255, 255, 255, 0.76))); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top, rgba(244, 246, 249, 0.76) 0%, rgba(255, 255, 255, 0.76) 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top, rgba(244, 246, 249, 0.76) 0%, rgba(255, 255, 255, 0.76) 100%); /* Opera11.10+ */ background: -ms-linear-gradient(top, rgba(244, 246, 249, 0.76) 0%, rgba(255, 255, 255, 0.76) 100%); /* IE10+ */ background: linear-gradient(top, rgba(244, 246, 249, 0.76) 0%, rgba(255, 255, 255, 0.76) 100%); /* W3C */ }
 .white_button:active span, article .white_button:active span { background-position: 0 0; }
 
 /* add person icon */
+.white_button.add_person:hover span { background-position: 0 -15px; }
 .white_button.add_person span { position: absolute; display: block-inline; width: 18px; height: 15px; top: 8px; left: 10px; background: url("/images/icons/add_person.png") no-repeat; }
 
 /* Hacks & fixes */
