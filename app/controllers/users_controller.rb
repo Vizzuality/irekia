@@ -71,7 +71,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create params[:user]
+    @user = User.new
+    @user.email = params[:user][:email]
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
 
@@ -79,7 +80,7 @@ class UsersController < ApplicationController
       env['warden'].set_user(@user)
       redirect_to edit_user_path(@user)
     else
-      render :new
+      render :json => @user.errors.to_json, :status => :error
     end
   end
 
