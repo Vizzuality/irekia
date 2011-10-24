@@ -365,7 +365,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container .cycle .inner-cycle form { overflow: hidden; clear: both; padding: 10px 0; }
 #container .cycle .inner-cycle form article { float: left; clear: none; margin: 0 100px 0 0; }
 #container .cycle .inner-cycle form article .inner fieldset { margin: auto; width: 415px; border: none!important; }
-#container .cycle .inner-cycle form article .inner fieldset .field span.mandatory { float: left; color: #7D8A92; font-size: 13px; margin-top: 10px; margin-left: 5px; }
+#container .cycle .inner-cycle form article .inner fieldset .field span.mandatory { float: left; color: rgba(125, 138, 146, 0.4); font-size: 13px; margin-top: 10px; margin-left: 5px; }
 #container .cycle .inner-cycle form article .inner fieldset .field.name, #container .cycle .inner-cycle form article .inner fieldset .field.lastname { clear: both; overflow: hidden; width: 415px; }
 #container .cycle .inner-cycle form article .inner fieldset .field.name .input_field, #container .cycle .inner-cycle form article .inner fieldset .field.lastname .input_field { float: left; clear: none; width: 350px; }
 #container .cycle .inner-cycle form article .inner fieldset .field.name .input_field input[type="text"], #container .cycle .inner-cycle form article .inner fieldset .field.lastname .input_field input[type="text"] { width: 328px; }

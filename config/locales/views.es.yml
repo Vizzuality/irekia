@@ -882,6 +882,7 @@ es:
       your_email: Tu email
       your_current_password: Tu contraseña actual
       your_new_password: Tu nueva contraseña
+      repeat_password: Repetir contraseña
       i_accept: Acepto las
       terms_of_service: condiciones de uso
       continue: Continuar

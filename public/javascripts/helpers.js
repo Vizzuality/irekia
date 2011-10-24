@@ -1,3 +1,7 @@
+function isEmpty(str) {
+  return !str.match(/\S/)
+}
+
 function watchHash(opt) {
 
   var speed  = (opt && opt.speed) || 200;
@@ -10,6 +14,99 @@ function watchHash(opt) {
     }
   }
 }
+
+
+jQuery.fn.enableRegistration = function(opt){
+
+  var speed  = (opt && opt.speed) || 200,
+  step = 0,
+  ok = true,
+  $form = $(".cycle form");
+
+  var $name = $form.find(".name input"),
+  $lastname = $form.find(".lastname input"),
+  $legal    = $form.find(".legal .checkbox");
+
+
+  function error($article) {
+    ok = false;
+    $article.effect("shake", { times:4 }, 100);
+  }
+
+  this.each(function(){
+
+    $(".advance").click(function(e) {
+      e.preventDefault();
+
+      $form.submit(function(e) {
+        event.preventDefault();
+        return false;
+      });
+
+      var $article     = $(this).parents("article");
+      var $nextArticle = $(this).parents(".inner-cycle").find("article:eq("+(step + 1)+")");
+
+      if (step == 0) {
+        $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
+      } else if (step == 1) {
+
+        if (!$legal.hasClass("selected")) {
+          error($article);
+        } else {
+          ok = true;
+        }
+      } else if (step == 2) {
+        if (isEmpty($name.val()) || isEmpty($lastname.val())) {
+          error($article);
+        } else {
+          ok = true;
+        }
+
+      } else if (step == 3) {
+        $form.unbind("submit");
+      }
+
+      if (ok) {
+        $(".cycle .inner-cycle").animate({height:$nextArticle.height() + 45}, 350, "easeInOutQuad");
+        $(".cycle").animate({scrollLeft:$article.position().left + 850}, 350, "easeInOutQuad", function() {
+        });
+        step++;
+      }
+    });
+
+  });
+}
+
+/* Enables comment submission */
+jQuery.fn.enableArguments = function(opt){
+
+  var speed  = (opt && opt.speed) || 200;
+
+  this.each(function(){
+
+    //var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
+    //var spin_element = document.getElementById('comment_spinner');
+    //var spinner = new Spinner(opts);
+
+    //$(this).submit(function(e) {
+    //  spinner.spin(spin_element);
+    //});
+
+    $(this).bind('ajax:success', function(evt, xhr, status) {
+      var $el = $(this).parent().siblings("ul");
+      var $argument = $(xhr);
+      $argument.hide();
+      $el.append($argument);
+      $argument.slideDown(250);
+      // spinner.stop();
+
+      // Reset input
+      $(this).find('.input_text input[type="text"]').val("");
+    });
+  });
+}
+
+
 
 /* Preloading of images */
 jQuery.preloadImages = function(){
@@ -137,7 +234,7 @@ jQuery.fn.enableComments = function(opt){
       spinner.spin(spin_element);
     });
 
-   $(this).bind('ajax:success', function(evt, xhr, status) {
+    $(this).bind('ajax:success', function(evt, xhr, status) {
       var $el = $(this).parents("ul").find("li.comment");
       var $comment = $(xhr);
       $comment.hide();
