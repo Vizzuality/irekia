@@ -7,10 +7,10 @@
     <%= link_to @content.author.try(:fullname), user_path(@content.users.first) %>
     <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     &middot;
-    <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments.moderated.count), '#', :class => :goto_comments %>
+    <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments_count), '#', :class => :goto_comments %>
     &middot;
     <% if @content.answer.blank? %>
-      <span><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests.count) %></span>
+      <span><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
     <% else %>
       <span class="<%= @content.answer ? 'answered' : 'not_answered' %>"><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words_to_now(@content.answer.published_at)) %></span>
     <% end %>
@@ -18,7 +18,7 @@
 
     <% if @content.answer %>
       <div class="answer">
-        <%= simple_format @content.answer.answer_text %>
+        <%= simple_format @answer.answer_text %>
       </div>
     <% else %>
       <div class="answer_placeholder">
@@ -66,10 +66,10 @@
         <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
       </span>
       &middot;
-      <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments.count), '/in_development' %>
+      <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments_count), '/in_development' %>
       &middot;
       <% if @content.answer.blank? %>
-        <span><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests.count) %></span>
+        <span><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
       <% else %>
         <span><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words_to_now(@content.answer.published_at)) %></span>
       <% end %>
@@ -110,7 +110,7 @@
               <% end %>
             <% end %>
             <%= f.submit t('.question_content.answer_satisfactory') %>
-            <span>&nbsp;(<%= @content.answer.answer_opinions.satisfactory.count %>)</span>
+            <span>&nbsp;(<%= @satisfactory_opinions_count %>)</span>
           <% end %>
           <%= form_for @content do |f| %>
             <%= f.fields_for :answer do |af| %>
@@ -122,7 +122,7 @@
               <% end %>
             <% end %>
             <%= f.submit t('.question_content.answer_not_satisfactory') %>
-            <span>&nbsp;(<%= @content.answer.answer_opinions.not_satisfactory.count %>)</span>
+            <span>&nbsp;(<%= @not_satisfactory_opinions_count %>)</span>
           <% end %>
         <% else %>
           <span><%= t('.question_content.answer_satisfactory') %></span><span class="count">&nbsp;(<%= @content.answer.answer_opinions.satisfactory.count %>)</span>
@@ -154,7 +154,7 @@
             <li>
             <p><%= link_to question.question_text, question_path(question) %></p>
             <span class="when"><%= t('.related_questions.time', :time => distance_of_time_in_words_to_now(question.published_at)) %></span>
-            <%= link_to t('.related_questions.comments', :count => question.comments.count), '/in_development' %>
+            <%= link_to t('.related_questions.comments', :count => question.comments_count), '/in_development' %>
             </li>
           <% end %>
         </ul>

@@ -6,6 +6,11 @@ class Question < Content
           :include => :target_user,
           :select => 'id, question_id, user_id, area_id, question_text, answered_at'
 
+  has_one :answer_data
+  has_one :answer,
+          :through => :answer_data,
+          :include => [:answer_data, :users => :profile_pictures]
+
   has_many :answer_requests,
            :foreign_key => :content_id
 

@@ -3,7 +3,7 @@
   <ul class="previously no-bullets">
     <% @last_contents.each do |event| %>
       <li><%= link_to event.title, event_path(event) %>
-      <div class="footer"><%= t('.time', :time => distance_of_time_in_words_to_now(event.published_at)) %> <%= link_to t('.comments', :count => event.comments.moderated.count), event_path(event, :anchor => "comments") %>
+      <div class="footer"><%= t('.time', :time => distance_of_time_in_words_to_now(event.published_at)) %> <%= link_to t('.comments', :count => event.comments_count), event_path(event, :anchor => "comments") %>
       </div>
       </li>
     <% end %>

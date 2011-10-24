@@ -3,18 +3,18 @@
     <div class="birdie"></div>
   <% end %>
 
-  <div class="count"><%= t('.title', :count => @content.comments.moderated.count) %></div>
+  <div class="count"><%= t('.title', :count => @content.comments_count) %></div>
   <ul>
     <% if @comments.count.zero? %>
       <li></li>
     <% end %>
-    <% @comments.moderated.reject{|c| c.new_record?}.each do |comment| %>
+    <% @comments.reject{|c| c.new_record?}.each do |comment| %>
       <li>
-      <%= avatar comment.user %>
+      <%= avatar comment.author %>
       <div class="comment">
         <blockquote><%= simple_format comment.body %></blockquote>
         <div class="footer when">
-          <%= link_to comment.user.fullname, user_path(comment.user), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
+          <%= link_to comment.author.fullname, user_path(comment.author), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
         </div>
       </div>
       </li>

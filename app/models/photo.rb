@@ -20,4 +20,9 @@ class Photo < Content
       :last_comments   => last_comments
     }
   end
+
+  def self.by_id(id)
+    includes(:areas, :users, :comments, :image).find(id)
+  end
+
 end

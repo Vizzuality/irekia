@@ -1,5 +1,8 @@
 class AnswerRequest < Participation
 
+  belongs_to :question,
+             :counter_cache => true
+
   def as_json(options = {})
     {
       :author          => {

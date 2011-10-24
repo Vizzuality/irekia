@@ -37,11 +37,11 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @content = @content_class.where(:id => params[:id]).first
+    @content = @content_class.by_id(params[:id])
     @moderation_status = @content.moderated?? 'moderated' : 'not_moderated'
 
-    @comments = @content.comments
-    @last_contents = @content_class.moderated.order('published_at desc').where('id <> ?', @content.id).first(5)
+    @comments = @content.comments.moderated.all
+    @last_contents = @content.last_contents
     if current_user.present?
       @comment = @content.comments.build
       @comment.build_comment_data
@@ -62,6 +62,9 @@ class ContentsController < ApplicationController
       else
         return if current_user && current_user.has_given_his_opinion?(@content.answer)
 
+        @answer = @content.answer
+        @satisfactory_opinions_count = @content.answer.answer_opinions.satisfactory.count
+        @not_satisfactory_opinions_count = @content.answer.answer_opinions.not_satisfactory.count
         @answer_opinion = @content.answer.answer_opinions.build
         @answer_opinion.user = current_user if current_user.present?
         @answer_opinion.answer_opinion_data = AnswerOpinionData.new
@@ -72,6 +75,9 @@ class ContentsController < ApplicationController
       end
 
     when Proposal
+      @in_favor = @content.arguments.moderated.with_reason.in_favor.all
+      @against = @content.arguments.moderated.with_reason.against.all
+
       @in_favor_count = @content.arguments.with_reason.in_favor.count
       @against_count = @content.arguments.with_reason.against.count
 

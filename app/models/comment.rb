@@ -1,5 +1,6 @@
 class Comment < Participation
-  belongs_to :content
+  belongs_to :content,
+             :counter_cache => true
   has_one :comment_data,
           :select => 'comment_id, body'
 
