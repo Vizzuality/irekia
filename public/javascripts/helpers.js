@@ -497,7 +497,7 @@ function shareWith($el, service, speed, easing) {
                 shadow.html(val);
                 if (!resizing) {
                   resizing = true;
-                  var height= Math.max(shadow.height() , minHeight);
+                  var height= Math.max(shadow.height() + 20, minHeight);
                   $(this).animate({height: height}, 50, function() {
                     resizing = false;
                   });
