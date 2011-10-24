@@ -24,9 +24,13 @@ jQuery.fn.enableRegistration = function(opt){
   ok = true,
   $form = $(".cycle form");
 
-  var $name = $form.find(".name input"),
-  $lastname = $form.find(".lastname input"),
-  $legal    = $form.find(".legal .checkbox");
+  var
+  $name             = $form.find(".name input"),
+  $lastname         = $form.find(".lastname input"),
+  $email            = $form.find(".email input"),
+  $password         = $form.find(".password input"),
+  $confirm_password = $form.find(".confirm_password input"),
+  $legal            = $form.find(".legal .checkbox");
 
 
   function error($article) {
@@ -51,11 +55,12 @@ jQuery.fn.enableRegistration = function(opt){
         $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
       } else if (step == 1) {
 
-        if (!$legal.hasClass("selected")) {
+        if (isEmpty($email.val()) || isEmpty($password.val()) || isEmpty($confirm_password.val()) || !$legal.hasClass("selected")) {
           error($article);
         } else {
           ok = true;
         }
+
       } else if (step == 2) {
         if (isEmpty($name.val()) || isEmpty($lastname.val())) {
           error($article);
