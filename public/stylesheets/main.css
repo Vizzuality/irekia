@@ -130,9 +130,11 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_sidebar .inner .right { position: relative; float: left; left: 30px; width: 262px; }
 #container article.with_form { clear: both; }
 #container article.with_form .inner .left { width: 641px; }
-#container article.with_form .inner .content, #container article.with_form .inner .left { clear: both; overflow: hidden; }
+#container article.with_form .inner .content, #container article.with_form .inner .left { clear: both; overflow: none; }
 #container article.with_form .inner .content fieldset, #container article.with_form .inner .left fieldset { text-align: left; border-right: 1px solid #e3e6e8; }
-#container article.with_form .inner .content .field, #container article.with_form .inner .left .field { margin: 0 0 20px 0; width: 200px; color: #7D8A92; font-size: 15px; }
+#container article.with_form .inner .content .field, #container article.with_form .inner .left .field { margin: 0 0 20px 0; width: 200px; color: #7D8A92; font-size: 15px; position: relative; }
+#container article.with_form .inner .content .field ul.errors, #container article.with_form .inner .left .field ul.errors { position: absolute; top: 30px; right: -684px; margin: 0; padding: 0; }
+#container article.with_form .inner .content .field ul.errors li, #container article.with_form .inner .left .field ul.errors li { background: url("/images/icons/icon_sprite.png") no-repeat -54px 2px; margin: 0; padding: 0 0 0 21px; font-size: 15px; color: #E96F5F; }
 #container article.with_form .inner .content .field a:hover, #container article.with_form .inner .left .field a:hover { text-decoration: none; }
 #container article.with_form .inner .content .field.left, #container article.with_form .inner .left .field.left { float: left; margin-right: 6px; }
 #container article.with_form .inner .content .field.right, #container article.with_form .inner .left .field.right { float: left; }

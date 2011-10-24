@@ -405,7 +405,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     .inner .content,
     .inner .left {
       clear:both;
-      overflow:hidden;
+      overflow:none;
 
       fieldset { text-align:left; border-right: 1px solid #e3e6e8; }
 
@@ -414,6 +414,22 @@ article .inner { h2, h3 { color: $dark_blue; } }
       width:200px;
       color: #7D8A92;
       font-size:15px;
+      position:relative;
+
+      ul.errors {
+        position: absolute;
+        top:30px;
+        right: -684px;
+        margin:0;
+        padding: 0;
+        li {
+          background: url('/images/icons/icon_sprite.png') no-repeat -54px 2px;
+          margin:0;
+          padding: 0 0 0 21px;
+          font-size:15px;
+          color: #E96F5F;
+        }
+      }
 
       a:hover { text-decoration:none; }
 
