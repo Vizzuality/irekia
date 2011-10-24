@@ -22,7 +22,8 @@ jQuery.fn.enableRegistration = function(opt){
   var speed  = (opt && opt.speed) || 200,
   step = 0,
   ok = true,
-  $form = $(".cycle form");
+  $form = $(".cycle form"),
+  $container = $(".cycle .inner-cycle");
 
   var
   $name             = $form.find(".name input"),
@@ -38,27 +39,44 @@ jQuery.fn.enableRegistration = function(opt){
     $article.effect("shake", { times:4 }, 100);
   }
 
+  function forward($current, $next) {
+    if (ok) {
+      console.log($next.height(), $next);
+    $container.animate({height:$next.height() + 45}, 350, "easeInOutQuad");
+    $(".cycle").animate({scrollLeft:$current.position().left + 850}, 350, "easeInOutQuad", function() {
+    });
+    step++;
+    }
+  }
+
   this.each(function(){
 
     $(".advance").click(function(e) {
       e.preventDefault();
 
-      $form.submit(function(e) {
-        event.preventDefault();
-        return false;
-      });
-
       var $article     = $(this).parents("article");
-      var $nextArticle = $(this).parents(".inner-cycle").find("article:eq("+(step + 1)+")");
+      var $nextArticle = $container.find("article:eq("+(step + 1)+")");
 
       if (step == 0) {
         $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
+          $.ajax({ url: "/users/new", data: {}, type: "GET", success: function(data){
+            var $p = $(data);
+            $article.after($p);
+
+           // $p.find("form").submit(function(e) {
+           //   event.preventDefault();
+           //   alert('a');
+           // });
+
+            forward($article, $p);
+          }});
       } else if (step == 1) {
 
         if (isEmpty($email.val()) || isEmpty($password.val()) || isEmpty($confirm_password.val()) || !$legal.hasClass("selected")) {
           error($article);
         } else {
           ok = true;
+
         }
 
       } else if (step == 2) {
@@ -74,12 +92,6 @@ jQuery.fn.enableRegistration = function(opt){
         }
       }
 
-      if (ok) {
-        $(".cycle .inner-cycle").animate({height:$nextArticle.height() + 45}, 350, "easeInOutQuad");
-        $(".cycle").animate({scrollLeft:$article.position().left + 850}, 350, "easeInOutQuad", function() {
-        });
-        step++;
-      }
     });
 
   });
@@ -454,66 +466,66 @@ function shareWith($el, service, speed, easing) {
 
 (function($) {
 
-    /*
-     * Auto-growing textareas; technique ripped from Facebook
-     */
-    $.fn.autogrow = function(options) {
+/*
+* Auto-growing textareas; technique ripped from Facebook
+*/
+  $.fn.autogrow = function(options) {
 
-      var resizing = false;
-        this.filter('textarea').each(function() {
+    var resizing = false;
+    this.filter('textarea').each(function() {
 
-            var $this       = $(this),
-                minHeight   = $this.height(),
-                lineHeight  = $this.css('lineHeight');
+      var $this       = $(this),
+      minHeight   = $this.height(),
+      lineHeight  = $this.css('lineHeight');
 
-            var shadow = $('<div></div>').css({
-                position:   'absolute',
-                top:        -10000,
-                left:       -10000,
-                width:      $(this).width() - parseInt($this.css('paddingLeft')) - parseInt($this.css('paddingRight')),
-                fontSize:   $this.css('fontSize'),
-                fontFamily: $this.css('fontFamily'),
-                lineHeight: $this.css('lineHeight'),
-                resize:     'none'
-            }).appendTo(document.body);
+      var shadow = $('<div></div>').css({
+        position:   'absolute',
+        top:        -10000,
+        left:       -10000,
+        width:      $(this).width() - parseInt($this.css('paddingLeft')) - parseInt($this.css('paddingRight')),
+        fontSize:   $this.css('fontSize'),
+        fontFamily: $this.css('fontFamily'),
+        lineHeight: $this.css('lineHeight'),
+        resize:     'none'
+      }).appendTo(document.body);
 
-            var update = function() {
+      var update = function() {
 
-                var times = function(string, number) {
-                    var _res = '';
-                    for(var i = 0; i < number; i ++) {
-                        _res = _res + string;
-                    }
-                    return _res;
-                };
+        var times = function(string, number) {
+          var _res = '';
+          for(var i = 0; i < number; i ++) {
+            _res = _res + string;
+          }
+          return _res;
+        };
 
-                var val = this.value.replace(/</g, '&lt;')
-                                    .replace(/>/g, '&gt;')
-                                    .replace(/&/g, '&amp;')
-                                    .replace(/\n$/, '<br/>&nbsp;')
-                                    .replace(/\n/g, '<br/>')
-                                    .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length -1) + ' ' });
+        var val = this.value.replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/&/g, '&amp;')
+        .replace(/\n$/, '<br/>&nbsp;')
+        .replace(/\n/g, '<br/>')
+        .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length -1) + ' ' });
 
-                shadow.html(val);
-                if (!resizing) {
-                  resizing = true;
-                  var height= Math.max(shadow.height() + 20, minHeight);
-                  $(this).animate({height: height}, 50, function() {
-                    resizing = false;
-                  });
-                }
+        shadow.html(val);
+        if (!resizing) {
+          resizing = true;
+          var height= Math.max(shadow.height() + 20, minHeight);
+          $(this).animate({height: height}, 50, function() {
+            resizing = false;
+          });
+        }
 
-            }
+      }
 
-            $(this).change(update).keyup(update).keydown(update);
+      $(this).change(update).keyup(update).keydown(update);
 
-            update.apply(this);
+      update.apply(this);
 
-        });
+    });
 
-        return this;
+    return this;
 
-    }
+  }
 
 })(jQuery);
 

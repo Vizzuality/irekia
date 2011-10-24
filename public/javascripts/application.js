@@ -33,6 +33,7 @@ $(function() {
     }
   });
 
+
   // Checkbox binding
   $('a.checkbox').click(function(e){
     e.preventDefault();

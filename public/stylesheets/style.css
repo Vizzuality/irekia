@@ -296,7 +296,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_form .inner .content .field.right, #container article.with_form .inner .left .field.right { float: left; }
 #container article.with_form .inner .content .field .gender.male, #container article.with_form .inner .left .field .gender.male { margin-right: 25px; }
 #container article.with_form .inner .content .field.social, #container article.with_form .inner .left .field.social { width: 410px; }
-#container article.with_form .inner .content .field.legal, #container article.with_form .inner .left .field.legal { width: 410px; }
+#container article.with_form .inner .content .field.legal, #container article.with_form .inner .left .field.legal { width: 410px; clear: both; }
+#container article.with_form .inner .content .field.legal overflow:hidden input[type="checkbox"], #container article.with_form .inner .left .field.legal overflow:hidden input[type="checkbox"] { float: left; }
 #container article.with_form .inner .content .field.email, #container article.with_form .inner .left .field.email { width: 410px; }
 #container article.with_form .inner .content .field.email .input_field, #container article.with_form .inner .left .field.email .input_field { width: 410px; }
 #container article.with_form .inner .content .field.email .input_field input[type="text"], #container article.with_form .inner .content .field.email .input_field input[type="email"], #container article.with_form .inner .left .field.email .input_field input[type="text"], #container article.with_form .inner .left .field.email .input_field input[type="email"] { width: 384px; }
@@ -522,14 +523,15 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 #container .cycle { overflow: hidden; clear: both; }
 #container .cycle .inner-cycle { position: relative; overflow: hidden; clear: both; width: 9000px; height: 332px; }
-#container .cycle .inner-cycle form { overflow: hidden; clear: both; padding: 10px 0; }
-#container .cycle .inner-cycle form article { float: left; clear: none; margin: 0 100px 0 0; }
-#container .cycle .inner-cycle form article .inner fieldset { margin: auto; width: 415px; border: none!important; }
-#container .cycle .inner-cycle form article .inner fieldset .field span.mandatory { float: left; color: rgba(125, 138, 146, 0.4); font-size: 13px; margin-top: 10px; margin-left: 5px; }
-#container .cycle .inner-cycle form article .inner fieldset .field.name, #container .cycle .inner-cycle form article .inner fieldset .field.lastname { clear: both; overflow: hidden; width: 415px; }
-#container .cycle .inner-cycle form article .inner fieldset .field.name .input_field, #container .cycle .inner-cycle form article .inner fieldset .field.lastname .input_field { float: left; clear: none; width: 350px; }
-#container .cycle .inner-cycle form article .inner fieldset .field.name .input_field input[type="text"], #container .cycle .inner-cycle form article .inner fieldset .field.lastname .input_field input[type="text"] { width: 328px; }
-#container .cycle .inner-cycle form article.thin { margin-left: 164px!important; }
+#container .cycle .inner-cycle article { float: left; clear: none; margin: 10px 100px 0 0; }
+#container .cycle .inner-cycle article form { overflow: hidden; clear: both; }
+#container .cycle .inner-cycle article form .inner fieldset, #container .cycle .inner-cycle article .inner fieldset { margin: auto; width: 415px; border: none!important; }
+#container .cycle .inner-cycle article form .inner fieldset .field span.mandatory, #container .cycle .inner-cycle article .inner fieldset .field span.mandatory { float: left; color: rgba(125, 138, 146, 0.4); font-size: 13px; margin-top: 10px; margin-left: 5px; }
+#container .cycle .inner-cycle article form .inner fieldset .field.legal label, #container .cycle .inner-cycle article form .inner fieldset .field.legal a, #container .cycle .inner-cycle article .inner fieldset .field.legal label, #container .cycle .inner-cycle article .inner fieldset .field.legal a { font-size: 15px; text-transform: none; font-weight: normal; }
+#container .cycle .inner-cycle article form .inner fieldset .field.name, #container .cycle .inner-cycle article form .inner fieldset .field.lastname, #container .cycle .inner-cycle article .inner fieldset .field.name, #container .cycle .inner-cycle article .inner fieldset .field.lastname { clear: both; overflow: hidden; width: 415px; }
+#container .cycle .inner-cycle article form .inner fieldset .field.name .input_field, #container .cycle .inner-cycle article form .inner fieldset .field.lastname .input_field, #container .cycle .inner-cycle article .inner fieldset .field.name .input_field, #container .cycle .inner-cycle article .inner fieldset .field.lastname .input_field { float: left; clear: none; width: 350px; }
+#container .cycle .inner-cycle article form .inner fieldset .field.name .input_field input[type="text"], #container .cycle .inner-cycle article form .inner fieldset .field.lastname .input_field input[type="text"], #container .cycle .inner-cycle article .inner fieldset .field.name .input_field input[type="text"], #container .cycle .inner-cycle article .inner fieldset .field.lastname .input_field input[type="text"] { width: 328px; }
+#container .cycle .inner-cycle article.thin { margin-left: 164px!important; }
 
 #container article .inner .avatar-uploader { clear: both; overflow: hidden; border-right: 1px solid #e3e6e8; width: 634px; margin: 15px 0 20px 0; }
 #container article .inner .avatar-uploader .xlAvatar { padding: 4px; background: url("/images/circle_bkg.png") no-repeat -293px center; z-index: 10; }

@@ -1,52 +1,52 @@
-      <article class="thin with_footer with_form signup">
-        <%= form_for @user do |f| %>
-          <div class="inner">
-            <div class="content">
+<article class="thin with_footer with_form signup">
+<%= form_for @user, { :remote => true, :html => { "data-type" => :html }} do |f| %>
+  <div class="inner">
+    <div class="content">
 
-              <h1><%= t('.new_in_irekia') %></h1>
-              <p><%= t('.fill_in_your_data') %></p>
+      <h1><%= t('.new_in_irekia') %></h1>
+      <p><%= t('.fill_in_your_data') %></p>
 
-              <fieldset>
-                <div class="field email">
-                  <%= f.label :email %>
-                  <div class="input_field">
-                    <%= f.email_field :email, :autocomplete => :off %>
-                  </div>
-                </div>
-
-                <div class="field password left">
-                  <%= f.label :password %>
-                  <div class="input_field">
-                    <%= f.password_field :password, :autocomplete => :off %>
-                  </div>
-                </div>
-
-                <div class="field confirm_password right">
-                  <%= f.label :password_confirmation %>
-                  <div class="input_field">
-                    <%= f.password_field :password_confirmation, :autocomplete => :off %>
-                  </div>
-                </div>
-
-                <div class="field legal">
-                  <%= f.check_box :terms_of_service %><%= f.label :terms_of_service, raw(t('.terms_of_service', :link => link_to(t('.terms_of_service_link'), '#'))) %>
-                </div>
-              </fieldset>
-
-            </div>
+      <fieldset>
+        <div class="field email">
+          <%= f.label :email %>
+          <div class="input_field">
+            <%= f.email_field :email, :autocomplete => :off %>
           </div>
+        </div>
 
-          <footer>
-          <div class="separator"></div>
-          <div class="inner">
-            <div class="center">
-              <%= f.submit t('.sign_up'), :class => 'white_button pink center advance' %>
-            </div>
+        <div class="field password left">
+          <%= f.label :password %>
+          <div class="input_field">
+            <%= f.password_field :password, :autocomplete => :off %>
           </div>
-          </footer>
-          <div class="t"></div><div class="f"></div>
+        </div>
 
-        <% end -%>
+        <div class="field confirm_password right">
+          <%= f.label :password_confirmation %>
+          <div class="input_field">
+            <%= f.password_field :password_confirmation, :autocomplete => :off %>
+          </div>
+        </div>
 
-      </article>
+        <div class="field legal">
+          <%= f.check_box :terms_of_service %><%= f.label :terms_of_service, raw(t('.terms_of_service', :link => link_to(t('.terms_of_service_link'), '#'))) %>
+        </div>
+      </fieldset>
+
+    </div>
+  </div>
+
+  <footer>
+  <div class="separator"></div>
+  <div class="inner">
+    <div class="center">
+      <%= f.submit t('.sign_up'), :class => 'white_button pink center advance' %>
+    </div>
+  </div>
+  </footer>
+  <div class="t"></div><div class="f"></div>
+
+<% end -%>
+
+</article>
 

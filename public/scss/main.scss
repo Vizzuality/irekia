@@ -439,7 +439,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
       .gender.male { margin-right:25px; }
 
       &.social { width:410px; }
-      &.legal { width:410px; }
+      &.legal { width:410px; clear:both; overflow:hidden
+
+        input[type="checkbox"] {
+          float:left;
+
+        }
+      }
 
       &.email {
         width:410px;
@@ -1218,8 +1224,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
               height:auto;
 
               textarea {
-
-    resize: none;
+                resize: none;
                 overflow-y:none;
                 width: 489px;
                 position: relative;
@@ -1336,16 +1341,19 @@ article .inner { h2, h3 { color: $dark_blue; } }
     width:9000px;
     height:332px;
 
-    form {
-      overflow:hidden;
-      clear:both;
-      padding: 10px 0;
-
       article {
         float:left;
         clear:none;
-        margin: 0 100px 0 0;
-        .inner {
+        margin: 10px 100px 0 0;
+
+        form {
+          overflow:hidden;
+          clear:both;
+        }
+
+
+
+        form .inner, .inner {
           fieldset {
             margin:auto;
             width: 415px;
@@ -1359,6 +1367,17 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 font-size:13px;
                 margin-top:10px;
                 margin-left:5px;
+              }
+
+              &.legal {
+
+
+                label,  a {
+                  font-size:15px;
+                  text-transform:none;
+                  font-weight:normal;
+                }
+
               }
 
               &.name,
@@ -1382,7 +1401,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
           margin-left:164px!important;
         }
       }
-    }
+
   }
 }
 
