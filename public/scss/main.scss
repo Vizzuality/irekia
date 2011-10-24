@@ -2470,6 +2470,21 @@ input {
   }
 }
 
+
+
+/* Field with errors */
+#container article.with_form .inner .field.error {
+  padding: 0;
+  .input_field input[type="text"],
+  .input_field input[type="email"],
+  .input_field input[type="password"] {
+    border:1px solid #E96F5F;
+  }
+  label {
+    color: #E96F5F;
+  }
+}
+
 .search_box {
   float:left;
   padding-left:10px;
