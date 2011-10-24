@@ -869,22 +869,7 @@ es:
       use_facebook_or_twitter: Utiliza Facebook o Twitter para registrarte
       signin: "Conectar con <strong>%{name}</strong>"
       dont_you_have_fb_or_twitter: ¿No tienes cuenta de Facebook ni de Twitter?
-      new_in_irekia: ¿Nuevo en Irekia?
-      tell_us_more_about_you: Cuéntanos más de tí.
-      we_want_to_know_you_better: Queremos conocerte mejor.
-      fill_in_your_data: Rellena tus datos y comienza a participar.
-      name: nombre
-      lastname: apellidos
-      territory: territorio
-      municipality: municipio
-      born_at: fecha de nacimiento
       mandatory: obligatorio
-      your_email: Tu email
-      your_current_password: Tu contraseña actual
-      your_new_password: Tu nueva contraseña
-      repeat_password: Repetir contraseña
-      i_accept: Acepto las
-      terms_of_service: condiciones de uso
       continue: Continuar
     new:
       new_in_irekia: ¿Nuevo en Irekia?
@@ -900,8 +885,7 @@ es:
     connect:
       connect: Conéctate.
       works_better: Irekia funciona mucho mejor conectándola con tus redes sociales.
-      facebook: Conectar con Facebook
-      twitter: Conectar con Twitter
+      signin: "Conectar con <strong>%{name}</strong>"
       continue: Continuar
       discover: Descubre por qué queremos que te conectes.
   follows:

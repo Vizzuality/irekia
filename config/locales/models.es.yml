@@ -31,7 +31,7 @@ es:
         title_id: Título
         province_id: Territorio
         city_id: Municipio
-        birtday: Fecha de nacimiento
+        birthday: Fecha de nacimiento
       area_user:
         area_id: Área
       image:

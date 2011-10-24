@@ -1,20 +1,33 @@
-<div id="connect">
-  <h1><%= t('.connect') %></h1>
-  <h4><%= t('.works_better') %></h4>
+<article class="thin with_footer with_remark signup">
+<div class="inner">
+  <div class="content">
 
-  <% if @user.connected_with_facebook? %>
-  <span id="facebook"><%= t('.facebook') %></span>
-  <% else %>
-  <%= link_to t('.facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook %>
-  <% end %>
+    <h1><%= t('.connect') %></h1>
+    <p><%= t('.works_better') %></p>
 
-  <% if @user.connected_with_twitter? %>
-  <span id="twitter"><%= t('.twitter') %></span>
-  <% else %>
-  <%= link_to t('.twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter %>
-  <% end %>
+    <div class="facebook <%='disabled' if @user.connected_with_facebook? %>">
+      <%= link_to raw(t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook %>
+    </div>
 
-  <%= link_to t('.continue'), user_path(@user) %>
+    <div class="twitter <%='disabled' if @user.connected_with_twitter? %>">
+      <%= link_to raw(t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter %>
+    </div>
 
+  </div>
+</div>
+
+<footer>
+<div class="separator"></div>
+<div class="inner">
+  <div class="center">
+    <%= link_to t('.continue'), user_path(@user), :class => "white_button pink center"  %>
+  </div>
+</div>
+</footer>
+
+<div class="remark">
   <%= link_to t('.discover'), '/in_development' %>
 </div>
+<div class="t"></div><div class="f"></div>
+</article>
+

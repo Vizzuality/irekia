@@ -67,6 +67,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    render :layout => !request.xhr?
   end
 
   def create
@@ -84,6 +85,7 @@ class UsersController < ApplicationController
 
   def edit
     session[:return_to] = connect_user_path(@user)
+    render :layout => !request.xhr?
   end
 
   def update
@@ -98,6 +100,7 @@ class UsersController < ApplicationController
 
   def connect
     session[:return_to] = connect_user_path(@user)
+    render :layout => !request.xhr?
   end
 
   def redirect_to_politician_page?
