@@ -1,21 +1,52 @@
-<div id="sign_up">
-  <h1><%= t('.new_in_irekia') %></h1>
-  <h4><%= t('.fill_in_your_data') %></h4>
+      <article class="thin with_footer with_form signup">
+        <%= form_for @user do |f| %>
+          <div class="inner">
+            <div class="content">
 
-  <%= form_for @user do |f| %>
+              <h1><%= t('.new_in_irekia') %></h1>
+              <p><%= t('.fill_in_your_data') %></p>
 
-    <p><%= f.label :email %><br />
-    <%= f.email_field :email %></p>
+              <fieldset>
+                <div class="field email">
+                  <%= f.label :email %>
+                  <div class="input_field">
+                    <%= f.email_field :email, :autocomplete => :off %>
+                  </div>
+                </div>
 
-    <p><%= f.label :password %><br />
-    <%= f.password_field :password %></p>
+                <div class="field password left">
+                  <%= f.label :password %>
+                  <div class="input_field">
+                    <%= f.password_field :password, :autocomplete => :off %>
+                  </div>
+                </div>
 
-    <p><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %></p>
+                <div class="field confirm_password right">
+                  <%= f.label :password_confirmation %>
+                  <div class="input_field">
+                    <%= f.password_field :password_confirmation, :autocomplete => :off %>
+                  </div>
+                </div>
 
-    <p><%= f.check_box :terms_of_service %><%= f.label :terms_of_service, raw(t('.terms_of_service', :link => link_to(t('.terms_of_service_link'), '#'))) %></p>
+                <div class="field legal">
+                  <%= f.check_box :terms_of_service %><%= f.label :terms_of_service, raw(t('.terms_of_service', :link => link_to(t('.terms_of_service_link'), '#'))) %>
+                </div>
+              </fieldset>
 
-    <p><%= f.submit t('.sign_up') %></p>
-  <% end %>
+            </div>
+          </div>
 
-</div>
+          <footer>
+          <div class="separator"></div>
+          <div class="inner">
+            <div class="center">
+              <%= f.submit t('.sign_up'), :class => 'white_button pink center advance' %>
+            </div>
+          </div>
+          </footer>
+          <div class="t"></div><div class="f"></div>
+
+        <% end -%>
+
+      </article>
+

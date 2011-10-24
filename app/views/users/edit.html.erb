@@ -1,26 +1,67 @@
-<h1><%= t('.tell_us_more_about_you') %></h1>
-<h4><%= t('.we_want_to_know_you_better') %></h4>
+<article class="thin with_footer with_remark with_form signup">
+  <%= form_for @user do |f| %>
+    <div class="inner">
+      <div class="content">
 
-<%= form_for @user do |f| %>
-  <p><%= f.label :name %><br />
-  <%= f.text_field :name %></p>
+        <h1><%= t('.tell_us_more_about_you') %></h1>
+        <p><%= t('.we_want_to_know_you_better') %></p>
 
-  <p><%= f.label :lastname %><br />
-  <%= f.text_field :lastname %></p>
+        <fieldset>
 
-  <p><%= f.label :province_id %><br />
-  <p><%= f.select :province_id, [['Vizcaya', 1]], :include_blank => true %><br />
+          <div class="field name">
+            <%= f.label :name %>
+            <div class="input_field">
+              <%= f.text_field :name, :autocomplete => :off %>
+            </div>
+            <span class="mandatory">obligatorio</span>
+          </div>
 
-  <p><%= f.label :city_id %><br />
-  <p><%= f.select :city_id, [['Bilbao', 1]], :include_blank => true %><br />
+          <div class="field lastname">
+            <%= f.label :lastname %>
+            <div class="input_field">
+              <%= f.text_field :lastname, :autocomplete => :off %>
+            </div>
+            <span class="mandatory">obligatorio</span>
+          </div>
 
-  <p><%= f.label :birthday %><br />
-  <p><%= f.date_select :birthday, :start_year => 1900 %><br />
+          <div class="field territory left">
+            <%= f.label :province_id %>
+            <div class="input_field">
+              <%= f.select :province_id, [['Vizcaya', 1]], :include_blank => true %>
+            </div>
+          </div>
+
+          <div class="field municipality right">
+            <%= f.label :city_id %>
+            <div class="input_field">
+              <%= f.select :city_id, [['Bilbao', 1]], :include_blank => true %>
+            </div>
+          </div>
+
+          <div class="field born_at">
+            <%= f.label :birthday %>
+            <div class="input_field">
+              <%= f.date_select :birthday, :start_year => 1900 %>
+            </div>
+          </div>
+
+        </fieldset>
 
 
-  <p><%= f.submit t('.continue') %></p>
+      </div>
+    </div>
 
-  <%= link_to t('.with_this_data'), '/in_development' %>
-
-<% end %>
-
+    <footer>
+    <div class="separator"></div>
+    <div class="inner">
+      <div class="center">
+        <%= f.submit t('.continue'), :class => "white_button pink center advance" %>
+      </div>
+    </div>
+    </footer>
+    <div class="remark">
+      <%= link_to t('.with_this_data'), '/in_development' %><a href="#">
+    </div>
+    <div class="t"></div><div class="f"></div>
+  <% end %>
+</article>
