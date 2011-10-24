@@ -44,6 +44,8 @@ class PoliticiansController < UsersController
   end
 
   def agenda
+    render :partial => 'shared/agenda_list',
+           :layout  => nil and return if request.xhr?
   end
 
   def get_politician
@@ -121,12 +123,17 @@ class PoliticiansController < UsersController
   private :get_proposals
 
   def get_agenda
-    beginning_of_calendar = Date.current.beginning_of_week
+    calendar_date = Date.current
+    if params[:next_month].present?
+      calendar_date = Date.current.advance(:months => params[:next_month].to_i)
+    end
+    beginning_of_calendar = calendar_date.beginning_of_week
+
     case action_name
     when 'show'
-      end_of_calendar = Date.current.next_week.end_of_week
+      end_of_calendar = calendar_date.next_week.end_of_week
     when 'agenda'
-      end_of_calendar = Date.current.advance(:weeks => 3).end_of_week
+      end_of_calendar = calendar_date.advance(:weeks => 3).end_of_week
     end
 
     events = @politician.agenda_between(beginning_of_calendar, end_of_calendar)

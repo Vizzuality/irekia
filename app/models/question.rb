@@ -4,7 +4,7 @@ class Question < Content
   has_one :question_data,
           :foreign_key => :question_id,
           :include => :target_user,
-          :select => 'question_id, user_id, area_id, question_text, answered_at'
+          :select => 'id, question_id, user_id, area_id, question_text, answered_at'
 
   has_many :answer_requests,
            :foreign_key => :content_id
