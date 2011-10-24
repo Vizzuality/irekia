@@ -49,13 +49,15 @@ class AreasController < ApplicationController
   end
 
   def agenda
+    render :partial => 'shared/agenda_list',
+           :layout  => nil and return if request.xhr?
   end
 
   def team
   end
 
   def get_area
-    @area = Area.where(:id => params[:id]).first if params[:id].present?
+    @area = Area.by_id(params[:id])
   end
   private :get_area
 
@@ -67,19 +69,17 @@ class AreasController < ApplicationController
       @follow = current_user.followed_item(@area)
     end
     @follow_parent   = @area
-
-    @team            = @area.team.includes(:title).all
-    @team_first_two  = @team.first(2)
+    @team            = @area.team.all
   end
   private :get_area_data
 
   def get_counters
-    @followers_count = @follow_parent.followers.count
-    @news_count      = @area.news.count
-    @questions_count = @area.questions.count
-    @proposals_count = @area.proposals.count
-    @photos_count    = @area.photos.count
-    @videos_count    = @area.videos.count
+    @followers_count = @area.followers.count
+    @news_count      = @area.news_count
+    @questions_count = @area.questions_count
+    @proposals_count = @area.proposals_count
+    @photos_count    = @area.photos_count
+    @videos_count    = @area.videos_count
   end
   private :get_counters
 
@@ -122,8 +122,6 @@ class AreasController < ApplicationController
       @proposals.more_recent
     end
 
-    @proposals = @proposals.page(1).per(4)
-
     @proposal                  = Proposal.new
     @proposal_data             = @proposal.build_proposal_data
     @proposal_data.target_area = @area
@@ -131,25 +129,31 @@ class AreasController < ApplicationController
   private :get_proposals
 
   def get_agenda
+    calendar_date = Date.current
+    if params[:next_month].present?
+      calendar_date = Date.current.advance(:months => params[:next_month].to_i)
+    end
+    beginning_of_calendar = calendar_date.beginning_of_week
+
     case action_name
     when 'show'
-      @beginning_of_calendar = Date.current.beginning_of_week
-      @end_of_calendar       = Date.current.next_week.end_of_week
+      end_of_calendar = calendar_date.next_week.end_of_week
     when 'agenda'
-      @beginning_of_calendar = Date.current.beginning_of_week
-      @end_of_calendar       = Date.current.advance(:weeks => 3).end_of_week
+      end_of_calendar = calendar_date.advance(:weeks => 3).end_of_week
     end
 
-    @agenda = @area.agenda_between(@beginning_of_calendar, @end_of_calendar)
-    @days   = @beginning_of_calendar..@end_of_calendar
-    @agenda_json = @agenda.map{|event| {
+    events = @area.agenda_between(beginning_of_calendar, end_of_calendar)
+
+    @agenda = events.group_by{|e| e.event_date.day }
+    @days   = beginning_of_calendar..end_of_calendar
+    @agenda_json = JSON.generate(events.map{|event| {
       :title => event.title,
       :date  => l(event.event_date, :format => '%d, %B de %Y'),
       :when  => event.event_date.strftime('%H:%M'),
-      :where => event.location,
+      :where => nil,
       :lat   => event.latitude,
       :lon   => event.longitude
-    }}.group_by{|event| [event[:lat], event[:lon]]}.values.to_json.html_safe
+    }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
   end
   private :get_agenda
 

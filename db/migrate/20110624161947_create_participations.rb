@@ -8,10 +8,13 @@ class CreateParticipations < ActiveRecord::Migration
       t.string   :type
       t.datetime :published_at
       t.boolean  :moderated, :default => false
-      t.point    :the_geom, :geographic => true
 
       t.timestamps
     end
+
+    add_index :participations, :type
+    add_index :participations, :published_at
+    add_index :participations, :moderated
   end
 
   def self.down

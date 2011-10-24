@@ -21,11 +21,19 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean  :inactive,                   :default => false
       t.boolean  :first_time,                 :default => true
       t.string   :locale,                     :default => 'es'
-      t.integer  :questions_count,            :default => 0
-      t.integer  :answers_count,              :default => 0
-      t.integer  :proposals_count,            :default => 0
-      t.integer  :comments_count,             :default => 0
-      t.integer  :tagged_count,               :default => 0
+
+      t.integer :areas_users_count, :default => 0
+      t.integer :follows_count, :default => 0
+      t.integer :proposals_count, :default => 0
+      t.integer :questions_count, :default => 0
+      t.integer :answers_count, :default => 0
+      t.integer :events_count, :default => 0
+      t.integer :news_count, :default => 0
+      t.integer :tweets_count, :default => 0
+      t.integer :photos_count, :default => 0
+      t.integer :videos_count, :default => 0
+      t.integer :comments_count, :default => 0
+      t.integer :tagged_count, :default => 0
 
       t.database_authenticatable :null => false
       t.recoverable

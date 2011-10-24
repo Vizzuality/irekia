@@ -72,19 +72,21 @@ end
 
 def create_event(params)
   defaults = {
-    :title    => Faker::Lorem.sentence(10),
-    :area     => @area,
-    :the_geom => "POINT(#{(-95..33).to_a.sample/10} #{(360..438).to_a.sample/10})"
+    :title     => Faker::Lorem.sentence(10),
+    :area      => @area,
+    :latitude  => (-95..33).to_a.sample/10,
+    :longitude => (360..438).to_a.sample/10
   }
   params = defaults.merge(params)
 
   event = Event.create(
     :users                 => [params[:user]],
     :areas                 => [params[:area]],
-    :the_geom              => params[:the_geom],
+    :latitude              => params[:latitude],
+    :longitude             => params[:longitude],
     :event_data_attributes => {
-                               :title      => params[:title],
-                               :event_date => params[:date]
+      :title      => params[:title],
+      :event_date => params[:date]
     }
   )
 

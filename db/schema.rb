@@ -40,9 +40,23 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "updated_at"
   end
 
+  add_index "area_public_streams", ["event_id"], :name => "index_area_public_streams_on_event_id"
+  add_index "area_public_streams", ["event_type"], :name => "index_area_public_streams_on_event_type"
+  add_index "area_public_streams", ["published_at"], :name => "index_area_public_streams_on_published_at"
+
   create_table "areas", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "areas_users_count", :default => 0
+    t.integer  "follows_count",     :default => 0
+    t.integer  "proposals_count",   :default => 0
+    t.integer  "questions_count",   :default => 0
+    t.integer  "answers_count",     :default => 0
+    t.integer  "events_count",      :default => 0
+    t.integer  "news_count",        :default => 0
+    t.integer  "tweets_count",      :default => 0
+    t.integer  "photos_count",      :default => 0
+    t.integer  "videos_count",      :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "areas_users", ["display_order"], :name => "index_areas_users_on_display_order"
 
   create_table "argument_data", :force => true do |t|
     t.integer  "argument_id"
@@ -83,11 +99,16 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.string   "type"
     t.string   "tags"
     t.datetime "published_at"
-    t.boolean  "moderated",                                                                      :default => false
-    t.spatial  "the_geom",           :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.boolean  "moderated",          :default => false
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "contents", ["id", "type", "moderated"], :name => "index_contents_on_id_and_type_and_moderated"
+  add_index "contents", ["id", "type", "published_at"], :name => "index_contents_on_id_and_type_and_published_at"
+  add_index "contents", ["id", "type"], :name => "index_contents_on_id_and_type"
 
   create_table "contents_users", :force => true do |t|
     t.integer  "content_id"
@@ -107,6 +128,8 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "updated_at"
   end
 
+  add_index "event_data", ["event_date"], :name => "index_event_data_on_event_date"
+
   create_table "follows", :force => true do |t|
     t.integer  "user_id"
     t.integer  "follow_item_id"
@@ -114,6 +137,9 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "follows", ["follow_item_id"], :name => "index_follows_on_follow_item_id"
+  add_index "follows", ["follow_item_type"], :name => "index_follows_on_follow_item_type"
 
   create_table "images", :force => true do |t|
     t.integer  "photo_id"
@@ -140,11 +166,14 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.string   "name"
     t.string   "type"
     t.datetime "published_at"
-    t.boolean  "moderated",                                                                :default => false
-    t.spatial  "the_geom",     :limit => {:srid=>4326, :type=>"point", :geographic=>true}
+    t.boolean  "moderated",    :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "participations", ["moderated"], :name => "index_participations_on_moderated"
+  add_index "participations", ["published_at"], :name => "index_participations_on_published_at"
+  add_index "participations", ["type"], :name => "index_participations_on_type"
 
   create_table "proposal_data", :force => true do |t|
     t.integer  "proposal_id"
@@ -153,7 +182,7 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.string   "title"
     t.text     "body"
     t.boolean  "close",         :default => false
-    t.integer  "participation"
+    t.integer  "participation", :default => 0
     t.integer  "in_favor",      :default => 0
     t.integer  "against",       :default => 0
     t.datetime "created_at"
@@ -235,9 +264,16 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.boolean  "inactive",                                   :default => false
     t.boolean  "first_time",                                 :default => true
     t.string   "locale",                                     :default => "es"
+    t.integer  "areas_users_count",                          :default => 0
+    t.integer  "follows_count",                              :default => 0
+    t.integer  "proposals_count",                            :default => 0
     t.integer  "questions_count",                            :default => 0
     t.integer  "answers_count",                              :default => 0
-    t.integer  "proposals_count",                            :default => 0
+    t.integer  "events_count",                               :default => 0
+    t.integer  "news_count",                                 :default => 0
+    t.integer  "tweets_count",                               :default => 0
+    t.integer  "photos_count",                               :default => 0
+    t.integer  "videos_count",                               :default => 0
     t.integer  "comments_count",                             :default => 0
     t.integer  "tagged_count",                               :default => 0
     t.string   "email",                                      :default => "",    :null => false

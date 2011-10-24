@@ -44,6 +44,8 @@ class PoliticiansController < UsersController
   end
 
   def agenda
+    render :partial => 'shared/agenda_list',
+           :layout  => nil and return if request.xhr?
   end
 
   def get_politician
@@ -63,9 +65,12 @@ class PoliticiansController < UsersController
   private :get_politician_data
 
   def get_counters
-    @followers_count = @follow_parent.followers.count
-    @news_count      = @politician.news.count
-    @questions_count = @politician.questions.count
+    @followers_count = @politician.followers.count
+    @news_count      = @politician.news_count
+    @questions_count = @politician.questions_count
+    @proposals_count = @politician.proposals_count
+    @photos_count    = @politician.photos_count
+    @videos_count    = @politician.videos_count
   end
   private :get_counters
 
@@ -118,25 +123,31 @@ class PoliticiansController < UsersController
   private :get_proposals
 
   def get_agenda
+    calendar_date = Date.current
+    if params[:next_month].present?
+      calendar_date = Date.current.advance(:months => params[:next_month].to_i)
+    end
+    beginning_of_calendar = calendar_date.beginning_of_week
+
     case action_name
     when 'show'
-      @beginning_of_calendar = Date.current.beginning_of_week
-      @end_of_calendar       = Date.current.next_week.end_of_week
+      end_of_calendar = calendar_date.next_week.end_of_week
     when 'agenda'
-      @beginning_of_calendar = Date.current.beginning_of_week
-      @end_of_calendar       = Date.current.advance(:weeks => 4).end_of_week
+      end_of_calendar = calendar_date.advance(:weeks => 3).end_of_week
     end
 
-    @agenda = @politician.agenda_between(@beginning_of_calendar, @end_of_calendar)
-    @days   = @beginning_of_calendar..@end_of_calendar
-    @agenda_json = @agenda.map{|event| {
+    events = @politician.agenda_between(beginning_of_calendar, end_of_calendar)
+
+    @agenda = events.group_by{|e| e.event_date.day }
+    @days   = beginning_of_calendar..end_of_calendar
+    @agenda_json = JSON.generate(events.map{|event| {
       :title => event.title,
       :date  => l(event.event_date, :format => '%d, %B de %Y'),
       :when  => event.event_date.strftime('%H:%M'),
-      :where => event.location,
+      :where => nil,
       :lat   => event.latitude,
       :lon   => event.longitude
-    }}.group_by{|event| [event[:lat], event[:lon]]}.values.to_json.html_safe
+    }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
   end
   private :get_agenda
 

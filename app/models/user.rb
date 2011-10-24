@@ -22,8 +22,10 @@ class User < ActiveRecord::Base
 
   validates :terms_of_service, :acceptance => true
 
-  belongs_to :role
-  belongs_to :title
+  belongs_to :role,
+             :select => 'id, name_i18n_key'
+  belongs_to :title,
+             :select => 'id, name_i18n_key'
 
   has_many :areas_users,
            :class_name => 'AreaUser'
@@ -43,22 +45,18 @@ class User < ActiveRecord::Base
            :through => :contents_users
   has_many :questions,
            :through => :contents_users,
-           :include => [{:users => [:role, :profile_pictures]}, :question_data, :comments]
+           :include => [{:users => :profile_pictures}, :question_data, :comments ],
+           :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
   has_many :proposals_done,
            :through => :contents_users,
            :source => :proposal,
-           :include => [{:users => [:role, :profile_pictures]}, :proposal_data, :comments]
+           :include => [{:users => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }],
+           :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
   has_many :events,
            :through => :contents_users,
            :include => :event_data,
            :order => 'event_data.event_date asc'
 
-
-  has_many :proposal_data,
-           :class_name => 'ProposalData'
-  has_many :proposals_received,
-           :through => :proposal_data,
-           :source => :proposal
   has_many :question_data,
            :class_name => 'QuestionData'
   has_many :questions_received,
@@ -83,7 +81,8 @@ class User < ActiveRecord::Base
            :order      => 'published_at desc'
 
   has_many :profile_pictures,
-           :class_name => 'Image'
+           :class_name => 'Image',
+           :select => 'id, photo_id, user_id, image'
 
 
   ###
@@ -128,7 +127,7 @@ class User < ActiveRecord::Base
                   }
 
   def self.by_id(id)
-    User.includes(:role, :profile_pictures, :title, :areas).find(id)
+    User.includes(:role, :title, :areas).find(id)
   end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
@@ -177,6 +176,10 @@ class User < ActiveRecord::Base
 
       user
     end
+  end
+
+  def proposals_received
+    areas.first.proposals_received
   end
 
   def fullname

@@ -1,0 +1,22 @@
+<ul class="agenda">
+	<% i = 0 %>
+	<% today = Date.today %>
+
+	<% @days.to_a.each do |day| %>
+		<% i = i.succ %>
+		<% day_classes = [] %>
+
+		<% day_classes.push((l day, :format => '%b_%d')) %>
+		<% day_classes.push('disabled') if day < today %>
+		<% day_classes.push('today') if day == today %>
+		<% day_classes.push('last') if i % 7 == 0 %>
+
+		<li class="day <%= day_classes.join(' ') %>">
+		<h3 class="day"><%= day.day %></h3>
+		<span class="month"><%= l day, :format => '%b' %></span>
+		<% if day_events = @agenda[day.day] -%>
+			<%= render 'shared/agenda_for_day', :day_events => day_events %>
+<% end -%>
+</li>
+<% end %>
+</ul>

@@ -15,7 +15,7 @@
   </header>
   <div class="left">
     <div id="listing">
-      <% if @proposals.count > 0 %>
+      <% if @proposals_count > 0 %>
         <%= render 'shared/proposals_list' if @proposals %>
       <% else %>
         <span class="empty">No hay contenido en este area</span>

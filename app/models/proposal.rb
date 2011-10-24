@@ -1,7 +1,8 @@
 class Proposal < Content
   include PgSearch
 
-  has_one :proposal_data
+  has_one :proposal_data,
+          :select => 'id, proposal_id, area_id, user_id, title, close, participation, in_favor, against'
   has_many :arguments,
            :foreign_key => :content_id,
            :dependent   => :destroy,
@@ -54,7 +55,6 @@ class Proposal < Content
       :id               => id,
       :published_at     => published_at,
       :title            => title,
-      :body             => body,
       :participation    => participation,
       :in_favor         => in_favor,
       :against          => against,
@@ -67,8 +67,8 @@ class Proposal < Content
   end
 
   def update_statistics
-    proposal_data.in_favor = arguments.in_favor.count
-    proposal_data.against = arguments.against.count
+    proposal_data.in_favor      = arguments.in_favor.count
+    proposal_data.against       = arguments.against.count
     proposal_data.participation = arguments.count
     proposal_data.save!
   end

@@ -11,6 +11,8 @@ class CreateEventData < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :event_data, :event_date
   end
 
   def self.down

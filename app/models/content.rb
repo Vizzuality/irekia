@@ -8,7 +8,8 @@ class Content < ActiveRecord::Base
   has_many      :contents_users,
                 :class_name => "ContentUser"
   has_many      :users,
-                :through => :contents_users
+                :through => :contents_users,
+                :select => 'name, lastname'
 
   has_many      :follows
   has_many      :participations
@@ -21,12 +22,14 @@ class Content < ActiveRecord::Base
   before_create :update_published_at
   after_save :author_is_politician?
   after_save  :publish_content
+  after_create :increment_counter_cache
+  after_destroy :decrement_counter_cache
 
   accepts_nested_attributes_for :comments, :contents_users
 
   scope :moderated,     where(:moderated => true)
   scope :not_moderated, where(:moderated => false)
-  scope :more_recent, order('published_at desc')
+  scope :more_recent, order('contents.published_at desc')
   scope :more_polemic, joins(<<-SQL
     LEFT JOIN participations ON
     participations.content_id = contents.id AND
@@ -34,9 +37,7 @@ class Content < ActiveRecord::Base
   SQL
   ).select('count(participations.id) as comments_count').group(Content.column_names.map{|c| "contents.#{c}"}).order('comments_count desc')
 
-  reverse_geocoded_by :latitude, :longitude
-
-  # after_validation :reverse_geocode
+  attr_accessor :location
 
   def not_moderated?
     !moderated
@@ -53,20 +54,8 @@ class Content < ActiveRecord::Base
     User.where('id in (?)', commenters_ids)
   end
 
-  def latitude
-    the_geom.try(:latitude)
-  end
-
-  def longitude
-    the_geom.try(:longitude)
-  end
-
   def author
     users.first if users.present?
-  end
-
-  def location
-    reverse_geocode if Rails.env.staging? || Rails.env.production?
   end
 
   def comments_count
@@ -138,4 +127,16 @@ class Content < ActiveRecord::Base
     end
   end
   private :publish_content
+
+  def increment_counter_cache
+    areas.each { |area| Area.increment_counter("#{self.class.name.downcase.pluralize}_count", area.id) }
+    users.each { |user| User.increment_counter("#{self.class.name.downcase.pluralize}_count", user.id) }
+  end
+  private :increment_counter_cache
+
+  def decrement_counter_cache
+    areas.each { |area| Area.decrement_counter("#{self.class.name.downcase.pluralize}_count", area.id) }
+    users.each { |user| User.decrement_counter("#{self.class.name.downcase.pluralize}_count", user.id) }
+  end
+  private :decrement_counter_cache
 end

@@ -32,7 +32,7 @@ class Answer < Content
     return unless self.moderated?
 
     author = question.author
-    author.update_attribute('answers_count', author.answers_count + 1)
+    User.increment_counter('answers_count', author.id)
     super
   end
   private :publish_content
