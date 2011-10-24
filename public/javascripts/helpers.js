@@ -16,6 +16,7 @@ function watchHash(opt) {
 }
 
 
+/* Enables registration process */
 jQuery.fn.enableRegistration = function(opt){
 
   var speed  = (opt && opt.speed) || 200,
@@ -46,7 +47,6 @@ jQuery.fn.enableRegistration = function(opt){
       var $article     = $(this).parents("article");
       var $nextArticle = $(this).parents(".inner-cycle").find("article:eq("+(step + 1)+")");
 
-      console.log(step);
       if (step == 0) {
         $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
       } else if (step == 1) {
