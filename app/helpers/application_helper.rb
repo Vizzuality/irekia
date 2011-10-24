@@ -43,7 +43,7 @@ module ApplicationHelper
     size = size.present?? size.to_s : ''
 
     if user.profile_pictures.present?
-      link_to image_tag(user.profile_image, :class => "avatar #{size}"), path, :title => user.fullname
+      link_to (image_tag(user.profile_image) + (raw (content_tag :div, " ", :class => :ieframe))), path, :title => user.fullname, :class => "avatar #{size}"
     else
       link_to image_tag('icons/faceless_avatar.png', :class => "avatar #{size}"), path, :title => user.fullname
     end
