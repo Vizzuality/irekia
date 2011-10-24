@@ -46,6 +46,7 @@ jQuery.fn.enableRegistration = function(opt){
       var $article     = $(this).parents("article");
       var $nextArticle = $(this).parents(".inner-cycle").find("article:eq("+(step + 1)+")");
 
+      console.log(step);
       if (step == 0) {
         $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
       } else if (step == 1) {
@@ -60,10 +61,12 @@ jQuery.fn.enableRegistration = function(opt){
           error($article);
         } else {
           ok = true;
-        }
+          $form.unbind("submit");
 
-      } else if (step == 3) {
-        $form.unbind("submit");
+          $form.submit(function(e) {
+            alert('Sending');
+          });
+        }
       }
 
       if (ok) {
