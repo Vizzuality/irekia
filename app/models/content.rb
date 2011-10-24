@@ -14,7 +14,7 @@ class Content < ActiveRecord::Base
   has_many      :follows
   has_many      :participations
   has_many      :comments,
-                :include => [:author, :comment_data],
+                :include => [{:author => :profile_pictures}, :comment_data],
                 :conditions => {:moderated => true}
 
   attr_protected :moderated
@@ -43,10 +43,18 @@ class Content < ActiveRecord::Base
     !moderated
   end
 
+  def self.by_id(id)
+    includes(:areas, :users, :comments, :"#{name.downcase}_data").find(id)
+  end
+
   def self.validate_all_not_moderated
     self.not_moderated.find_each do |content|
       content.update_attribute('moderated', true)
     end
+  end
+
+  def last_contents
+    self.class.moderated.includes(:"#{self.class.name.downcase}_data", :comments).order('published_at desc').where('id <> ?', id).first(5)
   end
 
   def commenters

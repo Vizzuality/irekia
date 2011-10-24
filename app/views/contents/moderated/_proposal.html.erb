@@ -6,7 +6,7 @@
     <%= link_to @content.author.try(:fullname), user_path(@content.author)  %>
     <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     &middot;
-    <%= link_to t('.title_author_and_comments.comments', :count => @content.comments.moderated.count), '#', :class => :goto_comments %>
+    <%= link_to t('.title_author_and_comments.comments', :count => @content.comments_count), '#', :class => :goto_comments %>
     </p>
 
     <div class="my_opinion">

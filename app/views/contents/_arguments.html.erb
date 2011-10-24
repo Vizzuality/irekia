@@ -2,7 +2,7 @@
   <div class="proposal agree">
     <h3><%= t(".in_favor") %> <sup>(<%= @in_favor_count %>)</sup></h3>
     <ul>
-      <% @content.arguments.moderated.with_reason.in_favor.each do |argument| %>
+      <% @in_favor.each do |argument| %>
         <li><%= argument.reason %></li>
       <% end %>
     </ul>
@@ -28,7 +28,7 @@
   <div class="proposal against">
     <h3><%= t(".against") %> <sup>(<%= @against_count %>)</sup></h3>
     <ul>
-      <% @content.arguments.moderated.with_reason.against.each do |argument| %>
+      <% @against.each do |argument| %>
         <li><%= argument.reason %></li>
       <% end %>
     </ul>
