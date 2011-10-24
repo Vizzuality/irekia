@@ -3,10 +3,10 @@
     <% @info_div_id = (@info_div_id || 0 ) + 1 -%>
     <% day_events.first(2).each do |event| -%>
       <li>
-      <%= link_to event.title.truncate(17), event, :id => "event-#{@info_div_id}", :class => :show_event %>
+      <%= link_to event.title.truncate(17), event, :id => "event-#{event.id}", :class => :show_event %>
       </li>
     <% end -%>
-    <li class="more"><%= link_to (t('.and_more', :count => day_events.count - 2)), '#', :id => "event-more", :class => :show_event %></li>
+    <li class="more"><%= link_to (t('.and_more', :count => day_events.count - 2)), '#', :id => "event-more-#{@info_div_id}", :class => :show_event %></li>
   <% else -%>
     <% day_events.each do |event| -%>
       <li>
@@ -17,10 +17,27 @@
 </ul>
 
 <% if day_events.count > 3 -%>
-  <div id="info-event-<%= @info_div_id %>" class="info large">
+
+  <% day_events.first(2).each do |event| -%>
+    <div id="info-event-<%= event.id %>" class="info">
+      <ul>
+        <li>
+        <strong class="date"><%= l(event.event_date, :format => '%d, %B de %Y') %></strong>
+        <%= link_to event.title.truncate(60), event, :class => :event %>
+        <ul class="details">
+          <li class="where"><%= event.location %></li>
+          <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
+        </ul>
+        </li>
+      </ul>
+      <span class="close"></span>
+    </div>
+  <% end -%>
+
+  <div id="info-event-more-<%= @info_div_id %>" class="info large">
     <div class="scroll-pane">
       <ul class="events">
-        <% day_events.each do |event| -%>
+        <% day_events.last(day_events.count - 2).each do |event| -%>
           <li>
           <strong class="date"><%= l(event.event_date, :format => '%d, %B de %Y') %></strong>
           <%= link_to event.title, event, :class => :event %>
