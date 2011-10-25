@@ -21,6 +21,7 @@ header {
   margin: auto;
 }
 
+#main .content article .content { width:auto; }
 #main.content {
   margin: 60px;
 }
@@ -35,6 +36,8 @@ Basics
 ========================================================================== */
 
 blockquote { width:574px; padding:0; margin:0; font-size:31px; color:$dark_blue; font-family: "ClarendonLTMedium", Georgia, serif; }
+
+hr { border-color:rgba(70, 88, 102, .14); }
 
 ul {
   margin: 0;
@@ -396,7 +399,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 
   &.with_form {
-
     clear:both;
 
     .inner .left { width:641px; }

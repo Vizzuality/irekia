@@ -15,6 +15,8 @@ header .content, header nav .content { width: 996px; margin: auto; }
 
 #main .content, footer .content { width: 996px; margin: auto; }
 
+#main .content article .content { width: auto; }
+
 #main.content { margin: 60px; }
 
 #main.users.intro { background: url("/images/bubbles.png") no-repeat center top; padding: 20px 0 104px 0; }
@@ -23,6 +25,8 @@ header .content, header nav .content { width: 996px; margin: auto; }
 Basics
 ========================================================================== */
 blockquote { width: 574px; padding: 0; margin: 0; font-size: 31px; color: #465866; font-family: "ClarendonLTMedium", Georgia, serif; }
+
+hr { border-color: rgba(70, 88, 102, 0.14); }
 
 ul { margin: 0; padding: 0; list-style: none; }
 ul li { margin: 0; padding: 0; }

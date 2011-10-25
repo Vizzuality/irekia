@@ -46,7 +46,7 @@ jQuery.fn.enableRegistration = function(opt){
     $currentArticle = $data;
 
     forward($article, $currentArticle);
-    var $form = $currentArticle.find("form");
+    $form = $currentArticle.find("form");
   }
 
   function step2(evt, xhr, status) {
@@ -58,30 +58,20 @@ jQuery.fn.enableRegistration = function(opt){
     $currentArticle = $data;
 
     forward($article, $currentArticle);
-    var $form = $currentArticle.find("form");
+    $form = $currentArticle.find("form");
 
     $form.submit(function() {
       $(this).find(".error").removeClass("error");
     });
 
     $form.bind('ajax:success', step3);
-
-    $form.bind('ajax:error', function(evt, xhr, status) {
-      var errors = $.parseJSON(xhr.responseText);
-
-      _.each(errors, function(message, field) {
-        $currentArticle.find("form ." + field).addClass("error");
-      });
-
-      error($currentArticle);
-    });
-
+    $form.bind('ajax:error', validateErrors);
   }
 
   function step1(data) {
     $currentArticle = $(data);
     $article.after($currentArticle);
-    var $form = $currentArticle.find("form");
+    $form = $currentArticle.find("form");
 
     $form.submit(function() {
       $(this).find(".error").removeClass("error");
