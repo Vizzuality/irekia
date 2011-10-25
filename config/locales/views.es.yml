@@ -16,7 +16,7 @@ es:
         time: 'Hace %{time}'
       related_proposals:
         time: 'Hace %{time}'
-        title: Políticos relacionados
+        title: Propuestas relacionadas
         in_favor: '%{percentage}% a favor (%{count} votos)'
         against: '%{percentage}% en contra (%{count} votos)'
       related_events:

@@ -22,16 +22,12 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "updated_at"
   end
 
-  add_index "answer_data", ["answer_id"], :name => "index_answer_data_on_answer_id"
-
   create_table "answer_opinion_data", :force => true do |t|
     t.integer  "answer_opinion_id"
     t.boolean  "satisfactory",      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "answer_opinion_data", ["answer_opinion_id"], :name => "index_answer_opinion_data_on_answer_opinion_id"
 
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
@@ -90,8 +86,6 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "updated_at"
   end
 
-  add_index "argument_data", ["argument_id"], :name => "index_argument_data_on_argument_id"
-
   create_table "comment_data", :force => true do |t|
     t.integer  "comment_id"
     t.string   "subject"
@@ -99,8 +93,6 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "comment_data", ["comment_id"], :name => "index_comment_data_on_comment_id"
 
   create_table "contents", :force => true do |t|
     t.integer  "related_content_id"
@@ -114,8 +106,8 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "updated_at"
   end
 
-  add_index "contents", ["id", "published_at", "type"], :name => "index_contents_on_id_and_published_at_and_type"
   add_index "contents", ["id", "type", "moderated"], :name => "index_contents_on_id_and_type_and_moderated"
+  add_index "contents", ["id", "type", "published_at"], :name => "index_contents_on_id_and_type_and_published_at"
   add_index "contents", ["id", "type"], :name => "index_contents_on_id_and_type"
 
   create_table "contents_users", :force => true do |t|
@@ -137,7 +129,6 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
   end
 
   add_index "event_data", ["event_date"], :name => "index_event_data_on_event_date"
-  add_index "event_data", ["event_id"], :name => "index_event_data_on_event_id"
 
   create_table "follows", :force => true do |t|
     t.integer  "user_id"
@@ -169,8 +160,6 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "updated_at"
   end
 
-  add_index "news_data", ["news_id"], :name => "index_news_data_on_news_id"
-
   create_table "participations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "content_id"
@@ -182,8 +171,6 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "updated_at"
   end
 
-  add_index "participations", ["content_id", "moderated", "type"], :name => "index_participations_on_content_id_and_moderated_and_type"
-  add_index "participations", ["content_id"], :name => "index_participations_on_content_id"
   add_index "participations", ["moderated"], :name => "index_participations_on_moderated"
   add_index "participations", ["published_at"], :name => "index_participations_on_published_at"
   add_index "participations", ["type"], :name => "index_participations_on_type"
@@ -202,8 +189,6 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "updated_at"
   end
 
-  add_index "proposal_data", ["proposal_id"], :name => "index_proposal_data_on_proposal_id"
-
   create_table "question_data", :force => true do |t|
     t.integer  "question_id"
     t.integer  "user_id"
@@ -213,8 +198,6 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "question_data", ["question_id"], :name => "index_question_data_on_question_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -238,8 +221,6 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "tweet_data", ["tweet_id"], :name => "index_tweet_data_on_tweet_id"
 
   create_table "user_private_streams", :force => true do |t|
     t.integer  "user_id"
@@ -310,7 +291,6 @@ ActiveRecord::Schema.define(:version => 20110824091805) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["id"], :name => "index_users_on_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
