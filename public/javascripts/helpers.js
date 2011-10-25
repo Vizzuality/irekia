@@ -20,18 +20,11 @@ function watchHash(opt) {
 jQuery.fn.enableRegistration = function(opt){
 
   var speed  = (opt && opt.speed) || 200,
-  step = 0,
   ok = true,
   $form = $(".cycle form"),
   $container = $(".cycle .inner-cycle");
 
-  var
-  $name             = $form.find(".name input"),
-  $lastname         = $form.find(".lastname input"),
-  $email            = $form.find(".email input"),
-  $password         = $form.find(".password input"),
-  $confirm_password = $form.find(".confirm_password input"),
-  $legal            = $form.find(".legal .checkbox");
+  var $article, $newArticle, $currentArticle;
 
 
   function error($article) {
@@ -40,60 +33,84 @@ jQuery.fn.enableRegistration = function(opt){
   }
 
   function forward($current, $next) {
-    if (ok) {
-      console.log($next.height(), $next);
     $container.animate({height:$next.height() + 45}, 350, "easeInOutQuad");
-    $(".cycle").animate({scrollLeft:$current.position().left + 850}, 350, "easeInOutQuad", function() {
+    $(".cycle").animate({scrollLeft:$current.position().left + 850}, 350, "easeInOutQuad");
+  }
+
+  function step3(evt, xhr, status) {
+    var $data = $(xhr);
+
+    $currentArticle.after($data);
+
+    $article = $currentArticle;
+    $currentArticle = $data;
+
+    forward($article, $currentArticle);
+    var $form = $currentArticle.find("form");
+  }
+
+  function step2(evt, xhr, status) {
+    var $data = $(xhr);
+
+    $currentArticle.after($data);
+
+    $article = $currentArticle;
+    $currentArticle = $data;
+
+    forward($article, $currentArticle);
+    var $form = $currentArticle.find("form");
+
+    $form.submit(function() {
+      $(this).find(".error").removeClass("error");
     });
-    step++;
-    }
+
+    $form.bind('ajax:success', step3);
+
+    $form.bind('ajax:error', function(evt, xhr, status) {
+      var errors = $.parseJSON(xhr.responseText);
+
+      _.each(errors, function(message, field) {
+        $currentArticle.find("form ." + field).addClass("error");
+      });
+
+      error($currentArticle);
+    });
+
+  }
+
+  function step1(data) {
+    $currentArticle = $(data);
+    $article.after($currentArticle);
+    var $form = $currentArticle.find("form");
+
+    $form.submit(function() {
+      $(this).find(".error").removeClass("error");
+    });
+
+    $form.bind('ajax:success', step2);
+    $form.bind('ajax:error', validateErrors);
+
+    forward($article, $currentArticle);
+  }
+
+  function validateErrors(evt, xhr, status) {
+    var errors = $.parseJSON(xhr.responseText);
+
+    _.each(errors, function(message, field) {
+      $currentArticle.find("form ." + field).addClass("error");
+    });
+
+    error($currentArticle);
   }
 
   this.each(function(){
-
     $(".advance").click(function(e) {
       e.preventDefault();
 
-      var $article     = $(this).parents("article");
-      var $nextArticle = $container.find("article:eq("+(step + 1)+")");
-
-      if (step == 0) {
-        $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
-          $.ajax({ url: "/users/new", data: {}, type: "GET", success: function(data){
-            var $p = $(data);
-            $article.after($p);
-
-           // $p.find("form").submit(function(e) {
-           //   event.preventDefault();
-           //   alert('a');
-           // });
-
-            forward($article, $p);
-          }});
-      } else if (step == 1) {
-
-        if (isEmpty($email.val()) || isEmpty($password.val()) || isEmpty($confirm_password.val()) || !$legal.hasClass("selected")) {
-          error($article);
-        } else {
-          ok = true;
-
-        }
-
-      } else if (step == 2) {
-        if (isEmpty($name.val()) || isEmpty($lastname.val())) {
-          error($article);
-        } else {
-          ok = true;
-          $form.unbind("submit");
-
-          $form.submit(function(e) {
-            alert('Sending');
-          });
-        }
-      }
-
+      $article = $(this).parents("article");
+      $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
+      $.ajax({ url: "/users/new", data: {}, type: "GET", success: step1});
     });
-
   });
 }
 

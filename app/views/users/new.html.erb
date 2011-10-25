@@ -1,5 +1,5 @@
 <article class="thin with_footer with_form signup">
-<%= form_for @user, { :remote => true, :html => { "data-type" => :html }} do |f| %>
+<%= form_for @user, { :remote => true, :html => { :novalidate => :novalidate, "data-type" => :html }} do |f| %>
   <div class="inner">
     <div class="content">
 

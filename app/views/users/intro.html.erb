@@ -21,33 +21,6 @@
       </article>
 
 
-      <article class="thin with_footer with_remark signup">
-      <div class="inner">
-        <div class="content">
-
-          <h1><%= t('.new_in_irekia') %></h1>
-          <p><%= t('.fill_in_your_data') %></p>
-
-          <div class="social-links">
-            <div class="facebook"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
-            <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
-          </div>
-        </div>
-      </div>
-
-      <footer>
-      <div class="separator"></div>
-      <div class="inner">
-        <div class="center">
-          <%= submit_tag t('.continue'), :class => "white_button pink center" %>
-        </div>
-      </div>
-      </footer>
-
-        <div class="remark"><a href="#">Descubre por qué queremos que te conectes.</a></div>
-      <div class="t"></div><div class="f"></div>
-      </article>
-
 
   </div>
 </div>
