@@ -5,7 +5,7 @@ class Admin::UsersController < Admin::AdminController
   before_filter :get_titles, :only => [:new, :create, :edit, :update]
 
   def index
-    @users = User.oldest_first
+    @users = User.oldest_first.all
   end
 
   def new
@@ -53,7 +53,7 @@ class Admin::UsersController < Admin::AdminController
 
   private
   def get_user
-    @user = User.where(:id => params[:id]).first
+    @user = User.includes(:areas_users, :profile_pictures).find(params[:id])
   end
 
   def get_roles

@@ -13,6 +13,7 @@
     </li>
     <% end %>
   </ul>
+  <%= paginate @contents[:not_moderated] %>
 </div>
 <div class="participations">
   <h1><%= t('.participations') %></h1>
@@ -29,4 +30,5 @@
     </li>
     <% end %>
   </ul>
+  <%= paginate @participations[:not_moderated] %>
 </div>

@@ -4,8 +4,8 @@ class Admin::ModerationController < Admin::AdminController
     @contents = {}
     @participations = {}
 
-    @contents[:not_moderated] = Content.not_moderated.order('created_at ASC')
-    @participations[:not_moderated] = Participation.not_moderated.order('created_at ASC')
+    @contents[:not_moderated] = Content.not_moderated.order('created_at ASC').page(params[:page])
+    @participations[:not_moderated] = Participation.not_moderated.order('created_at ASC').page(params[:page])
 
     if params[:shows_moderated]
       @contents[:moderated] = Content.moderated.order('created_at ASC')
