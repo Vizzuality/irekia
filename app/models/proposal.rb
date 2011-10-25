@@ -8,12 +8,6 @@ class Proposal < Content
            :dependent   => :destroy,
            :include     => :argument_data
 
-  scope :open, joins(:proposal_data).where('proposal_data.close' => false)
-  scope :close, joins(:proposal_data).where('proposal_data.close' => true)
-  scope :from_politicians, joins(:users => :role).where('roles.name = ?', 'Politician')
-  scope :from_citizens, joins(:users => :role).where('roles.name = ?', 'Citizen')
-  scope :approved_by_majority, joins(:proposal_data).where('proposal_data.in_favor > proposal_data.against')
-
   pg_search_scope :search_existing_proposals,
                   :associated_against => {
                     :proposal_data => :title
@@ -25,6 +19,26 @@ class Proposal < Content
   accepts_nested_attributes_for :proposal_data, :arguments
 
   delegate :in_favor, :against, :participation, :title, :body, :target_user, :target_area, :to => :proposal_data
+
+  def self.open
+    joins(:proposal_data).where('proposal_data.close' => false)
+  end
+
+  def self.close
+    joins(:proposal_data).where('proposal_data.close' => true)
+  end
+
+  def self.from_politicians
+    joins(:users => :role).where('roles.name = ?', 'Politician')
+  end
+
+  def self.from_citizens
+    joins(:users => :role).where('roles.name = ?', 'Citizen')
+  end
+
+  def self.approved_by_majority
+    joins(:proposal_data).where('proposal_data.in_favor > proposal_data.against')
+  end
 
   def percent_in_favor
     return 0 if participation.blank?

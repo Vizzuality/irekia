@@ -14,8 +14,13 @@ class Participation < ActiveRecord::Base
 
   accepts_nested_attributes_for :user
 
-  scope :moderated,     where(:moderated => true)
-  scope :not_moderated, where(:moderated => false)
+  def self.moderated
+    where(:moderated => true)
+  end
+
+  def self.not_moderated
+    where(:moderated => false)
+  end
 
   def self.validate_all_not_moderated
     self.not_moderated.find_each do |participation|

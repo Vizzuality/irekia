@@ -112,19 +112,23 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile_pictures, :questions, :question_data, :areas_users
   accepts_nested_attributes_for :follows, :allow_destroy => true
 
-  scope :oldest_first, order('created_at asc')
-  scope :politicians, :joins      => :role,
-                      :conditions => ['roles.name = ?', 'Politician'],
-                      :readonly   => false
-  scope :citizens, :joins      => :role,
-                   :conditions => ['roles.name = ?', 'Citizen'],
-                   :readonly   => false
 
   pg_search_scope :search_by_name_description_province_and_city,
                   :against => [:name, :description, :province, :city],
                   :using => {
                     :tsearch => {:prefix => true, :any_word => true}
                   }
+  def self.oldest_first
+    order('created_at asc')
+  end
+
+  def self.politicians
+    joins(:role).where('roles.name' => 'Politician').readonly(false)
+  end
+
+  def self.citizens
+    joins(:role).where('roles.name' => 'Citizen').readonly(false)
+  end
 
   def self.by_id(id)
     User.includes(:role, :title, :areas).find(id)

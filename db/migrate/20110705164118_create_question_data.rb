@@ -10,6 +10,8 @@ class CreateQuestionData < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :question_data, :question_id
   end
 
   def self.down

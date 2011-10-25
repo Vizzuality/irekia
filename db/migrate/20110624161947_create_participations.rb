@@ -12,9 +12,12 @@ class CreateParticipations < ActiveRecord::Migration
       t.timestamps
     end
 
+    add_index :participations, [:content_id, :moderated, :type ]
+    add_index :participations, :content_id
     add_index :participations, :type
     add_index :participations, :published_at
     add_index :participations, :moderated
+
   end
 
   def self.down

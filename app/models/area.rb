@@ -58,7 +58,6 @@ class Area < ActiveRecord::Base
   accepts_nested_attributes_for :questions
   accepts_nested_attributes_for :follows, :allow_destroy => true
 
-  scope :names_and_ids, select([:id, :name])
   pg_search_scope :search_by_name_and_description,
                   :against => [:name, :description],
                   :using => {
@@ -75,6 +74,10 @@ class Area < ActiveRecord::Base
                            :proposals_count,
                            :photos_count,
                            :videos_count]).find(id)
+  end
+
+  def self.names_and_ids
+    select([:id, :name])
   end
 
   def agenda_between(start_date, end_date)

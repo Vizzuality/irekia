@@ -8,6 +8,8 @@ class CreateTweetData < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :tweet_data, :tweet_id
   end
 
   def self.down

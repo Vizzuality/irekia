@@ -6,6 +6,8 @@ class CreateAnswerOpinionData < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :answer_opinion_data, :answer_opinion_id
   end
 
   def self.down

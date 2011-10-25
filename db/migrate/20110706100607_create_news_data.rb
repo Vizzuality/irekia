@@ -9,6 +9,8 @@ class CreateNewsData < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :news_data, :news_id
   end
 
   def self.down

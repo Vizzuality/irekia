@@ -7,14 +7,22 @@ class Argument < Participation
   before_create :set_as_moderated
   after_save :update_proposal
 
-  scope :in_favor, joins(:argument_data).where('argument_data.in_favor' => true)
-  scope :against, joins(:argument_data).where('argument_data.in_favor' => false)
-  scope :with_reason, joins(:argument_data).where('argument_data.reason IS NOT NULL')
-
   delegate :in_favor, :against, :reason, :to => :argument_data
   delegate :title, :to => :proposal
 
   accepts_nested_attributes_for :argument_data
+
+  def self.in_favor
+    joins(:argument_data).where('argument_data.in_favor' => true)
+  end
+
+  def self.against
+    joins(:argument_data).where('argument_data.in_favor' => false)
+  end
+
+  def self.with_reason
+    joins(:argument_data).where('argument_data.reason IS NOT NULL')
+  end
 
   def as_json(options = {})
     {

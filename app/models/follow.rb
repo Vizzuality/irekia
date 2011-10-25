@@ -5,7 +5,12 @@ class Follow < ActiveRecord::Base
              :polymorphic => true,
              :counter_cache => true
 
-  scope :areas, where("follow_item_type = 'Area'")
-  scope :users, where("follow_item_type = 'User'")
+  def self.areas
+    where("follow_item_type = 'Area'")
+  end
+
+  def self.users
+    where("follow_item_type = 'User'")
+  end
 
 end

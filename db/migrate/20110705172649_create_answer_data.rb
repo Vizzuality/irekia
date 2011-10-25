@@ -9,6 +9,8 @@ class CreateAnswerData < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :answer_data, :answer_id
   end
 
   def self.down

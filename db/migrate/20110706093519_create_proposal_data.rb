@@ -14,6 +14,8 @@ class CreateProposalData < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :proposal_data, :proposal_id
   end
 
   def self.down
