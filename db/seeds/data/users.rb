@@ -5,6 +5,7 @@ puts 'Creating users...'.green
 puts '================='.green
 
 @admin = create_user :name                  => 'Administrator',
+                     :lastname              => 'Administrator',
                      :email                 => 'admin@example.com',
                      :password              => 'example',
                      :password_confirmation => 'example',
@@ -65,7 +66,8 @@ end
                      :profile_picture       => Image.create(:image => @men_images.sample)
 
 
-@pepito = create_user :name                  => 'José López Pérez',
+@pepito = create_user :name                  => 'José',
+                      :lastname              => 'López Pérez',
                       :email                 => 'pepito@irekia.com',
                       :password              => 'irekia1234',
                       :password_confirmation => 'irekia1234'

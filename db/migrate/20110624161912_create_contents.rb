@@ -10,6 +10,8 @@ class CreateContents < ActiveRecord::Migration
       t.float    :latitude
       t.float    :longitude
 
+      t.integer :comments_count, :default => 0
+
       t.timestamps
     end
 

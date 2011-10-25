@@ -9,7 +9,7 @@ class Content < ActiveRecord::Base
                 :class_name => "ContentUser"
   has_many      :users,
                 :through => :contents_users,
-                :select => 'name, lastname'
+                :select => 'users.id, name, lastname'
 
   has_many      :follows
   has_many      :participations
