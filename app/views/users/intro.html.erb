@@ -1,26 +1,23 @@
 <div class="cycle">
   <div class="inner-cycle">
-      <article class="thin signup">
-      <div class="inner">
-        <div class="content">
+    <article class="thin signup">
+    <div class="inner">
+      <div class="content">
 
-          <h1><%= t('.new_in_irekia') %></h1>
-          <p><%= t('.use_facebook_or_twitter') %></p>
+        <h1><%= t('.new_in_irekia') %></h1>
+        <p><%= t('.use_facebook_or_twitter') %></p>
 
-          <div class="social-links">
-            <div class="facebook"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
-            <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
-          </div>
-
-          <%= link_to t('.dont_you_have_fb_or_twitter'), new_user_path, :class => :advance %>
-
+        <div class="social-links">
+          <div class="facebook"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+          <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
         </div>
+
+        <%= link_to t('.dont_you_have_fb_or_twitter'), new_user_path, :class => :advance %>
+
       </div>
+    </div>
 
-      <div class="t"></div><div class="f"></div>
-      </article>
-
-
-
+    <div class="t"></div><div class="f"></div>
+    </article>
   </div>
 </div>

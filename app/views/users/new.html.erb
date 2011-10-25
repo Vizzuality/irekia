@@ -29,7 +29,7 @@
         </div>
 
         <div class="field legal">
-          <%= f.check_box :terms_of_service %><%= f.label :terms_of_service, raw(t('.terms_of_service', :link => link_to(t('.terms_of_service_link'), '#'))) %>
+          <p class="terms_of_service"><%= f.check_box :terms_of_service, :class => :hidden %> <a class="checkbox big"><%= raw(t('.terms_of_service', :link => link_to(t('.terms_of_service_link'), '#'))) %></a></p>
         </div>
       </fieldset>
 

@@ -35,7 +35,7 @@ $(function() {
 
 
   // Checkbox binding
-  $('a.checkbox').click(function(e){
+  $('a.checkbox').live("click", function(e){
     e.preventDefault();
     if (!$(this).hasClass('selected')) {
       $(this).addClass('selected');

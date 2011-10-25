@@ -5,12 +5,14 @@
     <h1><%= t('.connect') %></h1>
     <p><%= t('.works_better') %></p>
 
-    <div class="facebook <%='disabled' if @user.connected_with_facebook? %>">
-      <%= link_to raw(t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook %>
-    </div>
+    <div class="social-links">
+      <div class="facebook <%='disabled' if @user.connected_with_facebook? %>">
+        <%= link_to raw(t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook %>
+      </div>
 
-    <div class="twitter <%='disabled' if @user.connected_with_twitter? %>">
-      <%= link_to raw(t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter %>
+      <div class="twitter <%='disabled' if @user.connected_with_twitter? %>">
+        <%= link_to raw(t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter %>
+      </div>
     </div>
 
   </div>
