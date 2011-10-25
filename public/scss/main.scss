@@ -2527,7 +2527,14 @@ input {
 
 
 
-/* Field with errors */
+/* Fields with errors */
+#container article.with_form .inner .content .field p.error,
+#container article.with_form .inner .left .field p.error,
+#container article.with_form .inner .content .field p.error a,
+#container article.with_form .inner .left .field p.error a {
+  color: #E96F5F;
+}
+
 #container article.with_form .inner .field.error {
   padding: 0;
   .input_field input[type="text"],
@@ -2535,9 +2542,7 @@ input {
   .input_field input[type="password"] {
     border:1px solid #E96F5F;
   }
-  label {
-    color: #E96F5F;
-  }
+  label { color: #E96F5F; }
 }
 
 .search_box {

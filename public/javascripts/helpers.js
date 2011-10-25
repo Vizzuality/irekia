@@ -20,7 +20,6 @@ function watchHash(opt) {
 jQuery.fn.enableRegistration = function(opt){
 
   var speed  = (opt && opt.speed) || 200,
-  ok = true,
   $form = $(".cycle form"),
   $container = $(".cycle .inner-cycle");
 
