@@ -533,6 +533,7 @@ function shareWith($el, service, speed, easing) {
         .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length -1) + ' ' });
 
         shadow.html(val);
+
         if (!resizing) {
           resizing = true;
           var height= Math.max(shadow.height() + 20, minHeight);

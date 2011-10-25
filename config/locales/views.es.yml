@@ -722,7 +722,7 @@ es:
     private:
       welcome:
         hello: 'Hola %{name}‚ ¿por dónde empezar?'
-        hi_again: 'Hola de nuevo %{name},'
+        hi_again: 'Hola de nuevo, %{name},'
         configure_your_account: Configura tu cuenta
         following_nobody: No estás siguiendo a nadie todavía.
         currently: 'Actualmente %{politicians} y %{areas}'

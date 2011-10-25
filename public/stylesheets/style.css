@@ -343,6 +343,27 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.micro.with_footer .separator { height: 2px; background: url("/images/box_micro_bkg.png") repeat-x; background-position: 0 -33px; }
 #container article.micro.with_footer footer .inner .left { position: relative; float: left; left: 0; width: 50%; }
 #container article.micro.with_footer footer .inner div.right { right: 0; margin: 0; width: 50%; }
+#container article.publish { width: 757px; margin: 0 auto 40px auto; }
+#container article.publish.initialy_hidden { opacity: 0; }
+#container article.publish .inner header { margin: 0; width: 691px; }
+#container article.publish .inner header h2 { line-height: normal; }
+#container article.publish .inner .content .input_field.textarea { height: auto; }
+#container article.publish .inner .content .input_field.textarea textarea { width: 664px; height: 53px; font-size: 15px; }
+#container article.publish .inner .content .input_field.textarea span.holder { font-size: 15px; }
+#container article.publish .inner .content ul.menu { width: 686px; margin: 0 0 26px 0; }
+#container article.publish .inner .content ul.menu li { margin-right: 6px; }
+#container article.publish .inner .content ul.menu li.last { margin: 0; }
+#container article.publish .inner .content ul.menu li a { height: 14px; padding: 14px 0 18px 0; width: 106px; font-size: 15px; }
+#container article.publish .inner .content p { margin: 0 0 20px 0; padding: 0; font-size: 15px; color: #7d8a92; }
+#container article.publish .t, #container article.publish .f { height: 10px; background: url("/images/box_publish_bkg.png") no-repeat; }
+#container article.publish .t { top: -10px; background-position: 0 0; }
+#container article.publish .f { bottom: -10px; background-position: 0 -28px; }
+#container article.publish .inner { width: 691px; padding: 15px 31px 19px 35px; background: url("/images/box_publish_bkg.png") repeat-y -757px 0; border: none; }
+#container article.publish .inner .content { margin: 3px 0 18px 0px; width: 692px; }
+#container article.publish.with_footer .f { bottom: -10px; background-position: 0 -23px; }
+#container article.publish.with_footer footer { padding: 0; border: none; background: none; }
+#container article.publish.with_footer footer .inner { width: 729px; background: url("/images/box_publish_bkg.png") repeat-y -1514px 0; border: none; }
+#container article.publish.with_footer .separator { height: 2px; background: url("/images/box_publish_bkg.png") repeat-x; background-position: 0 -33px; }
 #container article.thin { width: 636px; margin: 0 auto 40px auto; }
 #container article.thin.initialy_hidden { opacity: 0; }
 #container article.thin .inner header { margin: 0; width: 635px; }
@@ -712,6 +733,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .map a.marker .counter { position: absolute; display: block; top: 6px; width: 25px; text-align: center; color: white; font-size: 11px; font-weight: bold; }
 #container article .input_field { position: relative; clear: both; height: 39px; }
 #container article .input_field span.holder { position: absolute; left: 11px; top: 8px; width: 200px; color: #D7D8DD; }
+#container article .input_field.textarea span.holder { position: absolute; left: 11px; top: 8px; width: auto; color: #D7D8DD; }
 #container article .input-counter span.holder { position: absolute; left: 11px; top: 10px; width: 200px; color: #D7D8DD; }
 #container article .input_field span.holder.large { width: 100%; color: #666666; font-size: 15px; }
 #container article .input-counter span.holder.large { width: 100%; top: 8px; color: #666666; font-size: 15px; }
@@ -723,18 +745,6 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .content textarea { width: 534px; height: 34px; position: relative; padding: 10px; font-size: 15px; color: #465866; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); outline: none; -moz-transition-property: border; -webkit-transition-property: border; -o-transition-property: border; transition-property: border; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; }
 #container article .content textarea:focus { border: 1px solid #ccc; }
 #container article .content textarea:hover { border: 1px solid #999999; }
-
-/* Textarea scrollbar */
-textarea { -webkit-appearance: none; }
-textarea::-webkit-scrollbar { width: 6px; height: 6px; }
-textarea::-webkit-scrollbar-button:start:decrement, textarea::-webkit-scrollbar-button:end:increment { display: block; height: 0; background-color: transparent; }
-textarea::-webkit-scrollbar-track-piece { background-color: #FAFAFA; -webkit-border-radius: 0; -webkit-border-bottom-right-radius: 8px; -webkit-border-bottom-left-radius: 8px; }
-textarea::-webkit-scrollbar-thumb:vertical { height: 20px; background-color: #999; -webkit-border-radius: 8px; }
-textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #999; -webkit-border-radius: 8px; }
-
-.textarea-comment { font-size: 15px; width: 535px; height: 67px; background: url("/images/textareas.png") no-repeat; overflow: hidden; float: left; margin-bottom: 15px; position: relative; }
-.textarea-comment span.holder { position: absolute; left: 13px; top: 8px; width: 500px; color: #D7D8DD; }
-.textarea-comment textarea { margin: 7px 10px 10px 11px; resize: none; width: 510px; height: 50px; background: none; border: none; outline: none; }
 
 #container article .right .content ul.tags { clear: both; overflow: hidden; list-style: none; margin-bottom: 20px; }
 #container article .right .content ul.tags li { float: left; position: relative; clear: both; margin: 0 0 5px 0; left: 15px; height: 24px; background: url("/images/tag_sprite.png") repeat-x right 0; }
@@ -978,6 +988,21 @@ Error pages
 *:first-child + html .clearfix, *:first-child + html .inner { zoom: 1; }
 
 /* IE7 */
+textarea { resize: none; }
+
+/* Textarea scrollbar */
+textarea { -webkit-appearance: none; }
+textarea.grow::-webkit-scrollbar { display: none; }
+textarea::-webkit-scrollbar { width: 6px; height: 6px; }
+textarea::-webkit-scrollbar-button:start:decrement, textarea::-webkit-scrollbar-button:end:increment { display: block; height: 0; background-color: transparent; }
+textarea::-webkit-scrollbar-track-piece { background-color: #FAFAFA; -webkit-border-radius: 0; -webkit-border-bottom-right-radius: 8px; -webkit-border-bottom-left-radius: 8px; }
+textarea::-webkit-scrollbar-thumb:vertical { height: 20px; background-color: #999; -webkit-border-radius: 8px; }
+textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #999; -webkit-border-radius: 8px; }
+
+.textarea-comment { font-size: 15px; width: 535px; height: 67px; background: url("/images/textareas.png") no-repeat; overflow: hidden; float: left; margin-bottom: 15px; position: relative; }
+.textarea-comment span.holder { position: absolute; left: 13px; top: 8px; width: 500px; color: #D7D8DD; }
+.textarea-comment textarea { margin: 7px 10px 10px 11px; resize: none; width: 510px; height: 50px; background: none; border: none; outline: none; }
+
 header nav .content a.blue_button, header nav .content ul.auth li a.blue_button, header nav .content ul li .blue_button a, article .blue_button a { padding: 7px 14px; }
 
 .ie9 .white_button.disabled:hover, .ie9 article .white_button.disabled:hover, .ie9 .white_button, .ie9 article .white_button { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f4f6f9',GradientType=0 ); /* IE6-9 */ }

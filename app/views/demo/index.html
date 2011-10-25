@@ -4,6 +4,42 @@
   </script>
 <% end %>
 
+<article class="publish with_footer">
+<div class="inner">
+  <div class="content">
+
+    <h2>Publicar</h2>
+    <p>Elige el tipo de contenido, y compártelo con el resto de los usuarios</p>
+
+
+<%= menu ([
+  { :link => (link_to t(".dashboard"), "#")},
+  { :link => (link_to t(".photos"), "#")},
+  { :link => (link_to t(".video"), "#")},
+  { :link => (link_to t(".proposals"), "#") },
+  { :link => (link_to t(".link"), "#") },
+  { :link => (link_to t(".event"), "#"), :class => "last"},
+]) %>
+
+<div class="input_field placeholder textarea">
+  <textarea name="" rows="8" cols="40"></textarea>
+  <span class="holder">Introduce el texto que quieras publicar aquí.</span>
+</div>
+
+  </div>
+</div>
+
+<footer>
+<div class="separator"></div>
+<div class="inner">
+  <div class="right">
+    <a href="#" class="white_button pink right">Publicar</a>
+  </div>
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>
+
 <article class="thin with_footer">
 <div class="inner">
   <div class="content">

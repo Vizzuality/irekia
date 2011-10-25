@@ -7,6 +7,21 @@
 *:first-child + html .clearfix, *:first-child + html .inner { zoom: 1; }
 
 /* IE7 */
+textarea { resize: none; }
+
+/* Textarea scrollbar */
+textarea { -webkit-appearance: none; }
+textarea.grow::-webkit-scrollbar { display: none; }
+textarea::-webkit-scrollbar { width: 6px; height: 6px; }
+textarea::-webkit-scrollbar-button:start:decrement, textarea::-webkit-scrollbar-button:end:increment { display: block; height: 0; background-color: transparent; }
+textarea::-webkit-scrollbar-track-piece { background-color: #FAFAFA; -webkit-border-radius: 0; -webkit-border-bottom-right-radius: 8px; -webkit-border-bottom-left-radius: 8px; }
+textarea::-webkit-scrollbar-thumb:vertical { height: 20px; background-color: #999; -webkit-border-radius: 8px; }
+textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #999; -webkit-border-radius: 8px; }
+
+.textarea-comment { font-size: 15px; width: 535px; height: 67px; background: url("/images/textareas.png") no-repeat; overflow: hidden; float: left; margin-bottom: 15px; position: relative; }
+.textarea-comment span.holder { position: absolute; left: 13px; top: 8px; width: 500px; color: #D7D8DD; }
+.textarea-comment textarea { margin: 7px 10px 10px 11px; resize: none; width: 510px; height: 50px; background: none; border: none; outline: none; }
+
 header nav .content a.blue_button, header nav .content ul.auth li a.blue_button, header nav .content ul li .blue_button a, article .blue_button a { padding: 7px 14px; }
 
 .ie9 .white_button.disabled:hover, .ie9 article .white_button.disabled:hover, .ie9 .white_button, .ie9 article .white_button { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f4f6f9',GradientType=0 ); /* IE6-9 */ }

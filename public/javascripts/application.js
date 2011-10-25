@@ -2,7 +2,7 @@ $(function() {
   watchHash(); // this function watches the url hashes and acts accordingly
 
 
-    $("textarea").autogrow();
+  $("textarea.grow").autogrow();
 
   $(".cycle").enableRegistration();
   // Preloading of popover assets

@@ -22,7 +22,7 @@
         <% end -%>
         <%= form.hidden_field :content_id, :value => data.id %>
         <%= form.fields_for :comment_data, CommentData.new do |comment_data_form| %>
-          <%= comment_data_form.text_area :body %>
+          <%= comment_data_form.text_area :body, :class => :grow %>
           <span class="holder"><%= t('.write_your_comment')%></span>
         <% end -%>
       </div>
