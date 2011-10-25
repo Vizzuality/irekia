@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   before_validation :check_blank_name, :on => :create
 
   validates :terms_of_service, :acceptance => true
+  validates :name, :presence => true, :on => :update
+  validates :lastname, :presence => true, :on => :update
 
   belongs_to :role,
              :select => 'id, name_i18n_key'

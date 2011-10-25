@@ -91,11 +91,11 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:user])
       flash[:notice] = :question_created if params['user']['question_data_attributes'].present?
+      redirect_back_or_default user_path(@user)
     else
       flash[:notice] = :question_failed if params['user']['question_data_attributes'].present?
+      render :json => @user.errors.to_json, :status => :error
     end
-
-    redirect_back_or_default user_path(@user)
   end
 
   def connect

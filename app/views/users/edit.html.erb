@@ -41,7 +41,7 @@
           <div class="field born_at">
             <%= f.label :birthday %>
             <div class="input_field">
-              <%= f.date_select :birthday, :start_year => 1900 %>
+              <%= f.date_select :birthday, :start_year => 1900, :include_blank => true %>
             </div>
           </div>
 
