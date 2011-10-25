@@ -263,7 +263,6 @@ header {
   .f { bottom: -10px; background-position: 0 -10px; }
   .inner {
     clear: both;
-    overflow: hidden;
     width: 928px;
     padding: 15px 31px 10px 35px;
     background: $white;
@@ -1371,7 +1370,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
               &.legal {
 
-
                 label,  a {
                   font-size:15px;
                   text-transform:none;
@@ -1989,7 +1987,7 @@ a.editable {
   .input_field {
     position: relative;
     clear: both;
-    overflow: hidden;
+    //overflow: hidden;
     height: 39px;
     span.holder { position: absolute; left: 11px; top: 8px; width: 200px; color: #D7D8DD; }
   }
@@ -2840,6 +2838,8 @@ Explorer fixes
 .ie8 #container article footer .right .question {
   color:$gray;
 }
+
+
 
 /* =============================================================================
 Sign in

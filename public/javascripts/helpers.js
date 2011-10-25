@@ -114,6 +114,25 @@ jQuery.fn.enableRegistration = function(opt){
   });
 }
 
+/* Enables checkboxes */
+jQuery.fn.enableCheckbox = function(opt){
+
+  this.each(function(){
+
+    $(this).click(function(e){
+      e.preventDefault();
+      if (!$(this).hasClass('selected')) {
+        $(this).addClass('selected');
+        $(this).closest('p').find('input[type="checkbox"]').val(1);
+      } else {
+        $(this).removeClass('selected');
+        $(this).closest('p').find('input[type="checkbox"]').val(0);
+      }
+    });
+
+  });
+}
+
 /* Enables comment submission */
 jQuery.fn.enableArguments = function(opt){
 

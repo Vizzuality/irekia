@@ -33,18 +33,8 @@ $(function() {
     }
   });
 
-
-  // Checkbox binding
-  $('a.checkbox').live("click", function(e){
-    e.preventDefault();
-    if (!$(this).hasClass('selected')) {
-      $(this).addClass('selected');
-      $(this).closest('p').find('input[type="checkbox"]').val(1);
-    } else {
-      $(this).removeClass('selected');
-      $(this).closest('p').find('input[type="checkbox"]').val(0);
-    }
-  });
+  $('a.checkbox').enableCheckbox();
+  $('.default').dropkick();
 
   $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();
