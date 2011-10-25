@@ -7,6 +7,8 @@ class CreateCommentData < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :comment_data, :comment_id
   end
 
   def self.down

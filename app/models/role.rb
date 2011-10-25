@@ -3,9 +3,17 @@
 class Role < ActiveRecord::Base
   has_many :users
 
-  scope :politician, where(:name => 'Politician')
-  scope :administrator, where(:name => 'Administrator')
-  scope :citizen, where(:name => 'Citizen')
+  def self.politician
+    where(:name => 'Politician')
+  end
+
+  def self.administrator
+    where(:name => 'Administrator')
+  end
+
+  def self.citizen
+    where(:name => 'Citizen')
+  end
 
   def politician?
     self.name_i18n_key.eql?('politician')

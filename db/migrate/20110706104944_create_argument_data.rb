@@ -8,6 +8,8 @@ class CreateArgumentData < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :argument_data, :argument_id
   end
 
   def self.down

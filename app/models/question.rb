@@ -14,9 +14,6 @@ class Question < Content
   has_many :answer_requests,
            :foreign_key => :content_id
 
-  scope :answered, joins(:question_data).where('question_data.answered_at IS NOT NULL')
-  scope :not_answered, includes(:question_data).where('question_data.answered_at IS NULL')
-
   pg_search_scope :search_existing_questions,
                   :associated_against => {
                     :question_data => :question_text
@@ -28,6 +25,14 @@ class Question < Content
   accepts_nested_attributes_for :question_data, :answer_requests
 
   delegate :target_user, :question_text, :answered_at, :to => :question_data
+
+  def self.answered
+    joins(:question_data).where('question_data.answered_at IS NOT NULL')
+  end
+
+  def self.not_answered
+    includes(:question_data).where('question_data.answered_at IS NULL')
+  end
 
   def target_is_a_user?
     question_data.present? && question_data.user_id.present?

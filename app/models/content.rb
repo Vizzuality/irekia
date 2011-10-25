@@ -27,20 +27,27 @@ class Content < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments, :contents_users
 
-  scope :moderated,     where(:moderated => true)
-  scope :not_moderated, where(:moderated => false)
-  scope :more_recent, order('contents.published_at desc')
-  scope :more_polemic, joins(<<-SQL
-    LEFT JOIN participations ON
-    participations.content_id = contents.id AND
-    participations.type = 'Comment'
-  SQL
-  ).select('count(participations.id) as comments_count').group(Content.column_names.map{|c| "contents.#{c}"}).order('comments_count desc')
-
   attr_accessor :location
 
-  def not_moderated?
-    !moderated
+  def self.moderated
+    where(:moderated => true)
+  end
+
+  def self.not_moderated
+    where(:moderated => false)
+  end
+
+  def self.more_recent
+    order('contents.published_at desc')
+  end
+
+  def self.more_polemic
+    joins(<<-SQL
+      LEFT JOIN participations ON
+      participations.content_id = contents.id AND
+      participations.type = 'Comment'
+    SQL
+    ).select('count(participations.id) as comments_count').group(Content.column_names.map{|c| "contents.#{c}"}).order('comments_count desc')
   end
 
   def self.by_id(id)
@@ -51,6 +58,10 @@ class Content < ActiveRecord::Base
     self.not_moderated.find_each do |content|
       content.update_attribute('moderated', true)
     end
+  end
+
+  def not_moderated?
+    !moderated
   end
 
   def last_contents

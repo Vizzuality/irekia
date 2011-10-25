@@ -15,7 +15,7 @@ class CreateContents < ActiveRecord::Migration
 
     add_index :contents, [:id, :type]
     add_index :contents, [:id, :type, :moderated]
-    add_index :contents, [:id, :type, :published_at]
+    add_index :contents, [:id, :published_at, :type ]
 
   end
 

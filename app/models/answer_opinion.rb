@@ -4,12 +4,18 @@ class AnswerOpinion < Participation
 
   has_one :answer_opinion_data
 
-  scope :satisfactory, joins(:answer_opinion_data).where('answer_opinion_data.satisfactory' => true)
-  scope :not_satisfactory, joins(:answer_opinion_data).where('answer_opinion_data.satisfactory' => false)
 
   delegate :satisfactory, :to => :answer_opinion_data
 
   accepts_nested_attributes_for :answer_opinion_data
+
+  def self.satisfactory
+    joins(:answer_opinion_data).where('answer_opinion_data.satisfactory' => true)
+  end
+
+  def self.not_satisfactory
+    joins(:answer_opinion_data).where('answer_opinion_data.satisfactory' => false)
+  end
 
   def as_json(options = {})
     {
