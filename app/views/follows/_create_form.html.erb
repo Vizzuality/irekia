@@ -11,7 +11,7 @@
   <%= form.hidden_field :user_id %>
   <%= form.hidden_field :follow_item_id %>
   <%= form.hidden_field :follow_item_type %>
-  <%= content_tag :button, :type => 'submit', :class => "#{@button_class} add_person add_to_favorites" do %>
+  <%= content_tag :button, :type => 'submit', :class => "#{@button_class} #{class_for_modal_login} add_person add_to_favorites" do %>
     <%= raw (content_tag(:span, '', :class => 'add') + @label) %>
   <% end -%>
 <% end -%>

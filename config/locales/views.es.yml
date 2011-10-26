@@ -85,11 +85,6 @@ es:
       nav_bar:
         currently_viewing: Estás viendo...
         search: O busca lo que necesitas...
-        sign_up: Regístrate
-        sign_in: Login
-        sign_out: Salir
-        facebook: Facebook
-        twitter: Twitter
       sign_in:
         access_irekia: Accede a Irekia
         forgotten_password: ¿Olvidaste tu contraseña?
@@ -275,6 +270,14 @@ es:
       view_calendar: Ver calendario
       view_map: Ver mapa
       more: Ver calendario completo
+
+    nav_bar_buttons:
+      sign_up: Regístrate
+      sign_in: Login
+      hello: 'Hola, %{name}'
+      sign_out: Salir
+      facebook: Facebook
+      twitter: Twitter
 
   contents:
     arguments:

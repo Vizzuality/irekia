@@ -48,21 +48,11 @@ class Question < Content
       :name => question_data.try(:target_user).try(:fullname)
     } if question_data.target_user
 
-    {
-      :author          => {
-        :id            => author.id,
-        :name          => author.name,
-        :fullname      => author.fullname,
-        :profile_image => author.profile_image
-      },
-      :id              => id,
-      :published_at    => published_at,
+    super({
       :question_text   => question_text,
       :target_user     => target_user,
-      :answered_at     => answered_at,
-      :comments_count  => comments_count,
-      :last_comments   => last_comments
-    }
+      :answered_at     => answered_at
+    })
   end
 
   def publish_content

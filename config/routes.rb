@@ -87,6 +87,8 @@ Irekia::Application.routes.draw do
 
   root :to => "areas#show", :id => 1
 
+  match '/nav_bar_buttons', :to => 'home#nav_bar_buttons'
+
   match '/in_development', :to => 'application#in_development'
   match '*a', :to => 'application#render_not_found'
 end

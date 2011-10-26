@@ -59,25 +59,15 @@ class Proposal < Content
   end
 
   def as_json(options = {})
-    {
-      :author           => {
-        :id               => author.id,
-        :name             => author.name,
-        :fullname         => author.fullname,
-        :profile_image    => author.profile_image
-      },
-      :id               => id,
-      :published_at     => published_at,
+    super({
       :title            => title,
       :participation    => participation,
       :in_favor         => in_favor,
       :against          => against,
       :percentage       => percentage,
       :percent_in_favor => percent_in_favor,
-      :percent_against  => percent_against,
-      :comments_count   => comments_count,
-      :last_comments    => last_comments
-    }
+      :percent_against  => percent_against
+    })
   end
 
   def update_statistics
