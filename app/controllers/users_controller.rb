@@ -104,7 +104,7 @@ class UsersController < ApplicationController
   end
 
   def redirect_to_politician_page?
-    redirect_to politician_path(@user) if current_user.blank? || (@user.politician? && current_user != @user)
+    redirect_to politician_path(@user) if @user.politician? unless current_user == @user
   end
   private :redirect_to_politician_page?
 
