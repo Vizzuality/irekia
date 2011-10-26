@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:intro, :new, :create, :show, :questions, :proposals, :actions, :followings]
   before_filter :private_politician_or_public?
+  before_filter :user_is_current_user?, :only => [:edit, :update]
   before_filter :get_user, :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :get_questions, :only => [:questions]
   before_filter :get_proposals, :only => [:proposals]
@@ -121,6 +122,11 @@ class UsersController < ApplicationController
     @section = params[:section] || 'dashboard'
   end
   private :get_section
+
+  def user_is_current_user?
+    redirect_to root_path if current_user.present? && params[:id].to_i != current_user.id
+  end
+  private :user_is_current_user?
 
   def get_user
     return unless params[:id].present?
