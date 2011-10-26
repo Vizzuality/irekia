@@ -74,5 +74,9 @@ module ApplicationHelper
   def class_for_modal_login
     'floating-login' unless user_signed_in?
   end
+
+  def notifications_count
+    user_signed_in?? current_user.notifications_count : 0
+  end
 end
 

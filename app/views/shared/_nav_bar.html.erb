@@ -18,24 +18,5 @@
       <div class="t"></div><div class="f"></div>
     </div>
   <% end %>
-  <% if user_signed_in? && current_user.name.present? %>
-    <ul class="auth">
-      <li>
-      <%= link_to "hola, #{current_user.name}", user_path(current_user), :class => "blue_button" %>
-      <%= content_tag 'div', @notifications_count, :class => "pending-counter" if @notifications_count > 0 %>
-      </li>
-      <li><%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => "sign_out blue_button" %></li>
-    </ul>
-  <% else %>
-    <ul class="auth">
-      <li><%= link_to t('.sign_up'), intro_users_path, :class => :blue_button %></li>
-      <li>
-      <div class="blue_button">
-        <%= link_to t('.sign_in'), new_user_session_path, :class => :login %>
-        <%= link_to t('.facebook'), user_omniauth_authorize_path(:facebook), :class => :facebook %>
-        <%= link_to t('.twitter'), user_omniauth_authorize_path(:twitter), :class => :twitter %>
-      </div>
-      </li>
-    </ul>
-  <% end %>
+  <%= render 'shared/nav_bar_buttons' %>
 </div>
