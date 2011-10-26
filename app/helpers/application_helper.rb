@@ -33,19 +33,19 @@ module ApplicationHelper
   end
 
   def avatar(user, size = nil)
-
-    if user.politician?
-      path = politician_path(user.id)
-    else
-      path = user_path(user.id)
-    end
-
     size = size.present?? size.to_s : ''
 
-    if user.profile_pictures.present?
+    if user.present? && user.profile_pictures.present?
+
+      if user.politician?
+        path = politician_path(user.id)
+      else
+        path = user_path(user.id)
+      end
+
       link_to (image_tag(user.profile_image) + (raw (content_tag :div, " ", :class => :ieframe))), path, :title => user.fullname, :class => "avatar #{size}"
     else
-      link_to image_tag('icons/faceless_avatar.png', :class => "avatar #{size}"), path, :title => user.fullname
+      image_tag 'icons/faceless_avatar.png', :class => "avatar #{size}", :title => t('unknown_user')
     end
   end
 
@@ -75,3 +75,4 @@ module ApplicationHelper
     'floating-login' unless user_signed_in?
   end
 end
+

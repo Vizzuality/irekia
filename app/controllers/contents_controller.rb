@@ -42,11 +42,9 @@ class ContentsController < ApplicationController
 
     @comments = @content.comments.moderated.all
     @last_contents = @content.last_contents
-    if current_user.present?
-      @comment = @content.comments.build
-      @comment.build_comment_data
-      @comment.user = current_user
-    end
+
+    @comment = @content.comments.build
+    @comment.build_comment_data
 
     case @content
     when Question
@@ -124,3 +122,4 @@ class ContentsController < ApplicationController
   end
   private :get_content_class
 end
+
