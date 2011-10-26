@@ -784,7 +784,7 @@ Explorer fixes
 /* =============================================================================
 Login & sign in
 ========================================================================== */
-#login { display: none; position: absolute; }
+article#login { display: none; position: absolute; z-index: 100; }
 
 #sign_in { display: none; position: absolute; right: 0; background: url("/images/popovers_bkg.png") no-repeat; width: 314px; height: 363px; z-index: 100; padding: 51px 38px 0 38px; }
 #sign_in .content { font-size: 15px; }

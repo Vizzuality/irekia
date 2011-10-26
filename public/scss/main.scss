@@ -2927,9 +2927,10 @@ Explorer fixes
 Login & sign in
 ========================================================================== */
 
-#login {
+article#login {
   display: none;
   position: absolute;
+  z-index: 100;
 }
 
 #sign_in {

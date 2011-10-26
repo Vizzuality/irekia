@@ -66,6 +66,7 @@ module ApplicationHelper
   def link_to_with_login(*args)
     html_options = args[2] || {}
     html_options[:class] = "floating-login #{html_options[:class]}" unless user_signed_in?
+    html_options[:class].gsub!('after_', '') if user_signed_in?
     args[2] = html_options
     link_to(*args)
   end
