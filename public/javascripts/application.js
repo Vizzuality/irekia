@@ -1,7 +1,6 @@
 $(function() {
   watchHash(); // this function watches the url hashes and acts accordingly
 
-
   $("textarea.grow").autogrow();
 
   $(".cycle").enableRegistration();
