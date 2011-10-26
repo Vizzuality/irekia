@@ -161,7 +161,7 @@
     }});
   }
 
-  // setup the close event & signal the other subscribers
+  // setup the close event
   function _subscribeToEvent(event) {
     GOD.subscribe(event);
   }
@@ -170,7 +170,12 @@
 
     data.$ps.find("form").unbind();
     data.$ps.find("form").bind('ajax:success', function(event, xhr, status) {
-      _close(data, true);
+      var $el = $(this);
+
+      _close(data, false, function() {
+        $el.questionPopover({open:true});
+      });
+
       loginInLinks();
     });
 

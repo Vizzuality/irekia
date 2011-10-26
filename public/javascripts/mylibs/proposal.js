@@ -1,6 +1,6 @@
 /*
 * ================
-* QUESTION POPOVER
+* PROPOSAL POPOVER
 * ================
 */
 
@@ -42,7 +42,7 @@
    '  <div class="inner">',
    '    <div class="icon success"></div>',
    '    <div class="content">',
-   '      <h2>Tu pregunta ha sido enviada</h2>',
+   '      <h2>Tu propuesta ha sido enviada</h2>',
    '      <p>En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.</p>',
    '    </div>',
    '    <span class="close"></span>',
@@ -50,7 +50,7 @@
    '  <footer>',
    '  <div class="separator"></div>',
    '  <div class="inner">',
-   '    <a href="#" class="white_button blue close right">Aceptar</a>',
+   '    <a href="#" class="white_button close right">Aceptar</a>',
    '  </div>',
    '  </footer>',
    '  <div class="t"></div><div class="f"></div>',
@@ -58,7 +58,7 @@
   };
 
   var
-  store = "question-popover",
+  store = "proposal-popover",
   // Public methods
   methods = { },
   interval,
@@ -89,7 +89,7 @@
       // The completed ps_container element
       $ps = false;
 
-      // Dont do anything if we've already setup questionPopover on this element
+      // Dont do anything if we've already setup proposalPopover on this element
       if (data.id) {
         return $this;
       } else {
@@ -111,7 +111,7 @@
       // Save the updated $ps reference into our data object
       data.$ps = $ps;
 
-      // Save the questionPopover data onto the <select> element
+      // Save the proposalPopover data onto the <select> element
       $this.data(store, data);
 
       // Do the same for the dropdown, but add a few helpers
@@ -127,7 +127,7 @@
   };
 
   // Expose the plugin
-  $.fn.questionPopover = function(method) {
+  $.fn.proposalPopover = function(method) {
     if (!ie6) {
       if (methods[method]) {
         return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
@@ -136,6 +136,14 @@
       }
     }
   };
+
+  function _build(data, templateName, extraParams) {
+    var params = _.extend({id:data.id + "_success", name:data.name}, extraParams);
+
+    var $ps = $(_.template(data.templates[templateName], params ));
+
+    return $ps;
+  }
 
   function _toggleLockScreen(callback) {
     var $lock_screen = $("#lock_screen");
@@ -169,12 +177,12 @@
   function _open(data) {
     data.$ps = $(document).find("article#" + data.id);
     var $ps = data.$ps;
-    console.log("_open", $ps, data);
 
     // bindings
     _addCloseAction(data);
     _addSubmitAction(data);
     _addDefaultAction(data);
+
 
     $ps.find('textarea').keyup(function(ev){
 
@@ -189,7 +197,7 @@
         interval = setTimeout(function(){
 
           var query = $ps.find("textarea").val();
-          $.ajax({ url: "/questions", data: { query: query, per_page: 2, mini: true }, type: "GET", success: function(data){
+          $.ajax({ url: "/proposals", data: { query: query, per_page: 2, mini: true }, type: "GET", success: function(data){
             $related.slideUp(250, function() {
 
               var $data = $(data);
@@ -240,12 +248,6 @@
     $ps.find(".related").hide();
   }
 
-  function _build(data, templateName, extraParams) {
-    var params = _.extend({id:data.id + "_success", name:data.name}, extraParams);
-    var $ps = $(_.template(data.templates[templateName], params ));
-    return $ps;
-  }
-
   function _close2(data, hideLockScreen, callback) {
 
     data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
@@ -269,6 +271,7 @@
   // setup the close event & signal the other subscribers
   function _subscribeToEvent(event) {
     GOD.subscribe(event);
+    GOD.broadcast(event);
   }
 
   function _addSubmitAction(data) {
@@ -326,4 +329,5 @@
   $(function() { });
 
 })(jQuery, window, document);
+
 
