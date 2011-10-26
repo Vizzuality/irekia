@@ -9,7 +9,7 @@ class Question < Content
   has_one :answer_data
   has_one :answer,
           :through => :answer_data,
-          :include => [:answer_data, :users => :profile_pictures]
+          :include => [:answer_data, {:users => :profile_pictures}]
 
   has_many :answer_requests,
            :foreign_key => :content_id
