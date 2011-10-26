@@ -4,13 +4,17 @@ function loginInLinks() {
     $(el).die();
 
     if ($(el).hasClass("after_ask_question")) {
-      console.log("question");
      $(el).addClass("ask_question");
      $(el).removeClass("after_ask_question");
      $(el).questionPopover();
     }
 
-    $(el).hasClass("after_create_proposal") && $(el).proposalPopover();
+    if ($(el).hasClass("after_create_proposal")) {
+     $(el).addClass("create_proposal");
+     $(el).removeClass("after_create_proposal");
+     $(el).proposalPopover();
+    }
+
     $(el).removeClass("floating-login");
   });
 }

@@ -30,11 +30,7 @@
                   <%= argument_data_form.hidden_field :reason, :value => '' %>
                   <%= argument_data_form.hidden_field :in_favor, :value => false %>
                 <% end -%>
-<<<<<<< HEAD
-                <%= form.submit 'Estoy en contra', :class => 'white_button disagree floating-login' %>
-=======
                 <%= form.submit_with_login 'Estoy en contra', :class => 'white_button disagree' %>
->>>>>>> a6dd0958aff9198879f0fa149e7860b92e2042a8
               </div>
             <% end -%>
           </div>
@@ -51,11 +47,7 @@
                   <%= argument_data_form.hidden_field :reason, :value => '' %>
                   <%= argument_data_form.hidden_field :in_favor, :value => true %>
                 <% end -%>
-<<<<<<< HEAD
-                <%= form.submit 'Estoy a favor', :class => 'white_button agree floating-login' %>
-=======
                 <%= form.submit_with_login 'Estoy a favor', :class => 'white_button agree' %>
->>>>>>> a6dd0958aff9198879f0fa149e7860b92e2042a8
               </div>
             <% end -%>
           </div>
