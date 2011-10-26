@@ -18,7 +18,7 @@
       <div class="t"></div><div class="f"></div>
     </div>
   <% end %>
-  <% if user_signed_in? && current_user.name.present? %>
+  <% if user_signed_in? %>
     <ul class="auth">
       <li>
       <%= link_to "hola, #{current_user.name}", user_path(current_user), :class => "blue_button" %>
