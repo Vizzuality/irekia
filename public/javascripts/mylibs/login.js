@@ -97,7 +97,7 @@
       $("body").append("<div id='lock_screen'></div>");
       $("#lock_screen").height($(document).height());
       $("#lock_screen").fadeIn(150, function() {
-        callback();
+        callback && callback();
       });
     }
   }
