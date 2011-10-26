@@ -1,56 +1,24 @@
 /*
-Syntax error: Invalid CSS after "      .left {": expected "}", was "<<<<<<< HEAD"
-        on line 376 of /Users/javierarce/Sites/irekia/public/scss/main.scss
-        from line 8 of /Users/javierarce/Sites/irekia/public/scss/style.scss
+Syntax error: Invalid CSS after "@import "helpers";": expected selector or at-rule, was "<<<<<<< HEAD"
+        on line 4 of /Users/javierarce/Sites/irekia/public/scss/buttons.scss
+        from line 9 of /Users/javierarce/Sites/irekia/public/scss/style.scss
 
-371:         text-align: right;
-372: 
-373:         a { display:block; clear:both; }
-374:       }
-375:       .left {
-376: <<<<<<< HEAD
-377: =======
-378:         padding:3px;
-379: >>>>>>> a6dd0958aff9198879f0fa149e7860b92e2042a8
-380:         a { display:block; clear:both; }
-381:       }
+1: @import "compass/css3";
+2: @import "helpers";
+3: 
+4: <<<<<<< HEAD
+5: 
+6: textarea { resize:none; }
+7: 
+8: /* Textarea scrollbar */
+9: textarea {
 
 Backtrace:
-/Users/javierarce/Sites/irekia/public/scss/main.scss:376
-/Users/javierarce/Sites/irekia/public/scss/style.scss:8
+/Users/javierarce/Sites/irekia/public/scss/buttons.scss:4
+/Users/javierarce/Sites/irekia/public/scss/style.scss:9
 /Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:898:in `expected'
 /Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:841:in `expected'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:836:in `tok!'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:362:in `block'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:355:in `ruleset'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:417:in `block in declaration_or_ruleset'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:872:in `call'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:872:in `rethrow'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:418:in `declaration_or_ruleset'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:380:in `block_child'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:372:in `block_contents'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:361:in `block'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:355:in `ruleset'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:417:in `block in declaration_or_ruleset'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:872:in `call'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:872:in `rethrow'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:418:in `declaration_or_ruleset'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:380:in `block_child'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:372:in `block_contents'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:361:in `block'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:355:in `ruleset'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:417:in `block in declaration_or_ruleset'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:872:in `call'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:872:in `rethrow'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:418:in `declaration_or_ruleset'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:380:in `block_child'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:372:in `block_contents'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:361:in `block'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:355:in `ruleset'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:379:in `block_child'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:372:in `block_contents'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:57:in `stylesheet'
-/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:26:in `parse'
+/Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/scss/parser.rb:27:in `parse'
 /Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/engine.rb:320:in `_to_tree'
 /Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/engine.rb:251:in `block in to_tree'
 /Users/javierarce/.rvm/gems/ruby-1.9.2-p180@irekia/gems/sass-3.1.7/lib/sass/util.rb:297:in `silence_sass_warnings'
@@ -123,4 +91,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"      .left {\": expected \"}\", was \"<<<<<<< HEAD\"\A         on line 376 of /Users/javierarce/Sites/irekia/public/scss/main.scss\A         from line 8 of /Users/javierarce/Sites/irekia/public/scss/style.scss\A \A 371:         text-align: right;\A 372: \A 373:         a { display:block; clear:both; }\A 374:       }\A 375:       .left {\A 376: <<<<<<< HEAD\A 377: =======\A 378:         padding:3px;\A 379: >>>>>>> a6dd0958aff9198879f0fa149e7860b92e2042a8\A 380:         a { display:block; clear:both; }\A 381:       }"; }
+  content: "Syntax error: Invalid CSS after \"@import \"helpers\";\": expected selector or at-rule, was \"<<<<<<< HEAD\"\A         on line 4 of /Users/javierarce/Sites/irekia/public/scss/buttons.scss\A         from line 9 of /Users/javierarce/Sites/irekia/public/scss/style.scss\A \A 1: @import \"compass/css3\";\A 2: @import \"helpers\";\A 3: \A 4: <<<<<<< HEAD\A 5: \A 6: textarea { resize:none; }\A 7: \A 8: /* Textarea scrollbar */\A 9: textarea {"; }
