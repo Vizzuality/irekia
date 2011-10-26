@@ -37,6 +37,7 @@
 
       // We store lots of great stuff using jQuery data
       data = $this.data(store) || {},
+      callback = ($this.hasClass("after_create_proposal") || $this.hasClass("after_ask_question")) ? true : false,
 
       // This gets applied to the 'ps_container' element
       id = $this.attr('id') || $this.attr('name'),
@@ -55,6 +56,7 @@
         data.$this = $this;
         data.settings = settings;
         data.name = store;
+        data.callback = callback;
         data.event = "_close." + store + "_" + id;
       }
 
@@ -63,7 +65,10 @@
 
       //_setupCallback(data, $this.attr('class'));
 
+      $(this).unbind("click");
       $(this).click(_toggle);
+
+      $(window).unbind(data.event);
       $(window).bind(data.event, function() { _close(data, true); });
 
       // Save the updated $ps reference into our data object
@@ -171,10 +176,15 @@
     data.$ps.find("form").unbind();
     data.$ps.find("form").bind('ajax:success', function(event, xhr, status) {
       var $el = $(this);
+      GOD.unsubscribe(data.event);
 
-      _close(data, false, function() {
-        $el.questionPopover({open:true});
-      });
+      if (data.callback) {
+        _close(data, false, function() {
+          $el.questionPopover({open:true});
+        });
+      } else {
+        _close(data, true);
+      }
 
       loginInLinks();
     });
@@ -182,24 +192,6 @@
     data.$ps.find("form").bind('ajax:error', function(event, xhr, status) {
       $(this).effect("shake", { times:4 }, 100);
     });
-
-
-    // data.$ps.find('input[type="submit"]').bind('click', function(e) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
-
-    //   var $el = $(this);
-
-    //   if (data.callback) {
-    //     _close(data, false, function() {
-    //       $el.questionPopover({open:true});
-    //     });
-
-    //   } else {
-    //     _close(data, true);
-    //   }
-
-    // });
   }
 
   function _addSubmitRecoverPasswordAction(data) {
