@@ -50,7 +50,7 @@
    '  <footer>',
    '  <div class="separator"></div>',
    '  <div class="inner">',
-   '    <a href="#" class="white_button close right">Aceptar</a>',
+   '    <a href="#" class="white_button blue close right">Aceptar</a>',
    '  </div>',
    '  </footer>',
    '  <div class="t"></div><div class="f"></div>',
@@ -237,6 +237,12 @@
   function _clearRelated($ps) {
     $ps.find("textarea").val("");
     $ps.find(".related").hide();
+  }
+
+  function _build(data, templateName, extraParams) {
+    var params = _.extend({id:data.id + "_success", name:data.name}, extraParams);
+    var $ps = $(_.template(data.templates[templateName], params ));
+    return $ps;
   }
 
   function _close2(data, hideLockScreen, callback) {
