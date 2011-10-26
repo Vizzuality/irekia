@@ -53,6 +53,7 @@
     <div id="main" class="<%= controller.controller_name %> <%= controller.action_name %> role="main">
       <div class="content">
         <%= yield %>
+        <%= render 'shared/floating_login' %>
       </div>
     </div>
 

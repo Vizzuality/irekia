@@ -1,0 +1,33 @@
+<article id="login" class="micro login with_footer">
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:'data-type' => 'html', :remote => true, :novalidate => "novalidate"}) do |f| %>
+
+  <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="mOoFPTs9xQUTOTplStCotWba1+xiF4SX6/vYt12YNPY=" /></div>
+  <div class="inner">
+    <div class="content">
+      <h2>Accede a Irekia</h2>
+      <p>¿Olvidaste tu contraseña? <a href="#">Recupérala aquí</a></p>
+
+      <p><%= f.label :email %> <%= f.email_field :email, :class => :mInput %></p>
+      <p><%= f.label :password %> <%= f.password_field :password, :class => :mInput %></p>
+
+      <p class="remember_me"><%= f.check_box :remember_me, :class => "hidden" %> <a class="checkbox">Recordar mis datos</a></p>
+    </div>
+  </div>
+  <span class="close"></span>
+
+  <footer>
+  <div class="separator"></div>
+  <div class="inner">
+    <div class="left">
+      <a href="/users/auth/facebook" class="facebook" id="facebook_signin">Facebook</a>
+      <a href="/users/auth/twitter" class="twitter" id="twitter_signin">Twitter</a>
+    </div>
+    <div class="right">
+      <button type="submit" class="white_button right"><span>Entra</span></button>
+    </div>
+  </div>
+  </footer>
+
+  <div class="t"></div><div class="f"></div>
+<% end %>
+</article>

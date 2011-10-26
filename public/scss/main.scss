@@ -373,7 +373,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
         a { display:block; clear:both; }
       }
       .left {
-        padding:3px;
         a { display:block; clear:both; }
       }
     }
@@ -599,7 +598,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 
   &.publish {
-    &.initialy_hidden { opacity:0;}
     width: 757px;
     margin: 0 auto 40px auto;
     .inner {
@@ -693,7 +691,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
   } // publish
 
   &.thin {
-    &.initialy_hidden { opacity:0;}
     width: 636px;
     margin: 0 auto 40px auto;
     .inner {
@@ -777,7 +774,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 
   &.mini {
-    &.initialy_hidden { opacity:0;}
     width: 610px;
     margin: 0 auto 0 auto;
     .inner {
@@ -1374,6 +1370,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
 }
 
 /* Article addons */
+
+#container article {
+  &.initialy_hidden { opacity:0;}
+}
 
 #container article .social-links {
   margin: 0 auto 40px auto;
@@ -2924,8 +2924,13 @@ Explorer fixes
 
 
 /* =============================================================================
-Sign in
+Login & sign in
 ========================================================================== */
+
+#login {
+  display: none;
+  position: absolute;
+}
 
 #sign_in {
   display: none;
@@ -2946,7 +2951,6 @@ Sign in
 
     footer {
       clear: both;
-      overflow: hidden;
       border: 0;
       padding: 0;
       position: absolute;

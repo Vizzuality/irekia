@@ -287,7 +287,6 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_footer footer .inner a { font-size: 15px; }
 #container article.with_footer footer .right { position: relative; right: 36px; text-align: right; }
 #container article.with_footer footer .right a { display: block; clear: both; }
-#container article.with_footer footer .left { padding: 3px; }
 #container article.with_footer footer .left a { display: block; clear: both; }
 #container article.with_footer .separator { height: 2px; background: url("/images/box_simple_bkg.png") repeat-x; background-position: 0 -36px; }
 #container article.with_sidebar { position: relative; }
@@ -344,7 +343,6 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.micro.with_footer footer .inner .left { position: relative; float: left; left: 0; width: 50%; }
 #container article.micro.with_footer footer .inner div.right { right: 0; margin: 0; width: 50%; }
 #container article.publish { width: 757px; margin: 0 auto 40px auto; }
-#container article.publish.initialy_hidden { opacity: 0; }
 #container article.publish .inner header { margin: 0; width: 691px; }
 #container article.publish .inner header h2 { line-height: normal; }
 #container article.publish .inner .content .input_field.textarea { height: auto; }
@@ -365,7 +363,6 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish.with_footer footer .inner { width: 729px; background: url("/images/box_publish_bkg.png") repeat-y -1514px 0; border: none; }
 #container article.publish.with_footer .separator { height: 2px; background: url("/images/box_publish_bkg.png") repeat-x; background-position: 0 -33px; }
 #container article.thin { width: 636px; margin: 0 auto 40px auto; }
-#container article.thin.initialy_hidden { opacity: 0; }
 #container article.thin .inner header { margin: 0; width: 635px; }
 #container article.thin .inner header h2 { line-height: normal; }
 #container article.thin .inner .content p { margin: 0 0 20px 0; padding: 0; font-size: 15px; color: #7d8a92; }
@@ -385,7 +382,6 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.thin.signup .inner .content a { font-size: 15px; }
 #container article.thin.signup .inner .content p { margin: 0 0 46px 0; padding: 0; font-size: 17px; }
 #container article.mini { width: 610px; margin: 0 auto 0 auto; }
-#container article.mini.initialy_hidden { opacity: 0; }
 #container article.mini .inner header { margin: 0; }
 #container article.mini .inner header h2 { line-height: normal; }
 #container article.mini .inner .content p { margin: 0 0 20px 0; padding: 0; font-size: 15px; color: #7d8a92; }
@@ -541,6 +537,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.actions .inner .right .input_field, #container article.proposal .inner .right .input_field, #container article.proposals .inner .right .input_field, #container article.questions .inner .right .input_field, #container article.activity .inner .right .input_field { margin-bottom: 28px; }
 
 /* Article addons */
+#container article.initialy_hidden { opacity: 0; }
+
 #container article .social-links { margin: 0 auto 40px auto; width: 447px; clear: both; overflow: hidden; }
 #container article .social-links .facebook { margin: 0 29px 0 0; }
 #container article .social-links .facebook, #container article .social-links .twitter { float: left; height: 36px; background: url("/images/icons/share.png") no-repeat left -154px; }
@@ -940,14 +938,16 @@ Explorer fixes
 .ie7 #container article footer .left .question, .ie7 #container article footer .right .question, .ie8 #container article footer .left .question, .ie8 #container article footer .right .question { color: #cccccc; }
 
 /* =============================================================================
-Sign in
+Login & sign in
 ========================================================================== */
+#login { display: none; position: absolute; }
+
 #sign_in { display: none; position: absolute; right: 0; background: url("/images/popovers_bkg.png") no-repeat; width: 314px; height: 363px; z-index: 100; padding: 51px 38px 0 38px; }
 #sign_in .content { font-size: 15px; }
 #sign_in .content p { margin: 0 0 20px 0; font-size: 15px; }
 #sign_in .content label { display: block; }
 #sign_in .content h1 { color: #465866; font-weight: 300; line-height: normal; font-size: 31px; }
-#sign_in .content footer { clear: both; overflow: hidden; border: 0; padding: 0; position: absolute; bottom: 34px; width: 315px; background: none; }
+#sign_in .content footer { clear: both; border: 0; padding: 0; position: absolute; bottom: 34px; width: 315px; background: none; }
 #sign_in .content footer .left { float: left; width: 50%; }
 #sign_in .content footer .right { float: right; width: 50%; }
 #sign_in .content footer .white_button { margin: 0 1px; }
