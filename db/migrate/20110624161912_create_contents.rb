@@ -11,6 +11,7 @@ class CreateContents < ActiveRecord::Migration
       t.float    :longitude
 
       t.integer :comments_count, :default => 0
+      t.integer :answer_requests_count, :default => 0
 
       t.timestamps
     end

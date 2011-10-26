@@ -185,7 +185,7 @@ class User < ActiveRecord::Base
   end
 
   def proposals_received
-    areas.first.proposals_received
+    areas.first ? areas.first.proposals_received : []
   end
 
   def fullname
