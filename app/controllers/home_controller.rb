@@ -7,6 +7,6 @@ class HomeController < ApplicationController
   end
 
   def nav_bar_buttons
-    render :partial => 'shared/nav_bar_buttons'
+    render :partial => 'shared/nav_bar_buttons', :layout => false
   end
 end

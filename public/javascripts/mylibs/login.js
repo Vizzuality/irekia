@@ -175,8 +175,14 @@
 
     data.$ps.find("form").unbind();
     data.$ps.find("form").bind('ajax:success', function(event, xhr, status) {
-      var $el = $(this);
+
       GOD.unsubscribe(data.event);
+
+      var $el = $(this);
+      var $nav = $(xhr);
+
+      console.log(event, $nav);
+      //$("nav .content ul.auth").replaceWith($(xhr));
 
       if (data.callback) {
         _close(data, false, function() {
@@ -217,6 +223,7 @@
   }
 
   function _addCloseAction(data) {
+    data.$ps.find(".close").unbind();
     data.$ps.find(".close").bind('click', function(e) {
       e.stopPropagation();
       e.preventDefault();
