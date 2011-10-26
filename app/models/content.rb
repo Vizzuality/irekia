@@ -95,6 +95,7 @@ class Content < ActiveRecord::Base
       },
       :id              => id,
       :published_at    => published_at,
+      :tags            => tags,
       :comments_count  => comments_count,
       :last_comments   => last_comments
     }
