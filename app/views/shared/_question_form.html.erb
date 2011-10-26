@@ -1,4 +1,4 @@
-<% if user_signed_in? && @question.present? %>
+<% if @question.present? %>
   <article id="question-popover" class="mini popover with_footer initialy_hidden">
   <%= form_for @question, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
     <div class="inner">

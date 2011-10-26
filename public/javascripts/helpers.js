@@ -1,3 +1,20 @@
+function loginInLinks() {
+  $(".floating-login").each(function(i, el) {
+    $(el).unbind();
+    $(el).die();
+
+    if ($(el).hasClass("after_ask_question")) {
+      console.log("question");
+     $(el).addClass("ask_question");
+     $(el).removeClass("after_ask_question");
+     $(el).questionPopover();
+    }
+
+    $(el).hasClass("after_create_proposal") && $(el).proposalPopover();
+    $(el).removeClass("floating-login");
+  });
+}
+
 function isEmpty(str) {
   return !str.match(/\S/)
 }

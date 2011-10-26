@@ -61,7 +61,7 @@
       // Update the reference to $ps
       $ps = $('#' + store);
 
-      _setupCallback(data, $this.attr('class'));
+      //_setupCallback(data, $this.attr('class'));
 
       $(this).click(_toggle);
       $(window).bind(data.event, function() { _close(data, true); });
@@ -153,7 +153,6 @@
 
   // Close popover
   function _close(data, hideLockScreen, callback) {
-    GOD.unsubscribe(data.event);
 
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       data.$ps.hide();
@@ -169,10 +168,10 @@
 
   function _addSubmitAction(data) {
 
-
+    data.$ps.find("form").unbind();
     data.$ps.find("form").bind('ajax:success', function(event, xhr, status) {
-      console.log(event, xhr);
       _close(data, true);
+      loginInLinks();
     });
 
     data.$ps.find("form").bind('ajax:error', function(event, xhr, status) {
