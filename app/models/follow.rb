@@ -5,6 +5,8 @@ class Follow < ActiveRecord::Base
              :polymorphic => true,
              :counter_cache => true
 
+  validate :user_already_following_this_item?
+
   def self.areas
     where("follow_item_type = 'Area'")
   end
@@ -12,5 +14,11 @@ class Follow < ActiveRecord::Base
   def self.users
     where("follow_item_type = 'User'")
   end
+
+  def user_already_following_this_item?
+    return if user.not_following(follow_item)
+    errors[:already_following] = "You're already following this item"
+  end
+  private :user_already_following_this_item?
 
 end
