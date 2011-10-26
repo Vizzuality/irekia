@@ -130,8 +130,6 @@
     _addPassworRecoverAction(data);
     _addDefaultAction(data);
 
-    $("#container").prepend($ps);
-
     _subscribeToEvent(data.event);
     _triggerOpenAnimation($ps, data);
   }
@@ -141,9 +139,7 @@
     var left = _getLeftPosition($ps);
 
     $ps.css({"top":(top + 100) + "px", "left": left + "px"});
-
     $ps.show();
-
     $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
   }
 
@@ -169,26 +165,37 @@
   // setup the close event & signal the other subscribers
   function _subscribeToEvent(event) {
     GOD.subscribe(event);
-    GOD.broadcast(event);
   }
 
   function _addSubmitAction(data) {
-    data.$ps.find('input[type="submit"]').bind('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
 
-      var $el = $(this);
 
-      if (data.callback) {
-        _close(data, false, function() {
-          $el.questionPopover({open:true});
-        });
-
-      } else {
-        _close(data, true);
-      }
-
+    data.$ps.find("form").bind('ajax:success', function(event, xhr, status) {
+      console.log(event, xhr);
+      _close(data, true);
     });
+
+    data.$ps.find("form").bind('ajax:error', function(event, xhr, status) {
+      $(this).effect("shake", { times:4 }, 100);
+    });
+
+
+    // data.$ps.find('input[type="submit"]').bind('click', function(e) {
+    //   e.preventDefault();
+    //   e.stopPropagation();
+
+    //   var $el = $(this);
+
+    //   if (data.callback) {
+    //     _close(data, false, function() {
+    //       $el.questionPopover({open:true});
+    //     });
+
+    //   } else {
+    //     _close(data, true);
+    //   }
+
+    // });
   }
 
   function _addSubmitRecoverPasswordAction(data) {
@@ -228,8 +235,6 @@
   }
 
   function _loadTemplate(data, template) {
-
-    data.$ps = _build(data, template);
     var $ps = data.$ps;
 
     _addCloseAction(data);
