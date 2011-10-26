@@ -1,40 +1,90 @@
 <article class="thin with_footer with_remark with_form signup">
 <%= form_for @user, { :remote => true, :html => { :novalidate => :novalidate, "data-type" => :html }} do |f| %>
-    <div class="inner">
-      <div class="content">
+  <div class="inner">
+    <div class="content">
 
-        <h1><%= t('.tell_us_more_about_you') %></h1>
-        <p><%= t('.we_want_to_know_you_better') %></p>
+      <h1><%= t('.tell_us_more_about_you') %></h1>
+      <p><%= t('.we_want_to_know_you_better') %></p>
 
-        <fieldset>
+      <fieldset>
 
-          <div class="field name">
-            <%= f.label :name %>
-            <div class="input_field">
-              <%= f.text_field :name, :autocomplete => :off %>
-            </div>
-            <span class="mandatory">obligatorio</span>
+        <div class="field name">
+          <%= f.label :name %>
+          <div class="input_field">
+            <%= f.text_field :name, :autocomplete => :off %>
           </div>
+          <span class="mandatory">obligatorio</span>
+        </div>
 
-          <div class="field lastname">
-            <%= f.label :lastname %>
-            <div class="input_field">
-              <%= f.text_field :lastname, :autocomplete => :off %>
-            </div>
-            <span class="mandatory">obligatorio</span>
+        <div class="field lastname">
+          <%= f.label :lastname %>
+          <div class="input_field">
+            <%= f.text_field :lastname, :autocomplete => :off %>
           </div>
+          <span class="mandatory">obligatorio</span>
+        </div>
 
-          <div class="field territory left">
-            <%= f.label :province_id %>
-            <div class="input_field">
-              <%= f.select :province_id, [['Vizcaya', 1]], :include_blank => true %>
-            </div>
+        <div class="field territory left">
+          <%= f.label :province_id %>
+          <div class="input_field">
+            <%= f.select :province_id, [['Vizcaya', 1]], :include_blank => true %>
           </div>
+        </div>
 
-          <div class="field municipality right">
-            <%= f.label :city_id %>
-            <div class="input_field">
-              <%= f.select :city_id, [['Bilbao', 1]], :include_blank => true %>
+        <div class="field municipality right">
+          <%= f.label :city_id %>
+          <div class="input_field">
+            <%= f.select :city_id, [["alegria-dulantzi","Alegría-Dulantzi"],
+              ["amurrio","Amurrio"],
+              ["anana","Añana"],
+              ["aramaio","Aramaio"],
+              ["arminon","Armiñon"],
+              ["arraia","Arraia-Maeztu"],
+              ["arrazua","Arrazua-Ubarrundia"],
+              ["artziniega","Artziniega"],
+              ["asparrena","Asparrena"],
+              ["aiara","Ayala/Aiara"],
+              ["banos","Baños de Ebro/Mañueta"],
+              ["barrundia","Barrundia"],
+              ["berantevilla","Berantevilla"],
+              ["bernedo","Bernedo"],
+              ["campezo","Campezo/Kanpezu"],
+              ["elburgo","Elburgo/Burgelu"],
+              ["elciego","Elciego"],
+              ["villar","Elvillar/Bilar"],
+              ["ribera_alta","Erriberagoitia/Ribera Alta"],
+              ["arana","Harana/Valle de Arana"],
+              ["oca","Iruña Oka/Iruña de Oca"],
+              ["iruraiz","Iruraiz-Gauna"],
+              ["kripan","Kripan"],
+              ["kuartango","Kuartango"],
+              ["labastida","Labastida/Bastida"],
+              ["lagran","Lagrán"],
+              ["laguardia","Laguardia"],
+              ["lanciego","Lanciego/Lantziego"],
+              ["lantaron","Lantarón"],
+              ["lapuebla","Lapuebla de Labarca"],
+              ["laudio","Laudio/Llodio"],
+              ["legutiano","Legutio"],
+              ["leza","Leza"],
+              ["moreda","Moreda de Álava"],
+              ["navaridas","Navaridas"],
+              ["okondo","Okondo"],
+              ["oion","Oyón-Oion"],
+              ["penacerrada","Peñacerrada/Urizaharra"],
+              ["ribera_baja","Ribera Baja/Erribera Beitia"],
+              ["salvatierra","Salvatierra/Agurain"],
+              ["samaniego","Samaniego"],
+              ["san_millan","San Millán/Donemiliaga"],
+              ["urkabustaiz","Urkabustaiz"],
+              ["valdegovia","Valdegovía/Gaubea"],
+              ["villabuena","Villabuena de Álava/Esku"],
+              ["gasteiz","Vitoria-Gasteiz"],
+              ["yecora","Yécora/Iekora"],
+              ["zalduondo","Zalduondo"],
+              ["zambrana","Zambrana"],
+              ["zigoitia","Zigoitia"],
+              ["zuia","Zuia"]], :include_blank => true %>
             </div>
           </div>
 
@@ -46,7 +96,6 @@
           </div>
 
         </fieldset>
-
 
       </div>
     </div>
@@ -61,7 +110,7 @@
     </footer>
     <div class="remark">
       <%= link_to t('.with_this_data'), '/in_development' %><a href="#">
-    </div>
-    <div class="t"></div><div class="f"></div>
-  <% end %>
-</article>
+      </div>
+      <div class="t"></div><div class="f"></div>
+    <% end %>
+    </article>

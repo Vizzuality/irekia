@@ -1474,6 +1474,16 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
               }
 
+              &.born_at {
+                float:left;
+                width:415px;
+                clear:both;
+                .input_field {
+                  width:415px;
+                  select, .dk_container { float:left; margin:0 5px 0 0; }
+                }
+              }
+
               &.name,
               &.lastname {
                 clear:both;

@@ -34,7 +34,7 @@ $(function() {
   });
 
   $('a.checkbox').enableCheckbox();
-  $('.default').dropkick();
+  $('select').dropkick();
 
   $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();

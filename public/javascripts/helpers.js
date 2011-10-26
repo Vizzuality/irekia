@@ -58,6 +58,7 @@ jQuery.fn.enableRegistration = function(opt){
 
     forward($article, $currentArticle);
     $form = $currentArticle.find("form");
+    $form.find('select').dropkick();
 
     $form.submit(function() {
       $(this).find(".error").removeClass("error");
@@ -71,6 +72,7 @@ jQuery.fn.enableRegistration = function(opt){
     $currentArticle = $(data);
     $article.after($currentArticle);
     $form = $currentArticle.find("form");
+
     $form.find('a.checkbox').enableCheckbox();
 
     $form.submit(function() {
