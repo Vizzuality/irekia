@@ -18,7 +18,7 @@
               <%= argument_data_form.text_field :reason, :value => '' %>
               <%= argument_data_form.hidden_field :in_favor, :value => true %>
             <% end -%>
-            <%= form.submit t('.add') %>
+            <%= form.submit_with_login t('.add') %>
           </div>
         <% end -%>
       </div>
@@ -44,7 +44,7 @@
               <%= argument_data_form.text_field :reason, :value => '' %>
               <%= argument_data_form.hidden_field :in_favor, :value => false %>
             <% end -%>
-            <%= form.submit t('.add') %>
+            <%= form.submit_with_login t('.add') %>
           </div>
         <% end -%>
       </div>
