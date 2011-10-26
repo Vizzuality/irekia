@@ -4,20 +4,10 @@ class News < Content
   delegate :title, :subtitle, :body, :to => :news_data
 
   def as_json(options = {})
-    {
-      :author          => {
-        :id            => author.id,
-        :name          => author.name,
-        :fullname      => author.fullname,
-        :profile_image => author.profile_image
-      },
-      :id              => id,
-      :published_at    => published_at,
+    super({
       :title           => title,
       :subtitle        => subtitle,
-      :body            => body,
-      :comments_count  => comments_count,
-      :last_comments   => last_comments
-    }
+      :body            => body
+    })
   end
 end

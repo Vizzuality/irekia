@@ -86,28 +86,20 @@ class Content < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    {
-      :author          => {
-        :id            => author.id,
-        :fullname          => author.fullname,
-        :profile_image => author.profile_image
-      },
-      :published_at    => published_at,
-      :comments => comments_count
-    }
-  end
-
-  def as_json(options = {})
-    {
+    default = {
       :author          => {
         :id            => author.id,
         :name          => author.name,
         :fullname      => author.fullname,
         :profile_image => author.profile_image
       },
+      :id              => id,
       :published_at    => published_at,
-      :comments => comments_count
+      :comments_count  => comments_count,
+      :last_comments   => last_comments
     }
+
+    default.merge(options)
   end
 
   def update_published_at

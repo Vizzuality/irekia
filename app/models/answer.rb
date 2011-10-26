@@ -11,20 +11,10 @@ class Answer < Content
   accepts_nested_attributes_for :answer_opinions
 
   def as_json(options = {})
-    {
-      :author          => {
-        :id            => author.id,
-        :name          => author.name,
-        :fullname      => author.fullname,
-        :profile_image => author.profile_image
-      },
-      :id              => id,
-      :published_at    => published_at,
+    super({
       :question_text   => answer_data.question_text,
-      :answer_text     => answer_text,
-      :comments_count  => comments_count,
-      :last_comments   => last_comments
-    }
+      :answer_text     => answer_text
+    })
   end
 
   def publish_content
