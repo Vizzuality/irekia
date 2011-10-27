@@ -139,24 +139,8 @@
 
   function _build(data, templateName, extraParams) {
     var params = _.extend({id:data.id + "_success", name:data.name}, extraParams);
-
     var $ps = $(_.template(data.templates[templateName], params ));
-
     return $ps;
-  }
-
-  function _toggleLockScreen(callback) {
-    var $lock_screen = $("#lock_screen");
-
-    if ($lock_screen.length) {
-      $lock_screen.fadeOut(150, function() { $(this).remove(); });
-    } else {
-      $("body").append("<div id='lock_screen'></div>");
-      $("#lock_screen").height($(document).height());
-      $("#lock_screen").fadeIn(150, function() {
-        callback && callback();
-      });
-    }
   }
 
   // Toggle popover
@@ -169,7 +153,7 @@
     var data  = $(this).data(store);
     var $ps   = $('#' + data.name + "_" + data.id);
 
-    _toggleLockScreen(function(){
+    LockScreen.show(function(){
       $ps.length ?  null : _open(data);
     });
   }
@@ -253,7 +237,7 @@
     data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).remove();
       _clearRelated($(this));
-      hideLockScreen && _toggleLockScreen();
+      hideLockScreen && LockScreen.hide();
       callback && callback();
     }});
   }
@@ -263,7 +247,7 @@
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).css("top", "-900px");
       _clearRelated($(this));
-      hideLockScreen && _toggleLockScreen();
+      hideLockScreen && LockScreen.hide();
       callback && callback();
     }});
   }

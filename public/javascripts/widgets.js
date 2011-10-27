@@ -1,4 +1,43 @@
 /*
+* LockScreen Systems Inc.
+*/
+var LockScreen = (function() {
+
+  function _isLocked() {
+    return $("#lock_screen").length != 0;
+  }
+
+  function _hide(callback) {
+    if (_isLocked()) {
+      $("#lock_screen").fadeOut(150, function() {
+        $(this).remove();
+        callback && callback();
+      });
+    }
+  }
+
+  function _show(callback) {
+    if (!_isLocked()) {
+      $("body").append("<div id='lock_screen'></div>");
+      $("#lock_screen").height($(document).height());
+      $("#lock_screen").fadeIn(150, function() {
+        callback && callback();
+      });
+    }
+  }
+
+  function _toggle(callback) {
+    $("#lock_screen").length ? _hide(callback) : _show(callback);
+  }
+
+  return {
+    toggle:_toggle,
+    show:_show,
+    hide:_hide
+  };
+})();
+
+/*
 * GOD sees everything
 */
 var GOD = (function() {
