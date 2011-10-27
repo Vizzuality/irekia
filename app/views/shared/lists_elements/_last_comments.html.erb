@@ -11,7 +11,7 @@
           <li>
           <%= avatar data.author, 'small' %>
           <p>
-          <%= link_to data.last_comments.last.author.fullname, user_path(data.last_comments.last.author.id) %> - <%= truncate(data.last_comments.last.body, :length => 150) %>
+          <%= link_to data.last_comments.last.author.fullname, path_for_user(data.last_comments.last.author) %> - <%= truncate(data.last_comments.last.body, :length => 150) %>
           </p>
           </li>
         </ul>

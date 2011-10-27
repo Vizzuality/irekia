@@ -33,7 +33,7 @@ module ApplicationHelper
   end
 
   def path_for_user(user)
-    if user.politician?
+    if user.is_politician
       politician_path(user.id)
     else
       user_path(user.id)
@@ -43,7 +43,7 @@ module ApplicationHelper
   def avatar(user, size = nil)
     size = size.present?? size.to_s : ''
 
-    if user.present? && user.profile_pictures.present?
+    if user.present? && user.profile_image.present?
 
       link_to (image_tag(user.profile_image) + (raw (content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
     else

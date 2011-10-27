@@ -91,7 +91,8 @@ class Content < ActiveRecord::Base
         :id            => author.id,
         :name          => author.name,
         :fullname      => author.fullname,
-        :profile_image => author.profile_image
+        :profile_image => author.profile_image,
+        :is_politician => author.politician?
       },
       :id              => id,
       :type            => type,
