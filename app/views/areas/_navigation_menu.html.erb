@@ -1,8 +1,8 @@
 <%= menu [
-  { :link => (link_to t(".menu.summary"), area_path(@area)), :class => current_action?(:show)},
-  { :link => (link_to t(".menu.actions"), actions_area_path(@area)), :class => current_action?(:actions) },
-  { :link => (link_to t(".menu.questions"), questions_area_path(@area)) , :class => current_action?(:questions)},
-  { :link => (link_to t(".menu.proposals"), proposals_area_path(@area)) , :class => current_action?(:proposals)},
-  { :link => (link_to t(".menu.agenda"), agenda_area_path(@area)) , :class => current_action?(:agenda)},
-  { :link => (link_to t(".menu.team"), team_area_path(@area)) , :class => current_action?(:team)}
+  { :link => (link_to t(".menu.summary"),   area_path(@area)),                                   :class => current_action?(:show)},
+  { :link => (link_to t(".menu.actions"),   actions_area_path(@area,   :anchor => :actions)),    :class => current_action?(:actions)},
+  { :link => (link_to t(".menu.questions"), questions_area_path(@area, :anchor => :questions)),  :class => current_action?(:questions)},
+  { :link => (link_to t(".menu.proposals"), proposals_area_path(@area, :anchor => :proposals)),  :class => current_action?(:proposals)},
+  { :link => (link_to t(".menu.agenda"),    agenda_area_path(@area,    :anchor => :agenda)),     :class => current_action?(:agenda)},
+  { :link => (link_to t(".menu.team"),      team_area_path(@area,      :anchor => :team)),       :class => current_action?(:team)}
 ] %>
