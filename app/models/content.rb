@@ -64,8 +64,8 @@ class Content < ActiveRecord::Base
     !moderated
   end
 
-  def last_contents
-    self.class.moderated.includes(:"#{self.class.name.downcase}_data", :comments).order('published_at desc').where('id <> ?', id).first(5)
+  def last_contents(limit = 5)
+    self.class.moderated.includes(:"#{self.class.name.downcase}_data", :comments).order('published_at desc').where('id <> ?', id).first(limit)
   end
 
   def commenters
