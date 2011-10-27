@@ -94,6 +94,7 @@ class Content < ActiveRecord::Base
         :profile_image => author.profile_image
       },
       :id              => id,
+      :type            => type,
       :published_at    => published_at,
       :tags            => tags,
       :comments_count  => comments_count,

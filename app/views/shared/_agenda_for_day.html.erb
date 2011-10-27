@@ -3,7 +3,7 @@
     <% @info_div_id = (@info_div_id || 0 ) + 1 -%>
     <% day_events.first(2).each do |event| -%>
       <li>
-      <%= link_to event.title.truncate(17), event, :id => "event-#{event.id}", :class => :show_event %>
+      <%= link_to (raw (event.title.truncate(19, :omission => "&hellip;"))), event, :id => "event-#{event.id}", :class => :show_event %>
       </li>
     <% end -%>
     <li class="more"><%= link_to (t('.and_more', :count => day_events.count - 2)), '#', :id => "event-more-#{@info_div_id}", :class => :show_event %></li>
@@ -15,7 +15,7 @@
       <ul>
         <li>
         <strong class="date"><%= l(event.event_date, :format => '%d, %B de %Y') %></strong>
-        <%= link_to event.title.truncate(60), event, :class => :event %>
+        <%= link_to (raw (event.title.truncate(60, :omission => "&hellip;"))), event, :class => :event %>
         <ul class="details">
           <li class="where"><%= event.location %></li>
           <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
@@ -38,7 +38,7 @@
             <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
           </ul>
           <% if event != day_events.last %>
-            <div class="separator"></div>
+            <div class="omission"></div>
           <% end %>
           </li>
         <% end -%>
@@ -52,7 +52,7 @@
   <ul class="events">
     <% day_events.each do |event| -%>
       <li>
-      <%= link_to event.title.truncate(17), event, :id => "event-#{event.id}", :class => :show_event %>
+      <%= link_to (raw (event.title.truncate(19, :omission => "&hellip;"))), event, :id => "event-#{event.id}", :class => :show_event %>
       </li>
     <% end -%>
   </ul>
@@ -63,7 +63,7 @@
       <ul>
         <li>
         <strong class="date"><%= l(event.event_date, :format => '%d, %B de %Y') %></strong>
-        <%= link_to event.title.truncate(60), event, :class => :event %>
+        <%= link_to (raw (event.title.truncate(60, :omission => "&hellip;"))), event, :class => :event %>
         <ul class="details">
           <li class="where"><%= event.location %></li>
           <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
