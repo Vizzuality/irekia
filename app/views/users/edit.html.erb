@@ -1,6 +1,5 @@
 <article class="thin with_footer with_remark with_form signup">
 <%= form_for @user, { :remote => true, :html => { :novalidate => :novalidate, "data-type" => :html }} do |f| %>
-
   <div class="inner">
     <div class="content">
 
@@ -86,41 +85,6 @@
               ["zambrana","Zambrana"],
               ["zigoitia","Zigoitia"],
               ["zuia","Zuia"]], :include_blank => true %>
-    <div class="inner">
-      <div class="content">
-
-        <h1><%= t('.tell_us_more_about_you') %></h1>
-        <p><%= t('.we_want_to_know_you_better') %></p>
-
-        <fieldset>
-
-          <div class="field name">
-            <%= f.label :name %>
-            <div class="input_field">
-              <%= f.text_field :name, :autocomplete => :off %>
-            </div>
-            <span class="mandatory">obligatorio</span>
-          </div>
-
-          <div class="field lastname">
-            <%= f.label :lastname %>
-            <div class="input_field">
-              <%= f.text_field :lastname, :autocomplete => :off %>
-            </div>
-            <span class="mandatory">obligatorio</span>
-          </div>
-
-          <div class="field territory left">
-            <%= f.label :province_id %>
-            <div class="input_field">
-              <%= f.select :province_id, [['Vizcaya', 1]], :include_blank => true %>
-            </div>
-          </div>
-
-          <div class="field municipality right">
-            <%= f.label :city_id %>
-            <div class="input_field">
-              <%= f.select :city_id, [['Bilbao', 1]], :include_blank => true %>
             </div>
           </div>
 
@@ -132,7 +96,6 @@
           </div>
 
         </fieldset>
-
 
       </div>
     </div>
@@ -147,7 +110,8 @@
     </footer>
     <div class="remark">
       <%= link_to t('.with_this_data'), '/in_development' %><a href="#">
-    </div>
-    <div class="t"></div><div class="f"></div>
-  <% end %>
-</article>
+      </div>
+      <div class="t"></div><div class="f"></div>
+    <% end %>
+    </article>
+
