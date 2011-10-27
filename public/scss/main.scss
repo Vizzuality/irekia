@@ -1279,6 +1279,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
               margin: 0 0 8px 0;
               line-height: 19px;
               &.excerpt { font-size: 15px; padding: 0; margin: 0 0 12px 0; line-height: 19px; color: $standard_gray; }
+              a { color: #465866;}
             }
 
             a:hover {

@@ -5,8 +5,7 @@
   <%= content_tag 'p', t(".title", :receiver => t('.area')) if data.target_is_a_user? %>
 
   <p class="excerpt">
-  <%= %Q{"#{data.question_text}"} %>
-  <%= link_to t(".read_more"), question_path(data.id)%>
+  <%= link_to %Q{"#{data.question_text}"}, question_path(data.id) %>
   </p>
 
   <div class="footer">
