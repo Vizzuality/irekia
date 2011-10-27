@@ -178,7 +178,7 @@ es:
         title: 'Contestando a "%{question}"'
         author: '%{author} contesto hace %{time}'
       question:
-        title: 'Pregunta para %{receiver}...'
+        title: 'Pregunta para %{receiver}'
         area: "el área"
         author: '%{author} hace %{time}'
         answered: 'Contestada hace %{time}'

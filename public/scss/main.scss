@@ -609,6 +609,24 @@ article .inner { h2, h3 { color: $dark_blue; } }
       }
 
       .content {
+
+
+        .container {
+            overflow:hidden;
+            clear:both;
+            width:687px;
+            height:94px;
+          .inner_container {
+            width:9000px;
+            margin-top:19px;
+            .section {
+              float:left;
+              margin-right:10px;
+            }
+          }
+        }
+
+
         .input_field.textarea {
           height:auto;
 
@@ -634,14 +652,14 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
         ul.menu {
           width:686px;
-          margin:0 0 26px 0;
+          margin:0 0 8px 0;
 
           li {
             margin-right:6px;
             &.last { margin: 0;}
             a {
               height:14px;
-              padding:14px 0 18px 0;
+              padding:12px 0 16px 0;
               width: 106px;
               font-size:15px;
             }
@@ -693,7 +711,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
           width: 729px;
           background: url('/images/box_publish_bkg.png') repeat-y -1514px 0;
           border: none;
-          div.left { width:50%; }
+          div.left  { width:50%; }
           div.right { width:50%; margin:0; }
         }
       }

@@ -11,21 +11,45 @@
     <h2>Publicar</h2>
     <p>Elige el tipo de contenido, y compártelo con el resto de los usuarios</p>
 
+    <%= menu ([
+    { :link => (link_to t(".dashboard"), "#"), :class => :selected},
+    { :link => (link_to t(".photos"), "#")},
+    { :link => (link_to t(".video"), "#")},
+    { :link => (link_to t(".proposals"), "#") },
+    { :link => (link_to t(".link"), "#") },
+    { :link => (link_to t(".event"), "#"), :class => "last"},
+    ]) %>
 
-<%= menu ([
-{ :link => (link_to t(".dashboard"), "#"), :class => :selected},
-  { :link => (link_to t(".photos"), "#")},
-  { :link => (link_to t(".video"), "#")},
-  { :link => (link_to t(".proposals"), "#") },
-  { :link => (link_to t(".link"), "#") },
-  { :link => (link_to t(".event"), "#"), :class => "last"},
-]) %>
+    <div class="container">
+      <div class="inner_container clearfix">
 
-<div class="input_field placeholder textarea">
-  <textarea name="" rows="8" cols="40"></textarea>
-  <span class="holder">Introduce el texto que quieras publicar aquí.</span>
-  <div class="triangle"></div>
-</div>
+        <div class="section">
+          <div class="input_field placeholder textarea">
+            <textarea></textarea>
+            <span class="holder">Introduce el texto que quieras publicar aquí.</span>
+            <div class="triangle"></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="input_field placeholder textarea">
+            <textarea></textarea>
+            <span class="holder">Introduce el texto que quieras publicar aquí.</span>
+            <div class="triangle"></div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="input_field placeholder textarea">
+            <textarea></textarea>
+            <span class="holder">Introduce el texto que quieras publicar aquí.</span>
+            <div class="triangle"></div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
 
   </div>
 </div>

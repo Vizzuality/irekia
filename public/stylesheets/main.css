@@ -189,15 +189,18 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish { width: 757px; margin: 0 auto 40px auto; }
 #container article.publish .inner header { margin: 0; width: 691px; }
 #container article.publish .inner header h2 { line-height: normal; }
+#container article.publish .inner .content .container { overflow: hidden; clear: both; width: 687px; height: 94px; }
+#container article.publish .inner .content .container .inner_container { width: 9000px; margin-top: 19px; }
+#container article.publish .inner .content .container .inner_container .section { float: left; margin-right: 10px; }
 #container article.publish .inner .content .input_field.textarea { height: auto; }
 #container article.publish .inner .content .input_field.textarea textarea { width: 664px; height: 53px; font-size: 15px; -moz-transition-duration: 0; -webkit-transition-duration: 0; -o-transition-duration: 0; transition-duration: 0; }
 #container article.publish .inner .content .input_field.textarea:focus .triangle, #container article.publish .inner .content .input_field.textarea:hover .triangle { background-position: 0 bottom; }
 #container article.publish .inner .content .input_field.textarea span.holder { font-size: 15px; }
 #container article.publish .inner .content .input_field.textarea .triangle { width: 30px; height: 25px; background: url("/images/icons/triangle.png") no-repeat 0 0; position: absolute; top: -14px; left: 37px; }
-#container article.publish .inner .content ul.menu { width: 686px; margin: 0 0 26px 0; }
+#container article.publish .inner .content ul.menu { width: 686px; margin: 0 0 8px 0; }
 #container article.publish .inner .content ul.menu li { margin-right: 6px; }
 #container article.publish .inner .content ul.menu li.last { margin: 0; }
-#container article.publish .inner .content ul.menu li a { height: 14px; padding: 14px 0 18px 0; width: 106px; font-size: 15px; }
+#container article.publish .inner .content ul.menu li a { height: 14px; padding: 12px 0 16px 0; width: 106px; font-size: 15px; }
 #container article.publish .inner .content p { margin: 0 0 20px 0; padding: 0; font-size: 15px; color: #7d8a92; }
 #container article.publish .t, #container article.publish .f { height: 10px; background: url("/images/box_publish_bkg.png") no-repeat; }
 #container article.publish .t { top: -10px; background-position: 0 0; }
