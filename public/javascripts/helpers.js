@@ -405,40 +405,60 @@ jQuery.fn.enableCommentBox = function(opt){
     var spin_element = document.getElementById('spinner_' + $(this).attr("id"));
     var spinner = new Spinner(opts);
 
+    var $textarea = $(this).find("textarea");
+
     $(this).submit(function(e) {
       var count = $input.val().length;
       if (count <= 0) {
         return false;
+      } else {
+        spinner.spin(spin_element);
       }
     });
 
     var $that = $(this);
 
+    function resetTextarea() {
+      $textarea.removeAttr('disabled');
+      $textarea.blur();
+      $textarea.val("");
+      $textarea.find(".holder").fadeIn(speed);
+    }
+
+    function submitContent() {
+      submitting = true;
+      $textarea.parent().submit();
+      $textarea.attr("disabled", "disabled");
+      $textarea.blur();
+    }
+
     $(this).find("textarea").keydown(function(e) {
-      if (!submitting && e.keyCode == 13) {
-        submitting = true;
-        $(this).parent().submit();
-        $(this).attr("disabled", "disabled");
-        $(this).blur();
-        spinner.spin(spin_element);
+      var count = $input.val().length;
+      if (count > 0) {
+        if (!submitting && e.keyCode == 13) {
+          submitContent();
+        }
       }
+    });
+
+    $(this).bind('ajax:error', function(evt, xhr, status) {
+      spinner.stop();
+      submitting = false;
+      resetTextarea();
     });
 
     $(this).bind('ajax:success', function(evt, xhr, status) {
       var $el = $(this).siblings("ul");
       var $comment = $(xhr);
+
+      // Add new comment
       $comment.hide();
       $el.append($comment);
-      //spinner.stop();
-      submitting = false;
+      $comment.slideDown(speed);
 
       spinner.stop();
-      // Reset textarea
-      $(this).find('textarea').val("");
-      $(this).find('textarea').removeAttr('disabled');
-      $(this).find('textarea').focus();
-      $(this).find(".holder").fadeIn(speed);
-      $comment.slideDown(speed);
+      submitting = false;
+      resetTextarea();
     });
 
     function textCounter($input) {
