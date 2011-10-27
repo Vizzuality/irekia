@@ -397,9 +397,13 @@ jQuery.fn.smartPlaceholder = function(opt){
 jQuery.fn.enableCommentBox = function(opt){
 
   var speed  = (opt && opt.speed) || 200;
-  var submitting = false;
 
   this.each(function(){
+
+    var submitting = false;
+    var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
+    var spin_element = document.getElementById('spinner_' + $(this).attr("id"));
+    var spinner = new Spinner(opts);
 
     $(this).submit(function(e) {
       var count = $input.val().length;
@@ -414,8 +418,9 @@ jQuery.fn.enableCommentBox = function(opt){
       if (!submitting && e.keyCode == 13) {
         submitting = true;
         $(this).parent().submit();
-        $comment.hide();
-        $that.find('textarea').val("");
+        $(this).attr("disabled", "disabled");
+        $(this).blur();
+        spinner.spin(spin_element);
       }
     });
 
@@ -427,8 +432,11 @@ jQuery.fn.enableCommentBox = function(opt){
       //spinner.stop();
       submitting = false;
 
+      spinner.stop();
       // Reset textarea
       $(this).find('textarea').val("");
+      $(this).find('textarea').removeAttr('disabled');
+      $(this).find('textarea').focus();
       $(this).find(".holder").fadeIn(speed);
       $comment.slideDown(speed);
     });

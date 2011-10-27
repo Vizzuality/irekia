@@ -1273,6 +1273,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         margin-top: 12px;
         background: rgba(237, 237, 239, 0.7);
         input[type="submit"] { display:none; }
+
         .avatar {
           margin: 0 9px 0 0;
           &:before { border-color: rgba(237, 237, 239, 0.7); }
@@ -1285,6 +1286,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
             padding: 10px;
             background: rgba(237, 237, 239, 0.7);
             margin:0;
+
+
             &.previous { padding:0; border:none; display:none; }
             &.moderated {
               background:$moderated_color; border-top: 1px solid $white;
@@ -1313,6 +1316,18 @@ article .inner { h2, h3 { color: $dark_blue; } }
           .input_field {
             &.textarea {
               height:auto;
+
+        .spinner {
+          position:absolute;
+          right:3px;
+          top: 1px;
+          display:block;
+          width:33px;
+          height:33px;
+        }
+
+
+
 
               textarea {
                 resize: none;
