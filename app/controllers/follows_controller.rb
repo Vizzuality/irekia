@@ -6,12 +6,13 @@ class FollowsController < ApplicationController
 
   def new
     @follow = if @area then @area.follows.build else @user.follows.build end
-    @follow.user = current_user
     @followers_count = @follow_parent.followers.count
   end
 
   def create
-    @follow = Follow.create! params[:follow]
+    @follow = Follow.new params[:follow]
+    @follow.user = current_user
+    @follow.save!
 
     redirect_to edit_area_follow_path(@area, @follow) and return if @area
     redirect_to edit_user_follow_path(@user, @follow) and return if @user

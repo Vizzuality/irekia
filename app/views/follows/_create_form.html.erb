@@ -8,7 +8,6 @@
 %>
 
 <%= form_for [@follow_parent, @follow], :remote => true, :html => {:'data-type' => 'html', :class => :follow } do |form| %>
-  <%= form.hidden_field :user_id %>
   <%= form.hidden_field :follow_item_id %>
   <%= form.hidden_field :follow_item_type %>
   <%= content_tag :button, :type => 'submit', :class => "#{@button_class} #{class_for_modal_login} add_person add_to_favorites" do %>
