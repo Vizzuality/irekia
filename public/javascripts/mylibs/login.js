@@ -181,8 +181,13 @@
       var $el = $(this);
       var $nav = $(xhr);
 
-      console.log(event, $nav);
-      //$("nav .content ul.auth").replaceWith($(xhr));
+      // Let's replace the header
+      $("nav .content ul.auth").fadeOut(250, function() {
+        $("nav .content ul.auth").replaceWith($(xhr));
+        $("nav .content ul.auth").fadeIn(250);
+        $(".auth a.login").unbind(); // and we no longer need this binding
+      });
+
 
       if (data.callback) {
         _close(data, false, function() {
