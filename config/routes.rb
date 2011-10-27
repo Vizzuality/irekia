@@ -42,7 +42,11 @@ Irekia::Application.routes.draw do
   end
 
   resources :areas do
-    resources :follows
+    resources :follows do
+      collection do
+        get 'button'
+      end
+    end
     member do
       get 'actions', :path => 'actions(/:type)(.:format)'
       get 'questions'
@@ -53,7 +57,11 @@ Irekia::Application.routes.draw do
   end
 
   resources :politicians do
-    resources :follows
+    resources :follows do
+      collection do
+        get 'button'
+      end
+    end
     member do
       get 'actions'
       get 'questions'

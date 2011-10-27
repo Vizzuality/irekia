@@ -15,7 +15,6 @@ class FollowsController < ApplicationController
     @follow.user = current_user
     @follow.save!
 
-
     redirect_to edit_area_follow_path(@area, @follow, :form_type => params[:form_type]) and return if @area
     redirect_to edit_user_follow_path(@user, @follow, :form_type => params[:form_type]) and return if @user
   end
@@ -29,9 +28,18 @@ class FollowsController < ApplicationController
     @follow = Follow.where(:id => params[:id]).first
     @follow.destroy
 
-
     redirect_to new_area_follow_path(@area, :form_type => params[:form_type]) and return if @area
     redirect_to new_user_follow_path(@user, :form_type => params[:form_type]) and return if @user
+  end
+
+  def button
+    if current_user && (@follow = current_user.followed_item(@area || @user))
+      redirect_to edit_area_follow_path(@area, @follow, :form_type => params[:form_type]) and return if @area
+      redirect_to edit_user_follow_path(@user, @follow, :form_type => params[:form_type]) and return if @user
+    else
+      redirect_to new_area_follow_path(@area, :form_type => params[:form_type]) and return if @area
+      redirect_to new_user_follow_path(@user, :form_type => params[:form_type]) and return if @user
+    end
   end
 
   def get_area

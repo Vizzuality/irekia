@@ -6,5 +6,5 @@
 <%= form_for [@follow_parent, @follow], :remote => true, :html => {:'data-type' => 'html', :method => :delete, :class => :follow } do |form| %>
   <%= hidden_field_tag :form_type, 'ribbon' %>
   <%= form.hidden_field :id %>
-  <%= form.submit '', :class => 'ribbon add_person add_to_favorites' %>
+  <%= form.submit '', :class => 'ribbon add_person add_to_favorites', :'data-item-id' => @follow_parent.id %>
 <% end -%>

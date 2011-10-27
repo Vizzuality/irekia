@@ -43,7 +43,11 @@
 
 </div>
 </footer>
-<%= link_to "", '/in_development', {:class => :ribbon} %>
+<% if @follow.new_record? -%>
+  <%= render 'follows/create_ribbon' %>
+<% else -%>
+  <%= render 'follows/destroy_ribbon' %>
+<% end -%>
 <div class="t"></div><div class="f"></div>
 </article>
 
