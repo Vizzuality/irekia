@@ -12,7 +12,7 @@
             <%= link_to area.name, area_path(area), :class => :name %>
             <p><%= t('.area') %></p>
             <div class="follow basic">
-            <%= render 'follows/destroy_form', :follow => @areas_follows[area.id], :follow_parent => @user, :button_class => '' %>
+              <%= render 'follows/destroy_mini', :follow => @areas_follows[area.id], :follow_parent => @user %>
             <div>
           </div>
         </li>
@@ -28,7 +28,9 @@
             <p>
               <%= t('.title_and_area', :title => get_politician_title(user), :area => user.areas.map(&:name).to_sentence) %>
             </p>
-            <div class="follow basic"><%= render 'follows/destroy_form', :follow => @users_follows[user.id], :follow_parent => @user, :button_class => '' %></div>
+            <div class="follow basic">
+              <%= render 'follows/destroy_mini', :follow => @users_follows[user.id], :follow_parent => @user %>
+            </div>
           </div>
         </li>
       <% end %>

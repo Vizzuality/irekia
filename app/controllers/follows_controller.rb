@@ -1,6 +1,7 @@
 class FollowsController < ApplicationController
   before_filter :get_area
   before_filter :get_user
+  before_filter :get_form_type, :only => [:new, :edit]
 
   layout false
 
@@ -14,20 +15,23 @@ class FollowsController < ApplicationController
     @follow.user = current_user
     @follow.save!
 
-    redirect_to edit_area_follow_path(@area, @follow) and return if @area
-    redirect_to edit_user_follow_path(@user, @follow) and return if @user
+
+    redirect_to edit_area_follow_path(@area, @follow, :form_type => params[:form_type]) and return if @area
+    redirect_to edit_user_follow_path(@user, @follow, :form_type => params[:form_type]) and return if @user
   end
 
   def edit
     @follow = Follow.where(:id => params[:id]).first
+
   end
 
   def destroy
     @follow = Follow.where(:id => params[:id]).first
     @follow.destroy
 
-    redirect_to new_area_follow_path(@area) and return if @area
-    redirect_to new_user_follow_path(@user) and return if @user
+
+    redirect_to new_area_follow_path(@area, :form_type => params[:form_type]) and return if @area
+    redirect_to new_user_follow_path(@user, :form_type => params[:form_type]) and return if @user
   end
 
   def get_area
@@ -39,4 +43,9 @@ class FollowsController < ApplicationController
     @follow_parent = @user = User.find(params[:user_id]) if params[:user_id]
   end
   private :get_user
+
+  def get_form_type
+    @form_type = "_#{params[:form_type]}" if params[:form_type].present?
+  end
+  private :get_form_type
 end

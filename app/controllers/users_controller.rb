@@ -16,11 +16,11 @@ class UsersController < ApplicationController
 
     @first_time = @user.first_time
 
-    @suggestions         = @user.follow_suggestions.limit(6)
+    @suggestions         = current_user.follow_suggestions.limit(6)
     @suggestions_follows = @suggestions.inject({}) do |suggestions_follows, user|
       suggestions_follows[user.id] = if @user.blank? || @user.not_following(user)
         follow          = user.follows.build
-        follow.user     = @user
+        follow.user     = current_user
         follow
       else
         follow = @user.followed_item(user)
@@ -53,9 +53,12 @@ class UsersController < ApplicationController
     @areas_following = @user.areas_following.all
     @users_following = @user.users_following.all
 
-    unless public_profile?
+    if private_profile?
       @areas_follows   = Hash[@user.followed_items.areas.map{|follow| [follow.follow_item_id, follow]}]
       @users_follows   = Hash[@user.followed_items.users.map{|follow| [follow.follow_item_id, follow]}]
+    elsif public_profile?
+      @areas_follows   = Hash[@areas_following.map{|area| [area.id, current_user ? current_user.follow_for(area) : Follow.new(:follow_item => area)]}]
+      @users_follows   = Hash[@users_following.map{|user| [user.id, current_user ? current_user.follow_for(user) : Follow.new(:follow_item => user)]}]
     end
   end
 

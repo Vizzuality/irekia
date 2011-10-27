@@ -15,9 +15,9 @@
           </p>
           <div class="follow basic">
             <% if @suggestions_follows[user.id] && @suggestions_follows[user.id].new_record? -%>
-              <%= render 'follows/create_form', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '', :button_label => t('.follow') %>
+              <%= render 'follows/create_mini', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '', :button_label => t('.follow') %>
             <% else -%>
-              <%= render 'follows/destroy_form', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '' %>
+              <%= render 'follows/destroy_mini', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '' %>
             <% end -%>
           </div>
         </div>

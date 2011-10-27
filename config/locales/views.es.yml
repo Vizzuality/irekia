@@ -906,7 +906,7 @@ es:
       continue: Continuar
       discover: Descubre por qué queremos que te conectes.
   follows:
-    create_form:
+    create:
       area:
         follow:
           zero: Seguir a este área (0)
@@ -917,5 +917,9 @@ es:
           zero: Seguir a %{name} (0)
           one: Seguir a %{name} (1)
           other: 'Seguir a %{name} (%{count})'
-    destroy_form:
+    create_mini:
+      follow: Seguir
+    destroy:
+      stop_follow: Dejar de seguir
+    destroy_mini:
       stop_follow: Dejar de seguir

@@ -14,9 +14,9 @@
     </div>
       <div id="follow">
         <% if @follow.new_record? -%>
-          <%= render 'follows/create_form' %>
+          <%= render 'follows/create' %>
         <% else -%>
-          <%= render 'follows/destroy_form' %>
+          <%= render 'follows/destroy' %>
         <% end -%>
       </div>
   </div>

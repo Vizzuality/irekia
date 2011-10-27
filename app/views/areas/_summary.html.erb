@@ -14,9 +14,9 @@
 
         <div id="follow" class="clearfix">
           <% if @follow.new_record? -%>
-            <%= render 'follows/create_form' %>
+            <%= render 'follows/create' %>
           <% else -%>
-            <%= render 'follows/destroy_form' %>
+            <%= render 'follows/destroy' %>
           <% end -%>
         </div>
     </div>
@@ -43,7 +43,11 @@
     </div>
   </div>
 </div>
-<%= link_to "", '/in_development', {:class => :ribbon} %>
+<% if @follow.new_record? -%>
+  <%= render 'follows/create_ribbon' %>
+<% else -%>
+  <%= render 'follows/destroy_ribbon' %>
+<% end -%>
 <div class="t"></div><div class="f"></div>
 </article>
 <!-- /Article -->

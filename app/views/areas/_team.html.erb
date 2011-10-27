@@ -14,9 +14,9 @@
           <p class="title"><%= get_politician_title(user) %></p>
           <div class="follow basic clearfix">
           <% if follow.new_record? -%>
-            <%= render 'follows/create_form', :follow => follow, :follow_parent => user, :button_class => '', :button_label => t('.follow') %>
+            <%= render 'follows/create_mini', :follow => follow, :follow_parent => user %>
           <% else -%>
-            <%= render 'follows/destroy_form', :follow => follow, :follow_parent => user, :button_class => '' %>
+            <%= render 'follows/destroy_mini', :follow => follow, :follow_parent => user %>
           <% end -%>
           </div>
         </div>

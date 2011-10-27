@@ -283,6 +283,10 @@ class User < ActiveRecord::Base
     followed_item(item).nil? if item.present?
   end
 
+  def follow_for(item)
+    followed_item(item) || Follow.new(:follow_item => item)
+  end
+
   def follow_suggestions
     User.includes(:role, :profile_pictures, :title, :areas).politicians.where('users.id <> ?', id)
   end
