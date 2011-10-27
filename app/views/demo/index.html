@@ -13,7 +13,7 @@
 
 
 <%= menu ([
-  { :link => (link_to t(".dashboard"), "#")},
+{ :link => (link_to t(".dashboard"), "#"), :class => :selected},
   { :link => (link_to t(".photos"), "#")},
   { :link => (link_to t(".video"), "#")},
   { :link => (link_to t(".proposals"), "#") },
@@ -33,6 +33,10 @@
 <footer>
 <div class="separator"></div>
 <div class="inner">
+  <div class="left">
+    <div class="checkbox_button facebook"><a href="#" class="checkbox"><div class="icon"></div> </a></div>
+    <div class="checkbox_button twitter"><a href="#" class="checkbox"><div class="icon"></div> </a></div>
+  </div>
   <div class="right">
     <a href="#" class="white_button pink right">Publicar</a>
   </div>

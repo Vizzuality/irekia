@@ -82,6 +82,11 @@ White buttons
 .ie8 .white_button span, .ie7 .white_button span { display: block; left: 10px; height: 19px; padding: 9px 14px; margin: 0 0 0 -10px; line-height: 18px; background: url("/images/buttons_sprite.png") no-repeat left -40px; color: #f10063; font-weight: bold; font-size: 15px; cursor: pointer; }
 
 /*Checkboxs, radiobuttons, ...*/
+.checkbox_button { float: left; margin: 0 9px 0 0; width: 36px; padding: 7px 8px; border: 1px solid #ccc; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: #fff; height: auto; }
+.checkbox_button.facebook .checkbox .icon { margin-left: 2px; background: url("/images/icons/share.png") no-repeat -128px 0; height: 18px; width: 14px; }
+.checkbox_button.twitter { text-indent: -99999px; }
+.checkbox_button.twitter .checkbox .icon { margin-left: 2px; background: url("/images/icons/share.png") no-repeat -149px 0; height: 18px; width: 14px; }
+
 a.checkbox { padding: 0 0 0 17px; background: url("/images/special_buttons.png") no-repeat 0 4px; color: #666666; line-height: normal; }
 a.checkbox:hover { cursor: pointer; }
 a.checkbox.selected { background-position: 0 -14px; }

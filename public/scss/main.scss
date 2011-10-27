@@ -616,10 +616,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
             width:664px;
             height:53px;
             font-size:15px;
-            @include transition-duration(30ms);
+            @include transition-duration(0);
           }
 
-          &:hover .triangle { background-position: 0 bottom; }
+          &:focus .triangle, &:hover .triangle { background-position: 0 bottom; }
 
           span.holder { font-size:15px; }
 
@@ -693,6 +693,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
           width: 729px;
           background: url('/images/box_publish_bkg.png') repeat-y -1514px 0;
           border: none;
+          div.left { width:50%; }
+          div.right { width:50%; margin:0; }
         }
       }
       .separator {

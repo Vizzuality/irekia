@@ -303,6 +303,41 @@ article .white_button:active {
 
 
 /*Checkboxs, radiobuttons, ...*/
+
+.checkbox_button {
+
+  &.facebook {
+    .checkbox {
+    .icon {
+      margin-left:2px;
+      background:url('/images/icons/share.png') no-repeat -128px 0;
+      height:18px; width:14px;
+    }
+  }
+  }
+
+  &.twitter {
+    text-indent: -99999px;
+    .checkbox {
+    .icon {
+      margin-left:2px;
+      background:url('/images/icons/share.png') no-repeat -149px 0;
+      height:18px; width:14px;
+    }
+  }
+  }
+
+  float:left;
+  margin:0 9px 0 0;
+  width:36px;
+  padding: 7px 8px;
+  border: 1px solid #ccc;
+  @include border-radius(4px);
+  background:#fff;
+  height:auto;
+}
+
+
 a.checkbox {
   padding:0 0 0 17px;
   background:url('/images/special_buttons.png') no-repeat 0 4px;

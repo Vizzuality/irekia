@@ -190,8 +190,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner header { margin: 0; width: 691px; }
 #container article.publish .inner header h2 { line-height: normal; }
 #container article.publish .inner .content .input_field.textarea { height: auto; }
-#container article.publish .inner .content .input_field.textarea textarea { width: 664px; height: 53px; font-size: 15px; -moz-transition-duration: 30ms; -webkit-transition-duration: 30ms; -o-transition-duration: 30ms; transition-duration: 30ms; }
-#container article.publish .inner .content .input_field.textarea:hover .triangle { background-position: 0 bottom; }
+#container article.publish .inner .content .input_field.textarea textarea { width: 664px; height: 53px; font-size: 15px; -moz-transition-duration: 0; -webkit-transition-duration: 0; -o-transition-duration: 0; transition-duration: 0; }
+#container article.publish .inner .content .input_field.textarea:focus .triangle, #container article.publish .inner .content .input_field.textarea:hover .triangle { background-position: 0 bottom; }
 #container article.publish .inner .content .input_field.textarea span.holder { font-size: 15px; }
 #container article.publish .inner .content .input_field.textarea .triangle { width: 30px; height: 25px; background: url("/images/icons/triangle.png") no-repeat 0 0; position: absolute; top: -14px; left: 37px; }
 #container article.publish .inner .content ul.menu { width: 686px; margin: 0 0 26px 0; }
@@ -207,6 +207,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish.with_footer .f { bottom: -10px; background-position: 0 -23px; }
 #container article.publish.with_footer footer { padding: 0; border: none; background: none; }
 #container article.publish.with_footer footer .inner { width: 729px; background: url("/images/box_publish_bkg.png") repeat-y -1514px 0; border: none; }
+#container article.publish.with_footer footer .inner div.left { width: 50%; }
+#container article.publish.with_footer footer .inner div.right { width: 50%; margin: 0; }
 #container article.publish.with_footer .separator { height: 2px; background: url("/images/box_publish_bkg.png") repeat-x; background-position: 0 -33px; }
 #container article.thin { width: 636px; margin: 0 auto 40px auto; }
 #container article.thin .inner header { margin: 0; width: 635px; }

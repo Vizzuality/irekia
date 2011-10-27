@@ -3,7 +3,6 @@ $(function() {
 
   $("textarea.grow").autogrow();
 
-
   $(".cycle").enableRegistration();
   // Preloading of popover assets
   $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
