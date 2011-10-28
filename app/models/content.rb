@@ -95,7 +95,7 @@ class Content < ActiveRecord::Base
         :is_politician => author.politician?
       },
       :id              => id,
-      :type            => type,
+      :content_type    => type,
       :published_at    => published_at,
       :tags            => tags,
       :comments_count  => comments_count,

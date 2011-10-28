@@ -2,7 +2,7 @@
   <div class="comment-box">
     <% if data.comments_count > 1 -%>
       <p class="previous">
-        <%= raw t('.previous', :count => (data.comments_count - 1), :previous_link => link_to(t('.previous_link', :count => (data.comments_count - 1)), send("#{data.type.downcase}_path", data.id, :anchor => :comments)), :authors => data.last_comments.first.author.fullname ) %>
+        <%= raw t('.previous', :count => (data.comments_count - 1), :previous_link => link_to(t('.previous_link', :count => (data.comments_count - 1)), send("#{data.content_type.downcase}_path", data.id, :anchor => :comments)), :authors => data.last_comments.first.author.fullname ) %>
       </p>
     <% end -%>
     <% if data.comments_count > 0 -%>
