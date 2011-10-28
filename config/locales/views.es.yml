@@ -421,6 +421,9 @@ es:
               zero: Ningún comentario
               one: Un comentario
               other: '%{count} comentarios'
+        footer:
+          all_questions_to_user: 'Todas las preguntas para %{name}'
+          all_questions_to_area: 'Todas las preguntas para el área de %{name}'
       proposal:
         back: volver
         see_all_proposals: Ver todas las propuestas a este área
