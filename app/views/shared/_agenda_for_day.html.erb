@@ -16,7 +16,9 @@
         <strong class="date"><%= l(event.event_date, :format => '%d, %B de %Y') %></strong>
         <%= link_to (raw (event.title.truncate(60, :omission => "&hellip;"))), event, :class => :event %>
         <ul class="details">
+          <% if event.location.present? -%>
           <li class="where"><%= event.location %></li>
+          <% end -%>
           <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
         </ul>
         </li>
@@ -33,7 +35,9 @@
           <strong class="date"><%= l(event.event_date, :format => '%d, %B de %Y') %></strong>
           <%= link_to event.title, event, :class => :event %>
           <ul class="details">
+            <% if event.location.present? -%>
             <li class="where"><%= event.location %></li>
+            <% end -%>
             <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
           </ul>
           <% if event != day_events.last %>
@@ -64,7 +68,9 @@
         <strong class="date"><%= l(event.event_date, :format => '%d, %B de %Y') %></strong>
         <%= link_to (raw (event.title.truncate(60, :omission => "&hellip;"))), event, :class => :event %>
         <ul class="details">
+          <% if event.location.present? -%>
           <li class="where"><%= event.location %></li>
+          <% end -%>
           <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
         </ul>
         </li>
