@@ -83,8 +83,8 @@ es:
         accessibility: Accesibilidad
         management: Mis gestiones
       nav_bar:
-        currently_viewing: Estás viendo...
-        search: O busca lo que necesitas...
+        currently_viewing: Estás viendo&hellip;
+        search: O busca lo que necesitas&hellip;
       sign_in:
         access_irekia: Accede a Irekia
         forgotten_password: ¿Olvidaste tu contraseña?
@@ -107,8 +107,8 @@ es:
       management: Mis gestiones
 
     nav_bar:
-      currently_viewing: Estás viendo...
-      search: O busca lo que necesitas...
+      currently_viewing: Estás viendo&hellip;
+      search: O busca lo que necesitas&hellip;
       sign_up: Regístrate
       sign_in: Login
       sign_out: Salir
@@ -414,8 +414,14 @@ es:
               other: '%{count} comentarios'
       proposal:
         back: volver
-        in_favor: '%{percentage}% a favor (%{count} votos)'
-        against: '%{percentage}% en contra (%{count} votos)'
+        in_favor:
+            zero: '%{percentage}% a favor (%{count} votos)'
+            one:  '%{percentage}% a favor (%{count} voto)'
+            other: '%{percentage}% a favor (%{count} votos)'
+        against:
+            zero: '%{percentage}% en contra (%{count} votos)'
+            one:  '%{percentage}% en contra (%{count} voto)'
+            other: '%{percentage}% en contra (%{count} votos)'
         title_author_and_comments:
           time: 'hace %{time}'
           comments:
@@ -465,16 +471,16 @@ es:
         one: Un comentario
         other: '%{count} comentarios'
       answer_this:
-        question: '¿Algo que decir?... comenta esta pregunta'
-        news:  '¿Algo que decir?... comenta esta noticia'
-        tweet: '¿Algo que decir?... comenta este tweet'
-        event: '¿Algo que decir?... comenta este evento'
-        proposal: '¿Algo que decir?... comenta esta propuesta'
+        question: '¿Algo que decir?&hellip; comenta esta pregunta'
+        news:  '¿Algo que decir?&hellip; comenta esta noticia'
+        tweet: '¿Algo que decir?&hellip; comenta este tweet'
+        event: '¿Algo que decir?&hellip; comenta este evento'
+        proposal: '¿Algo que decir?&hellip; comenta esta propuesta'
       time: 'hace %{time}'
       new:
         submit: Comentar
       label:
-        news: ¿Algo que decir?... comenta esta noticia
+        news: ¿Algo que decir?&hellip; comenta esta noticia
     not_moderated:
       comment:
         comment_sent: "Tu comentario ha sido enviado :)"
@@ -485,8 +491,14 @@ es:
       comment:
         time: 'hace %{time}'
       argument:
-        in_favor: '%{percentage}% a favor (%{count} votos)'
-        against: '%{percentage}% en contra (%{count} votos)'
+        in_favor:
+            zero: '%{percentage}% a favor (%{count} votos)'
+            one:  '%{percentage}% a favor (%{count} voto)'
+            other: '%{percentage}% a favor (%{count} votos)'
+        against:
+            zero: '%{percentage}% en contra (%{count} votos)'
+            one:  '%{percentage}% en contra (%{count} voto)'
+            other: '%{percentage}% en contra (%{count} votos)'
   areas:
     navigation_menu:
       menu:
@@ -573,7 +585,7 @@ es:
           other: '%{count} preguntas contestadas'
         ask: 'Pregunta a %{name}'
       make_a_question:
-        label: 'Haz una pregunta a %{name}...'
+        label: 'Haz una pregunta a %{name}'
         submit: Preguntar
       question_sent:
         success: Tu pregunta se ha enviado correctamente
@@ -687,7 +699,7 @@ es:
           man: 'Nacido el %{birthday}.'
           woman: 'Nacida el %{birthday}.'
       follow_suggestions:
-        title: ¿Quieres más? Te sugerimos...
+        title: ¿Quieres más? Te sugerimos&hellip;
         title_and_area: '%{title} de %{area}'
         follow: Seguir
         more: Más sugerencias
@@ -758,7 +770,7 @@ es:
             También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia."
             link: Configura tu cuenta
       follow_suggestions:
-        title: ¿Quieres más? Te sugerimos...
+        title: ¿Quieres más? Te sugerimos&hellip;
         title_and_area: '%{title} de %{area}'
         follow: Seguir
         more: Más sugerencias
@@ -782,7 +794,7 @@ es:
           zero: No has hecho ninguna propuesta
           one: Has hecho 1 propuesta
           other: 'Has hecho %{count} propuestas'
-        proposal_support: Tus propuestas tienen un apoyo entre los usuarios de Irekia de...
+        proposal_support: Tus propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;
         proposal_support_count:
           zero: Ninguna a favor
           one: 1 a favor
@@ -839,7 +851,7 @@ es:
           zero: No has hecho ninguna propuesta
           one: Has hecho 1 propuesta
           other: 'Has hecho %{count} propuestas'
-        proposal_support: Tus propuestas tienen un apoyo entre los usuarios de Irekia de...
+        proposal_support: Tus propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;
         proposal_support_count:
           zero: Ninguna a favor
           one: 1 a favor

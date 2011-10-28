@@ -46,7 +46,7 @@ function startMap() {
         navigationControlOptions: {
             style: google.maps.NavigationControlStyle.SMALL
         },
-        maxZoom: 158
+        maxZoom: 18
     };
 
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -82,7 +82,7 @@ function startMap() {
     map.fitBounds(mapBounds);
 }
 
-function loadMap (mapID, lat, lng) {
+function startMiniMap (mapID, lat, lng) {
   var center = new google.maps.LatLng(lat, lng);
   var defaultZoom = 15;
   var latlng = center;
@@ -98,7 +98,7 @@ function loadMap (mapID, lat, lng) {
     navigationControlOptions: {
       style: google.maps.NavigationControlStyle.SMALL
     },
-    maxZoom: 158
+    maxZoom: 18
   };
   map = new google.maps.Map(document.getElementById(mapID), myOptions);
 

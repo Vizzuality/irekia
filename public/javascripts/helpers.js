@@ -27,10 +27,19 @@ function watchHash(opt) {
 
   var speed  = (opt && opt.speed) || 200;
 
+  function removeHash() {
+    window.history.pushState("", document.title, window.location.pathname);
+  }
+
   if (hash = window.location.hash) {
     if (hash == "#comments") {
-      $('html, body').delay(500).animate({scrollTop:$(".comments").offset().top}, speed, function() {
+      $('html, body').delay(500).animate({scrollTop:$(".comments").offset().top - 10}, speed, function() {
         window.location.hash = '';
+        removeHash();
+      });
+    } else if (hash == "#team" || hash == "#questions" || hash == "#proposals" || hash == "#actions" || hash == "#agenda") {
+      $('html, body').delay(500).animate({scrollTop:$("ul.menu").offset().top - 10}, speed, function() {
+        removeHash();
       });
     }
   }

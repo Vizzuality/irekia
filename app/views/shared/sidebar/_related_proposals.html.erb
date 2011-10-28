@@ -1,9 +1,9 @@
 <% if @last_contents and @last_contents.size > 0 %>
   <h4><%= t('.title') %></h4>
-  <ul class="related no-bullets">
+  <ul class="related">
     <% @last_contents.each do |proposal| %>
       <li><%= link_to proposal.title, url_for(proposal) %>
-      <div class="footer"><%= distance_of_time_in_words_to_now(proposal.published_at) %> &middot;
+      <div class="footer">
         <% if proposal.percent_in_favor >= proposal.percent_against %>
           <%= content_tag :span, t(".in_favor", :percentage => proposal.percent_in_favor, :count => proposal.in_favor), :class => :agree %>
         <% else %>

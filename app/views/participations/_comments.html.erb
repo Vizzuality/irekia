@@ -28,7 +28,7 @@
 
         <%= form.fields_for :comment_data do |comment_data| %>
           <%= comment_data.text_area :body, :id => :comment %>
-          <span class="holder"><%= t(".answer_this.#{@content.class.to_s.downcase}") %></span>
+          <span class="holder"><%= raw t(".answer_this.#{@content.class.to_s.downcase}") %></span>
         <% end %>
 
       </div>
