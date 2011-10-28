@@ -3,6 +3,7 @@ class Admin::ContentsController < Admin::AdminController
   def update
     @content     = Content.where(:id => params[:id]).first
     content_type = params[:type].downcase.to_sym
+    @content.moderated = params[content_type][:moderated]
 
     if @content.update_attributes(params[content_type])
       ModerationMailer.accepted(@content).deliver if params[content_type][:moderated] == 'true'
