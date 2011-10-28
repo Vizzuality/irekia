@@ -146,20 +146,20 @@
         one:  "1 minuto"
         other: "%{count} minutos"
       about_x_hours:
-        one:  "alrededor de 1 hora"
-        other: "alrededor de %{count} horas"
+        one:  " 1 hora"
+        other: " %{count} horas"
       x_days:
         one:  "1 día"
         other: "%{count} días"
       about_x_months:
-        one:  "alrededor de 1 mes"
-        other: "alrededor de %{count} meses"
+        one:  " 1 mes"
+        other: " %{count} meses"
       x_months:
         one:  "1 mes"
         other: "%{count} meses"
       about_x_years:
-        one:  "alrededor de 1 año"
-        other: "alrededor de %{count} años"
+        one:  " 1 año"
+        other: " %{count} años"
       over_x_years:
         one:  "más de 1 año"
         other: "más de %{count} años"

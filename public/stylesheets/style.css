@@ -594,7 +594,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner .right .proposal-support .count { padding: 13px; color: #465866; text-transform: uppercase; font-weight: bold; border-top: 1px solid #fff; }
 #container article .inner .right .proposal-support .count .icon { float: left; margin: 0 5px 0 0; width: 11px; height: 12px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -18px; }
 
-#follow { overflow: hidden; clear: both; width: 550px; margin: 0 0 10px 0; padding-right: 10px; }
+#follow { clear: both; width: 550px; margin: 0 0 10px 0; padding-right: 10px; }
 #follow form { float: right; }
 
 .follow.basic button { background: none; padding: 0; text-shadow: none; -moz-box-shadow: 0 0 0; -webkit-box-shadow: 0 0 0; -o-box-shadow: 0 0 0; box-shadow: 0 0 0; }

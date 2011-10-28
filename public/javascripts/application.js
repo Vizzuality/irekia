@@ -37,10 +37,10 @@ $(function() {
 
   $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();
-    $el.fadeOut(250, function() {
+    $el.fadeOut(150, function() {
       $el.parents("li").toggleClass("selected");
       $(this).html(xhr);
-      $(this).fadeIn(250);
+      $(this).fadeIn(150);
     });
   });
 
@@ -50,9 +50,9 @@ $(function() {
 
   $("#follow form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parents("#follow");
-    $el.fadeOut(250, function() {
+    $el.fadeOut(150, function() {
       $(this).html(xhr);
-      $(this).fadeIn(250);
+      $(this).fadeIn(150);
     });
   });
 

@@ -12,7 +12,7 @@
         <%= simple_format(@area.description) %>
       </div>
 
-        <div id="follow">
+        <div id="follow" class="clearfix">
           <% if @follow.new_record? -%>
             <%= render 'follows/create_form' %>
           <% else -%>
