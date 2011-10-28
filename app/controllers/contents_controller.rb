@@ -73,24 +73,32 @@ class ContentsController < ApplicationController
       end
 
     when Proposal
-      @in_favor = @content.arguments.moderated.with_reason.in_favor.all
-      @against = @content.arguments.moderated.with_reason.against.all
 
-      @in_favor_count = @content.arguments.with_reason.in_favor.count
-      @against_count = @content.arguments.with_reason.against.count
+      #votes
+      @vote_in_favor               = @content.votes.in_favor.build
+      @vote_in_favor.user          = current_user if current_user.present?
+      @vote_in_favor.vote_data     = @vote_in_favor.build_vote_data
 
-      @new_in_favor = @content.arguments.in_favor.build
-      @new_in_favor.user = current_user if current_user.present?
-      @new_in_favor.argument_data = @new_in_favor.build_argument_data
-
-      @new_against = @content.arguments.against.build
-      @new_against.user = current_user if current_user.present?
-      @new_against.argument_data = @new_against.build_argument_data
+      @vote_against               = @content.votes.against.build
+      @vote_against.user          = current_user if current_user.present?
+      @vote_against.vote_data     = @vote_against.build_vote_data
 
       if current_user && current_user.has_given_his_opinion?(@content)
-        @new_in_favor = current_user.his_opinion(@content).first
-        @new_against = @new_in_favor
+        @vote_in_favor = current_user.his_opinion(@content).first
+        @vote_against  = @vote_in_favor
       end
+
+      #arguments
+      @arguments_in_favor = @content.arguments.moderated.in_favor.all
+      @arguments_against  = @content.arguments.moderated.against.all
+
+      @argument_in_favor               = @content.arguments.in_favor.build
+      @argument_in_favor.user          = current_user if current_user.present?
+      @argument_in_favor.argument_data = @argument_in_favor.build_argument_data
+
+      @argument_against               = @content.arguments.against.build
+      @argument_against.user          = current_user if current_user.present?
+      @argument_against.argument_data = @argument_against.build_argument_data
     end
 
     respond_with(@content) do |format|

@@ -82,8 +82,9 @@ Irekia::Application.routes.draw do
 
   resources :demo
 
-  resources :arguments,    :controller => 'participations', :type => 'Argument'
-  resources :comments,     :controller => 'participations', :type => 'Comment'
+  resources :arguments,  :controller => 'participations', :type => 'Argument'
+  resources :votes,      :controller => 'participations', :type => 'Vote'
+  resources :comments,   :controller => 'participations', :type => 'Comment'
 
   resource :search do
     member do

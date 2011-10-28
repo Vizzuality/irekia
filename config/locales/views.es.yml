@@ -491,7 +491,7 @@ es:
     moderated:
       comment:
         time: 'hace %{time}'
-      argument:
+      vote:
         in_favor:
             zero: '%{percentage}% a favor (%{count} votos)'
             one:  '%{percentage}% a favor (%{count} voto)'

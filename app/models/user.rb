@@ -258,7 +258,7 @@ class User < ActiveRecord::Base
     when Answer
       AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', content.id, id)
     when Proposal
-      content.arguments.where('user_id = ?', id)
+      content.votes.where('user_id = ?', id)
     end
 
   end

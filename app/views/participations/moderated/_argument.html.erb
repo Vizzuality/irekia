@@ -1,9 +1,1 @@
-<% if @participation.reason.present? -%>
 <li><%= @participation.reason %></li>
-<% end -%>
-
-<% if @participation.content.percent_in_favor > 50 -%>
-<%= content_tag :span, t(".in_favor", :percentage => @participation.content.percent_in_favor, :count => @participation.content.participation), :class => :agree %>
-<% else -%>
-<%= content_tag :span, t(".against", :percentage => @participation.content.percent_against, :count => @participation.content.participation), :class => :disagree %>
-<% end -%>
