@@ -33,7 +33,7 @@ $(function() {
   });
 
   $('a.checkbox').enableCheckbox();
-  $('select').dropkick();
+  $('select.dropkick').dropkick();
 
   $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();

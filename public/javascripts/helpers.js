@@ -88,7 +88,12 @@ jQuery.fn.enableRegistration = function(opt){
 
     forward($article, $currentArticle);
     $form = $currentArticle.find("form");
-    $form.find('select').dropkick();
+
+    $form.find('.field.territory select').dropkick({width:72});
+    $form.find('.field.municipality select').dropkick({width:71});
+    $('form .field.born_at select[name="user[birthday(1i)]"]').dropkick({width:-10});
+    $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});
+    $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
 
     $form.submit(function() {
       $(this).find(".error").removeClass("error");
@@ -543,7 +548,7 @@ jQuery.fn.share = function(opt){
   this.each(function(){
     var service = $(this).attr('class').replace('share ', '');
 
-    bindShareService(service);
+   // bindShareService(service);
 
     $(this).bind('click', function(e) {
       e.preventDefault();
