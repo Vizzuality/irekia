@@ -8,6 +8,7 @@ class CreateParticipations < ActiveRecord::Migration
       t.string   :type
       t.datetime :published_at
       t.boolean  :moderated, :default => false
+      t.boolean  :rejected, :default => false
 
       t.timestamps
     end

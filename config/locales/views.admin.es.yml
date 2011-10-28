@@ -50,4 +50,4 @@ es:
             other: '%{count} comentarios'
         validate_all: Validar todos
         validate: 'Validar %{type}'
-        delete: 'Eliminar %{type}'
+        delete: 'Rechazar %{type}'

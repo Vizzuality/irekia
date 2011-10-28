@@ -24,6 +24,7 @@ class Admin::ParticipationsController < Admin::AdminController
     @participation     = Participation.where(:id => params[:id]).first
     participation_type = params[:type].downcase.to_sym
     @participation.moderated = params[participation_type][:moderated]
+    @participation.rejected = params[participation_type][:rejected]
 
     if @participation.update_attributes(params[participation_type])
       ModerationMailer.accepted(@participation).deliver if params[participation_type][:moderated] == 'true'

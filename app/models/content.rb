@@ -17,7 +17,7 @@ class Content < ActiveRecord::Base
                 :include => [{:author => :profile_pictures}, :comment_data],
                 :conditions => {:moderated => true}
 
-  attr_protected :moderated
+  attr_protected :moderated, :rejected
 
   before_create :update_published_at
   after_save :author_is_politician?
@@ -35,6 +35,14 @@ class Content < ActiveRecord::Base
 
   def self.not_moderated
     where(:moderated => false)
+  end
+
+  def self.rejected
+    where(:rejected => true)
+  end
+
+  def self.not_rejected
+    where(:rejected => false)
   end
 
   def self.more_recent

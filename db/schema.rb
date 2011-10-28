@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
     t.string   "tags"
     t.datetime "published_at"
     t.boolean  "moderated",             :default => false
+    t.boolean  "rejected",              :default => false
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "comments_count",        :default => 0
@@ -180,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
     t.string   "type"
     t.datetime "published_at"
     t.boolean  "moderated",    :default => false
+    t.boolean  "rejected",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
