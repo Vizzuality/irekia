@@ -43,9 +43,9 @@
 <div class="inner">
   <div class="left">
     <% if @content.target_is_a_user? -%>
-    <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user), :class => :left_arrow %>
+      <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user, :anchor => :questions), :class => :left_arrow %>
     <% else -%>
-    <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area), :class => :left_arrow %>
+      <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area, :anchor => :questions), :class => :left_arrow %>
     <% end -%>
   </div>
 </div>
