@@ -155,7 +155,7 @@ class UsersController < ApplicationController
     end
 
     if @questions_top && (params[:referer].blank? || params[:referer] == 'answered')
-      @questions_top = if params[:more_polemic]
+      @questions_top = if params[:more_polemic] == "true"
         @questions_top.more_polemic
       else
         @questions_top.more_recent
@@ -165,7 +165,7 @@ class UsersController < ApplicationController
     end
 
     if params[:referer].blank? || params[:referer] == 'all'
-      @questions = if params[:more_polemic]
+      @questions = if params[:more_polemic] == "true"
         @questions.more_polemic
       else
         @questions.more_recent
@@ -179,7 +179,7 @@ class UsersController < ApplicationController
   def get_proposals
     @proposals = @user.proposals_done.moderated
 
-    @proposals = if params[:more_polemic]
+    @proposals = if params[:more_polemic] == "true"
     @proposals.more_polemic
     else
     @proposals.more_recent
@@ -198,7 +198,7 @@ class UsersController < ApplicationController
       @actions = @user.actions
       @actions = @actions.where(:event_type => params[:type]) if params[:type].present?
 
-      @actions = if params[:more_polemic]
+      @actions = if params[:more_polemic] == "true"
         @actions.more_polemic
       else
         @actions.more_recent

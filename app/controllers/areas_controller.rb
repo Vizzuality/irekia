@@ -87,7 +87,7 @@ class AreasController < ApplicationController
     @actions = @area.actions
     @actions = @actions.where(:event_type => params[:type]) if params[:type].present?
 
-    @actions = if params[:more_polemic]
+    @actions = if params[:more_polemic] == 'true'
       @actions.more_polemic
     else
       @actions.more_recent
@@ -99,7 +99,7 @@ class AreasController < ApplicationController
     @questions = @area.questions.moderated
     @questions = @questions.answered if params[:answered]
 
-    @questions = if params[:more_polemic]
+    @questions = if params[:more_polemic] == 'true'
       @questions.more_polemic
     else
       @questions.more_recent
@@ -116,7 +116,7 @@ class AreasController < ApplicationController
     @proposals = @proposals.from_politicians if params[:from_politicians]
     @proposals = @proposals.from_citizens if params[:from_citizens]
 
-    @proposals = if params[:more_polemic]
+    @proposals = if params[:more_polemic] == 'true'
       @proposals.more_polemic
     else
       @proposals.more_recent

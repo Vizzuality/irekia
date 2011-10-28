@@ -9,7 +9,10 @@ module ContentsHelper
     end
   end
 
-  def link_for_questions(params = {})
-    questions_path(params)
+  def link_for_questions(filters = {})
+    filters[:more_polemic] = params[:more_polemic] unless filters.key?(:more_polemic)
+    filters[:answered]     = params[:answered] unless filters.key?(:answered)
+
+    questions_path(filters)
   end
 end
