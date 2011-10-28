@@ -11,8 +11,8 @@ textarea {
 
   &::-webkit-scrollbar { width:6px; height:6px;}
   &::-webkit-scrollbar-button:start:decrement,
-  &::-webkit-scrollbar-button:end:increment { display:block; height:0; background-color:transparent;}
-  &::-webkit-scrollbar-track-piece { background-color:#FAFAFA; -webkit-border-radius:0; -webkit-border-bottom-right-radius:8px; -webkit-border-bottom-left-radius:8px; }
+  &::-webkit-scrollbar-button:end:increment { display:block; height:0; background-color:none;}
+  &::-webkit-scrollbar-track-piece { background-color:none; -webkit-border-radius:0; -webkit-border-bottom-right-radius:8px; -webkit-border-bottom-left-radius:8px; }
   &::-webkit-scrollbar-thumb:vertical{ height:20px; background-color:#999; -webkit-border-radius:8px;}
   &::-webkit-scrollbar-thumb:horizontal { width:20px; background-color:#999; -webkit-border-radius:8px;}
   -webkit-appearance:none;

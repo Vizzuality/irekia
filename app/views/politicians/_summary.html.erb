@@ -26,7 +26,7 @@
 <div class="separator"></div>
 <div class="inner with_avatar with_question">
 
-  <%= image_tag 'temp/avatar_big.png', :class => :xlAvatar %>
+  <%= image_tag @politician.profile_image_big, :class => "avatar xlAvatar" %>
   <h3>Pregunta a <%= @politician.name %></h3>
 
   <%= form_for @question, :remote => true, :html => {:'data-type' => 'html', :class => [:make_question, only_logged_class]} do |form| %>

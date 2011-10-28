@@ -991,6 +991,12 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
 // Avatars
 .avatar {
+  &.xlAvatar {
+    width: $avatar_big_size;
+    height: $avatar_big_size;
+    &>img { width: $avatar_big_size; height: $avatar_big_size; @include border-radius(100em); }
+  }
+
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -1562,7 +1568,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   width:634px;
   margin: 15px 0 20px 0;
 
-  .xlAvatar { padding: 4px; background: url('/images/circle_bkg.png') no-repeat -293px center; z-index: 10; }
+  .xlAvatar { background: url('/images/circle_bkg.png') no-repeat -293px center; z-index: 10; }
   .avatar {
     float:left;
     width:281px;
@@ -2154,13 +2160,11 @@ a.editable {
   }
   .input_field span.holder.large {
     width: 100%;
-    color: $medium_dark;
     font-size: 15px;
   }
   .input-counter span.holder.large {
     width: 100%;
     top: 8px;
-    color: $medium_dark;
     font-size: 15px;
   }
   .input_field input {
@@ -2533,7 +2537,7 @@ a.editable {
 
   footer {
     inner.with_avatar { position: relative; }
-    img.xlAvatar { position: absolute; bottom: 22px; right: 30px; padding: 4px; background: url('/images/circle_bkg.png') no-repeat 2px center; z-index: 10; }
+    img.xlAvatar { position: absolute; bottom: 22px; right: 30px; background: url('/images/circle_bkg.png') no-repeat 2px center; z-index: 10; }
   }
 
   ul.suggestions {

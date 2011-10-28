@@ -278,6 +278,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.welcome .inner ul.actions li .white_button { float: left; }
 
 .avatar { display: inline-block; position: relative; overflow: hidden; width: 65px; height: 65px; -moz-border-radius: 100em; -webkit-border-radius: 100em; -o-border-radius: 100em; -ms-border-radius: 100em; -khtml-border-radius: 100em; border-radius: 100em; }
+.avatar.xlAvatar { width: 280px; height: 280px; }
+.avatar.xlAvatar > img { width: 280px; height: 280px; -moz-border-radius: 100em; -webkit-border-radius: 100em; -o-border-radius: 100em; -ms-border-radius: 100em; -khtml-border-radius: 100em; border-radius: 100em; }
 .avatar > img { width: 65px; height: 65px; -moz-border-radius: 100em; -webkit-border-radius: 100em; -o-border-radius: 100em; -ms-border-radius: 100em; -khtml-border-radius: 100em; border-radius: 100em; }
 .avatar.small, .avatar.small > img { width: 36px; height: 36px; }
 .avatar.medium, .avatar.medium > img { width: 40px; height: 40px; }
@@ -422,7 +424,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container .cycle .inner-cycle article.thin { margin-left: 164px!important; }
 
 #container article .inner .avatar-uploader { clear: both; overflow: hidden; border-right: 1px solid #e3e6e8; width: 634px; margin: 15px 0 20px 0; }
-#container article .inner .avatar-uploader .xlAvatar { padding: 4px; background: url("/images/circle_bkg.png") no-repeat -293px center; z-index: 10; }
+#container article .inner .avatar-uploader .xlAvatar { background: url("/images/circle_bkg.png") no-repeat -293px center; z-index: 10; }
 #container article .inner .avatar-uploader .avatar { float: left; width: 281px; height: 281px; margin: 0 25px 0 0; }
 #container article .inner .avatar-uploader .explanation { float: left; width: 314px; color: #465866; margin: 43px 0 0 0; }
 #container article .inner .avatar-uploader .explanation h3 { margin: 0 0 3px 0; }
@@ -589,8 +591,8 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .input_field span.holder { position: absolute; left: 11px; top: 8px; width: 200px; color: #D7D8DD; }
 #container article .input_field.textarea span.holder { position: absolute; left: 11px; top: 8px; width: auto; color: #D7D8DD; }
 #container article .input-counter span.holder { position: absolute; left: 11px; top: 10px; width: 200px; color: #D7D8DD; }
-#container article .input_field span.holder.large { width: 100%; color: #666666; font-size: 15px; }
-#container article .input-counter span.holder.large { width: 100%; top: 8px; color: #666666; font-size: 15px; }
+#container article .input_field span.holder.large { width: 100%; font-size: 15px; }
+#container article .input-counter span.holder.large { width: 100%; top: 8px; font-size: 15px; }
 #container article .input_field input { position: absolute; background: white; }
 #container article .input_field input[type="text"], #container article .input_field input[type="email"], #container article .input_field input[type="password"] { width: 222px; height: 29px; padding: 0 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); outline: none; }
 #container article .input-counter { position: relative; margin-bottom: 24px; float: left; }
@@ -681,7 +683,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .description.two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
 #container article footer inner.with_avatar { position: relative; }
-#container article footer img.xlAvatar { position: absolute; bottom: 22px; right: 30px; padding: 4px; background: url("/images/circle_bkg.png") no-repeat 2px center; z-index: 10; }
+#container article footer img.xlAvatar { position: absolute; bottom: 22px; right: 30px; background: url("/images/circle_bkg.png") no-repeat 2px center; z-index: 10; }
 #container article ul.suggestions li { width: 275px; padding: 14px 16px 16px 16px; margin: 0 0 5px 0; font-size: 15px; color: #7d8a92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 #container article ul.suggestions li .avatar { float: left; margin: 0 8px 0 0; }
 #container article ul.suggestions li .content { float: left; width: 200px; }
