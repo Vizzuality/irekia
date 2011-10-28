@@ -9,7 +9,6 @@
     <li class="more"><%= link_to (t('.and_more', :count => day_events.count - 2)), '#', :id => "event-more-#{@info_div_id}", :class => :show_event %></li>
   </ul>
 
-
   <% day_events.first(2).each do |event| -%>
     <div id="info-event-<%= event.id %>" class="info">
       <ul>
@@ -38,7 +37,7 @@
             <li class="when"><%= event.event_date.strftime('%H:%M') %></li>
           </ul>
           <% if event != day_events.last %>
-            <div class="omission"></div>
+            <div class="separator"></div>
           <% end %>
           </li>
         <% end -%>
@@ -72,6 +71,7 @@
       </ul>
       <span class="close"></span>
     </div>
+
   <% end -%>
 
 <% end -%>
