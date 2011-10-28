@@ -11,8 +11,10 @@
     <span class="author">
       <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
     </span>
+    <% unless show_last_comments?(data) -%>
     &middot;
     <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), proposal_path(data.id, :anchor => :comments), :class => "participants-count" %>
+    <% end -%>
     &middot;
     <%= t('.votes', :count => data.participation) %>
     &middot;

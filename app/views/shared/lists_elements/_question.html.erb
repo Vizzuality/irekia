@@ -20,12 +20,15 @@
         <% end %>
       </span>
 
+      <% unless show_last_comments?(data) -%>
       &middot;
-
       <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), question_path(data.id, :anchor => :comments), :class => "comment-count" %>
+      <% end -%>
     <% else %>
+      <% unless show_last_comments?(data) -%>
       <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), question_path(data.id, :anchor => :comments), :class => "comment-count" %>
       &middot;
+      <% end -%>
       <%= render "/shared/inline_sharing" %>
     <% end %>
   </div>

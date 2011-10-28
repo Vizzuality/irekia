@@ -234,7 +234,10 @@ es:
         other: '%{count} comentarios'
       share: Compartir
       last_comments:
-        previous: '%{previous_link} de %{authors}'
+        previous:
+          zero: ''
+          one: '%{previous_link} de %{authors}'
+          other: '%{previous_link}'
         previous_link:
           zero: Ningún comentario anterior
           one: 1 comentario anterior
