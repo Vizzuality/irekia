@@ -18,8 +18,14 @@ es:
       related_proposals:
         time: 'Hace %{time}'
         title: Propuestas relacionadas
-        in_favor: '%{percentage}% a favor (%{count} votos)'
-        against: '%{percentage}% en contra (%{count} votos)'
+        in_favor:
+          zero: No votada aún
+          one: '%{percentage}% a favor (%{count} voto)'
+          other: '%{percentage}% a favor (%{count} votos)'
+        against:
+          zero: No votada aún
+          one: '%{percentage}% en contra (%{count} voto)'
+          other: '%{percentage}% en contra (%{count} votos)'
       related_events:
         title: 'Otros eventos de este área'
         time: 'Hace %{time}'
