@@ -9,7 +9,7 @@
         <li>
         <%= avatar politician %>
         <div class="content">
-          <%= link_to politician.fullname, politician_path(politician), :class => :name %>
+          <%= link_to politician.fullname, path_for_user(politician), :class => :name %>
           <p><%= t('.results.title_area', :title => get_politician_title(politician), :area => politician.areas.map(&:name).join(', ')) %></p>
           <%= link_to t('.results.follow'), '/in_development' %>
         </div>

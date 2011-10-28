@@ -8,7 +8,7 @@
         <span class="bqstart">&#8220;</span> <span class="bqend">&#8221;</span>
       </blockquote>
       <div class="author">
-        <%= raw t('.author', :name => link_to(@content.author.fullname, user_path(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+        <%= raw t('.author', :name => link_to(@content.author.fullname, path_for_user(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
       </div>
     </div>
     <%= render "participations/comments" %>
@@ -25,7 +25,7 @@
 <div class="separator"></div>
 <div class="inner">
   <div class="left">
-    <%= link_to t(".back"), politician_path(@content.author.id), :class => :left_arrow %>
+    <%= link_to t(".back"), path_for_user(@content.author), :class => :left_arrow %>
   </div>
 </div>
 </footer>
@@ -36,7 +36,7 @@
 <article><div id="tweet">
   <h1><%= @content.message %></h1>
   <span class="author">
-    <%= raw t('.author', :name => link_to(@content.author.fullname, user_path(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+    <%= raw t('.author', :name => link_to(@content.author.fullname, path_for_user(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
   </span>
   <%= render 'participations/comments' %>
   <div class="sidebar">

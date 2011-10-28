@@ -10,7 +10,7 @@
         <li class="<%= 'selected' unless (follow = (current_user.follow_for_user(user) rescue Follow.new)).new_record? %>">
         <%= avatar user %>
         <div class="content">
-          <%= link_to user.fullname, politician_path(user.id), :title => user.fullname, :class => :name %>
+          <%= link_to user.fullname, path_for_user(user), :title => user.fullname, :class => :name %>
           <p class="title"><%= get_politician_title(user) %></p>
           <div class="follow basic clearfix">
           <% if follow.new_record? -%>

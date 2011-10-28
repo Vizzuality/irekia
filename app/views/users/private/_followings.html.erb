@@ -22,9 +22,9 @@
       <% end -%>
       <% @users_following.each do |user| %>
         <li class="selected">
-          <%= link_to avatar(user), user_path(user) %>
+          <%= link_to avatar(user), path_for_user(user) %>
           <div class="content">
-            <%= link_to user.fullname, politician_path(user), :class => :name %>
+            <%= link_to user.fullname, path_for_user(user), :class => :name %>
             <p>
               <%= t('.title_and_area', :title => get_politician_title(user), :area => user.areas.map(&:name).to_sentence) %>
             </p>
