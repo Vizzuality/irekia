@@ -1,5 +1,5 @@
-<% if data.comments.present? %>
-  <% if within_the_day?(data.comments.last(2)) -%>
+<% if data.last_comments.present? %>
+  <% if within_the_day?(data.last_comments.last(2)) -%>
     <div class="comment-box">
       <% if data.last_comments.size == 2 -%>
         <p class="previous">
