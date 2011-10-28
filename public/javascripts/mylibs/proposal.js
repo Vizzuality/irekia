@@ -168,6 +168,7 @@
     _addDefaultAction(data);
 
 
+    $ps.find("textarea.grow").autogrow();
     $ps.find('textarea').keyup(function(ev){
 
       if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }

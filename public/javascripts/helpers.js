@@ -562,7 +562,6 @@ function shareWith($el, service, speed, easing) {
 
 
 (function($) {
-
 /*
 * Auto-growing textareas; technique ripped from Facebook
 */
@@ -571,7 +570,7 @@ function shareWith($el, service, speed, easing) {
     var resizing = false;
     this.filter('textarea').each(function() {
 
-      var $this       = $(this),
+      var $this   = $(this),
       minHeight   = $this.height(),
       lineHeight  = $this.css('lineHeight');
 
@@ -587,7 +586,6 @@ function shareWith($el, service, speed, easing) {
       }).appendTo(document.body);
 
       var update = function() {
-
         var times = function(string, number) {
           var _res = '';
           for(var i = 0; i < number; i ++) {
@@ -601,29 +599,23 @@ function shareWith($el, service, speed, easing) {
         .replace(/&/g, '&amp;')
         .replace(/\n$/, '<br/>&nbsp;')
         .replace(/\n/g, '<br/>')
-        .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length -1) + ' ' });
+        .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length - 1) + ' ' });
 
         shadow.html(val);
 
         if (!resizing) {
           resizing = true;
-          var height= Math.max(shadow.height() + 20, minHeight);
+          var height= Math.max(shadow.height() + 15, minHeight);
           $(this).animate({height: height}, 50, function() {
             resizing = false;
           });
         }
-
       }
 
       $(this).change(update).keyup(update).keydown(update);
-
       update.apply(this);
-
     });
-
     return this;
-
   }
-
 })(jQuery);
 

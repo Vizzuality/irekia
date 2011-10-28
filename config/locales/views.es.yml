@@ -414,6 +414,7 @@ es:
               other: '%{count} comentarios'
       proposal:
         back: volver
+        see_all_proposals: Ver todas las propuestas a este área
         in_favor:
             zero: '%{percentage}% a favor (%{count} votos)'
             one:  '%{percentage}% a favor (%{count} voto)'

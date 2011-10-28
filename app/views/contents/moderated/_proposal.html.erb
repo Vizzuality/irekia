@@ -73,7 +73,7 @@
 <div class="separator"></div>
 <div class="inner">
   <div class="left">
-    <%= link_to t('.back'), @content.author, :class => :left_arrow %>
+    <%= link_to t('.see_all_proposals'), proposals_area_path(@content.target_area, :anchor => :proposals), :class => :left_arrow %>
   </div>
 </div>
 </footer>
