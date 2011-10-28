@@ -1,4 +1,5 @@
-var map;
+var map,
+		dblclick = false;		// If the user cliks double, just zoom in, not open the infowindow
 
 $(function() {
   if ($("#map_canvas").length) startMap();
@@ -49,6 +50,9 @@ function startMap() {
     };
 
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		google.maps.event.addListener(map,'dblclick',function(ev) {
+	 		dblclick = true;
+	  });
 
     // zoomIn
     var zoomInControlDiv = document.createElement('DIV');
@@ -96,8 +100,8 @@ function startMiniMap (mapID, lat, lng) {
     },
     maxZoom: 18
   };
-
   map = new google.maps.Map(document.getElementById(mapID), myOptions);
+
 
   var center = new google.maps.LatLng(lat, lng);
   var marker = new google.maps.Marker({ position: center, map: map });
@@ -184,20 +188,25 @@ IrekiaMarker.prototype.draw = function() {
                 $(div).append(markerTemplate);
                 $(div).append(contentTemplate);
 
-                $('.close').live('mousedown',function(ev){
-                  ev.stopPropagation();
+                $(div).find('span.close').click(function(ev){
                   ev.preventDefault();
                   $('div.infowindow').hide();
                 });
-
-
-                $('a.marker').live('mousedown',function(ev){
-                  ev.stopPropagation();
-                  ev.preventDefault();
-                  me.moveMaptoOpen();
-                  $('div.infowindow').hide();
-                  $(this).parent().children('div.infowindow').show();
-                  $('.scroll-pane').jScrollPane();
+								
+								
+								var interval;
+                $(div).find('a.marker').click(function(ev){
+									clearTimeout(interval);
+									interval = setTimeout(function(){
+										if (!dblclick) {
+											me.moveMaptoOpen();
+		                  $('div.infowindow').hide();
+		                  $(me.div_).find('div.infowindow').show();
+		                  $(me.div_).find('.scroll-pane').jScrollPane();
+										} else {
+											dblclick = false;
+										}
+									},300);
                 });
 
                 var panes = this.getPanes();
