@@ -414,8 +414,14 @@ es:
               other: '%{count} comentarios'
       proposal:
         back: volver
-        in_favor: '%{percentage}% a favor (%{count} votos)'
-        against: '%{percentage}% en contra (%{count} votos)'
+        in_favor:
+            zero: '%{percentage}% a favor (%{count} votos)'
+            one:  '%{percentage}% a favor (%{count} voto)'
+            other: '%{percentage}% a favor (%{count} votos)'
+        against:
+            zero: '%{percentage}% en contra (%{count} votos)'
+            one:  '%{percentage}% en contra (%{count} voto)'
+            other: '%{percentage}% en contra (%{count} votos)'
         title_author_and_comments:
           time: 'hace %{time}'
           comments:
@@ -485,8 +491,14 @@ es:
       comment:
         time: 'hace %{time}'
       argument:
-        in_favor: '%{percentage}% a favor (%{count} votos)'
-        against: '%{percentage}% en contra (%{count} votos)'
+        in_favor:
+            zero: '%{percentage}% a favor (%{count} votos)'
+            one:  '%{percentage}% a favor (%{count} voto)'
+            other: '%{percentage}% a favor (%{count} votos)'
+        against:
+            zero: '%{percentage}% en contra (%{count} votos)'
+            one:  '%{percentage}% en contra (%{count} voto)'
+            other: '%{percentage}% en contra (%{count} votos)'
   areas:
     navigation_menu:
       menu:
