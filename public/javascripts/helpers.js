@@ -541,23 +541,48 @@ jQuery.fn.share = function(opt){
   var easing = (opt && opt.easing) || 'easeInExpo';
 
   this.each(function(){
+    var service = $(this).attr('class').replace('share ', '');
+
+    bindShareService(service);
+
     $(this).bind('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
 
-      var service = $(this).attr('class').replace('share ', '');
       shareWith($(this), service, speed, easing);
     });
   });
 }
 
 function shareWith($el, service, speed, easing) {
-  var $ok = $el.find(".ok");
-  if ($ok) $ok.animate({opacity:0, top:"20px"}, speed, easing, function() { $(this).remove(); })
+  var $ok = $el.find(".ok"),
+  $form;
 
-  $el.append('<div class="ok" />');
-  $ok = $el.find(".ok");
-  $ok.animate({opacity:1, top:"-2px"}, speed, easing);
+  function success (argument) {
+    if ($ok) $ok.animate({ opacity:0, top: "20px" }, speed, easing, function() { $(this).remove(); })
+
+    $el.append('<div class="ok" />');
+    $ok = $el.find(".ok");
+    $ok.animate({opacity:1, top:"-2px"}, speed, easing);
+  }
+
+  function error () {
+    $form.find(".input_field").addClass("error");
+  }
+
+  if (service == "email") {
+    $form = $el.parents("li").find("form");
+
+    $form.submit(function() {
+      console.log('a');
+     // $form.find(".input_field").removeClass("error");
+    });
+
+    $form.bind('ajax:success', success);
+    $form.bind('ajax:error', error);
+  } else {
+    success();
+  }
 }
 
 

@@ -2659,6 +2659,15 @@ input {
   color: #E96F5F;
 }
 
+#container article .left .content .sharebox .input_field.error,
+#container article .right .content .sharebox .input_field.error {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    border:1px solid #E96F5F;
+  }
+}
+
 #container article.with_form .inner .field.error {
   padding: 0;
   .input_field input[type="text"],
@@ -3070,8 +3079,9 @@ footer {
 Error pages
 ========================================================================== */
 
-#container{
-  .error, .not_found{
+#container {
+  .page_error,
+  .not_found{
     padding: 125px 0;
     article.with_footer{
       margin: 0 auto;

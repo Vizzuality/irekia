@@ -20,7 +20,6 @@
   <div class="content">
     <div class="agenda_map">
       <div id="map_canvas" class="map"></div>
-
       <%= render 'shared/agenda_list' %>
     </div>
   </div>
@@ -32,11 +31,12 @@
 <div class="inner">
 
   <div class="right">
-    <%= link_to t(".more"), link_for_agenda, :class => "right right_arrow" if defined?(more) %>
+    <%= link_to t(".more"), link_for_agenda(:anchor => :agenda), :class => "right right_arrow" if defined?(more) and more %>
   </div>
 
 </div>
 </footer>
-<div class="t"></div><div class="f"></div>
+<div class="t"></div>
+<div class="f"></div>
 </article>
 <!-- Agenda -->
