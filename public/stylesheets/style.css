@@ -836,7 +836,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .left .content .sharebox ul li, #container article .right .content .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 
 .share { position: relative; }
-.share.email, .share.twitter, .share.facebook, .share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; cursor: pointer; }
+.share.email, .share.twitter, .share.facebook, .share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; border: 0 none; cursor: pointer; }
 .share.twitter { background-position: -29px 0; }
 .share.facebook { background-position: -58px 0; }
 .share.more { background-position: -88px 0; }

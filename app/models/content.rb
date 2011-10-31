@@ -117,6 +117,18 @@ class Content < ActiveRecord::Base
     default.merge(options)
   end
 
+  def facebook_share_message
+
+  end
+
+  def twitter_share_message
+
+  end
+
+  def email_share_message
+
+  end
+
   def update_published_at
     self.published_at = Time.now
   end

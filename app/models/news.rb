@@ -10,4 +10,17 @@ class News < Content
       :body            => body
     })
   end
+
+  def facebook_share_message
+    title.truncate(140)
+  end
+
+  def twitter_share_message
+    title.truncate(140)
+  end
+
+  def email_share_message
+    title
+  end
+
 end

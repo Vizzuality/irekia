@@ -120,6 +120,11 @@ class User < ActiveRecord::Base
                   :using => {
                     :tsearch => {:prefix => true, :any_word => true}
                   }
+
+  def email_required?
+    false
+  end
+
   def self.oldest_first
     order('created_at asc')
   end
@@ -137,14 +142,12 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
-
     data        = access_token['user_info']
     credentials = access_token['credentials']
 
-    if user = User.find_by_email(data['email'])
+    if user = (signed_in_resource || User.find_by_email(data['email']))
 
       user.facebook_oauth_token        = credentials['token']
-      user.facebook_oauth_token_secret = credentials['secret']
       user.save!
 
       user
@@ -154,7 +157,6 @@ class User < ActiveRecord::Base
 
       user.password                    = Devise.friendly_token[0,20]
       user.facebook_oauth_token        = credentials['token']
-      user.facebook_oauth_token_secret = credentials['secret']
 
       user
     end
@@ -165,16 +167,14 @@ class User < ActiveRecord::Base
     data        = access_token['user_info']
     credentials = access_token['credentials']
 
-    if user = User.find_by_email(data['email'])
-
+    if user = (signed_in_resource || User.find_by_twitter_oauth_token_and_twitter_oauth_token_secret(credentials['token'], credentials['secret']))
       user.twitter_oauth_token        = credentials['token']
       user.twitter_oauth_token_secret = credentials['secret']
       user.save!
 
       user
     else
-      user = User.new :name  => data['name'],
-                      :email => data['email']
+      user = User.new :name  => data['name']
 
       user.password                   = Devise.friendly_token[0,20]
       user.twitter_oauth_token        = credentials['token']
@@ -269,7 +269,7 @@ class User < ActiveRecord::Base
   end
 
   def connected_with_facebook?
-    facebook_oauth_token.present? && facebook_oauth_token_secret.present?
+    facebook_oauth_token.present?# && facebook_oauth_token_secret.present?
   end
 
   def connected_with_twitter?
