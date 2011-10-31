@@ -2538,7 +2538,7 @@ a.editable {
     span.holder { top: 22px; left: 19px; }
   }
 
-  input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; height: 20px; border: none; }
+  input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; width:auto; height: 20px; border: none; }
 
   ul {
     background:url('/images/share_box.png') no-repeat 0 -59px;

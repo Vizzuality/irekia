@@ -55,7 +55,8 @@ jQuery.fn.enablePublish = function(opt){
   $currentSection,
   currentHeight = 0,
   $submit = $article.find("footer .publish"),
-  spin_element = document.getElementById('publish_spinner');
+  spin_element = document.getElementById('publish_spinner'),
+  submitting = false;
 
   $currentSection = $article.find(".container .section:nth-child(1)");
 
@@ -85,11 +86,13 @@ jQuery.fn.enablePublish = function(opt){
     }
 
     function enableSubmit() {
+      submitting = false;
       $submit.removeAttr('disabled');
       $submit.removeClass("disabled");
     }
 
     function disableSubmit() {
+      submitting = true;
       $submit.attr("disable", "disable");
       $submit.addClass("disabled");
     }
@@ -101,6 +104,8 @@ jQuery.fn.enablePublish = function(opt){
     });
 
     $(this).find("ul.menu li a").click(function(e) {
+      if (submitting) return;
+
       e.preventDefault();
       $(this).parents("ul").find("li").removeClass("selected");
       $(this).parent().addClass("selected");

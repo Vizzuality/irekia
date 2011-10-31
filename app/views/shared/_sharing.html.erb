@@ -1,0 +1,39 @@
+<ul class="sharing">
+  <li><div class="share email"></div>
+
+  <div class="sharebox email">
+    <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post, :novalidate => 'novalidate'} do |form| %>
+      <div class="input_field placeholder">
+        <%= hidden_field_tag :provider, :email %>
+        <%= text_field_tag :email %>
+        <span class="holder">Escribe la dirección de email</span>
+      </div>
+      <%= form.submit 'Enviar', :class => 'share twitter' %>
+      <div class="arrow"></div>
+    <% end -%>
+  </div>
+
+  </li>
+  <li>
+    <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
+      <%= hidden_field_tag :provider, :twitter %>
+      <%= form.submit '', :class => 'share twitter' %>
+    <% end -%>
+  </li>
+  <li>
+    <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
+      <%= hidden_field_tag :provider, :facebook %>
+      <%= form.submit '', :class => 'share facebook' %>
+    <% end -%>
+  </li>
+  <li><div class="share more"></div>
+
+  <div class="sharebox">
+    <ul>
+      <li><div class="share twitter"></div></li>
+      <li><div class="share facebook"></div></li>
+    </ul>
+    <div class="arrow"></div>
+  </div>
+  </li>
+</ul>
