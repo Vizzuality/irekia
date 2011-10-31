@@ -1,20 +1,10 @@
 development:
-  facebook_app_id:
-  facebook_app_secret:
-  twitter_app_id:
-  twitter_app_secret:
+  facebook_app_id: 117110258386307
+  facebook_app_secret: 09d1dea28433bf78a0af535767e8cd1f
+  twitter_app_id: fVAGx4YargojLx9mOaAEfg
+  twitter_app_secret: AvSecOIPjaPR1rCzFmDzHrxE4jx2vjACOPyawhnss
 test:
-  facebook_app_id:
-  facebook_app_secret:
-  twitter_app_id:
-  twitter_app_secret:
-staging:
-  facebook_app_id:
-  facebook_app_secret:
-  twitter_app_id:
-  twitter_app_secret:
-production:
-  facebook_app_id:
-  facebook_app_secret:
-  twitter_app_id:
-  twitter_app_secret:
+  facebook_app_id: 117110258386307
+  facebook_app_secret: 09d1dea28433bf78a0af535767e8cd1f
+  twitter_app_id: fVAGx4YargojLx9mOaAEfg
+  twitter_app_secret: AvSecOIPjaPR1rCzFmDzHrxE4jx2vjACOPyawhnss

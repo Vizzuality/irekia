@@ -2531,7 +2531,7 @@ a.editable {
 .share {
   position:relative;
 
-  &.email, &.twitter, &.facebook, &.more { width:28px; height:28px; background:url('/images/icons/share.png') no-repeat 0 0; cursor: pointer; }
+  &.email, &.twitter, &.facebook, &.more { width:28px; height:28px; background:url('/images/icons/share.png') no-repeat 0 0; border: 0 none; cursor: pointer; }
   &.twitter  { background-position:-29px 0; }
   &.facebook { background-position:-58px 0; }
   &.more     { background-position:-88px 0; }

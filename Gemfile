@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '~> 3.0.10'
 gem 'sass', '~> 3.1.7'
 gem 'pg', '0.11.0'
-gem 'oa-oauth', '0.2.6', :require => "omniauth/oauth"
+gem 'oa-oauth', :require => "omniauth/oauth"
 gem 'devise', '~> 1.4.7'
 gem 'carrierwave', '~> 0.5.7'
 gem 'mini_magick', '~> 3.3'
@@ -12,6 +12,8 @@ gem 'colored', '~> 1.2'
 gem 'pg_search', '~> 0.3.1'
 gem 'json', '1.5.3'
 gem 'ffaker', '1.8.1'
+gem 'mini_fb', '1.1.7'
+gem 'twitter', '1.7.2'
 
 group :development do
   gem 'capistrano'

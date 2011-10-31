@@ -615,19 +615,16 @@ function shareWith($el, service, speed, easing) {
     $form.find(".input_field").addClass("error");
   }
 
-  if (service == "email") {
-    $form = $el.parents("li").find("form");
+  $form = $el.parents("li").find("form");
 
-    $form.submit(function() {
-      console.log('a');
-     // $form.find(".input_field").removeClass("error");
-    });
+  // $form.submit(function() {
+  //   console.log('a');
+  //  // $form.find(".input_field").removeClass("error");
+  // });
 
-    $form.bind('ajax:success', success);
-    $form.bind('ajax:error', error);
-  } else {
-    success();
-  }
+  $form.bind('ajax:success', success);
+  $form.bind('ajax:error', error);
+  $form.submit();
 }
 
 

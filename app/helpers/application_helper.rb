@@ -32,11 +32,11 @@ module ApplicationHelper
     render 'shared/menu', :options => options
   end
 
-  def path_for_user(user)
+  def path_for_user(user, params = {})
     if user.is_politician
-      politician_path(user.id)
+      politician_path(user.id, params)
     else
-      user_path(user.id)
+      user_path(user.id, params)
     end
   end
 
