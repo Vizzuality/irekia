@@ -621,6 +621,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
             margin-top:19px;
 
             .message {
+              display:none;
               padding:31px;
               height:137px - 31*2;
               width: 687px - 31*2;
@@ -644,8 +645,19 @@ article .inner { h2, h3 { color: $dark_blue; } }
               width:687px;
               height:900px;
 
+              &.photo {
+                .triangle { left:155px; }
+                .input_field {
+                  width:100%;
+                  margin:0 0 10px 0;
+
+                  input[type="text"] { width:666px; font-size:15px; }
+                  .holder { width: 666px; }
+                }
+              } // section.photo
+
               &.link {
-                .triangle { left:492px; }
+                .triangle { left:505px; }
                 .input_field {
                   width:100%;
                   margin:0 0 10px 0;
@@ -655,8 +667,21 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 }
               } // section.link
 
+              &.event {
+                .triangle { left:385px; }
+                .input_field {
+                  width:100%;
+                  margin:0 0 10px 0;
+                  input[type="text"] {
+                    width:666px;
+                    font-size:15px;
+                  }
+                  .holder { width: 666px; }
+                }
+              } // section.event
+
               &.proposal {
-                .triangle { left:150px; }
+                .triangle { left:386px; }
                 .input_field {
                   width:100%;
                   margin:0 0 10px 0;

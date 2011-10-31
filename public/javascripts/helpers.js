@@ -49,13 +49,15 @@ function watchHash(opt) {
 }
 
 jQuery.fn.enablePublish = function(opt){
-  var section = 0;
-  var speed   = 250;
-  var $article = $(this);
-  var $currentSection;
-  var currentHeight = 0;
+  var section = 0,
+  speed   = 250,
+  $article = $(this),
+  $currentSection,
+  currentHeight = 0,
+  $submit = $article.find("footer .publish"),
+  spin_element = document.getElementById('publish_spinner');
 
-  var spin_element = document.getElementById('publish_spinner');
+  $currentSection = $article.find(".container .section:nth-child(1)");
 
   this.each(function(){
 
@@ -67,22 +69,34 @@ jQuery.fn.enablePublish = function(opt){
       var $error        = $currentSection.find(".message.error");
 
       if (kind == "success") {
-        $success.show();
         $error.hide();
+        $success.show();
       } else {
-        $success.hide();
         $error.show();
+        $success.hide();
       }
 
       var successHeight = $success.outerHeight(true);
 
       $article.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, speed * 2, "easeInOutQuad", function() {
         IrekiaSpinner.stop();
+        enableSubmit();
       });
     }
 
-    $(this).find(".publish").click(function(e) {
+    function enableSubmit() {
+      $submit.removeAttr('disabled');
+      $submit.removeClass("disabled");
+    }
+
+    function disableSubmit() {
+      $submit.attr("disable", "disable");
+      $submit.addClass("disabled");
+    }
+
+    $submit.click(function(e) {
       e.preventDefault();
+      disableSubmit();
       showMessage("success");
     });
 
@@ -93,15 +107,26 @@ jQuery.fn.enablePublish = function(opt){
       section = $(this).parent().index();
       $section = $(this).parents(".content").find(".container .section:nth-child(" + (section + 1) + ")");
 
+
       if ($currentSection) {
         currentHeight = $currentSection.find(".form").outerHeight(true) + 20;
-      }
 
-      $article.find(".container").animate({scrollTop: 0, height:currentHeight}, function() {
+        $article.find(".container").animate({scrollTop: 0, height:currentHeight}, function() {
+
+          var $success      = $currentSection.find(".message.success").hide();
+          var $error        = $currentSection.find(".message.error").hide();
+
+          $currentSection = $section;
+          var height = $section.find(".form").outerHeight(true) + 20;
+          $article.find(".container").delay(100).animate({scrollLeft:section * 687, height:height}, speed, "easeInOutQuad");
+        });
+
+      } else {
         $currentSection = $section;
         var height = $section.find(".form").outerHeight(true) + 20;
-        $article.find(".container").delay(100).animate({scrollTop: 0, scrollLeft:section * 687, height:height}, speed, "easeInOutQuad");
-      });
+        $article.find(".container").animate({scrollTop: 0, scrollLeft:section * 687, height:height}, speed, "easeInOutQuad");
+      }
+
     });
   })
 }

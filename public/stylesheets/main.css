@@ -191,16 +191,24 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner header h2 { line-height: normal; }
 #container article.publish .inner .content .container { overflow: hidden; clear: both; width: 687px; height: 94px; }
 #container article.publish .inner .content .container .inner_container { width: 9000px; margin-top: 19px; }
-#container article.publish .inner .content .container .inner_container .message { padding: 31px; height: 75px; width: 625px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: #EDF3E5; }
+#container article.publish .inner .content .container .inner_container .message { display: none; padding: 31px; height: 75px; width: 625px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: #EDF3E5; }
 #container article.publish .inner .content .container .inner_container .message p { color: #7D8A92; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .message h3 { letter-spacing: 1px; }
 #container article.publish .inner .content .container .inner_container .message .icon { float: left; margin: 0 18px 0 0; background: url("/images/icons/ok_ball.png") no-repeat; width: 76px; height: 80px; }
 #container article.publish .inner .content .container .inner_container .section { float: left; width: 687px; height: 900px; }
-#container article.publish .inner .content .container .inner_container .section.link .triangle { left: 492px; }
+#container article.publish .inner .content .container .inner_container .section.photo .triangle { left: 155px; }
+#container article.publish .inner .content .container .inner_container .section.photo .input_field { width: 100%; margin: 0 0 10px 0; }
+#container article.publish .inner .content .container .inner_container .section.photo .input_field input[type="text"] { width: 666px; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .section.photo .input_field .holder { width: 666px; }
+#container article.publish .inner .content .container .inner_container .section.link .triangle { left: 505px; }
 #container article.publish .inner .content .container .inner_container .section.link .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.link .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.link .input_field .holder { width: 666px; }
-#container article.publish .inner .content .container .inner_container .section.proposal .triangle { left: 150px; }
+#container article.publish .inner .content .container .inner_container .section.event .triangle { left: 385px; }
+#container article.publish .inner .content .container .inner_container .section.event .input_field { width: 100%; margin: 0 0 10px 0; }
+#container article.publish .inner .content .container .inner_container .section.event .input_field input[type="text"] { width: 666px; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .section.event .input_field .holder { width: 666px; }
+#container article.publish .inner .content .container .inner_container .section.proposal .triangle { left: 386px; }
 #container article.publish .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
