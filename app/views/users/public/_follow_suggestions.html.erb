@@ -7,17 +7,17 @@
     <ul class="suggestions">
       <% @suggestions.each do |user| %>
         <li class="<%= 'selected' unless @suggestions_follows[user.id] && @suggestions_follows[user.id].new_record? %>">
-        <%= link_to avatar(user), user_path(user) %>
+        <%= link_to avatar(user), path_for_user(user) %>
         <div class="content">
-          <%= link_to user.fullname, politician_path(user), :class => :name %>
+          <%= link_to user.fullname, path_for_user(user), :class => :name %>
           <p>
           <%= t('.title_and_area', :title => get_politician_title(user), :area => user.areas.map(&:name).to_sentence) %>
           </p>
           <div class="follow basic">
             <% if @suggestions_follows[user.id] && @suggestions_follows[user.id].new_record? -%>
-              <%= render 'follows/create_form', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '', :button_label => t('.follow') %>
+              <%= render 'follows/create_mini', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '', :button_label => t('.follow') %>
             <% else -%>
-              <%= render 'follows/destroy_form', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '' %>
+              <%= render 'follows/destroy_mini', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '' %>
             <% end -%>
           </div>
         </div>

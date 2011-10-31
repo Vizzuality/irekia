@@ -32,18 +32,20 @@ module ApplicationHelper
     render 'shared/menu', :options => options
   end
 
+  def path_for_user(user)
+    if user.is_politician
+      politician_path(user.id)
+    else
+      user_path(user.id)
+    end
+  end
+
   def avatar(user, size = nil)
     size = size.present?? size.to_s : ''
 
-    if user.present? && user.profile_pictures.present?
+    if user.present? && user.profile_image.present?
 
-      if user.politician?
-        path = politician_path(user.id)
-      else
-        path = user_path(user.id)
-      end
-
-      link_to (image_tag(user.profile_image) + (raw (content_tag :div, " ", :class => :ieframe))), path, :title => user.fullname, :class => "avatar #{size}"
+      link_to (image_tag(user.profile_image) + (raw (content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
     else
       image_tag 'icons/faceless_avatar.png', :class => "avatar #{size}", :title => t('unknown_user')
     end
@@ -61,6 +63,10 @@ module ApplicationHelper
     comment_date = last_comment.published_at
     comment_date = DateTime.parse(comment_date) if comment_date.is_a?(String)
     comment_date > 1.day.ago
+  end
+
+  def show_last_comments?(content)
+    content.last_comments.present? && within_the_day?(content.last_comments)
   end
 
   def link_to_with_login(*args)

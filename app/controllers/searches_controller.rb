@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
 
   def show
     @contents = @contents.limit(10)
-    if request.xhr? && (params.keys.include?('more_polemic') || params.keys.include?('more_recent') || params.keys.include?('type'))
+    if request.xhr? && (params.key?('more_polemic') || params.key?('more_recent') || params.key?('type'))
       render :partial => 'contents_list' and return
     end
 

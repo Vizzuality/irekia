@@ -24,7 +24,7 @@ class Question < Content
 
   accepts_nested_attributes_for :question_data, :answer_requests
 
-  delegate :target_user, :question_text, :answered_at, :to => :question_data
+  delegate :target_area, :target_user, :question_text, :answered_at, :to => :question_data
 
   def self.answered
     joins(:question_data).where('question_data.answered_at IS NOT NULL')

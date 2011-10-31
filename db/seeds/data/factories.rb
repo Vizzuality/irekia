@@ -40,7 +40,7 @@ end
 def create_argument(params)
   defaults = {
     :reason => Faker::Lorem.sentence(10),
-    :in_favor => true
+    :in_favor => [true, false].sample
   }
   params = defaults.merge(params)
 
@@ -60,6 +60,30 @@ def create_argument(params)
   print '.'.blue
 
   argument
+end
+
+def create_vote(params)
+  defaults = {
+    :in_favor => [true, false].sample
+  }
+  params = defaults.merge(params)
+
+  vote = Vote.new
+  vote.user = params[:author]
+  vote.vote_data = VoteData.create :in_favor => params[:in_favor]
+
+  case params[:proposal]
+  when String
+    vote.proposal = ProposalData.find_by_title(params[:proposal]).proposal
+  when Integer
+    vote.proposal = Proposal.find(params[:proposal])
+  end
+
+  vote.save!
+
+  print '.'.blue
+
+  vote
 end
 
 def create_comment(user, comment = Faker::Lorem.sentence)

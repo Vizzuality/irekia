@@ -6,7 +6,7 @@
   </div>
   <div class="right">
     <ul class="switch">
-      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_actions(:referer => action_name), :class => 'filter' %></li>
+      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_actions(:more_polemic => false, :referer => action_name), :class => 'filter' %></li>
       <li><%= link_to t('.main_filters.more_polemic'), link_for_actions(:more_polemic => true, :referer => action_name), :class => 'filter' %></li>
     </ul>
 
@@ -27,7 +27,7 @@
   <div class="right">
     <ul class="selector">
 
-      <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_actions, :class => "filter" %></li>
+      <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_actions(:type => nil, :referer => action_name), :class => "filter" %></li>
 
       <li>
       <% if @news_count > 0 %>

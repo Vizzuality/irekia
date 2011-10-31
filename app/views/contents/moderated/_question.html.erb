@@ -4,7 +4,7 @@
 
     <h2><%= @content.question_text %></h2>
     <p class="info">
-    <%= link_to @content.author.try(:fullname), user_path(@content.users.first) %>
+    <%= link_to @content.author.try(:fullname), path_for_user(@content.users.first) %>
     <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     &middot;
     <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments_count), '#', :class => :goto_comments %>
@@ -42,123 +42,13 @@
 <div class="separator"></div>
 <div class="inner">
   <div class="left">
-    <%= link_to "ver todas las preguntas", "#", :class => :left_arrow %>
-    <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
-  </div>
-
-  <div class="right">
-    <%= link_to "siguiente pregunta", "#", :class => :right_arrow %>
-    <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
+    <% if @content.target_is_a_user? -%>
+      <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user, :anchor => :questions), :class => :left_arrow %>
+    <% else -%>
+      <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area, :anchor => :questions), :class => :left_arrow %>
+    <% end -%>
   </div>
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>
 </article>
-
-<!--
-
-<div id="question" class="content">
-  <div class="question_content">
-    <h1><%= @content.question_text %></h1>
-    <div class="author_and_comments">
-      <span>
-        <%= link_to @content.author.try(:fullname), user_path(@content.users.first)  %>
-        <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
-      </span>
-      &middot;
-      <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments_count), '/in_development' %>
-      &middot;
-      <% if @content.answer.blank? %>
-        <span><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
-      <% else %>
-        <span><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words_to_now(@content.answer.published_at)) %></span>
-      <% end %>
-    </div>
-    <% if @content.answer.blank? %>
-      <div class="answer_requests">
-        <% if @new_request %>
-          <%= form_for @content do |f| %>
-            <%= f.fields_for :answer_requests, @new_request do |answer_requests_form| %>
-              <%= answer_requests_form.hidden_field :user_id %>
-            <% end %>
-            <%= f.submit t('.question_content.answer_requests.do_request') %>
-          <% end %>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="answer">
-        <div class="author">
-          <%= image_tag(@content.answer.author.try(:profile_image)) if @content.answer.author.try(:profile_pictures).present? %>
-          <div>
-            <%= raw t('.question_content.answer.has_answered', :name => link_to(@content.answer.author.fullname, politician_path(@content.answer.author))) %>
-          </div>
-          <span class="title"><%= get_politician_title(@content.answer.author) %></span>
-        </div>
-        <div class="text">
-          <%= simple_format @content.answer.answer_text %>
-        </div>
-        <p>
-        <%= t('.question_content.answer_opinion') %>
-        <% if @answer_opinion %>
-          <%= form_for @content do |f| %>
-            <%= f.fields_for :answer do |af| %>
-              <%= af.fields_for :answer_opinions, @answer_opinion do |apf| %>
-                <%= apf.hidden_field :user_id %>
-                <%= apf.fields_for :answer_opinion_data, @answer_opinion_data_satisfactory do |apdf| %>
-                  <%= apdf.hidden_field :satisfactory %>
-                <% end %>
-              <% end %>
-            <% end %>
-            <%= f.submit t('.question_content.answer_satisfactory') %>
-            <span>&nbsp;(<%= @satisfactory_opinions_count %>)</span>
-          <% end %>
-          <%= form_for @content do |f| %>
-            <%= f.fields_for :answer do |af| %>
-              <%= af.fields_for :answer_opinions, @answer_opinion do |apf| %>
-                <%= apf.hidden_field :user_id %>
-                <%= apf.fields_for :answer_opinion_data, @answer_opinion_data_not_satisfactory do |apdf| %>
-                  <%= apdf.hidden_field :satisfactory %>
-                <% end %>
-              <% end %>
-            <% end %>
-            <%= f.submit t('.question_content.answer_not_satisfactory') %>
-            <span>&nbsp;(<%= @not_satisfactory_opinions_count %>)</span>
-          <% end %>
-        <% else %>
-          <span><%= t('.question_content.answer_satisfactory') %></span><span class="count">&nbsp;(<%= @content.answer.answer_opinions.satisfactory.count %>)</span>
-          <span><%= t('.question_content.answer_not_satisfactory') %></span><span class="count">&nbsp;(<%= @content.answer.answer_opinions.not_satisfactory.count %>)</span>
-        <% end %>
-        </p>
-      </div>
-    <% end %>
-    <%= render 'participations/comments' %>
-  </div>
-  <div class="sidebar">
-    <ul class="sharing_links">
-      <li><%= link_to t('.sidebar.sharing_links.mail'), '/in_development' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.twitter'), '/in_development' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.facebook'), '/in_development' %></li>
-    </ul>
-    <div class="tags">
-      <h3><%= t('.sidebar.tags.title') %></h3>
-      <ul>
-        <% @content.tags.split(',').each do |tag| %>
-          <li><%= tag.strip %></li>
-          <% end if @content.tags.present? %>
-        </ul>
-      </div>
-      <div class="related_questions">
-        <h3><%= t('.sidebar.related_questions.title') %></h3>
-        <ul>
-          <% @last_contents.each do |question| %>
-            <li>
-            <p><%= link_to question.question_text, question_path(question) %></p>
-            <span class="when"><%= t('.related_questions.time', :time => distance_of_time_in_words_to_now(question.published_at)) %></span>
-            <%= link_to t('.related_questions.comments', :count => question.comments_count), '/in_development' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-  -->

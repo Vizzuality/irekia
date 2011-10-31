@@ -7,7 +7,7 @@
   <div class="right">
 
     <ul class="switch">
-      <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:referer => 'answered'), :class => 'filter' %></li>
+      <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:more_polemic => false, :referer => 'answered'), :class => 'filter' %></li>
       <li><%= link_to t('.more_polemic'), link_for_questions(:more_polemic => true, :referer => 'answered'), :class => 'filter' %></li>
     </ul>
 
@@ -33,7 +33,7 @@
   <div class="right">
 
     <ul class="switch">
-      <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:referer => 'all'), :class => 'filter' %></li>
+      <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:more_polemic => false, :referer => 'all'), :class => 'filter' %></li>
       <li><%= link_to t('.more_polemic'), link_for_questions(:more_polemic => true, :referer => 'all'), :class => 'filter' %></li>
     </ul>
 

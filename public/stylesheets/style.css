@@ -825,7 +825,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .right .content ul.locations li .map { background: #f1f1f1; width: 253px; height: 129px; margin-bottom: 9px; }
 
 /* Ribbons */
-#container article .ribbon { position: absolute; top: -14px; right: 25px; display: block; width: 37px; height: 85px; background: url("/images/ribbon.png") no-repeat; z-index: 10; }
+#container article .ribbon { position: absolute; top: -14px; right: 25px; display: block; width: 37px; height: 85px; background: url("/images/ribbon.png") no-repeat; border: 0 none; z-index: 10; }
 #container article footer .inner .right { float: right; }
 #container article .inner .right ul.selector li { padding: 10px; font-size: 15px; height: 12px; line-height: 11px; }
 #container article .inner .right ul.selector li.selected { -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: url("/images/link_gradient_bkg.png"); }

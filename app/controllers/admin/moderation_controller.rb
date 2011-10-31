@@ -4,12 +4,17 @@ class Admin::ModerationController < Admin::AdminController
     @contents = {}
     @participations = {}
 
-    @contents[:not_moderated] = Content.not_moderated.order('created_at ASC').page(params[:page])
-    @participations[:not_moderated] = Participation.not_moderated.order('created_at ASC').page(params[:page])
+    @contents[:not_moderated] = Content.not_rejected.not_moderated.order('created_at ASC').page(params[:page])
+    @participations[:not_moderated] = Participation.not_rejected.not_moderated.order('created_at ASC').page(params[:page])
 
     if params[:shows_moderated]
       @contents[:moderated] = Content.moderated.order('created_at ASC')
       @participations[:moderated] = Participation.moderated.order('created_at ASC')
+    end
+
+    if params[:shows_rejected]
+      @contents[:rejected] = Content.rejected.order('created_at ASC')
+      @participations[:rejected] = Participation.rejected.order('created_at ASC')
     end
 
     session[:return_to] = admin_moderation_path

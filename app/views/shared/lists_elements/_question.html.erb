@@ -10,7 +10,7 @@
 
   <div class="footer">
     <span class="published_at">
-      <%= raw t('.author', :author => link_to(data.author.fullname, user_path(data.author.id)), :time => distance_of_time_in_words_to_now(data.published_at)) %> &middot;
+      <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %> &middot;
 
       <% if data.is_a?(Question) %>
         <% if data.answered_at.present? %>
@@ -20,12 +20,15 @@
         <% end %>
       </span>
 
+      <% unless show_last_comments?(data) -%>
       &middot;
-
       <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), question_path(data.id, :anchor => :comments), :class => "comment-count" %>
+      <% end -%>
     <% else %>
+      <% unless show_last_comments?(data) -%>
       <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), question_path(data.id, :anchor => :comments), :class => "comment-count" %>
       &middot;
+      <% end -%>
       <%= render "/shared/inline_sharing" %>
     <% end %>
   </div>

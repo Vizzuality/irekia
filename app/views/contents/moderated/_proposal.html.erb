@@ -3,7 +3,7 @@
   <div class="left">
     <h1><%= @content.title %></h1>
     <p class="info extra-margin-bottom">
-    <%= link_to @content.author.try(:fullname), user_path(@content.author)  %>
+    <%= link_to @content.author.try(:fullname), path_for_user(@content.author)  %>
     <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     &middot;
     <%= link_to t('.title_author_and_comments.comments', :count => @content.comments_count), '#', :class => :goto_comments %>
@@ -18,34 +18,32 @@
         <% end %>
       </div>
 
-        <% if @new_against -%>
+        <% if @vote_against -%>
           <div class="footer">
-            <%= form_for @new_against, :remote => true do |form| %>
+            <%= form_for @vote_against, :remote => true do |form| %>
               <%= form.hidden_field :id %>
               <%= form.hidden_field :content_id %>
               <%= form.hidden_field :user_id %>
               <div class="input_text">
-                <%= form.fields_for :argument_data do |argument_data_form| %>
-                  <%= argument_data_form.hidden_field :id, :value => '' %>
-                  <%= argument_data_form.hidden_field :reason, :value => '' %>
-                  <%= argument_data_form.hidden_field :in_favor, :value => false %>
+                <%= form.fields_for :vote_data do |vote_data_form| %>
+                  <%= vote_data_form.hidden_field :id, :value => '' %>
+                  <%= vote_data_form.hidden_field :in_favor, :value => false %>
                 <% end -%>
                 <%= form.submit_with_login 'Estoy en contra', :class => 'white_button disagree' %>
               </div>
             <% end -%>
           </div>
         <% end -%>
-        <% if @new_in_favor -%>
+        <% if @vote_in_favor -%>
           <div class="footer">
-            <%= form_for @new_in_favor, :remote => true do |form| %>
+            <%= form_for @vote_in_favor, :remote => true do |form| %>
               <%= form.hidden_field :id %>
               <%= form.hidden_field :content_id %>
               <%= form.hidden_field :user_id %>
               <div class="input_text">
-                <%= form.fields_for :argument_data do |argument_data_form| %>
-                  <%= argument_data_form.hidden_field :id, :value => '' %>
-                  <%= argument_data_form.hidden_field :reason, :value => '' %>
-                  <%= argument_data_form.hidden_field :in_favor, :value => true %>
+                <%= form.fields_for :vote_data do |vote_data_form| %>
+                  <%= vote_data_form.hidden_field :id, :value => '' %>
+                  <%= vote_data_form.hidden_field :in_favor, :value => true %>
                 <% end -%>
                 <%= form.submit_with_login 'Estoy a favor', :class => 'white_button agree' %>
               </div>

@@ -4,13 +4,12 @@ class Argument < Participation
 
   has_one :argument_data
 
-  before_create :set_as_moderated
-  after_save :update_proposal
-
   delegate :in_favor, :against, :reason, :to => :argument_data
   delegate :title, :to => :proposal
 
   accepts_nested_attributes_for :argument_data
+
+  validates :reason, :presence => true
 
   def self.in_favor
     joins(:argument_data).where('argument_data.in_favor' => true)
@@ -18,10 +17,6 @@ class Argument < Participation
 
   def self.against
     joins(:argument_data).where('argument_data.in_favor' => false)
-  end
-
-  def self.with_reason
-    joins(:argument_data).where('argument_data.reason IS NOT NULL')
   end
 
   def as_json(options = {})
@@ -40,15 +35,5 @@ class Argument < Participation
       :comments_count  => comments_count
     }
   end
-
-  def set_as_moderated
-    moderated = true
-  end
-  private :set_as_moderated
-
-  def update_proposal
-    proposal.update_statistics
-  end
-  private :update_proposal
 
 end

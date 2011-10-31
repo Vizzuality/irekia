@@ -1,53 +1,49 @@
 <div class="proposals">
   <div class="proposal agree">
-    <h3><%= t(".in_favor") %> <sup>(<%= @in_favor_count %>)</sup></h3>
+    <h3><%= t(".in_favor") %> <sup>(<%= @arguments_in_favor.count %>)</sup></h3>
     <ul>
-      <% @in_favor.each do |argument| %>
+      <% @arguments_in_favor.each do |argument| %>
         <li><%= argument.reason %></li>
       <% end %>
     </ul>
-    <% if current_user and @new_in_favor -%>
-      <div class="footer">
-        <%= form_for @new_in_favor, :remote => true do |form| %>
-          <%= form.hidden_field :id %>
-          <%= form.hidden_field :content_id %>
-          <%= form.hidden_field :user_id %>
-          <div class="input_text">
-            <%= form.fields_for :argument_data do |argument_data_form| %>
-              <%= argument_data_form.hidden_field :id, :value => '' %>
-              <%= argument_data_form.text_field :reason, :value => '' %>
-              <%= argument_data_form.hidden_field :in_favor, :value => true %>
-            <% end -%>
-            <%= form.submit_with_login t('.add') %>
-          </div>
-        <% end -%>
-      </div>
-    <% end -%>
+    <div class="footer">
+      <%= form_for @argument_in_favor, :remote => true do |form| %>
+        <%= form.hidden_field :id %>
+        <%= form.hidden_field :content_id %>
+        <%= form.hidden_field :user_id %>
+        <div class="input_text">
+          <%= form.fields_for :argument_data do |argument_data_form| %>
+            <%= argument_data_form.hidden_field :id, :value => '' %>
+            <%= argument_data_form.text_field :reason, :value => '' %>
+            <%= argument_data_form.hidden_field :in_favor, :value => true %>
+          <% end -%>
+          <%= form.submit_with_login t('.add') %>
+        </div>
+      <% end -%>
+    </div>
   </div>
 
   <div class="proposal against">
-    <h3><%= t(".against") %> <sup>(<%= @against_count %>)</sup></h3>
+    <h3><%= t(".against") %> <sup>(<%= @arguments_against.count %>)</sup></h3>
     <ul>
-      <% @against.each do |argument| %>
+      <% @arguments_against.each do |argument| %>
         <li><%= argument.reason %></li>
       <% end %>
     </ul>
-    <% if current_user  and @new_against -%>
-      <div class="footer">
-        <%= form_for @new_against, :remote => true do |form| %>
-          <%= form.hidden_field :id %>
-          <%= form.hidden_field :content_id %>
-          <%= form.hidden_field :user_id %>
-          <div class="input_text">
-            <%= form.fields_for :argument_data do |argument_data_form| %>
-              <%= argument_data_form.hidden_field :id, :value => '' %>
-              <%= argument_data_form.text_field :reason, :value => '' %>
-              <%= argument_data_form.hidden_field :in_favor, :value => false %>
-            <% end -%>
-            <%= form.submit_with_login t('.add') %>
-          </div>
-        <% end -%>
-      </div>
-    <% end -%>
+    <div class="footer">
+      <%= form_for @argument_against, :remote => true do |form| %>
+        <%= form.hidden_field :id %>
+        <%= form.hidden_field :content_id %>
+        <%= form.hidden_field :user_id %>
+        <div class="input_text">
+          <%= form.fields_for :argument_data do |argument_data_form| %>
+            <%= argument_data_form.hidden_field :id, :value => '' %>
+            <%= argument_data_form.text_field :reason, :value => '' %>
+            <%= argument_data_form.hidden_field :in_favor, :value => false %>
+          <% end -%>
+          <%= form.submit_with_login t('.add') %>
+        </div>
+      <% end -%>
+    </div>
   </div>
 </div>

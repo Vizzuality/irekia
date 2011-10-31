@@ -9,7 +9,7 @@ class Content < ActiveRecord::Base
                 :class_name => "ContentUser"
   has_many      :users,
                 :through => :contents_users,
-                :select => 'users.id, name, lastname'
+                :select => 'users.id, name, lastname, locale, email'
 
   has_many      :follows
   has_many      :participations
@@ -17,7 +17,7 @@ class Content < ActiveRecord::Base
                 :include => [{:author => :profile_pictures}, :comment_data],
                 :conditions => {:moderated => true}
 
-  attr_protected :moderated
+  attr_protected :moderated, :rejected
 
   before_create :update_published_at
   after_save :author_is_politician?
@@ -35,6 +35,14 @@ class Content < ActiveRecord::Base
 
   def self.not_moderated
     where(:moderated => false)
+  end
+
+  def self.rejected
+    where(:rejected => true)
+  end
+
+  def self.not_rejected
+    where(:rejected => false)
   end
 
   def self.more_recent
@@ -64,6 +72,10 @@ class Content < ActiveRecord::Base
     !moderated
   end
 
+  def content_type
+    type
+  end
+
   def last_contents(limit = 5)
     self.class.moderated.includes(:"#{self.class.name.downcase}_data", :comments).order('published_at desc').where('id <> ?', id).first(limit)
   end
@@ -91,10 +103,11 @@ class Content < ActiveRecord::Base
         :id            => author.id,
         :name          => author.name,
         :fullname      => author.fullname,
-        :profile_image => author.profile_image
+        :profile_image => author.profile_image,
+        :is_politician => author.politician?
       },
       :id              => id,
-      :type            => type,
+      :content_type    => type,
       :published_at    => published_at,
       :tags            => tags,
       :comments_count  => comments_count,

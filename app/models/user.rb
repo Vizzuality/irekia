@@ -211,6 +211,7 @@ class User < ActiveRecord::Base
   def politician?
     role.politician? if role.present?
   end
+  alias :is_politician :politician?
 
   def administrator?
     role.administrator? if role.present?
@@ -257,7 +258,7 @@ class User < ActiveRecord::Base
     when Answer
       AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', content.id, id)
     when Proposal
-      content.arguments.where('user_id = ?', id)
+      content.votes.where('user_id = ?', id)
     end
 
   end
@@ -281,6 +282,10 @@ class User < ActiveRecord::Base
 
   def not_following(item)
     followed_item(item).nil? if item.present?
+  end
+
+  def follow_for(item)
+    followed_item(item) || Follow.new(:follow_item => item)
   end
 
   def follow_suggestions

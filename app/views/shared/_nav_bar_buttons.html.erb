@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <ul class="auth">
     <li>
-      <%= link_to t('.hello', :name => current_user.name), user_path(current_user), :class => "blue_button" %>
+      <%= link_to t('.hello', :name => current_user.name), path_for_user(current_user), :class => "blue_button" %>
     <%= content_tag 'div', notifications_count, :class => "pending-counter" if notifications_count > 0 %>
     </li>
     <li><%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => "sign_out blue_button" %></li>

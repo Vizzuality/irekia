@@ -6,7 +6,7 @@ class Participation < ActiveRecord::Base
              :select => 'id, role_id, title_id, name, lastname'
   belongs_to :content
 
-  attr_protected :moderated
+  attr_protected :moderated, :rejected
 
   before_create :update_published_at
   before_save :author_is_politician?
@@ -20,6 +20,14 @@ class Participation < ActiveRecord::Base
 
   def self.not_moderated
     where(:moderated => false)
+  end
+
+  def self.rejected
+    where(:rejected => true)
+  end
+
+  def self.not_rejected
+    where(:rejected => false)
   end
 
   def self.validate_all_not_moderated

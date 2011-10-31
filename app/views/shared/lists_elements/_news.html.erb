@@ -6,8 +6,10 @@
     <span class="published_at">
       <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
     </span>
+    <% unless show_last_comments?(data) -%>
     &middot;
     <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '/in_development', :class => "comment-count" %>
+    <% end -%>
     &middot;
       <%= render "/shared/inline_sharing" %>
   </div>

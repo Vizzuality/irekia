@@ -3,10 +3,15 @@ class Proposal < Content
 
   has_one :proposal_data,
           :select => 'id, proposal_id, area_id, user_id, title, body, close, participation, in_favor, against'
+  has_many :votes,
+           :foreign_key => :content_id,
+           :dependent   => :destroy,
+           :include     => :vote_data
   has_many :arguments,
            :foreign_key => :content_id,
            :dependent   => :destroy,
-           :include     => :argument_data
+           :include     => :argument_data,
+           :order       => 'published_at'
 
   pg_search_scope :search_existing_proposals,
                   :associated_against => {
@@ -16,7 +21,7 @@ class Proposal < Content
                     :tsearch => {:prefix => true, :any_word => true}
                   }
 
-  accepts_nested_attributes_for :proposal_data, :arguments
+  accepts_nested_attributes_for :proposal_data, :arguments, :votes
 
   delegate :in_favor, :against, :participation, :title, :body, :target_user, :target_area, :to => :proposal_data
 
@@ -54,10 +59,6 @@ class Proposal < Content
     [percent_in_favor, percent_against].sort.last
   end
 
-  def moderated_participation
-    arguments.moderated.count
-  end
-
   def as_json(options = {})
     super({
       :title            => title,
@@ -71,9 +72,9 @@ class Proposal < Content
   end
 
   def update_statistics
-    proposal_data.in_favor      = arguments.in_favor.count
-    proposal_data.against       = arguments.against.count
-    proposal_data.participation = arguments.count
+    proposal_data.in_favor      = votes.in_favor.count
+    proposal_data.against       = votes.against.count
+    proposal_data.participation = votes.count
     proposal_data.save!
   end
 

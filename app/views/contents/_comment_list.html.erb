@@ -7,7 +7,7 @@
   <div class="comment">
     <blockquote><%= simple_format comment.body %></blockquote>
     <div class="footer when">
-      <%= link_to comment.user.fullname, user_path(comment.user), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
+      <%= link_to comment.user.fullname, path_for_user(comment.user), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
     </div>
   </div>
   </li>

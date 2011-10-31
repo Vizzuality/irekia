@@ -18,8 +18,14 @@ es:
       related_proposals:
         time: 'Hace %{time}'
         title: Propuestas relacionadas
-        in_favor: '%{percentage}% a favor (%{count} votos)'
-        against: '%{percentage}% en contra (%{count} votos)'
+        in_favor:
+          zero: No votada aún
+          one: '%{percentage}% a favor (%{count} voto)'
+          other: '%{percentage}% a favor (%{count} votos)'
+        against:
+          zero: No votada aún
+          one: '%{percentage}% en contra (%{count} voto)'
+          other: '%{percentage}% en contra (%{count} votos)'
       related_events:
         title: 'Otros eventos de este área'
         time: 'Hace %{time}'
@@ -228,7 +234,10 @@ es:
         other: '%{count} comentarios'
       share: Compartir
       last_comments:
-        previous: '%{previous_link} de %{authors}'
+        previous:
+          zero: ''
+          one: '%{previous_link} de %{authors}'
+          other: '%{previous_link}'
         previous_link:
           zero: Ningún comentario anterior
           one: 1 comentario anterior
@@ -412,6 +421,9 @@ es:
               zero: Ningún comentario
               one: Un comentario
               other: '%{count} comentarios'
+        footer:
+          all_questions_to_user: 'Todas las preguntas para %{name}'
+          all_questions_to_area: 'Todas las preguntas para el área de %{name}'
       proposal:
         back: volver
         see_all_proposals: Ver todas las propuestas a este área
@@ -491,7 +503,7 @@ es:
     moderated:
       comment:
         time: 'hace %{time}'
-      argument:
+      vote:
         in_favor:
             zero: '%{percentage}% a favor (%{count} votos)'
             one:  '%{percentage}% a favor (%{count} voto)'
@@ -906,7 +918,7 @@ es:
       continue: Continuar
       discover: Descubre por qué queremos que te conectes.
   follows:
-    create_form:
+    create:
       area:
         follow:
           zero: Seguir a este área (0)
@@ -917,5 +929,9 @@ es:
           zero: Seguir a %{name} (0)
           one: Seguir a %{name} (1)
           other: 'Seguir a %{name} (%{count})'
-    destroy_form:
+    create_mini:
+      follow: Seguir
+    destroy:
+      stop_follow: Dejar de seguir
+    destroy_mini:
       stop_follow: Dejar de seguir

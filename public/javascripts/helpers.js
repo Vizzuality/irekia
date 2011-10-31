@@ -243,6 +243,10 @@ jQuery.fn.autocomplete = function(opt){
       $(this).find('input[type="text"]').keyup(function(ev){
         clearTimeout(interval);
         if ($(this).val().length>2) {
+					if (ev.keyCode == 13) {
+						window.location = '/search?' + $(this).closest('form').serialize();
+						return;
+					}
           spinner.stop();
           interval = setTimeout(function(){
             spinner.spin(spin_element);

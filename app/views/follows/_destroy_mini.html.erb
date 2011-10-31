@@ -1,0 +1,12 @@
+<%
+@follow        = follow if defined?(follow)
+@follow_parent = follow_parent if defined?(follow_parent)
+%>
+
+<%= form_for [@follow_parent, @follow], :remote => true, :html => {:'data-type' => 'html', :method => :delete, :class => :follow } do |form| %>
+  <%= hidden_field_tag :form_type, 'mini' %>
+  <%= form.hidden_field :id %>
+  <%= content_tag :button, :type => 'submit', :class => "add_person add_to_favorites", :'data-item-id' => @follow_parent.id do %>
+    <%= raw (content_tag(:span, '', :class => 'add') + t('.stop_follow')) %>
+  <% end -%>
+<% end -%>

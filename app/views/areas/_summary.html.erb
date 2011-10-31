@@ -14,9 +14,9 @@
 
         <div id="follow" class="clearfix">
           <% if @follow.new_record? -%>
-            <%= render 'follows/create_form' %>
+            <%= render 'follows/create' %>
           <% else -%>
-            <%= render 'follows/destroy_form' %>
+            <%= render 'follows/destroy' %>
           <% end -%>
         </div>
     </div>
@@ -26,8 +26,8 @@
         <% @team.first(2).each do |user| %>
           <li>
           <%= avatar(user, :small) %>
-          <%#= link_to (content_tag 'div', image_tag(user.profile_image), :class => "avatar small"), politician_path(user) if user.profile_image %>
-          <%= link_to user.fullname, politician_path(user), :class => :name %>
+          <%#= link_to (content_tag 'div', image_tag(user.profile_image), :class => "avatar small"), path_for_user(user) if user.profile_image %>
+          <%= link_to user.fullname, path_for_user(user), :class => :name %>
           <span><%= get_politician_title(user) %></span>
           </li>
         <% end %>
@@ -43,7 +43,11 @@
     </div>
   </div>
 </div>
-<%= link_to "", '/in_development', {:class => :ribbon} %>
+<% if @follow.new_record? -%>
+  <%= render 'follows/create_ribbon' %>
+<% else -%>
+  <%= render 'follows/destroy_ribbon' %>
+<% end -%>
 <div class="t"></div><div class="f"></div>
 </article>
 <!-- /Article -->
