@@ -347,12 +347,39 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner header h2 { line-height: normal; }
 #container article.publish .inner .content .container { overflow: hidden; clear: both; width: 687px; height: 94px; }
 #container article.publish .inner .content .container .inner_container { width: 9000px; margin-top: 19px; }
-#container article.publish .inner .content .container .inner_container .section { float: left; margin-right: 10px; }
-#container article.publish .inner .content .input_field.textarea { height: auto; }
-#container article.publish .inner .content .input_field.textarea textarea { width: 664px; height: 53px; font-size: 15px; -moz-transition-duration: 0; -webkit-transition-duration: 0; -o-transition-duration: 0; transition-duration: 0; }
-#container article.publish .inner .content .input_field.textarea:focus .triangle, #container article.publish .inner .content .input_field.textarea:hover .triangle { background-position: 0 bottom; }
-#container article.publish .inner .content .input_field.textarea span.holder { font-size: 15px; }
-#container article.publish .inner .content .input_field.textarea .triangle { width: 30px; height: 25px; background: url("/images/icons/triangle.png") no-repeat 0 0; position: absolute; top: -14px; left: 37px; }
+#container article.publish .inner .content .container .inner_container .success { padding: 31px; height: 75px; width: 625px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: #EDF3E5; }
+#container article.publish .inner .content .container .inner_container .success p { color: #7D8A92; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .success h3 { letter-spacing: 1px; }
+#container article.publish .inner .content .container .inner_container .success .icon { float: left; margin: 0 18px 0 0; background: url("/images/icons/ok_ball.png") no-repeat; width: 76px; height: 80px; }
+#container article.publish .inner .content .container .inner_container .section { float: left; width: 687px; }
+#container article.publish .inner .content .container .inner_container .section.link .triangle { left: 492px; }
+#container article.publish .inner .content .container .inner_container .section.link .input_field { width: 100%; margin: 0 0 10px 0; }
+#container article.publish .inner .content .container .inner_container .section.link .input_field input[type="text"] { width: 666px; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .section.link .input_field .holder { width: 666px; }
+#container article.publish .inner .content .container .inner_container .section.proposal .triangle { left: 150px; }
+#container article.publish .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
+#container article.publish .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
+#container article.publish .inner .content .container .inner_container .section.video { height: auto; background: #EFEFEF; }
+#container article.publish .inner .content .container .inner_container .section.video ul li { float: left; width: 307px; height: 93px; margin: 0 10px 0 0; padding: 10px; position: relative; background: #fff; -moz-border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; -ms-border-radius: 8px; -khtml-border-radius: 8px; border-radius: 8px; -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; }
+#container article.publish .inner .content .container .inner_container .section.video ul li .radio { display: block; }
+#container article.publish .inner .content .container .inner_container .section.video ul li .logo { width: 110px; height: 46px; margin: 0 0 17px 0; background: url("/images/icons/share.png") no-repeat 0 -617px; }
+#container article.publish .inner .content .container .inner_container .section.video ul li.vimeo { margin: 0; }
+#container article.publish .inner .content .container .inner_container .section.video ul li.vimeo .logo { width: 125px; height: 43px; background-position: -120px -617px; }
+#container article.publish .inner .content .container .inner_container .section.video ul li .input_field { width: 100%; }
+#container article.publish .inner .content .container .inner_container .section.video ul li .input_field input[type="text"] { float: right; width: 275px; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .section.video ul li .input_field .holder { font-size: 15px; top: 11px; }
+#container article.publish .inner .content .container .inner_container .section.image .triangle { left: 150px; }
+#container article.publish .inner .content .container .inner_container .section.image .input_field input[type="text"] { width: 666px; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .section.image .input_field span.holder { width: 666px; font-size: 15px; top: 11px; }
+#container article.publish .inner .content .input_field { height: 36px; }
+#container article.publish .inner .content .input_field input[type="text"] { height: 34px; }
+#container article.publish .inner .content .input_field.textarea { height: auto; background: red; }
+#container article.publish .inner .content .input_field.textarea textarea { width: 664px; height: 53px; }
+#container article.publish .inner .content .input_field.textarea textarea:focus, #container article.publish .inner .content .input_field.textarea textarea:hover { border: 1px solid rgba(0, 0, 0, 0.2); }
+#container article.publish .inner .content .input_field input[type="text"], #container article.publish .inner .content .input_field textarea { font-size: 15px; }
+#container article.publish .inner .content .input_field span.holder { font-size: 15px; top: 11px; }
+#container article.publish .inner .content .input_field .triangle { width: 30px; height: 25px; background: url("/images/icons/triangle.png") no-repeat 0 0; position: absolute; top: -14px; left: 37px; }
 #container article.publish .inner .content ul.menu { width: 686px; margin: 0 0 8px 0; }
 #container article.publish .inner .content ul.menu li { margin-right: 6px; }
 #container article.publish .inner .content ul.menu li.last { margin: 0; }
@@ -368,6 +395,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish.with_footer footer .inner { width: 729px; background: url("/images/box_publish_bkg.png") repeat-y -1514px 0; border: none; }
 #container article.publish.with_footer footer .inner div.left { width: 50%; }
 #container article.publish.with_footer footer .inner div.right { width: 50%; margin: 0; }
+#container article.publish.with_footer footer .inner div.right .publish { margin: 0; }
+#container article.publish.with_footer footer .inner div.right .spinner { display: block; float: right; top: 2px; margin-right: 5px; position: relative; width: 33px; height: 33px; z-index: 10000; }
 #container article.publish.with_footer .separator { height: 2px; background: url("/images/box_publish_bkg.png") repeat-x; background-position: 0 -33px; }
 #container article.thin { width: 636px; margin: 0 auto 40px auto; }
 #container article.thin .inner header { margin: 0; width: 635px; }
@@ -998,7 +1027,7 @@ Error pages
 #container .page_error article.with_footer > .inner h1, #container .not_found article.with_footer > .inner h1 { margin: 20px; }
 #container .page_error article.with_footer > .inner p, #container .not_found article.with_footer > .inner p { width: 400px; margin: 0 auto; }
 
-/* CSS Styles that are needed by jScrollPane for it to operate correctly.  Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane may not operate correctly without them. */
+/* CSS Styles that are needed by jScrollPane for it to operate correctly. */
 .jspContainer { overflow: hidden; position: relative; }
 
 .jspPane { position: absolute; }

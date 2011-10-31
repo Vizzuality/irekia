@@ -1,3 +1,6 @@
+var SPINNER_OPTIONS = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
+var IrekiaSpinner = new Spinner(SPINNER_OPTIONS);
+
 function loginInLinks() {
   $(".floating-login").each(function(i, el) {
     $(el).unbind();
@@ -45,6 +48,31 @@ function watchHash(opt) {
   }
 }
 
+jQuery.fn.enablePublish = function(opt){
+  var section = 0;
+  var speed   = 250;
+  var $article = $(this);
+
+  var spin_element = document.getElementById('publish_spinner');
+
+  this.each(function(){
+    $(this).find(".publish").click(function(e) {
+      e.preventDefault();
+      IrekiaSpinner.spin(spin_element);
+    });
+
+    $(this).find("ul.menu li a").click(function(e) {
+      e.preventDefault();
+      $(this).parents("ul").find("li").removeClass("selected");
+      $(this).parent().addClass("selected");
+      section = $(this).parent().index();
+      $section = $(this).parents(".content").find(".container .section:nth-child(" + (section + 1) + ")");
+      var height = $section.find(".form").outerHeight(true) + 20;
+      console.log(height, $section.find(".form"));
+      $article.find(".container").animate({scrollLeft:section * 687, height:height}, speed, "easeInOutQuad");
+    });
+  })
+}
 
 /* Enables registration process */
 jQuery.fn.enableRegistration = function(opt){
@@ -166,21 +194,12 @@ jQuery.fn.enableArguments = function(opt){
 
   this.each(function(){
 
-    //var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
-    //var spin_element = document.getElementById('comment_spinner');
-    //var spinner = new Spinner(opts);
-
-    //$(this).submit(function(e) {
-    //  spinner.spin(spin_element);
-    //});
-
     $(this).bind('ajax:success', function(evt, xhr, status) {
       var $el = $(this).parent().siblings("ul");
       var $argument = $(xhr);
       $argument.hide();
       $el.append($argument);
       $argument.slideDown(250);
-      // spinner.stop();
 
       // Reset input
       $(this).find('.input_text input[type="text"]').val("");

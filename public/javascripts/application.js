@@ -99,22 +99,5 @@ $(function() {
   //$('.avatar').prepend("<div class='ieframe'></div>");
   $(".with_filters").filterWidget();
 
-
-
-
-  $("article.publish").each(function() {
-    var section = 0;
-    var speed   = 250;
-    var $article = $(this);
-
-    $("ul.menu li a").click(function(e) {
-      e.preventDefault();
-      $(this).parents("ul").find("li").removeClass("selected");
-      $(this).parent().addClass("selected");
-      section = $(this).parent().index();
-      $article.find(".container").animate({scrollLeft:section * 696}, speed, "easeInOut");
-    });
-  });
-
-
+  $("article.publish").enablePublish();
 });

@@ -167,6 +167,7 @@ header {
       form {
         float: left;
         width: 290px;
+
         .input_field {
           position:relative;
 
@@ -212,49 +213,49 @@ header {
             margin: 0 0 0 10px;
             @include inline-block;
 
-                  .pending-counter { right: 5px; }
+            .pending-counter { right: 5px; }
 
-                  a {
-                    display: inline-block;
-                    font-size: 15px;
-                    color: $white;
+            a {
+              display: inline-block;
+              font-size: 15px;
+              color: $white;
 
-                    &.twitter { background: url('/images/icons/twitter.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
-                    &.facebook { background: url('/images/icons/facebook.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
-                  }
-                }
-              }
-              &.areas {
-                float: left;
-                margin-right: 10px;
-                padding: 7px 14px;
-                color: $white;
-                font-size: 15px;
-                text-shadow: 0px 1px 1px #0F4768;
-                border: 1px solid #13587F;
-
-                @include border-radius(5px);
-                @include box-shadow(0 1px 1px 0 #369acf);
-
-                background: #3396cd;
-
-                background: -moz-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3396cd), color-stop(100%, #2080b5));
-                background: -webkit-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-                background: -o-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-                background: -ms-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 );
-                background: linear-gradient(top, #3396cd 0%, #2080b5 100%);
-              }
+              &.twitter { background: url('/images/icons/twitter.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
+              &.facebook { background: url('/images/icons/facebook.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
             }
           }
         }
+        &.areas {
+          float: left;
+          margin-right: 10px;
+          padding: 7px 14px;
+          color: $white;
+          font-size: 15px;
+          text-shadow: 0px 1px 1px #0F4768;
+          border: 1px solid #13587F;
+
+          @include border-radius(5px);
+          @include box-shadow(0 1px 1px 0 #369acf);
+
+          background: #3396cd;
+
+          background: -moz-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3396cd), color-stop(100%, #2080b5));
+          background: -webkit-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+          background: -o-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+          background: -ms-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 );
+          background: linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        }
       }
+    }
+  }
+}
 
 
-      /* =============================================================================
-      Article
-      ========================================================================== */
+/* =============================================================================
+Article
+========================================================================== */
 
 #container article {
   position: relative;
@@ -409,82 +410,82 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
       fieldset { text-align:left; border-right: 1px solid #e3e6e8; }
 
-    .field {
-      margin: 0 0 20px 0;
-      width:200px;
-      color: #7D8A92;
-      font-size:15px;
-      position:relative;
-
-      ul.errors {
-        position: absolute;
-        top:30px;
-        right: -684px;
-        margin:0;
-        padding: 0;
-        li {
-          background: url('/images/icons/icon_sprite.png') no-repeat -54px 2px;
-          margin:0;
-          padding: 0 0 0 21px;
-          font-size:15px;
-          color: #E96F5F;
-        }
-      }
-
-      a:hover { text-decoration:none; }
-
-      &.left { float:left; margin-right:6px; }
-      &.right { float:left;  }
-
-      .gender.male { margin-right:25px; }
-
-      &.social { width:410px; }
-      &.legal { width:410px; clear:both; overflow:hidden
-
-        input[type="checkbox"] {
-          float:left;
-
-        }
-      }
-
-      &.email {
-        width:410px;
-        .input_field {
-          width:410px;
-          input[type="text"],
-          input[type="email"] { width:384px; }
-        }
-      }
-
-      &.lastname {
-        width:410px;
-        .input_field {
-          width:410px;
-          input[type="text"] { width:383px; }
-        }
-      }
-
-      .input_field {
+      .field {
+        margin: 0 0 20px 0;
         width:200px;
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-          width:178px;
-          color: #7D8A92;
-          font-size:15px;
-        }
-      }
+        color: #7D8A92;
+        font-size:15px;
+        position:relative;
 
-      label {
-        display:block;
-        margin: 0 0 7px 0;
-        text-transform: uppercase;
-        font-size:12px;
-        color:#465866;
-        font-weight:bold;
+        ul.errors {
+          position: absolute;
+          top:30px;
+          right: -684px;
+          margin:0;
+          padding: 0;
+
+          li {
+            background: url('/images/icons/icon_sprite.png') no-repeat -54px 2px;
+            margin:0;
+            padding: 0 0 0 21px;
+            font-size:15px;
+            color: #E96F5F;
+          }
+        }
+
+        a:hover { text-decoration:none; }
+
+        &.left { float:left; margin-right:6px; }
+        &.right { float:left;  }
+
+        .gender.male { margin-right:25px; }
+
+        &.social { width:410px; }
+        &.legal {
+          width:410px;
+          clear:both;
+          overflow:hidden
+          input[type="checkbox"] { float:left; }
+        }
+
+        &.email {
+          width:410px;
+          .input_field {
+            width:410px;
+            input[type="text"],
+            input[type="email"] { width:384px; }
+          }
+        }
+
+        &.lastname {
+          width:410px;
+          .input_field {
+            width:410px;
+            input[type="text"] { width:383px; }
+          }
+        }
+
+        .input_field {
+          width:200px;
+          input[type="text"],
+          input[type="email"],
+          input[type="password"] {
+            width:178px;
+            color: #7D8A92;
+            font-size:15px;
+          }
+        }
+
+        label {
+          display:block;
+          margin: 0 0 7px 0;
+          text-transform: uppercase;
+          font-size:12px;
+          color:#465866;
+          font-weight:bold;
+        }
       }
     }
-  }
   }
 
 
@@ -609,44 +610,143 @@ article .inner { h2, h3 { color: $dark_blue; } }
       }
 
       .content {
-
-
         .container {
-            overflow:hidden;
-            clear:both;
-            width:687px;
-            height:94px;
+          overflow:hidden;
+          clear:both;
+          width:687px;
+          height:94px;
+
           .inner_container {
             width:9000px;
             margin-top:19px;
+
+            .success {
+              padding:31px;
+              height:137px - 31*2;
+              width: 687px - 31*2;
+              @include border-radius(4px);
+              background:#EDF3E5;
+
+              p { color: #7D8A92; font-size:15px; }
+              h3 { letter-spacing: 1px; }
+
+              .icon {
+                float: left;
+                margin: 0 18px 0 0;
+                background: url('/images/icons/ok_ball.png') no-repeat;
+                width: 76px;
+                height: 80px;
+              }
+            }
+
             .section {
               float:left;
-              margin-right:10px;
+              width:687px;
+
+              &.link {
+                .triangle { left:492px; }
+                .input_field {
+                  width:100%;
+                  margin:0 0 10px 0;
+
+                  input[type="text"] { width:666px; font-size:15px; }
+                  .holder { width: 666px; }
+                }
+              } // section.link
+
+              &.proposal {
+                .triangle { left:150px; }
+                .input_field {
+                  width:100%;
+                  margin:0 0 10px 0;
+                  input[type="text"] {
+                    width:666px;
+                    font-size:15px;
+                  }
+                  .holder { width: 666px; }
+                }
+              } // section.proposal
+
+              &.video {
+                height:auto;
+                background:#EFEFEF;
+
+                ul {
+                  li {
+                    float:left;
+                    width: 307px;
+                    height: 93px;
+                    margin: 0 10px 0 0;
+                    padding: 10px;
+                    position:relative;
+                    background:#fff;
+                    @include border-radius(8px);
+                    @include transition-property(all);
+                    @include transition-duration(300ms);
+
+                    .radio { display:block; }
+
+                    .logo {
+                      width:110px;
+                      height:46px;
+                      margin: 0 0 17px 0;
+                      background:url('/images/icons/share.png') no-repeat 0 -617px;
+                    } // logo
+
+                    &.vimeo {
+                      margin:0;
+                      .logo {
+                        width:125px;
+                        height:43px;
+                        background-position:-120px -617px;
+                      }
+                    } // li.vimeo
+
+                    .input_field {
+                      width:100%;
+                      input[type="text"] { float:right; width:275px; font-size:15px; }
+                      .holder { font-size: 15px; top:11px; }
+                    } // input_field
+                  }
+                }
+              } // section.video
+
+              &.image {
+                .triangle { left:150px; }
+                .input_field {
+                  input[type="text"] { width:666px; font-size:15px; }
+                  span.holder { width:666px; font-size:15px; top:11px; }
+                }
+              } // section.image
             }
           }
         }
 
 
-        .input_field.textarea {
-          height:auto;
+        .input_field {
+          height:36px;
+          input[type="text"] { height:34px; }
 
-          textarea {
-            width:664px;
-            height:53px;
-            font-size:15px;
-            @include transition-duration(0);
+          &.textarea {
+            height:auto;
+
+            textarea {
+              width:664px;
+              height:53px;
+              &:focus, &:hover { border: 1px solid rgba(0, 0, 0, 0.2); }
+            }
+
+            //&:focus .triangle, &:hover .triangle { background-position: 0 bottom; }
           }
-
-          &:focus .triangle, &:hover .triangle { background-position: 0 bottom; }
-
-          span.holder { font-size:15px; }
+          input[type="text"], textarea  { font-size:15px; }
+          span.holder { font-size:15px; top:11px; }
 
           .triangle {
-           width: 30px; height: 25px;
-           background:url('/images/icons/triangle.png') no-repeat 0 0;
-           position:absolute;
-           top:-14px;
-           left:37px;
+            width: 30px; height: 25px;
+            background:url('/images/icons/triangle.png') no-repeat 0 0;
+            position:absolute;
+            top:-14px;
+            left:37px;
           }
         }
 
@@ -668,12 +768,12 @@ article .inner { h2, h3 { color: $dark_blue; } }
         }
 
         p {
-        margin: 0 0 20px 0;
-        padding: 0;
-        font-size: 15px;
-        color: $standard_gray;
+          margin: 0 0 20px 0;
+          padding: 0;
+          font-size: 15px;
+          color: $standard_gray;
+        }
       }
-    }
     }
     .t, .f {
       height: 10px;
@@ -712,7 +812,23 @@ article .inner { h2, h3 { color: $dark_blue; } }
           background: url('/images/box_publish_bkg.png') repeat-y -1514px 0;
           border: none;
           div.left  { width:50%; }
-          div.right { width:50%; margin:0; }
+          div.right {
+            width:50%;
+            margin:0;
+
+            .publish { margin: 0; }
+
+            .spinner {
+              display:block;
+              float:right;
+              top:2px;
+              margin-right:5px;
+              position:relative;
+              width:33px;
+              height:33px;
+              z-index:10000;
+            }
+          }
         }
       }
       .separator {
@@ -934,20 +1050,20 @@ article .inner { h2, h3 { color: $dark_blue; } }
       }
       img.avatar { position: relative; float: left; }
 
-       .close {
-         position: absolute;
-         top: 0px;
-         right: 10px;
-         display: block;
-         width: 17px;
-         height: 17px;
-         background: url('/images/icons/icon_sprite.png') no-repeat -13px 0;
-         border: 0 none;
-         cursor: pointer;
-         &:hover {
-           background-position: -31px 0;
-         }
-       }
+      .close {
+        position: absolute;
+        top: 0px;
+        right: 10px;
+        display: block;
+        width: 17px;
+        height: 17px;
+        background: url('/images/icons/icon_sprite.png') no-repeat -13px 0;
+        border: 0 none;
+        cursor: pointer;
+        &:hover {
+          background-position: -31px 0;
+        }
+      }
 
       .content {
         position: relative;
@@ -1500,80 +1616,80 @@ article .inner { h2, h3 { color: $dark_blue; } }
     width:9000px;
     height:332px;
 
-      article {
-        float:left;
-        clear:none;
-        margin: 10px 100px 0 0;
+    article {
+      float:left;
+      clear:none;
+      margin: 10px 100px 0 0;
 
-        form { clear:both; }
+      form { clear:both; }
 
 
 
-        form .inner, .inner {
-          fieldset {
-            margin:auto;
-            width: 415px;
-            border:none!important;
+      form .inner, .inner {
+        fieldset {
+          margin:auto;
+          width: 415px;
+          border:none!important;
 
-            .field {
+          .field {
 
-              span.mandatory {
-                float:left;
-                color: rgba(125,138,146, .4);
-                font-size:13px;
-                margin-top:10px;
-                margin-left:5px;
+            span.mandatory {
+              float:left;
+              color: rgba(125,138,146, .4);
+              font-size:13px;
+              margin-top:10px;
+              margin-left:5px;
+            }
+
+            &.territory {
+              width: 174px;
+              z-index:1000;
+
+            }
+            &.municipality {
+              width: 174px;
+              float:left; clear:none;
+            }
+
+            &.legal {
+              label,  a {
+                font-size:15px;
+                text-transform:none;
+                font-weight:normal;
               }
+            }
 
-              &.territory {
-                width: 174px;
-                z-index:1000;
-
-              }
-              &.municipality {
-                width: 174px;
-                float:left; clear:none;
-              }
-
-              &.legal {
-                label,  a {
-                  font-size:15px;
-                  text-transform:none;
-                  font-weight:normal;
-                }
-              }
-
-              &.born_at {
-                float:left;
+            &.born_at {
+              float:left;
+              width:415px;
+              clear:both;
+              .input_field {
                 width:415px;
-                clear:both;
-                .input_field {
-                  width:415px;
-                  select, .dk_container { float:left; margin:0 5px 0 0; }
-                }
+                select, .dk_container { float:left; margin:0 5px 0 0; }
               }
+            }
 
-              &.name,
-              &.lastname {
-                clear:both;
-                overflow:hidden;
-                width:415px;
+            &.name,
+            &.lastname {
+              clear:both;
+              overflow:hidden;
+              width:415px;
 
-                .input_field {
-                  float:left;
-                  clear:none;
-                  width:350px;
-                  input[type="text"] { width:328px; }
-                }
+              .input_field {
+                float:left;
+                clear:none;
+                width:350px;
+                input[type="text"] { width:328px; }
               }
             }
           }
         }
-
-        &.thin {
-          margin-left:164px!important;
-        }
       }
+
+      &.thin {
+        margin-left:164px!important;
+      }
+    }
 
   }
 }
@@ -1695,7 +1811,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
     cursor: pointer;
 
     @include border-radius(4px);
-
     @include transition-property(all);
     @include transition-duration(300ms);
 
@@ -3119,126 +3234,24 @@ Error pages
   }
 }
 
-
-
 /*
  * CSS Styles that are needed by jScrollPane for it to operate correctly.
- *
- * Include this stylesheet in your site or copy and paste the styles below into your stylesheet - jScrollPane
- * may not operate correctly without them.
  */
-
-.jspContainer
-{
-    overflow: hidden;
-    position: relative;
-}
-
-.jspPane
-{
-    position: absolute;
-}
-
-.jspVerticalBar
-{
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 16px;
-    height: 100%;
-    background: red;
-}
-
-.jspHorizontalBar
-{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 16px;
-    background: red;
-}
-
-.jspVerticalBar *,
-.jspHorizontalBar *
-{
-    margin: 0;
-    padding: 0;
-}
-
-.jspCap
-{
-    display: none;
-}
-
-.jspHorizontalBar .jspCap
-{
-    float: left;
-}
-
-.jspTrack
-{
-    background: #dde;
-    position: relative;
-}
-
-.jspDrag
-{
-    background: #bbd;
-    position: relative;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-}
-
-.jspHorizontalBar .jspTrack,
-.jspHorizontalBar .jspDrag
-{
-    float: left;
-    height: 100%;
-}
-
-.jspArrow
-{
-    background: #50506d;
-    text-indent: -20000px;
-    display: block;
-    cursor: pointer;
-}
-
-.jspArrow.jspDisabled
-{
-    cursor: default;
-    background: #80808d;
-}
-
-.jspVerticalBar .jspArrow
-{
-    height: 16px;
-}
-
-.jspHorizontalBar .jspArrow
-{
-    width: 16px;
-    float: left;
-    height: 100%;
-}
-
-.jspVerticalBar .jspArrow:focus
-{
-    outline: none;
-}
-
-.jspCorner
-{
-    background: #eeeef4;
-    float: left;
-    height: 100%;
-}
-
+.jspContainer { overflow: hidden; position: relative; }
+.jspPane { position: absolute; }
+.jspVerticalBar { position: absolute; top: 0; right: 0; width: 16px; height: 100%; background: red; }
+.jspHorizontalBar { position: absolute; bottom: 0; left: 0; width: 100%; height: 16px; background: red; }
+.jspVerticalBar *, .jspHorizontalBar * { margin: 0; padding: 0; }
+.jspCap { display: none; }
+.jspHorizontalBar .jspCap { float: left; }
+.jspTrack { background: #dde; position: relative; }
+.jspDrag { background: #bbd; position: relative; top: 0; left: 0; cursor: pointer; }
+.jspHorizontalBar .jspTrack, .jspHorizontalBar .jspDrag { float: left; height: 100%; }
+.jspArrow { background: #50506d; text-indent: -20000px; display: block; cursor: pointer; }
+.jspArrow.jspDisabled { cursor: default; background: #80808d; }
+.jspVerticalBar .jspArrow { height: 16px; }
+.jspHorizontalBar .jspArrow { width: 16px; float: left; height: 100%; }
+.jspVerticalBar .jspArrow:focus { outline: none; }
+.jspCorner { background: #eeeef4; float: left; height: 100%; }
 /* Yuk! CSS Hack for IE6 3 pixel bug :( */
-* html .jspCorner
-{
-    margin: 0 -3px 0 0;
-}
-
+* html .jspCorner { margin: 0 -3px 0 0; }
