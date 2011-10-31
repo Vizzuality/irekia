@@ -191,11 +191,11 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner header h2 { line-height: normal; }
 #container article.publish .inner .content .container { overflow: hidden; clear: both; width: 687px; height: 94px; }
 #container article.publish .inner .content .container .inner_container { width: 9000px; margin-top: 19px; }
-#container article.publish .inner .content .container .inner_container .success { padding: 31px; height: 75px; width: 625px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: #EDF3E5; }
-#container article.publish .inner .content .container .inner_container .success p { color: #7D8A92; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .success h3 { letter-spacing: 1px; }
-#container article.publish .inner .content .container .inner_container .success .icon { float: left; margin: 0 18px 0 0; background: url("/images/icons/ok_ball.png") no-repeat; width: 76px; height: 80px; }
-#container article.publish .inner .content .container .inner_container .section { float: left; width: 687px; }
+#container article.publish .inner .content .container .inner_container .message { padding: 31px; height: 75px; width: 625px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: #EDF3E5; }
+#container article.publish .inner .content .container .inner_container .message p { color: #7D8A92; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .message h3 { letter-spacing: 1px; }
+#container article.publish .inner .content .container .inner_container .message .icon { float: left; margin: 0 18px 0 0; background: url("/images/icons/ok_ball.png") no-repeat; width: 76px; height: 80px; }
+#container article.publish .inner .content .container .inner_container .section { float: left; width: 687px; height: 900px; }
 #container article.publish .inner .content .container .inner_container .section.link .triangle { left: 492px; }
 #container article.publish .inner .content .container .inner_container .section.link .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.link .input_field input[type="text"] { width: 666px; font-size: 15px; }
@@ -215,14 +215,13 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .section.video ul li .input_field .holder { font-size: 15px; top: 11px; }
 #container article.publish .inner .content .container .inner_container .section.image .triangle { left: 150px; }
 #container article.publish .inner .content .container .inner_container .section.image .input_field input[type="text"] { width: 666px; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .section.image .input_field span.holder { width: 666px; font-size: 15px; top: 11px; }
 #container article.publish .inner .content .input_field { height: 36px; }
 #container article.publish .inner .content .input_field input[type="text"] { height: 34px; }
 #container article.publish .inner .content .input_field.textarea { height: auto; }
 #container article.publish .inner .content .input_field.textarea textarea { width: 664px; height: 53px; }
 #container article.publish .inner .content .input_field.textarea textarea:focus, #container article.publish .inner .content .input_field.textarea textarea:hover { border: 1px solid rgba(0, 0, 0, 0.2); }
 #container article.publish .inner .content .input_field input[type="text"], #container article.publish .inner .content .input_field textarea { font-size: 15px; }
-#container article.publish .inner .content .input_field span.holder { font-size: 15px; top: 11px; }
+#container article.publish .inner .content .input_field span.holder { width: 666px; font-size: 15px; top: 10px; }
 #container article.publish .inner .content .input_field .triangle { width: 30px; height: 25px; background: url("/images/icons/triangle.png") no-repeat 0 0; position: absolute; top: -14px; left: 37px; }
 #container article.publish .inner .content ul.menu { width: 686px; margin: 0 0 8px 0; }
 #container article.publish .inner .content ul.menu li { margin-right: 6px; }

@@ -620,7 +620,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
             width:9000px;
             margin-top:19px;
 
-            .success {
+            .message {
               padding:31px;
               height:137px - 31*2;
               width: 687px - 31*2;
@@ -642,6 +642,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
             .section {
               float:left;
               width:687px;
+              height:900px;
 
               &.link {
                 .triangle { left:492px; }
@@ -715,13 +716,11 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 .triangle { left:150px; }
                 .input_field {
                   input[type="text"] { width:666px; font-size:15px; }
-                  span.holder { width:666px; font-size:15px; top:11px; }
                 }
               } // section.image
             }
           }
         }
-
 
         .input_field {
           height:36px;
@@ -739,7 +738,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
             //&:focus .triangle, &:hover .triangle { background-position: 0 bottom; }
           }
           input[type="text"], textarea  { font-size:15px; }
-          span.holder { font-size:15px; top:11px; }
+          span.holder { width:666px; font-size:15px; top:10px; }
 
           .triangle {
             width: 30px; height: 25px;

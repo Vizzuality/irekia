@@ -52,13 +52,38 @@ jQuery.fn.enablePublish = function(opt){
   var section = 0;
   var speed   = 250;
   var $article = $(this);
+  var $currentSection;
+  var currentHeight = 0;
 
   var spin_element = document.getElementById('publish_spinner');
 
   this.each(function(){
+
+    function showMessage(kind) {
+      IrekiaSpinner.spin(spin_element);
+
+      var currentHeight = $currentSection.find(".form").outerHeight(true);
+      var $success      = $currentSection.find(".message.success");
+      var $error        = $currentSection.find(".message.error");
+
+      if (kind == "success") {
+        $success.show();
+        $error.hide();
+      } else {
+        $success.hide();
+        $error.show();
+      }
+
+      var successHeight = $success.outerHeight(true);
+
+      $article.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, speed * 2, "easeInOutQuad", function() {
+        IrekiaSpinner.stop();
+      });
+    }
+
     $(this).find(".publish").click(function(e) {
       e.preventDefault();
-      IrekiaSpinner.spin(spin_element);
+      showMessage("success");
     });
 
     $(this).find("ul.menu li a").click(function(e) {
@@ -67,9 +92,16 @@ jQuery.fn.enablePublish = function(opt){
       $(this).parent().addClass("selected");
       section = $(this).parent().index();
       $section = $(this).parents(".content").find(".container .section:nth-child(" + (section + 1) + ")");
-      var height = $section.find(".form").outerHeight(true) + 20;
-      console.log(height, $section.find(".form"));
-      $article.find(".container").animate({scrollLeft:section * 687, height:height}, speed, "easeInOutQuad");
+
+      if ($currentSection) {
+        currentHeight = $currentSection.find(".form").outerHeight(true) + 20;
+      }
+
+      $article.find(".container").animate({scrollTop: 0, height:currentHeight}, function() {
+        $currentSection = $section;
+        var height = $section.find(".form").outerHeight(true) + 20;
+        $article.find(".container").delay(100).animate({scrollTop: 0, scrollLeft:section * 687, height:height}, speed, "easeInOutQuad");
+      });
     });
   })
 }
