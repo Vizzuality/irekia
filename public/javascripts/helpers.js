@@ -418,51 +418,38 @@ jQuery.fn.enableCommentBox = function(opt){
 
   this.each(function(){
 
+    var $that = $(this);
+
     var submitting = false;
     var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
     var spin_element = document.getElementById('spinner_' + $(this).attr("id"));
     var spinner = new Spinner(opts);
 
-    var $textarea = $(this).find("textarea");
-
+    var $input = $(this).find(':text, textarea');
+    var $submit = $(this).find('input[type="submit"]');
     $(this).submit(function(e) {
       var count = $input.val().length;
       if (count <= 0) {
         return false;
       } else {
         spinner.spin(spin_element);
+        $input.attr("disabled", "disabled");
+        $input.blur();
+        $submit.fadeOut(speed);
       }
     });
 
-    var $that = $(this);
 
-    function resetTextarea() {
-      $textarea.removeAttr('disabled');
-      $textarea.blur();
-      $textarea.val("");
-      $textarea.find(".holder").fadeIn(speed);
+    function resetInput() {
+      $input.val("");
+      $input.removeAttr('disabled');
+      $input.blur();
+      $input.find(".holder").fadeIn(speed);
     }
-
-    function submitContent() {
-      submitting = true;
-      $textarea.parent().submit();
-      $textarea.attr("disabled", "disabled");
-      $textarea.blur();
-    }
-
-    $(this).find("textarea").keydown(function(e) {
-      var count = $input.val().length;
-      if (count > 0) {
-        if (!submitting && e.keyCode == 13) {
-          submitContent();
-        }
-      }
-    });
 
     $(this).bind('ajax:error', function(evt, xhr, status) {
       spinner.stop();
-      submitting = false;
-      resetTextarea();
+      resetInput();
     });
 
     $(this).bind('ajax:success', function(evt, xhr, status) {
@@ -475,8 +462,7 @@ jQuery.fn.enableCommentBox = function(opt){
       $comment.slideDown(speed);
 
       spinner.stop();
-      submitting = false;
-      resetTextarea();
+      resetInput();
     });
 
     function textCounter($input) {
@@ -491,7 +477,6 @@ jQuery.fn.enableCommentBox = function(opt){
       }
     }
 
-    var $input = $(this).find(":text, textarea");
     var $submit = $(this).find('input[type="submit"]');
 
     $input.keyup(function(e) {
