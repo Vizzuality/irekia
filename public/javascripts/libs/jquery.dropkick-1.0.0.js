@@ -22,7 +22,7 @@
   var
     // Public methods exposed to $.fn.dropkick()
     methods = {},
-
+    scrollbar,
     // Cache every <select> element that gets dropkicked
     lists   = [],
 
@@ -142,16 +142,16 @@
       lists[lists.length] = $select;
 
 
-      $(window).bind('blur.dropkick.', function() {
-        $dk.removeClass('dk_open dk_focus');
-      });
+       $(window).bind('blur.dropkick.', function() {
+         $dk.removeClass('dk_open dk_focus');
+       });
 
-      // Focus events
-      $dk.bind('focus.dropkick', function (e) {
-        $dk.addClass('dk_focus');
-      }).bind('blur.dropkick', function (e) {
-        $dk.removeClass('dk_open dk_focus');
-      });
+      // // Focus events
+      // $dk.bind('focus.dropkick', function (e) {
+      //   $dk.addClass('dk_focus');
+      // }).bind('blur.dropkick', function (e) {
+      //   $dk.removeClass('dk_open dk_focus');
+      // });
 
 
       setTimeout(function () {
@@ -301,11 +301,18 @@
   // Open a dropdown
   function _openDropdown($dk) {
     GOD.subscribe("blur.dropkick");
+
     var data = $dk.data('dropkick');
     $dk.find('.dk_options').css({ top : $dk.find('.dk_toggle').outerHeight() - 1 });
     $dk.toggleClass('dk_open');
-    $dk.find(".scrollpane").jScrollPane();
 
+    if (!scrollbar) {
+      scrollbar = $dk.find(".scrollpane").jScrollPane();
+
+      $dk.find('.dk_options').css({
+        'width' : ($dk.find('.dk_options').width() - 2) + 'px'
+      });
+    }
   }
 
   /**
