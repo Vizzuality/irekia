@@ -191,7 +191,7 @@ a { text-decoration: none; color: #1d79b0; }
 a:active, a:visited { color: #1d79b0; }
 a:hover { text-decoration: underline; color: #114c6e; }
 a.left_arrow { background: url("/images/icons/arrow_left.png") no-repeat left 7px; padding-left: 12px; }
-a.right_arrow { background: url("/images/icons/arrow_right.png") no-repeat right 7px; padding-right: 12px; }
+a.right_arrow { background: url("/images/icons/arrow_right.png") no-repeat right 7px; padding-right: 12px; float: left; }
 a.down_arrow { background: url("/images/icons/arrow_down.png") no-repeat left 7px; padding-left: 12px; }
 
 p { font-family: "Helvetica", sans-serif; font-size: 17px; font-weight: 300; line-height: 21px; color: #6C777F; }
