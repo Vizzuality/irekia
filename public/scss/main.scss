@@ -1967,11 +1967,13 @@ a.editable {
       border-top: 1px solid #fff;
       a {float:left; margin-right:20px;}
       .sparkline { margin-top:10px; }
+
       .input_text {
         @include border-radius(5px);
         border:1px solid #B3B6AE;
         background:#fff;
         -webkit-appearance:none;
+        position:relative;
 
         input[type="text"],
         input[type="password"],
@@ -1981,6 +1983,11 @@ a.editable {
           padding:7px 7px;
           margin: 0 0 0 3px;
           width:177px;
+          font-size:15px;
+          &.disabled {
+            color:#7D8A92;
+            opacity:.5;
+          }
         }
 
         input[type="submit"] {
@@ -1988,14 +1995,36 @@ a.editable {
           color:$pink;
           background:none;
           float:right;
-          margin-top:5px;
-          margin-right:5px;
+          position:absolute;
+          top: 6px;
+          right:4px;
+        }
+
+        .icon {
+          display:block;
+          width:20px;
+          height:20px;
+
+          position:absolute;
+          right:4px;
+          top: 4px;
+          z-index:100;
+
+          background:url('/images/icons/share.png') no-repeat 0 0;
+          &.success {
+            background-position: 0 -674px;
+          }
+
+          &.error {
+            background-position: -30px -674px;
+          }
         }
 
         span.spinner {
-          margin: 5px 5px 0 0;
           display:block;
-          float:right;
+          position:absolute;
+          right:4px;
+          top: 4px;
           width:20px;
           height:20px;
           z-index:100;

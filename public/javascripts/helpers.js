@@ -256,8 +256,8 @@ jQuery.fn.enableArguments = function(opt){
 
   this.each(function(){
 
+    var that = this;
     var in_favor = $(this).hasClass("in_favor");
-
     if (in_favor) {
       var spin_element = document.getElementById('spinner_in_favor');
     } else  {
@@ -265,31 +265,45 @@ jQuery.fn.enableArguments = function(opt){
     }
 
     var spinner = new Spinner(SPINNER_OPTIONS);
+    var $input  = $(this).find('.input_text input[type="text"]');
+    var $submit = $(this).find('input[type="submit"]');
+    var $icon;
+
+    $(this).find(".new_argument input[type='submit']").click(function(e) {
+      spinner.spin(spin_element);
+      $submit.hide();
+      $input.addClass("disabled");
+    });
+
+    function showIcon() {
+      setTimeout(function() {
+        $icon.fadeOut(speed, function() {
+        $submit.fadeIn(speed);
+        $(this).remove();
+        $input.val('');
+        $input.removeClass('disabled');
+        });
+      }, 2000);
+
+    }
+
+    $(this).find(".new_argument").bind('ajax:error', function(evt, xhr, status) {
+      console.log(evt, xhr, status);
+      spinner.stop();
+      $icon = $("<span class='icon error' />");
+      $(that).find(".footer .input_text").append($icon);
+      showIcon();
+    });
 
     $(this).find(".new_argument").bind('ajax:success', function(evt, xhr, status) {
-    spinner.spin(spin_element);
-      var $el = $(this).parent().siblings("ul");
-      var $argument = $(xhr);
+      spinner.stop();
 
-      var $input = $(this).find('.input_text input[type="text"]');
-      var $submit = $(this).find('input[type="submit"]');
-      console.log(spin_element);
-
-      $submit.fadeOut(speed, function() {
-        IrekiaSpinner.spin(spin_element);
-      });
-
-      $argument.hide();
-      $el.append($argument);
-      $argument.slideDown(250);
-
-      // Reset input
-      $input.val("");
+      $icon = $("<span class='icon success' />");
+      $(that).find(".footer .input_text").append($icon);
+      showIcon();
     });
   });
 }
-
-
 
 /* Preloading of images */
 jQuery.preloadImages = function(){

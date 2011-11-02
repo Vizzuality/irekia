@@ -532,10 +532,14 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .proposals .proposal .footer { clear: both; overflow: hidden; padding: 16px; border-top: 1px solid #fff; }
 #container article .inner .left .proposals .proposal .footer a { float: left; margin-right: 20px; }
 #container article .inner .left .proposals .proposal .footer .sparkline { margin-top: 10px; }
-#container article .inner .left .proposals .proposal .footer .input_text { -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; border: 1px solid #B3B6AE; background: #fff; -webkit-appearance: none; }
-#container article .inner .left .proposals .proposal .footer .input_text input[type="text"], #container article .inner .left .proposals .proposal .footer .input_text input[type="password"], #container article .inner .left .proposals .proposal .footer .input_text input[type="email"] { border: none; outline: none; padding: 7px 7px; margin: 0 0 0 3px; width: 177px; }
-#container article .inner .left .proposals .proposal .footer .input_text input[type="submit"] { border: none; color: #f10063; background: none; float: right; margin-top: 5px; margin-right: 5px; }
-#container article .inner .left .proposals .proposal .footer .input_text span.spinner { margin: 5px 5px 0 0; display: block; float: right; width: 20px; height: 20px; z-index: 100; }
+#container article .inner .left .proposals .proposal .footer .input_text { -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; border: 1px solid #B3B6AE; background: #fff; -webkit-appearance: none; position: relative; }
+#container article .inner .left .proposals .proposal .footer .input_text input[type="text"], #container article .inner .left .proposals .proposal .footer .input_text input[type="password"], #container article .inner .left .proposals .proposal .footer .input_text input[type="email"] { border: none; outline: none; padding: 7px 7px; margin: 0 0 0 3px; width: 177px; font-size: 15px; }
+#container article .inner .left .proposals .proposal .footer .input_text input[type="text"].disabled, #container article .inner .left .proposals .proposal .footer .input_text input[type="password"].disabled, #container article .inner .left .proposals .proposal .footer .input_text input[type="email"].disabled { color: #7D8A92; opacity: .5; }
+#container article .inner .left .proposals .proposal .footer .input_text input[type="submit"] { border: none; color: #f10063; background: none; float: right; position: absolute; top: 6px; right: 4px; }
+#container article .inner .left .proposals .proposal .footer .input_text .icon { display: block; width: 20px; height: 20px; position: absolute; right: 4px; top: 4px; z-index: 100; background: url("/images/icons/share.png") no-repeat 0 0; }
+#container article .inner .left .proposals .proposal .footer .input_text .icon.success { background-position: 0 -674px; }
+#container article .inner .left .proposals .proposal .footer .input_text .icon.error { background-position: -30px -674px; }
+#container article .inner .left .proposals .proposal .footer .input_text span.spinner { display: block; position: absolute; right: 4px; top: 4px; width: 20px; height: 20px; z-index: 100; }
 
 /* Complete article / read more link */
 #container article a.more { padding: 0 0 0 15px; background: url("/images/icons/read_more.png") no-repeat 0 5px; }
