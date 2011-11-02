@@ -372,7 +372,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         right: 36px;
         text-align: right;
 
-        a { display:block; clear:both; }
+        a { display:block; clear:both; float:right; }
       }
       .left {
         a { display:block; clear:both; }

@@ -286,7 +286,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_footer footer .inner h3 { margin: 0 0 5px 0; padding: 0; }
 #container article.with_footer footer .inner a { font-size: 15px; }
 #container article.with_footer footer .right { position: relative; right: 36px; text-align: right; }
-#container article.with_footer footer .right a { display: block; clear: both; }
+#container article.with_footer footer .right a { display: block; clear: both; float: right; }
 #container article.with_footer footer .left a { display: block; clear: both; }
 #container article.with_footer .separator { height: 2px; background: url("/images/box_simple_bkg.png") repeat-x; background-position: 0 -36px; }
 #container article.with_sidebar { position: relative; }
