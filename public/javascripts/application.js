@@ -61,8 +61,12 @@ $(function() {
     });
   });
 
+  $(".my_opinion input[type='submit']").click(function(e) {
+      $(".my_opinion .selected").removeClass("selected");
+      $(this).addClass("selected");
+  });
+
   $(".my_opinion form").bind('ajax:success', function(evt, xhr, status) {
-    $(this).parents(".my_opinion").find("form").fadeOut(250);
     $(this).parents(".my_opinion").find(".result").fadeOut(250, function() {
       $(this).html(xhr);
       $(this).fadeIn(250);

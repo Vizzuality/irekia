@@ -84,8 +84,7 @@ class ContentsController < ApplicationController
       @vote_against.vote_data     = @vote_against.build_vote_data
 
       if current_user && current_user.has_given_his_opinion?(@content)
-        @vote_in_favor = current_user.his_opinion(@content).first
-        @vote_against  = @vote_in_favor
+        @vote = current_user.his_opinion(@content).first
       end
 
       #arguments

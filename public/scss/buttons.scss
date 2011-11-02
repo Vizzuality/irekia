@@ -108,9 +108,30 @@ White buttons
   &.blue   { color:$link_color; }
   &.orange { color:$orange; }
   &.green  { color:$green; }
-  &.agree        { color: $agree_color; }
+  &.agree  {
+    color: $agree_color;
+    &.selected {
+      background: #75B100;
+      color: #fff;
+      text-shadow: #4E7500 1px 1px 0;
+    }
+  }
+
   &.disagree,
-  &.against      { color: $against_color; }
+  &.against   {
+    color: $against_color;
+
+    &.selected {
+      background:#FF6600;
+      color:#fff;
+      text-shadow: #B74400 1px 1px 0;
+    }
+
+  }
+
+
+
+
 /* ------------------------------------------------------------------------------ Icons */
   &.add_person, &.add_person:active { position:relative; padding-left:33px; color:$pink; }
 /* ------------------------------------------------------------------------------ Definition */

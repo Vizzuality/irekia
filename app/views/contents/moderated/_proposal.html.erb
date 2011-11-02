@@ -6,7 +6,7 @@
     <%= link_to @content.author.try(:fullname), path_for_user(@content.author)  %>
     <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     &middot;
-    <%= link_to t('.title_author_and_comments.comments', :count => @content.comments_count), '#', :class => :goto_comments %>
+    <%= link_to t('.title_author_and_comments.comments', :count => @content.comments_count), { :anchor => :comments }, :class => :goto_comments %>
     </p>
 
     <div class="my_opinion">
@@ -18,9 +18,9 @@
         <% end %>
       </div>
 
-        <% if @vote_against -%>
+        <% if @vote -%>
           <div class="footer">
-            <%= form_for @vote_against, :remote => true do |form| %>
+            <%= form_for @vote, :remote => true do |form| %>
               <%= form.hidden_field :id %>
               <%= form.hidden_field :content_id %>
               <%= form.hidden_field :user_id %>
@@ -29,14 +29,14 @@
                   <%= vote_data_form.hidden_field :id, :value => '' %>
                   <%= vote_data_form.hidden_field :in_favor, :value => false %>
                 <% end -%>
-                <%= form.submit_with_login 'Estoy en contra', :class => 'white_button disagree' %>
+                <%= form.submit_with_login 'Estoy en contra', :class => "white_button disagree#{' selected' if @vote.against}" %>
               </div>
             <% end -%>
           </div>
         <% end -%>
-        <% if @vote_in_favor -%>
+        <% if @vote -%>
           <div class="footer">
-            <%= form_for @vote_in_favor, :remote => true do |form| %>
+            <%= form_for @vote, :remote => true do |form| %>
               <%= form.hidden_field :id %>
               <%= form.hidden_field :content_id %>
               <%= form.hidden_field :user_id %>
@@ -45,7 +45,7 @@
                   <%= vote_data_form.hidden_field :id, :value => '' %>
                   <%= vote_data_form.hidden_field :in_favor, :value => true %>
                 <% end -%>
-                <%= form.submit_with_login 'Estoy a favor', :class => 'white_button agree' %>
+                <%= form.submit_with_login 'Estoy a favor', :class => "white_button agree#{' selected ' if @vote.in_favor}" %>
               </div>
             <% end -%>
           </div>
