@@ -7,7 +7,7 @@ $(function() {
 
     $.ajax({url: "/areas/" + area_id + "/proposals", method: 'GET', data:{ page:2 }, success:function(response, xhr, status) {
       var content = $(response).html()
-      console.log(content);
+      console.log($("#proposals_" + area.id).find(".inner ul"));
     }});
   });
 
