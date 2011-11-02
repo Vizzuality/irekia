@@ -1,5 +1,5 @@
 <div class="proposals">
-  <div class="proposal agree">
+  <div class="proposal in_favor">
     <h3><%= t(".in_favor") %> <sup>(<%= @arguments_in_favor.count %>)</sup></h3>
     <ul>
       <% @arguments_in_favor.each do |argument| %>
@@ -18,6 +18,7 @@
             <%= argument_data_form.hidden_field :in_favor, :value => true %>
           <% end -%>
           <%= form.submit_with_login t('.add') %>
+          <span id="spinner_in_favor" class="spinner"></span>
         </div>
       <% end -%>
     </div>
@@ -42,6 +43,7 @@
             <%= argument_data_form.hidden_field :in_favor, :value => false %>
           <% end -%>
           <%= form.submit_with_login t('.add') %>
+          <span id="spinner_against" class="spinner"></span>
         </div>
       <% end -%>
     </div>

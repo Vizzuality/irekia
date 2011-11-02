@@ -256,15 +256,35 @@ jQuery.fn.enableArguments = function(opt){
 
   this.each(function(){
 
-    $(this).bind('ajax:success', function(evt, xhr, status) {
+    var in_favor = $(this).hasClass("in_favor");
+
+    if (in_favor) {
+      var spin_element = document.getElementById('spinner_in_favor');
+    } else  {
+      var spin_element = document.getElementById('spinner_against');
+    }
+
+    var spinner = new Spinner(SPINNER_OPTIONS);
+
+    $(this).find(".new_argument").bind('ajax:success', function(evt, xhr, status) {
+    spinner.spin(spin_element);
       var $el = $(this).parent().siblings("ul");
       var $argument = $(xhr);
+
+      var $input = $(this).find('.input_text input[type="text"]');
+      var $submit = $(this).find('input[type="submit"]');
+      console.log(spin_element);
+
+      $submit.fadeOut(speed, function() {
+        IrekiaSpinner.spin(spin_element);
+      });
+
       $argument.hide();
       $el.append($argument);
       $argument.slideDown(250);
 
       // Reset input
-      $(this).find('.input_text input[type="text"]').val("");
+      $input.val("");
     });
   });
 }
@@ -356,35 +376,6 @@ jQuery.fn.enableGotoComments = function(opt){
   });
 }
 
-/* Enables comment submission */
-jQuery.fn.enableArguments = function(opt){
-
-  var speed  = (opt && opt.speed) || 200;
-
-  this.each(function(){
-
-    //var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
-    //var spin_element = document.getElementById('comment_spinner');
-    //var spinner = new Spinner(opts);
-
-    //$(this).submit(function(e) {
-    //  spinner.spin(spin_element);
-    //});
-
-    $(this).bind('ajax:success', function(evt, xhr, status) {
-      var $el = $(this).parent().siblings("ul");
-      var $argument = $(xhr);
-      $argument.hide();
-      $el.append($argument);
-      $argument.slideDown(250);
-      // spinner.stop();
-
-      // Reset input
-      $(this).find('.input_text input[type="text"]').val("");
-    });
-  });
-}
-
 jQuery.fn.enablePagination = function(opt){
 
   var speed  = (opt && opt.speed) || 200;
@@ -399,8 +390,8 @@ jQuery.fn.enablePagination = function(opt){
     var url = window.location.href;
     var id = $(this).attr("id").replace(name + '_', '');
     var $article = $(this).parents("article");
-    var spin_element = document.getElementById(name + '_spinner');
 
+    var spin_element = document.getElementById(name + '_spinner');
     IrekiaSpinner.spin(spin_element);
 
     $.ajax({url: url, method: 'GET', data:{ page: ++currentPage }, success:function(response, xhr, status) {

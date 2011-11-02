@@ -1928,10 +1928,12 @@ a.editable {
     float:left;
     width:286px;
 
-    &.agree {background:#E9F0DE; margin:0 33px 0 0 ;}
+    &.in_favor, &.agree {background:#E9F0DE; margin:0 33px 0 0 ;}
     &.against {background:#FFF0D9; margin:0;}
 
     @include border-radius(5px);
+
+
 
     a.icon {
       display:block;
@@ -1988,6 +1990,15 @@ a.editable {
           float:right;
           margin-top:5px;
           margin-right:5px;
+        }
+
+        span.spinner {
+          margin: 5px 5px 0 0;
+          display:block;
+          float:right;
+          width:20px;
+          height:20px;
+          z-index:100;
         }
       }
     }

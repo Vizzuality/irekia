@@ -85,6 +85,9 @@ class ContentsController < ApplicationController
 
       if current_user && current_user.has_given_his_opinion?(@content)
         @vote = current_user.his_opinion(@content).first
+      else
+        @vote = @content.votes.where('user_id = ?', current_user.id).build
+        @vote.vote_data = VoteData.new
       end
 
       #arguments

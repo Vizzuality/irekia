@@ -29,7 +29,7 @@
                   <%= vote_data_form.hidden_field :id, :value => '' %>
                   <%= vote_data_form.hidden_field :in_favor, :value => false %>
                 <% end -%>
-                <%= form.submit_with_login 'Estoy en contra', :class => "white_button disagree#{' selected' if @vote.against}" %>
+                <%= form.submit_with_login 'Estoy en contra', :class => "white_button disagree#{' selected' unless @vote.new_record? || @vote.in_favor }" %>
               </div>
             <% end -%>
           </div>
@@ -45,7 +45,7 @@
                   <%= vote_data_form.hidden_field :id, :value => '' %>
                   <%= vote_data_form.hidden_field :in_favor, :value => true %>
                 <% end -%>
-                <%= form.submit_with_login 'Estoy a favor', :class => "white_button agree#{' selected ' if @vote.in_favor}" %>
+                <%= form.submit_with_login 'Estoy a favor', :class => "white_button agree#{' selected' unless @vote.new_record? || @vote.against }" %>
               </div>
             <% end -%>
           </div>
