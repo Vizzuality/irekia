@@ -169,9 +169,9 @@ a.radio.selected:hover { cursor: pointer; text-decoration: none; }
 
 .jspPane { position: absolute; }
 
-.jspVerticalBar { position: absolute; top: 0; right: 0; width: 16px; height: 100%; background: red; }
+.jspVerticalBar { position: absolute; top: 0; right: 0; width: 16px; height: 100%; background: none; }
 
-.jspHorizontalBar { position: absolute; bottom: 0; left: 0; width: 100%; height: 16px; background: red; }
+.jspHorizontalBar { position: absolute; bottom: 0; left: 0; width: 100%; height: 16px; background: none; }
 
 .jspVerticalBar *, .jspHorizontalBar * { margin: 0; padding: 0; }
 

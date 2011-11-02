@@ -1,6 +1,16 @@
 $(function() {
   watchHash(); // this function watches the url hashes and acts accordingly
 
+  $(".more_proposals").click(function(e) {
+    e.preventDefault();
+    var area_id = $(this).attr("id").replace(/area_/, '');
+
+    $.ajax({url: "/areas/" + area_id + "/proposals", method: 'GET', data:{ page:2 }, success:function(response, xhr, status) {
+      var content = $(response).html()
+      console.log(content);
+    }});
+  });
+
   $("textarea.grow").autogrow();
 
   $(".cycle").enableRegistration();
