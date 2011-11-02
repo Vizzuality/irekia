@@ -2,7 +2,7 @@
 
 def create_area(params)
   area = Area.find_or_create_by_name(params[:name])
-  area.update_attribute(:description, Faker::Lorem.paragraph(3))
+  area.update_attribute(:description, Faker::Lorem.paragraph(6))
   area.description = params[:description]
 
   print '.'.blue

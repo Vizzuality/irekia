@@ -1,4 +1,4 @@
-<% if @content.comments.count.zero? %>
+<% if @comments.count.zero? %>
   <li></li>
 <% end %>
 <% @content.comments.reject{|c| c.new_record?}.each do |comment| %>
