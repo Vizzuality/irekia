@@ -1,13 +1,28 @@
+var currentPage = 1;
+
 $(function() {
   watchHash(); // this function watches the url hashes and acts accordingly
 
   $(".more_proposals").click(function(e) {
     e.preventDefault();
-    var area_id = $(this).attr("id").replace(/area_/, '');
 
-    $.ajax({url: "/areas/" + area_id + "/proposals", method: 'GET', data:{ page:2 }, success:function(response, xhr, status) {
-      var content = $(response).html()
-      console.log($("#proposals_" + area.id).find(".inner ul"));
+    var area_id = $(this).attr("id").replace(/area_/, '');
+    var $article = $("#proposals_" + area_id);
+    var name = "proposals";
+    var spin_element = document.getElementById(name + '_spinner');
+
+    IrekiaSpinner.spin(spin_element);
+
+    $.ajax({url: "/areas/" + area_id + "/" + name, method: 'GET', data:{ page: ++currentPage }, success:function(response, xhr, status) {
+      IrekiaSpinner.stop();
+      try {
+        var $content = $($(response).html());
+        $content.hide();
+
+        var $ul = $article.find(".listing_" + area_id + " > ul");
+        $ul.append($content);
+        $content.slideDown(250);
+      } catch(err) { }
     }});
   });
 

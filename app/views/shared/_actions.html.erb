@@ -75,9 +75,16 @@
 <footer>
 <div class="separator"></div>
 <div class="inner">
-  <div class="right">
-    <%= link_to t('.more'), link_for_actions, :class => "right_arrow" %>
-  </div>
+
+  <% if controller.action_name == "actions" %>
+    <div class="left">
+      <%= link_to t('.more'), link_for_actions, :id => "area_#{@area.id}", :class => "more_actions down_arrow" %>
+    </div>
+  <% else %>
+    <div class="right">
+      <%= link_to t('.more'), link_for_actions(:anchor => :actions), :id => "area_#{@area.id}", :class => "right_arrow" %>
+    </div>
+  <% end %>
 
 </div>
 </footer>

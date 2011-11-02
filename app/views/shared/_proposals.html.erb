@@ -14,7 +14,7 @@
   </div>
   </header>
   <div class="left">
-    <div id="listing">
+    <div id="listing" class="listing_<%= @area.id %>">
       <% if @proposals_count > 0 %>
         <%= render 'shared/proposals_list' if @proposals %>
       <% else %>
@@ -36,11 +36,18 @@
 </div>
 <footer>
 <div class="separator"></div>
-<div class="inner">
+<div class="inner with_spinner">
 
-  <div class="left">
-  <%= link_to t('.more'), link_for_proposals, :id => "area_#{@area.id}", :class => "more_proposals down_arrow" %>
-  </div>
+  <% if controller.action_name == "proposals" %>
+    <div class="left">
+      <%= link_to t('.more'), link_for_proposals, :id => "area_#{@area.id}", :class => "more_proposals left down_arrow" %>
+      <span id="proposals_spinner" class="spinner"></span>
+    </div>
+  <% else %>
+    <div class="right">
+      <%= link_to t('.more'), link_for_proposals(:anchor => :proposals), :id => "area_#{@area.id}", :class => "right_arrow" %>
+    </div>
+  <% end %>
 
 </div>
 </footer>

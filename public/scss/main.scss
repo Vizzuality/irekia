@@ -364,12 +364,17 @@ article .inner { h2, h3 { color: $dark_blue; } }
         background: none;
         border: 0;
 
+        &.with_spinner { height: 15px; }
+
         h3 { margin: 0 0 5px 0; padding: 0; }
         a { font-size: 15px; }
+        a.left { width:auto; float:left; clear:none; }
+
+        .spinner { display:block; top:-7px; float:left; margin: 0 0 0 5px; position:relative; width:33px; height:33px; z-index:10000; }
       }
       .right {
         position:relative;
-        right: 36px;
+        right: 23px;
         text-align: right;
 
         a { display:block; clear:both; float:right; }
