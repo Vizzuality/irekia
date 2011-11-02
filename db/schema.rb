@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
     t.string   "title"
     t.string   "subtitle"
     t.text     "body"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

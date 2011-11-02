@@ -1,7 +1,7 @@
 class Event < Content
   has_one :event_data
 
-  delegate :event_date, :title, :subtitle, :body, :to => :event_data
+  delegate :event_date, :title, :subtitle, :body, :location, :to => :event_data
 
   before_save :update_areas_agenda
 
@@ -27,7 +27,7 @@ class Event < Content
       :title           => title,
       :subtitle        => subtitle,
       :body            => body,
-      :location        => nil,
+      :location        => location,
       :latitude        => latitude,
       :longitude       => longitude
     })

@@ -7,6 +7,7 @@ puts '=================='.green
 this_week = Time.current.beginning_of_week
 
 100.times do
-  create_event :user => @virginia,
-               :date => this_week.advance(:days => rand(35), :hours => rand(24))
+  create_event :user     => @virginia,
+               :date     => this_week.advance(:days => rand(35), :hours => rand(24)),
+               :location => 'Universidad de Deusto'
 end

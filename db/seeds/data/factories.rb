@@ -110,7 +110,8 @@ def create_event(params)
     :longitude             => params[:longitude],
     :event_data_attributes => {
       :title      => params[:title],
-      :event_date => params[:date]
+      :event_date => params[:date],
+      :location   => params[:location]
     }
   )
 
