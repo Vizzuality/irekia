@@ -1,14 +1,14 @@
 <div class="content">
   <div class="top_nav">
     <ul class="user_options">
-      <li><%= link_to t('.contact'), '/in_development' %></li>
-      <li><%= link_to t('.help'), '/in_development' %></li>
-      <li><%= link_to t('.map'), '/in_development' %></li>
-      <li><%= link_to t('.accessibility'), '/in_development' %></li>
-      <li class="last"><%= link_to t('.management'), '/in_development' %></li>
+      <li><%= link_to t('.contact'), t('.contact_url') %></li>
+      <li><%= link_to t('.help'), t('.contact_url') %></li>
+      <li><%= link_to t('.map'), t('.map_url') %></li>
+      <li><%= link_to t('.accessibility'), t('.accessibility_url') %></li>
+      <li class="last"><%= link_to t('.management'), t('.management_url') %></li>
     </ul>
 
     <%= link_to (image_tag 'logo.png'), root_path, :class => "logo" %>
-    <%= link_to (image_tag 'euskadi_net_logo.png'), '/in_development', :class => :net_logo %>
+    <%= link_to (image_tag 'euskadi_net_logo.png'), t('.euskadi_net_url'), :class => :net_logo %>
   </div>
 </div>

@@ -107,10 +107,16 @@ es:
         sign_up: Crear mi cuenta
     header:
       contact: Contacto
+      contact_url: "http://www.ej-gv.net/o53/visualizador/o53BuzonEuskadi.jsp?por=2&lenguaje=1"
       help: Ayuda
+      help_url: "http://www.irekia.euskadi.net/es/pages/781-ayuda"
       map: Mapa
+      map_url: "http://www.irekia.euskadi.net/es/site/sitemap"
       accessibility: Accesibilidad
+      accessibility_url: "http://www.euskadi.net/r33-2288/es/contenidos/informacion/cabecera_accesibilidad/es_6144/politica_accesibilidad.html"
       management: Mis gestiones
+      management_url: "https://xlnets.servicios.euskadi.net/n38a/N38LoginEuskadiOMA.jsp?n38id=-902481386"
+      euskadi_net_url: "http://www.euskadi.net/r33-2220/es/"
 
     nav_bar:
       currently_viewing: Estás viendo&hellip;

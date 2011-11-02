@@ -612,19 +612,20 @@ jQuery.fn.inputCounter = function(opt){
 /* Adds sharing capabilities */
 jQuery.fn.share = function(opt){
 
-  var speed  = (opt && opt.speed) || 200;
-  var easing = (opt && opt.easing) || 'easeInExpo';
+  var speed   = (opt && opt.speed) || 200;
+  var easing  = (opt && opt.easing) || 'easeInExpo';
+  var finishedSharing = true;
 
   this.each(function(){
     var service = $(this).attr('class').replace('share ', '');
-
-   // bindShareService(service);
 
     $(this).bind('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
 
-      shareWith($(this), service, speed, easing);
+      if (finishedSharing) {
+        finishedSharing = shareWith($(this), service, speed, easing);
+      }
     });
   });
 }
@@ -639,10 +640,12 @@ function shareWith($el, service, speed, easing) {
     $el.append('<div class="ok" />');
     $ok = $el.find(".ok");
     $ok.animate({opacity:1, top:"-2px"}, speed, easing);
+    return true;
   }
 
   function error () {
     $form.find(".input_field").addClass("error");
+    return true;
   }
 
   $form = $el.parents("li").find("form");
