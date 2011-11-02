@@ -385,6 +385,39 @@ jQuery.fn.enableArguments = function(opt){
   });
 }
 
+jQuery.fn.enablePagination = function(opt){
+
+  var speed  = (opt && opt.speed) || 200;
+  var name   = (opt && opt.name)  || "proposals";
+  var currentPage = 1;
+
+  this.each(function(){
+
+    $(this).click(function(e) {
+    e.preventDefault();
+
+    var url = window.location.href;
+    var id = $(this).attr("id").replace(name + '_', '');
+    var $article = $(this).parents("article");
+    var spin_element = document.getElementById(name + '_spinner');
+
+    IrekiaSpinner.spin(spin_element);
+
+    $.ajax({url: url, method: 'GET', data:{ page: ++currentPage }, success:function(response, xhr, status) {
+      IrekiaSpinner.stop();
+
+      try {
+        var $content = $($(response).html());
+        $content.hide();
+
+        var $ul = $article.find(".listing_" + name  + "_" + id + " > ul");
+        $ul.append($content);
+        $content.slideDown(250);
+      } catch(err) { }
+    }});
+  });
+})
+}
 
 /* Enables comment submission */
 jQuery.fn.enableComments = function(opt){

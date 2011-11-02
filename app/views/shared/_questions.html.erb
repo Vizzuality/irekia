@@ -14,7 +14,7 @@
   </div>
   </header>
   <div class="left">
-    <div id="listing">
+    <div id="listing" class="listing_questions_<%= params[:id] %>">
 
       <% if @questions.count > 0 %>
         <%= render 'shared/questions_list' %>
@@ -37,15 +37,16 @@
 </div>
 <footer>
 <div class="separator"></div>
-<div class="inner">
+<div class="inner with_spinner">
 
   <% if controller.action_name == "questions" %>
     <div class="left">
-      <%= link_to t('.more'), link_for_questions, :id => "area_#{@area.id}", :class => "more_questions down_arrow" %>
+      <%= link_to t('.more'), link_for_questions, :id => "questions_#{params[:id]}", :class => "more_questions left down_arrow" %>
+      <span id="questions_spinner" class="spinner"></span>
     </div>
   <% else %>
     <div class="right">
-      <%= link_to t('.more'), link_for_questions(:anchor => :questions), :id => "area_#{@area.id}", :class => "right_arrow" %>
+      <%= link_to t('.more'), link_for_questions(:anchor => :questions), :id => "questions_#{params[:id]}", :class => "right_arrow" %>
     </div>
   <% end %>
 

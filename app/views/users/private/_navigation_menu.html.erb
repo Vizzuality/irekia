@@ -2,7 +2,7 @@
   { :link => link_to(t(".dashboard"), path_for_user(@user)), :class => current_action?('show') },
   { :link => link_to(t(".your_questions"), questions_user_path(@user)), :class => current_action?('questions'), :count => @answers_count },
   { :link => link_to(t(".your_proposals"), proposals_user_path(@user)), :class => current_action?('proposals') },
-  { :link => link_to(t(".your_activity"), actions_user_path(@user)), :class => current_action?('activity')  },
+  { :link => link_to(t(".your_activity"), actions_user_path(@user)), :class => current_action?('actions')  },
   { :link => link_to(t(".what_to_follow"), followings_user_path(@user)), :class => current_action?('followings')  },
   { :link => link_to(t(".publish"), path_for_user(@user), :section => 'publish'), :class => "publish #{current_action?('publish')}" },
 ] %>
