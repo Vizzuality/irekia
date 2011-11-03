@@ -14,7 +14,10 @@
   } else {
     document.documentElement.className = document.documentElement.className + ' ps_fouc';
   }
-  var templates = {
+
+  var spin_element = document.getElementById('question_spinner'),
+  spinner      = new Spinner(SPINNER_OPTIONS),
+  templates = {
     main:['<article id="<%= name %>_<%= id %>" class="mini popover with_footer" >',
    '  <form action="">',
    '    <div class="inner">',
@@ -163,40 +166,41 @@
     _addDefaultAction(data);
 
     $ps.find("textarea.grow").autogrow();
-    $ps.find('textarea').keyup(function(ev){
 
-      if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+     // $ps.find('textarea').keyup(function(ev){
 
-      clearTimeout(interval);
+     //   if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
 
-      var $related = $ps.find("div.related");
-      var $relatedTitle = $ps.find("h3.related");
+     //   clearTimeout(interval);
 
-      if ($(this).val().length > 5) {
-        interval = setTimeout(function(){
+     //   var $related = $ps.find("div.related");
+     //   var $relatedTitle = $ps.find("h3.related");
 
-          var query = $ps.find("textarea").val();
-          $.ajax({ url: "/questions", data: { query: query, per_page: 2, mini: true }, type: "GET", success: function(data){
-            $related.slideUp(250, function() {
+     //   if ($(this).val().length > 5) {
+     //     interval = setTimeout(function(){
 
-              var $data = $(data);
+     //       var query = $ps.find("textarea").val();
+     //       $.ajax({ url: "/questions", data: { query: query, per_page: 2, mini: true }, type: "GET", success: function(data){
+     //         $related.slideUp(250, function() {
 
-              if ($data.find("li").length > 0) {
-                $(this).html($data);
-                $(this).slideDown(250);
-                $relatedTitle.fadeIn(250);
-              } else {
-                $relatedTitle.fadeOut(250);
+     //           var $data = $(data);
 
-              }
-            });
-          }});
-        }, 500);
-      } else {
-        $related.fadeOut(350);
-        $relatedTitle.fadeOut(350);
-      }
-    });
+     //           if ($data.find("li").length > 0) {
+     //             $(this).html($data);
+     //             $(this).slideDown(250);
+     //             $relatedTitle.fadeIn(250);
+     //           } else {
+     //             $relatedTitle.fadeOut(250);
+
+     //           }
+     //         });
+     //       }});
+     //     }, 500);
+     //   } else {
+     //     $related.fadeOut(350);
+     //     $relatedTitle.fadeOut(350);
+     //   }
+     // });
 
     _subscribeToEvent(data.event);
     _triggerOpenAnimation($ps, data);
@@ -259,14 +263,29 @@
   }
 
   function _addSubmitAction(data) {
-
     data.$ps.find("form").die();
+
+    data.$ps.find("form").submit(function(e) {
+      spinner.spin(spin_element);
+      data.$ps.find("form input[type='submit']").attr("disabled", "true");
+      data.$ps.find("form input[type='submit']").addClass("disabled");
+    });
+
     data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
-      //$(this).append(xhr.responseText)
+      spinner.stop();
+      $(this).find("input[type='submit']").removeAttr("disabled");
+      $(this).find("input[type='submit']").removeClass("disabled");
       _close(data, false, function() {
         _gotoSuccess(data);
       });
     });
+
+    data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
+      spinner.stop();
+      $(this).find("input[type='submit']").removeAttr("disabled");
+      $(this).find("input[type='submit']").removeClass("disabled");
+    });
+
   }
 
   function _addCloseAction2(data) {

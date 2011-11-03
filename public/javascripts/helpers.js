@@ -276,6 +276,7 @@ jQuery.fn.enableArguments = function(opt){
       spinner.spin(spin_element);
       $submit.hide();
       $input.addClass("disabled");
+
       setTimeout(function() {
         $input.attr("disabled", "disabled");
       }, 150);
