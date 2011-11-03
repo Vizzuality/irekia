@@ -30,6 +30,10 @@ class Participation < ActiveRecord::Base
     where(:rejected => false)
   end
 
+  def self.more_recent
+    order('participations.published_at desc')
+  end
+
   def self.validate_all_not_moderated
     self.not_moderated.find_each do |participation|
       participation.update_attribute('moderated', true)

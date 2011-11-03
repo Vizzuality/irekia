@@ -25,6 +25,10 @@ class Proposal < Content
 
   delegate :in_favor, :against, :participation, :title, :body, :target_user, :target_area, :to => :proposal_data
 
+  def self.by_id(id)
+    scoped.includes([{:users => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }]).find(id)
+  end
+
   def self.open
     joins(:proposal_data).where('proposal_data.close' => false)
   end

@@ -4,7 +4,6 @@
 <div class="content">
 
   <p>
-    <%= (position == 'in_favor') ? 'A favor de la propuesta' : 'En contra de la propuesta' unless data.target_area %>
     <%= content_tag 'strong', (link_to %Q{"#{data.title}"}, proposal_path(data.id)) %></p>
 
   <div class="footer">

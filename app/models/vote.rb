@@ -12,6 +12,10 @@ class Vote < Participation
 
   accepts_nested_attributes_for :vote_data
 
+  def self.by_id(id)
+    scoped.includes([{:user => :profile_pictures}, :vote_data]).find(id)
+  end
+
   def self.in_favor
     joins(:vote_data).where('vote_data.in_favor' => true)
   end

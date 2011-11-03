@@ -50,12 +50,7 @@ class Content < ActiveRecord::Base
   end
 
   def self.more_polemic
-    joins(<<-SQL
-      LEFT JOIN participations ON
-      participations.content_id = contents.id AND
-      participations.type = 'Comment'
-    SQL
-    ).select('count(participations.id) as comments_count').group(Content.column_names.map{|c| "contents.#{c}"}).order('comments_count desc')
+    order('contents.comments_count desc')
   end
 
   def self.by_id(id)

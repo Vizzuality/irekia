@@ -16,16 +16,18 @@ class UsersController < ApplicationController
 
     @first_time = @user.first_time
 
-    @suggestions         = current_user.follow_suggestions.limit(6)
-    @suggestions_follows = @suggestions.inject({}) do |suggestions_follows, user|
-      suggestions_follows[user.id] = if @user.blank? || @user.not_following(user)
-        follow          = user.follows.build
-        follow.user     = current_user
-        follow
-      else
-        follow = @user.followed_item(user)
+    if current_user
+      @suggestions         = current_user.follow_suggestions.limit(6)
+      @suggestions_follows = @suggestions.inject({}) do |suggestions_follows, user|
+        suggestions_follows[user.id] = if @user.blank? || @user.not_following(user)
+          follow          = user.follows.build
+          follow.user     = current_user
+          follow
+        else
+          follow = @user.followed_item(user)
+        end
+        suggestions_follows
       end
-      suggestions_follows
     end
   end
 
@@ -177,16 +179,11 @@ class UsersController < ApplicationController
   private :get_questions
 
   def get_proposals
-    @proposals = @user.proposals_done.moderated
+    @proposals = @user.proposals_and_participation(params.slice(:from_politicians, :from_citizens, :more_polemic), nil, nil)
 
-    @proposals = if params[:more_polemic] == "true"
-    @proposals.more_polemic
-    else
-    @proposals.more_recent
-    end
-    @proposals_count          = @proposals.count
-    @proposals_in_favor_count = @proposals.approved_by_majority.count
-    @proposals                = @proposals.all if @proposals
+    user_proposals            = @user.proposals_done.moderated
+    @proposals_count          = user_proposals.count
+    @proposals_in_favor_count = user_proposals.approved_by_majority.count
   end
   private :get_proposals
 

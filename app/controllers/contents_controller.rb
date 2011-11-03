@@ -41,6 +41,7 @@ class ContentsController < ApplicationController
     @moderation_status = @content.moderated?? 'moderated' : 'not_moderated'
 
     @comments = @content.comments.moderated.all
+    @comments_count = @content.comments_count
     @last_contents = @content.last_contents(3)
 
     @comment = @content.comments.build

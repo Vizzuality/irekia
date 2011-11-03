@@ -74,6 +74,8 @@ class User < ActiveRecord::Base
 
   has_many :participations
   has_many :comments
+  has_many :votes
+  has_many :arguments
   has_many :answer_requests
 
   has_many :actions,
@@ -184,8 +186,49 @@ class User < ActiveRecord::Base
     end
   end
 
-  def proposals_received
-    areas.first ? areas.first.proposals_received : []
+  def proposals_and_participation(filters = {}, page = 1, per_page = 4)
+    if politician?
+      @proposals = Proposal.select([:'contents.id', :type, :published_at, :comments_count]).joins(:areas_contents, :contents_users).where('contents_users.user_id = ? OR areas_contents.area_id = ?', id, areas.first.id)
+    else
+      @proposals = Proposal.select([:'contents.id', :type, :published_at, :comments_count]).joins(:contents_users).where('contents_users.user_id = ?', id)
+    end
+
+    @votes = Vote.select([:id, :type, :published_at, :'0 as comments_count']).where(:user_id => id)
+    @arguments = Argument.select([:id, :type, :published_at, :'0 as comments_count']).where(:user_id => id)
+
+    if filters[:from_politicians]
+      @proposals = @proposals.from_politicians
+      @votes     = @votes.joins(:proposal      => :users).where('role_id = ?', Role.politician.first.id)
+      @arguments = @arguments.joins(:proposal  => :users).where('role_id = ?', Role.politician.first.id)
+    elsif filters[:from_citizens]
+      @proposals = @proposals.from_citizens
+      @votes     = @votes.joins(:proposal     => :users).where('role_id = ?', Role.citizen.first.id)
+      @arguments = @arguments.joins(:proposal => :users).where('role_id = ?', Role.citizen.first.id)
+    end
+
+    order = 'published_at desc'
+    if filters[:more_polemic] == 'true'
+      order = 'comments_count desc, published_at desc'
+    end
+
+    if page && per_page
+      offset = (page - 1) * per_page
+      offset = 0 if offset < 0
+      pagination = "LIMIT #{per_page} OFFSET #{offset}"
+    end
+
+    @proposals_and_participation = User.connection.select_all(<<-SQL
+      (#{@proposals.to_sql})
+      UNION
+      (#{@votes.to_sql})
+      UNION
+      (#{@arguments.to_sql})
+      ORDER BY #{order}
+      #{pagination}
+    SQL
+    ).map{|i| i['type'].constantize.by_id(i['id'])}
+
+    @proposals_and_participation
   end
 
   def fullname

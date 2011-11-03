@@ -1,0 +1,20 @@
+<%= avatar data.author %>
+<div class="content">
+  <p>
+  <% if data.in_favor %>
+    <%= raw t('.title.in_favor', :proposal => content_tag(:strong, data.title)) %>
+  <% else %>
+    <%= raw t('.title.against', :proposal => content_tag(:strong, data.title)) %>
+  <% end %>
+  </p>
+
+  <div class="footer">
+    <span class="published_at">
+    <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
+    </span>
+    &middot;
+    <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '/in_development', :class => "comment-count" %>
+    &middot;
+      <%= render "/shared/inline_sharing" %>
+  </div>
+</div>
