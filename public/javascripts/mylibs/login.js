@@ -63,7 +63,7 @@
       // Update the reference to $ps
       $ps = $('#' + store);
 
-      //_setupCallback(data, $this.attr('class'));
+      _setupCallback(data, $this.attr('class'));
 
       $(this).unbind("click");
       $(this).click(_toggle);
@@ -107,9 +107,13 @@
   }
 
   function _setupCallback(data, classes) {
+    console.log(data,classes);
     if (classes.indexOf("question") != -1) {
       data.callback = "question";
+    } else if (classes.indexOf("proposal") != -1) {
+      data.callback = "proposal";
     }
+    console.log(data.callback);
   }
 
   function _open(data) {
@@ -176,7 +180,11 @@
 
       if (data.callback) {
         _close(data, false, function() {
-          $el.questionPopover({open:true});
+          if (data.callback == "question") {
+            $el.questionPopover({open:true});
+          } else if (data.callback == "proposal") {
+            $el.proposalPopover({open:true});
+          }
         });
       } else {
         _close(data, true);

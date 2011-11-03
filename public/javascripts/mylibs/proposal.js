@@ -61,7 +61,6 @@
   store = "proposal-popover",
   // Public methods
   methods = { },
-  interval,
   // Default values
   defaults = {
     easingMethod:'easeInOutQuad',
@@ -167,42 +166,7 @@
     _addSubmitAction(data);
     _addDefaultAction(data);
 
-
     $ps.find("textarea.grow").autogrow();
-    $ps.find('textarea').keyup(function(ev){
-
-      if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
-
-      clearTimeout(interval);
-
-      var $related = $ps.find("div.related");
-      var $relatedTitle = $ps.find("h3.related");
-
-      if ($(this).val().length > 5) {
-        interval = setTimeout(function(){
-
-          var query = $ps.find("textarea").val();
-          $.ajax({ url: "/proposals", data: { query: query, per_page: 2, mini: true }, type: "GET", success: function(data){
-            $related.slideUp(250, function() {
-
-              var $data = $(data);
-
-              if ($data.find("li").length > 0) {
-                $(this).html($data);
-                $(this).slideDown(250);
-                $relatedTitle.fadeIn(250);
-              } else {
-                $relatedTitle.fadeOut(250);
-
-              }
-            });
-          }});
-        }, 500);
-      } else {
-        $related.fadeOut(350);
-        $relatedTitle.fadeOut(350);
-      }
-    });
 
     _subscribeToEvent(data.event);
     _triggerOpenAnimation($ps, data);

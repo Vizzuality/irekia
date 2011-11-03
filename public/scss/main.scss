@@ -63,17 +63,26 @@ a {
   &.left_arrow {
     background: url('/images/icons/arrow_left.png') no-repeat left 7px;
     padding-left: 12px;
+    &:hover {
+      background-position:0 -13px;
+    }
   }
 
   &.right_arrow {
     background: url('/images/icons/arrow_right.png') no-repeat right 7px;
     padding-right: 12px;
     float:left;
+    &:hover {
+      background-position:right -13px;
+    }
   }
 
   &.down_arrow {
     background: url('/images/icons/arrow_down.png') no-repeat left 7px;
     padding-left: 12px;
+    &:hover {
+      background-position:0 -15px;
+    }
   }
 }
 
@@ -1075,42 +1084,47 @@ article .inner { h2, h3 { color: $dark_blue; } }
     top:-900px;
     z-index: 1000;
 
+    footer .inner .spinner { float:right; display:block; width:33px; height:33px; margin-top: 6px; z-index:1000; }
+    footer .inner .white_button { margin-left:10px; }
+    &.proposal {
+      .input_field {
+        &.textarea {
+          height:76px;
+          margin:0 0 10px 0;
+
+          textarea.body { height:53px; }
+          .holder { font-size: 15px; top: 10px; }
+        }
+      } // input_field
+    }
+
     h3.related { display:none; }
+
     div.related {
       ul {
         li {
           clear:both;
           overflow:hidden;
           margin: 0 0 10px 0;
-          background:#F2F5F8;
-          @include border-radius(4px);
           padding:11px 10px;
+          @include border-radius(4px);
+          background:#F2F5F8;
+
           .content {
             float:left;
             width:490px;
             clear:right;
             margin:0;
-            p {
-              font-size:15px;
-              margin: 0 0 5px 0;
-            }
-            .footer {
-              color:#7D8A92;
 
-            }
+            p { margin: 0 0 5px 0; font-size:15px; }
+            .footer { color:#7D8A92; }
           }
 
-
-          .avatar {
-            margin: 0 10px 0 0;
-            float:left;
-          }
-
-        }
-      }
-
-    }
-  }
+          .avatar { float:left; margin: 0 10px 0 0; }
+        } // li
+      } // ul
+    } // div.related
+  } // popover
 
   &.broken-top .t {
     top: -10px;

@@ -375,8 +375,6 @@ var GOD = (function() {
 
 })(jQuery, window, document);
 
-
-
 /*
 * =============
 * SHARE POPOVER
@@ -566,7 +564,7 @@ var GOD = (function() {
       var $ps = $(this);
 
       // Let's create the spinner dom element
-      if ($(this).find('div.right ul.selector').length>0) {
+      if ($(this).find('div.right ul.selector').length > 0) {
         var filter_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: 'white',speed: 1,trail: 100,shadow: false});
       }
 

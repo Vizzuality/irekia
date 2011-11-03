@@ -1,10 +1,11 @@
 <% if @proposal.present? %>
-  <article id="proposal-popover" class="mini popover with_footer initialy_hidden">
+  <article id="proposal-popover" class="mini popover proposal with_footer initialy_hidden">
   <%= form_for @proposal, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
     <div class="inner">
       <header><h2>Haz una propuesta</h2></header>
       <div class="content">
         <p>Recuerda ser breve y conciso.</p>
+
         <h3>Título de la propuesta</h3>
 
         <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %>
@@ -16,18 +17,24 @@
             <%= proposal_data.text_area :title, :class => :grow %>
           </div>
 
-        <% end %>
+          <h3>¿Quieres explicar la propuesta con más detalle?</h3>
 
-        <h3 class="related">Propuestas parecidas</h3>
-        <div class="related"></div>
+          <div class="input_field textarea placeholder">
+            <%= proposal_data.text_area :body, :class => "grow body" %>
+            <span class="holder">Describe la propuesta en pocas palabras</span>
+          </div>
+
+          <p>Si quieres puedes <a href="#">añadir una foto</a></p>
 
       </div>
+        <% end %>
       <span class="close"></span>
     </div>
     <footer>
     <div class="separator"></div>
     <div class="inner">
       <%= form.submit t('.make_a_proposal.continue'), :id => 'submit-124', :class => 'disabled white_button right', :disabled => 'disabled' %>
+      <span id="proposal_spinner" class="spinner"></span>
     </div>
     </footer>
     <div class="t"></div><div class="f"></div>
