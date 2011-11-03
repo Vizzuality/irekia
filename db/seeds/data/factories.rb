@@ -133,6 +133,7 @@ def create_news(params)
   if news_data.new_record?
     news_data.subtitle = params[:subtitle]
     news_data.body     = params[:body]
+    news_data.image    = Image.create :image => params[:image]
     news               = News.new
     news.tags          = params[:tags]
     news.areas         = [params[:area]]
@@ -237,6 +238,11 @@ def create_question(params)
 
     print '.'.blue
 
+    if params[:answer]
+      params[:answer][:question] = question
+      create_answer params[:answer]
+    end
+
     question
   else
     question_data.question
@@ -262,7 +268,7 @@ def create_user(params)
     :password              => "#{params[:name].downcase}1234",
     :password_confirmation => "#{params[:name].downcase}1234",
     :is_woman              => [true, false].sample,
-    :inactive              => [true, false].sample,
+    :inactive              => false,
     :description           => Faker::Lorem.paragraphs(10).join("\n\n"),
     :province              => 'Vizcaya',
     :city                  => 'Ondarroa',

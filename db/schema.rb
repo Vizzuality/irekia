@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
   create_table "images", :force => true do |t|
     t.integer  "photo_id"
     t.integer  "user_id"
+    t.integer  "news_data_id"
     t.string   "image"
     t.string   "title"
     t.string   "description"
@@ -166,6 +167,7 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
 
   create_table "news_data", :force => true do |t|
     t.integer  "news_id"
+    t.integer  "image_id"
     t.string   "title"
     t.string   "subtitle"
     t.text     "body"

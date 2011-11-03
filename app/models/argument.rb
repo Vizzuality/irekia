@@ -5,7 +5,7 @@ class Argument < Participation
   has_one :argument_data
 
   delegate :in_favor, :against, :reason, :to => :argument_data
-  delegate :title, :to => :proposal
+  delegate :title, :percent_in_favor, :percent_against, :percentage, :participation, :to => :proposal
 
   accepts_nested_attributes_for :argument_data
 
@@ -25,18 +25,23 @@ class Argument < Participation
 
   def as_json(options = {})
     {
-      :author          => {
-        :id            => user.id,
-        :name          => user.name,
-        :fullname      => user.fullname,
-        :profile_image => user.profile_image
+      :author           => {
+        :id               => user.id,
+        :name             => user.name,
+        :fullname         => user.fullname,
+        :profile_image    => user.profile_image
       },
-      :published_at    => published_at,
+      :content_id       => content_id,
+      :published_at     => published_at,
       :title            => title,
-      :reason          => reason,
-      :in_favor        => in_favor,
-      :against         => against,
-      :comments_count  => comments_count
+      :percent_in_favor => percent_in_favor,
+      :percent_against  => percent_against,
+      :percentage       => percentage,
+      :participation    => participation,
+      :reason           => reason,
+      :in_favor         => in_favor,
+      :against          => against,
+      :comments_count   => comments_count
     }
   end
 
