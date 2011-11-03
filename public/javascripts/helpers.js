@@ -443,21 +443,22 @@ jQuery.fn.enableComments = function(opt){
   var speed  = (opt && opt.speed) || 200;
 
   function disableSubmit($submit) {
-    $submit.addClass("disabled");
-    $submit.attr("disabled", "disabled");
+    if ($submit) {
+      $submit.addClass("disabled");
+      $submit.attr("disabled", "disabled");
+    }
   }
 
-
-  function textCounter($input, $submit) {
-    var count = $input.val().length;
-
-    if (count <= 0) {
-      $submit.addClass("disabled");
-      $submit.attr('disabled', 'disabled');
-    } else {
+  function enableSubmit($submit) {
+    if ($submit) {
       $submit.removeAttr('disabled');
       $submit.removeClass("disabled");
     }
+  }
+
+  function textCounter($input, $submit) {
+    var count = $input.val().length;
+    (count <= 0) ? disableSubmit($submit) : enableSubmit($submit);
   }
 
   this.each(function(){
@@ -465,8 +466,8 @@ jQuery.fn.enableComments = function(opt){
     var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
     var spin_element = document.getElementById('comment_spinner');
     var spinner = new Spinner(opts);
-    var $input = $(this).find("textarea");
-    var $submit = $(this).find('button[type="submit"]');
+    var $input  = $(this).find("textarea");
+    var $submit = $(this).find('button');
 
     disableSubmit($submit);
 
