@@ -1560,14 +1560,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
             &.textarea {
               height:auto;
 
-              .spinner {
-                position:absolute;
-                right:3px;
-                top: 1px;
-                display:block;
-                width:33px;
-                height:33px;
-              }
+              .spinner { position:absolute; right:3px; top: 1px; display:block; width:33px; height:33px; }
 
               textarea {
                 resize: none;
@@ -2043,6 +2036,8 @@ a.editable {
           }
         }
 
+        input[disabled="disabled"], input.disabled { background:#fff; }
+
         input[type="submit"] {
           border:none;
           color:$pink;
@@ -2051,6 +2046,9 @@ a.editable {
           position:absolute;
           top: 6px;
           right:4px;
+          display:block;
+          background:#fff;
+          height:18px;
         }
 
         .icon {

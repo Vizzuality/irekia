@@ -267,12 +267,16 @@ jQuery.fn.enableArguments = function(opt){
     var $icon;
 
     $submit.click(function(e) {
-      spinner.spin(spin_element);
-      $submit.hide();
-      $input.addClass("disabled");
-      setTimeout(function() {
-        $input.attr("disabled", "disabled");
-      }, 150);
+      if($input.val().replace(/\s/g,"") == ""){
+        e.preventDefault();
+        return false;
+      }
+        spinner.spin(spin_element);
+        $submit.hide();
+        $input.addClass("disabled");
+        setTimeout(function() {
+          $input.attr("disabled", "disabled");
+        }, 150);
     });
 
     function showIcon(noticeType) {
@@ -700,7 +704,6 @@ function shareWith($el, service, speed, easing) {
   $form.bind('ajax:error', error);
   $form.submit();
 }
-
 
 (function($) {
 /*
