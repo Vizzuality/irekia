@@ -14,7 +14,10 @@
   } else {
     document.documentElement.className = document.documentElement.className + ' ps_fouc';
   }
-  var templates = {
+
+  var spin_element = document.getElementById('proposal_spinner'),
+  spinner      = new Spinner(SPINNER_OPTIONS),
+  templates = {
     main:['<article id="<%= name %>_<%= id %>" class="mini popover with_footer" >',
    '  <form action="">',
    '    <div class="inner">',
@@ -50,14 +53,12 @@
    '  <footer>',
    '  <div class="separator"></div>',
    '  <div class="inner">',
-   '    <a href="#" class="white_button close right">Aceptar</a>',
+   '    <a href="#" class="white_button pink close right">Aceptar</a>',
    '  </div>',
    '  </footer>',
    '  <div class="t"></div><div class="f"></div>',
    '</article>'].join(' ')
-  };
-
-  var
+  },
   store = "proposal-popover",
   // Public methods
   methods = { },
@@ -224,13 +225,26 @@
   }
 
   function _addSubmitAction(data) {
-
     data.$ps.find("form").die();
+    data.$ps.find("form").submit(function(e) {
+      spinner.spin(spin_element);
+      data.$ps.find("form input[type='submit']").attr("disabled", "true");
+      data.$ps.find("form input[type='submit']").addClass("disabled");
+    });
+
     data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
-      //$(this).append(xhr.responseText)
+      spinner.stop();
+      $(this).find("input[type='submit']").removeAttr("disabled");
+      $(this).find("input[type='submit']").removeClass("disabled");
       _close(data, false, function() {
         _gotoSuccess(data);
       });
+    });
+
+    data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
+      spinner.stop();
+      $(this).find("input[type='submit']").removeAttr("disabled");
+      $(this).find("input[type='submit']").removeClass("disabled");
     });
   }
 

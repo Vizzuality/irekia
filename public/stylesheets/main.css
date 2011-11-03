@@ -301,11 +301,11 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.mini.with_footer footer .inner { width: 544px; padding: 25px 31px 25px 35px; background: url("/images/box_mini_bkg.png") repeat-y right 0; border: none; }
 #container article.mini.with_footer .separator { height: 2px; background: url("/images/box_mini_bkg.png") repeat-x; background-position: 0 -31px; }
 #container article.popover { position: absolute; top: -900px; z-index: 1000; }
-#container article.popover footer .inner .spinner { float: right; display: block; width: 33px; height: 33px; margin-top: 6px; z-index: 1000; }
-#container article.popover footer .inner .white_button { margin-left: 10px; }
-#container article.popover.proposal .input_field.textarea { height: 53px; }
-#container article.popover.proposal .input_field.textarea textarea.body { height: 53px; margin-bottom: 17px; }
-#container article.popover.proposal .input_field.textarea .holder { font-size: 15px; }
+#container article.popover footer .inner .spinner { float: right; display: block; width: 33px; height: 33px; margin-top: 7px; z-index: 1000; }
+#container article.popover footer .inner .white_button { margin-left: 5px; }
+#container article.popover.proposal .input_field.textarea { height: 76px; margin: 0 0 10px 0; }
+#container article.popover.proposal .input_field.textarea textarea.body { height: 53px; }
+#container article.popover.proposal .input_field.textarea .holder { font-size: 15px; top: 10px; }
 #container article.popover h3.related { display: none; }
 #container article.popover div.related ul li { clear: both; overflow: hidden; margin: 0 0 10px 0; padding: 11px 10px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: #F2F5F8; }
 #container article.popover div.related ul li .content { float: left; width: 490px; clear: right; margin: 0; }

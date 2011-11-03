@@ -1084,8 +1084,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
     top:-900px;
     z-index: 1000;
 
-    footer .inner .spinner { float:right; display:block; width:33px; height:33px; margin-top: 6px; z-index:1000; }
-    footer .inner .white_button { margin-left:10px; }
+    footer .inner .spinner { float:right; display:block; width:33px; height:33px; margin-top: 7px; z-index:1000; }
+    footer .inner .white_button { margin-left:5px; }
     &.proposal {
       .input_field {
         &.textarea {

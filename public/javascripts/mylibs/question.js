@@ -50,7 +50,7 @@
    '  <footer>',
    '  <div class="separator"></div>',
    '  <div class="inner">',
-   '    <a href="#" class="white_button blue close right">Aceptar</a>',
+   '    <a href="#" class="white_button pink close right">Aceptar</a>',
    '  </div>',
    '  </footer>',
    '  <div class="t"></div><div class="f"></div>',
