@@ -11,6 +11,10 @@ class Argument < Participation
 
   validates :reason, :presence => true
 
+  def self.by_id(id)
+    scoped.includes([{:user => :profile_pictures}, :argument_data, :proposal]).find(id)
+  end
+
   def self.in_favor
     joins(:argument_data).where('argument_data.in_favor' => true)
   end

@@ -1,6 +1,7 @@
 class PoliticiansController < UsersController
   skip_before_filter :authenticate_user!, :only => [:show, :actions, :questions, :proposals, :agenda]
 
+  before_filter :per_page,                   :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :get_politician,             :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda]
@@ -106,15 +107,8 @@ class PoliticiansController < UsersController
   private :get_questions
 
   def get_proposals
-    @proposals = @politician.proposals_received.moderated
-    @proposals = @proposals.from_politicians if params[:from_politicians]
-    @proposals = @proposals.from_citizens if params[:from_citizens]
 
-    @proposals = if params[:more_polemic] == 'true'
-      @proposals.more_polemic
-    else
-      @proposals.more_recent
-    end
+    @proposals = @politician.proposals_and_participation(params.slice(:from_politicians, :from_citizens, :more_polemic), @page, @per_page)
 
     @proposal                  = Proposal.new
     @proposal_data             = @proposal.build_proposal_data
@@ -151,16 +145,19 @@ class PoliticiansController < UsersController
   end
   private :get_agenda
 
-  def paginate
-    if action_name == 'show' || params[:referer] == 'show'
-      @actions   = @actions.page(1).per(4).all   if @actions
-      @questions = @questions.page(1).per(4).all if @questions
-      @proposals = @proposals.page(1).per(4).all if @proposals
+  def per_page
+    @page = params[:page] || 0
+    @per_page = if action_name == 'show' || params[:referer] == 'show'
+      4
     else
-      @actions   = @actions.page(params[:page]).per(10).all   if @actions
-      @questions = @questions.page(params[:page]).per(10).all if @questions
-      @proposals = @proposals.page(params[:page]).per(10).all if @proposals
+      10
     end
+  end
+  private :per_page
+
+  def paginate
+    @actions   = @actions.page(1).per(@per_page).all   if @actions
+    @questions = @questions.page(1).per(@per_page).all if @questions
   end
   private :paginate
 end

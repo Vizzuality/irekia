@@ -226,6 +226,16 @@ es:
           one: '%{percent}% en contra (1 voto)'
           other: '%{percent}% en contra (%{count} votos)'
       argument:
+        title: Nuevo argumento en la propuesta %{proposal}
+        author: 'hace %{time}'
+        votes:
+          zero: 0 votos
+          one: 1 voto
+          other: '%{count} votos'
+        arguments:
+          in_favor: 'Nuevos argumentos a favor:'
+          against: 'Nuevos argumentos en contra:'
+      vote:
         title:
           in_favor: 'A favor de la propuesta "%{proposal}"'
           against: 'En contra de la propuesta "%{proposal}"'
@@ -746,7 +756,7 @@ es:
         more_recent: Más recientes
         more_polemic: Más polémicas
       proposals:
-        title: 'Todas las propuestas hechas por %{name}'
+        title: 'Propuestas de %{name}'
         more_recent: Más recientes
         more_commented: Más comentadas
       followings:
