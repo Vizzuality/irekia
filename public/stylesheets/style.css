@@ -261,6 +261,17 @@ Article
 
 article .inner h2, article .inner h3 { color: #465866; }
 
+#container article.notice, #container article .inner .notice { display: none; position: absolute; width: 173px; margin: 0; z-index: 1000; }
+#container article.notice .inner, #container article .inner .notice .inner { width: 173px; }
+#container article.notice .inner .content p, #container article .inner .notice .inner .content p { margin: 0; padding: 0; font-size: 15px; color: #7d8a92; }
+#container article.notice .t, #container article.notice .f, #container article .inner .notice .t, #container article .inner .notice .f { height: 11px; background: url("/images/box_notice_bkg.png") no-repeat; }
+#container article.notice .t, #container article .inner .notice .t { top: -11px; background-position: 0 0; }
+#container article.notice .f, #container article .inner .notice .f { bottom: -27px; height: 27px; background-position: 0 -21px; }
+#container article.notice .inner, #container article .inner .notice .inner { width: 174px; padding: 0 10px; background: url("/images/box_notice_bkg.png") repeat-y -175px 0; border: none; }
+#container article.notice .inner .content, #container article .inner .notice .inner .content { margin: 0; width: 147px; padding: 0 13px; }
+#container article.notice .inner .content p, #container article .inner .notice .inner .content p { font-size: 13px; color: #7D8A92; line-height: 16px; }
+#container article.notice .inner .content p strong, #container article .inner .notice .inner .content p strong { display: block; font-size: 13px; color: #465866; }
+
 #container article.static .inner header h3 { text-transform: none; font-size: 19px; font-family: "Helvetica", sans-serif; font-weight: normal; }
 
 #container article .inner .left h1 { margin-bottom: 10px; line-height: 41px; }
@@ -675,8 +686,8 @@ a.editable { position: absolute; right: 0px; top: -10px; z-index: 50; display: b
 a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simple_bkg.png") no-repeat 0 -110px; }
 
 /* Proposals blocks */
-#container article .inner .left .proposals { clear: both; overflow: hidden; margin: 0 0 61px 0; }
-#container article .inner .left .proposals .proposal { float: left; width: 286px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
+#container article .inner .left .proposals { margin: 0 0 61px 0; position: relative; }
+#container article .inner .left .proposals .proposal { position: relative; float: left; width: 286px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container article .inner .left .proposals .proposal.in_favor, #container article .inner .left .proposals .proposal.agree { background: #E9F0DE; margin: 0 33px 0 0; }
 #container article .inner .left .proposals .proposal.against { background: #FFF0D9; margin: 0; }
 #container article .inner .left .proposals .proposal a.icon { display: block; float: left; width: 10px; height: 10px; float: left; margin-right: 20px; }
@@ -690,7 +701,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .proposals .proposal .footer .sparkline { margin-top: 10px; }
 #container article .inner .left .proposals .proposal .footer .input_text { -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; border: 1px solid #B3B6AE; background: #fff; -webkit-appearance: none; position: relative; }
 #container article .inner .left .proposals .proposal .footer .input_text input[type="text"], #container article .inner .left .proposals .proposal .footer .input_text input[type="password"], #container article .inner .left .proposals .proposal .footer .input_text input[type="email"] { border: none; outline: none; padding: 7px 7px; margin: 0 0 0 3px; width: 177px; font-size: 15px; }
-#container article .inner .left .proposals .proposal .footer .input_text input[type="text"].disabled, #container article .inner .left .proposals .proposal .footer .input_text input[type="password"].disabled, #container article .inner .left .proposals .proposal .footer .input_text input[type="email"].disabled { color: #7D8A92; opacity: .5; }
+#container article .inner .left .proposals .proposal .footer .input_text input[type="text"].disabled, #container article .inner .left .proposals .proposal .footer .input_text input[type="password"].disabled, #container article .inner .left .proposals .proposal .footer .input_text input[type="email"].disabled { color: #ccc; }
 #container article .inner .left .proposals .proposal .footer .input_text input[type="submit"] { border: none; color: #f10063; background: none; float: right; position: absolute; top: 6px; right: 4px; }
 #container article .inner .left .proposals .proposal .footer .input_text .icon { display: block; width: 20px; height: 20px; position: absolute; right: 4px; top: 4px; z-index: 100; background: url("/images/icons/share.png") no-repeat 0 0; }
 #container article .inner .left .proposals .proposal .footer .input_text .icon.success { background-position: 0 -674px; }

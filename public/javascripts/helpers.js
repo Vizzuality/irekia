@@ -252,47 +252,55 @@ jQuery.fn.enableCheckbox = function(opt){
 /* Enables comment submission */
 jQuery.fn.enableArguments = function(opt){
 
-  var speed  = (opt && opt.speed) || 200;
+  var speed     = (opt && opt.speed) || 200;
+  var duration  = (opt && opt.speed) || 3000;
 
   this.each(function(){
 
     var that = this;
-    var in_favor = $(this).hasClass("in_favor");
-    if (in_favor) {
-      var spin_element = document.getElementById('spinner_in_favor');
-    } else  {
-      var spin_element = document.getElementById('spinner_against');
-    }
 
+    var spin_element = $(that).hasClass("in_favor") ? document.getElementById('spinner_in_favor') : document.getElementById('spinner_against');
     var spinner = new Spinner(SPINNER_OPTIONS);
+
     var $input  = $(this).find('.input_text input[type="text"]');
-    var $submit = $(this).find('input[type="submit"]');
+    var $submit = $(this).find('.new_argument input[type="submit"]');
     var $icon;
 
-    $(this).find(".new_argument input[type='submit']").click(function(e) {
+    $submit.click(function(e) {
       spinner.spin(spin_element);
       $submit.hide();
       $input.addClass("disabled");
+      setTimeout(function() {
+        $input.attr("disabled", "disabled");
+      }, 150);
     });
 
-    function showIcon() {
+    function showIcon(noticeType) {
+
+      $(that).append($("#notice_" + noticeType));
+      $("#notice_" + noticeType).css("bottom", "75px");
+      $("#notice_" + noticeType).css("right", "-42px");
+      $("#notice_" + noticeType).fadeIn(250);
+
       setTimeout(function() {
+        $("#notice_" + noticeType).fadeOut(speed);
         $icon.fadeOut(speed, function() {
+        $input.removeAttr("disabled");
         $submit.fadeIn(speed);
         $(this).remove();
         $input.val('');
         $input.removeClass('disabled');
-        });
-      }, 2000);
 
+        });
+      }, duration);
     }
 
     $(this).find(".new_argument").bind('ajax:error', function(evt, xhr, status) {
-      console.log(evt, xhr, status);
       spinner.stop();
       $icon = $("<span class='icon error' />");
       $(that).find(".footer .input_text").append($icon);
-      showIcon();
+
+      showIcon("against");
     });
 
     $(this).find(".new_argument").bind('ajax:success', function(evt, xhr, status) {
@@ -300,7 +308,7 @@ jQuery.fn.enableArguments = function(opt){
 
       $icon = $("<span class='icon success' />");
       $(that).find(".footer .input_text").append($icon);
-      showIcon();
+      showIcon("in_favor");
     });
   });
 }
@@ -687,11 +695,6 @@ function shareWith($el, service, speed, easing) {
   }
 
   $form = $el.parents("li").find("form");
-
-  // $form.submit(function() {
-  //   console.log('a');
-  //  // $form.find(".input_field").removeClass("error");
-  // });
 
   $form.bind('ajax:success', success);
   $form.bind('ajax:error', error);

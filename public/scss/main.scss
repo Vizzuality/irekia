@@ -280,6 +280,59 @@ Article
 
 article .inner { h2, h3 { color: $dark_blue; } }
 
+// NOTICE
+#container article.notice,
+#container article .inner .notice {
+  display:none;
+  position:absolute;
+  width: 173px;
+  margin: 0;
+  z-index:1000;
+  .inner {
+    width:173px;
+
+    .content p {
+      margin: 0;
+      padding: 0;
+      font-size: 15px;
+      color: $standard_gray;
+    }
+  }
+  .t, .f {
+    height: 11px;
+    background: url('/images/box_notice_bkg.png') no-repeat;
+  }
+  .t {
+    top: -11px;
+    background-position: 0 0;
+  }
+  .f {
+    bottom: -27px;
+    height: 27px;
+    background-position: 0 -21px;
+  }
+  .inner {
+    width: 174px;
+    padding: 0 10px;
+    background: url("/images/box_notice_bkg.png") repeat-y -175px 0;
+    border: none;
+
+    .content {
+      margin: 0;
+      width: 147px;
+      padding: 0 13px;
+
+      p {
+        font-size:13px;
+        color:#7D8A92;
+        strong { display:block; font-size:13px; color: #465866; }
+        line-height:16px;
+      }
+    }
+  }
+}
+
+
 #container article.static .inner header h3 {text-transform:none; font-size:19px; font-family: "Helvetica", sans-serif; font-weight:normal;}
 #container article {
   .inner {
@@ -604,6 +657,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     }
   }
 
+  // PUBLISH
   &.publish {
     width: 757px;
     margin: 0 auto 40px auto;
@@ -1920,11 +1974,11 @@ a.editable {
 
 /* Proposals blocks */
 #container article .inner .left .proposals {
-  clear:both;
-  overflow:hidden;
   margin: 0 0 61px 0;
+  position:relative;
 
   .proposal {
+    position:relative;
     float:left;
     width:286px;
 
@@ -1985,8 +2039,7 @@ a.editable {
           width:177px;
           font-size:15px;
           &.disabled {
-            color:#7D8A92;
-            opacity:.5;
+            color:#ccc;
           }
         }
 

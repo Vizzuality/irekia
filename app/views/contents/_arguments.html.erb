@@ -1,4 +1,5 @@
-<div class="proposals">
+<div class="proposals clearfix">
+
   <div class="proposal in_favor">
     <h3><%= t(".in_favor") %> <sup>(<%= @arguments_in_favor.count %>)</sup></h3>
     <ul>
@@ -48,4 +49,29 @@
       <% end -%>
     </div>
   </div>
+
+  <article id="notice_in_favor" class="notice">
+  <div class="inner">
+    <div class="content">
+      <p>
+      <strong>Comentario enviado.</strong>
+      Te avisaremos en cuanto sea aprobado.
+      </p>
+    </div>
+    <div class="t"></div><div class="f"></div>
+  </div>
+  </article>
+
+
+  <article id="notice_against" class="notice">
+  <div class="inner">
+    <div class="content">
+      <p>
+      <strong>Error.</strong>
+      Te avisaremos en cuanto sea aprobado.
+      </p>
+    </div>
+    <div class="t"></div><div class="f"></div>
+  </div>
+  </article>
 </div>
