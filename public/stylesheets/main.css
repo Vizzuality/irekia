@@ -57,8 +57,8 @@ article .inner header h2, article .inner h2 { font-family: "ClarendonLTMedium", 
 span.answered { color: #00AA54; }
 span.not_answered { color: #FF3300; }
 span.positive { color: #FF0066; font-style: italic; }
-span.agree { color: #669900; }
-span.disagree, span.against { color: #ff9933; }
+span.in_favor { color: #669900; }
+span.against { color: #ff9933; }
 
 /* =============================================================================
 Header
@@ -501,6 +501,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner .right .map a { font-size: 10px!important; }
 
 .my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EDF3E5; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
+.my_opinion.against { background: #FFF3E1; }
+.my_opinion.in_favor { background: #EDF3E5; }
 .my_opinion .result { float: left; padding: 8px 0; width: 200px; font-size: 15px; }
 .my_opinion input[type="submit"] { float: right; margin-left: 10px; }
 
@@ -532,7 +534,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* Proposals blocks */
 #container article .inner .left .proposals { margin: 0 0 61px 0; position: relative; }
 #container article .inner .left .proposals .proposal { position: relative; float: left; width: 286px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
-#container article .inner .left .proposals .proposal.in_favor, #container article .inner .left .proposals .proposal.agree { background: #E9F0DE; margin: 0 33px 0 0; }
+#container article .inner .left .proposals .proposal.in_favor { background: #E9F0DE; margin: 0 33px 0 0; }
 #container article .inner .left .proposals .proposal.against { background: #FFF0D9; margin: 0; }
 #container article .inner .left .proposals .proposal a.icon { display: block; float: left; width: 10px; height: 10px; float: left; margin-right: 20px; }
 #container article .inner .left .proposals .proposal h3 { margin: 0; padding: 16px 0 12px 16px; font-size: 17px; text-transform: none; }

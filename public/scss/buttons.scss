@@ -108,7 +108,7 @@ White buttons
   &.blue   { color:$link_color; }
   &.orange { color:$orange; }
   &.green  { color:$green; }
-  &.agree  {
+  &.in_favor {
     color: $agree_color;
     &.selected {
       background: #75B100;
@@ -117,7 +117,6 @@ White buttons
     }
   }
 
-  &.disagree,
   &.against   {
     color: $against_color;
 

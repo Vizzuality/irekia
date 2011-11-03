@@ -69,6 +69,11 @@ $(function() {
   $(".my_opinion form").bind('ajax:success', function(evt, xhr, status) {
     $(this).parents(".my_opinion").find(".result").fadeOut(250, function() {
       $(this).html(xhr);
+
+      $(this).parent().removeClass("in_favor");
+      $(this).parent().removeClass("against");
+      $(this).parent().addClass($(xhr).attr('class'));
+
       $(this).fadeIn(250);
     });
   });

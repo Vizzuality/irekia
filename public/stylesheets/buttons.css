@@ -45,10 +45,10 @@ White buttons
 .white_button.blue, article.white_button.blue { color: #1d79b0; }
 .white_button.orange, article.white_button.orange { color: #ff6600; }
 .white_button.green, article.white_button.green { color: #75b100; }
-.white_button.agree, article.white_button.agree { color: #669900; }
-.white_button.agree.selected, article.white_button.agree.selected { background: #75B100; color: #fff; text-shadow: #4E7500 1px 1px 0; }
-.white_button.disagree, .white_button.against, article.white_button.disagree, article.white_button.against { color: #ff9933; }
-.white_button.disagree.selected, .white_button.against.selected, article.white_button.disagree.selected, article.white_button.against.selected { background: #FF6600; color: #fff; text-shadow: #B74400 1px 1px 0; }
+.white_button.in_favor, article.white_button.in_favor { color: #669900; }
+.white_button.in_favor.selected, article.white_button.in_favor.selected { background: #75B100; color: #fff; text-shadow: #4E7500 1px 1px 0; }
+.white_button.against, article.white_button.against { color: #ff9933; }
+.white_button.against.selected, article.white_button.against.selected { background: #FF6600; color: #fff; text-shadow: #B74400 1px 1px 0; }
 .white_button.add_person, .white_button.add_person:active, article.white_button.add_person, article.white_button.add_person:active { position: relative; padding-left: 33px; color: #f10063; }
 
 #container article footer .white_button.right, #container article .white_button.right, #container article article .white_button.right { float: right; right: 0; width: auto; }

@@ -213,8 +213,8 @@ article .inner header h2, article .inner h2 { font-family: "ClarendonLTMedium", 
 span.answered { color: #00AA54; }
 span.not_answered { color: #FF3300; }
 span.positive { color: #FF0066; font-style: italic; }
-span.agree { color: #669900; }
-span.disagree, span.against { color: #ff9933; }
+span.in_favor { color: #669900; }
+span.against { color: #ff9933; }
 
 /* =============================================================================
 Header
@@ -657,6 +657,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner .right .map a { font-size: 10px!important; }
 
 .my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EDF3E5; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
+.my_opinion.against { background: #FFF3E1; }
+.my_opinion.in_favor { background: #EDF3E5; }
 .my_opinion .result { float: left; padding: 8px 0; width: 200px; font-size: 15px; }
 .my_opinion input[type="submit"] { float: right; margin-left: 10px; }
 
@@ -688,7 +690,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* Proposals blocks */
 #container article .inner .left .proposals { margin: 0 0 61px 0; position: relative; }
 #container article .inner .left .proposals .proposal { position: relative; float: left; width: 286px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
-#container article .inner .left .proposals .proposal.in_favor, #container article .inner .left .proposals .proposal.agree { background: #E9F0DE; margin: 0 33px 0 0; }
+#container article .inner .left .proposals .proposal.in_favor { background: #E9F0DE; margin: 0 33px 0 0; }
 #container article .inner .left .proposals .proposal.against { background: #FFF0D9; margin: 0; }
 #container article .inner .left .proposals .proposal a.icon { display: block; float: left; width: 10px; height: 10px; float: left; margin-right: 20px; }
 #container article .inner .left .proposals .proposal h3 { margin: 0; padding: 16px 0 12px 16px; font-size: 17px; text-transform: none; }
@@ -1101,10 +1103,10 @@ White buttons
 .white_button.blue, article.white_button.blue { color: #1d79b0; }
 .white_button.orange, article.white_button.orange { color: #ff6600; }
 .white_button.green, article.white_button.green { color: #75b100; }
-.white_button.agree, article.white_button.agree { color: #669900; }
-.white_button.agree.selected, article.white_button.agree.selected { background: #75B100; color: #fff; text-shadow: #4E7500 1px 1px 0; }
-.white_button.disagree, .white_button.against, article.white_button.disagree, article.white_button.against { color: #ff9933; }
-.white_button.disagree.selected, .white_button.against.selected, article.white_button.disagree.selected, article.white_button.against.selected { background: #FF6600; color: #fff; text-shadow: #B74400 1px 1px 0; }
+.white_button.in_favor, article.white_button.in_favor { color: #669900; }
+.white_button.in_favor.selected, article.white_button.in_favor.selected { background: #75B100; color: #fff; text-shadow: #4E7500 1px 1px 0; }
+.white_button.against, article.white_button.against { color: #ff9933; }
+.white_button.against.selected, article.white_button.against.selected { background: #FF6600; color: #fff; text-shadow: #B74400 1px 1px 0; }
 .white_button.add_person, .white_button.add_person:active, article.white_button.add_person, article.white_button.add_person:active { position: relative; padding-left: 33px; color: #f10063; }
 
 #container article footer .white_button.right, #container article .white_button.right, #container article article .white_button.right { float: right; right: 0; width: auto; }

@@ -260,23 +260,25 @@ jQuery.fn.enableArguments = function(opt){
     var that = this;
 
     var spin_element = $(that).hasClass("in_favor") ? document.getElementById('spinner_in_favor') : document.getElementById('spinner_against');
-    var spinner = new Spinner(SPINNER_OPTIONS);
+    var spinner      = new Spinner(SPINNER_OPTIONS);
 
-    var $input  = $(this).find('.input_text input[type="text"]');
-    var $submit = $(this).find('.new_argument input[type="submit"]');
+    var $input       = $(this).find('.input_text input[type="text"]');
+    var $submit      = $(this).find('.new_argument input[type="submit"]');
     var $icon;
 
     $submit.click(function(e) {
-      if($input.val().replace(/\s/g,"") == ""){
+
+      if (isEmpty($input.val())) {
         e.preventDefault();
         return false;
       }
-        spinner.spin(spin_element);
-        $submit.hide();
-        $input.addClass("disabled");
-        setTimeout(function() {
-          $input.attr("disabled", "disabled");
-        }, 150);
+
+      spinner.spin(spin_element);
+      $submit.hide();
+      $input.addClass("disabled");
+      setTimeout(function() {
+        $input.attr("disabled", "disabled");
+      }, 150);
     });
 
     function showIcon(noticeType) {
@@ -294,7 +296,6 @@ jQuery.fn.enableArguments = function(opt){
         $(this).remove();
         $input.val('');
         $input.removeClass('disabled');
-
         });
       }, duration);
     }
@@ -441,13 +442,48 @@ jQuery.fn.enableComments = function(opt){
 
   var speed  = (opt && opt.speed) || 200;
 
+  function disableSubmit($submit) {
+    $submit.addClass("disabled");
+    $submit.attr("disabled", "disabled");
+  }
+
+
+  function textCounter($input, $submit) {
+    var count = $input.val().length;
+
+    if (count <= 0) {
+      $submit.addClass("disabled");
+      $submit.attr('disabled', 'disabled');
+    } else {
+      $submit.removeAttr('disabled');
+      $submit.removeClass("disabled");
+    }
+  }
+
   this.each(function(){
 
     var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
     var spin_element = document.getElementById('comment_spinner');
     var spinner = new Spinner(opts);
+    var $input = $(this).find("textarea");
+    var $submit = $(this).find('button[type="submit"]');
+
+    disableSubmit($submit);
+
+    $input.keyup(function(e) {
+      textCounter($input, $submit);
+    });
+
+    $input.keydown(function(e) {
+      textCounter($input, $submit);
+    });
 
     $(this).submit(function(e) {
+      if (isEmpty($input.val())) {
+        e.preventDefault();
+        return false;
+      }
+      disableSubmit();
       spinner.spin(spin_element);
     });
 
@@ -462,6 +498,7 @@ jQuery.fn.enableComments = function(opt){
       $(this).find("textarea").val("");
       $(this).find(".holder").fadeIn(speed);
       $comment.slideDown(speed);
+      disableSubmit($submit);
     });
   });
 }
@@ -569,7 +606,6 @@ jQuery.fn.enableCommentBox = function(opt){
         $submit.fadeOut(speed);
       }
     });
-
 
     function resetInput() {
       $input.val("");

@@ -99,8 +99,7 @@ span {
   &.answered     { color: #00AA54; }
   &.not_answered { color: #FF3300; }
   &.positive     { color: #FF0066; font-style: italic; }
-  &.agree        { color: $agree_color; }
-  &.disagree,
+  &.in_favor     { color: $agree_color; }
   &.against      { color: $against_color; }
 }
 
@@ -1856,6 +1855,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
   padding:10px;
   margin: 0 0 10px 0;
   background:#EDF3E5;
+
+  &.against  { background:#FFF3E1; }
+  &.in_favor { background:#EDF3E5; }
+
   clear:both; overflow:hidden;
   @include border-radius(4px);
 
@@ -1975,7 +1978,7 @@ a.editable {
     float:left;
     width:286px;
 
-    &.in_favor, &.agree {background:#E9F0DE; margin:0 33px 0 0 ;}
+    &.in_favor {background:#E9F0DE; margin:0 33px 0 0 ;}
     &.against {background:#FFF0D9; margin:0;}
 
     @include border-radius(5px);
