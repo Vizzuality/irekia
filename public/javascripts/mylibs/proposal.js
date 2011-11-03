@@ -181,7 +181,7 @@
     $ps.css({"top":(top + 100) + "px", "left": left + "px"});
 
     $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function() {
-      $(this).find("textarea").focus();
+      $(this).find("textarea.title").focus();
     }});
   }
 
@@ -194,26 +194,30 @@
   }
 
   function _clearInfo($ps) {
-    console.log("-", $ps, $ps.find("textarea"));
-    $ps.find("textarea").val("x");
-    $ps.find(".input-counter").val("140");
-    disableSending();
+    $ps.find("textarea").val("");
+    $ps.find(".counter").html(140);
+    disableSending($ps);
   }
 
   function enableSending($ps) {
-    $ps.find("input[type='submit']").removeAttr("disabled");
-    $ps.find("input[type='submit']").removeClass("disabled");
+    if ($ps) {
+      $ps.find("input[type='submit']").removeAttr("disabled");
+      $ps.find("input[type='submit']").removeClass("disabled");
+    }
   }
+
   function disableSending($ps) {
-    $ps.find("form input[type='submit']").attr("disabled", "true");
-    $ps.find("form input[type='submit']").addClass("disabled");
+    if ($ps) {
+      $ps.find("form input[type='submit']").attr("disabled", "true");
+      $ps.find("form input[type='submit']").addClass("disabled");
+    }
   }
 
   function _close2(data, hideLockScreen, callback) {
 
     data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).remove();
-      _clearInfo($(this));
+      _clearInfo(data.$ps);
       hideLockScreen && LockScreen.hide();
       callback && callback();
     }});
@@ -223,7 +227,7 @@
 
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).css("top", "-900px");
-      _clearInfo($(this));
+      _clearInfo(data.$ps);
       hideLockScreen && LockScreen.hide();
       callback && callback();
     }});
