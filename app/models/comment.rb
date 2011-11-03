@@ -16,16 +16,9 @@ class Comment < Participation
   end
 
   def as_json(options = {})
-    {
-      :author          => {
-        :id            => user.id,
-        :name          => user.name,
-        :fullname      => user.fullname,
-        :profile_image => user.profile_image
-      },
-      :published_at    => published_at,
+    super({
       :body            => body
-    }
+    })
   end
 
   def publish_participation
@@ -34,9 +27,6 @@ class Comment < Participation
     content.commenters.each { |user| User.increment_counter('comments_count', user.id) }
 
     Content.increment_counter('comments_count', content.id)
-
-    super
-
   end
   private :publish_participation
 

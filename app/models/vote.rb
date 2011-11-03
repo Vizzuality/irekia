@@ -25,19 +25,11 @@ class Vote < Participation
   end
 
   def as_json(options = {})
-    {
-      :author          => {
-        :id            => user.id,
-        :name          => user.name,
-        :fullname      => user.fullname,
-        :profile_image => user.profile_image
-      },
-      :published_at    => published_at,
+    super({
       :title            => title,
       :in_favor        => in_favor,
-      :against         => against,
-      :comments_count  => comments_count
-    }
+      :against         => against
+    })
   end
 
   def set_as_moderated
