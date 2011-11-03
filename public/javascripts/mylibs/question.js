@@ -226,11 +226,25 @@
     return (($(window).width() - $ps.width()) / 2);
   }
 
-  function _clearRelated($ps) {
+  function _clearInfo($ps) {
     $ps.find("textarea").val("");
-    $ps.find(".related").hide();
+    $ps.find(".counter").html(140);
+    disableSending($ps);
   }
 
+  function enableSending($ps) {
+    if ($ps) {
+      $ps.find("input[type='submit']").removeAttr("disabled");
+      $ps.find("input[type='submit']").removeClass("disabled");
+    }
+  }
+
+  function disableSending($ps) {
+    if ($ps) {
+      $ps.find("form input[type='submit']").attr("disabled", "true");
+      $ps.find("form input[type='submit']").addClass("disabled");
+    }
+  }
   function _build(data, templateName, extraParams) {
     var params = _.extend({id:data.id + "_success", name:data.name}, extraParams);
     var $ps = $(_.template(data.templates[templateName], params ));
@@ -241,7 +255,7 @@
 
     data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).remove();
-      _clearRelated($(this));
+      _clearInfo(data.$ps);
       hideLockScreen && LockScreen.hide();
       callback && callback();
     }});
@@ -251,7 +265,7 @@
 
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).css("top", "-900px");
-      _clearRelated($(this));
+      _clearInfo(data.$ps);
       hideLockScreen && LockScreen.hide();
       callback && callback();
     }});
@@ -267,14 +281,12 @@
 
     data.$ps.find("form").submit(function(e) {
       spinner.spin(spin_element);
-      data.$ps.find("form input[type='submit']").attr("disabled", "true");
-      data.$ps.find("form input[type='submit']").addClass("disabled");
+      disableSending(data.$ps);
     });
 
     data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
       spinner.stop();
-      $(this).find("input[type='submit']").removeAttr("disabled");
-      $(this).find("input[type='submit']").removeClass("disabled");
+      enableSending(data.$ps);
       _close(data, false, function() {
         _gotoSuccess(data);
       });
@@ -282,8 +294,7 @@
 
     data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
       spinner.stop();
-      $(this).find("input[type='submit']").removeAttr("disabled");
-      $(this).find("input[type='submit']").removeClass("disabled");
+      enableSending(data.$ps);
     });
 
   }
