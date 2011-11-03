@@ -1,7 +1,7 @@
 class Event < Content
   has_one :event_data
 
-  delegate :event_date, :title, :subtitle, :body, :location, :to => :event_data
+  delegate :event_date, :title, :subtitle, :body, :location, :to => :event_data, :allow_nil => true
 
   before_save :update_areas_agenda
 

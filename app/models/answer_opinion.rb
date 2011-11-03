@@ -5,7 +5,7 @@ class AnswerOpinion < Participation
   has_one :answer_opinion_data
 
 
-  delegate :satisfactory, :to => :answer_opinion_data
+  delegate :satisfactory, :to => :answer_opinion_data, :allow_nil => true
 
   accepts_nested_attributes_for :answer_opinion_data
 

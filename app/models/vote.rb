@@ -7,8 +7,8 @@ class Vote < Participation
   before_save :set_as_moderated
   after_save :update_proposal
 
-  delegate :in_favor, :against, :to => :vote_data
-  delegate :title, :to => :proposal
+  delegate :in_favor, :against, :to => :vote_data, :allow_nil => true
+  delegate :title, :to => :proposal, :allow_nil => true
 
   accepts_nested_attributes_for :vote_data
 

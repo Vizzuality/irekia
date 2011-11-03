@@ -1,7 +1,7 @@
 class News < Content
   has_one :news_data
 
-  delegate :title, :subtitle, :body, :to => :news_data
+  delegate :title, :subtitle, :body, :to => :news_data, :allow_nil => true
 
   def as_json(options = {})
     super({

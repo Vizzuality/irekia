@@ -4,8 +4,8 @@ class Argument < Participation
 
   has_one :argument_data
 
-  delegate :in_favor, :against, :reason, :to => :argument_data
-  delegate :title, :percent_in_favor, :percent_against, :percentage, :participation, :to => :proposal
+  delegate :in_favor, :against, :reason, :to => :argument_data, :allow_nil => true
+  delegate :title, :percent_in_favor, :percent_against, :percentage, :participation, :to => :proposal, :allow_nil => true
 
   accepts_nested_attributes_for :argument_data
 

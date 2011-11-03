@@ -3,7 +3,7 @@ class Comment < Participation
   has_one :comment_data,
           :select => 'comment_id, body'
 
-  delegate :subject, :body, :to => :comment_data
+  delegate :subject, :body, :to => :comment_data, :allow_nil => true
 
   accepts_nested_attributes_for :comment_data
 
