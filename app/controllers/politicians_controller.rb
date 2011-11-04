@@ -77,6 +77,7 @@ class PoliticiansController < UsersController
 
   def build_new_question
     @question                  = Question.new
+    @question.areas_contents   << @question.areas_contents.build(:area => @politician.areas.first)
     @question_data             = @question.build_question_data
     @question_data.target_user = @user
   end
@@ -111,6 +112,7 @@ class PoliticiansController < UsersController
     @proposals = @politician.proposals_and_participation(params.slice(:from_politicians, :from_citizens, :more_polemic), @page, @per_page)
 
     @proposal                  = Proposal.new
+    @proposal.areas_contents   << @proposal.areas_contents.build(:area => @politician.areas.first)
     @proposal_data             = @proposal.build_proposal_data
     @proposal_data.target_area = @politician.areas.first
   end

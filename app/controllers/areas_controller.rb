@@ -106,6 +106,7 @@ class AreasController < ApplicationController
     end
 
     @question                  = Question.new
+    @question.areas_contents   << @question.areas_contents.build(:area => @area)
     @question_data             = @question.build_question_data
     @question_data.target_area = @area
   end
@@ -123,6 +124,7 @@ class AreasController < ApplicationController
     end
 
     @proposal                  = Proposal.new
+    @proposal.areas_contents   << @proposal.areas_contents.build(:area => @area)
     @proposal_data             = @proposal.build_proposal_data
     @proposal_data.target_area = @area
   end

@@ -18,11 +18,13 @@ class Area < ActiveRecord::Base
   has_many :questions,
            :through => :areas_contents,
            :include => [{:users => :profile_pictures}, :question_data, :comments ],
-           :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
+           :select => 'contents.id, contents.type, contents.published_at, contents.moderated',
+           :order => 'published_at asc'
   has_many :proposals,
            :through => :areas_contents,
            :include => [{:users => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }],
-           :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
+           :select => 'contents.id, contents.type, contents.published_at, contents.moderated',
+           :order => 'published_at asc'
 
   has_many :news,
            :through => :areas_contents,
@@ -48,7 +50,8 @@ class Area < ActiveRecord::Base
 
   has_many :actions,
            :class_name => 'AreaPublicStream',
-           :select => 'event_id, event_type, message'
+           :select => 'event_id, event_type, message',
+           :order => 'published_at asc'
   has_many :follows,
            :as => :follow_item
   has_many :followers,

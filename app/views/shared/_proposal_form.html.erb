@@ -8,6 +8,11 @@
 
         <h3>Título de la propuesta</h3>
 
+        <%= form.fields_for :areas_contents, @proposal.areas_contents.first do |area_content_data| %>
+          <%= area_content_data.hidden_field :area_id %>
+          <%= area_content_data.hidden_field :content_id %>
+        <% end -%>
+
         <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %>
           <%= proposal_data.hidden_field :user_id %>
           <%= proposal_data.hidden_field :area_id %>
