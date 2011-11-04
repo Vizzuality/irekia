@@ -3,7 +3,7 @@
   <ul class="areas">
     <% @areas.each do |area| %>
       <li class="<%= current_area?(area) %>"><%= truncate(area.name, :length => 18) %></li>
-    <% end %>
+    <% end if @areas %>
   </ul>
   <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get, :autocomplete => :off } do |search_form| %>
     <div class="input_field search placeholder">
