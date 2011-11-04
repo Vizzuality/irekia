@@ -4,8 +4,8 @@
   <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="mOoFPTs9xQUTOTplStCotWba1+xiF4SX6/vYt12YNPY=" /></div>
   <div class="inner">
     <div class="content">
-      <h2>Accede a Irekia</h2>
-      <p>¿Olvidaste tu contraseña? <a href="#">Recupérala aquí</a></p>
+      <h2><%= t(".access_irekia") %></h2>
+      <p><%= t(".forgotten_password") %> <a href="#"><%= t(".get_it_here") %></a></p>
 
       <p><%= f.label :email %> <%= f.email_field :email, :class => :mInput %></p>
       <p><%= f.label :password %> <%= f.password_field :password, :class => :mInput %></p>

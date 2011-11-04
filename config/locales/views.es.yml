@@ -9,6 +9,11 @@ es:
     publish: Publicar
     configure_your_account: Configura tu cuenta
   shared:
+    floating_login:
+      access_irekia: Accede a Irekia
+      forgotten_password: ¿Olvidaste tu contraseña?
+      get_it_here: Recupérala aquí
+      remember_me: Recordar mis datos
     sidebar:
       location:
         title: "Localización del evento"
