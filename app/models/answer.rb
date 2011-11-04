@@ -12,6 +12,7 @@ class Answer < Content
 
   def as_json(options = {})
     super({
+      :question_id     => answer_data.question_id,
       :question_text   => answer_data.question_text,
       :answer_text     => answer_text
     })
