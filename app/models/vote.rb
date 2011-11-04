@@ -12,6 +12,15 @@ class Vote < Participation
 
   accepts_nested_attributes_for :vote_data
 
+  def self.find_or_initialize(params = nil)
+    new_vote = new(params)
+    vote = User.find(params[:user_id]).his_opinion(Content.find(params[:content_id])).first if params.present?
+    if vote.present?
+      vote.vote_data.in_favor = params[:vote_data_attributes][:in_favor]
+    end
+    vote || new_vote
+  end
+
   def self.by_id(id)
     scoped.includes([{:user => :profile_pictures}, :vote_data]).find(id)
   end
