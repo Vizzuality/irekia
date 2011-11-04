@@ -107,7 +107,7 @@ Irekia::Application.routes.draw do
     end
   end
 
-  root :to => "areas#show", :id => 1
+  root :to => "home#index"
 
   match '/nav_bar_buttons', :to => 'home#nav_bar_buttons'
 
