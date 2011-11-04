@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
            :class_name => 'UserPublicStream'
   has_many :followings_actions,
            :class_name => 'UserPrivateStream',
-           :order      => 'published_at desc'
+           :order      => 'published_at asc'
 
   has_many :profile_pictures,
            :class_name => 'Image',
@@ -148,10 +148,6 @@ class User < ActiveRecord::Base
     credentials = access_token['credentials']
 
     if user = (signed_in_resource || User.find_by_email(data['email']))
-
-      user.facebook_oauth_token        = credentials['token']
-      user.save!
-
       user
     else
       user = User.new :name  => data['name'],
@@ -169,14 +165,10 @@ class User < ActiveRecord::Base
     data        = access_token['user_info']
     credentials = access_token['credentials']
 
-    if user = (signed_in_resource || User.find_by_twitter_oauth_token_and_twitter_oauth_token_secret(credentials['token'], credentials['secret']))
-      user.twitter_oauth_token        = credentials['token']
-      user.twitter_oauth_token_secret = credentials['secret']
-      user.save(false)
-
+    if user = (signed_in_resource || User.find_by_twitter_username(data['nickname']))
       user
     else
-      user = User.new :name  => data['name']
+      user = User.new :name  => data['name'], :twitter_username => data['nickname']
 
       user.password                   = Devise.friendly_token[0,20]
       user.twitter_oauth_token        = credentials['token']
@@ -206,7 +198,7 @@ class User < ActiveRecord::Base
       @arguments = @arguments.joins(:proposal => :users).where('role_id = ?', Role.citizen.first.id)
     end
 
-    order = 'published_at desc'
+    order = 'published_at asc'
     if filters[:more_polemic] == 'true'
       order = 'comments_count desc, published_at desc'
     end

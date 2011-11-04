@@ -285,6 +285,7 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
     t.string   "postal_code"
     t.string   "facebook_oauth_token"
     t.string   "facebook_oauth_token_secret"
+    t.string   "twitter_username"
     t.string   "twitter_oauth_token"
     t.string   "twitter_oauth_token_secret"
     t.boolean  "inactive",                                   :default => false
@@ -317,8 +318,11 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["facebook_oauth_token", "facebook_oauth_token_secret"], :name => "facebook_credentials", :unique => true
   add_index "users", ["id"], :name => "index_users_on_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["twitter_oauth_token", "twitter_oauth_token_secret"], :name => "twitter_credentials", :unique => true
+  add_index "users", ["twitter_username"], :name => "index_users_on_twitter_username", :unique => true
 
   create_table "vote_data", :force => true do |t|
     t.integer  "vote_id"

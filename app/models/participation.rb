@@ -31,7 +31,7 @@ class Participation < ActiveRecord::Base
   end
 
   def self.more_recent
-    order('participations.published_at desc')
+    order('participations.published_at asc')
   end
 
   def self.validate_all_not_moderated

@@ -25,7 +25,7 @@ class Content < ActiveRecord::Base
   after_create :increment_counter_cache
   after_destroy :decrement_counter_cache
 
-  accepts_nested_attributes_for :comments, :contents_users
+  accepts_nested_attributes_for :comments, :areas_contents, :contents_users
 
   attr_accessor :location
 
@@ -46,7 +46,7 @@ class Content < ActiveRecord::Base
   end
 
   def self.more_recent
-    order('contents.published_at desc')
+    order('contents.published_at asc')
   end
 
   def self.more_polemic
@@ -72,7 +72,7 @@ class Content < ActiveRecord::Base
   end
 
   def last_contents(limit = 5)
-    self.class.moderated.includes(:"#{self.class.name.downcase}_data", :comments).order('published_at desc').where('id <> ?', id).first(limit)
+    self.class.moderated.includes(:"#{self.class.name.downcase}_data", :comments).order('published_at asc').where('id <> ?', id).first(limit)
   end
 
   def commenters

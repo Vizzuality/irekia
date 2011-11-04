@@ -1,5 +1,5 @@
 <article class="thin with_footer with_remark with_form signup">
-<%= form_for @user, { :remote => true, :html => { :novalidate => :novalidate, "data-type" => :html }} do |f| %>
+<%= form_for current_user, { :remote => true, :html => { :novalidate => :novalidate, "data-type" => :html }} do |f| %>
   <div class="inner">
     <div class="content">
 
@@ -23,6 +23,16 @@
           </div>
           <span class="mandatory">obligatorio</span>
         </div>
+
+        <% if current_user.email.blank? %>
+          <div class="field email">
+            <%= f.label :email %>
+            <div class="input_field">
+              <%= f.text_field :email, :autocomplete => :off %>
+            </div>
+            <span class="mandatory">obligatorio</span>
+          </div>
+        <% end -%>
 
         <div class="field postal_code">
           <%= f.label :postal_code %>
