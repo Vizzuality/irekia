@@ -172,7 +172,7 @@ class User < ActiveRecord::Base
     if user = (signed_in_resource || User.find_by_twitter_oauth_token_and_twitter_oauth_token_secret(credentials['token'], credentials['secret']))
       user.twitter_oauth_token        = credentials['token']
       user.twitter_oauth_token_secret = credentials['secret']
-      user.save!
+      user.save(false)
 
       user
     else
