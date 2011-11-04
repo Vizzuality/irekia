@@ -22,6 +22,7 @@
               <%= form.hidden_field :rejected, :value => true %>
               <%= form.submit t('.delete', :type => content.class.model_name.human)%>
             <% end %>
+            <hr />
             </li>
           <% end %>
         </ul>
@@ -42,6 +43,7 @@
               <%= form.hidden_field :rejected, :value => true %>
               <%= form.submit t('.delete', :type => participation.class.model_name.human)%>
             <% end %>
+            <hr />
             </li>
           <% end %>
         </ul>

@@ -52,7 +52,20 @@
 
     <div id="main" class="<%= controller.controller_name %> <%= controller.action_name %> role="main">
       <div class="content">
+
+<article>
+<div class="inner">
+  <div class="content">
+    <div class="left">
+        <%= render 'admin/shared/navigation' %>
+    </div>
+    <div class="right"> </div>
+  </div>
+</div>
+<div class="t"></div><div class="f"></div>
+</article>
         <%= yield %>
+
         <%= render 'shared/floating_login' %>
       </div>
     </div>
