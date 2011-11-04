@@ -1,7 +1,9 @@
 <% if options -%>
   <ul class="menu">
     <% options.each_with_index do |option, i| -%>
+      <% if !option[:show_count] or option[:show_count] > 0 %>
       <li<%=" class='#{'last ' if i >= options.size - 1 }#{option[:class]}'" if option[:class] or i >= options.size - 1 -%>><%= option[:link] -%><%= content_tag 'div', option[:count], :class => "pending-counter" if option[:count] && option[:count] > 0 -%></li>
+    <% end %>
     <% end -%>
   </ul>
 <% end %>

@@ -45,6 +45,7 @@ class SearchesController < ApplicationController
     @politicians = users.politicians
 
     @contents_count = @contents.count
+    @areas_count = @areas.count
     @politicians_count = @politicians.count
     @citizens_count = @citizens.count
   end

@@ -640,6 +640,10 @@ es:
           zero: Ningún contenido
           one: 1 contenido
           other: '%{count} contenidos'
+        areas:
+          zero: Ningún área
+          one: 1 área
+          other: '%{count} áreas'
         politicians:
           zero: Ningún político
           one: 1 político
@@ -648,6 +652,15 @@ es:
           zero: Ningún usuario
           one: 1 usuario
           other: '%{count} usuarios'
+    areas:
+      results:
+        title:
+          zero: Ningún área
+          one: 1 área
+          other: '%{count} áreas'
+        all: 'ver los %{count} áreas encontradas'
+        more: ver más resultados
+        follow: Seguir
     users:
       results:
         title:

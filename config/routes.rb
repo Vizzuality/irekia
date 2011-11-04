@@ -101,6 +101,7 @@ Irekia::Application.routes.draw do
   resource :search do
     member do
       get :contents
+      get :areas
       get :politicians
       get :citizens
     end
