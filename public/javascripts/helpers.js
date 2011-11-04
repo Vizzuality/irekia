@@ -710,7 +710,7 @@ jQuery.fn.inputCounter = function(opt){
 /* Adds sharing capabilities */
 jQuery.fn.share = function(opt){
 
-  var speed   = (opt && opt.speed) || 200;
+  var speed   = (opt && opt.speed)  || 200;
   var easing  = (opt && opt.easing) || 'easeInExpo';
   var finishedSharing = true;
 
@@ -732,7 +732,7 @@ function shareWith($el, service, speed, easing) {
   var $ok = $el.find(".ok"),
   $form;
 
-  function success (argument) {
+  function success(argument) {
     if ($ok) $ok.animate({ opacity:0, top: "20px" }, speed, easing, function() { $(this).remove(); })
 
     $el.append('<div class="ok" />');
@@ -741,13 +741,13 @@ function shareWith($el, service, speed, easing) {
     return true;
   }
 
-  function error () {
+  function error(a, b, c) {
+    console.log(a, b, c);
     $form.find(".input_field").addClass("error");
     return true;
   }
 
   $form = $el.parents("li").find("form");
-
   $form.bind('ajax:success', success);
   $form.bind('ajax:error', error);
   $form.submit();

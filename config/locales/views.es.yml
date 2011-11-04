@@ -959,7 +959,7 @@ es:
         follow:
           zero: Seguir a este área (0)
           one: Seguir a este área (1)
-          other: 'Seguir este a área (%{count})'
+          other: 'Seguir a este área (%{count})'
       user:
         follow:
           zero: Seguir a %{name} (0)
