@@ -8,22 +8,34 @@ default_run_options[:pty] = true
 
 set :application, 'irekia'
 
+set :default_environment, {
+  'PATH' => "/home/ubuntu/.rvm/gems/ruby-1.9.2-p290/bin:/home/ubuntu/.rvm/gems/ruby-1.9.2-p290@global/bin:/home/ubuntu/.rvm/rubies/ruby-1.9.2-p290/bin:/home/ubuntu/.rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games",
+  'RUBY_VERSION' => 'ruby 1.9.2',
+  'GEM_HOME'     => '/home/ubuntu/.rvm/gems/ruby-1.9.2-p290',
+  'GEM_PATH'     => '/home/ubuntu/.rvm/gems/ruby-1.9.2-p290:/home/ubuntu/.rvm/gems/ruby-1.9.2-p290@global',
+  'BUNDLE_PATH'  => '/home/ubuntu/.rvm/gems/ruby-1.9.2-p290/bin/bundle'
+}
+
 set :scm, :git
 #set :git_shallow_clone, 1
 set :deploy_via, :remote_cache
 set :scm_user, 'ubuntu'
-set :use_sudo, false
 set :repository, "git@github.com:Vizzuality/irekia.git"
-ssh_options[:forward_agent] = true
+set :ssh_options, { :forward_agent => true }
 set :keep_releases, 2
+set :normalize_asset_timestamps, false
 
-set :appserver_staging, '178.79.131.104'
-set :appserver_production, '178.79.131.104'
+
+set :appserver_staging, '178.79.162.72'
+set :appserver_production, '178.79.162.72'
 set :user,  'ubuntu'
+set :use_sudo, false
 
 set(:deploy_to){
   "/home/ubuntu/www/#{application}"
 }
+
+default_run_options[:shell] = 'bash'
 
 after  "deploy:update_code", :symlinks, :set_staging_flag
 
