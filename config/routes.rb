@@ -1,6 +1,10 @@
 Irekia::Application.routes.draw do
 
-  devise_for :users, :controllers => { :registrations => 'users', :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => {
+    :sessions => 'sessions',
+    :registrations => 'users',
+    :omniauth_callbacks => "users/omniauth_callbacks"
+  }
 
   resources :users do
     resources :follows
