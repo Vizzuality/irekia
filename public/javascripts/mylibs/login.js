@@ -107,13 +107,11 @@
   }
 
   function _setupCallback(data, classes) {
-    console.log(data,classes);
     if (classes.indexOf("question") != -1) {
       data.callback = "question";
     } else if (classes.indexOf("proposal") != -1) {
       data.callback = "proposal";
     }
-    console.log(data.callback);
   }
 
   function _open(data) {

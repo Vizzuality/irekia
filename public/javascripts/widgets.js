@@ -598,14 +598,19 @@ var GOD = (function() {
 
         $.ajax({ url: data.filter, data: data.sort, type: "GET", success: function(data){
           $ps.find("#listing").fadeOut(settings.transitionSpeed, function() {
-            if (data.length<12) {
-              $ps.find("#listing").html('<span class="empty">No hay contenido en este area</span>');
+
+
+            if (data.length < 1) {
+              $ps.find("#listing").html('<span class="empty">No hay contenido en este area</span>'); // TODO: We shouldn't use non localized strings here
             } else {
               $ps.find("#listing").html(data);
             }
+
             $ps.find("#listing").slideDown(settings.transitionSpeed, function() {
               filter_spinner.stop();
             });
+
+            $ps.find(".placeholder").smartPlaceholder();
           });
         }});
       });
