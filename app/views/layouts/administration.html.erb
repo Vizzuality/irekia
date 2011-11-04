@@ -19,7 +19,7 @@
   <meta name="author" content="">
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport" content="width=1020,initial-scale=1">
+  <meta name="viewport" content="width=1024">
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
@@ -40,12 +40,27 @@
 
 <body>
 
-<%= render 'shared/header' %>
-<%= render 'admin/shared/navigation' %>
+  <%= render 'shared/sign_in' %>
 
-<%= yield %>
+  <div id="container">
+    <header>
+      <%= render 'shared/header' %>
+    <nav>
+      <%= render 'shared/nav_bar' %>
+    </nav>
+    </header>
 
-<%= render 'shared/footer' %>
+    <div id="main" class="<%= controller.controller_name %> <%= controller.action_name %> role="main">
+      <div class="content">
+        <%= yield %>
+        <%= render 'shared/floating_login' %>
+      </div>
+    </div>
+
+    <footer> <%= render 'shared/footer' %>
+    </footer>
+  </div>
+
 
   <!-- JavaScript at the bottom for fast page loading -->
 
@@ -54,7 +69,8 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
-    <%= javascript_include_tag 'rails', 'helpers', 'temp', 'widgets', 'map', 'plugins', 'libs/jquery-ui-1.8.16.custom.min.js', 'application' %>
+    <%= javascript_include_tag 'rails', 'libs/spin.min', 'helpers', 'temp', 'widgets', 'mylibs/question', 'mylibs/proposal', 'mylibs/login',  'map', 'plugins', 'libs/jquery-ui-1.8.16.custom.min', 'libs/jquery.dropkick-1.0.0', 'application' %>
+    <%= yield :js_data %>
 
     <!-- Change UA-XXXXX-X to be your site's ID -->
     <script>
