@@ -1,4 +1,3 @@
-
 $(function() {
   watchHash(); // this function watches the url hashes and acts accordingly
 
@@ -7,8 +6,8 @@ $(function() {
   $(".more_actions").enablePagination({name: "actions"});
 
   $("textarea.grow").autogrow();
-
   $(".cycle").enableRegistration();
+
   // Preloading of popover assets
   $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
 

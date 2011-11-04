@@ -22,7 +22,6 @@
   var
     // Public methods exposed to $.fn.dropkick()
     methods = {},
-    scrollbar,
     // Cache every <select> element that gets dropkicked
     lists   = [],
 
@@ -306,8 +305,8 @@
     $dk.find('.dk_options').css({ top : $dk.find('.dk_toggle').outerHeight() - 1 });
     $dk.toggleClass('dk_open');
 
-    if (!scrollbar) {
-      scrollbar = $dk.find(".scrollpane").jScrollPane();
+    if (!data.scrollbar) {
+      data.scrollbar = $dk.find(".scrollpane").jScrollPane();
 
       $dk.find('.dk_options').css({
         'width' : ($dk.find('.dk_options').width() - 2) + 'px'

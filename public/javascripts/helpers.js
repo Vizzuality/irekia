@@ -179,8 +179,6 @@ jQuery.fn.enableRegistration = function(opt){
     forward($article, $currentArticle);
     $form = $currentArticle.find("form");
 
-    $form.find('.field.territory select').dropkick({width:72});
-    $form.find('.field.municipality select').dropkick({width:71});
     $('form .field.born_at select[name="user[birthday(1i)]"]').dropkick({width:-10});
     $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});
     $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
@@ -211,6 +209,7 @@ jQuery.fn.enableRegistration = function(opt){
 
   function validateErrors(evt, xhr, status) {
     var errors = $.parseJSON(xhr.responseText);
+    console.log(errors);
 
     _.each(errors, function(message, field) {
       $currentArticle.find("form ." + field).addClass("error");

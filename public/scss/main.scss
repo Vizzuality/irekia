@@ -1005,6 +1005,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       }
 
       .inner .content {
+        width: 570px;
         padding: 30px 0 0 0;
 
         a { font-size:15px; }
@@ -1739,6 +1740,19 @@ article .inner { h2, h3 { color: $dark_blue; } }
             &.municipality {
               width: 174px;
               float:left; clear:none;
+            }
+
+            &.postal_code {
+              width:415px;
+              float:left;
+              clear:none;
+              overflow:hidden;
+              .input_field {
+                width:203px;
+                float:left;
+                clear:none;
+                input[type="text"] { margin:0 5px 0 0; }
+              }
             }
 
             &.legal {

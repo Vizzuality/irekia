@@ -24,84 +24,13 @@
           <span class="mandatory">obligatorio</span>
         </div>
 
-        <div class="field territory left">
-          <%= f.label :province_id %>
+        <div class="field postal_code">
+          <%= f.label :postal_code %>
           <div class="input_field">
-            <%= f.select :province_id, [['Vizcaya', 1],
-              ["Asparrena","Asparrena"],
-              ["Aiara","Ayala/Aiara"],
-              ["Banos","Baños de Ebro/Mañueta"],
-              ["Barrundia","Barrundia"],
-              ["Berantevilla","Berantevilla"],
-              ["Bernedo","Bernedo"],
-              ["Campezo","Campezo/Kanpezu"],
-              ["Elburgo","Elburgo/Burgelu"],
-              ["Elciego","Elciego"],
-              ["Villar","Elvillar/Bilar"],
-              ["Ribera_alta","Erriberagoitia/Ribera Alta"],
-              ["Arana","Harana/Valle de Arana"],
-              ["Oca","Iruña Oka/Iruña de Oca"]],
-              :include_blank => false %>
+            <%= f.text_field :postal_code, :autocomplete => :off %>
           </div>
+          <span class="mandatory">obligatorio</span>
         </div>
-
-        <div class="field municipality">
-          <%= f.label :city_id %>
-          <div class="input_field">
-            <%= f.select :city_id,
-              [["alegria-dulantzi","Alegría-Dulantzi"],
-              ["Umurrio","Amurrio"],
-              ["Unana","Añana"],
-              ["Uramaio","Aramaio"],
-              ["Urminon","Armiñon"],
-              ["Urraia","Arraia-Maeztu"],
-              ["Urrazua","Arrazua-Ubarrundia"],
-              ["Urtziniega","Artziniega"],
-              ["Usparrena","Asparrena"],
-              ["Uiara","Ayala/Aiara"],
-              ["Uanos","Baños de Ebro/Mañueta"],
-              ["Uarrundia","Barrundia"],
-              ["Uerantevilla","Berantevilla"],
-              ["Uernedo","Bernedo"],
-              ["Uampezo","Campezo/Kanpezu"],
-              ["Ulburgo","Elburgo/Burgelu"],
-              ["Ulciego","Elciego"],
-              ["Uillar","Elvillar/Bilar"],
-              ["Uibera_alta","Erriberagoitia/Ribera Alta"],
-              ["Urana","Harana/Valle de Arana"],
-              ["Uca","Iruña Oka/Iruña de Oca"],
-              ["Ururaiz","Iruraiz-Gauna"],
-              ["Uripan","Kripan"],
-              ["Uuartango","Kuartango"],
-              ["Uabastida","Labastida/Bastida"],
-              ["Uagran","Lagrán"],
-              ["Uaguardia","Laguardia"],
-              ["Uanciego","Lanciego/Lantziego"],
-              ["Uantaron","Lantarón"],
-              ["Uapuebla","Lapuebla de Labarca"],
-              ["Uaudio","Laudio/Llodio"],
-              ["Uegutiano","Legutio"],
-              ["Ueza","Leza"],
-              ["Uoreda","Moreda de Álava"],
-              ["Uavaridas","Navaridas"],
-              ["Ukondo","Okondo"],
-              ["Uion","Oyón-Oion"],
-              ["Uenacerrada","Peñacerrada/Urizaharra"],
-              ["Uibera_baja","Ribera Baja/Erribera Beitia"],
-              ["Ualvatierra","Salvatierra/Agurain"],
-              ["Uamaniego","Samaniego"],
-              ["Uan_millan","San Millán/Donemiliaga"],
-              ["Urkabustaiz","Urkabustaiz"],
-              ["Ualdegovia","Valdegovía/Gaubea"],
-              ["Uillabuena","Villabuena de Álava/Esku"],
-              ["Uasteiz","Vitoria-Gasteiz"],
-              ["Uecora","Yécora/Iekora"],
-              ["Ualduondo","Zalduondo"],
-              ["Uambrana","Zambrana"],
-              ["Uigoitia","Zigoitia"],
-              ["Uuia","Zuia"]], :prompt => 'Test', :include_blank => false %>
-            </div>
-          </div>
 
           <div class="field born_at">
             <%= f.label :birthday %>

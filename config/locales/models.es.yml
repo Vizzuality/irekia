@@ -32,6 +32,7 @@ es:
         province_id: Territorio
         city_id: Municipio
         birthday: Fecha de nacimiento
+        postal_code: Código postal
       area_user:
         area_id: Área
       image:
