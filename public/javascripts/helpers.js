@@ -349,17 +349,28 @@ jQuery.fn.autocomplete = function(opt){
       e.stopPropagation();
     });
 
-    $(this).bind('ajax:error', function(e){
+    $(this).bind('ajax:error', function(evt, xhr, status){
       spinner.stop();
       $('#search_submit').show();
     });
 
     $(this).bind('ajax:success', function(evt, xhr, status){
+      console.log(evt, xhr, status);
+
       var $autocomplete = $(this).find('.autocomplete');
       $autocomplete.addClass("visible");
       $autocomplete.find('div.inner').html(xhr);
-      $autocomplete.css("margin-left", "-158px");
-      $autocomplete.css("margin-top", "23px");
+
+      if ($(xhr).length == 0) {
+        $autocomplete.addClass("no_result");
+        $autocomplete.css("margin-left", 0);
+        $autocomplete.css("margin-top", "13px");
+      } else {
+        $autocomplete.removeClass("no_result");
+        $autocomplete.css("margin-left", "-128px");
+        $autocomplete.css("margin-top", "23px");
+      }
+
       spinner.stop();
       $('#search_submit').show();
       $autocomplete.fadeIn("fast");

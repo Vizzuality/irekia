@@ -38,6 +38,9 @@ $(function() {
 
   $('a.checkbox').enableCheckbox();
   $('select.dropkick').dropkick();
+  $('form .field.born_at select[name="user[birthday(1i)]"]').dropkick({width:-10});
+  $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});
+  $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
 
   $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();

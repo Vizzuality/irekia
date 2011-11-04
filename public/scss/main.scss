@@ -182,7 +182,13 @@ header {
 
           span.holder { position: absolute; left: 11px; bottom: 8px; width: 200px; font-size:15px; font-weight:normal; color: #D7DADD; text-shadow:none; }
 
+          &.search {
+            width: 320px;
+            input#search_query { width: 275px; }
+          }
+
           input {
+
             &[type="text"],
             &[type="email"],
             &[type="password"] {
@@ -196,6 +202,7 @@ header {
               @include box-shadow(inset 0 2px 3px rgba(0, 0, 0, 0.2));
               outline: none;
             }
+
             &[type="submit"] {
               right: 10px;
               top: 10px;
@@ -3143,6 +3150,25 @@ Autocomplete
 ========================================================================== */
 
 .autocomplete {
+
+  &.no_result {
+    background: url('/images/popovers_bkg.png') no-repeat 0 -451px;
+    width:324px;
+    height: 65px;
+
+    .inner {
+      overflow: hidden;
+      background: none;
+      padding: 27px;
+      font-size:15px;
+      color: #7D8A92;
+      text-align: center;
+    }
+
+
+    .t, .f { background:none; }
+  }
+
   display: none;
   position: absolute;
 

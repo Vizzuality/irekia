@@ -6,7 +6,7 @@
     <% end %>
   </ul>
   <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get, :autocomplete => :off } do |search_form| %>
-    <div class="input_field placeholder">
+    <div class="input_field search placeholder">
       <%= search_form.text_field :query %>
       <%= search_form.submit '' %>
       <span id="autocomplete_spinner"></span>

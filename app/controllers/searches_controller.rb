@@ -16,7 +16,8 @@ class SearchesController < ApplicationController
     @areas = (@areas + contents_areas + citizens_areas + politicians_areas).uniq
 
     if request.xhr?
-      head(:not_found) and return if @areas.blank? && @contents.blank? && @citizens.blank? && @politicians.blank?
+      #head(:not_found) and return if @areas.blank? && @contents.blank? && @citizens.blank? && @politicians.blank?
+      render :no_result, :layout => false and return if @areas.blank? && @contents.blank? && @citizens.blank? && @politicians.blank?
       render :autocomplete, :layout => false and return
     end
   end

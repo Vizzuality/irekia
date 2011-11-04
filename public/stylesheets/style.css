@@ -239,6 +239,8 @@ header nav .content span.currently_viewing { float: left; margin: 10px 10px 0 0;
 header nav .content form { float: left; width: 290px; }
 header nav .content form .input_field { position: relative; }
 header nav .content form .input_field span.holder { position: absolute; left: 11px; bottom: 8px; width: 200px; font-size: 15px; font-weight: normal; color: #D7DADD; text-shadow: none; }
+header nav .content form .input_field.search { width: 320px; }
+header nav .content form .input_field.search input#search_query { width: 275px; }
 header nav .content form .input_field input[type="text"], header nav .content form .input_field input[type="email"], header nav .content form .input_field input[type="password"] { height: 33px; padding: 0 36px 0 9px; width: 245px; font-size: 15px; border: 1px solid #13587f; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); outline: none; }
 header nav .content form .input_field input[type="submit"] { right: 10px; top: 10px; position: absolute; width: 14px; height: 14px; background: url("/images/icons/magnifier.png") no-repeat; border: 0; z-index: 100; }
 header nav .content form .input_field span#autocomplete_spinner { position: absolute; right: 17px; top: 17px; }
@@ -985,6 +987,9 @@ Menu
 Autocomplete
 ========================================================================== */
 .autocomplete { display: none; position: absolute; width: 451px; z-index: 200; margin-bottom: 30px; }
+.autocomplete.no_result { background: url("/images/popovers_bkg.png") no-repeat 0 -451px; width: 324px; height: 65px; }
+.autocomplete.no_result .inner { overflow: hidden; background: none; padding: 27px; font-size: 15px; color: #7D8A92; text-align: center; }
+.autocomplete.no_result .t, .autocomplete.no_result .f { background: none; }
 .autocomplete .t, .autocomplete .f { height: 10px; width: 100%; position: absolute; background: url("/images/popovers_bkg.png") no-repeat; }
 .autocomplete .t { top: -10px; background-position: -397px 0; }
 .autocomplete .f { bottom: -10px; background-position: -397px -30px; }
