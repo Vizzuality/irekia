@@ -1,15 +1,5 @@
 desc "Setup Irekia Project for first time"
-task :setup => %w(irekia:setup_database irekia:validate_all_not_moderated) do
-    if Rails.env.development?
-      system 'rake irekia:setup_database RAILS_ENV=test'
-      # ENV["RAILS_ENV"] = 'test'
-      # RAILS_ENV.replace('test') if defined?(RAILS_ENV)
-      # load "#{RAILS_ROOT}/config/environment.rb"
-
-      # Rake::Task['irekia:setup_database'].reenable
-      # Rake::Task['irekia:setup_database'].invoke
-    end
-end
+task :setup => %w(irekia:setup_database irekia:validate_all_not_moderated irekia:randomize_all)
 
 namespace :irekia do
   desc "Setup Irekia Database"
@@ -19,5 +9,17 @@ namespace :irekia do
   task :validate_all_not_moderated => :environment do
     Content.validate_all_not_moderated
     Participation.validate_all_not_moderated
+  end
+
+  desc "Randomizes publishing dates in all contents/participations"
+  task :randomize_all => :environment do
+    Content.find_each do |content|
+      content.published_at =  Time.current.advance(:days => rand(35), :hours => rand(24), :minutes => rand(60))
+      content.save!
+    end
+    Participation.find_each do |participation|
+      participation.published_at =  Time.current.advance(:days => rand(35), :hours => rand(24), :minutes => rand(60))
+      participation.save!
+    end
   end
 end

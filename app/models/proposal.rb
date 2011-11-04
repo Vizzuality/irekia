@@ -23,7 +23,7 @@ class Proposal < Content
 
   accepts_nested_attributes_for :proposal_data, :arguments, :votes
 
-  delegate :in_favor, :against, :participation, :title, :body, :target_user, :target_area, :to => :proposal_data
+  delegate :in_favor, :against, :participation, :title, :body, :target_user, :target_area, :to => :proposal_data, :allow_nil => true
 
   def self.by_id(id)
     scoped.includes([{:users => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }]).find(id)

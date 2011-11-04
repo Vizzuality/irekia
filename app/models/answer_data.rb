@@ -10,5 +10,5 @@ class AnswerData < ActiveRecord::Base
              :class_name => 'User',
              :foreign_key => :user_id
 
-  delegate :question_text, :to => :question
+  delegate :question_text, :to => :question, :allow_nil => true
 end

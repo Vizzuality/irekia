@@ -228,6 +228,8 @@ es:
       argument:
         title: Nuevo argumento en la propuesta %{proposal}
         author: 'hace %{time}'
+        against: en contra
+        in_favor: a favor
         votes:
           zero: 0 votos
           one: 1 voto

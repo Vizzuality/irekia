@@ -5,6 +5,6 @@
   load Rails.root.join('db', 'seeds', "#{seed}.rb")
 end
 
-puts "Loading seed data for #{Rails.env} environment".red
+puts "Loading seed data".red
 
-load Rails.root.join('db', 'seeds', Rails.env, 'seeds.rb')
+load Rails.root.join('db/seeds/seeds.rb')

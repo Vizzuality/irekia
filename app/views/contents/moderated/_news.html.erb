@@ -14,7 +14,7 @@
 
     <h1><%= @content.title %></h1>
     <p><strong><%= @content.subtitle %></strong></p>
-
+    <%= image_tag @content.news_data.image.content_url %>
     <%= simple_format @content.body %>
     <p><%= link_to 'Leer noticia completa', '#', :class => :more %></p>
 

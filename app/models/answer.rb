@@ -6,7 +6,7 @@ class Answer < Content
 
   before_create :mark_question_as_answered
 
-  delegate :question, :question_text, :answer_text, :to => :answer_data
+  delegate :question, :question_text, :answer_text, :to => :answer_data, :allow_nil => true
 
   accepts_nested_attributes_for :answer_opinions
 

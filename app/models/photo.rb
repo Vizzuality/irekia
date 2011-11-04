@@ -1,7 +1,7 @@
 class Photo < Content
   has_one :image
 
-  delegate :title, :description, :original_url, :content_url, :to => :image
+  delegate :title, :description, :original_url, :content_url, :to => :image, :allow_nil => true
 
   def as_json(options = {})
     super({

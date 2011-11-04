@@ -54,6 +54,22 @@ class Participation < ActiveRecord::Base
   end
   private :author_is_politician?
 
+  def as_json(options = {})
+    default = {
+      :author           => {
+        :id               => user.id,
+        :name             => user.name,
+        :fullname         => user.fullname,
+        :profile_image    => user.profile_image
+      },
+      :content_id       => content_id,
+      :published_at     => published_at,
+      :comments_count   => comments_count
+    }
+
+    default.merge(options || {})
+  end
+
   def publish_participation
     return unless content.present? && self.moderated?
 
