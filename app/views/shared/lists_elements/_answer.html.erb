@@ -1,11 +1,11 @@
 <%= avatar data.author %>
 
 <div class="content">
-  <p><%= raw t('.title', :question => content_tag(:strong, data.question_text)) %></p>
+  <p><%= link_to(raw(t('.title', :question => content_tag(:strong, data.question_text))), question_path(data.question_id)) %></p>
 
   <p class="excerpt">
 
-  <%= link_to %Q{"#{data.answer_text}"}, answer_path(data.content_id) %>
+  <%= link_to %Q{"#{data.answer_text}"}, question_path(data.question_id) %>
 
   <div class="footer">
     <span class="published_at">
