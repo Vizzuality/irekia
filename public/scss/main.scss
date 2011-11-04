@@ -966,7 +966,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       border: none;
       .content {
         margin: 3px 0 18px 0px;
-        width: 556px;
+        width: 570px; // 556
       }
     }
 
@@ -1697,6 +1697,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     bottom:-35px;
   }
 }
+
 #container .cycle {
   overflow:hidden;
   clear:both;
@@ -1724,6 +1725,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
           .field {
 
+            &.password {
+              margin: 0 15px 0 0;
+            }
+
             span.mandatory {
               float:left;
               color: rgba(125,138,146, .4);
@@ -1735,8 +1740,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
             &.territory {
               width: 174px;
               z-index:1000;
-
             }
+
             &.municipality {
               width: 174px;
               float:left; clear:none;
@@ -1753,6 +1758,11 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 clear:none;
                 input[type="text"] { margin:0 5px 0 0; }
               }
+            }
+
+            .terms_of_service {
+              a.checkbox { text-decoration:none; }
+              a { text-decoration:underline; }
             }
 
             &.legal {
@@ -1773,8 +1783,18 @@ article .inner { h2, h3 { color: $dark_blue; } }
               }
             }
 
+            &.email {
+              width:415px;
+              .input_field {
+                width:415px;
+                input[type="text"],
+                input[type="email"] { width:396px; }
+              }
+            }
+
             &.name,
             &.lastname {
+              background:red;
               clear:both;
               overflow:hidden;
               width:415px;
