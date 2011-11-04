@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:intro, :new, :create, :show, :questions, :proposals, :actions, :followings]
+  skip_before_filter :check_user_lastname, :only => [:edit, :update]
   before_filter :private_politician_or_public?
   before_filter :user_is_current_user?, :only => [:edit, :update]
   before_filter :get_user, :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]

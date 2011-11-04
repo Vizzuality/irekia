@@ -16,6 +16,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :postal_code
       t.string   :facebook_oauth_token
       t.string   :facebook_oauth_token_secret
+      t.string   :twitter_username
       t.string   :twitter_oauth_token
       t.string   :twitter_oauth_token_secret
       t.boolean  :inactive,                   :default => false
@@ -51,10 +52,14 @@ class CreateUsers < ActiveRecord::Migration
 
     add_index :users, :id
     add_index :users, :email,                :unique => true
+    add_index :users, :twitter_username,     :unique => true
     add_index :users, :reset_password_token, :unique => true
     # add_index :users, :confirmation_token,   :unique => true
     # add_index :users, :unlock_token,         :unique => true
     # add_index :users, :authentication_token, :unique => true
+
+    add_index :users, [:facebook_oauth_token, :facebook_oauth_token_secret], :unique => true, :name => 'facebook_credentials'
+    add_index :users, [:twitter_oauth_token, :twitter_oauth_token_secret], :unique => true, :name => 'twitter_credentials'
   end
 
   def self.down

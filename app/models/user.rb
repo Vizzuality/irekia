@@ -148,10 +148,6 @@ class User < ActiveRecord::Base
     credentials = access_token['credentials']
 
     if user = (signed_in_resource || User.find_by_email(data['email']))
-
-      user.facebook_oauth_token        = credentials['token']
-      user.save!
-
       user
     else
       user = User.new :name  => data['name'],
@@ -169,14 +165,10 @@ class User < ActiveRecord::Base
     data        = access_token['user_info']
     credentials = access_token['credentials']
 
-    if user = (signed_in_resource || User.find_by_twitter_oauth_token_and_twitter_oauth_token_secret(credentials['token'], credentials['secret']))
-      user.twitter_oauth_token        = credentials['token']
-      user.twitter_oauth_token_secret = credentials['secret']
-      user.save(false)
-
+    if user = (signed_in_resource || User.find_by_twitter_username(data['nickname']))
       user
     else
-      user = User.new :name  => data['name']
+      user = User.new :name  => data['name'], :twitter_username => data['nickname']
 
       user.password                   = Devise.friendly_token[0,20]
       user.twitter_oauth_token        = credentials['token']
