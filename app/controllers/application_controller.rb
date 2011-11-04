@@ -25,9 +25,9 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
       nav_bar_buttons_path
     else
-      return_to = session[:return_to].nil?? root_path : session[:return_to].to_s
+      return_to = session[:return_to] || root_path
       session[:return_to] = nil
-      return_to
+      return_to.to_s
     end
   end
 
