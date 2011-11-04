@@ -302,6 +302,7 @@ es:
       view_calendar: Ver calendario
       view_map: Ver mapa
       more: Ver calendario completo
+      next_month: Siguiente mes
 
     nav_bar_buttons:
       sign_up: Regístrate
