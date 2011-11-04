@@ -314,6 +314,11 @@ var GOD = (function() {
       data.$ps = $ps;
       $this.data(store, data);
       $ps.data(store, data);
+
+      if ($ps.attr('class') == 'error') {
+        _open($this);
+      }
+
     });
   };
 
@@ -329,12 +334,7 @@ var GOD = (function() {
   };
 
 
-  // Toggle popover
-  function _toggle(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    var $this = $(this);
+  function _open($this) {
     var data = $this.data(store);
     var $ps = data.$ps;
 
@@ -351,6 +351,16 @@ var GOD = (function() {
 
       _close($this);
     }
+  }
+
+  // Toggle popover
+  function _toggle(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    _open($(this));
   }
 
   // Close popover

@@ -3456,8 +3456,18 @@ Login & sign in
 
   .content {
     font-size: 15px;
-    p { margin:0 0 20px 0; font-size:15px; }
-    label {display:block;}
+
+    p {
+      margin:0 0 20px 0; font-size:15px;
+      label { clear:both; float:left; }
+
+      &.error {
+        color: #E96F5F;
+        span { float:left; font-size: 12px; }
+        label { color: #E96F5F; margin: 0 5px 0 0; }
+        input { border:1px solid #E96F5F;}
+      }
+    }
 
     h1 { color: $dark_blue; font-weight: 300; line-height: normal; font-size:31px; }
 

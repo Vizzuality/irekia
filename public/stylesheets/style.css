@@ -1069,7 +1069,11 @@ Login & sign in
 #sign_in { display: none; position: absolute; right: 0; background: url("/images/popovers_bkg.png") no-repeat; width: 314px; height: 363px; z-index: 100; padding: 51px 38px 0 38px; }
 #sign_in .content { font-size: 15px; }
 #sign_in .content p { margin: 0 0 20px 0; font-size: 15px; }
-#sign_in .content label { display: block; }
+#sign_in .content p label { clear: both; float: left; }
+#sign_in .content p.error { color: #E96F5F; }
+#sign_in .content p.error span { float: left; font-size: 12px; }
+#sign_in .content p.error label { color: #E96F5F; margin: 0 5px 0 0; }
+#sign_in .content p.error input { border: 1px solid #E96F5F; }
 #sign_in .content h1 { color: #465866; font-weight: 300; line-height: normal; font-size: 31px; }
 #sign_in .content footer { clear: both; border: 0; padding: 0; position: absolute; bottom: 34px; width: 315px; background: none; }
 #sign_in .content footer .left { float: left; width: 50%; }

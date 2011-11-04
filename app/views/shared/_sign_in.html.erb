@@ -1,11 +1,11 @@
-<div id="sign_in">
+<div id="sign_in"<%= " class='error'" if flash and flash[:alert] %>>
   <div class="content">
     <h1><%= t('.access_irekia') %></h1>
     <p><%= t('.forgotten_password') %> <%= link_to t('.get_it_here'), new_password_path('user') %></p>
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:novalidate => "novalidate"}) do |f| %>
 
-      <p><%= f.label :email %> <%= f.email_field :email, :class => :mInput %></p>
-      <p><%= f.label :password %> <%= f.password_field :password, :class => :mInput %></p>
+      <p<%= " class='error'" if flash and flash[:alert] %>><%= f.label :email %> <%= content_tag 'span', flash[:alert] if flash %> <%= f.email_field :email, :class => :mInput %>
+      <p<%= " class='error'" if flash and flash[:alert] %>><%= f.label :password %> <%= f.password_field :password, :class => :mInput %></p>
       <p class="remember_me"><%= f.check_box :remember_me, :class => "hidden" %> <a class="checkbox">Recordar mis datos</a></p>
 
       <footer>
@@ -20,4 +20,3 @@
     <% end %>
   </div>
 </div>
-

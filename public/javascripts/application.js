@@ -111,7 +111,9 @@ $(function() {
   $(".show_event").infoEventPopover();
   $(".ask_question").questionPopover();
   $(".create_proposal").proposalPopover();
+
   $(".auth a.login").loginPopover();
+
   $(".share.inline, .share.more, .share.email").sharePopover();
 
   //$('.avatar').prepend("<div class='ieframe'></div>");
