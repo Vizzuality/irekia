@@ -13,7 +13,7 @@
           <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'contents') %></li>
           <% @contents[:not_moderated].each do |content| %>
             <li class="content">
-            <%= render "shared/lists_elements/#{content.class.name.downcase}", :data => content %>
+            <%= render "shared/lists_elements/#{content.class.name.downcase}", :data => content, :admin => true %>
             <%= form_for [:admin, content] do |form| %>
               <%= form.hidden_field :moderated, :value => true %>
               <%= form.submit t('.validate', :type => content.class.model_name.human)%>
@@ -33,7 +33,7 @@
           <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'participations') %></li>
           <% @participations[:not_moderated].each do |participation| %>
             <li class="participation">
-            <%= render "shared/lists_elements/#{participation.class.name.downcase}", :data => participation %>
+            <%= render "shared/lists_elements/#{participation.class.name.downcase}", :data => participation, :admin => true %>
             <%= form_for [:admin, participation] do |form| %>
               <%= form.hidden_field :moderated, :value => true %>
               <%= form.submit t('.validate', :type => participation.class.model_name.human)%>
