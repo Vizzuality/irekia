@@ -25,7 +25,6 @@ Irekia::Application.routes.draw do
     resources :users
     # resources :contents
     resources :proposals,      :controller => 'contents',       :type => 'Proposal'
-    resources :arguments,      :controller => 'contents',       :type => 'Argument'
     resources :questions,      :controller => 'contents',       :type => 'Question'
     resources :answers,        :controller => 'contents',       :type => 'Answer'
     resources :news,           :controller => 'contents',       :type => 'News'
@@ -37,7 +36,7 @@ Irekia::Application.routes.draw do
     # resources :participations
     resources :comments,       :controller => 'participations', :type => 'Comment'
     resources :arguments,      :controller => 'participations', :type => 'Argument'
-    resources :likes,          :controller => 'participations', :type => 'Like'
+    resources :votes,          :controller => 'participations', :type => 'Vote'
     resources :answer_request, :controller => 'participations', :type => 'AnswerRequest'
   end
 

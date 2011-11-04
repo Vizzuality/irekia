@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
            :class_name => 'UserPublicStream'
   has_many :followings_actions,
            :class_name => 'UserPrivateStream',
-           :order      => 'published_at asc'
+           :order      => 'published_at desc'
 
   has_many :profile_pictures,
            :class_name => 'Image',
@@ -198,7 +198,7 @@ class User < ActiveRecord::Base
       @arguments = @arguments.joins(:proposal => :users).where('role_id = ?', Role.citizen.first.id)
     end
 
-    order = 'published_at asc'
+    order = 'published_at desc'
     if filters[:more_polemic] == 'true'
       order = 'comments_count desc, published_at desc'
     end

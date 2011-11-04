@@ -14,11 +14,11 @@ namespace :irekia do
   desc "Randomizes publishing dates in all contents/participations"
   task :randomize_all => :environment do
     Content.find_each do |content|
-      content.published_at =  Time.current.advance(:days => rand(35), :hours => rand(24), :minutes => rand(60))
+      content.published_at =  Time.current.advance(:days => -rand(5), :hours => -rand(24), :minutes => -rand(60))
       content.save!
     end
     Participation.find_each do |participation|
-      participation.published_at =  Time.current.advance(:days => rand(35), :hours => rand(24), :minutes => rand(60))
+      participation.published_at =  Time.current.advance(:days => -rand(5), :hours => -rand(24), :minutes => -rand(60))
       participation.save!
     end
   end
