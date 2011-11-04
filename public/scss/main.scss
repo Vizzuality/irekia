@@ -1557,6 +1557,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
               color:$medium_dark;
               font-size:13px;
 
+              strong { display:block; margin: 4px 0 0 0; }
+
               .icon.ok {
                 background:url('/images/icons/ok.png') no-repeat;
                 width:37px; height:40px;
@@ -1564,7 +1566,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 float:left;
               }
 
-              strong { display:block; }
             }
           }
         }
@@ -2308,6 +2309,28 @@ a.editable {
       border-top:1px solid rgba(70, 88, 102, .12);
       margin-bottom:10px;
 
+      &.moderated {
+        border-top: 1px solid #e4e8da;
+        border-top: 1px solid rgba(208, 214, 219, .4);
+
+        font-size:15px;
+        color: #7D8A92;
+        strong {
+          display:block;
+          margin: 16px 0 3px 0;
+          color:#666666;
+          font-size:17px;
+        }
+
+        .icon.ok {
+          background:url('/images/icons/ok.png') no-repeat 0 -101px;
+          width:65px; height:69px;
+          margin-right:13px;
+          float:left;
+        }
+
+        strong { display:block; }
+      }
       &.answered {
         margin-top: 0;
         padding-top:0;
