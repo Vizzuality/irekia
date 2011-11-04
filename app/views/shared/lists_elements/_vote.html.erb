@@ -2,9 +2,9 @@
 <div class="content">
   <p>
   <% if data.in_favor %>
-    <%= raw t('.title.in_favor', :proposal => content_tag(:strong, data.title)) %>
+    <%= raw t('.title.in_favor', :proposal => (content_tag 'strong', (link_to %Q{"#{data.title}"}, proposal_path(data.id)))) %>
   <% else %>
-    <%= raw t('.title.against', :proposal => content_tag(:strong, data.title)) %>
+    <%= raw t('.title.against', :proposal => (content_tag 'strong', (link_to %Q{"#{data.title}"}, proposal_path(data.id)))) %>
   <% end %>
   </p>
 

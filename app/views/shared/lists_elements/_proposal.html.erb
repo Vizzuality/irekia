@@ -3,8 +3,7 @@
 <%= link_to raw("<strong>#{data.percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>"), proposal_path(data.id), :class => "icon #{ position }" %>
 <div class="content">
 
-  <p>
-    <%= content_tag 'strong', (link_to %Q{"#{data.title}"}, proposal_path(data.id)) %></p>
+  <p><%= content_tag 'strong', (link_to %Q{"#{data.title}"}, proposal_path(data.id)) %></p>
 
   <div class="footer">
     <span class="author">
