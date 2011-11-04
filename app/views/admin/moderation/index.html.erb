@@ -1,40 +1,57 @@
-<div class="contents">
-  <h1><%= t('.contents') %></h1>
-  <ul>
-    <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'contents') %></li>
-    <% @contents[:not_moderated].each do |content| %>
-    <li class="content">
-      <%= render "shared/lists_elements/#{content.class.name.downcase}", :data => content %>
-      <%= form_for [:admin, content] do |form| %>
-        <%= form.hidden_field :moderated, :value => true %>
-        <%= form.submit t('.validate', :type => content.class.model_name.human)%>
-      <% end %>
-      <%= form_for [:admin, content] do |form| %>
-        <%= form.hidden_field :rejected, :value => true %>
-        <%= form.submit t('.delete', :type => content.class.model_name.human)%>
-      <% end %>
-    </li>
-    <% end %>
-  </ul>
-  <%= paginate @contents[:not_moderated] %>
+<article>
+<div class="inner">
+  <div class="content">
+    <header>
+    <h1>Moderación de contenidos</h1>
+    </header>
+    <div class="left">
+
+
+      <div class="contents">
+        <h3><%= t('.contents') %></h3>
+        <ul>
+          <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'contents') %></li>
+          <% @contents[:not_moderated].each do |content| %>
+            <li class="content">
+            <%= render "shared/lists_elements/#{content.class.name.downcase}", :data => content %>
+            <%= form_for [:admin, content] do |form| %>
+              <%= form.hidden_field :moderated, :value => true %>
+              <%= form.submit t('.validate', :type => content.class.model_name.human)%>
+            <% end %>
+            <%= form_for [:admin, content] do |form| %>
+              <%= form.hidden_field :rejected, :value => true %>
+              <%= form.submit t('.delete', :type => content.class.model_name.human)%>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <%= paginate @contents[:not_moderated] %>
+      </div>
+      <div class="participations">
+        <h3><%= t('.participations') %></h3>
+        <ul>
+          <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'participations') %></li>
+          <% @participations[:not_moderated].each do |participation| %>
+            <li class="participation">
+            <%= render "shared/lists_elements/#{participation.class.name.downcase}", :data => participation %>
+            <%= form_for [:admin, participation] do |form| %>
+              <%= form.hidden_field :moderated, :value => true %>
+              <%= form.submit t('.validate', :type => participation.class.model_name.human)%>
+            <% end %>
+            <%= form_for [:admin, participation] do |form| %>
+              <%= form.hidden_field :rejected, :value => true %>
+              <%= form.submit t('.delete', :type => participation.class.model_name.human)%>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <%= paginate @participations[:not_moderated] %>
+      </div>
+
+
+    </div>
+    <div class="right"> </div>
+  </div>
 </div>
-<div class="participations">
-  <h1><%= t('.participations') %></h1>
-  <ul>
-    <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'participations') %></li>
-    <% @participations[:not_moderated].each do |participation| %>
-    <li class="participation">
-      <%= render "shared/lists_elements/#{participation.class.name.downcase}", :data => participation %>
-      <%= form_for [:admin, participation] do |form| %>
-        <%= form.hidden_field :moderated, :value => true %>
-        <%= form.submit t('.validate', :type => participation.class.model_name.human)%>
-      <% end %>
-      <%= form_for [:admin, participation] do |form| %>
-        <%= form.hidden_field :rejected, :value => true %>
-        <%= form.submit t('.delete', :type => participation.class.model_name.human)%>
-      <% end %>
-    </li>
-    <% end %>
-  </ul>
-  <%= paginate @participations[:not_moderated] %>
-</div>
+<div class="t"></div><div class="f"></div>
+</article>
