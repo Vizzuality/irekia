@@ -1691,8 +1691,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
 }
 
 
-
-
 #container article.with_remark {
 
   margin-bottom: 40px!important;
@@ -1704,6 +1702,110 @@ article .inner { h2, h3 { color: $dark_blue; } }
     bottom:-35px;
   }
 }
+
+#container article.with_form.signup {
+  clear:none;
+  margin: 10px 100px 0 0;
+
+  form { clear:both; }
+
+  form .inner, .inner {
+    fieldset {
+      margin:auto;
+      width: 415px;
+      border:none!important;
+
+      .field {
+
+        &.password {
+          margin: 0 15px 0 0;
+        }
+
+        span.mandatory {
+          float:left;
+          color: rgba(125,138,146, .4);
+          font-size:13px;
+          margin-top:10px;
+          margin-left:5px;
+        }
+
+        &.territory {
+          width: 174px;
+          z-index:1000;
+        }
+
+        &.municipality {
+          width: 174px;
+          float:left; clear:none;
+        }
+
+        &.postal_code {
+          width:415px;
+          float:left;
+          clear:none;
+          overflow:hidden;
+          .input_field {
+            width:203px;
+            float:left;
+            clear:none;
+            input[type="text"] { margin:0 5px 0 0; }
+          }
+        }
+
+        .terms_of_service {
+          a.checkbox { text-decoration:none; }
+          a { text-decoration:underline; }
+        }
+
+        &.legal {
+          label,  a {
+            font-size:15px;
+            text-transform:none;
+            font-weight:normal;
+          }
+        }
+
+        &.born_at {
+          float:left;
+          width:415px;
+          clear:both;
+          .input_field {
+            width:415px;
+            select, .dk_container { float:left; margin:0 5px 0 0; }
+          }
+        }
+
+        &.email {
+          width:415px;
+          .input_field {
+            width:415px;
+            input[type="text"],
+            input[type="email"] { width:396px; }
+          }
+        }
+
+        &.name,
+        &.lastname {
+          clear:both;
+          overflow:hidden;
+          width:415px;
+
+          .input_field {
+            float:left;
+            clear:none;
+            width:350px;
+            input[type="text"] { width:328px; }
+          }
+        }
+      }
+    }
+  }
+
+  &.thin {
+    margin-left:164px!important;
+  }
+}
+
 
 #container .cycle {
   overflow:hidden;
@@ -1721,8 +1823,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
       margin: 10px 100px 0 0;
 
       form { clear:both; }
-
-
 
       form .inner, .inner {
         fieldset {
@@ -1801,7 +1901,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
             &.name,
             &.lastname {
-              background:red;
               clear:both;
               overflow:hidden;
               width:415px;

@@ -5,23 +5,24 @@
     <h1>Moderación de contenidos</h1>
     </header>
     <div class="left">
-
-
       <div class="contents">
         <h3><%= t('.contents') %></h3>
         <ul>
-          <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'contents') %></li>
+          <li><p><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'contents') %></p></li>
           <% @contents[:not_moderated].each do |content| %>
             <li class="content">
             <%= render "shared/lists_elements/#{content.class.name.downcase}", :data => content, :admin => true %>
+
             <%= form_for [:admin, content] do |form| %>
               <%= form.hidden_field :moderated, :value => true %>
               <%= form.submit t('.validate', :type => content.class.model_name.human)%>
             <% end %>
+
             <%= form_for [:admin, content] do |form| %>
               <%= form.hidden_field :rejected, :value => true %>
               <%= form.submit t('.delete', :type => content.class.model_name.human)%>
             <% end %>
+
             <hr />
             </li>
           <% end %>
@@ -31,18 +32,21 @@
       <div class="participations">
         <h3><%= t('.participations') %></h3>
         <ul>
-          <li><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'participations') %></li>
+          <li><p><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'participations') %></p></li>
           <% @participations[:not_moderated].each do |participation| %>
             <li class="participation">
             <%= render "shared/lists_elements/#{participation.class.name.downcase}", :data => participation, :admin => true %>
+
             <%= form_for [:admin, participation] do |form| %>
               <%= form.hidden_field :moderated, :value => true %>
               <%= form.submit t('.validate', :type => participation.class.model_name.human)%>
             <% end %>
+
             <%= form_for [:admin, participation] do |form| %>
               <%= form.hidden_field :rejected, :value => true %>
               <%= form.submit t('.delete', :type => participation.class.model_name.human)%>
             <% end %>
+
             <hr />
             </li>
           <% end %>

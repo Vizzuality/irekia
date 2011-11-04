@@ -1,10 +1,11 @@
 <%= avatar data.author %>
 <div class="content">
+
   <p>
   <% if data.in_favor %>
-    <%= raw t('.title.in_favor', :proposal => (content_tag 'strong', (link_to %Q{"#{data.title}"}, proposal_path(data.content_id)))) %>
+    <%= raw t('.title.in_favor', :proposal => (content_tag 'strong', (link_to data.title, proposal_path(data.content_id)))) %>
   <% else %>
-    <%= raw t('.title.against', :proposal => (content_tag 'strong', (link_to %Q{"#{data.title}"}, proposal_path(data.content_id)))) %>
+    <%= raw t('.title.against',  :proposal => (content_tag 'strong', (link_to data.title, proposal_path(data.content_id)))) %>
   <% end %>
   </p>
 

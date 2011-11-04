@@ -11,7 +11,7 @@
         <div class="field name">
           <%= f.label :name %>
           <div class="input_field">
-            <%= f.text_field :name, :autocomplete => :off %>
+            <%= f.text_field :name, :placeholder => "", :autocomplete => :off %>
           </div>
           <span class="mandatory">obligatorio</span>
         </div>
@@ -19,7 +19,7 @@
         <div class="field lastname">
           <%= f.label :lastname %>
           <div class="input_field">
-            <%= f.text_field :lastname, :autocomplete => :off %>
+            <%= f.text_field :lastname, :placeholder => "",:autocomplete => :off %>
           </div>
           <span class="mandatory">obligatorio</span>
         </div>
@@ -27,7 +27,7 @@
         <div class="field postal_code">
           <%= f.label :postal_code %>
           <div class="input_field">
-            <%= f.text_field :postal_code, :autocomplete => :off %>
+            <%= f.text_field :postal_code, :placeholder => "", :autocomplete => :off %>
           </div>
           <span class="mandatory">obligatorio</span>
         </div>
@@ -56,5 +56,3 @@
     <%= link_to t('.with_this_data'), '/in_development' %></div>
   <div class="t"></div><div class="f"></div>
 <% end %>
-</article>
-

@@ -145,15 +145,15 @@ jQuery.fn.enableRegistration = function(opt){
 
   var $article, $newArticle, $currentArticle;
 
-
   function error($article) {
     ok = false;
     $article.effect("shake", { times:4 }, 100);
   }
 
   function forward($current, $next) {
-    $container.animate({height:$next.height() + 45}, 350, "easeInOutQuad");
-    $(".cycle").animate({scrollLeft:$current.position().left + 850}, 350, "easeInOutQuad");
+    $(".cycle").animate({scrollLeft:$current.position().left + 850}, 350, "easeInOutQuad", function() {
+      $container.parent().animate({height:$next.height() + 45}, 350, "easeInOutQuad");
+    });
   }
 
   function step3(evt, xhr, status) {
@@ -163,9 +163,9 @@ jQuery.fn.enableRegistration = function(opt){
 
     $article = $currentArticle;
     $currentArticle = $data;
+    $form = $currentArticle.find("form");
 
     forward($article, $currentArticle);
-    $form = $currentArticle.find("form");
   }
 
   function step2(evt, xhr, status) {

@@ -7,6 +7,7 @@ $(function() {
 
   $("textarea.grow").autogrow();
   $(".cycle").enableRegistration();
+  //$("article.signup").enableSocialRegistration();
 
   // Preloading of popover assets
   $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
@@ -38,6 +39,7 @@ $(function() {
 
   $('a.checkbox').enableCheckbox();
   $('select.dropkick').dropkick();
+
   $('form .field.born_at select[name="user[birthday(1i)]"]').dropkick({width:-10});
   $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});
   $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
