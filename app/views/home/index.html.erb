@@ -1,0 +1,7 @@
+<ul>
+<% @areas.each do |area| -%>
+  <li>
+    <%= link_to area.name, area_path(area) %>
+  </li>
+<% end -%>
+</ul>
