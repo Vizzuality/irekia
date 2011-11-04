@@ -273,6 +273,7 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
   create_table "users", :force => true do |t|
     t.integer  "role_id"
     t.integer  "title_id"
+    t.string   "email",                                      :default => "",    :null => false
     t.string   "name"
     t.string   "lastname"
     t.date     "birthday"
@@ -303,7 +304,6 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
     t.integer  "videos_count",                               :default => 0
     t.integer  "comments_count",                             :default => 0
     t.integer  "tagged_count",                               :default => 0
-    t.string   "email",                                      :default => "",    :null => false
     t.string   "encrypted_password",          :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
