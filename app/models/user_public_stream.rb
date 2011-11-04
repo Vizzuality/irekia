@@ -6,7 +6,7 @@ class UserPublicStream < ActiveRecord::Base
   end
 
   def self.more_recent
-    order('published_at asc')
+    order('published_at desc')
   end
 
   def self.more_polemic
@@ -19,7 +19,7 @@ class UserPublicStream < ActiveRecord::Base
       ) comments_count ON comments_count.content_id = user_public_streams.event_id
                        AND user_public_streams.event_type IN ('question', 'answer', 'proposal', 'event', 'news', 'tweet')
     SQL
-    ).order('comments_count.count desc, published_at asc')
+    ).order('comments_count.count desc, published_at desc')
   end
 
   def item

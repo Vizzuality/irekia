@@ -46,7 +46,7 @@ class Content < ActiveRecord::Base
   end
 
   def self.more_recent
-    order('contents.published_at asc')
+    order('contents.published_at desc')
   end
 
   def self.more_polemic
@@ -72,7 +72,7 @@ class Content < ActiveRecord::Base
   end
 
   def last_contents(limit = 5)
-    self.class.moderated.includes(:"#{self.class.name.downcase}_data", :comments).order('published_at asc').where('id <> ?', id).first(limit)
+    self.class.moderated.includes(:"#{self.class.name.downcase}_data", :comments).order('published_at desc').where('id <> ?', id).first(limit)
   end
 
   def commenters
