@@ -676,13 +676,15 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container .cycle .inner-cycle article form .inner fieldset .field.name .input_field input[type="text"], #container .cycle .inner-cycle article form .inner fieldset .field.lastname .input_field input[type="text"], #container .cycle .inner-cycle article .inner fieldset .field.name .input_field input[type="text"], #container .cycle .inner-cycle article .inner fieldset .field.lastname .input_field input[type="text"] { width: 328px; }
 #container .cycle .inner-cycle article.thin { margin-left: 164px!important; }
 
+.ie7 #container article .inner .avatar-uploader .explanation button, .ie7 #container article .inner .avatar-uploader input[type="submit"], .ie8 #container article .inner .avatar-uploader .explanation button, .ie8 #container article .inner .avatar-uploader input[type="submit"] { margin: 0 0 7px 10px; }
+
 #container article .inner .avatar-uploader { clear: both; overflow: hidden; border-right: 1px solid #e3e6e8; width: 634px; margin: 15px 0 20px 0; }
 #container article .inner .avatar-uploader .xlAvatar { background: url("/images/circle_bkg.png") no-repeat -293px center; z-index: 10; }
 #container article .inner .avatar-uploader .avatar { float: left; width: 281px; height: 281px; margin: 0 25px 0 0; }
-#container article .inner .avatar-uploader .explanation { float: left; width: 314px; color: #465866; margin: 43px 0 0 0; }
+#container article .inner .avatar-uploader .explanation { float: left; width: 314px; color: #465866; background: red; margin: 43px 0 0 0; }
 #container article .inner .avatar-uploader .explanation h3 { margin: 0 0 3px 0; }
 #container article .inner .avatar-uploader .explanation p { margin: 0 0 20px 0; padding: 0; color: #7D8A92; line-height: 19px; font-size: 15px; }
-#container article .inner .avatar-uploader .explanation input[type="submit"] { margin: 0 0 7px 0; float: none; }
+#container article .inner .avatar-uploader .explanation button, #container article .inner .avatar-uploader .explanation input[type="submit"] { margin: 0 0 7px 0; float: none; }
 #container article .inner .avatar-uploader .explanation .small { display: block; font-size: 13px; color: #b1b9be; }
 #container article .inner .avatar-uploader .explanation h3 { font-size: 12px; }
 
@@ -700,11 +702,13 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 #container article .inner .right .map a { font-size: 10px!important; }
 
-.my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EDF3E5; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
-.my_opinion.against { background: #FFF3E1; }
-.my_opinion.in_favor { background: #EDF3E5; }
-.my_opinion .result { float: left; padding: 8px 0; width: 200px; font-size: 15px; }
-.my_opinion input[type="submit"] { float: right; margin-left: 10px; }
+.ie7 #container article .my_opinion button, .ie7 #container article .my_opinion input[type="submit"], .ie8 #container article .my_opinion button, .ie8 #container article .my_opinion input[type="submit"] { margin: 0 0 0 20px; }
+
+#container article .my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EDF3E5; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
+#container article .my_opinion.against { background: #FFF3E1; }
+#container article .my_opinion.in_favor { background: #EDF3E5; }
+#container article .my_opinion .result { float: left; padding: 8px 0; width: 200px; font-size: 15px; }
+#container article .my_opinion button, #container article .my_opinion input[type="submit"] { float: right; margin: 0 0 0 10px; }
 
 #container article .inner .content ul.notifications { float: left; margin: 10px 0 20px 0; }
 #container article .inner .content ul.notifications li { padding: 20px; width: 241px; height: 175px; margin-right: 30px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: #fff; border: 1px solid #E2E5E8; opacity: .6; cursor: pointer; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; position: relative; }
@@ -1186,6 +1190,7 @@ White buttons
 .ie8 .white_button, .ie7 .white_button { float: left; height: 37px; padding: 0; margin: 0 10px; border: none; padding: 0; background: url("/images/buttons_sprite.png") repeat-x right 0 !important; }
 .ie8 .white_button:hover, .ie8 .white_button:hover span, .ie7 .white_button:hover, .ie7 .white_button:hover span { color: #333; }
 .ie8 .white_button.blue span, .ie7 .white_button.blue span { color: #1d79b0; }
+.ie8 .white_button.disabled:active, .ie8 .white_button.disabled:hover, .ie8 .white_button.disabled, .ie7 .white_button.disabled:active, .ie7 .white_button.disabled:hover, .ie7 .white_button.disabled { border: none; }
 .ie8 .white_button span, .ie7 .white_button span { display: block; left: 10px; height: 19px; padding: 9px 14px; margin: 0 0 0 -10px; line-height: 18px; background: url("/images/buttons_sprite.png") no-repeat left -40px; color: #f10063; font-weight: bold; font-size: 15px; cursor: pointer; }
 
 /*Checkboxs, radiobuttons, ...*/

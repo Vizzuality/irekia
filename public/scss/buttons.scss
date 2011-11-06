@@ -108,6 +108,7 @@ White buttons
   &.blue   { color:$link_color; }
   &.orange { color:$orange; }
   &.green  { color:$green; }
+
   &.in_favor {
     color: $agree_color;
     &.selected {
@@ -125,11 +126,7 @@ White buttons
       color:#fff;
       text-shadow: #B74400 1px 1px 0;
     }
-
   }
-
-
-
 
 /* ------------------------------------------------------------------------------ Icons */
   &.add_person, &.add_person:active { position:relative; padding-left:33px; color:$pink; }
@@ -299,9 +296,12 @@ article .white_button:active {
   background:url('/images/buttons_sprite.png') repeat-x right 0!important;
 
   &:hover, &:hover span { color: #333; }
+  &.blue span { color:$link_color; }
 
-  &.blue span {
-    color:$link_color;
+  &.disabled:active,
+  &.disabled:hover,
+  &.disabled {
+    border: none;
   }
 
   span {
@@ -320,7 +320,6 @@ article .white_button:active {
     cursor:pointer;
   }
 }
-
 
 /*Checkboxs, radiobuttons, ...*/
 

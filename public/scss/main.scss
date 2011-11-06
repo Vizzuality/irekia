@@ -1928,6 +1928,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 }
 
+.ie7 #container article .inner .avatar-uploader,
+.ie8 #container article .inner .avatar-uploader {
+  .explanation button, input[type="submit"] {
+    margin: 0 0 7px 10px;
+  }
+}
+
 #container article .inner .avatar-uploader {
 
   clear: both;
@@ -1953,7 +1960,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
     h3 { margin: 0 0 3px 0; }
     p { margin: 0 0 20px 0; padding: 0; color: #7D8A92; line-height:19px; font-size:15px; }
-    input[type="submit"] { margin: 0 0 7px 0; float:none; }
+    button, input[type="submit"] { margin: 0 0 7px 0; float:none; }
     .small { display:block; font-size:13px; color: #b1b9be; }
     h3 { font-size:12px; }
   }
@@ -2009,7 +2016,14 @@ article .inner { h2, h3 { color: $dark_blue; } }
   font-size:10px!important;
 }
 
-.my_opinion {
+.ie7 #container article .my_opinion,
+.ie8 #container article .my_opinion {
+  button, input[type="submit"] {
+    margin: 0 0 0 20px;
+  }
+}
+
+#container article .my_opinion {
   padding:10px;
   margin: 0 0 10px 0;
   background:#EDF3E5;
@@ -2027,9 +2041,9 @@ article .inner { h2, h3 { color: $dark_blue; } }
     font-size:15px;
   }
 
-  input[type="submit"] {
+  button, input[type="submit"] {
     float:right;
-    margin-left:10px;
+    margin: 0 0 0 10px;
   }
 }
 

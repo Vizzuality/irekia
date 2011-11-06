@@ -81,6 +81,7 @@ White buttons
 .ie8 .white_button, .ie7 .white_button { float: left; height: 37px; padding: 0; margin: 0 10px; border: none; padding: 0; background: url("/images/buttons_sprite.png") repeat-x right 0 !important; }
 .ie8 .white_button:hover, .ie8 .white_button:hover span, .ie7 .white_button:hover, .ie7 .white_button:hover span { color: #333; }
 .ie8 .white_button.blue span, .ie7 .white_button.blue span { color: #1d79b0; }
+.ie8 .white_button.disabled:active, .ie8 .white_button.disabled:hover, .ie8 .white_button.disabled, .ie7 .white_button.disabled:active, .ie7 .white_button.disabled:hover, .ie7 .white_button.disabled { border: none; }
 .ie8 .white_button span, .ie7 .white_button span { display: block; left: 10px; height: 19px; padding: 9px 14px; margin: 0 0 0 -10px; line-height: 18px; background: url("/images/buttons_sprite.png") no-repeat left -40px; color: #f10063; font-weight: bold; font-size: 15px; cursor: pointer; }
 
 /*Checkboxs, radiobuttons, ...*/

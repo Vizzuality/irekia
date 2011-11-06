@@ -65,7 +65,7 @@ $(function() {
     });
   });
 
-  $(".my_opinion input[type='submit']").click(function(e) {
+  $(".my_opinion input[type='submit'], .my_opinion button").click(function(e) {
       $(".my_opinion .selected").removeClass("selected");
       $(this).addClass("selected");
   });

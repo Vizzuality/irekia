@@ -69,6 +69,18 @@ module ApplicationHelper
     content.last_comments.present? && within_the_day?(content.last_comments)
   end
 
+  def button(value=nil, options={})
+    content_tag :button, :type => :submit, :class => options[:class] do
+      content_tag :span, value
+    end
+  end
+  def button_with_login(value=nil, options={})
+    options[:class] = "floating-login #{options[:class]}" unless current_user
+    content_tag :button, :type => :submit, :class => options[:class] do
+      content_tag :span, value
+    end
+  end
+
   def link_to_with_login(*args)
     html_options = args[2] || {}
     html_options[:class] = "floating-login #{html_options[:class]}" unless user_signed_in?
