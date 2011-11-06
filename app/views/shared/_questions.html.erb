@@ -31,7 +31,7 @@
       <li><%= link_to t('.content_type_filters.answered'), link_for_questions(:answered => true, :referer => action_name), :class => 'filter' %></li>
     </ul>
 
-    <%= link_to_with_login t('.create_question'), '#', :id => "question-popover", :class => "white_button pink after_ask_question" %>
+    <%= link_to_with_login (content_tag :span, t('.create_question')), '#', :id => "question-popover", :class => "white_button pink after_ask_question" %>
 
   </div>
 </div>

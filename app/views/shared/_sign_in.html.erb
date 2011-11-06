@@ -14,10 +14,9 @@
         <%= link_to t('.twitter_signin'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin, :class => :twitter %>
       </div>
       <div class="right">
-        <%= f.submit t('.sign_in'), :class => "right white_button " %>
+        <button class="white_button right"><span><%= t('.sign_in') %></span></button>
       </div>
       </footer>
     <% end %>
   </div>
 </div>
-

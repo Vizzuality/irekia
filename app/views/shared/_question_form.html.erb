@@ -23,16 +23,13 @@
 
         <% end %>
 
-        <h3 class="related">PREGUNTAS PARECIDAS</h3>
-        <div class="related"></div>
-
       </div>
       <span class="close"></span>
     </div>
     <footer>
     <div class="separator"></div>
     <div class="inner">
-      <%= form.submit t('.make_a_question.submit'), :id => 'submit-123', :class => 'disabled white_button right', :disabled => 'disabled' %>
+      <button class="disabled white_button right" id="submit-123" disabled="disabled"><span><%= t('.make_a_question.submit') %></span></button>
       <span id="question_spinner" class="spinner"></span>
     </div>
     </footer>
