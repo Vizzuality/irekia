@@ -15,9 +15,11 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    @participation = @participation_class.new params[@participation_type]
+    participation_params = params[@participation_type]
+    participation_params[:user_id] = current_user.id
 
-    @participation.author = current_user
+    @participation = @participation_class.find_or_initialize participation_params
+
     if @participation.save
       redirect_to @participation
     else

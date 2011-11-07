@@ -26,7 +26,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_back_or_default user_path(@user)
     else
 
-      @user.save!
+      @user.save(false)
       env['warden'].set_user(@user)
 
       redirect_to edit_user_path(@user)

@@ -14,6 +14,10 @@ class Participation < ActiveRecord::Base
 
   accepts_nested_attributes_for :user
 
+  def self.find_or_initialize(params = nil)
+    new(params)
+  end
+
   def self.moderated
     where(:moderated => true)
   end

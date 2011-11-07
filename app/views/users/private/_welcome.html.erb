@@ -21,17 +21,17 @@
     <li class="follow">
       <h3><%= t('.first_time.follow.title') %></h3>
       <%= simple_format t('.first_time.follow.text') %>
-      <%= link_to t('.first_time.follow.link'), '/in_development', :class => 'white_button blue' %>
+      <%= link_to (content_tag :span, t('.first_time.follow.link')), '/in_development', :class => 'white_button blue' %>
     </li>
     <li class="collaborate">
       <h3><%= t('.first_time.participate.title') %></h3>
       <%= simple_format t('.first_time.participate.text', :make_questions_link => link_to(t('.first_time.participate.make_questions')), :launch_proposals_link => link_to(t('.first_time.participate.launch_proposals'))) %>
-      <%= link_to t('.first_time.participate.link'), '/in_development', :class => 'white_button blue' %>
+      <%= link_to (content_tag :span, t('.first_time.participate.link')), '/in_development', :class => 'white_button blue' %>
     </li>
     <li class="configure last">
       <h3><%= t('.first_time.configure.title') %></h3>
       <%= simple_format t('.first_time.configure.text') %>
-      <%= link_to t('.first_time.configure.link'), '/in_development', :class => 'white_button blue' %>
+      <%= link_to (content_tag :span, t('.first_time.configure.link')), '/in_development', :class => 'white_button blue' %>
     </li>
   </ul>
   <%= form_for @user, :remote => true, :html => {:class => 'close-welcome'} do |form| %>

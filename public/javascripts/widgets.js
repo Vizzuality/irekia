@@ -609,8 +609,7 @@ var GOD = (function() {
         $.ajax({ url: data.filter, data: data.sort, type: "GET", success: function(data){
           $ps.find("#listing").fadeOut(settings.transitionSpeed, function() {
 
-
-            if (data.length < 1) {
+            if ($(data).find("li").length < 1) {
               $ps.find("#listing").html('<span class="empty">No hay contenido en este area</span>'); // TODO: We shouldn't use non localized strings here
             } else {
               $ps.find("#listing").html(data);

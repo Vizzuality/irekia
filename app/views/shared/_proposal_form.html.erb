@@ -29,7 +29,7 @@
             <span class="holder">Describe la propuesta en pocas palabras</span>
           </div>
 
-          <!--          <p>Si quieres puedes <a href="/in_development">añadir una foto</a></p> -->
+          <!-- <p>Si quieres puedes <a href="/in_development">añadir una foto</a></p> -->
 
       </div>
         <% end %>
@@ -38,7 +38,7 @@
     <footer>
     <div class="separator"></div>
     <div class="inner">
-      <%= form.submit t('.make_a_proposal.continue'), :id => 'submit-124', :class => 'disabled white_button right', :disabled => 'disabled' %>
+      <button class="disabled white_button right" id="submit-124" disabled="disabled"><span><%= t('.make_a_proposal.continue') %></span></button>
       <span id="proposal_spinner" class="spinner"></span>
     </div>
     </footer>

@@ -168,7 +168,9 @@ class User < ActiveRecord::Base
     if user = (signed_in_resource || User.find_by_twitter_username(data['nickname']))
       user
     else
-      user = User.new :name  => data['name'], :twitter_username => data['nickname']
+      user = User.new :name             => data['name'],
+                      :email            => data['nickname'],
+                      :twitter_username => data['nickname']
 
       user.password                   = Devise.friendly_token[0,20]
       user.twitter_oauth_token        = credentials['token']
