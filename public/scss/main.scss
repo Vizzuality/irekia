@@ -103,12 +103,7 @@ article .inner {
 }
 
 #lock_screen { position: absolute; top: 0; left: 0; right:0; bottom:0; width: 100%; height: 100%; background: #000; z-index: 99; }
-#lock_screen {
-  filter: alpha(opacity=80);
-  -khtml-opacity: 0.8;
-  -moz-opacity: 0.8;
-  opacity: 0.8;
-}
+#lock_screen { @include opacity(0.8); }
 
 span {
   &.answered     { color: #00AA54; }
@@ -1274,10 +1269,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         &.last { margin-right: 0; }
         &.disabled {
           background: #f1f1f1 url('/images/agenda_disabled_bkg.png') no-repeat;
-          h3 {
-            opacity: .5;
-            filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
-          }
+          h3 { @include opacity(0.5); }
         }
       }
     }
@@ -1551,8 +1543,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
           border-bottom: 1px solid $white;
           li {
             padding: 10px;
-            background: rgba(237, 237, 239, 0.7);
             margin:0;
+            background: rgba(237, 237, 239, 0.7);
 
 
             &.previous { padding:0; border:none; display:none; }
@@ -1564,10 +1556,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
               strong { display:block; margin: 4px 0 0 0; }
 
               .icon.ok {
-                background:url('/images/icons/ok.png') no-repeat;
+                float:left;
                 width:37px; height:40px;
                 margin-right:10px;
-                float:left;
+                background:url('/images/icons/ok.png') no-repeat;
               }
 
             }
@@ -1601,21 +1593,23 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 @include box-shadow(inset 0 5px 5px rgba(0, 0, 0, 0.05));
                 outline: none;
               }
-            }
+            } // textarea
 
             height: 33px;
+
             input[type="text"] {
               border:none;
               margin:0;
-              padding: 0 9px;
-              width: 410px;
+              padding: 1px 9px;
+              width: 435px;
               outline: none;
-              @include border-radius(none);
               border:none;
               font-size: 13px;
+              @include border-radius(none);
               @include box-shadow(none);
               background:none;
             }
+
             .input_field {
               position: relative;
               width: 507px;
@@ -1653,10 +1647,36 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 }
 
+.ie7 #container article,
+.ie8 #container article {
+  &.actions .inner .left ul li .content .comment-box form,
+  &.proposal .inner .left ul li .content .comment-box form,
+  &.proposals .inner .left ul li .content .comment-box form,
+  &.questions .inner .left ul li .content .comment-box form,
+  &.activity .inner .left ul li .content .comment-box form {
+
+    .input_field {
+      background:url('/images/inputs_sprite.png') repeat-x right -158px;
+      float:left;
+      height:34px;
+      input[type="text"]{
+        width: 430px;
+        height:32px;
+        left:10px;
+        margin: 0 0 0 -13px;
+        padding: 1px 3px 1px 13px;
+        background:url('/images/inputs_sprite.png') no-repeat left -200px;
+      }
+    }
+
+    input[type="submit"] { position: absolute; top: 12px; right: 17px; color: #FF0066; background: none; height: 30px; border: none; }
+  }
+}
+
 /* Article addons */
 
 #container article {
-  &.initialy_hidden { opacity:0;}
+  &.initialy_hidden { @include opacity(0); }
 }
 
 #container article .social-links {
@@ -1701,10 +1721,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
   margin-bottom: 40px!important;
 
   .remark {
-    text-align:center;
-    width:100%;
     position:absolute;
+    width:100%;
     bottom:-35px;
+    text-align:center;
   }
 }
 
@@ -1722,9 +1742,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
       .field {
 
-        &.password {
-          margin: 0 15px 0 0;
-        }
+        &.password { margin: 0 15px 0 0; }
 
         span.mandatory {
           float:left;
@@ -1811,7 +1829,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 }
 
-
 #container .cycle {
   overflow:hidden;
   clear:both;
@@ -1837,9 +1854,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
           .field {
 
-            &.password {
-              margin: 0 15px 0 0;
-            }
+            &.password { margin: 0 15px 0 0; }
 
             span.mandatory {
               float:left;
@@ -1921,9 +1936,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         }
       }
 
-      &.thin {
-        margin-left:164px!important;
-      }
+      &.thin { margin-left:164px!important; }
     }
 
   }
@@ -1991,8 +2004,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
   clear:both;
   width:550px;
   margin: 0 0 10px 0;
-  form { float:right; }
   padding-right:10px;
+  form { float:right; }
 }
 
 .follow.basic {
@@ -2005,10 +2018,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 
   button:active, button:hover {
-    @include box-shadow(0 0 0 );
+    padding:0; margin:0;
     border:none;
     background:none;
-    padding:0; margin:0;
+    @include box-shadow(0 0 0 );
   }
 
 }
@@ -2053,23 +2066,23 @@ article .inner { h2, h3 { color: $dark_blue; } }
   margin:10px 0 20px 0;
 
   li {
-    padding:20px;
     width:281px - 40;
     height:215px - 40;
     margin-right:30px;
-    @include inline-block;
+    padding:20px;
     background:#fff;
     border: 1px solid #E2E5E8;
-    opacity:.6;
     cursor: pointer;
 
+    @include opacity(0.6);
+    @include inline-block;
     @include border-radius(4px);
     @include transition-property(all);
     @include transition-duration(300ms);
 
     &:hover,
     &.selected {
-      opacity:1;
+    @include opacity(1);
       background:#F2F7F9;
       border: 1px solid #CCCCCC;
       @include box-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
@@ -2650,7 +2663,7 @@ a.editable {
       &.error {
         padding:0;
         color: #FF3300!important;
-        opacity: 1;
+        @include opacity(1);
       }
     }
   }
@@ -2863,7 +2876,7 @@ a.editable {
   &.more:hover    { background-position:-88px -30px; }
 
   .ok {
-    opacity:0;
+    @include opacity(0);
     position:absolute;
     top:20px; right:2px;
     width:9px; height:9px;

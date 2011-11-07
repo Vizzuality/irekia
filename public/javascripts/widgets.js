@@ -528,8 +528,6 @@ var GOD = (function() {
 
 
 /* FILTER WIDGET */
-
-
 (function($, window, document) {
 
   var ie6 = false;
@@ -568,6 +566,7 @@ var GOD = (function() {
         data.$this = $this;
         data.settings = settings;
         data.filter = "";
+        data.url = "";
         data.sort = {};
       }
 
@@ -581,32 +580,36 @@ var GOD = (function() {
       $(this).find(".filter").bind('click', function(e) {
         e.preventDefault();
 
-        // Positionate spinner and show it (if exists)
+        // Place spinner and show it (if exists)
         filter_spinner.stop();
         filter_spinner.spin();
+
         var top = $(this).position().top;
-        $(filter_spinner.el).css({top:top+8+"px",position:"absolute",right:'3px',height:'15px',width:'15px'});
+        $(filter_spinner.el).css({ top:top+8+"px", position:"absolute", right:'3px', height:'15px', width:'15px' });
         $(this).closest('div.right').append(filter_spinner.el);
 
         var classes = $(this).attr("class");
-          data.filter = $(this).attr("href");
 
-        if (classes.indexOf("recent") != -1) {
-          data.sort = {};
+
+        if ($(this).hasClass("more_polemic") || $(this).hasClass("more_recent")) {
+          data.filter = classes.replace("filter ", "");
         }
-        else if (classes.indexOf("polemic") != -1) {
+
+        if (data.filter == "more_recent") {
+          data.sort = { more_recent:true };
+        } else if (data.filter == "more_polemic") {
           data.sort = { more_polemic:true };
         }
-        else if (classes.indexOf("type") != -1) {
-          data.filter = $(this).attr("href");
-        }
+
 
         $(this).parents("ul").find("li").removeClass("selected");
         $(this).parent().addClass("selected");
+        data.url = $ps.find("ul.selector li.selected a").attr("href");
+        console.log(data.url, data.sort, data.filter);
 
         var settings = data.settings;
 
-        $.ajax({ url: data.filter, data: data.sort, type: "GET", success: function(data){
+        $.ajax({ url: data.url, data: data.sort, type: "GET", success: function(data){
           $ps.find("#listing").fadeOut(settings.transitionSpeed, function() {
 
             if ($(data).find("li").length < 1) {
@@ -619,7 +622,9 @@ var GOD = (function() {
               filter_spinner.stop();
             });
 
+            // Activate
             $ps.find(".placeholder").smartPlaceholder();
+            $ps.find(".comment-box form").enableCommentBox();
           });
         }});
       });

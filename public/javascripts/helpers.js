@@ -209,7 +209,6 @@ jQuery.fn.enableRegistration = function(opt){
 
   function validateErrors(evt, xhr, status) {
     var errors = $.parseJSON(xhr.responseText);
-    console.log(errors);
 
     _.each(errors, function(message, field) {
       $currentArticle.find("form ." + field).addClass("error");
@@ -355,7 +354,6 @@ jQuery.fn.autocomplete = function(opt){
     });
 
     $(this).bind('ajax:success', function(evt, xhr, status){
-      console.log(evt, xhr, status);
 
       var $autocomplete = $(this).find('.autocomplete');
       $autocomplete.addClass("visible");
@@ -433,6 +431,7 @@ jQuery.fn.enablePagination = function(opt){
     IrekiaSpinner.spin(spin_element);
 
     $.ajax({url: url, method: 'GET', data:{ page: ++currentPage }, success:function(response, xhr, status) {
+
       IrekiaSpinner.stop();
 
       try {
@@ -749,7 +748,6 @@ function shareWith($el, service, speed, easing) {
   }
 
   function error(a, b, c) {
-    console.log(a, b, c);
     $form.find(".input_field").addClass("error");
     return true;
   }
