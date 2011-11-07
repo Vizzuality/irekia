@@ -37,6 +37,12 @@ $green:            #75B100;
   vertical-align: top;
   zoom: 1; *display: inline;
 }
+@mixin opacity($value) {
+  filter: alpha(opacity=$value);
+  -khtml-opacity: $value;
+  -moz-opacity: $value;
+  opacity: $value;
+}
 
 /* New clearfix */
 .inner:after, .clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }

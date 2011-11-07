@@ -539,10 +539,12 @@ jQuery.fn.viewCalendar = function(opt){
   this.each(function(){
     $(this).click(function(e){
       e.preventDefault();
+      if ($(this).parent().hasClass("selected")) return;
+
       $(this).parent().toggleClass("selected");
       $(".view_map").parent().toggleClass("selected");
 
-      $(".agenda_map .map").animate({opacity:0}, speed);
+      $(".agenda_map .map").animate({opacity:0, height:"200px"}, speed);
       $(".agenda_map").animate({height:$(".agenda_map .agenda").height()}, speed);
       $(".agenda_map .agenda").fadeIn("fast");
     });
@@ -554,15 +556,20 @@ jQuery.fn.viewMap = function(opt){
 
   var speed      = (opt && opt.speed) || 150;
   var mapHeight  = (opt && opt.mapHeight) || 454;
+  var preloaded  = false;
 
   this.each(function(){
     $(this).click(function(e) {
+
       e.preventDefault();
+      if ($(this).parent().hasClass("selected")) return;
+
       $(this).parent().toggleClass("selected");
       $(".view_calendar").parent().toggleClass("selected");
-      $(".agenda_map").animate({height:mapHeight}, speed);
-      $(".agenda_map .map").delay(50).animate({opacity:1}, speed);
+      $(".agenda_map .map, .agenda_map").animate({height:mapHeight}, speed);
+      $(".agenda_map .map").animate({opacity:1}, speed);
       $(".agenda_map .agenda").fadeOut("fast");
+      if (!preloaded) { setTimeout(function() { preloaded = true; startMap(); }, 100); }
     });
   });
 }

@@ -129,7 +129,7 @@ White buttons
   }
 
 /* ------------------------------------------------------------------------------ Icons */
-  &.add_person, &.add_person:active { position:relative; padding-left:33px; color:$pink; }
+  //&.add_person, &.add_person:active { position:relative; padding-left:33px; color:$pink; }
 /* ------------------------------------------------------------------------------ Definition */
 
   float:left;
@@ -237,18 +237,23 @@ article .white_button:active {
 }
 
 /* add person icon */
+.ie8 .white_button.add_person,
+.ie7 .white_button.add_person,
 .white_button.add_person {
 
-  &:hover span {background-position:0 -15px;}
+  &:hover {
+    span.add { background-position: left bottom; }
 
+  }
   span {
-    position:absolute;
-    display:block-inline;
-    width:18px;
-    height:15px;
-    top:8px;
-    left:10px;
-    background:url('/images/icons/add_person.png') no-repeat;
+    .add {
+      float:left;
+      width:18px;
+      height:15px;
+      background:url('/images/icons/add_person.png') no-repeat;
+      padding: 0;
+      margin: 0 7px 0 -5px;
+    }
   }
 }
 
