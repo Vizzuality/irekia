@@ -10,8 +10,6 @@ class ParticipationsController < ApplicationController
     respond_with(@participation) do |format|
       format.html { render :layout => !request.xhr? }
     end
-
-
   end
 
   def create
@@ -37,7 +35,7 @@ class ParticipationsController < ApplicationController
 
   def get_participation_class
     @participation_class = params[:type].constantize
-    @participation_type = params[:type].downcase
+    @participation_type = params[:type].underscore
   end
   private :get_participation_class
 

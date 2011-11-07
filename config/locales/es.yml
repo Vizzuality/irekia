@@ -691,8 +691,13 @@
               other: '%{count} comentarios'
       question:
         not_answered_yet: Esta pregunta aún no ha sido contestada.
+        you_and_other:
+          zero: Nadie ha pedido que sea contestada
+          one: Por ahora sólo tú quieres que sea contestada
+          other: Por ahora sólo tú y otra persona queréis que sea contestada
+        you_and_thousands: Por ahora sólo tú y otras %{count} personas queréis que sea contestada
         people_demanding_answer:
-          zero: Nadie más quiere que sea contestada
+          zero: Nadie ha pedido que sea contestada
           one: 1 persona quiere que sea contestada
           other: '%{count} personas quieren que sea contestada'
         join_them:
@@ -823,6 +828,16 @@
             zero: '%{percentage}% en contra (%{count} votos)'
             one:  '%{percentage}% en contra (%{count} voto)'
             other: '%{percentage}% en contra (%{count} votos)'
+      answer_request:
+        you_and_other:
+          zero: Nadie ha pedido que sea contestada
+          one: Por ahora sólo tú quieres que sea contestada
+          other: Por ahora sólo tú y otra persona queréis que sea contestada
+        you_and_thousands: Por ahora sólo tú y otras %{count} personas queréis que sea contestada
+        people_demanding_answer:
+          zero: Nadie ha pedido que sea contestada
+          one: 1 persona quiere que sea contestada
+          other: '%{count} personas quieren que sea contestada'
   areas:
     navigation_menu:
       menu:

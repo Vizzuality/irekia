@@ -272,8 +272,16 @@ class User < ActiveRecord::Base
     events.moderated.where('event_data.event_date >= ? AND event_data.event_date <= ?', start_date, end_date)
   end
 
-  def has_not_requested_answer(question)
-    AnswerRequest.joins(:content, :user).where('contents.id = ? AND users.id = ?', question.id, self.id).count == 0
+  def has_requested_answer(question_id)
+    answer_request(question_id).count >= 1
+  end
+
+  def has_not_requested_answer(question_id)
+    answer_request(question_id).count == 0
+  end
+
+  def answer_request(question_id)
+    AnswerRequest.joins(:content, :user).where('contents.id = ? AND users.id = ?', question_id, self.id)
   end
 
   def has_not_given_his_opinion(content)

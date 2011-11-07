@@ -13,7 +13,6 @@ create_question :text           => '¿Podría decirme cuando tienen pensado fina
                   create_comment(@iker, 'seguro que a los pocos meses la vuelven a abrir para cambiar o poner otras cosas...')
                 ],
                 :tags           => %w(trafico obra ciudadanía).join(''),
-                :want_an_answer => [@andres, @iker],
                 :answer         => {
                   :text     => (<<-EOF
                     En el plazo máximo de 4 meses, la empresa constructora nos confirmo que estaría abierta la calle de nuevo al trafico. Las obras las estamos realizando como mejora del sistema de canalización de agua. Rogamos disculpen los problemas ocasionados tanto a viandantes como vecinos de la zona. Estamos trabajando para la mejora de nuestra ciudad.
@@ -38,7 +37,6 @@ create_question :text     => '¿Por qué  es tan dificil jugar al padel en Vizca
                   create_comment(@andres, 'yo me canso mas intentando reservar pista que luego jugando!!')
                 ],
                 :tags           => %w(deporte padel polideportivo).join(''),
-                :want_an_answer => [@patricia],
                 :answer         => {
                   :text => (<<-EOF
                     Somos conscientes del creciente aumento del padel en nuestra ciudad. Ya hemos recibido varias quejas y estamos barajando la posibilidad de construir pistas en las afueras de la ciudad con el fin de que todos podamos disfrutar de la practica de padel. Gracias por hacernos llegar vuestras sugerencias.
@@ -55,6 +53,7 @@ create_question :text     => 'Llevamos varios meses ya de inseguridad ciudadana 
                 :areas    => [@area],
                 :users    => [@iker],
                 :for      => @area,
+                :want_an_answer => [@patricia],
                 :comments => [
                   create_comment(@gonzalo, 'conozco a varios vecinos que han sufrido amenazas y robos. Al final acabaremos realizando patrullas callejeras, en plan americano.'),
                   create_comment(@patricia, 'la verdad que las calles se están volviendo territorio hostil. Esperemos que nuestras quejas no caigan en saco roto y nos hagan caso. Estoy bastante preocupada por mis hijos'),

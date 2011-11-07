@@ -47,7 +47,7 @@ class Vote < Participation
   private :set_as_moderated
 
   def update_proposal
-    proposal.update_statistics
+    proposal.update_statistics if moderated?
   end
   private :update_proposal
 
