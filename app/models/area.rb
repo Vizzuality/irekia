@@ -18,7 +18,7 @@ class Area < ActiveRecord::Base
   has_many :questions,
            :through => :areas_contents,
            :include => [{:users => :profile_pictures}, :question_data, :comments ],
-           :select => 'contents.id, contents.type, contents.published_at, contents.moderated',
+           :select => 'contents.id, contents.type, contents.published_at, contents.moderated, contents.answer_requests_count',
            :order => 'published_at desc'
   has_many :proposals,
            :through => :areas_contents,

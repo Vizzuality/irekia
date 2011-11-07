@@ -11,14 +11,17 @@
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %> &middot;
+    </span>
 
-      <% if data.is_a?(Question) %>
-        <% if data.answered_at.present? %>
-          <span class="answered"><%= t('.answered', :time => distance_of_time_in_words_to_now(data.answered_at)) %></span>
-        <% else %>
-          <span class="not_answered"><%= t('.not_answered') %></span>
-        <% end %>
-      </span>
+    <span class="positive">+<%= data.answer_requests_count %></span>
+    &middot;
+
+    <% if data.is_a?(Question) %>
+      <% if data.answered_at.present? %>
+        <span class="answered"><%= t('.answered', :time => distance_of_time_in_words_to_now(data.answered_at)) %></span>
+      <% else %>
+        <span class="not_answered"><%= t('.not_answered') %></span>
+      <% end %>
 
       <% unless show_last_comments?(data) -%>
       &middot;
