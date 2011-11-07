@@ -1,6 +1,0 @@
-es:
-  moderation_mailer:
-    accepted:
-      accepted: 'El %{link} ha sido aceptado.'
-      content_link: contenido que has enviado
-      thanks: Gracias por participar en Irekia.
