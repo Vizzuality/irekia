@@ -7,7 +7,7 @@ IREKIA
 - ImageMagick. If you're in OS X and have homebrew installed, this
   command will do the trick:
 
-    $ brew install imagemagick
+		$ brew install imagemagick
 
 - Ruby 1.9.2.
 
