@@ -279,6 +279,15 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.notice .inner .content p, #container article .inner .notice .inner .content p { font-size: 13px; color: #7D8A92; line-height: 16px; }
 #container article.notice .inner .content p strong, #container article .inner .notice .inner .content p strong { display: block; font-size: 13px; color: #465866; }
 
+.ie8 #container article.publish .inner .content .container .inner_container .input_field { float: left; padding: 0; margin: 0 10px; background: url("/images/inputs_sprite.png") repeat-x right -240px; float: left; height: 39px; }
+.ie8 #container article.publish .inner .content .container .inner_container .input_field input[type="text"] { width: 657px; height: 39px; left: 10px; margin: 0 0 0 -10px; padding: 9 14px; background: url("/images/inputs_sprite.png") no-repeat left -285px; outline: none; border: none; }
+.ie8 #container article.publish .inner .content .container .inner_container .input_field.textarea { float: left; padding: 0; margin: 0 10px; background: url("/images/inputs_sprite.png") repeat-x right -337px; float: left; height: 75px; }
+.ie8 #container article.publish .inner .content .container .inner_container .input_field.textarea textarea { width: 677px; height: 75px; left: 10px; margin: 0 0 0 -20px; padding: 9 14px; background: url("/images/inputs_sprite.png") no-repeat left -419px; outline: none; border: none; }
+.ie8 #container article.publish .inner .content .container .inner_container .input_field.textarea .holder { left: 0; }
+.ie8 #container article.publish.with_footer footer { padding: 0; border: none; background: none; }
+.ie8 #container article.publish.with_footer footer .inner { width: 730px; padding: 20px 3px 17px 35px; }
+.ie8 #container article.publish.with_footer footer .inner .right .white_button { margin: 0; }
+
 #container article.static .inner header h3 { text-transform: none; font-size: 19px; font-family: "Helvetica", sans-serif; font-weight: normal; }
 
 #container article .inner .left h1 { margin-bottom: 10px; line-height: 41px; }
@@ -420,7 +429,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content { margin: 3px 0 18px 0px; width: 692px; }
 #container article.publish.with_footer .f { bottom: -10px; background-position: 0 -23px; }
 #container article.publish.with_footer footer { padding: 0; border: none; background: none; }
-#container article.publish.with_footer footer .inner { width: 729px; background: url("/images/box_publish_bkg.png") repeat-y -1514px 0; border: none; }
+#container article.publish.with_footer footer .inner { width: 709px; padding: 20px 13px 17px 35px; background: url("/images/box_publish_bkg.png") repeat-y -1514px 0; border: none; }
 #container article.publish.with_footer footer .inner div.left { width: 50%; }
 #container article.publish.with_footer footer .inner div.right { width: 50%; margin: 0; }
 #container article.publish.with_footer footer .inner div.right .publish { margin: 0; }
@@ -1143,7 +1152,7 @@ textarea::-webkit-scrollbar-track-piece { background-color: none; -webkit-border
 textarea::-webkit-scrollbar-thumb:vertical { height: 20px; background-color: #999; -webkit-border-radius: 8px; }
 textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #999; -webkit-border-radius: 8px; }
 
-.textarea-comment { font-size: 15px; width: 535px; height: 67px; background: url("/images/textareas.png") no-repeat; overflow: hidden; float: left; margin-bottom: 15px; position: relative; }
+.textarea-comment { font-size: 15px; width: 535px; height: 67px; background: url("/images/inputs_sprite.png") no-repeat left top; overflow: hidden; float: left; margin-bottom: 15px; position: relative; }
 .textarea-comment span.holder { position: absolute; left: 13px; top: 8px; width: 500px; color: #D7D8DD; }
 .textarea-comment textarea { margin: 7px 10px 10px 11px; resize: none; width: 510px; height: 50px; background: none; border: none; outline: none; }
 

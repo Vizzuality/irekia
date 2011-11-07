@@ -18,7 +18,7 @@ textarea::-webkit-scrollbar-track-piece { background-color: none; -webkit-border
 textarea::-webkit-scrollbar-thumb:vertical { height: 20px; background-color: #999; -webkit-border-radius: 8px; }
 textarea::-webkit-scrollbar-thumb:horizontal { width: 20px; background-color: #999; -webkit-border-radius: 8px; }
 
-.textarea-comment { font-size: 15px; width: 535px; height: 67px; background: url("/images/textareas.png") no-repeat; overflow: hidden; float: left; margin-bottom: 15px; position: relative; }
+.textarea-comment { font-size: 15px; width: 535px; height: 67px; background: url("/images/inputs_sprite.png") no-repeat left top; overflow: hidden; float: left; margin-bottom: 15px; position: relative; }
 .textarea-comment span.holder { position: absolute; left: 13px; top: 8px; width: 500px; color: #D7D8DD; }
 .textarea-comment textarea { margin: 7px 10px 10px 11px; resize: none; width: 510px; height: 50px; background: none; border: none; outline: none; }
 

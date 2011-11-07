@@ -348,6 +348,68 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 }
 
+ .ie8 #container article.publish {
+  .inner .content .container .inner_container {
+
+    .input_field {
+      float:left;
+      padding: 0;
+      margin: 0 10px;
+      background:url('/images/inputs_sprite.png') repeat-x right -240px;
+      float:left;
+      height: 39px;
+
+      input[type="text"] {
+        width: 657px;
+        height: 39px;
+        left:10px;
+        margin: 0 0 0 -10px;
+        padding: 9 14px;
+        background:url('/images/inputs_sprite.png') no-repeat left -285px;
+        outline:none;
+        border:none;
+      }
+    }
+
+    .input_field.textarea {
+      float:left;
+      padding: 0;
+      margin: 0 10px;
+      background:url('/images/inputs_sprite.png') repeat-x right -337px;
+      float:left;
+      height: 75px;
+
+      textarea {
+        width: 677px;
+        height: 75px;
+        left:10px;
+        margin: 0 0 0 -20px;
+        padding: 9 14px;
+        background:url('/images/inputs_sprite.png') no-repeat left -419px;
+        outline:none;
+        border:none;
+      }
+      .holder { left:0; }
+    }
+  }
+
+  &.with_footer {
+    footer {
+      padding: 0;
+      border: none;
+      background: none;
+      .inner {
+          width: 730px;
+          padding: 20px 3px 17px 35px;
+      .right {
+        .white_button {
+          margin:0;
+        }
+      }
+      }
+    }
+  }
+}
 
 #container article.static .inner header h3 {text-transform:none; font-size:19px; font-family: "Helvetica", sans-serif; font-weight:normal;}
 #container article {
@@ -904,7 +966,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
         border: none;
         background: none;
         .inner {
-          width: 729px;
+          width: 709px;
+          padding: 20px 13px 17px 35px;
           background: url('/images/box_publish_bkg.png') repeat-y -1514px 0;
           border: none;
           div.left  { width:50%; }

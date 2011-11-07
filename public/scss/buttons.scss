@@ -21,7 +21,7 @@ textarea {
 .textarea-comment {
   font-size:15px;
   width:535px; height:67px;
-  background:url('/images/textareas.png') no-repeat;
+  background:url('/images/inputs_sprite.png') no-repeat left top;
   overflow:hidden;
   float:left;
   margin-bottom:15px;
@@ -243,8 +243,8 @@ article .white_button:active {
 
   &:hover {
     span.add { background-position: left bottom; }
-
   }
+
   span {
     .add {
       float:left;

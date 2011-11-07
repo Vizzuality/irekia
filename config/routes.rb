@@ -96,6 +96,7 @@ Irekia::Application.routes.draw do
   end
 
   resources :demo
+  match 'publish', :to => 'demo#publish'
 
   resources :arguments,  :controller => 'participations', :type => 'Argument'
   resources :votes,      :controller => 'participations', :type => 'Vote'
