@@ -1,7 +1,19 @@
 IREKIA
 ======
 
-1. Installation
+1. Requirements
+---------------
+
+- ImageMagick. If you're in OS X and have homebrew installed, this
+  command will do the trick:
+
+		$ brew install imagemagick
+
+- Ruby 1.9.2.
+
+- PostgreSQL 9.0
+
+2. Installation
 ---------------
 
 - Download the repository:
