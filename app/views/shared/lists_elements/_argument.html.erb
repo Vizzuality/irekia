@@ -18,7 +18,9 @@
     &middot;
     <%= render "/shared/inline_sharing" %>
   </div>
-  <ul class="<%= data.in_favor ? 'in_favor' : 'against' %>">
+
+  <ul class="arguments <%= data.in_favor ? 'in_favor' : 'against' %>">
     <li><%= data.reason %></li>
   </ul>
+
 </div>

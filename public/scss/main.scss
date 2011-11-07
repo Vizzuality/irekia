@@ -1683,8 +1683,15 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
 /* Article addons */
 
+
+
 #container article {
   &.initialy_hidden { @include opacity(0); }
+
+  ul.arguments {
+    background:#E9F0DE;
+
+  }
 }
 
 #container article .social-links {

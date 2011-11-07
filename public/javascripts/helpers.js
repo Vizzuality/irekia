@@ -255,8 +255,17 @@ jQuery.fn.enableArguments = function(opt){
 
   var speed     = (opt && opt.speed) || 200;
   var duration  = (opt && opt.speed) || 3000;
+  var maxHeight = 0;
 
   this.each(function(){
+    if ($(this).find("ul").height() > maxHeight) {
+      maxHeight = $(this).find("ul").height();
+    }
+  });
+
+  this.each(function(){
+
+    $(this).find("ul").animate({height:maxHeight});
 
     var that = this;
 
