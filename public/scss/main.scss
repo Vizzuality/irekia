@@ -2379,16 +2379,25 @@ a.editable {
   text-align:center;
   padding:55px 0;
 
+
   p {
     margin:0px;
     padding:0;
     color:$standard_gray;
     font-size:15px;
     strong { font-size:17px; color:$dark_blue; font-weight:normal; }
-    a,input {
+  }
+
+  form {
+    input[type="submit"] {
+      display:inline;
+      padding:0;
       font-size:15px;
       color:$pink;
       font-weight:bold;
+      background:none;
+      border:none;
+      outline:none;
     }
   }
 }

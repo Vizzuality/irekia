@@ -25,11 +25,11 @@
         <p><strong><%= t('.not_answered_yet') %></strong></p>
         <% if @new_request %>
         <p>
-          <%= t('.people_demanding_answer', :count => @answer_requests_count) %>,
           <%= form_for @content do |f| %>
             <%= f.fields_for :answer_requests, @new_request do |answer_requests_form| %>
               <%= answer_requests_form.hidden_field :user_id %>
             <% end %>
+            <%= t('.people_demanding_answer', :count => @answer_requests_count) %>,
             <%= f.submit_with_login t('.join_them', :count => @answer_requests_count) %>
           <% end %>
         </p>
