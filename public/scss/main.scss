@@ -2322,7 +2322,7 @@ a.editable {
     color:$standard_gray;
     font-size:15px;
     strong { font-size:17px; color:$dark_blue; font-weight:normal; }
-    a {
+    a,input {
       font-size:15px;
       color:$pink;
       font-weight:bold;
