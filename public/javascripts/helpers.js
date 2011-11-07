@@ -31,7 +31,10 @@ function watchHash(opt) {
   var speed  = (opt && opt.speed) || 200;
 
   function removeHash() {
-    window.history.pushState("", document.title, window.location.pathname);
+    if (  $.browser.msie) {
+    } else {
+      window.history.pushState("", document.title, window.location.pathname);
+    }
   }
 
   if (hash = window.location.hash) {

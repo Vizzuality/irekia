@@ -1666,8 +1666,18 @@ article .inner { h2, h3 { color: $dark_blue; } }
         background:url('/images/inputs_sprite.png') no-repeat left -200px;
       }
     }
+    input[type="submit"] { top: 12px; }
+  }
+}
 
-    input[type="submit"] { position: absolute; top: 12px; right: 17px; color: #FF0066; background: none; height: 30px; border: none; }
+
+.ie7 #container article {
+  &.actions .inner .left ul li .content .comment-box form,
+  &.proposal .inner .left ul li .content .comment-box form,
+  &.proposals .inner .left ul li .content .comment-box form,
+  &.questions .inner .left ul li .content .comment-box form,
+  &.activity .inner .left ul li .content .comment-box form {
+    input[type="submit"] { right: 27px; top: 12px; }
   }
 }
 
