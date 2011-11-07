@@ -63,6 +63,18 @@ jQuery.fn.enablePublish = function(opt){
 
   $currentSection = $article.find(".container .section:nth-child(1)");
 
+  $(this).find("li.vimeo, li.youtube").click(function(e) {
+    $(this).siblings("li").removeClass("selected");
+    $(this).addClass("selected");
+    $article.find(".radio.selected").removeClass("selected");
+    $(this).find(".radio").addClass("selected");
+  });
+
+  $(this).find("a.radio").click(function(e) {
+    $article.find("li.vimeo, li.youtube").toggleClass("selected");
+  });
+
+
   this.each(function(){
 
     function showMessage(kind) {

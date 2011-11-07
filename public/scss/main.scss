@@ -348,15 +348,15 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 }
 
- .ie8 #container article.publish {
+.ie7 #container article.publish,
+.ie8 #container article.publish {
   .inner .content .container .inner_container {
 
-    .input_field {
+    .input_fieldx {
       float:left;
       padding: 0;
       margin: 0 10px;
       background:url('/images/inputs_sprite.png') repeat-x right -240px;
-      float:left;
       height: 39px;
 
       input[type="text"] {
@@ -364,7 +364,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         height: 39px;
         left:10px;
         margin: 0 0 0 -10px;
-        padding: 9 14px;
+        padding: 0 10px;
         background:url('/images/inputs_sprite.png') no-repeat left -285px;
         outline:none;
         border:none;
@@ -399,13 +399,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
       border: none;
       background: none;
       .inner {
-          width: 730px;
-          padding: 20px 3px 17px 35px;
-      .right {
-        .white_button {
-          margin:0;
+        width: 730px;
+        padding: 20px 3px 17px 35px;
+        .right {
+          .white_button {
+            margin:0;
+          }
         }
-      }
       }
     }
   }
@@ -830,6 +830,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
               &.video {
                 height:auto;
                 background:#EFEFEF;
+                @include border-radius(4px);
 
                 ul {
                   li {
@@ -840,32 +841,47 @@ article .inner { h2, h3 { color: $dark_blue; } }
                     padding: 10px;
                     position:relative;
                     background:#fff;
+
+                    @include opacity(0.5);
                     @include border-radius(8px);
                     @include transition-property(all);
                     @include transition-duration(300ms);
 
-                    .radio { display:block; }
+                    .radio { float:left; position:relative; height:16px; width:13px; top:15px; padding:0; }
+
+                    &.selected {
+                      @include box-shadow (0 0px 5px rgba(0, 0, 0, 0.3));
+                      @include opacity(1);
+                    }
 
                     .logo {
-                      width:110px;
+                      width:125px;
                       height:46px;
-                      margin: 0 0 17px 0;
-                      background:url('/images/icons/share.png') no-repeat 0 -617px;
+                      margin: 0 0 17px 13px;
+                      background:url('/images/icons/share.png') no-repeat -120px -617px;
                     } // logo
 
                     &.vimeo {
-                      margin:0;
-                      .logo {
-                        width:125px;
-                        height:43px;
-                        background-position:-120px -617px;
-                      }
+                      margin:10px 10px 10px 0;
+                      height:111px;
                     } // li.vimeo
 
+                    &.youtube {
+                      margin: 10px;
+                      height:111px;
+                      .logo {
+                        width:125px;
+                        height:46px;
+                        background-position:0px -617px;
+                      }
+                    }
+
+
                     .input_field {
-                      width:100%;
-                      input[type="text"] { float:right; width:275px; font-size:15px; }
-                      .holder { font-size: 15px; top:11px; }
+                      width:263px;
+                      right: -24px;
+                      input[type="text"] { float:right; width:263px; font-size:15px; }
+                      .holder { top:11px; width:130px; font-size: 15px; }
                     } // input_field
                   }
                 }
@@ -1720,7 +1736,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
       background:url('/images/inputs_sprite.png') repeat-x right -158px;
       float:left;
       height:34px;
-      input[type="text"]{
+
+      input[type="text"] {
         width: 430px;
         height:32px;
         left:10px;
@@ -2389,6 +2406,9 @@ a.editable {
   }
 
   form {
+    font-size:15px;
+    color:$standard_gray;
+
     input[type="submit"] {
       display:inline;
       padding:0;
