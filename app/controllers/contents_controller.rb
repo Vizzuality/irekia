@@ -51,12 +51,11 @@ class ContentsController < ApplicationController
     when Question
 
       if @content.answer.blank?
-        @answer_requests_count = @content.answer_requests.count
+        @user_has_requested_answer = current_user && current_user.has_requested_answer(params[:id])
 
         if current_user.blank? || current_user.has_not_requested_answer(params[:id])
           @new_request = @content.answer_requests.build
         end
-
       else
         return if current_user && current_user.has_given_his_opinion?(@content.answer)
 
@@ -130,7 +129,7 @@ class ContentsController < ApplicationController
 
   def get_content_class
     @content_class = params[:type].constantize
-    @content_type = params[:type].downcase
+    @content_type = params[:type].underscore
   end
   private :get_content_class
 end

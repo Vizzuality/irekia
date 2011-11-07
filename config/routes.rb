@@ -38,10 +38,10 @@ Irekia::Application.routes.draw do
     resources :tweets,         :controller => 'contents',       :type => 'Tweet'
     resources :photos,         :controller => 'contents',       :type => 'Photo'
     # resources :participations
-    resources :comments,       :controller => 'participations', :type => 'Comment'
-    resources :arguments,      :controller => 'participations', :type => 'Argument'
-    resources :votes,          :controller => 'participations', :type => 'Vote'
-    resources :answer_request, :controller => 'participations', :type => 'AnswerRequest'
+    resources :comments,        :controller => 'participations', :type => 'Comment'
+    resources :arguments,       :controller => 'participations', :type => 'Argument'
+    resources :votes,           :controller => 'participations', :type => 'Vote'
+    resources :answer_requests, :controller => 'participations', :type => 'AnswerRequest'
   end
 
   resources :areas do
@@ -98,9 +98,10 @@ Irekia::Application.routes.draw do
   resources :demo
   match 'publish', :to => 'demo#publish'
 
-  resources :arguments,  :controller => 'participations', :type => 'Argument'
-  resources :votes,      :controller => 'participations', :type => 'Vote'
-  resources :comments,   :controller => 'participations', :type => 'Comment'
+  resources :arguments,       :controller => 'participations', :type => 'Argument'
+  resources :votes,           :controller => 'participations', :type => 'Vote'
+  resources :comments,        :controller => 'participations', :type => 'Comment'
+  resources :answer_requests, :controller => 'participations', :type => 'AnswerRequest'
 
   resource :search do
     member do

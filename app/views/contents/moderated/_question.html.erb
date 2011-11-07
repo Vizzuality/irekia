@@ -6,34 +6,44 @@
     <p class="info">
     <%= link_to @content.author.try(:fullname), path_for_user(@content.users.first) %>
     <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+    <% if @answer.blank? %>
+    &middot;
+    <span class="positive">+<%= @content.answer_requests_count %></span>
+    <% end -%>
     &middot;
     <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments_count), '#', :class => :goto_comments %>
     &middot;
-    <% if @content.answer.blank? %>
+    <% if @answer.blank? %>
       <span><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
     <% else %>
-      <span class="<%= @content.answer ? 'answered' : 'not_answered' %>"><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words_to_now(@content.answer.published_at)) %></span>
+      <span class="<%= @answer ? 'answered' : 'not_answered' %>"><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words_to_now(@answer.published_at)) %></span>
     <% end %>
     </p>
 
-    <% if @content.answer %>
+    <% if @answer %>
       <div class="answer">
         <%= simple_format @answer.answer_text %>
       </div>
     <% else %>
       <div class="answer_placeholder">
         <p><strong><%= t('.not_answered_yet') %></strong></p>
-        <% if @new_request %>
         <p>
-          <%= form_for @content do |f| %>
-            <%= f.fields_for :answer_requests, @new_request do |answer_requests_form| %>
-              <%= answer_requests_form.hidden_field :user_id %>
-            <% end %>
-            <%= t('.people_demanding_answer', :count => @answer_requests_count) %>,
-            <%= f.submit_with_login t('.join_them', :count => @answer_requests_count) %>
-          <% end %>
+          <% if @user_has_requested_answer %>
+            <% if @content.answer_requests_count <= 2 -%>
+              <%= t('.you_and_other', :count => @content.answer_requests_count) -%>
+            <% else -%>
+              <%= t('.you_and_thousands', :count => @content.answer_requests_count - 1) -%>
+            <% end -%>
+          <% else %>
+          <%= t('.people_demanding_answer', :count => @content.answer_requests_count) -%>
+          <% end -%>
+          <% if @new_request -%>
+            <%= form_for @new_request do |f| -%>
+              <%= f.hidden_field :content_id -%>
+              ,<%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
+            <% end -%>
+          <% end -%>
         </p>
-        <% end %>
       </div>
     <% end %>
     <%= render "participations/comments" %>
@@ -42,7 +52,7 @@
     <div class="content left-border">
       <%= render "shared/sharing" %>
       <%= render "shared/sidebar/tags" %>
-      <%= render "shared/sidebar/answered_by" if @content.answer %>
+      <%= render "shared/sidebar/answered_by" if @answer %>
       <%= render "shared/sidebar/related_questions" %>
     </div>
   </div>

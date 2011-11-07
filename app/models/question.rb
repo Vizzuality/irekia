@@ -49,10 +49,15 @@ class Question < Content
     } if question_data.target_user
 
     super({
-      :question_text   => question_text,
-      :target_user     => target_user,
-      :answered_at     => answered_at
+      :question_text         => question_text,
+      :answer_requests_count => answer_requests_count,
+      :target_user           => target_user,
+      :answered_at           => answered_at
     })
+  end
+
+  def update_answer_requests_count
+    update_attribute('answer_requests_count', answer_requests.count)
   end
 
   def publish_content
