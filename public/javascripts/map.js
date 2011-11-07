@@ -54,6 +54,7 @@ function startMap() {
 	 		dblclick = true;
 	  });
 
+
     // zoomIn
     var zoomInControlDiv = document.createElement('DIV');
     var zoomInControl = new ZoomInControl(zoomInControlDiv, map);
@@ -192,8 +193,8 @@ IrekiaMarker.prototype.draw = function() {
                   ev.preventDefault();
                   $('div.infowindow').hide();
                 });
-								
-								
+
+
 								var interval;
                 $(div).find('a.marker').click(function(ev){
 									clearTimeout(interval);

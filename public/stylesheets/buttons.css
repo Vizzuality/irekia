@@ -49,7 +49,6 @@ White buttons
 .white_button.in_favor.selected, article.white_button.in_favor.selected { background: #75B100; color: #fff; text-shadow: #4E7500 1px 1px 0; }
 .white_button.against, article.white_button.against { color: #ff9933; }
 .white_button.against.selected, article.white_button.against.selected { background: #FF6600; color: #fff; text-shadow: #B74400 1px 1px 0; }
-.white_button.add_person, .white_button.add_person:active, article.white_button.add_person, article.white_button.add_person:active { position: relative; padding-left: 33px; color: #f10063; }
 
 #container article footer .white_button.right, #container article .white_button.right, #container article article .white_button.right { float: right; right: 0; width: auto; }
 
@@ -67,8 +66,8 @@ White buttons
 .white_button:active span, article .white_button:active span { background-position: 0 0; }
 
 /* add person icon */
-.white_button.add_person:hover span { background-position: 0 -15px; }
-.white_button.add_person span { position: absolute; display: block-inline; width: 18px; height: 15px; top: 8px; left: 10px; background: url("/images/icons/add_person.png") no-repeat; }
+.ie8 .white_button.add_person:hover span.add, .ie7 .white_button.add_person:hover span.add, .white_button.add_person:hover span.add { background-position: left bottom; }
+.ie8 .white_button.add_person span .add, .ie7 .white_button.add_person span .add, .white_button.add_person span .add { float: left; width: 18px; height: 15px; background: url("/images/icons/add_person.png") no-repeat; padding: 0; margin: 0 7px 0 -5px; }
 
 /* Hacks & fixes */
 .ie9 .white_button:active, .ie9 article .white_button:active { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c2f4f6f9', endColorstr='#c2ffffff',GradientType=0 ); /* IE6-9 */ }
