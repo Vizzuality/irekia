@@ -53,10 +53,8 @@ class ContentsController < ApplicationController
       if @content.answer.blank?
         @answer_requests_count = @content.answer_requests.count
 
-        @new_request = @content.answer_requests.build
-
-        if current_user.present? && current_user.has_not_requested_answer(@content)
-          @new_request.user = current_user
+        if current_user.blank? || current_user.has_not_requested_answer(params[:id])
+          @new_request = @content.answer_requests.build
         end
 
       else
@@ -112,8 +110,10 @@ class ContentsController < ApplicationController
   end
 
   def create
-    @content = @content_class.new params[@content_type]
-    @content.users << current_user
+    content_params = params[@content_type]
+    content_params[:user_id] = current_user.id
+
+    @content = @content_class.find_or_initialize content_params
 
     if @content.save
       redirect_to @content
