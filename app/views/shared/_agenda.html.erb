@@ -28,11 +28,12 @@
 
 <footer>
 <div class="separator"></div>
-<div class="inner">
+<div class="inner with_spinner">
 
   <% if defined?(more) %>
     <div class="left">
-      <%= link_to t(".next_month"), link_for_agenda(:anchor => :agenda), :class => "down_arrow"  %>
+      <%= link_to t(".next_month"), link_for_agenda(:anchor => :agenda), :class => "down_arrow left more_months"  %>
+      <span id="months_spinner" class="spinner"></span>
     </div>
   <% else %>
     <div class="right">

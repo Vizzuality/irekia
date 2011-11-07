@@ -420,9 +420,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
       border-right: 1px solid #b4bdc4;
       background: #f8f8f9;
 
-      .inner.with_avatar {
-        padding:20px 0 0 35px;
-      }
 
       .inner {
         padding: 20px 0 17px 27px;
@@ -431,6 +428,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         background: none;
         border: 0;
 
+        &.with_avatar { padding:20px 0 0 35px; }
         &.with_spinner { height: 15px; }
 
         h3 { margin: 0 0 5px 0; padding: 0; }

@@ -414,22 +414,29 @@ jQuery.fn.enableGotoComments = function(opt){
 
 jQuery.fn.enablePagination = function(opt){
 
-  var speed  = (opt && opt.speed) || 200;
-  var name   = (opt && opt.name)  || "proposals";
+  var speed      = (opt && opt.speed) || 200;
+  var name       = (opt && opt.name)  || "proposals";
+  var cellHeight = (opt && opt.cellHeight)  || 132;
   var currentPage = 1;
+  var url, id, $article, spin_element;
 
-  this.each(function(){
+  function paginateMonths() {
+    $.ajax({url: url, method: 'GET', data:{ next_month: currentPage++ }, success:function(response, xhr, status) {
+      IrekiaSpinner.stop();
 
-    $(this).click(function(e) {
-    e.preventDefault();
+      var $content = $($(response).html());
+      var $ul = $article.find(".agenda_map ul.agenda");
 
-    var url = window.location.href;
-    var id = $(this).attr("id").replace(name + '_', '');
-    var $article = $(this).parents("article");
+      $content.hide();
+      $ul.append($content);
+      var height = ($(response).find("li").length / 7) * cellHeight + $ul.parent().height();
 
-    var spin_element = document.getElementById(name + '_spinner');
-    IrekiaSpinner.spin(spin_element);
+      $ul.parent().animate({height: height }, 500);
+      $content.slideDown(speed);
+    }});
+  }
 
+  function paginate() {
     $.ajax({url: url, method: 'GET', data:{ page: ++currentPage }, success:function(response, xhr, status) {
 
       IrekiaSpinner.stop();
@@ -443,8 +450,27 @@ jQuery.fn.enablePagination = function(opt){
         $content.slideDown(250);
       } catch(err) { }
     }});
-  });
-})
+  }
+
+  this.each(function(){
+
+    $(this).click(function(e) {
+      e.preventDefault();
+
+      url = window.location.href;
+      if (name != "months") {
+        id = $(this).attr("id").replace(name + '_', '');
+      }
+      $article = $(this).parents("article");
+
+      spin_element = document.getElementById(name + '_spinner');
+      IrekiaSpinner.spin(spin_element);
+
+      if (name == "months") paginateMonths();
+      else paginate();
+
+    });
+  })
 }
 
 /* Enables comment submission */

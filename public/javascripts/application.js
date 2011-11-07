@@ -2,6 +2,7 @@ $(function() {
   watchHash(); // this function watches the url hashes and acts accordingly
 
   $(".more_proposals").enablePagination({name: "proposals"});
+  $(".more_months").enablePagination({name: "months"});
   $(".more_questions").enablePagination({name: "questions"});
   $(".more_actions").enablePagination({name: "actions"});
 
