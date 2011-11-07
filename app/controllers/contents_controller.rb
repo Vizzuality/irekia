@@ -51,6 +51,7 @@ class ContentsController < ApplicationController
     when Question
 
       if @content.answer.blank?
+        @answer_requests_count = @content.answer_requests.count
 
         @new_request = @content.answer_requests.build
 
