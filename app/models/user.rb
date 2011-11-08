@@ -14,7 +14,26 @@ class User < ActiveRecord::Base
   attr_reader :random_password
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :lastname, :email, :remember_me, :terms_of_service, :role_id, :title_id, :birthday, :description, :is_woman, :province_id, :city_id, :postal_code, :first_time, :profile_pictures_attributes, :questions_attributes, :question_data_attributes, :areas_users_attributes, :follows_attributes
+  attr_accessible :name,
+                  :lastname,
+                  :twitter_username,
+                  :email,
+                  :remember_me,
+                  :terms_of_service,
+                  :role_id,
+                  :title_id,
+                  :birthday,
+                  :description,
+                  :is_woman,
+                  :province_id,
+                  :city_id,
+                  :postal_code,
+                  :first_time,
+                  :profile_pictures_attributes,
+                  :questions_attributes,
+                  :question_data_attributes,
+                  :areas_users_attributes,
+                  :follows_attributes
 
   attr_accessor :terms_of_service
 
@@ -123,10 +142,6 @@ class User < ActiveRecord::Base
                     :tsearch => {:prefix => true, :any_word => true}
                   }
 
-  def email_required?
-    false
-  end
-
   def self.oldest_first
     order('created_at asc')
   end
@@ -161,7 +176,6 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_twitter_oauth(access_token, signed_in_resource=nil)
-
     data        = access_token['user_info']
     credentials = access_token['credentials']
 
@@ -169,7 +183,6 @@ class User < ActiveRecord::Base
       user
     else
       user = User.new :name             => data['name'],
-                      :email            => data['nickname'],
                       :twitter_username => data['nickname']
 
       user.password                   = Devise.friendly_token[0,20]
