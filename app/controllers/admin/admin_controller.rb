@@ -8,7 +8,7 @@ class Admin::AdminController < ApplicationController
   end
 
   def admin_signed_in?
-    redirect_to root_url, :failure => 'Only administrators can access this section' unless current_user.administrator?
+    redirect_to root_url, :failure => 'Only administrators can access this section' unless current_user.present? && current_user.administrator?
   end
   private :admin_signed_in?
 end

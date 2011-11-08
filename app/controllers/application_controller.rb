@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   clear_helpers
   protect_from_forgery
-  before_filter :store_user_path
+  #before_filter :store_user_path
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
   before_filter :current_user_valid?
   before_filter :get_areas
