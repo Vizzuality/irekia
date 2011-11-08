@@ -558,7 +558,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
           padding: 0;
 
           li {
-            background: url('/images/icons/icon_sprite.png') no-repeat -54px 2px;
+            background: url('/images/icons/icon_sprite.png') no-repeat -62px 2px;
             margin:0;
             padding: 0 0 0 21px;
             font-size:15px;
@@ -1255,10 +1255,15 @@ article .inner { h2, h3 { color: $dark_blue; } }
         width: 17px;
         height: 17px;
         background: url('/images/icons/icon_sprite.png') no-repeat -13px 0;
-        border: 0 none;
+        border: 0;
         cursor: pointer;
+        -webkit-appearance: none;
+        font-size:0; // mobile safair hack
+
+        @include border-radius(0px);
+
         &:hover {
-          background-position: -31px 0;
+          background-position: -39px 0;
         }
       }
 
