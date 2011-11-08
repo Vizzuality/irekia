@@ -15,7 +15,8 @@ class Content < ActiveRecord::Base
   has_many      :participations
   has_many      :comments,
                 :include => [{:author => :profile_pictures}, :comment_data],
-                :conditions => {:moderated => true}
+                :conditions => {:moderated => true},
+                :order => 'published_at asc'
 
   attr_protected :moderated, :rejected
 

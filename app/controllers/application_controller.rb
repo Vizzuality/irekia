@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :store_user_path
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
-  before_filter :check_user_lastname
+  before_filter :current_user_valid?
   before_filter :get_areas
   before_filter :setup_search
 
@@ -44,8 +44,8 @@ class ApplicationController < ActionController::Base
     render :partial => 'shared/in_development'
   end
 
-  def check_user_lastname
-    redirect_to edit_user_path(current_user) if current_user && !current_user.valid?
+  def current_user_valid?
+    redirect_to edit_user_path(current_user) if current_user && current_user.invalid?
   end
 
   def get_areas
