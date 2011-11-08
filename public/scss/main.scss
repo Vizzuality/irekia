@@ -1944,6 +1944,12 @@ article .inner { h2, h3 { color: $dark_blue; } }
   overflow:hidden;
   clear:both;
 
+  &.extra {
+    .inner-cycle {
+      height:750px;
+    }
+  }
+
   .inner-cycle {
     position:relative;
     clear:both;

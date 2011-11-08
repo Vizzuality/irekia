@@ -52,6 +52,9 @@ function watchHash(opt) {
 }
 
 jQuery.fn.enablePublish = function(opt){
+
+  if (this.length < 1) return;
+
   var
   section       = 0,
   speed         = 250,
@@ -65,6 +68,7 @@ jQuery.fn.enablePublish = function(opt){
 
   // Initialize the initial section
   $currentSection = $article.find(".container .section:nth-child(1)");
+
 
   function _setupUpload(id) {
     var uploader = new qq.FileUploader({
@@ -88,7 +92,6 @@ jQuery.fn.enablePublish = function(opt){
 
     $article.find(".section .open_upload").click(function(e) {
       e && e.preventDefault();
-      console.log($(this), $(this).parent().find("input"));
       $(this).closest("input[type='file']").click();
     });
 
@@ -192,6 +195,7 @@ jQuery.fn.enablePublish = function(opt){
 jQuery.fn.enableRegistration = function(opt){
 
   var speed  = (opt && opt.speed) || 200,
+  marginBottom = 45,
   $form = $(".cycle form"),
   $container = $(".cycle .inner-cycle");
 
@@ -204,7 +208,7 @@ jQuery.fn.enableRegistration = function(opt){
 
   function forward($current, $next) {
     $(".cycle").animate({scrollLeft:$current.position().left + 850}, 350, "easeInOutQuad", function() {
-      $container.parent().animate({height:$next.height() + 45}, 350, "easeInOutQuad");
+      $container.parent().animate({height:$next.height() + marginBottom}, 350, "easeInOutQuad");
     });
   }
 
@@ -213,15 +217,16 @@ jQuery.fn.enableRegistration = function(opt){
 
     $currentArticle.after($data);
 
-    $article = $currentArticle;
+    $article        = $currentArticle;
     $currentArticle = $data;
-    $form = $currentArticle.find("form");
+    $form           = $currentArticle.find("form");
+
 
     forward($article, $currentArticle);
   }
 
   function step2(evt, xhr, status) {
-    var $data = $(xhr);
+    var $data = $($(xhr).find(".inner-cycle").html());
 
     $currentArticle.after($data);
 
@@ -270,13 +275,31 @@ jQuery.fn.enableRegistration = function(opt){
   }
 
   this.each(function(){
-    $(".advance").click(function(e) {
-      e.preventDefault();
+    $article = $container.find("article");
 
-      $article = $(this).parents("article");
-      $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
-      $.ajax({ url: "/users/new", data: {}, type: "GET", success: step1});
-    });
+    if ($article.hasClass("step2")) {
+      marginBottom = 90;
+      $currentArticle = $article;
+
+      $form = $currentArticle.find("form");
+
+      $form.submit(function() {
+        $(this).find(".error").removeClass("error");
+      });
+
+      $form.bind('ajax:success', step3);
+      $form.bind('ajax:error', validateErrors);
+
+    } else {
+      $(".advance").click(function(e) {
+        e.preventDefault();
+
+        $article = $(this).parents("article");
+
+        $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
+        $.ajax({ url: "/users/new", data: {}, type: "GET", success: step1});
+      })
+    }
   });
 }
 
@@ -351,11 +374,11 @@ jQuery.fn.enableArguments = function(opt){
       setTimeout(function() {
         $("#notice_" + noticeType).fadeOut(speed);
         $icon.fadeOut(speed, function() {
-        $input.removeAttr("disabled");
-        $submit.fadeIn(speed);
-        $(this).remove();
-        $input.val('');
-        $input.removeClass('disabled');
+          $input.removeAttr("disabled");
+          $submit.fadeIn(speed);
+          $(this).remove();
+          $input.val('');
+          $input.removeClass('disabled');
         });
       }, duration);
     }
@@ -441,10 +464,10 @@ jQuery.fn.autocomplete = function(opt){
       $(this).find('input[type="text"]').keyup(function(ev){
         clearTimeout(interval);
         if ($(this).val().length>2) {
-					if (ev.keyCode == 13) {
-						window.location = '/search?' + $(this).closest('form').serialize();
-						return;
-					}
+          if (ev.keyCode == 13) {
+            window.location = '/search?' + $(this).closest('form').serialize();
+            return;
+          }
           spinner.stop();
           interval = setTimeout(function(){
             spinner.spin(spin_element);

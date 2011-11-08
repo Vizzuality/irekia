@@ -674,6 +674,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_form.signup.thin { margin-left: 164px!important; }
 
 #container .cycle { overflow: hidden; clear: both; }
+#container .cycle.extra .inner-cycle { height: 750px; }
 #container .cycle .inner-cycle { position: relative; clear: both; width: 9000px; height: 332px; }
 #container .cycle .inner-cycle article { float: left; clear: none; margin: 10px 100px 0 0; }
 #container .cycle .inner-cycle article form { clear: both; }
