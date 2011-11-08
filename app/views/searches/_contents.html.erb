@@ -9,8 +9,8 @@
 
     <% if @contents_count > 0 %>
       <ul class="switch">
-        <li class="selected"><%= link_to t('.results.main_filters.more_recent'), search_path(search_params.merge(:more_recent => true)), :class => 'filter selected' %></li>
-        <li><%= link_to t('.results.main_filters.more_polemic'), search_path(search_params.merge(:more_polemic => true)), :class => 'filter' %></li>
+        <li class="selected"><%= link_to t('.results.main_filters.more_recent'), link_for_contents(search_params.merge(:more_recent => true)), :class => 'filter selected' %></li>
+        <li><%= link_to t('.results.main_filters.more_polemic'), link_for_contents(search_params.merge(:more_polemic => true)), :class => 'filter' %></li>
       </ul>
     <% end %>
 
@@ -26,12 +26,12 @@
   <div class="right">
     <% if @contents_count > 0 %>
       <ul class="selector no-margin">
-        <li><%= link_to t('.results.content_type_filters.all'), search_path(search_params), :class => 'selected filter' %></li>
-        <li><%= link_to t('.results.content_type_filters.news'), search_path(search_params.merge(:type => 'news')), :class => 'filter' %></li>
-        <li><%= link_to t('.results.content_type_filters.questions'), search_path(search_params.merge(:type => 'question')), :class => 'filter' %></li>
-        <li><%= link_to t('.results.content_type_filters.proposals'), search_path(search_params.merge(:type => 'proposal')), :class => 'filter' %></li>
-        <li><%= link_to t('.results.content_type_filters.images'), search_path(search_params.merge(:type => 'photo')), :class => 'filter' %></li>
-        <li><%= link_to t('.results.content_type_filters.videos'), search_path(search_params.merge(:type => 'video')), :class => 'filter' %></li>
+        <li><%= link_to t('.results.content_type_filters.all'), link_for_contents(search_params), :class => 'selected filter' %></li>
+        <li><%= link_to t('.results.content_type_filters.news'), link_for_contents(search_params.merge(:type => 'news')), :class => 'filter' %></li>
+        <li><%= link_to t('.results.content_type_filters.questions'), link_for_contents(search_params.merge(:type => 'question')), :class => 'filter' %></li>
+        <li><%= link_to t('.results.content_type_filters.proposals'), link_for_contents(search_params.merge(:type => 'proposal')), :class => 'filter' %></li>
+        <li><%= link_to t('.results.content_type_filters.images'), link_for_contents(search_params.merge(:type => 'photo')), :class => 'filter' %></li>
+        <li><%= link_to t('.results.content_type_filters.videos'), link_for_contents(search_params.merge(:type => 'video')), :class => 'filter' %></li>
       </ul>
     <% end %>
   </div>
