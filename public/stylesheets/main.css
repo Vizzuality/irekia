@@ -225,7 +225,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .message p { color: #7D8A92; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .message h3 { letter-spacing: 1px; }
 #container article.publish .inner .content .container .inner_container .message .icon { float: left; margin: 0 18px 0 0; background: url("/images/icons/ok_ball.png") no-repeat; width: 76px; height: 80px; }
-#container article.publish .inner .content .container .inner_container .section { float: left; width: 687px; height: 900px; }
+#container article.publish .inner .content .container .inner_container .section { float: left; position: relative; width: 687px; height: 900px; }
 #container article.publish .inner .content .container .inner_container .section .holder span { float: left; }
 #container article.publish .inner .content .container .inner_container .section.photo .triangle { left: 155px; }
 #container article.publish .inner .content .container .inner_container .section.photo .input_field { width: 100%; margin: 0 0 10px 0; }
@@ -235,15 +235,18 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .section.link .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.link .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.link .input_field .holder { width: 666px; }
-#container article.publish .inner .content .container .inner_container .section.event .triangle { left: 385px; }
-#container article.publish .inner .content .container .inner_container .section.event .input_field { width: 100%; margin: 0 0 10px 0; }
-#container article.publish .inner .content .container .inner_container .section.event .input_field input[type="text"] { width: 666px; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .section.event .input_field .holder { width: 666px; }
+#container article.publish .inner .content .container .inner_container .section.event { background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
+#container article.publish .inner .content .container .inner_container .section.event .triangle { left: 620px; background-position: 0 -64px; }
+#container article.publish .inner .content .container .inner_container .section.event .form { padding: 10px 10px 0 10px; }
+#container article.publish .inner .content .container .inner_container .section.event .form .input_field { width: 647px; margin: 0 0 10px 0; }
+#container article.publish .inner .content .container .inner_container .section.event .form .input_field input[type="text"] { width: 647px; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .section.event .form .input_field .holder { width: 647px; }
 #container article.publish .inner .content .container .inner_container .section.proposal .triangle { left: 386px; }
 #container article.publish .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
-#container article.publish .inner .content .container .inner_container .section.video { height: auto; background: #EFEFEF; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
+#container article.publish .inner .content .container .inner_container .section.video { height: auto; background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
+#container article.publish .inner .content .container .inner_container .section.video .triangle { left: 268px; background-position: 0 -64px; }
 #container article.publish .inner .content .container .inner_container .section.video ul li { float: left; width: 307px; height: 93px; margin: 0 10px 0 0; padding: 10px; position: relative; background: #fff; filter: alpha(opacity=50); -khtml-opacity: 0.5; -moz-opacity: 0.5; opacity: 0.5; -moz-border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; -ms-border-radius: 8px; -khtml-border-radius: 8px; border-radius: 8px; -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; }
 #container article.publish .inner .content .container .inner_container .section.video ul li .radio { float: left; position: relative; height: 16px; width: 13px; top: 15px; padding: 0; }
 #container article.publish .inner .content .container .inner_container .section.video ul li.selected { -moz-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3); -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3); -o-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3); box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3); filter: alpha(opacity=100); -khtml-opacity: 1; -moz-opacity: 1; opacity: 1; }
@@ -263,7 +266,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .input_field.textarea textarea:focus, #container article.publish .inner .content .input_field.textarea textarea:hover { border: 1px solid rgba(0, 0, 0, 0.2); }
 #container article.publish .inner .content .input_field input[type="text"], #container article.publish .inner .content .input_field textarea { font-size: 15px; }
 #container article.publish .inner .content .input_field span.holder { width: 666px; font-size: 15px; top: 10px; }
-#container article.publish .inner .content .input_field .triangle { width: 30px; height: 25px; background: url("/images/icons/triangle.png") no-repeat 0 0; position: absolute; top: -14px; left: 37px; }
+#container article.publish .inner .content .triangle { width: 30px; height: 25px; background: url("/images/icons/triangle.png") no-repeat 0 0; position: absolute; top: -14px; left: 37px; z-index: 1000; }
 #container article.publish .inner .content ul.menu { width: 686px; margin: 0 0 8px 0; }
 #container article.publish .inner .content ul.menu li { margin-right: 6px; }
 #container article.publish .inner .content ul.menu li.last { margin: 0; }

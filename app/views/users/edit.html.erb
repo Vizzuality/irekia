@@ -24,7 +24,7 @@
           <span class="mandatory">obligatorio</span>
         </div>
 
-        <% unless current_user.errors[:email].present? %>
+        <% if current_user.errors[:email].present? %>
           <div class="field email">
             <%= f.label :email %>
             <div class="input_field">

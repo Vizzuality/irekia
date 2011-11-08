@@ -776,6 +776,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
             .section {
               float:left;
+              position:relative;
               width:687px;
               height:900px;
 
@@ -804,16 +805,25 @@ article .inner { h2, h3 { color: $dark_blue; } }
               } // section.link
 
               &.event {
-                .triangle { left:385px; }
-                .input_field {
-                  width:100%;
-                  margin:0 0 10px 0;
-                  input[type="text"] {
-                    width:666px;
-                    font-size:15px;
-                  }
-                  .holder { width: 666px; }
-                }
+                background:#F6F6F7;
+                @include border-radius(4px);
+
+                .triangle { left: 620px; background-position: 0 -64px; }
+                .form {
+                  padding:10px 10px 0 10px;
+
+                  .input_field {
+                    width:647px;
+                    margin:0 0 10px 0;
+
+                    input[type="text"] {
+                      width:647px;
+                      font-size:15px;
+                    }
+
+                    .holder { width: 647px; }
+                  } // input_field
+                } // form
               } // section.event
 
               &.proposal {
@@ -831,8 +841,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
               &.video {
                 height:auto;
-                background:#EFEFEF;
+                background:#F6F6F7;
                 @include border-radius(4px);
+
+                .triangle { left: 268px; background-position: 0 -64px; }
 
                 ul {
                   li {
@@ -917,13 +929,15 @@ article .inner { h2, h3 { color: $dark_blue; } }
           input[type="text"], textarea  { font-size:15px; }
           span.holder { width:666px; font-size:15px; top:10px; }
 
-          .triangle {
-            width: 30px; height: 25px;
-            background:url('/images/icons/triangle.png') no-repeat 0 0;
-            position:absolute;
-            top:-14px;
-            left:37px;
-          }
+        }
+
+        .triangle {
+          width: 30px; height: 25px;
+          background:url('/images/icons/triangle.png') no-repeat 0 0;
+          position:absolute;
+          top:-14px;
+          left:37px;
+          z-index:1000;
         }
 
         ul.menu {
