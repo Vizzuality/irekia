@@ -1037,9 +1037,11 @@ Menu
 
 .ie7 #main ul.menu li a, .ie8 #main ul.menu li a { background: url("/images/menu_buttons.png") no-repeat 0 -112px; height: 16px; filter: none; }
 
+.ie7 #main ul.menu li a:hover, .ie8 #main ul.menu li a:hover { background: url("/images/menu_buttons.png") no-repeat 0 0; height: 16px; filter: none; }
+
 .ie7 #main ul.menu li.publish a, .ie8 #main ul.menu li.publish a { background: url("/images/menu_buttons.png") no-repeat 0 -55px; filter: none; height: 21px; border: none; }
 
-.ie7 #main ul.menu li.selected a, .ie8 #main ul.menu li.selected a, .ie9 #main ul.menu li.selected a { background: url("/images/menu_buttons.png") no-repeat 0 0; filter: none; height: 17px; }
+.ie7 #main ul.menu li.selected a, .ie8 #main ul.menu li.selected a, .ie9 #main ul.menu li.selected a { background: url("/images/menu_buttons.png") no-repeat 0 0; filter: none; height: 21px; }
 
 /* =============================================================================
 Autocomplete
