@@ -1623,16 +1623,21 @@ article .inner { h2, h3 { color: $dark_blue; } }
   &.activity .inner {
     .left ul li {
       a { color: #2C8CC5; }
+
       .content .comment-box {
-        @include border-radius(5px);
         margin-top: 12px;
+
+        background: #f2f2f4;
         background: rgba(237, 237, 239, 0.7);
+        @include border-radius(5px);
 
         input[type="submit"] { display:none; }
 
         .avatar {
           margin: 0 9px 0 0;
-          &:before { border-color: rgba(237, 237, 239, 0.7); }
+          &:before {
+            border-color: rgba(237, 237, 239, 0.7);
+          }
         }
 
         p { line-height: 16px; }
@@ -1747,11 +1752,19 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
 .ie7 #container article,
 .ie8 #container article {
-  &.actions .inner .left ul li .content .comment-box form,
-  &.proposal .inner .left ul li .content .comment-box form,
-  &.proposals .inner .left ul li .content .comment-box form,
-  &.questions .inner .left ul li .content .comment-box form,
-  &.activity .inner .left ul li .content .comment-box form {
+  &.actions .inner .left ul li .content .comment-box ,
+  &.proposal .inner .left ul li .content .comment-box,
+  &.proposals .inner .left ul li .content .comment-box ,
+  &.questions .inner .left ul li .content .comment-box,
+  &.activity .inner .left ul li .content .comment-box {
+
+    ul li {
+      .avatar .ieframe {
+        background-position: -75px -115px;
+      }
+    }
+
+    form {
 
     .input_field {
       background:url('/images/inputs_sprite.png') repeat-x right -158px;
@@ -1769,6 +1782,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     }
     input[type="submit"] { top: 12px; }
   }
+}
 }
 
 
