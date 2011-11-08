@@ -180,6 +180,9 @@ class User < ActiveRecord::Base
     credentials = access_token['credentials']
 
     if user = (signed_in_resource || User.find_by_twitter_username(data['nickname']))
+      user.twitter_oauth_token        = credentials['token']
+      user.twitter_oauth_token_secret = credentials['secret']
+      user.save!
       user
     else
       user = User.new :name             => data['name'],
