@@ -26,17 +26,26 @@
         <% @team.first(2).each do |user| %>
           <li>
           <%= avatar(user, :small) %>
-          <%#= link_to (content_tag 'div', image_tag(user.profile_image), :class => "avatar small"), path_for_user(user) if user.profile_image %>
           <%= link_to user.fullname, path_for_user(user), :class => :name %>
           <span><%= get_politician_title(user) %></span>
           </li>
         <% end %>
 
         <% if @team.from(2).present? %>
-          <li class="more">
-          <%= link_to (content_tag 'div', (image_tag 'icons/more_people_avatar.png'), :class => "avatar small"), team_area_path(@area, :anchor => :team) %>
-          <%= link_to t('.team.other_members', :count => @team.from(2).length), team_area_path(@area, :anchor => :team), :class => :name %>
-          </li>
+          <% if @team.from(2).size > 1 -%>
+            <li class="more">
+            <%= link_to (content_tag 'div', (image_tag 'icons/more_people_avatar.png'), :class => "avatar small"), team_area_path(@area, :anchor => :team) %>
+            <%= link_to t('.team.other_members', :count => @team.from(2).length), team_area_path(@area, :anchor => :team), :class => :name %>
+            </li>
+          <% else -%>
+            <% @team.from(2).each do |user| -%>
+              <li>
+              <%= avatar(user, :small) %>
+              <%= link_to user.fullname, path_for_user(user), :class => :name %>
+              <span><%= get_politician_title(user) %></span>
+              </li>
+            <% end -%>
+          <% end -%>
         <% end %>
 
       </ul>
