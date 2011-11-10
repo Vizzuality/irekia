@@ -565,8 +565,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner .right .proposal-support .count { padding: 13px; color: #465866; text-transform: uppercase; font-weight: bold; border-top: 1px solid #fff; }
 #container article .inner .right .proposal-support .count .icon { float: left; margin: 0 5px 0 0; width: 11px; height: 12px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -18px; }
 
-#follow { clear: both; width: 550px; margin: 0 0 10px 0; padding-right: 10px; }
-#follow form { float: right; }
+#follow { position: relative; height: 35px; margin: 0 0 10px 0; }
+#follow form { position: absolute; left: 322px; }
 
 .follow.basic button { background: none; padding: 0; text-shadow: none; -moz-box-shadow: 0 0 0; -webkit-box-shadow: 0 0 0; -o-box-shadow: 0 0 0; box-shadow: 0 0 0; }
 .follow.basic button span { display: none; }
@@ -749,6 +749,10 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .right .content ul.tags li.add { background: url("/images/tag_sprite.png") repeat-x left -105px; width: 88px; height: 26px; left: 0; }
 #container article .right .content ul.tags li.add a { background: none; height: 26px; padding: 0; line-height: 26px; float: none; text-align: center; color: #f10063; left: 0; }
 #container article .right .content ul.tags li a { float: left; position: relative; display: block; line-height: 16px; left: -15px; height: 16px; padding: 4px 0 4px 12px; background: url("/images/tag_sprite.png") no-repeat 0 -26px; }
+#container article .right .content ul.tags li:hover { background-position: right -53px; }
+#container article .right .content ul.tags li:hover a { color: #fff; background-position: 0 -79px; }
+#container article .right .content ul.tags li:hover.add { background-position: left -105px; }
+#container article .right .content ul.tags li:hover.add a { background: none; color: #465866; }
 
 /* Tags */
 /* Sharing */

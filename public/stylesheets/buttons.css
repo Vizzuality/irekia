@@ -72,7 +72,7 @@ White buttons
 
 /* add person icon */
 .ie8 .white_button.add_person:hover, .ie7 .white_button.add_person:hover, .white_button.add_person:hover { color: #f10063; }
-.ie8 .white_button.add_person span .add, .ie7 .white_button.add_person span .add, .white_button.add_person span .add { float: left; width: 18px; height: 15px; background: url("/images/icons/add_person.png") no-repeat; padding: 0; margin: 0 7px 0 -5px; }
+.ie8 .white_button.add_person span .add, .ie7 .white_button.add_person span .add, .white_button.add_person span .add { float: left; width: 18px; height: 15px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -69px; padding: 0; margin: 0 7px 0 -5px; }
 
 /* Hacks & fixes */
 .ie9 .white_button:active, .ie9 article .white_button:active { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c2f4f6f9', endColorstr='#c2ffffff',GradientType=0 ); /* IE6-9 */ }

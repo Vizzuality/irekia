@@ -2162,11 +2162,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
 }
 
 #follow {
-  clear:both;
-  width:550px;
+  position:relative;
+  height:35px;
   margin: 0 0 10px 0;
-  padding-right:10px;
-  form { float:right; }
+  form { position:absolute; left:322px; }
 }
 
 .follow.basic {
@@ -2905,7 +2904,19 @@ a.editable {
     }
 
     &:hover {
+      background-position:right -53px;
+      a {
+        color:#fff;
+        background-position: 0 -79px;
+      }
 
+      &.add {
+        background-position:left -105px;
+        a {
+          background:none;
+          color:$dark_blue;
+        }
+      }
     }
   }
 }
