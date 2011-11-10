@@ -195,7 +195,7 @@ jQuery.fn.enablePublish = function(opt){
 jQuery.fn.enableRegistration = function(opt){
 
   var speed  = (opt && opt.speed) || 200,
-  marginBottom = 45,
+  marginBottom = 20,
   $form = $(".cycle form"),
   $container = $(".cycle .inner-cycle");
 
@@ -517,6 +517,7 @@ jQuery.fn.enablePagination = function(opt){
 
       $ul.parent().animate({height: height }, 500);
       $content.slideDown(speed);
+      $ul.find(".show_event").infoEventPopover();
     }});
   }
 

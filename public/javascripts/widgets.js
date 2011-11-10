@@ -649,9 +649,3 @@ var GOD = (function() {
   $(function() {});
 
 })(jQuery, window, document);
-
-
-
-
-
-

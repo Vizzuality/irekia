@@ -23,4 +23,10 @@ class News < Content
     title
   end
 
+  def update_counter_cache
+    areas.each { |area| area.update_attribute("news_count", area.news.moderated.count) }
+    users.each { |user| user.update_attribute("news_count", user.news.moderated.count) }
+  end
+  private :update_counter_cache
+
 end

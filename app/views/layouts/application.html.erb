@@ -10,10 +10,6 @@
 <head>
   <meta charset="utf-8">
 
-  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
-       More info: h5bp.com/b/378 -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
   <title>Irekia</title>
   <meta name="description" content="">
   <meta name="author" content="">
@@ -71,22 +67,6 @@
 
     <%= javascript_include_tag 'rails', 'libs/spin.min', 'helpers', 'temp', 'widgets', 'mylibs/question', 'mylibs/proposal', 'mylibs/login',  'map', 'plugins', 'libs/jquery-ui-1.8.16.custom.min', 'libs/jquery.dropkick-1.0.0', 'application' %>
     <%= yield :js_data %>
-
-    <!-- Change UA-XXXXX-X to be your site's ID -->
-    <script>
-      window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
-      Modernizr.load({
-        load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
-      });
-    </script>
-
-
-    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-    chromium.org/developers/how-tos/chrome-frame-getting-started -->
-    <!--[if lt IE 7 ]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-    <![endif]-->
 
   </body>
 </html>

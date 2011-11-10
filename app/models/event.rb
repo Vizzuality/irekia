@@ -33,7 +33,6 @@ class Event < Content
     })
   end
 
-  private
   def update_areas_agenda
     self.users.each do |user|
       user.areas.each do |area|
@@ -41,4 +40,12 @@ class Event < Content
       end
     end
   end
+  private :update_areas_agenda
+
+  def update_counter_cache
+    areas.each { |area| area.update_attribute("events_count", area.events.moderated.count) }
+    users.each { |user| user.update_attribute("events_count", user.events.moderated.count) }
+  end
+  private :update_counter_cache
+
 end

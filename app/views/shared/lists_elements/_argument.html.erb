@@ -12,7 +12,7 @@
       <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
     </span>
     &middot;
-    <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), proposal_path(data.content_id, :anchor => :comments), :class => "participants-count" %>
+    <span class="comments"><%= link_to data.comments_count, proposal_path(data.content_id, :anchor => :comments), :class => "participants-count" %></span>
     &middot;
     <%= t('.votes', :count => data.participation) %>
     &middot;

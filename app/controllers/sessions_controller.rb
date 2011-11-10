@@ -1,3 +1,3 @@
 class SessionsController < Devise::SessionsController
-	skip_before_filter :check_user_lastname
+	skip_before_filter :current_user_valid?
 end

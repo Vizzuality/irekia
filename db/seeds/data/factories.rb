@@ -257,7 +257,19 @@ def create_tweet(params)
   params = defaults.merge(params)
 
   Tweet.create :users => [params[:author]],
+               :areas => [params[:area]],
                :tweet_data => TweetData.find_or_create_by_message(params[:message], :status_id => params[:status_id], :username => params[:username])
+end
+
+def create_status_message(params)
+  defaults = {
+    :message => Faker::Lorem.sentence(10).truncate(160)
+  }
+  params = defaults.merge(params)
+
+  StatusMessage.create :users => [params[:author]],
+                       :areas => [params[:area]],
+                       :status_message_data => StatusMessageData.find_or_create_by_message(params[:message])
 end
 
 @women_images = %w(woman.jpeg).map{|image_name| File.open(Rails.root.join('db', 'seeds', 'support', 'images', image_name))}

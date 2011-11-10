@@ -37,6 +37,7 @@ $green:            #75B100;
   vertical-align: top;
   zoom: 1; *display: inline;
 }
+
 @mixin opacity($value) {
   //filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   filter: alpha(opacity=$value * 100);

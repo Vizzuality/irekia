@@ -5,7 +5,7 @@
 
 <%= form_for [@follow_parent, @follow], :remote => true, :html => {:'data-type' => 'html', :method => :delete, :class => :follow } do |form| %>
   <%= form.hidden_field :id %>
-  <%= content_tag :button, :type => 'submit', :class => "white_button add_person add_to_favorites", :'data-item-id' => @follow_parent.id do %>
-    <%= raw (content_tag(:span, '', :class => 'add') + t('.stop_follow')) %>
+  <%= content_tag :button, :type => 'submit', :class => "white_button remove_person add_to_favorites", :'data-item-id' => @follow_parent.id do %>
+    <%= raw (content_tag :span, (content_tag(:span, '', :class => 'remove') + t(".stop_follow"))) %>
   <% end -%>
 <% end -%>

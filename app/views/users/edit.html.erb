@@ -2,7 +2,7 @@
   <div class="inner-cycle">
     <article class="thin with_footer with_remark with_form signup step2">
     <%= form_for current_user, { :remote => true, :html => { :novalidate => :novalidate, "data-type" => :html }} do |f| %>
-      <div class="inner">
+      <div class="inner clearfix">
         <div class="content">
 
           <h1><%= t('.tell_us_more_about_you') %></h1>
@@ -26,11 +26,11 @@
               <span class="mandatory">obligatorio</span>
             </div>
 
-            <% if current_user.errors[:email].present? %>
+            <% if current_user.invalid? && current_user.errors[:email].present? %>
               <div class="field email">
                 <%= f.label :email %>
                 <div class="input_field">
-                  <%= f.text_field :email, :value => nil, :autocomplete => :off %>
+                  <%= f.text_field :email, :autocomplete => :off %>
                 </div>
                 <span class="mandatory">obligatorio</span>
               </div>

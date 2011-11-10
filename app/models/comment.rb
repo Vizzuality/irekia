@@ -7,8 +7,6 @@ class Comment < Participation
 
   accepts_nested_attributes_for :comment_data
 
-  after_destroy :decrement_counter_cache
-
   def create_with_body(body)
     self.comment_data = CommentData.create :body => body
     self.save!
@@ -21,17 +19,11 @@ class Comment < Participation
     })
   end
 
-  def publish_participation
-    return unless content.present? && self.moderated?
+  def update_counter_cache
+    return if content.blank?
 
-    content.commenters.each { |user| User.increment_counter('comments_count', user.id) }
-
-    Content.increment_counter('comments_count', content.id)
+    content.update_attribute('comments_count', content.comments.moderated.count)
+    content.commenters.each { |user| user.update_attribute('comments_count', user.comments.moderated.count) }
   end
-  private :publish_participation
-
-  def decrement_counter_cache
-    Content.decrement_counter('comments_count', content.id)
-  end
-  private :decrement_counter_cache
+  private :update_counter_cache
 end

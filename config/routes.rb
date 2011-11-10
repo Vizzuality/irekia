@@ -73,25 +73,28 @@ Irekia::Application.routes.draw do
     end
   end
 
-  resources :proposals,    :controller => 'contents', :type => 'Proposal' do
+  resources :proposals,       :controller => 'contents', :type => 'Proposal' do
     resources :shares
   end
-  resources :questions,    :controller => 'contents', :type => 'Question' do
+  resources :questions,       :controller => 'contents', :type => 'Question' do
     resources :shares
   end
-  resources :answers,      :controller => 'contents', :type => 'Answer' do
+  resources :answers,         :controller => 'contents', :type => 'Answer' do
     resources :shares
   end
-  resources :news,         :controller => 'contents', :type => 'News' do
+  resources :news,            :controller => 'contents', :type => 'News' do
     resources :shares
   end
-  resources :events,       :controller => 'contents', :type => 'Event' do
+  resources :events,          :controller => 'contents', :type => 'Event' do
     resources :shares
   end
-  resources :tweets,       :controller => 'contents', :type => 'Tweet' do
+  resources :tweets,          :controller => 'contents', :type => 'Tweet' do
     resources :shares
   end
-  resources :photos,       :controller => 'contents', :type => 'Photo' do
+  resources :status_messages, :controller => 'contents', :type => 'StatusMessage' do
+    resources :shares
+  end
+  resources :photos,          :controller => 'contents', :type => 'Photo' do
     resources :shares
   end
 

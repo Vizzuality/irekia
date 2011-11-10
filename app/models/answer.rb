@@ -32,4 +32,10 @@ class Answer < Content
     question.mark_as_answered(published_at) if question
   end
   private :mark_question_as_answered
+
+  def update_counter_cache
+    users.each { |user| user.update_attribute("answers_count", user.answers.moderated.count) }
+  end
+  private :update_counter_cache
+
 end

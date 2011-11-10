@@ -15,15 +15,16 @@ class Content < ActiveRecord::Base
   has_many      :participations
   has_many      :comments,
                 :include => [{:author => :profile_pictures}, :comment_data],
-                :conditions => {:moderated => true}
+                :conditions => {:moderated => true},
+                :order => 'published_at desc'
 
   attr_protected :moderated, :rejected
 
   before_create :update_published_at
   after_save :author_is_politician?
   after_save  :publish_content
-  after_create :increment_counter_cache
-  after_destroy :decrement_counter_cache
+  after_save    :update_counter_cache
+  after_destroy :update_counter_cache
 
   accepts_nested_attributes_for :comments, :areas_contents, :contents_users
 
@@ -161,15 +162,8 @@ class Content < ActiveRecord::Base
   end
   private :publish_content
 
-  def increment_counter_cache
-    areas.each { |area| Area.increment_counter("#{self.class.name.downcase.pluralize}_count", area.id) }
-    users.each { |user| User.increment_counter("#{self.class.name.downcase.pluralize}_count", user.id) }
-  end
-  private :increment_counter_cache
+  def update_counter_cache
 
-  def decrement_counter_cache
-    areas.each { |area| Area.decrement_counter("#{self.class.name.downcase.pluralize}_count", area.id) }
-    users.each { |user| User.decrement_counter("#{self.class.name.downcase.pluralize}_count", user.id) }
   end
-  private :decrement_counter_cache
+  private :update_counter_cache
 end
