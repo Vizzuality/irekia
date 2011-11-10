@@ -8,6 +8,7 @@ class CreateContents < ActiveRecord::Migration
       t.datetime :published_at
       t.boolean  :moderated, :default => false
       t.boolean  :rejected, :default => false
+      t.datetime :moderated_at
       t.float    :latitude
       t.float    :longitude
 

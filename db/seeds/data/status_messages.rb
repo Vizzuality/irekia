@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
 puts ''.green
-puts 'Creating tweets...'.green
-puts '=================='.green
+puts 'Creating status messages...'.green
+puts '==========================='.green
 
 create_status_message :author => @aitana,
                       :area => @area,

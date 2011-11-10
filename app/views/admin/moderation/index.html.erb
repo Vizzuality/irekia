@@ -112,21 +112,12 @@
 <article class="total_info">
   <div class="inner">
     <div class="content">
-      <ul class="info">
-        <li>
-          <h3>34</h3>
-          <p>comentarios<br/>pendientes</p>
-        </li>
-        <li class="last">
-          <h3 class="time">3:31h</h3>
-          <p>tiempo medio<br/>de moderación</p>
-        </li>
-      </ul>
+      <%= render 'moderation_info' %>
       <div class="order">
         <span class="move"></span>
         <span class="buttons">
-          <a class="recents" href="#recents">recientes primero</a>
-          <a class="olds" href="#olds">antiguos primero</a>
+          <a class="recents" href="<%= admin_moderation_path %>">recientes primero</a>
+          <a class="olds" href="<%= admin_moderation_path(:oldest_first => true) %>">antiguos primero</a>
         </span>
       </div>
     </div>
@@ -139,38 +130,7 @@
   <div class="inner">
     <div class="content">
       <ul>
-        <li class="content">
-          <div class="left">
-            <p>Virginia es Licenciada en Ciencias del Deporte y en Ciencias políticas por la Universidad Complutense de Madrid. En el Gobierno Vasco y en este tiempo Virgnia ha potenciado enormemente todos los ámbitos relacionados con la Investigación, y en solo un año.</p>
-            <p class="time">Hace 21 minutos · <a href="/users/2">Sandra Artzua Rodríguez</a></p>
-          </div>
-          <div class="right">
-            <div class="moderation">
-              <span class="move"></span>
-              <span class="buttons">
-                <a class="ko" href="#rechazado">rechazado</a>
-                <a class="null" href="#null">pendientes</a>
-                <a class="ok" href="#aceptado">aceptado</a>
-              </span>
-            </div>
-          </div>
-        </li>
-        <li class="content">
-          <div class="left">
-            <p>Virginia es Licenciada en Ciencias del Deporte y en Ciencias políticas por la Universidad Complutense de Madrid. En el Gobierno Vasco y en este tiempo Virgnia ha potenciado enormemente todos los ámbitos relacionados con la Investigación, y en solo un año.</p>
-            <p class="time">Hace 21 minutos · <a href="/users/2">Sandra Artzua Rodríguez</a></p>
-          </div>
-          <div class="right">
-            <div class="moderation">
-              <span class="move"></span>
-              <span class="buttons">
-                <a class="ko" href="#rechazado">rechazado</a>
-                <a class="null" href="#null">pendientes</a>
-                <a class="ok" href="#aceptado">aceptado</a>
-              </span>
-            </div>
-          </div>
-        </li>
+        <%= render 'admin/moderation/items_list' %>
       </ul>
     </div>
   </div>

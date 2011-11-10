@@ -28,7 +28,12 @@ class Admin::ParticipationsController < Admin::AdminController
 
     if @participation.update_attributes(params[participation_type])
       ModerationMailer.accepted(@participation).deliver if params[participation_type][:moderated] == 'true'
-      redirect_back_or_default url_for [:admin, @participation]
+      ModerationMailer.rejected(@participation).deliver if params[participation_type][:rejected] == 'true'
+
+      @items_count          = Moderation.not_moderated_count
+      @moderation_time      = Moderation.get_moderation_time
+
+      render :partial => 'admin/moderation/moderation_info'
     else
       redirect_back_or_render_action :edit
     end

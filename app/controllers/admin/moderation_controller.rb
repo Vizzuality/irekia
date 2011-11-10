@@ -1,31 +1,13 @@
 class Admin::ModerationController < Admin::AdminController
 
   def index
-    @contents = {}
-    @participations = {}
-
-    @contents[:not_moderated] = Content.not_rejected.not_moderated.order('created_at ASC').page(params[:page])
-    @participations[:not_moderated] = Participation.not_rejected.not_moderated.order('created_at ASC').page(params[:page])
-
-    if params[:shows_moderated]
-      @contents[:moderated] = Content.moderated.order('created_at ASC')
-      @participations[:moderated] = Participation.moderated.order('created_at ASC')
-    end
-
-    if params[:shows_rejected]
-      @contents[:rejected] = Content.rejected.order('created_at ASC')
-      @participations[:rejected] = Participation.rejected.order('created_at ASC')
-    end
+    @items_count          = Moderation.not_moderated_count
+    @moderation_time      = Moderation.get_moderation_time
+    @items                = Moderation.items_not_moderated(params.slice(:oldest_first))
+    @show_moderation_info = true if request.xhr?
 
     session[:return_to] = admin_moderation_path
-  end
-
-  def validate_all
-    item_type_to_validate = params[:type].singularize.capitalize.constantize
-
-    item_type_to_validate.validate_all_not_moderated
-
-    redirect_to admin_moderation_path
+    render :layout => !request.xhr?
   end
 
 end

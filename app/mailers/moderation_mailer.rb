@@ -13,4 +13,15 @@ class ModerationMailer < ActionMailer::Base
     end
   end
 
+  def rejected(item)
+    @item = item
+    author = item.respond_to?(:users) ? item.users.first : item.user
+
+    I18n.with_locale author.locale do
+      mail(
+        :to => author.email,
+        :subject => "Irekia - contenido rechazado"
+      )
+    end
+  end
 end

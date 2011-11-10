@@ -46,7 +46,7 @@ class Question < Content
     target_user = {
       :id   => question_data.try(:target_user).try(:id),
       :name => question_data.try(:target_user).try(:fullname)
-    } if question_data.target_user
+    } if target_user
 
     super({
       :question_text         => question_text,
