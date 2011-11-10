@@ -2,7 +2,7 @@
   <span class="currently_viewing"><%= raw t('.areas') %></span>
 
   <div class="areas_selector">
-    <%= @area ? @areas.name : (content_tag :span, t(".choose_an_area")) %>
+    <%= @area ? @area.name : (content_tag :span, t(".choose_an_area")) %>
 
     <div class="popover">
       <div class="scroll-pane">
