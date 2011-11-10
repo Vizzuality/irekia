@@ -16,25 +16,21 @@ def create_answer(params)
   }
   params = defaults.merge(params)
 
-  answer_data = AnswerData.find_or_initialize_by_answer_text(params[:text])
+  answer = Answer.new
+  answer.areas = params[:areas]
+  answer.users = [params[:author]]
+  answer.comments = params[:comments] || []
 
-  if answer_data.new_record?
+  answer_data = answer.build_answer_data
+  answer_data.answer_text = params[:text]
+  answer_data.author = params[:author]
+  answer_data.question = params[:question]
 
-    answer_data.author = params[:author]
-    answer_data.question = params[:question]
+  print '.'.blue
 
-    answer = Answer.new
-    answer.areas = params[:areas]
-    answer.users = [params[:author]]
-    answer.answer_data = answer_data
-    answer.comments = params[:comments] || []
+  answer.save!
 
-    print '.'.blue
-
-    answer.save!
-
-    answer
-  end
+  answer
 end
 
 def create_argument(params)
@@ -215,38 +211,34 @@ def create_question(params)
 
   question_data = QuestionData.find_or_initialize_by_question_text(params[:text])
 
-  if question_data.new_record?
-    question = Question.new
-    question.areas         = params[:areas]
-    question.users         = params[:users]
-    question.question_data = question_data
-    question.comments      = params[:comments]
-    question.tags          = params[:tags]
+  question = Question.new
+  question.areas         = params[:areas]
+  question.users         = params[:users]
+  question.question_data = question_data
+  question.comments      = params[:comments]
+  question.tags          = params[:tags]
 
-    case params[:for]
-    when Area
-      question_data.target_area = params[:for] if params[:for]
-    when User
-      question_data.target_user = params[:for] if params[:for]
-    end
-
-    question.save!
-
-    (params[:want_an_answer] || []).each do |user|
-      question.answer_requests.create :user => user
-    end
-
-    print '.'.blue
-
-    if params[:answer]
-      params[:answer][:question] = question
-      create_answer params[:answer]
-    end
-
-    question
-  else
-    question_data.question
+  case params[:for]
+  when Area
+    question_data.target_area = params[:for] if params[:for]
+  when User
+    question_data.target_user = params[:for] if params[:for]
   end
+
+  question.save!
+
+  (params[:want_an_answer] || []).each do |user|
+    question.answer_requests.create :user => user
+  end
+
+  print '.'.blue
+
+  if params[:answer]
+    params[:answer][:question] = question.reload
+    create_answer params[:answer]
+  end
+
+  question
 end
 
 def create_tweet(params)

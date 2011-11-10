@@ -1412,3 +1412,7 @@
       accepted: 'El %{link} ha sido aceptado.'
       content_link: contenido que has enviado
       thanks: Gracias por participar en Irekia.
+    rejected:
+      rejected: 'El %{link} ha sido rechazado.'
+      content_link: contenido que has enviado
+      thanks: Gracias por participar en Irekia.

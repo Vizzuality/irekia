@@ -9,6 +9,7 @@ class Participation < ActiveRecord::Base
   attr_protected :moderated, :rejected
 
   before_create :update_published_at
+  before_save   :update_moderated_at
   before_save   :author_is_politician?
   after_save    :publish_participation
   after_save    :update_counter_cache
@@ -46,6 +47,10 @@ class Participation < ActiveRecord::Base
     end
   end
 
+  def self.moderation_time
+    moderated.select('extract(epoch from avg(moderated_at - published_at)) as moderation_time').first.moderation_time.try(:to_f) || 0
+  end
+
   def comments_count
     [].count
   end
@@ -54,6 +59,11 @@ class Participation < ActiveRecord::Base
     self.published_at = Time.now
   end
   private :update_published_at
+
+  def update_moderated_at
+    self.moderated_at = Time.now if moderated? && moderated_changed?
+  end
+  private :update_moderated_at
 
   def author_is_politician?
     self.moderated = true if author && author.politician?

@@ -15,7 +15,7 @@ class Comment < Participation
 
   def as_json(options = {})
     super({
-      :body            => body
+      :body => body
     })
   end
 

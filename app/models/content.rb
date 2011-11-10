@@ -21,8 +21,9 @@ class Content < ActiveRecord::Base
   attr_protected :moderated, :rejected
 
   before_create :update_published_at
-  after_save :author_is_politician?
-  after_save  :publish_content
+  before_save   :update_moderated_at
+  before_save   :author_is_politician?
+  after_save    :publish_content
   after_save    :update_counter_cache
   after_destroy :update_counter_cache
 
@@ -62,6 +63,10 @@ class Content < ActiveRecord::Base
     self.not_moderated.find_each do |content|
       content.update_attribute('moderated', true)
     end
+  end
+
+  def self.moderation_time
+    moderated.select('extract(epoch from avg(moderated_at - published_at)) as moderation_time').first.moderation_time.try(:to_f) || 0
   end
 
   def not_moderated?
@@ -130,8 +135,13 @@ class Content < ActiveRecord::Base
   end
   private :update_published_at
 
+  def update_moderated_at
+    self.moderated_at = Time.now if moderated? && moderated_changed?
+  end
+  private :update_moderated_at
+
   def author_is_politician?
-    update_attribute('moderated', true) if author.politician? && not_moderated?
+    update_attribute('moderated', true) if author && author.politician? && not_moderated?
   end
   private :author_is_politician?
 

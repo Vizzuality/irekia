@@ -18,10 +18,20 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-  <meta name="viewport" content="width=1024">
+  <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+  <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
+  <!-- For iPhone 4 with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/h/apple-touch-icon.png">
+  <!-- For first-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/m/apple-touch-icon.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
+  <!-- For nokia devices: -->
+  <link rel="shortcut icon" href="img/l/apple-touch-icon.png">
 
   <!-- CSS: implied media=all -->
   <!-- CSS concatenated and minified via ant build script-->
@@ -38,7 +48,7 @@
   <%= csrf_meta_tag %>
 </head>
 
-<body>
+<body class="admin">
 
   <%= render 'shared/sign_in' %>
 
@@ -52,18 +62,17 @@
 
     <div id="main" class="<%= controller.controller_name %> <%= controller.action_name %> role="main">
       <div class="content">
-
-<article>
-<div class="inner">
-  <div class="content">
-    <div class="left">
-        <%= render 'admin/shared/navigation' %>
-    </div>
-    <div class="right"> </div>
-  </div>
-</div>
-<div class="t"></div><div class="f"></div>
-</article>
+        <article style="display:none">
+        <div class="inner">
+          <div class="content">
+            <div class="left">
+                <%= render 'admin/shared/navigation' %>
+            </div>
+            <div class="right"> </div>
+          </div>
+        </div>
+        <div class="t"></div><div class="f"></div>
+        </article>
         <%= yield %>
 
         <%= render 'shared/floating_login' %>
