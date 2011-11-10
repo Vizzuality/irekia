@@ -517,6 +517,7 @@ jQuery.fn.enablePagination = function(opt){
 
       $ul.parent().animate({height: height }, 500);
       $content.slideDown(speed);
+      $ul.find(".show_event").infoEventPopover();
     }});
   }
 
