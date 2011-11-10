@@ -15,4 +15,10 @@ class Photo < Content
     includes(:areas, :users, :comments, :image).find(id)
   end
 
+  def update_counter_cache
+    areas.each { |area| area.update_attribute("photos_count", area.photos.moderated.count) }
+    users.each { |user| user.update_attribute("photos_count", Photo.joins(:contents_users).where(:moderated => true, :'contents_users.user_id' => user.id)) }
+  end
+  private :update_counter_cache
+
 end

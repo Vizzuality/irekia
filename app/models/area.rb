@@ -69,14 +69,16 @@ class Area < ActiveRecord::Base
 
   def self.by_id(id)
     scoped.select([:id,
-                           :name,
-                           :description,
-                           :follows_count,
-                           :news_count,
-                           :questions_count,
-                           :proposals_count,
-                           :photos_count,
-                           :videos_count]).find(id)
+                   :name,
+                   :description,
+                   :follows_count,
+                   :news_count,
+                   :questions_count,
+                   :proposals_count,
+                   :photos_count,
+                   :videos_count,
+                   :statuses_count
+                   ]).find(id)
   end
 
   def self.names_and_ids
@@ -85,5 +87,13 @@ class Area < ActiveRecord::Base
 
   def agenda_between(start_date, end_date)
     events.moderated.where('event_data.event_date >= ? AND event_data.event_date <= ?', start_date, end_date)
+  end
+
+  def tweets
+    Tweet.joins(:users => :areas).where('areas.id' => id).moderated
+  end
+
+  def status_messages
+    StatusMessage.joins(:users => :areas).where('areas.id' => id).moderated
   end
 end

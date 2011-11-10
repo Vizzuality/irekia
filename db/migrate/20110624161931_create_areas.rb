@@ -11,9 +11,9 @@ class CreateAreas < ActiveRecord::Migration
       t.integer :answers_count, :default => 0
       t.integer :events_count, :default => 0
       t.integer :news_count, :default => 0
-      t.integer :tweets_count, :default => 0
       t.integer :photos_count, :default => 0
       t.integer :videos_count, :default => 0
+      t.integer :statuses_count, :default => 0
 
       t.timestamps
     end

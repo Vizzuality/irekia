@@ -8,7 +8,7 @@ create_photo :title => 'Presentación del Gobierno Vasco 2010',
              :description => 'Presentación del Nuevo Gobierno Vasco, formado tras las elecciones de 2010',
              :image => @men_images.sample,
              :tags => %w(Comisión Transporte Gobierno\ Vasco Transporte).join(','),
-             :author => User.politicians.sample,
+             :author => User.all.sample,
              :comments => [
                 create_comment(User.citizens.sample, <<-EOF
                   Me encantaría que realmente esta gente fuera siempre a los eventos y nos lo comunicaran como en esta ocasión. La verdad que fue un buen momento para hablar con ellos y conocerlos en persona.

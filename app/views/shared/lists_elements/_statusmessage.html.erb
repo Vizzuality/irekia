@@ -1,6 +1,6 @@
 <%= avatar data.author %>
 <div class="content">
-  <p class="excerpt"><%= link_to data.message, tweet_path(data.id) %></p>
+  <p class="excerpt"><%= link_to data.message, status_message_path(data.id) %></p>
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>

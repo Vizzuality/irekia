@@ -91,4 +91,11 @@ class Proposal < Content
     super
   end
   private :publish_content
+
+  def update_counter_cache
+    areas.each { |area| area.update_attribute("proposals_count", area.proposals.moderated.count) }
+    users.each { |user| user.update_attribute("proposals_count", user.proposals_votes_and_arguments.inject(0){|r, a| r + a.count}) }
+  end
+  private :update_counter_cache
+
 end

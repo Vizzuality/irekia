@@ -74,4 +74,10 @@ class Question < Content
   end
   private :publish_content
 
+  def update_counter_cache
+    areas.each { |area| area.update_attribute("questions_count", area.questions.moderated.count) }
+    users.each { |user| user.update_attribute("questions_count", user.questions_received.count) }
+  end
+  private :update_counter_cache
+
 end

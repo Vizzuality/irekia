@@ -15,10 +15,10 @@
 
   <div class="left">
     <div id="listing" class="listing_actions_<%= params[:id] %>">
-      <% if @actions %>
+      <% if @actions.present? %>
         <%= render 'shared/actions_list' %>
       <% else %>
-        <span class="empty">No hay contenido en este area</span>
+        <span class="empty"><%= t((@area || @politician || @user).class.name.downcase, :scope => 'shared.actions.no_content')%></span>
       <% end %>
     </div>
     &nbsp;
@@ -33,7 +33,7 @@
       <% if @news_count > 0 %>
         <%= link_to t('.content_type_filters.news'), link_for_actions(:type => :news, :referer => action_name), :class => "filter" %>
       <% else %>
-        <em>No hay noticias</em>
+        <em><%= t('.no_content_filters.news') %></em>
       <% end %>
       </li>
 
@@ -41,31 +41,39 @@
       <% if @questions_count > 0 %>
       <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => :question, :referer => action_name), :class => "filter" %>
       <% else %>
-        <em>No hay preguntas</em>
+        <em><%= t('.no_content_filters.questions') %></em>
       <% end %>
       </li>
 
       <li>
-      <% if @proposals_count and @proposals_count > 0 %>
+      <% if @proposals_count > 0 %>
       <%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => :proposal, :referer => action_name), :class => "filter" %>
       <% else %>
-        <em>No hay propuestas</em>
+        <em><%= t('.no_content_filters.proposals') %></em>
       <% end %>
       </li>
 
       <li>
-      <% if @photos_count && @photos_count > 0 %>
+      <% if @photos_count > 0 %>
         <%= link_to t('.content_type_filters.images'), link_for_actions(:type => :image, :referer => action_name), :class => "filter" %>
       <% else %>
-        <em>No hay fotos</em>
+        <em><%= t('.no_content_filters.images') %></em>
       <% end %>
       </li>
 
       <li>
-      <% if @videos_count && @videos_count > 0 %>
+      <% if @videos_count > 0 %>
         <%= link_to t('.content_type_filters.videos'), link_for_actions(:type => :video, :referer => action_name), :class => "filter" %>
       <% else %>
-        <em>No hay vídeos</em>
+        <em><%= t('.no_content_filters.videos') %></em>
+      <% end %>
+      </li>
+
+      <li>
+      <% if @statuses_count > 0 %>
+        <%= link_to t('.content_type_filters.statuses'), link_for_actions(:type => [:tweet, :statusmessage], :referer => action_name), :class => "filter" %>
+      <% else %>
+        <em><%= t('.no_content_filters.statuses') %></em>
       <% end %>
       </li>
 

@@ -9,8 +9,10 @@ class Participation < ActiveRecord::Base
   attr_protected :moderated, :rejected
 
   before_create :update_published_at
-  before_save :author_is_politician?
-  after_save  :publish_participation
+  before_save   :author_is_politician?
+  after_save    :publish_participation
+  after_save    :update_counter_cache
+  after_destroy :update_counter_cache
 
   accepts_nested_attributes_for :user
 
@@ -98,4 +100,9 @@ class Participation < ActiveRecord::Base
 
   end
   private :publish_participation
+
+  def update_counter_cache
+
+  end
+  private :update_counter_cache
 end

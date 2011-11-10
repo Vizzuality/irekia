@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111028085815) do
+ActiveRecord::Schema.define(:version => 20111110100035) do
 
   create_table "answer_data", :force => true do |t|
     t.integer  "answer_id"
@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
     t.integer  "answers_count",     :default => 0
     t.integer  "events_count",      :default => 0
     t.integer  "news_count",        :default => 0
-    t.integer  "tweets_count",      :default => 0
     t.integer  "photos_count",      :default => 0
     t.integer  "videos_count",      :default => 0
+    t.integer  "statuses_count",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -230,6 +230,15 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
     t.datetime "updated_at"
   end
 
+  create_table "status_message_data", :force => true do |t|
+    t.integer  "status_message_id"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "status_message_data", ["status_message_id"], :name => "index_status_message_data_on_status_message_id"
+
   create_table "titles", :force => true do |t|
     t.string   "name"
     t.string   "name_i18n_key"
@@ -298,9 +307,9 @@ ActiveRecord::Schema.define(:version => 20111028085815) do
     t.integer  "answers_count",                              :default => 0
     t.integer  "events_count",                               :default => 0
     t.integer  "news_count",                                 :default => 0
-    t.integer  "tweets_count",                               :default => 0
     t.integer  "photos_count",                               :default => 0
     t.integer  "videos_count",                               :default => 0
+    t.integer  "statuses_count",                             :default => 0
     t.integer  "comments_count",                             :default => 0
     t.integer  "tagged_count",                               :default => 0
     t.string   "email",                                      :default => "",    :null => false
