@@ -108,7 +108,6 @@ White buttons
   &.blue   { color:$link_color; }
   &.orange { color:$orange; }
   &.green  { color:$green; }
-
   &.in_favor {
     color: $agree_color;
     &.selected {
@@ -127,10 +126,6 @@ White buttons
       text-shadow: #B74400 1px 1px 0;
     }
   }
-
-/* ------------------------------------------------------------------------------ Icons */
-  //&.add_person, &.add_person:active { position:relative; padding-left:33px; color:$pink; }
-/* ------------------------------------------------------------------------------ Definition */
 
   float:left;
   padding:8px 14px;
@@ -236,14 +231,57 @@ article .white_button:active {
   span {background-position:0 0;}
 }
 
+
+
+.ie8 .white_button.remove_person,
+.ie7 .white_button.remove_person,
+.white_button.remove_person {
+    color:#fff;
+    text-shadow:1px 1px 1px #0F4869;
+
+    background: #3396cd; /* Old browsers */
+    background: -moz-linear-gradient(top,  #3396cd 0%, #2485ba 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3396cd), color-stop(100%,#2485ba)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #3396cd 0%,#2485ba 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #3396cd 0%,#2485ba 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #3396cd 0%,#2485ba 100%); /* IE10+ */
+    background: linear-gradient(top,  #3396cd 0%,#2485ba 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3396cd', endColorstr='#2485ba',GradientType=0 ); /* IE6-9 */
+
+  span.remove {
+    float:left;
+    width:18px;
+    height:15px;
+    background:url('/images/icons/icon_sprite.png') no-repeat 0 -104px;
+    padding: 0;
+    margin: 0 7px 0 -5px;
+  }
+
+
+
+    &:hover { color: #fff; }
+    &:active {
+    background: #3396cd; /* Old browsers */
+    background: -moz-linear-gradient(top,  #3396cd 0%, #2485ba 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3396cd), color-stop(100%,#2485ba)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #3396cd 0%,#2485ba 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #3396cd 0%,#2485ba 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #3396cd 0%,#2485ba 100%); /* IE10+ */
+    background: linear-gradient(top,  #3396cd 0%,#2485ba 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3396cd', endColorstr='#2485ba',GradientType=0 ); /* IE6-9 */
+
+  }
+
+}
+
+
+
 /* add person icon */
 .ie8 .white_button.add_person,
 .ie7 .white_button.add_person,
 .white_button.add_person {
 
-  &:hover {
-    span.add { background-position: left bottom; }
-  }
+  &:hover { color: $pink; }
 
   span {
     .add {
@@ -254,6 +292,7 @@ article .white_button:active {
       padding: 0;
       margin: 0 7px 0 -5px;
     }
+
   }
 }
 

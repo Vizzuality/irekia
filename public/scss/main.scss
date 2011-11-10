@@ -2352,6 +2352,7 @@ a.editable {
         font-size: 15px;
         color:$standard_gray;
         margin: 0 0 5px 0;
+
         &.add {
           background:none;
           a { font-size:13px; text-decoration:underline; color:rgba(0,0,0,.3); }
@@ -2904,19 +2905,7 @@ a.editable {
     }
 
     &:hover {
-      background-position:right -53px;
-      a {
-        color:#fff;
-        background-position: 0 -79px;
-      }
 
-      &.add {
-        background-position:left -105px;
-        a {
-          background:none;
-          color:$dark_blue;
-        }
-      }
     }
   }
 }
