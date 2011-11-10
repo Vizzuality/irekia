@@ -568,8 +568,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
         a:hover { text-decoration:none; }
 
-        &.left { float:left; margin-right:6px; }
-        &.right { float:left;  }
+        &.pull-left { float:left; clear:left; margin-right:6px; }
+        &.pull-right { float:left;  }
 
         .gender.male { margin-right:25px; }
 
@@ -2811,7 +2811,7 @@ a.editable {
     &[type="email"] ,
     &[type="password"] {
       width: 222px;
-      height: 29px;
+      height: 33px;
       padding: 0 9px;
       font-size: 13px;
       border: 1px solid rgba(0, 0, 0, 0.2);
@@ -3287,9 +3287,64 @@ input {
   }
 }
 
+#container article.settings .inner {
+  .left {
+    fieldset {
+      .field {
+        .input_field {
+          width:415px;
+          z-index:299999;
+        }
 
-#container article.with_form .inner .left .field {
+        &.social {
+          float:left;
+        }
 
+        &.born_at {
+          float:left;
+          width:415px;
+          clear:right;
+
+          select, .dk_container { float:left; margin:0 5px 0 0; }
+
+          .input_field {
+            width:415px;
+          }
+        }
+        &.pull-left { float:left; clear:left; margin-right:6px; }
+        &.pull-right { float:left;  }
+      }
+    }
+
+
+    .delete_profile {
+      width:237px;
+      right:-270px;
+      bottom:40px;
+      position:absolute;
+      background:#f1f1f1;
+      padding:5px;
+      @include border-radius(5px);
+      a { color:#465866; font-size:15px; text-decoration:underline; }
+
+
+      p {
+        margin: 0 0 9px 0;
+        padding:3px 10px;
+        color:#465866;
+        font-size:15px;
+        &:last-child { margin:0; }
+        &.last { margin:0; }
+      }
+    }
+
+  }
+
+  .right {
+    width:263px;
+    background:red;
+
+  }
 }
 
 /* Fields with errors */
@@ -3344,14 +3399,14 @@ input {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  display:block;
-  width:638px;
-  height:35px;
-  background:url('/images/inputs_sprite.png') no-repeat right -75px;
-  border:none;
-  font-size:15px;
-  color:$medium_dark;
-  outline:none;
+display:block;
+width:638px;
+height:35px;
+background:url('/images/inputs_sprite.png') no-repeat right -75px;
+border:none;
+font-size:15px;
+color:$medium_dark;
+outline:none;
 }
 }
 

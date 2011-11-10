@@ -334,8 +334,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_form .inner .content .field ul.errors, #container article.with_form .inner .left .field ul.errors { position: absolute; top: 30px; right: -684px; margin: 0; padding: 0; }
 #container article.with_form .inner .content .field ul.errors li, #container article.with_form .inner .left .field ul.errors li { background: url("/images/icons/icon_sprite.png") no-repeat -62px 2px; margin: 0; padding: 0 0 0 21px; font-size: 15px; color: #E96F5F; }
 #container article.with_form .inner .content .field a:hover, #container article.with_form .inner .left .field a:hover { text-decoration: none; }
-#container article.with_form .inner .content .field.left, #container article.with_form .inner .left .field.left { float: left; margin-right: 6px; }
-#container article.with_form .inner .content .field.right, #container article.with_form .inner .left .field.right { float: left; }
+#container article.with_form .inner .content .field.pull-left, #container article.with_form .inner .left .field.pull-left { float: left; clear: left; margin-right: 6px; }
+#container article.with_form .inner .content .field.pull-right, #container article.with_form .inner .left .field.pull-right { float: left; }
 #container article.with_form .inner .content .field .gender.male, #container article.with_form .inner .left .field .gender.male { margin-right: 25px; }
 #container article.with_form .inner .content .field.social, #container article.with_form .inner .left .field.social { width: 410px; }
 #container article.with_form .inner .content .field.legal, #container article.with_form .inner .left .field.legal { width: 410px; clear: both; }
@@ -892,7 +892,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .input_field span.holder.large { width: 100%; font-size: 15px; }
 #container article .input-counter span.holder.large { width: 100%; top: 8px; font-size: 15px; }
 #container article .input_field input { position: absolute; background: white; }
-#container article .input_field input[type="text"], #container article .input_field input[type="email"], #container article .input_field input[type="password"] { width: 222px; height: 29px; padding: 0 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); outline: none; }
+#container article .input_field input[type="text"], #container article .input_field input[type="email"], #container article .input_field input[type="password"] { width: 222px; height: 33px; padding: 0 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); outline: none; }
 #container article .input-counter { position: relative; margin-bottom: 24px; float: left; }
 #container article .input-counter .counter { top: -20px; right: 0; position: absolute; color: #465866; color: rgba(70, 88, 102, 0.3); -moz-transition-property: color; -webkit-transition-property: color; -o-transition-property: color; transition-property: color; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; }
 #container article .input-counter .counter.error { padding: 0; color: #FF3300!important; filter: alpha(opacity=100); -khtml-opacity: 1; -moz-opacity: 1; opacity: 1; }
@@ -1010,6 +1010,20 @@ Forms
 ========================================================================== */
 input.mInput { width: 294px; height: 32px; padding: 0 9px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); outline: none; font-size: 15px; font-weight: 300; }
 input.xlInput { width: 508px; height: 32px; padding: 0 9px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.1); outline: none; color: #666666; font-size: 15px; }
+
+#container article.settings .inner .left fieldset .field .input_field { width: 415px; z-index: 299999; }
+#container article.settings .inner .left fieldset .field.social { float: left; }
+#container article.settings .inner .left fieldset .field.born_at { float: left; width: 415px; clear: right; }
+#container article.settings .inner .left fieldset .field.born_at select, #container article.settings .inner .left fieldset .field.born_at .dk_container { float: left; margin: 0 5px 0 0; }
+#container article.settings .inner .left fieldset .field.born_at .input_field { width: 415px; }
+#container article.settings .inner .left fieldset .field.pull-left { float: left; clear: left; margin-right: 6px; }
+#container article.settings .inner .left fieldset .field.pull-right { float: left; }
+#container article.settings .inner .left .delete_profile { width: 237px; right: -270px; bottom: 40px; position: absolute; background: #f1f1f1; padding: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
+#container article.settings .inner .left .delete_profile a { color: #465866; font-size: 15px; text-decoration: underline; }
+#container article.settings .inner .left .delete_profile p { margin: 0 0 9px 0; padding: 3px 10px; color: #465866; font-size: 15px; }
+#container article.settings .inner .left .delete_profile p:last-child { margin: 0; }
+#container article.settings .inner .left .delete_profile p.last { margin: 0; }
+#container article.settings .inner .right { width: 263px; background: red; }
 
 /* Fields with errors */
 #container article.with_form .inner .content .field p.error, #container article.with_form .inner .left .field p.error, #container article.with_form .inner .content .field p.error a, #container article.with_form .inner .left .field p.error a { color: #E96F5F; }
