@@ -123,4 +123,5 @@ $(function() {
   $(".with_filters").filterWidget();
 
   $("article.publish").enablePublish();
+  $(".areas_selector").areasPopover();
 });

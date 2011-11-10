@@ -124,7 +124,6 @@ header {
 
   .content {
     clear: both;
-    overflow: hidden;
     //position: relative;
     height: 74px;
 
@@ -174,6 +173,7 @@ header {
         color: #19597A;
         text-shadow: 1px 1px 1px #2F9CD8;
       }
+
       form {
         float: left;
         width: 290px;
@@ -222,47 +222,87 @@ header {
 
       .sign_out { float: right; }
 
-      ul {
-        &.auth {
-          float: right;
-          li {
-            position: relative;
-            margin: 0 0 0 10px;
-            @include inline-block;
+      .areas_selector {
+        float: left;
+        margin-right: 10px;
+        position:relative;
+        padding: 7px 14px;
+        width:150px;
+        color: $white;
+        font-size: 15px;
+        text-shadow: 0px 1px 1px #0F4768;
+        border: 1px solid #13587F;
 
-            .pending-counter { right: 5px; }
+        @include border-radius(5px);
+        @include box-shadow(0 1px 1px 0 #369acf);
 
-            a {
-              display: inline-block;
-              font-size: 15px;
-              color: $white;
+        background: #3396cd;
 
-              &.twitter { background: url('/images/icons/twitter.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
-              &.facebook { background: url('/images/icons/facebook.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
+        background: -moz-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3396cd), color-stop(100%, #2080b5));
+        background: -webkit-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        background: -o-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        background: -ms-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 );
+        background: linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        cursor:pointer;
+
+        .popover {
+          display:none;
+          position:absolute;
+          width:231px;
+          height: 311px;
+          z-index:1000;
+          background: url("/images/popovers_bkg.png") no-repeat -400px -78px;
+
+          .scroll-pane {
+            height: 280px;
+            width: 195px;
+            overflow: hidden;
+            margin: 20px 0 0 20px;
+            outline:none;
+
+            ul {
+              margin:0; padding:0;
+              width:195px;
+
+              li {
+                text-shadow:none;
+                color:#333;
+
+                &.last {
+                  a { border:none; }
+                }
+
+                a {
+                  display:block;
+                  padding: 20px 0 20px 0;
+                  border-bottom: 1px solid #f1f1f1;
+                }
+              }
             }
           }
+
         }
-        &.areas {
-          float: left;
-          margin-right: 10px;
-          padding: 7px 14px;
-          color: $white;
-          font-size: 15px;
-          text-shadow: 0px 1px 1px #0F4768;
-          border: 1px solid #13587F;
+      }
 
-          @include border-radius(5px);
-          @include box-shadow(0 1px 1px 0 #369acf);
+      ul.auth {
+        float: right;
+        li {
+          position: relative;
+          margin: 0 0 0 10px;
+          @include inline-block;
 
-          background: #3396cd;
+          .pending-counter { right: 5px; }
 
-          background: -moz-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3396cd), color-stop(100%, #2080b5));
-          background: -webkit-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-          background: -o-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-          background: -ms-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 );
-          background: linear-gradient(top, #3396cd 0%, #2080b5 100%);
+          a {
+            display: inline-block;
+            font-size: 15px;
+            color: $white;
+
+            &.twitter { background: url('/images/icons/twitter.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
+            &.facebook { background: url('/images/icons/facebook.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
+          }
         }
       }
     }
