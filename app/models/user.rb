@@ -77,6 +77,12 @@ class User < ActiveRecord::Base
            :through => :contents_users,
            :include => :event_data,
            :order => 'event_data.event_date asc'
+  has_many :tweets,
+           :through => :contents_users,
+           :include => :tweet_data
+  has_many :status_messages,
+           :through => :contents_users,
+           :include => :status_message_data
 
   has_many :question_data,
            :class_name => 'QuestionData'
@@ -180,6 +186,9 @@ class User < ActiveRecord::Base
     credentials = access_token['credentials']
 
     if user = (signed_in_resource || User.find_by_twitter_username(data['nickname']))
+      user.twitter_oauth_token        = credentials['token']
+      user.twitter_oauth_token_secret = credentials['secret']
+      user.save!
       user
     else
       user = User.new :name             => data['name'],
@@ -193,15 +202,21 @@ class User < ActiveRecord::Base
     end
   end
 
-  def proposals_and_participation(filters = {}, page = 1, per_page = 4)
+  def proposals_votes_and_arguments
     if politician?
-      @proposals = Proposal.select([:'contents.id', :type, :published_at, :comments_count]).joins(:areas_contents, :contents_users).where('contents_users.user_id = ? OR areas_contents.area_id = ?', id, areas.first.id)
+      proposals = Proposal.select([:'contents.id', :type, :published_at, :comments_count]).joins(:areas_contents, :contents_users).where('contents_users.user_id = ? OR areas_contents.area_id = ?', id, areas.first.id)
     else
-      @proposals = Proposal.select([:'contents.id', :type, :published_at, :comments_count]).joins(:contents_users).where('contents_users.user_id = ?', id)
+      proposals = Proposal.select([:'contents.id', :type, :published_at, :comments_count]).joins(:contents_users).where('contents_users.user_id = ?', id)
     end
 
-    @votes = Vote.select([:id, :type, :published_at, :'0 as comments_count']).where(:user_id => id)
-    @arguments = Argument.select([:id, :type, :published_at, :'0 as comments_count']).where(:user_id => id)
+    votes = Vote.select([:id, :type, :published_at, :'0 as comments_count']).where(:user_id => id)
+    arguments = Argument.select([:id, :type, :published_at, :'0 as comments_count']).where(:user_id => id)
+
+    [proposals, votes, arguments]
+  end
+
+  def proposals_and_participation(filters = {}, page = 1, per_page = 4)
+    @proposals, @votes, @arguments = *proposals_votes_and_arguments
 
     if filters[:from_politicians]
       @proposals = @proposals.from_politicians

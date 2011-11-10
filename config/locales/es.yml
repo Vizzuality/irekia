@@ -468,14 +468,24 @@
       main_filters:
         more_recent: Más recientes
         more_polemic: Más polémicas
+      no_content:
+        area: No hay contenido en este área.
+        user: No hay contenido para este usuario.
       content_type_filters:
        all: Todos los tipos
        news: Noticias
-       politicians_activity: Actividad de los políticos
        questions: Preguntas
        proposals: Propuestas
        images: Fotos
        videos: Vídeos
+       statuses: Cambios de estado
+      no_content_filters:
+       news: No hay noticias
+       questions: No hay preguntas
+       proposals: No hay propuestas
+       images: No hay fotos
+       videos: No hay vídeos
+       statuses: No hay cambios de estado
       more: ver más acciones
 
     lists_elements:

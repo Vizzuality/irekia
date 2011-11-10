@@ -10,5 +10,6 @@ load Rails.root.join('db/seeds/data/questions.rb')
 load Rails.root.join('db/seeds/data/news.rb')
 load Rails.root.join('db/seeds/data/events.rb')
 load Rails.root.join('db/seeds/data/photos.rb')
+load Rails.root.join('db/seeds/data/status_messages.rb')
 load Rails.root.join('db/seeds/data/tweets.rb')
 

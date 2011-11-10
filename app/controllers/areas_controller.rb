@@ -74,12 +74,13 @@ class AreasController < ApplicationController
   private :get_area_data
 
   def get_counters
-    @followers_count = @area.followers.count
-    @news_count      = @area.news_count
-    @questions_count = @area.questions_count
-    @proposals_count = @area.proposals_count
-    @photos_count    = @area.photos_count
-    @videos_count    = @area.videos_count
+    @followers_count = @area.followers.count || 0
+    @news_count      = @area.news_count      || 0
+    @questions_count = @area.questions_count || 0
+    @proposals_count = @area.proposals_count || 0
+    @photos_count    = @area.photos_count    || 0
+    @videos_count    = @area.videos_count    || 0
+    @statuses_count  = @area.statuses_count  || 0
   end
   private :get_counters
 

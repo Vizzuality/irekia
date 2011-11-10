@@ -6,7 +6,7 @@
     <%= link_to @content.author.try(:fullname), path_for_user(@content.author)  %>
     <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     &middot;
-    <%= link_to t('.title_author_and_comments.comments', :count => @content.comments_count), { :anchor => :comments }, :class => :goto_comments %>
+    <%= link_to t('.title_author_and_comments.comments', :count => @comments_count), { :anchor => :comments }, :class => :goto_comments %>
     </p>
 
     <div class="my_opinion <%= @content.percent_in_favor >= 50 ? "in_favor" : "against" %>">
