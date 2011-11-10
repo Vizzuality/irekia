@@ -1,75 +1,257 @@
-<article>
-<div class="inner">
-  <div class="content">
-    <header>
-    <h1>Moderación de contenidos</h1>
-    </header>
-    <div class="left">
-      <% if @contents[:not_moderated].size > 0 %>
-      <div class="contents">
-        <h3><%= t('.contents') %></h3>
-        <div class="clearfix"><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'contents'), :class => :white_button %></div>
 
-        <ul>
-          <% @contents[:not_moderated].each do |content| %>
-            <li class="content">
-            <%= render "shared/lists_elements/#{content.class.name.downcase}", :data => content, :admin => true %>
 
-            <div class="clearfix">
-              <%= form_for [:admin, content] do |form| %>
-                <%= form.hidden_field :moderated, :value => true %>
-                <%= button t('.validate', :type => content.class.model_name.human.downcase), :class => :white_button %>
-              <% end %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
-              <%= form_for [:admin, content] do |form| %>
-                <%= form.hidden_field :rejected, :value => true %>
-                <%= button t('.delete', :type => content.class.model_name.human.downcase), :class => :white_button %>
-              <% end %>
-            </div>
+<script type="text/javascript">
 
-            <hr />
-            </li>
-          <% end %>
-        </ul>
-        <%= paginate @contents[:not_moderated] %>
+  var colors = {ok:'#E2E6BD',ko:'#FF855C', 'null':'#F6F6F7'};
+  var loading = false;
+
+  $(document).ready(function(){
+    // Mobile
+    var mobile = false;
+    if( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i)){
+      mobile = true;
+      $('ul.info li.last p').html('tiempo<br/>medio');
+    }
+
+    $('li div.moderation').each(function(i,ele){
+      var w = $(this).find('span.buttons').width();
+      $(ele).width(w + 6);
+      var move = $(ele).find('span.move');
+      var w_n = $(ele).find('a.null').width() + 16;
+      var p = $(ele).find('a.null').position().left + 3;
+      move.css({left:p+'px',width:w_n+'px'});
+    });
+
+    $('div.order span.buttons a').click(function(ev){
+      ev.preventDefault();
+      ev.stopPropagation();
+
+      // Send request !!
+
+      var order = $(this).closest('div.order');
+      var move = order.find('span.move');
+
+      var p_w = order.width();
+      var w = $(this).width() + 34; //18 - 2(borders)
+      var p = $(this).position().left + 3;
+
+      move.animate({
+        left:p + 'px',
+        width: w  + 'px'
+      },300);
+
+      order.find('span.buttons a').css({color:'#7D8700'});
+      $(this).css({color:'#333333'});
+    });
+
+    $('li div.moderation span.buttons a').click(function(ev){
+      ev.preventDefault();
+      ev.stopPropagation();
+
+      // Send request !!
+
+      var moderation = $(this).closest('div.moderation');
+      var li = $(this).closest('li');
+      var move = moderation.find('span.move');
+
+      var p_w = moderation.width();
+      var w = $(this).width() + 16; //18 - 2(borders)
+      var p = $(this).position().left + 3;
+
+      var t = $(this).attr('class');
+
+      move.animate({
+        left:p + 'px',
+        width: w  + 'px'
+      },300);
+
+      moderation.animate({
+        backgroundColor:colors[t]
+      },300);
+
+      if (t == 'ko') {
+        moderation.find('span.buttons a').css({color:'#FCC3AE'});
+      } else if (t == 'ok') {
+        moderation.find('span.buttons a').css({color:'#B5B996'});
+      } else {
+        moderation.find('span.buttons a').css({color:'#7D8700'});
+      }
+      $(this).css({color:'#333333'});
+
+      // Remove after 5 secs if it is not null
+      if (t == 'null') {
+        li.stop(true);
+      } else {
+        li.stop(true).delay(5000).animate({
+          opacity:0
+        },500,function(){
+          $(this).animate({height:0,paddingTop:0,paddingBottom:0},500,function(){
+            $(this).remove();
+          });
+        });
+      }
+    });
+
+    $(document).scroll(function(ev){
+      if (!loading && (($(document).scrollTop() + $(window).height() + (mobile?60:0)) >= $(document).height())) {
+        loading = true;
+        $('span.loader').css({'display':'inline-block'});
+        // Get more!
+      }
+    });
+  });
+
+</script>
+
+
+
+<article class="total_info">
+  <div class="inner">
+    <div class="content">
+      <ul class="info">
+        <li>
+          <h3>34</h3>
+          <p>comentarios<br/>pendientes</p>
+        </li>
+        <li class="last">
+          <h3 class="time">3:31h</h3>
+          <p>tiempo medio<br/>de moderación</p>
+        </li>
+      </ul>
+      <div class="order">
+        <span class="move"></span>
+        <span class="buttons">
+          <a class="recents" href="#recents">recientes primero</a>
+          <a class="olds" href="#olds">antiguos primero</a>
+        </span>
       </div>
-    <% end %>
-
-    <% if @participations[:not_moderated].size > 0 %>
-      <div class="participations">
-        <h3><%= t('.participations') %></h3>
-        <div class="clearfix"><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'participations'), :class => :white_button %></div>
-
-        <ul>
-
-          <% @participations[:not_moderated].each do |participation| %>
-            <li class="participation">
-            <%= render "shared/lists_elements/#{participation.class.name.downcase}", :data => participation, :admin => true %>
-
-            <div class="clearfix">
-              <%= form_for [:admin, participation] do |form| %>
-                <%= form.hidden_field :moderated, :value => true %>
-                <%= button t('.validate', :type => participation.class.model_name.human.downcase), :class => :white_button %>
-              <% end %>
-
-              <%= form_for [:admin, participation] do |form| %>
-                <%= form.hidden_field :rejected, :value => true %>
-                <%= button t('.delete', :type => participation.class.model_name.human.downcase), :class => :white_button %>
-              <% end %>
-            </div>
-
-            <hr />
-            </li>
-          <% end %>
-        </ul>
-        <%= paginate @participations[:not_moderated] %>
-      </div>
-    <% end %>
-
-
+    </div>
   </div>
-  <div class="right"> </div>
-</div>
-</div>
-<div class="t"></div><div class="f"></div>
+  <div class="t"></div><div class="f"></div>
 </article>
+
+
+<article class="activity">
+  <div class="inner">
+    <div class="content">
+      <ul>
+        <li class="content">
+          <div class="left">
+            <p>Virginia es Licenciada en Ciencias del Deporte y en Ciencias políticas por la Universidad Complutense de Madrid. En el Gobierno Vasco y en este tiempo Virgnia ha potenciado enormemente todos los ámbitos relacionados con la Investigación, y en solo un año.</p>
+            <p class="time">Hace 21 minutos · <a href="/users/2">Sandra Artzua Rodríguez</a></p>
+          </div>
+          <div class="right">
+            <div class="moderation">
+              <span class="move"></span>
+              <span class="buttons">
+                <a class="ko" href="#rechazado">rechazado</a>
+                <a class="null" href="#null">pendientes</a>
+                <a class="ok" href="#aceptado">aceptado</a>
+              </span>
+            </div>
+          </div>
+        </li>
+        <li class="content">
+          <div class="left">
+            <p>Virginia es Licenciada en Ciencias del Deporte y en Ciencias políticas por la Universidad Complutense de Madrid. En el Gobierno Vasco y en este tiempo Virgnia ha potenciado enormemente todos los ámbitos relacionados con la Investigación, y en solo un año.</p>
+            <p class="time">Hace 21 minutos · <a href="/users/2">Sandra Artzua Rodríguez</a></p>
+          </div>
+          <div class="right">
+            <div class="moderation">
+              <span class="move"></span>
+              <span class="buttons">
+                <a class="ko" href="#rechazado">rechazado</a>
+                <a class="null" href="#null">pendientes</a>
+                <a class="ok" href="#aceptado">aceptado</a>
+              </span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="t"></div><div class="f"></div>
+</article>
+
+<span class="loader">Cargando más contenido</span>
+
+<% if false %>
+<article>
+  <div class="inner">
+    <div class="content">
+      <header>
+      <h1>Moderación de contenidos</h1>
+      </header>
+      <div class="left">
+        <% if @contents[:not_moderated].size > 0 %>
+        <div class="contents">
+          <h3><%= t('.contents') %></h3>
+          <div class="clearfix"><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'contents'), :class => :white_button %></div>
+
+          <ul>
+            <% @contents[:not_moderated].each do |content| %>
+              <li class="content">
+              <%= render "shared/lists_elements/#{content.class.name.downcase}", :data => content, :admin => true %>
+
+              <div class="clearfix">
+                <%= form_for [:admin, content] do |form| %>
+                  <%= form.hidden_field :moderated, :value => true %>
+                  <%= button t('.validate', :type => content.class.model_name.human.downcase), :class => :white_button %>
+                <% end %>
+
+                <%= form_for [:admin, content] do |form| %>
+                  <%= form.hidden_field :rejected, :value => true %>
+                  <%= button t('.delete', :type => content.class.model_name.human.downcase), :class => :white_button %>
+                <% end %>
+              </div>
+
+              <hr />
+              </li>
+            <% end %>
+          </ul>
+          <%= paginate @contents[:not_moderated] %>
+        </div>
+      <% end %>
+
+      <% if @participations[:not_moderated].size > 0 %>
+        <div class="participations">
+          <h3><%= t('.participations') %></h3>
+          <div class="clearfix"><%= button_to t('.validate_all'), admin_moderate_all_path(:type => 'participations'), :class => :white_button %></div>
+
+          <ul>
+
+            <% @participations[:not_moderated].each do |participation| %>
+              <li class="participation">
+              <%= render "shared/lists_elements/#{participation.class.name.downcase}", :data => participation, :admin => true %>
+
+              <div class="clearfix">
+                <%= form_for [:admin, participation] do |form| %>
+                  <%= form.hidden_field :moderated, :value => true %>
+                  <%= button t('.validate', :type => participation.class.model_name.human.downcase), :class => :white_button %>
+                <% end %>
+
+                <%= form_for [:admin, participation] do |form| %>
+                  <%= form.hidden_field :rejected, :value => true %>
+                  <%= button t('.delete', :type => participation.class.model_name.human.downcase), :class => :white_button %>
+                <% end %>
+              </div>
+
+              <hr />
+              </li>
+            <% end %>
+          </ul>
+          <%= paginate @participations[:not_moderated] %>
+        </div>
+      <% end %>
+
+
+    </div>
+    <div class="right"> </div>
+  </div>
+  </div>
+  <div class="t"></div><div class="f"></div>
+</article>
+<% end %>

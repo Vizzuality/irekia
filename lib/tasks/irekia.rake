@@ -1,5 +1,5 @@
 desc "Setup Irekia Project for first time"
-task :setup => %w(irekia:setup_database irekia:validate_all_not_moderated irekia:randomize_all)
+task :setup => %w(irekia:setup_database irekia:randomize_all)
 
 namespace :irekia do
   desc "Setup Irekia Database"
