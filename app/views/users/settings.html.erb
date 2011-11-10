@@ -1,4 +1,6 @@
-<article class="with_form with_footer">
+
+
+<article class="profile with_form with_footer">
 <form action="#" novalidate>
   <div class="inner">
     <header>
@@ -17,10 +19,10 @@
           <a href="#" class="radio gender female">Mujer</a>
         </div>
 
-        <div class="field name left error">
+        <div class="field name left">
           <label for="">Nombre</label>
           <div class="input_field"> <input type="text" /> </div>
-          <ul class="errors"><li>La URL no parece ser correcta</li></ul>
+          <!-- <ul class="errors"><li>La URL no parece ser correcta</li></ul> -->
         </div>
 
         <div class="field lastname right">
@@ -31,10 +33,11 @@
         <div class="field territory left">
           <label for="">Territorio</label>
           <div class="input_field"> <input type="text" /> </div>
-          <ul class="errors">
+          <!--<ul class="errors">
             <li>La URL no parece ser correcta</li>
             <li>La URL no parece ser correcta</li>
           </ul>
+          -->
         </div>
 
         <div class="field municipality right">
@@ -63,7 +66,7 @@
           </div>
         </div>
 
-        <div class="field born_at">
+        <div class="field born_at left">
           <label for="">Fecha de nacimiento</label>
         </div>
       </fieldset>
@@ -72,8 +75,8 @@
         <label for="">Conexión con redes sociales</label>
 
           <div class="social-links">
-            <div class="facebook"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
-            <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
+            <div class="facebook"><%= link_to t('.connect_with', :name => 'Facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+            <div class="twitter"><%= link_to t('.connect_with', :name => 'Twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
           </div>
       </div>
 

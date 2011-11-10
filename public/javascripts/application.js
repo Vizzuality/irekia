@@ -97,6 +97,7 @@ $(function() {
   $('.proposals .proposal').enableArguments();
   $('form.add_comment').enableComments();
   $(".comment-box form").enableCommentBox();
+  $(".notifications").enableNotificationSelector();
 
   $(".goto_comments").enableGotoComments();
   $('.floating-login').floatingLoginPopover();
@@ -118,6 +119,7 @@ $(function() {
   $(".share.inline, .share.more, .share.email").sharePopover();
 
   //$('.avatar').prepend("<div class='ieframe'></div>");
+  $(".with_filters").filterWidget();
   $(".with_filters").filterWidget();
 
   $("article.publish").enablePublish();

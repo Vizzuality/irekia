@@ -970,7 +970,6 @@
         all: 'ver los %{count} áreas encontradas'
         more: ver más resultados
         follow: Seguir
-    users:
       results:
         title:
           zero: Ningún usuario
@@ -1045,6 +1044,8 @@
             other: '%{count} contenidos encontrados'
 
   users:
+    settings:
+      connect_with: "Conectar con %{name}"
     public:
       welcome:
         address: 'Residente en %{city}, %{province}.'

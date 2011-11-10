@@ -558,6 +558,21 @@ jQuery.fn.enablePagination = function(opt){
   })
 }
 
+jQuery.fn.enableNotificationSelector = function(opt){
+
+  var speed  = (opt && opt.speed) || 200;
+
+  this.each(function(){
+
+    $(this).find("li").click(function(e) {
+      e.preventDefault();
+      $(this).siblings("li.selected").removeClass("selected")
+      $(this).addClass("selected")
+      // TODO: add ajax communication
+    });
+  });
+}
+
 /* Enables comment submission */
 jQuery.fn.enableComments = function(opt){
 
