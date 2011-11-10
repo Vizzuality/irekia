@@ -82,9 +82,9 @@
       div.order {
         position:relative;
         float:left;
-        width:280px;
+        width:267px;
         height:41px;
-        margin:0 0 15px 15px;
+        margin:0 0 15px 22px!important;
         padding:0;
         background:#F6F6F7;
         @include border-radius(3px);
@@ -93,7 +93,7 @@
           position:absolute;
           top:3px;
           left:3px;
-          width:140px;
+          width:130px;
           height:33px;
           border:1px solid rgba(0,0,0,0.1);
           @include border-radius(3px);
@@ -376,6 +376,18 @@
       font:normal 17px "Helvetica",Arial;
       color:#7D7F80;
       background:url('/images/admin/ajax-loader.gif') no-repeat 0 0;
+    }
+
+    span.no_content {
+      position:relative;
+      display:block;
+      left:50%;
+      width:600px;
+      padding:0 0 50px 0;
+      margin:0 0 0 -300px;
+      font:bold 45px "Helvetica",Arial;
+      color:#A1ABB2;
+      text-align:center;
     }
 
 

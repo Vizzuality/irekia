@@ -35,7 +35,8 @@
       var move = order.find('span.move');
 
       var p_w = order.width();
-      var w = $(this).width() + 34; //18 - 2(borders)
+      var pad = parseInt($(this).css('paddingLeft').replace('px',''));
+      var w = $(this).width() + (pad*2) - 2; //18 - 2(borders)
       var p = $(this).position().left + 3;
 
       move.animate({
@@ -176,6 +177,7 @@
   <div class="t"></div><div class="f"></div>
 </article>
 
+<span class="no_content">No hay más contenidos pendientes de ser moderados</span>
 <span class="loader">Cargando más contenido</span>
 
 <% if false %>
