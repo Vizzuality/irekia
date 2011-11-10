@@ -1,9 +1,10 @@
 #encoding: UTF-8
 
 def create_area(params)
-  area = Area.find_or_create_by_name(params[:name])
-  area.update_attribute(:description, Faker::Lorem.paragraph(6))
+  area = Area.find_or_initialize_by_name(params[:name])
+  area.image = Image.create(:image => params[:image]) if params[:image]
   area.description = params[:description]
+  area.save!
 
   print '.'.blue
 
