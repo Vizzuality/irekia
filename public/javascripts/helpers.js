@@ -195,7 +195,7 @@ jQuery.fn.enablePublish = function(opt){
 jQuery.fn.enableRegistration = function(opt){
 
   var speed  = (opt && opt.speed) || 200,
-  marginBottom = 45,
+  marginBottom = 20,
   $form = $(".cycle form"),
   $container = $(".cycle .inner-cycle");
 

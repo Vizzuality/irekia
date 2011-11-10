@@ -1530,7 +1530,12 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
 .footer.when, span.when, .map .infowindow ul.details li.when, #container article.agenda .inner .content ul li.day .info ul.details li.when {
   padding: 0 0 0 17px;
-  background: url('/images/icons/clock.png') no-repeat 0 1px;
+  background: url('/images/icons/icon_sprite.png') no-repeat 0 -35px;
+}
+
+.footer.comments, span.comments {
+  padding: 0 0 0 13px;
+  background: url('/images/icons/icon_sprite.png') no-repeat 0 -50px;
 }
 
 .footer.where, span.where, ul.locations .footer, .map .infowindow ul.details li.where {
@@ -1607,8 +1612,16 @@ article .inner { h2, h3 { color: $dark_blue; } }
               color:$link_color_hover;
             }
           }
+
           .avatar { float: left; margin: 0 13px 0 0; }
-          .content .footer { margin-bottom: 3px; padding-left: 16px; background: url('/images/icons/clock.png') no-repeat left 1px; color: $standard_gray; font-size: 13px; }
+          .content .footer {
+            margin-bottom: 3px;
+            padding-left: 16px;
+            background: url('/images/icons/icon_sprite.png') no-repeat 0 -35px;
+            color: $standard_gray;
+            font-size: 13px;
+          }
+
         }
       }
     }
@@ -1804,7 +1817,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   &.initialy_hidden { @include opacity(0); }
 
   ul.arguments {
-    background:#E9F0DE;
+    // background:#E9F0DE;
 
   }
 }
@@ -1973,12 +1986,21 @@ article .inner { h2, h3 { color: $dark_blue; } }
     position:relative;
     clear:both;
     width:9000px;
-    height:332px;
+    height:333px;
 
     article {
       float:left;
       clear:none;
       margin: 10px 100px 0 0;
+
+      &.step1 {
+        .inner {
+          //padding: 15px 31px 0px 35px;
+          .content {
+            padding: 30px 0 0 0;
+          }
+        }
+      } // step2
 
       form { clear:both; }
 
@@ -2024,6 +2046,9 @@ article .inner { h2, h3 { color: $dark_blue; } }
             }
 
             .terms_of_service {
+              margin: 0;
+              font-size:15px;
+              color: #7D8A92;
               a.checkbox { text-decoration:none; }
               a { text-decoration:underline; }
             }

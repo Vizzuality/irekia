@@ -2,7 +2,7 @@
   <div class="inner-cycle">
     <article class="thin with_footer with_remark with_form signup step2">
     <%= form_for current_user, { :remote => true, :html => { :novalidate => :novalidate, "data-type" => :html }} do |f| %>
-      <div class="inner">
+      <div class="inner clearfix">
         <div class="content">
 
           <h1><%= t('.tell_us_more_about_you') %></h1>
