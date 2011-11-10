@@ -121,8 +121,6 @@
       }
     }
 
-
-
     #container article {
       width:($w - 10) + px;
       overflow:hidden;
@@ -173,6 +171,16 @@
           }
         }
       }
+    }
+
+    span.no_content {
+      position:relative;
+      display:block;
+      width:$w;
+      padding:0 0 50px 0;
+      font:bold 25px "Helvetica",Arial;
+      color:#A1ABB2;
+      text-align:center;
     }
 
     footer {display:none;}

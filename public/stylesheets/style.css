@@ -1217,6 +1217,7 @@ body.admin span.no_content { position: relative; display: block; left: 50%; widt
   body.admin #container article div.right { float: left; width: 280px !important; margin: 15px 6px 0!important; }
   body.admin #container article div.right div.moderation { width: 280px!important; float: right; }
   body.admin #container article div.right div.moderation a.null { float: left; height: 15px; width: auto; padding: 7px 9px; color: #7D8700; font: normal 15px "Helvetica",Arial; line-height: 15px; text-indent: 0; background: none; }
+  body.admin span.no_content { position: relative; display: block; width: 320; padding: 0 0 50px 0; font: bold 25px "Helvetica",Arial; color: #A1ABB2; text-align: center; }
   body.admin footer { display: none; } }
 @media screen and (min-width: 321px) and (max-width:480px) { body.admin #main .content, body.admin header .content, body.admin footer .content { width: 480px; overflow: hidden; }
   body.admin header { padding: 12px 0 0; }
@@ -1249,6 +1250,7 @@ body.admin span.no_content { position: relative; display: block; left: 50%; widt
   body.admin #container article div.right { float: left; width: 440px !important; margin: 15px 6px 0!important; }
   body.admin #container article div.right div.moderation { width: 280px!important; float: right; }
   body.admin #container article div.right div.moderation a.null { float: left; height: 15px; width: auto; padding: 7px 9px; color: #7D8700; font: normal 15px "Helvetica",Arial; line-height: 15px; text-indent: 0; background: none; }
+  body.admin span.no_content { position: relative; display: block; width: 480; padding: 0 0 50px 0; font: bold 25px "Helvetica",Arial; color: #A1ABB2; text-align: center; }
   body.admin footer { display: none; } }
 
 /* New clearfix */
