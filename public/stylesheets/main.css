@@ -787,7 +787,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .left .content .sharebox .input_field input, #container article .right .content .sharebox .input_field input { height: 27px; }
 #container article .left .content .sharebox .input_field span.holder, #container article .right .content .sharebox .input_field span.holder { top: 22px; left: 19px; }
 #container article .left .content .sharebox span.spinner, #container article .right .content .sharebox span.spinner { position: absolute; display: block; right: 18px; top: 20px; width: 20px; height: 20px; z-index: 10; }
-#container article .left .content .sharebox input[type="submit"], #container article .right .content .sharebox input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; width: auto; height: 20px; border: none; }
+#container article .left .content .sharebox input[type="submit"], #container article .right .content .sharebox input[type="submit"] { position: absolute; top: 20px; right: 17px; color: #FF0066; background: none; width: auto; height: 20px; border: none; outline: none; }
 #container article .left .content .sharebox ul, #container article .right .content .sharebox ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
 #container article .left .content .sharebox ul li, #container article .right .content .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 

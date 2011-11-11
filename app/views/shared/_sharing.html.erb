@@ -5,7 +5,7 @@
     <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post, :novalidate => 'novalidate'} do |form| %>
       <div class="input_field placeholder">
         <%= hidden_field_tag :provider, :email %>
-        <%= text_field_tag :email %>
+        <%= text_field_tag :email, "", :placeholder => "", :autocomplete => :off  %>
         <span class="holder">Escribe la dirección de email</span>
       </div>
       <span class="spinner" id="share_via_email"></span>
@@ -13,20 +13,26 @@
       <div class="arrow"></div>
     <% end -%>
   </div>
+  </li>
 
-  </li>
-  <li>
-  <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
-    <%= hidden_field_tag :provider, :twitter %>
-    <%= form.submit '', :class => 'share twitter' %>
-  <% end -%>
-  </li>
-  <li>
-  <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
-    <%= hidden_field_tag :provider, :facebook %>
-    <%= form.submit '', :class => 'share facebook' %>
-  <% end -%>
-  </li>
+  <% if current_user.connected_with_twitter? %>
+    <li>
+    <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
+      <%= hidden_field_tag :provider, :twitter %>
+      <%= form.submit '', :class => 'share twitter' %>
+    <% end -%>
+    </li>
+  <% end %>
+
+  <% if current_user.connected_with_facebook? %>
+    <li>
+    <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
+      <%= hidden_field_tag :provider, :facebook %>
+      <%= form.submit '', :class => 'share facebook' %>
+    <% end -%>
+    </li>
+  <% end %>
+  <!--
   <li><div class="share more"></div>
 
   <div class="sharebox">
@@ -37,4 +43,5 @@
     <div class="arrow"></div>
   </div>
   </li>
+  -->
 </ul>

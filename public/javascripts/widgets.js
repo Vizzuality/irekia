@@ -447,9 +447,12 @@ var GOD = (function() {
       // Update the reference to $ps
       $ps = $(this);
 
+      $ps.next(".sharebox.email").find('input[type="submit"]').unbind("click");
+
       $ps.next(".sharebox.email").find('input[type="submit"]').click(function(e) {
         e.stopPropagation();
         spinner.spin(spin_element);
+        _removeOk(data);
         $(this).fadeOut(data.settings.transitionSpeed);
          _shareWith($(this), "email", data.settings.transitionSpeed, data.settings.easing);
       });
@@ -494,18 +497,16 @@ var GOD = (function() {
   };
 
 function _shareWith($el, service, speed, easing) {
-  var $ok = $el.find(".ok"),
-  $form;
+  var $form;
 
   function success(argument) {
-    if ($ok) $ok.animate({ opacity:0, top: "20px" }, speed, easing, function() { $(this).remove(); })
     spinner.stop();
-    console.log($form);
     $form.find('input[type="submit"]').fadeIn(speed);
     $form.find('input[type="text"]').val("");
-    $el.append('<div class="ok" />');
-    $ok = $el.find(".ok");
-    $ok.animate({opacity:1, top:"-2px"}, speed, easing);
+    $form.find('.holder').fadeIn(speed);
+   // $ok = $('<div class="ok" />');
+   // $el.parents("li").find(".share.email").append($ok)
+   // $ok.animate({opacity:1, top:"-2px"}, speed, easing);
     return true;
   }
 
@@ -520,14 +521,20 @@ function _shareWith($el, service, speed, easing) {
   $form.bind('ajax:success', success);
   $form.bind('ajax:error', error);
 }
-
-
   function _resize($ps) {
     var $sharebox = $ps.next(".sharebox");
     if (!$sharebox.hasClass("email")) {
       var items = $sharebox.find("li").length;
       $sharebox.width(items * 35);
     }
+  }
+
+  function _removeOk(data) {
+    var $ps = data.$ps;
+
+    $ps.find(".ok").animate({ opacity:0, top: "20px" }, data.settings.transitionSpeed, data.settings.easingMethod, function() {
+      $(this).remove();
+    })
   }
 
   // Toggle popover
@@ -549,6 +556,7 @@ function _shareWith($el, service, speed, easing) {
     if (!$ps.hasClass("open")) {
       $ps.addClass("open");
       $ps.next(".sharebox").fadeIn(data.settings.transitionSpeed);
+      _removeOk(data);
     } else {
       _close($this);
     }
@@ -640,7 +648,6 @@ function _shareWith($el, service, speed, easing) {
         } else if (data.filter == "more_polemic") {
           data.sort = { more_polemic:true };
         }
-
 
         $(this).parents("ul").find("li").removeClass("selected");
         $(this).parent().addClass("selected");

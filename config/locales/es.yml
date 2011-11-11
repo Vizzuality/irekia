@@ -556,7 +556,7 @@
       event:
         author: '%{author} hace %{time}'
       comment:
-        author: 'Comentado por %{author} hace %{time}'
+        author: 'Publicado por %{author} hace %{time}'
       comments:
         zero: Ningún comentario
         one: 1 comentario
