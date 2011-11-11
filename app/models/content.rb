@@ -31,6 +31,10 @@ class Content < ActiveRecord::Base
 
   attr_accessor :location
 
+  def self.find_or_initialize(params = nil)
+    new(params)
+  end
+
   def self.moderated
     where(:moderated => true)
   end
