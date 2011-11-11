@@ -13,6 +13,7 @@
     // Header
     header {
       padding:12px 0 0;
+      margin:0 0 10px 0;
 
       .content {height:51px;}
 
@@ -44,6 +45,7 @@
 
 
     article.total_info {
+      margin:5px auto 0!important;
       div.inner {padding:20px;}
 
       ul.info {
@@ -123,6 +125,7 @@
 
     #container article {
       width:($w - 10) + px;
+      margin:10px 0 0 0;
       overflow:hidden;
       @include border-radius(4px);
       border:1px solid #dadef1;
@@ -155,7 +158,7 @@
         margin:15px 6px 0!important;
 
         div.moderation {
-          width:280px!important;
+          width:190px;
           float:right;
 
           a.null {
@@ -173,9 +176,10 @@
       }
     }
 
+
     span.no_content {
       position:relative;
-      display:block;
+      display:none;
       width:$w;
       padding:0 0 50px 0;
       font:bold 25px "Helvetica",Arial;
@@ -187,15 +191,13 @@
   }
 
 
-
-
   body.admin {
 
     // Header
     header {
       nav {
         @include background(linear-gradient(top, #B5C229, #99A322));
-
+        background:#B5C229\9;
         .content{
           span.currently_viewing {display:none;}
           ul.areas {display:none;}
@@ -208,6 +210,8 @@
 
 
     article.total_info {
+      margin:20px 0 0 0;
+
       div.inner {padding:20px;}
 
       ul.info {
@@ -230,6 +234,7 @@
             font:bold 67px "Helvetica",Arial!important;
             color:#9FA923;
             line-height:50px!important;
+            text-transform:lowercase!important;
             &.time {color:#A1ABB2;}
           }
           p {
@@ -259,6 +264,7 @@
           width:151px;
           height:43px;
           border:1px solid rgba(0,0,0,0.1);
+          border:1px solid #CCCCCC\9;
           @include border-radius(3px);
           background:white;
           z-index:0;
@@ -320,10 +326,10 @@
           margin:0!important;
           padding:0!important;
 
-          div.moderation,div.order {
+          div.moderation {
             position:relative;
             float:right;
-            width:205px;
+            width:240px;
             height:35px;
             margin:0;
             padding:0;
@@ -337,6 +343,7 @@
               width:25px;
               height:27px;
               border:1px solid rgba(0,0,0,0.1);
+              border:1px solid #CCCCCC\9;
               @include border-radius(3px);
               background:white;
               z-index:0;
@@ -346,21 +353,29 @@
               position:absolute;
               top:3px;
               left:3px;
-              width:auto;
+              width:100%;
               z-index:10;
 
-              a {
+              div {
                 float:left;
-                height:15px;
+                display:block;
+                width:auto;
+              }
+
+              button {
+                float:left!important;
+                height:29px;
                 width:auto;
                 padding:7px 9px;
                 color:#7D8700;
                 font:normal 15px "Helvetica",Arial;
                 line-height:15px;
+                border:none;
+                background:none;
 
                 &.null {
                   height:29px;
-                  width:9px;
+                  width:27px;
                   padding:0 9px;
                   text-indent:-9999px;
                   background:url('/images/admin/null_bkg.png') no-repeat 7px 11px;
@@ -388,7 +403,7 @@
 
     span.no_content {
       position:relative;
-      display:block;
+      display:none;
       left:50%;
       width:600px;
       padding:0 0 50px 0;

@@ -982,9 +982,10 @@
         all: 'ver los %{count} áreas encontradas'
         more: ver más resultados
         follow: Seguir
+    users:
       results:
         title:
-          zero: Ningún usuario
+          zero: Ningún area
           one: 1 usuario
           other: '%{count} usuarios'
         all: 'ver los %{count} usuarios encontrados'
@@ -1342,9 +1343,9 @@
             zero: Ningún comentario
             one: 1 comentario
             other: '%{count} comentarios'
-        validate_all: Validar todos
-        validate: 'Validar %{type}'
-        delete: 'Rechazar %{type}'
+      items_list:
+        validate: 'aceptar'
+        rejected: 'rechazar'
 
 #######################################
 # IREKIA - Models

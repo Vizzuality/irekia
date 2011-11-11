@@ -7,7 +7,7 @@ class Admin::ModerationController < Admin::AdminController
     @show_moderation_info = true if request.xhr?
 
     session[:return_to] = admin_moderation_path
-    render :layout => !request.xhr?
+    render :partial => 'admin/moderation/items_list' and return if request.xhr?
   end
 
 end

@@ -233,6 +233,14 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
     t.datetime "updated_at"
   end
 
+  create_table "spatial_ref_sys", :id => false, :force => true do |t|
+    t.integer "srid",                      :null => false
+    t.string  "auth_name", :limit => 256
+    t.integer "auth_srid"
+    t.string  "srtext",    :limit => 2048
+    t.string  "proj4text", :limit => 2048
+  end
+
   create_table "status_message_data", :force => true do |t|
     t.integer  "status_message_id"
     t.string   "message"
