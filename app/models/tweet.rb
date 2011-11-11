@@ -11,6 +11,18 @@ class Tweet < Content
     })
   end
 
+  def facebook_share_message
+    message.truncate(140)
+  end
+
+  def twitter_share_message
+    message.truncate(140)
+  end
+
+  def email_share_message
+    message
+  end
+
   def update_counter_cache
     areas.each { |area| area.update_attribute("statuses_count", (area.status_messages.count + area.tweets.count)) }
     users.each { |user| user.update_attribute("statuses_count", (user.status_messages.moderated.count + user.tweets.moderated.count)) }
