@@ -5,6 +5,8 @@ class CreateImages < ActiveRecord::Migration
       t.references :user
       t.references :area
       t.references :news_data
+      t.references :proposal_data
+      t.references :event_data
 
       t.string :image
       t.string :title

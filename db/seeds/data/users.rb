@@ -30,7 +30,7 @@ puts '================='.green
                       :title                 => Title.find_by_name('Adviser'),
                       :role                  => Role.find_by_name('Politician'),
                       :area_user             => AreaUser.create(:area  => @area, :display_order => 1),
-                      :profile_picture       => Image.create(:image => @women_images.sample)
+                      :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'politico_00.jpg')))
 
 @aitor = create_user :name                  => 'Aitor',
                      :lastname              => 'García Ibarra',
@@ -43,7 +43,7 @@ puts '================='.green
                      ),
                      :role                  => Role.find_by_name('Politician'),
                      :area_user             => AreaUser.create(:area  => @area, :display_order => 2),
-                     :profile_picture       => Image.create(:image => @men_images.sample)
+                     :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'politico_01.jpg')))
 
 @javier = create_user :name                  => 'Javier',
                       :lastname              => 'Jimenez Alvarez',
@@ -56,7 +56,33 @@ puts '================='.green
                       ),
                       :role                  => Role.find_by_name('Politician'),
                       :area_user             => AreaUser.create(:area  => @area, :display_order => 2),
-                      :profile_picture       => Image.create(:image => @men_images.sample)
+                      :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'politico_02.jpg')))
+
+@ainara = create_user :name                  => 'Ainara',
+                      :lastname              => 'Sanchéz Urkullu',
+                      :email                 => 'asanch@hotmail.com',
+                      :is_woman              => true,
+                      :description           => (<<-EOF
+                        Ainara trabaja actualmente en el área de Medio Ambiente del Gobierno Vasco.
+                        Desarrolla y fomenta diversos programas de protección del Medio Ambiente, así como multitud de actividades relacionadas con el mismo.
+                      EOF
+                      ),
+                      :role                  => Role.find_by_name('Politician'),
+                      :area_user             => AreaUser.create(:area  => @area),
+                      :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'politico_03.jpg')))
+
+@joel = create_user :name                  => 'Joel',
+                    :lastname              => 'López Leiva',
+                    :email                 => 'jlopez_leiva@gmail.com',
+                    :is_woman              => false,
+                    :description           => (<<-EOF
+                      Joel promueve y desarrolla el Departamento de Asuntos Sociales.
+                      Busca una constante solución a los problemas cotidianos de los ciudadanos vascos, eliminando barreras e impedimentos para permitir un mejor nivel de vida.
+                    EOF
+                    ),
+                    :role                  => Role.find_by_name('Politician'),
+                    :area_user             => AreaUser.create(:area  => @area, :display_order => 2),
+                    :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'politico_04.jpg')))
 
 #############
 # Citizens
@@ -67,7 +93,7 @@ puts '================='.green
                       :email                 => 'andresmedina@hotmail.com',
                       :title                 => nil,
                       :is_woman              => false,
-                      :profile_picture       => Image.create(:image => @men_images.sample),
+                      :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_00.jpg'))),
                       :users_following       => User.politicians,
                       :areas_following       => Area.all
 
@@ -76,7 +102,7 @@ puts '================='.green
                        :email                 => 'corraburu@gmail.com',
                        :title                 => nil,
                        :is_woman              => false,
-                       :profile_picture       => Image.create(:image => @men_images.sample),
+                       :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_01.jpg'))),
                        :users_following       => User.politicians,
                        :areas_following       => Area.all
 
@@ -85,7 +111,7 @@ puts '================='.green
                         :email                 => 'pagocero@hotmail.com',
                         :title                 => nil,
                         :is_woman              => true,
-                        :profile_picture       => Image.create(:image => @women_images.sample),
+                        :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_02.jpg'))),
                         :users_following       => User.politicians,
                         :areas_following       => Area.all
 
@@ -94,7 +120,7 @@ puts '================='.green
                          :email                 => 'alejandro_bengoechea@yahoo.com',
                          :title                 => nil,
                          :is_woman              => false,
-                         :profile_picture       => Image.create(:image => @men_images.sample),
+                         :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_03.jpg'))),
                          :users_following       => User.politicians,
                          :areas_following       => Area.all
 
@@ -103,6 +129,6 @@ puts '================='.green
                     :email                 => 'urieta1981@msn.com',
                     :title                 => nil,
                     :is_woman              => false,
-                    :profile_picture       => Image.create(:image => @men_images.sample),
+                    :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_04.jpg'))),
                     :users_following       => User.politicians,
                     :areas_following       => Area.all

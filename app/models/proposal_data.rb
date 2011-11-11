@@ -1,4 +1,5 @@
 class ProposalData < ActiveRecord::Base
+  has_one :image
 
   belongs_to :proposal,
              :foreign_key => :proposal_id

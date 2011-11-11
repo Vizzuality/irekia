@@ -148,7 +148,6 @@ end
 
 def create_photo(params)
   defaults = {
-    :image       => (@men_images + @women_images).sample,
     :title       => Faker::Lorem.sentence(10),
     :description => Faker::Lorem.paragraphs(10).join("\n\n"),
   }
@@ -265,9 +264,6 @@ def create_status_message(params)
                        :status_message_data => StatusMessageData.find_or_create_by_message(params[:message])
 end
 
-@women_images = %w(woman.jpeg).map{|image_name| File.open(Rails.root.join('db', 'seeds', 'support', 'images', image_name))}
-@men_images   = %w(man.jpeg).map{|image_name| File.open(Rails.root.join('db', 'seeds', 'support', 'images', image_name))}
-
 def create_user(params)
   defaults = {
     :password              => "#{params[:name].downcase}1234",
@@ -279,8 +275,7 @@ def create_user(params)
     :city                  => 'Ondarroa',
     :birthday              => rand(100).years.ago,
     :role                  => Role.find_by_name('Citizen'),
-    :title                 => Title.find_by_name('Co-adviser'),
-    :profile_picture       => Image.create(:image => (@men_images + @women_images).sample)
+    :title                 => Title.find_by_name('Co-adviser')
   }
   params = defaults.merge(params)
 
@@ -301,7 +296,7 @@ def create_user(params)
   elsif params[:area_user]
     user.areas_users << params[:area_user]
   end
-  user.profile_pictures << params[:profile_picture]
+  user.profile_pictures << params[:profile_picture] if params[:profile_picture]
   user.users_following = params[:users_following] if params[:users_following]
   user.areas_following = params[:areas_following] if params[:areas_following]
   user.save!

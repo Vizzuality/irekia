@@ -4,6 +4,8 @@ class Image < ActiveRecord::Base
   belongs_to :user
   belongs_to :area
   belongs_to :news_data
+  belongs_to :proposal_data
+  belongs_to :event_data
 
   mount_uploader :image, ImageUploader
 

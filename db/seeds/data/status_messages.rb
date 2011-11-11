@@ -52,3 +52,35 @@ create_status_message :author => @javier,
                       :area => @area,
                       :message => 'Comiendo con estudiantes universitarios en Bilbao.'
 
+create_status_message :author => @ainara,
+                      :area => @area,
+                      :message => 'Visita del Ministro de Medio Ambiente Danés'
+
+create_status_message :author => @ainara,
+                      :area => @area,
+                      :message => 'Recibida la ayuda europea para la protección del ecosistema vasco'
+
+create_status_message :author => @ainara,
+                      :area => @area,
+                      :message => 'Inaugurando la temporada de la recogida de hongos'
+
+create_status_message :author => @ainara,
+                      :area => @area,
+                      :message => 'Visitando la Sociedad Gastrónomica en Zarautz'
+
+create_status_message :author => @joel,
+                      :area => @area,
+                      :message => 'Visitando el Museo Naval'
+
+create_status_message :author => @joel,
+                      :area => @area,
+                      :message => 'Mañana  charla sobre osteoporosis'
+
+create_status_message :author => @joel,
+                      :area => @area,
+                      :message => 'En las conferencias sobre igualdad'
+
+create_status_message :author => @joel,
+                      :area => @area,
+                      :message => 'Inaugurando en nuevo comedor social'
+

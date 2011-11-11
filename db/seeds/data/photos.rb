@@ -6,7 +6,7 @@ puts '=================='.green
 
 create_photo :title => 'Presentación del Gobierno Vasco 2010',
              :description => 'Presentación del Nuevo Gobierno Vasco, formado tras las elecciones de 2010',
-             :image => @men_images.sample,
+             :image => File.open(Dir[Rails.root.join('db/seeds/support/images/*')].sample),
              :tags => %w(Comisión Transporte Gobierno\ Vasco Transporte).join(','),
              :author => User.all.sample,
              :comments => [
