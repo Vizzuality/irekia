@@ -41,7 +41,7 @@
 
   <% if controller.action_name == "questions" %>
     <div class="left">
-      <%= link_to t('.more'), link_for_questions, :id => "questions_#{params[:id]}", :class => "more_questions left down_arrow" %>
+      <%= link_to t('.more'), link_for_questions, :id => "questions_#{params[:id]}", :class => "more_questions left down_arrow" if @questions.count > 0 %>
       <span id="questions_spinner" class="spinner"></span>
     </div>
   <% else %>

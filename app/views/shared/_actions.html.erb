@@ -2,7 +2,7 @@
 <div class="inner">
   <header>
   <div class="left">
-  <h2><%= raw t('.title') %></h2>
+    <h2><%= raw t('.title') %></h2>
   </div>
   <div class="right">
     <ul class="switch">
@@ -39,7 +39,7 @@
 
       <li>
       <% if @questions_count > 0 %>
-      <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => :question, :referer => action_name), :class => "filter" %>
+        <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => :question, :referer => action_name), :class => "filter" %>
       <% else %>
         <em><%= t('.no_content_filters.questions') %></em>
       <% end %>
@@ -47,7 +47,7 @@
 
       <li>
       <% if @proposals_count > 0 %>
-      <%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => :proposal, :referer => action_name), :class => "filter" %>
+        <%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => :proposal, :referer => action_name), :class => "filter" %>
       <% else %>
         <em><%= t('.no_content_filters.proposals') %></em>
       <% end %>
@@ -86,7 +86,7 @@
 
   <% if controller.action_name == "actions" %>
     <div class="left">
-      <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" %>
+      <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" if @actions.present? %>
       <span id="actions_spinner" class="spinner"></span>
     </div>
   <% else %>
