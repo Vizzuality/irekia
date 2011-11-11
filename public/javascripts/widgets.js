@@ -577,6 +577,7 @@ var GOD = (function() {
         var filter_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: 'white',speed: 1,trail: 100,shadow: false});
       }
 
+      $(this).find(".filter").unbind("click");
       $(this).find(".filter").bind('click', function(e) {
         e.preventDefault();
 
