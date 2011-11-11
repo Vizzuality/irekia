@@ -224,9 +224,9 @@ header {
 
       .areas_selector {
         float: left;
-        margin-right: 10px;
+        margin: 0 15px 0 0;
         position:relative;
-        padding: 7px 14px;
+        padding: 8px 14px 7px 14px;
         width:150px;
         color: $white;
         font-size: 15px;
@@ -255,24 +255,24 @@ header {
           z-index:1000;
           background: url("/images/popovers_bkg.png") no-repeat -511px -202px;
 
-          .gtop,
-          .gbottom {
-            z-index:2000;
-            background: url("/images/popovers_bkg.png") no-repeat -855px -478px;
-            position:absolute;
-            height: 26px;
-            width: 219px;
-            left: 3px;
-          }
+          // .gtop,
+          // .gbottom {
+          //   z-index:2000;
+          //   background: url("/images/popovers_bkg.png") no-repeat -855px -478px;
+          //   position:absolute;
+          //   height: 26px;
+          //   width: 219px;
+          //   left: 3px;
+          // }
 
-          .gtop {
-            top: 10px;
-            background-position: -1080px -488px;
-          }
+          // .gtop {
+          //   top: 10px;
+          //   background-position: -1080px -488px;
+          // }
 
-          .gbottom {
-            bottom: 5px;
-          }
+          // .gbottom {
+          //   bottom: 5px;
+          // }
 
           .scroll-pane {
             height: 280px;
@@ -280,10 +280,6 @@ header {
             overflow: hidden;
             margin: 20px 0 0 20px;
             outline:none;
-
-            .jspDrag {
-              z-index:2200;
-            }
 
             ul {
               margin:0; padding:0;
@@ -3823,7 +3819,7 @@ footer {
   .content { clear: both; overflow: hidden; padding: 0 0 23px 0; width: 900px; }
   ul.copyright { float: left; margin-right: 35px; }
 
-  .home, .areas, .about { float: left; margin-right: 35px; }
+  .home, .areas { float: left; margin-right: 35px; }
 
   .content {
     .home { margin-right: 50px; }

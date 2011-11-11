@@ -771,6 +771,12 @@ var GOD = (function() {
 
     _triggerOpenAnimation($ps, data);
     $ps.find('.scroll-pane').jScrollPane();
+
+    console.log($ps.find(".jspDrag"));
+    $ps.find(".jspDrag").bind('click', function(e) {
+      e.stopPropagation();
+    });
+
     // $ps.find('.scroll-pane .jspPane').animate({top:"-300px"}, 500);
     // $ps.find('.scroll-pane .jspDrag').animate({top:"100px"}, 500);
   }
