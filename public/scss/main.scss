@@ -1138,7 +1138,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
         border: none;
         background: none;
         .inner {
-          width: 613px;
+          width: 636px;
+          padding: 9px 0 4px 0;
           background: url('/images/box_thin_bkg.png') repeat-y -1287px 0;
           border: none;
         }
@@ -1978,7 +1979,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         }
 
         .terms_of_service {
-          a.checkbox { text-decoration:none; }
+          a.checkbox { color: #7D8A92; text-decoration:none; }
           a { text-decoration:underline; }
         }
 
@@ -1994,6 +1995,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
           float:left;
           width:415px;
           clear:both;
+          margin:0;
+
           .input_field {
             width:415px;
             select, .dk_container { float:left; margin:0 5px 0 0; }

@@ -302,7 +302,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.thin .inner .content { margin: 3px 0 18px 0px; width: 570px; }
 #container article.thin.with_footer .f { bottom: -10px; background-position: 0 -24px; }
 #container article.thin.with_footer footer { padding: 0; border: none; background: none; }
-#container article.thin.with_footer footer .inner { width: 613px; background: url("/images/box_thin_bkg.png") repeat-y -1287px 0; border: none; }
+#container article.thin.with_footer footer .inner { width: 636px; padding: 9px 0 4px 0; background: url("/images/box_thin_bkg.png") repeat-y -1287px 0; border: none; }
 #container article.thin.with_footer .separator { height: 2px; background: url("/images/box_thin_bkg.png") repeat-x; background-position: 0 -40px; }
 #container article.thin.signup { text-align: center; }
 #container article.thin.signup footer .inner .white_button { padding-left: 40px; padding-right: 40px; }
@@ -511,10 +511,10 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_form.signup form .inner fieldset .field.postal_code, #container article.with_form.signup .inner fieldset .field.postal_code { width: 415px; float: left; clear: none; overflow: hidden; }
 #container article.with_form.signup form .inner fieldset .field.postal_code .input_field, #container article.with_form.signup .inner fieldset .field.postal_code .input_field { width: 203px; float: left; clear: none; }
 #container article.with_form.signup form .inner fieldset .field.postal_code .input_field input[type="text"], #container article.with_form.signup .inner fieldset .field.postal_code .input_field input[type="text"] { margin: 0 5px 0 0; }
-#container article.with_form.signup form .inner fieldset .field .terms_of_service a.checkbox, #container article.with_form.signup .inner fieldset .field .terms_of_service a.checkbox { text-decoration: none; }
+#container article.with_form.signup form .inner fieldset .field .terms_of_service a.checkbox, #container article.with_form.signup .inner fieldset .field .terms_of_service a.checkbox { color: #7D8A92; text-decoration: none; }
 #container article.with_form.signup form .inner fieldset .field .terms_of_service a, #container article.with_form.signup .inner fieldset .field .terms_of_service a { text-decoration: underline; }
 #container article.with_form.signup form .inner fieldset .field.legal label, #container article.with_form.signup form .inner fieldset .field.legal a, #container article.with_form.signup .inner fieldset .field.legal label, #container article.with_form.signup .inner fieldset .field.legal a { font-size: 15px; text-transform: none; font-weight: normal; }
-#container article.with_form.signup form .inner fieldset .field.born_at, #container article.with_form.signup .inner fieldset .field.born_at { float: left; width: 415px; clear: both; }
+#container article.with_form.signup form .inner fieldset .field.born_at, #container article.with_form.signup .inner fieldset .field.born_at { float: left; width: 415px; clear: both; margin: 0; }
 #container article.with_form.signup form .inner fieldset .field.born_at .input_field, #container article.with_form.signup .inner fieldset .field.born_at .input_field { width: 415px; }
 #container article.with_form.signup form .inner fieldset .field.born_at .input_field select, #container article.with_form.signup form .inner fieldset .field.born_at .input_field .dk_container, #container article.with_form.signup .inner fieldset .field.born_at .input_field select, #container article.with_form.signup .inner fieldset .field.born_at .input_field .dk_container { float: left; margin: 0 5px 0 0; }
 #container article.with_form.signup form .inner fieldset .field.email, #container article.with_form.signup .inner fieldset .field.email { width: 415px; }
