@@ -27,10 +27,10 @@
             </div>
 
             <% if current_user.invalid? && current_user.errors[:email].present? %>
-              <div class="field email">
+              <div class="field email error">
                 <%= f.label :email %>
                 <div class="input_field">
-                  <%= f.text_field :email, :autocomplete => :off %>
+                  <%= f.text_field :email, :placeholder => "", :autocomplete => :off %>
                 </div>
                 <span class="mandatory">obligatorio</span>
               </div>

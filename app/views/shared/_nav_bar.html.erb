@@ -1,19 +1,18 @@
 <div class="content clearfix">
-
   <% if controller.controller_name == "users" and ["intro", "edit"].include?(controller.action_name) %>
-    <span class="currently_viewing" >Regístrate en Irekia</span>
+    <span class="currently_viewing">Regístrate en Irekia</span>
   <% else %>
     <span class="currently_viewing"><%= raw t('.areas') %></span>
 
     <div class="areas_selector">
-      <%= @area ? @area.name : (content_tag :span, t(".choose_an_area")) %>
+      <%= @area ? (truncate(@area.name, :length => 23)) : (content_tag :span, t(".choose_an_area")) %>
 
       <div class="popover">
 
         <div class="scroll-pane">
           <ul>
             <% @areas.each do |area| %>
-              <li class="<%= current_area?(area) %><%= ' last' if @areas.last == area %>"><%= link_to truncate(area.name, :lenght => 20), area_path(area) %></li>
+              <li class="<%= current_area?(area) %><%= ' last' if @areas.last == area %>"><%= link_to area.name, area_path(area) %></li>
               <% end if @areas %>
             </ul>
           </div>
