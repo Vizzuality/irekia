@@ -43,18 +43,17 @@ module ApplicationHelper
   def avatar(user_or_area, size = nil)
     size = size.present?? size.to_s : ''
 
-    case user_or_area
-    when User
+    if user_or_area.is_a?(Area)
+      area = user_or_area
+      if area.present? && area.image.present?
+        link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area), :title => area.name, :class => "avatar #{size}"
+      end
+    else
       user = user_or_area
       if user.present? && user.profile_image.present?
         link_to (image_tag(user.profile_image) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
       else
         image_tag 'icons/faceless_avatar.png', :class => "avatar #{size}", :title => t('unknown_user')
-      end
-    when Area
-      area = user_or_area
-      if area.present? && area.image.present?
-        link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area), :title => area.name, :class => "avatar #{size}"
       end
     end
   end
