@@ -3,7 +3,7 @@
   <p class="excerpt"><%= link_to data.message, status_message_path(data.id) %></p>
   <div class="footer">
     <span class="published_at">
-      <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
+      <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
     </span>
     <% unless show_last_comments?(data) -%>
     &middot;
