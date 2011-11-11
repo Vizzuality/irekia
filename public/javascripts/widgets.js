@@ -824,7 +824,7 @@ function _shareWith($el, service, speed, easing) {
   }
 
   function _getLeftPosition($ps) {
-    return $ps.width() - 180;
+    return $ps.width() - 185;
   }
 
   function _triggerOpenAnimation($ps, data) {

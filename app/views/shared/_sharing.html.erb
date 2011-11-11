@@ -15,7 +15,7 @@
   </div>
   </li>
 
-  <% if current_user.connected_with_twitter? %>
+  <% if current_user and current_user.connected_with_twitter? %>
     <li>
     <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
       <%= hidden_field_tag :provider, :twitter %>
@@ -24,7 +24,7 @@
     </li>
   <% end %>
 
-  <% if current_user.connected_with_facebook? %>
+  <% if current_user and current_user.connected_with_facebook? %>
     <li>
     <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
       <%= hidden_field_tag :provider, :facebook %>
