@@ -17,13 +17,14 @@
   <% end %>
 
   <% if has_areas? %>
-    <li class="areas<%= ' no-border' unless has_politicians? %>">
+    <li class="areas2 clearfix<%= ' no-border' if !has_politicians? %>">
     <div class="summary"><h3><%= t('.areas.summary.title') %></h3></div>
     <ul>
       <% @areas.first(2).each do |area| %>
         <li>
         <a href="#" class="avatar medium"><img src="/images/icons/news_avatar_medium.png" /></a>
         <%= link_to area.name, area_path(area), :class => :name %>
+        <span class="position">&nbsp;</span>
         </li>
       <% end %>
     </ul>
@@ -31,7 +32,7 @@
   <% end %>
 
   <% if has_citizens? %>
-    <li class="users<%= ' no-border' unless has_areas? && has_politicians? %>">
+    <li class="users clearfix<%= ' no-border' if !has_politicians? && !has_areas? %>">
     <div class="summary"><h3><%= t('.users.summary.title') %></h3><%= link_to t('.users.summary.count', :count => @citizens.count), citizens_search_path(search_params) %></div>
     <ul>
       <% @citizens.first(2).each do |user| %>
@@ -46,7 +47,7 @@
   <% end %>
 
   <% if has_contents? %>
-    <li class="contents<%= ' no-border' unless has_citizens? && has_areas? && has_politicians? %>">
+    <li class="contents clearfix<%= ' no-border' if !has_politicians? && !has_areas? && !has_citizens? %>">
     <div class="summary"><h3><%= t('.contents.summary.title') %></h3></div>
     <%= link_to t('.contents.count', :count => @contents.count), contents_search_path(search_params) %>
     </li>

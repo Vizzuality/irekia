@@ -253,7 +253,26 @@ header {
           width:231px;
           height: 311px;
           z-index:1000;
-          background: url("/images/popovers_bkg.png") no-repeat -400px -78px;
+          background: url("/images/popovers_bkg.png") no-repeat -511px -202px;
+
+          .gtop,
+          .gbottom {
+            z-index:2000;
+            background: url("/images/popovers_bkg.png") no-repeat -855px -478px;
+            position:absolute;
+            height: 26px;
+            width: 219px;
+            left: 3px;
+          }
+
+          .gtop {
+            top: 10px;
+            background-position: -1080px -488px;
+          }
+
+          .gbottom {
+            bottom: 5px;
+          }
 
           .scroll-pane {
             height: 280px;
@@ -261,6 +280,10 @@ header {
             overflow: hidden;
             margin: 20px 0 0 20px;
             outline:none;
+
+            .jspDrag {
+              z-index:2200;
+            }
 
             ul {
               margin:0; padding:0;
@@ -2961,37 +2984,6 @@ a.editable {
   }
 }
 
-
-/* Tags */
-//#container article .right .content ul.tags {
-//  margin-bottom:20px;
-//  padding-bottom:10px;
-//  list-style:none;
-
-//  li {
-//    //background:none;
-//    padding:0;
-//    display:block;
-//    clear:both;
-//    overflow:hidden;
-//    margin-bottom:4px;
-
-//    a {
-//    //  padding:6px 12px;
-//      float:left;
-//      display:block;
-////      background:#f0f0f0;
-//      font-size:13px;
-//      color:$link_color;
-//      font-weight:normal;
-
-////      -webkit-border-radius: 14px;
-////      -moz-border-radius: 14px;
-////      border-radius: 14px;
-//    }
-//  }
-//} // ul.tags
-
 /* Sharing */
 .ie7 ul.sharing li { margin: 0 3px 0 3px; }
 
@@ -3172,7 +3164,15 @@ a.editable {
       height: 12px;
       line-height: 11px;
       &.selected {
-        a { font-weight: bold; color: $white; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); &:hover {text-decoration:none; cursor:default;}}
+        a {
+          font-weight: bold;
+          color: $white;
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+          &:hover {
+            text-decoration:none;
+            cursor:default;
+          }
+        }
         @include border-radius(4px);
         background: url('/images/link_gradient_bkg.png');
       }
@@ -3632,7 +3632,7 @@ Autocomplete
       .summary { margin-top:10px; width:120px; text-align:right; }
 
       &.politicians { margin-bottom:0; background:none;}
-      &.areas { margin-bottom:0;  ul { margin-top:-27px; }}
+      &.areas2 { margin-bottom:0;  ul { margin-top:-27px; }}
       &.users { margin-bottom:0;  ul { margin-top:-40px; }}
 
       &.contents {
@@ -3823,7 +3823,7 @@ footer {
   .content { clear: both; overflow: hidden; padding: 0 0 23px 0; width: 900px; }
   ul.copyright { float: left; margin-right: 35px; }
 
-  .home, .areas, .aobut { float: left; margin-right: 35px; }
+  .home, .areas, .about { float: left; margin-right: 35px; }
 
   .content {
     .home { margin-right: 50px; }

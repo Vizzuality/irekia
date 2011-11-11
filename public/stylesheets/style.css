@@ -20,9 +20,9 @@ audio:not([controls]), [hidden] { display: none; }
 Base
 ========================================================================== */
 /* 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units 2. Force vertical scrollbar in non-IE 3. Prevent iOS text size adjust on device orientation change, without disabling user zoom: h5bp.com/g */
-html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; }
 
-body { margin: 0; font-size: 13px; line-height: 1.231; font-family: sans-serif; color: #222; }
+body { margin: 0; font-size: 13px; line-height: 1.231; font-family: sans-serif; color: #222; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; }
 
 button, input, select, textarea { font-family: sans-serif; color: #222; }
 
@@ -248,8 +248,12 @@ header nav .content form .input_field input[type="submit"] { right: 10px; top: 1
 header nav .content form .input_field span#autocomplete_spinner { position: absolute; right: 17px; top: 17px; }
 header nav .content .sign_out { float: right; }
 header nav .content .areas_selector { float: left; margin-right: 10px; position: relative; padding: 7px 14px; width: 150px; color: white; font-size: 15px; text-shadow: 0px 1px 1px #0F4768; border: 1px solid #13587F; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 1px 0 #369acf; -webkit-box-shadow: 0 1px 1px 0 #369acf; -o-box-shadow: 0 1px 1px 0 #369acf; box-shadow: 0 1px 1px 0 #369acf; background: #3396cd; background: -moz-linear-gradient(top, #3396cd 0%, #2080b5 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3396cd), color-stop(100%, #2080b5)); background: -webkit-linear-gradient(top, #3396cd 0%, #2080b5 100%); background: -o-linear-gradient(top, #3396cd 0%, #2080b5 100%); background: -ms-linear-gradient(top, #3396cd 0%, #2080b5 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 ); background: linear-gradient(top, #3396cd 0%, #2080b5 100%); cursor: pointer; }
-header nav .content .areas_selector .popover { display: none; position: absolute; width: 231px; height: 311px; z-index: 1000; background: url("/images/popovers_bkg.png") no-repeat -400px -78px; }
+header nav .content .areas_selector .popover { display: none; position: absolute; width: 231px; height: 311px; z-index: 1000; background: url("/images/popovers_bkg.png") no-repeat -511px -202px; }
+header nav .content .areas_selector .popover .gtop, header nav .content .areas_selector .popover .gbottom { z-index: 2000; background: url("/images/popovers_bkg.png") no-repeat -855px -478px; position: absolute; height: 26px; width: 219px; left: 3px; }
+header nav .content .areas_selector .popover .gtop { top: 10px; background-position: -1080px -488px; }
+header nav .content .areas_selector .popover .gbottom { bottom: 5px; }
 header nav .content .areas_selector .popover .scroll-pane { height: 280px; width: 195px; overflow: hidden; margin: 20px 0 0 20px; outline: none; }
+header nav .content .areas_selector .popover .scroll-pane .jspDrag { z-index: 2200; }
 header nav .content .areas_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 195px; }
 header nav .content .areas_selector .popover .scroll-pane ul li { text-shadow: none; color: #333; }
 header nav .content .areas_selector .popover .scroll-pane ul li.last a { border: none; }
@@ -916,7 +920,6 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .right .content ul.tags li:hover.add { background-position: left -105px; }
 #container article .right .content ul.tags li:hover.add a { background: none; color: #465866; }
 
-/* Tags */
 /* Sharing */
 .ie7 ul.sharing li { margin: 0 3px 0 3px; }
 
@@ -1084,8 +1087,8 @@ Autocomplete
 .autocomplete ul.results li h3 { text-transform: uppercase; font-weight: bold; font-size: 12px; color: #465866; }
 .autocomplete ul.results li .summary { margin-top: 10px; width: 120px; text-align: right; }
 .autocomplete ul.results li.politicians { margin-bottom: 0; background: none; }
-.autocomplete ul.results li.areas { margin-bottom: 0; }
-.autocomplete ul.results li.areas ul { margin-top: -27px; }
+.autocomplete ul.results li.areas2 { margin-bottom: 0; }
+.autocomplete ul.results li.areas2 ul { margin-top: -27px; }
 .autocomplete ul.results li.users { margin-bottom: 0; }
 .autocomplete ul.results li.users ul { margin-top: -40px; }
 .autocomplete ul.results li.contents { margin: 0; }
@@ -1146,7 +1149,7 @@ Footer
 footer { padding-top: 38px; background: white; border-top: 1px solid #c2c4c6; }
 footer .content { clear: both; overflow: hidden; padding: 0 0 23px 0; width: 900px; }
 footer ul.copyright { float: left; margin-right: 35px; }
-footer .home, footer .areas, footer .aobut { float: left; margin-right: 35px; }
+footer .home, footer .areas, footer .about { float: left; margin-right: 35px; }
 footer .content .home { margin-right: 50px; }
 footer .content .areas ul { float: left; margin-right: 34px; }
 footer .content ul li { margin-bottom: 4px; color: #7d8a92; font-size: 13px; }
