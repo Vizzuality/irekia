@@ -253,7 +253,7 @@ header {
           width:231px;
           height: 311px;
           z-index:1000;
-          background: url("/images/popovers_bkg.png") no-repeat -511px -202px;
+          background: url("/images/popovers_bkg.png") no-repeat -3px -536px;
 
           // .gtop,
           // .gbottom {
@@ -3630,7 +3630,7 @@ Autocomplete
       .summary { margin-top:10px; width:120px; text-align:right; }
 
       &.politicians { margin-bottom:0; background:none;}
-      &.areas2 { margin-bottom:0;  ul { margin-top:-27px; }}
+      &.areas { margin-bottom:0;  ul { margin-top:-27px; }}
       &.users { margin-bottom:0;  ul { margin-top:-40px; }}
 
       &.contents {

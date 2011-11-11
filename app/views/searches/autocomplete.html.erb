@@ -1,5 +1,5 @@
 <ul class="results">
-  <% if has_politicians? %>
+  <% if @politicians.size > 0 %>
     <li class="politicians">
       <div class="summary"><h3><%= t('.politicians.summary.title') %></h3><%= link_to t('.politicians.summary.count', :count => @politicians.count), politicians_search_path(search_params) %></div>
     <ul>
@@ -16,8 +16,8 @@
     </li>
   <% end %>
 
-  <% if has_areas? %>
-    <li class="areas2 clearfix<%= ' no-border' if !has_politicians? %>">
+  <% if @areas_found.size > 0 %>
+    <li class="areas clearfix<%= ' no-border' if @politicians.size <= 0 %>">
     <div class="summary"><h3><%= t('.areas.summary.title') %></h3></div>
     <ul>
       <% @areas_found.first(2).each do |area| %>
@@ -31,8 +31,8 @@
     </li>
   <% end %>
 
-  <% if has_citizens? %>
-    <li class="users clearfix<%= ' no-border' if !has_politicians? && !has_areas? %>">
+  <% if @citizens.size > 0 %>
+    <li class="users clearfix<%= ' no-border' if @politicians.size <= 0 and @areas_found.size <= 0 %>">
     <div class="summary"><h3><%= t('.users.summary.title') %></h3><%= link_to t('.users.summary.count', :count => @citizens.count), citizens_search_path(search_params) %></div>
     <ul>
       <% @citizens.first(2).each do |user| %>
@@ -47,7 +47,7 @@
   <% end %>
 
   <% if has_contents? %>
-    <li class="contents clearfix<%= ' no-border' if !has_politicians? && !has_areas? && !has_citizens? %>">
+    <li class="contents clearfix<%= ' no-border' if @politicians.size <= 0 and @areas_found.size <= 0 and @citizens.size <= 0 %>">
     <div class="summary"><h3><%= t('.contents.summary.title') %></h3></div>
     <%= link_to t('.contents.count', :count => @contents.count), contents_search_path(search_params) %>
     </li>

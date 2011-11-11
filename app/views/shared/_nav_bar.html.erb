@@ -1,6 +1,6 @@
 <div class="content clearfix">
 
-  <% if controller.controller_name == "users" and ["intro"].include?(controller.action_name) %>
+  <% if controller.controller_name == "users" and ["intro", "edit"].include?(controller.action_name) %>
     <span class="currently_viewing" >Regístrate en Irekia</span>
   <% else %>
     <span class="currently_viewing"><%= raw t('.areas') %></span>
