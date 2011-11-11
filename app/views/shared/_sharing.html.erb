@@ -8,6 +8,7 @@
         <%= text_field_tag :email %>
         <span class="holder">Escribe la dirección de email</span>
       </div>
+      <span class="spinner" id="share_via_email"></span>
       <%= form.submit 'Enviar', :class => 'share twitter' %>
       <div class="arrow"></div>
     <% end -%>
@@ -15,16 +16,16 @@
 
   </li>
   <li>
-    <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
-      <%= hidden_field_tag :provider, :twitter %>
-      <%= form.submit '', :class => 'share twitter' %>
-    <% end -%>
+  <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
+    <%= hidden_field_tag :provider, :twitter %>
+    <%= form.submit '', :class => 'share twitter' %>
+  <% end -%>
   </li>
   <li>
-    <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
-      <%= hidden_field_tag :provider, :facebook %>
-      <%= form.submit '', :class => 'share facebook' %>
-    <% end -%>
+  <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
+    <%= hidden_field_tag :provider, :facebook %>
+    <%= form.submit '', :class => 'share facebook' %>
+  <% end -%>
   </li>
   <li><div class="share more"></div>
 
