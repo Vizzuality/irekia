@@ -44,7 +44,7 @@ function watchHash(opt) {
         removeHash();
       });
     } else if (hash == "#team" || hash == "#questions" || hash == "#proposals" || hash == "#actions" || hash == "#agenda") {
-      $('html, body').delay(500).animate({scrollTop:$("ul.menu").offset().top - 10}, speed, function() {
+      $('html, body').delay(500).animate({scrollTop:$("ul.menu").offset().top - 40}, speed, function() {
         removeHash();
       });
     }

@@ -160,6 +160,8 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
     t.integer  "user_id"
     t.integer  "area_id"
     t.integer  "news_data_id"
+    t.integer  "proposal_data_id"
+    t.integer  "event_data_id"
     t.string   "image"
     t.string   "title"
     t.string   "description"
