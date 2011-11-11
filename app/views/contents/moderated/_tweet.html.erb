@@ -11,7 +11,7 @@
         <%= raw t('.author', :name => link_to(@content.author.fullname, path_for_user(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
       </div>
     </div>
-    <%= render "participations/comments" %>
+    <%= render "participations/comments", :birdie => true %>
   </div>
   <div class="right">
     <div class="content left-border">
