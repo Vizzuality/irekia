@@ -7,7 +7,7 @@
     </span>
     <% unless show_last_comments?(data) -%>
     &middot;
-    <%= link_to t('shared.lists_elements.comments', :count => data.comments_count), '/in_development', :class => "comment-count" %>
+    <span class="comments"><%= link_to data.comments_count, tweet_path(data.id), :class => "comment-count" %></span>
     <% end -%>
     &middot;
     <%= render "/shared/inline_sharing" %>
