@@ -1,6 +1,6 @@
 <%= avatar data.author %>
 <div class="content">
-  <p><%= simple_format data.body %></p>
+  <%= simple_format data.body %>
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
