@@ -1,14 +1,14 @@
-<% if @areas.count > 0  %>
+<% if @areas_found.count > 0  %>
   <article class="results with_footer">
   <div class="inner">
     <header>
-    <h2><%= t('.results.title', :count => @areas.count) %></h2>
+    <h2><%= t('.results.title', :count => @areas_found.count) %></h2>
     </header>
     <div class="content">
       <ul class="suggestions">
-        <% @areas.each do |area| %>
+        <% @areas_found.each do |area| %>
           <li>
-          <a href="/users/6" class="avatar " title="Gonzalo Aranburu Corrales"><img alt="Thumb_man" src="/images/icons/news_avatar_medium.png" /><div class="ieframe"> </div></a>
+            <%= avatar(area) %>
           <div class="content">
             <%= link_to area.name, area_path(area), :class => :name %>
             <%= link_to t('.results.follow'), '/in_development' %>
@@ -23,11 +23,11 @@
   <div class="inner">
     <div class="left">
       <% if action_name == 'show' %>
-        <% if @areas.count > 10 %>
-          <%= link_to t('.results.all', :count => @areas.count), '/in_development', :class => :right_arrow %>
+        <% if @areas_found.count > 10 %>
+          <%= link_to t('.results.all', :count => @areas_found.count), '/in_development', :class => :right_arrow %>
         <% end %>
       <% else %>
-        <% if @areas.count > 10 %>
+        <% if @areas_found.count > 10 %>
           <%= link_to t('.results.more'), '/in_development', :class => :right_arrow %>
         <% end %>
       <% end %>
