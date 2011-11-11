@@ -1,6 +1,10 @@
-<ul>
-  <% @proposals.each do |proposal| %>
-    <li class="proposal">
-    <%= render "shared/lists_elements/#{proposal.class.name.downcase}#{'_mini' if defined?(mini) && proposal.is_a?(Proposal)}", :data => proposal %>
-  <% end %>
-</ul>
+<% if @proposals.size > 0%>
+  <ul>
+    <% @proposals.each do |proposal| %>
+      <li class="proposal">
+      <%= render "shared/lists_elements/#{proposal.class.name.downcase}#{'_mini' if defined?(mini) && proposal.is_a?(Proposal)}", :data => proposal %>
+    <% end %>
+  </ul>
+<% else %>
+  <span class="empty">No hay propuestas en este área.</span>
+<% end %>
