@@ -109,10 +109,8 @@ class ContentsController < ApplicationController
   end
 
   def create
-    content_params = params[@content_type]
-    content_params[:user_id] = current_user.id
-
-    @content = @content_class.find_or_initialize content_params
+    @content = @content_class.new params[@content_type]
+    @content.users << current_user
 
     if @content.save
       redirect_to @content

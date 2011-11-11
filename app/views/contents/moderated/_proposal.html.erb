@@ -52,6 +52,7 @@
         <% end -%>
     </div>
 
+    <%= image_tag @content.proposal_data.image.content_url %>
     <%= simple_format @content.body %>
     <%= render "arguments" %>
     <%= render "participations/comments" %>

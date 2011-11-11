@@ -745,7 +745,9 @@ jQuery.fn.enableCommentBox = function(opt){
         return false;
       } else {
         spinner.spin(spin_element);
-        $input.attr("disabled", "disabled");
+				setTimeout(function(){
+					$input.attr("disabled", "disabled");
+				}, 10);
         $input.blur();
         $submit.fadeOut(speed);
       }

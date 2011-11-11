@@ -35,22 +35,11 @@ def create_answer(params)
 end
 
 def create_argument(params)
-  defaults = {
-    :reason => Faker::Lorem.sentence(10),
-    :in_favor => [true, false].sample
-  }
-  params = defaults.merge(params)
 
   argument = Argument.new
   argument.user = params[:author]
   argument.argument_data = ArgumentData.create :in_favor => params[:in_favor], :reason => params[:reason]
-
-  case params[:proposal]
-  when String
-    argument.proposal = ProposalData.find_by_title(params[:proposal]).proposal
-  when Integer
-    argument.proposal = Proposal.find(params[:proposal])
-  end
+  argument.proposal = params[:proposal]
 
   argument.save!
 
@@ -108,7 +97,8 @@ def create_event(params)
     :event_data_attributes => {
       :title      => params[:title],
       :event_date => params[:date],
-      :location   => params[:location]
+      :location   => params[:location],
+      :image      => params[:image]
     }
   )
 
@@ -179,6 +169,7 @@ def create_proposal(params)
 
   if proposal_data.new_record?
     proposal_data.body = params[:body]
+    proposal_data.image = params[:image]
 
     case params[:target]
     when Area
@@ -251,6 +242,9 @@ def create_tweet(params)
   Tweet.create :users => [params[:author]],
                :areas => [params[:area]],
                :tweet_data => TweetData.find_or_create_by_message(params[:message], :status_id => params[:status_id], :username => params[:username])
+
+  print '.'.blue
+
 end
 
 def create_status_message(params)
@@ -262,6 +256,9 @@ def create_status_message(params)
   StatusMessage.create :users => [params[:author]],
                        :areas => [params[:area]],
                        :status_message_data => StatusMessageData.find_or_create_by_message(params[:message])
+
+  print '.'.blue
+
 end
 
 def create_user(params)
