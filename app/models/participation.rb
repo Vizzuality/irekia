@@ -48,7 +48,7 @@ class Participation < ActiveRecord::Base
   end
 
   def self.moderation_time
-    moderated.select('extract(epoch from avg(moderated_at - published_at)) as moderation_time').first.moderation_time.try(:to_f)
+    moderated.select('extract(epoch from avg(moderated_at - published_at)) as moderation_time').where('moderated_at IS NOT NULL').first.moderation_time.try(:to_f)
   end
 
   def comments_count
