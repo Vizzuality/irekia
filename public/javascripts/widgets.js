@@ -448,7 +448,7 @@ var GOD = (function() {
       $ps.next(".sharebox.email").find('input[type="submit"]').click(function(e) {
         e.stopPropagation();
         var $el = $(this).parents("li").find(".share.email");
-        shareWith($el, "email", data.settings.transitionSpeed, data.settings.easing);
+        _shareWith($el, "email", data.settings.transitionSpeed, data.settings.easing);
       });
 
       $ps.next(".sharebox").bind('click', function(e) {
@@ -482,6 +482,31 @@ var GOD = (function() {
       }
     }
   };
+
+function _shareWith($el, service, speed, easing) {
+  var $ok = $el.find(".ok"),
+  $form;
+
+  function success(argument) {
+    if ($ok) $ok.animate({ opacity:0, top: "20px" }, speed, easing, function() { $(this).remove(); })
+
+    $el.append('<div class="ok" />');
+    $ok = $el.find(".ok");
+    $ok.animate({opacity:1, top:"-2px"}, speed, easing);
+    return true;
+  }
+
+  function error(a, b, c) {
+    $form.find(".input_field").addClass("error");
+    return true;
+  }
+
+  $form = $el.parents("li").find("form");
+  $form.bind('ajax:success', success);
+  $form.bind('ajax:error', error);
+  //$form.submit();
+}
+
 
   function _resize($ps) {
     var $sharebox = $ps.next(".sharebox");

@@ -841,56 +841,28 @@ jQuery.fn.inputCounter = function(opt){
   });
 }
 
-/* Adds sharing capabilities */
-jQuery.fn.share = function(opt){
+// /* Adds sharing capabilities */
+// jQuery.fn.share = function(opt){
+//
+//   var speed   = (opt && opt.speed)  || 200;
+//   var easing  = (opt && opt.easing) || 'easeInExpo';
+//   var finishedSharing = true;
+//
+//   this.each(function(){
+//     var service = $(this).attr('class').replace('share ', '');
+//
+//     $(this).bind('click', function(e) {
+//       e.preventDefault();
+//       e.stopPropagation();
+//
+//       if (finishedSharing) {
+//         //finishedSharing = shareWith($(this), service, speed, easing);
+//       }
+//     });
+//   });
+// }
 
-  var speed   = (opt && opt.speed)  || 200;
-  var easing  = (opt && opt.easing) || 'easeInExpo';
-  var finishedSharing = true;
-
-  this.each(function(){
-    var service = $(this).attr('class').replace('share ', '');
-
-    $(this).bind('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      if (finishedSharing) {
-        finishedSharing = shareWith($(this), service, speed, easing);
-      }
-    });
-  });
-}
-
-function shareWith($el, service, speed, easing) {
-  var $ok = $el.find(".ok"),
-  $form;
-
-  function success(argument) {
-    if ($ok) $ok.animate({ opacity:0, top: "20px" }, speed, easing, function() { $(this).remove(); })
-
-    $el.append('<div class="ok" />');
-    $ok = $el.find(".ok");
-    $ok.animate({opacity:1, top:"-2px"}, speed, easing);
-    return true;
-  }
-
-  function error(a, b, c) {
-    $form.find(".input_field").addClass("error");
-    return true;
-  }
-
-  $form = $el.parents("li").find("form");
-  $form.bind('ajax:success', success);
-  $form.bind('ajax:error', error);
-  $form.submit();
-}
-
-(function($) {
-/*
-* Auto-growing textareas; technique ripped from Facebook
-*/
-  $.fn.autogrow = function(options) {
+jQuery.fn.autogrow = function(options){
 
     var resizing = false;
     this.filter('textarea').each(function() {
@@ -942,5 +914,5 @@ function shareWith($el, service, speed, easing) {
     });
     return this;
   }
-})(jQuery);
+
 

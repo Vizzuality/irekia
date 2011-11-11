@@ -106,7 +106,7 @@ $(function() {
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
 
-  $(".share.twitter, .share.facebook").share();
+  //$(".share.twitter, .share.facebook").share();
   $(".show-hidden-comments").showHiddenComments();
 
   // Popovers
