@@ -1,4 +1,4 @@
-<article class="with_form with_footer">
+<article class="settings with_form with_footer">
 <form action="#" novalidate>
   <div class="inner">
     <header>
@@ -6,8 +6,7 @@
       <h2>Tu perfil</h2>
       <h4>Recuerda que son datos públicos y visibles en Irekia.</h3>
     </div>
-    <div class="right">
-    </div>
+    <div class="right"></div>
     </header>
     <div class="left">
       <fieldset>
@@ -17,67 +16,76 @@
           <a href="#" class="radio gender female">Mujer</a>
         </div>
 
-        <div class="field name left error">
+        <div class="field name pull-left">
           <label for="">Nombre</label>
           <div class="input_field"> <input type="text" /> </div>
-          <ul class="errors"><li>La URL no parece ser correcta</li></ul>
+          <!-- <ul class="errors"><li>La URL no parece ser correcta</li></ul> -->
         </div>
 
-        <div class="field lastname right">
+        <div class="field lastname pull-right">
           <label for="">Apellidos</label>
           <div class="input_field"> <input type="text" /> </div>
         </div>
 
-        <div class="field territory left">
+        <div class="field territory pull-left">
           <label for="">Territorio</label>
           <div class="input_field"> <input type="text" /> </div>
-          <ul class="errors">
+          <!--<ul class="errors">
             <li>La URL no parece ser correcta</li>
             <li>La URL no parece ser correcta</li>
           </ul>
+          -->
         </div>
 
-        <div class="field municipality right">
+        <div class="field municipality pull-right">
           <label for="">Municipio</label>
           <div class="input_field select">
-            <select name="municipality" class="default">
-              <option value="A" >A</option>
-              <option value="B" >B</option>
-              <option value="C" >C</option>
-              <option value="A" >A</option>
-              <option value="B" >B</option>
-              <option value="C" >C</option>
-              <option value="A" >A</option>
-              <option value="B" >B</option>
-              <option value="C" >C</option>
-              <option value="A" >A</option>
-              <option value="B" >B</option>
-              <option value="C" >C</option>
-              <option value="A" >A</option>
-              <option value="B" >B</option>
-              <option value="C" >C</option>
-              <option value="A" >A</option>
-              <option value="B" >B</option>
-              <option value="C" >C</option>
+            <select name="municipality" class="dropkick default">
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
             </select>
           </div>
         </div>
 
         <div class="field born_at">
           <label for="">Fecha de nacimiento</label>
+          <%= date_select :user, :birthday, :start_year => 1900, :include_blank => true %>
         </div>
-      </fieldset>
 
       <div class="field social">
         <label for="">Conexión con redes sociales</label>
 
-          <div class="social-links">
-            <div class="facebook"><%= link_to (raw t('.signin', :name => "Facebook")), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
-            <div class="twitter"><%= link_to (raw t('.signin', :name => "Twitter")), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
-          </div>
+        <div class="social-links">
+          <div class="facebook"><%= link_to t('.connect_with', :name => 'Facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+          <div class="twitter"><%= link_to t('.connect_with', :name => 'Twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
+        </div>
+      </div>
+      </fieldset>
+
+      <div class="delete_profile">
+        <p>Por supuesto, si lo deseas puedes <a href="/in_development">borrar tu perfil</a> de Irekia en cualquier momento.</p>
+        <p class="last">Esperamos que no sea así :-)</p>
       </div>
 
     </div>
+
+
     <div class="right">
     </div>
   </div>
@@ -173,25 +181,24 @@
 
 
       <fieldset>
-            <div class="field email">
-              <label for="">Tu email</label>
-              <div class="input_field"> <input type="email" /> </div>
-            </div>
+        <div class="field email">
+          <label for="">Tu email</label>
+          <div class="input_field"> <input type="email" /> </div>
+        </div>
 
-            <div class="field password left">
-              <label for="">Tu contraseña actual</label>
-              <div class="input_field"> <input type="password" /> </div>
-            </div>
+        <div class="field password left">
+          <label for="">Tu contraseña actual</label>
+          <div class="input_field"> <input type="password" /> </div>
+        </div>
 
-            <div class="field confirm_password right">
-              <label for="">Tu nueva contraseña</label>
-              <div class="input_field"> <input type="password" /> </div>
-            </div>
+        <div class="field confirm_password pull-right">
+          <label for="">Tu nueva contraseña</label>
+          <div class="input_field"> <input type="password" /> </div>
+        </div>
       </fieldset>
 
     </div>
-    <div class="right">
-    </div>
+    <div class="right"></div>
   </div>
   <footer>
   <div class="separator"></div>

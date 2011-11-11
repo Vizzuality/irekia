@@ -1,0 +1,209 @@
+
+
+<article class="profile with_form with_footer">
+<form action="#" novalidate>
+  <div class="inner">
+    <header>
+    <div class="left">
+      <h2>Tu perfil</h2>
+      <h4>Recuerda que son datos públicos y visibles en Irekia.</h3>
+    </div>
+    <div class="right">
+    </div>
+    </header>
+    <div class="left">
+      <fieldset>
+        <div class="field">
+          <label for="">Sexo</label>
+          <a href="#" class="radio gender male">Hombre</a>
+          <a href="#" class="radio gender female">Mujer</a>
+        </div>
+
+        <div class="field name left error">
+          <label for="">Nombre</label>
+          <div class="input_field"> <input type="text" /> </div>
+          <ul class="errors"><li>La URL no parece ser correcta</li></ul>
+        </div>
+
+        <div class="field lastname right">
+          <label for="">Apellidos</label>
+          <div class="input_field"> <input type="text" /> </div>
+        </div>
+
+        <div class="field territory left">
+          <label for="">Territorio</label>
+          <div class="input_field"> <input type="text" /> </div>
+          <ul class="errors">
+            <li>La URL no parece ser correcta</li>
+            <li>La URL no parece ser correcta</li>
+          </ul>
+        </div>
+
+        <div class="field municipality right">
+          <label for="">Municipio</label>
+          <div class="input_field select">
+            <select name="municipality" class="default">
+              <option value="A" >A</option>
+              <option value="B" >B</option>
+              <option value="C" >C</option>
+              <option value="A" >A</option>
+              <option value="B" >B</option>
+              <option value="C" >C</option>
+              <option value="A" >A</option>
+              <option value="B" >B</option>
+              <option value="C" >C</option>
+              <option value="A" >A</option>
+              <option value="B" >B</option>
+              <option value="C" >C</option>
+              <option value="A" >A</option>
+              <option value="B" >B</option>
+              <option value="C" >C</option>
+              <option value="A" >A</option>
+              <option value="B" >B</option>
+              <option value="C" >C</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field born_at left">
+          <label for="">Fecha de nacimiento</label>
+        </div>
+      </fieldset>
+
+      <div class="field social">
+        <label for="">Conexión con redes sociales</label>
+
+          <div class="social-links">
+            <div class="facebook"><%= link_to t('.connect_with', :name => 'Facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+            <div class="twitter"><%= link_to t('.connect_with', :name => 'Twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
+          </div>
+      </div>
+
+    </div>
+    <div class="right">
+    </div>
+  </div>
+  <footer>
+  <div class="separator"></div>
+  <div class="inner">
+    <div class="left">
+      <%= button "Guardar cambios", :class => "white_button blue" %>
+    </div>
+  </div>
+  </footer>
+
+  <div class="t"></div><div class="f"></div>
+</form>
+</article>
+
+<article>
+<div class="inner">
+  <div class="content">
+    <h2>Tu avatar</h2>
+
+    <div class="avatar-uploader">
+
+      <img alt="Avatar_big" class="avatar xlAvatar" src="/images/temp/avatar_big.png?1316444070" />
+
+
+      <div class="explanation">
+        <h3>Selecciona tu avatar</h3>
+        <p>Necesitas una imagen que te represente en Irekia. Los usuarios con avatar son mas populares</p>
+
+        <%= button "Subir una nueva imagen", :class => "white_button clear blue" %>
+        <div class="small">Tamaño máximo 500x500.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="t"></div><div class="f"></div>
+</article>
+
+<article>
+<div class="inner">
+  <div class="content">
+    <h2>Notificaciones</h2>
+
+    <ul class="notifications">
+      <li>
+      <a href="#" class="letter minimun"></a>
+      <div class="content">
+        <strong>Mínimas</strong>
+        <p>Recibirás los emails estrictamente necesarios para la gestión de tu cuenta.</p>
+      </div>
+      </li>
+
+      <li class="selected">
+      <a href="#" class="letter basics"></a>
+      <div class="content">
+        <strong>Básicas</strong>
+        <p>Recibirás los resultados finales de las propuestas y preguntas en las que has participado.</p>
+      </div>
+      </li>
+
+      <li class="last">
+      <a href="#" class="letter all"></a>
+      <div class="content">
+        <strong>Todas</strong>
+        <p>Te avisaremos también cuando haya novedades en un hilo en el que has participado.</p>
+      </div>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+<div class="t"></div><div class="f"></div>
+</article>
+
+
+<article class="with_form with_footer">
+<form action="#" novalidate>
+  <div class="inner">
+    <header>
+    <div class="left">
+      <h2>Configuración de tu cuenta</h2>
+      <h4>Datos de acceso a Irekia</h3>
+    </div>
+    <div class="right">
+    </div>
+    </header>
+
+
+    <div class="left">
+
+
+      <fieldset>
+            <div class="field email">
+              <label for="">Tu email</label>
+              <div class="input_field"> <input type="email" /> </div>
+            </div>
+
+            <div class="field password left">
+              <label for="">Tu contraseña actual</label>
+              <div class="input_field"> <input type="password" /> </div>
+            </div>
+
+            <div class="field confirm_password right">
+              <label for="">Tu nueva contraseña</label>
+              <div class="input_field"> <input type="password" /> </div>
+            </div>
+      </fieldset>
+
+    </div>
+    <div class="right">
+    </div>
+  </div>
+  <footer>
+  <div class="separator"></div>
+  <div class="inner">
+    <div class="left">
+      <%= button "Guardar cambios", :class => "white_button blue" %>
+    </div>
+  </div>
+  </footer>
+
+  <div class="t"></div><div class="f"></div>
+</form>
+</article>

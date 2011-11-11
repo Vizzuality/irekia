@@ -124,7 +124,6 @@ header {
 
   .content {
     clear: both;
-    overflow: hidden;
     //position: relative;
     height: 74px;
 
@@ -174,6 +173,7 @@ header {
         color: #19597A;
         text-shadow: 1px 1px 1px #2F9CD8;
       }
+
       form {
         float: left;
         width: 290px;
@@ -222,47 +222,87 @@ header {
 
       .sign_out { float: right; }
 
-      ul {
-        &.auth {
-          float: right;
-          li {
-            position: relative;
-            margin: 0 0 0 10px;
-            @include inline-block;
+      .areas_selector {
+        float: left;
+        margin-right: 10px;
+        position:relative;
+        padding: 7px 14px;
+        width:150px;
+        color: $white;
+        font-size: 15px;
+        text-shadow: 0px 1px 1px #0F4768;
+        border: 1px solid #13587F;
 
-            .pending-counter { right: 5px; }
+        @include border-radius(5px);
+        @include box-shadow(0 1px 1px 0 #369acf);
 
-            a {
-              display: inline-block;
-              font-size: 15px;
-              color: $white;
+        background: #3396cd;
 
-              &.twitter { background: url('/images/icons/twitter.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
-              &.facebook { background: url('/images/icons/facebook.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
+        background: -moz-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3396cd), color-stop(100%, #2080b5));
+        background: -webkit-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        background: -o-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        background: -ms-linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 );
+        background: linear-gradient(top, #3396cd 0%, #2080b5 100%);
+        cursor:pointer;
+
+        .popover {
+          display:none;
+          position:absolute;
+          width:231px;
+          height: 311px;
+          z-index:1000;
+          background: url("/images/popovers_bkg.png") no-repeat -400px -78px;
+
+          .scroll-pane {
+            height: 280px;
+            width: 195px;
+            overflow: hidden;
+            margin: 20px 0 0 20px;
+            outline:none;
+
+            ul {
+              margin:0; padding:0;
+              width:195px;
+
+              li {
+                text-shadow:none;
+                color:#333;
+
+                &.last {
+                  a { border:none; }
+                }
+
+                a {
+                  display:block;
+                  padding: 20px 0 20px 0;
+                  border-bottom: 1px solid #f1f1f1;
+                }
+              }
             }
           }
+
         }
-        &.areas {
-          float: left;
-          margin-right: 10px;
-          padding: 7px 14px;
-          color: $white;
-          font-size: 15px;
-          text-shadow: 0px 1px 1px #0F4768;
-          border: 1px solid #13587F;
+      }
 
-          @include border-radius(5px);
-          @include box-shadow(0 1px 1px 0 #369acf);
+      ul.auth {
+        float: right;
+        li {
+          position: relative;
+          margin: 0 0 0 10px;
+          @include inline-block;
 
-          background: #3396cd;
+          .pending-counter { right: 5px; }
 
-          background: -moz-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3396cd), color-stop(100%, #2080b5));
-          background: -webkit-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-          background: -o-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-          background: -ms-linear-gradient(top, #3396cd 0%, #2080b5 100%);
-          filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 );
-          background: linear-gradient(top, #3396cd 0%, #2080b5 100%);
+          a {
+            display: inline-block;
+            font-size: 15px;
+            color: $white;
+
+            &.twitter { background: url('/images/icons/twitter.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
+            &.facebook { background: url('/images/icons/facebook.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
+          }
         }
       }
     }
@@ -568,8 +608,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
         a:hover { text-decoration:none; }
 
-        &.left { float:left; margin-right:6px; }
-        &.right { float:left;  }
+        &.pull-left { float:left; clear:left; margin-right:6px; }
+        &.pull-right { float:left;  }
 
         .gender.male { margin-right:25px; }
 
@@ -2811,7 +2851,7 @@ a.editable {
     &[type="email"] ,
     &[type="password"] {
       width: 222px;
-      height: 29px;
+      height: 33px;
       padding: 0 9px;
       font-size: 13px;
       border: 1px solid rgba(0, 0, 0, 0.2);
@@ -3287,7 +3327,65 @@ input {
   }
 }
 
+#container article.settings .inner {
+  .left {
+    fieldset {
+      .field {
+        .input_field {
+          width:415px;
+          z-index:299999;
+        }
 
+        &.social {
+          float:left;
+        }
+
+        &.born_at {
+          float:left;
+          width:415px;
+          clear:right;
+
+          select, .dk_container { float:left; margin:0 5px 0 0; }
+
+          .input_field {
+            width:415px;
+          }
+        }
+        &.pull-left { float:left; clear:left; margin-right:6px; }
+        &.pull-right { float:left;  }
+      }
+    }
+
+
+    .delete_profile {
+      width:237px;
+      right:-270px;
+      bottom:40px;
+      position:absolute;
+      background:#f1f1f1;
+      padding:5px;
+      @include border-radius(5px);
+      a { color:#465866; font-size:15px; text-decoration:underline; }
+
+
+      p {
+        margin: 0 0 9px 0;
+        padding:3px 10px;
+        color:#465866;
+        font-size:15px;
+        &:last-child { margin:0; }
+        &.last { margin:0; }
+      }
+    }
+
+  }
+
+  .right {
+    width:263px;
+    background:red;
+
+  }
+}
 
 /* Fields with errors */
 #container article.with_form .inner .content .field p.error,
@@ -3341,14 +3439,14 @@ input {
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  display:block;
-  width:638px;
-  height:35px;
-  background:url('/images/inputs_sprite.png') no-repeat right -75px;
-  border:none;
-  font-size:15px;
-  color:$medium_dark;
-  outline:none;
+display:block;
+width:638px;
+height:35px;
+background:url('/images/inputs_sprite.png') no-repeat right -75px;
+border:none;
+font-size:15px;
+color:$medium_dark;
+outline:none;
 }
 }
 

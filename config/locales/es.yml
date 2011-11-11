@@ -382,8 +382,9 @@
         accessibility: Accesibilidad
         management: Mis gestiones
       nav_bar:
-        currently_viewing: Estás viendo&hellip;
-        search: O busca lo que necesitas&hellip;
+        areas: "Áreas"
+        search: Busca lo que necesitas&hellip;
+        choose_an_area: Elige un área
       sign_in:
         access_irekia: Accede a Irekia
         forgotten_password: ¿Olvidaste tu contraseña?
@@ -412,8 +413,9 @@
       euskadi_net_url: "http://www.euskadi.net/r33-2220/es/"
 
     nav_bar:
-      currently_viewing: Estás viendo&hellip;
-      search: O busca lo que necesitas&hellip;
+      areas: "Áreas"
+      search: Busca lo que necesitas&hellip;
+      choose_an_area: Elige un área
       sign_up: Regístrate
       sign_in: Login
       sign_out: Salir
@@ -980,7 +982,6 @@
         all: 'ver los %{count} áreas encontradas'
         more: ver más resultados
         follow: Seguir
-    users:
       results:
         title:
           zero: Ningún usuario
@@ -1055,6 +1056,8 @@
             other: '%{count} contenidos encontrados'
 
   users:
+    settings:
+      connect_with: "Conectar con %{name}"
     public:
       welcome:
         address: 'Residente en %{city}, %{province}.'

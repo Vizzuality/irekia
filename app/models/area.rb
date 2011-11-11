@@ -58,6 +58,8 @@ class Area < ActiveRecord::Base
            :through => :follows,
            :source => :user
 
+  has_one :image
+
   accepts_nested_attributes_for :questions
   accepts_nested_attributes_for :follows, :allow_destroy => true
 

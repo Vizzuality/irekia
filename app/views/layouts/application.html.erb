@@ -33,7 +33,6 @@
 
   <%= csrf_meta_tag %>
 </head>
-
 <body>
 
   <%= render 'shared/sign_in' %>
@@ -46,17 +45,15 @@
     </nav>
     </header>
 
-    <div id="main" class="<%= controller.controller_name %> <%= controller.action_name %> role="main">
+    <div id="main" class="<%= controller.controller_name %> <%= controller.action_name %>">
       <div class="content">
         <%= yield %>
         <%= render 'shared/floating_login' %>
       </div>
     </div>
 
-    <footer> <%= render 'shared/footer' %>
-    </footer>
+    <footer><%= render 'shared/footer' %></footer>
   </div>
-
 
   <!-- JavaScript at the bottom for fast page loading -->
 
@@ -64,9 +61,7 @@
   <script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false" type="text/javascript"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.6.2.min.js"><\/script>')</script>
-
     <%= javascript_include_tag 'rails', 'libs/spin.min', 'helpers', 'temp', 'widgets', 'mylibs/question', 'mylibs/proposal', 'mylibs/login',  'map', 'plugins', 'libs/jquery-ui-1.8.16.custom.min', 'libs/jquery.dropkick-1.0.0', 'application' %>
     <%= yield :js_data %>
-
   </body>
 </html>

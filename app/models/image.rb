@@ -2,6 +2,7 @@ class Image < ActiveRecord::Base
   belongs_to :photo,
              :foreign_key => :photo_id
   belongs_to :user
+  belongs_to :area
   belongs_to :news_data
 
   mount_uploader :image, ImageUploader

@@ -1,16 +1,26 @@
-<div class="content">
-  <span class="currently_viewing"><%= raw t('.currently_viewing') %></span>
-  <ul class="areas">
-    <% @areas.each do |area| %>
-      <li class="<%= current_area?(area) %>"><%= truncate(area.name, :length => 18) %></li>
-    <% end if @areas %>
-  </ul>
+<div class="content clearfix">
+  <span class="currently_viewing"><%= raw t('.areas') %></span>
+
+  <div class="areas_selector">
+    <%= @area ? @area.name : (content_tag :span, t(".choose_an_area")) %>
+
+    <div class="popover">
+      <div class="scroll-pane">
+        <ul>
+          <% @areas.each do |area| %>
+            <li class="<%= current_area?(area) %><%= ' last' if @areas.last == area %>"><%= link_to area.name, area_path(area) %></li>
+            <% end if @areas %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
   <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get, :autocomplete => :off } do |search_form| %>
     <div class="input_field search placeholder">
       <%= search_form.text_field :query %>
       <%= search_form.submit '' %>
       <span id="autocomplete_spinner"></span>
-      <span class="holder">o busca lo que necesites…</span>
+      <span class="holder"><%= raw t(".search") %></span>
     </div>
     <field></field>
     <div class="autocomplete">
