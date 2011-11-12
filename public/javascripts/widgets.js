@@ -824,7 +824,7 @@ function _shareWith($el, service, speed, easing) {
   }
 
   function _getLeftPosition($ps) {
-    return $ps.width() - 185;
+    return ($ps.outerWidth() / 2) - ($ps.find(".popover").outerWidth() / 2) - 1;
   }
 
   function _triggerOpenAnimation($ps, data) {
