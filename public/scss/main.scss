@@ -227,7 +227,7 @@ header {
         margin: 0 15px 0 0;
         position:relative;
         padding: 8px 14px 7px 14px;
-        width:171px;
+        width:191px;
         color: $white;
         font-size: 15px;
         text-shadow: 0px 1px 1px #0F4768;
@@ -246,6 +246,20 @@ header {
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 );
         background: linear-gradient(top, #3396cd 0%, #2080b5 100%);
         cursor:pointer;
+
+        &.open {
+          .handle { background-position: 0 -141px; }
+        }
+
+        .handle {
+          position:absolute;
+          display:block;
+          width:6px;
+          height:5px;
+          right: 11px;
+          top: 15px;
+          background: url('/images/icons/icon_sprite.png') no-repeat 0 -128px;
+        }
 
         .popover {
           display:none;
