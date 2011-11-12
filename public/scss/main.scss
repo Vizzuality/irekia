@@ -489,6 +489,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   .inner {
     .left h1 { margin-bottom: 10px; line-height: 41px; }
 
+    header p { margin: 14px 0 0 0; font-size:17px; color:$standard_gray; }
     header p.position { padding: 0; margin: 0; font-size:17px; color:$standard_gray; }
 
     h1 { margin-bottom: 5px; font-size: 41px; font-weight: 300; }
@@ -700,15 +701,15 @@ article .inner { h2, h3 { color: $dark_blue; } }
       padding-top: 35px;
       padding-bottom: 10px;
     }
+
     &.with_icon {
       footer .inner, &.with_footer footer .inner {
         padding-top: 25px;
         padding-bottom: 25px;
       }
       .inner {
-        .content p {
-          line-height: 20px;
-        }
+        .content p { line-height: 20px; }
+
         .icon {
           float: left;
           margin: 0 18px 0 0;
@@ -716,16 +717,20 @@ article .inner { h2, h3 { color: $dark_blue; } }
           width: 76px;
           height: 80px;
         }
-      }
-    }
-  }
+
+      } // inner
+    } // mini.with_icon
+  } // mini
+
+
   &.profile .inner {
     h1 { font-size: 41px; }
     .left {
       h3 { margin-bottom: 5px; }
-      p { width: 292px; display: block-inline; margin: 0 0 10px 0; font-size: 15px; }
+      p  { width: 292px; display: block-inline; margin: 0 0 10px 0; font-size: 15px; }
     }
   }
+
   &.micro {
     width: 390px;
     margin: 0 auto 40px auto;
@@ -762,6 +767,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         width: 316px;
       }
     }
+
     &.with_footer {
       margin-bottom: 40px;
       .inner {
@@ -803,6 +809,30 @@ article .inner { h2, h3 { color: $dark_blue; } }
       }
     }
   }
+
+  &.help {
+    .inner {
+      width: 851px;
+      padding: 105px 31px 100px 112px;
+
+      h2 { margin: 0 0 14px 0; }
+
+      .icon {
+        width:93px;
+        height:98px;
+        background: url('/images/icons/icon_sprite.png') no-repeat 0 -153px;
+        float:left;
+        margin: 0 18px 0 0;
+      }
+
+      .content {
+        float:left;
+        width:544px;
+      }
+
+      p { margin: 0 0 16px 0; color: #7D8A92; font-size: 17px; }
+    } // inner
+  } // help
 
   // PUBLISH
   &.publish {

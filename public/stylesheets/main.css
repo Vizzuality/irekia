@@ -143,6 +143,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.static .inner header h3 { text-transform: none; font-size: 19px; font-family: "Helvetica", sans-serif; font-weight: normal; }
 
 #container article .inner .left h1 { margin-bottom: 10px; line-height: 41px; }
+#container article .inner header p { margin: 14px 0 0 0; font-size: 17px; color: #7d8a92; }
 #container article .inner header p.position { padding: 0; margin: 0; font-size: 17px; color: #7d8a92; }
 #container article .inner h1 { margin-bottom: 5px; font-size: 41px; font-weight: 300; }
 #container article .inner h2 { margin-bottom: 5px; font-size: 31px; line-height: 31px; font-weight: 300; }
@@ -224,6 +225,11 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.micro.with_footer .separator { height: 2px; background: url("/images/box_micro_bkg.png") repeat-x; background-position: 0 -33px; }
 #container article.micro.with_footer footer .inner .left { position: relative; float: left; left: 0; width: 50%; }
 #container article.micro.with_footer footer .inner div.right { right: 0; margin: 0; width: 50%; }
+#container article.help .inner { width: 851px; padding: 105px 31px 100px 112px; }
+#container article.help .inner h2 { margin: 0 0 14px 0; }
+#container article.help .inner .icon { width: 93px; height: 98px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -153px; float: left; margin: 0 18px 0 0; }
+#container article.help .inner .content { float: left; width: 544px; }
+#container article.help .inner p { margin: 0 0 16px 0; color: #7D8A92; font-size: 17px; }
 #container article.publish { width: 757px; margin: 0 auto 40px auto; }
 #container article.publish .inner header { margin: 0; width: 691px; }
 #container article.publish .inner header h2 { line-height: normal; }

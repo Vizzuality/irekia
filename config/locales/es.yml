@@ -1143,7 +1143,8 @@
             También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia."
             link: Configura tu cuenta
       follow_suggestions:
-        title: ¿Quieres más? Te sugerimos&hellip;
+        title: Tu dashboard está vacío.
+        we_suggest_you_the_most_active: "Seguramente no sigues al número suficiente de políticos o áreas. Te sugerimos los más activos:"
         title_and_area: '%{title} de %{area}'
         follow: Seguir
         more: Más sugerencias
