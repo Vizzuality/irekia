@@ -16,4 +16,8 @@ class Image < ActiveRecord::Base
   def content_url
     image.content.url
   end
+
+  def list_element_url
+    image.list_element.url
+  end
 end

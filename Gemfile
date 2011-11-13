@@ -22,6 +22,7 @@ end
 
 group :development, :test do
   gem 'ruby-debug19', :platforms => :mri_19
+  gem 'ruby-debug-base19', '~> 0.11.25'
   gem 'rspec-rails', '~> 2.6'
   gem 'capybara', '~> 1.0.1'
   gem 'selenium-webdriver', '2.7.0'

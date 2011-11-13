@@ -1,9 +1,5 @@
 #encoding: UTF-8
 
-puts ''.green
-puts 'Creating proposals...'.green
-puts '====================='.green
-
 @proposal1 = create_proposal :title    => 'Calidad del aire en Euskadi',
                 :body     => (<<-EOF
                       Estos días estamos a vueltas con la contaminación presente en Madrid que hasta ha salido en la foto de campaña del PP. Dicen que los medidores de la red de Madrid han pasado los límites permitidos por la UE. En Euskadi contamos con una red también, en la que nos cuentan las bondades del aire vasco. Una red, cuya pagina web a parte de una actualización deficiente, te da sorpresas como la que aparece en la foto en la que el día 18 de octubre en Euskadi no tenemos nada que envidiar al aire de Madrid.
@@ -12,9 +8,8 @@ Y de paso, como he leído en otra propuesta, si no se va a actualizar la previsi
 Supongo que lo de la foto será un fallo, pero no da un buen ejemplo de profesionalidad.
                 EOF
                 ),
-                :target   => Area.first,
+                :target   => @area,
                 :tags     => %w(contaminación ecología Medio\ Ambiente).join(','),
-                :area     => @area,
                 :author   => @andres,
                 :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'proposal_00.jpg'))),
                 :comments => [
@@ -29,14 +24,13 @@ Los bajos niveles de acumulación podrían deberse, según la investigación, a 
 Se propone aumentar la superficie del bosque vasco con la plantación de árboles autóctonos para fijar el carbono, abrir corredores ecológicos, mejorar el estado de los nuestros ecosistemas naturales, la calidad de nuestro aire y generando puestos de trabajo verdes.
                 EOF
                 ),
-                :target   => Area.first,
+                :target   => @area,
                 :tags     => %w(arboles naturaleza Medio\ Ambiente).join(','),
-                :area     => @area,
-                :author   => @gonzalo,
+                :author   => @aitor,
                 :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'proposal_01.jpg'))),
                 :comments => [
                   create_comment(@iker, 'en el País Vasco tenemos unos prados extraordinarios! Aunque deberíamos repoblar mas, porque en otros tiempos teníamos unos bosques mas chulos!!'),
-                  create_comment(@andres, 'debemos cambiar las actuales políticas por unas mas ecologistas. Antiguamente se ctalaban arboles a diestro y siniestro y nunca nos preocupamos de repoblar.')
+                  create_comment(@andres, 'debemos cambiar las actuales políticas por unas mas ecologistas. Antiguamente se talaban arboles a diestro y siniestro y nunca nos preocupamos de repoblar.')
                 ]
 
 @proposal3 = create_proposal :title    => 'Competencias policiales durante la noche',
@@ -46,9 +40,8 @@ En Euskadi hay poblaciones como Ondarroa (10000 habitantes más o menos) en las 
 Gracias
                 EOF
                 ),
-                :target   => Area.first,
+                :target   => @area,
                 :tags     => %w(policia seguridad ciudadanía).join(','),
-                :area     => @area,
                 :author   => @patricia,
                 :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'proposal_02.jpg'))),
                 :comments => [

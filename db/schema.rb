@@ -15,8 +15,6 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
 
   create_table "answer_data", :force => true do |t|
     t.integer  "answer_id"
-    t.integer  "question_id"
-    t.integer  "user_id"
     t.text     "answer_text"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -54,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
     t.integer  "areas_users_count", :default => 0
     t.integer  "follows_count",     :default => 0
     t.integer  "proposals_count",   :default => 0
+    t.integer  "arguments_count",   :default => 0
+    t.integer  "votes_count",       :default => 0
     t.integer  "questions_count",   :default => 0
     t.integer  "answers_count",     :default => 0
     t.integer  "events_count",      :default => 0
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
   add_index "comment_data", ["comment_id"], :name => "index_comment_data_on_comment_id"
 
   create_table "contents", :force => true do |t|
+    t.integer  "user_id"
     t.integer  "related_content_id"
     t.string   "type"
     t.string   "tags"
@@ -202,7 +203,6 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
 
   create_table "proposal_data", :force => true do |t|
     t.integer  "proposal_id"
-    t.integer  "user_id"
     t.integer  "area_id"
     t.string   "title"
     t.text     "body"
@@ -307,7 +307,10 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
     t.string   "locale",                                     :default => "es"
     t.integer  "areas_users_count",                          :default => 0
     t.integer  "follows_count",                              :default => 0
+    t.integer  "tagged_count",                               :default => 0
     t.integer  "proposals_count",                            :default => 0
+    t.integer  "arguments_count",                            :default => 0
+    t.integer  "votes_count",                                :default => 0
     t.integer  "questions_count",                            :default => 0
     t.integer  "answers_count",                              :default => 0
     t.integer  "events_count",                               :default => 0
@@ -316,7 +319,17 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
     t.integer  "videos_count",                               :default => 0
     t.integer  "statuses_count",                             :default => 0
     t.integer  "comments_count",                             :default => 0
-    t.integer  "tagged_count",                               :default => 0
+    t.integer  "private_proposals_count",                    :default => 0
+    t.integer  "private_arguments_count",                    :default => 0
+    t.integer  "private_votes_count",                        :default => 0
+    t.integer  "private_questions_count",                    :default => 0
+    t.integer  "private_answers_count",                      :default => 0
+    t.integer  "private_events_count",                       :default => 0
+    t.integer  "private_news_count",                         :default => 0
+    t.integer  "private_photos_count",                       :default => 0
+    t.integer  "private_videos_count",                       :default => 0
+    t.integer  "private_statuses_count",                     :default => 0
+    t.integer  "private_comments_count",                     :default => 0
     t.string   "email",                                      :default => "",    :null => false
     t.string   "encrypted_password",          :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"

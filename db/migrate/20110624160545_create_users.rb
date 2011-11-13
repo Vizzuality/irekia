@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :lastname
       t.date     :birthday
       t.text     :description
-      t.boolean  :is_woman,                   :default => false
+      t.boolean  :is_woman,                                                      :default => false
       t.integer  :province_id
       t.string   :province
       t.integer  :city_id
@@ -19,22 +19,36 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :twitter_username
       t.string   :twitter_oauth_token
       t.string   :twitter_oauth_token_secret
-      t.boolean  :inactive,                   :default => false
-      t.boolean  :first_time,                 :default => true
-      t.string   :locale,                     :default => 'es'
+      t.boolean  :inactive,                                                      :default => false
+      t.boolean  :first_time,                                                    :default => true
+      t.string   :locale,                                                        :default => 'es'
 
-      t.integer :areas_users_count, :default => 0
-      t.integer :follows_count, :default => 0
-      t.integer :proposals_count, :default => 0
-      t.integer :questions_count, :default => 0
-      t.integer :answers_count, :default => 0
-      t.integer :events_count, :default => 0
-      t.integer :news_count, :default => 0
-      t.integer :photos_count, :default => 0
-      t.integer :videos_count, :default => 0
-      t.integer :statuses_count, :default => 0
-      t.integer :comments_count, :default => 0
-      t.integer :tagged_count, :default => 0
+      t.integer :areas_users_count,                                              :default => 0
+      t.integer :follows_count,                                                  :default => 0
+      t.integer :tagged_count,                                                   :default => 0
+      t.integer :proposals_count,                                                :default => 0
+      t.integer :arguments_count,                                                :default => 0
+      t.integer :votes_count,                                                    :default => 0
+      t.integer :questions_count,                                                :default => 0
+      t.integer :answers_count,                                                  :default => 0
+      t.integer :events_count,                                                   :default => 0
+      t.integer :news_count,                                                     :default => 0
+      t.integer :photos_count,                                                   :default => 0
+      t.integer :videos_count,                                                   :default => 0
+      t.integer :statuses_count,                                                 :default => 0
+      t.integer :comments_count,                                                 :default => 0
+
+      t.integer :private_proposals_count,                                        :default => 0
+      t.integer :private_arguments_count,                                        :default => 0
+      t.integer :private_votes_count,                                            :default => 0
+      t.integer :private_questions_count,                                        :default => 0
+      t.integer :private_answers_count,                                          :default => 0
+      t.integer :private_events_count,                                           :default => 0
+      t.integer :private_news_count,                                             :default => 0
+      t.integer :private_photos_count,                                           :default => 0
+      t.integer :private_videos_count,                                           :default => 0
+      t.integer :private_statuses_count,                                         :default => 0
+      t.integer :private_comments_count,                                         :default => 0
 
       t.database_authenticatable :null => false
       t.recoverable
@@ -51,15 +65,15 @@ class CreateUsers < ActiveRecord::Migration
     end
 
     add_index :users, :id
-    add_index :users, :email,                :unique => true
-    add_index :users, :twitter_username,     :unique => true
-    add_index :users, :reset_password_token, :unique => true
-    # add_index :users, :confirmation_token,   :unique => true
-    # add_index :users, :unlock_token,         :unique => true
-    # add_index :users, :authentication_token, :unique => true
+    add_index :users, :email,                                                :unique => true
+    add_index :users, :twitter_username,                                     :unique => true
+    add_index :users, :reset_password_token,                                 :unique => true
+    # add_index :users, :confirmation_token,                                 :unique => true
+    # add_index :users, :unlock_token,                                       :unique => true
+    # add_index :users, :authentication_token,                               :unique => true
 
     add_index :users, [:facebook_oauth_token, :facebook_oauth_token_secret], :unique => true, :name => 'facebook_credentials'
-    add_index :users, [:twitter_oauth_token, :twitter_oauth_token_secret], :unique => true, :name => 'twitter_credentials'
+    add_index :users, [:twitter_oauth_token, :twitter_oauth_token_secret],   :unique => true, :name => 'twitter_credentials'
   end
 
   def self.down

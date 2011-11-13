@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:intro, :new, :create, :show, :questions, :proposals, :actions, :followings, :edit]
-  skip_before_filter :current_user_valid?, :only => [:edit, :update]
+  skip_before_filter :authenticate_user!,      :only => [:intro, :new, :create, :show, :questions, :proposals, :actions, :followings, :edit]
+  skip_before_filter :current_user_valid?,     :only => [:edit, :update]
   before_filter :private_politician_or_public?
-  before_filter :user_is_current_user?, :only => [:edit, :update]
-  before_filter :get_user, :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
-  before_filter :get_questions, :only => [:questions]
-  before_filter :get_proposals, :only => [:proposals]
-  before_filter :get_actions, :only => [:show, :actions]
-  before_filter :get_agenda, :only => [:agenda]
-  before_filter :log_user_connection_time, :only => [:show]
+  before_filter :user_is_current_user?,        :only => [:edit, :update]
+  before_filter :per_page,                     :only => [:show, :actions, :questions, :proposals]
+  before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
+  before_filter :get_counters,                 :only => [:show, :actions]
+  before_filter :get_questions,                :only => [:questions]
+  before_filter :get_proposals,                :only => [:proposals]
+  before_filter :get_actions,                  :only => [:show, :actions]
+  before_filter :get_agenda,                   :only => [:agenda]
+  before_filter :paginate,                     :only => [:show, :actions, :questions, :proposals]
+  before_filter :log_user_connection_time,     :only => [:show]
 
   respond_to :html, :json
 
@@ -146,6 +149,19 @@ class UsersController < ApplicationController
   end
   private :get_user
 
+  def get_counters
+    @followers_count = @user.followers.count || 0
+    @news_count      = @user.send("#{'private_' if show_private_actions?}news_count")      || 0
+    @questions_count = @user.send("#{'private_' if show_private_actions?}questions_count") || 0
+    @answers_count   = @user.send("#{'private_' if show_private_actions?}answers_count")   || 0
+    @proposals_count = @user.send("#{'private_' if show_private_actions?}proposals_count") || 0
+    @arguments_count = @user.send("#{'private_' if show_private_actions?}arguments_count") || 0
+    @votes_count     = @user.send("#{'private_' if show_private_actions?}votes_count")     || 0
+    @photos_count    = @user.send("#{'private_' if show_private_actions?}photos_count")    || 0
+    @videos_count    = @user.send("#{'private_' if show_private_actions?}videos_count")    || 0
+    @statuses_count  = @user.send("#{'private_' if show_private_actions?}statuses_count")  || 0
+  end
+  private :get_counters
   def get_questions
     if public_profile?
       @questions = @user.questions.moderated
@@ -174,34 +190,22 @@ class UsersController < ApplicationController
         @questions.more_recent
       end
     end
-    @questions = @questions.all if @questions
-    @questions_top = @questions_top.all if @questions_top
   end
   private :get_questions
 
   def get_proposals
-    @proposals = @user.proposals_and_participation(params.slice(:from_politicians, :from_citizens, :more_polemic), nil, nil)
+    @proposals = @user.get_proposals(params.slice(:from_politicians, :from_citizens, :more_polemic))
 
-    user_proposals            = @user.proposals_done.moderated
-    @proposals_count          = user_proposals.count
-    @proposals_in_favor_count = user_proposals.approved_by_majority.count
+    @proposals_count          = @proposals.count
+    @proposals_in_favor_count = @proposals.approved_by_majority.count
   end
   private :get_proposals
 
   def get_actions
-    if action_name == 'show' && private_profile?
-      user_actions = @user.actions.limit(5)
-      @actions     = user_actions + @user.followings_actions.limit(10 - user_actions.length)
+    if (action_name == 'show' || params[:referer] == 'show') && private_profile?
+      @actions = @user.get_private_actions(params.slice(:type, :referer, :more_polemic, :page))
     else
-      @actions = @user.actions
-      @actions = @actions.where(:event_type => params[:type]) if params[:type].present?
-
-      @actions = if params[:more_polemic] == "true"
-        @actions.more_polemic
-      else
-        @actions.more_recent
-      end
-      @actions = @actions.page(params[:page]).per(10).all
+      @actions = @user.get_actions(params.slice(:type, :referer, :more_polemic, :page))
     end
   end
   private :get_actions
@@ -225,10 +229,33 @@ class UsersController < ApplicationController
   end
   private :get_agenda
 
+  def per_page
+    @page = params[:page] || 0
+    @per_page = if action_name == 'show' || params[:referer] == 'show'
+      4
+    else
+      10
+    end
+  end
+  private :per_page
+
+  def paginate
+    @actions   = @actions.page(1).per(@per_page).all   if @actions
+    @proposals = @proposals.page(1).per(@per_page).all if @proposals
+    @questions = @questions.all if @questions
+    @questions_top = @questions_top.all if @questions_top
+  end
+  private :paginate
+
   def private_profile?
     @viewing_access == 'private'
   end
   private :private_profile?
+
+  def show_private_actions?
+    (action_name == 'show' || params[:referer] == 'show') && private_profile?
+  end
+  private :show_private_actions?
 
   def public_profile?
     @viewing_access == 'public'

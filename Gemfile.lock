@@ -126,7 +126,7 @@ GEM
       rails (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
-    linecache19 (0.5.12)
+    linecache19 (0.5.13)
       ruby_core_source (>= 0.1.4)
     looksee (1.0.3)
     mail (2.2.19)
@@ -216,7 +216,7 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.7.0)
-    ruby-debug-base19 (0.11.25)
+    ruby-debug-base19 (0.11.26)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
       ruby_core_source (>= 0.1.4)
@@ -294,6 +294,7 @@ DEPENDENCIES
   rails (~> 3.0.10)
   rails-footnotes (>= 3.7.5.rc4)
   rspec-rails (~> 2.6)
+  ruby-debug-base19 (~> 0.11.25)
   ruby-debug19
   ruby-prof
   sass (~> 3.1.7)

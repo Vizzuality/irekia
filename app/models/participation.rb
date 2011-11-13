@@ -79,6 +79,11 @@ class Participation < ActiveRecord::Base
         :profile_image    => user.profile_image
       },
       :content_id       => content_id,
+      :content => {
+        :id   => content.try(:id),
+        :type => content.try(:type).try(:downcase),
+        :text => content.try(:text)
+      },
       :published_at     => published_at,
       :comments_count   => comments_count
     }
@@ -89,24 +94,36 @@ class Participation < ActiveRecord::Base
   def publish_participation
     return unless content.present? && self.moderated?
 
-    content.areas.each do |area|
-      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
-      area_action.published_at = self.published_at
-      area_action.message      = self.to_json
-      area_action.save!
-    end
-
     user_action              = user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
     user_action.published_at = self.published_at
     user_action.message      = self.to_json
     user_action.save!
 
+    user.areas.each do |area|
+      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      area_action.published_at = self.published_at
+      area_action.message      = self.to_json
+      area_action.save!
+
+      area.followers.each do |follower|
+        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+        user_action.published_at = self.published_at
+        user_action.message      = self.to_json
+        user_action.save!
+      end
+    end
+
     user.followers.each do |follower|
-      user_action              = follower.followings_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
       user_action.published_at = self.published_at
       user_action.message      = self.to_json
       user_action.save!
     end
+
+    user_action              = content.author.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+    user_action.published_at = self.published_at
+    user_action.message      = self.to_json
+    user_action.save!
 
   end
   private :publish_participation

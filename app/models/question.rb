@@ -6,10 +6,9 @@ class Question < Content
           :include => :target_user,
           :select => 'id, question_id, user_id, area_id, question_text, answered_at'
 
-  has_one :answer_data
   has_one :answer,
-          :through => :answer_data,
-          :include => [:answer_data, {:users => :profile_pictures}]
+          :foreign_key => :related_content_id,
+          :include => [:answer_data, {:author => :profile_pictures}]
 
   has_many :answer_requests,
            :foreign_key => :content_id
@@ -34,8 +33,17 @@ class Question < Content
     includes(:question_data).where('question_data.answered_at IS NULL')
   end
 
-  def target_is_a_user?
-    question_data.present? && question_data.user_id.present?
+  def self.from_area(area)
+    select('contents.id, contents.user_id, contents.type, contents.published_at, contents.moderated, contents.answer_requests_count')
+    .includes({:author => :profile_pictures}, :question_data, :comments)
+    .joins(:question_data)
+    .moderated
+    .where('question_data.area_id = ? OR question_data.user_id IN (?)', area.id, area.user_ids)
+    .order('published_at desc')
+  end
+
+  def text
+    question_text
   end
 
   def mark_as_answered(answered_at)
@@ -44,14 +52,20 @@ class Question < Content
 
   def as_json(options = {})
     target_user = {
-      :id   => question_data.try(:target_user).try(:id),
-      :name => question_data.try(:target_user).try(:fullname)
-    } if target_user
+      :id       => self.target_user.try(:id),
+      :fullname => self.target_user.try(:fullname)
+    } if self.target_user
+
+    target_area = {
+      :id   => self.target_area.try(:id),
+      :name => self.target_area.try(:name)
+    } if self.target_area
 
     super({
       :question_text         => question_text,
       :answer_requests_count => answer_requests_count,
       :target_user           => target_user,
+      :target_area           => target_area,
       :answered_at           => answered_at
     })
   end
@@ -81,14 +95,47 @@ class Question < Content
       user_action.published_at = self.published_at
       user_action.message      = self.to_json
       user_action.save!
+
+      target_user.areas.each do |area|
+        area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+        area_action.published_at = self.published_at
+        area_action.message      = self.to_json
+        area_action.save!
+
+        area.followers.each do |follower|
+          user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+          user_action.published_at = self.published_at
+          user_action.message      = self.to_json
+          user_action.save!
+        end
+      end
+
+      target_user.followers.each do |follower|
+        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+        user_action.published_at = self.published_at
+        user_action.message      = self.to_json
+        user_action.save!
+      end
+    elsif target_area
+      area_action              = target_area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      area_action.published_at = self.published_at
+      area_action.message      = self.to_json
+      area_action.save!
     end
-    super
   end
   private :publish_content
 
   def update_counter_cache
-    areas.each { |area| area.update_attribute("questions_count", area.questions.moderated.count) }
-    users.each { |user| user.update_attribute("questions_count", user.questions_received.count) }
+    author.update_attribute("questions_count", author.actions.questions.count)
+    author.followers.each{|user| user.update_attribute("private_questions_count", user.private_actions.questions.count)}
+    if target_area
+      target_area.update_attribute("questions_count", target_area.actions.questions.count)
+      target_area.followers.each{|user| user.update_attribute("private_questions_count", user.private_actions.questions.count)}
+    elsif target_user
+      target_user.update_attribute("questions_count", target_user.actions.questions.count)
+      target_user.followers.each{|user| user.update_attribute("private_questions_count", user.private_actions.questions.count)}
+      target_user.areas.each{|area| area.update_attribute("questions_count", area.actions.questions.count) }
+    end
   end
   private :update_counter_cache
 

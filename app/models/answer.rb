@@ -1,4 +1,6 @@
 class Answer < Content
+  belongs_to :question,
+             :foreign_key => :related_content_id
   has_one :answer_data,
           :dependent => :destroy
   has_many :answer_opinions,
@@ -6,9 +8,18 @@ class Answer < Content
 
   before_create :mark_question_as_answered
 
-  delegate :question, :question_text, :answer_text, :to => :answer_data, :allow_nil => true
+  delegate :answer_text, :to => :answer_data, :allow_nil => true
+  delegate :question_text, :to => :question, :allow_nil => true
 
   accepts_nested_attributes_for :answer_opinions
+
+  def self.from_area(area)
+    joins(:author => :areas).moderated.where('areas.id' => area.id)
+  end
+
+  def text
+    answer_text
+  end
 
   def as_json(options = {})
     super({
@@ -24,7 +35,11 @@ class Answer < Content
   private :mark_question_as_answered
 
   def update_counter_cache
-    users.each { |user| user.update_attribute("answers_count", user.answers.moderated.count) }
+    author.update_attribute("answers_count", author.actions.answers.count)
+    author.followers.each{|user| user.update_attribute("private_answers_count", user.private_actions.answers.count)}
+    author.areas.each do |area|
+      area.update_attribute("answers_count", area.actions.answers.count)
+    end
   end
   private :update_counter_cache
 

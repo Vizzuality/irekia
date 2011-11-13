@@ -15,6 +15,10 @@ class Argument < Participation
     scoped.includes([{:user => :profile_pictures}, :argument_data, :proposal]).find(id)
   end
 
+  def self.from_area(area)
+    joins(:author => :areas).moderated.where('areas.id' => area.id)
+  end
+
   def self.in_favor
     joins(:argument_data).where('argument_data.in_favor' => true)
   end
@@ -36,4 +40,10 @@ class Argument < Participation
     })
   end
 
+  def update_counter_cache
+    author.update_attribute('arguments_count', author.actions.arguments.count)
+    author.followers.each{|user| user.update_attribute("private_arguments_count", user.private_actions.arguments.count)}
+    author.areas.each{|area| area.update_attribute('arguments_count', area.actions.arguments.count)}
+  end
+  private :update_counter_cache
 end

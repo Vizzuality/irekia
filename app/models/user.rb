@@ -56,32 +56,70 @@ class User < ActiveRecord::Base
 
   has_many :contents_users,
            :class_name => 'ContentUser'
+  has_many :contents_being_tagged,
+           :through => :contents_users
+  has_many :news_being_tagged,
+           :through => :contents_users,
+           :source => :news
+# has_many :photos_being_tagged,
+#          :through => :contents_users
+# has_many :videos_being_tagged,
+#          :through => :contents_users
+# has_many :questions_being_tagged,
+#          :through => :contents_users,
+#          :include => [{:users => :profile_pictures}, :question_data, :comments ],
+#          :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
+# has_many :answers_being_tagged,
+#          :through => :contents_users,
+#          :include => [{:users => :profile_pictures}, :comments ],
+#          :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
+# has_many :proposals_being_tagged,
+#          :through => :contents_users,
+#          :source => :proposal,
+#          :include => [{:users => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }],
+#          :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
+# has_many :events_being_tagged,
+#          :through => :contents_users,
+#          :include => :event_data,
+#          :order => 'event_data.event_date asc'
+# has_many :tweets_being_tagged,
+#          :through => :contents_users,
+#          :include => :tweet_data
+# has_many :status_messages_being_tagged,
+#          :through => :contents_users,
+#          :include => :status_message_data
+
+
   has_many :contents,
-           :through => :contents_users
+           :foreign_key => :user_id
   has_many :news,
-           :through => :contents_users
+           :foreign_key => :user_id
   has_many :photos,
-           :through => :contents_users
+           :foreign_key => :user_id
   has_many :videos,
-           :through => :contents_users
+           :foreign_key => :user_id
   has_many :questions,
-           :through => :contents_users,
-           :include => [{:users => :profile_pictures}, :question_data, :comments ],
+           :foreign_key => :user_id,
+           :include => [{:author => :profile_pictures}, :question_data, :comments ],
            :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
-  has_many :proposals_done,
-           :through => :contents_users,
+  has_many :answers,
+           :foreign_key => :user_id,
+           :include => [{:author => :profile_pictures}, :comments ],
+           :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
+  has_many :proposals,
+           :foreign_key => :user_id,
            :source => :proposal,
-           :include => [{:users => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }],
+           :include => [{:author => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }],
            :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
   has_many :events,
-           :through => :contents_users,
+           :foreign_key => :user_id,
            :include => :event_data,
            :order => 'event_data.event_date asc'
   has_many :tweets,
-           :through => :contents_users,
+           :foreign_key => :user_id,
            :include => :tweet_data
   has_many :status_messages,
-           :through => :contents_users,
+           :foreign_key => :user_id,
            :include => :status_message_data
 
   has_many :question_data,
@@ -89,13 +127,7 @@ class User < ActiveRecord::Base
   has_many :questions_received,
            :through => :question_data,
            :source => :question,
-           :include => [{:users => [:role, :profile_pictures]}, :question_data, :comments]
-  has_many :answer_data,
-           :class_name => 'AnswerData'
-  has_many :answers,
-           :through => :answer_data
-  has_many :poll_answers,
-           :class_name => 'AnswerUser'
+           :include => [{:author => [:role, :profile_pictures]}, :question_data, :comments]
 
   has_many :participations
   has_many :comments
@@ -105,7 +137,7 @@ class User < ActiveRecord::Base
 
   has_many :actions,
            :class_name => 'UserPublicStream'
-  has_many :followings_actions,
+  has_many :private_actions,
            :class_name => 'UserPrivateStream',
            :order      => 'published_at desc'
 
@@ -202,55 +234,55 @@ class User < ActiveRecord::Base
     end
   end
 
-  def proposals_votes_and_arguments
-    if politician?
-      proposals = Proposal.select([:'contents.id', :type, :published_at, :comments_count]).joins(:areas_contents, :contents_users).where('contents_users.user_id = ? OR areas_contents.area_id = ?', id, areas.first.id)
+  def get_actions(filters)
+    actions = self.actions
+    actions = actions.where(:event_type => filters[:type]) if filters[:type].present?
+
+    actions = if filters[:more_polemic] == 'true'
+      actions.more_polemic
     else
-      proposals = Proposal.select([:'contents.id', :type, :published_at, :comments_count]).joins(:contents_users).where('contents_users.user_id = ?', id)
+      actions.more_recent
     end
-
-    votes = Vote.select([:id, :type, :published_at, :'0 as comments_count']).where(:user_id => id)
-    arguments = Argument.select([:id, :type, :published_at, :'0 as comments_count']).where(:user_id => id)
-
-    [proposals, votes, arguments]
+    actions
   end
 
-  def proposals_and_participation(filters = {}, page = 1, per_page = 4)
-    @proposals, @votes, @arguments = *proposals_votes_and_arguments
+  def get_private_actions(filters)
+    actions = self.private_actions
+    actions = actions.where(:event_type => filters[:type]) if filters[:type].present?
 
-    if filters[:from_politicians]
-      @proposals = @proposals.from_politicians
-      @votes     = @votes.joins(:proposal      => :users).where('role_id = ?', Role.politician.first.id)
-      @arguments = @arguments.joins(:proposal  => :users).where('role_id = ?', Role.politician.first.id)
-    elsif filters[:from_citizens]
-      @proposals = @proposals.from_citizens
-      @votes     = @votes.joins(:proposal     => :users).where('role_id = ?', Role.citizen.first.id)
-      @arguments = @arguments.joins(:proposal => :users).where('role_id = ?', Role.citizen.first.id)
+    actions = if filters[:more_polemic] == 'true'
+      actions.more_polemic
+    else
+      actions.more_recent
     end
+    actions
+  end
 
-    order = 'published_at desc'
-    if filters[:more_polemic] == 'true'
-      order = 'comments_count desc, published_at desc'
+  def get_questions(filters)
+    questions = questions_received.moderated
+    questions = questions.answered if filters[:answered] == "true"
+
+    questions = if filters[:more_polemic] == 'true'
+      questions.more_polemic
+    else
+      questions.more_recent
     end
+    questions
+  end
 
-    if page && per_page
-      offset = (page - 1) * per_page
-      offset = 0 if offset < 0
-      pagination = "LIMIT #{per_page} OFFSET #{offset}"
+  def get_proposals(filters)
+    proposals = Proposal.from_politician(self) if politician?
+    proposals = Proposal.from_citizen(self)    if citizen?
+
+    proposals = proposals.from_politicians     if filters[:from_politicians]
+    proposals = proposals.from_citizens        if filters[:from_citizens]
+
+    proposals = if filters[:more_polemic] == 'true'
+      proposals.more_polemic
+    else
+      proposals.more_recent
     end
-
-    @proposals_and_participation = User.connection.select_all(<<-SQL
-      (#{@proposals.to_sql})
-      UNION
-      (#{@votes.to_sql})
-      UNION
-      (#{@arguments.to_sql})
-      ORDER BY #{order}
-      #{pagination}
-    SQL
-    ).map{|i| i['type'].constantize.by_id(i['id'])}
-
-    @proposals_and_participation
+    proposals
   end
 
   def fullname
@@ -300,6 +332,30 @@ class User < ActiveRecord::Base
     events.moderated.where('event_data.event_date >= ? AND event_data.event_date <= ?', start_date, end_date)
   end
 
+  def agenda_between(weeks, filters)
+    calendar_date = Date.current
+    if filters[:next_month].present?
+      calendar_date = Date.current.advance(:months => filters[:next_month].to_i)
+    end
+
+    beginning_of_calendar = calendar_date.beginning_of_week
+    end_of_calendar = calendar_date.advance(:weeks => weeks).end_of_week
+
+    events = Event.from_user(self, beginning_of_calendar, end_of_calendar)
+
+    agenda      = events.group_by{|e| e.event_date.day }
+    days        = beginning_of_calendar..end_of_calendar
+    agenda_json = JSON.generate(events.map{|event| {
+      :title => event.title,
+      :date  => I18n.localize(event.event_date, :format => '%d, %B de %Y'),
+      :when  => event.event_date.strftime('%H:%M'),
+      :where => nil,
+      :lat   => event.latitude,
+      :lon   => event.longitude
+    }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
+
+    return agenda, days, agenda_json
+  end
   def has_requested_answer(question_id)
     answer_request(question_id).count >= 1
   end

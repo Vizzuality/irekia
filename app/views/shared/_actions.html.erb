@@ -2,7 +2,18 @@
 <div class="inner">
   <header>
   <div class="left">
-    <h2><%= raw t('.title') %></h2>
+    <% if viewing_dashboard? -%>
+      <h2><%= t('users.private.show.activity.title') %></h2>
+      <p><%= raw t('users.private.show.activity.subtitle', :link => link_to(t('users.private.show.activity.profiles_or_areas_following'), '#')) %></p>
+    <% elsif viewing_politician_dashboard? -%>
+      <h2><%= t('users.politician.actions.title') %></h2>
+    <% elsif viewing_private_activity? %>
+      <h2><%= t('users.private.actions.title') %></h2>
+    <% elsif viewing_public_profile? -%>
+      <h2><%= t('users.public.actions.title') %></h2>
+    <% else -%>
+      <h2><%= raw t('.title') %></h2>
+    <% end -%>
   </div>
   <div class="right">
     <ul class="switch">
@@ -38,16 +49,16 @@
       </li>
 
       <li>
-      <% if @questions_count > 0 %>
-        <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => :question, :referer => action_name), :class => "filter" %>
+      <% if @questions_count > 0 || @answers_count > 0 %>
+        <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => [:question, :answer], :referer => action_name), :class => "filter" %>
       <% else %>
         <em><%= t('.no_content_filters.questions') %></em>
       <% end %>
       </li>
 
       <li>
-      <% if @proposals_count > 0 %>
-        <%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => :proposal, :referer => action_name), :class => "filter" %>
+      <% if @proposals_count > 0 || @arguments_count > 0 || @votes_count > 0 %>
+        <%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => [:proposal, :argument, :vote], :referer => action_name), :class => "filter" %>
       <% else %>
         <em><%= t('.no_content_filters.proposals') %></em>
       <% end %>
@@ -55,7 +66,7 @@
 
       <li>
       <% if @photos_count > 0 %>
-        <%= link_to t('.content_type_filters.images'), link_for_actions(:type => :image, :referer => action_name), :class => "filter" %>
+        <%= link_to t('.content_type_filters.images'), link_for_actions(:type => :photo, :referer => action_name), :class => "filter" %>
       <% else %>
         <em><%= t('.no_content_filters.images') %></em>
       <% end %>

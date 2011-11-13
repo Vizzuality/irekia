@@ -94,26 +94,24 @@ puts '================='.green
                       :title                 => nil,
                       :is_woman              => false,
                       :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_00.jpg'))),
-                      :users_following       => User.politicians,
-                      :areas_following       => Area.all
-
-@gonzalo = create_user :name                  => 'Gonzalo',
-                       :lastname              => 'Aranburu Corrales',
-                       :email                 => 'corraburu@gmail.com',
-                       :title                 => nil,
-                       :is_woman              => false,
-                       :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_01.jpg'))),
-                       :users_following       => User.politicians,
-                       :areas_following       => Area.all
+                      :users_following       => [@aitana]
 
 @patricia = create_user :name                  => 'Patricia',
                         :lastname              => 'Gómez Pecero',
                         :email                 => 'pagocero@hotmail.com',
                         :title                 => nil,
                         :is_woman              => true,
-                        :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_02.jpg'))),
-                        :users_following       => User.politicians,
+                        :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_01.jpg'))),
+                        :users_following       => [@aitor],
                         :areas_following       => Area.all
+
+@gonzalo = create_user :name                  => 'Gonzalo',
+                       :lastname              => 'Aranburu Corrales',
+                       :email                 => 'corraburu@gmail.com',
+                       :title                 => nil,
+                       :is_woman              => false,
+                       :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_02.jpg'))),
+                       :users_following       => [@javier]
 
 @alejandro = create_user :name                  => 'Alejandro',
                          :lastname              => 'Bengoechea Ramirez',
@@ -121,8 +119,7 @@ puts '================='.green
                          :title                 => nil,
                          :is_woman              => false,
                          :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_03.jpg'))),
-                         :users_following       => User.politicians,
-                         :areas_following       => Area.all
+                         :users_following       => [@ainara]
 
 @iker = create_user :name                  => 'Iker',
                     :lastname              => 'Urieta Mendía',
@@ -130,5 +127,4 @@ puts '================='.green
                     :title                 => nil,
                     :is_woman              => false,
                     :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_04.jpg'))),
-                    :users_following       => User.politicians,
-                    :areas_following       => Area.all
+                    :users_following       => [@joel]

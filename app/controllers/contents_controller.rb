@@ -110,7 +110,7 @@ class ContentsController < ApplicationController
 
   def create
     @content = @content_class.new params[@content_type]
-    @content.users << current_user
+    @content.author = current_user
 
     if @content.save
       redirect_to @content
