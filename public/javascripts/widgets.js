@@ -427,7 +427,7 @@ var GOD = (function() {
       data = $this.data(store) || {},
 
       // This gets applied to the 'ps_container' element
-      id = $this.attr('class').replace(" ", "_");
+      id = $this.attr('class').fulltrim().replace(/ /g, "_");
 
       // This gets updated to be equal to the longest <option> element
       width = settings.width || $this.outerWidth(),
@@ -521,6 +521,7 @@ function _shareWith($el, service, speed, easing) {
   $form.bind('ajax:success', success);
   $form.bind('ajax:error', error);
 }
+
   function _resize($ps) {
     var $sharebox = $ps.next(".sharebox");
     if (!$sharebox.hasClass("email")) {

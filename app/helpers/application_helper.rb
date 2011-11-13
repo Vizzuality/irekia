@@ -112,8 +112,12 @@ module ApplicationHelper
     link_to(*args)
   end
 
+  def class_for_after_login
+    'after_' unless user_signed_in?
+  end
+
   def class_for_modal_login
-    'floating-login' unless user_signed_in?
+    'floating-login ' unless user_signed_in?
   end
 
   def notifications_count

@@ -1,5 +1,5 @@
 <ul class="sharing">
-  <li><div class="<%= class_for_modal_login %> after_share email"></div>
+  <li><div class="<%= class_for_modal_login %> <%= class_for_after_login %>share email"></div>
 
   <div class="sharebox email">
     <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post, :novalidate => 'novalidate'} do |form| %>
