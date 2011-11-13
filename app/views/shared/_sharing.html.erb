@@ -1,5 +1,5 @@
 <ul class="sharing">
-  <li><div class="share email"></div>
+  <li><div class="<%= class_for_modal_login %> after_share email"></div>
 
   <div class="sharebox email">
     <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post, :novalidate => 'novalidate'} do |form| %>
@@ -9,7 +9,7 @@
         <span class="holder">Escribe la dirección de email</span>
       </div>
       <span class="spinner" id="share_via_email"></span>
-      <%= form.submit 'Enviar', :class => 'share twitter' %>
+      <%= form.submit 'Enviar', :class => "share" %>
       <div class="arrow"></div>
     <% end -%>
   </div>

@@ -3206,7 +3206,8 @@ a.editable {
 }
 
 // sharing icons
-.share {
+.share,
+.after_share {
   position:relative;
 
   &.email, &.twitter, &.facebook, &.more { width:28px; height:28px; background:url('/images/icons/share.png') no-repeat 0 0; border: 0 none; cursor: pointer; }

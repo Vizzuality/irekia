@@ -802,17 +802,17 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .left .content .sharebox ul, #container article .right .content .sharebox ul { background: url("/images/share_box.png") no-repeat 0 -59px; left: -10px; position: relative; height: 42px; padding-left: 10px; padding-top: 15px; }
 #container article .left .content .sharebox ul li, #container article .right .content .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 
-.share { position: relative; }
-.share.email, .share.twitter, .share.facebook, .share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; border: 0 none; cursor: pointer; }
-.share.twitter { background-position: -29px 0; }
-.share.facebook { background-position: -58px 0; }
-.share.more { background-position: -88px 0; }
-.share.share:hover { z-index: 100; }
-.share.email:hover { background-position: 0px -30px; }
-.share.twitter:hover { background-position: -29px -30px; }
-.share.facebook:hover { background-position: -58px -30px; }
-.share.more:hover { background-position: -88px -30px; }
-.share .ok { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; position: absolute; top: 20px; right: 2px; width: 9px; height: 9px; background: url("/images/icons/share.png") no-repeat 0 -61px; z-index: 110; }
+.share, .after_share { position: relative; }
+.share.email, .share.twitter, .share.facebook, .share.more, .after_share.email, .after_share.twitter, .after_share.facebook, .after_share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; border: 0 none; cursor: pointer; }
+.share.twitter, .after_share.twitter { background-position: -29px 0; }
+.share.facebook, .after_share.facebook { background-position: -58px 0; }
+.share.more, .after_share.more { background-position: -88px 0; }
+.share.share:hover, .after_share.share:hover { z-index: 100; }
+.share.email:hover, .after_share.email:hover { background-position: 0px -30px; }
+.share.twitter:hover, .after_share.twitter:hover { background-position: -29px -30px; }
+.share.facebook:hover, .after_share.facebook:hover { background-position: -58px -30px; }
+.share.more:hover, .after_share.more:hover { background-position: -88px -30px; }
+.share .ok, .after_share .ok { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; position: absolute; top: 20px; right: 2px; width: 9px; height: 9px; background: url("/images/icons/share.png") no-repeat 0 -61px; z-index: 110; }
 
 .left-border { border-left: 1px solid #eaeaea; border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
 

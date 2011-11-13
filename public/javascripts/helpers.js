@@ -6,6 +6,12 @@ function loginInLinks() {
     $(el).unbind();
     $(el).die();
 
+    if ($(el).hasClass("after_share")) {
+     $(el).addClass("share");
+     $(el).removeClass("after_share");
+     $(el).sharePopover();
+    }
+
     if ($(el).hasClass("after_ask_question")) {
      $(el).addClass("ask_question");
      $(el).removeClass("after_ask_question");
