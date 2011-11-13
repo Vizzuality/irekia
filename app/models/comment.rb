@@ -23,7 +23,9 @@ class Comment < Participation
     return if content.blank?
 
     content.update_attribute('comments_count', content.comments.moderated.count)
-    content.commenters.each { |user| user.update_attribute('comments_count', user.comments.moderated.count) }
+    content.commenters.each do |user|
+      user.update_attribute('private_comments_count', user.private_actions.comments.count)
+    end
   end
   private :update_counter_cache
 end

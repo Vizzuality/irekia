@@ -14,7 +14,51 @@ class AreaPublicStream < ActiveRecord::Base
   end
 
   def self.only_contents
-    where(:event_type => [:proposal, :argument, :question, :answer, :news, :poll, :pollanswer, :event, :tweet, :photo])
+    where(:event_type => [:proposal, :argument, :question, :answer, :news, :event, :tweet, :photo])
+  end
+
+  def self.questions
+    where(:event_type => :question)
+  end
+
+  def self.answers
+    where(:event_type => :answer)
+  end
+
+  def self.proposals
+    where(:event_type => :proposal)
+  end
+
+  def self.votes
+    where(:event_type => :vote)
+  end
+
+  def self.arguments
+    where(:event_type => :argument)
+  end
+
+  def self.news
+    where(:event_type => :news)
+  end
+
+  def self.photos
+    where(:event_type => :photo)
+  end
+
+  def self.videos
+    where(:event_type => :video)
+  end
+
+  def self.events
+    where(:event_type => :event)
+  end
+
+  def self.status_messages
+    where(:event_type => [:status_message, :tweet])
+  end
+
+  def self.comments
+    where(:event_type => :comment)
   end
 
   def self.more_recent

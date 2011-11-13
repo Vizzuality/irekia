@@ -11,263 +11,11 @@ def create_area(params)
   area
 end
 
-def create_answer(params)
-  defaults = {
-    :text => Faker::Lorem.paragraphs(10).join("\n\n")
-  }
-  params = defaults.merge(params)
-
-  answer = Answer.new
-  answer.areas = params[:areas]
-  answer.users = [params[:author]]
-  answer.comments = params[:comments] || []
-
-  answer_data = answer.build_answer_data
-  answer_data.answer_text = params[:text]
-  answer_data.author = params[:author]
-  answer_data.question = params[:question]
-
-  print '.'.blue
-
-  answer.save!
-
-  answer
-end
-
-def create_argument(params)
-
-  argument = Argument.new
-  argument.user = params[:author]
-  argument.argument_data = ArgumentData.create :in_favor => params[:in_favor], :reason => params[:reason]
-  argument.proposal = params[:proposal]
-
-  argument.save!
-
-  print '.'.blue
-
-  argument
-end
-
-def create_vote(params)
-  defaults = {
-    :in_favor => [true, false].sample
-  }
-  params = defaults.merge(params)
-
-  vote = Vote.new
-  vote.user = params[:author]
-  vote.vote_data = VoteData.create :in_favor => params[:in_favor]
-
-  case params[:proposal]
-  when String
-    vote.proposal = ProposalData.find_by_title(params[:proposal]).proposal
-  when Integer
-    vote.proposal = Proposal.find(params[:proposal])
-  end
-
-  vote.save!
-
-  print '.'.blue
-
-  vote
-end
-
-def create_comment(user, comment = Faker::Lorem.sentence)
-  user.comments.new.create_with_body(comment)
-end
-
-def random_comments(size = nil)
-  Array.new(size || rand(10)).inject([]){|array, x| array << create_comment(User.citizens.sample)}
-end
-
-def create_event(params)
-  defaults = {
-    :title     => Faker::Lorem.sentence(10),
-    :area      => @area,
-    :latitude  => (-95..33).to_a.sample/10,
-    :longitude => (360..438).to_a.sample/10
-  }
-  params = defaults.merge(params)
-
-  event = Event.create(
-    :users                 => [params[:user]],
-    :areas                 => [params[:area]],
-    :latitude              => params[:latitude],
-    :longitude             => params[:longitude],
-    :event_data_attributes => {
-      :title      => params[:title],
-      :event_date => params[:date],
-      :location   => params[:location],
-      :image      => params[:image]
-    }
-  )
-
-  print '.'.blue
-
-  event
-end
-
-def create_news(params)
-  defaults = {
-    :title => Faker::Lorem.sentence(7),
-    :subtitle => Faker::Lorem.sentence(10),
-    :body => Faker::Lorem.paragraphs(10).join("\n\n")
-  }
-  params = defaults.merge(params)
-
-  news_data = NewsData.find_or_initialize_by_title(params[:title])
-
-  if news_data.new_record?
-    news_data.subtitle = params[:subtitle]
-    news_data.body     = params[:body]
-    news_data.image    = Image.create :image => params[:image]
-    news               = News.new
-    news.tags          = params[:tags]
-    news.areas         = [params[:area]]
-    news.users         = [params[:author]]
-    news.news_data     = news_data
-    news.comments      = params[:comments]
-
-    print '.'.blue
-
-    news.save!
-
-    news
-  end
-end
-
-def create_photo(params)
-  defaults = {
-    :title       => Faker::Lorem.sentence(10),
-    :description => Faker::Lorem.paragraphs(10).join("\n\n"),
-  }
-  params = defaults.merge(params)
-
-  image = Image.create :image => params[:image],
-                       :title => params[:title],
-                       :description => params[:description]
-
-  photo = Photo.create :image    => image,
-                       :tags     => params[:tags],
-                       :users    => [params[:author]],
-                       :comments => params[:comments]
-
-  print '.'.blue
-
-  photo
-end
-
-def create_proposal(params)
-  defaults = {
-    :title => Faker::Lorem.sentence(10),
-    :body => Faker::Lorem.paragraphs(10).join("\n\n")
-  }
-
-  params = defaults.merge(params)
-
-  proposal_data = ProposalData.find_or_initialize_by_title(params[:title])
-
-  if proposal_data.new_record?
-    proposal_data.body = params[:body]
-    proposal_data.image = params[:image]
-
-    case params[:target]
-    when Area
-      proposal_data.target_area = params[:target]
-    when User
-      proposal_data.target_user = params[:target]
-    end
-
-    proposal = Proposal.new
-    proposal.tags = params[:tags]
-    proposal.areas = [params[:area]]
-    proposal.users = [params[:author]]
-    proposal.proposal_data = proposal_data
-    proposal.comments = params[:comments]
-
-    proposal.save!
-
-    print '.'.blue
-
-    proposal
-  end
-end
-
-def create_question(params)
-  defaults = {
-    :text => "¿#{Faker::Lorem.sentence(10)}?",
-    :comments => []
-  }
-  params = defaults.merge(params)
-
-  question_data = QuestionData.find_or_initialize_by_question_text(params[:text])
-
-  question = Question.new
-  question.areas         = params[:areas]
-  question.users         = params[:users]
-  question.question_data = question_data
-  question.comments      = params[:comments]
-  question.tags          = params[:tags]
-
-  case params[:for]
-  when Area
-    question_data.target_area = params[:for] if params[:for]
-  when User
-    question_data.target_user = params[:for] if params[:for]
-  end
-
-  question.save!
-
-  (params[:want_an_answer] || []).each do |user|
-    question.answer_requests.create :user => user
-  end
-
-  print '.'.blue
-
-  if params[:answer]
-    params[:answer][:question] = question.reload
-    create_answer params[:answer]
-  end
-
-  question
-end
-
-def create_tweet(params)
-  defaults = {
-    :message => Faker::Lorem.sentence(10).truncate(160),
-    :status_id => '000000000000000000000'
-  }
-  params = defaults.merge(params)
-
-  Tweet.create :users => [params[:author]],
-               :areas => [params[:area]],
-               :tweet_data => TweetData.find_or_create_by_message(params[:message], :status_id => params[:status_id], :username => params[:username])
-
-  print '.'.blue
-
-end
-
-def create_status_message(params)
-  defaults = {
-    :message => Faker::Lorem.sentence(10).truncate(160)
-  }
-  params = defaults.merge(params)
-
-  StatusMessage.create :users => [params[:author]],
-                       :areas => [params[:area]],
-                       :status_message_data => StatusMessageData.find_or_create_by_message(params[:message])
-
-  print '.'.blue
-
-end
-
 def create_user(params)
   defaults = {
     :password              => "#{params[:name].downcase}1234",
     :password_confirmation => "#{params[:name].downcase}1234",
-    :is_woman              => [true, false].sample,
     :inactive              => false,
-    :description           => Faker::Lorem.paragraphs(10).join("\n\n"),
     :province              => 'Vizcaya',
     :city                  => 'Ondarroa',
     :birthday              => rand(100).years.ago,
@@ -281,7 +29,7 @@ def create_user(params)
   user.password_confirmation = params[:password_confirmation]
   user.is_woman              = params[:is_woman]
   user.inactive              = params[:inactive]
-  user.description           = params[:description]
+  user.description           = params[:description] if params[:description]
   user.province              = params[:province]
   user.city                  = params[:city]
   user.birthday              = params[:birthday]
@@ -301,5 +49,198 @@ def create_user(params)
   print '.'.blue
 
   user
+end
+
+def create_proposal(params)
+
+  proposal_data = ProposalData.find_or_initialize_by_title(params[:title])
+  proposal_data.body = params[:body]
+  proposal_data.image = params[:image]
+  proposal_data.target_area = params[:target]
+
+  proposal = Proposal.new
+  proposal.tags = params[:tags]
+  proposal.author = params[:author]
+  proposal.proposal_data = proposal_data
+  proposal.comments = params[:comments]
+
+  proposal.save!
+
+  print '.'.blue
+
+  proposal
+end
+
+def create_argument(params)
+
+  argument = Argument.new
+  argument.user = params[:author]
+  argument.argument_data = ArgumentData.create :in_favor => params[:in_favor], :reason => params[:reason]
+  argument.proposal = params[:proposal]
+
+  argument.save!
+
+  print '.'.blue
+
+  argument
+end
+
+def create_vote(params)
+
+  vote = Vote.new
+  vote.user = params[:author]
+  vote.vote_data = VoteData.create :in_favor => params[:in_favor]
+
+  case params[:proposal]
+  when String
+    vote.proposal = ProposalData.find_by_title(params[:proposal]).proposal
+  when Integer
+    vote.proposal = Proposal.find(params[:proposal])
+  end
+
+  vote.save!
+
+  print '.'.blue
+
+  vote
+end
+
+def create_question(params)
+
+  question_data = QuestionData.find_or_initialize_by_question_text(params[:text])
+  case params[:for]
+  when Area
+    question_data.target_area = params[:for]
+  when User
+    question_data.target_user = params[:for]
+  end
+
+  question               = Question.new
+  question.question_data = question_data
+  question.comments      = params[:comments] || []
+  question.tags          = params[:tags]
+  question.author        = params[:author]
+
+  question.save!
+
+  (params[:want_an_answer] || []).each do |user|
+    question.answer_requests.create :user => user
+  end
+
+  print '.'.blue
+
+  if params[:answer]
+    params[:answer][:question] = question.reload
+    create_answer params[:answer]
+  end
+
+  question
+end
+
+def create_answer(params)
+
+  answer = Answer.new
+  answer.author = params[:author]
+  answer.comments = params[:comments] || []
+  answer.question = params[:question]
+
+  answer_data = answer.build_answer_data
+  answer_data.answer_text = params[:text]
+
+  print '.'.blue
+
+  answer.save!
+
+  answer
+end
+
+def create_event(params)
+  defaults = {
+    :latitude  => (-95..33).to_a.sample/10,
+    :longitude => (360..438).to_a.sample/10
+  }
+  params = defaults.merge(params)
+
+  event = Event.create(
+    :author                => params[:user],
+    :latitude              => params[:latitude],
+    :longitude             => params[:longitude],
+    :event_data_attributes => {
+      :title      => params[:title],
+      :event_date => params[:date],
+      :location   => params[:location],
+      :image      => params[:image]
+    }
+  )
+
+  print '.'.blue
+
+  event
+end
+
+def create_news(params)
+
+  news_data = NewsData.find_or_initialize_by_title(params[:title])
+
+  if news_data.new_record?
+    news_data.subtitle = params[:subtitle]
+    news_data.body     = params[:body]
+    news_data.image    = Image.create :image => params[:image]
+    news               = News.new
+    news.tags          = params[:tags]
+    news.author        = params[:author]
+    news.areas         = params[:areas_tagged] if params[:areas_tagged]
+    news.users         = params[:users_tagged] if params[:users_tagged]
+    news.news_data     = news_data
+    news.comments      = params[:comments]
+
+    print '.'.blue
+
+    news.save!
+
+    news
+  end
+end
+
+def create_photo(params)
+
+  image = Image.create :image => params[:image],
+                       :title => params[:title],
+                       :description => params[:description]
+
+  photo = Photo.create :image    => image,
+                       :tags     => params[:tags],
+                       :author   => params[:author],
+                       :comments => params[:comments]
+
+  print '.'.blue
+
+  photo
+end
+
+def create_tweet(params)
+  defaults = {
+    :status_id => '000000000000000000000'
+  }
+  params = defaults.merge(params)
+
+  Tweet.create :author => params[:author],
+               :tweet_data => TweetData.find_or_create_by_message(params[:message], :status_id => params[:status_id], :username => params[:username])
+
+  print '.'.blue
+
+end
+
+def create_status_message(params)
+
+  StatusMessage.create :author => params[:author],
+                       :status_message_data => StatusMessageData.find_or_create_by_message(params[:message])
+
+  print '.'.blue
+
+end
+
+def create_comment(user, comment = Faker::Lorem.sentence)
+  user.comments.new.create_with_body(comment)
 end
 

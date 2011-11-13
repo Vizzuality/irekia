@@ -7,6 +7,7 @@ class PoliticiansController < UsersController
   before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_counters,               :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :build_new_question,         :only => [:show, :actions, :questions, :proposals, :agenda]
+  before_filter :build_new_proposal,         :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_actions,                :only => [:show, :actions]
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
@@ -71,6 +72,8 @@ class PoliticiansController < UsersController
     @questions_count = @politician.questions_count || 0
     @answers_count   = @politician.answers_count   || 0
     @proposals_count = @politician.proposals_count || 0
+    @arguments_count = @politician.arguments_count || 0
+    @votes_count     = @politician.votes_count     || 0
     @photos_count    = @politician.photos_count    || 0
     @videos_count    = @politician.videos_count    || 0
     @statuses_count  = @politician.statuses_count  || 0
@@ -85,67 +88,33 @@ class PoliticiansController < UsersController
   end
   private :build_new_question
 
-  def get_actions
-    @actions = @politician.actions
-    @actions = @actions.where(:event_type => params[:type]) if params[:type].present?
-
-    @actions = if params[:more_polemic] == 'true'
-      @actions.more_polemic
-    else
-      @actions.more_recent
-    end
-  end
-  private :get_actions
-
-  def get_questions
-    @questions = @politician.questions_received.moderated
-    @questions = @questions.answered if params[:answered] == "true"
-
-    @questions = if params[:more_polemic] == 'true'
-      @questions.more_polemic
-    else
-      @questions.more_recent
-    end
-  end
-  private :get_questions
-
-  def get_proposals
-
-    @proposals = @politician.proposals_and_participation(params.slice(:from_politicians, :from_citizens, :more_polemic), @page, @per_page)
-
+  def build_new_proposal
     @proposal                  = Proposal.new
     @proposal.areas_contents   << @proposal.areas_contents.build(:area => @politician.areas.first)
     @proposal_data             = @proposal.build_proposal_data
     @proposal_data.target_area = @politician.areas.first
   end
+  private :build_new_proposal
+
+  def get_actions
+    @actions = @politician.get_actions(params.slice(:type, :more_polemic))
+  end
+  private :get_actions
+
+  def get_questions
+    @questions = @politician.get_questions(params.slice(:answered, :more_polemic))
+  end
+  private :get_questions
+
+  def get_proposals
+    @proposals = @politician.get_proposals(params.slice(:from_politicians, :from_citizens, :more_polemic))
+  end
   private :get_proposals
 
   def get_agenda
-    calendar_date = Date.current
-    if params[:next_month].present?
-      calendar_date = Date.current.advance(:months => params[:next_month].to_i)
-    end
-    beginning_of_calendar = calendar_date.beginning_of_week
+    weeks = action_name == 'show' ? 1 : 3
 
-    case action_name
-    when 'show'
-      end_of_calendar = calendar_date.next_week.end_of_week
-    when 'agenda'
-      end_of_calendar = calendar_date.advance(:weeks => 3).end_of_week
-    end
-
-    events = @politician.agenda_between(beginning_of_calendar, end_of_calendar)
-
-    @agenda = events.group_by{|e| e.event_date.day }
-    @days   = beginning_of_calendar..end_of_calendar
-    @agenda_json = JSON.generate(events.map{|event| {
-      :title => event.title,
-      :date  => l(event.event_date, :format => '%d, %B de %Y'),
-      :when  => event.event_date.strftime('%H:%M'),
-      :where => nil,
-      :lat   => event.latitude,
-      :lon   => event.longitude
-    }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
+    @agenda, @days, @agenda_json = @politician.agenda_between(weeks, params.slice(:next_month))
   end
   private :get_agenda
 
@@ -161,6 +130,7 @@ class PoliticiansController < UsersController
 
   def paginate
     @actions   = @actions.page(1).per(@per_page).all   if @actions
+    @proposals = @proposals.page(1).per(@per_page).all if @proposals
     @questions = @questions.page(1).per(@per_page).all if @questions
   end
   private :paginate

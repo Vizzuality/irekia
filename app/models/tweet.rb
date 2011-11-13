@@ -3,6 +3,14 @@ class Tweet < Content
 
   delegate :message, :status_id, :username, :to => :tweet_data, :allow_nil => true
 
+  def self.from_area(area)
+    joins(:author => :areas).moderated.where('areas.id' => area.id)
+  end
+
+  def text
+    message
+  end
+
   def as_json(options = {})
     super({
       :message         => message,
@@ -24,8 +32,9 @@ class Tweet < Content
   end
 
   def update_counter_cache
-    areas.each { |area| area.update_attribute("statuses_count", (area.status_messages.count + area.tweets.count)) }
-    users.each { |user| user.update_attribute("statuses_count", (user.status_messages.moderated.count + user.tweets.moderated.count)) }
+    author.update_attribute("statuses_count", author.actions.status_messages.count)
+    author.followers.each{|user| user.update_attribute("private_statuses_count", user.private_actions.status_messages.count)}
+    author.areas.each{|area| area.update_attribute("statuses_count", area.actions.status_messages.count)}
   end
   private :update_counter_cache
 

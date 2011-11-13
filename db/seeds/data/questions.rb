@@ -5,8 +5,7 @@ puts 'Creating questions...'.green
 puts '====================='.green
 
 create_question :text           => '¿Podría decirme cuando tienen pensado finalizar las obras de la calle Libertad?',
-                :areas          => [@area],
-                :users          => [@andres],
+                :author         => @andres,
                 :for            => @aitana,
                 :comments       => [
                   create_comment(@alejandro, 'dijeron que en principio eran unos meses, y ya van camino del año... Esperemos no dure mucho mas, porque tengo que aparcar lejos y cuando me toca venir con la compra no me hace mucha gracia la verdad'),
@@ -19,7 +18,6 @@ create_question :text           => '¿Podría decirme cuando tienen pensado fina
                   EOF
                   ),
                   :author   => @aitana,
-                  :areas    => [@area],
                   :comments => [
                     create_comment(@alejandro, 'la verdad que se hace cansado el constante ruido al que estamos expuestos. Además del polvo y la suciedad que llevamos sufriendo tantos meses.'),
                     create_comment(@gonzalo, 'Quedará todo genial despues de tantos meses...')
@@ -29,8 +27,7 @@ create_question :text           => '¿Podría decirme cuando tienen pensado fina
 
 
 create_question :text     => '¿Por qué  es tan dificil jugar al padel en Vizcaya? Llevo varias semanas intentando reservar pista y siempre me encuentro con  que está reservada.',
-                :areas    => [@area],
-                :users    => [@gonzalo],
+                :author   => @gonzalo,
                 :for      => @aitor,
                 :comments => [
                   create_comment(@patricia, 'me gustaría saber si por internet y por telefono se puede reservar o solamente es presencial.  Es dificil jugar al padel, esperemos pongan soluciones pronto.'),
@@ -43,15 +40,13 @@ create_question :text     => '¿Por qué  es tan dificil jugar al padel en Vizca
                   EOF
                   ),
                   :author => @javier,
-                  :areas => [@area],
                   :comments => [
                     create_comment(@iker, 'además de poner mas pistas tambien sería un detalle por vuestra parte bajar los precios, porque son algo excesivos la verdad! Seria una forma bastante interesante de fomentar mas el deporte')
                   ]
                 }
 
 create_question :text     => 'Llevamos varios meses ya de inseguridad ciudadana y varias decenas de denuncias,  ¿hasta cuando vamos a tener que aguantar la inseguridad que hay en nuestras calles?',
-                :areas    => [@area],
-                :users    => [@iker],
+                :author   => @iker,
                 :for      => @area,
                 :want_an_answer => [@patricia],
                 :comments => [
@@ -62,14 +57,12 @@ create_question :text     => 'Llevamos varios meses ya de inseguridad ciudadana 
                 :tags           => %w(seguridad ciudadania robos).join(',')
 
 create_question :text     => 'Desde el barrio de Pradoalto, rogamos que se tenga en cuenta nuestra situación y pongan una linea de autobus a nuestro barrio.',
-                :areas    => [@area],
-                :users    => [@patricia],
+                :author   => @patricia,
                 :for      => @javier,
                 :tags     => %w(transporte Pradoalto movilidad).join(','),
                 :answer => {
                   :text => 'Estamos hablando ya con varias empresas locales de transporte para buscar una solución que nos beneficie a los vecinos de Pradoalto. Se baraja la posibilidad de poner una linea de autobus para estudiantes de enseñanza primaria y secundaria en horario lectivo.',
                   :author => @aitana,
-                  :areas => [@area],
                   :comments => [
                     create_comment(@andres, 'nos podrían regalar bicis!!!'),
                     create_comment(@iker, 'no se si será porque somos un barrio nuevo o porqué, pero también pagamos nuestros impuestos como la gente de otros barrios'),

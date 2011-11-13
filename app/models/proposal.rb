@@ -2,7 +2,7 @@ class Proposal < Content
   include PgSearch
 
   has_one :proposal_data,
-          :select => 'id, proposal_id, area_id, user_id, title, body, close, participation, in_favor, against'
+          :select => 'id, proposal_id, area_id, title, body, close, participation, in_favor, against'
   has_many :votes,
            :foreign_key => :content_id,
            :dependent   => :destroy,
@@ -23,10 +23,10 @@ class Proposal < Content
 
   accepts_nested_attributes_for :proposal_data, :arguments, :votes
 
-  delegate :in_favor, :against, :participation, :title, :body, :target_user, :target_area, :to => :proposal_data, :allow_nil => true
+  delegate :in_favor, :against, :participation, :title, :body, :target_area, :to => :proposal_data, :allow_nil => true
 
   def self.by_id(id)
-    scoped.includes([{:users => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }]).find(id)
+    scoped.includes([{:author => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }]).find(id)
   end
 
   def self.open
@@ -38,15 +38,31 @@ class Proposal < Content
   end
 
   def self.from_politicians
-    joins(:users => :role).where('roles.name = ?', 'Politician')
+    joins(:author => :role).where('roles.name = ?', 'Politician')
   end
 
   def self.from_citizens
-    joins(:users => :role).where('roles.name = ?', 'Citizen')
+    joins(:author => :role).where('roles.name = ?', 'Citizen')
+  end
+
+  def self.from_area(area)
+    joins(:proposal_data => :target_area, :author => :areas).moderated.where('areas.id => ? OR target_areas_proposal_data.id = ?', area.id, area.id)
+  end
+
+  def self.from_politician(user)
+    joins(:author, :proposal_data => {:target_area => :users}).moderated.where('users.id = ? OR users_areas.id = ?', user.id, user.id)
+  end
+
+  def self.from_citizen(user)
+    joins(:author).moderated.where('users.id' => user.id)
   end
 
   def self.approved_by_majority
     joins(:proposal_data).where('proposal_data.in_favor > proposal_data.against')
+  end
+
+  def text
+    title
   end
 
   def percent_in_favor
@@ -71,7 +87,11 @@ class Proposal < Content
       :against          => against,
       :percentage       => percentage,
       :percent_in_favor => percent_in_favor,
-      :percent_against  => percent_against
+      :percent_against  => percent_against,
+      :target_area      => {
+        :id   => target_area.try(:id),
+        :name => target_area.try(:name)
+      }
     })
   end
 
@@ -98,15 +118,30 @@ class Proposal < Content
 
     return unless self.moderated?
 
-    User.where('id in (?)', target_area.user_ids).update_all('proposals_count = (proposals_count + 1)') if target_area
+    if target_area
+      area_action              = target_area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      area_action.published_at = self.published_at
+      area_action.message      = self.to_json
+      area_action.save!
 
+      target_area.followers.each do |follower|
+        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+        user_action.published_at = self.published_at
+        user_action.message      = self.to_json
+        user_action.save!
+      end
+    end
     super
   end
   private :publish_content
 
   def update_counter_cache
-    areas.each { |area| area.update_attribute("proposals_count", area.proposals.moderated.count) }
-    users.each { |user| user.update_attribute("proposals_count", user.proposals_votes_and_arguments.inject(0){|r, a| r + a.count}) }
+    if target_area
+      target_area.update_attribute("proposals_count", target_area.actions.proposals.count)
+      target_area.followers.each{|user| user.update_attribute("private_proposals_count", user.private_actions.proposals.count)}
+    end
+    author.update_attribute("proposals_count", author.actions.proposals.count)
+    author.followers.each{|user| user.update_attribute("private_proposals_count", user.private_actions.proposals.count)}
   end
   private :update_counter_cache
 

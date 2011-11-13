@@ -1,22 +1,26 @@
 class Content < ActiveRecord::Base
+  belongs_to :author,
+             :class_name => 'User',
+             :foreign_key => :user_id,
+             :select => 'id, name, lastname, locale, email, title_id, role_id'
 
-  has_many      :areas_contents,
-                :class_name => "AreaContent"
-  has_many      :areas,
-                :through => :areas_contents
+  has_many   :areas_contents,
+             :class_name => "AreaContent"
+  has_many   :areas,
+             :through => :areas_contents
 
-  has_many      :contents_users,
-                :class_name => "ContentUser"
-  has_many      :users,
-                :through => :contents_users,
-                :select => 'users.id, name, lastname, locale, email'
+  has_many   :contents_users,
+             :class_name => "ContentUser"
+  has_many   :users,
+             :through => :contents_users,
+             :select => 'users.id, name, lastname, locale, email'
 
-  has_many      :follows
-  has_many      :participations
-  has_many      :comments,
-                :include => [{:author => :profile_pictures}, :comment_data],
-                :conditions => {:moderated => true},
-                :order => 'published_at asc'
+  has_many   :follows
+  has_many   :participations
+  has_many   :comments,
+             :include => [{:author => :profile_pictures}, :comment_data],
+             :conditions => {:moderated => true},
+             :order => 'published_at asc'
 
   attr_protected :moderated, :rejected
 
@@ -60,7 +64,7 @@ class Content < ActiveRecord::Base
   end
 
   def self.by_id(id)
-    includes(:areas, :users, :comments, :"#{name.downcase}_data").find(id)
+    includes(:areas, :author, :comments, :"#{name.downcase}_data").find(id)
   end
 
   def self.validate_all_not_moderated
@@ -81,17 +85,17 @@ class Content < ActiveRecord::Base
     type
   end
 
+  def text
+
+  end
+
   def last_contents(limit = 5)
     self.class.moderated.includes(:"#{self.class.name.downcase}_data", :comments).order('published_at desc').where('id <> ?', id).first(limit)
   end
 
   def commenters
-    commenters_ids = User.select('DISTINCT(users.id)').includes().joins(:comments).where('content_id = ?', id).map(&:id)
+    commenters_ids = User.select('DISTINCT(users.id)').joins(:comments).where('content_id = ?', id).map(&:id)
     User.where('id in (?)', commenters_ids)
-  end
-
-  def author
-    users.first if users.present?
   end
 
   def comments_count
@@ -145,7 +149,7 @@ class Content < ActiveRecord::Base
   private :update_moderated_at
 
   def author_is_politician?
-    update_attribute('moderated', true) if author && author.politician? && not_moderated?
+    self.moderated = true if author && author.politician? && not_moderated?
   end
   private :author_is_politician?
 
@@ -153,26 +157,32 @@ class Content < ActiveRecord::Base
 
     return unless self.moderated?
 
-    areas.each do |area|
+    user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+    user_action.published_at = self.published_at
+    user_action.message      = self.to_json
+    user_action.save!
+
+    author.areas.each do |area|
       area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
       area_action.published_at = self.published_at
       area_action.message      = self.to_json
       area_action.save!
-    end
-    users.each do |user|
-      user_action              = user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
-      user_action.published_at = self.published_at
-      user_action.message      = self.to_json
-      user_action.save!
 
-      user.followers.each do |follower|
-        user_action              = follower.followings_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      area.followers.each do |follower|
+        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
         user_action.published_at = self.published_at
         user_action.message      = self.to_json
         user_action.save!
       end
-
     end
+
+    author.followers.each do |follower|
+      user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      user_action.published_at = self.published_at
+      user_action.message      = self.to_json
+      user_action.save!
+    end
+
   end
   private :publish_content
 

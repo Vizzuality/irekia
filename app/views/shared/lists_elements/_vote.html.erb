@@ -3,9 +3,9 @@
 
   <p>
   <% if data.in_favor %>
-    <%= raw t('.title.in_favor', :proposal => (content_tag 'strong', (link_to data.title, proposal_path(data.content_id)))) %>
+    <%= raw t('.title.in_favor', :name => data.author.name, :proposal => (content_tag 'strong', (link_to data.title, proposal_path(data.content_id)))) %>
   <% else %>
-    <%= raw t('.title.against',  :proposal => (content_tag 'strong', (link_to data.title, proposal_path(data.content_id)))) %>
+    <%= raw t('.title.against', :name => data.author.name, :proposal => (content_tag 'strong', (link_to data.title, proposal_path(data.content_id)))) %>
   <% end %>
   </p>
 

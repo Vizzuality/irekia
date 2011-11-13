@@ -25,6 +25,10 @@ class Vote < Participation
     scoped.includes([{:user => :profile_pictures}, :vote_data]).find(id)
   end
 
+  def self.from_area(area)
+    joins(:author => :areas).moderated.where('areas.id' => area.id)
+  end
+
   def self.in_favor
     joins(:vote_data).where('vote_data.in_favor' => true)
   end
@@ -51,4 +55,10 @@ class Vote < Participation
   end
   private :update_proposal
 
+  def update_counter_cache
+    author.update_attribute('votes_count', author.actions.votes.count)
+    author.followers.each{|user| user.update_attribute("private_votes_count", user.private_actions.votes.count)}
+    author.areas.each{|area| area.update_attribute('votes_count', area.actions.votes.count)}
+  end
+  private :update_counter_cache
 end

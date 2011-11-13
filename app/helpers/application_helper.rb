@@ -16,6 +16,22 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def viewing_dashboard?
+    controller_name == 'users' && action_name == 'show' && current_user && params[:id].to_i == current_user.id
+  end
+
+  def viewing_politician_dashboard?
+    controller_name == 'politicians' && action_name == 'show' && current_user && params[:id].to_i == current_user.id && current_user.is_politician
+  end
+
+  def viewing_private_activity?
+    controller_name == 'users' && action_name == 'actions' && current_user && params[:id].to_i == current_user.id
+  end
+
+  def viewing_public_profile?
+    controller_name == 'users' && action_name == 'show' && ((current_user && params[:id].to_i != current_user.id) || current_user.blank?)
+  end
+
   def current_action?(action)
     'selected' if action_name.eql?(action.to_s)
   end

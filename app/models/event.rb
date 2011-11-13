@@ -3,8 +3,6 @@ class Event < Content
 
   delegate :event_date, :title, :subtitle, :body, :location, :to => :event_data, :allow_nil => true
 
-  before_save :update_areas_agenda
-
   accepts_nested_attributes_for :event_data
 
   def self.create_agenda_entry(attributes)
@@ -14,11 +12,33 @@ class Event < Content
     event
   end
 
+  def self.from_area(area, start_date, end_date)
+    Event.select('event_date, duration, title, subtitle, body')
+         .includes(:event_data)
+         .joins(:author => :areas)
+         .moderated
+         .where('areas.id = ? AND event_data.event_date >= ? AND event_data.event_date <= ?', area.id, start_date, end_date)
+         .order('event_data.event_date asc')
+  end
+
+  def self.from_user(user, start_date, end_date)
+    Event.select('event_date, duration, title, subtitle, body')
+         .includes(:event_data)
+         .joins(:author)
+         .moderated
+         .where('users.id = ? AND event_data.event_date >= ? AND event_data.event_date <= ?', user.id, start_date, end_date)
+         .order('event_data.event_date asc')
+  end
+
   def date
   end
 
   def time
     event_date.strftime('%H:%M')
+  end
+
+  def text
+    title
   end
 
   def as_json(options = {})
@@ -45,18 +65,10 @@ class Event < Content
     title
   end
 
-  def update_areas_agenda
-    self.users.each do |user|
-      user.areas.each do |area|
-        self.areas << area
-      end
-    end
-  end
-  private :update_areas_agenda
-
   def update_counter_cache
-    areas.each { |area| area.update_attribute("events_count", area.events.moderated.count) }
-    users.each { |user| user.update_attribute("events_count", user.events.moderated.count) }
+    # areas.each { |area| area.update_attribute("events_count", area.events.moderated.count) }
+    author.update_attribute("events_count", author.actions.events.count)
+    author.followers.each{|user| user.update_attribute("private_events_count", user.private_actions.events.count)}
   end
   private :update_counter_cache
 

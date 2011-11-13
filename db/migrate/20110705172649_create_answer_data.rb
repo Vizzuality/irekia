@@ -2,8 +2,6 @@ class CreateAnswerData < ActiveRecord::Migration
   def self.up
     create_table :answer_data do |t|
       t.references :answer
-      t.references :question
-      t.references :user
 
       t.text :answer_text
 

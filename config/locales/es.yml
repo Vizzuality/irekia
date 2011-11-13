@@ -492,11 +492,10 @@
 
     lists_elements:
       answer:
-        title: 'Contestando a "%{question}"'
+        title: '%{author} ha contestado a "%{question}"'
         author: '%{author} contesto hace %{time}'
       question:
-        title: 'Pregunta para %{receiver}'
-        area: "el área"
+        title: 'Pregunta para %{receiver}:'
         author: '%{author} hace %{time}'
         answered: 'Contestada hace %{time}'
         not_answered: 'Aún no contestada'
@@ -509,7 +508,7 @@
         author: '%{author} hace %{time}'
         read_more: 'Leer más'
       tweet:
-        author: '%{author} hace %{time}'
+        author: '%{author} hace %{time} vía %{twitter}'
         read_more: 'Leer más'
       news:
         author: 'Publicado hace %{time}'
@@ -526,6 +525,9 @@
           zero: Ningún usuario ha participado
           one: Un usuario ha participado
           other: '%{count} usuarios han participado'
+      photo:
+        title: '%{name} ha subido una foto:'
+        author: '%{author} hace %{time}'
       proposal_mini:
         author: '%{author} hace %{time}'
         votes_in_favor:
@@ -550,12 +552,20 @@
           against: 'Nuevos argumentos en contra:'
       vote:
         title:
-          in_favor: 'A favor de la propuesta "%{proposal}"'
-          against: 'En contra de la propuesta "%{proposal}"'
+          in_favor: '%{name} ha votado a favor de la propuesta "%{proposal}"'
+          against: '%{name} ha votado en contra de la propuesta "%{proposal}"'
         author: '%{author} participó hace %{time}'
       event:
         author: '%{author} hace %{time}'
       comment:
+        title: 'Nuevo comentario en %{content_type}'
+        proposal: la propuesta
+        question: la pregunta
+        answer: la respuesta
+        news: la noticia
+        photo: la foto
+        tweet: el tweet
+        event: el evento
         author: 'Publicado por %{author} hace %{time}'
       comments:
         zero: Ningún comentario
@@ -1142,6 +1152,11 @@
             text: "Sube tu ávatar o modifica tus datos.
             También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia."
             link: Configura tu cuenta
+      show:
+        activity:
+          title: Última actividad
+          subtitle: 'Esta es la actividad relacionada con tus contenidos, o con los %{link}.'
+          profiles_or_areas_following: perfiles o áreas que sigues
       follow_suggestions:
         title: Tu dashboard está vacío.
         we_suggest_you_the_most_active: "Seguramente no sigues al número suficiente de políticos o áreas. Te sugerimos los más activos:"
@@ -1176,7 +1191,7 @@
         more_recent: Más recientes
         more_commented: Más comentadas
       actions:
-        title: Últimas acciones
+        title: Tus últimas acciones
         main_filters:
           more_recent: Más recientes
           more_polemic: Más polémicas
@@ -1371,7 +1386,6 @@
       like: Me gusta
       news: Noticia
       participation: Participación
-      poll: Encuesta
       proposal: Propuesta
       question: Pregunta
       Role: Rol

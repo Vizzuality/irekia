@@ -1,10 +1,11 @@
 class AreasController < ApplicationController
 
-  around_filter :benchmark_area, :only => :show
   skip_before_filter :authenticate_user!,    :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_area,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_area_data,              :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_counters,               :only => [:show, :actions, :questions, :proposals, :agenda, :team]
+  before_filter :build_new_question,         :only => [:show, :actions, :questions, :proposals, :agenda, :team]
+  before_filter :build_new_proposal,         :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_actions,                :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]
@@ -12,12 +13,6 @@ class AreasController < ApplicationController
   before_filter :paginate,                   :only => [:show, :actions, :questions, :proposals]
 
   respond_to :html, :json
-
-  def benchmark_area
-    self.class.benchmark("Area loading benchmark...") do
-      yield
-    end
-  end
 
   def show
   end
@@ -74,89 +69,54 @@ class AreasController < ApplicationController
   private :get_area_data
 
   def get_counters
-    @followers_count = @area.followers.count || 0
-    @news_count      = @area.news_count      || 0
-    @questions_count = @area.questions_count || 0
-    @proposals_count = @area.proposals_count || 0
-    @photos_count    = @area.photos_count    || 0
-    @videos_count    = @area.videos_count    || 0
-    @statuses_count  = @area.statuses_count  || 0
+    @followers_count = @area.followers.count          || 0
+    @news_count      = @area.news_count               || 0
+    @questions_count = @area.questions_count          || 0
+    @answers_count   = @area.answers_count            || 0
+    @proposals_count = @area.proposals_count          || 0
+    @arguments_count = @area.arguments_count          || 0
+    @votes_count     = @area.votes_count              || 0
+    @photos_count    = @area.photos_count             || 0
+    @videos_count    = @area.videos_count             || 0
+    @statuses_count  = @area.statuses_count           || 0
   end
   private :get_counters
 
-  def get_actions
-    @actions = @area.actions
-    @actions = @actions.where(:event_type => params[:type]) if params[:type].present?
-
-    @actions = if params[:more_polemic] == 'true'
-      @actions.more_polemic
-    else
-      @actions.more_recent
-    end
-  end
-  private :get_actions
-
-  def get_questions
-    @questions = @area.questions.moderated
-    @questions = @questions.answered if params[:answered]
-
-    @questions = if params[:more_polemic] == 'true'
-      @questions.more_polemic
-    else
-      @questions.more_recent
-    end
-
+  def build_new_question
     @question                  = Question.new
     @question.areas_contents   << @question.areas_contents.build(:area => @area)
     @question_data             = @question.build_question_data
     @question_data.target_area = @area
   end
-  private :get_questions
+  private :build_new_question
 
-  def get_proposals
-    @proposals = @area.proposals.moderated
-    @proposals = @proposals.from_politicians if params[:from_politicians]
-    @proposals = @proposals.from_citizens if params[:from_citizens]
-
-    @proposals = if params[:more_polemic] == 'true'
-      @proposals.more_polemic
-    else
-      @proposals.more_recent
-    end
-
+  def build_new_proposal
     @proposal                  = Proposal.new
     @proposal.areas_contents   << @proposal.areas_contents.build(:area => @area)
     @proposal_data             = @proposal.build_proposal_data
     @proposal_data.target_area = @area
   end
+  private :build_new_proposal
+
+  def get_actions
+    @actions = @area.get_actions(params.slice(:type, :more_polemic))
+  end
+  private :get_actions
+
+  def get_questions
+    @questions = @area.get_questions(params.slice(:answered, :more_polemic))
+  end
+  private :get_questions
+
+  def get_proposals
+    @proposals = @area.get_proposals(params.slice(:from_politicians, :from_citizens, :more_polemic))
+  end
   private :get_proposals
 
   def get_agenda
-    calendar_date = Date.current
-    if params[:next_month].present?
-      calendar_date = Date.current.advance(:months => params[:next_month].to_i)
-    end
-    beginning_of_calendar = calendar_date.beginning_of_week
+    weeks = action_name == 'show' ? 1 : 3
 
-    case action_name
-    when 'show'
-      end_of_calendar = calendar_date.next_week.end_of_week
-    when 'agenda'
-      end_of_calendar = calendar_date.advance(:weeks => 3).end_of_week
-    end
-
-    events = @area.agenda_between(beginning_of_calendar, end_of_calendar)
-
-    @agenda = events.group_by{|e| e.event_date.day }
-    @days   = beginning_of_calendar..end_of_calendar
-    @agenda_json = JSON.generate(events.map{|event| {
-      :title => event.title,
-      :date  => l(event.event_date, :format => '%d, %B de %Y'),
-      :when  => event.event_date.strftime('%H:%M'),
-      :where => nil,
-      :lat   => event.latitude,
-      :lon   => event.longitude
-    }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
+    @agenda, @days, @agenda_json = @area.agenda_between(weeks, params.slice(:next_month))
   end
   private :get_agenda
 
