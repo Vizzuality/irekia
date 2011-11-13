@@ -35,10 +35,12 @@
               <%= t('.title_and_area', :title => get_politician_title(user), :area => user.areas.map(&:name).to_sentence) if user.politician? %>
             </p>
             <div class="follow basic">
-              <% if @users_follows[user.id].new_record? -%>
-                <%= render 'follows/create_mini', :follow => @users_follows[user.id], :follow_parent => current_user %>
-              <% else -%>
-                <%= render 'follows/destroy_mini', :follow => @users_follows[user.id], :follow_parent => current_user %>
+              <% if current_user -%>
+                <% if @users_follows[user.id].new_record? -%>
+                  <%= render 'follows/create_mini', :follow => @users_follows[user.id], :follow_parent => current_user %>
+                <% else -%>
+                  <%= render 'follows/destroy_mini', :follow => @users_follows[user.id], :follow_parent => current_user %>
+                <% end -%>
               <% end -%>
             </div>
           </div>
