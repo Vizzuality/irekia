@@ -1170,7 +1170,7 @@
         we_suggest_you_the_most_active: "Seguramente no sigues al número suficiente de políticos o áreas. Te sugerimos los más activos:"
         title_and_area: '%{title} de %{area}'
         follow: Seguir
-        more: Más sugerencias
+        more_politicians: Buscar más políticos
       navigation_menu:
         dashboard: Dashboard
         your_questions: Tus preguntas
