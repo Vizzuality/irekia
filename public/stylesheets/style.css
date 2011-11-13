@@ -287,14 +287,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.notice .inner .content p, #container article .inner .notice .inner .content p { font-size: 13px; color: #7D8A92; line-height: 16px; }
 #container article.notice .inner .content p strong, #container article .inner .notice .inner .content p strong { display: block; font-size: 13px; color: #465866; }
 
-.ie7 #container article.publish .inner .content .container .inner_container .input_fieldx, .ie8 #container article.publish .inner .content .container .inner_container .input_fieldx { float: left; padding: 0; margin: 0 10px; background: url("/images/inputs_sprite.png") repeat-x right -240px; height: 39px; }
-.ie7 #container article.publish .inner .content .container .inner_container .input_fieldx input[type="text"], .ie8 #container article.publish .inner .content .container .inner_container .input_fieldx input[type="text"] { width: 657px; height: 39px; left: 10px; margin: 0 0 0 -10px; padding: 0 10px; background: url("/images/inputs_sprite.png") no-repeat left -285px; outline: none; border: none; }
-.ie7 #container article.publish .inner .content .container .inner_container .input_field.textarea, .ie8 #container article.publish .inner .content .container .inner_container .input_field.textarea { float: left; padding: 0; margin: 0 10px; background: url("/images/inputs_sprite.png") repeat-x right -337px; float: left; height: 75px; }
-.ie7 #container article.publish .inner .content .container .inner_container .input_field.textarea textarea, .ie8 #container article.publish .inner .content .container .inner_container .input_field.textarea textarea { width: 677px; height: 75px; left: 10px; margin: 0 0 0 -20px; padding: 9 14px; background: url("/images/inputs_sprite.png") no-repeat left -419px; outline: none; border: none; }
-.ie7 #container article.publish .inner .content .container .inner_container .input_field.textarea .holder, .ie8 #container article.publish .inner .content .container .inner_container .input_field.textarea .holder { left: 0; }
-.ie7 #container article.publish.with_footer footer, .ie8 #container article.publish.with_footer footer { padding: 0; border: none; background: none; }
-.ie7 #container article.publish.with_footer footer .inner, .ie8 #container article.publish.with_footer footer .inner { width: 730px; padding: 20px 3px 17px 35px; }
-.ie7 #container article.publish.with_footer footer .inner .right .white_button, .ie8 #container article.publish.with_footer footer .inner .right .white_button { margin: 0; }
+.ie7 #container article.publish textarea, .ie7 #container article.publish input[type="text"], .ie8 #container article.publish textarea, .ie8 #container article.publish input[type="text"] { border: 1px solid #7d8a92; }
 
 #container article.static .inner header h3 { text-transform: none; font-size: 19px; font-family: "Helvetica", sans-serif; font-weight: normal; }
 
@@ -397,6 +390,11 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .message .icon { float: left; margin: 0 18px 0 0; background: url("/images/icons/ok_ball.png") no-repeat; width: 76px; height: 80px; }
 #container article.publish .inner .content .container .inner_container .section { float: left; position: relative; width: 687px; height: 900px; }
 #container article.publish .inner .content .container .inner_container .section .holder span { float: left; }
+#container article.publish .inner .content .container .inner_container .section strong { display: block; margin: 0 0 7px 0; color: #465866; font-size: 12px; }
+#container article.publish .inner .content .container .inner_container .section .input_field { width: 100%; margin: 0 0 10px 0; }
+#container article.publish .inner .content .container .inner_container .section .input_field input[type="text"] { width: 666px; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .section .input_field .holder { width: 666px; }
+#container article.publish .inner .content .container .inner_container .section .extra { display: none; }
 #container article.publish .inner .content .container .inner_container .section.photo .triangle { left: 155px; }
 #container article.publish .inner .content .container .inner_container .section.photo .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.photo .input_field input[type="text"] { width: 666px; font-size: 15px; }
@@ -411,10 +409,16 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .section.event .form .input_field { width: 647px; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.event .form .input_field input[type="text"] { width: 647px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.event .form .input_field .holder { width: 647px; }
+#container article.publish .inner .content .container .inner_container .section.question .triangle { left: 35px; }
+#container article.publish .inner .content .container .inner_container .section.question .input_field.textarea { margin: 0 0 10px 0; height: auto; }
+#container article.publish .inner .content .container .inner_container .section.question .input_field.textarea textarea { height: 33px; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .section.question .input_field.textarea .holder { width: 666px; }
 #container article.publish .inner .content .container .inner_container .section.proposal .triangle { left: 386px; }
 #container article.publish .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
+#container article.publish .inner .content .container .inner_container .section.image .triangle { left: 150px; }
+#container article.publish .inner .content .container .inner_container .section.image .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.video { height: auto; background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
 #container article.publish .inner .content .container .inner_container .section.video .triangle { left: 268px; background-position: 0 -64px; }
 #container article.publish .inner .content .container .inner_container .section.video ul li { float: left; width: 307px; height: 93px; margin: 0 10px 0 0; padding: 10px; position: relative; background: #fff; filter: alpha(opacity=50); -khtml-opacity: 0.5; -moz-opacity: 0.5; opacity: 0.5; -moz-border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; -ms-border-radius: 8px; -khtml-border-radius: 8px; border-radius: 8px; -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; }
@@ -427,8 +431,6 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .section.video ul li .input_field { width: 263px; right: -24px; }
 #container article.publish .inner .content .container .inner_container .section.video ul li .input_field input[type="text"] { float: right; width: 263px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.video ul li .input_field .holder { top: 11px; width: 130px; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .section.image .triangle { left: 150px; }
-#container article.publish .inner .content .container .inner_container .section.image .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner .content .input_field { height: 36px; }
 #container article.publish .inner .content .input_field input[type="text"] { height: 34px; }
 #container article.publish .inner .content .input_field.textarea { height: auto; }

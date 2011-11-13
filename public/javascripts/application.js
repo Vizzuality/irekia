@@ -122,6 +122,7 @@ $(function() {
   $(".with_filters").filterWidget();
   $(".with_filters").filterWidget();
 
-  $("article.publish").enablePublish();
+  $("article.politician.publish").enablePoliticianPublish();
+  $("article.user.publish").enableUserPublish();
   $(".areas_selector").areasPopover();
 });
