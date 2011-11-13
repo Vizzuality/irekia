@@ -1,58 +1,42 @@
-<div id="photo">
-  <div class="title">
+
+<article class="photos with_footer">
+<div class="inner">
+  <div class="left">
+
+    <p class="info">
     <span><%= l @content.published_at.to_date, :format => :long %></span>
     &middot;
     <%= link_to @content.title, photo_path(@content) %>
     &middot;
     <%= link_to t('.title.comments', :count => @content.comments_count), '#', :class => :goto_comments %>
+    </p>
     <h1><%= @content.title %></h1>
-  </div>
-  <div class="content">
+
     <%= image_tag @content.content_url %>
-    <%= simple_format @content.description %>
+    <div class="caption"><%= simple_format @content.description %></div>
+
+    <%= render "participations/comments" %>
+
   </div>
-  <div class="sidebar">
-    <ul class="sharing_links">
-      <li><%= link_to t('.sidebar.sharing_links.mail'), '/in_development' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.twitter'), '/in_development' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.facebook'), '/in_development' %></li>
-    </ul>
-    <div class="tags">
-      <h3><%= t('.sidebar.tags.title') %></h3>
-      <ul>
-        <% @content.tags.split(',').each do |tag| %>
-        <li><%= tag.strip %></li>
-        <% end if @content.tags.present? %>
-      </ul>
-    </div>
-    <div class="location">
-      <h3><%= t('.sidebar.location.title') %></h3>
-      <div id="map">
-      </div>
-      <span class="place"></span>
-    </div>
-    <div class="related_politicians">
-      <h3><%= t('.sidebar.related_politicians.title') %></h3>
-      <ul>
-        <% @content.users.each do |user| %>
-        <li>
-          <%= link_to user.fullname, path_for_user(user) %>
-          <span><%= get_politician_title(user) %></span>
-        </li>
-        <% end if @content.users.present? %>
-      </ul>
-    </div>
-    <div class="related_photos">
-      <h3><%= t('.sidebar.related_photos.title') %></h3>
-      <ul>
-        <% @last_contents.each do |photo| %>
-        <li>
-          <p><%= link_to photo.title, question_path(photo) %></p>
-          <span class="when"><%= t('.sidebar.related_questions.time', :time => distance_of_time_in_words_to_now(photo.published_at)) %></span>
-          <%= link_to t('.sidebar.related_questions.comments', :count => photo.comments.count), '/in_development' %>
-        </li>
-        <% end %>
-      </ul>
+  <div class="right">
+    <div class="content left-border">
+
+      <%= render "shared/sharing" %>
+      <%= render "shared/sidebar/tags" %>
+      <%= render "shared/sidebar/location" %>
+      <%= render "shared/sidebar/related_politicians" %>
+
     </div>
   </div>
 </div>
+
+<footer>
+<div class="separator"></div>
+<div class="inner">
+  <div class="left">
+    <%= link_to t('.back'), "/in_development", :class => :left_arrow %>
+  </div>
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>

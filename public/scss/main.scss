@@ -1710,6 +1710,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
   &.actions .inner,
   &.proposals .inner,
+  &.photos .inner,
   &.proposal .inner,
   &.questions .inner,
   &.activity .inner {
@@ -1799,6 +1800,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
   &.actions .inner,
   &.proposal .inner,
+  &.photos .inner,
   &.proposals .inner,
   &.questions .inner,
   &.activity .inner {
@@ -1935,6 +1937,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 .ie8 #container article {
   &.actions .inner .left ul li .content .comment-box ,
   &.proposal .inner .left ul li .content .comment-box,
+  &.photos .inner .left ul li .content .comment-box ,
   &.proposals .inner .left ul li .content .comment-box ,
   &.questions .inner .left ul li .content .comment-box,
   &.activity .inner .left ul li .content .comment-box {
@@ -1970,6 +1973,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 .ie7 #container article {
   &.actions .inner .left ul li .content .comment-box form,
   &.proposal .inner .left ul li .content .comment-box form,
+  &.photos .inner .left ul li .content .comment-box form,
   &.proposals .inner .left ul li .content .comment-box form,
   &.questions .inner .left ul li .content .comment-box form,
   &.activity .inner .left ul li .content .comment-box form {
@@ -1979,14 +1983,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
 /* Article addons */
 
-
-
 #container article {
   &.initialy_hidden { @include opacity(0); }
 
+  .caption, .caption p { color: $standard_gray; }
+
   ul.arguments {
     // background:#E9F0DE;
-
   }
 }
 
@@ -3240,6 +3243,7 @@ a.editable {
 /* Lists */
 #container article .right .content ul.locations,
 #container article .right .content ul.proposals,
+#container article .right .content ul.photos,
 #container article .right .content ul.questions,
 #container article .right .content ul.related,
 #container article .right .content ul.previously,

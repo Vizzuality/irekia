@@ -1,3 +1,4 @@
+<% if @contents and @contents.size > 0 and @contents.users.size > 0 %>
 <div class="related_politicians">
   <h3><%= t('.sidebar.related_politicians.title') %></h3>
   <ul>
@@ -9,3 +10,4 @@
       <% end if @content.users.present? %>
     </ul>
   </div>
+<% end %>
