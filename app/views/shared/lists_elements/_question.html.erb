@@ -5,7 +5,7 @@
   <%= content_tag 'p', t(".title", :receiver => data.target_area.name) if data.target_area %>
   <%= content_tag 'p', t(".title", :receiver => data.target_user.fullname) if data.target_user %>
 
-  <% if data.target_is_a_user? %>
+  <% if data.target_user %>
   <p class="excerpt"><%= link_to %Q{"#{data.question_text}"}, question_path(data.id) %></p>
 <% else %>
   <p><strong><%= link_to %Q{"#{data.question_text}"}, question_path(data.id) %></strong></p>
