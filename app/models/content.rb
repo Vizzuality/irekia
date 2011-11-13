@@ -20,7 +20,7 @@ class Content < ActiveRecord::Base
   has_many   :comments,
              :include => [{:author => :profile_pictures}, :comment_data],
              :conditions => {:moderated => true},
-             :order => 'published_at asc'
+             :order => 'published_at desc'
 
   attr_protected :moderated, :rejected
 
