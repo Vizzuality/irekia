@@ -28,6 +28,10 @@ class Photo < Content
     title
   end
 
+  def last_contents(limit = 5)
+    self.class.moderated.includes(:image, :comments).order('published_at desc').where('id <> ?', id).first(limit)
+  end
+
   def facebook_share_message
     title.truncate(140)
   end
