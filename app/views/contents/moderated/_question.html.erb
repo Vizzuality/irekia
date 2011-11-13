@@ -11,7 +11,7 @@
     <span class="positive">+<%= @content.answer_requests_count %></span>
     <% end -%>
     &middot;
-    <%= link_to t('.question_content.author_and_comments.comments', :count => @content.comments_count), '#', :class => :goto_comments %>
+    <%= link_to t('.question_content.author_and_comments.comments', :count => @comments_count), '#', :class => :goto_comments %>
     &middot;
     <% if @answer.blank? %>
       <span><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
