@@ -3,18 +3,24 @@ jQuery.fn.enableUserPublish = function(opt){
   if (this.length < 1) return;
 
   var
-  section       = 0,
-  speed         = 250,
+  sectionID     = 0,
+  speed         = 150,
   sectionWidth  = 687,
   $article      = $(this),
   currentHeight = 0,
   $currentSection,
+  $currentMenuOption,
+  $menu,
+  questionStep = 0,
+  proposalStep = 0,
   $submit = $article.find("footer .publish"),
   spin_element = document.getElementById('publish_spinner'),
   submitting = false;
 
   // Initialize the initial section
-  $currentSection = $article.find(".container .section:nth-child(1)");
+  $currentSection    = $article.find(".container .section:nth-child(1)");
+  $menu              = $article.find(".menu");
+  $currentMenuOption = $menu.find("li.selected");
 
   function textCounter($input, $submit) {
     var count = $input.val().length;
@@ -38,6 +44,16 @@ jQuery.fn.enableUserPublish = function(opt){
         onCancel: function(id, fileName){ }
       });
     }
+  }
+
+  function _enableInputCounter() {
+    $article.find(":text, textarea").keyup(function(e) {
+      textCounter($(this), $submit);
+    });
+
+    $article.find(":text, textarea").keydown(function(e) {
+      textCounter($(this), $submit);
+    });
   }
 
   function _bindActions() {
@@ -65,7 +81,7 @@ jQuery.fn.enableUserPublish = function(opt){
     });
   }
 
-  function _showMessage(kind) {
+  function _showMessage(kind, callback) {
     IrekiaSpinner.spin(spin_element);
 
     var currentHeight = $currentSection.find(".form").outerHeight(true);
@@ -84,8 +100,17 @@ jQuery.fn.enableUserPublish = function(opt){
 
     $article.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, speed * 2, "easeInOutQuad", function() {
       IrekiaSpinner.stop();
-      _enableSubmit();
+      callback && callback();
     });
+  }
+
+  function _resetSection($section) {
+    $section.find(":text, textarea").val("");
+    $section.find(".holder").fadeIn(speed);
+  }
+
+  function _hasContent($section) {
+    return !isEmpty($section.find(":text, textarea").val());
   }
 
   function _enableSubmit() {
@@ -100,55 +125,116 @@ jQuery.fn.enableUserPublish = function(opt){
     $submit.addClass("disabled");
   }
 
+  function _selectOption($option) {
+    $menu.find("li.selected").removeClass("selected");
+    $option.parent().addClass("selected");
+  }
+
+  function _resizeSection($section, callback) {
+    height = $section.find(".form").outerHeight(true) + 20;
+    $article.find(".container").animate({ scrollTop: 0, height: height }, speed, function() {
+      callback && callback();
+    });
+  }
+
+  function _hideExtraFields() {
+    $currentSection.find(".extra").fadeOut(speed);
+  }
+  function _showExtraFields() {
+    $currentSection.find(".extra").fadeIn(speed);
+  }
+
+  function _doProposal() {
+  }
+
+  function _doQuestion() {
+    if (questionStep == 0) {
+      _showExtraFields();
+      _resizeSection($currentSection);
+      _disableSubmit();
+      questionStep++;
+      _changeSubmitTitle("Publicar");
+    } else {
+      _showMessage("success", function() {
+        questionStep = 0;
+        _resetSection($currentSection);
+      });
+    }
+  }
+
+  function _proposal() {
+    return $currentSection.hasClass("proposal");
+  }
+
+  function _question() {
+    return $currentSection.hasClass("question");
+  }
+
+  function _changeSubmitTitle(title) {
+    $submit.text(title);
+  }
+
+  function _sectionName($section) {
+    return $section.attr("class").replace(/section/g, "").fulltrim();
+  }
+
   // Init
   _bindActions();
+  _enableInputCounter();
 
   this.each(function(){
+
+    _disableSubmit();
+
     $submit.click(function(e) {
       e && e.preventDefault();
+
+      if (!_hasContent($currentSection)) return;
+
       _disableSubmit();
-      _showMessage("success");
 
-      $article.find(":text, textarea").keyup(function(e) {
-        console.log('a');
-        textCounter($(this), $submit);
-      });
-
-      $article.find(":text, textarea").keydown(function(e) {
-        textCounter($(this), $submit);
-      });
-
+      if (_question()) _doQuestion();
+      else if (_proposal()) _doProposal();
     });
 
     $(this).find("ul.menu li a").click(function(e) {
-      if (submitting) return;
+
+      //if (submitting) return;
 
       e && e.preventDefault();
+      _hideExtraFields();
 
-      $(this).parents("ul").find("li").removeClass("selected");
-      $(this).parent().addClass("selected");
 
-      section  = $(this).parent().index();
-      $section = $(this).parents(".content").find(".container .section:nth-child(" + (section + 1) + ")");
+      sectionID = $(this).parent().index();
+      $section  = $(this).parents(".content").find(".container .section:nth-child(" + (sectionID + 1) + ")");
+
+
+          if (_sectionName($section) != _sectionName($currentSection)) {
+            _resetSection($section);
+          }
+
+
+      _selectOption($(this));
 
       if ($currentSection) {
 
-        currentHeight = $currentSection.find(".form").outerHeight(true) + 20;
-
-        $article.find(".container").animate({scrollTop: 0, height:currentHeight}, function() {
+        _resizeSection($currentSection, function() {
 
           var $success = $currentSection.find(".message.success").hide();
           var $error   = $currentSection.find(".message.error").hide();
 
           $currentSection = $section;
           var height = $section.find(".form").outerHeight(true) + 20;
-          $article.find(".container").animate({scrollLeft:section * sectionWidth, height:height}, speed, "easeInOutQuad");
+          $article.find(".container").animate({scrollLeft: sectionID * sectionWidth, height: height }, speed, "easeInOutQuad");
+          _changeSubmitTitle("Continuar");
+
+
         });
 
       } else {
         $currentSection = $section;
         var height = $section.find(".form").outerHeight(true) + 20;
-        $article.find(".container").animate({scrollTop: 0, scrollLeft:section * sectionWidth, height:height}, speed, "easeInOutQuad");
+        $article.find(".container").animate({scrollTop: 0, scrollLeft: sectionID * sectionWidth, height: height }, speed, "easeInOutQuad");
       }
 
     });
