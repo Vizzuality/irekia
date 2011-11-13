@@ -669,6 +669,7 @@
               one: Un comentario
               other: '%{count} comentarios'
       photo:
+        back: volver
         title_author_and_comments:
           time: 'hace %{time}'
           comments:
