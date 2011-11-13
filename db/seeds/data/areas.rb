@@ -24,7 +24,7 @@ create_area :name => 'Justicia',
             :description => 'Le corresponde la preparación y ejecución de la política del Gobierno Vasco en materia de derecho penal, civil, mercantil y procesal; política de organización y apoyo de la Administración de Justicia. Es un órgano jurisdiccional colegiado, en el que culmina la organización judicial y es la máxima autoridad judicial en materia de derecho autonómico.',
             :image    => File.open(Rails.root.join('public/images/icons/news_avatar_medium.png'))
 
-create_area :name => 'Adm. Pública',
+create_area :name => 'Administración Pública',
             :description => 'Le corresponde la preparación y ejecución de la política del Gobierno Vasco. Le corresponde asimismo la política del Gobierno Vasco en materia de función pública y la coordinación de la Administración General del País  en toda la Comunidad Autónoma. Éste es el punto de partida para consultar los servicios de las diferentes administraciones públicas.',
             :image    => File.open(Rails.root.join('public/images/icons/news_avatar_medium.png'))
 
@@ -36,7 +36,7 @@ create_area :name => 'Obras Públicas',
             :description => 'Es el departamento encargado de la preparación y ejecución de la política del Gobierno en materia de infraestructuras de transporte terrestre, aéreo y marítimo, y el control, la ordenación y la regulación administrativa de los servicios de transporte correspondientes; la ordenación y dirección de todos los servicios postales y telegráficos.',
             :image    => File.open(Rails.root.join('public/images/icons/news_avatar_medium.png'))
 
-create_area :name => 'Transporte y movilidad',
+create_area :name => 'Transporte y Movilidad',
             :description => 'Es el departamento encargado de dirigir, supervisar, coordinar y promover leyes sobre transportes y telecomunicaciones. Informarse sobre las opciones de transporte público en el País Vasco, consultar guías de calles y carreteras, enterarse de las incidencias del tráfico... Todas estas gestiones y muchas mas puede realizar desde esta web.',
             :image    => File.open(Rails.root.join('public/images/icons/news_avatar_medium.png'))
 
@@ -60,7 +60,7 @@ create_area :name => 'Medio Ambiente',
             :description => 'Uno de los retos más importantes a que se enfrentan las sociedades modernas es impulsar el desarrollo sin dañar el delicado equilibrio natural. En este apartado se concentran las informaciones relativas a cuestiones como la protección de los animales, el medio, el paisaje y la gestión de recursos como el agua y la energía.',
             :image    => File.open(Rails.root.join('public/images/icons/news_avatar_medium.png'))
 
-create_area :name => 'Urbanismo y territorio',
+create_area :name => 'Urbanismo y Territorio',
             :description => 'Es el departamento encargado de la preparación y ejecución de la política en materia de infraestructuras, competencia estatal, y el control, la ordenación y la regulación administrativa de los servicios de transporte correspondientes; la ordenación y dirección de todos los servicios postales y telegráficos.',
             :image    => File.open(Rails.root.join('public/images/icons/news_avatar_medium.png'))
 
