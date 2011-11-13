@@ -48,6 +48,8 @@ class User < ActiveRecord::Base
   belongs_to :title,
              :select => 'id, name_i18n_key'
 
+  has_many :notifications
+
   has_many :areas_users,
            :class_name => 'AreaUser'
 
@@ -272,7 +274,7 @@ class User < ActiveRecord::Base
 
   def get_proposals(filters)
     proposals = Proposal.from_politician(self) if politician?
-    proposals = Proposal.from_citizen(self)    if citizen?
+    proposals = Proposal.from_citizen(self)    if citizen? || administrator?
 
     proposals = proposals.from_politicians     if filters[:from_politicians]
     proposals = proposals.from_citizens        if filters[:from_citizens]
@@ -427,9 +429,11 @@ class User < ActiveRecord::Base
 
   def notifications_count
     count = if politician?
-      (questions_count + proposals_count + comments_count + tagged_count) rescue 0
+      (new_questions_count + new_comments_count + new_arguments_count + new_votes_count + new_contents_users_count + new_follows_count) rescue 0
+    elsif citizen?
+      (new_answers_count + new_comments_count + new_arguments_count + new_votes_count + new_answer_requests_count + new_answer_opinions_count) rescue 0
     else
-      (answers_count + comments_count) rescue 0
+      0
     end
     count = 99 if count > 99
     count

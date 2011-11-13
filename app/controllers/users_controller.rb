@@ -5,20 +5,20 @@ class UsersController < ApplicationController
   before_filter :user_is_current_user?,        :only => [:edit, :update]
   before_filter :per_page,                     :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
-  before_filter :get_counters,                 :only => [:show, :actions]
+  before_filter :get_counters,                 :only => [:show, :actions, :questions, :proposals]
+  before_filter :build_new_question,           :only => [:questions]
+  before_filter :build_new_proposal,           :only => [:proposals]
   before_filter :get_questions,                :only => [:questions]
   before_filter :get_proposals,                :only => [:proposals]
   before_filter :get_actions,                  :only => [:show, :actions]
   before_filter :get_agenda,                   :only => [:agenda]
   before_filter :paginate,                     :only => [:show, :actions, :questions, :proposals]
-  before_filter :log_user_connection_time,     :only => [:show]
 
   respond_to :html, :json
 
   def show
     redirect_to_politician_page?
 
-    @first_time = @user.first_time
 
     if current_user
       @suggestions         = current_user.follow_suggestions.limit(6)
@@ -140,28 +140,49 @@ class UsersController < ApplicationController
   def get_user
     return unless params[:id].present?
 
-    @user                  = User.by_id(params[:id])
-    @users_following       = @user.users_following.politicians.all
-    @areas_following       = @user.areas_following.all
-    @answers_count         = current_user.answers_count if current_user
-    @followers_count       = @user.followers.count
-    @new_followers_count   = @user.new_followers(last_seen_at).count
+    @user            = User.by_id(params[:id])
+    @users_following = @user.users_following.politicians.all
+    @areas_following = @user.areas_following.all
+
+    if private_profile?
+      @first_time      = @user.first_time
+      @random_area = Area.select(:id).all.sample
+    end
+
+    if politician_profile?
+      @followers_count         = @user.followers.count
+      @new_followers_count     = @user.new_follows_count
+      @questions_notifications = @user.new_questions_count
+    else
+      @questions_notifications = @user.new_answers_count + @user.new_answer_requests_count + @user.new_answer_opinions_count
+    end
+    @proposals_notifications = @user.new_arguments_count + @user.new_votes_count
   end
   private :get_user
 
   def get_counters
-    @followers_count = @user.followers.count || 0
-    @news_count      = @user.send("#{'private_' if show_private_actions?}news_count")      || 0
-    @questions_count = @user.send("#{'private_' if show_private_actions?}questions_count") || 0
-    @answers_count   = @user.send("#{'private_' if show_private_actions?}answers_count")   || 0
-    @proposals_count = @user.send("#{'private_' if show_private_actions?}proposals_count") || 0
-    @arguments_count = @user.send("#{'private_' if show_private_actions?}arguments_count") || 0
-    @votes_count     = @user.send("#{'private_' if show_private_actions?}votes_count")     || 0
-    @photos_count    = @user.send("#{'private_' if show_private_actions?}photos_count")    || 0
-    @videos_count    = @user.send("#{'private_' if show_private_actions?}videos_count")    || 0
-    @statuses_count  = @user.send("#{'private_' if show_private_actions?}statuses_count")  || 0
+    @followers_count      = @user.followers.count                                               || 0
+    @questions_done_count = @user.questions_count                                               || 0
+    @proposals_done_count = @user.proposals_count                                               || 0
+    @news_count           = @user.send("#{'private_' if show_private_actions?}news_count")      || 0
+    @questions_count      = @user.send("#{'private_' if show_private_actions?}questions_count") || 0
+    @answers_count        = @user.send("#{'private_' if show_private_actions?}answers_count")   || 0
+    @proposals_count      = @user.send("#{'private_' if show_private_actions?}proposals_count") || 0
+    @arguments_count      = @user.send("#{'private_' if show_private_actions?}arguments_count") || 0
+    @votes_count          = @user.send("#{'private_' if show_private_actions?}votes_count")     || 0
+    @photos_count         = @user.send("#{'private_' if show_private_actions?}photos_count")    || 0
+    @videos_count         = @user.send("#{'private_' if show_private_actions?}videos_count")    || 0
+    @statuses_count       = @user.send("#{'private_' if show_private_actions?}statuses_count")  || 0
   end
   private :get_counters
+
+  def build_new_question
+    @question                  = Question.new
+    @question_data             = @question.build_question_data
+    @question_data.target_user = @user
+  end
+  private :build_new_question
+
   def get_questions
     if public_profile?
       @questions = @user.questions.moderated
@@ -192,6 +213,13 @@ class UsersController < ApplicationController
     end
   end
   private :get_questions
+
+  def build_new_proposal
+    @proposal                  = Proposal.new
+    @proposal_data             = @proposal.build_proposal_data
+    @proposal_data.target_area = @user.areas.first
+  end
+  private :build_new_proposal
 
   def get_proposals
     @proposals = @user.get_proposals(params.slice(:from_politicians, :from_citizens, :more_polemic))
@@ -266,15 +294,5 @@ class UsersController < ApplicationController
     @viewing_access == 'politician'
   end
   private :private_profile?
-
-  def log_user_connection_time
-    cookies[:last_seen_at] = DateTime.now if user_signed_in?
-  end
-  private :log_user_connection_time
-
-  def last_seen_at
-    DateTime.parse(cookies[:last_seen_at]) rescue nil
-  end
-  private :last_seen_at
 
 end

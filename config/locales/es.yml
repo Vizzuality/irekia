@@ -1186,6 +1186,10 @@
         not_answered_title: Todas las preguntas hechas por ti
         more_recent: Más recientes
         more_polemic: Más polémicas
+        no_questions:
+          title: 'No has hecho ninguna pregunta aún.'
+          description: 'Puedes preguntar cualquier cosa relacionada con el Gobierno Vasco: el presupuesto de un área, el motivo para tomar una decisión, el sueldo de un cargo político, etc.'
+          create_question: Crea una pregunta
       proposals:
         title:
           zero: No has hecho ninguna propuesta
@@ -1198,6 +1202,10 @@
           other: '%{count} a favor'
         more_recent: Más recientes
         more_commented: Más comentadas
+        no_proposals:
+          title: 'No has hecho ninguna propuesta aún.'
+          description: 'Puedes proponer cualquier cosa que creas que mejore el País Vasco. Desde ideas para agilizar la administración hasta propuestas de cambio o mejora de leyes y normativas.'
+          create_proposal: Crea una propuesta
       actions:
         title: Tus últimas acciones
         main_filters:

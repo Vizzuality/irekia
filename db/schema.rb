@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111110100035) do
+ActiveRecord::Schema.define(:version => 20111113180737) do
 
   create_table "answer_data", :force => true do |t|
     t.integer  "answer_id"
@@ -182,6 +182,16 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
 
   add_index "news_data", ["news_id"], :name => "index_news_data_on_news_id"
 
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["user_id", "item_id", "item_type"], :name => "index_notifications_on_user_id_and_item_id_and_item_type", :unique => true
+
   create_table "participations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "content_id"
@@ -305,9 +315,8 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
     t.boolean  "inactive",                                   :default => false
     t.boolean  "first_time",                                 :default => true
     t.string   "locale",                                     :default => "es"
-    t.integer  "areas_users_count",                          :default => 0
     t.integer  "follows_count",                              :default => 0
-    t.integer  "tagged_count",                               :default => 0
+    t.integer  "areas_users_count",                          :default => 0
     t.integer  "proposals_count",                            :default => 0
     t.integer  "arguments_count",                            :default => 0
     t.integer  "votes_count",                                :default => 0
@@ -330,6 +339,15 @@ ActiveRecord::Schema.define(:version => 20111110100035) do
     t.integer  "private_videos_count",                       :default => 0
     t.integer  "private_statuses_count",                     :default => 0
     t.integer  "private_comments_count",                     :default => 0
+    t.integer  "new_answers_count",                          :default => 0
+    t.integer  "new_comments_count",                         :default => 0
+    t.integer  "new_votes_count",                            :default => 0
+    t.integer  "new_arguments_count",                        :default => 0
+    t.integer  "new_questions_count",                        :default => 0
+    t.integer  "new_answer_requests_count",                  :default => 0
+    t.integer  "new_answer_opinions_count",                  :default => 0
+    t.integer  "new_contents_users_count",                   :default => 0
+    t.integer  "new_follows_count",                          :default => 0
     t.string   "email",                                      :default => "",    :null => false
     t.string   "encrypted_password",          :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"

@@ -32,6 +32,8 @@ class Tweet < Content
   end
 
   def update_counter_cache
+    return unless moderated?
+
     author.update_attribute("statuses_count", author.actions.status_messages.count)
     author.followers.each{|user| user.update_attribute("private_statuses_count", user.private_actions.status_messages.count)}
     author.areas.each{|area| area.update_attribute("statuses_count", area.actions.status_messages.count)}

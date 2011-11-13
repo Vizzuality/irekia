@@ -136,6 +136,8 @@ class Proposal < Content
   private :publish_content
 
   def update_counter_cache
+    return unless moderated?
+
     if target_area
       target_area.update_attribute("proposals_count", target_area.actions.proposals.count)
       target_area.followers.each{|user| user.update_attribute("private_proposals_count", user.private_actions.proposals.count)}

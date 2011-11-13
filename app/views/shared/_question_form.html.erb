@@ -7,11 +7,6 @@
         <p>Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo.</p>
         <h3>Tu pregunta</h3>
 
-        <%= form.fields_for :areas_contents, @question.areas_contents.first do |area_content_data| %>
-          <%= area_content_data.hidden_field :area_id %>
-          <%= area_content_data.hidden_field :content_id %>
-        <% end -%>
-
         <%= form.fields_for :question_data, @question_data do |question_data| %>
           <%= question_data.hidden_field :user_id %>
           <%= question_data.hidden_field :area_id %>

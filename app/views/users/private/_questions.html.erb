@@ -1,17 +1,18 @@
-
+<% if @questions_done_count <= 0 -%>
 <article class="help">
 <div class="inner">
     <div class="info icon"></div>
     <div class="content">
-        <h2>No has hecho ninguna pregunta aún.</h2>
-        <p>Puedes preguntar cualquier cosa relacionada con el Gobierno Vasco: el presupuesto de un área, el motivo para tomar una decisión, el sueldo de un cargo político, etc.</p>
-        <a href="/in_development" class="white_button pink">Haz una pregunta</a>
+        <h2><%= t('.no_questions.title') %></h2>
+        <p><%= t('.no_questions.description') %></p>
+        <%= link_to_with_login (content_tag :span, t('.no_questions.create_question')), '#', :id => "question-popover", :class => "white_button pink after_ask_question" %>
     </div>
 </div>
 <div class="t"></div><div class="f"></div>
 </article>
 
-
+<%= render "/shared/question_form" %>
+<% else -%>
 
 <article class="questions with_filters broken-bottom">
 <div class="inner">
@@ -64,3 +65,5 @@
 </div>
 <div class="t"></div><div class="f"></div>
 </article>
+
+<% end -%>

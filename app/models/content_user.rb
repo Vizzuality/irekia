@@ -12,4 +12,13 @@ class ContentUser < ActiveRecord::Base
   belongs_to :status_message, :foreign_key => :content_id
 
   accepts_nested_attributes_for :question, :user
+
+  after_save :update_counter_cache
+
+  def update_counter_cache
+    return unless content && content.moderated?
+
+    Notification.for(user, self)
+  end
+  private :update_counter_cache
 end

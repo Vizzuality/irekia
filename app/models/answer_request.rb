@@ -23,4 +23,11 @@ class AnswerRequest < Participation
   end
   private :update_question
 
+  def update_counter_cache
+    return unless moderated?
+
+    Notification.for(content.author, self)
+  end
+  private :update_counter_cache
+
 end

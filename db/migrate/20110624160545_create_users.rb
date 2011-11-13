@@ -23,9 +23,8 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean  :first_time,                                                    :default => true
       t.string   :locale,                                                        :default => 'es'
 
-      t.integer :areas_users_count,                                              :default => 0
       t.integer :follows_count,                                                  :default => 0
-      t.integer :tagged_count,                                                   :default => 0
+      t.integer :areas_users_count,                                              :default => 0
       t.integer :proposals_count,                                                :default => 0
       t.integer :arguments_count,                                                :default => 0
       t.integer :votes_count,                                                    :default => 0
@@ -49,6 +48,16 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :private_videos_count,                                           :default => 0
       t.integer :private_statuses_count,                                         :default => 0
       t.integer :private_comments_count,                                         :default => 0
+
+      t.integer :new_answers_count,                                              :default => 0
+      t.integer :new_comments_count,                                             :default => 0
+      t.integer :new_votes_count,                                                :default => 0
+      t.integer :new_arguments_count,                                            :default => 0
+      t.integer :new_questions_count,                                            :default => 0
+      t.integer :new_answer_requests_count,                                      :default => 0
+      t.integer :new_answer_opinions_count,                                      :default => 0
+      t.integer :new_contents_users_count,                                       :default => 0
+      t.integer :new_follows_count,                                              :default => 0
 
       t.database_authenticatable :null => false
       t.recoverable

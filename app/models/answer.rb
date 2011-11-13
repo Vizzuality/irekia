@@ -35,11 +35,14 @@ class Answer < Content
   private :mark_question_as_answered
 
   def update_counter_cache
+    return unless moderated?
+
     author.update_attribute("answers_count", author.actions.answers.count)
     author.followers.each{|user| user.update_attribute("private_answers_count", user.private_actions.answers.count)}
     author.areas.each do |area|
       area.update_attribute("answers_count", area.actions.answers.count)
     end
+    Notification.for(question.author, self)
   end
   private :update_counter_cache
 

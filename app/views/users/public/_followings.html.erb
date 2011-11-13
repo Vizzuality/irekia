@@ -14,10 +14,12 @@
               <%= t('.area') %>
             </p>
             <div class="follow basic">
-              <% if @areas_follows[area.id].new_record? -%>
-                <%= render 'follows/create_mini', :follow => @areas_follows[area.id], :follow_parent => current_user %>
-              <% else -%>
-                <%= render 'follows/destroy_mini', :follow => @areas_follows[area.id], :follow_parent => current_user %>
+              <% if current_user -%>
+                <% if @areas_follows[area.id].new_record? -%>
+                  <%= render 'follows/create_mini', :follow => @areas_follows[area.id], :follow_parent => current_user %>
+                <% else -%>
+                  <%= render 'follows/destroy_mini', :follow => @areas_follows[area.id], :follow_parent => current_user %>
+                <% end -%>
               <% end -%>
             </div>
           </div>

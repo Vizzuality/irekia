@@ -41,9 +41,12 @@ class Argument < Participation
   end
 
   def update_counter_cache
+    return unless moderated?
+
     author.update_attribute('arguments_count', author.actions.arguments.count)
     author.followers.each{|user| user.update_attribute("private_arguments_count", user.private_actions.arguments.count)}
     author.areas.each{|area| area.update_attribute('arguments_count', area.actions.arguments.count)}
+    Notification.for(content.author, self)
   end
   private :update_counter_cache
 end

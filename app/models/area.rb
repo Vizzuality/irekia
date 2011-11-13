@@ -52,7 +52,6 @@ class Area < ActiveRecord::Base
     scoped.select([:id,
                    :name,
                    :description,
-                   :follows_count,
                    :news_count,
                    :questions_count,
                    :answers_count,

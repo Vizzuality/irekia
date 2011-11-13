@@ -126,15 +126,19 @@ class Question < Content
   private :publish_content
 
   def update_counter_cache
+    return unless moderated?
+
     author.update_attribute("questions_count", author.actions.questions.count)
     author.followers.each{|user| user.update_attribute("private_questions_count", user.private_actions.questions.count)}
     if target_area
       target_area.update_attribute("questions_count", target_area.actions.questions.count)
       target_area.followers.each{|user| user.update_attribute("private_questions_count", user.private_actions.questions.count)}
+      target_area.users.each{|user| Notification.for(user, self)}
     elsif target_user
       target_user.update_attribute("questions_count", target_user.actions.questions.count)
       target_user.followers.each{|user| user.update_attribute("private_questions_count", user.private_actions.questions.count)}
       target_user.areas.each{|area| area.update_attribute("questions_count", area.actions.questions.count) }
+      Notification.for(target_user, self)
     end
   end
   private :update_counter_cache

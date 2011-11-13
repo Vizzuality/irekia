@@ -72,6 +72,8 @@ class News < Content
   private :publish_content
 
   def update_counter_cache
+    return unless moderated?
+
     areas.each{ |area| area.update_attribute("news_count", area.actions.news.count) }
     users.each do |user|
       user.update_attribute("news_count", user.actions.news.count)

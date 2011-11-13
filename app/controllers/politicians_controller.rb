@@ -80,22 +80,6 @@ class PoliticiansController < UsersController
   end
   private :get_counters
 
-  def build_new_question
-    @question                  = Question.new
-    @question.areas_contents   << @question.areas_contents.build(:area => @politician.areas.first)
-    @question_data             = @question.build_question_data
-    @question_data.target_user = @user
-  end
-  private :build_new_question
-
-  def build_new_proposal
-    @proposal                  = Proposal.new
-    @proposal.areas_contents   << @proposal.areas_contents.build(:area => @politician.areas.first)
-    @proposal_data             = @proposal.build_proposal_data
-    @proposal_data.target_area = @politician.areas.first
-  end
-  private :build_new_proposal
-
   def get_actions
     @actions = @politician.get_actions(params.slice(:type, :more_polemic))
   end

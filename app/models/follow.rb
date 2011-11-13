@@ -7,6 +7,8 @@ class Follow < ActiveRecord::Base
 
   validate :user_already_following_this_item?
 
+  after_create :update_counter_cache
+
   def self.areas
     where("follow_item_type = 'Area'")
   end
@@ -21,4 +23,8 @@ class Follow < ActiveRecord::Base
   end
   private :user_already_following_this_item?
 
+  def update_counter_cache
+    Notification.for(user, self)
+  end
+  private :update_counter_cache
 end

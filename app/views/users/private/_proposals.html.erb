@@ -1,16 +1,19 @@
+<% if @proposals_done_count == 0 -%>
 <article class="help">
 <div class="inner">
     <div class="info icon"></div>
     <div class="content">
-        <h2>No has hecho ninguna propuesta aún.</h2>
-        <p>Puedes proponer cualquier cosa que creas que mejore el País Vasco. Desde ideas para agilizar la administración hasta propuestas de cambio o mejora de leyes y normativas.</p>
-        <a href="/in_development" class="white_button pink">Haz una propuesta</a>
+        <h2><%= t('.no_proposals.title') %></h2>
+        <p><%= t('.no_proposals.description') %></p>
+        <%= link_to_with_login (content_tag :span, t('.no_proposals.create_proposal')), '#', :id => "proposal-popover", :class => "white_button pink after_create_proposal" %>
     </div>
 </div>
 <div class="t"></div><div class="f"></div>
 </article>
 
+<%= render "/shared/proposal_form" %>
 
+<% else -%>
 
 <article class="proposals with_filters with_footer">
 <div class="inner">
@@ -47,3 +50,5 @@
 </footer>
 <div class="t"></div><div class="f"></div>
 </article>
+
+<% end -%>
