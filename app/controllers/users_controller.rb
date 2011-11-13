@@ -190,8 +190,6 @@ class UsersController < ApplicationController
         @questions.more_recent
       end
     end
-    @questions = @questions.all if @questions
-    @questions_top = @questions_top.all if @questions_top
   end
   private :get_questions
 
@@ -244,7 +242,8 @@ class UsersController < ApplicationController
   def paginate
     @actions   = @actions.page(1).per(@per_page).all   if @actions
     @proposals = @proposals.page(1).per(@per_page).all if @proposals
-    @questions = @questions.page(1).per(@per_page).all if @questions
+    @questions = @questions.all if @questions
+    @questions_top = @questions_top.all if @questions_top
   end
   private :paginate
 
