@@ -145,15 +145,31 @@ jQuery.fn.enableUserPublish = function(opt){
   }
 
   function _doProposal() {
+    if (proposalStep == 0) {
+      proposalStep++;
+
+      _showExtraFields();
+      _resizeSection($currentSection);
+      _disableSubmit();
+      _changeSubmitTitle("Publicar");
+
+    } else {
+      _showMessage("success", function() {
+        proposalStep = 0;
+        _resetSection($currentSection);
+      });
+    }
   }
 
   function _doQuestion() {
     if (questionStep == 0) {
+      questionStep++;
+
       _showExtraFields();
       _resizeSection($currentSection);
       _disableSubmit();
-      questionStep++;
       _changeSubmitTitle("Publicar");
+
     } else {
       _showMessage("success", function() {
         questionStep = 0;
