@@ -10,17 +10,17 @@
   }
 
 
- var
- sectionID     = 0,
- speed         = 150,
- sectionWidth  = 687,
- $article      = $(this),
- currentHeight = 0,
- $currentSection,
- $currentMenuOption,
- $menu,
- spin_element = document.getElementById('publish_spinner'),
- submitting = false;
+  var
+  sectionID     = 0,
+  speed         = 150,
+  sectionWidth  = 687,
+  $article      = $(this),
+  currentHeight = 0,
+  $currentSection,
+  $currentMenuOption,
+  $menu,
+  spin_element = document.getElementById('publish_spinner'),
+  submitting = false;
 
   var spin_element = document.getElementById('user_publish_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
@@ -136,12 +136,13 @@
 
     // Initialize the initial section
     $currentSection    = $ps.find(".container .section:nth-child(1)");
-    $menu              = $ps.find(".menu");
-    $currentMenuOption = $menu.find("li.selected");
+    data.$menu         = $ps.find(".menu");
+    $currentMenuOption = data.$menu.find("li:nth-child(" + (data.sectionID + 1) + ")");
+    $currentSection    = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
-    $currentSection  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
     _gotoSection(data);
 
+    _selectOption(data, $currentMenuOption);
     _resizeSection($ps, $currentSection);
 
     _subscribeToEvent(data.event);
@@ -149,23 +150,22 @@
     $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
   }
 
-   function _enableInputCounter(data) {
-     var $ps = data.$ps;
+  function _enableInputCounter(data) {
+    var $ps = data.$ps;
 
-     $ps.find(":text, textarea").keyup(function(e) {
-       textCounter($(this), data.$submit);
-     });
+    $ps.find(":text, textarea").keyup(function(e) {
+      textCounter($(this), data.$submit);
+    });
 
-     $ps.find(":text, textarea").keydown(function(e) {
-       textCounter($(this), data.$submit);
-     });
-   }
+    $ps.find(":text, textarea").keydown(function(e) {
+      textCounter($(this), data.$submit);
+    });
+  }
 
-   function textCounter($input, $submit) {
-     var count = $input.val().length;
-     (count <= 0) ? _disableSubmit($submit) : _enableSubmit($submit);
-   }
-
+  function textCounter($input, $submit) {
+    var count = $input.val().length;
+    (count <= 0) ? _disableSubmit($submit) : _enableSubmit($submit);
+  }
 
   function _resetSection($section) {
     $section.find(":text, textarea").val("");
@@ -188,11 +188,10 @@
     $submit.addClass("disabled");
   }
 
-  function _selectOption($option) {
-    $menu.find("li.selected").removeClass("selected");
-    $option.parent().addClass("selected");
+  function _selectOption(data, $option) {
+    data.$menu.find("li.selected").removeClass("selected");
+    $option.addClass("selected");
   }
-
 
   function _bindActions(data) {
     var $ps = data.$ps;
@@ -220,12 +219,12 @@
     });
   }
 
-   function _resizeSection($ps, $section, callback) {
-     height = $section.find(".form").outerHeight(true) + 20;
-     $ps.find(".container").animate({ scrollTop: 0, height: height }, speed, function() {
-       callback && callback();
-     });
-   }
+  function _resizeSection($ps, $section, callback) {
+    height = $section.find(".form").outerHeight(true) + 20;
+    $ps.find(".container").animate({ scrollTop: 0, height: height }, speed, function() {
+      callback && callback();
+    });
+  }
 
   function _hideExtraFields() {
     $currentSection.find(".extra").fadeOut(speed);
@@ -302,7 +301,6 @@
       if (_question()) _doQuestion(data);
       else if (_proposal()) _doProposal(data);
     });
-
   }
 
   function _setupUpload(id) {
@@ -338,20 +336,22 @@
     $ps.find("ul.menu li a").unbind();
     $ps.find("ul.menu li a").click(function(e) {
 
-      //if (submitting) return;
+      data.questionStep = 0;
+      data.proposalStep = 0;
+
+      // if (submitting) return;
 
       e && e.preventDefault();
       _hideExtraFields();
 
       data.sectionID = $(this).parent().index();
-      $section  = $(this).parents(".content").find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
-
+      $section       = $(this).parents(".content").find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
       if (_sectionName($section) != _sectionName($currentSection)) {
         _resetSection($section);
       }
 
-      _selectOption($(this));
+      _selectOption(data, $(this).parent());
 
       if ($currentSection) {
 
