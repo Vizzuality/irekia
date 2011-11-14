@@ -140,7 +140,7 @@ $(function() {
   $(".with_filters").filterWidget();
   $(".with_filters").filterWidget();
 
-  $("article.politician.publish").enablePoliticianPublish();
-  $("article.user.publish").enableUserPublish();
+  //$("article.politician.publish").enablePoliticianPublish();
+  //$("article.user.publish").enableUserPublish();
   $(".areas_selector").areasPopover();
 });

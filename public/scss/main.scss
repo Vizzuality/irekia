@@ -1935,7 +1935,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
             span { top: 9px; color: #ccc; }
           }
-          input[type="submit"] { position: absolute; top: 13px; right: 17px; color: #FF0066; background: none; height: 30px; border: none; }
+          input[type="submit"] { position: absolute; top: 13px; right: 17px; color: #FF0066; background: none; height: 30px; border: none;
+              &:hover{text-decoration:underline;}
+              &.blue {
+                color:$link_color;
+                &:hover {color:$link_color_hover;}
+              }
+          }
 
         }
         div.previous p { font-size: 13px; }
