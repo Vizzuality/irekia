@@ -166,8 +166,12 @@ def create_event(params)
     :latitude              => params[:latitude],
     :longitude             => params[:longitude],
     :tags                  => params[:tags],
+    :areas                 => params[:areas_tagged] || [],
+    :users                 => params[:users_tagged] || [],
     :event_data_attributes => {
       :title      => params[:title],
+      :subtitle   => params[:subtitle],
+      :body       => params[:body],
       :event_date => params[:date],
       :location   => params[:location],
       :image      => params[:image]

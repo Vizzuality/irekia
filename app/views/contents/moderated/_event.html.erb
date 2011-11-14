@@ -11,7 +11,7 @@
 
     <h1><%= @content.title %></h1>
     <p><strong><%= @content.subtitle %></strong></p>
-
+    <%= image_tag @content.event_data.image.content_url %>
     <%= simple_format @content.body %>
     <%= render "participations/comments" %>
   </div>
@@ -21,6 +21,7 @@
       <%= render "shared/sharing" %>
       <%= render "shared/sidebar/tags" %>
       <%= render "shared/sidebar/location" %>
+      <%= render "shared/sidebar/politicians" %>
       <%= render "shared/sidebar/related_events" %>
 
     </div>
