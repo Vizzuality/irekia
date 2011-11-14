@@ -2,12 +2,12 @@
 <div class="inner clearfix">
   <div class="content">
 
-    <h2>Publicar</h2>
+    <h2><%= t(".publish") %></h2>
     <p>¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!</p>
 
     <%= menu ([
-    { :link => (link_to t(".question"), "#"), :class => :selected},
-    { :link => (link_to t(".proposal"), "#") }
+              { :link => (link_to t(".question"), "#"), :class => :selected},
+              { :link => (link_to t(".proposal"), "#") }
     ]) %>
 
     <div class="container">
@@ -93,11 +93,11 @@
 
 
 
+      </div>
     </div>
-  </div>
 
-</div>
-      <span class="close"></span>
+  </div>
+  <span class="close"></span>
 </div>
 
 <footer>

@@ -19,8 +19,6 @@
  $currentSection,
  $currentMenuOption,
  $menu,
- questionStep = 0,
- proposalStep = 0,
  spin_element = document.getElementById('publish_spinner'),
  submitting = false;
 
@@ -66,6 +64,8 @@
         data.settings = settings;
         data.name = store;
         data.event = "_close." + store;
+        data.proposalStep = 0;
+        data.questionStep = 0;
       }
 
       // Update the reference to $ps
@@ -83,6 +83,17 @@
 
       // Do the same for the dropdown, but add a few helpers
       $ps.data(store, data);
+
+      data.$submit = $ps.find("footer .publish");
+
+      // bindings
+      _addCloseAction(data);
+      _addDefaultAction(data);
+      _bindMenu(data);
+      _bindSubmit(data);
+      _bindActions(data);
+      _enableInputCounter(data);
+
 
     });
   };
@@ -116,22 +127,13 @@
   function _open(data) {
     var $ps = data.$ps;
 
-    data.$submit = $ps.find("footer .publish");
-
-    // bindings
-    _addCloseAction(data);
-    _addDefaultAction(data);
-    _bindMenu(data);
-    _bindSubmit(data);
-    //_addSubmitAction(data);
+    data.questionStep = 0;
+    data.proposalStep = 0;
 
     // Initialize the initial section
     $currentSection    = $ps.find(".container .section:nth-child(1)");
     $menu              = $ps.find(".menu");
     $currentMenuOption = $menu.find("li.selected");
-
-   _bindActions($ps);
-   _enableInputCounter(data);
 
     _subscribeToEvent(data.event);
     _triggerOpenAnimation($ps, data);
@@ -184,8 +186,8 @@
   }
 
 
-
-  function _bindActions($ps) {
+  function _bindActions(data) {
+    var $ps = data.$ps;
 
     //_setupUpload("upload_proposal");
     //_setupUpload("upload_image");
@@ -227,8 +229,8 @@
 
   function _doProposal(data) {
     var $ps = data.$ps;
-    if (proposalStep == 0) {
-      proposalStep++;
+    if (data.proposalStep == 0) {
+      data.proposalStep++;
 
       _showExtraFields();
       _resizeSection($ps, $currentSection);
@@ -237,7 +239,7 @@
 
     } else {
       _showMessage($ps, "success", function() {
-        proposalStep = 0;
+        data.proposalStep = 0;
         _resetSection($currentSection);
       });
     }
@@ -246,8 +248,8 @@
   function _doQuestion(data) {
     var $ps = data.$ps;
 
-    if (questionStep == 0) {
-      questionStep++;
+    if (data.questionStep == 0) {
+      data.questionStep++;
 
       _showExtraFields();
       _resizeSection($ps, $currentSection);
@@ -256,7 +258,7 @@
 
     } else {
       _showMessage($ps, "success", function() {
-        questionStep = 0;
+        data.questionStep = 0;
         _resetSection($currentSection);
       });
     }
@@ -281,22 +283,24 @@
   function _bindSubmit(data) {
     var $ps = data.$ps;
 
-     data.$submit.click(function(e) {
-       e && e.preventDefault();
+    data.$submit.unbind();
+    data.$submit.click(function(e) {
+      e && e.preventDefault();
 
-       if (!_hasContent($currentSection)) return;
+      if (!_hasContent($currentSection)) return;
 
-       _disableSubmit(data.$submit);
+      _disableSubmit(data.$submit);
 
-       if (_question()) _doQuestion(data);
-       else if (_proposal()) _doProposal(data);
-     });
+      if (_question()) _doQuestion(data);
+      else if (_proposal()) _doProposal(data);
+    });
 
   }
 
   function _bindMenu(data) {
     var $ps = data.$ps;
 
+    $ps.find("ul.menu li a").unbind();
     $ps.find("ul.menu li a").click(function(e) {
 
       //if (submitting) return;
@@ -336,28 +340,28 @@
     });
   }
 
-   function _showMessage($ps, kind, callback) {
-     IrekiaSpinner.spin(spin_element);
+  function _showMessage($ps, kind, callback) {
+    IrekiaSpinner.spin(spin_element);
 
-     var currentHeight = $currentSection.find(".form").outerHeight(true);
-     var $success      = $currentSection.find(".message.success");
-     var $error        = $currentSection.find(".message.error");
+    var currentHeight = $currentSection.find(".form").outerHeight(true);
+    var $success      = $currentSection.find(".message.success");
+    var $error        = $currentSection.find(".message.error");
 
-     if (kind == "success") {
-       $error.hide();
-       $success.show();
-     } else {
-       $error.show();
-       $success.hide();
-     }
+    if (kind == "success") {
+      $error.hide();
+      $success.show();
+    } else {
+      $error.show();
+      $success.hide();
+    }
 
-     var successHeight = $success.outerHeight(true);
+    var successHeight = $success.outerHeight(true);
 
-     $ps.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, speed * 2, "easeInOutQuad", function() {
-       IrekiaSpinner.stop();
-       callback && callback();
-     });
-   }
+    $ps.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, speed * 2, "easeInOutQuad", function() {
+      IrekiaSpinner.stop();
+      callback && callback();
+    });
+  }
 
   function _triggerOpenAnimation($ps, data) {
     var top  = _getTopPosition($ps);
@@ -396,21 +400,20 @@
     }
   }
 
-  function _close2(data, hideLockScreen, callback) {
-
-    data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
-      $(this).remove();
-      _clearInfo(data.$ps);
-      hideLockScreen && LockScreen.hide();
-      callback && callback();
-    }});
-  }
   // Close popover
   function _close(data, hideLockScreen, callback) {
 
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).css("top", "-900px");
       _clearInfo(data.$ps);
+
+      data.questionStep = 0;
+      data.proposalStep = 0;
+
+      data.$ps.find(".extra").hide();
+      data.$ps.find(".holder").show();
+      _resizeSection(data.$ps, $currentSection);
+
       hideLockScreen && LockScreen.hide();
       callback && callback();
     }});
@@ -433,6 +436,7 @@
       spinner.stop();
       enableSending(data.$ps);
       _close(data, false, function() {
+        _hideExtraFields();
         _gotoSuccess(data);
       });
     });
@@ -442,15 +446,6 @@
       enableSending(data.$ps);
     });
 
-  }
-
-  function _addCloseAction2(data) {
-    data.$ps.find(".close").unbind("click");
-    data.$ps.find(".close").bind('click', function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      _close2(data, true);
-    });
   }
 
   function _addCloseAction(data) {
