@@ -97,7 +97,6 @@
       _enableInputCounter(data);
       _bindSearch(data);
 
-
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
 
     });
@@ -137,8 +136,7 @@
 
     // Initialize the initial section
     $currentSection    = $ps.find(".container .section:nth-child(1)");
-    data.$menu         = $ps.find(".menu");
-    $currentMenuOption = data.$menu.find("li:nth-child(" + (data.sectionID + 1) + ")");
+    $currentMenuOption = $ps.find(".menu").find("li:nth-child(" + (data.sectionID + 1) + ")");
     $currentSection    = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
     _gotoSection(data);
@@ -188,10 +186,10 @@
   }
 
   function _selectOption(data, $option) {
-    if (data.$menu) {
-      data.$menu.find("li.selected").removeClass("selected");
-      $option.addClass("selected");
-    }
+    var $ps = data.$ps;
+    var $menu = $ps.find(".menu");
+    $menu.find("li.selected").removeClass("selected");
+    $option.addClass("selected");
   }
 
   function _bindActions(data) {
@@ -220,7 +218,7 @@
   }
 
   function _resizeSection($ps, $section, callback) {
-    height = $section.find(".form").outerHeight(true) ;
+    height = $section.find(".form").outerHeight(true);
     $ps.find(".container").animate({ scrollTop: 0, height: height }, speed, function() {
       callback && callback();
     });
@@ -262,8 +260,6 @@
          // $relatedTitle.fadeOut(350);
        }
      });
-
-
   }
 
   function _doProposal(data) {
@@ -388,8 +384,6 @@
       data.questionStep = 0;
       data.proposalStep = 0;
 
-      // if (submitting) return;
-
       _hideExtraFields();
 
       data.sectionID = $(this).parent().index();
@@ -412,7 +406,6 @@
 
           _gotoSection(data);
           _changeSubmitTitle(data.$submit, "Continuar");
-
         });
 
       } else {
