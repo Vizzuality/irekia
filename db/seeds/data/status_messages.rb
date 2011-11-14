@@ -10,19 +10,19 @@ create_status_message :author => @aitana,
 
 create_status_message :author => @aitana,
                       :area => @area,
-                      :message => 'En la rueda de prensa del Lehendakari.'
+                      :message => 'En la rueda de prensa del Lehendakari que da hoy en el Palacio de Congresos de Bilbao.'
 
 create_status_message :author => @aitana,
                       :area => @area,
-                      :message => 'Dando el pistoletazo de salida en la Maratón de Bilbao.'
+                      :message => 'Dando el pistoletazo de salida en la Maratón de Bilbao. Ánimo a todos!'
 
 create_status_message :author => @aitana,
                       :area => @area,
-                      :message => 'Éxito en la Conferencia contra el dopaje 2011.'
+                      :message => 'Éxito en la Conferencia contra el dopaje 2011. Un paso adelante en el mundo del deporte'
 
 create_status_message :author => @aitor,
                       :area => @area,
-                      :message => 'Abierto el plazo de vacunación para nuestros mayores.'
+                      :message => 'Abierto el plazo de vacunación para nuestros mayores. No te olvides de llevar a tu abuel@'
 
 create_status_message :author => @aitor,
                       :area => @area,
@@ -30,15 +30,15 @@ create_status_message :author => @aitor,
 
 create_status_message :author => @aitor,
                       :area => @area,
-                      :message => 'Ya se puede solicitar las consultas medicas desde la web.'
+                      :message => 'Ya se pueden solicitar las consultas medicas desde la web: http://euskadi.net'
 
 create_status_message :author => @aitor,
                       :area => @area,
-                      :message => 'Realizado el envío de medicamentos a Haití.'
+                      :message => 'Realizado el envío de medicamentos a Haití. Esperamos que todo vaya a mejor'
 
 create_status_message :author => @javier,
                       :area => @area,
-                      :message => 'Presentación del nuevo curso académico.'
+                      :message => 'Presentación del nuevo curso académico en la Universidad de Deusto.'
 
 create_status_message :author => @javier,
                       :area => @area,
@@ -50,37 +50,37 @@ create_status_message :author => @javier,
 
 create_status_message :author => @javier,
                       :area => @area,
-                      :message => 'Comiendo con estudiantes universitarios en Bilbao.'
+                      :message => 'Comiendo con estudiantes universitarios en Bilbao y alegrado por el futuro que nos espera a todos.'
 
 create_status_message :author => @ainara,
                       :area => @area,
-                      :message => 'Visita del Ministro de Medio Ambiente Danés'
+                      :message => 'Visita del Ministro de Medio Ambiente Danés.'
 
 create_status_message :author => @ainara,
                       :area => @area,
-                      :message => 'Recibida la ayuda europea para la protección del ecosistema vasco'
+                      :message => 'Recibida la ayuda europea para la protección del ecosistema Vasco.'
 
 create_status_message :author => @ainara,
                       :area => @area,
-                      :message => 'Inaugurando la temporada de la recogida de hongos'
+                      :message => 'Inaugurando la temporada de la recogida de hongos en los bosques de Behobia. Paisajes sin igual.'
 
 create_status_message :author => @ainara,
                       :area => @area,
-                      :message => 'Visitando la Sociedad Gastrónomica en Zarautz'
+                      :message => 'Visitando la Sociedad Gastrónomica en Zarautz. Que hambre!'
 
 create_status_message :author => @joel,
                       :area => @area,
-                      :message => 'Visitando el Museo Naval'
+                      :message => 'Visitando el Museo Naval. Que bonito está esto!'
 
 create_status_message :author => @joel,
                       :area => @area,
-                      :message => 'Mañana  charla sobre osteoporosis'
+                      :message => 'Mañana charla sobre osteoporosis en el I.E.S Guernica.'
 
 create_status_message :author => @joel,
                       :area => @area,
-                      :message => 'En las conferencias sobre igualdad'
+                      :message => 'En las conferencias sobre igualdad.'
 
 create_status_message :author => @joel,
                       :area => @area,
-                      :message => 'Inaugurando en nuevo comedor social'
+                      :message => 'Inaugurando en nuevo comedor social en la calle Uriarte.'
 
