@@ -42,7 +42,7 @@ var LockScreen = (function() {
 */
 var GOD = (function() {
   var subscribers = {};
-  var debug = true;
+  var debug = false;
 
   function unsubscribe(event) {
     debug && console.log("Unsubscribe ->", event);
@@ -681,7 +681,7 @@ var GOD = (function() {
           $ps.find("#listing").fadeOut(settings.transitionSpeed, function() {
 
             $ps.find("#listing").html(data);
-						
+
 						if ($ps.find("#listing h2").length>0) {
 							var $place = $ps.find('header div.left');
 							$place.find('h2').remove();

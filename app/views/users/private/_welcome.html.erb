@@ -24,8 +24,8 @@
       </li>
       <li class="collaborate">
       <h3><%= t('.first_time.participate.title') %></h3>
-      <%= simple_format t('.first_time.participate.text', :make_questions_link => link_to(t('.first_time.participate.make_questions')), :launch_proposals_link => link_to(t('.first_time.participate.launch_proposals'))) %>
-      <%= link_to_with_login (content_tag :span, t('.first_time.participate.link')), '#', :class => "white_button pink publish user_publish" %>
+      <%= simple_format t('.first_time.participate.text', :make_questions_link => link_to(t('.first_time.participate.make_questions'), "#", :class => "publish_question user_publish"), :launch_proposals_link => link_to(t('.first_time.participate.launch_proposals'), "#", :class => "publish_proposal user_publish")) %>
+      <%= link_to_with_login (content_tag :span, t('.first_time.participate.link')), '#', :class => "white_button pink publish_question user_publish" %>
       </li>
       <li class="configure last">
       <h3><%= t('.first_time.configure.title') %></h3>

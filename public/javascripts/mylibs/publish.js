@@ -31,6 +31,7 @@
   // Default values
   defaults = {
     easingMethod:'easeInOutQuad',
+    sectionWidth: 687,
     transitionSpeed: 200,
     maxLimit: 140
   };
@@ -66,6 +67,7 @@
         data.event = "_close." + store;
         data.proposalStep = 0;
         data.questionStep = 0;
+        data.sectionID = 0;
       }
 
       // Update the reference to $ps
@@ -73,6 +75,7 @@
 
       $(this).click(_toggle);
 
+      $(window).unbind();
       $(window).bind(data.event, function() { _close(data, true); });
 
       // Save the updated $ps reference into our data object
@@ -94,6 +97,7 @@
       _bindActions(data);
       _enableInputCounter(data);
 
+      if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
 
     });
   };
@@ -135,11 +139,15 @@
     $menu              = $ps.find(".menu");
     $currentMenuOption = $menu.find("li.selected");
 
+    $currentSection  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
+    _gotoSection(data);
+
+    _resizeSection($ps, $currentSection);
+
     _subscribeToEvent(data.event);
     _triggerOpenAnimation($ps, data);
     $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
   }
-
 
    function _enableInputCounter(data) {
      var $ps = data.$ps;
@@ -297,6 +305,33 @@
 
   }
 
+  function _setupUpload(id) {
+
+    if ($ps.find("#" + id).length > 0) {
+
+      var uploader = new qq.FileUploader({
+        element: document.getElementById(id),
+        action: '',
+        debug: true,
+        text:"sube una nueva",
+        onSubmit: function(id, fileName){
+          $currentSection.find(".holder").fadeOut(speed);
+        },
+        onProgress: function(id, fileName, loaded, total){},
+        onComplete: function(id, fileName, responseJSON){},
+        onCancel: function(id, fileName){ }
+      });
+    }
+  }
+
+  function _gotoSection(data) {
+    var $ps = data.$ps;
+
+    var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
+    var height    = $section.find(".form").outerHeight(true) + 20;
+    $ps.find(".container").animate({scrollLeft: data.sectionID * data.settings.sectionWidth, height: height }, data.settings.transitionSpeed, "easeInOutQuad");
+  }
+
   function _bindMenu(data) {
     var $ps = data.$ps;
 
@@ -308,8 +343,8 @@
       e && e.preventDefault();
       _hideExtraFields();
 
-      sectionID = $(this).parent().index();
-      $section  = $(this).parents(".content").find(".container .section:nth-child(" + (sectionID + 1) + ")");
+      data.sectionID = $(this).parent().index();
+      $section  = $(this).parents(".content").find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
 
       if (_sectionName($section) != _sectionName($currentSection)) {
@@ -326,15 +361,16 @@
           var $error   = $currentSection.find(".message.error").hide();
 
           $currentSection = $section;
-          var height = $section.find(".form").outerHeight(true) + 20;
-          $ps.find(".container").animate({scrollLeft: sectionID * sectionWidth, height: height }, speed, "easeInOutQuad");
+
+          _gotoSection(data);
           _changeSubmitTitle(data.$submit, "Continuar");
+
         });
 
       } else {
         $currentSection = $section;
         var height = $section.find(".form").outerHeight(true) + 20;
-        $ps.find(".container").animate({scrollTop: 0, scrollLeft: sectionID * sectionWidth, height: height }, speed, "easeInOutQuad");
+        $ps.find(".container").animate({scrollTop: 0, scrollLeft: data.sectionID * data.settings.sectionWidth, height: height }, speed, "easeInOutQuad");
       }
 
     });
@@ -467,10 +503,6 @@
   $(function() { });
 
 })(jQuery, window, document);
-
-
-
-
 
 
 // jQuery.fn.enableUserPublish = function(opt){
