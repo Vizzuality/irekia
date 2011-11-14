@@ -1027,9 +1027,36 @@
     contents:
       results:
         title:
-          zero: Ningún contenido
-          one: 1 contenido
-          other: '%{count} contenidos'
+          total:
+            zero: Ningún contenido
+            one: 1 contenido
+            other: '%{count} contenidos'
+          news:
+            zero: Ninguna noticia
+            one: 1 noticia
+            other: '%{count} noticias'
+          questions:
+            zero: Ninguna pregunta
+            one: 1 pregunta
+            other: '%{count} preguntas'
+          proposals:
+            zero: Ninguna propuesta
+            one: 1 propuesta
+            other: '%{count} propuestas'
+          photos:
+            zero: Ninguna foto
+            one: 1 foto
+            other: '%{count} fotos'
+          videos:
+            zero: Ningún vídeo
+            one: 1 vídeo
+            other: '%{count} vídeos'
+        no_content_filters:
+          news: No hay noticias
+          questions: No hay preguntas
+          proposals: No hay propuestas
+          photos: No hay fotos
+          videos: No hay vídeos
         all: 'ver los %{count} contenidos encontrados'
         more: ver más resultados
         main_filters:
@@ -1043,6 +1070,33 @@
          proposals: Propuestas
          images: Fotos
          videos: Vídeos
+    contents_list:
+      results:
+        title:
+          total:
+            zero: Ningún contenido
+            one: 1 contenido
+            other: '%{count} contenidos'
+          news:
+            zero: Ninguna noticia
+            one: 1 noticia
+            other: '%{count} noticias'
+          questions:
+            zero: Ninguna pregunta
+            one: 1 pregunta
+            other: '%{count} preguntas'
+          proposals:
+            zero: Ninguna propuesta
+            one: 1 propuesta
+            other: '%{count} propuestas'
+          photos:
+            zero: Ninguna foto
+            one: 1 foto
+            other: '%{count} fotos'
+          videos:
+            zero: Ningún vídeo
+            one: 1 vídeo
+            other: '%{count} vídeos'
     politicians:
       results:
         title:

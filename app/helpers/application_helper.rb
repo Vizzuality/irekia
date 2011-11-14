@@ -85,7 +85,7 @@ module ApplicationHelper
     # is 20.000x slower than JSON.parse, we prefer to just convert values as need
     comment_date = last_comment.published_at
     comment_date = DateTime.parse(comment_date) if comment_date.is_a?(String)
-    comment_date > 1.day.ago
+    comment_date > 2.day.ago
   end
 
   def show_last_comments?(content)
