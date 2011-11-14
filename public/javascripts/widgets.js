@@ -442,19 +442,28 @@ var GOD = (function() {
         data.id = id;
         data.$this = $this;
         data.settings = settings;
+        data.$submit = $(this).next(".sharebox.email").find('input[type="submit"]');
+        data.$input = $(this).next(".sharebox.email").find('input[type="text"]');
       }
 
       // Update the reference to $ps
       $ps = $(this);
 
-      $ps.next(".sharebox.email").find('input[type="submit"]').unbind("click");
+      data.$submit.unbind("click");
 
-      $ps.next(".sharebox.email").find('input[type="submit"]').click(function(e) {
+      data.$submit.click(function(e) {
         e.stopPropagation();
+
+        if (isEmpty(data.$input.val())) {
+          data.$input.parent().addClass("error");
+          return;
+        }
+
         spinner.spin(spin_element);
         _removeOk(data);
+
         $(this).fadeOut(data.settings.transitionSpeed);
-         _shareWith($(this), "email", data.settings.transitionSpeed, data.settings.easing);
+        _shareWith($(this), "email", data.settings.transitionSpeed, data.settings.easing);
       });
 
       $ps.next(".sharebox").bind('click', function(e) {
@@ -496,31 +505,43 @@ var GOD = (function() {
     }
   };
 
-function _shareWith($el, service, speed, easing) {
-  var $form;
+  function _shareWith($el, service, speed, easing) {
+    var $form;
 
-  function success(argument) {
-    spinner.stop();
-    $form.find('input[type="submit"]').fadeIn(speed);
-    $form.find('input[type="text"]').val("");
-    $form.find('.holder').fadeIn(speed);
-   // $ok = $('<div class="ok" />');
-   // $el.parents("li").find(".share.email").append($ok)
-   // $ok.animate({opacity:1, top:"-2px"}, speed, easing);
-    return true;
+    function success(argument) {
+      spinner.stop();
+      $form.find('input[type="submit"]').fadeIn(speed);
+      $form.find('input[type="text"]').val("");
+      $form.find('.holder').fadeIn(speed);
+
+      $ok = $('<div class="ok" />');
+      $el.parents("li").find(".share.email").append($ok)
+      $ok.animate({opacity:1, top:"-2px"}, speed, easing);
+
+      return true;
+    }
+
+    function error(event, xhr, status) {
+      spinner.stop();
+      $form.find(".input_field").addClass("error");
+      $form.find('input[type="submit"]').fadeIn(speed);
+      return true;
+    }
+
+    function removeOk($ok) {
+      $ok.animate({ opacity:0, top: "20px" }, speed, easing, function() {
+        $(this).remove();
+      })
+    }
+
+    removeOk($el.parents("li").find(".share.email .ok"), speed, easing);
+
+    $form = $el.parents("li").find("form");
+    $form.unbind();
+    $form.find(".input_field").removeClass("error");
+    $form.bind('ajax:success', success);
+    $form.bind('ajax:error', error);
   }
-
-  function error(a, b, c) {
-    spinner.stop();
-    $form.find(".input_field").addClass("error");
-    $form.find('input[type="submit"]').fadeIn(speed);
-    return true;
-  }
-
-  $form = $el.parents("li").find("form");
-  $form.bind('ajax:success', success);
-  $form.bind('ajax:error', error);
-}
 
   function _resize($ps) {
     var $sharebox = $ps.next(".sharebox");
