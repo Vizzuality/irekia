@@ -13,7 +13,7 @@ class Content < ActiveRecord::Base
              :class_name => "ContentUser"
   has_many   :users,
              :through => :contents_users,
-             :select => 'users.id, name, lastname, locale, email'
+             :select => 'users.id, name, lastname, locale, email, title_id'
 
   has_many   :follows
   has_many   :participations
@@ -136,6 +136,16 @@ class Content < ActiveRecord::Base
 
   def email_share_message
 
+  end
+
+  def content_area
+    if respond_to?(:target_area) && target_area.present?
+      target_area
+    elsif areas.present?
+      areas.first
+    elsif author && author.areas.present?
+      author.areas.first
+    end
   end
 
   def update_published_at

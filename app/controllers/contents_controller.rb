@@ -47,6 +47,8 @@ class ContentsController < ApplicationController
     @comment = @content.comments.build
     @comment.build_comment_data
 
+    @tags = @content.tags.present?? @content.tags.split(',') : []
+
     case @content
     when Question
 
