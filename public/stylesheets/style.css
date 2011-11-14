@@ -1209,6 +1209,7 @@ Error pages
 /* =============================================================================
 Home page
 ========================================================================== */
+article.participation { padding: 0 0 40px 0; }
 article.participation div.wrap { width: 575px; }
 article.participation div.wrap h1 { font-size: 48px; color: #465866; letter-spacing: -2px; }
 article.participation div.wrap p { font: normal 17px "Helvetica",Arial; color: #465866; line-height: 18px; }
@@ -1216,6 +1217,8 @@ article.participation div.wrap div.login_block { display: block; width: 100%; he
 article.participation div.wrap div.login_block p { float: right; }
 article.participation div.wrap div.login_block p a { font: bold 18px "Helvetica",Arial; }
 article.participation div.wrap div.login_block p a.blue_button { padding: 13px 30px; text-align: center; margin: 0 0 0 10px; }
+
+div.home_last_activity li.loop { display: none; }
 
 section.banners ul { display: block; width: auto; height: 117px; padding: 0 0 0 1px; overflow: visible; }
 section.banners ul li { float: left; position: relative; width: 174px; height: 117px; margin: 0 31px 0 0; background: url("/images/banner_bkg.png") no-repeat 0 0; overflow: visible; }

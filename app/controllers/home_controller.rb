@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @areas           = Area.select([:id, :name]).order(:id).all
-    @actions         = AreaPublicStream.order('published_at desc').page(1).per(10)
+    @actions         = AreaPublicStream.where('event_type <> ?', 'photo').order('published_at desc').page(1).per(10)
     @news_count      = @actions.news.count
     @questions_count = @actions.questions.count
     @answers_count   = @actions.answers.count

@@ -1078,3 +1078,29 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   })
 }
 
+
+jQuery.fn.verticalHomeLoop = function(opt){
+	
+  if (this.length < 1) return;
+	var ele = this;
+
+	function loopContent() {
+		if ($(ele).find('div.left ul li').size()>0) {
+			var last = $(ele).find('div.left ul li.loop').last();
+			var list = $(ele).find('div.left ul');
+			var height = last.height();
+			last.css({opacity:0,height:0}).removeClass('loop');
+			list.prepend(last);
+			last.animate({height:height+'px'},500,function(){
+				$(this).animate({opacity:1},300);
+			});
+			var last_vi = $(ele).find('div.left ul li').not('.loop').last().addClass();
+			last_vi.delay(800).animate({height:0,opacity:0},500,function(){
+				$(this).addClass('loop').removeAttr('style');
+			});
+		}
+	}
+	
+	setInterval(function(){loopContent()},5000);
+}
+
