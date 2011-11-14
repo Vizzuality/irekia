@@ -223,7 +223,7 @@
   }
 
   function _resizeSection($ps, $section, callback) {
-    height = $section.find(".form").outerHeight(true) + 20;
+    height = $section.find(".form").outerHeight(true) ;
     $ps.find(".container").animate({ scrollTop: 0, height: height }, speed, function() {
       callback && callback();
     });
@@ -301,17 +301,24 @@
     } else {
       var $form = $currentSection.find("form");
       $form.submit();
-      $form.unbind();
       data.spinner.spin(spin_element);
 
-      $form.bind('ajax:success', function(event, xhr, status) {
-        data.spinner.stop();
-        var $response = $(xhr);
-        $response.hide();
-        $form.after($response);
-        _showMessage($ps, "success");
-      });
+      $form.unbind();
+      $form.bind('ajax:success', function(event, xhr, status) { _successQuestion(data, $form, xhr); })
     }
+  }
+
+  function _successQuestion(data, $form, xhr) {
+    var $ps = data.$ps;
+    var $response = $(xhr);
+
+    data.spinner.stop();
+    $response.hide();
+    $form.after($response);
+    data.$ps.find(".extra").hide();
+    data.$ps.find(".holder").show();
+    data.$ps.find(":text, textarea").val("");
+    _showMessage($ps, "success");
   }
 
   function _proposal() {
