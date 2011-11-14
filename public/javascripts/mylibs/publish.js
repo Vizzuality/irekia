@@ -179,13 +179,11 @@
 
   function _enableSubmit($submit) {
     submitting = false;
-    $submit.removeAttr('disabled');
     $submit.removeClass("disabled");
   }
 
   function _disableSubmit($submit) {
     submitting = true;
-    $submit.attr("disable", "disable");
     $submit.addClass("disabled");
   }
 
@@ -199,8 +197,8 @@
   function _bindActions(data) {
     var $ps = data.$ps;
 
-    //_setupUpload("upload_proposal");
-    //_setupUpload("upload_image");
+    _setupUpload(data,"upload_proposal");
+    _setupUpload(data,"upload_image");
 
     $ps.find(".section .open_upload").click(function(e) {
       e && e.preventDefault();
@@ -353,8 +351,9 @@
     });
   }
 
-  function _setupUpload(id) {
+  function _setupUpload(data,id) {
 
+    var $ps = data.$ps;
     if ($ps.find("#" + id).length > 0) {
 
       var uploader = new qq.FileUploader({
@@ -469,21 +468,7 @@
   function _clearInfo($ps) {
     $ps.find("textarea").val("");
     $ps.find(".counter").html(140);
-    disableSending($ps);
-  }
-
-  function enableSending($ps) {
-    if ($ps) {
-      $ps.find("input[type='submit']").removeAttr("disabled");
-      $ps.find("input[type='submit']").removeClass("disabled");
-    }
-  }
-
-  function disableSending($ps) {
-    if ($ps) {
-      $ps.find("form input[type='submit']").attr("disabled", "true");
-      $ps.find("form input[type='submit']").addClass("disabled");
-    }
+    _disableSubmit($ps);
   }
 
   // Close popover
@@ -508,30 +493,6 @@
   // setup the close event & signal the other subscribers
   function _subscribeToEvent(event) {
     GOD.subscribe(event);
-  }
-
-  function _addSubmitAction(data) {
-    data.$ps.find("form").die();
-
-    data.$ps.find("form").submit(function(e) {
-      data.spinner.spin(spin_element);
-      disableSending(data.$ps);
-    });
-
-    data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
-      data.spinner.stop();
-      enableSending(data.$ps);
-      _close(data, false, function() {
-        _hideExtraFields();
-        _gotoSuccess(data);
-      });
-    });
-
-    data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
-      data.spinner.stop();
-      enableSending(data.$ps);
-    });
-
   }
 
   function _addCloseAction(data) {
