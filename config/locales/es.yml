@@ -338,6 +338,8 @@
           zero: Ningún comentario
           one: Un comentario
           other: '%{count} comentarios'
+      politicians:
+        title: Políticos etiquetados en la imagen
       tags:
         title: Tags
       related_content:

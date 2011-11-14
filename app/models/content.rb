@@ -13,7 +13,7 @@ class Content < ActiveRecord::Base
              :class_name => "ContentUser"
   has_many   :users,
              :through => :contents_users,
-             :select => 'users.id, name, lastname, locale, email'
+             :select => 'users.id, name, lastname, locale, email, title_id'
 
   has_many   :follows
   has_many   :participations
