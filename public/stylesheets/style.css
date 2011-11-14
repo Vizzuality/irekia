@@ -1211,7 +1211,7 @@ Home page
 ========================================================================== */
 article.participation div.wrap { width: 575px; }
 article.participation div.wrap h1 { font-size: 48px; color: #465866; letter-spacing: -2px; }
-article.participation div.wrap p { font: normal 17px "Helvetica",Arial; color: #465866; }
+article.participation div.wrap p { font: normal 17px "Helvetica",Arial; color: #465866; line-height: 18px; }
 article.participation div.wrap div.login_block { display: block; width: 100%; height: 46px; }
 article.participation div.wrap div.login_block p { float: right; }
 article.participation div.wrap div.login_block p a { font: bold 18px "Helvetica",Arial; }
