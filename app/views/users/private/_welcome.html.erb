@@ -1,4 +1,3 @@
-<!-- Welcome article -->
 <article class="welcome">
 <div class="inner">
   <div class="avatar">
@@ -17,28 +16,28 @@
     <% end -%>
   </div>
   <% if @first_time -%>
-  <ul class="actions">
-    <li class="follow">
+    <ul class="actions">
+      <li class="follow">
       <h3><%= t('.first_time.follow.title') %></h3>
       <%= simple_format t('.first_time.follow.text') %>
       <%= link_to (content_tag :span, t('.first_time.follow.link')), area_path(@random_area), :class => 'white_button blue' %>
-    </li>
-    <li class="collaborate">
+      </li>
+      <li class="collaborate">
       <h3><%= t('.first_time.participate.title') %></h3>
       <%= simple_format t('.first_time.participate.text', :make_questions_link => link_to(t('.first_time.participate.make_questions')), :launch_proposals_link => link_to(t('.first_time.participate.launch_proposals'))) %>
       <%= link_to_with_login (content_tag :span, t('.first_time.participate.link')), '#', :id => "question-popover", :class => "white_button pink after_ask_question" %>
-    </li>
-    <li class="configure last">
+      </li>
+      <li class="configure last">
       <h3><%= t('.first_time.configure.title') %></h3>
       <%= simple_format t('.first_time.configure.text') %>
       <%= link_to (content_tag :span, t('.first_time.configure.link')), '/in_development', :class => 'white_button blue' %>
-    </li>
-  </ul>
-  <%= form_for @user, :remote => true, :html => {:class => 'close-welcome'} do |form| %>
-    <%= form.hidden_field :first_time, :value => false %>
-    <%= form.submit '', :class => 'close' %>
-  <% end -%>
-  <%= link_to t('.configure_your_account'), settings_user_path, :class => 'config first-time' %>
+      </li>
+    </ul>
+    <%= form_for @user, :remote => true, :html => {:class => 'close-welcome'} do |form| %>
+      <%= form.hidden_field :first_time, :value => false %>
+      <%= form.submit '', :class => 'close' %>
+    <% end -%>
+    <%= link_to t('.configure_your_account'), settings_user_path, :class => 'config first-time' %>
   <% else -%>
     <%= link_to t('.configure_your_account'), settings_user_path, :class => :config %>
   <% end -%>
@@ -47,4 +46,3 @@
 <div class="t"></div><div class="f"></div>
 </article>
 
-<%= render "/shared/question_form" %>

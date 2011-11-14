@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_filter :per_page,                     :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :get_counters,                 :only => [:show, :actions, :questions, :proposals]
-  before_filter :build_new_question,           :only => [:show, :questions]
+  before_filter :build_new_question,           :only => [:questions]
   before_filter :build_new_proposal,           :only => [:proposals]
   before_filter :get_questions,                :only => [:questions]
   before_filter :get_proposals,                :only => [:proposals]
