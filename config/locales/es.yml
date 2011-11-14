@@ -650,7 +650,9 @@
       proposal:
         moderation_pending: Propuesta pendiente de moderación
       question:
+        title: Tu pregunta ha sido enviada
         moderation_pending: Pregunta pendiente de moderación
+        description: En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.
       tweet:
         moderation_pending: Tweet pendiente de moderación
     moderated:

@@ -306,7 +306,10 @@
 
       $form.bind('ajax:success', function(event, xhr, status) {
         data.spinner.stop();
-        console.log(event, xhr, status);
+        var $response = $(xhr);
+        $response.hide();
+        $form.after($response);
+        _showMessage($ps, "success");
       });
     }
   }
