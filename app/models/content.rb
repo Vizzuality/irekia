@@ -139,7 +139,7 @@ class Content < ActiveRecord::Base
   end
 
   def content_area
-    if defined?(:target_area) && target_area.present?
+    if respond_to?(:target_area) && target_area.present?
       target_area
     elsif areas.present?
       areas.first
