@@ -158,6 +158,7 @@
   function _open(data) {
     data.$ps = $(document).find("article#" + data.id);
     var $ps = data.$ps;
+
     console.log("_open", $ps, data);
 
     // bindings
