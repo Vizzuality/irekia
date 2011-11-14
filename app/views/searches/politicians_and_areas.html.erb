@@ -1,16 +1,21 @@
-<ul>
-  <% @areas.each do |area| %>
-    <li clas="area_<%= area.id%>">
-    <%= avatar area, 'small' %>
-    <span><%= area.name %></span>
-    <span><%= t('.area_description') %></span>
-    </li>
-  <% end %>
-  <% @politicians.each do |politician| %>
-    <li clas="politician_<%= politician.id%>">
-    <%= avatar politician, 'small' %>
-    <span><%= politician.fullname %></span>
-    <span><%= t('.title_area', :title => get_politician_title(politician), :area => politician.areas.first.name) %></span>
-    </li>
-  <% end %>
-</ul>
+<div class="autosuggest">
+  <ul>
+    <% @areas.each do |area| %>
+      <li clas="area_<%= area.id%>">
+      <%= avatar area, 'small' %>
+      <span><%= area.name %></span>
+      <span><%= t('.area_description') %></span>
+      </li>
+    <% end %>
+    <% @politicians.each do |politician| %>
+      <li clas="politician_<%= politician.id%>">
+      <%= avatar politician, 'small' %>
+      <span><%= politician.fullname %></span>
+      <span><%= t('.title_area', :title => get_politician_title(politician), :area => politician.areas.first.name) %></span>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="a_t"></div>
+  <div class="a_f"></div>
+</div>
