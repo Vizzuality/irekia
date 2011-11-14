@@ -676,7 +676,8 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .answer_placeholder { margin: 20px 0 0 0; border: 3px dashed #f1f1f1; text-align: center; padding: 55px 0; }
 #container article .inner .left .answer_placeholder p { margin: 0px; padding: 0; color: #7d8a92; font-size: 15px; }
 #container article .inner .left .answer_placeholder p strong { font-size: 17px; color: #465866; font-weight: normal; }
-#container article .inner .left .answer_placeholder form { font-size: 15px; color: #7d8a92; }
+#container article .inner .left .answer_placeholder p.has_requested_answer { display: inline-block; zoom: 1; *display: inline; vertical-align: bottom; width: auto; }
+#container article .inner .left .answer_placeholder form { width: auto; display: inline-block; zoom: 1; *display: inline; vertical-align: bottom; padding: 0 0 1px 0; font-size: 15px; color: #7d8a92; }
 #container article .inner .left .answer_placeholder form input[type="submit"] { display: inline; padding: 0; font-size: 15px; color: #f10063; font-weight: bold; background: none; border: none; outline: none; }
 
 /* info */

@@ -2705,9 +2705,22 @@ a.editable {
     color:$standard_gray;
     font-size:15px;
     strong { font-size:17px; color:$dark_blue; font-weight:normal; }
+    &.has_requested_answer {
+      display:inline-block;
+      zoom:1;
+      *display:inline;
+      vertical-align:bottom;
+      width:auto;
+    }
   }
 
   form {
+    width:auto;
+    display:inline-block;
+    zoom:1;
+    *display:inline;
+    vertical-align:bottom;
+    padding:0 0 1px 0;
     font-size:15px;
     color:$standard_gray;
 
