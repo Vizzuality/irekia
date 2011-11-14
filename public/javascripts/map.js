@@ -74,6 +74,9 @@ function startMap() {
             var event = events[i][0];
             var events_data = events[i];
             var center = new google.maps.LatLng(event.lat, event.lon);
+						if (events_data.title && events_data.title.length>50) {
+							events_data.title = events_data.title.substr(0,47) + '...';
+						}
             new IrekiaMarker(center, events_data, map);
             mapBounds.extend(center);
         };
@@ -149,7 +152,7 @@ IrekiaMarker.prototype.draw = function() {
           event:[
             '    <li>',
             '      <strong class="date"><%= date %></strong>',
-            '      <a href="#" class="event"><%= title %></a>',
+            '      <a href="/events/<%= event_id %>" class="event"><%= title %></a>',
             '      <ul class="details">',
             '        <li class="where"><%= where %></li>',
             '        <li class="when"><%= when %></li>',
@@ -182,9 +185,9 @@ IrekiaMarker.prototype.draw = function() {
                 for (var i = 0; i <= this.info.length - 1 ; i++) {
                   event = this.info[i];
                   var addSeparator = (count > 1 && i < count - 1) ? true : false;
-                  events +=  _.template(templates.event, {title:event.title, date:event.date, where:event.where, when:event.when, separator:addSeparator});
+                  events +=  _.template(templates.event, {event_id:event.event_id ,title:event.title, date:event.date, where:event.where, when:event.when, separator:addSeparator});
                 }
-
+								
                 var contentTemplate = _.template(templates.infowindow, {count:count, events:events});
                 $(div).append(markerTemplate);
                 $(div).append(contentTemplate);

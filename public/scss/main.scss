@@ -1643,11 +1643,14 @@ article .inner { h2, h3 { color: $dark_blue; } }
   display: block;
   margin: 0 0 13px 0;
   padding: 0;
+  width:100%;
+  height: 36px;
   font-weight: bold;
   font-size: 15px;
   color: $link_color;
   background: none;
   text-shadow: none;
+  overflow-y: hidden;
 }
 
 #container article.agenda .inner .content ul li.day .info {

@@ -418,7 +418,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 .map .infowindow ul.events li, #container article.agenda .inner .content ul li.day .info ul.events li { width: auto; height: auto; }
 
-.map .infowindow ul li a { display: block; margin: 0 0 13px 0; padding: 0; font-weight: bold; font-size: 15px; color: #1d79b0; background: none; text-shadow: none; }
+.map .infowindow ul li a { display: block; margin: 0 0 13px 0; padding: 0; width: 100%; height: 36px; font-weight: bold; font-size: 15px; color: #1d79b0; background: none; text-shadow: none; overflow-y: hidden; }
 
 #container article.agenda .inner .content ul li.day .info a, #container article.agenda .inner .content ul li.day .info.large ul.events li a { display: block; margin: 0 0 13px 0; padding: 0; font-weight: bold; font-size: 15px; color: #1d79b0; background: none; text-shadow: none; }
 
