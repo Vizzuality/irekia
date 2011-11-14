@@ -13,10 +13,9 @@ class SharingMailer < ActionMailer::Base
 
     I18n.with_locale from.locale do
       mail(
-        :to => to,
+        :to => to.email,
         :subject => "#{from.name} quiere compartir este contenido de Irekia contigo"
       )
     end
-    mail :to => to
   end
 end

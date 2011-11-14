@@ -181,7 +181,6 @@ GEM
       rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
-    railroady (1.0.2)
     rails (3.0.10)
       actionmailer (= 3.0.10)
       actionpack (= 3.0.10)
@@ -225,7 +224,6 @@ GEM
       linecache19 (>= 0.5.11)
       ruby-debug-base19 (>= 0.11.19)
     ruby-growl (3.0)
-    ruby-prof (0.10.8)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
     ruby_parser (2.3.1)
@@ -290,13 +288,11 @@ DEPENDENCIES
   oa-oauth
   pg (= 0.11.0)
   pg_search (~> 0.3.1)
-  railroady
   rails (~> 3.0.10)
   rails-footnotes (>= 3.7.5.rc4)
   rspec-rails (~> 2.6)
-  ruby-debug-base19 (~> 0.11.25)
+  ruby-debug-base19 (>= 0.11.25, <= 0.11.26)
   ruby-debug19
-  ruby-prof
   sass (~> 3.1.7)
   selenium-webdriver (= 2.7.0)
   spork
