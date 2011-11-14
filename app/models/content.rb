@@ -138,6 +138,16 @@ class Content < ActiveRecord::Base
 
   end
 
+  def content_area
+    if defined?(:target_area) && target_area.present?
+      target_area
+    elsif areas.present?
+      areas.first
+    elsif author && author.areas.present?
+      author.areas.first
+    end
+  end
+
   def update_published_at
     self.published_at = Time.now
   end
