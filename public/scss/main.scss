@@ -4157,6 +4157,8 @@ Home page
 ========================================================================== */
 
 article.participation {
+  padding:0 0 40px 0;
+
   div.wrap {
     width:575px;
 
@@ -4176,6 +4178,9 @@ article.participation {
   }
 }
 
+div.home_last_activity {
+  li.loop {display:none;}
+}
 
 
 section.banners {
