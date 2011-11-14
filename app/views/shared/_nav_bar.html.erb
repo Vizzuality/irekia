@@ -5,7 +5,13 @@
     <span class="currently_viewing"><%= raw t('.areas') %></span>
 
     <div class="areas_selector">
-      <%= @area ? @area.name : (content_tag :span, t(".choose_an_area")) %>
+
+      <% if @content and @content.target_area %>
+        <%= @content.target_area.name %>
+      <% else %>
+        <%= @area ? @area.name : (content_tag :span, t(".choose_an_area")) %>
+      <% end %>
+
       <span class="handle"></span>
 
       <div class="popover">
