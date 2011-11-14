@@ -1,7 +1,7 @@
 class FollowsController < ApplicationController
   before_filter :get_area
   before_filter :get_user
-  before_filter :get_form_type, :only => [:new, :edit]
+  before_filter :get_form_types, :only => [:new, :edit]
 
   layout false
 
@@ -15,8 +15,11 @@ class FollowsController < ApplicationController
     @follow.user = current_user
     @follow.save!
 
-    redirect_to edit_area_follow_path(@area, @follow, :form_type => params[:form_type]) and return if @area
-    redirect_to edit_user_follow_path(@user, @follow, :form_type => params[:form_type]) and return if @user
+    form_types = [params[:form_type]]
+    form_types = ['', 'ribbon'] if params[:form_type].blank? || params[:form_type] == 'ribbon'
+
+    redirect_to edit_area_follow_path(@area, @follow, :form_types => form_types) and return if @area
+    redirect_to edit_user_follow_path(@user, @follow, :form_types => form_types) and return if @user
   end
 
   def edit
@@ -28,17 +31,20 @@ class FollowsController < ApplicationController
     @follow = Follow.where(:id => params[:id]).first
     @follow.destroy
 
-    redirect_to new_area_follow_path(@area, :form_type => params[:form_type]) and return if @area
-    redirect_to new_user_follow_path(@user, :form_type => params[:form_type]) and return if @user
+    form_types = [params[:form_type]]
+    form_types = ['', 'ribbon'] if params[:form_type].blank? || params[:form_type] == 'ribbon'
+
+    redirect_to new_area_follow_path(@area, :form_types => form_types) and return if @area
+    redirect_to new_user_follow_path(@user, :form_types => form_types) and return if @user
   end
 
   def button
     if current_user && (@follow = current_user.followed_item(@area || @user))
-      redirect_to edit_area_follow_path(@area, @follow, :form_type => params[:form_type]) and return if @area
-      redirect_to edit_user_follow_path(@user, @follow, :form_type => params[:form_type]) and return if @user
+      redirect_to edit_area_follow_path(@area, @follow, :form_types => [params[:form_type]]) and return if @area
+      redirect_to edit_user_follow_path(@user, @follow, :form_types => [params[:form_type]]) and return if @user
     else
-      redirect_to new_area_follow_path(@area, :form_type => params[:form_type]) and return if @area
-      redirect_to new_user_follow_path(@user, :form_type => params[:form_type]) and return if @user
+      redirect_to new_area_follow_path(@area, :form_types => [params[:form_type]]) and return if @area
+      redirect_to new_user_follow_path(@user, :form_types => [params[:form_type]]) and return if @user
     end
   end
 
@@ -52,8 +58,8 @@ class FollowsController < ApplicationController
   end
   private :get_user
 
-  def get_form_type
-    @form_type = "_#{params[:form_type]}" if params[:form_type].present?
+  def get_form_types
+    @form_types = params[:form_types] || []
   end
-  private :get_form_type
+  private :get_form_types
 end

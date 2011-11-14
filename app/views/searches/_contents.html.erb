@@ -30,27 +30,27 @@
         <% if @contents_count[:news] > 0 -%>
         <li><%= link_to t('.results.content_type_filters.news'), link_for_contents(search_params.merge(:type => 'news')), :class => 'filter' %></li>
         <% else -%>
-        <em><%= t('.results.no_content_filters.news') %></em>
+        <li><em><%= t('.results.no_content_filters.news') %></em></li>
         <% end -%>
         <% if @contents_count[:questions] > 0 -%>
         <li><%= link_to t('.results.content_type_filters.questions'), link_for_contents(search_params.merge(:type => 'question')), :class => 'filter' %></li>
         <% else -%>
-        <em><%= t('.results.no_content_filters.questions') %></em>
+        <li><em><%= t('.results.no_content_filters.questions') %></em></li>
         <% end -%>
         <% if @contents_count[:proposals] > 0 -%>
         <li><%= link_to t('.results.content_type_filters.proposals'), link_for_contents(search_params.merge(:type => 'proposal')), :class => 'filter' %></li>
         <% else -%>
-        <em><%= t('.results.no_content_filters.proposals') %></em>
+        <li><em><%= t('.results.no_content_filters.proposals') %></em></li>
         <% end -%>
         <% if @contents_count[:photos] > 0 -%>
         <li><%= link_to t('.results.content_type_filters.images'), link_for_contents(search_params.merge(:type => 'photo')), :class => 'filter' %></li>
         <% else -%>
-        <em><%= t('.results.no_content_filters.photos') %></em>
+        <li><em><%= t('.results.no_content_filters.photos') %></em></li>
         <% end -%>
         <% if @contents_count[:videos] > 0 -%>
         <li><%= link_to t('.results.content_type_filters.videos'), link_for_contents(search_params.merge(:type => 'video')), :class => 'filter' %></li>
         <% else -%>
-        <em><%= t('.results.no_content_filters.videos') %></em>
+        <li><em><%= t('.results.no_content_filters.videos') %></em></li>
         <% end -%>
       </ul>
     <% end %>

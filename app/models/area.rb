@@ -120,12 +120,13 @@ class Area < ActiveRecord::Base
     agenda      = events.group_by{|e| e.event_date.day }
     days        = beginning_of_calendar..end_of_calendar
     agenda_json = JSON.generate(events.map{|event| {
-      :title => event.title,
-      :date  => I18n.localize(event.event_date, :format => '%d, %B de %Y'),
-      :when  => event.event_date.strftime('%H:%M'),
-      :where => nil,
-      :lat   => event.latitude,
-      :lon   => event.longitude
+      :title      => event.title,
+      :date       => I18n.localize(event.event_date, :format => '%d, %B de %Y'),
+      :when       => event.event_date.strftime('%H:%M'),
+      :where      => nil,
+      :lat        => event.latitude,
+      :lon        => event.longitude,
+      :event_id   => event.id
     }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
 
     return agenda, days, agenda_json

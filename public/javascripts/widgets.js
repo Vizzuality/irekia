@@ -681,6 +681,12 @@ var GOD = (function() {
           $ps.find("#listing").fadeOut(settings.transitionSpeed, function() {
 
             $ps.find("#listing").html(data);
+						
+						if ($ps.find("#listing h2").length>0) {
+							var $place = $ps.find('header div.left');
+							$place.find('h2').remove();
+							$place.append($ps.find("#listing h2"));
+						}
 
             $ps.find("#listing").slideDown(settings.transitionSpeed, function() {
               filter_spinner.stop();
