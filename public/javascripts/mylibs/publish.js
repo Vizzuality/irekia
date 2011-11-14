@@ -187,7 +187,7 @@ jQuery.fn.enableUserPublish = function(opt){
   }
 
   function _changeSubmitTitle(title) {
-    $submit.text(title);
+    $submit.find("span").text(title);
   }
 
   function _sectionName($section) {
@@ -200,6 +200,7 @@ jQuery.fn.enableUserPublish = function(opt){
 
   this.each(function(){
 
+      _resizeSection($currentSection);
     _disableSubmit();
 
     $submit.click(function(e) {
@@ -225,9 +226,9 @@ jQuery.fn.enableUserPublish = function(opt){
       $section  = $(this).parents(".content").find(".container .section:nth-child(" + (sectionID + 1) + ")");
 
 
-          if (_sectionName($section) != _sectionName($currentSection)) {
-            _resetSection($section);
-          }
+      if (_sectionName($section) != _sectionName($currentSection)) {
+        _resetSection($section);
+      }
 
 
       _selectOption($(this));
