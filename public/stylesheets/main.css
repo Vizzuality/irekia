@@ -509,7 +509,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 /* Article addons */
 #container article.initialy_hidden { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; }
 #container article .caption, #container article .caption p { color: #7d8a92; }
-#container article .autosuggest { width: 691px; position: absolute; padding-bottom: 10px; top: 20px; }
+#container article .autosuggest { width: 691px; position: absolute; padding-bottom: 10px; top: 20px; z-index: 2000; }
 #container article .autosuggest .a_t { background: url("/images/box_autosuggest_bkg.png") no-repeat -1px top; height: 20px; z-index: 1000; position: absolute; top: -20px; width: 691px; }
 #container article .autosuggest .a_f { background: url("/images/box_autosuggest_bkg.png") no-repeat -1px bottom; height: 10px; z-index: 1000; position: absolute; bottom: 0px; width: 691px; }
 #container article .autosuggest ul li { background: url("/images/box_autosuggest_bkg.png") repeat-y -713px 0; padding-left: 10px; }

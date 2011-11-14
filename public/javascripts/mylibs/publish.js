@@ -253,7 +253,7 @@
       var $related = $ps.find("div.related");
       var $relatedTitle = $ps.find("h3.related");
 
-      if ($(this).val().length > 5) {
+      if ($(this).val().length > 3) {
         interval = setTimeout(function(){
 
           var query = $ps.find('.extra input[type="text"]').val();
@@ -261,6 +261,11 @@
           $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(data){
 
             var $response = $(data);
+            $response.find("li").unbind();
+            $response.find("li").bind("click", function(e) {
+              alert($(this).attr("id"));
+            });
+
             $ps.find(".autosuggest").fadeOut(150, function() {
               $(this).remove();
             });
