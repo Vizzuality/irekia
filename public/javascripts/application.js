@@ -61,26 +61,40 @@ $(function() {
 	});
 
 
-  $("#follow form").live('ajax:success', function(evt, xhr, status) {
-    var $el = $(this).parents("#follow");
-    $el.fadeOut(150, function() {
+  $("form.follow_button,form.follow_ribbon").live('ajax:success', function(evt, xhr, status) {
+    // Button
+		var $el1 = $("#follow");
+    $el1.fadeOut(150, function() {
       $(this).html(xhr);
+			$(this).find('form.follow_ribbon').remove();
       $(this).fadeIn(150);
     });
+
+		// Ribbon
+		var $el2 = $('article.summary').find("form.follow_ribbon");
+    $el2.fadeOut(150, function() {
+      $(this).remove();
+			$('article.summary').append(xhr);
+			$('article.summary > form.follow_button').remove();
+      $(this).fadeIn(150);
+    });
+		
+		
   }).live('ajax:error', function(evt, xhr, status) {
 		$(this).effect("shake", { times:4 }, 100);
 	});
 
 
 	// Grow ribbon
-	$('.follow .ribbon').live('mouseenter',function(){
+	$('.follow_ribbon .ribbon').live('mouseenter',function(){
 		var form_ = $(this).closest('form');
 		form_.stop().animate({height:'90px'},300);
 	}).live('mouseleave',function() {
 		var form_ = $(this).closest('form');
 		form_.stop().animate({height:'75px'},300);
 	});
-
+	
+	// END FOLLOW FORMS!!
 
 
 

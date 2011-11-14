@@ -1,14 +1,12 @@
-
 <article class="activity with_footer">
 <div class="inner">
   <div class="left">
     <p class="info">
     <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
     &middot;
-    <%= raw @content.areas.map{|a| link_to "#{a.name} &middot;", area_path(a)}.join(', ') %>
+    <%= raw @content.areas.map{|a| link_to (raw "#{a.name} &middot;"), area_path(a)}.join(', ') %>
     <%= link_to t('.date_area_and_comments.comments', :count => @comments_count), '#', :class => :goto_comments %>
     </p>
-
 
     <h1><%= @content.title %></h1>
     <p><strong><%= @content.subtitle %></strong></p>
@@ -36,67 +34,10 @@
 <div class="inner">
 
   <div class="left">
-    <%= link_to "volver", "#", :class => :left_arrow %>
+    <%= link_to t(".back"), "/in_development", :class => :left_arrow %>
   </div>
 
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>
 </article>
-
-    <!--
-<div id="news" class="content">
-  <div class="date_area_and_comments">
-    <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
-    &middot;
-    <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
-    &middot;
-    <%= link_to t('.date_area_and_comments.comments', :count => @content.comments_count), '#', :class => :goto_comments %>
-  </div>
-  <div class="news_content">
-    <h1><%= @content.title %></h1>
-    <h4><%= @content.subtitle %></h4>
-    <%= simple_format @content.body %>
-    <%= render 'participations/comments' %>
-  </div>
-  <div class="sidebar">
-    <ul class="sharing_links">
-      <li><%= link_to t('.sidebar.sharing_links.mail'), '/in_development' %></li>
-      <li><%= link_to t('.sidebar.sharing_links.twitter'), '/in_development' %></li>
-      <li>
-        <%= link_to t('.sidebar.sharing_links.facebook'), '/in_development' %></li>
-    </ul>
-    <div class="tags">
-      <h3><%= t('.sidebar.tags.title') %></h3>
-      <ul>
-        <% @content.tags.split(',').each do |tag| %>
-        <li><%= tag.strip %></li>
-        <% end if @content.tags.present? %>
-      </ul>
-    </div>
-    <div class="related_politicians">
-      <h3><%= t('.sidebar.related_politicians.title') %></h3>
-      <ul>
-        <% @content.users.each do |user| %>
-        <li>
-          <%= link_to user.fullname, path_for_user(user) %>
-          <span><%= get_politician_title(user) %></span>
-        </li>
-        <% end if @content.users.present? %>
-      </ul>
-    </div>
-    <div class="related_content">
-      <h3><%= t('.sidebar.related_content.title') %></h3>
-      <ul>
-        <% @last_contents.each do |content| %>
-        <li>
-          <p><%= content.title %></p>
-          <span class="when"><%= distance_of_time_in_words_to_now(content.published_at) %></span>
-          <%= link_to t('.sidebar.related_content.comments', :count => content.comments_count), '/in_development' %>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
--->

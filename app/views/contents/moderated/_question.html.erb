@@ -27,7 +27,7 @@
     <% else %>
       <div class="answer_placeholder">
         <p><strong><%= t('.not_answered_yet') %></strong></p>
-        <p>
+        <p class="has_requested_answer">
           <% if @user_has_requested_answer %>
             <% if @content.answer_requests_count <= 2 -%>
               <%= t('.you_and_other', :count => @content.answer_requests_count) -%>
@@ -35,12 +35,13 @@
               <%= t('.you_and_thousands', :count => @content.answer_requests_count - 1) -%>
             <% end -%>
           <% else %>
-          <%= t('.people_demanding_answer', :count => @content.answer_requests_count) -%>
+            <%= t('.people_demanding_answer', :count => @content.answer_requests_count) -%>
           <% end -%>
+        </p>
           <% if @new_request -%>
             <%= form_for @new_request do |f| -%>
               <%= f.hidden_field :content_id -%>
-              ,<%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
+              , <%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
             <% end -%>
           <% end -%>
         </p>

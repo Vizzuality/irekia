@@ -653,6 +653,7 @@
         moderation_pending: Tweet pendiente de moderación
     moderated:
       news:
+        back: volver
         date_area_and_comments:
           comments:
             zero: Ningún comentario

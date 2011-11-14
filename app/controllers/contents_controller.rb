@@ -87,6 +87,9 @@ class ContentsController < ApplicationController
       elsif current_user
         @vote = @content.votes.where('user_id = ?', current_user.id).build
         @vote.vote_data = VoteData.new
+      else
+        @vote = Vote.new
+        @vote.vote_data = VoteData.new
       end
 
       #arguments

@@ -102,14 +102,19 @@ function startMiniMap (mapID, lat, lng) {
     navigationControlOptions: {
       style: google.maps.NavigationControlStyle.SMALL
     },
-    maxZoom: 18
+    maxZoom: 16
   };
   map = new google.maps.Map(document.getElementById(mapID), myOptions);
 
 
   var center = new google.maps.LatLng(lat, lng);
-  var marker = new google.maps.Marker({ position: center, map: map });
 
+	var image = new google.maps.MarkerImage('/images/maps_sprite.png',
+	      new google.maps.Size(24, 34),
+	      new google.maps.Point(0,67),
+	      new google.maps.Point(12, 30));
+
+  var marker = new google.maps.Marker({ position: center, map: map, icon: image });
   var mapBounds = new google.maps.LatLngBounds();
   mapBounds.extend(center);
   map.fitBounds(mapBounds);

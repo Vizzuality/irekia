@@ -1,1 +1,3 @@
-<%= render "create#{@form_type}" %>
+<% @form_types.each do |form_type| -%>
+  <%= render %Q{create#{"_#{form_type}" if form_type.present?}} %>
+<% end -%>
