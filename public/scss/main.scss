@@ -4040,6 +4040,58 @@ p label,
 Footer
 ========================================================================== */
 
+section.get_mobile_app {
+  width:100%;
+  height:54px;
+  padding:15px 0;
+  margin:45px 0 0 0;
+  background: url('/images/mobile_app_bkg.png') repeat-x;
+
+  div.inner {
+    width:996px;
+    margin:0 auto;
+
+    div.left {float:left;}
+    div.right {float:right; width:50%;}
+    h5 {font:bold 18px "Helvetica",Arial; color:white; @include textShadow(0,1px,#0F4768);}
+    p {padding:0; margin:5px 0 0 0; font:normal 15px "Helvetica",Arial; color:#19597A; @include textShadow(0,1px,#2F9CD8);}
+    a {
+      float:right;
+      width:103px;
+      height:28px;
+      margin:0 0 0 28px;
+      padding:12px 18px 12px 50px;
+      border:1px solid #13587F;
+      @include border-radius(4px);
+      box-shadow:0 1px #2CA4E4;
+      font:normal 10px "Helvetica",Arial;
+      color:#19597A;
+      @include textShadow(0,1px,#2F9CD8);
+      background:url('/images/mobile_icons.png') no-repeat 14px 12px;
+      @include box-shadow(rgba(255,255,255,0),0,0,5px,5px);
+      @include transition-property(all);
+      @include transition-duration(300ms);
+
+      &.iphone {background-position:-186px 12px;}
+
+      span {
+        font:normal 15px "Helvetica",Arial;
+        color:white;
+        @include textShadow(0,1px,#0F4768);
+      }
+
+      &:hover {
+        text-decoration:none;
+        @include box-shadow(rgba(255,255,255,0.2),0,0,5px,5px);
+        @include transition-property(all);
+        @include transition-duration(600ms);
+      }
+    }
+  }
+
+
+}
+
 footer {
   padding-top: 38px;
   background: $white;
@@ -4098,4 +4150,66 @@ Error pages
   }
 }
 
+/* =============================================================================
+Home page
+========================================================================== */
+
+article.participation {
+  div.wrap {
+    width:575px;
+
+    h1 {font-size:48px; color:#465866; letter-spacing:-2px;}
+    p {font:normal 17px "Helvetica",Arial; color:#465866;}
+    div.login_block {
+      display:block;
+      width:100%;
+      height:46px;
+
+      p {
+        float:right;
+        a {font:bold 18px "Helvetica",Arial;}
+        a.blue_button {padding:13px 30px; text-align:center; margin:0 0 0 10px;}
+      }
+    }
+  }
+}
+
+
+section.banners {
+  ul {
+    display:block;
+    width:auto;
+    height:117px;
+    padding:0 0 0 1px;
+    overflow:visible;
+
+    li {
+      float:left;
+      position:relative;
+      width:174px;
+      height:117px;
+      margin:0 31px 0 0;
+      background:url('/images/banner_bkg.png') no-repeat 0 0;
+      overflow:visible;
+      &:last-child,&.last {margin:0;}
+
+
+      a {
+        position:absolute;
+
+        left:2px;
+        width:171px;
+        height:115px;
+        text-indent:-9999px;
+        font-size:0;
+        line-height:0;
+        background:url('/images/banners_example.png') no-repeat 0 -4px;
+        &.guia_com {top:1px; background-position:-220px 0;}
+        &.opacity {top:1px; background-position:-409px -9px;}
+        &.press {bottom:0; left:2px; width:180px; height:124px; background-position:-617px -1px;}
+        z-index:5;
+      }
+    }
+  }
+}
 

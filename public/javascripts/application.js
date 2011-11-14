@@ -79,7 +79,6 @@ $(function() {
       $(this).fadeIn(150);
     });
 		
-		
   }).live('ajax:error', function(evt, xhr, status) {
 		$(this).effect("shake", { times:4 }, 100);
 	});

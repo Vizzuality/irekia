@@ -1172,6 +1172,17 @@ p label, .content form p label { font-size: 12px; font-weight: bold; color: #465
 /* =============================================================================
 Footer
 ========================================================================== */
+section.get_mobile_app { width: 100%; height: 54px; padding: 15px 0; margin: 45px 0 0 0; background: url("/images/mobile_app_bkg.png") repeat-x; }
+section.get_mobile_app div.inner { width: 996px; margin: 0 auto; }
+section.get_mobile_app div.inner div.left { float: left; }
+section.get_mobile_app div.inner div.right { float: right; width: 50%; }
+section.get_mobile_app div.inner h5 { font: bold 18px "Helvetica",Arial; color: white; text-shadow: 0 1px #0f4768; filter: progid:DXImageTransform.Microsoft.Shadow(color='$c', Direction=135, Strength=1); }
+section.get_mobile_app div.inner p { padding: 0; margin: 5px 0 0 0; font: normal 15px "Helvetica",Arial; color: #19597A; text-shadow: 0 1px #2f9cd8; filter: progid:DXImageTransform.Microsoft.Shadow(color='$c', Direction=135, Strength=1); }
+section.get_mobile_app div.inner a { float: right; width: 103px; height: 28px; margin: 0 0 0 28px; padding: 12px 18px 12px 50px; border: 1px solid #13587F; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; box-shadow: 0 1px #2CA4E4; font: normal 10px "Helvetica",Arial; color: #19597A; text-shadow: 0 1px #2f9cd8; filter: progid:DXImageTransform.Microsoft.Shadow(color='$c', Direction=135, Strength=1); background: url("/images/mobile_icons.png") no-repeat 14px 12px; -moz-box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0); -webkit-box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0); -o-box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0); box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0); -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; }
+section.get_mobile_app div.inner a.iphone { background-position: -186px 12px; }
+section.get_mobile_app div.inner a span { font: normal 15px "Helvetica",Arial; color: white; text-shadow: 0 1px #0f4768; filter: progid:DXImageTransform.Microsoft.Shadow(color='$c', Direction=135, Strength=1); }
+section.get_mobile_app div.inner a:hover { text-decoration: none; -moz-box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2); -webkit-box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2); -o-box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2); box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2); -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 600ms; -webkit-transition-duration: 600ms; -o-transition-duration: 600ms; transition-duration: 600ms; }
+
 footer { padding-top: 38px; background: white; border-top: 1px solid #c2c4c6; }
 footer .content { clear: both; overflow: hidden; padding: 0 0 23px 0; width: 900px; }
 footer ul.copyright { float: left; margin-right: 35px; }
@@ -1194,6 +1205,25 @@ Error pages
 #container .page_error article.with_footer > .inner, #container .not_found article.with_footer > .inner { width: 636px; padding: 42px 0; text-align: center; }
 #container .page_error article.with_footer > .inner h1, #container .not_found article.with_footer > .inner h1 { margin: 20px; }
 #container .page_error article.with_footer > .inner p, #container .not_found article.with_footer > .inner p { width: 400px; margin: 0 auto; }
+
+/* =============================================================================
+Home page
+========================================================================== */
+article.participation div.wrap { width: 575px; }
+article.participation div.wrap h1 { font-size: 48px; color: #465866; letter-spacing: -2px; }
+article.participation div.wrap p { font: normal 17px "Helvetica",Arial; color: #465866; }
+article.participation div.wrap div.login_block { display: block; width: 100%; height: 46px; }
+article.participation div.wrap div.login_block p { float: right; }
+article.participation div.wrap div.login_block p a { font: bold 18px "Helvetica",Arial; }
+article.participation div.wrap div.login_block p a.blue_button { padding: 13px 30px; text-align: center; margin: 0 0 0 10px; }
+
+section.banners ul { display: block; width: auto; height: 117px; padding: 0 0 0 1px; overflow: visible; }
+section.banners ul li { float: left; position: relative; width: 174px; height: 117px; margin: 0 31px 0 0; background: url("/images/banner_bkg.png") no-repeat 0 0; overflow: visible; }
+section.banners ul li:last-child, section.banners ul li.last { margin: 0; }
+section.banners ul li a { position: absolute; left: 2px; width: 171px; height: 115px; text-indent: -9999px; font-size: 0; line-height: 0; background: url("/images/banners_example.png") no-repeat 0 -4px; z-index: 5; }
+section.banners ul li a.guia_com { top: 1px; background-position: -220px 0; }
+section.banners ul li a.opacity { top: 1px; background-position: -409px -9px; }
+section.banners ul li a.press { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -617px -1px; }
 
 /* New clearfix */
 .inner:after, .clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }

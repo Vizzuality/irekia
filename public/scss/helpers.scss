@@ -46,6 +46,11 @@ $green:            #75B100;
   opacity: $value;
 }
 
+@mixin textShadow($h,$v,$c) {
+  text-shadow:$h $v $c;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color='$c', Direction=135, Strength=1);
+}
+
 /* New clearfix */
 .inner:after, .clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
 * html .clearfix, * html .inner { zoom: 1; } /* IE6 */

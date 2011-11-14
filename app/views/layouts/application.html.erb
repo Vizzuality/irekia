@@ -52,6 +52,22 @@
       </div>
     </div>
 
+    <% if @controller.controller_name == "home" %>
+      <section class="get_mobile_app">
+        <div class="inner">
+          <div class="left">
+            <h5>¿Tienes un smartphone?</h5>
+            <p>Accede a IREKIA a través de la aplicación Android o iPhone</p>
+          </div>
+          <div class="right">
+            <ul>
+              <li><a class="iphone" href="#iphone!">DISPONIBLE EN <span>App Store</span></a></li>
+              <li><a class="android" href="#android!">DISPONIBLE EN <span>Android Market</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    <% end %>
     <footer><%= render 'shared/footer' %></footer>
   </div>
 
