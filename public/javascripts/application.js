@@ -45,6 +45,10 @@ $(function() {
   $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});
   $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
 
+
+
+
+	// FOLLOW FORMS!!
   $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();
     $el.fadeOut(150, function() {
@@ -52,11 +56,10 @@ $(function() {
       $(this).html(xhr);
       $(this).fadeIn(150);
     });
-  });
+  }).live('ajax:error', function(evt, xhr, status) {
+		$(this).effect("shake", { times:4 }, 100);
+	});
 
-  $("#follow form").live('ajax:error', function(evt, xhr, status) {
-    $(this).effect("shake", { times:4 }, 100);
-  });
 
   $("#follow form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parents("#follow");
@@ -64,7 +67,22 @@ $(function() {
       $(this).html(xhr);
       $(this).fadeIn(150);
     });
-  });
+  }).live('ajax:error', function(evt, xhr, status) {
+		$(this).effect("shake", { times:4 }, 100);
+	});
+
+
+	// Grow ribbon
+	$('.follow .ribbon').live('mouseenter',function(){
+		var form_ = $(this).closest('form');
+		form_.stop().animate({height:'90px'},300);
+	}).live('mouseleave',function() {
+		var form_ = $(this).closest('form');
+		form_.stop().animate({height:'75px'},300);		
+	});
+	
+	
+	
 
   $(".my_opinion input[type='submit'], .my_opinion button").click(function(e) {
       $(".my_opinion .selected").removeClass("selected");
