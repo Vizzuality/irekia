@@ -14,7 +14,7 @@
   <div class="t"></div><div class="f"></div>
 </article>
 
-
+<% if (@items.size>0) %>
 <article class="activity">
   <div class="inner">
     <div class="content">
@@ -25,6 +25,7 @@
   </div>
   <div class="t"></div><div class="f"></div>
 </article>
+<% end %>
 
-<span class="no_content">No hay más contenidos<br/>pendientes de ser<br/>moderados</span>
+<span class="no_content" <% if (@items.blank?) %>style="display:block"<% end %>>No hay más contenidos<br/>pendientes de ser<br/>moderados</span>
 <span class="loader">Cargando más contenido</span>
