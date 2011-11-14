@@ -236,7 +236,7 @@
       _changeSubmitTitle(data.$submit, "Publicar");
 
     } else {
-      _showMessage("success", function() {
+      _showMessage($ps, "success", function() {
         proposalStep = 0;
         _resetSection($currentSection);
       });
@@ -255,7 +255,7 @@
       _changeSubmitTitle(data.$submit, "Publicar");
 
     } else {
-      _showMessage("success", function() {
+      _showMessage($ps, "success", function() {
         questionStep = 0;
         _resetSection($currentSection);
       });
@@ -335,6 +335,29 @@
 
     });
   }
+
+   function _showMessage($ps, kind, callback) {
+     IrekiaSpinner.spin(spin_element);
+
+     var currentHeight = $currentSection.find(".form").outerHeight(true);
+     var $success      = $currentSection.find(".message.success");
+     var $error        = $currentSection.find(".message.error");
+
+     if (kind == "success") {
+       $error.hide();
+       $success.show();
+     } else {
+       $error.show();
+       $success.hide();
+     }
+
+     var successHeight = $success.outerHeight(true);
+
+     $ps.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, speed * 2, "easeInOutQuad", function() {
+       IrekiaSpinner.stop();
+       callback && callback();
+     });
+   }
 
   function _triggerOpenAnimation($ps, data) {
     var top  = _getTopPosition($ps);

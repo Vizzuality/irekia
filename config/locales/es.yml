@@ -297,6 +297,11 @@
     publish: Publicar
     configure_your_account: Configura tu cuenta
   shared:
+    user_publish:
+      question: Pregunta
+      proposal: Propuesta
+      continue: Continuar
+      publish: Publicar
     floating_login:
       access_irekia: Accede a Irekia
       forgotten_password: ¿Olvidaste tu contraseña?
