@@ -14,7 +14,9 @@ class SharesController < ApplicationController
       end
       Twitter.update(@content.twitter_share_message)
     when 'email'
-      SharingMailer.share_content(current_user, params[:email], @content).deliver
+      receiver = SharingTarget.new(params[:email])
+      head :error and return  if receiver.invalid?
+      SharingMailer.share_content(current_user, receiver, @content).deliver
     end
 
     head :ok

@@ -1719,8 +1719,10 @@ article .inner { h2, h3 { color: $dark_blue; } }
 }
 
 .footer.comments, span.comments {
-  padding: 0 0 0 13px;
-  background: url('/images/icons/icon_sprite.png') no-repeat 0 -50px;
+  a {
+    padding: 0 0 0 13px;
+    background: url('/images/icons/icon_sprite.png') no-repeat 0 -50px;
+  }
 }
 
 .footer.where, span.where, ul.locations .footer, .map .infowindow ul.details li.where {
@@ -1934,7 +1936,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
             span { top: 9px; color: #ccc; }
           }
-          input[type="submit"] { position: absolute; top: 13px; right: 17px; color: #FF0066; background: none; height: 30px; border: none; }
+          input[type="submit"] { position: absolute; top: 13px; right: 17px; color: #FF0066; background: none; height: 30px; border: none;
+              &:hover{text-decoration:underline;}
+              &.blue {
+                color:$link_color;
+                &:hover {color:$link_color_hover;}
+              }
+          }
 
         }
         div.previous p { font-size: 13px; }
@@ -2038,6 +2046,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       background-position: 0 -306px;
       a {
         background-position: right -344px;
+        &:hover {text-decoration:none; cursor:default;}
       }
     }
   }
@@ -2050,6 +2059,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       background-position: 0 -534px;
       a {
         background-position: right -572px;
+        &:hover {text-decoration:none; cursor:default;}
       }
     }
   }
@@ -3315,17 +3325,34 @@ a.editable {
 /* Ribbons */
 
 #container article {
-  .ribbon {
-    position: absolute;
-    top: -14px;
-    right: 25px;
-    display: block;
-    width: 37px;
-    height: 85px;
-    background: url('/images/ribbon.png') no-repeat;
-    border: 0 none;
+
+  form.follow_ribbon {
+    position:absolute;
+    top:-14px;
+    right:25px;
+    display:block;
+    width:36px;
+    height:75px;
+    padding:0px 0 0 1px;
+    background: url('/images/ribbon.png') no-repeat -76px 0;
     z-index: 10;
+
+    .ribbon {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: url('/images/ribbon.png') no-repeat 0 bottom;
+      border: 0 none;
+    }
+
+    &.remove {
+      background-position:-113px 0;
+      .ribbon {background-position:-39px bottom;}
+    }
   }
+
+
 
   footer .inner .right { float: right; }
   .inner {

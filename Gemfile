@@ -21,20 +21,18 @@ group :development do
 end
 
 group :development, :test do
-  gem 'ruby-debug19', :platforms => :mri_19
-  gem 'ruby-debug-base19', '~> 0.11.25'
+  gem 'ruby-debug19'
+  gem 'ruby-debug-base19', '>= 0.11.25', '<= 0.11.26'
   gem 'rspec-rails', '~> 2.6'
   gem 'capybara', '~> 1.0.1'
   gem 'selenium-webdriver', '2.7.0'
   gem 'spork'
   gem 'launchy'
   gem 'irbtools', :require => 'irbtools/configure'
-  gem 'railroady'
   gem 'escape_utils'
   gem 'compass'
   gem 'rails-footnotes', '>= 3.7.5.rc4'
   gem 'bullet'
-  gem 'ruby-prof'
   gem 'newrelic_rpm'
 end
 
