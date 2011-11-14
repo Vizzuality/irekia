@@ -16,103 +16,83 @@
         <!-- QUESTION -->
         <div class="section question">
           <div class="triangle"></div>
-            <%= form_for @question, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+          <%= form_for @question, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
 
-              <div class="form clearfix">
+            <div class="form clearfix">
 
-                <%= form.fields_for :question_data, @question_data do |question_data| %>
-          <%= question_data.hidden_field :user_id %>
-          <%= question_data.hidden_field :area_id %>
+              <%= form.fields_for :question_data, @question_data do |question_data| %>
+                <%= question_data.hidden_field :user_id %>
+                <%= question_data.hidden_field :area_id %>
 
-                  <div class="input_field placeholder textarea">
-                    <div id="123" class="input-counter">
-                      <span class="counter">140</span>
-                      <%= question_data.text_area :question_text, :class => :grow %>
-                      <span class="holder">Introduce el texto que quieras publicar aquí.</span>
-                    </div>
-                  </div>
-
-                <% end %>
-
-                <div class="extra">
-                  <strong>¿A QUIÉN LE QUIERES DIRIGIR LA PREGUNTA?</strong>
-                  <div class="input_field placeholder">
-                    <%= form_for :search, :url => politicians_and_areas_search_path, :remote => true, :html => {:'data-type' => 'html', :method => :get, :id => :search} do |f| %>
-
-                      <div class="search_box">
-                        <%= f.text_field :name %>
-                        <span class="holder">Nombre de persona o área...</span>
-                      </div>
-
-                    <% end %>
+                <div class="input_field placeholder textarea">
+                  <div id="123" class="input-counter">
+                    <span class="counter">140</span>
+                    <%= question_data.text_area :question_text %>
+                    <span class="holder">Introduce el texto que quieras publicar aquí.</span>
                   </div>
                 </div>
 
-              </div>
+              <% end %>
 
-            <div class="success message">
-              <div class="icon"></div>
-              <h2>Tu pregunta ha sido enviada</h2>
-              <p>En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.</p>
+            <div class="extra">
+                <strong>¿A QUIÉN LE QUIERES DIRIGIR LA PREGUNTA?</strong>
+                <div class="input_field placeholder">
+                  <div class="search_box">
+                    <input type="text" class="search" />
+                    <span class="holder">Nombre de persona o área...</span>
+                    <span class="spinner" id="search_question_spinner"></span>
+                  </div>
+
+                </div>
+                </div>
             </div>
 
-            <div class="error message">
-              <div class="icon"></div>
-              <h2>Error</h2>
-              <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
             </div>
-
-          <% end -%>
-
-        </div>
-
+            <% end -%>
 
         <!-- PROPOSAL -->
         <div class="section proposal">
           <div class="triangle"></div>
-          <div class="form clearfix">
+            <%= form_for @proposal, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+              <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %>
+                <%= proposal_data.hidden_field :area_id %>
+                <div class="form clearfix">
 
-            <div class="input_field placeholder textarea">
-              <textarea></textarea>
-              <span class="holder">Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.</span>
-            </div>
+                  <div class="input_field placeholder textarea">
+                    <div id="124" class="input-counter">
+                      <span class="counter">140</span>
+                      <%= proposal_data.text_area :title, :class => "grow title" %>
+                      <span class="holder">Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.</span>
+                    </div>
+                  </div>
+
+                  <div class="extra">
+
+                    <div class="input_field placeholder">
+                      <input type="text" />
+                      <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_image">Sube una nueva</span></span>
+                    </div>
+
+                    <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
+                    <div class="input_field placeholder textarea">
+                      <%= proposal_data.text_area :body, :class => "grow body" %>
+                      <span class="holder">Describe la propuesta en pocas palabras</span>
+                    </div>
+                  </div>
+              <% end -%>
+            <% end -%>
 
             <div class="extra">
 
+              <strong>¿A QUÉ ÁREA QUIERES DIRIGIR LA PROPUESTA?</strong>
               <div class="input_field placeholder">
                 <input type="text" />
-                <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_image">Sube una nueva</span></span>
-              </div>
-
-              <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
-              <div class="input_field placeholder textarea">
-                <textarea></textarea>
-                <span class="holder">Describe la propuesta en pocas palabras</span>
-              </div>
-
-              <strong>¿A QUIÉN LE QUIERES DIRIGIR LA PROPUESTA?</strong>
-              <div class="input_field placeholder">
-                <input type="text" />
-                <span class="holder">Buscar por nombre...</span>
+                <span class="holder">Nombre de área...</span>
               </div>
 
             </div>
           </div>
-
-          <div class="success message">
-            <div class="icon"></div>
-            <h2>Tu propuesta ha sido enviada</h2>
-            <p>En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.</p>
-          </div>
-
-          <div class="error message">
-            <div class="icon"></div>
-            <h2>Error</h2>
-            <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
-          </div>
         </div>
-
-
 
       </div>
     </div>
@@ -124,10 +104,7 @@
 <footer>
 <div class="separator"></div>
 <div class="inner">
-  <div class="left">
-    <div class="checkbox_button facebook"><a href="#" class="checkbox"><div class="icon"></div> </a></div>
-    <div class="checkbox_button twitter"><a href="#" class="checkbox"><div class="icon"></div> </a></div>
-  </div>
+  <div class="left"></div>
   <div class="right">
     <a href="#" class="white_button pink publish right disabled"><span>Continuar</span></a>
     <span class="spinner" id="publish_spinner"></span>

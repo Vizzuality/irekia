@@ -31,7 +31,7 @@ class SearchesController < ApplicationController
   end
 
   def politicians_and_areas
-    @politicians = User.politicians.search_by_name(params[:search][:name])
+    @politicians = User.politicians.search_by_name(params[:search][:name]) unless params[:search][:only_areas]
     @areas       = Area.search_by_name(params[:search][:name])
 
     render :layout => false

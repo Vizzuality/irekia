@@ -14,6 +14,7 @@ create_event :title    => 'Festival Internacional de Cortometrajes',
              :user     => @ainara,
              :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'event_00.jpg'))),
              :date     => this_week.advance(:days => rand(35), :hours => rand(24)),
+             :users_tagged => User.politicians.sample((1..5).to_a.sample),
              :tags     => %w(Festival Cine Cortometrajes Premio 2010).join(',')
 
 create_event :title    => 'Reunión con el Sindicato de Estudiantes Universitarios',
@@ -25,6 +26,7 @@ create_event :title    => 'Reunión con el Sindicato de Estudiantes Universitari
              :user     => @aitana,
              :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'event_01.jpg'))),
              :date     => this_week.advance(:days => rand(35), :hours => rand(24)),
+             :users_tagged => User.politicians.sample((1..5).to_a.sample),
              :tags     => %w(Sindicato\ de\ estudiantes).join(',')
 
 create_event :title    => 'Conferencia sobre del Cambio Climático',
@@ -35,6 +37,7 @@ create_event :title    => 'Conferencia sobre del Cambio Climático',
              :user     => @aitor,
              :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'event_02.jpg'))),
              :date     => this_week.advance(:days => rand(35), :hours => rand(24)),
+             :users_tagged => User.politicians.sample((1..5).to_a.sample),
              :tags     => %w(Conferencia Congreso Cambio\ Climático).join(',')
 
 create_event :title    => 'Rueda de Prensa sobre los Presupuestos Generales',
@@ -46,6 +49,7 @@ create_event :title    => 'Rueda de Prensa sobre los Presupuestos Generales',
              :user     => @aitana,
              :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'event_03.jpg'))),
              :date     => this_week.advance(:days => rand(35), :hours => rand(24)),
+             :users_tagged => User.politicians.sample((1..5).to_a.sample),
              :tags     => %w(Rueda\ de\ prensa Catering Presupuestos Economía Prensa).join(',')
 
 create_event :title    => 'Charlas sobre la Convivencia Multicultural',
@@ -54,6 +58,7 @@ create_event :title    => 'Charlas sobre la Convivencia Multicultural',
              :user     => @javier,
              :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'event_04.jpg'))),
              :date     => this_week.advance(:days => rand(35), :hours => rand(24)),
+             :users_tagged => User.politicians.sample((1..5).to_a.sample),
              :tags     => %w(Charla Congreso Convivencia\ multicultural).join(',')
 
 create_event :title    => 'Entrega de premios de Ciudadania Ejemplar',
@@ -64,5 +69,6 @@ create_event :title    => 'Entrega de premios de Ciudadania Ejemplar',
              :user     => @javier,
              :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'event_05.jpg'))),
              :date     => this_week.advance(:days => rand(35), :hours => rand(24)),
+             :users_tagged => User.politicians.sample((1..5).to_a.sample),
              :tags     => %w(Premios Ciudadanía Bodegas\ Elorriaga).join(',')
 

@@ -5,7 +5,7 @@ module AreasHelper
     filters[:more_polemic] = params[:more_polemic] unless filters.key?(:more_polemic)
     filters[:type]         = params[:type] unless filters.key?(:type)
 
-    actions_home_path(@area, filters)
+    actions_area_path(@area, filters)
   end
 
   def link_for_proposals(filters = {})

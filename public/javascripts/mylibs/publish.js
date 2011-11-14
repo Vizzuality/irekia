@@ -20,10 +20,8 @@
   $currentMenuOption,
   $menu,
   spin_element = document.getElementById('publish_spinner'),
-  submitting = false;
-
-  var spin_element = document.getElementById('user_publish_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
+  submitting = false,
   store = "publish-popover",
   // Public methods
   methods = { },
@@ -68,6 +66,7 @@
         data.proposalStep = 0;
         data.questionStep = 0;
         data.sectionID = 0;
+        data.spinner = spinner;
       }
 
       // Update the reference to $ps
@@ -96,6 +95,7 @@
       _bindSubmit(data);
       _bindActions(data);
       _enableInputCounter(data);
+      _bindSearch(data);
 
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
 
@@ -136,8 +136,7 @@
 
     // Initialize the initial section
     $currentSection    = $ps.find(".container .section:nth-child(1)");
-    data.$menu         = $ps.find(".menu");
-    $currentMenuOption = data.$menu.find("li:nth-child(" + (data.sectionID + 1) + ")");
+    $currentMenuOption = $ps.find(".menu").find("li:nth-child(" + (data.sectionID + 1) + ")");
     $currentSection    = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
     _gotoSection(data);
@@ -178,26 +177,25 @@
 
   function _enableSubmit($submit) {
     submitting = false;
-    $submit.removeAttr('disabled');
     $submit.removeClass("disabled");
   }
 
   function _disableSubmit($submit) {
     submitting = true;
-    $submit.attr("disable", "disable");
     $submit.addClass("disabled");
   }
 
   function _selectOption(data, $option) {
-    data.$menu.find("li.selected").removeClass("selected");
+    var $ps = data.$ps;
+    var $menu = $ps.find(".menu");
+    $menu.find("li.selected").removeClass("selected");
     $option.addClass("selected");
   }
 
   function _bindActions(data) {
     var $ps = data.$ps;
 
-    //_setupUpload("upload_proposal");
-    //_setupUpload("upload_image");
+    _setupUpload(data,"upload_image");
 
     $ps.find(".section .open_upload").click(function(e) {
       e && e.preventDefault();
@@ -220,7 +218,7 @@
   }
 
   function _resizeSection($ps, $section, callback) {
-    height = $section.find(".form").outerHeight(true) + 20;
+    height = $section.find(".form").outerHeight(true);
     $ps.find(".container").animate({ scrollTop: 0, height: height }, speed, function() {
       callback && callback();
     });
@@ -232,6 +230,36 @@
 
   function _showExtraFields() {
     $currentSection.find(".extra").fadeIn(speed);
+  }
+
+
+  function _bindSearch(data) {
+    var $ps = data.$ps;
+
+     $ps.find('.extra input').keyup(function(ev){
+
+       if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+
+       clearTimeout(interval);
+
+       var $related = $ps.find("div.related");
+       var $relatedTitle = $ps.find("h3.related");
+
+       if ($(this).val().length > 5) {
+         interval = setTimeout(function(){
+
+           var query = $ps.find('.extra input[type="text"]').val();
+
+           $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(data){
+             console.log(data);
+           }});
+
+         }, 500);
+       } else {
+         // $related.fadeOut(350);
+         // $relatedTitle.fadeOut(350);
+       }
+     });
   }
 
   function _doProposal(data) {
@@ -264,11 +292,26 @@
       _changeSubmitTitle(data.$submit, "Publicar");
 
     } else {
-      _showMessage($ps, "success", function() {
-        data.questionStep = 0;
-        _resetSection($currentSection);
-      });
+      var $form = $currentSection.find("form");
+      $form.submit();
+      data.spinner.spin(spin_element);
+
+      $form.unbind();
+      $form.bind('ajax:success', function(event, xhr, status) { _successQuestion(data, $form, xhr); })
     }
+  }
+
+  function _successQuestion(data, $form, xhr) {
+    var $ps = data.$ps;
+    var $response = $(xhr);
+
+    data.spinner.stop();
+    $response.hide();
+    $form.after($response);
+    data.$ps.find(".extra").hide();
+    data.$ps.find(".holder").show();
+    data.$ps.find(":text, textarea").val("");
+    _showMessage($ps, "success");
   }
 
   function _proposal() {
@@ -303,8 +346,9 @@
     });
   }
 
-  function _setupUpload(id) {
+  function _setupUpload(data,id) {
 
+    var $ps = data.$ps;
     if ($ps.find("#" + id).length > 0) {
 
       var uploader = new qq.FileUploader({
@@ -335,13 +379,11 @@
 
     $ps.find("ul.menu li a").unbind();
     $ps.find("ul.menu li a").click(function(e) {
+      e && e.preventDefault();
 
       data.questionStep = 0;
       data.proposalStep = 0;
 
-      // if (submitting) return;
-
-      e && e.preventDefault();
       _hideExtraFields();
 
       data.sectionID = $(this).parent().index();
@@ -364,7 +406,6 @@
 
           _gotoSection(data);
           _changeSubmitTitle(data.$submit, "Continuar");
-
         });
 
       } else {
@@ -419,21 +460,7 @@
   function _clearInfo($ps) {
     $ps.find("textarea").val("");
     $ps.find(".counter").html(140);
-    disableSending($ps);
-  }
-
-  function enableSending($ps) {
-    if ($ps) {
-      $ps.find("input[type='submit']").removeAttr("disabled");
-      $ps.find("input[type='submit']").removeClass("disabled");
-    }
-  }
-
-  function disableSending($ps) {
-    if ($ps) {
-      $ps.find("form input[type='submit']").attr("disabled", "true");
-      $ps.find("form input[type='submit']").addClass("disabled");
-    }
+    _disableSubmit($ps);
   }
 
   // Close popover
@@ -460,30 +487,6 @@
     GOD.subscribe(event);
   }
 
-  function _addSubmitAction(data) {
-    data.$ps.find("form").die();
-
-    data.$ps.find("form").submit(function(e) {
-      spinner.spin(spin_element);
-      disableSending(data.$ps);
-    });
-
-    data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
-      spinner.stop();
-      enableSending(data.$ps);
-      _close(data, false, function() {
-        _hideExtraFields();
-        _gotoSuccess(data);
-      });
-    });
-
-    data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
-      spinner.stop();
-      enableSending(data.$ps);
-    });
-
-  }
-
   function _addCloseAction(data) {
     data.$ps.find(".close").unbind("click");
     data.$ps.find(".close").bind('click', function(e) {
@@ -503,265 +506,3 @@
   $(function() { });
 
 })(jQuery, window, document);
-
-
-// jQuery.fn.enableUserPublish = function(opt){
-//
-//   if (this.length < 1) return;
-//
-//   var
-//   sectionID     = 0,
-//   speed         = 150,
-//   sectionWidth  = 687,
-//   $article      = $(this),
-//   currentHeight = 0,
-//   $currentSection,
-//   $currentMenuOption,
-//   $menu,
-//   questionStep = 0,
-//   proposalStep = 0,
-//   $submit = $article.find("footer .publish"),
-//   spin_element = document.getElementById('publish_spinner'),
-//   submitting = false;
-//
-//   // Initialize the initial section
-//   $currentSection    = $article.find(".container .section:nth-child(1)");
-//   $menu              = $article.find(".menu");
-//   $currentMenuOption = $menu.find("li.selected");
-//
-//   function textCounter($input, $submit) {
-//     var count = $input.val().length;
-//     (count <= 0) ? _disableSubmit($submit) : _enableSubmit($submit);
-//   }
-//
-//   function _setupUpload(id) {
-//
-//     if ($article.find("#" + id).length > 0) {
-//
-//       var uploader = new qq.FileUploader({
-//         element: document.getElementById(id),
-//         action: '',
-//         debug: true,
-//         text:"sube una nueva",
-//         onSubmit: function(id, fileName){
-//           $currentSection.find(".holder").fadeOut(speed);
-//         },
-//         onProgress: function(id, fileName, loaded, total){},
-//         onComplete: function(id, fileName, responseJSON){},
-//         onCancel: function(id, fileName){ }
-//       });
-//     }
-//   }
-//
-//   function _enableInputCounter() {
-//     $article.find(":text, textarea").keyup(function(e) {
-//       textCounter($(this), $submit);
-//     });
-//
-//     $article.find(":text, textarea").keydown(function(e) {
-//       textCounter($(this), $submit);
-//     });
-//   }
-//
-//   function _bindActions() {
-//
-//     _setupUpload("upload_proposal");
-//     _setupUpload("upload_image");
-//
-//     $article.find(".section .open_upload").click(function(e) {
-//       e && e.preventDefault();
-//       $(this).closest("input[type='file']").click();
-//     });
-//
-//     $article.find(".section.video li").click(function(e) {
-//       e && e.preventDefault();
-//
-//       $(this).siblings("li").removeClass("selected");
-//       $(this).addClass("selected");
-//       $article.find(".radio.selected").removeClass("selected");
-//       $(this).find(".radio").addClass("selected");
-//     });
-//
-//     $article.find("a.radio").click(function(e) {
-//       e && e.preventDefault();
-//       $article.find(".section.video li").toggleClass("selected");
-//     });
-//   }
-//
-//   function _showMessage(kind, callback) {
-//     IrekiaSpinner.spin(spin_element);
-//
-//     var currentHeight = $currentSection.find(".form").outerHeight(true);
-//     var $success      = $currentSection.find(".message.success");
-//     var $error        = $currentSection.find(".message.error");
-//
-//     if (kind == "success") {
-//       $error.hide();
-//       $success.show();
-//     } else {
-//       $error.show();
-//       $success.hide();
-//     }
-//
-//     var successHeight = $success.outerHeight(true);
-//
-//     $article.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, speed * 2, "easeInOutQuad", function() {
-//       IrekiaSpinner.stop();
-//       callback && callback();
-//     });
-//   }
-//
-//   function _resetSection($section) {
-//     $section.find(":text, textarea").val("");
-//     $section.find(".holder").fadeIn(speed);
-//   }
-//
-//   function _hasContent($section) {
-//     return !isEmpty($section.find(":text, textarea").val());
-//   }
-//
-//   function _enableSubmit() {
-//     submitting = false;
-//     $submit.removeAttr('disabled');
-//     $submit.removeClass("disabled");
-//   }
-//
-//   function _disableSubmit() {
-//     submitting = true;
-//     $submit.attr("disable", "disable");
-//     $submit.addClass("disabled");
-//   }
-//
-//   function _selectOption($option) {
-//     $menu.find("li.selected").removeClass("selected");
-//     $option.parent().addClass("selected");
-//   }
-//
-//   function _resizeSection($section, callback) {
-//     height = $section.find(".form").outerHeight(true) + 20;
-//     $article.find(".container").animate({ scrollTop: 0, height: height }, speed, function() {
-//       callback && callback();
-//     });
-//   }
-//
-//   function _hideExtraFields() {
-//     $currentSection.find(".extra").fadeOut(speed);
-//   }
-//   function _showExtraFields() {
-//     $currentSection.find(".extra").fadeIn(speed);
-//   }
-//
-//   function _doProposal() {
-//     if (proposalStep == 0) {
-//       proposalStep++;
-//
-//       _showExtraFields();
-//       _resizeSection($currentSection);
-//       _disableSubmit();
-//       _changeSubmitTitle("Publicar");
-//
-//     } else {
-//       _showMessage("success", function() {
-//         proposalStep = 0;
-//         _resetSection($currentSection);
-//       });
-//     }
-//   }
-//
-//   function _doQuestion() {
-//     if (questionStep == 0) {
-//       questionStep++;
-//
-//       _showExtraFields();
-//       _resizeSection($currentSection);
-//       _disableSubmit();
-//       _changeSubmitTitle("Publicar");
-//
-//     } else {
-//       _showMessage("success", function() {
-//         questionStep = 0;
-//         _resetSection($currentSection);
-//       });
-//     }
-//   }
-//
-//   function _proposal() {
-//     return $currentSection.hasClass("proposal");
-//   }
-//
-//   function _question() {
-//     return $currentSection.hasClass("question");
-//   }
-//
-//   function _changeSubmitTitle(title) {
-//     $submit.find("span").text(title);
-//   }
-//
-//   function _sectionName($section) {
-//     return $section.attr("class").replace(/section/g, "").fulltrim();
-//   }
-//
-//   // Init
-//   _bindActions();
-//   _enableInputCounter();
-//
-//   this.each(function(){
-//
-//       _resizeSection($currentSection);
-//     _disableSubmit();
-//
-//     $submit.click(function(e) {
-//       e && e.preventDefault();
-//
-//       if (!_hasContent($currentSection)) return;
-//
-//       _disableSubmit();
-//
-//       if (_question()) _doQuestion();
-//       else if (_proposal()) _doProposal();
-//     });
-//
-//     $(this).find("ul.menu li a").click(function(e) {
-//
-//       //if (submitting) return;
-//
-//       e && e.preventDefault();
-//       _hideExtraFields();
-//
-//
-//       sectionID = $(this).parent().index();
-//       $section  = $(this).parents(".content").find(".container .section:nth-child(" + (sectionID + 1) + ")");
-//
-//
-//       if (_sectionName($section) != _sectionName($currentSection)) {
-//         _resetSection($section);
-//       }
-//
-//
-//       _selectOption($(this));
-//
-//       if ($currentSection) {
-//
-//         _resizeSection($currentSection, function() {
-//
-//           var $success = $currentSection.find(".message.success").hide();
-//           var $error   = $currentSection.find(".message.error").hide();
-//
-//           $currentSection = $section;
-//           var height = $section.find(".form").outerHeight(true) + 20;
-//           $article.find(".container").animate({scrollLeft: sectionID * sectionWidth, height: height }, speed, "easeInOutQuad");
-//           _changeSubmitTitle("Continuar");
-//
-//
-//         });
-//
-//       } else {
-//         $currentSection = $section;
-//         var height = $section.find(".form").outerHeight(true) + 20;
-//         $article.find(".container").animate({scrollTop: 0, scrollLeft: sectionID * sectionWidth, height: height }, speed, "easeInOutQuad");
-//       }
-//
-//     });
-//   })
-// }
-//
