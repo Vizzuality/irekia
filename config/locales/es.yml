@@ -344,6 +344,10 @@
         title: Tags
       related_content:
         title: Contenidos similares
+        comments:
+          zero: Ningún comentario
+          one: Un comentario
+          other: '%{count} comentarios'
     question_form:
       make_a_question:
         submit: Enviar pregunta
