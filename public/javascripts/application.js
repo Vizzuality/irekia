@@ -159,4 +159,15 @@ $(function() {
   // $("article.politician.publish").enablePoliticianPublish();
   // $("article.politician.publish").enablePoliticianPublish();
   $(".areas_selector").areasPopover();
+
+	// HOME, grow all areas
+	$("a.see_all_areas").click(function(ev){
+		ev.preventDefault();
+		$(this).closest('article.areas').find('div.areas_list').animate({height:'640px'},500);
+		$(this).closest('article.areas').find('footer').animate({opacity:0,height:0},500,function(){
+			$(this).closest('article.areas').removeClass('with_footer');
+			$(this).remove();
+		});
+	});
+	
 });
