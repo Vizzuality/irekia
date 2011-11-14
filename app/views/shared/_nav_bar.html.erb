@@ -6,11 +6,7 @@
 
     <div class="areas_selector">
 
-      <% if @content and @content.target_area %>
-        <%= @content.target_area.name %>
-      <% else %>
         <%= @area ? @area.name : (content_tag :span, t(".choose_an_area")) %>
-      <% end %>
 
       <span class="handle"></span>
 
