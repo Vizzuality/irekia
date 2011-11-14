@@ -16,33 +16,54 @@
         <!-- QUESTION -->
         <div class="section question">
           <div class="triangle"></div>
-          <div class="form clearfix">
+            <%= form_for @question, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
 
-            <div class="input_field placeholder textarea">
-              <textarea></textarea>
-              <span class="holder">Introduce el texto que quieras publicar aquí.</span>
-            </div>
+              <div class="form clearfix">
 
-            <div class="extra">
-              <strong>¿A QUIÉN LE QUIERES DIRIGIR LA PREGUNTA?</strong>
-              <div class="input_field placeholder">
-                <input type="text" />
-                <span class="holder">Buscar por nombre...</span>
+                <%= form.fields_for :question_data, @question_data do |question_data| %>
+          <%= question_data.hidden_field :user_id %>
+          <%= question_data.hidden_field :area_id %>
+
+                  <div class="input_field placeholder textarea">
+                    <div id="123" class="input-counter">
+                      <span class="counter">140</span>
+                      <%= question_data.text_area :question_text, :class => :grow %>
+                      <span class="holder">Introduce el texto que quieras publicar aquí.</span>
+                    </div>
+                  </div>
+
+                <% end %>
+
+                <div class="extra">
+                  <strong>¿A QUIÉN LE QUIERES DIRIGIR LA PREGUNTA?</strong>
+                  <div class="input_field placeholder">
+                    <%= form_for :search, :url => politicians_and_areas_search_path, :remote => true, :html => {:'data-type' => 'html', :method => :get, :id => :search} do |f| %>
+
+                      <div class="search_box">
+                        <%= f.text_field :name %>
+                        <span class="holder">Nombre de persona o área...</span>
+                      </div>
+
+                    <% end %>
+                  </div>
+                </div>
+
               </div>
+
+            <div class="success message">
+              <div class="icon"></div>
+              <h2>Tu pregunta ha sido enviada</h2>
+              <p>En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.</p>
             </div>
-          </div>
 
-          <div class="success message">
-            <div class="icon"></div>
-            <h2>Tu pregunta ha sido enviada</h2>
-            <p>En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.</p>
-          </div>
+            <div class="error message">
+              <div class="icon"></div>
+              <h2>Error</h2>
+              <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+            </div>
 
-          <div class="error message">
-            <div class="icon"></div>
-            <h2>Error</h2>
-            <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
-          </div>
+          <% end -%>
+
         </div>
 
 

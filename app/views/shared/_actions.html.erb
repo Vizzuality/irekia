@@ -25,7 +25,7 @@
   </header>
 
   <div class="left">
-    <div id="listing" class="listing_actions_<%= params[:id] %>">
+    <div class="listing listing_actions_<%= params[:id] %>">
       <% if @actions.present? %>
         <%= render 'shared/actions_list' %>
       <% else %>

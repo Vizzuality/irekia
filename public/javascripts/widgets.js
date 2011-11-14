@@ -678,17 +678,17 @@ var GOD = (function() {
         var settings = data.settings;
 
         $.ajax({ url: data.url, data: data.sort, type: "GET", success: function(data){
-          $ps.find("#listing").fadeOut(settings.transitionSpeed, function() {
+          $ps.find(".listing").fadeOut(settings.transitionSpeed, function() {
 
-            $ps.find("#listing").html(data);
+            $ps.find(".listing").html(data);
 
-						if ($ps.find("#listing h2").length>0) {
+						if ($ps.find(".listing h2").length>0) {
 							var $place = $ps.find('header div.left');
 							$place.find('h2').remove();
-							$place.append($ps.find("#listing h2"));
+							$place.append($ps.find(".listing h2"));
 						}
 
-            $ps.find("#listing").slideDown(settings.transitionSpeed, function() {
+            $ps.find(".listing").slideDown(settings.transitionSpeed, function() {
               filter_spinner.stop();
             });
 

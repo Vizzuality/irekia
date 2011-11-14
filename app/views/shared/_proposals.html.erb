@@ -14,7 +14,7 @@
 
   </header>
   <div class="left">
-    <div id="listing" class="listing_proposals_<%= params[:id] %>">
+    <div class="listing listing_proposals_<%= params[:id] %>">
       <% if @proposals.count > 0 %>
         <%= render 'shared/proposals_list' if @proposals %>
       <% else %>

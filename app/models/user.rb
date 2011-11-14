@@ -176,6 +176,11 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :follows, :allow_destroy => true
 
 
+  pg_search_scope :search_by_name,
+                  :against => [:name],
+                  :using => {
+                    :tsearch => {:prefix => true, :any_word => true}
+                  }
   pg_search_scope :search_by_name_description_province_and_city,
                   :against => [:name, :description, :province, :city],
                   :using => {

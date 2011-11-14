@@ -14,7 +14,7 @@
   </div>
   </header>
   <div class="left">
-    <div id="listing" class="listing_questions_<%= params[:id] %>">
+    <div class="listing listing_questions_<%= params[:id] %>">
 
       <% if @questions.count > 0 %>
         <%= render 'shared/questions_list' %>

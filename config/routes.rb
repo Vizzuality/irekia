@@ -110,6 +110,7 @@ Irekia::Application.routes.draw do
       get :contents
       get :areas
       get :politicians
+      get :politicians_and_areas
       get :citizens
     end
   end
