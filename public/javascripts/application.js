@@ -112,6 +112,7 @@ $(function() {
   // Popovers
   $(".show_event").infoEventPopover();
   $(".ask_question").questionPopover();
+  $(".user_publish").userPublishPopover();
   $(".create_proposal").proposalPopover();
 
   $(".auth a.login").loginPopover();
@@ -123,6 +124,5 @@ $(function() {
   $(".with_filters").filterWidget();
 
   $("article.politician.publish").enablePoliticianPublish();
-  $("article.user.publish").enableUserPublish();
   $(".areas_selector").areasPopover();
 });

@@ -1363,6 +1363,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       }
     }
   }
+
   &.popover {
     position: absolute;
     top:-900px;
@@ -3374,6 +3375,17 @@ a.editable {
       }
     }
     .left .description.two_columns {
+
+      // p {
+      //   margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px;
+      //   width:282px;
+      //   background:#f1f1f1;
+      //   &.first { margin-right: 40px; }
+      //   &.last {
+      //     width: 280px!Important;
+      //     background:#ccc;
+      //   }
+      // }
       .column {
         margin-right: 40px;
         width: 282px!important;

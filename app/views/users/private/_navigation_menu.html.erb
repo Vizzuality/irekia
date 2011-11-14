@@ -4,6 +4,6 @@
   { :link => link_to(t(".your_proposals"), proposals_user_path(@user)), :class => current_action?('proposals'), :count => @proposals_notifications },
   { :link => link_to(t(".your_activity"), actions_user_path(@user)), :class => current_action?('actions')  },
   { :link => link_to(t(".what_to_follow"), followings_user_path(@user)), :class => current_action?('followings')  },
-  { :link => link_to(t(".publish"), path_for_user(@user), :section => 'publish'), :class => "publish #{current_action?('publish')}" },
+  { :link => link_to(t(".publish"), path_for_user(@user), :section => 'publish'), :class => "publish user_publish #{current_action?('publish')}" },
 ] %>
 
