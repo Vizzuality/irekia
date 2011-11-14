@@ -1,3 +1,6 @@
+<% if @show_title -%>
+  <h2><%= t(".results.title.#{params[:type].pluralize || 'total'}", :count => @contents_count[:"#{params[:type].try(:pluralize) || 'total'}"]) %></h2>
+<% end -%>
 <ul>
   <% if @contents.size > 0 %>
     <% @contents.each do |content| %>

@@ -51,10 +51,6 @@ class Participation < ActiveRecord::Base
     moderated.select('extract(epoch from avg(moderated_at - published_at)) as moderation_time').first.moderation_time.try(:to_f) || 0
   end
 
-  def comments_count
-    [].count
-  end
-
   def update_published_at
     self.published_at = Time.now
   end
@@ -85,7 +81,7 @@ class Participation < ActiveRecord::Base
         :text => content.try(:text)
       },
       :published_at     => published_at,
-      :comments_count   => comments_count
+      :comments_count   => content.try(:comments_count)
     }
 
     default.merge(options || {})
