@@ -20,10 +20,8 @@
   $currentMenuOption,
   $menu,
   spin_element = document.getElementById('publish_spinner'),
-  submitting = false;
-
-  var spin_element = document.getElementById('user_publish_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
+  submitting = false,
   store = "publish-popover",
   // Public methods
   methods = { },
@@ -68,6 +66,7 @@
         data.proposalStep = 0;
         data.questionStep = 0;
         data.sectionID = 0;
+        data.spinner = spinner;
       }
 
       // Update the reference to $ps
@@ -96,6 +95,8 @@
       _bindSubmit(data);
       _bindActions(data);
       _enableInputCounter(data);
+      _bindSearch(data);
+
 
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
 
@@ -189,8 +190,10 @@
   }
 
   function _selectOption(data, $option) {
-    data.$menu.find("li.selected").removeClass("selected");
-    $option.addClass("selected");
+    if (data.$menu) {
+      data.$menu.find("li.selected").removeClass("selected");
+      $option.addClass("selected");
+    }
   }
 
   function _bindActions(data) {
@@ -234,6 +237,38 @@
     $currentSection.find(".extra").fadeIn(speed);
   }
 
+
+  function _bindSearch(data) {
+    var $ps = data.$ps;
+
+     $ps.find('.extra input').keyup(function(ev){
+
+       if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+
+       clearTimeout(interval);
+
+       var $related = $ps.find("div.related");
+       var $relatedTitle = $ps.find("h3.related");
+
+       if ($(this).val().length > 5) {
+         interval = setTimeout(function(){
+
+           var query = $ps.find('.extra input[type="text"]').val();
+
+           $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(data){
+             console.log(data);
+           }});
+
+         }, 500);
+       } else {
+         // $related.fadeOut(350);
+         // $relatedTitle.fadeOut(350);
+       }
+     });
+
+
+  }
+
   function _doProposal(data) {
     var $ps = data.$ps;
     if (data.proposalStep == 0) {
@@ -264,9 +299,14 @@
       _changeSubmitTitle(data.$submit, "Publicar");
 
     } else {
-      _showMessage($ps, "success", function() {
-        data.questionStep = 0;
-        _resetSection($currentSection);
+      var $form = $currentSection.find("form");
+      $form.submit();
+      $form.unbind();
+      data.spinner.spin(spin_element);
+
+      $form.bind('ajax:success', function(event, xhr, status) {
+        data.spinner.stop();
+        console.log(event, xhr, status);
       });
     }
   }
@@ -335,13 +375,13 @@
 
     $ps.find("ul.menu li a").unbind();
     $ps.find("ul.menu li a").click(function(e) {
+      e && e.preventDefault();
 
       data.questionStep = 0;
       data.proposalStep = 0;
 
       // if (submitting) return;
 
-      e && e.preventDefault();
       _hideExtraFields();
 
       data.sectionID = $(this).parent().index();
@@ -464,12 +504,12 @@
     data.$ps.find("form").die();
 
     data.$ps.find("form").submit(function(e) {
-      spinner.spin(spin_element);
+      data.spinner.spin(spin_element);
       disableSending(data.$ps);
     });
 
     data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
-      spinner.stop();
+      data.spinner.stop();
       enableSending(data.$ps);
       _close(data, false, function() {
         _hideExtraFields();
@@ -478,7 +518,7 @@
     });
 
     data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
-      spinner.stop();
+      data.spinner.stop();
       enableSending(data.$ps);
     });
 

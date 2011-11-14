@@ -930,9 +930,11 @@ article .inner { h2, h3 { color: $dark_blue; } }
               .extra {
                 display: none;
                 margin: 20px 0 0 0;
-                .input_field { margin: 0 0 20px 0!important; }
+                .search_box { margin:0; padding:0; }
+                .input_field {
+                  margin: 0 0 20px 0!important;
+                }
               }
-
 
               // -----------------------------------------------------
 
@@ -1195,7 +1197,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
             .spinner {
               display:block;
               float:right;
-              top:2px;
+              top:-5px;
               margin-right:5px;
               position:relative;
               width:33px;
