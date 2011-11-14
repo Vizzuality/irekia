@@ -1115,6 +1115,9 @@
           more_active: Más activos
         area_filters:
          all: Todas las áreas
+    politicians_and_areas:
+      area_description: Área del Gobierno Vasco
+      title_area: '%{title} de %{area}'
     autocomplete:
       politicians:
         summary:

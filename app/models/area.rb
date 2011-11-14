@@ -42,6 +42,11 @@ class Area < ActiveRecord::Base
 
   accepts_nested_attributes_for :follows, :allow_destroy => true
 
+  pg_search_scope :search_by_name,
+                  :against => [:name],
+                  :using => {
+                    :tsearch => {:prefix => true, :any_word => true}
+                  }
   pg_search_scope :search_by_name_and_description,
                   :against => [:name, :description],
                   :using => {

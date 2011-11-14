@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   skip_before_filter :authenticate_user!
-  before_filter :get_search_results
+  before_filter :get_search_results, :except => [:politicians_and_areas]
   before_filter :get_contents, :only => [:show, :contents]
   before_filter :paginate, :only => [:show, :contents]
 
@@ -28,6 +28,13 @@ class SearchesController < ApplicationController
 
   def citizens
 
+  end
+
+  def politicians_and_areas
+    @politicians = User.politicians.search_by_name(params[:search][:name])
+    @areas       = Area.search_by_name(params[:search][:name])
+
+    render :layout => false
   end
 
   def get_search_results

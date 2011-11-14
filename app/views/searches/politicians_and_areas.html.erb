@@ -1,0 +1,18 @@
+<ul>
+	<% @areas.each do |area| %>
+		<li>
+			<%= avatar area, 'small' %>
+			<span><%= area.name %></span>
+			<span><%= t('.area_description') %></span>
+			<%= hidden_field_tag 'question[question_data_attributes][area_id]', area.id, :id => nil, :disabled => :disabled %>
+		</li>
+	<% end %>
+	<% @politicians.each do |politician| %>
+		<li>
+			<%= avatar politician, 'small' %>
+			<span><%= politician.fullname %></span>
+			<span><%= t('.title_area', :title => get_politician_title(politician), :area => politician.areas.first.name) %></span>
+			<%= hidden_field_tag 'question[question_data_attributes][user_id]', politician.id, :id => nil, :disabled => :disabled %>
+		</li>
+	<% end %>
+</ul>
