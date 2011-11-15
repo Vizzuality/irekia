@@ -267,9 +267,14 @@ header nav .content .areas_selector .popover .scroll-pane ul li a { display: blo
 header nav .content ul.auth { float: right; }
 header nav .content ul.auth li { position: relative; margin: 0 0 0 10px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 header nav .content ul.auth li .pending-counter { right: 5px; }
-header nav .content ul.auth li a { display: inline-block; font-size: 15px; color: white; }
+header nav .content ul.auth li .empty_count { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: url("/images/icons/icon_sprite.png") no-repeat 0 -339px; width: 18px; text-shadow: none; line-height: 15px; height: 19px; color: #2687bd; font-size: 10px; position: relative; top: 7px; padding-left: 6px; margin: 0 0 0 10px; }
+header nav .content ul.auth li .count { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: url("/images/icons/icon_sprite.png") no-repeat 0 -358px; width: 18px; line-height: 15px; height: 20px; text-shadow: none; color: #fff; font-size: 10px; position: relative; top: 7px; padding-left: 7px; margin: 0 0 0 10px; }
+header nav .content ul.auth li span.username { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; margin: 0 0 0 10px; font-size: 15px; color: #fff; position: relative; top: 8px; text-shadow: 1px 1px 1px #0F4869; }
+header nav .content ul.auth li a { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; font-size: 15px; color: white; }
 header nav .content ul.auth li a.twitter { background: url("/images/icons/twitter.png") no-repeat; text-indent: -999em; position: relative; top: 5px; }
 header nav .content ul.auth li a.facebook { background: url("/images/icons/facebook.png") no-repeat; text-indent: -999em; position: relative; top: 5px; }
+header nav .content ul.auth li a.sign_out { float: none; background: url("/images/icons/icon_sprite.png") no-repeat 0 -265px; width: 7px; height: 17px; text-indent: -999em; position: relative; top: 4px; }
+header nav .content ul.auth li a.settings { float: none; background: url("/images/icons/icon_sprite.png") no-repeat 0 -299px; width: 1px; height: 17px; text-indent: -999em; position: relative; top: 4px; }
 
 /* =============================================================================
 Article
