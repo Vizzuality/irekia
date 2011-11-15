@@ -276,9 +276,6 @@
 
     $currentSection.find('#' + name + '_' + name + '_data_attributes_' + targetClass + '_id').val(id)
     $currentSection.find('#' + name + '_' + name + '_data_attributes_' + otherTarget + '_id').val("");
-
-    console.log(name, $currentSection, targetClass, otherTarget, $currentSection.find('#' + name + '_' + name + '_data_attributes_' + targetClass + '_id'));
-    console.log(name, $currentSection, targetClass, otherTarget, $currentSection.find('#' + name + '_' + name + '_data_attributes_' + otherTarget + '_id'));
   }
 
   function _bindSearch(data) {
@@ -302,7 +299,13 @@
 
           data.spinner.spin(spin_element);
 
-          $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(response) {
+          var params = { name : query };
+
+          if (_getCurrentSectionName() == "proposal") {
+            params = $.extend(params, { only_areas : true} );
+          }
+
+          $.ajax({ url: "/search/politicians_and_areas", data: { search: params }, type: "GET", success: function(response) {
 
             var $response = $(response);
 

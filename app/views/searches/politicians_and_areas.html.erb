@@ -1,22 +1,26 @@
 <div class="autosuggest">
   <ul>
-    <% @areas.each do |area| %>
-      <li id="item_<%= area.id %>" class="area clearfix">
-      <%= avatar area, 'small' %>
-      <p>
-      <span class="name"><%= area.name %></span>
-      <span class="description"><%= t('.area_description') %></span>
-      </p>
-      </li>
+    <% if @areas %>
+      <% @areas.each do |area| %>
+        <li id="item_<%= area.id %>" class="area clearfix">
+        <%= avatar area, 'small' %>
+        <p>
+        <span class="name"><%= area.name %></span>
+        <span class="description"><%= t('.area_description') %></span>
+        </p>
+        </li>
+      <% end %>
     <% end %>
-    <% @politicians.each do |politician| %>
-      <li id="item_<%= politician.id%>" class="user clearfix">
-      <%= avatar politician, 'small' %>
-      <p>
-      <span class="name"><%= politician.fullname %></span>
-      <span class="description"><%= t('.title_area', :title => get_politician_title(politician), :area => politician.areas.first.name) %></span>
-      </p>
-      </li>
+    <% if @politicians %>
+      <% @politicians.each do |politician| %>
+        <li id="item_<%= politician.id%>" class="user clearfix">
+        <%= avatar politician, 'small' %>
+        <p>
+        <span class="name"><%= politician.fullname %></span>
+        <span class="description"><%= t('.title_area', :title => get_politician_title(politician), :area => politician.areas.first.name) %></span>
+        </p>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 
