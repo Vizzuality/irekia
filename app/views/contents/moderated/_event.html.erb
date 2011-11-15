@@ -1,3 +1,8 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="Irekia - <%= @content.title %>" />
+  <meta property="og:description" content="<%= @content.body.strip.truncate(128) %>" />
+  <meta property="og:image" content="<%= image_url @content.event_data.image.content_url %>" />
+<% end -%>
 <article class="activity with_footer">
 <div class="inner">
   <div class="left">
@@ -19,6 +24,7 @@
     <div class="content left-border">
 
       <%= render "shared/sharing" %>
+      <%= render "shared/sharing", :facebook_url => event_url(@content) %>
       <%= render "shared/sidebar/tags" %>
       <%= render "shared/sidebar/location" %>
       <%= render "shared/sidebar/politicians" %>
