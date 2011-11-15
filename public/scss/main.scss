@@ -1745,14 +1745,21 @@ article .inner { h2, h3 { color: $dark_blue; } }
 }
 
 .footer.where, span.where, ul.locations .footer, .map .infowindow ul.details li.where {
+  max-height:26px;
   padding: 0 0 0 17px;
   background: url('/images/maps_sprite.png') no-repeat -51px -65px;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
 }
 
 #container article {
   &.agenda .inner .content ul li.day .info ul.details li.where {
+    width:207px;
+    max-height:26px;
     padding: 0 0 0 17px;
     background: url('/images/maps_sprite.png') no-repeat -51px -65px;
+    @include text-overflow();
   }
 
   &.actions .inner,
@@ -2877,6 +2884,7 @@ a.editable {
                   }
 
                   button { margin-left:5px; }
+                  &.first {background:none; border-top:1px solid #DEE2E6;}
                 }
 
                 &.no-border { border:none; }

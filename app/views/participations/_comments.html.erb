@@ -4,9 +4,6 @@
   <% end %>
   <div class="count"><%= t('.title', :count => @comments_count) %></div>
   <ul>
-    <% if @comments_count.zero? %>
-      <li></li>
-    <% end %>
     <% @comments.reject{|c| c.new_record?}.each do |comment| %>
       <li>
       <%= avatar comment.author %>
@@ -19,7 +16,7 @@
       </li>
     <% end %>
 
-    <li class="comment">
+    <li class="comment <%= 'first' if @comments.blank? %>">
     <%= form_for @comment, :remote => true, :html => {:'data-type' => 'html', :class => :add_comment }  do |form| %>
       <%= form.hidden_field :content_id %>
       <%= avatar current_user %>

@@ -51,6 +51,13 @@ $green:            #75B100;
   filter: progid:DXImageTransform.Microsoft.Shadow(color='$c', Direction=135, Strength=1);
 }
 
+@mixin text-overflow() {
+  text-overflow:ellipsis;
+  -o-text-overflow: ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
 /* New clearfix */
 .inner:after, .clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
 * html .clearfix, * html .inner { zoom: 1; } /* IE6 */

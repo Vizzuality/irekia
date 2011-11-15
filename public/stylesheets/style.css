@@ -602,9 +602,9 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 .footer.comments a, span.comments a { padding: 0 0 0 13px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -50px; }
 
-.footer.where, span.where, ul.locations .footer, .map .infowindow ul.details li.where { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
+.footer.where, span.where, ul.locations .footer, .map .infowindow ul.details li.where { max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 
-#container article.agenda .inner .content ul li.day .info ul.details li.where { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
+#container article.agenda .inner .content ul li.day .info ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; -o-text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 #container article.actions .inner, #container article.proposals .inner, #container article.photos .inner, #container article.proposal .inner, #container article.questions .inner, #container article.activity .inner { width: 934px; padding: 15px 31px 35px 29px; }
 #container article.actions .inner .left, #container article.proposals .inner .left, #container article.photos .inner .left, #container article.proposal .inner .left, #container article.questions .inner .left, #container article.activity .inner .left { width: 614px; }
 #container article.actions .inner .left ul li, #container article.proposals .inner .left ul li, #container article.photos .inner .left ul li, #container article.proposal .inner .left ul li, #container article.questions .inner .left ul li, #container article.activity .inner .left ul li { clear: both; overflow: hidden; margin-bottom: 39px; }
@@ -868,6 +868,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .comments ul li.comment { border: none; background: url("/images/comment_border.png") no-repeat; }
 #container article .inner .left .comments ul li.comment span.spinner { float: right; width: 33px; height: 33px; }
 #container article .inner .left .comments ul li.comment button { margin-left: 5px; }
+#container article .inner .left .comments ul li.comment.first { background: none; border-top: 1px solid #DEE2E6; }
 #container article .inner .left .comments ul li.no-border { border: none; }
 #container article .inner .left .comments ul li .comment { float: left; width: 536px; }
 #container article .inner .left .comments ul li .comment blockquote { width: 100%; margin-bottom: 5px; font-size: 17px; color: #7d8a92; font-family: "Helvetica", sans-serif; line-height: 20px; }
