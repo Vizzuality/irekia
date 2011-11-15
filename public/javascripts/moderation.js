@@ -14,10 +14,8 @@
   
 		  checkModeration();
 
+
 		  $('div.order span.buttons a').click(function(ev){
-
-		    // Send request !!
-
 		    var order = $(this).closest('div.order');
 		    var move = order.find('span.move');
 
@@ -35,10 +33,8 @@
 		    $(this).css({color:'#333333'});
 		  });
 
+
 		  $('li div.moderation span.buttons button').click(function(ev){
-
-		    // Send request !!
-
 		    var moderation = $(this).closest('div.moderation');
 		    var li = $(this).closest('li');
 		    var move = moderation.find('span.move');
@@ -76,6 +72,10 @@
 		      },500,function(){
 		        $(this).animate({height:0,paddingTop:0,paddingBottom:0},500,function(){
 		          $(this).remove();
+							if ($('article.activity div.content ul li').size()==0) {
+					      $('span.no_content').css({'display':'inline-block'});
+					      $('article.activity').hide();
+					    }
 		        });
 		      });
 		    }

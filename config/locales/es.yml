@@ -1063,11 +1063,11 @@
             one: 1 vídeo
             other: '%{count} vídeos'
         no_content_filters:
-          news: No hay noticias
-          questions: No hay preguntas
-          proposals: No hay propuestas
-          photos: No hay fotos
-          videos: No hay vídeos
+          news: Noticias
+          questions: Preguntas
+          proposals: Propuestas
+          photos: Fotos
+          videos: Vídeos
         all: 'ver los %{count} contenidos encontrados'
         more: ver más resultados
         main_filters:
