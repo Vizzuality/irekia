@@ -292,12 +292,17 @@
 
           var query = $ps.find('.extra input[type="text"]').val();
 
+          data.spinner.spin(spin_element);
+
           $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(response) {
 
             var $response = $(response);
 
+            data.spinner.stop();
+
             $response.find("li").unbind();
             $response.find("li").bind("click", function(e) {
+              // Publish!
               _bindSubmit(data, "Publicar", true, "publish");
               _clearAutosuggest(data);
               _enableSubmit(data.$submit);
