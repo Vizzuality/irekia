@@ -324,6 +324,9 @@
       previous_tweets:
         title: 'Tweets anteriores de %{name}'
         time: 'Hace %{time}'
+      previous_statuses:
+        title: 'Publicaciones anteriores de %{name}'
+        time: 'Hace %{time}'
       related_proposals:
         time: 'Hace %{time}'
         title: Propuestas relacionadas
@@ -356,7 +359,7 @@
       related_content:
         title: Contenidos similares
         comments:
-          zero: Aún no hay comentarios
+          zero: Todavía no hay comentarios
           one: Un comentario
           other: '%{count} comentarios'
     question_form:
@@ -845,6 +848,17 @@
               other: '%{count} comentarios'
       tweet:
         author: 'Twitteado por %{name} hace %{time}'
+        back: volver
+        sidebar:
+          sharing_links:
+            mail: Mail
+            twitter: Twitter
+            facebook: Facebook
+          last_tweets:
+            title: 'Últimos tweets de %{name}'
+            time: 'hace %{time}'
+      statusmessage:
+        author: 'Publicado por %{name} hace %{time}'
         back: volver
         sidebar:
           sharing_links:

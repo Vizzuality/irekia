@@ -64,7 +64,7 @@ class Content < ActiveRecord::Base
   end
 
   def self.by_id(id)
-    includes(:areas, :author, :comments, :"#{name.downcase}_data").find(id)
+    includes(:areas, :author, :comments, :"#{name.underscore}_data").find(id)
   end
 
   def self.validate_all_not_moderated
@@ -90,7 +90,7 @@ class Content < ActiveRecord::Base
   end
 
   def last_contents(limit = 5)
-    self.class.moderated.includes(:"#{self.class.name.downcase}_data", :comments).order('published_at desc').where('id <> ?', id).first(limit)
+    self.class.moderated.includes(:"#{self.class.name.underscore}_data", :comments).order('published_at desc').where('id <> ?', id).first(limit)
   end
 
   def commenters
