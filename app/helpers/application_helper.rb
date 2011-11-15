@@ -123,5 +123,9 @@ module ApplicationHelper
   def notifications_count
     user_signed_in?? current_user.notifications_count : 0
   end
+
+  def image_url(image_path)
+    request.protocol + request.host_with_port + image_path
+  end
 end
 

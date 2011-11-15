@@ -65,11 +65,13 @@ $(function() {
 
   $("form.follow_button,form.follow_ribbon").live('ajax:success', function(evt, xhr, status) {
     // Button
-		var $el1 = $("#follow");
+		var $el1 = $("div.column form.follow_button");
     $el1.fadeOut(150, function() {
-      $(this).html(xhr);
-			$(this).find('form.follow_ribbon').remove();
-      $(this).fadeIn(150);
+			var parent = $(this).parent();
+      $(this).remove();
+			parent.append(xhr);
+			parent.find('form.follow_ribbon').remove();
+      parent.find('form.follow_button').fadeIn(150);
     });
 
 		// Ribbon
@@ -135,7 +137,7 @@ $(function() {
   $(".goto_comments").enableGotoComments();
   $('.floating-login').floatingLoginPopover();
 
-  $('.two_columns').columnize({width:302, height:125});
+  $('.two_columns').columnize({width:302, height:120});
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
 
@@ -159,4 +161,15 @@ $(function() {
   // $("article.politician.publish").enablePoliticianPublish();
   // $("article.politician.publish").enablePoliticianPublish();
   $(".areas_selector").areasPopover();
+
+	// HOME, grow all areas
+	$("a.see_all_areas").click(function(ev){
+		ev.preventDefault();
+		$(this).closest('article.areas').find('div.areas_list').animate({height:'640px'},500);
+		$(this).closest('article.areas').find('footer').animate({opacity:0,height:0},500,function(){
+			$(this).closest('article.areas').removeClass('with_footer');
+			$(this).remove();
+		});
+	});
+	
 });

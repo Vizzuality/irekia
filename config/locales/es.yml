@@ -328,14 +328,14 @@
         title: 'Otros eventos de este área'
         time: 'Hace %{time}'
         comments:
-          zero: Ningún comentario
+          zero: Todavía no hay comentarios
           one: Un comentario
           other: '%{count} comentarios'
       related_questions:
         title: 'Otras preguntas similares'
         time: 'Hace %{time}'
         comments:
-          zero: Ningún comentario
+          zero: Todavía no hay comentarios
           one: Un comentario
           other: '%{count} comentarios'
       politicians:
@@ -345,7 +345,7 @@
       related_content:
         title: Contenidos similares
         comments:
-          zero: Ningún comentario
+          zero: Todavía no hay comentarios
           one: Un comentario
           other: '%{count} comentarios'
     question_form:
@@ -493,12 +493,12 @@
        videos: Vídeos
        statuses: Cambios de estado
       no_content_filters:
-       news: No hay noticias
-       questions: No hay preguntas
-       proposals: No hay propuestas
-       images: No hay fotos
-       videos: No hay vídeos
-       statuses: No hay cambios de estado
+       news: Noticias
+       questions: Preguntas
+       proposals: Propuestas
+       images: Fotos
+       videos: Vídeos
+       statuses: Cambios de estado
       more: ver más acciones
 
     lists_elements:
@@ -579,7 +579,7 @@
         event: el evento
         author: 'Publicado por %{author} hace %{time}'
       comments:
-        zero: Ningún comentario
+        zero: Todavía no hay comentarios
         one: 1 comentario
         other: '%{count} comentarios'
       share: Compartir
@@ -666,7 +666,7 @@
         back: volver
         date_area_and_comments:
           comments:
-            zero: Ningún comentario
+            zero: Todavía no hay comentarios
             one: Un comentario
             other: '%{count} comentarios'
         sidebar:
@@ -681,7 +681,7 @@
           related_content:
             title: Últimos contenidos
             comments:
-              zero: Ningún comentario
+              zero: Todavía no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
       photo:
@@ -689,12 +689,12 @@
         title_author_and_comments:
           time: 'hace %{time}'
           comments:
-            zero: Ningún comentario
+            zero: Todavía no hay comentarios
             one: Un comentario
             other: '%{count} comentarios'
         title:
           comments:
-            zero: Ningún comentario
+            zero: Todavía no hay comentarios
             one: Un comentario
             other: '%{count} comentarios'
         sidebar:
@@ -709,7 +709,7 @@
           related_photos:
             title: Últimas fotos
             comments:
-              zero: Ningún comentario
+              zero: Todavía no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
       event:
@@ -718,12 +718,12 @@
         title:
           time: '%{day} a partir de las %{hour}'
           comments:
-            zero: Ningún comentario
+            zero: Todavía no hay comentarios
             one: Un comentario
             other: '%{count} comentarios'
         date_area_and_comments:
           comments:
-            zero: Ningún comentario
+            zero: Todavía no hay comentarios
             one: Un comentario
             other: '%{count} comentarios'
         sidebar:
@@ -738,7 +738,7 @@
           related_events:
             title: Últimos eventos
             comments:
-              zero: Ningún comentario
+              zero: Todavía no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
       question:
@@ -765,7 +765,7 @@
               one: 'No contestada, solicitada por 1'
               other: 'No contestada, solicitada por %{count}'
             comments:
-              zero: Ningún comentario
+              zero: Todavía no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
           answer_requests:
@@ -786,7 +786,7 @@
             title: 'Otras preguntas similares'
             time: 'Hace %{time}'
             comments:
-              zero: Ningún comentario
+              zero: Todavía no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
         footer:
@@ -806,7 +806,7 @@
         title_author_and_comments:
           time: 'hace %{time}'
           comments:
-            zero: Ningún comentario
+            zero: Todavía no hay comentarios
             one: Un comentario
             other: '%{count} comentarios'
           total_in_favor: '%{percent}% a favor (de %{total})'
@@ -829,7 +829,7 @@
           related_content:
             title: Últimos contenidos
             comments:
-              zero: Ningún comentario
+              zero: Todavía no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
       tweet:
@@ -848,7 +848,7 @@
       time: 'hace %{time}'
     comments:
       title:
-        zero: Ningún comentario
+        zero: Todavía no hay comentarios
         one: Un comentario
         other: '%{count} comentarios'
       answer_this:
@@ -1451,7 +1451,7 @@
           comment:
             author: 'Comentado por %{author} hace %{time}'
           comments:
-            zero: Ningún comentario
+            zero: Todavía no hay comentarios
             one: 1 comentario
             other: '%{count} comentarios'
       items_list:

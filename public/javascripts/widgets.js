@@ -346,9 +346,11 @@ var GOD = (function() {
 
     if (!$ps.hasClass("open")) {
       $ps.addClass("open");
-      $ps.fadeIn(data.settings.transitionSpeed);
+      $ps.fadeIn(data.settings.transitionSpeed, function(){
+				// Focus on email input
+				$ps.find('#user_email').focus();
+			});
     } else {
-
       _close($this);
     }
   }
@@ -1082,12 +1084,13 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 jQuery.fn.verticalHomeLoop = function(opt){
 	
   if (this.length < 1) return;
-	var ele = this;
+	var ele = this,
+			onElement = false;
 
 	function loopContent() {
-		if ($(ele).find('div.left ul li').size()>0) {
+		if ($(ele).find('div.left ul li').size()>0 && !onElement) {
 			var last = $(ele).find('div.left ul li.loop').last();
-			var list = $(ele).find('div.left ul');
+			var list = $(ele).find('div.left ul').first();
 			var height = last.height();
 			last.css({opacity:0,height:0}).removeClass('loop');
 			list.prepend(last);
@@ -1095,11 +1098,17 @@ jQuery.fn.verticalHomeLoop = function(opt){
 				$(this).animate({opacity:1},300);
 			});
 			var last_vi = $(ele).find('div.left ul li').not('.loop').last().addClass();
-			last_vi.delay(800).animate({height:0,opacity:0},500,function(){
+			last_vi.animate({height:0,opacity:0},500,function(){
 				$(this).addClass('loop').removeAttr('style');
 			});
 		}
 	}
+	
+	$(ele).find('div.left ul').hover(function(){
+		onElement = true;
+	},function(){
+		onElement = false;		
+	});
 	
 	setInterval(function(){loopContent()},5000);
 }

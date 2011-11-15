@@ -192,6 +192,7 @@ a:active, a:visited { color: #1d79b0; }
 a:hover { text-decoration: underline; color: #114c6e; }
 a.left_arrow { background: url("/images/icons/arrow_left.png") no-repeat left 7px; padding-left: 12px; }
 a.left_arrow:hover { background-position: 0 -13px; }
+a.margin_left { margin-left: 20px; }
 a.right_arrow { background: url("/images/icons/arrow_right.png") no-repeat right 7px; padding-right: 12px; float: left; }
 a.right_arrow:hover { background-position: right -13px; }
 a.down_arrow { background: url("/images/icons/arrow_down.png") no-repeat left 7px; padding-left: 12px; }
@@ -255,7 +256,7 @@ header nav .content .areas_selector .popover .scroll-pane { height: 280px; width
 header nav .content .areas_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 195px; }
 header nav .content .areas_selector .popover .scroll-pane ul li { text-shadow: none; color: #333; }
 header nav .content .areas_selector .popover .scroll-pane ul li.last a { border: none; }
-header nav .content .areas_selector .popover .scroll-pane ul li a { display: block; padding: 20px 0 20px 0; border-bottom: 1px solid #f1f1f1; }
+header nav .content .areas_selector .popover .scroll-pane ul li a { display: block; padding: 10px 0 10px 0; border-bottom: 1px solid #f1f1f1; }
 header nav .content ul.auth { float: right; }
 header nav .content ul.auth li { position: relative; margin: 0 0 0 10px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 header nav .content ul.auth li .pending-counter { right: 5px; }
@@ -305,7 +306,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner header h2 { font-size: 31px; line-height: normal; }
 #container article.with_filters div.left span.empty { display: block; width: 100%; margin: 80px 0 80px 0; color: #7D8A92; font: normal 17px Arial; text-align: center; }
 #container article.with_filters div.right { position: relative; }
-#container article.with_filters div.right li em { font-size: 15px; color: #999999; }
+#container article.with_filters div.right li p { padding: 0; margin: 0; font-style: normal; font-size: 15px!important; line-height: 15px!important; color: #CCC; }
 #container article.with_filters div.right span.spinner { position: absolute; display: block; right: 7px; top: 7px; width: 20px; height: 20px; z-index: 10; }
 #container article.with_footer .inner { width: 933px; padding: 15px 31px 5px 30px; }
 #container article.with_footer .f { bottom: -10px; background-position: 0 -22px; }
@@ -609,9 +610,9 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 .footer.comments a, span.comments a { padding: 0 0 0 13px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -50px; }
 
-.footer.where, span.where, ul.locations .footer, .map .infowindow ul.details li.where { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
+.footer.where, span.where, ul.locations .footer, .map .infowindow ul.details li.where { max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 
-#container article.agenda .inner .content ul li.day .info ul.details li.where { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
+#container article.agenda .inner .content ul li.day .info ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; -o-text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 #container article.actions .inner, #container article.proposals .inner, #container article.photos .inner, #container article.proposal .inner, #container article.questions .inner, #container article.activity .inner { width: 934px; padding: 15px 31px 35px 29px; }
 #container article.actions .inner .left, #container article.proposals .inner .left, #container article.photos .inner .left, #container article.proposal .inner .left, #container article.questions .inner .left, #container article.activity .inner .left { width: 614px; }
 #container article.actions .inner .left ul li, #container article.proposals .inner .left ul li, #container article.photos .inner .left ul li, #container article.proposal .inner .left ul li, #container article.questions .inner .left ul li, #container article.activity .inner .left ul li { clear: both; overflow: hidden; margin-bottom: 39px; }
@@ -875,6 +876,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .comments ul li.comment { border: none; background: url("/images/comment_border.png") no-repeat; }
 #container article .inner .left .comments ul li.comment span.spinner { float: right; width: 33px; height: 33px; }
 #container article .inner .left .comments ul li.comment button { margin-left: 5px; }
+#container article .inner .left .comments ul li.comment.first { background: none; border-top: 1px solid #DEE2E6; }
 #container article .inner .left .comments ul li.no-border { border: none; }
 #container article .inner .left .comments ul li .comment { float: left; width: 536px; }
 #container article .inner .left .comments ul li .comment blockquote { width: 100%; margin-bottom: 5px; font-size: 17px; color: #7d8a92; font-family: "Helvetica", sans-serif; line-height: 20px; }
@@ -913,7 +915,8 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .content ul.questions li .avatar { float: left; margin-right: 6px; }
 #container article .inner .content ul.questions li p { float: left; margin: 0; padding: 0; font-size: 13px; }
 #container article .inner .content ul.questions li p a { display: block; font-size: 15px; color: #465866; font-weight: bold; }
-#container article footer .inner.with_question form div.input-counter { margin-right: 10px; }
+#container article footer .inner.with_question form div.input-counter { position: relative; margin-right: 10px; }
+#container article footer .inner.with_question form div.input-counter span.peak { position: absolute; bottom: -7px; left: 12px; width: 14px; height: 8px; background: url("/images/icons/triangle.png") no-repeat 0 -156px; z-index: 4; }
 #container article .inner .right ul.people { padding: 10px 0 0 28px; border-left: 1px solid #eaeaea; border-left: 1px solid rgba(70, 88, 102, 0.17); }
 #container article .inner .right ul.people.no-border { border: none; }
 #container article .inner .right ul.people.no-padding { margin: 0; padding: 0; }
@@ -926,7 +929,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .right ul.people li a { display: block; font-weight: normal; color: #1d79b0; }
 #container article .inner .right ul.people li a:hover { color: #114c6e; }
 #container article .inner .right ul.people li .avatar { float: left; margin: 0 9px 0 0; }
-#container article .inner .content .map { width: 920px; height: 200px; }
+#container article .inner .content .map { width: 923px; height: 200px; }
 #container article .map .zoom_in { cursor: pointer; background: transparent url("/images/maps_sprite.png") no-repeat 0 0; width: 30px; height: 32px; margin-top: 15px; margin-left: 17px; }
 #container article .map .zoom_in:hover { background: transparent url("/images/maps_sprite.png") no-repeat -31px 0; }
 #container article .map .zoom_out { cursor: pointer; background: transparent url("/images/maps_sprite.png") no-repeat 0 -32px; width: 30px; height: 32px; margin-left: 17px; }
@@ -990,9 +993,10 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .left .content .sharebox ul li, #container article .right .content .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 
 .share, .after_share { position: relative; }
-.share.email, .share.twitter, .share.facebook, .share.more, .after_share.email, .after_share.twitter, .after_share.facebook, .after_share.more { width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; border: 0 none; cursor: pointer; }
+.share.email, .share.twitter, .share.facebook, .share.more, .after_share.email, .after_share.twitter, .after_share.facebook, .after_share.more { display: block; width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; border: 0 none; cursor: pointer; }
 .share.twitter, .after_share.twitter { background-position: -29px 0; }
 .share.facebook, .after_share.facebook { background-position: -58px 0; }
+.share.facebook .FBConnectButton_Simple, .after_share.facebook .FBConnectButton_Simple { background: none; }
 .share.more, .after_share.more { background-position: -88px 0; }
 .share.share:hover, .after_share.share:hover { z-index: 100; }
 .share.email:hover, .after_share.email:hover { background-position: 0px -30px; }
@@ -1031,7 +1035,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner header .right ul.switch li.selected { border: 1px solid #ccc; background: white; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container article .inner header .right ul.switch li.selected a { padding: 4px 23px; color: #465866; }
 #container article .inner header .right ul.switch li.selected a:hover { text-decoration: none; cursor: default; }
-#container article .inner .left .description.two_columns .column { margin-right: 40px; width: 282px!important; }
+#container article .inner .left .description.two_columns .column { margin-right: 40px; width: 282px!important; padding: 0 0 20px; }
 #container article .inner .left .description.two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
 #container article footer inner.with_avatar { position: relative; }
@@ -1236,6 +1240,23 @@ article.participation div.wrap div.login_block { display: block; width: 100%; he
 article.participation div.wrap div.login_block p { float: right; }
 article.participation div.wrap div.login_block p a { font: bold 18px "Helvetica",Arial; }
 article.participation div.wrap div.login_block p a.blue_button { padding: 13px 30px; text-align: center; margin: 0 0 0 10px; }
+
+#container article#areas div.areas_list { position: relative; width: 994px; height: 366px; padding: 0; margin: 0; background: white; border-left: 1px solid #CCC; border-right: 1px solid #CCC; overflow: hidden; }
+#container article#areas div.areas_list ul { position: absolute; top: -8px; left: 0; width: 100%; margin: 0; background: none; }
+#container article#areas div.areas_list ul li { float: left; width: 270px; height: 74px; padding: 25px 30px; border-right: 1px solid #ECEDEF; border-bottom: 1px solid #ECEDEF; background: none; }
+#container article#areas div.areas_list ul li div.avatar { float: left; width: 67px; }
+#container article#areas div.areas_list ul li div.info { float: left; width: 190px; margin: 0 0 0 10px; padding: 10px 0 0 0; }
+#container article#areas div.areas_list ul li div.info h3 { font: bold 17px "Helvetica",Arial!important; }
+#container article#areas div.areas_list ul li div.info h3 a { color: #465866; }
+#container article#areas div.areas_list ul li div.info span.total { display: block; margin: 5px 0 0 0; padding: 0; font-size: 13!important; color: #666666; }
+#container article#areas div.areas_list ul li div.info span.total a { font-size: 13px!important; }
+#container article#areas div.areas_list ul li.last { width: 271px; border-right: none; }
+#container article#areas div.areas_list div.all_areas { position: absolute; top: 400px; }
+#container article#areas div.areas_list div.all_areas h4 { width: 100%; display: block; margin: 0 0 0 30px; font: bold 12px "Helvetica",Arial; color: #465866; }
+#container article#areas div.areas_list div.all_areas ul.list { position: relative; padding: 20px 0 0 0; }
+#container article#areas div.areas_list div.all_areas ul.list li { height: auto; padding: 5px 30px; border: none; }
+#container article#areas div.areas_list div.all_areas ul.list li a { font: normal 17px "Helvetica",Arial!important; color: #1D79B0; }
+#container article#areas div.areas_list div.all_areas ul.list li a a:hover { text-decoration: underline; }
 
 div.home_last_activity li.loop { display: none; }
 

@@ -1,11 +1,3 @@
-<!-- <ul>
-<% @areas.each do |area| -%>
-  <li>
-    <%= link_to area.name, area_path(area) %>
-  </li>
-<% end -%>
-</ul> -->
-
 
   <article class="participation">
     <div class="wrap">
@@ -15,6 +7,21 @@
         <p><a href="#">Accede a tu cuenta o</a> <a href="#" class="blue_button">Regístrate ya</a></p>
       </div>
     </div>
+  </article>
+
+
+  <article id="areas" class="areas with_footer">
+    <div class="t"></div>
+    <div class="areas_list">
+      <%= render 'areas' %>
+    </div>
+    <footer>
+      <div class="separator"></div>
+      <div class="inner with_spinner">
+        <a class="see_all_areas middle" href="#see_all_areas">ver todas las áreas</a>
+      </div>
+    </footer>
+    <div class="f"></div>
   </article>
 
   <div class="home_last_activity">
