@@ -306,6 +306,7 @@
         zero: Ninguna propuesta
         one: 1 propuesta
         other: '%{count} propuestas'
+      no_activity: Sin actividad
   shared:
     user_publish:
       question: Pregunta

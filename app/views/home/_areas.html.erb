@@ -7,7 +7,16 @@
       <div class="info">
         <h3><a href="/areas/<%= area.id %>"><%= area.name %></a></h3>
         <span class="total">
-          <%= link_to t('.questions', :count => area.questions_count), questions_area_path(area) %> y <%= link_to t('.proposals', :count => area.proposals_count), proposals_area_path(area) %>        </span>
+          <% if area.questions_count > 0 && area.proposals_count > 0 -%>
+            <%= link_to t('.questions', :count => area.questions_count), questions_area_path(area) %> y <%= link_to t('.proposals', :count => area.proposals_count), proposals_area_path(area) %>
+          <% elsif area.questions_count > 0 -%>
+            <%= link_to t('.questions', :count => area.questions_count), questions_area_path(area) %>
+          <% elsif area.proposals_count > 0 -%>
+            <%= link_to t('.proposals', :count => area.proposals_count), proposals_area_path(area) %>
+          <% else -%>
+            <%= t('.no_activity') %>
+          <% end -%>
+        </span>
       </div>
     </li>
   <% end %>
