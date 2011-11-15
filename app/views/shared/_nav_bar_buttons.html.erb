@@ -4,7 +4,7 @@
     <li>
     <div class="blue_button">
       <%= content_tag 'div', notifications_count, :class => "#{'empty_' if notifications_count.zero? }count" %>
-      <%= link_to t('.settings'), "#", :class => :settings %>
+      <%= link_to t('.settings'), settings_user_path, :class => :settings %>
       <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => :sign_out %>
     </div>
     </li>
