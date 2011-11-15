@@ -19,7 +19,7 @@
   </div>
   <div class="right">
     <div class="content left-border">
-      <%= render "shared/sharing", :facebook_url => tweet_url(@content) %>
+      <%= sharing_partial(tweet_url(@content), @content.message) %>
       <%= render "shared/sidebar/previous_tweets" %>
     </div>
   </div>

@@ -11,7 +11,7 @@ class Answer < Content
   delegate :answer_text, :to => :answer_data, :allow_nil => true
   delegate :question_text, :to => :question, :allow_nil => true
 
-  accepts_nested_attributes_for :answer_opinions
+  accepts_nested_attributes_for :answer_opinions, :answer_data
 
   def self.from_area(area)
     joins(:author => :areas).moderated.where('areas.id' => area.id)

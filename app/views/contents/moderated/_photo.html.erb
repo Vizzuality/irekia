@@ -27,7 +27,7 @@
   <div class="right">
     <div class="content left-border">
 
-      <%= render "shared/sharing", :facebook_url => photo_url(@content) %>
+      <%= sharing_partial(photo_url(@content), @content.title) %>
       <%= render "shared/sidebar/tags" %>
       <%= render "shared/sidebar/location" %>
       <%= render "shared/sidebar/related_politicians" %>
