@@ -1088,7 +1088,7 @@ jQuery.fn.verticalHomeLoop = function(opt){
 			onElement = false;
 
 	function loopContent() {
-		if ($(ele).find('div.left ul li').size()>0 && !onElement) {
+		if ($(ele).find('div.left > ul li').size()>0 && !onElement) {
 			var last = $(ele).find('div.left ul li.loop').last();
 			var list = $(ele).find('div.left ul').first();
 			var height = last.height();
