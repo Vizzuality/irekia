@@ -137,7 +137,7 @@ $(function() {
   $(".goto_comments").enableGotoComments();
   $('.floating-login').floatingLoginPopover();
 
-  $('.two_columns').columnize({width:302, height:120});
+  $('.two_columns').columnize({width:302, height:140});
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
 

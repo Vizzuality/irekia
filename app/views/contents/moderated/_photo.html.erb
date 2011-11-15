@@ -10,7 +10,10 @@
     <p class="info">
     <span><%= l @content.published_at.to_date, :format => :long %></span>
     &middot;
-    <%= link_to "#{@content.title} &middot;", photo_path(@content) %>
+    <% if !@content.title.blank? %>
+      <%= link_to @content.title, photo_path(@content) %>
+      &middot;
+    <% end %>
     <%= link_to t('.title.comments', :count => @comments_count), '#', :class => :goto_comments %>
     </p>
     <h1><%= @content.title %></h1>

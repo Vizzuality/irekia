@@ -10,7 +10,10 @@
     <p class="info">
     <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
     &middot;
-    <%= raw @content.areas.map{|a| link_to "#{a.name} &middot;", area_path(a)}.join(', ') %>
+    <% if !@content.areas.blank? %>
+      <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+      &middot;
+    <% end %>
     <%= link_to t('.date_area_and_comments.comments', :count => @comments_count), "#", :class => :goto_comments  %>
     </p>
 
