@@ -1,9 +1,0 @@
---no-private
---protected
---tag rate_limited:"Rate Limited?"
---tag requires_authentication:"Requires Authentication?"
---tag response_format:"Response Formats"
---markup markdown
--
-HISTORY.md
-LICENSE.md

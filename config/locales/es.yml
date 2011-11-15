@@ -296,6 +296,16 @@
     what_to_follow: ¿Qué seguir?
     publish: Publicar
     configure_your_account: Configura tu cuenta
+  home:
+    areas:
+      questions:
+        zero: Ninguna pregunta
+        one: 1 pregunta
+        other: '%{count} preguntas'
+      proposals:
+        zero: Ninguna propuesta
+        one: 1 propuesta
+        other: '%{count} propuestas'
   shared:
     user_publish:
       question: Pregunta
