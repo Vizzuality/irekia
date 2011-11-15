@@ -1,7 +1,7 @@
 <% content_for :facebook_meta do -%>
   <meta property="og:title" content="Irekia - <%= @content.title %>" />
-  <meta property="og:description" content="<%= @content.body.truncate(128) %>" />
-<meta property="og:image" content="<%= @content.news_data.image.content_url %>" />
+  <meta property="og:description" content="<%= @content.body.truncate(255) %>" />
+<meta property="og:image" content="<%= image_url @content.news_data.image.content_url %>" />
 <% end -%>
 <article class="activity with_footer">
 <div class="inner">
