@@ -1098,7 +1098,7 @@ jQuery.fn.verticalHomeLoop = function(opt){
 			last.animate({height:height+'px'},500,function(){
 				$(this).animate({opacity:1},300);
 			});
-			var last_vi = $(ele).find('div.left ul li').not('.loop').last().addClass();
+			var last_vi = $(ele).find('div.left > div.listing > ul > li').not('.loop').last().addClass();
 			last_vi.animate({height:0,opacity:0},500,function(){
 				$(this).addClass('loop').removeAttr('style');
 			});
