@@ -225,17 +225,24 @@ span.against { color: #ff9933; }
 /* =============================================================================
 Header
 ========================================================================== */
-header { padding-top: 34px; margin-bottom: 53px; background: white; }
+header { padding-top: 50px; margin-bottom: 53px; background: white; }
 header .content { clear: both; height: 74px; }
-header .content .top_nav { position: relative; clear: both; overflow: hidden; }
+header .content .top_nav { position: relative; height: 57px; clear: both; }
+header .content .top_nav ul.languages { position: absolute; top: -42px; right: 0; width: auto; }
+header .content .top_nav ul.languages li { float: left; width: auto; border-right: 1px solid #666666; padding: 0 4px!important; }
+header .content .top_nav ul.languages li a { padding: 1px 0; font: normal 10px "Helvetica",Arial; color: #1d79b0; }
+header .content .top_nav ul.languages li a:hover { color: #114c6e; }
+header .content .top_nav ul.languages li.last { border: none; padding-right: 0; }
+header .content .top_nav ul.languages li.selected a { color: #666666; }
+header .content .top_nav ul.languages li.selected a:hover { text-decoration: none; color: #666666; cursor: default; }
 header .content .top_nav .logo { float: left; left: 0; top: 0; position: relative; display: block; }
 header .content .top_nav .net_logo { float: right; right: 0; position: absolute; display: block; }
 header .content .top_nav ul.user_options { right: 0; bottom: 0; float: right; position: absolute; clear: both; overflow: hidden; }
-header .content .top_nav ul.user_options li { float: left; font-size: 13px; }
+header .content .top_nav ul.user_options li { float: left; font-size: 12px; }
 header .content .top_nav ul.user_options li:after { content: "|"; padding: 0 5px; }
 header .content .top_nav ul.user_options li.last, header .content .top_nav ul.user_options li:last-child:after { content: ""; padding: 0; }
-header .content .top_nav ul.user_options li a { color: #333; text-transform: lowercase; }
-header .content .top_nav ul.user_options li a:hover { text-decoration: underline; }
+header .content .top_nav ul.user_options li a { color: #1d79b0; text-transform: lowercase; }
+header .content .top_nav ul.user_options li a:hover { text-decoration: underline; color: #114c6e; }
 header nav { height: 55px; background: url("/images/nav_bkg.png") repeat-x; }
 header nav .content { padding: 10px 0 0 0; }
 header nav .content span.currently_viewing { float: left; margin: 10px 10px 0 0; font-size: 15px; font-weight: bold; color: #19597A; text-shadow: 1px 1px 1px #2F9CD8; }
@@ -358,7 +365,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.mini.with_icon .inner .icon { float: left; margin: 0 18px 0 0; background: url("/images/icons/ok_ball.png") no-repeat; width: 76px; height: 80px; }
 #container article.profile .inner h1 { font-size: 41px; }
 #container article.profile .inner .left h3 { margin-bottom: 5px; }
-#container article.profile .inner .left p { width: 292px; display: block-inline; margin: 0 0 10px 0; font-size: 15px; }
+#container article.profile .inner .left p { width: 100%; display: block-inline; margin: 0 0 10px 0; font-size: 15px; }
 #container article.micro { width: 390px; margin: 0 auto 40px auto; }
 #container article.micro .inner header { margin: 0; }
 #container article.micro .inner .content p { margin: 0 0 20px 0; padding: 0; font-size: 15px; color: #7d8a92; }
@@ -1237,17 +1244,22 @@ Error pages
 /* =============================================================================
 Home page
 ========================================================================== */
+body.home header { background: #F2F5F8; padding-top: 35px; }
+body.home header a.net_logo { display: none!important; }
+body.home header ul.user_options { bottom: 35px!important; }
+body.home header ul.languages { top: -30px !important; }
+
 article.participation { padding: 0 0 40px 0; }
 article.participation div.wrap { width: 575px; }
 article.participation div.wrap h1 { font-size: 48px; color: #465866; letter-spacing: -2px; }
 article.participation div.wrap p { font: normal 17px "Helvetica",Arial; color: #465866; line-height: 18px; }
 article.participation div.wrap div.login_block { display: block; width: 100%; height: 46px; }
-article.participation div.wrap div.login_block p { float: right; }
+article.participation div.wrap div.login_block p { float: right; font-size: 18px; }
 article.participation div.wrap div.login_block p a { font: bold 18px "Helvetica",Arial; }
 article.participation div.wrap div.login_block p a.blue_button { padding: 13px 30px; text-align: center; margin: 0 0 0 10px; }
 
-#container article#areas div.areas_list { position: relative; width: 994px; height: 366px; padding: 0; margin: 0; background: white; border-left: 1px solid #CCC; border-right: 1px solid #CCC; overflow: hidden; }
-#container article#areas div.areas_list ul { position: absolute; top: -8px; left: 0; width: 100%; margin: 0; background: none; }
+#container article#areas div.areas_list { position: relative; display: block; width: 994px; height: 366px; padding: 0; margin: 0; background: white; border-left: 1px solid #B5BDC4; border-right: 1px solid #B5BDC4; }
+#container article#areas div.areas_list ul { position: absolute; top: -9px; left: 0; width: 100%; margin: 0; background: none; border: none; }
 #container article#areas div.areas_list ul li { float: left; width: 270px; height: 74px; padding: 25px 30px; border-right: 1px solid #ECEDEF; border-bottom: 1px solid #ECEDEF; background: none; }
 #container article#areas div.areas_list ul li div.avatar { float: left; width: 67px; }
 #container article#areas div.areas_list ul li div.info { float: left; width: 190px; margin: 0 0 0 10px; padding: 10px 0 0 0; }
@@ -1255,13 +1267,15 @@ article.participation div.wrap div.login_block p a.blue_button { padding: 13px 3
 #container article#areas div.areas_list ul li div.info h3 a { color: #465866; }
 #container article#areas div.areas_list ul li div.info span.total { display: block; margin: 5px 0 0 0; padding: 0; font-size: 13!important; color: #666666; }
 #container article#areas div.areas_list ul li div.info span.total a { font-size: 13px!important; }
-#container article#areas div.areas_list ul li.last { width: 271px; border-right: none; }
-#container article#areas div.areas_list div.all_areas { position: absolute; top: 400px; }
+#container article#areas div.areas_list ul li.last { width: 272px; border-right: none; }
+#container article#areas div.areas_list div.all_areas { position: absolute; display: none; top: 400px; }
 #container article#areas div.areas_list div.all_areas h4 { width: 100%; display: block; margin: 0 0 0 30px; font: bold 12px "Helvetica",Arial; color: #465866; }
 #container article#areas div.areas_list div.all_areas ul.list { position: relative; padding: 20px 0 0 0; }
-#container article#areas div.areas_list div.all_areas ul.list li { height: auto; padding: 5px 30px; border: none; }
+#container article#areas div.areas_list div.all_areas ul.list li { height: auto; padding: 5px 30px; border: none; width: 271px; }
 #container article#areas div.areas_list div.all_areas ul.list li a { font: normal 17px "Helvetica",Arial!important; color: #1D79B0; }
 #container article#areas div.areas_list div.all_areas ul.list li a a:hover { text-decoration: underline; }
+#container article#areas div.areas_list div.all_areas ul.list li.last { width: 272px; }
+#container article#areas a.see_all_areas { width: 920px!important; display: block; text-align: center; background: url("/images/icons/arrow_down.png") no-repeat 533px 8px; }
 
 div.home_last_activity li.loop { display: none; }
 
@@ -1421,6 +1435,7 @@ header nav .content a.blue_button, header nav .content ul.auth li a.blue_button,
 
 /* Blue buttons */
 article .blue_button, header nav .content .blue_button, header nav .content ul li .blue_button { color: #fff; font-size: 15px; text-shadow: 0px 1px 1px #0F4768; border: 1px solid #13587F; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 1px 0 #369acf; -webkit-box-shadow: 0 1px 1px 0 #369acf; -o-box-shadow: 0 1px 1px 0 #369acf; box-shadow: 0 1px 1px 0 #369acf; background: #3396cd; /* Old browsers */ background: -moz-linear-gradient(top, #3396cd 0%, #2080b5 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3396cd), color-stop(100%, #2080b5)); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top, #3396cd 0%, #2080b5 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top, #3396cd 0%, #2080b5 100%); /* Opera11.10+ */ background: -ms-linear-gradient(top, #3396cd 0%, #2080b5 100%); /* IE10+ */ background: linear-gradient(top, #3396cd 0%, #2080b5 100%); /* W3C */ }
+article .blue_button.no_shadow, header nav .content .blue_button.no_shadow, header nav .content ul li .blue_button.no_shadow { box-shadow: none; }
 
 article .blue_button:active, header nav .content ul li .blue_button:active { background: #3396cd; /* Old browsers */ background: -moz-linear-gradient(top, #2080b5 0%, #3396cd 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2080b5), color-stop(100%, #3396cd)); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top, #2080b5 0%, #3396cd 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top, #2080b5 0%, #3396cd 100%); /* Opera11.10+ */ background: -ms-linear-gradient(top, #2080b5 0%, #3396cd 100%); /* IE10+ */ background: linear-gradient(top, #2080b5 0%, #3396cd 100%); /* W3C */ }
 
