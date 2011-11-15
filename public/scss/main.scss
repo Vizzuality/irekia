@@ -122,7 +122,7 @@ Header
 ========================================================================== */
 
 header {
-  padding-top: 34px;
+  padding-top: 50px;
   margin-bottom: 53px;
   background: $white;
 
@@ -133,8 +133,24 @@ header {
 
     .top_nav {
       position:relative;
+      height:57px;
       clear:both;
-      overflow:hidden;
+
+      ul.languages {
+        position:absolute;
+        top:-42px;
+        right:0;
+        width:auto;
+        li {
+          float:left;
+          width:auto;
+          border-right:1px solid #666666;
+          padding:0 4px!important;
+          a {padding:1px 0; font:normal 10px "Helvetica",Arial; color:$link_color; &:hover{color:$link_color_hover;}}
+          &.last {border:none; padding-right:0;}
+          &.selected a {color:#666666; &:hover {text-decoration:none; color:#666666; cursor:default;}}
+        }
+      }
 
       .logo { float:left; left: 0; top: 0; position: relative; display: block; }
       .net_logo { float: right;right:0; position:absolute; display: block; }
@@ -149,14 +165,14 @@ header {
 
         li {
           float: left;
-          font-size: 13px;
+          font-size: 12px;
 
-          &:after { content: "|"; padding: 0 5px; }
+          &:after {content: "|"; padding: 0 5px; }
           &.last, &:last-child:after { content: ""; padding: 0; }
           a {
-            color: #333;
+            color: $link_color;
             text-transform: lowercase;
-            &:hover {text-decoration:underline;}
+            &:hover {text-decoration:underline; color:$link_color_hover;}
           }
         }
       }
@@ -743,7 +759,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     h1 { font-size: 41px; }
     .left {
       h3 { margin-bottom: 5px; }
-      p  { width: 292px; display: block-inline; margin: 0 0 10px 0; font-size: 15px; }
+      p  { width: 100%; display: block-inline; margin: 0 0 10px 0; font-size: 15px; }
     }
   }
 
@@ -4307,6 +4323,16 @@ Error pages
 Home page
 ========================================================================== */
 
+body.home header {
+  background:#F2F5F8;
+  padding-top: 35px;
+
+  a.net_logo {display:none!important;}
+  ul.user_options {bottom:35px!important;}
+  ul.languages {top:-30px!important;}
+}
+
+
 article.participation {
   padding:0 0 40px 0;
 
@@ -4322,6 +4348,8 @@ article.participation {
 
       p {
         float:right;
+        font-size:18px;
+
         a {font:bold 18px "Helvetica",Arial;}
         a.blue_button {padding:13px 30px; text-align:center; margin:0 0 0 10px;}
       }
@@ -4330,83 +4358,100 @@ article.participation {
 }
 
 
-#container article#areas div.areas_list {
-  position:relative;
-  width:994px;
-  height:366px;
-  padding:0;
-  margin:0;
-  background:white;
-  border-left:1px solid #CCC;
-  border-right:1px solid #CCC;
-  overflow:hidden;
+#container article#areas {
 
-  ul {
-    position:absolute;
-    top:-8px;
-    left:0;
-    width:100%;
+  div.areas_list {
+    position:relative;
+    display:block;
+    width:994px;
+    height:366px;
+    padding:0;
     margin:0;
-    background:none;
+    background:white;
+    border-left:1px solid #B5BDC4;
+    border-right:1px solid #B5BDC4;
 
-    li {
-      float:left;
-      width:270px;
-      height:74px;
-      padding:25px 30px;
-      border-right:1px solid #ECEDEF;
-      border-bottom:1px solid #ECEDEF;
-      background:none;
-
-      div.avatar {
-        float:left;
-        width:67px;
-      }
-
-      div.info {
-        float:left;
-        width:190px;
-        margin:0 0 0 10px;
-        padding:10px 0 0 0;
-
-        h3 {font:bold 17px "Helvetica",Arial!important; a {color:#465866;}}
-        span.total {display:block; margin:5px 0 0 0; padding:0; font-size:13!important; color:#666666; a {font-size:13px!important;}}
-      }
-
-      &.last {width:271px; border-right:none;}
-    }
-  }
-
-  div.all_areas {
-    position:absolute;
-    top:400px;
-
-    h4 {
+    ul {
+      position:absolute;
+      top:-9px;
+      left:0;
       width:100%;
-      display:block;
-      margin:0 0 0 30px;
-      font:bold 12px "Helvetica",Arial;
-      color:#465866;
-    }
-
-    ul.list {
-      position:relative;
-      padding:20px 0 0 0;
+      margin:0;
+      background:none;
+      border:none;
 
       li {
-        height:auto;
-        padding:5px 30px;
-        border:none;
+        float:left;
+        width:270px;
+        height:74px;
+        padding:25px 30px;
+        border-right:1px solid #ECEDEF;
+        border-bottom:1px solid #ECEDEF;
+        background:none;
 
-        a {
-          font:normal 17px "Helvetica",Arial!important;
-          color:#1D79B0;
-          a:hover {text-decoration:underline;}
+        div.avatar {
+          float:left;
+          width:67px;
+        }
+
+        div.info {
+          float:left;
+          width:190px;
+          margin:0 0 0 10px;
+          padding:10px 0 0 0;
+
+          h3 {font:bold 17px "Helvetica",Arial!important; a {color:#465866;}}
+          span.total {display:block; margin:5px 0 0 0; padding:0; font-size:13!important; color:#666666; a {font-size:13px!important;}}
+        }
+
+        &.last {width:272px; border-right:none;}
+      }
+    }
+
+    div.all_areas {
+      position:absolute;
+      display:none;
+      top:400px;
+
+      h4 {
+        width:100%;
+        display:block;
+        margin:0 0 0 30px;
+        font:bold 12px "Helvetica",Arial;
+        color:#465866;
+      }
+
+      ul.list {
+        position:relative;
+        padding:20px 0 0 0;
+
+        li {
+          height:auto;
+          padding:5px 30px;
+          border:none;
+          width:271px;
+
+          a {
+            font:normal 17px "Helvetica",Arial!important;
+            color:#1D79B0;
+            a:hover {text-decoration:underline;}
+          }
+
+          &.last {width:272px;}
         }
       }
     }
+
+  }
+
+  a.see_all_areas {
+    width:920px!important;
+    display:block;
+    text-align:center;
+    background:url('/images/icons/arrow_down.png') no-repeat 533px 8px;
   }
 }
+
 
 
 div.home_last_activity {

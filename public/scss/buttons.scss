@@ -85,6 +85,8 @@ header nav .content .blue_button, header nav .content ul li .blue_button {
   background: -o-linear-gradient(top, #3396cd 0%,#2080b5 100%); /* Opera11.10+ */
   background: -ms-linear-gradient(top, #3396cd 0%,#2080b5 100%); /* IE10+ */
   background: linear-gradient(top, #3396cd 0%,#2080b5 100%); /* W3C */
+
+  &.no_shadow {box-shadow:none;}
 }
 
 article .blue_button:active, header nav .content ul li .blue_button:active {

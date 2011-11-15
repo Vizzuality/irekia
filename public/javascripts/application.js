@@ -64,7 +64,8 @@ $(function() {
 
 
   $("form.follow_button,form.follow_ribbon").live('ajax:success', function(evt, xhr, status) {
-    // Button
+    
+		// Button
 		var $el1 = $("div.column form.follow_button");
     $el1.fadeOut(150, function() {
 			var parent = $(this).parent();
@@ -91,10 +92,10 @@ $(function() {
 	// Grow ribbon
 	$('.follow_ribbon .ribbon').live('mouseenter',function(){
 		var form_ = $(this).closest('form');
-		form_.stop().animate({height:'90px'},300);
+		form_.stop(true).animate({height:'90px'},300);
 	}).live('mouseleave',function() {
 		var form_ = $(this).closest('form');
-		form_.stop().animate({height:'75px'},300);
+		form_.stop(true).animate({height:'75px'},300);
 	});
 	
 	// END FOLLOW FORMS!!
@@ -137,7 +138,9 @@ $(function() {
   $(".goto_comments").enableGotoComments();
   $('.floating-login').floatingLoginPopover();
 
-  $('.two_columns').columnize({width:302, height:140});
+	// If is politicians - 105 | areas - 140 >> HACK
+	var height_ = $('.two_columns').height();
+  $('.two_columns').columnize({width:302, height:height_ + 30});
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
 
@@ -165,7 +168,8 @@ $(function() {
 	// HOME, grow all areas
 	$("a.see_all_areas").click(function(ev){
 		ev.preventDefault();
-		$(this).closest('article.areas').find('div.areas_list').animate({height:'640px'},500);
+		$(this).closest('article.areas').find('div.areas_list').animate({height:'635px'},500);
+		$(this).closest('article.areas').find('div.all_areas').show();
 		$(this).closest('article.areas').find('footer').animate({opacity:0,height:0},500,function(){
 			$(this).closest('article.areas').removeClass('with_footer');
 			$(this).remove();

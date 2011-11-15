@@ -34,18 +34,19 @@
   <%= csrf_meta_tag %>
   <%= yield :facebook_meta %>
 </head>
-<body>
+<body class="<%= 'home' if (controller.controller_name=="home") %>">
 
   <%= render 'shared/sign_in' %>
 
   <div id="container">
     <header>
       <%= render 'shared/header' %>
-    <nav>
-      <%= render 'shared/nav_bar' %>
-    </nav>
+      <% if controller.controller_name != "home" %>
+        <nav>
+          <%= render 'shared/nav_bar' %>
+        </nav>
+    <% end %>
     </header>
-
     <div id="main" class="<%= controller.controller_name %> <%= controller.action_name %>">
       <div class="content">
         <%= yield %>

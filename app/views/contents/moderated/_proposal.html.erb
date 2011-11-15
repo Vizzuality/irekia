@@ -23,38 +23,35 @@
         <% end %>
       </div>
 
-        <% if @vote -%>
-          <div class="footer">
-            <%= form_for @vote, :remote => true do |form| %>
-              <%= form.hidden_field :id %>
-              <%= form.hidden_field :content_id %>
-              <%= form.hidden_field :user_id %>
-              <div class="input_text">
-                <%= form.fields_for :vote_data do |vote_data_form| %>
-                  <%= vote_data_form.hidden_field :id, :value => '' %>
-                  <%= vote_data_form.hidden_field :in_favor, :value => false %>
-                <% end -%>
-                <%= button_with_login 'Estoy en contra', :class => "white_button against#{' selected' unless @vote.new_record? || @vote.in_favor }" %>
-              </div>
+      <div class="footer">
+        <%= form_for @vote, :remote => true do |form| %>
+          <%= form.hidden_field :id %>
+          <%= form.hidden_field :content_id %>
+          <%= form.hidden_field :user_id %>
+          <div class="input_text">
+            <%= form.fields_for :vote_data do |vote_data_form| %>
+              <%= vote_data_form.hidden_field :id, :value => '' %>
+              <%= vote_data_form.hidden_field :in_favor, :value => false %>
             <% end -%>
+            <%= button_with_login 'Estoy en contra', :class => "white_button against#{' selected' unless @vote.new_record? || @vote.in_favor }" %>
           </div>
         <% end -%>
-        <% if @vote -%>
-          <div class="footer">
-            <%= form_for @vote, :remote => true do |form| %>
-              <%= form.hidden_field :id %>
-              <%= form.hidden_field :content_id %>
-              <%= form.hidden_field :user_id %>
-              <div class="input_text">
-                <%= form.fields_for :vote_data do |vote_data_form| %>
-                  <%= vote_data_form.hidden_field :id, :value => '' %>
-                  <%= vote_data_form.hidden_field :in_favor, :value => true %>
-                <% end -%>
-                <%= button_with_login 'Estoy a favor', :class => "white_button in_favor#{' selected' unless @vote.new_record? || @vote.against }" %>
-              </div>
+      </div>
+
+      <div class="footer">
+        <%= form_for @vote, :remote => true do |form| %>
+          <%= form.hidden_field :id %>
+          <%= form.hidden_field :content_id %>
+          <%= form.hidden_field :user_id %>
+          <div class="input_text">
+            <%= form.fields_for :vote_data do |vote_data_form| %>
+              <%= vote_data_form.hidden_field :id, :value => '' %>
+              <%= vote_data_form.hidden_field :in_favor, :value => true %>
             <% end -%>
+            <%= button_with_login 'Estoy a favor', :class => "white_button in_favor#{' selected' unless @vote.new_record? || @vote.against }" %>
           </div>
         <% end -%>
+      </div>
     </div>
 
     <%#= image_tag @content.proposal_data.image.content_url if @content.proposal_data.image.present? %>
