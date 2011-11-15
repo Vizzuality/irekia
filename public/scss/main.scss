@@ -850,7 +850,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     &.user {
       .inner .content .container {
 
-        height:70px;
+        height:79px;
 
         .inner_container .section {
 
@@ -882,7 +882,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
           overflow:hidden;
           clear:both;
           width:687px;
-          height:94px;
+          height:79px;
 
           .inner_container {
             width:9000px;
@@ -2042,6 +2042,16 @@ article .inner { h2, h3 { color: $dark_blue; } }
     padding-bottom: 10px;
     top:20px;
     z-index:2000;
+
+    li {
+      .avatar { float: left; margin: 0 10px 0 0; }
+      p {
+        float: left; margin: 0!important; padding: 0;
+        line-height:16px;
+        span { display: block; font-size:15px; color:#666666; }
+        span.description { color:#7D8A92; }
+      }
+    }
 
     .a_t {
       background:url('/images/box_autosuggest_bkg.png') no-repeat -1px top;
