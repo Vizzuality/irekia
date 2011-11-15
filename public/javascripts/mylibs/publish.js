@@ -26,7 +26,7 @@
   defaults = {
     easingMethod:'easeInOutQuad',
     sectionWidth: 687,
-    transitionSpeed: 150,
+    transitionSpeed: 200,
     maxLimit: 140
   };
 
@@ -478,6 +478,7 @@
           console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
 					$ps.find(".progress").show();
 					$uploader.find("input").blur();
+          $uploader.find(".holder").fadeOut(speed);
           $uploader.find(".holder, .loading, .percentage").fadeIn(speed);
         },
         onProgress: function(id, fileName, loaded, total){
