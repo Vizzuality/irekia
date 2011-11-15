@@ -22,6 +22,6 @@ module ContentsHelper
   end
 
   def message_for_twitter(url, message)
-    message = "#{message.truncate(137 - url.length)} - #{url}"
+    message = "Irekia - #{message.truncate(131 - url.length)} - #{url}"
   end
 end

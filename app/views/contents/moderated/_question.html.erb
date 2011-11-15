@@ -29,27 +29,37 @@
         <%= simple_format @answer.answer_text %>
       </div>
     <% else %>
-      <div class="answer_placeholder">
-        <p><strong><%= t('.not_answered_yet') %></strong></p>
-        <p class="has_requested_answer">
-          <% if @user_has_requested_answer %>
-            <% if @content.answer_requests_count <= 2 -%>
-              <%= t('.you_and_other', :count => @content.answer_requests_count) -%>
-            <% else -%>
-              <%= t('.you_and_thousands', :count => @content.answer_requests_count - 1) -%>
-            <% end -%>
-          <% else %>
-            <%= t('.people_demanding_answer', :count => @content.answer_requests_count) -%>
+      <% if current_user && current_user.politician? -%>
+        <%= form_for @new_answer do |form| %>
+          <%= form.hidden_field :related_content_id %>
+          <%= form.fields_for :answer_data, @new_answer.answer_data do |answer_data| -%>
+            <%= answer_data.text_area :answer_text %>
           <% end -%>
-        </p>
-          <% if @new_request -%>
-            <%= form_for @new_request do |f| -%>
-              <%= f.hidden_field :content_id -%>
-              , <%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
+          <%= form.submit 'Publicar respuesta' %>
+        <% end -%>
+      <% else -%>
+        <div class="answer_placeholder">
+          <p><strong><%= t('.not_answered_yet') %></strong></p>
+          <p class="has_requested_answer">
+            <% if @user_has_requested_answer %>
+              <% if @content.answer_requests_count <= 2 -%>
+                <%= t('.you_and_other', :count => @content.answer_requests_count) -%>
+              <% else -%>
+                <%= t('.you_and_thousands', :count => @content.answer_requests_count - 1) -%>
+              <% end -%>
+            <% else %>
+              <%= t('.people_demanding_answer', :count => @content.answer_requests_count) -%>
             <% end -%>
-          <% end -%>
-        </p>
-      </div>
+          </p>
+            <% if @new_request -%>
+              <%= form_for @new_request do |f| -%>
+                <%= f.hidden_field :content_id -%>
+                , <%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
+              <% end -%>
+            <% end -%>
+          </p>
+        </div>
+      <% end -%>
     <% end %>
     <%= render "participations/comments" %>
   </div>
