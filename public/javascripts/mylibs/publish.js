@@ -138,10 +138,6 @@
     $currentMenuOption = $ps.find(".menu").find("li:nth-child(" + (data.sectionID + 1) + ")");
     $currentSection    = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
-    // Clear the hidden fields
-    $("#question_question_data_attributes_politician_id").val("");
-    $("#question_question_data_attributes_area_id").val("");
-
     _gotoSection(data);
 
     _selectOption(data, $currentMenuOption);
@@ -173,11 +169,6 @@
       on && on();
     }
   }
-
-  // function textCounter($input, $submit) {
-  //   var count = $input.val().length;
-  //   (count <= 0) ? _disableSubmit($submit) : _enableSubmit($submit);
-  // }
 
   function _resetSection(data, $section) {
     $section.find(":text, textarea").val("");
@@ -277,12 +268,25 @@
     });
   }
 
+  // Update target depending on the selected element
+  function _updateHiddenTarget(targetClass, id) {
+    var id = id.replace("item_", "");
+    var otherTarget =  (targetClass == "user") ? "area" : "user";
+    var name = _getCurrentSectionName();
+
+    $currentSection.find('#' + name + '_' + name + '_data_attributes_' + targetClass + '_id').val(id)
+    $currentSection.find('#' + name + '_' + name + '_data_attributes_' + otherTarget + '_id').val("");
+
+    console.log(name, $currentSection, targetClass, otherTarget, $currentSection.find('#' + name + '_' + name + '_data_attributes_' + targetClass + '_id'));
+    console.log(name, $currentSection, targetClass, otherTarget, $currentSection.find('#' + name + '_' + name + '_data_attributes_' + otherTarget + '_id'));
+  }
+
   function _bindSearch(data) {
     var $ps = data.$ps;
 
-    _enableInputCounter(data, $(".autosuggest_field input"), null, function() { _clearAutosuggest(data); } );
+    _enableInputCounter(data, $(".autosuggest_field input"), null, function() { _clearAutosuggest(data); _resetHiddenFields(); } );
 
-    $ps.find('.extra input').keyup(function(ev){
+    $ps.find('.autosuggest_field input').keyup(function(ev){
 
       if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
 
@@ -294,7 +298,7 @@
       if ($(this).val().length > 3) {
         interval = setTimeout(function(){
 
-          var query = $ps.find('.extra input[type="text"]').val();
+          var query = $currentSection.find('.extra .autosuggest_field input[type="text"]').val();
 
           data.spinner.spin(spin_element);
 
@@ -309,28 +313,21 @@
               // Publish!
               var id = $(this).attr("id");
 
-              if ($(this).hasClass("politician")) {
-                id = id.replace("politician_", "");
-                $ps.find("#question_question_data_attributes_user_id").val(id)
-                $ps.find("#question_question_data_attributes_area_id").val("");
-              } else {
-                id = id.replace("area_", "");
-                $ps.find("#question_question_data_attributes_area_id").val(id);
-                $ps.find("#question_question_data_attributes_user_id").val("");
-              }
+              $(this).hasClass("user") ? _updateHiddenTarget("user", id) : _updateHiddenTarget("area", id);
 
               _bindSubmit(data, "Publicar", true, "publish");
               _clearAutosuggest(data);
               _enableSubmit(data.$submit);
+
             });
 
-            $ps.find(".autosuggest").fadeOut(150, function() {
+            $currentSection.find(".autosuggest").fadeOut(150, function() {
               $(this).remove();
             });
 
             if ($response.find("li").length > 0) {
               $response.hide();
-              $response.css("top", $ps.find(".autosuggest_field").position().top + 220);
+              $response.css("top", $currentSection.find(".autosuggest_field").position().top + 220);
               $ps.find('.content').append($response);
               $response.fadeIn(150);
             }
@@ -372,7 +369,6 @@
     _disableSubmit(data.$submit);
     _changeSubmitTitle(data.$submit, "Publicar");
     data.$submit.unbind();
-
   }
 
   function _publishQuestion(data) {
@@ -396,6 +392,7 @@
     $form.unbind();
     $form.bind('ajax:success', function(event, xhr, status) { _successQuestion(data, $form, xhr); })
   }
+
   function _successProposal(data, $form, xhr) {
     var $ps = data.$ps;
     var $response = $(xhr);
@@ -422,8 +419,8 @@
     _showMessage(data, "success");
   }
 
-  function _proposal() {
-    return $currentSection.hasClass("proposal");
+  function _getCurrentSectionName() {
+    return _question() ? "question" : "proposal";
   }
 
   function _question() {
@@ -540,14 +537,19 @@
     }
   }
 
+  function _resetHiddenFields() {
+    $("#question_question_data_attributes_politician_id").val("");
+    $("#question_question_data_attributes_area_id").val("");
+    $("#proposal_proposal_data_attributes_politician_id").val("");
+    $("#proposal_proposal_data_attributes_area_id").val("");
+  }
+
   function _gotoSection(data) {
     var $ps = data.$ps;
 
     _clearAutosuggest(data);
     _clearSection(data);
-
-    $("#question_question_data_attributes_politician_id").val("");
-    $("#question_question_data_attributes_area_id").val("");
+    _resetHiddenFields();
 
     var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
     var height    = $section.find(".form").outerHeight(true) + 20;
