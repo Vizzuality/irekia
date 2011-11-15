@@ -1,7 +1,7 @@
 <div class="autosuggest">
   <ul>
     <% @areas.each do |area| %>
-      <li id="area_<%= area.id %>" class="clearfix">
+      <li id="area_<%= area.id %>" class="area clearfix">
       <%= avatar area, 'small' %>
       <p>
       <span class="name"><%= area.name %></span>
@@ -10,7 +10,7 @@
       </li>
     <% end %>
     <% @politicians.each do |politician| %>
-      <li id="politician_<%= politician.id%>" class="clearfix">
+      <li id="politician_<%= politician.id%>" class="politician clearfix">
       <%= avatar politician, 'small' %>
       <p>
       <span class="name"><%= politician.fullname %></span>
