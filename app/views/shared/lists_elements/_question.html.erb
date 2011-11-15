@@ -6,10 +6,10 @@
   <%= content_tag 'p', t(".title", :receiver => data.target_user.fullname) if data.target_user %>
 
   <% if data.target_user %>
-  <p class="excerpt"><%= link_to %Q{"#{data.question_text}"}, question_path(data.id) %></p>
-<% else %>
-  <p><strong><%= link_to %Q{"#{data.question_text}"}, question_path(data.id) %></strong></p>
-<% end %>
+    <p class="excerpt"><%= link_to %Q{"#{data.question_text}"}, question_path(data.id) %></p>
+  <% else %>
+    <p class="excerpt"><%= link_to %Q{"#{data.question_text}"}, question_path(data.id) %></p>
+  <% end %>
 
   <div class="footer">
     <span class="published_at">
