@@ -1084,6 +1084,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 jQuery.fn.verticalHomeLoop = function(opt){
 	
   if (this.length < 1) return;
+
 	var ele = this,
 			onElement = false;
 
@@ -1104,7 +1105,7 @@ jQuery.fn.verticalHomeLoop = function(opt){
 		}
 	}
 	
-	$(ele).find('div.left ul').hover(function(){
+	$(ele).find('div.left > ul').hover(function(){
 		onElement = true;
 	},function(){
 		onElement = false;		

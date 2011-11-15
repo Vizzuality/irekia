@@ -24,13 +24,13 @@
     </li>
   <% end %>
 
-    <% if defined?(facebook_url) -%>
-      <li>
-        <%= link_to '', '#', :name => 'fb_share', :class => 'share facebook', :type => 'icon', :share_url => facebook_url %>
-        <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
-        </script>
-      </li>
-    <% end -%>
+  <% if defined?(facebook_url) -%>
+    <li>
+      <%= link_to '', '#', :name => 'fb_share', :class => 'share facebook', :type => 'icon', :share_url => facebook_url %>
+      <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
+      </script>
+    </li>
+  <% end -%>
   <!--
   <li><div class="share more"></div>
 

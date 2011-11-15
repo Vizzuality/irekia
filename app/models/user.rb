@@ -356,7 +356,7 @@ class User < ActiveRecord::Base
       :title    => event.title,
       :date     => I18n.localize(event.event_date, :format => '%d, %B de %Y'),
       :when     => event.event_date.strftime('%H:%M'),
-      :where    => nil,
+      :where    => event.try(:location),
       :lat      => event.latitude,
       :lon      => event.longitude,
       :event_id => event.id

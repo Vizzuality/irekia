@@ -1,3 +1,7 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="Irekia - Estado de <%= @content.author.fullname %>" />
+  <meta property="og:description" content="<%= @content.message %>" />
+<% end -%>
 <article class="activity with_footer">
 <div class="inner">
   <div class="left">
@@ -15,7 +19,7 @@
   </div>
   <div class="right">
     <div class="content left-border">
-      <%= render "shared/sharing" %>
+      <%= render "shared/sharing", :facebook_url => tweet_url(@content) %>
       <%= render "shared/sidebar/previous_tweets" %>
     </div>
   </div>

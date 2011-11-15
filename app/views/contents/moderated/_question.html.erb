@@ -1,3 +1,7 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="Irekia - Pregunta para <%= @content.target_user ? @content.target_user.fullname : @content.target_area.name %>" />
+  <meta property="og:description" content="<%= @content.question_text.strip %>" />
+<% end -%>
 <article class="questions with_footer">
 <div class="inner">
   <div class="left">
@@ -51,7 +55,7 @@
   </div>
   <div class="right">
     <div class="content left-border">
-      <%= render "shared/sharing" %>
+      <%= render "shared/sharing", :facebook_url => question_url(@content) %>
       <%= render "shared/sidebar/tags" %>
       <%= render "shared/sidebar/answered_by" if @answer %>
       <%= render "shared/sidebar/related_questions" %>

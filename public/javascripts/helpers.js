@@ -201,7 +201,7 @@ jQuery.fn.enableArguments = function(opt){
   var maxHeight = 0;
 
   this.each(function(){
-    if ($(this).find("ul").height() > maxHeight) {
+    if (($(this).find("ul").height()) > maxHeight) {
       maxHeight = $(this).find("ul").height();
     }
   });

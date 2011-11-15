@@ -22,9 +22,7 @@ puts '================='.green
                       :email                 => 'aitana_muguzola@yahoo.es',
                       :is_woman              => true,
                       :description           => (<<-EOF
-                        Aitana es la persona encargada de Deportes del Gobierno Vasco.
-                        Coordina y gestiona tanto infraestructuras deportivas como eventos.
-                        Actualmente inmersa en el desarrollo del deporte escolar y de barrio.
+                        Aitana es la persona encargada de Deportes del Gobierno Vasco y una de las personas mas jóvenes del equipo de gobierno. Coordina y gestiona tanto infraestructuras deportivas como eventos. Actualmente centra la mayor parte de sus esfuerzos en desarrollar el deporte escolar y de barrio.
                       EOF
                       ),
                       :title                 => Title.find_by_name('Adviser'),
@@ -37,9 +35,7 @@ puts '================='.green
                      :email                 => 'aitor_garcia_ibarra@hotmail.com',
                      :is_woman              => false,
                      :description           => (<<-EOF
-                       Aitor dirige y tramita la Sanidad del Gobierno Vasco.
-                       Entre sus principales funciones destaca velar por el desarrollo del sistema sanitario y reducir tanto listas de espera como los tiempos de atención a pacientes.
-                       Además de construir un hospital con las últimas tecnologías en cada área del País Vasco.
+                       Aitor dirige y tramita la Sanidad del Gobierno Vasco. Entre sus principales funciones destaca velar por el desarrollo del sistema sanitario y reducir tanto listas de espera como los tiempos de atención a pacientes, además de construir un hospital con las últimas tecnologías para la atención de pacientes y la investigación en cada área del País Vasco.
                      EOF
                      ),
                      :role                  => Role.find_by_name('Politician'),
@@ -51,8 +47,7 @@ puts '================='.green
                       :email                 => 'jamal@gmail.com',
                       :is_woman              => false,
                       :description           => (<<-EOF
-                        Javier actualmente trabaja  en el Departamento de Educación.
-                        Dirigir los organismos autónomicos, entes públicos de derecho privado y sociedades públicas adscritos al Departamento.
+                        Javier actualmente trabaja en el Departamento de Educación. Su día a día se desarrolla dirigiendo los organismos autónomicos, entes públicos de derecho privado y sociedades públicas adscritos al Departamento encargadas de todos los ámbitos que rodéan a la investigación, el desarrollo y la educación pública.
                       EOF
                       ),
                       :role                  => Role.find_by_name('Politician'),
@@ -64,8 +59,7 @@ puts '================='.green
                       :email                 => 'asanch@hotmail.com',
                       :is_woman              => true,
                       :description           => (<<-EOF
-                        Ainara trabaja actualmente en el área de Medio Ambiente del Gobierno Vasco.
-                        Desarrolla y fomenta diversos programas de protección del Medio Ambiente, así como multitud de actividades relacionadas con el mismo.
+                        Ainara trabaja actualmente en el área de Medio Ambiente del Gobierno Vasco. Amante de los animales y los paisajes desconocidos, desarrolla y fomenta diversos programas de protección del Medio Ambiente, así como multitud de actividades relacionadas con el mismo. Ella afirma que no podría imaginarse viviendo en un mejor lugar el País Vasco.
                       EOF
                       ),
                       :role                  => Role.find_by_name('Politician'),
@@ -77,8 +71,7 @@ puts '================='.green
                     :email                 => 'jlopez_leiva@gmail.com',
                     :is_woman              => false,
                     :description           => (<<-EOF
-                      Joel promueve y desarrolla el Departamento de Asuntos Sociales.
-                      Busca una constante solución a los problemas cotidianos de los ciudadanos vascos, eliminando barreras e impedimentos para permitir un mejor nivel de vida.
+                      Joel promueve y desarrolla el Departamento de Asuntos Sociales. Busca una constante solución a los problemas cotidianos de los ciudadanos vascos, eliminando barreras e impedimentos para permitir un mejor nivel de vida. Muchos de sus compañeros aseguran que apenas duerme, trabaja todo el día.
                     EOF
                     ),
                     :role                  => Role.find_by_name('Politician'),
