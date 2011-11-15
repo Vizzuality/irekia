@@ -610,7 +610,9 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 .footer.comments a, span.comments a { padding: 0 0 0 13px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -50px; }
 
-.footer.where, span.where, ul.locations .footer, .map .infowindow ul.details li.where { max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.footer.where, ul.locations .footer { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
+
+span.where, .map .infowindow ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 
 #container article.agenda .inner .content ul li.day .info ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; -o-text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 #container article.actions .inner, #container article.proposals .inner, #container article.photos .inner, #container article.proposal .inner, #container article.questions .inner, #container article.activity .inner { width: 934px; padding: 15px 31px 35px 29px; }
@@ -1035,7 +1037,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner header .right ul.switch li.selected { border: 1px solid #ccc; background: white; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container article .inner header .right ul.switch li.selected a { padding: 4px 23px; color: #465866; }
 #container article .inner header .right ul.switch li.selected a:hover { text-decoration: none; cursor: default; }
-#container article .inner .left .description.two_columns .column { margin-right: 40px; width: 282px!important; padding: 0 0 20px; }
+#container article .inner .left .description.two_columns .column { margin-right: 40px; width: 282px!important; padding: 0 0 10px; }
 #container article .inner .left .description.two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
 #container article footer inner.with_avatar { position: relative; }

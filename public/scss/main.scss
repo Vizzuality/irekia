@@ -1802,7 +1802,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 }
 
-.footer.where, span.where, ul.locations .footer, .map .infowindow ul.details li.where {
+.footer.where, ul.locations .footer {
+  padding: 0 0 0 17px;
+  background: url('/images/maps_sprite.png') no-repeat -51px -65px;
+}
+
+span.where, .map .infowindow ul.details li.where {
+  width:207px;
   max-height:26px;
   padding: 0 0 0 17px;
   background: url('/images/maps_sprite.png') no-repeat -51px -65px;
@@ -3574,7 +3580,7 @@ a.editable {
                   .column {
                     margin-right: 40px;
                     width: 282px!important;
-                    padding:0 0 20px;
+                    padding:0 0 10px;
                     p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
                     &.last { margin-right: 0px; width: 280px!Important; }
                   }
