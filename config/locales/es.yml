@@ -339,14 +339,14 @@
         title: 'Otros eventos de este área'
         time: 'Hace %{time}'
         comments:
-          zero: Todavía no hay comentarios
+          zero: Aún no hay comentarios
           one: Un comentario
           other: '%{count} comentarios'
       related_questions:
         title: 'Otras preguntas similares'
         time: 'Hace %{time}'
         comments:
-          zero: Todavía no hay comentarios
+          zero: Aún no hay comentarios
           one: Un comentario
           other: '%{count} comentarios'
       politicians:
@@ -356,7 +356,7 @@
       related_content:
         title: Contenidos similares
         comments:
-          zero: Todavía no hay comentarios
+          zero: Aún no hay comentarios
           one: Un comentario
           other: '%{count} comentarios'
     question_form:
@@ -692,7 +692,7 @@
           related_content:
             title: Últimos contenidos
             comments:
-              zero: Todavía no hay comentarios
+              zero: Aún no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
       photo:
@@ -720,7 +720,7 @@
           related_photos:
             title: Últimas fotos
             comments:
-              zero: Todavía no hay comentarios
+              zero: Aún no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
       event:
@@ -749,7 +749,7 @@
           related_events:
             title: Últimos eventos
             comments:
-              zero: Todavía no hay comentarios
+              zero: Aún no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
       question:
@@ -797,7 +797,7 @@
             title: 'Otras preguntas similares'
             time: 'Hace %{time}'
             comments:
-              zero: Todavía no hay comentarios
+              zero: Aún no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
         footer:
@@ -840,7 +840,7 @@
           related_content:
             title: Últimos contenidos
             comments:
-              zero: Todavía no hay comentarios
+              zero: Aún no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
       tweet:
