@@ -30,7 +30,7 @@ class Moderation
     order = "created_at #{order}"
 
     if page && per_page
-      offset = (page - 1) * per_page
+      offset = (page.to_i - 1) * per_page
       offset = 0 if offset < 0
       pagination = "LIMIT #{per_page} OFFSET #{offset}"
     end

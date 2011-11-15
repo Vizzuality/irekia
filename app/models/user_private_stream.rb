@@ -1,6 +1,9 @@
 class UserPrivateStream < ActiveRecord::Base
   belongs_to :user
 
+  after_create  :update_user_counters
+  after_destroy :update_user_counters
+
   def self.questions
     where(:event_type => :question)
   end
@@ -66,4 +69,16 @@ class UserPrivateStream < ActiveRecord::Base
     JSON.parse(self.message).hashes2ostruct if self.message.present?
   rescue
   end
+
+  def update_user_counters
+    case
+    when event_type == 'statusmessage' || event_type == 'tweet'
+      user.update_attribute("private_statuses_count", user.private_actions.where(:event_type => %w(statusmessage tweet)).count)
+    when event_type == 'answerrequest'
+      user.update_attribute("private_questions_count", user.private_actions.where(:event_type => %w(questions answers answerrequest)).count)
+    else
+      user.update_attribute("private_#{event_type.pluralize}_count", user.private_actions.where(:event_type => event_type).count)
+    end
+  end
+  private :update_user_counters
 end

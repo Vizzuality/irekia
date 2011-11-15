@@ -28,13 +28,14 @@ Irekia::Application.routes.draw do
     match '/moderation/validate_all/:type' => 'moderation#validate_all', :as => :moderate_all
     resources :users
     # resources :contents
-    resources :proposals,      :controller => 'contents',       :type => 'Proposal'
-    resources :questions,      :controller => 'contents',       :type => 'Question'
-    resources :answers,        :controller => 'contents',       :type => 'Answer'
-    resources :news,           :controller => 'contents',       :type => 'News'
-    resources :events,         :controller => 'contents',       :type => 'Event'
-    resources :tweets,         :controller => 'contents',       :type => 'Tweet'
-    resources :photos,         :controller => 'contents',       :type => 'Photo'
+    resources :proposals,       :controller => 'contents',       :type => 'Proposal'
+    resources :questions,       :controller => 'contents',       :type => 'Question'
+    resources :answers,         :controller => 'contents',       :type => 'Answer'
+    resources :news,            :controller => 'contents',       :type => 'News'
+    resources :events,          :controller => 'contents',       :type => 'Event'
+    resources :tweets,          :controller => 'contents',       :type => 'Tweet'
+    resources :status_messages, :controller => 'contents',       :type => 'Tweet'
+    resources :photos,          :controller => 'contents',       :type => 'Photo'
     # resources :participations
     resources :comments,        :controller => 'participations', :type => 'Comment'
     resources :arguments,       :controller => 'participations', :type => 'Argument'

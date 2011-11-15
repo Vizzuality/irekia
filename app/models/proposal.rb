@@ -96,6 +96,8 @@ class Proposal < Content
   end
 
   def update_statistics
+    return unless proposal_data && votes
+
     proposal_data.in_favor      = votes.in_favor.count
     proposal_data.against       = votes.against.count
     proposal_data.participation = votes.count

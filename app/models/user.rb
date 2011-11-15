@@ -459,6 +459,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def destroy_exfollower_activity(exfollower)
+    UserPrivateStream.joins(<<-SQL
+      INNER JOIN contents ON contents.id = user_private_streams.event_id AND lower(contents.type) = user_private_streams.event_type
+    SQL
+    ).where('contents.user_id' => self.id, 'user_private_streams.user_id' => exfollower.id).destroy_all
+
+    UserPrivateStream.joins(<<-SQL
+      INNER JOIN participations ON participations.id = user_private_streams.event_id AND lower(participations.type) = user_private_streams.event_type
+    SQL
+    ).where('participations.user_id' => self.id, 'user_private_streams.user_id' => exfollower.id).destroy_all
+  end
+
   def check_blank_name
     name = email if name.blank?
   end

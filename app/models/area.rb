@@ -73,6 +73,14 @@ class Area < ActiveRecord::Base
     select([:id, :name])
   end
 
+  def contents
+    Content.joins(:author => :areas).where('areas.id' => self.id)
+  end
+
+  def participations
+    Participation.joins(:author => :areas).where('areas.id' => self.id)
+  end
+
   def get_actions(filters)
     actions = self.actions
     actions = actions.where(:event_type => filters[:type]) if filters[:type].present?
@@ -147,5 +155,19 @@ class Area < ActiveRecord::Base
 
   def status_messages
     StatusMessage.joins(:users => :areas).where('areas.id' => id).moderated
+  end
+
+  def destroy_exfollower_activity(exfollower)
+    users.where('users.id not in (?)', exfollower.users_following_ids).each do |user|
+      UserPrivateStream.joins(<<-SQL
+        INNER JOIN contents ON contents.id = user_private_streams.event_id AND lower(contents.type) = user_private_streams.event_type
+      SQL
+      ).where('contents.user_id' => user.id, 'user_private_streams.user_id' => exfollower.id).destroy_all
+
+      UserPrivateStream.joins(<<-SQL
+        INNER JOIN participations ON participations.id = user_private_streams.event_id AND lower(participations.type) = user_private_streams.event_type
+      SQL
+      ).where('participations.user_id' => user.id, 'user_private_streams.user_id' => exfollower.id).destroy_all
+    end
   end
 end
