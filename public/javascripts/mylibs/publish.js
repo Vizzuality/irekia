@@ -9,11 +9,7 @@
     document.documentElement.className = document.documentElement.className + ' ps_fouc';
   }
 
-
   var
-  sectionID     = 0,
-  speed         = 150,
-  sectionWidth  = 687,
   $article      = $(this),
   currentHeight = 0,
   $currentSection,
@@ -30,7 +26,7 @@
   defaults = {
     easingMethod:'easeInOutQuad',
     sectionWidth: 687,
-    transitionSpeed: 200,
+    transitionSpeed: 150,
     maxLimit: 140
   };
 
@@ -143,10 +139,10 @@
     _gotoSection(data);
 
     _selectOption(data, $currentMenuOption);
-    _resizeSection($ps, $currentSection);
+    _resizeSection(data, $currentSection);
 
     _subscribeToEvent(data.event);
-    _triggerOpenAnimation($ps, data);
+    _triggerOpenAnimation(data);
     $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
   }
 
@@ -177,9 +173,9 @@
   //   (count <= 0) ? _disableSubmit($submit) : _enableSubmit($submit);
   // }
 
-  function _resetSection($section) {
+  function _resetSection(data, $section) {
     $section.find(":text, textarea").val("");
-    $section.find(".holder").fadeIn(speed);
+    $section.find(".holder").fadeIn(data.settings.transitionSpeed);
   }
 
   function _hasContent($section) {
@@ -228,25 +224,26 @@
     });
   }
 
-  function _resizeSection($ps, $section, callback) {
+  function _resizeSection(data, $section, callback) {
+    var $ps = data.$ps;
     height = $section.find(".form").outerHeight(true);
-    $ps.find(".container").animate({ scrollTop: 0, height: height }, speed, function() {
+    $ps.find(".container").animate({ scrollTop: 0, height: height }, data.settings.transitionSpeed, function() {
       callback && callback();
     });
   }
 
-  function _hideExtraFields() {
+  function _hideExtraFields(speed) {
     $currentSection.find(".extra").fadeOut(speed);
   }
 
-  function _showExtraFields() {
+  function _showExtraFields(speed) {
     $currentSection.find(".extra").fadeIn(speed);
   }
 
-
   function _clearAutosuggest(data) {
     var $ps = data.$ps;
-    $ps.find(".autosuggest").fadeOut(150, function() {
+
+    $ps.find(".autosuggest").fadeOut(100, function() {
       $(this).remove();
     });
   }
@@ -304,16 +301,18 @@
     if (data.proposalStep == 0) {
       data.proposalStep++;
 
-      _showExtraFields();
-      _resizeSection($ps, $currentSection);
+      _showExtraFields(data.settings.transitionSpeed);
+      _resizeSection(data, $currentSection);
       _disableSubmit(data.$submit);
       //data.$submit.unbind();
       _changeSubmitTitle(data.$submit, "Publicar");
     } else {
-      _showMessage($ps, "success", function() {
-        data.proposalStep = 0;
-        _resetSection($currentSection);
-      });
+      var $form = $currentSection.find("form");
+      $form.submit();
+      data.spinner.spin(spin_element);
+
+      $form.unbind();
+      $form.bind('ajax:success', function(event, xhr, status) { _successProposal(data, $form, xhr); })
     }
   }
 
@@ -323,8 +322,8 @@
     if (data.questionStep == 0) {
       data.questionStep++;
 
-      _showExtraFields();
-      _resizeSection($ps, $currentSection);
+      _showExtraFields(data.settings.transitionSpeed);
+      _resizeSection(data, $currentSection);
       _disableSubmit(data.$submit);
       _changeSubmitTitle(data.$submit, "Publicar");
 
@@ -338,6 +337,19 @@
     }
   }
 
+  function _successProposal(data, $form, xhr) {
+    var $ps = data.$ps;
+    var $response = $(xhr);
+
+    data.spinner.stop();
+    $response.hide();
+    $form.after($response);
+    data.$ps.find(".extra").hide();
+    data.$ps.find(".holder").show();
+    data.$ps.find(":text, textarea").val("");
+    _showMessage(data, "success");
+  }
+
   function _successQuestion(data, $form, xhr) {
     var $ps = data.$ps;
     var $response = $(xhr);
@@ -348,7 +360,7 @@
     data.$ps.find(".extra").hide();
     data.$ps.find(".holder").show();
     data.$ps.find(":text, textarea").val("");
-    _showMessage($ps, "success");
+    _showMessage(data, "success");
   }
 
   function _proposal() {
@@ -383,11 +395,15 @@
     });
   }
 
-  function _setupUpload(data,id) {
+  function _setupUpload(data, id) {
 
     var $ps = data.$ps,
 				$span  = $ps.find("#" + id);
+
     if ($span.length > 0) {
+
+      var speed = data.settings.transitionSpeed;
+      var $uploader = $ps.find(".uploader");
 
       var uploader = new qq.FileUploader({
         element: document.getElementById(id),
@@ -399,14 +415,42 @@
         debug: true,
         text:"sube una nueva",
         onSubmit: function(id, fileName){
+          data.spinner.spin(spin_element);
           $currentSection.find(".holder").fadeOut(speed);
+          console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
+					$ps.find(".progress").show();
+					$uploader.find("input").blur();
+          $uploader.find(".holder, .loading, .percentage").fadeIn(speed);
         },
         onProgress: function(id, fileName, loaded, total){
-					console.debug(arguments);
+					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
+					var width = 665 * p / 100;
+					console.debug(p, width, arguments, arguments[2], arguments[3]);
+					if (p > 60) $ps.find(".uploader").find(".loading").fadeOut(speed);
+					if (p > 65) $ps.find(".uploader").find(".percentage").css("color", "#fff");
+          $uploader.find(".percentage").html(p + "%");
+					$ps.find(".progress").animate({width: width }, 550, data.settings.easingMethod);
 				},
         onComplete: function(id, fileName, responseJSON){
-					console.debug();
-					$span.closest('form').find('input.image_cache_name').val(responseJSON.image_cache_name)
+          data.spinner.stop();
+				//	$span.closest('form').find('input.image_cache_name').val(responseJSON.image_cache_name)
+					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+          $uploader.find(".loading").fadeOut(speed);
+          $uploader.find(".holder").fadeIn(speed);
+          $uploader.find(".percentage").fadeOut(speed);
+
+          _resizeSection(data, $currentSection);
+
+          var cacheImage = document.createElement('img');
+          cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
+          $ps.find(".image_container").prepend(cacheImage);
+          $ps.find(".image_container").fadeIn(2*speed);
+
+          $uploader.fadeOut(2*speed);
+
+          $uploader.find(".progress").fadeOut(speed, function() {
+            $(this).width(0);
+          });
 				},
         onCancel: function(id, fileName){ }
       });
@@ -415,6 +459,8 @@
 
   function _gotoSection(data) {
     var $ps = data.$ps;
+
+    _clearAutosuggest(data);
 
     var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
     var height    = $section.find(".form").outerHeight(true) + 20;
@@ -431,20 +477,20 @@
       data.questionStep = 0;
       data.proposalStep = 0;
 
-      _hideExtraFields();
+      _hideExtraFields(data.settings.transitionSpeed);
 
       data.sectionID = $(this).parent().index();
       $section       = $(this).parents(".content").find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
       if (_sectionName($section) != _sectionName($currentSection)) {
-        _resetSection($section);
+        _resetSection(data, $section);
       }
 
       _selectOption(data, $(this).parent());
 
       if ($currentSection) {
 
-        _resizeSection($ps, $currentSection, function() {
+        _resizeSection(data, $currentSection, function() {
 
           var $success = $currentSection.find(".message.success").hide();
           var $error   = $currentSection.find(".message.error").hide();
@@ -458,13 +504,14 @@
       } else {
         $currentSection = $section;
         var height = $section.find(".form").outerHeight(true) + 20;
-        $ps.find(".container").animate({scrollTop: 0, scrollLeft: data.sectionID * data.settings.sectionWidth, height: height }, speed, "easeInOutQuad");
+        $ps.find(".container").animate({scrollTop: 0, scrollLeft: data.sectionID * data.settings.sectionWidth, height: height }, data.settings.transitionSpeed, "easeInOutQuad");
       }
 
     });
   }
 
-  function _showMessage($ps, kind, callback) {
+  function _showMessage(data, kind, callback) {
+    var $ps = data.$ps;
     IrekiaSpinner.spin(spin_element);
 
     var currentHeight = $currentSection.find(".form").outerHeight(true);
@@ -481,13 +528,14 @@
 
     var successHeight = $success.outerHeight(true);
 
-    $ps.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, speed * 2, "easeInOutQuad", function() {
+    $ps.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, data.settings.transitionSpeed * 2, "easeInOutQuad", function() {
       IrekiaSpinner.stop();
       callback && callback();
     });
   }
 
-  function _triggerOpenAnimation($ps, data) {
+  function _triggerOpenAnimation(data) {
+    var $ps = data.$ps;
     var top  = _getTopPosition($ps);
     var left = _getLeftPosition($ps);
 
@@ -522,7 +570,7 @@
 
       data.$ps.find(".extra").hide();
       data.$ps.find(".holder").show();
-      _resizeSection(data.$ps, $currentSection);
+      _resizeSection(data, $currentSection);
 
       hideLockScreen && LockScreen.hide();
       callback && callback();

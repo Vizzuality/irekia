@@ -736,7 +736,7 @@ a.radio {
 }
 .qq-upload-drop-area-active {background:#FF7171;}
 
-.qq-upload-list {}
+.qq-upload-list { display:none; }
 .qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
 .qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
     margin-right: 7px;
@@ -746,6 +746,7 @@ a.radio {
 //.qq-upload-spinner {display:inline-block; background: url("loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
 .qq-upload-size,.qq-upload-cancel {font-size:11px;}
 
+.qq-upload-fail .qq-upload-failed-text { display:none; }
 .qq-upload-failed-text {display:none;}
 .qq-upload-fail .qq-upload-failed-text {display:inline;}
 
