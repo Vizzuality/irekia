@@ -7,4 +7,6 @@ class ProposalData < ActiveRecord::Base
   belongs_to :target_area,
              :class_name => 'Area',
              :foreign_key => :area_id
+
+  accepts_nested_attributes_for :image
 end

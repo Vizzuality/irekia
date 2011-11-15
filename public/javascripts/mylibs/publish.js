@@ -385,19 +385,29 @@
 
   function _setupUpload(data,id) {
 
-    var $ps = data.$ps;
-    if ($ps.find("#" + id).length > 0) {
+    var $ps = data.$ps,
+				$span  = $ps.find("#" + id);
+    if ($span.length > 0) {
 
       var uploader = new qq.FileUploader({
         element: document.getElementById(id),
-        action: '',
+        action: $span.attr('data-url'),
+				params: {
+					utf8: $span.closest('form').find('input[name=utf8]').val(),
+					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
+				},
         debug: true,
         text:"sube una nueva",
         onSubmit: function(id, fileName){
           $currentSection.find(".holder").fadeOut(speed);
         },
-        onProgress: function(id, fileName, loaded, total){},
-        onComplete: function(id, fileName, responseJSON){},
+        onProgress: function(id, fileName, loaded, total){
+					console.debug(arguments);
+				},
+        onComplete: function(id, fileName, responseJSON){
+					console.debug();
+					$span.closest('form').find('input.image_cache_name').val(responseJSON.image_cache_name)
+				},
         onCancel: function(id, fileName){ }
       });
     }

@@ -1,6 +1,7 @@
 class ContentsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:index, :show]
   before_filter :get_content_class
+  before_filter :process_file_upload, :only => [:create, :update]
 
   respond_to :html, :json
 
@@ -114,6 +115,8 @@ class ContentsController < ApplicationController
   end
 
   def create
+    render :json => @image and return if @image.present?
+
     @content = @content_class.new params[@content_type]
     @content.author = current_user
 
@@ -125,6 +128,8 @@ class ContentsController < ApplicationController
   end
 
   def update
+    render :json => @image and return if @image.present?
+
     @content = @content_class.moderated.where(:id => params[:id]).first
     @content.update_attributes(params[@content_type])
     redirect_to @content
@@ -135,5 +140,16 @@ class ContentsController < ApplicationController
     @content_type = params[:type].underscore
   end
   private :get_content_class
+
+  def process_file_upload
+    return unless params[:qqfile].present?
+
+    uploader = ImageUploader.cache_from_io!(request.body, params.delete(:qqfile))
+    @image = {
+      :success => true,
+      :image_cache_name => uploader.cache_name
+    }
+  end
+  private :process_file_upload
 end
 
