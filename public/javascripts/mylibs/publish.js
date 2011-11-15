@@ -482,14 +482,15 @@
         },
         onProgress: function(id, fileName, loaded, total){
 					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
-					var width = 665 * parseInt(p, 10) / 100;
+					var width = parseInt(665 * parseInt(p, 10) / 100, 10);
+
 					console.debug(p, width, arguments, arguments[2], arguments[3]);
 
 					if (parseInt(p) > 70) $ps.find(".uploader").find(".loading").fadeOut(speed);
 					if (parseInt(p) > 55) $ps.find(".uploader").find(".percentage").css("color", "#fff");
 
           $uploader.find(".percentage").html(parseInt(p, 10) + "%");
-					$ps.find(".progress").animate({width: width }, 550, data.settings.easingMethod);
+					$ps.find(".progress").css("width", width);
 				},
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();
