@@ -346,9 +346,11 @@ var GOD = (function() {
 
     if (!$ps.hasClass("open")) {
       $ps.addClass("open");
-      $ps.fadeIn(data.settings.transitionSpeed);
+      $ps.fadeIn(data.settings.transitionSpeed, function(){
+				// Focus on email input
+				$ps.find('#user_email').focus();
+			});
     } else {
-
       _close($this);
     }
   }

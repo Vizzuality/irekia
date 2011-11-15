@@ -68,6 +68,10 @@ a {
     }
   }
 
+  &.margin_left {
+    margin-left:20px;
+  }
+
   &.right_arrow {
     background: url('/images/icons/arrow_right.png') no-repeat right 7px;
     padding-right: 12px;
@@ -536,9 +540,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
     div.right {
       position:relative;
 
-      li em {
-        font-size:15px;
-        color: #999999;
+      li p {
+        padding:0;
+        margin:0;
+        font-style:normal;
+        font-size:15px!important;
+        line-height:15px!important;
+        color: #CCC;
       }
 
       span.spinner {
@@ -2984,7 +2992,7 @@ a.editable {
       }
     }
     .content .map {
-      width: 920px;
+      width: 923px;
       height: 200px;
     }
   }

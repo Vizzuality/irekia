@@ -44,7 +44,7 @@
       <% if @news_count > 0 %>
         <%= link_to t('.content_type_filters.news'), link_for_actions(:type => :news, :referer => action_name), :class => "filter" %>
       <% else %>
-        <em><%= t('.no_content_filters.news') %></em>
+        <p><%= t('.no_content_filters.news') %></p>
       <% end %>
       </li>
 
@@ -52,7 +52,7 @@
       <% if @questions_count > 0 || @answers_count > 0 %>
         <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => [:question, :answer], :referer => action_name), :class => "filter" %>
       <% else %>
-        <em><%= t('.no_content_filters.questions') %></em>
+        <p><%= t('.no_content_filters.questions') %></p>
       <% end %>
       </li>
 
@@ -60,7 +60,7 @@
       <% if @proposals_count > 0 || @arguments_count > 0 || @votes_count > 0 %>
         <%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => [:proposal, :argument, :vote], :referer => action_name), :class => "filter" %>
       <% else %>
-        <em><%= t('.no_content_filters.proposals') %></em>
+        <p><%= t('.no_content_filters.proposals') %></p>
       <% end %>
       </li>
 
@@ -68,7 +68,7 @@
       <% if @photos_count > 0 %>
         <%= link_to t('.content_type_filters.images'), link_for_actions(:type => :photo, :referer => action_name), :class => "filter" %>
       <% else %>
-        <em><%= t('.no_content_filters.images') %></em>
+        <p><%= t('.no_content_filters.images') %></p>
       <% end %>
       </li>
 
@@ -76,7 +76,7 @@
       <% if @videos_count > 0 %>
         <%= link_to t('.content_type_filters.videos'), link_for_actions(:type => :video, :referer => action_name), :class => "filter" %>
       <% else %>
-        <em><%= t('.no_content_filters.videos') %></em>
+        <p><%= t('.no_content_filters.videos') %></p>
       <% end %>
       </li>
 
@@ -84,7 +84,7 @@
       <% if @statuses_count > 0 %>
         <%= link_to t('.content_type_filters.statuses'), link_for_actions(:type => [:tweet, :statusmessage], :referer => action_name), :class => "filter" %>
       <% else %>
-        <em><%= t('.no_content_filters.statuses') %></em>
+        <p><%= t('.no_content_filters.statuses') %></p>
       <% end %>
       </li>
 

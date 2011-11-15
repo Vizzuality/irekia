@@ -489,12 +489,12 @@
        videos: Vídeos
        statuses: Cambios de estado
       no_content_filters:
-       news: No hay noticias
-       questions: No hay preguntas
-       proposals: No hay propuestas
-       images: No hay fotos
-       videos: No hay vídeos
-       statuses: No hay cambios de estado
+       news: Noticias
+       questions: Preguntas
+       proposals: Propuestas
+       images: Fotos
+       videos: Vídeos
+       statuses: Cambios de estado
       more: ver más acciones
 
     lists_elements:

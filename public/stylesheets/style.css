@@ -192,6 +192,7 @@ a:active, a:visited { color: #1d79b0; }
 a:hover { text-decoration: underline; color: #114c6e; }
 a.left_arrow { background: url("/images/icons/arrow_left.png") no-repeat left 7px; padding-left: 12px; }
 a.left_arrow:hover { background-position: 0 -13px; }
+a.margin_left { margin-left: 20px; }
 a.right_arrow { background: url("/images/icons/arrow_right.png") no-repeat right 7px; padding-right: 12px; float: left; }
 a.right_arrow:hover { background-position: right -13px; }
 a.down_arrow { background: url("/images/icons/arrow_down.png") no-repeat left 7px; padding-left: 12px; }
@@ -305,7 +306,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner header h2 { font-size: 31px; line-height: normal; }
 #container article.with_filters div.left span.empty { display: block; width: 100%; margin: 80px 0 80px 0; color: #7D8A92; font: normal 17px Arial; text-align: center; }
 #container article.with_filters div.right { position: relative; }
-#container article.with_filters div.right li em { font-size: 15px; color: #999999; }
+#container article.with_filters div.right li p { padding: 0; margin: 0; font-style: normal; font-size: 15px!important; line-height: 15px!important; color: #CCC; }
 #container article.with_filters div.right span.spinner { position: absolute; display: block; right: 7px; top: 7px; width: 20px; height: 20px; z-index: 10; }
 #container article.with_footer .inner { width: 933px; padding: 15px 31px 5px 30px; }
 #container article.with_footer .f { bottom: -10px; background-position: 0 -22px; }
@@ -908,7 +909,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .right ul.people li a { display: block; font-weight: normal; color: #1d79b0; }
 #container article .inner .right ul.people li a:hover { color: #114c6e; }
 #container article .inner .right ul.people li .avatar { float: left; margin: 0 9px 0 0; }
-#container article .inner .content .map { width: 920px; height: 200px; }
+#container article .inner .content .map { width: 923px; height: 200px; }
 #container article .map .zoom_in { cursor: pointer; background: transparent url("/images/maps_sprite.png") no-repeat 0 0; width: 30px; height: 32px; margin-top: 15px; margin-left: 17px; }
 #container article .map .zoom_in:hover { background: transparent url("/images/maps_sprite.png") no-repeat -31px 0; }
 #container article .map .zoom_out { cursor: pointer; background: transparent url("/images/maps_sprite.png") no-repeat 0 -32px; width: 30px; height: 32px; margin-left: 17px; }
