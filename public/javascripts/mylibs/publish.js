@@ -88,7 +88,7 @@
       _addCloseAction(data);
       _addDefaultAction(data);
       _bindMenu(data);
-      _bindSubmit(data);
+      _bindSubmit(data, "Continuar", true, "continue");
       _bindActions(data);
       _enableInputCounter(data, $("#question_question_data_attributes_question_text"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
       _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
@@ -127,6 +127,8 @@
 
   function _open(data) {
     var $ps = data.$ps;
+
+    _bindSubmit(data, "Continuar", true, "continue");
 
     data.questionStep = 0;
     data.proposalStep = 0;
@@ -199,28 +201,38 @@
     $option.addClass("selected");
   }
 
+  function _resetImageContainer(e, data) {
+    e.preventDefault();
+
+    var
+    $ps = data.$ps,
+    $proposal = $ps.find(".section.proposal"),
+    $image_container = $proposal.find(".image_container");
+
+    $image_container.fadeOut(data.settings.transitionSpeed, function() {
+      $image_container.find("img").remove();
+      $ps.find(".uploader").show();
+      $ps.find(".holder").show();
+      $ps.find(".loading").hide();
+      $ps.find(".percentage").hide();
+      $ps.find(".progress").css("width", "0");
+    });
+
+  }
+
   function _bindActions(data) {
     var $ps = data.$ps;
 
+    // Image uploader
     _setupUpload(data,"upload_image");
+
+    // Remove image link
+    $ps.find(".image_container a.remove").unbind();
+    $ps.find(".image_container a.remove").bind("click", function(e) { _resetImageContainer(e, data); } );
 
     $ps.find(".section .open_upload").click(function(e) {
       e && e.preventDefault();
       $(this).closest("input[type='file']").click();
-    });
-
-    $ps.find(".section.video li").click(function(e) {
-      e && e.preventDefault();
-
-      $(this).siblings("li").removeClass("selected");
-      $(this).addClass("selected");
-      $ps.find(".radio.selected").removeClass("selected");
-      $(this).find(".radio").addClass("selected");
-    });
-
-    $ps.find("a.radio").click(function(e) {
-      e && e.preventDefault();
-      $ps.find(".section.video li").toggleClass("selected");
     });
   }
 
@@ -238,6 +250,19 @@
 
   function _showExtraFields(speed) {
     $currentSection.find(".extra").fadeIn(speed);
+  }
+
+  function _clearSection(data) {
+    var $ps = data.$ps;
+    $ps.find(":text, textarea").val("");
+    $ps.find(".uploader").show();
+    $ps.find(".holder").show();
+    $ps.find(".loading").hide();
+    $ps.find(".percentage").hide();
+    $ps.find(".progress").css("width", "0");
+    $ps.find(".counter").html("140");
+    $ps.find(".image_container").hide();
+    $ps.find(".image_container img").remove();
   }
 
   function _clearAutosuggest(data) {
@@ -267,13 +292,15 @@
 
           var query = $ps.find('.extra input[type="text"]').val();
 
-          $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(data) {
+          $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(response) {
 
-            var $response = $(data);
+            var $response = $(response);
 
             $response.find("li").unbind();
             $response.find("li").bind("click", function(e) {
-              alert($(this).attr("id"));
+              _bindSubmit(data, "Publicar", true, "publish");
+              _clearAutosuggest(data);
+              _enableSubmit(data.$submit);
             });
 
             $ps.find(".autosuggest").fadeOut(150, function() {
@@ -319,24 +346,35 @@
   function _doQuestion(data) {
     var $ps = data.$ps;
 
-    if (data.questionStep == 0) {
-      data.questionStep++;
+    _showExtraFields(data.settings.transitionSpeed);
+    _resizeSection(data, $currentSection);
+    _disableSubmit(data.$submit);
+    _changeSubmitTitle(data.$submit, "Publicar");
+    data.$submit.unbind();
 
-      _showExtraFields(data.settings.transitionSpeed);
-      _resizeSection(data, $currentSection);
-      _disableSubmit(data.$submit);
-      _changeSubmitTitle(data.$submit, "Publicar");
-
-    } else {
-      var $form = $currentSection.find("form");
-      $form.submit();
-      data.spinner.spin(spin_element);
-
-      $form.unbind();
-      $form.bind('ajax:success', function(event, xhr, status) { _successQuestion(data, $form, xhr); })
-    }
   }
 
+  function _publishQuestion(data) {
+    var $ps = data.$ps;
+    var $form = $currentSection.find("form");
+
+    $form.submit();
+    data.spinner.spin(spin_element);
+
+    $form.unbind();
+    $form.bind('ajax:success', function(event, xhr, status) { _successQuestion(data, $form, xhr); })
+  }
+
+  function _publishProposal(data) {
+    var $ps = data.$ps;
+    var $form = $currentSection.find("form");
+
+    $form.submit();
+    data.spinner.spin(spin_element);
+
+    $form.unbind();
+    $form.bind('ajax:success', function(event, xhr, status) { _successQuestion(data, $form, xhr); })
+  }
   function _successProposal(data, $form, xhr) {
     var $ps = data.$ps;
     var $response = $(xhr);
@@ -379,19 +417,34 @@
     return $section.attr("class").replace(/section/g, "").fulltrim();
   }
 
-  function _bindSubmit(data) {
+  function _doCallback(name, data) {
+    if (name == "continue") _submitContinue(data);
+    else if (name == "publish") _submitPublish(data);
+  }
+
+  function _submitPublish(data) {
+    if (!_hasContent($currentSection)) return;
+    _disableSubmit(data.$submit);
+    _question() ?  _publishQuestion(data) : _publishProposal(data);
+  }
+
+  function _submitContinue(data) {
+    if (!_hasContent($currentSection)) return;
+    _disableSubmit(data.$submit);
+    _question() ?  _doQuestion(data) : _doProposal(data);
+  }
+
+  function _bindSubmit(data, title, initiallyDisabled, callback) {
     var $ps = data.$ps;
 
-    data.$submit.unbind();
+    _changeSubmitTitle(data.$submit, title);
+
+    initiallyDisabled && _disableSubmit(data.$submit);
+
+    data.$submit.unbind("click");
     data.$submit.click(function(e) {
-      e && e.preventDefault();
-
-      if (!_hasContent($currentSection)) return;
-
-      _disableSubmit(data.$submit);
-
-      if (_question()) _doQuestion(data);
-      else if (_proposal()) _doProposal(data);
+      e.preventDefault();
+      callback && _doCallback(callback, data);
     });
   }
 
@@ -426,14 +479,16 @@
 					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
 					var width = 665 * parseInt(p, 10) / 100;
 					console.debug(p, width, arguments, arguments[2], arguments[3]);
-					if (p > 60) $ps.find(".uploader").find(".loading").fadeOut(speed);
-					if (p > 65) $ps.find(".uploader").find(".percentage").css("color", "#fff");
+
+					if (parseInt(p) > 70) $ps.find(".uploader").find(".loading").fadeOut(speed);
+					if (parseInt(p) > 55) $ps.find(".uploader").find(".percentage").css("color", "#fff");
+
           $uploader.find(".percentage").html(parseInt(p, 10) + "%");
 					$ps.find(".progress").animate({width: width }, 550, data.settings.easingMethod);
 				},
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();
-				//	$span.closest('form').find('input.image_cache_name').val(responseJSON.image_cache_name)
+				// $span.closest('form').find('input.image_cache_name').val(responseJSON.image_cache_name)
 					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);
@@ -442,12 +497,16 @@
 
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
-          $ps.find(".image_container").prepend(cacheImage);
-          $ps.find(".image_container").fadeIn(2*speed);
 
-          $uploader.fadeOut(speed);
+          $(cacheImage).bind("load", function () {
+            $ps.find(".image_container").prepend(cacheImage);
+            $ps.find(".image_container").fadeIn(speed);
+            $ps.find(".image_container img").fadeIn(speed);
+            $uploader.fadeOut(speed, function() {
+              _resizeSection(data, $currentSection);
+            });
+          });
 
-          $ps.find(".container").animate({ height: $ps.find(".container").height() + 70 }, data.settings.transitionSpeed );
 
           $uploader.find(".progress").fadeOut(speed, function() {
             $(this).width(0);
@@ -462,6 +521,7 @@
     var $ps = data.$ps;
 
     _clearAutosuggest(data);
+    _clearSection(data);
 
     var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
     var height    = $section.find(".form").outerHeight(true) + 20;
@@ -499,7 +559,7 @@
           $currentSection = $section;
 
           _gotoSection(data);
-          _changeSubmitTitle(data.$submit, "Continuar");
+          _bindSubmit(data, "Continuar", true, "continue");
         });
 
       } else {
@@ -521,7 +581,16 @@
 
     if (kind == "success") {
       $error.hide();
-      $success.show();
+      $success.show(0, function() {
+        _changeSubmitTitle(data.$submit, "Cerrar");
+        _enableSubmit(data.$submit);
+
+        data.$submit.unbind("click");
+        data.$submit.bind("click", function() {
+          _close(data, true);
+        });
+
+      });
     } else {
       $error.show();
       $success.hide();
@@ -561,6 +630,8 @@
 
   // Close popover
   function _close(data, hideLockScreen, callback) {
+
+    _clearAutosuggest(data);
 
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).css("top", "-900px");

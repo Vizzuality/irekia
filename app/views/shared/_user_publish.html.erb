@@ -25,7 +25,7 @@
                 <%= question_data.hidden_field :area_id %>
 
                 <div class="input_field placeholder textarea">
-                  <div id="123" class="input-counter">
+                  <div id="question-counter" class="input-counter">
                     <span class="counter">140</span>
                     <%= question_data.text_area :question_text %>
                     <span class="holder">Introduce el texto que quieras publicar aquí.</span>
@@ -65,9 +65,9 @@
                 <div class="form clearfix">
 
                 <div class="input_field placeholder textarea clearfix">
-                  <div id="124" class="input-counter">
+                  <div id="proposal-counter" class="input-counter">
                     <span class="counter">140</span>
-                    <%= proposal_data.text_area :title, :class => "grow title" %>
+                    <%= proposal_data.text_area :title, :class => :title %>
                     <span class="holder">Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.</span>
                   </div>
                 </div>
@@ -84,12 +84,12 @@
 
                   <div class="image_container clearfix">
                     <p>Se incluirá esta imagen en la propuesta.</p>
-                    <a href="#">Eliminar</a>
+                    <a href="#" class="remove">Eliminar</a>
                   </div>
 
                   <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
                   <div class="input_field placeholder textarea">
-                    <%= proposal_data.text_area :body, :class => "grow body" %>
+                    <%= proposal_data.text_area :body, :class => :body %>
                     <span class="holder">Describe la propuesta en pocas palabras</span>
                   </div>
                 </div>

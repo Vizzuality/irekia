@@ -393,7 +393,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container { width: 9000px; margin-top: 19px; }
 #container article.publish .inner .content .container .inner_container strong { float: left; }
 #container article.publish .inner .content .container .inner_container .image_container { display: none; padding: 10px; margin: 0 0 20px 0; background: #EDF3E5; }
-#container article.publish .inner .content .container .inner_container .image_container img { float: left; margin: 0 10px 0 0; height: 72px; }
+#container article.publish .inner .content .container .inner_container .image_container img { display: none; float: left; margin: 0 10px 0 0; height: 72px; }
 #container article.publish .inner .content .container .inner_container .image_container p { float: left; margin: 30px 0 0 0; font-size: 15px; color: #7D8A92; }
 #container article.publish .inner .content .container .inner_container .image_container a { float: right; margin: 30px 10px 0 0; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .percentage { display: none; margin-left: -343px; position: absolute; top: 10px; right: 50%; font-size: 15px; color: #FF0066; z-index: 2010; font-weight: bold; }
