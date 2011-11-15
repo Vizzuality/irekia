@@ -64,7 +64,7 @@
 
                 <div class="form clearfix">
 
-                <div class="input_field placeholder textarea">
+                <div class="input_field placeholder textarea clearfix">
                   <div id="124" class="input-counter">
                     <span class="counter">140</span>
                     <%= proposal_data.text_area :title, :class => "grow title" %>
@@ -74,10 +74,18 @@
 
                 <div class="extra">
 
-                    <div class="input_field placeholder">
-                      <input type="text" />
-                      <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
-                    </div>
+                  <div class="input_field placeholder uploader">
+                    <input type="text" />
+                    <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
+                    <span class="percentage">0%</span>
+                    <span class="loading">Cargando imagen...</span>
+                    <div class="progress"></div>
+                  </div>
+
+                  <div class="image_container clearfix">
+                    <p>Se incluirá esta imagen en la propuesta.</p>
+                    <a href="#">Eliminar</a>
+                  </div>
 
                   <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
                   <div class="input_field placeholder textarea">

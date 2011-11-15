@@ -864,9 +864,12 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
           &.proposal {
             .triangle { left:152px; }
+            .input_field.textarea { margin:0; }
+
             .input_field {
               width:100%;
               margin:0 0 10px 0;
+
               input[type="text"] {
                 width:666px;
                 font-size:15px;
@@ -897,6 +900,60 @@ article .inner { h2, h3 { color: $dark_blue; } }
             margin-top:19px;
 
             strong { float:left; }
+
+            .image_container {
+              display:none;
+              padding:10px;
+              margin: 0 0 20px 0;
+              background:#EDF3E5;
+
+              img {
+                float:left;
+                margin: 0 10px 0 0;
+                height:72px;
+              }
+
+              p {
+                float:left;
+                margin: 30px 0 0 0;
+                font-size: 15px;
+                color: #7D8A92;
+              }
+              a { float:right; margin: 30px 10px 0 0; font-size:15px; }
+            }
+
+            .percentage {
+              display:none;
+              margin-left:-343px;
+              position: absolute;
+              top: 10px;
+              right: 50%;
+              font-size:15px;
+              color: #FF0066;
+              z-index:2010;
+              font-weight:bold;
+            }
+
+            .loading {
+              display:none;
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              font-size:15px;
+              color:#CCCCCC;
+              z-index:2010;
+            }
+
+            .progress {
+              position: absolute;
+              top: 10px;
+              left: 10px;
+              height: 16px;
+              width: 0px;
+              background: #FF0066;
+              @include border-radius(2px);
+              z-index:2000;
+            }
 
             .message {
               display:none;
@@ -943,7 +1000,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
               .extra {
                 display: none;
-                margin: 20px 0 0 0;
+                margin: 0 0 0 0;
                 .search_box { margin:0; padding:0; }
                 .input_field {
                   margin: 0 0 20px 0!important;
@@ -1023,6 +1080,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 .input_field {
                   width:100%;
                   margin:0 0 10px 0;
+
                   input[type="text"] {
                     width:666px;
                     font-size:15px;
@@ -2415,7 +2473,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
 }
 
 #container article .inner .avatar-uploader {
-
   clear: both;
   overflow: hidden;
   border-right: 1px solid #e3e6e8;
@@ -3344,9 +3401,15 @@ a.editable {
           .after_share {
             position:relative;
 
-            &.email, &.twitter, &.facebook, &.more { width:28px; height:28px; background:url('/images/icons/share.png') no-repeat 0 0; border: 0 none; cursor: pointer; }
+            &.email, &.twitter, &.facebook, &.more { display: block; width:28px; height:28px; background:url('/images/icons/share.png') no-repeat 0 0; border: 0 none; cursor: pointer; }
             &.twitter  { background-position:-29px 0; }
-            &.facebook { background-position:-58px 0; }
+            &.facebook {
+              background-position:-58px 0;
+
+              .FBConnectButton_Simple{
+                background: none;
+              }
+            }
             &.more     { background-position:-88px 0; }
 
             &.share:hover   { z-index:100; }
