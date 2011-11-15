@@ -94,7 +94,8 @@
       _bindMenu(data);
       _bindSubmit(data);
       _bindActions(data);
-      _enableInputCounter(data, function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+      _enableInputCounter(data, $("#question_question_data_attributes_question_text"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+      _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
       _bindSearch(data);
 
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
@@ -149,14 +150,14 @@
     $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
   }
 
-  function _enableInputCounter(data, on, off) {
+  function _enableInputCounter(data, $input, on, off) {
     var $ps = data.$ps;
 
-    $ps.find(":text, textarea").keyup(function(e) {
+    $input.keyup(function(e) {
       textCounter($(this), on, off);
     });
 
-    $ps.find(":text, textarea").keydown(function(e) {
+    $input.keydown(function(e) {
       textCounter($(this), on, off);
     });
   }
@@ -164,8 +165,10 @@
   function textCounter($input, on, off) {
     var count = $input.val().length;
 
-    if (on && off) {
-      (count <= 0) ? off() : on();
+    if (count <= 0) {
+      off && off();
+    } else {
+      on && on();
     }
   }
 
@@ -241,8 +244,17 @@
   }
 
 
+  function _clearAutosuggest(data) {
+    var $ps = data.$ps;
+    $ps.find(".autosuggest").fadeOut(150, function() {
+      $(this).remove();
+    });
+  }
+
   function _bindSearch(data) {
     var $ps = data.$ps;
+
+    _enableInputCounter(data, $(".autosuggest_field input"), null, function() { _clearAutosuggest(data); } );
 
     $ps.find('.extra input').keyup(function(ev){
 
@@ -258,9 +270,10 @@
 
           var query = $ps.find('.extra input[type="text"]').val();
 
-          $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(data){
+          $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(data) {
 
             var $response = $(data);
+
             $response.find("li").unbind();
             $response.find("li").bind("click", function(e) {
               alert($(this).attr("id"));
@@ -272,7 +285,6 @@
 
             if ($response.find("li").length > 0) {
               $response.hide();
-              console.log($ps.find(".autosuggest_field").position().top);
               $response.css("top", $ps.find(".autosuggest_field").position().top + 220);
               $ps.find('.content').append($response);
               $response.fadeIn(150);
