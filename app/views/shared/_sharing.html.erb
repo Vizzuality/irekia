@@ -24,14 +24,13 @@
     </li>
   <% end %>
 
-  <% if current_user and current_user.connected_with_facebook? %>
-    <li>
-    <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
-      <%= hidden_field_tag :provider, :facebook %>
-      <%= form.submit '', :class => 'share facebook' %>
+    <% if defined?(facebook_url) -%>
+      <li>
+        <%= link_to '', '#', :name => 'fb_share', :class => 'share facebook', :type => 'icon', :share_url => facebook_url %>
+        <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
+        </script>
+      </li>
     <% end -%>
-    </li>
-  <% end %>
   <!--
   <li><div class="share more"></div>
 

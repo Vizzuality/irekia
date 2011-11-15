@@ -3344,9 +3344,15 @@ a.editable {
           .after_share {
             position:relative;
 
-            &.email, &.twitter, &.facebook, &.more { width:28px; height:28px; background:url('/images/icons/share.png') no-repeat 0 0; border: 0 none; cursor: pointer; }
+            &.email, &.twitter, &.facebook, &.more { display: block; width:28px; height:28px; background:url('/images/icons/share.png') no-repeat 0 0; border: 0 none; cursor: pointer; }
             &.twitter  { background-position:-29px 0; }
-            &.facebook { background-position:-58px 0; }
+            &.facebook {
+              background-position:-58px 0;
+
+              .FBConnectButton_Simple{
+                background: none;
+              }
+            }
             &.more     { background-position:-88px 0; }
 
             &.share:hover   { z-index:100; }
