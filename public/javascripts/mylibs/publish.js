@@ -268,6 +268,9 @@
   function _clearAutosuggest(data) {
     var $ps = data.$ps;
 
+    $("#question_question_data_attributes_politician_id").val("");
+    $("#question_question_data_attributes_area_id").val("");
+
     $ps.find(".autosuggest").fadeOut(100, function() {
       $(this).remove();
     });
@@ -303,8 +306,18 @@
             $response.find("li").unbind();
             $response.find("li").bind("click", function(e) {
               // Publish!
-              //var $id = $(this).attr("id")
-          //$uploader.find(".holder, .loading, .percentage").fadeIn(speed);
+              var $id = $(this).attr("id");
+              if ($(this).hasClass("politician")) {
+                id = id.replace("politician_", "");
+                $("#question_question_data_attributes_politician_id").val(id);
+              } else {
+                var $id = $(this).attr("id")
+                id = id.replace("area_", "");
+                $("#question_question_data_attributes_area_id").val(id);
+              }
+              console.log(id);
+
+              //$uploader.find(".holder, .loading, .percentage").fadeIn(speed);
               console.log($ps.find('input[type="hidden"]'));
               _bindSubmit(data, "Publicar", true, "publish");
               _clearAutosuggest(data);
