@@ -1084,11 +1084,12 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 jQuery.fn.verticalHomeLoop = function(opt){
 	
   if (this.length < 1) return;
+
 	var ele = this,
 			onElement = false;
 
 	function loopContent() {
-		if ($(ele).find('div.left > ul li').size()>0 && !onElement) {
+		if ($(ele).find('div.left ul li').size()>0 && !onElement) {
 			var last = $(ele).find('div.left ul li.loop').last();
 			var list = $(ele).find('div.left ul').first();
 			var height = last.height();
@@ -1104,7 +1105,7 @@ jQuery.fn.verticalHomeLoop = function(opt){
 		}
 	}
 	
-	$(ele).find('div.left ul').hover(function(){
+	$(ele).find('div.left > ul').hover(function(){
 		onElement = true;
 	},function(){
 		onElement = false;		

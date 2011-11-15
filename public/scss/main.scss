@@ -1950,8 +1950,8 @@ span.where, .map .infowindow ul.details li.where {
             margin:0;
             background: rgba(237, 237, 239, 0.7);
 
-
-            &.previous { padding:0; border:none; display:none; }
+            a {color:$link_color;}
+            &.previous { padding:0; border:none; display:none;}
             &.moderated {
               background:$moderated_color; border-top: 1px solid $white;
               color:$medium_dark;
@@ -1970,7 +1970,7 @@ span.where, .map .infowindow ul.details li.where {
           }
         }
 
-        .previous { margin:0; padding: 10px 13px 10px 13px; border-bottom: 1px solid $white; color: $standard_gray; font-size: 13px; }
+        .previous { margin:0; padding: 10px 13px 10px 13px; border-bottom: 1px solid $white; color: $standard_gray; font-size: 13px; a {color:$link_color;}}
 
         form {
           position: relative;
