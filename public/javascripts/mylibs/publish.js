@@ -138,6 +138,10 @@
     $currentMenuOption = $ps.find(".menu").find("li:nth-child(" + (data.sectionID + 1) + ")");
     $currentSection    = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
+    // Clear the hidden fields
+    $("#question_question_data_attributes_politician_id").val("");
+    $("#question_question_data_attributes_area_id").val("");
+
     _gotoSection(data);
 
     _selectOption(data, $currentMenuOption);
@@ -268,9 +272,6 @@
   function _clearAutosuggest(data) {
     var $ps = data.$ps;
 
-    $("#question_question_data_attributes_politician_id").val("");
-    $("#question_question_data_attributes_area_id").val("");
-
     $ps.find(".autosuggest").fadeOut(100, function() {
       $(this).remove();
     });
@@ -307,18 +308,17 @@
             $response.find("li").bind("click", function(e) {
               // Publish!
               var id = $(this).attr("id");
+
               if ($(this).hasClass("politician")) {
                 id = id.replace("politician_", "");
-                $("#question_question_data_attributes_user_id").val(id);
-                $("#question_question_data_attributes_area_id").val("");
+                $ps.find("#question_question_data_attributes_user_id").val(id)
+                $ps.find("#question_question_data_attributes_area_id").val("");
               } else {
                 id = id.replace("area_", "");
-                $("#question_question_data_attributes_area_id").val(id);
-                $("#question_question_data_attributes_user_id").val("");
+                $ps.find("#question_question_data_attributes_area_id").val(id);
+                $ps.find("#question_question_data_attributes_user_id").val("");
               }
-              console.log(id, $("#question_question_data_attributes_area_id"), $("#question_question_data_attributes_user_id"));
 
-              //$uploader.find(".holder, .loading, .percentage").fadeIn(speed);
               _bindSubmit(data, "Publicar", true, "publish");
               _clearAutosuggest(data);
               _enableSubmit(data.$submit);
@@ -545,6 +545,9 @@
 
     _clearAutosuggest(data);
     _clearSection(data);
+
+    $("#question_question_data_attributes_politician_id").val("");
+    $("#question_question_data_attributes_area_id").val("");
 
     var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
     var height    = $section.find(".form").outerHeight(true) + 20;
