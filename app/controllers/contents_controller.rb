@@ -56,8 +56,12 @@ class ContentsController < ApplicationController
       if @content.answer.blank?
         @user_has_requested_answer = current_user && current_user.has_requested_answer(params[:id])
 
-        if current_user.blank? || current_user.has_not_requested_answer(params[:id])
+        if current_user.present? && current_user.politician?
+          @new_answer = @content.build_answer
+          @new_answer.answer_data = @new_answer.build_answer_data
+        elsif current_user.blank? || current_user.has_not_requested_answer(params[:id])
           @new_request = @content.answer_requests.build
+
         end
       else
         return if current_user && current_user.has_given_his_opinion?(@content.answer)

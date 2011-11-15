@@ -243,19 +243,7 @@ class UsersController < ApplicationController
     beginning_of_calendar = Date.current.beginning_of_week
     end_of_calendar       = Date.current.advance(:weeks => 4).end_of_week
 
-    events = @politician.agenda_between(beginning_of_calendar, end_of_calendar)
-
-    @agenda = events.group_by{|e| e.event_date.day }
-    @days   = beginning_of_calendar..end_of_calendar
-    @agenda_json = JSON.generate(events.map{|event| {
-      :title    => event.title,
-      :date     => l(event.event_date, :format => '%d, %B de %Y'),
-      :when     => event.event_date.strftime('%H:%M'),
-      :where    => nil,
-      :lat      => event.latitude,
-      :lon      => event.longitude,
-      :event_id => event.id
-    }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
+    @agenda, @days, @agenda_json = @user.agenda_between(beginning_of_calendar, end_of_calendar)
   end
   private :get_agenda
 

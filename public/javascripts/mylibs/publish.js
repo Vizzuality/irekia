@@ -26,7 +26,7 @@
   defaults = {
     easingMethod:'easeInOutQuad',
     sectionWidth: 687,
-    transitionSpeed: 150,
+    transitionSpeed: 200,
     maxLimit: 140
   };
 
@@ -292,12 +292,17 @@
 
           var query = $ps.find('.extra input[type="text"]').val();
 
+          data.spinner.spin(spin_element);
+
           $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(response) {
 
             var $response = $(response);
 
+            data.spinner.stop();
+
             $response.find("li").unbind();
             $response.find("li").bind("click", function(e) {
+              // Publish!
               _bindSubmit(data, "Publicar", true, "publish");
               _clearAutosuggest(data);
               _enableSubmit(data.$submit);
@@ -473,18 +478,20 @@
           console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
 					$ps.find(".progress").show();
 					$uploader.find("input").blur();
+          $uploader.find(".holder").fadeOut(speed);
           $uploader.find(".holder, .loading, .percentage").fadeIn(speed);
         },
         onProgress: function(id, fileName, loaded, total){
 					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
-					var width = 665 * parseInt(p, 10) / 100;
+					var width = parseInt(665 * parseInt(p, 10) / 100, 10);
+
 					console.debug(p, width, arguments, arguments[2], arguments[3]);
 
 					if (parseInt(p) > 70) $ps.find(".uploader").find(".loading").fadeOut(speed);
 					if (parseInt(p) > 55) $ps.find(".uploader").find(".percentage").css("color", "#fff");
 
           $uploader.find(".percentage").html(parseInt(p, 10) + "%");
-					$ps.find(".progress").animate({width: width }, 550, data.settings.easingMethod);
+					$ps.find(".progress").css("width", width);
 				},
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();

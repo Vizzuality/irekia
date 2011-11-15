@@ -65,7 +65,7 @@
   <div class="right">
     <div class="content left-border">
 
-      <%= render "shared/sharing", :facebook_url => proposal_url(@content) %>
+      <%= sharing_partial(proposal_url(@content), @content.title) %>
       <%= render "shared/sidebar/tags" %>
       <%= render "shared/sidebar/related_proposals" %>
 
