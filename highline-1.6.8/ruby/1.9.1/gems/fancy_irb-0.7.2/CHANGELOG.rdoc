@@ -1,0 +1,15 @@
+== 0.7.2
+* Fix a small bug that happens if there was no last line
+
+== 0.7.1
+* Deactivate buggy input coloring :/
+
+== 0.7.0
+* Use paint gem for terminal colors
+* Fix some rocket issues (when using with colored content)
+
+== 0.6.5
+* Windows support
+
+== < 0.6.5
+See https://github.com/janlelis/fancy_irb/commits/0.6.4

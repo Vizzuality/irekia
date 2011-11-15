@@ -224,7 +224,7 @@
     var $ps = data.$ps;
 
     // Image uploader
-    _setupUpload(data,"upload_image");
+    _setupUpload(data, "upload_image");
 
     // Remove image link
     $ps.find(".image_container a.remove").unbind();
@@ -303,6 +303,9 @@
             $response.find("li").unbind();
             $response.find("li").bind("click", function(e) {
               // Publish!
+              //var $id = $(this).attr("id")
+          //$uploader.find(".holder, .loading, .percentage").fadeIn(speed);
+              console.log($ps.find('input[type="hidden"]'));
               _bindSubmit(data, "Publicar", true, "publish");
               _clearAutosuggest(data);
               _enableSubmit(data.$submit);
@@ -477,9 +480,10 @@
           $currentSection.find(".holder").fadeOut(speed);
           console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
 					$ps.find(".progress").show();
+          $uploader.find(".percentage").css("color", "#FF0066");
 					$uploader.find("input").blur();
           $uploader.find(".holder").fadeOut(speed);
-          $uploader.find(".holder, .loading, .percentage").fadeIn(speed);
+          $uploader.find(".loading, .percentage").fadeIn(speed);
         },
         onProgress: function(id, fileName, loaded, total){
 					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
@@ -487,20 +491,19 @@
 
 					console.debug(p, width, arguments, arguments[2], arguments[3]);
 
-					if (parseInt(p) > 70) $ps.find(".uploader").find(".loading").fadeOut(speed);
-					if (parseInt(p) > 55) $ps.find(".uploader").find(".percentage").css("color", "#fff");
+					if (parseInt(p) >= 75) $ps.find(".uploader").find(".loading").fadeOut(speed);
+					if (parseInt(p) >= 49) $ps.find(".uploader").find(".percentage").css("color", "#fff");
 
           $uploader.find(".percentage").html(parseInt(p, 10) + "%");
-					$ps.find(".progress").css("width", width);
+				  $ps.find(".progress").css("width", width);
 				},
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();
-				// $span.closest('form').find('input.image_cache_name').val(responseJSON.image_cache_name)
+
 					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);
           $uploader.find(".percentage").fadeOut(speed);
-
 
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
@@ -574,7 +577,6 @@
         var height = $section.find(".form").outerHeight(true) + 20;
         $ps.find(".container").animate({scrollTop: 0, scrollLeft: data.sectionID * data.settings.sectionWidth, height: height }, data.settings.transitionSpeed, "easeInOutQuad");
       }
-
     });
   }
 
