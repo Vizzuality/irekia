@@ -424,11 +424,11 @@
         },
         onProgress: function(id, fileName, loaded, total){
 					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
-					var width = 665 * p / 100;
+					var width = 665 * parseInt(p, 10) / 100;
 					console.debug(p, width, arguments, arguments[2], arguments[3]);
 					if (p > 60) $ps.find(".uploader").find(".loading").fadeOut(speed);
 					if (p > 65) $ps.find(".uploader").find(".percentage").css("color", "#fff");
-          $uploader.find(".percentage").html(p + "%");
+          $uploader.find(".percentage").html(parseInt(p, 10) + "%");
 					$ps.find(".progress").animate({width: width }, 550, data.settings.easingMethod);
 				},
         onComplete: function(id, fileName, responseJSON){
@@ -439,14 +439,15 @@
           $uploader.find(".holder").fadeIn(speed);
           $uploader.find(".percentage").fadeOut(speed);
 
-          _resizeSection(data, $currentSection);
 
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
           $ps.find(".image_container").prepend(cacheImage);
           $ps.find(".image_container").fadeIn(2*speed);
 
-          $uploader.fadeOut(2*speed);
+          $uploader.fadeOut(speed);
+
+          $ps.find(".container").animate({ height: $ps.find(".container").height() + 70 }, data.settings.transitionSpeed );
 
           $uploader.find(".progress").fadeOut(speed, function() {
             $(this).width(0);

@@ -247,7 +247,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .message p { color: #7D8A92; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .message h3 { letter-spacing: 1px; }
 #container article.publish .inner .content .container .inner_container .message .icon { float: left; margin: 0 18px 0 0; background: url("/images/icons/ok_ball.png") no-repeat; width: 76px; height: 80px; }
-#container article.publish .inner .content .container .inner_container .section { float: left; position: relative; width: 687px; height: 900px; }
+#container article.publish .inner .content .container .inner_container .section { float: left; position: relative; width: 687px; }
 #container article.publish .inner .content .container .inner_container .section .holder span { float: left; }
 #container article.publish .inner .content .container .inner_container .section strong { display: block; margin: 0 0 7px 0; color: #465866; font-size: 12px; }
 #container article.publish .inner .content .container .inner_container .section .input_field { width: 100%; margin: 0 0 10px 0; }
