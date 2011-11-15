@@ -7,6 +7,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::ImageScience
   include CarrierWave::MiniMagick
 
+  def self.cache_from_io!(io_string, name)
+    uploader = ImageUploader.new
+    tempfile = Tempfile.new(name)
+    tempfile.write io_string.read.force_encoding('UTF-8')
+    uploader.cache!(tempfile)
+    tempfile.close
+    tempfile.unlink
+    uploader
+  end
+
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
