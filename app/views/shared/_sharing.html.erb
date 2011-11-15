@@ -15,14 +15,9 @@
   </div>
   </li>
 
-  <% if current_user and current_user.connected_with_twitter? %>
-    <li>
-    <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post} do |form| %>
-      <%= hidden_field_tag :provider, :twitter %>
-      <%= form.submit '', :class => 'share twitter' %>
-    <% end -%>
-    </li>
-  <% end %>
+  <li>
+    <%= link_to '', "https://twitter.com/share?text=#{twitter_message}", :class => 'share twitter', :target => '_blank' %>
+  </li>
 
   <% if defined?(facebook_url) -%>
     <li>

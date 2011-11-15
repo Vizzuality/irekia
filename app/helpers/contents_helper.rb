@@ -15,4 +15,13 @@ module ContentsHelper
 
     questions_path(filters)
   end
+
+  def sharing_partial(url, message)
+    render "shared/sharing", :facebook_url    => url,
+                             :twitter_message => message_for_twitter(url, message)
+  end
+
+  def message_for_twitter(url, message)
+    message = "#{message.truncate(137 - url.length)} - #{url}"
+  end
 end

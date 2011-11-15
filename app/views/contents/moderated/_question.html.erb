@@ -55,7 +55,7 @@
   </div>
   <div class="right">
     <div class="content left-border">
-      <%= render "shared/sharing", :facebook_url => question_url(@content) %>
+      <%= sharing_partial(question_url(@content), @content.question_text) %>
       <%= render "shared/sidebar/tags" %>
       <%= render "shared/sidebar/answered_by" if @answer %>
       <%= render "shared/sidebar/related_questions" %>
