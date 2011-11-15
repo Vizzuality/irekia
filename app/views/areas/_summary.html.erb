@@ -7,18 +7,14 @@
     </header>
     <div class="left">
       <h3><%= t('.description.title') %></h3>
-
       <div class="description two_columns">
         <%= simple_format(@area.description) %>
+        <% if @follow.new_record? -%>
+          <%= render 'follows/create' %>
+        <% else -%>
+          <%= render 'follows/destroy' %>
+        <% end -%>
       </div>
-
-        <div id="follow" class="clearfix">
-          <% if @follow.new_record? -%>
-            <%= render 'follows/create' %>
-          <% else -%>
-            <%= render 'follows/destroy' %>
-          <% end -%>
-        </div>
     </div>
     <div class="right">
       <ul class="people">

@@ -94,7 +94,7 @@
       _bindMenu(data);
       _bindSubmit(data);
       _bindActions(data);
-      _enableInputCounter(data);
+      _enableInputCounter(data, function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
       _bindSearch(data);
 
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
@@ -149,22 +149,30 @@
     $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
   }
 
-  function _enableInputCounter(data) {
+  function _enableInputCounter(data, on, off) {
     var $ps = data.$ps;
 
     $ps.find(":text, textarea").keyup(function(e) {
-      textCounter($(this), data.$submit);
+      textCounter($(this), on, off);
     });
 
     $ps.find(":text, textarea").keydown(function(e) {
-      textCounter($(this), data.$submit);
+      textCounter($(this), on, off);
     });
   }
 
-  function textCounter($input, $submit) {
+  function textCounter($input, on, off) {
     var count = $input.val().length;
-    (count <= 0) ? _disableSubmit($submit) : _enableSubmit($submit);
+
+    if (on && off) {
+      (count <= 0) ? off() : on();
+    }
   }
+
+  // function textCounter($input, $submit) {
+  //   var count = $input.val().length;
+  //   (count <= 0) ? _disableSubmit($submit) : _enableSubmit($submit);
+  // }
 
   function _resetSection($section) {
     $section.find(":text, textarea").val("");
@@ -236,30 +244,47 @@
   function _bindSearch(data) {
     var $ps = data.$ps;
 
-     $ps.find('.extra input').keyup(function(ev){
+    $ps.find('.extra input').keyup(function(ev){
 
-       if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+      if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
 
-       clearTimeout(interval);
+      clearTimeout(interval);
 
-       var $related = $ps.find("div.related");
-       var $relatedTitle = $ps.find("h3.related");
+      var $related = $ps.find("div.related");
+      var $relatedTitle = $ps.find("h3.related");
 
-       if ($(this).val().length > 5) {
-         interval = setTimeout(function(){
+      if ($(this).val().length > 3) {
+        interval = setTimeout(function(){
 
-           var query = $ps.find('.extra input[type="text"]').val();
+          var query = $ps.find('.extra input[type="text"]').val();
 
-           $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(data){
-             console.log(data);
-           }});
+          $.ajax({ url: "/search/politicians_and_areas", data: { search: { name : query } }, type: "GET", success: function(data){
 
-         }, 500);
-       } else {
-         // $related.fadeOut(350);
-         // $relatedTitle.fadeOut(350);
-       }
-     });
+            var $response = $(data);
+            $response.find("li").unbind();
+            $response.find("li").bind("click", function(e) {
+              alert($(this).attr("id"));
+            });
+
+            $ps.find(".autosuggest").fadeOut(150, function() {
+              $(this).remove();
+            });
+
+            if ($response.find("li").length > 0) {
+              $response.hide();
+              console.log($ps.find(".autosuggest_field").position().top);
+              $response.css("top", $ps.find(".autosuggest_field").position().top + 220);
+              $ps.find('.content').append($response);
+              $response.fadeIn(150);
+            }
+          }});
+
+        }, 500);
+      } else {
+        // $related.fadeOut(350);
+        // $relatedTitle.fadeOut(350);
+      }
+    });
   }
 
   function _doProposal(data) {
@@ -270,8 +295,8 @@
       _showExtraFields();
       _resizeSection($ps, $currentSection);
       _disableSubmit(data.$submit);
+      //data.$submit.unbind();
       _changeSubmitTitle(data.$submit, "Publicar");
-
     } else {
       _showMessage($ps, "success", function() {
         data.proposalStep = 0;
@@ -348,19 +373,29 @@
 
   function _setupUpload(data,id) {
 
-    var $ps = data.$ps;
-    if ($ps.find("#" + id).length > 0) {
+    var $ps = data.$ps,
+				$span  = $ps.find("#" + id);
+    if ($span.length > 0) {
 
       var uploader = new qq.FileUploader({
         element: document.getElementById(id),
-        action: '',
+        action: $span.attr('data-url'),
+				params: {
+					utf8: $span.closest('form').find('input[name=utf8]').val(),
+					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
+				},
         debug: true,
         text:"sube una nueva",
         onSubmit: function(id, fileName){
           $currentSection.find(".holder").fadeOut(speed);
         },
-        onProgress: function(id, fileName, loaded, total){},
-        onComplete: function(id, fileName, responseJSON){},
+        onProgress: function(id, fileName, loaded, total){
+					console.debug(arguments);
+				},
+        onComplete: function(id, fileName, responseJSON){
+					console.debug();
+					$span.closest('form').find('input.image_cache_name').val(responseJSON.image_cache_name)
+				},
         onCancel: function(id, fileName){ }
       });
     }

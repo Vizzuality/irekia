@@ -10,15 +10,13 @@
   <div class="left">
     <h3><%= t(".description.title") %></h3>
     <div class="description two_columns">
-      <%= simple_format(@politician.description.truncate(258) + ' ' + link_to(t('.description.read_more'), '/in_development')) %>
+      <%= simple_format(@politician.description.strip.truncate(258) + ' ' + link_to(t('.description.read_more'), '/in_development')) %>
+      <% if @follow.new_record? -%>
+        <%= render 'follows/create' %>
+      <% else -%>
+        <%= render 'follows/destroy' %>
+      <% end -%>
     </div>
-      <div id="follow">
-        <% if @follow.new_record? -%>
-          <%= render 'follows/create' %>
-        <% else -%>
-          <%= render 'follows/destroy' %>
-        <% end -%>
-      </div>
   </div>
 </div>
 
@@ -42,6 +40,7 @@
         <span class="counter">140</span>
         <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
         <span class="holder large">Haz una pregunta a <%= @politician.name %>...</span>
+        <span class="peak"></span>
       </div>
       <input type="submit" value="Preguntar" id="submit-counter-124" class="disabled white_button" disabled="disabled" />
     <% end %>

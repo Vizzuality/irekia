@@ -256,7 +256,7 @@ header nav .content .areas_selector .popover .scroll-pane { height: 280px; width
 header nav .content .areas_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 195px; }
 header nav .content .areas_selector .popover .scroll-pane ul li { text-shadow: none; color: #333; }
 header nav .content .areas_selector .popover .scroll-pane ul li.last a { border: none; }
-header nav .content .areas_selector .popover .scroll-pane ul li a { display: block; padding: 20px 0 20px 0; border-bottom: 1px solid #f1f1f1; }
+header nav .content .areas_selector .popover .scroll-pane ul li a { display: block; padding: 10px 0 10px 0; border-bottom: 1px solid #f1f1f1; }
 header nav .content ul.auth { float: right; }
 header nav .content ul.auth li { position: relative; margin: 0 0 0 10px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 header nav .content ul.auth li .pending-counter { right: 5px; }
@@ -380,7 +380,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.help .inner .icon { width: 93px; height: 98px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -153px; float: left; margin: 0 18px 0 0; }
 #container article.help .inner .content { float: left; width: 544px; }
 #container article.help .inner p { margin: 0 0 16px 0; color: #7D8A92; font-size: 17px; }
-#container article.publish { width: 757px; margin: 0 auto 40px auto; }
+#container article.publish { width: 757px; margin: 0 auto 0px auto; }
+#container article.publish.user .inner .content .container { height: 70px; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .triangle { left: 152px; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
@@ -389,6 +390,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner header h2 { line-height: normal; }
 #container article.publish .inner .content .container { overflow: hidden; clear: both; width: 687px; height: 94px; }
 #container article.publish .inner .content .container .inner_container { width: 9000px; margin-top: 19px; }
+#container article.publish .inner .content .container .inner_container strong { float: left; }
 #container article.publish .inner .content .container .inner_container .message { display: none; padding: 31px; height: 75px; width: 625px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: #EDF3E5; }
 #container article.publish .inner .content .container .inner_container .message p { color: #7D8A92; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .message h3 { letter-spacing: 1px; }
@@ -664,6 +666,10 @@ article .inner h2, article .inner h3 { color: #465866; }
 /* Article addons */
 #container article.initialy_hidden { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; }
 #container article .caption, #container article .caption p { color: #7d8a92; }
+#container article .autosuggest { width: 691px; position: absolute; padding-bottom: 10px; top: 20px; z-index: 2000; }
+#container article .autosuggest .a_t { background: url("/images/box_autosuggest_bkg.png") no-repeat -1px top; height: 20px; z-index: 1000; position: absolute; top: -20px; width: 691px; }
+#container article .autosuggest .a_f { background: url("/images/box_autosuggest_bkg.png") no-repeat -1px bottom; height: 10px; z-index: 1000; position: absolute; bottom: 0px; width: 691px; }
+#container article .autosuggest ul li { background: url("/images/box_autosuggest_bkg.png") repeat-y -713px 0; padding-left: 10px; }
 
 #container article .social-links { margin: 0 auto 40px auto; width: 447px; clear: both; overflow: hidden; }
 #container article .social-links .facebook { margin: 0 29px 0 0; }
@@ -896,7 +902,8 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .content ul.questions li .avatar { float: left; margin-right: 6px; }
 #container article .inner .content ul.questions li p { float: left; margin: 0; padding: 0; font-size: 13px; }
 #container article .inner .content ul.questions li p a { display: block; font-size: 15px; color: #465866; font-weight: bold; }
-#container article footer .inner.with_question form div.input-counter { margin-right: 10px; }
+#container article footer .inner.with_question form div.input-counter { position: relative; margin-right: 10px; }
+#container article footer .inner.with_question form div.input-counter span.peak { position: absolute; bottom: -7px; left: 12px; width: 14px; height: 8px; background: url("/images/icons/triangle.png") no-repeat 0 -156px; z-index: 4; }
 #container article .inner .right ul.people { padding: 10px 0 0 28px; border-left: 1px solid #eaeaea; border-left: 1px solid rgba(70, 88, 102, 0.17); }
 #container article .inner .right ul.people.no-border { border: none; }
 #container article .inner .right ul.people.no-padding { margin: 0; padding: 0; }
@@ -1014,7 +1021,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner header .right ul.switch li.selected { border: 1px solid #ccc; background: white; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container article .inner header .right ul.switch li.selected a { padding: 4px 23px; color: #465866; }
 #container article .inner header .right ul.switch li.selected a:hover { text-decoration: none; cursor: default; }
-#container article .inner .left .description.two_columns .column { margin-right: 40px; width: 282px!important; }
+#container article .inner .left .description.two_columns .column { margin-right: 40px; width: 282px!important; padding: 0 0 20px; }
 #container article .inner .left .description.two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
 #container article footer inner.with_avatar { position: relative; }

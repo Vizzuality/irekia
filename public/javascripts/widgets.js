@@ -1090,7 +1090,7 @@ jQuery.fn.verticalHomeLoop = function(opt){
 	function loopContent() {
 		if ($(ele).find('div.left ul li').size()>0 && !onElement) {
 			var last = $(ele).find('div.left ul li.loop').last();
-			var list = $(ele).find('div.left ul');
+			var list = $(ele).find('div.left ul').first();
 			var height = last.height();
 			last.css({opacity:0,height:0}).removeClass('loop');
 			list.prepend(last);
@@ -1098,7 +1098,7 @@ jQuery.fn.verticalHomeLoop = function(opt){
 				$(this).animate({opacity:1},300);
 			});
 			var last_vi = $(ele).find('div.left ul li').not('.loop').last().addClass();
-			last_vi.delay(800).animate({height:0,opacity:0},500,function(){
+			last_vi.animate({height:0,opacity:0},500,function(){
 				$(this).addClass('loop').removeAttr('style');
 			});
 		}

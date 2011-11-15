@@ -39,6 +39,7 @@ puts '================='.green
                      :description           => (<<-EOF
                        Aitor dirige y tramita la Sanidad del Gobierno Vasco.
                        Entre sus principales funciones destaca velar por el desarrollo del sistema sanitario y reducir tanto listas de espera como los tiempos de atención a pacientes.
+                       Además de construir un hospital con las últimas tecnologías en cada área del País Vasco.
                      EOF
                      ),
                      :role                  => Role.find_by_name('Politician'),
