@@ -66,7 +66,7 @@ function watchHash(opt) {
 jQuery.fn.enableRegistration = function(opt){
 
   var speed  = (opt && opt.speed) || 200,
-  marginBottom = 20,
+  marginBottom = 10,
   $form = $(".cycle form"),
   $container = $(".cycle .inner-cycle");
 
@@ -79,7 +79,7 @@ jQuery.fn.enableRegistration = function(opt){
 
   function forward($current, $next) {
     $(".cycle").animate({scrollLeft:$current.position().left + 850}, 350, "easeInOutQuad", function() {
-      $container.parent().animate({height:$next.height() + marginBottom}, 350, "easeInOutQuad");
+      $container.parent().animate({height:$next.outerHeight(true) + marginBottom}, 350, "easeInOutQuad");
     });
   }
 
