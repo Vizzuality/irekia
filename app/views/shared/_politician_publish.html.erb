@@ -6,15 +6,15 @@
     <p>¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!</p>
 
     <%= menu ([
-              { :link => (link_to t(".question"), "#"), :class => :selected},
+              { :link => (link_to t(".dashboard"), "#"), :class => :selected},
               { :link => (link_to t(".proposal"), "#") }
     ]) %>
 
     <div class="container">
       <div class="inner_container clearfix">
 
-        <!-- QUESTION -->
-        <div class="section question">
+        <!-- DASHBOARD -->
+        <div class="section dashboard">
           <div class="triangle"></div>
           <%= form_for @question, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
 
@@ -26,24 +26,12 @@
 
                 <div class="input_field placeholder textarea">
                   <div id="question-counter" class="input-counter">
-                    <span class="counter">140</span>
                     <%= question_data.text_area :question_text %>
                     <span class="holder">Introduce el texto que quieras publicar aquí.</span>
                   </div>
                 </div>
 
               <% end %>
-
-              <div class="extra">
-                <strong>¿A QUIÉN LE QUIERES DIRIGIR LA PREGUNTA?</strong>
-                <div class="input_field autosuggest_field placeholder">
-                  <div class="search_box">
-                    <input type="text" class="search" />
-                    <span class="holder">Nombre de persona o área...</span>
-                    <span class="spinner" id="search_question_spinner"></span>
-                  </div>
-                </div>
-              </div>
 
             </div>
 
@@ -66,7 +54,6 @@
 
                 <div class="input_field placeholder textarea clearfix">
                   <div id="proposal-counter" class="input-counter">
-                    <span class="counter">140</span>
                     <%= proposal_data.text_area :title, :class => :title %>
                     <span class="holder">Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.</span>
                   </div>

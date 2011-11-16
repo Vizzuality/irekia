@@ -60,8 +60,6 @@
         data.settings = settings;
         data.name = store;
         data.event = "_close." + store;
-        data.proposalStep = 0;
-        data.questionStep = 0;
         data.sectionID = 0;
         data.spinner = spinner;
       }
@@ -89,7 +87,7 @@
       _addCloseAction(data);
       _addDefaultAction(data);
       _bindMenu(data);
-      _bindSubmit(data, "Continuar", true, "continue");
+      _bindSubmit(data, "Publicar", true, "publish");
       _bindActions(data);
       _enableInputCounter(data, $("#question_question_data_attributes_question_text"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
       _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
@@ -128,10 +126,7 @@
   function _open(data) {
     var $ps = data.$ps;
 
-    _bindSubmit(data, "Continuar", true, "continue");
-
-    data.questionStep = 0;
-    data.proposalStep = 0;
+    _bindSubmit(data, "Publicar", true, "publish");
 
     // Initialize the initial section
     $currentSection    = $ps.find(".container .section:nth-child(1)");
@@ -361,17 +356,17 @@
     }
   }
 
-  function _doQuestion(data) {
-    var $ps = data.$ps;
+ // function _doMessage(data) {
+ //   var $ps = data.$ps;
 
-    _showExtraFields(data.settings.transitionSpeed);
-    _resizeSection(data, $currentSection);
-    _disableSubmit(data.$submit);
-    _changeSubmitTitle(data.$submit, "Publicar");
-    data.$submit.unbind();
-  }
+ //   _showExtraFields(data.settings.transitionSpeed);
+ //   _resizeSection(data, $currentSection);
+ //   _disableSubmit(data.$submit);
+ //   _changeSubmitTitle(data.$submit, "Publicar");
+ //   data.$submit.unbind();
+ // }
 
-  function _publishQuestion(data) {
+  function _publishMessage(data) {
     var $ps = data.$ps;
     var $form = $currentSection.find("form");
 
@@ -379,7 +374,7 @@
     data.spinner.spin(spin_element);
 
     $form.unbind();
-    $form.bind('ajax:success', function(event, xhr, status) { _successQuestion(data, $form, xhr); })
+    $form.bind('ajax:success', function(event, xhr, status) { _successMessage(data, $form, xhr); })
   }
 
   function _publishProposal(data) {
@@ -390,7 +385,7 @@
     data.spinner.spin(spin_element);
 
     $form.unbind();
-    $form.bind('ajax:success', function(event, xhr, status) { _successQuestion(data, $form, xhr); })
+    $form.bind('ajax:success', function(event, xhr, status) { _successMessage(data, $form, xhr); })
   }
 
   function _successProposal(data, $form, xhr) {
@@ -406,7 +401,7 @@
     _showMessage(data, "success");
   }
 
-  function _successQuestion(data, $form, xhr) {
+  function _successMessage(data, $form, xhr) {
     var $ps = data.$ps;
     var $response = $(xhr);
 
@@ -420,11 +415,11 @@
   }
 
   function _getCurrentSectionName() {
-    return _question() ? "question" : "proposal";
+    return _message() ? "dashboard" : "proposal";
   }
 
-  function _question() {
-    return $currentSection.hasClass("question");
+  function _message() {
+    return $currentSection.hasClass("dashboard");
   }
 
   function _changeSubmitTitle($submit, title) {
@@ -443,13 +438,13 @@
   function _submitPublish(data) {
     if (!_hasContent($currentSection)) return;
     _disableSubmit(data.$submit);
-    _question() ?  _publishQuestion(data) : _publishProposal(data);
+    _message() ?  _publishMessage(data) : _publishProposal(data);
   }
 
   function _submitContinue(data) {
     if (!_hasContent($currentSection)) return;
     _disableSubmit(data.$submit);
-    _question() ?  _doQuestion(data) : _doProposal(data);
+    _message() ?  _doMessage(data) : _doProposal(data);
   }
 
   function _bindSubmit(data, title, initiallyDisabled, callback) {
@@ -564,9 +559,6 @@
     $ps.find("ul.menu li a").click(function(e) {
       e && e.preventDefault();
 
-      data.questionStep = 0;
-      data.proposalStep = 0;
-
       _hideExtraFields(data.settings.transitionSpeed);
 
       data.sectionID = $(this).parent().index();
@@ -662,9 +654,6 @@
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).css("top", "-900px");
       _clearInfo(data.$ps);
-
-      data.questionStep = 0;
-      data.proposalStep = 0;
 
       data.$ps.find(".extra").hide();
       data.$ps.find(".holder").show();
