@@ -4495,11 +4495,17 @@ body.home {
         form {
           margin:20px 0 0 0;
 
+          span.holder {
+            top:6px;
+            font-size:15px;
+          }
+
           input[type="text"] {
             position:relative;
             float:left;
             height:29px;
             width:190px;
+            font-size:15px;
             border:1px solid #999999;
             border-right:none;
             -webkit-border-top-left-radius: 50px;
@@ -4509,6 +4515,7 @@ body.home {
             border-top-left-radius: 50px;
             border-bottom-left-radius: 50px;
           }
+
           input[type="submit"] {
             position:relative;
             float:left;
