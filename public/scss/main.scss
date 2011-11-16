@@ -3487,7 +3487,7 @@ a.editable {
           .after_share {
             position:relative;
 
-            &.email, &.twitter, &.facebook, &.more { display: block; width:28px; height:28px; background:url('/images/icons/share.png') no-repeat 0 0; border: 0 none; cursor: pointer; }
+            &.email, &.twitter, &.facebook, &.ical, &.more { display: block; width:28px; height:28px; background:url('/images/icons/share.png') no-repeat 0 0; border: 0 none; cursor: pointer; }
             &.twitter  { background-position:-29px 0; }
             &.facebook {
               background-position:-58px 0;
@@ -3496,12 +3496,14 @@ a.editable {
                 background: none;
               }
             }
+            &.ical {background-position:-176px 0;}
             &.more     { background-position:-88px 0; }
 
             &.share:hover   { z-index:100; }
             &.email:hover   { background-position:0px -30px; }
             &.twitter:hover { background-position:-29px -30px; }
             &.facebook:hover{ background-position:-58px -30px; }
+            &.ical:hover {background-position:-176px -30px;}
             &.more:hover    { background-position:-88px -30px; }
 
             .ok {

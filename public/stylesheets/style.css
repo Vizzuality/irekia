@@ -1021,15 +1021,17 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .left .content .sharebox ul li, #container article .right .content .sharebox ul li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 
 .share, .after_share { position: relative; }
-.share.email, .share.twitter, .share.facebook, .share.more, .after_share.email, .after_share.twitter, .after_share.facebook, .after_share.more { display: block; width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; border: 0 none; cursor: pointer; }
+.share.email, .share.twitter, .share.facebook, .share.ical, .share.more, .after_share.email, .after_share.twitter, .after_share.facebook, .after_share.ical, .after_share.more { display: block; width: 28px; height: 28px; background: url("/images/icons/share.png") no-repeat 0 0; border: 0 none; cursor: pointer; }
 .share.twitter, .after_share.twitter { background-position: -29px 0; }
 .share.facebook, .after_share.facebook { background-position: -58px 0; }
 .share.facebook .FBConnectButton_Simple, .after_share.facebook .FBConnectButton_Simple { background: none; }
+.share.ical, .after_share.ical { background-position: -176px 0; }
 .share.more, .after_share.more { background-position: -88px 0; }
 .share.share:hover, .after_share.share:hover { z-index: 100; }
 .share.email:hover, .after_share.email:hover { background-position: 0px -30px; }
 .share.twitter:hover, .after_share.twitter:hover { background-position: -29px -30px; }
 .share.facebook:hover, .after_share.facebook:hover { background-position: -58px -30px; }
+.share.ical:hover, .after_share.ical:hover { background-position: -176px -30px; }
 .share.more:hover, .after_share.more:hover { background-position: -88px -30px; }
 .share .ok, .after_share .ok { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; position: absolute; top: 20px; right: 2px; width: 9px; height: 9px; background: url("/images/icons/share.png") no-repeat 0 -61px; z-index: 110; }
 
