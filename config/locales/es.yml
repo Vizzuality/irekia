@@ -314,6 +314,8 @@
       continue: Continuar
       publish: Publicar
     floating_login:
+      not_yet_registered: ¿No tienes cuenta en Irekia?
+      register_here: Regístrate aquí
       access_irekia: Accede a Irekia
       forgotten_password: ¿Olvidaste tu contraseña?
       get_it_here: Recupérala aquí
@@ -412,6 +414,7 @@
         choose_an_area: Elige un área
       sign_in:
         access_irekia: Accede a Irekia
+        get_it_here: Recupérala aquí
         forgotten_password: ¿Olvidaste tu contraseña?
         get_it_here: Recupérala aquí
         remember_me: Recordar mis datos
@@ -448,6 +451,8 @@
       twitter: twitter
 
     sign_in:
+      not_yet_registered: ¿No tienes cuenta en Irekia?
+      register_here: Regístrate aquí
       access_irekia: Accede a Irekia
       forgotten_password: ¿Olvidaste tu contraseña?
       get_it_here: Recupérala aquí

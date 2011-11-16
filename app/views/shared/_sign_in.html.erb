@@ -1,7 +1,8 @@
 <div id="sign_in"<%= " class='error'" if flash and flash[:alert] %>>
   <div class="content">
     <h1><%= t('.access_irekia') %></h1>
-    <p><%= t('.forgotten_password') %> <%= link_to t('.get_it_here'), new_password_path('user') %></p>
+    <!--<p><%= t('.forgotten_password') %> <%= link_to t('.get_it_here'), new_password_path('user') %></p> -->
+    <p><%= t('.not_yet_registered') %> <%= link_to t('.register_here'), intro_users_path %></p>
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:novalidate => "novalidate"}) do |f| %>
 
       <p<%= " class='error'" if flash and flash[:alert] %>><%= f.label :email %> <%= content_tag 'span', flash[:alert] if flash %> <%= f.email_field :email, :class => :mInput %>
