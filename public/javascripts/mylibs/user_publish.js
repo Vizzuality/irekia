@@ -205,7 +205,7 @@
     $image_container.fadeOut(data.settings.transitionSpeed, function() {
       $image_container.find("img").remove();
       $ps.find(".uploader").show();
-      $ps.find(".holder").show();
+      $image_container.find(".holder").show();
       $ps.find(".loading").hide();
       $ps.find(".percentage").hide();
       $ps.find(".progress").css("width", "0");
