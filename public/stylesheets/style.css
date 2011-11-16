@@ -322,6 +322,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article .inner header p { margin: 14px 0 0 0; font-size: 17px; color: #7d8a92; }
 #container article .inner header p.position { padding: 0; margin: 0; font-size: 17px; color: #7d8a92; }
 #container article .inner h1 { margin-bottom: 5px; font-size: 41px; font-weight: 300; }
+#container article .inner h1 a { color: #465866; text-decoration: none; }
+#container article .inner h1 a:hover { color: #465866; text-decoration: none; }
 #container article .inner h2 { margin-bottom: 5px; font-size: 31px; line-height: 31px; font-weight: 300; }
 #container article .inner h3 { margin-bottom: 7px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
 #container article .inner .left { position: relative; float: left; left: 0; width: 605px; z-index: 0; }

@@ -3,7 +3,7 @@
 <div class="inner">
   <div class="content">
     <header>
-    <h1><%= @area.name %></h1>
+    <h1><%= link_to @area.name, area_path(@area) %></h1>
     </header>
     <div class="left">
       <h3><%= t('.description.title') %></h3>
