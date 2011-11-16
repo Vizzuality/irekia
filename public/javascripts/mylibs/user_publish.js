@@ -501,7 +501,7 @@
 					console.debug(p, width, arguments, arguments[2], arguments[3]);
 
 					if (parseInt(p) >= 75) $ps.find(".uploader").find(".loading").fadeOut(speed);
-					if (parseInt(p) >= 49) $ps.find(".uploader").find(".percentage").css("color", "#fff");
+					if (parseInt(p) >= 46) $ps.find(".uploader").find(".percentage").css("color", "#fff");
 
           $uploader.find(".percentage").html(parseInt(p, 10) + "%");
 				  $ps.find(".progress").css("width", width);
