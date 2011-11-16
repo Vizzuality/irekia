@@ -14,7 +14,13 @@ class Comment < Participation
   end
 
   def as_json(options = {})
+    comment_content = content.parent.present?? content.parent : content
     super({
+      :content => {
+        :id   => comment_content.try(:id),
+        :type => comment_content.try(:type).try(:underscore),
+        :text => comment_content.try(:text)
+      },
       :body => body
     })
   end

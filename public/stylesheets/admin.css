@@ -12,6 +12,8 @@ body.admin header nav .content span.currently_viewing { display: none; }
 body.admin header nav .content ul.areas { display: none; }
 body.admin header nav .content form { display: none; }
 body.admin header nav .content div.areas_selector { display: none; }
+body.admin header nav .content div.blue_button { display: none; }
+body.admin header nav .content span.username { text-shadow: 0 1px #58620F!important; }
 body.admin article.total_info { margin: 20px 0 0 0; }
 body.admin article.total_info div.inner { padding: 20px; }
 body.admin article.total_info ul.info { float: left; width: auto; }

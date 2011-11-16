@@ -815,7 +815,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .right ul.people.no-border { border: none; }
 #container article .inner .right ul.people.no-padding { margin: 0; padding: 0; }
 #container article .inner .right ul.people.extra-margin-bottom { margin-bottom: 30px; }
-#container article .inner .right ul.people li { clear: both; overflow: hidden; margin: 0 0 12px 0; padding: 0; font-size: 15px; color: #7d8a92; }
+#container article .inner .right ul.people li { clear: both; overflow: hidden; margin: 0 0 12px 0; padding: 0; font-size: 15px; color: #465866; }
 #container article .inner .right ul.people li.more a.name { margin-top: 8px; }
 #container article .inner .right ul.people li.add { width: 263px; height: 59px; margin-left: -8px; background: url("/images/tag_sprite.png") no-repeat 0 -133px; }
 #container article .inner .right ul.people li.add a.add { margin-top: 22px; font-size: 13px; color: #f10063; }
