@@ -149,7 +149,6 @@
   function _enableInputCounter(data, $input, on, off) {
     var $ps = data.$ps;
 
-    $input.unbind();
     $input.keyup(function(e) {
       textCounter($(this), on, off);
     });
