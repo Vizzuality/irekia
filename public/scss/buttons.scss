@@ -234,7 +234,7 @@ article .white_button.disabled:hover {
   @include box-shadow(none);
 }
 
-.white_button:hover, article .white_button:hover {
+.white_button:hover, article .white_button:hover, li.publish a:hover {
   color:#333;
   background-color:rgba(244,246,249,0.76);
   @include box-shadow(0 0 7px rgba(43, 140, 194, .3));
