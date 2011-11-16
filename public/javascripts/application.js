@@ -164,7 +164,7 @@ $(function() {
   // $("article.politician.publish").enablePoliticianPublish();
   // $("article.politician.publish").enablePoliticianPublish();
   $(".areas_selector").areasPopover();
-  $(".notification_selector").notificationPopover();
+  $(".toggle_notifications").notificationPopover();
 
 	// HOME, grow all areas
 	$("a.see_all_areas").click(function(ev){

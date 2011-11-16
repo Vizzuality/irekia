@@ -521,7 +521,7 @@ var GOD = (function() {
       $ok = $('<div class="ok" />');
       $el.parents("li").find(".share.email").append($ok)
       $ok.animate({opacity:1, top:"-2px"}, speed, easing);
-			
+
       return true;
     }
 
@@ -1150,7 +1150,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
       }
 
       // Update the reference to $ps
-      $ps = $('.' + store);
+      $ps = $(this);
 
       $(this).click(_toggle);
 
@@ -1190,11 +1190,12 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 
     var data  = $(this).data(store);
     var $ps   = data.$ps;
+    console.log($ps);
 
-    if ($ps.hasClass("open")) {
+    if ($(".notification_selector").hasClass("open")) {
       _close(data);
     } else {
-      $ps.addClass("open");
+      $(".notification_selector").addClass("open");
       _open(data);
       GOD.subscribe(data.event);
       GOD.broadcast(data.event);
@@ -1217,54 +1218,22 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   }
 
   function _getLeftPosition($ps) {
-    return ($ps.outerWidth() / 2) - ($ps.find(".popover").outerWidth() / 2) - 1;
+    return $ps.offset().left;
   }
 
   function _triggerOpenAnimation($ps, data) {
     var top  = _getTopPosition($ps);
-    var left = _getLeftPosition($ps);
+    var left = 213;
 
-    $ps.find(".popover").css({"top":(top) + "px", "left": left + "px"});
-    $ps.find(".popover").fadeIn(data.settings.transitionSpeed, data.settings.easingMethod);
+    $(".notification_selector").css({"top":(top) + "px", "left": left + "px"});
+    $(".notification_selector").find(".popover").fadeIn(data.settings.transitionSpeed, data.settings.easingMethod);
   }
 
   // Close popover
   function _close(data) {
     var $ps = data.$ps;
-    $ps.removeClass("open");
-    $ps.find(".popover").fadeOut(data.settings.transitionSpeed, data.settings.easingMethod);
-  }
-
-  function _addSubmitAction(data) {
-    data.$ps.find("form").die();
-
-    data.$ps.find("form").submit(function(e) {
-      spinner.spin(spin_element);
-      disableSending(data.$ps);
-    });
-
-    data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
-      spinner.stop();
-      enableSending(data.$ps);
-      _close(data, false, function() {
-        _gotoSuccess(data);
-      });
-    });
-
-    data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
-      spinner.stop();
-      enableSending(data.$ps);
-    });
-
-  }
-
-  function _addCloseAction2(data) {
-    data.$ps.find(".close").unbind("click");
-    data.$ps.find(".close").bind('click', function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      _close2(data, true);
-    });
+    $(".notification_selector").removeClass("open");
+    $(".notification_selector").find(".popover").fadeOut(data.settings.transitionSpeed, data.settings.easingMethod);
   }
 
   function _addCloseAction(data) {
@@ -1283,21 +1252,6 @@ jQuery.fn.enablePoliticianPublish = function(opt){
     });
   }
 
-  function _gotoSuccess(data) {
-
-    data.$ps = _build(data, "success");
-    var $ps  = data.$ps;
-
-
-    _addCloseAction2(data);
-    _addDefaultAction(data);
-
-    $("#container").prepend($ps);
-    _subscribeToEvent(data.event);
-    _triggerOpenAnimation($ps, data);
-
-    $ps.find(".input-counter").inputCounter();
-  }
 
   $(function() { });
 

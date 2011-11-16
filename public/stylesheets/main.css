@@ -99,11 +99,12 @@ header nav .content form .input_field input[type="text"], header nav .content fo
 header nav .content form .input_field input[type="submit"] { right: 10px; top: 10px; position: absolute; width: 14px; height: 14px; background: url("/images/icons/magnifier.png") no-repeat; border: 0; z-index: 100; }
 header nav .content form .input_field span#autocomplete_spinner { position: absolute; right: 17px; top: 17px; }
 header nav .content .sign_out { float: right; }
-header nav .content .notification_selector { float: left; margin: 0 15px 0 0; position: relative; width: 191px; }
+header nav .content .notification_selector { float: left; position: relative; width: 191px; }
+header nav .content .notification_selector.open .popover { display: block; }
 header nav .content .notification_selector.open .handle { background-position: 0 -141px; }
 header nav .content .notification_selector .handle { position: absolute; display: block; width: 6px; height: 5px; right: 11px; top: 15px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -128px; }
 header nav .content .notification_selector .popover { display: none; position: absolute; width: 246px; height: 311px; z-index: 1000; background: url("/images/popovers_bkg.png") no-repeat -3px -536px; }
-header nav .content .notification_selector .popover .scroll-pane { height: 232px; width: 210px; overflow: hidden; margin: 20px 0 0 20px; outline: none; }
+header nav .content .notification_selector .popover .scroll-pane { height: 232px; width: 210px; overflow: hidden; margin: 20px 0 0 17px; outline: none; }
 header nav .content .notification_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 210px; }
 header nav .content .notification_selector .popover .scroll-pane ul li { text-shadow: none; font-size: 13px; border-bottom: 1px solid #f1f1f1; padding: 10px 0 10px 0; color: #666; }
 header nav .content .notification_selector .popover .scroll-pane ul li.last { border: none; padding: 10px 0 0 0; }
@@ -111,7 +112,7 @@ header nav .content .areas_selector { float: left; margin: 0 15px 0 0; position:
 header nav .content .areas_selector.open .handle { background-position: 0 -141px; }
 header nav .content .areas_selector .handle { position: absolute; display: block; width: 6px; height: 5px; right: 11px; top: 15px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -128px; }
 header nav .content .areas_selector .popover { display: none; position: absolute; width: 246px; height: 311px; z-index: 1000; background: url("/images/popovers_bkg.png") no-repeat -3px -536px; }
-header nav .content .areas_selector .popover .scroll-pane { height: 232px; width: 210px; overflow: hidden; margin: 20px 0 0 20px; outline: none; }
+header nav .content .areas_selector .popover .scroll-pane { height: 232px; width: 210px; overflow: hidden; margin: 20px 0 0 17px; outline: none; }
 header nav .content .areas_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 210px; }
 header nav .content .areas_selector .popover .scroll-pane ul li { text-shadow: none; color: #333; }
 header nav .content .areas_selector .popover .scroll-pane ul li.last a { border: none; }
@@ -119,8 +120,8 @@ header nav .content .areas_selector .popover .scroll-pane ul li a { display: blo
 header nav .content ul.auth { float: right; }
 header nav .content ul.auth li { position: relative; margin: 0 0 0 10px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 header nav .content ul.auth li .pending-counter { right: 5px; }
-header nav .content ul.auth li .empty_count { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: url("/images/icons/icon_sprite.png") no-repeat 0 -339px; width: 18px; text-shadow: none; line-height: 15px; height: 19px; color: #2687bd; font-size: 10px; position: relative; top: 7px; padding-left: 6px; margin: 0 0 0 10px; }
-header nav .content ul.auth li .count { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: url("/images/icons/icon_sprite.png") no-repeat 0 -358px; width: 18px; line-height: 15px; height: 20px; text-shadow: none; color: #fff; font-size: 10px; position: relative; top: 7px; padding-left: 7px; margin: 0 0 0 10px; }
+header nav .content ul.auth li .empty_count { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: url("/images/icons/icon_sprite.png") no-repeat 1px -339px; width: 24px; text-shadow: none; line-height: 15px; height: 19px; color: #2687bd; font-size: 10px; position: relative; top: 7px; margin: 0 0 0 10px; text-align: center; }
+header nav .content ul.auth li .count { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: url("/images/icons/icon_sprite.png") no-repeat 1px -358px; width: 24px; line-height: 15px; height: 20px; text-shadow: none; color: #fff; font-size: 10px; position: relative; top: 7px; margin: 0 0 0 10px; text-align: center; cursor: pointer; }
 header nav .content ul.auth li span.username { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; margin: 0 0 0 10px; font-size: 15px; color: #fff; position: relative; top: 8px; text-shadow: 1px 1px 1px #0F4869; }
 header nav .content ul.auth li a { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; font-size: 15px; color: white; }
 header nav .content ul.auth li a.twitter { background: url("/images/icons/twitter.png") no-repeat; text-indent: -999em; position: relative; top: 5px; }
