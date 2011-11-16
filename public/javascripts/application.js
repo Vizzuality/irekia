@@ -193,12 +193,24 @@ jQuery.fn.enableQuestion = function(opt){
     $(this).bind('ajax:success', function(evt, xhr, status) {
       spinner.stop();
       $(this).find(".notice_success").fadeIn(220);
-      $("#notice_success").css("left", "445px");
+
+      $icon = $("<span class='icon success' />");
+      $(this).find(".input-counter").append($icon);
+
+
+      $("#notice_success").css("left", "447px");
       $("#notice_success").css("bottom", "70px");
       $(this).find('input[type="text"]').val("");
       $(this).find(".holder").fadeIn(150);
 
-      setTimeout(function() { $("#notice_success").fadeOut(150) }, 2000);
+      $(this).find(".counter").val(140);
+      var $that = $(this);
+
+      setTimeout(function() {
+        $("#notice_success").fadeOut(150);
+        $that.find(".icon").fadeOut(150, function() { $(this).remove();});
+      }, 2000);
+
     });
   });
 };
