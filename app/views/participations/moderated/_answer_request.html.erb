@@ -1,4 +1,3 @@
-<span class="positive">+<%= @participation.question.answer_requests_count %></span>
 <% if current_user && current_user.has_requested_answer(@participation.content_id) %>
 	<% if @participation.question.answer_requests_count <= 2 -%>
 		<%= t('.you_and_other', :count => @participation.question.answer_requests_count) -%>
