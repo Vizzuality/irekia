@@ -17,6 +17,10 @@ class AnswerOpinion < Participation
     joins(:answer_opinion_data).where('answer_opinion_data.satisfactory' => false)
   end
 
+  def parent
+    answer
+  end
+
   def as_json(options = {})
     super({
       :satisfactory    => satisfactory

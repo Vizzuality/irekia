@@ -124,6 +124,37 @@ module ApplicationHelper
     user_signed_in?? current_user.notifications_count : 0
   end
 
+  def notifications_list
+    user_signed_in?? current_user.notifications_grouped : []
+  end
+
+  def render_notification_item(notification, li_class = nil)
+    case notification.item_type
+    when 'Follow'
+      content_tag :li, raw(t('.notifications.follow', :count => notification.count.to_i, :name => link_to(notification.parent.fullname, user_path(notification.parent)))), :class => li_class
+    when 'Comment'
+
+      i18n_key, i18n_scope = if notification.parent.author == current_user
+        ['.notifications.comments_content_author', 'shared.nav_bar_buttons.notifications.your_content']
+      else
+        ['.notifications.comments_content', 'shared.nav_bar_buttons.notifications.a_content']
+      end
+
+      content_tag :li, raw(t(i18n_key, :count => notification.count.to_i, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope), send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
+    when 'Argument'
+    when 'Vote'
+    when 'ContentUser'
+
+      i18n_scope = if notification.parent.author == current_user
+        'shared.nav_bar_buttons.notifications.your_content'
+      else
+        'shared.nav_bar_buttons.notifications.a_content'
+      end
+
+      content_tag :li, raw(t('.notifications.content_users', :count => notification.count.to_i, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope), send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
+    end
+  end
+
   def image_url(image_path)
     request.protocol + request.host_with_port + image_path
   end

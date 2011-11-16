@@ -13,6 +13,10 @@ class AnswerRequest < Participation
     answer_request || new_request
   end
 
+  def parent
+    question
+  end
+
   def set_as_moderated
     self.moderated = true
   end

@@ -33,7 +33,7 @@ class Content < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments, :areas_contents, :contents_users
 
-  attr_accessor :location
+  attr_accessor :location, :parent
 
   def self.find_or_initialize(params = nil)
     new(params)

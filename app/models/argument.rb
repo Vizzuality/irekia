@@ -27,6 +27,10 @@ class Argument < Participation
     joins(:argument_data).where('argument_data.in_favor' => false)
   end
 
+  def parent
+    proposal
+  end
+
   def as_json(options = {})
     super({
       :title            => title,

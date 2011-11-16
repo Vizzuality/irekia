@@ -19,6 +19,10 @@ class Follow < ActiveRecord::Base
     where("follow_item_type = 'User'")
   end
 
+  def parent
+    user
+  end
+
   def user_already_following_this_item?
     return if user.not_following(follow_item)
     errors[:already_following] = "You're already following this item"
@@ -26,7 +30,7 @@ class Follow < ActiveRecord::Base
   private :user_already_following_this_item?
 
   def update_counter_cache
-    Notification.for(user, self)
+    Notification.for(follow_item, self) if follow_item.is_a?(User)
   end
   private :update_counter_cache
 

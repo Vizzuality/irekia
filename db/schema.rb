@@ -196,6 +196,8 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
     t.integer  "user_id"
     t.integer  "item_id"
     t.string   "item_type"
+    t.integer  "parent_id"
+    t.string   "parent_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
