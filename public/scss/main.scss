@@ -3741,8 +3741,10 @@ a.editable {
                   //   }
                   // }
                   .column {
+                    float:left;
                     margin-right: 40px;
                     width: 282px!important;
+                    padding:0 0 20px 0;
                     p { margin-top: 0; font-size: 15px; line-height: 18px; }
                     &.last { margin-right: 0px; width: 280px!important; }
                   }
