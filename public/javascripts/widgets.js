@@ -42,7 +42,7 @@ var LockScreen = (function() {
 */
 var GOD = (function() {
   var subscribers = {};
-  var debug = false;
+  var debug = true;
 
   function unsubscribe(event) {
     debug && console.log("Unsubscribe ->", event);
@@ -598,6 +598,9 @@ var GOD = (function() {
 })(jQuery, window, document);
 
 
+
+
+
 /* FILTER WIDGET */
 (function($, window, document) {
 
@@ -725,8 +728,6 @@ var GOD = (function() {
 
 
 
-
-
 /*
 * ================
 * AREAS POPOVER
@@ -835,6 +836,7 @@ var GOD = (function() {
       $ps.addClass("open");
       _open(data);
       GOD.subscribe(data.event);
+      GOD.broadcast(data.event);
     }
   }
 
@@ -940,6 +942,7 @@ var GOD = (function() {
 
 })(jQuery, window, document);
 
+/*
 jQuery.fn.enablePoliticianPublish = function(opt){
 
   if (this.length < 1) return;
@@ -1079,38 +1082,221 @@ jQuery.fn.enablePoliticianPublish = function(opt){
     });
   })
 }
+*/
 
 
-jQuery.fn.verticalHomeLoop = function(opt){
-	
-  if (this.length < 1) return;
 
-	var ele = this,
-			onElement = false;
 
-	function loopContent() {
-		if ($(ele).find('div.left ul li').size()>0 && !onElement) {
-			var last = $(ele).find('div.left ul li.loop').last();
-			var list = $(ele).find('div.left ul').first();
-			var height = last.height();
-			last.css({opacity:0,height:0}).removeClass('loop');
-			list.prepend(last);
-			last.animate({height:height+'px'},500,function(){
-				$(this).animate({opacity:1},300);
-			});
-			var last_vi = $(ele).find('div.left > div.listing > ul > li').not('.loop').last().addClass();
-			last_vi.animate({height:0,opacity:0},500,function(){
-				$(this).addClass('loop').removeAttr('style');
-			});
-		}
-	}
-	
-	$(ele).find('div.left > ul').hover(function(){
-		onElement = true;
-	},function(){
-		onElement = false;		
-	});
-	
-	setInterval(function(){loopContent()},5000);
-}
+/*
+* ====================
+* NOTIFICATION POPOVER
+* ====================
+*/
 
+(function($, window, document) {
+
+  var ie6 = false;
+
+  // Help prevent flashes of unstyled content
+  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
+    ie6 = true;
+  } else {
+    document.documentElement.className = document.documentElement.className + ' ps_fouc';
+  }
+
+  var
+  store = "notification_selector",
+  // Public methods
+  methods = { },
+  interval,
+  // Default values
+  defaults = {
+    easingMethod:'easeInOutQuad',
+    transitionSpeed: 200,
+    maxLimit: 140
+  };
+
+  methods.init = function(settings) {
+    settings = $.extend({}, defaults, settings);
+
+    return this.each(function() {
+      var
+      // The current <select> element
+      $this = $(this),
+
+      // We store lots of great stuff using jQuery data
+      data = $this.data(store) || {},
+
+      // This gets applied to the 'ps_container' element
+      id = $this.attr('id') || $this.attr('name'),
+
+      // This gets updated to be equal to the longest <option> element
+      width = settings.width || $this.outerWidth(),
+
+      // The completed ps_container element
+      $ps = false;
+
+      // Dont do anything if we've already setup notificationPopover on this element
+      if (data.id) {
+        return $this;
+      } else {
+        data.id = id;
+        data.$this = $this;
+        data.settings = settings;
+        data.name = store;
+        data.event = "_close." + store;
+      }
+
+      // Update the reference to $ps
+      $ps = $('.' + store);
+
+      $(this).click(_toggle);
+
+      $(this).find("ul li a").bind('click', function(e) {
+        window.location = $(this).attr('href');
+      });
+
+      // Save the updated $ps reference into our data object
+      data.$ps = $ps;
+
+      // Save the notificationPopover data onto the <select> element
+      $this.data(store, data);
+
+      // Do the same for the dropdown, but add a few helpers
+      $ps.data(store, data);
+      $(window).bind(data.event, function() { _close(data); });
+    });
+  };
+
+  // Expose the plugin
+  $.fn.notificationPopover = function(method) {
+    if (!ie6) {
+      if (methods[method]) {
+        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+      } else if (typeof method === 'object' || !method) {
+        return methods.init.apply(this, arguments);
+      }
+    }
+  };
+
+  // Toggle popover
+  function _toggle(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    var data  = $(this).data(store);
+    var $ps   = data.$ps;
+
+    if ($ps.hasClass("open")) {
+      _close(data);
+    } else {
+      $ps.addClass("open");
+      _open(data);
+      GOD.subscribe(data.event);
+      GOD.broadcast(data.event);
+    }
+  }
+
+  function _open(data) {
+    var $ps = data.$ps;
+
+    _triggerOpenAnimation($ps, data);
+    $ps.find('.scroll-pane').jScrollPane();
+
+    $ps.find(".jspDrag").bind('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  function _getTopPosition($ps) {
+    return $ps.height() + 17;
+  }
+
+  function _getLeftPosition($ps) {
+    return ($ps.outerWidth() / 2) - ($ps.find(".popover").outerWidth() / 2) - 1;
+  }
+
+  function _triggerOpenAnimation($ps, data) {
+    var top  = _getTopPosition($ps);
+    var left = _getLeftPosition($ps);
+
+    $ps.find(".popover").css({"top":(top) + "px", "left": left + "px"});
+    $ps.find(".popover").fadeIn(data.settings.transitionSpeed, data.settings.easingMethod);
+  }
+
+  // Close popover
+  function _close(data) {
+    var $ps = data.$ps;
+    $ps.removeClass("open");
+    $ps.find(".popover").fadeOut(data.settings.transitionSpeed, data.settings.easingMethod);
+  }
+
+  function _addSubmitAction(data) {
+    data.$ps.find("form").die();
+
+    data.$ps.find("form").submit(function(e) {
+      spinner.spin(spin_element);
+      disableSending(data.$ps);
+    });
+
+    data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
+      spinner.stop();
+      enableSending(data.$ps);
+      _close(data, false, function() {
+        _gotoSuccess(data);
+      });
+    });
+
+    data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
+      spinner.stop();
+      enableSending(data.$ps);
+    });
+
+  }
+
+  function _addCloseAction2(data) {
+    data.$ps.find(".close").unbind("click");
+    data.$ps.find(".close").bind('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      _close2(data, true);
+    });
+  }
+
+  function _addCloseAction(data) {
+    data.$ps.find(".close").unbind("click");
+    data.$ps.find(".close").bind('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      _close(data, true);
+    });
+  }
+
+  function _addDefaultAction(data){
+    data.$ps.unbind("click");
+    data.$ps.bind('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  function _gotoSuccess(data) {
+
+    data.$ps = _build(data, "success");
+    var $ps  = data.$ps;
+
+
+    _addCloseAction2(data);
+    _addDefaultAction(data);
+
+    $("#container").prepend($ps);
+    _subscribeToEvent(data.event);
+    _triggerOpenAnimation($ps, data);
+
+    $ps.find(".input-counter").inputCounter();
+  }
+
+  $(function() { });
+
+})(jQuery, window, document);

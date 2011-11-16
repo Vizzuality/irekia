@@ -242,6 +242,60 @@ header {
 
       .sign_out { float: right; }
 
+      .notification_selector {
+        float: left;
+        margin: 0 15px 0 0;
+        position:relative;
+        width:191px;
+
+        &.open {
+          .handle { background-position: 0 -141px; }
+        }
+
+        .handle {
+          position:absolute;
+          display:block;
+          width:6px;
+          height:5px;
+          right: 11px;
+          top: 15px;
+          background: url('/images/icons/icon_sprite.png') no-repeat 0 -128px;
+        }
+
+        .popover {
+          display:none;
+          position:absolute;
+          width:246px;
+          height: 311px;
+          z-index:1000;
+          background: url("/images/popovers_bkg.png") no-repeat -3px -536px;
+
+          .scroll-pane {
+            height: 232px;
+            width: 210px;
+            overflow: hidden;
+            margin: 20px 0 0 20px;
+            outline:none;
+
+            ul {
+              margin:0; padding:0;
+              width:210px;
+
+              li {
+                text-shadow:none;
+                font-size:13px;
+                border-bottom: 1px solid #f1f1f1;
+                padding: 10px 0 10px 0;
+                color:#666;
+
+                &.last { border:none; padding: 10px 0 0 0; }
+
+              }
+            }
+          }
+
+        }
+      }
       .areas_selector {
         float: left;
         margin: 0 15px 0 0;
@@ -284,7 +338,7 @@ header {
         .popover {
           display:none;
           position:absolute;
-          width:225px;
+          width:246px;
           height: 311px;
           z-index:1000;
           background: url("/images/popovers_bkg.png") no-repeat -3px -536px;
@@ -309,15 +363,15 @@ header {
           // }
 
           .scroll-pane {
-            height: 280px;
-            width: 195px;
+            height: 232px;
+            width: 210px;
             overflow: hidden;
             margin: 20px 0 0 20px;
             outline:none;
 
             ul {
               margin:0; padding:0;
-              width:195px;
+              width:210px;
 
               li {
                 text-shadow:none;
