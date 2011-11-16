@@ -311,6 +311,11 @@
         other: '%{count} propuestas'
       no_activity: Sin actividad
   shared:
+    politician_publish:
+      publish: Publicar
+      dashboard: Dashboard
+      proposal: Propuesta
+      photos: Fotos
     user_publish:
       question: Pregunta
       proposal: Propuesta
