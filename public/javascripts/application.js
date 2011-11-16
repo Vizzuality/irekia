@@ -135,9 +135,19 @@ $(function() {
   $(".goto_comments").enableGotoComments();
   $('.floating-login').floatingLoginPopover();
 
+
+
+
 	// If is politicians - 105 | areas - 140 >> HACK
-	var height_ = $('.two_columns').height();
-  $('.two_columns').columnize({width:302, height:height_ + 30});
+	var h_ = 0;
+	if ($('div#main').hasClass('politicians')) {
+		h_ = (7 * 18) + 5;
+	} else {
+		h_ = $('.two_columns').height() + 30;
+	}
+		
+  $('.two_columns').columnize({width:282, height:h_, columns:2});
+
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
 
