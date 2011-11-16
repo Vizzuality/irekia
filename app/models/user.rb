@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   attr_accessor :terms_of_service
 
   before_validation :check_blank_name, :on => :create
+  before_create :check_user_role
 
   validates :terms_of_service, :acceptance => true
   validates :name, :presence => true, :on => :update
@@ -480,5 +481,10 @@ class User < ActiveRecord::Base
     name = email if name.blank?
   end
   private :check_blank_name
+
+  def check_user_role
+    self.role = Role.citizen.first unless self.role.present?
+  end
+  private :check_user_role
 
 end
