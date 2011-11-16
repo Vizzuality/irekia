@@ -19,6 +19,17 @@
     <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
     <link rel="shortcut icon" href="img/l/apple-touch-icon.png">
     <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+      window.onload = function() {
+        var a = document.getElementsByTagName("area");
+        for (var i = 0; i < a.length; i++) {
+          a[i].onclick = function() {
+            window.location = this.getAttribute("href");
+            return false
+          }
+        }
+      }
+    </script>
   </head>
   <body class="datalogger">
     <div style="position:relative; text-align:center; width:314px; margin-left:auto; margin-right:auto;">
