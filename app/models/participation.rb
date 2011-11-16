@@ -79,7 +79,7 @@ class Participation < ActiveRecord::Base
       :content_id       => content_id,
       :content => {
         :id   => content.try(:id),
-        :type => content.try(:type).try(:downcase),
+        :type => content.try(:type).try(:underscore),
         :text => content.try(:text)
       },
       :published_at     => published_at,
