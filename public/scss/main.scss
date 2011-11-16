@@ -112,7 +112,7 @@ article .inner {
 span {
   &.answered     { color: #00AA54; }
   &.not_answered { color: #FF3300; }
-  &.positive     { color: #FF0066; font-style: italic; }
+  &.positive     { color: #FF0066; }
   &.in_favor     { color: $agree_color; }
   &.against      { color: $against_color; }
 }
@@ -1894,6 +1894,11 @@ article .inner { h2, h3 { color: $dark_blue; } }
 .footer.when, span.when, .map .infowindow ul.details li.when, #container article.agenda .inner .content ul li.day .info ul.details li.when {
   padding: 0 0 0 17px;
   background: url('/images/icons/icon_sprite.png') no-repeat 0 -35px;
+}
+
+span.requests {
+  padding: 0 0 0 10px;
+  background: url('/images/icons/icon_sprite.png') no-repeat 0 -385px;
 }
 
 .footer.comments, span.comments {

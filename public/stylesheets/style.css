@@ -218,7 +218,7 @@ article .inner header h2, article .inner h2 { font-family: "ClarendonLTMedium", 
 
 span.answered { color: #00AA54; }
 span.not_answered { color: #FF3300; }
-span.positive { color: #FF0066; font-style: italic; }
+span.positive { color: #FF0066; }
 span.in_favor { color: #669900; }
 span.against { color: #ff9933; }
 
@@ -637,6 +637,8 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.agenda .inner .content ul li.day .info ul.details li, #container article.agenda .inner .content ul li.day .info.large ul.details li { font-size: 13px; color: #7d8a92; margin-bottom: 0; }
 
 .footer.when, span.when, .map .infowindow ul.details li.when, #container article.agenda .inner .content ul li.day .info ul.details li.when { padding: 0 0 0 17px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -35px; }
+
+span.requests { padding: 0 0 0 10px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -385px; }
 
 .footer.comments a, span.comments a { padding: 0 0 0 13px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -50px; }
 
