@@ -347,7 +347,6 @@
       _showExtraFields(data.settings.transitionSpeed);
       _resizeSection(data, $currentSection);
       _disableSubmit(data.$submit);
-      //data.$submit.unbind();
       _changeSubmitTitle(data.$submit, "Publicar");
     } else {
       var $form = $currentSection.find("form");
