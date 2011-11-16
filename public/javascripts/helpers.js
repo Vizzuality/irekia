@@ -50,7 +50,7 @@ function watchHash(opt) {
 
   if (hash = window.location.hash) {
     if (hash == "#comments") {
-      $('html, body').delay(500).animate({scrollTop:$(".comments").offset().top - 10}, speed, function() {
+      $('html, body').delay(500).animate({scrollTop:$("div.comments").offset().top - 10}, speed, function() {
         window.location.hash = '';
         removeHash();
       });
@@ -388,7 +388,7 @@ jQuery.fn.enableGotoComments = function(opt){
   this.each(function(){
     $(this).click(function(e) {
       e.preventDefault();
-      $('html, body').animate({scrollTop:$(".comments").offset().top}, speed);
+      $('html, body').animate({scrollTop:$("div.comments").offset().top}, speed);
     });
   });
 }
