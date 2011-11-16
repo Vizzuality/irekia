@@ -5,7 +5,8 @@ class HomeController < ApplicationController
   def index
     @areas           = Area.areas_for_homepage
     @areas_by_name   = Area.names_and_ids.all
-    @actions         = AreaPublicStream.where('event_type <> ?', 'photo').order('published_at desc').page(1).per(10)
+    @actions         = AreaPublicStream.where('event_type <> ?', 'photo').order('published_at desc')
+    @actions         = @actions.where(:event_type => params[:type]) if params[:type]
     @news_count      = @actions.news.count
     @questions_count = @actions.questions.count
     @answers_count   = @actions.answers.count
@@ -15,6 +16,8 @@ class HomeController < ApplicationController
     @photos_count    = @actions.photos.count
     @videos_count    = @actions.videos.count
     @statuses_count  = @actions.status_messages.count
+
+    @actions = @actions.page(1).per(10)
 
     render :partial => 'shared/actions_list' and return if request.xhr?
   end

@@ -8,7 +8,7 @@ class AnswerRequest < Participation
 
   def self.find_or_initialize(params = nil)
     new_request = new(params)
-    answer_request = User.find(params[:user_id]).answer_request(params[:content_id]).first if params.present?
+    answer_request = User.find(params[:user_id]).answer_request(params[:content_id]).readonly(false).first if params.present?
 
     answer_request || new_request
   end

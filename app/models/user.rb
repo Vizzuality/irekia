@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
                   :title_id,
                   :birthday,
                   :description,
+                  :description_1,
+                  :description_2,
                   :is_woman,
                   :province_id,
                   :city_id,
@@ -448,7 +450,12 @@ class User < ActiveRecord::Base
   end
 
   def notifications_grouped
-    Notification.select([:item_type, :parent_id, :parent_type, :'count(id) as count']).group('item_type, parent_id, parent_type').where(:user_id => id).includes(:parent).all
+    Notification
+    .select([:item_type, :parent_id, :parent_type, :'count(id) as count'])
+    .from("(#{Notification.where(:user_id => id).order('created_at desc').to_sql}) notifications")
+    .group('item_type, parent_id, parent_type, created_at')
+    .includes(:parent)
+    .all
   end
 
   def reset_counter(counter)

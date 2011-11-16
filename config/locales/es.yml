@@ -673,7 +673,10 @@
           event: un evento
           proposal: una propuesta
           question: una pregunta
-          answer: una answer
+          answer: una respuesta
+          tweet: un tweet
+          status_message: un cambio de estado
+          video: un video
         your_content:
           news: Tu noticia
           photo: Tu foto
@@ -681,6 +684,9 @@
           proposal: Tu propuesta
           question: Tu pregunta
           answer: Tu respuesta
+          tweet: Tu tweet
+          status_message: Tu cambio de estado
+          video: Tu video
         comments_content_author:
           zero: 'Ningún comentario en %{content}'
           one: 'Nuevo comentario en %{content}'

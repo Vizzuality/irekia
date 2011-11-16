@@ -90,6 +90,11 @@ class Question < Content
 
     return unless self.moderated?
 
+    user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+    user_action.published_at = self.published_at
+    user_action.message      = self.to_json
+    user_action.save!
+
     if target_user
       user_action              = target_user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
       user_action.published_at = self.published_at

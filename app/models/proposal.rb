@@ -146,6 +146,7 @@ class Proposal < Content
 
     if target_area
       target_area.update_attribute("proposals_count", target_area.actions.proposals.count)
+      target_area.users.each{|user| user.update_attribute("private_proposals_count", user.private_actions.proposals.count)}
       target_area.followers.each{|user| user.update_attribute("private_proposals_count", user.private_actions.proposals.count)}
     end
     author.update_attribute("proposals_count", author.actions.proposals.count)

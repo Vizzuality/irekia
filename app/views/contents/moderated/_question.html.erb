@@ -56,7 +56,7 @@
             <% end -%>
           </p>
             <% if @new_request -%>
-              <%= form_for @new_request do |f| -%>
+              <%= form_for @new_request, :remote => true, :html => {:'data-type' => :html} do |f| -%>
                 <%= f.hidden_field :content_id -%>
                 <%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
               <% end -%>
