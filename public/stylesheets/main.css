@@ -143,6 +143,8 @@ Article
 
 div#main.searches .inner { padding-bottom: 25px; }
 
+div#main.show div.left img { margin: 4px 0 7px; }
+
 article .inner h2, article .inner h3 { color: #465866; }
 
 #container article.notice, #container article .inner .notice { display: none; position: absolute; width: 173px; margin: 0; z-index: 1000; }
