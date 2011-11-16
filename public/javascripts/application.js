@@ -101,6 +101,19 @@ $(function() {
 	// END FOLLOW FORMS!!
 
 
+	// ANSWER FORM
+	$('div.answering form').live('ajax:success',function(evt, xhr, status) {
+		var parent = $(this).closest('div.answering');
+		var response = $(xhr);
+		response.hide();
+		
+		parent.fadeOut(function(){
+			parent.before(response);
+			response.fadeIn();
+		});
+	});
+	// END ANSWER FORM 
+
 
   // This button close welcome message for new users
   $(".close-welcome").submit(function(e) {
