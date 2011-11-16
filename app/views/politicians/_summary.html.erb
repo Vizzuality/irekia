@@ -10,14 +10,17 @@
   <div class="left">
     <h3><%= t(".description.title") %></h3>
     <div class="description two_columns">
-      <% if @politician.description -%>
-        <%= simple_format(@politician.try(:description).try(:strip) + ' ' + link_to(t('.description.read_more'), '/in_development')) %>
-      <% end -%>
-      <% if @follow.new_record? -%>
-        <%= render 'follows/create' %>
-      <% else -%>
-        <%= render 'follows/destroy' %>
-      <% end -%>
+      <div class="first column">
+        <%= simple_format(@politician.description_1.strip) %>
+      </div>
+      <div class="last column">
+        <%= simple_format(@politician.description_2.strip + ' ' + link_to(t('.description.read_more'), '/in_development')) %>
+        <% if @follow.new_record? -%>
+          <%= render 'follows/create' %>
+        <% else -%>
+          <%= render 'follows/destroy' %>
+        <% end -%>
+      </div>
     </div>
   </div>
 </div>

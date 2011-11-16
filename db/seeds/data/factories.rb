@@ -3,7 +3,9 @@
 def create_area(params)
   area = Area.find_or_initialize_by_name(params[:name])
   area.image = Image.create(:image => params[:image]) if params[:image]
-  area.description = params[:description]
+  area.description    = params[:description]
+  area.description_1  = params[:description_1]
+  area.description_2  = params[:description_2]
   area.save!
 
   print '.'.blue
@@ -29,7 +31,9 @@ def create_user(params)
   user.password_confirmation = params[:password_confirmation]
   user.is_woman              = params[:is_woman]
   user.inactive              = params[:inactive]
-  user.description           = params[:description] if params[:description]
+  user.description           = params[:description_1] + params[:description_2] if params[:description_1] && params[:description_2]
+  user.description_1         = params[:description_1]
+  user.description_2         = params[:description_2]
   user.province              = params[:province]
   user.city                  = params[:city]
   user.birthday              = params[:birthday]

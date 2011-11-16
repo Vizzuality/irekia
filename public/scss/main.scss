@@ -588,7 +588,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
     header p { margin: 14px 0 0 0; font-size:17px; color:$standard_gray; }
     header p.position { padding: 0; margin: 0; font-size:17px; color:$standard_gray; }
 
-    h1 { margin-bottom: 5px; font-size: 41px; font-weight: 300; }
+    h1 { margin-bottom: 5px; font-size: 41px; font-weight: 300; a {color:#465866; text-decoration:none; &:hover {color:#465866; text-decoration:none;}}}
     h2 { margin-bottom: 5px; font-size: 31px; line-height:31px; font-weight: 300; }
     h3 { margin-bottom: 7px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
 
@@ -3756,8 +3756,10 @@ a.editable {
                   //   }
                   // }
                   .column {
+                    float:left;
                     margin-right: 40px;
                     width: 282px!important;
+                    padding:0 0 20px 0;
                     p { margin-top: 0; font-size: 15px; line-height: 18px; }
                     &.last { margin-right: 0px; width: 280px!important; }
                   }
@@ -3770,6 +3772,7 @@ a.editable {
               }
 
               ul.suggestions {
+                padding:0 0 20px 0;
                 li {
                   width: 275px;
                   padding: 14px 16px 16px 16px;

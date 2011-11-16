@@ -1299,7 +1299,7 @@
     private:
       welcome:
         hello: 'Hola %{name}‚ ¿por dónde empezar?'
-        hi_again: 'Hola de nuevo, %{name},'
+        hi_again: 'Hola de nuevo, %{name}.'
         configure_your_account: Configura tu cuenta
         following_nobody: No estás siguiendo a nadie todavía.
         currently: 'Actualmente %{politicians} y %{areas}'
@@ -1391,13 +1391,13 @@
          videos: Vídeos
         more: ver más acciones
       followings:
-        title: A quien sigues en Irekia
+        title: A quién sigues en Irekia
         all_profiles: Ver todos los perfiles a los que sigues
         title_and_area: '%{title} de %{area}'
         area: Área
     politician:
       welcome:
-        hi_again: 'Hola de nuevo %{name},'
+        hi_again: 'Hola de nuevo %{name}.'
         followers_count:
           zero: No te sigue nadie todavía
           one: Te sigue 1 usuario
@@ -1451,7 +1451,7 @@
          videos: Vídeos
         more: ver más acciones
       followings:
-        title: A quien sigues en Irekia
+        title: A quién sigues en Irekia
         all_profiles: Ver todos los perfiles a los que sigues
         title_and_area: '%{title} de %{area}'
         area: Área

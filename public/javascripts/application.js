@@ -134,14 +134,14 @@ $(function() {
 
 
 	// If is politicians - 105 | areas - 140 >> HACK
-	var h_ = 0;
-	if ($('div#main').hasClass('politicians')) {
-		h_ = (7 * 18) + 5;
-	} else {
-		h_ = $('.two_columns').height() + 30;
-	}
-
-  $('.two_columns').columnize({width:282, height:h_, columns:2});
+	// var h_ = 0;
+	// if ($('div#main').hasClass('politicians')) {
+	// 	h_ = (7 * 18) + 5;
+	// } else {
+	// 	h_ = $('.two_columns').height() + 30;
+	// }
+	//
+	//   $('.two_columns').columnize({width:282, height:h_, columns:2});
 
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
@@ -194,6 +194,11 @@ jQuery.fn.enableQuestion = function(opt){
       $("#notice_success").css("bottom", "70px");
       $(this).find('input[type="text"]').val("");
       $(this).find(".holder").fadeIn(150);
+
+      setTimeout(function() {
+      $(this).find(".holder").fadeOut(150, function() { $(this).remove(); } );
+
+      }, 2000);
     });
   });
 };
