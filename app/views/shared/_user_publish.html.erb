@@ -59,7 +59,7 @@
 
                 <%= proposal_data.fields_for :image, @proposal_data.image do |image| %>
                   <%= image.hidden_field :proposal_data_id %>
-                  <%= image.hidden_field :image, :class => :image_cache_name %>
+                  <%= image.hidden_field :image_cache, :class => :image_cache_name %>
                 <% end %>
 
                 <div class="form clearfix">

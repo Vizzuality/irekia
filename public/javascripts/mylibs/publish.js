@@ -520,6 +520,7 @@
 
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
+					$ps.find('.image_cache_name').val(responseJSON.image_cache_name);
 
           $(cacheImage).bind("load", function () {
             $ps.find(".image_container").prepend(cacheImage);

@@ -54,7 +54,7 @@
       </div>
     </div>
 
-    <%#= image_tag @content.proposal_data.image.content_url if @content.proposal_data.image.present? %>
+    <%= image_tag @content.proposal_data.image.content_url if @content.has_image? %>
     <%= simple_format @content.body %>
     <%= render "arguments" %>
     <%= render "participations/comments" %>

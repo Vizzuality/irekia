@@ -9,12 +9,6 @@ class Image < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  attr_accessor :image_cache_name
-
-  def image_cache_name=(name)
-    image = ImageUploader.retrieve_from_cache!(name)
-  end
-
   def original_url
     image.original.url
   end

@@ -1,8 +1,10 @@
 <%= avatar data.author %>
 <div class="content">
   <%= content_tag 'p', t(".title", :name => data.author.name) %>
-  <%= link_to image_tag(data.list_element_url), photo_path(data.id) %>
-  <p class="excerpt">&quot;<%= link_to data.title, photo_path(data.id) %>&quot;</p>
+  <div class="photo_block">
+    <%= link_to image_tag(data.list_element_url), photo_path(data.id) %>
+    <p class="excerpt inline"><%= link_to data.title, photo_path(data.id) %></p>
+  </div>
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %>

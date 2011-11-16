@@ -3,6 +3,7 @@ class PoliticiansController < UsersController
 
   before_filter :per_page,                   :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda]
+  before_filter :current_user_is_politician?
   before_filter :get_politician,             :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_counters,               :only => [:show, :actions, :questions, :proposals, :agenda]
@@ -49,6 +50,11 @@ class PoliticiansController < UsersController
     render :partial => 'shared/agenda_list',
            :layout  => nil and return if request.xhr?
   end
+
+  def current_user_is_politician?
+    redirect_to user_path(current_user) if current_user.present? && params[:id].to_i == current_user.id && current_user.politician?
+  end
+  private :current_user_is_politician?
 
   def get_politician
     @politician = @user

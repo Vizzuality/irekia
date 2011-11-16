@@ -9,4 +9,6 @@ class ProposalData < ActiveRecord::Base
              :foreign_key => :area_id
 
   accepts_nested_attributes_for :image
+
+  delegate :content_url, :to => :image
 end
