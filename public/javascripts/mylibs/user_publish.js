@@ -138,7 +138,6 @@
     $currentSection    = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
     _gotoSection(data);
-    _bindSearch(data);
 
     _selectOption(data, $currentMenuOption);
 
@@ -550,6 +549,8 @@
     _clearAutosuggest(data);
     _clearSection(data);
     _resetHiddenFields();
+
+    _bindSearch(data);
 
     var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
     var height    = $section.find(".form").outerHeight(true);
