@@ -260,7 +260,7 @@ header nav .content .notification_selector.open { display: block; }
 header nav .content .notification_selector.open .popover { display: block; }
 header nav .content .notification_selector.open .handle { background-position: 0 -141px; }
 header nav .content .notification_selector .handle { position: absolute; display: block; width: 6px; height: 5px; right: 11px; top: 15px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -128px; }
-header nav .content .notification_selector .popover { display: none; position: absolute; width: 230px; height: 230px; padding: 8px 0 18px 17px; z-index: 1000; background: url("/images/box_notifications_selector.png") no-repeat right bottom; }
+header nav .content .notification_selector .popover { display: block; position: absolute; width: 230px; height: 230px; padding: 8px 0 18px 17px; z-index: 1000; background: url("/images/box_notifications_selector.png") no-repeat right bottom; }
 header nav .content .notification_selector .popover .scroll-pane { height: 100%; width: 213px; overflow: hidden; outline: none; }
 header nav .content .notification_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 213px; }
 header nav .content .notification_selector .popover .scroll-pane ul li { text-shadow: none; font-size: 13px; border-bottom: 1px solid #f1f1f1; padding: 10px 0 10px 0; color: #666; }
