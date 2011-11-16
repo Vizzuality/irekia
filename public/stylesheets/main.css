@@ -812,6 +812,9 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .content ul.questions li p { float: left; width: 100%; margin: 0; padding: 0; font-size: 13px; }
 #container article .inner .content ul.questions li p a { display: block; font-size: 15px; color: #465866; font-weight: bold; }
 #container article footer .inner.with_question form div.input-counter { position: relative; margin-right: 10px; }
+#container article footer .inner.with_question form div.input-counter .icon { display: block; width: 20px; height: 20px; position: absolute; right: 7px; top: 8px; z-index: 100; background: url("/images/icons/share.png") no-repeat 0 0; }
+#container article footer .inner.with_question form div.input-counter .icon.success { background-position: 0 -674px; }
+#container article footer .inner.with_question form div.input-counter .icon.error { background-position: -30px -674px; }
 #container article footer .inner.with_question form div.input-counter .spinner { position: absolute; display: block; right: 8px; top: 8px; width: 20px; height: 20px; z-index: 10; }
 #container article footer .inner.with_question form div.input-counter span.peak { position: absolute; bottom: -7px; left: 12px; width: 14px; height: 8px; background: url("/images/icons/triangle.png") no-repeat 0 -156px; z-index: 4; }
 #container article .inner .right ul.people { padding: 10px 0 0 28px; border-left: 1px solid #eaeaea; border-left: 1px solid rgba(70, 88, 102, 0.17); }

@@ -185,6 +185,9 @@ jQuery.fn.enableQuestion = function(opt){
   this.each(function(){
     $(this).submit(function(e) {
       spinner.spin(spin_element);
+      $("#notice_success").fadeOut(150);
+
+
     });
 
     $(this).bind('ajax:success', function(evt, xhr, status) {
@@ -195,54 +198,52 @@ jQuery.fn.enableQuestion = function(opt){
       $(this).find('input[type="text"]').val("");
       $(this).find(".holder").fadeIn(150);
 
-      setTimeout(function() {
-      $(this).find(".holder").fadeOut(150, function() { $(this).remove(); } );
-
-      }, 2000);
+      setTimeout(function() { $("#notice_success").fadeOut(150) }, 2000);
     });
   });
 };
 
-    $(".make_question").enableQuestion();
+$(".make_question").enableQuestion();
 
-  $(".user_publish").userPublishPopover();
-  $(".politician_publish").politicianPublishPopover();
+$(".user_publish").userPublishPopover();
+$(".politician_publish").politicianPublishPopover();
 
-  $(".create_proposal").proposalPopover();
+$(".create_proposal").proposalPopover();
 
-  $(".auth a.login").loginPopover();
+$(".auth a.login").loginPopover();
 
-  $(".share.inline, .share.more, .share.email").sharePopover();
+$(".share.inline, .share.more, .share.email").sharePopover();
 
-  //$('.avatar').prepend("<div class='ieframe'></div>");
-  $(".with_filters").filterWidget();
-  $(".with_filters").filterWidget();
+//$('.avatar').prepend("<div class='ieframe'></div>");
+$(".with_filters").filterWidget();
+$(".with_filters").filterWidget();
 
-  // $("article.politician.publish").enablePoliticianPublish();
-  // $("article.politician.publish").enablePoliticianPublish();
-  $(".areas_selector").areasPopover();
-  $(".toggle_notifications").notificationPopover();
+// $("article.politician.publish").enablePoliticianPublish();
+// $("article.politician.publish").enablePoliticianPublish();
 
-  // After requesting an answer, reload the text
-  $(".answer_placeholder form").bind('ajax:success', function(evt, xhr, status) {
-    var $ps = $(this).parents(".answer_placeholder").find(".has_requested_answer");
+$(".areas_selector").areasPopover();
+$(".toggle_notifications").notificationPopover();
 
-    $(this).fadeOut(150);
-    $ps.fadeOut(150, function() {
-      $ps.html(xhr);
-      $ps.fadeIn(150);
-    });
+// After requesting an answer, reload the text
+$(".answer_placeholder form").bind('ajax:success', function(evt, xhr, status) {
+  var $ps = $(this).parents(".answer_placeholder").find(".has_requested_answer");
+
+  $(this).fadeOut(150);
+  $ps.fadeOut(150, function() {
+    $ps.html(xhr);
+    $ps.fadeIn(150);
   });
+});
 
-	// HOME, grow all areas
-	$("a.see_all_areas").click(function(ev){
-		ev.preventDefault();
-		$(this).closest('article.areas').find('div.areas_list').animate({height:'635px'},500);
-		$(this).closest('article.areas').find('div.all_areas').show();
-		$(this).closest('article.areas').find('footer').animate({opacity:0,height:0},500,function(){
-			$(this).closest('article.areas').removeClass('with_footer');
-			$(this).remove();
-		});
-	});
+// HOME, grow all areas
+$("a.see_all_areas").click(function(ev){
+  ev.preventDefault();
+  $(this).closest('article.areas').find('div.areas_list').animate({height:'635px'},500);
+  $(this).closest('article.areas').find('div.all_areas').show();
+  $(this).closest('article.areas').find('footer').animate({opacity:0,height:0},500,function(){
+    $(this).closest('article.areas').removeClass('with_footer');
+    $(this).remove();
+  });
+});
 
 });

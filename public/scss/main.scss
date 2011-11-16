@@ -3239,6 +3239,25 @@ a.editable {
             }
             footer .inner.with_question form div.input-counter {position:relative; margin-right: 10px;
 
+              .icon {
+                display:block;
+                width:20px;
+                height:20px;
+
+                position:absolute;
+                right:7px;
+                top: 8px;
+                z-index:100;
+
+                background:url('/images/icons/share.png') no-repeat 0 0;
+                &.success {
+                  background-position: 0 -674px;
+                }
+
+                &.error {
+                  background-position: -30px -674px;
+                }
+              }
 
               .spinner {
                 position:absolute;
