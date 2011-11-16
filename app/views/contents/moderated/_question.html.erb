@@ -30,13 +30,17 @@
       </div>
     <% else %>
       <% if current_user && current_user.politician? -%>
-        <%= form_for @new_answer do |form| %>
-          <%= form.hidden_field :related_content_id %>
-          <%= form.fields_for :answer_data, @new_answer.answer_data do |answer_data| -%>
-            <%= answer_data.text_area :answer_text %>
+        <div class="answering">
+          <span class="peak"></span>
+          <h3>CONTESTA A ESTA PREGUNTA</h3>
+          <%= form_for @new_answer, :remote => true, :html => {:'data-type' => :html} do |form| %>
+            <%= form.hidden_field :related_content_id %>
+            <%= form.fields_for :answer_data, @new_answer.answer_data do |answer_data| -%>
+              <%= answer_data.text_area :answer_text %>
+            <% end -%>
+            <%= form.submit 'Publicar respuesta', :class => 'white_button pink' %>
           <% end -%>
-          <%= form.submit 'Publicar respuesta' %>
-        <% end -%>
+        </div>
       <% else -%>
         <div class="answer_placeholder">
           <p><strong><%= t('.not_answered_yet') %></strong></p>

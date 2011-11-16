@@ -101,6 +101,21 @@ $(function() {
 	// END FOLLOW FORMS!!
 
 
+	// ANSWER FORM
+	$('div.answering form').live('ajax:success',function(evt, xhr, status) {
+		var parent = $(this).closest('div.answering');
+		var response = $(xhr);
+		response.hide();
+		
+		parent.fadeOut(function(){
+			parent.before(response);
+			response.fadeIn();
+		});
+		
+		
+	});
+	// END ANSWER FORM 
+
 
   $(".my_opinion input[type='submit'], .my_opinion button").click(function(e) {
       $(".my_opinion .selected").removeClass("selected");
