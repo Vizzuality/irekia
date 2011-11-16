@@ -111,8 +111,6 @@ $(function() {
 			parent.before(response);
 			response.fadeIn();
 		});
-		
-		
 	});
 	// END ANSWER FORM 
 

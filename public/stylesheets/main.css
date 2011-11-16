@@ -789,7 +789,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .content ul.questions li { clear: both; overflow: hidden; margin: 0 0 13px 0; padding: 10px; background: #F2F5F8; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container article .inner .content ul.questions li:last-child, #container article .inner .content ul.questions li.last { margin-bottom: 0; }
 #container article .inner .content ul.questions li .avatar { float: left; margin-right: 6px; }
-#container article .inner .content ul.questions li p { float: left; margin: 0; padding: 0; font-size: 13px; }
+#container article .inner .content ul.questions li p { float: left; width: 100%; margin: 0; padding: 0; font-size: 13px; }
 #container article .inner .content ul.questions li p a { display: block; font-size: 15px; color: #465866; font-weight: bold; }
 #container article footer .inner.with_question form div.input-counter { position: relative; margin-right: 10px; }
 #container article footer .inner.with_question form div.input-counter span.peak { position: absolute; bottom: -7px; left: 12px; width: 14px; height: 8px; background: url("/images/icons/triangle.png") no-repeat 0 -156px; z-index: 4; }
