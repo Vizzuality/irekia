@@ -612,7 +612,12 @@ jQuery.fn.smartPlaceholder = function(opt){
     }
 
     $input.keydown(function(e) {
-      setTimeout(function() { (e && e.keyCode == 8 || $input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);
+
+      if (e.keyCode == 88) { // alt-x
+        $span.fadeIn(speed);
+      } else {
+        setTimeout(function() { ($input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);
+      }
     });
 
     $span.click(function() { $input.focus(); });
