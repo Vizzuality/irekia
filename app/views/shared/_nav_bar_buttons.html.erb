@@ -3,12 +3,28 @@
     <li><span class="username"><%= t('.hello', :name => current_user.name) %>.</span></li>
     <li>
     <div class="blue_button">
-      <%= content_tag 'div', notifications_count, :class => "#{'empty_' if notifications_count.zero? }count" %>
+      <%= content_tag 'div', notifications_count, :class => "#{'empty_' if notifications_count.zero? }count toggle_notifications" %>
       <%= link_to t('.settings'), settings_user_path, :class => :settings %>
       <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => :sign_out %>
     </div>
     </li>
   </ul>
+
+<div class="notification_selector">
+  <div class="popover">
+    <div class="scroll-pane">
+      <ul>
+        <li class="selected">Nuevo comentario en tu propuesta</li>
+        <li class="">Nuevos argumentos en una propuesta en la que has participado</li>
+        <li class="">Has sido etiquetado en un nuevo evento</li>
+        <li class=" last"><a href="/areas/15">Urbanismo y Territorio</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
 <% else %>
   <ul class="auth">
     <li><%= link_to t('.sign_up'), intro_users_path, :class => :blue_button %></li>
@@ -21,17 +37,4 @@
     </li>
   </ul>
 <% end %>
-
-<div class="notifications_selector">
-  <div class="popover">
-    <div class="scroll-pane">
-      <ul>
-        <li class="selected">Nuevo comentario en tu propuesta</li>
-        <li class="">Nuevos argumentos en una propuesta en la que has participado</li>
-        <li class="">Has sido etiquetado en un nuevo evento</li>
-        <li class=" last"><a href="/areas/15">Urbanismo y Territorio</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
 
