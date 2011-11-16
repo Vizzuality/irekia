@@ -651,7 +651,7 @@
       data.$ps.find(".extra").hide();
       data.$ps.find(".holder").show();
       _resizeSection(data, $currentSection);
-      data.$ps.find(".message").remove();
+      data.$ps.find(".message").fadeOut(150);
 
       hideLockScreen && LockScreen.hide();
       callback && callback();
