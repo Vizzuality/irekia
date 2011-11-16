@@ -50,7 +50,7 @@ class Argument < Participation
     author.update_attribute('arguments_count', author.actions.arguments.count)
     author.followers.each{|user| user.update_attribute("private_arguments_count", user.private_actions.arguments.count)}
     author.areas.each{|area| area.update_attribute('arguments_count', area.actions.arguments.count)}
-    Notification.for(content.author, self)
+    proposal.target_area.users.each{|user| Notification.for(user, self)}
   end
   private :update_counter_cache
 end

@@ -61,7 +61,6 @@ class Vote < Participation
     author.update_attribute('votes_count', author.actions.votes.count)
     author.followers.each{|user| user.update_attribute("private_votes_count", user.private_actions.votes.count)}
     author.areas.each{|area| area.update_attribute('votes_count', area.actions.votes.count)}
-    Notification.for(content.author, self)
   end
   private :update_counter_cache
 end

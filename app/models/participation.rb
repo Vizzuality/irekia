@@ -103,11 +103,20 @@ class Participation < ActiveRecord::Base
       area_action.message      = self.to_json
       area_action.save!
 
+      area.users.each do |user|
+        user_action              = user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+        user_action.published_at = self.published_at
+        user_action.message      = self.to_json
+        user_action.save!
+        Notification.for(user, self)
+      end
+
       area.followers.each do |follower|
         user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
         user_action.published_at = self.published_at
         user_action.message      = self.to_json
         user_action.save!
+        Notification.for(follower, self)
       end
     end
 
@@ -116,12 +125,26 @@ class Participation < ActiveRecord::Base
       user_action.published_at = self.published_at
       user_action.message      = self.to_json
       user_action.save!
+      Notification.for(follower, self)
+    end
+
+    content.users.each do |user|
+      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      user_action.published_at = self.published_at
+      user_action.message      = self.to_json
+      user_action.save!
+      Notification.for(user, self)
     end
 
     user_action              = content.author.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
     user_action.published_at = self.published_at
     user_action.message      = self.to_json
     user_action.save!
+    Notification.for(content.author, self)
+
+    if content.respond_to?(:target_area) && content.target_area.present?
+      content.target_area.users.each{|user| Notification.for(user, self)}
+    end
 
   end
   private :publish_participation

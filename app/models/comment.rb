@@ -35,8 +35,6 @@ class Comment < Participation
       user.update_attribute('private_comments_count', user.private_actions.comments.count)
       Notification.for(user, self)
     end
-    Notification.for(content.author, self)
-    content.users.each{|user| Notification.for(user, self)}
   end
   private :update_counter_cache
 end
