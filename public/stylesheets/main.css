@@ -846,7 +846,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 
 #container article .right .content ul.tags { clear: both; overflow: hidden; list-style: none; margin-bottom: 20px; }
 #container article .right .content ul.tags li { float: left; position: relative; clear: both; margin: 0 0 5px 0; left: 15px; height: 24px; background: url("/images/tag_sprite.png") repeat-x right 0; }
-#container article .right .content ul.tags li.add { background: url("/images/tag_sprite.png") repeat-x left -105px; width: 88px; height: 26px; left: 0; }
+#container article .right .content ul.tags li.add { display: none; background: url("/images/tag_sprite.png") repeat-x left -105px; width: 88px; height: 26px; left: 0; }
 #container article .right .content ul.tags li.add a { background: none; height: 26px; padding: 0; line-height: 26px; float: none; text-align: center; color: #f10063; left: 0; }
 #container article .right .content ul.tags li a { float: left; position: relative; display: block; line-height: 16px; left: -15px; height: 16px; padding: 4px 0 4px 12px; background: url("/images/tag_sprite.png") no-repeat 0 -26px; }
 #container article .right .content ul.tags li:hover { background-position: right -53px; }
