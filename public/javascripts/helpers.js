@@ -7,21 +7,21 @@ function loginInLinks() {
     $(el).die();
 
     if ($(el).hasClass("after_share")) {
-     $(el).addClass("share");
-     $(el).removeClass("after_share");
-     $(el).sharePopover();
+      $(el).addClass("share");
+      $(el).removeClass("after_share");
+      $(el).sharePopover();
     }
 
     if ($(el).hasClass("after_ask_question")) {
-     $(el).addClass("ask_question");
-     $(el).removeClass("after_ask_question");
-     $(el).questionPopover();
+      $(el).addClass("ask_question");
+      $(el).removeClass("after_ask_question");
+      $(el).questionPopover();
     }
 
     if ($(el).hasClass("after_create_proposal")) {
-     $(el).addClass("create_proposal");
-     $(el).removeClass("after_create_proposal");
-     $(el).proposalPopover();
+      $(el).addClass("create_proposal");
+      $(el).removeClass("after_create_proposal");
+      $(el).proposalPopover();
     }
 
     $(el).removeClass("floating-login");
@@ -616,9 +616,9 @@ jQuery.fn.enableCommentBox = function(opt){
         return false;
       } else {
         spinner.spin(spin_element);
-				setTimeout(function(){
-					$input.attr("disabled", "disabled");
-				}, 10);
+        setTimeout(function(){
+          $input.attr("disabled", "disabled");
+        }, 10);
         $input.blur();
         $submit.fadeOut(speed);
       }
@@ -735,55 +735,87 @@ jQuery.fn.inputCounter = function(opt){
 
 jQuery.fn.autogrow = function(options){
 
-    var resizing = false;
-    this.filter('textarea').each(function() {
+  var resizing = false;
+  this.filter('textarea').each(function() {
 
-      var $this   = $(this),
-      minHeight   = $this.height(),
-      lineHeight  = $this.css('lineHeight');
+    var $this   = $(this),
+    minHeight   = $this.height(),
+    lineHeight  = $this.css('lineHeight');
 
-      var shadow = $('<div></div>').css({
-        position:   'absolute',
-        top:        -10000,
-        left:       -10000,
-        width:      $(this).width() - parseInt($this.css('paddingLeft')) - parseInt($this.css('paddingRight')),
-        fontSize:   $this.css('fontSize'),
-        fontFamily: $this.css('fontFamily'),
-        lineHeight: $this.css('lineHeight'),
-        resize:     'none'
-      }).appendTo(document.body);
+    var shadow = $('<div></div>').css({
+      position:   'absolute',
+      top:        -10000,
+      left:       -10000,
+      width:      $(this).width() - parseInt($this.css('paddingLeft')) - parseInt($this.css('paddingRight')),
+      fontSize:   $this.css('fontSize'),
+      fontFamily: $this.css('fontFamily'),
+      lineHeight: $this.css('lineHeight'),
+      resize:     'none'
+    }).appendTo(document.body);
 
-      var update = function() {
-        var times = function(string, number) {
-          var _res = '';
-          for(var i = 0; i < number; i ++) {
-            _res = _res + string;
-          }
-          return _res;
-        };
-
-        var val = this.value.replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/&/g, '&amp;')
-        .replace(/\n$/, '<br/>&nbsp;')
-        .replace(/\n/g, '<br/>')
-        .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length - 1) + ' ' });
-
-        shadow.html(val);
-
-        if (!resizing) {
-          resizing = true;
-          var height= Math.max(shadow.height() + 15, minHeight);
-          $(this).animate({height: height}, 50, function() {
-            resizing = false;
-          });
+    var update = function() {
+      var times = function(string, number) {
+        var _res = '';
+        for(var i = 0; i < number; i ++) {
+          _res = _res + string;
         }
-      }
+        return _res;
+      };
 
-      $(this).change(update).keyup(update).keydown(update);
-      update.apply(this);
-    });
-    return this;
+      var val = this.value.replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/&/g, '&amp;')
+      .replace(/\n$/, '<br/>&nbsp;')
+      .replace(/\n/g, '<br/>')
+      .replace(/ {2,}/g, function(space) { return times('&nbsp;', space.length - 1) + ' ' });
+
+      shadow.html(val);
+
+      if (!resizing) {
+        resizing = true;
+        var height= Math.max(shadow.height() + 15, minHeight);
+        $(this).animate({height: height}, 50, function() {
+          resizing = false;
+        });
+      }
+    }
+
+    $(this).change(update).keyup(update).keydown(update);
+    update.apply(this);
+  });
+  return this;
+}
+
+
+jQuery.fn.verticalHomeLoop = function(opt){
+
+  if (this.length < 1) return;
+
+  var ele = this,
+  onElement = false;
+
+  function loopContent() {
+    if ($(ele).find('div.left ul li').size()>0 && !onElement) {
+      var last = $(ele).find('div.left ul li.loop').last();
+      var list = $(ele).find('div.left ul').first();
+      var height = last.height();
+      last.css({opacity:0,height:0}).removeClass('loop');
+      list.prepend(last);
+      last.animate({height:height+'px'},500,function(){
+        $(this).animate({opacity:1},300);
+      });
+      var last_vi = $(ele).find('div.left > div.listing > ul > li').not('.loop').last().addClass();
+      last_vi.animate({height:0,opacity:0},500,function(){
+        $(this).addClass('loop').removeAttr('style');
+      });
+    }
   }
 
+  $(ele).find('div.left > ul').hover(function(){
+    onElement = true;
+  },function(){
+    onElement = false;
+  });
 
+  setInterval(function(){loopContent()},5000);
+}

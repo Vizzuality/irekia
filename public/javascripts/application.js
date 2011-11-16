@@ -64,7 +64,7 @@ $(function() {
 
 
   $("form.follow_button,form.follow_ribbon").live('ajax:success', function(evt, xhr, status) {
-    
+
 		// Button
 		var $el1 = $("div.column form.follow_button");
     $el1.fadeOut(150, function() {
@@ -83,7 +83,7 @@ $(function() {
 			$('article.summary > form.follow_button').remove();
       $(this).fadeIn(150);
     });
-		
+
   }).live('ajax:error', function(evt, xhr, status) {
 		$(this).effect("shake", { times:4 }, 100);
 	});
@@ -97,7 +97,7 @@ $(function() {
 		var form_ = $(this).closest('form');
 		form_.stop(true).animate({height:'75px'},300);
 	});
-	
+
 	// END FOLLOW FORMS!!
 
 
@@ -164,6 +164,7 @@ $(function() {
   // $("article.politician.publish").enablePoliticianPublish();
   // $("article.politician.publish").enablePoliticianPublish();
   $(".areas_selector").areasPopover();
+  $(".notification_selector").notificationPopover();
 
 	// HOME, grow all areas
 	$("a.see_all_areas").click(function(ev){
@@ -175,5 +176,5 @@ $(function() {
 			$(this).remove();
 		});
 	});
-	
+
 });

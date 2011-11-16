@@ -1,3 +1,4 @@
 <%= render "users/#{@viewing_access}/welcome" %>
 <%= render "users/#{@viewing_access}/navigation_menu" %>
 <%= render "users/#{@viewing_access}/proposals" %>
+<%= render "shared/user_publish" if private_profile? %>
