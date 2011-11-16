@@ -6,6 +6,13 @@
       <div class="login_block">
         <p><a href="#" class="floating-login">Accede a tu cuenta</a> o <a href="/users/intro" class="blue_button no_shadow">Regístrate ya</a></p>
       </div>
+      <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get, :autocomplete => :off } do |search_form| %>
+        <div class="input_field search placeholder">
+          <%= search_form.text_field :query %>
+          <%= search_form.submit '' %>
+          <span class="holder"><%= raw t(".search") %></span>
+        </div>
+      <% end %>
     </div>
   </article>
 
