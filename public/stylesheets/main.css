@@ -546,7 +546,7 @@ span.where, .map .infowindow ul.details li.where { width: 207px; max-height: 26p
 #container article.initialy_hidden { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; }
 #container article .caption, #container article .caption p { color: #7d8a92; }
 #container article .autosuggest { width: 691px; position: absolute; padding-bottom: 10px; top: 20px; z-index: 2000; }
-#container article .autosuggest li { cursor: pointer; padding: 7px; background: url("/images/box_autosuggest_bkg.png") repeat-y -713px 0; }
+#container article .autosuggest li { cursor: pointer; padding: 7px 0 7px 10px; background: url("/images/box_autosuggest_bkg.png") repeat-y -713px 0; }
 #container article .autosuggest li .name { margin: 0 0 2px 0; }
 #container article .autosuggest li .avatar { float: left; margin: 0 10px 0 0; }
 #container article .autosuggest li p { cursor: pointer; float: left; margin: 0!important; padding: 0; line-height: 16px; }
