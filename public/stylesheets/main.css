@@ -546,14 +546,14 @@ span.where, .map .infowindow ul.details li.where { width: 207px; max-height: 26p
 #container article.initialy_hidden { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; }
 #container article .caption, #container article .caption p { color: #7d8a92; }
 #container article .autosuggest { width: 691px; position: absolute; padding-bottom: 10px; top: 20px; z-index: 2000; }
-#container article .autosuggest li { cursor: pointer; }
+#container article .autosuggest li { cursor: pointer; padding: 7px; background: url("/images/box_autosuggest_bkg.png") repeat-y -713px 0; }
+#container article .autosuggest li .name { margin: 0 0 2px 0; }
 #container article .autosuggest li .avatar { float: left; margin: 0 10px 0 0; }
 #container article .autosuggest li p { cursor: pointer; float: left; margin: 0!important; padding: 0; line-height: 16px; }
 #container article .autosuggest li p span { display: block; font-size: 15px; color: #666666; }
 #container article .autosuggest li p span.description { color: #7D8A92; }
 #container article .autosuggest .a_t { background: url("/images/box_autosuggest_bkg.png") no-repeat -1px top; height: 20px; z-index: 1000; position: absolute; top: -20px; width: 691px; }
 #container article .autosuggest .a_f { background: url("/images/box_autosuggest_bkg.png") no-repeat -1px bottom; height: 10px; z-index: 1000; position: absolute; bottom: 0px; width: 691px; }
-#container article .autosuggest ul li { background: url("/images/box_autosuggest_bkg.png") repeat-y -713px 0; padding-left: 10px; }
 
 #container article .social-links { margin: 0 auto 40px auto; width: 447px; clear: both; overflow: hidden; }
 #container article .social-links .facebook { margin: 0 29px 0 0; }

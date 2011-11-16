@@ -2204,8 +2204,12 @@ span.where, .map .infowindow ul.details li.where {
     z-index:2000;
 
     li {
-      .avatar { float: left; margin: 0 10px 0 0; }
       cursor: pointer;
+      padding: 7px 0 7px 10px;
+      background:url('/images/box_autosuggest_bkg.png') repeat-y -713px 0;
+
+      .name { margin: 0 0 2px 0; }
+      .avatar { float: left; margin: 0 10px 0 0; }
 
       p {
         cursor: pointer;
@@ -2234,14 +2238,6 @@ span.where, .map .infowindow ul.details li.where {
       width: 691px;
     }
 
-    ul {
-
-      li {
-        background:url('/images/box_autosuggest_bkg.png') repeat-y -713px 0;
-        padding-left:10px;
-
-      }
-    }
   }
 
 }
