@@ -16,17 +16,15 @@
         <!-- DASHBOARD -->
         <div class="section dashboard">
           <div class="triangle"></div>
-          <%= form_for @question, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+          <%= form_for @status_message, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
 
             <div class="form clearfix">
 
-              <%= form.fields_for :question_data, @question_data do |question_data| %>
-                <%= question_data.hidden_field :user_id %>
-                <%= question_data.hidden_field :area_id %>
+              <%= form.fields_for :status_message_data, @status_message.status_message_data do |status_message_data| %>
 
                 <div class="input_field placeholder textarea">
                   <div id="question-counter" class="input-counter">
-                    <%= question_data.text_area :question_text %>
+                    <%= status_message_data.text_area :message %>
                     <span class="holder">Introduce el texto que quieras publicar aquí.</span>
                   </div>
                 </div>
