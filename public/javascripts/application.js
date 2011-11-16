@@ -134,7 +134,10 @@ $(function() {
   // Popovers
   $(".show_event").infoEventPopover();
   $(".ask_question").questionPopover();
+
   $(".user_publish").userPublishPopover();
+  $(".politician_publish").politicianPublishPopover();
+
   $(".create_proposal").proposalPopover();
 
   $(".auth a.login").loginPopover();

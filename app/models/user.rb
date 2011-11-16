@@ -315,6 +315,7 @@ class User < ActiveRecord::Base
   def politician?
     role.politician? if role.present?
   end
+
   alias :is_politician :politician?
 
   def administrator?
