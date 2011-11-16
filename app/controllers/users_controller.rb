@@ -241,10 +241,7 @@ class UsersController < ApplicationController
   private :get_actions
 
   def get_agenda
-    beginning_of_calendar = Date.current.beginning_of_week
-    end_of_calendar       = Date.current.advance(:weeks => 4).end_of_week
-
-    @agenda, @days, @agenda_json = @user.agenda_between(beginning_of_calendar, end_of_calendar)
+    @agenda, @days, @agenda_json = @user.agenda_between(4, params.slice(:next_month))
   end
   private :get_agenda
 
