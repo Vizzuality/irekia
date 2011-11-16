@@ -171,6 +171,35 @@ $(function() {
   $(".show_event").infoEventPopover();
   $(".ask_question").questionPopover();
 
+
+jQuery.fn.enableQuestion = function(opt){
+
+  if (this.length < 1) return;
+
+  var speed  = (opt && opt.speed) || 200;
+
+  var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
+  var spin_element = document.getElementById("politician_question_spinner");
+  var spinner = new Spinner(opts);
+
+  this.each(function(){
+    $(this).submit(function(e) {
+      spinner.spin(spin_element);
+    });
+
+    $(this).bind('ajax:success', function(evt, xhr, status) {
+      spinner.stop();
+      $(this).find(".notice_success").fadeIn(220);
+      $("#notice_success").css("left", "445px");
+      $("#notice_success").css("bottom", "70px");
+      $(this).find('input[type="text"]').val("");
+      $(this).find(".holder").fadeIn(150);
+    });
+  });
+};
+
+    $(".make_question").enableQuestion();
+
   $(".user_publish").userPublishPopover();
   $(".politician_publish").politicianPublishPopover();
 

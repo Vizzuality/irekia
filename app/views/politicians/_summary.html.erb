@@ -11,7 +11,7 @@
     <h3><%= t(".description.title") %></h3>
     <div class="description two_columns">
       <% if @politician.description -%>
-      <%= simple_format(@politician.try(:description).try(:strip) + ' ' + link_to(t('.description.read_more'), '/in_development')) %>
+        <%= simple_format(@politician.try(:description).try(:strip) + ' ' + link_to(t('.description.read_more'), '/in_development')) %>
       <% end -%>
       <% if @follow.new_record? -%>
         <%= render 'follows/create' %>
@@ -30,7 +30,6 @@
   <h3>Pregunta a <%= @politician.name %></h3>
 
   <%= form_for @question, :remote => true, :html => {:'data-type' => 'html', :class => [:make_question, only_logged_class]} do |form| %>
-
     <%= form.fields_for :areas_contents, @question.areas_contents.first do |area_content_data| %>
       <%= area_content_data.hidden_field :area_id %>
       <%= area_content_data.hidden_field :content_id %>
@@ -42,39 +41,34 @@
         <span class="counter">140</span>
         <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
         <span class="holder large">Haz una pregunta a <%= @politician.name %>...</span>
+        <span class="spinner" id="politician_question_spinner"></span>
         <span class="peak"></span>
       </div>
       <input type="submit" value="Preguntar" id="submit-counter-124" class="disabled white_button" disabled="disabled" />
 
+      <article id="notice_success" class="notice_success notice">
+      <div class="inner">
+        <div class="content">
+          <p>
+          <strong>Comentario enviado.</strong>
+          Te avisaremos en cuanto sea aprobado.
+          </p>
+        </div>
+        <div class="t"></div><div class="f"></div>
+      </div>
+      </article>
 
-
-  <article id="notice_in_favor" class="notice">
-  <div class="inner">
-    <div class="content">
-      <p>
-      <strong>Comentario enviado.</strong>
-      Te avisaremos en cuanto sea aprobado.
-      </p>
-    </div>
-    <div class="t"></div><div class="f"></div>
-  </div>
-  </article>
-
-
-  <article id="notice_against" class="notice">
-  <div class="inner">
-    <div class="content">
-      <p>
-      <strong>Error técnico.</strong>
-      Lo sentimos, no se ha podido guardar :-(
-      </p>
-    </div>
-    <div class="t"></div><div class="f"></div>
-  </div>
-  </article>
-
-
-
+      <article class="notice_error notice">
+      <div class="inner">
+        <div class="content">
+          <p>
+          <strong>Error técnico.</strong>
+          Lo sentimos, no se ha podido guardar :-(
+          </p>
+        </div>
+        <div class="t"></div><div class="f"></div>
+      </div>
+      </article>
     <% end %>
   <% end %>
 
