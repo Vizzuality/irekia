@@ -2,3 +2,5 @@
 <%= render "users/#{@viewing_access}/navigation_menu" %>
 <%= render 'shared/agenda', :title => t('users.politician.agenda.title'),
   :more => link_to(t('users.politician.agenda.next_month'), 'in_development', :class => 'down_arrow') %>
+
+<%= render "shared/#{current_user.politician? ? 'politician' : 'user' }_publish" if private_profile? or politician_profile? %>

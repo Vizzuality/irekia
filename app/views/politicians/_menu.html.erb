@@ -1,7 +1,7 @@
 <%= menu ([
-  { :link => (link_to t(".summary"),  path_for_user(@politician)), :class => current_action?(:show)},
-  { :link => (link_to t(".actions"),   actions_politician_path(@politician)),  :class => current_action?(:actions) },
-  { :link => (link_to t(".questions"), questions_politician_path(@politician)), :class => current_action?(:questions) },
-  { :link => (link_to t(".proposals"), proposals_politician_path(@politician)), :class => current_action?(:proposals) },
-  { :link => (link_to t(".agenda"),    agenda_politician_path(@politician)),  :class => current_action?(:agenda) }
+  { :link => (link_to t(".summary"),  path_for_user(@politician, :anchor => :actions)), :class => current_action?(:show)},
+  { :link => (link_to t(".actions"),   actions_politician_path(@politician, :anchor => :actions)),  :class => current_action?(:actions) },
+  { :link => (link_to t(".questions"), questions_politician_path(@politician, :anchor => :questions)), :class => current_action?(:questions) },
+  { :link => (link_to t(".proposals"), proposals_politician_path(@politician, :anchor => :proposals)), :class => current_action?(:proposals) },
+  { :link => (link_to t(".agenda"),    agenda_politician_path(@politician, :anchor => :agenda)),  :class => current_action?(:agenda) }
 ]) %>
