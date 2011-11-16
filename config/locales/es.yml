@@ -1411,6 +1411,7 @@
         dashboard: Dashboard
         your_questions: Preguntas
         your_proposals: Propuestas
+        your_activity: Tu actividad
         your_agenda: Tu agenda
         publish: Publicar
       questions:
