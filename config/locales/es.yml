@@ -1391,7 +1391,7 @@
          videos: Vídeos
         more: ver más acciones
       followings:
-        title: A quien sigues en Irekia
+        title: A quién sigues en Irekia
         all_profiles: Ver todos los perfiles a los que sigues
         title_and_area: '%{title} de %{area}'
         area: Área
@@ -1451,7 +1451,7 @@
          videos: Vídeos
         more: ver más acciones
       followings:
-        title: A quien sigues en Irekia
+        title: A quién sigues en Irekia
         all_profiles: Ver todos los perfiles a los que sigues
         title_and_area: '%{title} de %{area}'
         area: Área

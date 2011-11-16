@@ -937,6 +937,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!important; }
 #container article footer inner.with_avatar { position: relative; }
 #container article footer img.xlAvatar { position: absolute; bottom: 22px; right: 30px; background: url("/images/circle_bkg.png") no-repeat 2px center; z-index: 10; }
+#container article ul.suggestions { padding: 0 0 20px 0; }
 #container article ul.suggestions li { width: 275px; padding: 14px 16px 16px 16px; margin: 0 0 5px 0; font-size: 15px; color: #7d8a92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 #container article ul.suggestions li .avatar { float: left; margin: 0 8px 0 0; }
 #container article ul.suggestions li .content { float: left; width: 200px; }
