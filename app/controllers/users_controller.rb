@@ -182,7 +182,7 @@ class UsersController < ApplicationController
 
     @proposal                  = Proposal.new
     @proposal_data             = @proposal.build_proposal_data
-    @proposal_data.target_area = @user.areas.first
+    @proposal_data.target_area = current_user.areas.first
     @proposal_data.image       = @proposal_data.build_image
 
     if politician_profile?
