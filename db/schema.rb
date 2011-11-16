@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
   create_table "areas", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.text     "description_1"
+    t.text     "description_2"
     t.integer  "areas_users_count", :default => 0
     t.integer  "follows_count",     :default => 0
     t.integer  "proposals_count",   :default => 0
@@ -303,6 +305,8 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
     t.string   "lastname"
     t.date     "birthday"
     t.text     "description"
+    t.text     "description_1"
+    t.text     "description_2"
     t.boolean  "is_woman",                                   :default => false
     t.integer  "province_id"
     t.string   "province"

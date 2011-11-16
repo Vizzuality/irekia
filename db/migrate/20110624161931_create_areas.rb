@@ -3,6 +3,8 @@ class CreateAreas < ActiveRecord::Migration
     create_table :areas do |t|
       t.string :name
       t.text :description
+      t.text :description_1
+      t.text :description_2
 
       t.integer :areas_users_count,        :default => 0
       t.integer :follows_count,            :default => 0
