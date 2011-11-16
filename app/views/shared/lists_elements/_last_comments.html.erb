@@ -7,7 +7,7 @@
     <% end -%>
     <% if data.comments_count > 0 -%>
       <ul>
-        <li>
+        <li class="clearfix">
         <%= avatar data.last_comments.last.author, 'small' %>
         <p><%= link_to data.last_comments.last.author.fullname, path_for_user(data.last_comments.last.author) %> - <%= truncate(data.last_comments.last.body, :length => 150) %></p>
         </li>

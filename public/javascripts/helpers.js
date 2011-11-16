@@ -614,12 +614,10 @@ jQuery.fn.smartPlaceholder = function(opt){
     $input.keydown(function(e) {
 
       //TODO: check for ie
-      if (e.metaKey && e.keyCode == 88) {
+      if (e.metaKey && e.keyCode == 88) { // command+x
         setTimeout(function() {
           isEmpty($input.val()) && $span.fadeIn(speed);
         }, 100);
-      } else if (e.keyCode == 86) {
-          $span.fadeOut(speed);
       } else {
         setTimeout(function() { ($input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);
       }
