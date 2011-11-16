@@ -1299,7 +1299,7 @@
     private:
       welcome:
         hello: 'Hola %{name}‚ ¿por dónde empezar?'
-        hi_again: 'Hola de nuevo, %{name},'
+        hi_again: 'Hola de nuevo, %{name}.'
         configure_your_account: Configura tu cuenta
         following_nobody: No estás siguiendo a nadie todavía.
         currently: 'Actualmente %{politicians} y %{areas}'
@@ -1397,7 +1397,7 @@
         area: Área
     politician:
       welcome:
-        hi_again: 'Hola de nuevo %{name},'
+        hi_again: 'Hola de nuevo %{name}.'
         followers_count:
           zero: No te sigue nadie todavía
           one: Te sigue 1 usuario
