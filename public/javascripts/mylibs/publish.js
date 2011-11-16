@@ -141,7 +141,6 @@
     _bindSearch(data);
 
     _selectOption(data, $currentMenuOption);
-    _resizeSection(data, $currentSection);
 
     _subscribeToEvent(data.event);
     _triggerOpenAnimation(data);
