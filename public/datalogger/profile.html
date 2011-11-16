@@ -4,6 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Irekia - Virginia</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="HandheldFriendly" content="True">
@@ -14,6 +19,23 @@
     <link rel="apple-touch-icon-precomposed" href="img/l/apple-touch-icon-precomposed.png">
     <link rel="shortcut icon" href="img/l/apple-touch-icon.png">
     <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+
+
+
+      window.onload = function() {
+        var a = document.getElementsByTagName("area");
+        for (var i = 0; i < a.length; i++) {
+          a[i].onclick = function() {
+            window.location = this.getAttribute("href");
+            return false
+          }
+        }
+
+      }
+
+
+</script>
   </head>
   <body class="datalogger">
     <div style="text-align:center; width:314px; margin-left:auto; margin-right:auto;">
