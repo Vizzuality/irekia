@@ -79,7 +79,7 @@ jQuery.fn.enableRegistration = function(opt){
 
   function forward($current, $next) {
     $(".cycle").animate({scrollLeft:$current.position().left + 850}, 350, "easeInOutQuad", function() {
-      $container.parent().animate({height:$next.height() + marginBottom}, 350, "easeInOutQuad");
+      $container.parent().animate({height:$next.outerHeight(true) + marginBottom}, 350, "easeInOutQuad");
     });
   }
 
@@ -149,7 +149,7 @@ jQuery.fn.enableRegistration = function(opt){
     $article = $container.find("article");
 
     if ($article.hasClass("step2")) {
-      marginBottom = 90;
+      marginBottom = 50;
       $currentArticle = $article;
 
       $form = $currentArticle.find("form");
@@ -612,7 +612,12 @@ jQuery.fn.smartPlaceholder = function(opt){
     }
 
     $input.keydown(function(e) {
-      setTimeout(function() { (e && e.keyCode == 8 || $input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);
+
+      if (e.keyCode == 88) { // alt-x
+        $span.fadeIn(speed);
+      } else {
+        setTimeout(function() { ($input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);
+      }
     });
 
     $span.click(function() { $input.focus(); });

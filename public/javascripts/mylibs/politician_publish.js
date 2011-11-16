@@ -27,8 +27,7 @@
   defaults = {
     easingMethod:'easeInOutQuad',
     sectionWidth: 687,
-    transitionSpeed: 200,
-    maxLimit: 140
+    transitionSpeed: 200
   };
 
   methods.init = function(settings) {
@@ -250,7 +249,6 @@
     $ps.find(".loading").hide();
     $ps.find(".percentage").hide();
     $ps.find(".progress").css("width", "0");
-    $ps.find(".counter").html("140");
     $ps.find(".image_container").hide();
     $ps.find(".image_container img").remove();
   }
@@ -580,7 +578,7 @@
           $currentSection = $section;
 
           _gotoSection(data);
-          _bindSubmit(data, "Continuar", true, "continue");
+          _bindSubmit(data, "Publicar", true, "publish");
         });
 
       } else {
@@ -642,7 +640,6 @@
 
   function _clearInfo($ps) {
     $ps.find("textarea").val("");
-    $ps.find(".counter").html(140);
     _disableSubmit($ps);
   }
 
