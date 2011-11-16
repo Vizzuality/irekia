@@ -132,6 +132,8 @@ module ApplicationHelper
     case notification.item_type
     when 'Follow'
       content_tag :li, raw(t('.notifications.follow', :count => notification.count.to_i, :name => link_to(notification.parent.fullname, user_path(notification.parent)))), :class => li_class
+    when 'Answer'
+      content_tag :li, raw(t('.notifications.answer', :count => notification.count.to_i, :question => link_to(t('.notifications.your_content.question'), question_path(notification.parent)))), :class => li_class
     when 'Comment'
 
       i18n_key, i18n_scope = if notification.parent.author == current_user
@@ -140,9 +142,25 @@ module ApplicationHelper
         ['.notifications.comments_content', 'shared.nav_bar_buttons.notifications.a_content']
       end
 
-      content_tag :li, raw(t(i18n_key, :count => notification.count.to_i, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope), send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
+      content_tag :li, raw(t(i18n_key, :count => notification.count.to_i, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     when 'Argument'
+
+      i18n_key, i18n_scope = if notification.parent.author == current_user
+        ['.notifications.argument_proposal_author', 'shared.nav_bar_buttons.notifications.your_content']
+      else
+        ['.notifications.argument_proposal', 'shared.nav_bar_buttons.notifications.a_content']
+      end
+
+      content_tag :li, raw(t(i18n_key, :count => notification.count.to_i, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     when 'Vote'
+
+      i18n_key, i18n_scope = if notification.parent.author == current_user
+        ['.notifications.vote_proposal_author', 'shared.nav_bar_buttons.notifications.your_content']
+      else
+        ['.notifications.vote_proposal', 'shared.nav_bar_buttons.notifications.a_content']
+      end
+
+      content_tag :li, raw(t(i18n_key, :count => notification.count.to_i, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     when 'ContentUser'
 
       i18n_scope = if notification.parent.author == current_user
@@ -151,7 +169,7 @@ module ApplicationHelper
         'shared.nav_bar_buttons.notifications.a_content'
       end
 
-      content_tag :li, raw(t('.notifications.content_users', :count => notification.count.to_i, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope), send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
+      content_tag :li, raw(t('.notifications.content_users', :count => notification.count.to_i, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     end
   end
 

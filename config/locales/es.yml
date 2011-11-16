@@ -665,12 +665,14 @@
           event: un evento
           proposal: una propuesta
           question: una pregunta
+          answer: una answer
         your_content:
-          news: tu noticia
-          photo: tu foto
-          event: tu evento
-          proposal: tu propuesta
-          question: tu pregunta
+          news: Tu noticia
+          photo: Tu foto
+          event: Tu evento
+          proposal: Tu propuesta
+          question: Tu pregunta
+          answer: Tu respuesta
         comments_content_author:
           zero: 'Ningún comentario en %{content}'
           one: 'Nuevo comentario en %{content}'
