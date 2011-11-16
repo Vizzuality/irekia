@@ -17,6 +17,10 @@ class Answer < Content
     joins(:author => :areas).moderated.where('areas.id' => area.id)
   end
 
+  def parent
+    question
+  end
+
   def text
     answer_text
   end

@@ -412,6 +412,7 @@
         areas: "Áreas"
         search: Busca lo que necesitas&hellip;
         choose_an_area: Elige un área
+
       sign_in:
         access_irekia: Accede a Irekia
         get_it_here: Recupérala aquí
@@ -657,6 +658,55 @@
       sign_out: Salir
       facebook: Facebook
       twitter: Twitter
+      notifications:
+        a_content:
+          news: una noticia
+          photo: una foto
+          event: un evento
+          proposal: una propuesta
+          question: una pregunta
+        your_content:
+          news: tu noticia
+          photo: tu foto
+          event: tu evento
+          proposal: tu propuesta
+          question: tu pregunta
+        comments_content_author:
+          zero: 'Ningún comentario en %{content}'
+          one: 'Nuevo comentario en %{content}'
+          other: '%{count} nuevos comentarios en %{content}'
+        comments_content:
+          zero: 'Ningún comentario en %{content} en la que has participado'
+          one: 'Nuevo comentario en %{content} en la que has participado'
+          other: '%{count} nuevos comentarios en %{content} en la que has participado'
+        content_users:
+          zero: 'No te han etiquetado aún'
+          one: 'Te han etiquetado en %{content}'
+          other: 'Te han etiquetado en %{count} nuevos contenidos'
+        follow:
+          zero: 'Ningún nuevo seguidor'
+          one: '%{name} te ha empezado a seguir'
+          other: '%{count} te han empezado a seguir'
+        answer:
+          zero: 'Ninguna respuesta nueva a tus preguntas'
+          one: '%{question} ha sido respondida'
+          other: 'Tus preguntas han sido respondidas'
+        vote_proposal_author:
+          zero: 'Ningún voto nuevo'
+          one: 'Nuevo voto en %{content}'
+          other: '%{count} nuevos votos en %{content}'
+        argument_proposal_author:
+          zero: 'Ningún argumento nuevo'
+          one: 'Nuevo argumento en %{content}'
+          other: '%{count} nuevos argumentos en %{content}'
+        vote_proposal:
+          zero: 'Ningún voto nuevo'
+          one: 'Un voto nuevo en una %{content} en la que has participado'
+          other: '%{count} nuevos votos en una %{content} en la que has participado'
+        argument_proposal:
+          zero: 'Ningún argumento nuevo'
+          one: 'Un voto argumento en una %{content} en la que has participado'
+          other: '%{count} nuevos argumentos en una %{content} en la que has participado'
 
   contents:
     arguments:

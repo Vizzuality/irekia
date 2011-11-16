@@ -14,15 +14,9 @@
   <div class="popover">
     <div class="scroll-pane">
       <ul>
-        <li>Nuevo comentario en tu propuesta</li>
-        <li>Nuevos argumentos en una propuesta en la que has participado</li>
-        <li>Has sido etiquetado en un nuevo evento</li>
-        <li>Nuevo comentario en tu propuesta</li>
-        <li>Nuevos argumentos en una propuesta en la que has participado</li>
-        <li>Has sido etiquetado en un nuevo evento</li>
-        <li>Nuevo comentario en tu propuesta</li>
-        <li>Nuevos argumentos en una propuesta en la que has participado</li>
-        <li class="last">Has sido etiquetado en un nuevo evento</li>
+        <% notifications_list.each_with_index do |notification, index| -%>
+        <%= render_notification_item(notification, notifications_list.count == (index + 1) ? 'last' : nil) %>
+        <% end -%>
       </ul>
     </div>
   </div>

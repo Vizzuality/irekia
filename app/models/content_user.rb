@@ -15,6 +15,10 @@ class ContentUser < ActiveRecord::Base
 
   after_save :update_counter_cache
 
+  def parent
+    content
+  end
+
   def update_counter_cache
     return unless content && content.moderated?
 
