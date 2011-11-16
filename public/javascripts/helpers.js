@@ -193,6 +193,32 @@ jQuery.fn.enableCheckbox = function(opt){
   });
 }
 
+jQuery.fn.enableOpinion = function(opt){
+
+  this.each(function(){
+
+  $(this).find("input[type='submit'], .my_opinion button").click(function(e) {
+      $(".my_opinion .selected").removeClass("selected");
+      $(this).addClass("selected");
+      console.log($(this));
+  });
+
+  $(this).find("form").bind('ajax:success', function(evt, xhr, status) {
+    $(this).parents(".my_opinion").find(".result").fadeOut(250, function() {
+      $(this).html(xhr);
+
+      $(this).parent().removeClass("in_favor");
+      $(this).parent().removeClass("against");
+      $(this).parent().addClass($(xhr).attr('class'));
+
+      $(this).fadeIn(250);
+    });
+  });
+
+
+  });
+}
+
 /* Enables comment submission */
 jQuery.fn.enableArguments = function(opt){
 
