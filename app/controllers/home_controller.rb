@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @areas           = Area.areas_for_homepage
+    @areas_by_name   = Area.names_and_ids.all
     @actions         = AreaPublicStream.where('event_type <> ?', 'photo').order('published_at desc').page(1).per(10)
     @news_count      = @actions.news.count
     @questions_count = @actions.questions.count
