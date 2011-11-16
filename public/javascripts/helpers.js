@@ -618,6 +618,10 @@ jQuery.fn.smartPlaceholder = function(opt){
         setTimeout(function() {
           isEmpty($input.val()) && $span.fadeIn(speed);
         }, 100);
+      } else if (e.metaKey && e.keyCode == 86) { // command+v
+        setTimeout(function() {
+          !isEmpty($input.val()) && $span.fadeOut(speed);
+        }, 100);
       } else {
         setTimeout(function() { ($input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);
       }

@@ -88,7 +88,7 @@
       _bindMenu(data);
       _bindSubmit(data, "Publicar", true, "publish");
       _bindActions(data);
-      _enableInputCounter(data, $("#question_question_data_attributes_question_text"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+      _enableInputCounter(data, $("#status_message_status_message_data_attributes_message"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
       _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
 
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
@@ -532,10 +532,6 @@
   }
 
   function _resetHiddenFields() {
-    $("#question_question_data_attributes_politician_id").val("");
-    $("#question_question_data_attributes_area_id").val("");
-    $("#proposal_proposal_data_attributes_politician_id").val("");
-    $("#proposal_proposal_data_attributes_area_id").val("");
   }
 
   function _gotoSection(data) {
