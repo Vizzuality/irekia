@@ -1,7 +1,9 @@
-<%= avatar @participation.user -%>
-<div class="comment">
-	<blockquote><%= simple_format @participation.body %></blockquote>
-	<div class="footer when">
-		<%= link_to @participation.user.fullname, path_for_user(@participation.user), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(@participation.published_at)) %>
-	</div>
-</div>
+<li>
+  <%= avatar @participation.user -%>
+  <div class="comment">
+    <blockquote><%= simple_format @participation.body %></blockquote>
+    <div class="footer when">
+      <%= link_to @participation.user.fullname, path_for_user(@participation.user), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(@participation.published_at)) %>
+    </div>
+  </div>
+</li>
