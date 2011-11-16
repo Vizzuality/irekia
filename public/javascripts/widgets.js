@@ -854,7 +854,7 @@ var GOD = (function() {
   }
 
   function _getTopPosition($ps) {
-    return $ps.height() + 17;
+    return $ps.height() + 27;
   }
 
   function _getLeftPosition($ps) {
@@ -1150,7 +1150,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
       }
 
       // Update the reference to $ps
-      $ps = $(this);
+      $ps = $(".notification_selector");
 
       $(this).click(_toggle);
 
@@ -1190,12 +1190,12 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 
     var data  = $(this).data(store);
     var $ps   = data.$ps;
-    console.log($ps);
 
-    if ($(".notification_selector").hasClass("open")) {
+    if ($ps.hasClass("open")) {
       _close(data);
     } else {
       $(".notification_selector").addClass("open");
+      _addDefaultAction(data);
       _open(data);
       GOD.subscribe(data.event);
       GOD.broadcast(data.event);
@@ -1214,7 +1214,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   }
 
   function _getTopPosition($ps) {
-    return $ps.height() + 17;
+    return $ps.height() + 26;
   }
 
   function _getLeftPosition($ps) {
@@ -1236,22 +1236,12 @@ jQuery.fn.enablePoliticianPublish = function(opt){
     $(".notification_selector").find(".popover").fadeOut(data.settings.transitionSpeed, data.settings.easingMethod);
   }
 
-  function _addCloseAction(data) {
-    data.$ps.find(".close").unbind("click");
-    data.$ps.find(".close").bind('click', function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      _close(data, true);
-    });
-  }
-
   function _addDefaultAction(data){
     data.$ps.unbind("click");
     data.$ps.bind('click', function(e) {
       e.stopPropagation();
     });
   }
-
 
   $(function() { });
 
