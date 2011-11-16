@@ -115,23 +115,6 @@ $(function() {
 	// END ANSWER FORM 
 
 
-  $(".my_opinion input[type='submit'], .my_opinion button").click(function(e) {
-      $(".my_opinion .selected").removeClass("selected");
-      $(this).addClass("selected");
-  });
-
-  $(".my_opinion form").bind('ajax:success', function(evt, xhr, status) {
-    $(this).parents(".my_opinion").find(".result").fadeOut(250, function() {
-      $(this).html(xhr);
-
-      $(this).parent().removeClass("in_favor");
-      $(this).parent().removeClass("against");
-      $(this).parent().addClass($(xhr).attr('class'));
-
-      $(this).fadeIn(250);
-    });
-  });
-
   // This button close welcome message for new users
   $(".close-welcome").submit(function(e) {
     $(".welcome .close-welcome").fadeOut(250, function(){
@@ -143,6 +126,7 @@ $(function() {
 		});
   });
 
+  $('.my_opinion').enableOpinion();
   $('.proposals .proposal').enableArguments();
   $('form.add_comment').enableComments();
   $(".comment-box form").enableCommentBox();
@@ -177,7 +161,7 @@ $(function() {
   // $("article.politician.publish").enablePoliticianPublish();
   // $("article.politician.publish").enablePoliticianPublish();
   $(".areas_selector").areasPopover();
-  $(".notification_selector").notificationPopover();
+  $(".toggle_notifications").notificationPopover();
 
 	// HOME, grow all areas
 	$("a.see_all_areas").click(function(ev){

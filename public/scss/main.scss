@@ -244,11 +244,11 @@ header {
 
       .notification_selector {
         float: left;
-        margin: 0 15px 0 0;
         position:relative;
         width:191px;
 
         &.open {
+          .popover { display: block; }
           .handle { background-position: 0 -141px; }
         }
 
@@ -272,14 +272,14 @@ header {
 
           .scroll-pane {
             height: 232px;
-            width: 210px;
+            width: 213px;
             overflow: hidden;
-            margin: 20px 0 0 20px;
+            margin: 20px 0 0 17px;
             outline:none;
 
             ul {
               margin:0; padding:0;
-              width:210px;
+              width:213px;
 
               li {
                 text-shadow:none;
@@ -366,7 +366,7 @@ header {
             height: 232px;
             width: 210px;
             overflow: hidden;
-            margin: 20px 0 0 20px;
+            margin: 20px 0 0 17px;
             outline:none;
 
             ul {
@@ -401,8 +401,8 @@ header {
           @include inline-block;
 
           .pending-counter { right: 5px; }
-          .empty_count  { @include inline-block; background: url('/images/icons/icon_sprite.png') no-repeat 0 -339px; width:24px - 6; text-shadow: none; line-height:15px; height:19px; color:$blue; font-size:10px; position: relative; top:7px; padding-left:6px; margin: 0 0 0 10px; }
-          .count  { @include inline-block; background: url('/images/icons/icon_sprite.png') no-repeat 0 -358px; width:24px - 6; line-height:15px; height:20px; text-shadow:none; color:#fff; font-size:10px; position: relative; top:7px; padding-left:7px; margin: 0 0 0 10px; }
+          .empty_count  { @include inline-block; background: url('/images/icons/icon_sprite.png') no-repeat 3px -339px; width:24px; text-shadow: none; line-height:15px; height:19px; color:$blue; font-size:10px; position: relative; top:7px; margin: 0 0 0 7px; text-align:center; }
+          .count  { @include inline-block; background: url('/images/icons/icon_sprite.png') no-repeat 1px -358px; width:24px; line-height:15px; height:20px; text-shadow:none; color:#fff; font-size:10px; position: relative; top:7px;  margin: 0 0 0 10px; text-align:center; cursor:pointer;}
 
           span.username  { @include inline-block; margin: 0 0 0 10px; font-size:15px; color:#fff; position:relative; top:8px;text-shadow: 1px 1px 1px #0F4869;  }
 
@@ -2807,7 +2807,7 @@ a.editable {
     float:left;
     width:286px;
 
-    &.in_favor {background:#E9F0DE; margin:0 33px 0 0 ;}
+    &.in_favor {background:#E9F0DE; margin:0 42px 0 0 ;}
     &.against {background:#FFF0D9; margin:0;}
 
     @include border-radius(5px);
