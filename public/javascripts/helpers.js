@@ -823,7 +823,8 @@ jQuery.fn.verticalHomeLoop = function(opt){
   if (this.length < 1) return;
 
   var ele = this,
-  onElement = false;
+  onElement = false,
+	interval = null;
 
   function loopContent() {
     if ($(ele).find('div.left ul li').size()>0 && !onElement) {
@@ -848,5 +849,15 @@ jQuery.fn.verticalHomeLoop = function(opt){
     onElement = false;
   });
 
-  setInterval(function(){loopContent()},5000);
+	$(window).blur(function(){
+	  clearInterval(interval);
+		interval = null;
+	});
+	$(window).focus(function(){
+		if (!interval) {
+		  interval = setInterval(function(){loopContent()},5000);
+		}
+	});
+	
+	interval = setInterval(function(){loopContent()},5000);
 }
