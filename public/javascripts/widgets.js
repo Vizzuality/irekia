@@ -1172,6 +1172,9 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 
   // Expose the plugin
   $.fn.notificationPopover = function(method) {
+		
+		// Max height: 235px
+	
     if (!ie6) {
       if (methods[method]) {
         return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
@@ -1204,6 +1207,12 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 
   function _open(data) {
     var $ps = data.$ps;
+		
+		// Check height if it pass 230px nothing
+		var h_ = $(".notification_selector ul").height();
+		if (h_<230) {
+			$(".notification_selector .popover").height(h_);
+		}
 
     _triggerOpenAnimation($ps, data);
     $ps.find('.scroll-pane').jScrollPane();
@@ -1214,7 +1223,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   }
 
   function _getTopPosition($ps) {
-    return $ps.height() + 46;
+    return $ps.height() + 12;
   }
 
   function _getLeftPosition($ps) {
@@ -1223,7 +1232,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 
   function _triggerOpenAnimation($ps, data) {
     var top  = _getTopPosition($ps);
-    var left = 213;
+    var left = 175;
 
     $(".notification_selector").css({"top":(top) + "px", "left": left + "px"});
     $(".notification_selector").find(".popover").fadeIn(data.settings.transitionSpeed, data.settings.easingMethod);

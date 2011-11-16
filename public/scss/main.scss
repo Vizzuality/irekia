@@ -245,9 +245,14 @@ header {
       .notification_selector {
         float: left;
         position:relative;
-        width:191px;
+        display:none;
+        width:247px;
+        height:auto;
+        padding:14px 0 0 0;
+        background: url("/images/box_notifications_selector.png") no-repeat 0 0;
 
         &.open {
+          display:block;
           .popover { display: block; }
           .handle { background-position: 0 -141px; }
         }
@@ -265,16 +270,16 @@ header {
         .popover {
           display:none;
           position:absolute;
-          width:246px;
-          height: 311px;
+          width:230px;
+          height:230px;
+          padding:8px 0 18px 17px;
           z-index:1000;
-          background: url("/images/popovers_bkg.png") no-repeat -3px -536px;
+          background: url("/images/box_notifications_selector.png") no-repeat right bottom;
 
           .scroll-pane {
-            height: 232px;
+            height: 100%;
             width: 213px;
             overflow: hidden;
-            margin: 20px 0 0 17px;
             outline:none;
 
             ul {

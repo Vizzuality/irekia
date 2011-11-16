@@ -99,12 +99,13 @@ header nav .content form .input_field input[type="text"], header nav .content fo
 header nav .content form .input_field input[type="submit"] { right: 10px; top: 10px; position: absolute; width: 14px; height: 14px; background: url("/images/icons/magnifier.png") no-repeat; border: 0; z-index: 100; }
 header nav .content form .input_field span#autocomplete_spinner { position: absolute; right: 17px; top: 17px; }
 header nav .content .sign_out { float: right; }
-header nav .content .notification_selector { float: left; position: relative; width: 191px; }
+header nav .content .notification_selector { float: left; position: relative; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 0; }
+header nav .content .notification_selector.open { display: block; }
 header nav .content .notification_selector.open .popover { display: block; }
 header nav .content .notification_selector.open .handle { background-position: 0 -141px; }
 header nav .content .notification_selector .handle { position: absolute; display: block; width: 6px; height: 5px; right: 11px; top: 15px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -128px; }
-header nav .content .notification_selector .popover { display: none; position: absolute; width: 246px; height: 311px; z-index: 1000; background: url("/images/popovers_bkg.png") no-repeat -3px -536px; }
-header nav .content .notification_selector .popover .scroll-pane { height: 232px; width: 213px; overflow: hidden; margin: 20px 0 0 17px; outline: none; }
+header nav .content .notification_selector .popover { display: none; position: absolute; width: 230px; height: 230px; padding: 8px 0 18px 17px; z-index: 1000; background: url("/images/box_notifications_selector.png") no-repeat right bottom; }
+header nav .content .notification_selector .popover .scroll-pane { height: 100%; width: 213px; overflow: hidden; outline: none; }
 header nav .content .notification_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 213px; }
 header nav .content .notification_selector .popover .scroll-pane ul li { text-shadow: none; font-size: 13px; border-bottom: 1px solid #f1f1f1; padding: 10px 0 10px 0; color: #666; }
 header nav .content .notification_selector .popover .scroll-pane ul li.last { border: none; padding: 10px 0 0 0; }
