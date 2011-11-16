@@ -133,7 +133,7 @@
 
     $ps.css({"top":(top + 100) + "px", "left": left + "px"});
     $ps.show();
-    $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){$ps.find('#user_email').focus()}});
   }
 
   function _getTopPosition($ps) {
