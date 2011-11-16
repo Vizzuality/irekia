@@ -202,8 +202,8 @@ jQuery.fn.enableQuestion = function(opt){
       $("#notice_success").css("bottom", "70px");
       $(this).find('input[type="text"]').val("");
       $(this).find(".holder").fadeIn(150);
+      $(this).find(".counter").html(140);
 
-      $(this).find(".counter").val(140);
       var $that = $(this);
 
       setTimeout(function() {
