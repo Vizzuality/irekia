@@ -1214,7 +1214,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   }
 
   function _getTopPosition($ps) {
-    return $ps.height() + 26;
+    return $ps.height() + 46;
   }
 
   function _getLeftPosition($ps) {
