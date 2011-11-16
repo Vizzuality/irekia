@@ -297,6 +297,9 @@
     publish: Publicar
     configure_your_account: Configura tu cuenta
   home:
+    index:
+      search: ¿Qué buscas?
+      button: Buscar
     areas:
       questions:
         zero: Ninguna pregunta
