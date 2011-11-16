@@ -197,9 +197,6 @@ jQuery.fn.enableQuestion = function(opt){
       $icon = $("<span class='icon success' />");
       $(this).find(".input-counter").append($icon);
 
-      $(this).find('input[type="submit"]').removeClass("disabled");
-      $(this).find('input[type="submit"]').removeAttr("disabled");
-
       $("#notice_success").css("left", "447px");
       $("#notice_success").css("bottom", "80px");
       $(this).find('input[type="text"]').val("");
@@ -210,6 +207,10 @@ jQuery.fn.enableQuestion = function(opt){
 
       setTimeout(function() {
         $("#notice_success").fadeOut(150);
+
+        $that.find('input[type="submit"]').removeClass("disabled");
+        $that.find('input[type="submit"]').removeAttr("disabled");
+
         $that.find(".icon").fadeOut(150, function() { $(this).remove();});
       }, 2000);
 
