@@ -186,6 +186,9 @@
         });
       } else {
         _close(data, true);
+				// If user is in the home reload page!!
+				if ($('body').hasClass('home'))
+					window.location.reload();
       }
 
       loginInLinks();
