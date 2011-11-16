@@ -925,7 +925,7 @@
     navigation_menu:
       menu:
         summary: Resumen
-        actions: Acciones
+        actions: Actividad
         questions: Preguntas
         proposals: Propuestas
         agenda: Agenda
@@ -978,7 +978,7 @@
   politicians:
     menu:
       summary: Resumen
-      actions: Acciones
+      actions: Actividad
       questions: Preguntas
       proposals: Propuestas
       agenda: Agenda
@@ -990,7 +990,7 @@
       menu:
         proposals: Propuestas
         agenda: Agenda
-        actions: Acciones
+        actions: Actividad
         questions: Preguntas
         documents: Documentos
         summary: Resumen

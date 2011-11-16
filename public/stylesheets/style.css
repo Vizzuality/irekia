@@ -225,10 +225,10 @@ span.against { color: #ff9933; }
 /* =============================================================================
 Header
 ========================================================================== */
-header { padding-top: 50px; margin-bottom: 53px; background: white; }
+header { padding-top: 45px; margin-bottom: 53px; background: white; }
 header .content { clear: both; height: 74px; }
 header .content .top_nav { position: relative; height: 57px; clear: both; }
-header .content .top_nav ul.languages { position: absolute; top: -42px; right: 0; width: auto; }
+header .content .top_nav ul.languages { position: absolute; top: -37px; right: 0; width: auto; }
 header .content .top_nav ul.languages li { float: left; width: auto; border-right: 1px solid #666666; padding: 0 4px!important; }
 header .content .top_nav ul.languages li a { padding: 1px 0; font: normal 10px "Helvetica",Arial; color: #1d79b0; }
 header .content .top_nav ul.languages li a:hover { color: #114c6e; }
@@ -236,7 +236,7 @@ header .content .top_nav ul.languages li.last { border: none; padding-right: 0; 
 header .content .top_nav ul.languages li.selected a { color: #666666; }
 header .content .top_nav ul.languages li.selected a:hover { text-decoration: none; color: #666666; cursor: default; }
 header .content .top_nav .logo { float: left; left: 0; top: 0; position: relative; display: block; }
-header .content .top_nav .net_logo { float: right; right: 0; position: absolute; display: block; }
+header .content .top_nav .net_logo { top: 5px; right: 0; position: absolute; display: block; }
 header .content .top_nav ul.user_options { right: 0; bottom: 0; float: right; position: absolute; clear: both; overflow: hidden; }
 header .content .top_nav ul.user_options li { float: left; font-size: 12px; }
 header .content .top_nav ul.user_options li:after { content: "|"; padding: 0 5px; }
@@ -298,6 +298,8 @@ Article
 #container article .inner h1 { color: #465866; }
 
 div#main.searches .inner { padding-bottom: 25px; }
+
+div#main.show div.left img { margin: 4px 0 7px; }
 
 article .inner h2, article .inner h3 { color: #465866; }
 
@@ -1021,7 +1023,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .left .content .sharebox.email, #container article .right .content ul.sharing li .sharebox.email { margin-left: -108px; }
 #container article .left .content .sharebox.email .input_field, #container article .right .content ul.sharing li .sharebox.email .input_field { margin: 0; }
 
-#container article .right .content ul.sharing { margin: 0 0 28px 0; padding: 0 0 20px 0; }
+#container article .right .content ul.sharing { margin: 3px 0 0 0; padding: 0 0 25px 0; }
 #container article .right .content ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: none; padding: 0; }
 
 .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
@@ -1294,6 +1296,24 @@ body.home #container article.participation div.wrap div.login_block { display: n
 body.home #container article.participation div.wrap div.login_block p { float: right; font-size: 18px; }
 body.home #container article.participation div.wrap div.login_block p a { font: bold 18px "Helvetica",Arial; }
 body.home #container article.participation div.wrap div.login_block p a.blue_button { padding: 13px 30px; text-align: center; margin: 0 0 0 10px; }
+body.home #container article#areas div.areas_list { position: relative; display: block; width: 994px; height: 366px; padding: 0; margin: 0; background: white; border-left: 1px solid #B5BDC4; border-right: 1px solid #B5BDC4; }
+body.home #container article#areas div.areas_list ul { position: absolute; top: -9px; left: 0; width: 100%; margin: 0; background: none; border: none; }
+body.home #container article#areas div.areas_list ul li { float: left; width: 270px; height: 74px; padding: 25px 30px; border-right: 1px solid #ECEDEF; border-bottom: 1px solid #ECEDEF; background: none; }
+body.home #container article#areas div.areas_list ul li div.avatar { float: left; width: 67px; }
+body.home #container article#areas div.areas_list ul li div.info { float: left; width: 190px; margin: 0 0 0 10px; padding: 10px 0 0 0; }
+body.home #container article#areas div.areas_list ul li div.info h3 { font: bold 17px "Helvetica",Arial!important; }
+body.home #container article#areas div.areas_list ul li div.info h3 a { color: #465866; }
+body.home #container article#areas div.areas_list ul li div.info span.total { display: block; margin: 5px 0 0 0; padding: 0; font-size: 13!important; color: #666666; }
+body.home #container article#areas div.areas_list ul li div.info span.total a { font-size: 13px!important; }
+body.home #container article#areas div.areas_list ul li.last { width: 272px; border-right: none; }
+body.home #container article#areas div.areas_list div.all_areas { position: absolute; display: none; top: 400px; }
+body.home #container article#areas div.areas_list div.all_areas h4 { width: 100%; display: block; margin: 0 0 0 30px; font: bold 12px "Helvetica",Arial; color: #465866; }
+body.home #container article#areas div.areas_list div.all_areas ul.list { position: relative; padding: 20px 0 0 0; }
+body.home #container article#areas div.areas_list div.all_areas ul.list li { height: auto; padding: 5px 30px; border: none; width: 271px; }
+body.home #container article#areas div.areas_list div.all_areas ul.list li a { font: normal 17px "Helvetica",Arial!important; color: #1D79B0; }
+body.home #container article#areas div.areas_list div.all_areas ul.list li a a:hover { text-decoration: underline; }
+body.home #container article#areas div.areas_list div.all_areas ul.list li.last { width: 272px; }
+body.home #container article#areas a.see_all_areas { width: 920px!important; display: block; text-align: center; background: url("/images/icons/arrow_down.png") no-repeat 533px 8px; }
 body.home #container div.home_last_activity li.loop { display: none; }
 body.home #container section.banners ul { display: block; width: auto; height: 117px; padding: 0 0 0 1px; overflow: visible; }
 body.home #container section.banners ul li { float: left; position: relative; width: 174px; height: 117px; margin: 0 31px 0 0; background: url("/images/banner_bkg.png") no-repeat 0 0; overflow: visible; }
