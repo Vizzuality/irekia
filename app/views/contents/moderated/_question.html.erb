@@ -18,7 +18,7 @@
     <%= link_to t('.question_content.author_and_comments.comments', :count => @comments_count), '#', :class => :goto_comments %>
     &middot;
     <% if @answer.blank? %>
-      <span><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
+      <span class="not_answered"><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
     <% else %>
       <span class="<%= @answer ? 'answered' : 'not_answered' %>"><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words_to_now(@answer.published_at)) %></span>
     <% end %>
@@ -54,7 +54,7 @@
             <% if @new_request -%>
               <%= form_for @new_request do |f| -%>
                 <%= f.hidden_field :content_id -%>
-                , <%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
+                <%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
               <% end -%>
             <% end -%>
           </p>

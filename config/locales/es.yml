@@ -763,9 +763,9 @@
           other: Por ahora sólo tú y otra persona queréis que sea contestada
         you_and_thousands: Por ahora sólo tú y otras %{count} personas queréis que sea contestada
         people_demanding_answer:
-          zero: Nadie ha pedido que sea contestada
-          one: 1 persona quiere que sea contestada
-          other: '%{count} personas quieren que sea contestada'
+          zero: Nadie ha pedido que sea contestada,
+          one: 1 persona quiere que sea contestada,
+          other: '%{count} personas quieren que sea contestada,'
         join_them:
           zero: sé el primero
           one: únete a ella
@@ -913,9 +913,9 @@
           other: Por ahora sólo tú y otra persona queréis que sea contestada
         you_and_thousands: Por ahora sólo tú y otras %{count} personas queréis que sea contestada
         people_demanding_answer:
-          zero: Nadie ha pedido que sea contestada
-          one: 1 persona quiere que sea contestada
-          other: '%{count} personas quieren que sea contestada'
+          zero: Nadie ha pedido que sea contestada,
+          one: 1 persona quiere que sea contestada,
+          other: '%{count} personas quieren que sea contestada,'
   areas:
     navigation_menu:
       menu:
