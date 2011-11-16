@@ -92,7 +92,6 @@
       _bindActions(data);
       _enableInputCounter(data, $("#question_question_data_attributes_question_text"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
       _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
-      _bindSearch(data);
 
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
 
@@ -139,6 +138,7 @@
     $currentSection    = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
     _gotoSection(data);
+    _bindSearch(data);
 
     _selectOption(data, $currentMenuOption);
     _resizeSection(data, $currentSection);
@@ -283,14 +283,11 @@
 
     _enableInputCounter(data, $(".autosuggest_field input"), null, function() { _clearAutosuggest(data); _resetHiddenFields(); } );
 
-    $ps.find('.autosuggest_field input').keyup(function(ev){
+    $currentSection.find('.autosuggest_field input').keyup(function(ev){
 
       if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
 
       clearTimeout(interval);
-
-      var $related = $ps.find("div.related");
-      var $relatedTitle = $ps.find("h3.related");
 
       if ($(this).val().length > 3) {
         interval = setTimeout(function(){
@@ -311,11 +308,15 @@
 
             data.spinner.stop();
 
+            // When the user clicks on a result…
             $response.find("li").unbind();
             $response.find("li").bind("click", function(e) {
-              // Publish!
               var id = $(this).attr("id");
 
+              var name = $(this).find(".name").html();
+              console.log(name);
+
+              $currentSection.find('.autosuggest_field input[type="text"]').val(name);
               $(this).hasClass("user") ? _updateHiddenTarget("user", id) : _updateHiddenTarget("area", id);
 
               _bindSubmit(data, "Publicar", true, "publish");
@@ -331,15 +332,13 @@
             if ($response.find("li").length > 0) {
               $response.hide();
               $response.css("top", $currentSection.find(".autosuggest_field").position().top + 220);
+              console.log($ps.find('.content'));
               $ps.find('.content').append($response);
               $response.fadeIn(150);
             }
           }});
 
         }, 500);
-      } else {
-        // $related.fadeOut(350);
-        // $relatedTitle.fadeOut(350);
       }
     });
   }
