@@ -313,7 +313,6 @@
               var id = $(this).attr("id");
 
               var name = $(this).find(".name").html();
-              console.log(name);
 
               $currentSection.find('.autosuggest_field input[type="text"]').val(name);
               $(this).hasClass("user") ? _updateHiddenTarget("user", id) : _updateHiddenTarget("area", id);
@@ -331,7 +330,6 @@
             if ($response.find("li").length > 0) {
               $response.hide();
               $response.css("top", $currentSection.find(".autosuggest_field").position().top + 220);
-              console.log($ps.find('.content'));
               $ps.find('.content').append($response);
               $response.fadeIn(150);
             }
