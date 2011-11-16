@@ -1292,6 +1292,24 @@ body.home #container article.participation div.wrap div.login_block { display: n
 body.home #container article.participation div.wrap div.login_block p { float: right; font-size: 18px; }
 body.home #container article.participation div.wrap div.login_block p a { font: bold 18px "Helvetica",Arial; }
 body.home #container article.participation div.wrap div.login_block p a.blue_button { padding: 13px 30px; text-align: center; margin: 0 0 0 10px; }
+body.home #container article#areas div.areas_list { position: relative; display: block; width: 994px; height: 366px; padding: 0; margin: 0; background: white; border-left: 1px solid #B5BDC4; border-right: 1px solid #B5BDC4; }
+body.home #container article#areas div.areas_list ul { position: absolute; top: -9px; left: 0; width: 100%; margin: 0; background: none; border: none; }
+body.home #container article#areas div.areas_list ul li { float: left; width: 270px; height: 74px; padding: 25px 30px; border-right: 1px solid #ECEDEF; border-bottom: 1px solid #ECEDEF; background: none; }
+body.home #container article#areas div.areas_list ul li div.avatar { float: left; width: 67px; }
+body.home #container article#areas div.areas_list ul li div.info { float: left; width: 190px; margin: 0 0 0 10px; padding: 10px 0 0 0; }
+body.home #container article#areas div.areas_list ul li div.info h3 { font: bold 17px "Helvetica",Arial!important; }
+body.home #container article#areas div.areas_list ul li div.info h3 a { color: #465866; }
+body.home #container article#areas div.areas_list ul li div.info span.total { display: block; margin: 5px 0 0 0; padding: 0; font-size: 13!important; color: #666666; }
+body.home #container article#areas div.areas_list ul li div.info span.total a { font-size: 13px!important; }
+body.home #container article#areas div.areas_list ul li.last { width: 272px; border-right: none; }
+body.home #container article#areas div.areas_list div.all_areas { position: absolute; display: none; top: 400px; }
+body.home #container article#areas div.areas_list div.all_areas h4 { width: 100%; display: block; margin: 0 0 0 30px; font: bold 12px "Helvetica",Arial; color: #465866; }
+body.home #container article#areas div.areas_list div.all_areas ul.list { position: relative; padding: 20px 0 0 0; }
+body.home #container article#areas div.areas_list div.all_areas ul.list li { height: auto; padding: 5px 30px; border: none; width: 271px; }
+body.home #container article#areas div.areas_list div.all_areas ul.list li a { font: normal 17px "Helvetica",Arial!important; color: #1D79B0; }
+body.home #container article#areas div.areas_list div.all_areas ul.list li a a:hover { text-decoration: underline; }
+body.home #container article#areas div.areas_list div.all_areas ul.list li.last { width: 272px; }
+body.home #container article#areas a.see_all_areas { width: 920px!important; display: block; text-align: center; background: url("/images/icons/arrow_down.png") no-repeat 533px 8px; }
 body.home #container div.home_last_activity li.loop { display: none; }
 body.home #container section.banners ul { display: block; width: auto; height: 117px; padding: 0 0 0 1px; overflow: visible; }
 body.home #container section.banners ul li { float: left; position: relative; width: 174px; height: 117px; margin: 0 31px 0 0; background: url("/images/banner_bkg.png") no-repeat 0 0; overflow: visible; }
