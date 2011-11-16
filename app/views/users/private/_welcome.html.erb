@@ -30,7 +30,7 @@
       <li class="configure last">
       <h3><%= t('.first_time.configure.title') %></h3>
       <%= simple_format t('.first_time.configure.text') %>
-      <%= link_to (content_tag :span, t('.first_time.configure.link')), '/in_development', :class => 'white_button blue' %>
+      <%= link_to (content_tag :span, t('.first_time.configure.link')), settings_user_path(current_user), :class => 'white_button blue' %>
       </li>
     </ul>
     <%= form_for @user, :remote => true, :html => {:class => 'close-welcome'} do |form| %>
