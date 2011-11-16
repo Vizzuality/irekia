@@ -311,11 +311,15 @@
 
             data.spinner.stop();
 
+            // When the user clicks on a result…
             $response.find("li").unbind();
             $response.find("li").bind("click", function(e) {
-              // Publish!
               var id = $(this).attr("id");
 
+              var name = $(this).find(".name").html();
+              console.log(name);
+
+              $currentSection.find('.autosuggest_field input[type="text"]').val(name);
               $(this).hasClass("user") ? _updateHiddenTarget("user", id) : _updateHiddenTarget("area", id);
 
               _bindSubmit(data, "Publicar", true, "publish");
