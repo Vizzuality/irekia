@@ -7,8 +7,6 @@ class PoliticiansController < UsersController
   before_filter :get_politician,             :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_counters,               :only => [:show, :actions, :questions, :proposals, :agenda]
-  before_filter :build_new_question,         :only => [:show, :actions, :questions, :proposals, :agenda]
-  before_filter :build_new_proposal,         :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_actions,                :only => [:show, :actions]
   before_filter :get_questions,              :only => [:show, :questions]
   before_filter :get_proposals,              :only => [:show, :proposals]

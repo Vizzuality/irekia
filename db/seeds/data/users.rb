@@ -21,7 +21,11 @@ puts '================='.green
                       :lastname              => 'Muguruza Odriozola',
                       :email                 => 'aitana_muguzola@yahoo.es',
                       :is_woman              => true,
-                      :description           => (<<-EOF
+                      :description_1         => (<<-EOF
+                        Aitana es la persona encargada de Deportes del Gobierno Vasco y una de las personas mas jóvenes del equipo de gobierno. Coordina y gestiona tanto infraestructuras deportivas como eventos. Actualmente centra la mayor parte de sus esfuerzos en desarrollar el deporte escolar y de barrio.
+                      EOF
+                      ),
+                      :description_2         => (<<-EOF
                         Aitana es la persona encargada de Deportes del Gobierno Vasco y una de las personas mas jóvenes del equipo de gobierno. Coordina y gestiona tanto infraestructuras deportivas como eventos. Actualmente centra la mayor parte de sus esfuerzos en desarrollar el deporte escolar y de barrio.
                       EOF
                       ),

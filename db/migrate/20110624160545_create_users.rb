@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :lastname
       t.date     :birthday
       t.text     :description
+      t.text     :description_1
+      t.text     :description_2
       t.boolean  :is_woman,                                                      :default => false
       t.integer  :province_id
       t.string   :province

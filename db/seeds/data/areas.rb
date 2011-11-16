@@ -5,7 +5,8 @@ puts 'Creating areas...'.green
 puts '================='.green
 
 create_area :name => 'Presidencia',
-            :description => 'Dirige, impulsa y coordina la acción del Gobierno Vasco y establece las directrices de la política. Designa y separa libremente al Vicepresidente y Consejeros. Detenta el rango de titular de Departamento respecto de las funciones, órganos y unidades que tiene asignados. Esta sección le permitirá conocer la institución: su historia y su funcionamiento.',
+            :description_1 => 'Dirige, impulsa y coordina la acción del Gobierno Vasco y establece las directrices de la política. Designa y separa libremente al Vicepresidente y Consejeros. Detenta el rango de titular de Departamento respecto de las funciones, órganos y unidades que tiene asignados. Esta sección le permitirá conocer la institución: su historia y su funcionamiento.',
+            :description_2 => 'Dirige, impulsa y coordina la acción del Gobierno Vasco y establece las directrices de la política. Designa y separa libremente al Vicepresidente y Consejeros. Detenta el rango de titular de Departamento respecto de las funciones, órganos y unidades que tiene asignados. Esta sección le permitirá conocer la institución: su historia y su funcionamiento.',
             :image    => File.open(Rails.root.join('public/images/icons/news_avatar_medium.png'))
 
 create_area :name => 'Interior',
