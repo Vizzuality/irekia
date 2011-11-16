@@ -313,7 +313,7 @@
   shared:
     politician_publish:
       publish: Publicar
-      dashboard: Dashboard
+      dashboard: Estado
       proposal: Propuesta
       photos: Fotos
     user_publish:
@@ -946,6 +946,7 @@
         news:  '¿Algo que decir?&hellip; comenta esta noticia'
         tweet: '¿Algo que decir?&hellip; comenta este tweet'
         event: '¿Algo que decir?&hellip; comenta este evento'
+        statusmessage: '¿Algo que decir?&hellip; comenta este estado'
         proposal: '¿Algo que decir?&hellip; comenta esta propuesta'
         photo: '¿Algo que decir?&hellip; comenta esta foto'
       time: 'hace %{time}'

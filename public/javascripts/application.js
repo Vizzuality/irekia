@@ -147,6 +147,24 @@ $(function() {
   $(".input-counter").inputCounter();
 
   //$(".share.twitter, .share.facebook").share();
+
+  $(".share.twitter").click(function() {
+    var width  = 611,
+        height = 400,
+        left   = 21,
+        top    = 44,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+
+    window.open(url, 'twitter', opts);
+
+    return false;
+  });
+
   $(".show-hidden-comments").showHiddenComments();
 
   // Popovers

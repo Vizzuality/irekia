@@ -12,10 +12,10 @@
     <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     <% if @answer.blank? %>
     &middot;
-    <span class="positive">+<%= @content.answer_requests_count %></span>
+    <span class="requests positive"><%= @content.answer_requests_count %></span>
     <% end -%>
     &middot;
-    <%= link_to t('.question_content.author_and_comments.comments', :count => @comments_count), '#', :class => :goto_comments %>
+    <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
     &middot;
     <% if @answer.blank? %>
       <span class="not_answered"><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
