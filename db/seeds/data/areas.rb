@@ -72,3 +72,7 @@ create_area :name => 'Cultura',
             :description => 'A este departamento le corresponden las siguientes funciones y áreas de actuación: deportes, juventud, gestión y protección del Patrimonio Artístico, museos, política linguística, promoción del euskera, actividades artísticas y culturales. Dirigir los organismos autónomos, entes públicos de derecho privado y sociedades públicas adscritos o dependientes del Departamento.',
             :image    => File.open(Rails.root.join('public/images/icons/news_avatar_medium.png'))
 
+Area.names_and_ids.each_with_index do |area, index|
+  area.image = Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', %Q{area_#{"%02d" % (index + 1)}.png})))
+  area.save!
+end
