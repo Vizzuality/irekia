@@ -189,6 +189,17 @@ $(function() {
   $(".areas_selector").areasPopover();
   $(".toggle_notifications").notificationPopover();
 
+  // After requesting an answer, reload the text
+  $(".answer_placeholder form").bind('ajax:success', function(evt, xhr, status) {
+    var $ps = $(this).parents(".answer_placeholder").find(".has_requested_answer");
+
+    $(this).fadeOut(150);
+    $ps.fadeOut(150, function() {
+      $ps.html(xhr);
+      $ps.fadeIn(150);
+    });
+  });
+
 	// HOME, grow all areas
 	$("a.see_all_areas").click(function(ev){
 		ev.preventDefault();

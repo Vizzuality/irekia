@@ -54,40 +54,41 @@
             <% else %>
               <%= t('.people_demanding_answer', :count => @content.answer_requests_count) -%>
             <% end -%>
-          </p>
+
             <% if @new_request -%>
+              &nbsp;
               <%= form_for @new_request, :remote => true, :html => {:'data-type' => :html} do |f| -%>
                 <%= f.hidden_field :content_id -%>
                 <%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
               <% end -%>
             <% end -%>
-          </p>
-        </div>
-      <% end -%>
-    <% end %>
-    <%= render "participations/comments" %>
-  </div>
-  <div class="right">
-    <div class="content left-border">
-      <%= sharing_partial(question_url(@content), @content.question_text) %>
-      <%= render "shared/sidebar/tags" %>
-      <%= render "shared/sidebar/answered_by" if @answer %>
-      <%= render "shared/sidebar/related_questions" %>
+            </p>
+          </div>
+        <% end -%>
+      <% end %>
+      <%= render "participations/comments" %>
+    </div>
+    <div class="right">
+      <div class="content left-border">
+        <%= sharing_partial(question_url(@content), @content.question_text) %>
+        <%= render "shared/sidebar/tags" %>
+        <%= render "shared/sidebar/answered_by" if @answer %>
+        <%= render "shared/sidebar/related_questions" %>
+      </div>
     </div>
   </div>
-</div>
 
-<footer>
-<div class="separator"></div>
-<div class="inner">
-  <div class="left">
-    <% if @content.target_user -%>
-      <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user, :anchor => :questions), :class => :left_arrow %>
-    <% else -%>
-      <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area, :anchor => :questions), :class => :left_arrow %>
-    <% end -%>
+  <footer>
+  <div class="separator"></div>
+  <div class="inner">
+    <div class="left">
+      <% if @content.target_user -%>
+        <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user, :anchor => :questions), :class => :left_arrow %>
+      <% else -%>
+        <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area, :anchor => :questions), :class => :left_arrow %>
+      <% end -%>
+    </div>
   </div>
-</div>
-</footer>
-<div class="t"></div><div class="f"></div>
-</article>
+  </footer>
+  <div class="t"></div><div class="f"></div>
+  </article>
