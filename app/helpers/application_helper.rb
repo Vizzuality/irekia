@@ -171,6 +171,7 @@ module ApplicationHelper
 
       content_tag :li, raw(t('.notifications.content_users', :count => notification.count.to_i, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     end
+  rescue
   end
 
   def image_url(image_path)

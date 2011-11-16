@@ -153,7 +153,9 @@ class UsersController < ApplicationController
       @new_followers_count     = @user.new_follows_count
       @questions_notifications = @user.new_questions_count
     else
-      @questions_notifications = @user.new_answers_count + @user.new_answer_requests_count + @user.new_answer_opinions_count
+      # TODO: Temporally commented code until all list items are finished
+      # @questions_notifications = @user.new_answers_count + @user.new_answer_requests_count + @user.new_answer_opinions_count
+      @questions_notifications = @user.new_answers_count# + @user.new_answer_requests_count + @user.new_answer_opinions_count
     end
     @proposals_notifications = @user.new_arguments_count + @user.new_votes_count
   end
