@@ -8,8 +8,8 @@
     <% if data.comments_count > 0 -%>
       <ul>
         <li>
-          <%= avatar data.last_comments.last.author, 'small' %>
-          <p><%= link_to data.last_comments.last.author.fullname, path_for_user(data.last_comments.last.author) %> - <%= truncate(data.last_comments.last.body, :length => 150) %></p>
+        <%= avatar data.last_comments.last.author, 'small' %>
+        <p><%= link_to data.last_comments.last.author.fullname, path_for_user(data.last_comments.last.author) %> - <%= truncate(data.last_comments.last.body, :length => 150) %></p>
         </li>
       </ul>
     <% end -%>
@@ -27,7 +27,8 @@
           <span id="spinner_comment_<%= data.id %>" class="spinner"></span>
         <% end -%>
       </div>
-      <%= submit_tag :send, :value => t('.Send') %>
+      <%= submit_tag :send, :class => class_for_modal_login, :value => t('.Send') %>
+
     <% end -%>
   </div>
 <% end -%>

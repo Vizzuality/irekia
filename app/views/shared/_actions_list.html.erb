@@ -1,7 +1,7 @@
 <ul>
   <% if @actions.count > 0 %>
     <% @actions.each_with_index do |action,i| %>
-      <li class="<%= action.event_type %> <% if i>4 %>loop<% end %>">
+      <li class="<%= action.event_type %> <% if i>4 %>loop<% end %> clearfix">
         <%= render "shared/lists_elements/#{action.event_type}", :data => action.item, :inline => true %>
       </li>
     <% end %>

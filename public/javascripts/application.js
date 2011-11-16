@@ -22,9 +22,6 @@ $(function() {
   $(".view_calendar").viewCalendar();
   $(".view_map").viewMap();
 
-  $('.sparkline.positive .graph').sparkline('html', {spotRadius: false, fillColor:false, lineColor: '#5E8821', height:"18px", width:"50px"});
-  $('.sparkline.negative .graph').sparkline('html', {spotRadius: false, fillColor:false, lineColor: '#FF3300', height:"18px", width:"50px"});
-
   $('nav form').autocomplete();
 
   // Radio binding
@@ -106,13 +103,13 @@ $(function() {
 		var parent = $(this).closest('div.answering');
 		var response = $(xhr);
 		response.hide();
-		
+
 		parent.fadeOut(function(){
 			parent.before(response);
 			response.fadeIn();
 		});
 	});
-	// END ANSWER FORM 
+	// END ANSWER FORM
 
 
   // This button close welcome message for new users
@@ -145,7 +142,7 @@ $(function() {
 	} else {
 		h_ = $('.two_columns').height() + 30;
 	}
-		
+
   $('.two_columns').columnize({width:282, height:h_, columns:2});
 
   $(".placeholder").smartPlaceholder();

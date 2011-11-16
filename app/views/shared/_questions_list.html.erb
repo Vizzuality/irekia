@@ -1,7 +1,7 @@
 <% if @questions.size > 0%>
   <ul>
     <% (defined?(questions) ? questions : @questions).each do |question| %>
-      <li class="question">
+      <li class="question clearfix">
       <%= render "shared/lists_elements/question#{'_mini' if defined?(mini)}", :data => question %>
       </li>
     <% end %>

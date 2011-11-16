@@ -1981,8 +1981,8 @@ span.where, .map .infowindow ul.details li.where {
 
       ul {
         li {
-          clear: both;
-          overflow: hidden;
+          // clear: both;
+          // overflow: hidden;
           margin-bottom: 39px;
 
           &.proposal, &.argument {
@@ -2079,7 +2079,9 @@ span.where, .map .infowindow ul.details li.where {
         background: rgba(237, 237, 239, 0.7);
         @include border-radius(5px);
 
-        input[type="submit"] { display:none; }
+        input[type="submit"] {
+          display:none;
+        }
 
         .avatar {
           margin: 0 9px 0 0;
