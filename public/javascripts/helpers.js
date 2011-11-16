@@ -66,7 +66,7 @@ function watchHash(opt) {
 jQuery.fn.enableRegistration = function(opt){
 
   var speed  = (opt && opt.speed) || 200,
-  marginBottom = 10,
+  marginBottom = 20,
   $form = $(".cycle form"),
   $container = $(".cycle .inner-cycle");
 
@@ -149,7 +149,7 @@ jQuery.fn.enableRegistration = function(opt){
     $article = $container.find("article");
 
     if ($article.hasClass("step2")) {
-      marginBottom = 90;
+      marginBottom = 50;
       $currentArticle = $article;
 
       $form = $currentArticle.find("form");
