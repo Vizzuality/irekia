@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   skip_before_filter :authenticate_user!, :only => :index
 
   def index
-    @areas           = Area.select([:id, :name]).order(:id).all
+    @areas           = Area.areas_for_homepage
     @actions         = AreaPublicStream.where('event_type <> ?', 'photo').order('published_at desc').page(1).per(10)
     @news_count      = @actions.news.count
     @questions_count = @actions.questions.count

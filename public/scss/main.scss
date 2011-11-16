@@ -1287,7 +1287,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
               width: 106px;
               font-size:15px;
             }
-
           }
         }
 
@@ -3969,9 +3968,16 @@ Menu
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f6f9',GradientType=0 ); /* IE6-9 */
       background: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* W3C */
 
-
       @include transition-property(background);
       @include transition-duration(300ms);
+
+      &:hover {
+        color:#333;
+        background-color:rgba(244,246,249,0.76);
+        @include box-shadow(0 0 7px rgba(43, 140, 194, .3));
+        text-decoration: none;
+        text-shadow:none;
+      }
     }
 
     &.selected a {

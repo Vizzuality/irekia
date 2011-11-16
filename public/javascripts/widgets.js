@@ -512,14 +512,16 @@ var GOD = (function() {
 
     function success(argument) {
       spinner.stop();
-      $form.find('input[type="submit"]').fadeIn(speed);
-      $form.find('input[type="text"]').val("");
-      $form.find('.holder').fadeIn(speed);
+			$form.fadeOut('fast',function(){
+				$form.find('input[type="submit"]').fadeIn(speed);
+	      $form.find('input[type="text"]').val("");
+	      $form.find('.holder').fadeIn(speed);
+			});
 
       $ok = $('<div class="ok" />');
       $el.parents("li").find(".share.email").append($ok)
       $ok.animate({opacity:1, top:"-2px"}, speed, easing);
-
+			
       return true;
     }
 
