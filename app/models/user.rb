@@ -443,7 +443,7 @@ class User < ActiveRecord::Base
     elsif citizen?
       (new_answers_count + new_comments_count + new_arguments_count + new_votes_count + new_answer_requests_count + new_answer_opinions_count) rescue 0
     else
-      0
+      (new_answers_count + new_comments_count + new_arguments_count + new_votes_count + new_answer_requests_count + new_answer_opinions_count) rescue 0
     end
     count = 99 if count > 99
     count
