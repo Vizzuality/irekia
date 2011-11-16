@@ -10,7 +10,7 @@
   <div class="left">
     <h3><%= t(".description.title") %></h3>
     <div class="description two_columns">
-      <%= simple_format(@politician.description.strip.truncate(258) + ' ' + link_to(t('.description.read_more'), '/in_development')) %>
+      <%= simple_format(@politician.description.strip + ' ' + link_to(t('.description.read_more'), '/in_development')) %>
       <% if @follow.new_record? -%>
         <%= render 'follows/create' %>
       <% else -%>

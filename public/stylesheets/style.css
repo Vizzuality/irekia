@@ -297,6 +297,8 @@ Article
 #container article .inner p { margin-bottom: 20px; color: #465866; }
 #container article .inner h1 { color: #465866; }
 
+div#main.searches .inner { padding-bottom: 25px; }
+
 article .inner h2, article .inner h3 { color: #465866; }
 
 #container article.notice, #container article .inner .notice { display: none; position: absolute; width: 173px; margin: 0; z-index: 1000; }
@@ -379,8 +381,10 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.mini.with_icon .inner .content p { line-height: 20px; }
 #container article.mini.with_icon .inner .icon { float: left; margin: 0 18px 0 0; background: url("/images/icons/ok_ball.png") no-repeat; width: 76px; height: 80px; }
 #container article.profile .inner h1 { font-size: 41px; }
+#container article.profile .inner .left { width: 100%; }
 #container article.profile .inner .left h3 { margin-bottom: 5px; }
-#container article.profile .inner .left p { width: 100%; display: block-inline; margin: 0 0 10px 0; font-size: 15px; }
+#container article.profile .inner .left p { width: 282px; display: inline-block; margin: 0; font-size: 15px; line-height: 18px; }
+#container article.profile .inner .left form { float: none; width: auto; display: inline-block; margin: 10px 0 0 0; }
 #container article.micro { width: 390px; margin: 0 auto 40px auto; }
 #container article.micro .inner header { margin: 0; }
 #container article.micro .inner .content p { margin: 0 0 20px 0; padding: 0; font-size: 15px; color: #7d8a92; }
@@ -1077,9 +1081,10 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner header .right ul.switch li.selected { border: 1px solid #ccc; background: white; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container article .inner header .right ul.switch li.selected a { padding: 4px 23px; color: #465866; }
 #container article .inner header .right ul.switch li.selected a:hover { text-decoration: none; cursor: default; }
-#container article .inner .left .description.two_columns .column { margin-right: 40px; width: 282px!important; padding: 0 0 10px; }
-#container article .inner .left .description.two_columns .column p { margin-top: 0; margin-bottom: 20px; font-size: 15px; line-height: 18px; }
-#container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!Important; }
+#container article .inner .left .description.two_columns { width: 100%!important; padding: 0 0 20px 0; }
+#container article .inner .left .description.two_columns .column { margin-right: 40px; width: 282px!important; }
+#container article .inner .left .description.two_columns .column p { margin-top: 0; font-size: 15px; line-height: 18px; }
+#container article .inner .left .description.two_columns .column.last { margin-right: 0px; width: 280px!important; }
 #container article footer inner.with_avatar { position: relative; }
 #container article footer img.xlAvatar { position: absolute; bottom: 22px; right: 30px; background: url("/images/circle_bkg.png") no-repeat 2px center; z-index: 10; }
 #container article ul.suggestions li { width: 275px; padding: 14px 16px 16px 16px; margin: 0 0 5px 0; font-size: 15px; color: #7d8a92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
@@ -1275,48 +1280,28 @@ Error pages
 /* =============================================================================
 Home page
 ========================================================================== */
-body.home header { background: #F2F5F8; padding-top: 35px; }
+body.home { width: 100%; height: 100%; }
+body.home header { padding: 35px 0 25px; margin: 0; background: none; }
 body.home header a.net_logo { display: none!important; }
 body.home header ul.user_options { bottom: 35px!important; }
 body.home header ul.languages { top: -30px !important; }
-
-article.participation { padding: 0 0 40px 0; }
-article.participation div.wrap { width: 575px; }
-article.participation div.wrap h1 { font-size: 48px; color: #465866; letter-spacing: -2px; }
-article.participation div.wrap p { font: normal 17px "Helvetica",Arial; color: #465866; line-height: 18px; }
-article.participation div.wrap div.login_block { display: block; width: 100%; height: 46px; }
-article.participation div.wrap div.login_block p { float: right; font-size: 18px; }
-article.participation div.wrap div.login_block p a { font: bold 18px "Helvetica",Arial; }
-article.participation div.wrap div.login_block p a.blue_button { padding: 13px 30px; text-align: center; margin: 0 0 0 10px; }
-
-#container article#areas div.areas_list { position: relative; display: block; width: 994px; height: 366px; padding: 0; margin: 0; background: white; border-left: 1px solid #B5BDC4; border-right: 1px solid #B5BDC4; }
-#container article#areas div.areas_list ul { position: absolute; top: -9px; left: 0; width: 100%; margin: 0; background: none; border: none; }
-#container article#areas div.areas_list ul li { float: left; width: 270px; height: 74px; padding: 25px 30px; border-right: 1px solid #ECEDEF; border-bottom: 1px solid #ECEDEF; background: none; }
-#container article#areas div.areas_list ul li div.avatar { float: left; width: 67px; }
-#container article#areas div.areas_list ul li div.info { float: left; width: 190px; margin: 0 0 0 10px; padding: 10px 0 0 0; }
-#container article#areas div.areas_list ul li div.info h3 { font: bold 17px "Helvetica",Arial!important; }
-#container article#areas div.areas_list ul li div.info h3 a { color: #465866; }
-#container article#areas div.areas_list ul li div.info span.total { display: block; margin: 5px 0 0 0; padding: 0; font-size: 13!important; color: #666666; }
-#container article#areas div.areas_list ul li div.info span.total a { font-size: 13px!important; }
-#container article#areas div.areas_list ul li.last { width: 272px; border-right: none; }
-#container article#areas div.areas_list div.all_areas { position: absolute; display: none; top: 400px; }
-#container article#areas div.areas_list div.all_areas h4 { width: 100%; display: block; margin: 0 0 0 30px; font: bold 12px "Helvetica",Arial; color: #465866; }
-#container article#areas div.areas_list div.all_areas ul.list { position: relative; padding: 20px 0 0 0; }
-#container article#areas div.areas_list div.all_areas ul.list li { height: auto; padding: 5px 30px; border: none; width: 271px; }
-#container article#areas div.areas_list div.all_areas ul.list li a { font: normal 17px "Helvetica",Arial!important; color: #1D79B0; }
-#container article#areas div.areas_list div.all_areas ul.list li a a:hover { text-decoration: underline; }
-#container article#areas div.areas_list div.all_areas ul.list li.last { width: 272px; }
-#container article#areas a.see_all_areas { width: 920px!important; display: block; text-align: center; background: url("/images/icons/arrow_down.png") no-repeat 533px 8px; }
-
-div.home_last_activity li.loop { display: none; }
-
-section.banners ul { display: block; width: auto; height: 117px; padding: 0 0 0 1px; overflow: visible; }
-section.banners ul li { float: left; position: relative; width: 174px; height: 117px; margin: 0 31px 0 0; background: url("/images/banner_bkg.png") no-repeat 0 0; overflow: visible; }
-section.banners ul li:last-child, section.banners ul li.last { margin: 0; }
-section.banners ul li a { position: absolute; left: 2px; width: 171px; height: 115px; text-indent: -9999px; font-size: 0; line-height: 0; background: url("/images/banners_example.png") no-repeat 0 -4px; z-index: 5; }
-section.banners ul li a.guia_com { top: 1px; background-position: -220px 0; }
-section.banners ul li a.opacity { top: 1px; background-position: -409px -9px; }
-section.banners ul li a.press { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -617px -1px; }
+body.home #container { background: url("/images/illustration.png") no-repeat center 0 #f2f5f8; }
+body.home #container article.participation { height: 255px; padding: 0; margin: 0 auto!important; }
+body.home #container article.participation div.wrap { width: 575px; }
+body.home #container article.participation div.wrap h1 { font-size: 48px; color: #465866; letter-spacing: -2px; }
+body.home #container article.participation div.wrap p { font: normal 17px "Helvetica",Arial; color: #465866; line-height: 18px; }
+body.home #container article.participation div.wrap div.login_block { display: none; width: 100%; height: 46px; }
+body.home #container article.participation div.wrap div.login_block p { float: right; font-size: 18px; }
+body.home #container article.participation div.wrap div.login_block p a { font: bold 18px "Helvetica",Arial; }
+body.home #container article.participation div.wrap div.login_block p a.blue_button { padding: 13px 30px; text-align: center; margin: 0 0 0 10px; }
+body.home #container div.home_last_activity li.loop { display: none; }
+body.home #container section.banners ul { display: block; width: auto; height: 117px; padding: 0 0 0 1px; overflow: visible; }
+body.home #container section.banners ul li { float: left; position: relative; width: 174px; height: 117px; margin: 0 31px 0 0; background: url("/images/banner_bkg.png") no-repeat 0 0; overflow: visible; }
+body.home #container section.banners ul li:last-child, body.home #container section.banners ul li.last { margin: 0; }
+body.home #container section.banners ul li a { position: absolute; left: 2px; width: 171px; height: 115px; text-indent: -9999px; font-size: 0; line-height: 0; background: url("/images/banners_example.png") no-repeat 0 -4px; z-index: 5; }
+body.home #container section.banners ul li a.guia_com { top: 1px; background-position: -220px 0; }
+body.home #container section.banners ul li a.opacity { top: 1px; background-position: -409px -9px; }
+body.home #container section.banners ul li a.press { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -617px -1px; }
 
 /* New clearfix */
 .inner:after, .clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
