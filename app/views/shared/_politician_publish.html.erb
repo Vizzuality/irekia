@@ -41,16 +41,16 @@
         <!-- PROPOSAL -->
         <div class="section proposal">
           <div class="triangle"></div>
-            <%= form_for @proposal, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
-              <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %>
-                <%= proposal_data.hidden_field :area_id %>
+          <%= form_for @proposal, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+            <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %>
+              <%= proposal_data.hidden_field :area_id %>
 
-                <%= proposal_data.fields_for :image, @proposal_data.image do |image| %>
-                  <%= image.hidden_field :proposal_data_id %>
-                  <%= image.hidden_field :image_cache, :class => :image_cache_name %>
-                <% end %>
+              <%= proposal_data.fields_for :image, @proposal_data.image do |image| %>
+                <%= image.hidden_field :proposal_data_id %>
+                <%= image.hidden_field :image_cache, :class => :image_cache_name %>
+              <% end %>
 
-                <div class="form clearfix">
+              <div class="form clearfix">
 
                 <div class="input_field placeholder textarea clearfix">
                   <div id="proposal-counter" class="input-counter">
@@ -59,39 +59,27 @@
                   </div>
                 </div>
 
-                <div class="extra">
+                <div class="input_field placeholder uploader">
+                  <input type="text" />
+                  <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
+                  <span class="percentage">0%</span>
+                  <span class="loading">Cargando imagen...</span>
+                  <div class="progress"></div>
+                </div>
 
-                  <div class="input_field placeholder uploader">
-                    <input type="text" />
-                    <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
-                    <span class="percentage">0%</span>
-                    <span class="loading">Cargando imagen...</span>
-                    <div class="progress"></div>
-                  </div>
+                <div class="image_container clearfix">
+                  <p>Se incluirá esta imagen en la propuesta.</p>
+                  <a href="#" class="remove">Eliminar</a>
+                </div>
 
-                  <div class="image_container clearfix">
-                    <p>Se incluirá esta imagen en la propuesta.</p>
-                    <a href="#" class="remove">Eliminar</a>
-                  </div>
-
-                  <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
-                  <div class="input_field placeholder textarea">
-                    <%= proposal_data.text_area :body, :class => :body %>
-                    <span class="holder">Describe la propuesta en pocas palabras</span>
-                  </div>
+                <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
+                <div class="input_field description placeholder textarea">
+                  <%= proposal_data.text_area :body, :class => :body %>
+                  <span class="holder">Describe la propuesta en pocas palabras</span>
                 </div>
               <% end -%>
             <% end -%>
 
-            <div class="extra">
-
-              <strong>¿A QUÉ ÁREA QUIERES DIRIGIR LA PROPUESTA?</strong>
-              <div class="input_field autosuggest_field placeholder">
-                <input type="text" />
-                <span class="holder">Nombre de área...</span>
-              </div>
-
-            </div>
           </div>
         </div>
 

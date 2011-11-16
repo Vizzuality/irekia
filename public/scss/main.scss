@@ -931,6 +931,39 @@ article .inner { h2, h3 { color: $dark_blue; } }
     width: 757px;
     margin: 0 auto 0px auto;
 
+    &.politician {
+      .inner .content .container {
+
+        height:79px;
+
+        .inner_container .section {
+
+          &.proposal {
+            .triangle { left:152px; }
+            .input_field.textarea { margin:0; }
+
+            .input_field.uploader {
+              margin-bottom: 20px;
+            }
+            .input_field.description {
+              margin-bottom: 20px;
+            }
+
+            .input_field {
+              width:100%;
+              margin:0 0 10px 0;
+
+              input[type="text"] {
+                width:666px;
+                font-size:15px;
+              }
+              .holder { width: 666px; }
+            }
+          } // section.proposal
+        } // .section
+      }
+    } // politician
+
     &.user {
       .inner .content .container {
 
@@ -1143,23 +1176,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
                   height:auto;
                   textarea {
                     height:33px;
-                    font-size:15px;
-                  }
-                  .holder { width: 666px; }
-                }
-              } // section.proposal
-
-              // -----------------------------------------------------
-              // -----------------------------------------------------
-
-              &.proposal {
-                .triangle { left:386px; }
-                .input_field {
-                  width:100%;
-                  margin:0 0 10px 0;
-
-                  input[type="text"] {
-                    width:666px;
                     font-size:15px;
                   }
                   .holder { width: 666px; }

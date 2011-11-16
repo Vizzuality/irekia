@@ -402,6 +402,14 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.help .inner .content { float: left; width: 544px; }
 #container article.help .inner p { margin: 0 0 16px 0; color: #7D8A92; font-size: 17px; }
 #container article.publish { width: 757px; margin: 0 auto 0px auto; }
+#container article.publish.politician .inner .content .container { height: 79px; }
+#container article.publish.politician .inner .content .container .inner_container .section.proposal .triangle { left: 152px; }
+#container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0; }
+#container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.uploader { margin-bottom: 20px; }
+#container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.description { margin-bottom: 20px; }
+#container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
+#container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
+#container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
 #container article.publish.user .inner .content .container { height: 79px; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .triangle { left: 152px; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0; }
@@ -451,10 +459,6 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .section.question .input_field.textarea { margin: 0 0 10px 0; height: auto; }
 #container article.publish .inner .content .container .inner_container .section.question .input_field.textarea textarea { height: 33px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.question .input_field.textarea .holder { width: 666px; }
-#container article.publish .inner .content .container .inner_container .section.proposal .triangle { left: 386px; }
-#container article.publish .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
-#container article.publish .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
 #container article.publish .inner .content .container .inner_container .section.image .triangle { left: 150px; }
 #container article.publish .inner .content .container .inner_container .section.image .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.video { height: auto; background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
