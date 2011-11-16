@@ -122,7 +122,7 @@ Header
 ========================================================================== */
 
 header {
-  padding-top: 50px;
+  padding-top: 45px;
   margin-bottom: 53px;
   background: $white;
 
@@ -138,7 +138,7 @@ header {
 
       ul.languages {
         position:absolute;
-        top:-42px;
+        top:-37px;
         right:0;
         width:auto;
         li {
@@ -153,7 +153,7 @@ header {
       }
 
       .logo { float:left; left: 0; top: 0; position: relative; display: block; }
-      .net_logo { float: right;right:0; position:absolute; display: block; }
+      .net_logo {top:5px; right:0; position:absolute; display: block; }
 
       ul.user_options {
         right: 0;
@@ -4486,6 +4486,21 @@ body.home {
 
         h1 {font-size:48px; color:#465866; letter-spacing:-2px;}
         p {font:normal 17px "Helvetica",Arial; color:#465866; line-height:18px;}
+
+
+
+
+//        <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get, :autocomplete => :off } do |search_form| %>
+//          <div class="input_field search placeholder">
+//            <%= search_form.text_field :query %>
+//            <%= search_form.submit '' %>
+//            <span class="holder"><%= raw t(".search") %></span>
+//          </div>
+//        <% end %>
+
+
+
+
         div.login_block {
           display:none;
           width:100%;
