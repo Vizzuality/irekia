@@ -532,7 +532,7 @@
     lists_elements:
       answer:
         title: '%{author} ha contestado a "%{question}"'
-        author: '%{author} contesto hace %{time}'
+        author: '%{author} &middot; <span class="answered">Contestada hace %{time}</span>'
       question:
         title: 'Pregunta para %{receiver}:'
         author: '%{author} hace %{time}'
