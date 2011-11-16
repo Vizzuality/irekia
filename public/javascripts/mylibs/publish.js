@@ -554,7 +554,7 @@
     _resetHiddenFields();
 
     var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
-    var height    = $section.find(".form").outerHeight(true) + 20;
+    var height    = $section.find(".form").outerHeight(true);
     $ps.find(".container").animate({scrollLeft: data.sectionID * data.settings.sectionWidth, height: height }, data.settings.transitionSpeed, "easeInOutQuad");
   }
 
@@ -634,13 +634,11 @@
   }
 
   function _triggerOpenAnimation(data) {
-    var $ps = data.$ps;
-    var top  = _getTopPosition($ps);
-    var left = _getLeftPosition($ps);
+    var top  = _getTopPosition(data.$ps);
+    var left = _getLeftPosition(data.$ps);
 
-    $ps.css({"top":(top + 100) + "px", "left": left + "px"});
-
-    $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    data.$ps.css({"top":(top + 100) + "px", "left": left + "px"});
+    data.$ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
   }
 
   function _getTopPosition($ps) {
@@ -672,6 +670,7 @@
       data.$ps.find(".extra").hide();
       data.$ps.find(".holder").show();
       _resizeSection(data, $currentSection);
+      data.$ps.find(".message").remove();
 
       hideLockScreen && LockScreen.hide();
       callback && callback();
