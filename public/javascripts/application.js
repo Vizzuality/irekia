@@ -45,8 +45,6 @@ $(function() {
   $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
 
 
-
-
 	// FOLLOW FORMS!!
   $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();

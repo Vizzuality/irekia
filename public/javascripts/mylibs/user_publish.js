@@ -138,7 +138,6 @@
     $currentSection    = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
 
     _gotoSection(data);
-    _bindSearch(data);
 
     _selectOption(data, $currentMenuOption);
 
@@ -150,6 +149,7 @@
   function _enableInputCounter(data, $input, on, off) {
     var $ps = data.$ps;
 
+    $input.unbind();
     $input.keyup(function(e) {
       textCounter($(this), on, off);
     });
@@ -282,6 +282,7 @@
 
     _enableInputCounter(data, $(".autosuggest_field input"), null, function() { _clearAutosuggest(data); _resetHiddenFields(); } );
 
+    $currentSection.find('.autosuggest_field input').unbind();
     $currentSection.find('.autosuggest_field input').keyup(function(ev){
 
       if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
@@ -550,6 +551,8 @@
     _clearAutosuggest(data);
     _clearSection(data);
     _resetHiddenFields();
+
+    _bindSearch(data);
 
     var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
     var height    = $section.find(".form").outerHeight(true);
