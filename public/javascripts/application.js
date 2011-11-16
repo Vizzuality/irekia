@@ -186,8 +186,8 @@ jQuery.fn.enableQuestion = function(opt){
     $(this).submit(function(e) {
       spinner.spin(spin_element);
       $("#notice_success").fadeOut(150);
-
-
+      $(this).find('input[type="submit"]').addClass("disabled");
+      $(this).find('input[type="submit"]').attr("disabled", "disabled");
     });
 
     $(this).bind('ajax:success', function(evt, xhr, status) {
@@ -197,9 +197,11 @@ jQuery.fn.enableQuestion = function(opt){
       $icon = $("<span class='icon success' />");
       $(this).find(".input-counter").append($icon);
 
+      $(this).find('input[type="submit"]').removeClass("disabled");
+      $(this).find('input[type="submit"]').removeAttr("disabled");
 
       $("#notice_success").css("left", "447px");
-      $("#notice_success").css("bottom", "70px");
+      $("#notice_success").css("bottom", "80px");
       $(this).find('input[type="text"]').val("");
       $(this).find(".holder").fadeIn(150);
       $(this).find(".counter").html(140);
