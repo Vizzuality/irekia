@@ -613,13 +613,16 @@ jQuery.fn.smartPlaceholder = function(opt){
 
     $input.keydown(function(e) {
 
-    //  if (e.keyCode == 86) { // alt-x
-    //    $span.fadeOut(speed);
-    //  } else if (e.keyCode == 88) { // alt-x
-    //    $span.fadeIn(speed);
-    //  } else {
+      //TODO: check for ie
+      if (e.metaKey && e.keyCode == 88) {
+        setTimeout(function() {
+          isEmpty($input.val()) && $span.fadeIn(speed);
+        }, 100);
+      } else if (e.keyCode == 86) {
+          $span.fadeOut(speed);
+      } else {
         setTimeout(function() { ($input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);
-     // }
+      }
     });
 
     $span.click(function() { $input.focus(); });
