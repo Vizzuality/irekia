@@ -189,6 +189,10 @@ $(function() {
   $(".areas_selector").areasPopover();
   $(".toggle_notifications").notificationPopover();
 
+  $(".has_requested_answer").find("form").bind('ajax:success', function(evt, xhr, status) {
+    console.log(evt, xhr, status);
+  });
+
 	// HOME, grow all areas
 	$("a.see_all_areas").click(function(ev){
 		ev.preventDefault();
