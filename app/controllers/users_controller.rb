@@ -6,8 +6,7 @@ class UsersController < ApplicationController
   before_filter :per_page,                     :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :get_counters,                 :only => [:show, :actions, :questions, :proposals]
-  before_filter :build_new_question,           :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
-  before_filter :build_new_proposal,           :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
+  before_filter :models_for_forms,             :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :get_questions,                :only => [:questions]
   before_filter :get_proposals,                :only => [:proposals]
   before_filter :get_actions,                  :only => [:show, :actions]
@@ -176,12 +175,22 @@ class UsersController < ApplicationController
   end
   private :get_counters
 
-  def build_new_question
+  def models_for_forms
     @question                  = Question.new
     @question_data             = @question.build_question_data
     @question_data.target_user = @user
+
+    @proposal                  = Proposal.new
+    @proposal_data             = @proposal.build_proposal_data
+    @proposal_data.target_area = @user.areas.first
+    @proposal_data.image       = @proposal_data.build_image
+
+    if politician_profile?
+      @status_message = StatusMessage.new
+      @status_message.status_message_data = @status_message.build_status_message_data
+    end
   end
-  private :build_new_question
+  private :models_for_forms
 
   def get_questions
     if public_profile?
@@ -213,14 +222,6 @@ class UsersController < ApplicationController
     end
   end
   private :get_questions
-
-  def build_new_proposal
-    @proposal                  = Proposal.new
-    @proposal_data             = @proposal.build_proposal_data
-    @proposal_data.target_area = @user.areas.first
-    @proposal_data.image       = @proposal_data.build_image
-  end
-  private :build_new_proposal
 
   def get_proposals
     @proposals = @user.get_proposals(params.slice(:from_politicians, :from_citizens, :more_polemic))
