@@ -34,4 +34,8 @@ module UsersHelper
   def private_profile?
     @viewing_access == 'private'
   end
+
+  def politician_profile?
+    @viewing_access == 'politician'
+  end
 end
