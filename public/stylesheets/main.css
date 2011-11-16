@@ -867,7 +867,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .left .content .sharebox.email, #container article .right .content ul.sharing li .sharebox.email { margin-left: -108px; }
 #container article .left .content .sharebox.email .input_field, #container article .right .content ul.sharing li .sharebox.email .input_field { margin: 0; }
 
-#container article .right .content ul.sharing { margin: 0 0 28px 0; padding: 0 0 20px 0; }
+#container article .right .content ul.sharing { margin: 3px 0 0 0; padding: 0 0 25px 0; }
 #container article .right .content ul.sharing li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; background: none; padding: 0; }
 
 .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
