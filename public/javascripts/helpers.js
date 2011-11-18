@@ -318,12 +318,12 @@ jQuery.fn.autocomplete = function(opt){
   var spinner = new Spinner(opts);
 
   function _close(e) {
-    GOD.broadcast('close.' + id);
+    GOD.broadcast('minimize.' + id);
     $('.autocomplete').fadeOut();
   }
 
   this.each(function(){
-    $(window).bind('close.autocomplete', _close);
+    $(window).bind('minimize.autocomplete', _close);
 
     $('.autocomplete').click(function(e){
       e.stopPropagation();
@@ -353,7 +353,7 @@ jQuery.fn.autocomplete = function(opt){
       spinner.stop();
       $('#search_submit').show();
       $autocomplete.fadeIn("fast");
-      GOD.subscribe('close.' + id);
+      GOD.subscribe('minimize.' + id);
     });
 
     $(this).click(function() {
