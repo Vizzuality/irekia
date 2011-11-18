@@ -72,16 +72,17 @@ class PoliticiansController < UsersController
   private :get_politician_data
 
   def get_counters
-    @followers_count = @politician.followers.count || 0
-    @news_count      = @politician.news_count      || 0
-    @questions_count = @politician.questions_count || 0
-    @answers_count   = @politician.answers_count   || 0
-    @proposals_count = @politician.proposals_count || 0
-    @arguments_count = @politician.arguments_count || 0
-    @votes_count     = @politician.votes_count     || 0
-    @photos_count    = @politician.photos_count    || 0
-    @videos_count    = @politician.videos_count    || 0
-    @statuses_count  = @politician.statuses_count  || 0
+    @followers_count       = @politician.followers.count       || 0
+    @news_count            = @politician.news_count            || 0
+    @questions_count       = @politician.questions_count       || 0
+    @answers_count         = @politician.answers_count         || 0
+    @proposals_count       = @politician.proposals_count       || 0
+    @arguments_count       = @politician.arguments_count       || 0
+    @votes_count           = @politician.votes_count           || 0
+    @photos_count          = @politician.photos_count          || 0
+    @videos_count          = @politician.videos_count          || 0
+    @status_messages_count = @politician.status_messages_count || 0
+    @tweets_count          = @politician.tweets_count          || 0
   end
   private :get_counters
 

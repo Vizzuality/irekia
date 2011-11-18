@@ -27,4 +27,13 @@ class AnswerRequest < Participation
   end
   private :update_question
 
+  def notification_for(user)
+    super(user)
+    content.participers.where('participations.type' => 'AnswerRequest').each{|user| Notification.for(user, self)}
+    if question.target_user
+      Notification.for(question.target_user, self)
+    elsif question.target_area
+      question.target_area.team.each{|politician| Notification.for(politician, self)}
+    end
+  end
 end

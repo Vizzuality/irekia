@@ -81,7 +81,7 @@
       </li>
 
       <li>
-      <% if @statuses_count > 0 %>
+      <% if @status_messages_count > 0 || @tweets_count > 0 %>
         <%= link_to t('.content_type_filters.statuses'), link_for_actions(:type => [:tweet, :statusmessage], :referer => action_name), :class => "filter" %>
       <% else %>
         <p><%= t('.no_content_filters.statuses') %></p>

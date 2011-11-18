@@ -3,15 +3,13 @@ class Answer < Content
              :foreign_key => :related_content_id
   has_one :answer_data,
           :dependent => :destroy
-  has_many :answer_opinions,
-           :foreign_key => :content_id
 
   before_create :mark_question_as_answered
 
   delegate :answer_text, :to => :answer_data, :allow_nil => true
   delegate :question_text, :to => :question, :allow_nil => true
 
-  accepts_nested_attributes_for :answer_opinions, :answer_data
+  accepts_nested_attributes_for :answer_data
 
   def self.from_area(area)
     joins(:author => :areas).moderated.where('areas.id' => area.id)
@@ -38,16 +36,9 @@ class Answer < Content
   end
   private :mark_question_as_answered
 
-  def update_counter_cache
-    return unless moderated?
-
-    question.author.update_attribute("answers_count", author.actions.answers.count)
+  def notification_for(user)
     Notification.for(question.author, self)
-    author.followers.each{|user| user.update_attribute("private_answers_count", user.private_actions.answers.count)}
-    author.areas.each do |area|
-      area.update_attribute("answers_count", area.actions.answers.count)
-    end
+    question.answer_requests.map(&:author).each{|user| Notification.for(user, self)}
   end
-  private :update_counter_cache
 
 end

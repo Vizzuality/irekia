@@ -246,7 +246,7 @@ class User < ActiveRecord::Base
 
   def get_actions(filters)
     actions = self.actions
-    actions = actions.where(:event_type => filters[:type]) if filters[:type].present?
+    actions = actions.where(:event_type => filters[:type].camelize) if filters[:type].present?
 
     actions = if filters[:more_polemic] == 'true'
       actions.more_polemic
@@ -258,7 +258,7 @@ class User < ActiveRecord::Base
 
   def get_private_actions(filters)
     actions = self.private_actions
-    actions = actions.where(:event_type => filters[:type]) if filters[:type].present?
+    actions = actions.where(:event_type => filters[:type].camelize) if filters[:type].present?
 
     actions = if filters[:more_polemic] == 'true'
       actions.more_polemic
@@ -441,9 +441,9 @@ class User < ActiveRecord::Base
     count = if politician?
       (new_questions_count + new_comments_count + new_arguments_count + new_votes_count + new_contents_users_count + new_follows_count) rescue 0
     elsif citizen?
-      (new_answers_count + new_comments_count + new_arguments_count + new_votes_count + new_answer_requests_count + new_answer_opinions_count) rescue 0
+      (new_answers_count + new_comments_count + new_arguments_count + new_votes_count + new_answer_requests_count) rescue 0
     else
-      (new_answers_count + new_comments_count + new_arguments_count + new_votes_count + new_answer_requests_count + new_answer_opinions_count) rescue 0
+      (new_answers_count + new_comments_count + new_arguments_count + new_votes_count + new_answer_requests_count) rescue 0
     end
     count = 99 if count > 99
     count

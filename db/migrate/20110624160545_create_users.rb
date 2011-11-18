@@ -27,16 +27,19 @@ class CreateUsers < ActiveRecord::Migration
 
       t.integer :follows_count,                                                  :default => 0
       t.integer :areas_users_count,                                              :default => 0
+
       t.integer :proposals_count,                                                :default => 0
       t.integer :arguments_count,                                                :default => 0
       t.integer :votes_count,                                                    :default => 0
       t.integer :questions_count,                                                :default => 0
       t.integer :answers_count,                                                  :default => 0
+      t.integer :answer_requests_count,                                          :default => 0
       t.integer :events_count,                                                   :default => 0
       t.integer :news_count,                                                     :default => 0
       t.integer :photos_count,                                                   :default => 0
       t.integer :videos_count,                                                   :default => 0
-      t.integer :statuses_count,                                                 :default => 0
+      t.integer :status_messages_count,                                          :default => 0
+      t.integer :tweets_count,                                                   :default => 0
       t.integer :comments_count,                                                 :default => 0
 
       t.integer :private_proposals_count,                                        :default => 0
@@ -44,20 +47,25 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :private_votes_count,                                            :default => 0
       t.integer :private_questions_count,                                        :default => 0
       t.integer :private_answers_count,                                          :default => 0
+      t.integer :private_answer_requests_count,                                  :default => 0
       t.integer :private_events_count,                                           :default => 0
       t.integer :private_news_count,                                             :default => 0
       t.integer :private_photos_count,                                           :default => 0
       t.integer :private_videos_count,                                           :default => 0
-      t.integer :private_statuses_count,                                         :default => 0
+      t.integer :private_status_messages_count,                                  :default => 0
+      t.integer :private_tweets_count,                                           :default => 0
       t.integer :private_comments_count,                                         :default => 0
 
+
+      t.integer :new_news_count,                                                 :default => 0
+      t.integer :new_events_count,                                               :default => 0
+      t.integer :new_proposals_count,                                            :default => 0
       t.integer :new_answers_count,                                              :default => 0
       t.integer :new_comments_count,                                             :default => 0
       t.integer :new_votes_count,                                                :default => 0
       t.integer :new_arguments_count,                                            :default => 0
       t.integer :new_questions_count,                                            :default => 0
       t.integer :new_answer_requests_count,                                      :default => 0
-      t.integer :new_answer_opinions_count,                                      :default => 0
       t.integer :new_contents_users_count,                                       :default => 0
       t.integer :new_follows_count,                                              :default => 0
 

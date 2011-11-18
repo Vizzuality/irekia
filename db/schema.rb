@@ -51,18 +51,20 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
     t.text     "description"
     t.text     "description_1"
     t.text     "description_2"
-    t.integer  "areas_users_count", :default => 0
-    t.integer  "follows_count",     :default => 0
-    t.integer  "proposals_count",   :default => 0
-    t.integer  "arguments_count",   :default => 0
-    t.integer  "votes_count",       :default => 0
-    t.integer  "questions_count",   :default => 0
-    t.integer  "answers_count",     :default => 0
-    t.integer  "events_count",      :default => 0
-    t.integer  "news_count",        :default => 0
-    t.integer  "photos_count",      :default => 0
-    t.integer  "videos_count",      :default => 0
-    t.integer  "statuses_count",    :default => 0
+    t.integer  "areas_users_count",     :default => 0
+    t.integer  "follows_count",         :default => 0
+    t.integer  "proposals_count",       :default => 0
+    t.integer  "arguments_count",       :default => 0
+    t.integer  "votes_count",           :default => 0
+    t.integer  "questions_count",       :default => 0
+    t.integer  "answers_count",         :default => 0
+    t.integer  "events_count",          :default => 0
+    t.integer  "news_count",            :default => 0
+    t.integer  "photos_count",          :default => 0
+    t.integer  "videos_count",          :default => 0
+    t.integer  "status_messages_count", :default => 0
+    t.integer  "tweets_count",          :default => 0
+    t.integer  "comments_count",        :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -307,7 +309,7 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
     t.text     "description"
     t.text     "description_1"
     t.text     "description_2"
-    t.boolean  "is_woman",                                   :default => false
+    t.boolean  "is_woman",                                     :default => false
     t.integer  "province_id"
     t.string   "province"
     t.integer  "city_id"
@@ -318,48 +320,54 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
     t.string   "twitter_username"
     t.string   "twitter_oauth_token"
     t.string   "twitter_oauth_token_secret"
-    t.boolean  "inactive",                                   :default => false
-    t.boolean  "first_time",                                 :default => true
-    t.string   "locale",                                     :default => "es"
-    t.integer  "follows_count",                              :default => 0
-    t.integer  "areas_users_count",                          :default => 0
-    t.integer  "proposals_count",                            :default => 0
-    t.integer  "arguments_count",                            :default => 0
-    t.integer  "votes_count",                                :default => 0
-    t.integer  "questions_count",                            :default => 0
-    t.integer  "answers_count",                              :default => 0
-    t.integer  "events_count",                               :default => 0
-    t.integer  "news_count",                                 :default => 0
-    t.integer  "photos_count",                               :default => 0
-    t.integer  "videos_count",                               :default => 0
-    t.integer  "statuses_count",                             :default => 0
-    t.integer  "comments_count",                             :default => 0
-    t.integer  "private_proposals_count",                    :default => 0
-    t.integer  "private_arguments_count",                    :default => 0
-    t.integer  "private_votes_count",                        :default => 0
-    t.integer  "private_questions_count",                    :default => 0
-    t.integer  "private_answers_count",                      :default => 0
-    t.integer  "private_events_count",                       :default => 0
-    t.integer  "private_news_count",                         :default => 0
-    t.integer  "private_photos_count",                       :default => 0
-    t.integer  "private_videos_count",                       :default => 0
-    t.integer  "private_statuses_count",                     :default => 0
-    t.integer  "private_comments_count",                     :default => 0
-    t.integer  "new_answers_count",                          :default => 0
-    t.integer  "new_comments_count",                         :default => 0
-    t.integer  "new_votes_count",                            :default => 0
-    t.integer  "new_arguments_count",                        :default => 0
-    t.integer  "new_questions_count",                        :default => 0
-    t.integer  "new_answer_requests_count",                  :default => 0
-    t.integer  "new_answer_opinions_count",                  :default => 0
-    t.integer  "new_contents_users_count",                   :default => 0
-    t.integer  "new_follows_count",                          :default => 0
-    t.string   "email",                                      :default => "",    :null => false
-    t.string   "encrypted_password",          :limit => 128, :default => "",    :null => false
+    t.boolean  "inactive",                                     :default => false
+    t.boolean  "first_time",                                   :default => true
+    t.string   "locale",                                       :default => "es"
+    t.integer  "follows_count",                                :default => 0
+    t.integer  "areas_users_count",                            :default => 0
+    t.integer  "proposals_count",                              :default => 0
+    t.integer  "arguments_count",                              :default => 0
+    t.integer  "votes_count",                                  :default => 0
+    t.integer  "questions_count",                              :default => 0
+    t.integer  "answers_count",                                :default => 0
+    t.integer  "answer_requests_count",                        :default => 0
+    t.integer  "events_count",                                 :default => 0
+    t.integer  "news_count",                                   :default => 0
+    t.integer  "photos_count",                                 :default => 0
+    t.integer  "videos_count",                                 :default => 0
+    t.integer  "status_messages_count",                        :default => 0
+    t.integer  "tweets_count",                                 :default => 0
+    t.integer  "comments_count",                               :default => 0
+    t.integer  "private_proposals_count",                      :default => 0
+    t.integer  "private_arguments_count",                      :default => 0
+    t.integer  "private_votes_count",                          :default => 0
+    t.integer  "private_questions_count",                      :default => 0
+    t.integer  "private_answers_count",                        :default => 0
+    t.integer  "private_answer_requests_count",                :default => 0
+    t.integer  "private_events_count",                         :default => 0
+    t.integer  "private_news_count",                           :default => 0
+    t.integer  "private_photos_count",                         :default => 0
+    t.integer  "private_videos_count",                         :default => 0
+    t.integer  "private_status_messages_count",                :default => 0
+    t.integer  "private_tweets_count",                         :default => 0
+    t.integer  "private_comments_count",                       :default => 0
+    t.integer  "new_news_count",                               :default => 0
+    t.integer  "new_events_count",                             :default => 0
+    t.integer  "new_proposals_count",                          :default => 0
+    t.integer  "new_answers_count",                            :default => 0
+    t.integer  "new_comments_count",                           :default => 0
+    t.integer  "new_votes_count",                              :default => 0
+    t.integer  "new_arguments_count",                          :default => 0
+    t.integer  "new_questions_count",                          :default => 0
+    t.integer  "new_answer_requests_count",                    :default => 0
+    t.integer  "new_contents_users_count",                     :default => 0
+    t.integer  "new_follows_count",                            :default => 0
+    t.string   "email",                                        :default => "",    :null => false
+    t.string   "encrypted_password",            :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                              :default => 0
+    t.integer  "sign_in_count",                                :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

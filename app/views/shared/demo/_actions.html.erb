@@ -11,7 +11,7 @@
   <ul>
     <% @actions.first(4).each do |action| %>
       <li class="action">
-        <%= render "shared/demo/lists_elements/#{action.event_type}", :data => action.item %>
+        <%= render "shared/demo/lists_elements/#{action.event_type.underscore}", :data => action.item %>
       </li>
     <% end %>
   </ul>

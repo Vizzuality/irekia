@@ -65,13 +65,4 @@ class Event < Content
     title
   end
 
-  def update_counter_cache
-    return unless moderated?
-
-    # areas.each { |area| area.update_attribute("events_count", area.events.moderated.count) }
-    author.update_attribute("events_count", author.actions.events.count)
-    author.followers.each{|user| user.update_attribute("private_events_count", user.private_actions.events.count)}
-  end
-  private :update_counter_cache
-
 end

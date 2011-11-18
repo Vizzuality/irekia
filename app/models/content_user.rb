@@ -13,16 +13,16 @@ class ContentUser < ActiveRecord::Base
 
   accepts_nested_attributes_for :question, :user
 
-  after_save :update_counter_cache
+  after_save :send_notification
 
   def parent
     content
   end
 
-  def update_counter_cache
+  def send_notification
     return unless content && content.moderated?
 
     Notification.for(user, self)
   end
-  private :update_counter_cache
+  private :send_notification
 end

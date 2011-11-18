@@ -25,16 +25,9 @@ class Comment < Participation
     })
   end
 
-  def update_counter_cache
-    return unless moderated?
-
-    return if content.blank?
-
-    content.update_attribute('comments_count', content.comments.moderated.count)
-    content.commenters.each do |user|
-      user.update_attribute('private_comments_count', user.private_actions.comments.count)
-      Notification.for(user, self)
-    end
+  def notification_for(user)
+    super(user)
+    content.commenters.each{|user| Notification.for(user, self)}
   end
-  private :update_counter_cache
+
 end

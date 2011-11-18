@@ -67,14 +67,6 @@ class ContentsController < ApplicationController
         return if current_user && current_user.has_given_his_opinion?(@content.answer)
 
         @answer = @content.answer
-        @satisfactory_opinions_count = @content.answer.answer_opinions.satisfactory.count
-        @not_satisfactory_opinions_count = @content.answer.answer_opinions.not_satisfactory.count
-        @answer_opinion = @content.answer.answer_opinions.build
-        @answer_opinion.user = current_user if current_user.present?
-        @answer_opinion.answer_opinion_data = AnswerOpinionData.new
-
-        @answer_opinion_data_satisfactory = AnswerOpinionData.new(:satisfactory => true)
-        @answer_opinion_data_not_satisfactory = AnswerOpinionData.new(:satisfactory => false)
 
       end
 

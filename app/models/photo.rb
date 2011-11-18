@@ -44,13 +44,4 @@ class Photo < Content
     title
   end
 
-  def update_counter_cache
-    return unless moderated?
-
-    author.update_attribute("photos_count", author.actions.photos.count)
-    author.followers.each{|user| user.update_attribute("private_photos_count", user.private_actions.photos.count)}
-    author.areas.each{|area| area.update_attribute("photos_count", area.actions.photos.count)}
-  end
-  private :update_counter_cache
-
 end

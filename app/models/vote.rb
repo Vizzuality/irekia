@@ -55,12 +55,10 @@ class Vote < Participation
   end
   private :update_proposal
 
-  def update_counter_cache
-    return unless moderated?
-
-    author.update_attribute('votes_count', author.actions.votes.count)
-    author.followers.each{|user| user.update_attribute("private_votes_count", user.private_actions.votes.count)}
-    author.areas.each{|area| area.update_attribute('votes_count', area.actions.votes.count)}
+  def notification_for(user)
+    super(user)
+    content.participers.where('participations.type' => 'Vote').each{|user| Notification.for(user, self)}
+    proposal.target_area.team.each{|politician| Notification.for(politician, self)}
   end
-  private :update_counter_cache
+
 end

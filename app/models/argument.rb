@@ -44,12 +44,10 @@ class Argument < Participation
     })
   end
 
-  def update_counter_cache
-    return unless moderated?
-
-    author.update_attribute('arguments_count', author.actions.arguments.count)
-    author.followers.each{|user| user.update_attribute("private_arguments_count", user.private_actions.arguments.count)}
-    author.areas.each{|area| area.update_attribute('arguments_count', area.actions.arguments.count)}
+  def notification_for(user)
+    super(user)
+    content.participers.where('participations.type' => 'Argument').each{|user| Notification.for(user, self)}
+    proposal.target_area.team.each{|politician| Notification.for(politician, self)}
   end
-  private :update_counter_cache
+
 end

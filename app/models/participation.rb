@@ -11,9 +11,7 @@ class Participation < ActiveRecord::Base
   before_create :update_published_at
   before_save   :update_moderated_at
   before_save   :author_is_politician?
-  after_save    :publish_participation
-  after_save    :update_counter_cache
-  after_destroy :update_counter_cache
+  after_save    :publish
 
   accepts_nested_attributes_for :user
 
@@ -89,68 +87,62 @@ class Participation < ActiveRecord::Base
     default.merge(options || {})
   end
 
-  def publish_participation
+  def publish
     return unless content.present? && self.moderated?
 
-    user_action              = user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+    user_action              = user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
     user_action.published_at = self.published_at
     user_action.message      = self.to_json
     user_action.save!
 
     user.areas.each do |area|
-      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
       area_action.published_at = self.published_at
       area_action.message      = self.to_json
       area_action.save!
 
       area.users.each do |user|
-        user_action              = user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+        user_action              = user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
         user_action.published_at = self.published_at
         user_action.message      = self.to_json
         user_action.save!
-        Notification.for(user, self)
       end
 
       area.followers.each do |follower|
-        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
         user_action.published_at = self.published_at
         user_action.message      = self.to_json
         user_action.save!
-        Notification.for(follower, self)
       end
     end
 
     user.followers.each do |follower|
-      user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
       user_action.published_at = self.published_at
       user_action.message      = self.to_json
       user_action.save!
-      Notification.for(follower, self)
     end
 
     content.users.each do |user|
-      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
       user_action.published_at = self.published_at
       user_action.message      = self.to_json
       user_action.save!
-      Notification.for(user, self)
     end
 
-    user_action              = content.author.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+    user_action              = content.author.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
     user_action.published_at = self.published_at
     user_action.message      = self.to_json
     user_action.save!
-    Notification.for(content.author, self)
 
     if content.respond_to?(:target_area) && content.target_area.present?
-      content.target_area.users.each{|user| Notification.for(user, self)}
     end
 
   end
-  private :publish_participation
+  private :publish
 
-  def update_counter_cache
-
+  def notification_for(user)
+    Notification.for(author, self)
   end
-  private :update_counter_cache
+
 end

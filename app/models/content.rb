@@ -14,6 +14,10 @@ class Content < ActiveRecord::Base
   has_many   :users,
              :through => :contents_users,
              :select => 'users.id, name, lastname, locale, email, title_id'
+  has_many   :tagged_politicians,
+             :through => :contents_users,
+             :source => :user,
+             :select => 'users.id, name, lastname, locale, email, title_id'
 
   has_many   :follows
   has_many   :participations
@@ -27,9 +31,7 @@ class Content < ActiveRecord::Base
   before_create :update_published_at
   before_save   :update_moderated_at
   before_save   :author_is_politician?
-  after_save    :publish_content
-  after_save    :update_counter_cache
-  after_destroy :update_counter_cache
+  after_save    :publish
 
   accepts_nested_attributes_for :comments, :areas_contents, :contents_users
 
@@ -93,9 +95,15 @@ class Content < ActiveRecord::Base
     self.class.moderated.includes(:"#{self.class.name.underscore}_data", :comments).order('published_at desc').where('id <> ?', id).first(limit)
   end
 
+  def participers
+    User.select(User.column_names.map{|c| "users.#{c}"})
+        .group(User.column_names.map{|c| "users.#{c}"})
+        .joins(:participations => :content)
+        .where('contents.id' => self.id)
+  end
+
   def commenters
-    commenters_ids = User.select('DISTINCT(users.id)').joins(:comments).where('content_id = ?', id).map(&:id)
-    User.where('id in (?)', commenters_ids)
+    participers.where('participations.type' => 'Comment')
   end
 
   def comments_count
@@ -163,23 +171,23 @@ class Content < ActiveRecord::Base
   end
   private :author_is_politician?
 
-  def publish_content
+  def publish
 
     return unless self.moderated?
 
-    user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+    user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
     user_action.published_at = self.published_at
     user_action.message      = self.to_json
     user_action.save!
 
     author.areas.each do |area|
-      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
       area_action.published_at = self.published_at
       area_action.message      = self.to_json
       area_action.save!
 
       area.followers.each do |follower|
-        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
         user_action.published_at = self.published_at
         user_action.message      = self.to_json
         user_action.save!
@@ -187,17 +195,17 @@ class Content < ActiveRecord::Base
     end
 
     author.followers.each do |follower|
-      user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
       user_action.published_at = self.published_at
       user_action.message      = self.to_json
       user_action.save!
     end
 
   end
-  private :publish_content
+  private :publish
 
-  def update_counter_cache
-
+  def notification_for(user)
+    tagged_politicians.each{|politician| Notification.for(politician, self)}
   end
-  private :update_counter_cache
+
 end

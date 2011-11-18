@@ -154,26 +154,27 @@ class UsersController < ApplicationController
       @questions_notifications = @user.new_questions_count
     else
       # TODO: Temporally commented code until all list items are finished
-      # @questions_notifications = @user.new_answers_count + @user.new_answer_requests_count + @user.new_answer_opinions_count
-      @questions_notifications = @user.new_answers_count# + @user.new_answer_requests_count + @user.new_answer_opinions_count
+      # @questions_notifications = @user.new_answers_count + @user.new_answer_requests_count
+      @questions_notifications = @user.new_answers_count# + @user.new_answer_requests_count
     end
     @proposals_notifications = @user.new_arguments_count + @user.new_votes_count
   end
   private :get_user
 
   def get_counters
-    @followers_count      = @user.followers.count                                               || 0
-    @questions_done_count = @user.questions_count                                               || 0
-    @proposals_done_count = @user.proposals_count                                               || 0
-    @news_count           = @user.send("#{'private_' if show_private_actions?}news_count")      || 0
-    @questions_count      = @user.send("#{'private_' if show_private_actions?}questions_count") || 0
-    @answers_count        = @user.send("#{'private_' if show_private_actions?}answers_count")   || 0
-    @proposals_count      = @user.send("#{'private_' if show_private_actions?}proposals_count") || 0
-    @arguments_count      = @user.send("#{'private_' if show_private_actions?}arguments_count") || 0
-    @votes_count          = @user.send("#{'private_' if show_private_actions?}votes_count")     || 0
-    @photos_count         = @user.send("#{'private_' if show_private_actions?}photos_count")    || 0
-    @videos_count         = @user.send("#{'private_' if show_private_actions?}videos_count")    || 0
-    @statuses_count       = @user.send("#{'private_' if show_private_actions?}statuses_count")  || 0
+    @followers_count       = @user.followers.count                                                     || 0
+    @questions_done_count  = @user.questions_count                                                     || 0
+    @proposals_done_count  = @user.proposals_count                                                     || 0
+    @news_count            = @user.send("#{'private_' if show_private_actions?}news_count")            || 0
+    @questions_count       = @user.send("#{'private_' if show_private_actions?}questions_count")       || 0
+    @answers_count         = @user.send("#{'private_' if show_private_actions?}answers_count")         || 0
+    @proposals_count       = @user.send("#{'private_' if show_private_actions?}proposals_count")       || 0
+    @arguments_count       = @user.send("#{'private_' if show_private_actions?}arguments_count")       || 0
+    @votes_count           = @user.send("#{'private_' if show_private_actions?}votes_count")           || 0
+    @photos_count          = @user.send("#{'private_' if show_private_actions?}photos_count")          || 0
+    @videos_count          = @user.send("#{'private_' if show_private_actions?}videos_count")          || 0
+    @status_messages_count = @user.send("#{'private_' if show_private_actions?}status_messages_count") || 0
+    @tweets_count          = @user.send("#{'private_' if show_private_actions?}tweets_count")          || 0
   end
   private :get_counters
 

@@ -86,29 +86,29 @@ class Question < Content
     question_text
   end
 
-  def publish_content
+  def publish
 
     return unless self.moderated?
 
-    user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+    user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
     user_action.published_at = self.published_at
     user_action.message      = self.to_json
     user_action.save!
 
     if target_user
-      user_action              = target_user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      user_action              = target_user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
       user_action.published_at = self.published_at
       user_action.message      = self.to_json
       user_action.save!
 
       target_user.areas.each do |area|
-        area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+        area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
         area_action.published_at = self.published_at
         area_action.message      = self.to_json
         area_action.save!
 
         area.followers.each do |follower|
-          user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+          user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
           user_action.published_at = self.published_at
           user_action.message      = self.to_json
           user_action.save!
@@ -116,36 +116,26 @@ class Question < Content
       end
 
       target_user.followers.each do |follower|
-        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
         user_action.published_at = self.published_at
         user_action.message      = self.to_json
         user_action.save!
       end
     elsif target_area
-      area_action              = target_area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name.downcase
+      area_action              = target_area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
       area_action.published_at = self.published_at
       area_action.message      = self.to_json
       area_action.save!
     end
   end
-  private :publish_content
+  private :publish
 
-  def update_counter_cache
-    return unless moderated?
-
-    author.update_attribute("questions_count", author.actions.questions.count)
-    author.followers.each{|user| user.update_attribute("private_questions_count", user.private_actions.questions.count)}
-    if target_area
-      target_area.update_attribute("questions_count", target_area.actions.questions.count)
-      target_area.followers.each{|user| user.update_attribute("private_questions_count", user.private_actions.questions.count)}
-      target_area.users.each{|user| Notification.for(user, self)}
-    elsif target_user
-      target_user.update_attribute("questions_count", target_user.actions.questions.count)
-      target_user.followers.each{|user| user.update_attribute("private_questions_count", user.private_actions.questions.count)}
-      target_user.areas.each{|area| area.update_attribute("questions_count", area.actions.questions.count) }
+  def notification_for(user)
+    if target_user.present?
       Notification.for(target_user, self)
+    elsif target_area.present?
+      target_area.team.each{|politician| Notification.for(politician, self)}
     end
   end
-  private :update_counter_cache
 
 end

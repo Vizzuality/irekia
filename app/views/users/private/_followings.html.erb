@@ -7,7 +7,7 @@
     <ul class="suggestions">
       <% @areas_following.first(9).each do |area| %>
         <li class="selected">
-          <%= link_to (image_tag 'icons/news_avatar_medium.png'), area_path(area), :title => area.name, :class => :avatar %>
+          <%= avatar area %>
           <div class="content">
             <%= link_to area.name, area_path(area), :class => :name %>
             <p><%= t('.area') %></p>

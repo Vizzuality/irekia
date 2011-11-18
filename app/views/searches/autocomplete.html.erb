@@ -22,7 +22,7 @@
     <ul>
       <% @areas_found.first(2).each do |area| %>
         <li>
-        <a href="#" class="avatar medium"><img src="/images/icons/news_avatar_medium.png" /></a>
+        <%= avatar area %>
         <%= link_to area.name, area_path(area), :class => :name %>
         <span class="position">&nbsp;</span>
         </li>

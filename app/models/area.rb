@@ -10,6 +10,7 @@ class Area < ActiveRecord::Base
   has_many :team,
            :through => :areas_users,
            :source => :user,
+           :select => 'users.id, users.name, users.lastname, users.title_id, users.role_id, display_order',
            :order => 'display_order ASC'
 
   has_many :areas_contents,
@@ -67,7 +68,8 @@ class Area < ActiveRecord::Base
                    :votes_count,
                    :photos_count,
                    :videos_count,
-                   :statuses_count
+                   :status_messages_count,
+                   :tweets_count
                    ]).find(id)
   end
 
@@ -94,7 +96,7 @@ class Area < ActiveRecord::Base
 
   def get_actions(filters)
     actions = self.actions
-    actions = actions.where(:event_type => filters[:type]) if filters[:type].present?
+    actions = actions.where(:event_type => filters[:type].camelize) if filters[:type].present?
 
     actions = if filters[:more_polemic] == 'true'
       actions.more_polemic

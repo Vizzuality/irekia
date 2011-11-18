@@ -62,7 +62,7 @@ class SearchesController < ApplicationController
   private :get_search_results
 
   def get_contents
-    @contents = @contents.where(:event_type => params[:type]) if params[:type].present?
+    @contents = @contents.where(:event_type => params[:type].camelize) if params[:type].present?
 
     @contents = if params[:more_polemic]
       @contents.more_polemic
