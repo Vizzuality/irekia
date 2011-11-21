@@ -1,7 +1,6 @@
 #encoding: UTF-8
 
 load Rails.root.join('db/seeds/data/factories.rb')
-load Rails.root.join('db/seeds/data/areas.rb')
 load Rails.root.join('db/seeds/data/users.rb')
 load Rails.root.join('db/seeds/data/proposals.rb')
 load Rails.root.join('db/seeds/data/votes.rb')

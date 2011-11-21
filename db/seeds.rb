@@ -1,10 +1,14 @@
 #encoding: UTF-8
 
-%w(master_tables).each do |seed|
-  puts '- Loading seed data:'.red
-  load Rails.root.join('db', 'seeds', "#{seed}.rb")
+puts '- Loading seed data:'.red
+puts ''
+%w(roles titles areas).each do |seed|
+  load Rails.root.join('db/seeds', "#{seed}.rb")
 end
 
-puts "Loading seed data".red
+unless Rails.env.production?
+  puts ''
+  puts "- Loading testing data".red
 
-load Rails.root.join('db/seeds/seeds.rb')
+  load Rails.root.join('db/seeds/seeds.rb')
+end

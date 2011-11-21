@@ -16,7 +16,7 @@ create_question :text           => '¿Podría decirme cuando tienen pensado fina
                   :text     => (<<-EOF
                     Hola Andrés,
 
-                    En el plazo máximo de 4 meses, la empresa constructora nos confirmo que estaría abierta la calle de nuevo al trafico. Las obras las estamos realizando como mejora del sistema de canalización de agua. Rogamos disculpen los problemas ocasionados tanto a viandantes como vecinos de la zona. 
+                    En el plazo máximo de 4 meses, la empresa constructora nos confirmo que estaría abierta la calle de nuevo al trafico. Las obras las estamos realizando como mejora del sistema de canalización de agua. Rogamos disculpen los problemas ocasionados tanto a viandantes como vecinos de la zona.
                     Estamos trabajando para la mejora de nuestra ciudad.
                   EOF
                   ),
@@ -40,7 +40,7 @@ create_question :text     => '¿Por qué es tan dificil jugar al padel en Vizcay
                 :answer         => {
                   :text => (<<-EOF
                   Hola,
-                  Somos conscientes del creciente aumento del padel en nuestra ciudad. Ya hemos recibido varias quejas y estamos barajando la posibilidad de construir pistas en las afueras de la ciudad con el fin de que todos podamos disfrutar de la practica de padel. 
+                  Somos conscientes del creciente aumento del padel en nuestra ciudad. Ya hemos recibido varias quejas y estamos barajando la posibilidad de construir pistas en las afueras de la ciudad con el fin de que todos podamos disfrutar de la practica de padel.
 
                   Gracias por hacernos llegar vuestras sugerencias.
                   EOF
@@ -53,7 +53,7 @@ create_question :text     => '¿Por qué es tan dificil jugar al padel en Vizcay
 
 create_question :text     => 'Llevamos varios meses ya de inseguridad ciudadana y varias decenas de denuncias,  ¿hasta cuando vamos a tener que aguantar la inseguridad que hay en nuestras calles?',
                 :author   => @iker,
-                :for      => @area,
+                :for      => Area.find(7),
                 :want_an_answer => [@patricia],
                 :comments => [
                   create_comment(@gonzalo, 'Conozco a varios vecinos que han sufrido amenazas y robos. Al final acabaremos realizando patrullas callejeras, en plan americano.'),
@@ -68,8 +68,8 @@ create_question :text     => 'Desde el barrio de Pradoalto, rogamos que se tenga
                 :tags     => %w(transporte Pradoalto movilidad).join(','),
                 :answer => {
                   :text => 'Hola,
-                  
-                  Estamos hablando ya con varias empresas locales de transporte para buscar una solución que nos beneficie a los vecinos de Pradoalto. Se baraja la posibilidad de poner una linea de autobus para estudiantes de enseñanza primaria y secundaria en horario lectivo. 
+
+                  Estamos hablando ya con varias empresas locales de transporte para buscar una solución que nos beneficie a los vecinos de Pradoalto. Se baraja la posibilidad de poner una linea de autobus para estudiantes de enseñanza primaria y secundaria en horario lectivo.
 
                   Gracias a todos por vuestro interés en mejorar el País Vasco.',
                   :author => @aitana,

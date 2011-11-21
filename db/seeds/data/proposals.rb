@@ -10,7 +10,7 @@ Y de paso, como he leído en otra propuesta, si no se va a actualizar la previsi
 Supongo que lo de la foto será un fallo, pero no da un buen ejemplo de profesionalidad.
                 EOF
                 ),
-                :target   => @area,
+                :target   => Area.find(7),
                 :tags     => %w(contaminación ecología Medio\ Ambiente).join(','),
                 :author   => @andres,
                 :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'proposal_00.jpg'))),
@@ -28,7 +28,7 @@ Los bajos niveles de acumulación podrían deberse, según la investigación, a 
 Se propone aumentar la superficie del bosque vasco con la plantación de árboles autóctonos para fijar el carbono, abrir corredores ecológicos, mejorar el estado de los nuestros ecosistemas naturales, la calidad de nuestro aire y generando puestos de trabajo verdes.
                 EOF
                 ),
-                :target   => @area,
+                :target   => Area.find(7),
                 :tags     => %w(arboles naturaleza Medio\ Ambiente).join(','),
                 :author   => @aitor,
                 :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'proposal_01.jpg'))),
@@ -41,14 +41,14 @@ Se propone aumentar la superficie del bosque vasco con la plantación de árbole
                 :body     => (<<-EOF
 Hola,
 
-En Euskadi hay poblaciones como Ondarroa (10000 habitantes más o menos) en las cuales durante la noche, desde las 22:00 hasta las 06:00 horas, no hay servicio de policía municipal. Yo creía que en este caso, era la Ertzantza la que asumía dichas competencias; pero resulta que he llamado varias veces por problemas de ruidos y horarios de cierre de un establecimiento hostelero que tenemos en un bajo de mi domicilio y las respuestas han sido variadas y diversas: desde venir y levantar un acta de horarios y ruidos, hasta " no es competencia nuestra sino municipal. Ya llamaremos pero no te prometemos nada..". 
+En Euskadi hay poblaciones como Ondarroa (10000 habitantes más o menos) en las cuales durante la noche, desde las 22:00 hasta las 06:00 horas, no hay servicio de policía municipal. Yo creía que en este caso, era la Ertzantza la que asumía dichas competencias; pero resulta que he llamado varias veces por problemas de ruidos y horarios de cierre de un establecimiento hostelero que tenemos en un bajo de mi domicilio y las respuestas han sido variadas y diversas: desde venir y levantar un acta de horarios y ruidos, hasta " no es competencia nuestra sino municipal. Ya llamaremos pero no te prometemos nada..".
 
 Me gustaría ( que yo creo que es así) que en caso de ausencia de servicio de policía municipal, la ERTZANTZA asuma dichas competencias. Y por supuesto, que lo tengan claro en todas las comisarías y hagan cumplir el DECRETO 140/1997, de 17 de junio.
 
 Gracias
                 EOF
                 ),
-                :target   => @area,
+                :target   => Area.find(7),
                 :tags     => %w(policia seguridad ciudadanía).join(','),
                 :author   => @patricia,
                 :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'proposal_02.jpg'))),

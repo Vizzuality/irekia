@@ -31,7 +31,7 @@ puts '================='.green
                       ),
                       :title                 => Title.find_by_name('Adviser'),
                       :role                  => Role.find_by_name('Politician'),
-                      :area_user             => AreaUser.create(:area  => @area, :display_order => 1),
+                      :area_user             => AreaUser.create(:area  => Area.find(7), :display_order => 1),
                       :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'politico_00.jpg')))
 
 @aitor = create_user :name                  => 'Aitor',
@@ -47,7 +47,7 @@ puts '================='.green
                       EOF
                       ),
                      :role                  => Role.find_by_name('Politician'),
-                     :area_user             => AreaUser.create(:area  => @area, :display_order => 2),
+                     :area_user             => AreaUser.create(:area  => Area.find(7), :display_order => 2),
                      :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'politico_01.jpg')))
 
 @javier = create_user :name                  => 'Javier',
@@ -63,7 +63,7 @@ puts '================='.green
                       EOF
                       ),
                       :role                  => Role.find_by_name('Politician'),
-                      :area_user             => AreaUser.create(:area  => @area, :display_order => 2),
+                      :area_user             => AreaUser.create(:area  => Area.find(7), :display_order => 2),
                       :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'politico_02.jpg')))
 
 @ainara = create_user :name                  => 'Ainara',
@@ -79,7 +79,7 @@ puts '================='.green
                       EOF
                       ),
                       :role                  => Role.find_by_name('Politician'),
-                      :area_user             => AreaUser.create(:area  => @area),
+                      :area_user             => AreaUser.create(:area  => Area.find(7)),
                       :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'politico_03.jpg')))
 
 @joel = create_user :name                  => 'Joel',
@@ -95,7 +95,7 @@ puts '================='.green
                     EOF
                     ),
                     :role                  => Role.find_by_name('Politician'),
-                    :area_user             => AreaUser.create(:area  => @area, :display_order => 2),
+                    :area_user             => AreaUser.create(:area  => Area.find(7), :display_order => 2),
                     :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'politico_04.jpg')))
 
 #############
