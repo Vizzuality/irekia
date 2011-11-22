@@ -27,7 +27,7 @@
     </li>
   <% end -%>
 
-  <% if true %>
+  <% if @content_type == 'event' %>
     <li>
       <%= link_to '', '/in_development', :class => 'share ical', :type => 'icon' %>
     </li>
