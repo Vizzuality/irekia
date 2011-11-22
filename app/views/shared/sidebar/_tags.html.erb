@@ -5,7 +5,7 @@
       <li><%= link_to tag.strip, search_path(:search => {:query => tag}) %></li>
     <% end -%>
     <% if current_user and current_user.politician? %>
-      <li class="add"><%= link_to "Añadir tag", "#" %></li>
+      <li class="add"><%= link_to "Añadir tag", "/in_development" %></li>
     <% end %>
   </ul>
 <% end %>
