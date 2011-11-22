@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-puts ''.green
-puts 'Creating tweets...'.green
-puts '=================='.green
+puts ''
+puts 'Creating tweets...'
+puts '=================='
 
 create_tweet :author => @aitana,
              :area => Area.find(7),

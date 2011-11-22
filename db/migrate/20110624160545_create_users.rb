@@ -16,11 +16,16 @@ class CreateUsers < ActiveRecord::Migration
       t.integer  :city_id
       t.string   :city
       t.string   :postal_code
+      t.string   :salary
+      t.string   :phone_number
+      t.string   :twitter_username
+      t.string   :facebook_username
+
       t.string   :facebook_oauth_token
       t.string   :facebook_oauth_token_secret
-      t.string   :twitter_username
       t.string   :twitter_oauth_token
       t.string   :twitter_oauth_token_secret
+
       t.boolean  :inactive,                                                      :default => false
       t.boolean  :first_time,                                                    :default => true
       t.string   :locale,                                                        :default => 'es'

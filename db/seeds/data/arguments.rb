@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-puts ''.green
-puts 'Creating arguments...'.green
-puts '====================='.green
+puts ''
+puts 'Creating arguments...'
+puts '====================='
 
 create_argument :author => User.all.sample,
                 :proposal => @proposal1,

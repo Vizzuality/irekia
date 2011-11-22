@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-puts ''.green
-puts 'Creating photos...'.green
-puts '=================='.green
+puts ''
+puts 'Creating photos...'
+puts '=================='
 
 photos_texts = [
 {

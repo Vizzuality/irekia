@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-puts ''.green
-puts 'Creating events...'.green
-puts '=================='.green
+puts ''
+puts 'Creating events...'
+puts '=================='
 
 this_week = Time.current.beginning_of_week
 

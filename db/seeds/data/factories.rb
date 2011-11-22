@@ -8,7 +8,7 @@ def create_area(params)
   area.description_2  = params[:description_2]
   area.save!
 
-  print '.'.blue
+  print '.'
 
   area
 end
@@ -50,7 +50,7 @@ def create_user(params)
   user.areas_following = params[:areas_following] if params[:areas_following]
   user.save!
 
-  print '.'.blue
+  print '.'
 
   user
 end
@@ -70,7 +70,7 @@ def create_proposal(params)
 
   proposal.save!
 
-  print '.'.blue
+  print '.'
 
   proposal
 end
@@ -84,7 +84,7 @@ def create_argument(params)
 
   argument.save!
 
-  print '.'.blue
+  print '.'
 
   argument
 end
@@ -104,7 +104,7 @@ def create_vote(params)
 
   vote.save!
 
-  print '.'.blue
+  print '.'
 
   vote
 end
@@ -131,7 +131,7 @@ def create_question(params)
     question.answer_requests.create :user => user
   end
 
-  print '.'.blue
+  print '.'
 
   if params[:answer]
     params[:answer][:question] = question.reload
@@ -151,7 +151,7 @@ def create_answer(params)
   answer_data = answer.build_answer_data
   answer_data.answer_text = params[:text]
 
-  print '.'.blue
+  print '.'
 
   answer.save!
 
@@ -182,7 +182,7 @@ def create_event(params)
     }
   )
 
-  print '.'.blue
+  print '.'
 
   event
 end
@@ -203,7 +203,7 @@ def create_news(params)
     news.news_data     = news_data
     news.comments      = params[:comments]
 
-    print '.'.blue
+    print '.'
 
     news.save!
 
@@ -222,7 +222,7 @@ def create_photo(params)
                        :author   => params[:author],
                        :comments => params[:comments]
 
-  print '.'.blue
+  print '.'
 
   photo
 end
@@ -236,7 +236,7 @@ def create_tweet(params)
   Tweet.create :author => params[:author],
                :tweet_data => TweetData.find_or_create_by_message(params[:message], :status_id => params[:status_id], :username => params[:username])
 
-  print '.'.blue
+  print '.'
 
 end
 
@@ -245,7 +245,7 @@ def create_status_message(params)
   StatusMessage.create :author => params[:author],
                        :status_message_data => StatusMessageData.find_or_create_by_message(params[:message])
 
-  print '.'.blue
+  print '.'
 
 end
 

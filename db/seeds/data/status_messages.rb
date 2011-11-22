@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-puts ''.green
-puts 'Creating status messages...'.green
-puts '==========================='.green
+puts ''
+puts 'Creating status messages...'
+puts '==========================='
 
 create_status_message :author => @aitana,
                       :area => Area.find(7),

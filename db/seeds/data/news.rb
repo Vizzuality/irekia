@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-puts ''.green
-puts 'Creating news...'.green
-puts '================'.green
+puts ''
+puts 'Creating news...'
+puts '================'
 
 create_news :title        => 'San Sebastián es elegida capital europea de la cultura en 2016',
             :subtitle     => 'La candidatura donostiarra se ha impuesto frente a las de Córdoba, Burgos, Las Palmas, Segovia y Zaragoza. Esta decisión llena de satisfación a todas las personas que han luchado por este proyecto.',

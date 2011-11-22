@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-puts ''.green
-puts 'Creating votes...'.green
-puts '====================='.green
+puts ''
+puts 'Creating votes...'
+puts '====================='
 
 Proposal.all.each do |proposal|
 

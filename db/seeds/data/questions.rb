@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-puts ''.green
-puts 'Creating questions...'.green
-puts '====================='.green
+puts ''
+puts 'Creating questions...'
+puts '====================='
 
 create_question :text           => '¿Podría decirme cuando tienen pensado finalizar las obras de la calle Libertad?',
                 :author         => @andres,

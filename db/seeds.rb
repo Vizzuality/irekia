@@ -6,9 +6,7 @@ puts ''
   load Rails.root.join('db/seeds', "#{seed}.rb")
 end
 
-unless Rails.env.production?
-  puts ''
-  puts "- Loading testing data"
+puts ''
+puts "- Loading testing data"
 
-  load Rails.root.join('db/seeds/seeds.rb')
-end
+load Rails.root.join('db/seeds/seeds.rb')

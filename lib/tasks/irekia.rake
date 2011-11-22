@@ -3,7 +3,7 @@ task :setup => %w(irekia:setup_database irekia:validate_all_not_moderated irekia
 
 namespace :irekia do
   desc "Setup Irekia Database"
-  task :setup_database => %w(db:drop db:create db:migrate db:seed)
+  task :setup_database => %w(db:migrate:reset db:seed)
 
   desc "Accepts all non moderated contents/participations"
   task :validate_all_not_moderated => :environment do

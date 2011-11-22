@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-puts ''.green
-puts 'Creating users...'.green
-puts '================='.green
+puts ''
+puts 'Creating users...'
+puts '================='
 
 @admin = create_user :name                  => 'Administrator',
                      :lastname              => 'Administrator',
