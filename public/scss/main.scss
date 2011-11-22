@@ -950,7 +950,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
         .inner_container .section {
 
           &.proposal {
-            .triangle { left:152px; }
+            .triangle { left:388px; }
             .input_field.textarea { margin:0; }
 
             .input_field.uploader {
@@ -1096,7 +1096,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
               width:687px;
               //height:900px;
 
-
               strong {
                 display:block;
                 margin: 0 0 7px 0;
@@ -1123,11 +1122,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
               // -----------------------------------------------------
 
               &.photo {
+
                 .triangle { left:155px; }
                 .input_field {
                   width:100%;
-                  margin:0 0 10px 0;
+                  margin:0 0 20px 0;
 
+                  .holder { width:600px; }
                   input[type="text"] { width:666px; font-size:15px; }
                 }
               } // section.photo

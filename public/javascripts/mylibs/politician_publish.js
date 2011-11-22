@@ -88,8 +88,7 @@
       _bindMenu(data);
       _bindSubmit(data, "Publicar", true, "publish");
       _bindActions(data);
-      _enableInputCounter(data, $("#status_message_status_message_data_attributes_message"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
-      _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+      _bindTextInputs(data);
 
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
 
@@ -209,11 +208,20 @@
 
   }
 
+  function _bindTextInputs(data) {
+    _enableInputCounter(data, $("#status_message_status_message_data_attributes_message"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+    _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+    _enableInputCounter(data, $(".autosuggest_field input"), null, function() { _clearAutosuggest(data); _resetHiddenFields(); } );
+    _enableInputCounter(data, $(".section.video .input_field input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+    _enableInputCounter(data, $(".section.photo .input_field input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+  }
+
   function _bindActions(data) {
     var $ps = data.$ps;
 
     // Image uploader
-    _setupUpload(data, "upload_image");
+    _setupUpload(data, "upload_proposal_image");
+    _setupUpload(data, "upload_photo", function() { _enableSubmit(data.$submit); });
 
     // Remove image link
     $ps.find(".image_container a.remove").unbind();
@@ -239,7 +247,6 @@
       $ps.find(".section.video li").toggleClass("selected");
     });
 
-    _enableInputCounter(data, $(".section.video .input_field input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
   }
 
   function _resizeSection(data, $section, callback) {
@@ -291,7 +298,6 @@
   function _bindSearch(data) {
     var $ps = data.$ps;
 
-    _enableInputCounter(data, $(".autosuggest_field input"), null, function() { _clearAutosuggest(data); _resetHiddenFields(); } );
 
     $currentSection.find('.autosuggest_field input').keyup(function(ev){
 
@@ -476,7 +482,7 @@
     });
   }
 
-  function _setupUpload(data, id) {
+  function _setupUpload(data, id, callback) {
 
     var $ps = data.$ps,
 				$span  = $ps.find("#" + id);
@@ -535,9 +541,9 @@
             $ps.find(".image_container img").fadeIn(speed);
             $uploader.fadeOut(speed, function() {
               _resizeSection(data, $currentSection);
+              callback && callback();
             });
           });
-
 
           $uploader.find(".progress").fadeOut(speed, function() {
             $(this).width(0);
