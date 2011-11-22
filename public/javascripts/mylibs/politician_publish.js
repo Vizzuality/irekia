@@ -223,6 +223,23 @@
       e && e.preventDefault();
       $(this).closest("input[type='file']").click();
     });
+
+    // Video section binding
+    $ps.find(".section.video li").click(function(e) {
+      e && e.preventDefault();
+
+      $(this).siblings("li").removeClass("selected");
+      $(this).addClass("selected");
+      $ps.find(".radio.selected").removeClass("selected");
+      $(this).find(".radio").addClass("selected");
+    });
+
+    $ps.find("a.radio").click(function(e) {
+      e && e.preventDefault();
+      $ps.find(".section.video li").toggleClass("selected");
+    });
+
+    _enableInputCounter(data, $(".section.video .input_field input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
   }
 
   function _resizeSection(data, $section, callback) {

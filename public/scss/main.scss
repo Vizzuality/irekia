@@ -964,6 +964,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
               width:100%;
               margin:0 0 10px 0;
 
+              .holder { width:666px; }
+
               input[type="text"] {
                 width:666px;
                 font-size:15px;
@@ -988,6 +990,8 @@ article .inner { h2, h3 { color: $dark_blue; } }
             .input_field {
               width:100%;
               margin:0 0 10px 0;
+
+              .holder { width:666px; }
 
               input[type="text"] {
                 width:666px;
@@ -1196,6 +1200,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 .triangle { left: 268px; background-position: 0 -64px; }
 
                 ul {
+                  margin: 0 0 20px 0;
                   li {
                     float:left;
                     width: 307px;

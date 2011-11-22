@@ -262,11 +262,13 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.uploader { margin-bottom: 20px; }
 #container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.description { margin-bottom: 20px; }
 #container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
+#container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
 #container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish.user .inner .content .container { height: 79px; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .triangle { left: 152px; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
+#container article.publish.user .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner header { margin: 0; width: 691px; }
 #container article.publish .inner header h2 { line-height: normal; }
@@ -309,6 +311,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .section.image .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.video { height: auto; background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
 #container article.publish .inner .content .container .inner_container .section.video .triangle { left: 268px; background-position: 0 -64px; }
+#container article.publish .inner .content .container .inner_container .section.video ul { margin: 0 0 20px 0; }
 #container article.publish .inner .content .container .inner_container .section.video ul li { float: left; width: 307px; height: 93px; margin: 0 10px 0 0; padding: 10px; position: relative; background: #fff; filter: alpha(opacity=50); -khtml-opacity: 0.5; -moz-opacity: 0.5; opacity: 0.5; -moz-border-radius: 8px; -webkit-border-radius: 8px; -o-border-radius: 8px; -ms-border-radius: 8px; -khtml-border-radius: 8px; border-radius: 8px; -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; }
 #container article.publish .inner .content .container .inner_container .section.video ul li .radio { float: left; position: relative; height: 16px; width: 13px; top: 15px; padding: 0; }
 #container article.publish .inner .content .container .inner_container .section.video ul li.selected { -moz-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3); -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3); -o-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3); box-shadow: 0 0px 5px rgba(0, 0, 0, 0.3); filter: alpha(opacity=100); -khtml-opacity: 1; -moz-opacity: 1; opacity: 1; }
@@ -884,7 +887,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 
 #container article .right .content ul.tags { clear: both; overflow: hidden; list-style: none; margin-bottom: 20px; }
 #container article .right .content ul.tags li { float: left; position: relative; clear: both; margin: 0 0 5px 0; left: 15px; height: 24px; background: url("/images/tag_sprite.png") repeat-x right 0; }
-#container article .right .content ul.tags li.add { display: none; background: url("/images/tag_sprite.png") repeat-x left -105px; width: 88px; height: 26px; left: 0; }
+#container article .right .content ul.tags li.add { background: url("/images/tag_sprite.png") repeat-x left -105px; width: 88px; height: 26px; left: 0; }
 #container article .right .content ul.tags li.add a { background: none; height: 26px; padding: 0; line-height: 26px; float: none; text-align: center; color: #f10063; left: 0; }
 #container article .right .content ul.tags li a { float: left; position: relative; display: block; line-height: 16px; left: -15px; height: 16px; padding: 4px 0 4px 12px; background: url("/images/tag_sprite.png") no-repeat 0 -26px; }
 #container article .right .content ul.tags li:hover { background-position: right -53px; }

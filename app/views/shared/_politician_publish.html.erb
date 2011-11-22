@@ -7,7 +7,8 @@
 
     <%= menu ([
               { :link => (link_to t(".dashboard"), "#"), :class => :selected},
-              { :link => (link_to t(".proposal"), "#") }
+              { :link => (link_to t(".proposal"), "#") },
+              { :link => (link_to t(".video"), "#") }
     ]) %>
 
     <div class="container">
@@ -31,17 +32,18 @@
 
               <% end %>
 
-        <% end -%>
-
-            </div>
-
-        <div class="success message">
-          <div class="icon"></div>
-          <h2>Tu mensaje ha sido publicado</h2>
-          <p>Mensaje de estado publicado correctamente.</p>
-        </div>
+            <% end -%>
 
           </div>
+
+          <div class="success message">
+            <div class="icon"></div>
+            <h2>Tu mensaje ha sido publicado</h2>
+            <p>Mensaje de estado publicado correctamente.</p>
+          </div>
+
+        </div>
+
         <!-- PROPOSAL -->
         <div class="section proposal">
           <div class="triangle"></div>
@@ -86,12 +88,56 @@
 
           </div>
 
+          <div class="success message">
+            <div class="icon"></div>
+            <h2>Tu propuesta ha sido publicada</h2>
+            <p>Propuesta publicada correctamente.</p>
+          </div>
+        </div>
+
+
+        <!-- VIDEO -->
+        <div class="section video">
+          <div class="triangle"></div>
+          <div class="form clearfix">
+            <ul class="clearfix">
+              <li class="youtube selected">
+              <a href="#" class="radio selected"></a>
+              <div class="logo"></div>
+              <div class="input_field placeholder">
+                <input type="text" />
+                <span class="holder">URL de Youtube</span>
+              </div>
+              </li>
+
+              <li class="vimeo">
+              <a href="#" class="radio"></a>
+              <div class="logo"></div>
+              <div class="input_field placeholder">
+                <input type="text" />
+                <span class="holder">URL de Vimeo</span>
+              </div>
+              </li>
+
+            </ul>
+          </div>
+
         <div class="success message">
           <div class="icon"></div>
-          <h2>Tu propuesta ha sido publicada</h2>
-          <p>Propuesta publicada correctamente.</p>
+          <h2>Tu video ha sido importado</h2>
+          <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+        </div>
+
+        <div class="error message">
+          <div class="icon"></div>
+          <h2>Error</h2>
+          <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
         </div>
         </div>
+
+
+
+
 
       </div>
     </div>
