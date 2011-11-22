@@ -19,7 +19,7 @@
       <% if @questions.count > 0 %>
         <%= render 'shared/questions_list' %>
       <% else %>
-        <span class="empty">No hay preguntas en este area</span>
+        <span class="empty"><%= t(".no_questions_in_this_area") %></span>
       <% end %>
     </div>
 
@@ -39,15 +39,17 @@
 <div class="separator"></div>
 <div class="inner with_spinner">
 
-  <% if controller.action_name == "questions" %>
-    <div class="left">
-      <%= link_to t('.more'), link_for_questions, :id => "questions_#{params[:id]}", :class => "more_questions left down_arrow" if @questions.count > 0 %>
-      <span id="questions_spinner" class="spinner"></span>
-    </div>
-  <% else %>
-    <div class="right">
-      <%= link_to t('.more'), link_for_questions(:anchor => :questions), :id => "questions_#{params[:id]}", :class => "right_arrow" %>
-    </div>
+  <% if @questions_count > @per_page %>
+    <% if controller.action_name == "questions" %>
+      <div class="left">
+        <%= link_to t('.more'), link_for_questions, :id => "questions_#{params[:id]}", :class => "more_questions left down_arrow" %>
+        <span id="questions_spinner" class="spinner"></span>
+      </div>
+    <% else %>
+      <div class="right">
+        <%= link_to t('.more'), link_for_questions(:anchor => :questions), :id => "questions_#{params[:id]}", :class => "right_arrow" %>
+      </div>
+    <% end %>
   <% end %>
 
 </div>

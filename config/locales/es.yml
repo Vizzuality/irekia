@@ -608,6 +608,7 @@
         author: '%{author} hace %{time}'
       comment:
         title: 'Nuevo comentario en %{content_type}'
+        status_message: un mensaje de estado
         proposal: la propuesta
         question: la pregunta
         answer: la respuesta
@@ -634,6 +635,7 @@
         Send: Enviar
 
     questions:
+      no_questions_in_this_area: "No hay preguntas en este area"
       title: Preguntas de los ciudadanos
       main_filters:
         more_recent: Más recientes

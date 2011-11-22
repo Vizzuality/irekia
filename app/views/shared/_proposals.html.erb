@@ -38,15 +38,17 @@
 <div class="separator"></div>
 <div class="inner with_spinner">
 
-  <% if controller.action_name == "proposals" %>
-    <div class="left">
-      <%= link_to t('.more'), link_for_proposals, :id => "proposals_#{params[:id]}", :class => "more_proposals left down_arrow" if @proposals.count > 0%>
-      <span id="proposals_spinner" class="spinner"></span>
-    </div>
-  <% else %>
-    <div class="right">
-      <%= link_to t('.more'), link_for_proposals(:anchor => :proposals), :id => "proposals_#{params[:id]}", :class => "right_arrow" %>
-    </div>
+  <% if @proposals_count > @per_page %>
+    <% if controller.action_name == "proposals" %>
+      <div class="left">
+        <%= link_to t('.more'), link_for_proposals, :id => "proposals_#{params[:id]}", :class => "more_proposals left down_arrow" %>
+        <span id="proposals_spinner" class="spinner"></span>
+      </div>
+    <% else %>
+      <div class="right">
+        <%= link_to t('.more'), link_for_proposals(:anchor => :proposals), :id => "proposals_#{params[:id]}", :class => "right_arrow" %>
+      </div>
+    <% end %>
   <% end %>
 
 </div>
