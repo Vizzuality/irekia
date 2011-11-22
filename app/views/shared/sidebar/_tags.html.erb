@@ -1,7 +1,11 @@
-<h4><%= t('.title') %></h4>
-<ul class="tags">
-  <% @tags.each do |tag| -%>
-    <li><%= link_to tag.strip, search_path(:search => {:query => tag}) %></li>
-  <% end -%>
-  <li class="add"><%= link_to "Añadir tag", "#" %></li>
-</ul>
+<% if @tags.size > 0 or (current_user and current_user.politician?) %>
+  <h4><%= t('.title') %></h4>
+  <ul class="tags">
+    <% @tags.each do |tag| -%>
+      <li><%= link_to tag.strip, search_path(:search => {:query => tag}) %></li>
+    <% end -%>
+    <% if current_user and current_user.politician? %>
+      <li class="add"><%= link_to "Añadir tag", "#" %></li>
+    <% end %>
+  </ul>
+<% end %>
