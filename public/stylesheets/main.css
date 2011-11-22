@@ -274,10 +274,10 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container { overflow: hidden; clear: both; width: 687px; height: 79px; }
 #container article.publish .inner .content .container .inner_container { width: 9000px; margin-top: 19px; }
 #container article.publish .inner .content .container .inner_container strong { float: left; }
-#container article.publish .inner .content .container .inner_container .image_container { display: none; padding: 10px; margin: 0 0 20px 0; background: #EDF3E5; }
+#container article.publish .inner .content .container .inner_container .image_container { display: none; float: left; width: 534px; padding: 10px; margin: 0 0 20px 0; line-height: normal; background: #EDF3E5; }
 #container article.publish .inner .content .container .inner_container .image_container img { display: none; float: left; margin: 0 10px 0 0; height: 72px; }
-#container article.publish .inner .content .container .inner_container .image_container p { float: left; margin: 30px 0 0 0; font-size: 15px; color: #7D8A92; }
-#container article.publish .inner .content .container .inner_container .image_container a { float: right; margin: 30px 10px 0 0; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .image_container p { float: left; margin: 30px 0 0 0; line-height: normal; font-size: 15px; color: #7D8A92; }
+#container article.publish .inner .content .container .inner_container .image_container a { float: right; margin: 30px 10px 0 0; line-height: normal; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .percentage { display: none; margin-left: -343px; position: absolute; top: 10px; right: 50%; font-size: 15px; color: #FF0066; z-index: 2010; font-weight: bold; }
 #container article.publish .inner .content .container .inner_container .loading { display: none; position: absolute; top: 10px; right: 10px; font-size: 15px; color: #CCCCCC; z-index: 2010; }
 #container article.publish .inner .content .container .inner_container .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
@@ -389,9 +389,20 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.popover { position: absolute; top: -900px; z-index: 1000; }
 #container article.popover footer .inner .spinner { float: right; display: block; width: 33px; height: 33px; margin-top: 7px; z-index: 1000; }
 #container article.popover footer .inner .white_button { margin-left: 5px; }
+#container article.popover.proposal .image_container { display: none; float: left; width: 534px; padding: 10px; margin: 0 0 20px 0; background: #EDF3E5; line-height: normal; }
+#container article.popover.proposal .image_container img { display: none; float: left; margin: 0 10px 0 0; height: 72px; }
+#container article.popover.proposal .image_container p { float: left; margin: 30px 0 0 0; line-height: normal; font-size: 15px; color: #7D8A92; }
+#container article.popover.proposal .image_container a { float: right; margin: 30px 10px 0 0; line-height: normal; font-size: 15px; }
+#container article.popover.proposal .percentage { display: none; margin-left: -343px; position: absolute; top: 10px; right: 50%; font-size: 15px; color: #FF0066; z-index: 2010; font-weight: bold; }
+#container article.popover.proposal .loading { display: none; position: absolute; top: 10px; right: 10px; font-size: 15px; color: #CCCCCC; z-index: 2010; }
+#container article.popover.proposal .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
+#container article.popover.proposal .input_field.uploader { width: 534px; margin: 0 0 10px 0; }
+#container article.popover.proposal .input_field.uploader input[type="text"] { width: 534px; font-size: 15px; }
+#container article.popover.proposal .input_field.uploader .holder { top: 10px; width: 500px; font-size: 15px; }
+#container article.popover.proposal .input_field.uploader .holder span { float: left; }
 #container article.popover.proposal .input_field.textarea { height: 76px; margin: 0 0 10px 0; }
 #container article.popover.proposal .input_field.textarea textarea.body { height: 53px; }
-#container article.popover.proposal .input_field.textarea .holder { font-size: 15px; top: 10px; }
+#container article.popover.proposal .input_field.textarea .holder { top: 10px; font-size: 15px; }
 #container article.popover h3.related { display: none; }
 #container article.popover div.related ul li { clear: both; overflow: hidden; margin: 0 0 10px 0; padding: 11px 10px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: #F2F5F8; }
 #container article.popover div.related ul li .content { float: left; width: 490px; clear: right; margin: 0; }

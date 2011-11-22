@@ -99,6 +99,7 @@
         data.templates = templates;
         data.name = store;
         data.event = "_close." + store + "_" + id;
+        data.spinner = spinner;
       }
 
       // Update the reference to $ps
@@ -166,12 +167,34 @@
     _addCloseAction(data);
     _addSubmitAction(data);
     _addDefaultAction(data);
+    _setupUpload(data, "upload_image");
+
+    // Remove image link
+    $ps.find(".image_container a.remove").unbind();
+    $ps.find(".image_container a.remove").bind("click", function(e) { _resetImageContainer(e, data); } );
 
     $ps.find("textarea.grow").autogrow();
 
     _subscribeToEvent(data.event);
     _triggerOpenAnimation($ps, data);
     $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
+  }
+
+  function _resetImageContainer(e, data) {
+    e.preventDefault();
+
+    var
+    $ps = data.$ps,
+    $image_container = $ps.find(".image_container");
+
+    $image_container.fadeOut(data.settings.transitionSpeed, function() {
+      $image_container.find("img").remove();
+      $ps.find(".uploader").show();
+      $image_container.find(".holder").show();
+      $ps.find(".loading").hide();
+      $ps.find(".percentage").hide();
+      $ps.find(".progress").css("width", "0");
+    });
   }
 
   function _triggerOpenAnimation($ps, data) {
@@ -284,6 +307,79 @@
       e.stopPropagation();
     });
   }
+
+  function _setupUpload(data, id) {
+
+    var $ps = data.$ps,
+				$span  = $ps.find("#" + id);
+
+    if ($span.length > 0) {
+
+      var speed = data.settings.transitionSpeed;
+      var $uploader = $ps.find(".uploader");
+
+      var uploader = new qq.FileUploader({
+        element: document.getElementById(id),
+        action: $span.attr('data-url'),
+				params: {
+					utf8: $span.closest('form').find('input[name=utf8]').val(),
+					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
+				},
+        debug: true,
+        text:"sube una nueva",
+        onSubmit: function(id, fileName){
+          data.spinner.spin(spin_element);
+          $uploader.find(".holder").fadeOut(speed);
+          console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
+					$ps.find(".progress").show();
+          $uploader.find(".percentage").css("color", "#FF0066");
+					$uploader.find("input").blur();
+          $uploader.find(".holder").fadeOut(speed);
+          $uploader.find(".loading, .percentage").fadeIn(speed);
+        },
+        onProgress: function(id, fileName, loaded, total){
+					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
+					var width = parseInt(534 * parseInt(p, 10) / 100, 10);
+
+					console.debug(p, width, arguments, arguments[2], arguments[3]);
+
+					if (parseInt(p) >= 75) $ps.find(".uploader").find(".loading").fadeOut(speed);
+					if (parseInt(p) >= 46) $ps.find(".uploader").find(".percentage").css("color", "#fff");
+
+          $uploader.find(".percentage").html(parseInt(p, 10) + "%");
+				  $ps.find(".progress").css("width", width);
+				},
+        onComplete: function(id, fileName, responseJSON){
+          data.spinner.stop();
+
+					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+          $uploader.find(".loading").fadeOut(speed);
+          $uploader.find(".holder").fadeIn(speed);
+          $uploader.find(".percentage").fadeOut(speed);
+
+          var cacheImage = document.createElement('img');
+          cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
+					$ps.find('.image_cache_name').val(responseJSON.image_cache_name);
+
+          $(cacheImage).bind("load", function () {
+            $ps.find(".image_container").prepend(cacheImage);
+            $ps.find(".image_container").fadeIn(speed);
+            $ps.find(".image_container img").fadeIn(speed);
+            $uploader.fadeOut(speed, function() {
+            //  _resizeSection(data, $currentSection);
+            });
+          });
+
+
+          $uploader.find(".progress").fadeOut(speed, function() {
+            $(this).width(0);
+          });
+				},
+        onCancel: function(id, fileName){ }
+      });
+    }
+  }
+
 
   function _gotoSuccess(data) {
 

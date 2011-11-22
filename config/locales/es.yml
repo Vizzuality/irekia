@@ -379,7 +379,14 @@
       make_a_question:
         submit: Enviar pregunta
     proposal_form:
+      write_the_photo_url_or: Introduce la URL de la foto o
+      do_you_want_to_explain_the_proposal: ¿Quieres explicar la propuesta con más detalle?
+      describe_the_proposal: Describe la propuesta en pocas palabras
+      upload_a_new_one: Sube una nueva
+      title: Título de la propuesta
+      subtitle: Recuerda ser breve y conciso.
       make_a_proposal:
+        title: Haz una propuesta.
         continue: Continuar
         submit: Enviar propuesta
     agenda_for_day:
@@ -672,6 +679,7 @@
       next_month: Siguiente mes
 
     nav_bar_buttons:
+      settings: Configuración
       sign_up: Regístrate
       sign_in: Login
       hello: 'Hola, %{name}'

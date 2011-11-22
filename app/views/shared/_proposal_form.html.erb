@@ -2,11 +2,11 @@
   <article id="proposal-popover" class="mini popover proposal with_footer initialy_hidden">
   <%= form_for @proposal, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
     <div class="inner">
-      <header><h2>Haz una propuesta</h2></header>
+      <header><h2><%= t(".make_a_proposal.title") %> </h2></header>
       <div class="content">
-        <p>Recuerda ser breve y conciso.</p>
+        <p><%= t(".subtitle") %></p>
 
-        <h3>Título de la propuesta</h3>
+        <h3><%= t(".title") %></h3>
 
         <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %>
           <%= proposal_data.hidden_field :area_id %>
@@ -16,16 +16,24 @@
             <%= proposal_data.text_area :title, :class => "grow title" %>
           </div>
 
-          <div class="input_field placeholder">
+          <div class="input_field placeholder uploader">
             <input type="text" />
-            <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_image">Sube una nueva</span></span>
+            <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
+            <span class="percentage">0%</span>
+            <span class="loading">Cargando imagen...</span>
+            <div class="progress"></div>
           </div>
 
-          <h3>¿Quieres explicar la propuesta con más detalle?</h3>
+          <div class="image_container clearfix">
+            <p>Se incluirá esta imagen en la propuesta.</p>
+            <a href="#" class="remove">Eliminar</a>
+          </div>
+
+          <h3><%= t(".do_you_want_to_explain_the_proposal") %></h3>
 
           <div class="input_field textarea placeholder">
             <%= proposal_data.text_area :body, :class => "grow body" %>
-            <span class="holder">Describe la propuesta en pocas palabras</span>
+            <span class="holder"><%= t(".describe_the_proposal") %></span>
           </div>
 
           <!-- <p>Si quieres puedes <a href="/in_development">añadir una foto</a></p> -->
