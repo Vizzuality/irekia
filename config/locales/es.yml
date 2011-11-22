@@ -746,8 +746,8 @@
 
   contents:
     arguments:
-      in_favor: A favor
-      against: En contra
+      in_favor: Argumentos a favor
+      against: Argumentos en contra
       add: Añadir
     not_moderated:
       event:
