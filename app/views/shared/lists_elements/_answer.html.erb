@@ -1,7 +1,7 @@
 <%= avatar data.author %>
 
 <div class="content">
-  <p><%= link_to(raw(t('.title', :author => data.author.name, :question => content_tag(:strong, data.question_text))), question_path(data.question_id)) %></p>
+  <p><%= link_to(raw(t(".title.#{am_I?(data.author) ? 'you' : 'other'}", :author => data.author.name, :question => content_tag(:strong, data.question_text))), question_path(data.question_id)) %></p>
 
   <p class="excerpt">
 
