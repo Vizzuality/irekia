@@ -6,7 +6,16 @@
 <article class="activity with_footer">
 <div class="inner">
   <div class="left">
-    <p class="info">
+
+    <div class="context">
+      <h3><%= t(@content.content_type) %></h3>
+       <% if @content.content_area %> <span class="middot">&middot;</span> <%= link_to @content.content_area.name, @content.content_area %> <% end %>
+    </div>
+
+    <h1><%= @content.title %></h1>
+    <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => :subtitle if @content.subtitle %>
+
+    <div class="meta">
     <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
     &middot;
     <% if !@content.areas.blank? %>
@@ -14,10 +23,8 @@
       &middot;
     <% end %>
     <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
-    </p>
+    </div>
 
-    <h1><%= @content.title %></h1>
-    <p><strong><%= @content.subtitle %></strong></p>
     <%= image_tag @content.news_data.image.content_url %>
     <%= simple_format @content.body %>
     <p><%= link_to 'Leer noticia completa', '#', :class => :more %></p>

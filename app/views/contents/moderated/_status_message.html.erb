@@ -1,0 +1,37 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="Irekia - Estado de <%= @content.author.fullname %>" />
+  <meta property="og:description" content="<%= @content.message %>" />
+<% end -%>
+<article class="activity with_footer">
+<div class="inner">
+  <div class="left">
+
+    <div class="quotation">
+      <blockquote>
+        <span class="quote"><%= @content.message %></span>
+        <span class="bqstart">&#8220;</span> <span class="bqend">&#8221;</span>
+      </blockquote>
+      <div class="author">
+        <%= raw t('.author', :name => link_to(@content.author.fullname, path_for_user(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+      </div>
+    </div>
+    <%= render "participations/comments", :birdie => false %>
+  </div>
+  <div class="right">
+    <div class="content left-border">
+      <%= sharing_partial(tweet_url(@content), @content.message) %>
+      <%= render "shared/sidebar/previous_statuses" %>
+    </div>
+  </div>
+</div>
+
+<footer>
+<div class="separator"></div>
+<div class="inner">
+  <div class="left">
+    <%= link_to t(".back"), path_for_user(@content.author), :class => :left_arrow %>
+  </div>
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</article>

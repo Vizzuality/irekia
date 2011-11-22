@@ -162,7 +162,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 #container article.static .inner header h3 { text-transform: none; font-size: 19px; font-family: "Helvetica", sans-serif; font-weight: normal; }
 
-#container article .inner .left h1 { margin-bottom: 10px; line-height: 41px; }
+#container article .inner .left h1 { margin-bottom: 10px; line-height: 41px; clear: left; }
 #container article .inner header p { margin: 14px 0 0 0; font-size: 17px; color: #7d8a92; }
 #container article .inner header p.position { padding: 0; margin: 0; font-size: 17px; color: #7d8a92; }
 #container article .inner h1 { margin-bottom: 5px; font-size: 41px; font-weight: 300; }
@@ -751,6 +751,18 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .left .answer_placeholder p.has_requested_answer { display: inline-block; zoom: 1; *display: inline; vertical-align: bottom; width: auto; }
 #container article .inner .left .answer_placeholder form { width: auto; display: inline-block; zoom: 1; *display: inline; vertical-align: bottom; padding: 0 0 1px 0; font-size: 15px; color: #7d8a92; }
 #container article .inner .left .answer_placeholder form input[type="submit"] { display: inline; padding: 0; font-size: 15px; color: #f10063; font-weight: bold; background: none; border: none; outline: none; }
+
+/* subtitle */
+#container article .inner .subtitle { margin: 0 0 10px 0; }
+
+/* meta */
+#container article .inner .meta { margin: 0 0 10px 0; padding: 0; font-size: 15px; }
+
+/* context */
+#container article .inner .context { float: left; clear: right; margin: 0 0 10px 0; padding: 0 0 5px 0; border-bottom: 1px solid #e4e8da; font-size: 15px; line-height: normal; color: #465866; }
+#container article .inner .context a { line-height: normal; }
+#container article .inner .context .middot { color: #ccc; }
+#container article .inner .context h3 { float: left; margin: 0 4px 0 0; padding: 0; line-height: 19px; font-size: 12px; }
 
 /* info */
 #container article .inner p.info { margin: 0 0 1px 0; padding: 0; font-size: 15px; }

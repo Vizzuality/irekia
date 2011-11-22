@@ -6,8 +6,13 @@
 <div class="inner">
   <div class="left">
 
+    <div class="context">
+      <h3><%= t(@content.content_type) %></h3>
+       <% if @content.content_area %> &middot; <%= link_to @content.content_area.name, @content.content_area %> <% end %>
+    </div>
+
     <h2><%= @content.question_text %></h2>
-    <p class="info">
+    <div class="meta">
     <%= link_to @content.author.try(:fullname), path_for_user(@content.author) %>
     <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     <% if @answer.blank? %>
@@ -22,7 +27,7 @@
     <% else %>
       <span class="<%= @answer ? 'answered' : 'not_answered' %>"><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words_to_now(@answer.published_at)) %></span>
     <% end %>
-    </p>
+    </div>
 
     <% if @answer %>
       <div class="answer">

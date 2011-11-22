@@ -1,5 +1,5 @@
 <div class="comments">
-  <% if defined?(birdie) %>
+  <% if defined?(birdie) and birdie %>
     <div class="birdie"></div>
   <% end %>
   <div class="count"><%= t('.title', :count => @comments_count) %></div>

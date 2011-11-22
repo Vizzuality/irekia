@@ -286,7 +286,10 @@
 #######################################
 # IREKIA - Views
 #######################################
-
+  News: Noticia
+  Event: Evento
+  Photo: Foto
+  Proposal: Propuesta
   unknown_user: Invitado
   menu:
     dashboard: Dashboard
@@ -543,7 +546,7 @@
         author: '%{author} hace %{time}'
         answered: 'Contestada hace %{time}'
         not_answered: 'Aún no contestada'
-      statusmessage:
+      status_message:
         author: '%{author} hace %{time}'
         read_more: 'Leer más'
       tweet:
@@ -770,6 +773,7 @@
               one: Un comentario
               other: '%{count} comentarios'
       photo:
+        published_by: 'Publicada por'
         back: volver
         title_author_and_comments:
           time: 'hace %{time}'
@@ -878,6 +882,7 @@
           all_questions_to_user: 'Todas las preguntas para %{name}'
           all_questions_to_area: 'Todas las preguntas para el área de %{name}'
       proposal:
+        addressed_to: 'Dirigida a'
         back: volver
         see_all_proposals: Ver todas las propuestas a este área
         in_favor:
@@ -928,7 +933,7 @@
           last_tweets:
             title: 'Últimos tweets de %{name}'
             time: 'hace %{time}'
-      statusmessage:
+      status_message:
         author: 'Publicado por %{name} hace %{time}'
         back: volver
         sidebar:
@@ -1484,13 +1489,13 @@
     create:
       area:
         follow:
-          zero: Seguir a este área (0)
-          one: Seguir a este área (1)
+          zero: 'Seguir a este área (0)'
+          one: 'Seguir a este área (1)'
           other: 'Seguir a este área (%{count})'
       user:
         follow:
-          zero: Seguir a %{name}
-          one: Seguir a %{name}
+          zero: 'Seguir a %{name}'
+          one: 'Seguir a %{name}'
           other: 'Seguir a %{name}'
     create_mini:
       follow: Seguir

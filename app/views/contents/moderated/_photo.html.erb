@@ -7,7 +7,14 @@
 <div class="inner">
   <div class="left">
 
-    <p class="info">
+    <div class="context">
+      <h3><%= t(@content.content_type) %></h3>
+      <% if @content.author %> <span class="middot">&middot;</span> <%= t(".published_by") %> <%= link_to @content.author.fullname, @content.author %> <% end %>
+    </div>
+
+    <h1><%= @content.title %></h1>
+
+    <div class="meta">
     <span><%= l @content.published_at.to_date, :format => :long %></span>
     &middot;
     <% if !@content.title.blank? %>
@@ -15,8 +22,7 @@
       &middot;
     <% end %>
     <span class="comments">    <%= link_to @comments_count, '#', :class => :goto_comments %></span>
-    </p>
-    <h1><%= @content.title %></h1>
+    </div>
 
     <%= image_tag @content.content_url %>
     <div class="caption"><%= simple_format @content.description %></div>

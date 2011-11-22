@@ -6,13 +6,24 @@
 <article class="proposal with_footer">
 <div class="inner">
   <div class="left">
+
+    <div class="context">
+      <h3><%= t(@content.content_type) %></h3>
+      <% if @content.target_area %>
+        <span class="middot">&middot;</span> <%= t(".addressed_to") %> <%= link_to @content.target_area.name, @content.target_area %>
+        <% elsif @content.target_user %>
+        <span class="middot">&middot;</span> <%= t(".addressed_to") %> <%= link_to @content.target_user.fullname, @content.target_user %>
+      <% end %>
+    </div>
+
     <h1><%= @content.title %></h1>
-    <p class="info extra-margin-bottom">
+
+    <div class="meta">
     <%= link_to @content.author.try(:fullname), path_for_user(@content.author)  %>
     <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
     &middot;
     <span class="comments"><%= link_to @comments_count, "#", :class => :goto_comments %></span>
-    </p>
+    </div>
 
     <div class="my_opinion <%= @content.percent_in_favor >= 50 ? "in_favor" : "against" %>">
       <div class="result">
