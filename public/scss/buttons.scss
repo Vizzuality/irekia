@@ -402,23 +402,23 @@ article .white_button:active {
 
   &.facebook {
     .checkbox {
-    .icon {
-      margin-left:2px;
-      background:url('/images/icons/share.png') no-repeat -128px 0;
-      height:18px; width:14px;
+      .icon {
+        margin-left:2px;
+        background:url('/images/icons/share.png') no-repeat -128px 0;
+        height:18px; width:14px;
+      }
     }
-  }
   }
 
   &.twitter {
     text-indent: -99999px;
     .checkbox {
-    .icon {
-      margin-left:2px;
-      background:url('/images/icons/share.png') no-repeat -149px 0;
-      height:18px; width:14px;
+      .icon {
+        margin-left:2px;
+        background:url('/images/icons/share.png') no-repeat -149px 0;
+        height:18px; width:14px;
+      }
     }
-  }
   }
 
   float:left;

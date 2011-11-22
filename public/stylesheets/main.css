@@ -163,6 +163,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.static .inner header h3 { text-transform: none; font-size: 19px; font-family: "Helvetica", sans-serif; font-weight: normal; }
 
 #container article .inner .left h1 { margin-bottom: 10px; line-height: 41px; clear: left; }
+#container article .inner .left h2 { clear: left; }
 #container article .inner header p { margin: 14px 0 0 0; font-size: 17px; color: #7d8a92; }
 #container article .inner header p.position { padding: 0; margin: 0; font-size: 17px; color: #7d8a92; }
 #container article .inner h1 { margin-bottom: 5px; font-size: 41px; font-weight: 300; }
@@ -501,10 +502,19 @@ p.info span.comments a { background-position: 0 -49px; }
 span.where, .map .infowindow ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 
 #container article.agenda .inner .content ul li.day .info ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; -o-text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
-#container article div.answering { position: relative; display: block; width: auto; height: 216px; padding: 12px; margin: 25px 0 0 0; background: #F6F6F7; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
-#container article div.answering span.peak { position: absolute; top: -14px; left: 30px; width: 28px; height: 14px; background: url("/images/icons/triangle.png") no-repeat 0 -181px; }
-#container article div.answering textarea { resize: none; overflow-y: none; width: 570px; position: relative; height: 132px; padding: 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); outline: none; }
-#container article div.answering input { float: right; margin: 8px 0 0 0; }
+#container article .inner .left .answering { position: relative; padding: 12px; margin: 25px 0 0 0; background: #F6F6F7; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
+#container article .inner .left .answering span.peak { position: absolute; top: -14px; left: 30px; width: 28px; height: 14px; background: url("/images/icons/triangle.png") no-repeat 0 -181px; }
+#container article .inner .left .answering h3 { float: left; }
+#container article .inner .left .answering .footer .left { float: left; width: 300px; }
+#container article .inner .left .answering .footer .left .checkbox_button { height: 20px; }
+#container article .inner .left .answering .footer .left .checkbox_button .checkbox { float: left; }
+#container article .inner .left .answering .footer .right { width: 200px; float: right; }
+#container article .inner .left .answering .footer .right .white_button { float: right; }
+#container article .inner .left .answering .input_field.textarea { margin: 0 0 10px 0; }
+#container article .inner .left .answering .input_field { width: 570px; margin: 0 0 10px 0; }
+#container article .inner .left .answering .input_field .holder { top: 10px; }
+#container article .inner .left .answering .input_field input[type="text"] { width: 570px; }
+#container article .inner .left .answering textarea { resize: none; overflow-y: none; width: 570px; position: relative; height: 132px; padding: 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); outline: none; }
 #container article.actions .inner, #container article.proposals .inner, #container article.photos .inner, #container article.proposal .inner, #container article.questions .inner, #container article.activity .inner { width: 934px; padding: 15px 31px 35px 29px; }
 #container article.actions .inner .left, #container article.proposals .inner .left, #container article.photos .inner .left, #container article.proposal .inner .left, #container article.questions .inner .left, #container article.activity .inner .left { width: 614px; }
 #container article.actions .inner .left ul li, #container article.proposals .inner .left ul li, #container article.photos .inner .left ul li, #container article.proposal .inner .left ul li, #container article.questions .inner .left ul li, #container article.activity .inner .left ul li { margin-bottom: 39px; }
@@ -761,6 +771,8 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 
 /* meta */
 #container article .inner .meta { margin: 0 0 10px 0; padding: 0; font-size: 15px; }
+#container article .inner .meta p.info span.comments a { background-position: 0 -44px; }
+#container article .inner .meta span.requests { background-position: 0 -383px; }
 
 /* context */
 #container article .inner .context { float: left; clear: right; margin: 0 0 10px 0; padding: 0 0 5px 0; border-bottom: 1px solid #e4e8da; font-size: 15px; line-height: normal; color: #465866; }
@@ -856,8 +868,8 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .map a.marker.with_counter { background-position: -26px -67px; }
 #container article .map a.marker .counter { position: absolute; display: block; top: 6px; width: 25px; text-align: center; color: white; font-size: 11px; font-weight: bold; }
 #container article .input_field { position: relative; clear: both; height: 39px; }
-#container article .input_field span.holder { position: absolute; left: 11px; top: 8px; color: #D7D8DD; }
-#container article .input_field.textarea span.holder { position: absolute; left: 11px; top: 8px; color: #D7D8DD; }
+#container article .input_field span.holder { position: absolute; left: 11px; top: 8px; width: 300px; color: #D7D8DD; }
+#container article .input_field.textarea span.holder { position: absolute; left: 11px; top: 8px; width: 300px; color: #D7D8DD; }
 #container article .input-counter span.holder { position: absolute; left: 11px; top: 10px; color: #D7D8DD; }
 #container article .input_field span.holder.large { font-size: 15px; }
 #container article .input-counter span.holder.large { top: 8px; font-size: 15px; }

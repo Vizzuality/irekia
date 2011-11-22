@@ -584,6 +584,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 #container article {
   .inner {
     .left h1 { margin-bottom: 10px; line-height: 41px; clear:left; }
+    .left h2 { clear:left; }
 
     header p { margin: 14px 0 0 0; font-size:17px; color:$standard_gray; }
     header p.position { padding: 0; margin: 0; font-size:17px; color:$standard_gray; }
@@ -1988,23 +1989,46 @@ span.where, .map .infowindow ul.details li.where {
     @include text-overflow();
   }
 
-  div.answering {
+  .inner .left .answering {
     position:relative;
-    display:block;
-    width:auto;
-    height:216px;
     padding:12px;
     margin:25px 0 0 0;
     background:#F6F6F7;
+
     @include border-radius(3px);
 
-    span.peak {
-      position:absolute;
-      top:-14px;
-      left:30px;
-      width:28px;
-      height:14px;
-      background:url('/images/icons/triangle.png') no-repeat 0 -181px;
+    span.peak { position:absolute; top:-14px; left:30px; width:28px; height:14px; background:url('/images/icons/triangle.png') no-repeat 0 -181px; }
+
+    h3 { float:left; }
+
+    .footer {
+
+      .left {
+        float:left;
+        width:300px;
+
+        .checkbox_button {
+          height:20px;
+          .checkbox { float:left; }
+        }
+      }
+
+      .right {
+        width:200px;
+        float:right;
+        .white_button { float:right; }
+      }
+    }
+
+    .input_field.textarea {
+      margin: 0 0 10px 0;
+    }
+
+    .input_field {
+      width:570px;
+      margin: 0 0 10px 0;
+      .holder { top: 10px; }
+      input[type="text"] { width:570px; }
     }
 
     textarea {
@@ -2020,7 +2044,6 @@ span.where, .map .infowindow ul.details li.where {
       @include box-shadow(inset 0 5px 5px rgba(0, 0, 0, 0.05));
       outline: none;
     }
-    input {float:right; margin:8px 0 0 0;}
   }
 
   &.actions .inner,
@@ -3093,6 +3116,14 @@ a.editable {
           /* meta */
           #container article .inner .meta {
             margin: 0 0 10px 0; padding:0; font-size:15px;
+
+            p.info span.comments a {
+              background-position: 0 -44px;
+            }
+
+            span.requests {
+              background-position: 0 -383px;
+            }
           }
 
           /* context */
@@ -3450,9 +3481,9 @@ a.editable {
               clear: both;
               //overflow: hidden;
               height: 39px;
-              span.holder { position: absolute; left: 11px; top: 8px; color: #D7D8DD; }
+              span.holder { position: absolute; left: 11px; top: 8px; width:300px; color: #D7D8DD; }
               &.textarea {
-                span.holder { position: absolute; left: 11px; top: 8px; color: #D7D8DD; }
+                span.holder { position: absolute; left: 11px; top: 8px; width:300px; color: #D7D8DD; }
               }
             }
             .input-counter span.holder {
@@ -4575,13 +4606,8 @@ Error pages
         width: 636px;
         padding: 42px 0;
         text-align: center;
-        h1{
-          margin: 20px;
-        }
-        p{
-          width: 400px;
-          margin: 0 auto;
-        }
+        h1{ margin: 20px; }
+        p{ width: 400px; margin: 0 auto; }
       }
     }
   }
