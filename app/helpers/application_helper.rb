@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def am_I?(user)
+    current_user && user && current_user.try(:id) == user.try(:id)
+  end
+
   def current_area?(area)
     area.eql?(@area) ? 'selected' : nil
   end

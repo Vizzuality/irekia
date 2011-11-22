@@ -531,7 +531,9 @@
 
     lists_elements:
       answer:
-        title: '%{author} ha contestado a "%{question}"'
+        title:
+          you: 'Has contestado a "%{question}"'
+          other: '%{author} ha contestado a "%{question}"'
         author: '%{author} &middot; <span class="answered">Contestada hace %{time}</span>'
       question:
         title: 'Pregunta para %{receiver}:'
@@ -543,7 +545,7 @@
         author: '%{author} hace %{time}'
         answered: 'Contestada hace %{time}'
         not_answered: 'Aún no contestada'
-      statusmessage:
+      status_message:
         author: '%{author} hace %{time}'
         read_more: 'Leer más'
       tweet:
@@ -553,6 +555,9 @@
         author: 'Publicado hace %{time}'
         read_more: 'Leer más'
       proposal:
+        title:
+          you: 'Has creado una nueva propuesta: '
+          other: '%{name} ha creado una nueva propuesta: '
         author: '%{author} hace %{time}'
         against: en contra
         in_favor: a favor
@@ -565,7 +570,9 @@
           one: Un usuario ha participado
           other: '%{count} usuarios han participado'
       photo:
-        title: '%{name} ha subido una foto:'
+        title:
+          you: 'Has subido una foto:'
+          other: '%{name} ha subido una foto:'
         author: '%{author} hace %{time}'
       proposal_mini:
         author: '%{author} hace %{time}'
