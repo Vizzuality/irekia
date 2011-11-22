@@ -1489,9 +1489,9 @@
           other: 'Seguir a este área (%{count})'
       user:
         follow:
-          zero: Seguir a %{name} (0)
-          one: Seguir a %{name} (1)
-          other: 'Seguir a %{name} (%{count})'
+          zero: Seguir a %{name}
+          one: Seguir a %{name}
+          other: 'Seguir a %{name}'
     create_mini:
       follow: Seguir
     destroy:
