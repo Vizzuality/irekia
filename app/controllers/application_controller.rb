@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  DEMO_USER = {'virekia' => 'gub5mar'}
 
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception,                           :with => :render_error
@@ -10,11 +11,20 @@ class ApplicationController < ActionController::Base
 
   clear_helpers
   protect_from_forgery
+  before_filter :authentication_check
   before_filter :store_user_path
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
   before_filter :current_user_valid?
   before_filter :get_areas
   before_filter :setup_search
+
+  def authentication_check
+    return unless Rails.env.production?
+
+    authenticate_or_request_with_http_basic do |user, password|
+      DEMO_USER[user] == password
+    end
+  end
 
   def store_user_path
     session[:return_to] = request.fullpath if current_user.blank? && request.get?

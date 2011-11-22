@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     @areas                 = Area.areas_for_homepage
     @areas_by_name         = Area.names_and_ids.all
     @actions               = AreaPublicStream.where('event_type <> ?', 'Photo').order('published_at desc')
-    @actions               = @actions.where(:event_type => params[:type].camelize) if params[:type]
+    @actions               = @actions.where(:event_type => [params[:type]].flatten.map(&:camelize)) if params[:type]
     @news_count            = @actions.news.count            || 0
     @questions_count       = @actions.questions.count       || 0
     @answers_count         = @actions.answers.count         || 0

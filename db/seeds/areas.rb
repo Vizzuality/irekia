@@ -103,4 +103,4 @@ Area.create :name => 'Vivienda',
             :description_2 => 'ofrecen datos, servicios y consejos prácticos para quien busca un espacio para vivir.',
             :image    => Image.create(:image => File.open(Rails.root.join('db/seeds/support/images/area_17.png')))
 
-puts '=> areas loaded'.blue
+puts '=> areas loaded'
