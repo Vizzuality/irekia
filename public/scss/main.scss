@@ -201,7 +201,7 @@ header {
         .input_field {
           position:relative;
 
-          span.holder { position: absolute; left: 11px; bottom: 8px; width: 200px; font-size:15px; font-weight:normal; color: #D7DADD; text-shadow:none; }
+          span.holder { position: absolute; left: 11px; bottom: 8px; font-size:15px; font-weight:normal; color: #D7DADD; text-shadow:none; }
 
           &.search {
             width: 320px;
@@ -967,7 +967,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 width:666px;
                 font-size:15px;
               }
-              .holder { width: 666px; }
             }
           } // section.proposal
         } // .section
@@ -993,7 +992,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 width:666px;
                 font-size:15px;
               }
-              .holder { width: 666px; }
             }
           } // section.proposal
         } // .section
@@ -1093,7 +1091,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
               width:687px;
               //height:900px;
 
-              .holder span { float:left; }
 
               strong {
                 display:block;
@@ -1107,7 +1104,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
                 margin:0 0 10px 0;
 
                 input[type="text"] { width:666px; font-size:15px; }
-                .holder { width: 666px; }
               }
 
               .extra {
@@ -1128,7 +1124,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
                   margin:0 0 10px 0;
 
                   input[type="text"] { width:666px; font-size:15px; }
-                  .holder { width: 666px; }
                 }
               } // section.photo
 
@@ -1141,7 +1136,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
                   margin:0 0 10px 0;
 
                   input[type="text"] { width:666px; font-size:15px; }
-                  .holder { width: 666px; }
                 }
               } // section.link
 
@@ -1164,7 +1158,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
                       font-size:15px;
                     }
 
-                    .holder { width: 647px; }
                   } // input_field
                 } // form
               } // section.event
@@ -1180,7 +1173,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
                     height:33px;
                     font-size:15px;
                   }
-                  .holder { width: 666px; }
                 }
               } // section.proposal
 
@@ -1251,7 +1243,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
                       width:263px;
                       right: -24px;
                       input[type="text"] { float:right; width:263px; font-size:15px; }
-                      .holder { top:11px; width:130px; font-size: 15px; }
+                      .holder { top:11px; font-size: 15px; }
                     } // input_field
                   }
                 }
@@ -1279,7 +1271,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
           }
 
           input[type="text"], textarea  { font-size:15px; }
-          span.holder { width:666px; font-size:15px; top:10px; }
+          span.holder { top:10px; font-size:15px; }
 
         }
 
@@ -1600,7 +1592,6 @@ article .inner { h2, h3 { color: $dark_blue; } }
           }
 
           .holder {
-            top: 10px; width: 500px; font-size:15px;
             span { float:left; }
           }
         }
@@ -2324,6 +2315,19 @@ span.where, .map .infowindow ul.details li.where {
   &.initialy_hidden { @include opacity(0); }
 
   .caption, .caption p { color: $standard_gray; }
+
+  .holder,
+  .input_field .holder {
+    width:100%;
+    position: absolute;
+    left:11px;
+    color: #D7DADD;
+    font-size:15px;
+    font-weight:normal;
+    text-shadow:none;
+    span { float:left; }
+  }
+
 
   ul.arguments {
     // background:#E9F0DE;
@@ -3446,24 +3450,21 @@ a.editable {
               clear: both;
               //overflow: hidden;
               height: 39px;
-              span.holder { position: absolute; left: 11px; top: 8px; width: 200px; color: #D7D8DD; }
+              span.holder { position: absolute; left: 11px; top: 8px; color: #D7D8DD; }
               &.textarea {
-                span.holder { position: absolute; left: 11px; top: 8px; width: auto; color: #D7D8DD; }
+                span.holder { position: absolute; left: 11px; top: 8px; color: #D7D8DD; }
               }
             }
             .input-counter span.holder {
               position: absolute;
               left: 11px;
               top: 10px;
-              width: 200px;
               color: #D7D8DD;
             }
             .input_field span.holder.large {
-              width: 100%;
               font-size: 15px;
             }
             .input-counter span.holder.large {
-              width: 100%;
               top: 8px;
               font-size: 15px;
             }

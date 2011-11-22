@@ -248,7 +248,7 @@ header nav .content { padding: 10px 0 0 0; }
 header nav .content span.currently_viewing { float: left; margin: 10px 10px 0 0; font-size: 15px; font-weight: bold; color: #19597A; text-shadow: 1px 1px 1px #2F9CD8; }
 header nav .content form { float: left; width: 290px; }
 header nav .content form .input_field { position: relative; }
-header nav .content form .input_field span.holder { position: absolute; left: 11px; bottom: 8px; width: 200px; font-size: 15px; font-weight: normal; color: #D7DADD; text-shadow: none; }
+header nav .content form .input_field span.holder { position: absolute; left: 11px; bottom: 8px; font-size: 15px; font-weight: normal; color: #D7DADD; text-shadow: none; }
 header nav .content form .input_field.search { width: 320px; }
 header nav .content form .input_field.search input#search_query { width: 275px; }
 header nav .content form .input_field input[type="text"], header nav .content form .input_field input[type="email"], header nav .content form .input_field input[type="password"] { height: 33px; padding: 0 36px 0 9px; width: 245px; font-size: 15px; border: 1px solid #13587f; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.2); outline: none; }
@@ -418,13 +418,11 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.description { margin-bottom: 20px; }
 #container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
-#container article.publish.politician .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
 #container article.publish.user .inner .content .container { height: 79px; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .triangle { left: 152px; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish.user .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
-#container article.publish.user .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
 #container article.publish .inner header { margin: 0; width: 691px; }
 #container article.publish .inner header h2 { line-height: normal; }
 #container article.publish .inner .content .container { overflow: hidden; clear: both; width: 687px; height: 79px; }
@@ -442,32 +440,26 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .message h3 { letter-spacing: 1px; }
 #container article.publish .inner .content .container .inner_container .message .icon { float: left; margin: 0 18px 0 0; background: url("/images/icons/ok_ball.png") no-repeat; width: 76px; height: 80px; }
 #container article.publish .inner .content .container .inner_container .section { float: left; position: relative; width: 687px; }
-#container article.publish .inner .content .container .inner_container .section .holder span { float: left; }
 #container article.publish .inner .content .container .inner_container .section strong { display: block; margin: 0 0 7px 0; color: #465866; font-size: 12px; }
 #container article.publish .inner .content .container .inner_container .section .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section .input_field input[type="text"] { width: 666px; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .section .input_field .holder { width: 666px; }
 #container article.publish .inner .content .container .inner_container .section .extra { display: none; margin: 0 0 0 0; }
 #container article.publish .inner .content .container .inner_container .section .extra .search_box { margin: 0; padding: 0; }
 #container article.publish .inner .content .container .inner_container .section .extra .input_field { margin: 0 0 20px 0!important; }
 #container article.publish .inner .content .container .inner_container .section.photo .triangle { left: 155px; }
 #container article.publish .inner .content .container .inner_container .section.photo .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.photo .input_field input[type="text"] { width: 666px; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .section.photo .input_field .holder { width: 666px; }
 #container article.publish .inner .content .container .inner_container .section.link .triangle { left: 505px; }
 #container article.publish .inner .content .container .inner_container .section.link .input_field { width: 100%; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.link .input_field input[type="text"] { width: 666px; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .section.link .input_field .holder { width: 666px; }
 #container article.publish .inner .content .container .inner_container .section.event { background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
 #container article.publish .inner .content .container .inner_container .section.event .triangle { left: 620px; background-position: 0 -64px; }
 #container article.publish .inner .content .container .inner_container .section.event .form { padding: 10px 10px 0 10px; }
 #container article.publish .inner .content .container .inner_container .section.event .form .input_field { width: 647px; margin: 0 0 10px 0; }
 #container article.publish .inner .content .container .inner_container .section.event .form .input_field input[type="text"] { width: 647px; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .section.event .form .input_field .holder { width: 647px; }
 #container article.publish .inner .content .container .inner_container .section.question .triangle { left: 35px; }
 #container article.publish .inner .content .container .inner_container .section.question .input_field.textarea { margin: 0 0 10px 0; height: auto; }
 #container article.publish .inner .content .container .inner_container .section.question .input_field.textarea textarea { height: 33px; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .section.question .input_field.textarea .holder { width: 666px; }
 #container article.publish .inner .content .container .inner_container .section.image .triangle { left: 150px; }
 #container article.publish .inner .content .container .inner_container .section.image .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container article.publish .inner .content .container .inner_container .section.video { height: auto; background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
@@ -481,14 +473,14 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.publish .inner .content .container .inner_container .section.video ul li.youtube .logo { width: 125px; height: 46px; background-position: 0px -617px; }
 #container article.publish .inner .content .container .inner_container .section.video ul li .input_field { width: 263px; right: -24px; }
 #container article.publish .inner .content .container .inner_container .section.video ul li .input_field input[type="text"] { float: right; width: 263px; font-size: 15px; }
-#container article.publish .inner .content .container .inner_container .section.video ul li .input_field .holder { top: 11px; width: 130px; font-size: 15px; }
+#container article.publish .inner .content .container .inner_container .section.video ul li .input_field .holder { top: 11px; font-size: 15px; }
 #container article.publish .inner .content .input_field { height: 36px; }
 #container article.publish .inner .content .input_field input[type="text"] { height: 34px; }
 #container article.publish .inner .content .input_field.textarea { height: auto; }
 #container article.publish .inner .content .input_field.textarea textarea { width: 664px; height: 53px; }
 #container article.publish .inner .content .input_field.textarea textarea:focus, #container article.publish .inner .content .input_field.textarea textarea:hover { border: 1px solid rgba(0, 0, 0, 0.2); }
 #container article.publish .inner .content .input_field input[type="text"], #container article.publish .inner .content .input_field textarea { font-size: 15px; }
-#container article.publish .inner .content .input_field span.holder { width: 666px; font-size: 15px; top: 10px; }
+#container article.publish .inner .content .input_field span.holder { top: 10px; font-size: 15px; }
 #container article.publish .inner .content .triangle { width: 30px; height: 25px; background: url("/images/icons/triangle.png") no-repeat 0 0; position: absolute; top: -14px; left: 37px; z-index: 1000; }
 #container article.publish .inner .content ul.menu { width: 686px; margin: 0 0 8px 0; }
 #container article.publish .inner .content ul.menu li { margin-right: 6px; }
@@ -554,7 +546,6 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.popover.proposal .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
 #container article.popover.proposal .input_field.uploader { width: 534px; margin: 0 0 10px 0; }
 #container article.popover.proposal .input_field.uploader input[type="text"] { width: 534px; font-size: 15px; }
-#container article.popover.proposal .input_field.uploader .holder { top: 10px; width: 500px; font-size: 15px; }
 #container article.popover.proposal .input_field.uploader .holder span { float: left; }
 #container article.popover.proposal .input_field.textarea { height: 76px; margin: 0 0 10px 0; }
 #container article.popover.proposal .input_field.textarea textarea.body { height: 53px; }
@@ -736,6 +727,8 @@ span.where, .map .infowindow ul.details li.where { width: 207px; max-height: 26p
 /* Article addons */
 #container article.initialy_hidden { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; }
 #container article .caption, #container article .caption p { color: #7d8a92; }
+#container article .holder, #container article .input_field .holder { width: 100%; position: absolute; left: 11px; color: #D7DADD; font-size: 15px; font-weight: normal; text-shadow: none; }
+#container article .holder span, #container article .input_field .holder span { float: left; }
 #container article .autosuggest { width: 691px; position: absolute; padding-bottom: 10px; top: 20px; z-index: 2000; }
 #container article .autosuggest li { cursor: pointer; padding: 7px 0 7px 10px; background: url("/images/box_autosuggest_bkg.png") repeat-y -713px 0; }
 #container article .autosuggest li .name { margin: 0 0 2px 0; }
@@ -1019,11 +1012,11 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .map a.marker.with_counter { background-position: -26px -67px; }
 #container article .map a.marker .counter { position: absolute; display: block; top: 6px; width: 25px; text-align: center; color: white; font-size: 11px; font-weight: bold; }
 #container article .input_field { position: relative; clear: both; height: 39px; }
-#container article .input_field span.holder { position: absolute; left: 11px; top: 8px; width: 200px; color: #D7D8DD; }
-#container article .input_field.textarea span.holder { position: absolute; left: 11px; top: 8px; width: auto; color: #D7D8DD; }
-#container article .input-counter span.holder { position: absolute; left: 11px; top: 10px; width: 200px; color: #D7D8DD; }
-#container article .input_field span.holder.large { width: 100%; font-size: 15px; }
-#container article .input-counter span.holder.large { width: 100%; top: 8px; font-size: 15px; }
+#container article .input_field span.holder { position: absolute; left: 11px; top: 8px; color: #D7D8DD; }
+#container article .input_field.textarea span.holder { position: absolute; left: 11px; top: 8px; color: #D7D8DD; }
+#container article .input-counter span.holder { position: absolute; left: 11px; top: 10px; color: #D7D8DD; }
+#container article .input_field span.holder.large { font-size: 15px; }
+#container article .input-counter span.holder.large { top: 8px; font-size: 15px; }
 #container article .input_field input { position: absolute; background: white; }
 #container article .input_field input[type="text"], #container article .input_field input[type="email"], #container article .input_field input[type="password"] { width: 222px; height: 33px; padding: 0 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); -o-box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1); outline: none; }
 #container article .input-counter { position: relative; margin-bottom: 24px; float: left; }
