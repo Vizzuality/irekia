@@ -22,7 +22,7 @@
     <ul>
       <% @areas_found.first(2).each do |area| %>
         <li>
-        <%= avatar area %>
+        <%= avatar area, :small %>
         <%= link_to area.name, area_path(area), :class => :name %>
         <span class="position">&nbsp;</span>
         </li>
