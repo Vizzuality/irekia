@@ -12,3 +12,4 @@ tmp/
 public/uploads
 .DS_Store
 ERD.pdf
+*.tar.gz
