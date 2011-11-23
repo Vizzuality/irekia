@@ -382,8 +382,6 @@ class User < ActiveRecord::Base
 
   def has_not_given_his_opinion(content)
     case content
-    when Answer
-      AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', content.id, id).count == 0
     when Proposal
       content.arguments.where('user_id = ?', id).count == 0
     end
@@ -396,8 +394,6 @@ class User < ActiveRecord::Base
   def his_opinion(content)
 
     case content
-    when Answer
-      AnswerOpinion.joins(:content, :user).where('contents.id = ? AND users.id = ?', content.id, id)
     when Proposal
       content.votes.where('user_id = ?', id)
     end
