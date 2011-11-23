@@ -100,6 +100,11 @@ class Content < ActiveRecord::Base
     self.tags = tags_array.join(',')
   end
 
+  def all_tags_but(tag_to_remove)
+    tags_array = (self.tags || '').split(',')
+    tags_array.select{|t| t != tag_to_remove}.join(',')
+  end
+
   def last_contents(limit = 5)
     self.class.moderated.includes(:"#{self.class.name.underscore}_data", :comments).order('published_at desc').where('id <> ?', id).first(limit)
   end
