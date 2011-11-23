@@ -1120,6 +1120,10 @@
     show:
       your_search_results: Resultados de tu búsqueda
     navigation_menu:
+      no_results: No hay resultados
+      change_the_search_terms: Cambia los términos utilizados para realizar la búsqueda.
+      you_can_also: O también puedes
+      explore_irekia_contents: explorar los contenidos de Irekia
       tabs:
         summary: Resumen
         contents:
