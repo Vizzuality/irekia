@@ -191,6 +191,8 @@ class UsersController < ApplicationController
     if politician_profile?
       @status_message = StatusMessage.new
       @status_message.status_message_data = @status_message.build_status_message_data
+
+      @photo                     = Photo.new
     end
   end
   private :models_for_forms

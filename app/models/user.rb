@@ -299,6 +299,10 @@ class User < ActiveRecord::Base
     "#{name} #{lastname}".strip
   end
 
+  def thumbnail
+    profile_image
+  end
+
   def profile_image
     @profile_image ||= self.profile_pictures.first.image.thumb.url if self.profile_pictures.present?
   end
