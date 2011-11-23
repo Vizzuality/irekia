@@ -4,11 +4,11 @@
     <% @tags.each do |tag| -%>
       <% if @editable %>
         <li<%=" class='editable'" if @editable %>>
-          <%= link_to tag.strip, search_path(:search => {:query => tag}), :class => :content %>
-          <%= form_for @content, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
-            <%= form.hidden_field :tags, :value => @content.all_tags_but(tag.strip) %>
-            <%= form.submit 'x', :class => 'remove' %>
-          <% end -%>
+        <%= link_to tag.strip, search_path(:search => {:query => tag}), :class => :content %>
+        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+          <%= form.hidden_field :tags, :value => @content.all_tags_but(tag.strip) %>
+          <%= form.submit 'x', :class => 'remove' %>
+        <% end -%>
         </li>
       <% else %>
         <li><%= link_to tag.strip, search_path(:search => {:query => tag}), :class => :content %></li>

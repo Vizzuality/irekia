@@ -264,7 +264,7 @@ jQuery.fn.enableEditTags = function(opt){
   // submit tag
   $new.find("form").submit(function(e) {
     $new.fadeOut(speed, function() {
-      $(this).find("input").val("");
+      //$(this).find("input").val("");
       $add.fadeIn(fadeInSpeed);
     });
   });
@@ -276,13 +276,11 @@ jQuery.fn.enableEditTags = function(opt){
       $ul.find(".new").fadeIn(fadeInSpeed, function() {
         $(this).find("input").focus();
       });
-
     });
   });
 
   // remove tag
-  $(this).find(".remove").click(function(e){
-    e.preventDefault();
+  $(this).find("form.remove").submit(function(e){
     $(this).parent().fadeOut(speed, function() {
       $(this).remove();
     });

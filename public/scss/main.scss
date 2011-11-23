@@ -3596,7 +3596,7 @@ a.editable {
             }
           }
 
-          // Tags
+          // Tagging system
           #container article .right .content ul.tags {
             clear:both;
             overflow:hidden;
@@ -3644,13 +3644,10 @@ a.editable {
                 background-position: right -226px;
                 line-height:18px;
 
-                a {
-                  height:26px - 8;
-                  background-position: 0 -197px;
-                  color: $medium_dark;
-                  line-height: 18px;
+                form {
+                  float:left;
 
-                  &.remove {
+                  input.remove {
                     height: 5px; width: 5px;
                     padding: 0;
                     position: relative;
@@ -3660,11 +3657,21 @@ a.editable {
                     margin: 0;
                     background:url('/images/tag_sprite.png') repeat-x -200px -105px;
                     text-indent: -99999px;
+                    border:0;
+                    outline:none;
 
                     &:hover {
                       background-position: -200px -105px;
                     }
                   }
+                }
+
+                a {
+                  height:26px - 8;
+                  background-position: 0 -197px;
+                  color: $medium_dark;
+                  line-height: 18px;
+
                 }
 
                 &:hover {
