@@ -48,25 +48,38 @@
         <!-- PHOTO -->
         <div class="section photo">
           <div class="triangle"></div>
-          <div class="form clearfix">
-          <div class="input_field placeholder">
-            <input type="text" />
-            <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_photo">Sube una nueva</span></span>
+
+          <%= form_for @photo, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+            <%= form.fields_for :photo_data, @photo_data do |proposal_data| %>
+              <%= proposal_data.hidden_field :area_id %>
+
+              <%= proposal_data.fields_for :image, @photo_data.image do |image| %>
+                <%= image.hidden_field :photo_data_id %>
+                <%= image.hidden_field :image_cache, :class => :image_cache_name %>
+              <% end %>
+
+              <div class="form clearfix">
+                <div class="input_field placeholder">
+                  <input type="text" />
+                  <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_photo">Sube una nueva</span></span>
+                </div>
+              </div>
+
+            <% end %>
+          <% end %>
+
+          <div class="success message">
+            <div class="icon"></div>
+            <h2>Tu video ha sido importado</h2>
+            <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+          </div>
+
+          <div class="error message">
+            <div class="icon"></div>
+            <h2>Error</h2>
+            <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
           </div>
         </div>
-
-        <div class="success message">
-          <div class="icon"></div>
-          <h2>Tu video ha sido importado</h2>
-          <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
-        </div>
-
-        <div class="error message">
-          <div class="icon"></div>
-          <h2>Error</h2>
-          <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
-        </div>
-      </div>
 
 
         <!-- VIDEO -->
@@ -95,21 +108,18 @@
             </ul>
           </div>
 
-        <div class="success message">
-          <div class="icon"></div>
-          <h2>Tu video ha sido importado</h2>
-          <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+          <div class="success message">
+            <div class="icon"></div>
+            <h2>Tu video ha sido importado</h2>
+            <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+          </div>
+
+          <div class="error message">
+            <div class="icon"></div>
+            <h2>Error</h2>
+            <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+          </div>
         </div>
-
-        <div class="error message">
-          <div class="icon"></div>
-          <h2>Error</h2>
-          <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
-        </div>
-        </div>
-
-
-
 
         <!-- PROPOSAL -->
         <div class="section proposal">

@@ -10,7 +10,8 @@
 
     <div class="context">
       <h3><%= t(@content.content_type) %></h3>
-       <% if @content.content_area %> &middot; <%= link_to @content.content_area.name, @content.content_area %> <% end %>
+      <% if @content.target_area %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_area.name, @content.target_area %> <% end %>
+       <% if @content.target_user %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_user.fullname, @content.target_user %> <% end %>
     </div>
 
     <h2><%= @content.question_text %></h2>

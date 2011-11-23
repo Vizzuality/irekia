@@ -849,6 +849,7 @@
               one: Un comentario
               other: '%{count} comentarios'
       question:
+        addressed_to: 'Dirigida a'
         not_answered_yet: Esta pregunta aún no ha sido contestada.
         you_and_other:
           zero: Nadie ha pedido que sea contestada
