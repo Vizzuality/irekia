@@ -392,12 +392,14 @@ class User < ActiveRecord::Base
   end
 
   def has_given_his_opinion?(content)
-    his_opinion(content).count > 0
+    his_opinion(content)
   end
 
   def his_opinion(content)
 
     case content
+    when Question
+      content.answer.where('user_id = ?', id)
     when Proposal
       content.votes.where('user_id = ?', id)
     end
