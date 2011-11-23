@@ -6,11 +6,14 @@ puts 'Deploying Irekia to production environment'
 puts '=========================================='
 puts ''
 
+puts '=> Checking-in to production branch'
 system <<-CMD
   git checkout production
   git merge staging
   git push origin production
 CMD
+
+puts '=> Copying files'
 
 APP_DIR        = File.expand_path('../../',  __FILE__)
 DEPLOYMENT_DIR = File.expand_path('../../tmp/deployments/production',  __FILE__)
@@ -43,7 +46,11 @@ FileUtils.rm_f File.join(DEPLOYMENT_DIR, 'config/app_config.staging.yml')
 FileUtils.mv   File.join(DEPLOYMENT_DIR, 'config/database.production.yml'),   File.join(DEPLOYMENT_DIR, 'config/database.yml')
 FileUtils.mv   File.join(DEPLOYMENT_DIR, 'config/app_config.production.yml'), File.join(DEPLOYMENT_DIR, 'config/app_config.yml')
 
+puts '=> Updating Gemfile'
+
 system "bundle --gemfile=#{File.join(DEPLOYMENT_DIR, 'Gemfile')}"
+
+puts '=> Syncing production server'
 
 PRODUCTION_SERVER_USER= 'virekia'
 PRODUCTION_SERVER_IP = '212.142.249.39'
@@ -53,10 +60,14 @@ PRODUCTION_RSYNC = "#{PRODUCTION_CONNECTION}:#{PRODUCTION_FOLDER}"
 
 rsync_cmd = 'rsync -vrlptz --progress --human-readable --progress'
 
-system <<-CMD
-  #{rsync_cmd} #{DEPLOYMENT_DIR}/* #{PRODUCTION_RSYNC}
+system "#{rsync_cmd} #{DEPLOYMENT_DIR}/* #{PRODUCTION_RSYNC}"
 
-  ssh #{PRODUCTION_CONNECTION} 'cd #{PRODUCTION_FOLDER} && touch tmp/restart.txt'
+puts '=> Restarting server'
 
-  git checkout master
-CMD
+system "ssh #{PRODUCTION_CONNECTION} 'cd #{PRODUCTION_FOLDER} && touch tmp/restart.txt'"
+
+puts '=> Checking-in to master branch'
+
+system "git checkout master"
+
+
