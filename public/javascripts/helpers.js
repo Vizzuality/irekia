@@ -1,6 +1,11 @@
 var SPINNER_OPTIONS = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
 var IrekiaSpinner = new Spinner(SPINNER_OPTIONS);
 
+String.prototype.trim=function(){return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');};
+String.prototype.ltrim=function(){return this.replace(/^\s+/,'');}
+String.prototype.rtrim=function(){return this.replace(/\s+$/,'');}
+String.prototype.fulltrim=function(){return this.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');}
+
 function loginInLinks() {
   $(".floating-login").each(function(i, el) {
     $(el).unbind();
@@ -27,11 +32,6 @@ function loginInLinks() {
     $(el).removeClass("floating-login");
   });
 }
-
-String.prototype.trim=function(){return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');};
-String.prototype.ltrim=function(){return this.replace(/^\s+/,'');}
-String.prototype.rtrim=function(){return this.replace(/\s+$/,'');}
-String.prototype.fulltrim=function(){return this.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');}
 
 function isEmpty(str) {
   return !str.match(/\S/)
@@ -174,6 +174,44 @@ jQuery.fn.enableRegistration = function(opt){
   });
 }
 
+/* Enables tag editing */
+jQuery.fn.enableEditTags = function(opt){
+  var speed     = (opt && opt.speed) || 100,
+  fadeInSpeed   = (opt && opt.speed) || 10,
+  $ul = $(this),
+  $new = $ul.find(".new"),
+  $add = $(this).find(".add");
+
+  // submit tag
+  $new.find("input").keyup(function(e) {
+    if (e.keyCode == 13) {
+      // TODO: add submit code
+      $new.fadeOut(speed, function() {
+        $(this).find("input").val("");
+        $add.fadeIn(fadeInSpeed);
+      });
+    }
+  });
+
+  // add tag
+  $add.find("a").click(function(e){
+    e.preventDefault();
+    $(this).parent().fadeOut(speed, function() {
+      $ul.find(".new").fadeIn(fadeInSpeed, function() {
+        $(this).find("input").focus();
+      });
+
+    });
+  });
+
+  // remove tag
+  $(this).find(".remove").click(function(e){
+    e.preventDefault();
+    $(this).parent().fadeOut(speed, function() {
+      $(this).remove();
+    });
+  });
+}
 /* Enables checkboxes */
 jQuery.fn.enableCheckbox = function(opt){
 

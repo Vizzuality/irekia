@@ -110,6 +110,12 @@ a.radio:hover { cursor: pointer; background-position: 0 -53px; }
 a.radio.selected { background-position: 0 -73px; }
 a.radio.selected:hover { cursor: pointer; text-decoration: none; }
 
+/* =============================================================================
+Edition forms
+========================================================================== */
+form.editable, #container article .inner .left form.editable { float: left; clear: both; margin: 0 0 10px 0; padding: 8px 17px 0 8px; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; background: #ffffeb; }
+form.editable h1, form.editable h2, form.editable p, form.editable .meta, #container article .inner .left form.editable h1, #container article .inner .left form.editable h2, #container article .inner .left form.editable p, #container article .inner .left form.editable .meta { margin: 0 0 9px 0; padding: 0; clear: none; }
+
 /** Default DropKick theme  Feel free to edit the default theme or even add your own.  See the readme for themeing help  */
 /***** Begin Theme, feel free to edit in here! ******/
 /* One container to bind them... */
