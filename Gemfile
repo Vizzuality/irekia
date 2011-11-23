@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.10'
-gem 'rake', '0.8.7'
+gem 'rake', '0.9.2'
 gem 'sass', '3.1.7'
 gem 'pg', '0.11.0'
 gem 'oa-oauth', '0.3.2', :require => "omniauth/oauth"
@@ -13,7 +13,7 @@ gem 'pg_search', '0.3.1'
 gem 'json', '1.6.1'
 gem 'mini_fb', '1.1.7'
 gem 'twitter', '1.7.2'
-gem 'feedzirra'
+gem 'feedzirra', '0.1.1'
 
 group :development do
   gem 'capistrano'
