@@ -294,6 +294,7 @@ Article
 #container article .t { top: -10px; background-position: 0 0; }
 #container article .f { bottom: -10px; background-position: 0 -10px; }
 #container article .inner { clear: both; width: 928px; padding: 15px 31px 10px 35px; background: white; border-left: 1px solid #b4bdc4; border-right: 1px solid #b4bdc4; }
+#container article .inner .left { font-size: 17px; color: #465866; }
 #container article .inner p { margin-bottom: 20px; color: #465866; }
 #container article .inner h1 { color: #465866; }
 
@@ -946,27 +947,28 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner p.info.extra-margin-bottom { margin-bottom: 10px; }
 
 /* comments */
-#container article .inner .left .comments { position: relative; margin: 40px 0 0 0; }
-#container article .inner .left .comments .count { padding: 0; font-size: 17px; color: #465866; font-weight: bold; }
-#container article .inner .left .comments .birdie { width: 185px; height: 87px; position: absolute; right: 0; top: -57px; background: url("/images/twitter_sprite.png") no-repeat; }
-#container article .inner .left .comments .textarea-comment { float: left; }
-#container article .inner .left .comments ul { margin-top: 10px; }
-#container article .inner .left .comments ul li { color: #7d8a92; padding: 30px 0 20px 0; border-top: 1px solid #eaeaea; border-top: 1px solid rgba(70, 88, 102, 0.12); margin-bottom: 10px; }
-#container article .inner .left .comments ul li.moderated { border-top: 1px solid #e4e8da; border-top: 1px solid rgba(208, 214, 219, 0.4); font-size: 15px; color: #7D8A92; }
-#container article .inner .left .comments ul li.moderated strong { display: block; margin: 16px 0 3px 0; color: #666666; font-size: 17px; }
-#container article .inner .left .comments ul li.moderated .icon.ok { background: url("/images/icons/ok.png") no-repeat 0 -101px; width: 65px; height: 69px; margin-right: 13px; float: left; }
-#container article .inner .left .comments ul li.moderated strong { display: block; }
-#container article .inner .left .comments ul li.answered { margin-top: 0; padding-top: 0; }
-#container article .inner .left .comments ul li.answered .answered_by { padding: 5px 0 5px 77px; margin: 0 0 30px 0; /* for ie<9 */ background: #F1F8DC; border-top: 1px solid #e4e8da; border-bottom: 1px solid #e4e8da; background: rgba(153, 204, 0, 0.14); border-top: 1px solid rgba(208, 214, 219, 0.4); border-bottom: 1px solid rgba(208, 214, 219, 0.4); font-size: 11px; font-family: "Helvetica", sans-serif; font-weight: bold; text-transform: uppercase; }
-#container article .inner .left .comments ul li.comment { border: none; background: url("/images/comment_border.png") no-repeat; }
-#container article .inner .left .comments ul li.comment span.spinner { float: right; width: 33px; height: 33px; }
-#container article .inner .left .comments ul li.comment button { margin-left: 5px; }
-#container article .inner .left .comments ul li.comment.first { background: none; border-top: 1px solid #DEE2E6; }
-#container article .inner .left .comments ul li.no-border { border: none; }
-#container article .inner .left .comments ul li .comment { float: left; width: 536px; }
-#container article .inner .left .comments ul li .comment blockquote { width: 100%; margin-bottom: 5px; font-size: 17px; color: #7d8a92; font-family: "Helvetica", sans-serif; line-height: 20px; }
-#container article .inner .left .comments ul li .comment blockquote p { margin: 0; padding: 0; }
-#container article .inner .left .comments ul li .comment .footer { float: left; }
+#container article .inner .left div.comments { position: relative; float: left; margin: 40px 0 0 0; }
+#container article .inner .left div.comments .count { padding: 0; font-size: 17px; color: #465866; font-weight: bold; }
+#container article .inner .left div.comments .birdie { width: 185px; height: 87px; position: absolute; right: 0; top: -57px; background: url("/images/twitter_sprite.png") no-repeat; }
+#container article .inner .left div.comments .textarea-comment { float: left; }
+#container article .inner .left div.comments ul { margin-top: 10px; }
+#container article .inner .left div.comments ul li { color: #7d8a92; padding: 30px 0 20px 0; border-top: 1px solid #eaeaea; border-top: 1px solid rgba(70, 88, 102, 0.12); margin-bottom: 10px; }
+#container article .inner .left div.comments ul li.moderated { border-top: 1px solid #e4e8da; border-top: 1px solid rgba(208, 214, 219, 0.4); font-size: 15px; color: #7D8A92; }
+#container article .inner .left div.comments ul li.moderated strong { display: block; margin: 16px 0 3px 0; color: #666666; font-size: 17px; }
+#container article .inner .left div.comments ul li.moderated .icon.ok { background: url("/images/icons/ok.png") no-repeat 0 -101px; width: 65px; height: 69px; margin-right: 13px; float: left; }
+#container article .inner .left div.comments ul li.moderated strong { display: block; }
+#container article .inner .left div.comments ul li.answered { margin-top: 0; padding-top: 0; }
+#container article .inner .left div.comments ul li.answered .answered_by { padding: 5px 0 5px 77px; margin: 0 0 30px 0; /* for ie<9 */ background: #F1F8DC; border-top: 1px solid #e4e8da; border-bottom: 1px solid #e4e8da; background: rgba(153, 204, 0, 0.14); border-top: 1px solid rgba(208, 214, 219, 0.4); border-bottom: 1px solid rgba(208, 214, 219, 0.4); font-size: 11px; font-family: "Helvetica", sans-serif; font-weight: bold; text-transform: uppercase; }
+#container article .inner .left div.comments ul li.comment { border: none; background: url("/images/comment_border.png") no-repeat; }
+#container article .inner .left div.comments ul li.comment span.spinner { float: right; width: 33px; height: 33px; }
+#container article .inner .left div.comments ul li.comment button { margin-left: 5px; }
+#container article .inner .left div.comments ul li.comment.first { background: none; border-top: 1px solid #DEE2E6; }
+#container article .inner .left div.comments ul li.no-border { border: none; }
+#container article .inner .left div.comments ul li .comment { float: left; width: 536px; }
+#container article .inner .left div.comments ul li .comment blockquote { width: 100%; margin-bottom: 5px; font-size: 17px; color: #7d8a92; font-family: "Helvetica", sans-serif; line-height: 20px; }
+#container article .inner .left div.comments ul li .comment blockquote p { margin: 0; padding: 0; }
+#container article .inner .left div.comments ul li .comment .footer { float: left; font-size: 13px; }
+#container article .inner .left div.comments ul li .comment .footer a { font-size: 13px; }
 
 /* quotation */
 .quotation blockquote { margin-bottom: 12px; position: relative; line-height: 34px; letter-spacing: -1px; background: none; }

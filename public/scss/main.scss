@@ -445,8 +445,15 @@ Article
     width: 928px;
     padding: 15px 31px 10px 35px;
     background: $white;
+
     border-left: 1px solid #b4bdc4;
     border-right: 1px solid #b4bdc4;
+
+    .left {
+      font-size:17px;
+      color:$dark_blue;
+    }
+
     p { margin-bottom: 20px; color: $dark_blue; }
     h1 { color: $dark_blue; }
   }
@@ -3149,8 +3156,9 @@ a.editable {
           }
 
           /* comments */
-          #container article .inner .left .comments {
+          #container article .inner .left div.comments {
             position:relative;
+            float:left;
             margin: 40px 0 0 0;
 
             .count { padding:0; font-size:17px; color:$dark_blue; font-weight:bold; }
@@ -3239,7 +3247,11 @@ a.editable {
                     line-height:20px;
                     p { margin:0; padding:0; } // fix for the simple_format helper
                   }
-                  .footer {float:left;}
+                  .footer {
+                    float:left;
+                    font-size:13px;
+                    a { font-size:13px; }
+                  }
                 }
               }
             }

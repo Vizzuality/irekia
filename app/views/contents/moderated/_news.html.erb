@@ -19,30 +19,33 @@
         <%= content_tag :h1, @content.title %>
       </form>
 
-      <form action="#" class="editable">
-        <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => :subtitle if @content.subtitle %>
-      </form>
+      <% unless @content.subtitle.blank? %>
+        <form action="#" class="editable">
+          <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => :subtitle if @content.subtitle %>
+        </form>
+      <% end %>
 
-
       <form action="#" class="editable">
-      <div class="meta">
-        <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
-        &middot;
-        <% if !@content.areas.blank? %>
-          <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+        <div class="meta">
+          <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
           &middot;
-        <% end %>
-        <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
-      </div>
-    </form>
-
-      <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
-
-      <form action="#" class="editable">
-        <%= simple_format (sanitize @content.body.try(:strip), :tags => %w(strong), :attributes => nil)  %>
+          <% if !@content.areas.blank? %>
+            <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+            &middot;
+          <% end %>
+          <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
+        </div>
       </form>
 
-      <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
+      <form action="#" class="editable">
+        <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+      </form>
+
+      <form action="#" class="editable">
+        <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil  %>
+        <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
+      </form>
+
     <% else %>
 
       <div class="context">
@@ -64,7 +67,7 @@
       </div>
 
       <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
-      <%= simple_format (sanitize @content.body.try(:strip), :tags => %w(strong), :attributes => nil)  %>
+      <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil %>
       <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
     <% end %>
 
