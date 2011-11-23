@@ -2193,13 +2193,7 @@ span.where, .map .infowindow ul.details li.where {
 
               strong { display:block; margin: 4px 0 0 0; }
 
-              .icon.ok {
-                float:left;
-                width:37px; height:40px;
-                margin-right:10px;
-                background:url('/images/icons/ok.png') no-repeat;
-              }
-
+              .icon.ok { float:left; width:37px; height:40px; margin-right:10px; background:url('/images/icons/ok.png') no-repeat; }
             }
           }
         }
@@ -2213,6 +2207,7 @@ span.where, .map .infowindow ul.details li.where {
           font-size: 13px;
 
           .input_field {
+            .holder { font-size: 13px; }
             &.textarea {
               height:auto;
 
