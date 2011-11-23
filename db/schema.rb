@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
     t.string   "title"
     t.string   "subtitle"
     t.text     "body"
+    t.string   "source_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

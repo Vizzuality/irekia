@@ -115,14 +115,16 @@ class Content < ActiveRecord::Base
   end
 
   def as_json(options = {})
+    content_author = {
+      :id            => author.id,
+      :name          => author.name,
+      :fullname      => author.fullname,
+      :profile_image => author.profile_image,
+      :is_politician => author.politician?
+    } if author.present?
+
     default = {
-      :author          => {
-        :id            => author.id,
-        :name          => author.name,
-        :fullname      => author.fullname,
-        :profile_image => author.profile_image,
-        :is_politician => author.politician?
-      },
+      :author          => content_author,
       :id              => id,
       :content_type    => type,
       :published_at    => published_at,

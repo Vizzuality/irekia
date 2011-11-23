@@ -69,9 +69,12 @@ module ApplicationHelper
         link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area), :title => area.name, :class => "avatar #{size}"
       end
     else
-      user = user_or_area
-      if user.present? && user.profile_image.present?
+      if user_or_area.present? && user_or_area.profile_image.present?
+        user = user_or_area
         link_to (image_tag(user.profile_image) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
+      elsif user_or_area.present? && user_or_area.thumbnail.present?
+        area = user_or_area
+        link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => area.name, :class => "avatar #{size}"
       else
         image_tag 'icons/faceless_avatar.png', :class => "avatar #{size}", :title => t('unknown_user')
       end

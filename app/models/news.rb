@@ -1,7 +1,8 @@
 class News < Content
-  has_one :news_data
+  has_one :news_data,
+          :dependent => :destroy
 
-  delegate :title, :subtitle, :body, :to => :news_data, :allow_nil => true
+  delegate :title, :subtitle, :body, :source_url, :to => :news_data, :allow_nil => true
 
   def self.from_area(area)
     includes(:areas, :users => :areas).where('areas.id = ? OR areas_users.id = ?', area.id, area.id)
@@ -12,10 +13,17 @@ class News < Content
   end
 
   def as_json(options = {})
+    area = {
+      :id            => areas.first.id,
+      :name          => areas.first.name,
+      :thumbnail     => areas.first.thumbnail
+    } if areas.present?
+
     super({
       :title           => title,
       :subtitle        => subtitle,
-      :body            => body
+      :body            => body,
+      :area            => area
     })
   end
 

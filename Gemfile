@@ -13,6 +13,7 @@ gem 'pg_search', '0.3.1'
 gem 'json', '1.6.1'
 gem 'mini_fb', '1.1.7'
 gem 'twitter', '1.7.2'
+gem 'feedzirra'
 
 group :development do
   gem 'capistrano'

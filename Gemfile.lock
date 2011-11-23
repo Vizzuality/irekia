@@ -69,6 +69,7 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    curb (0.7.16)
     delorean (1.1.1)
       chronic
     devise (1.4.7)
@@ -89,6 +90,13 @@ GEM
       rack (>= 1.1.0, < 2)
     faraday_middleware (0.7.0)
       faraday (~> 0.7.3)
+    feedzirra (0.0.24)
+      activesupport (>= 2.3.8)
+      builder (>= 2.1.2)
+      curb (>= 0.2.3)
+      loofah (>= 0.3.1)
+      nokogiri (> 0.0.0)
+      sax-machine (>= 0.0.12)
     ffaker (1.8.1)
     ffi (1.0.11)
     fssm (0.2.7)
@@ -128,6 +136,8 @@ GEM
       addressable (~> 2.2.6)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
+    loofah (1.2.0)
+      nokogiri (>= 1.4.4)
     looksee (1.0.3)
     mail (2.2.19)
       activesupport (>= 2.3.6)
@@ -231,6 +241,8 @@ GEM
     rubyzip (0.9.4)
     rvm_loader (1.0.0)
     sass (3.1.7)
+    sax-machine (0.1.0)
+      nokogiri (> 0.0.0)
     selenium-webdriver (2.7.0)
       childprocess (>= 0.2.1)
       ffi (>= 1.0.7)
@@ -277,6 +289,7 @@ DEPENDENCIES
   delorean
   devise (= 1.4.7)
   escape_utils
+  feedzirra
   ffaker (= 1.8.1)
   irbtools
   json (= 1.6.1)
