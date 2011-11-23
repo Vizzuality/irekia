@@ -1,6 +1,8 @@
 class ContentsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:index, :show]
   before_filter :get_content_class
+  before_filter :get_content, :only => [:show, :edit]
+  before_filter :check_edition_permission, :only => [:edit]
   before_filter :process_file_upload, :only => [:create, :update]
 
   respond_to :html, :json
@@ -38,7 +40,7 @@ class ContentsController < ApplicationController
   end
 
   def edit
-    @editable = true;
+    @editable = true
     @content = @content_class.by_id(params[:id])
 
     @comments = @content.comments.moderated.all
@@ -52,7 +54,6 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @content = @content_class.by_id(params[:id])
     @moderation_status = @content.moderated?? 'moderated' : 'not_moderated'
 
     @comments = @content.comments.moderated.all
@@ -147,6 +148,16 @@ class ContentsController < ApplicationController
     @content_type = params[:type].underscore
   end
   private :get_content_class
+
+  def get_content
+    @content = @content_class.by_id(params[:id])
+  end
+  private :get_content
+
+  def check_edition_permission
+    redirect_to @content unless current_user && current_user.administrator?
+  end
+  private :check_edition_permission
 
   def process_file_upload
     return unless params[:qqfile].present?
