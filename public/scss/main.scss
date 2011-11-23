@@ -144,11 +144,11 @@ header {
         li {
           float:left;
           width:auto;
-          border-right:1px solid #666666;
+          border-right:1px solid $medium_dark;
           padding:0 4px!important;
           a {padding:1px 0; font:normal 10px "Helvetica",Arial; color:$link_color; &:hover{color:$link_color_hover;}}
           &.last {border:none; padding-right:0;}
-          &.selected a {color:#666666; &:hover {text-decoration:none; color:#666666; cursor:default;}}
+          &.selected a {color:$medium_dark; &:hover {text-decoration:none; color:$medium_dark; cursor:default;}}
         }
       }
 
@@ -291,7 +291,7 @@ header {
                 font-size:13px;
                 border-bottom: 1px solid #f1f1f1;
                 padding: 10px 0 10px 0;
-                color:#666;
+                color:$medium_dark;
 
                 &.last { border:none; padding: 10px 0 0 0; }
 
@@ -449,7 +449,7 @@ Article
     border-left: 1px solid #b4bdc4;
     border-right: 1px solid #b4bdc4;
 
-    .left {
+    div.left {
       font-size:17px;
       color:$dark_blue;
     }
@@ -2383,7 +2383,7 @@ span.where, .map .infowindow ul.details li.where {
         cursor: pointer;
         float: left; margin: 0!important; padding: 0;
         line-height:16px;
-        span { display: block; font-size:15px; color:#666666; }
+        span { display: block; font-size:15px; color:$medium_dark; }
         span.description { color:#7D8A92; }
       }
     }
@@ -2944,8 +2944,6 @@ a.editable {
 
     @include border-radius(5px);
 
-
-
     a.icon {
       display:block;
       float:left;
@@ -3077,7 +3075,6 @@ a.editable {
   text-align:center;
   padding:55px 0;
 
-
   p {
     margin:0px;
     padding:0;
@@ -3124,6 +3121,7 @@ a.editable {
           /* meta */
           #container article .inner .meta {
             margin: 10px 0 10px 0; padding:0; font-size:15px;
+            color:#465866;
 
             span.comments a {
               background-position: 0 -49px;
@@ -3184,7 +3182,7 @@ a.editable {
                   strong {
                     display:block;
                     margin: 16px 0 3px 0;
-                    color:#666666;
+                    color:$medium_dark;
                     font-size:17px;
                   }
 
@@ -3567,6 +3565,7 @@ a.editable {
             }
           }
 
+          // Tags
           #container article .right .content ul.tags {
             clear:both;
             overflow:hidden;
@@ -3582,21 +3581,70 @@ a.editable {
               height:24px;
               background:url('/images/tag_sprite.png') repeat-x right 0;
 
-              &.add {
-                background:url('/images/tag_sprite.png') repeat-x left -105px;
-                width:88px;
+              // New tag
+              &.new {
+                display:none;
+                width:88px; height:26px;
+                padding: 0;
+                left: 0;
+                background:url('/images/tag_sprite.png') no-repeat -96px -105px;
+
+                &:hover { background-position: -96px -105px; }
+
+                input[type="text"] {
+                  border:none;
+                  outline: none;
+                  width:68px; height:26px;
+                  color: #666666;
+                  font-size:13px;
+                  line-height:18px;
+                  float:left;
+                  position:relative;
+                  display:block;
+                  left:0;
+                  padding: 0 0 0 10px;
+                  background:none;
+                }
+              }
+
+              // Edit tag
+              &.editable {
                 height:26px;
-                left:0;
+                background-position: right -226px;
+                line-height:18px;
 
                 a {
-                  background:none;
-                  height:26px;
-                  padding:0;
-                  line-height:26px;
-                  float:none;
-                  text-align:center;
-                  color:$pink;
-                  left:0;
+                  height:26px - 8;
+                  background-position: 0 -197px;
+                  color: $medium_dark;
+                  line-height: 18px;
+
+                  &.remove {
+                    height: 5px; width: 5px;
+                    padding: 0;
+                    position: relative;
+                    top: 11px;
+                    left: -10px;
+                    float: right;
+                    margin: 0;
+                    background:url('/images/tag_sprite.png') repeat-x -200px -105px;
+                    text-indent: -99999px;
+
+                    &:hover {
+                      background-position: -200px -105px;
+                    }
+                  }
+                }
+
+                &:hover {
+                  background-position:right -226px;
+                  a {
+                    color:$medium_dark;
+                    background-position: 0 -197px;
+                    &.remove {
+                      background-position: -200px -105px;
+                    }
+                  }
                 }
               }
 
@@ -3626,6 +3674,27 @@ a.editable {
                   }
                 }
               }
+
+              // Add tag
+              &.add {
+                background:url('/images/tag_sprite.png') repeat-x left -105px;
+                width:88px;
+                height:26px;
+                left:0;
+
+                a {
+                  background:none;
+                  height:26px;
+                  padding:0;
+                  line-height:26px;
+                  float:none;
+                  text-align:center;
+                  color:$pink;
+                  left:0;
+                }
+              }
+
+
             }
           }
 
@@ -4775,7 +4844,7 @@ body.home {
 
               h3 {font:bold 17px "Helvetica",Arial!important; a {color:#465866;}}
               span.total {
-                display:block; margin:5px 0 0 0; padding:0; font-size:13!important; color:#666666;
+                display:block; margin:5px 0 0 0; padding:0; font-size:13!important; color:$medium_dark;
                 a {font-size:13px!important;}
               }
             }

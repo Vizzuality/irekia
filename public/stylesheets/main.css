@@ -107,7 +107,7 @@ header nav .content .notification_selector .handle { position: absolute; display
 header nav .content .notification_selector .popover { display: block; position: absolute; width: 230px; height: 230px; padding: 8px 0 18px 17px; z-index: 1000; background: url("/images/box_notifications_selector.png") no-repeat right bottom; }
 header nav .content .notification_selector .popover .scroll-pane { height: 100%; width: 221px; overflow: hidden; outline: none; }
 header nav .content .notification_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 221px; }
-header nav .content .notification_selector .popover .scroll-pane ul li { text-shadow: none; font-size: 13px; border-bottom: 1px solid #f1f1f1; padding: 10px 0 10px 0; color: #666; }
+header nav .content .notification_selector .popover .scroll-pane ul li { text-shadow: none; font-size: 13px; border-bottom: 1px solid #f1f1f1; padding: 10px 0 10px 0; color: #666666; }
 header nav .content .notification_selector .popover .scroll-pane ul li.last { border: none; padding: 10px 0 0 0; }
 header nav .content .areas_selector { float: left; margin: 0 15px 0 0; position: relative; padding: 8px 14px 7px 14px; width: 191px; color: white; font-size: 15px; text-shadow: 0px 1px 1px #0F4768; border: 1px solid #13587F; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 1px 0 #369acf; -webkit-box-shadow: 0 1px 1px 0 #369acf; -o-box-shadow: 0 1px 1px 0 #369acf; box-shadow: 0 1px 1px 0 #369acf; background: #3396cd; background: -moz-linear-gradient(top, #3396cd 0%, #2080b5 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3396cd), color-stop(100%, #2080b5)); background: -webkit-linear-gradient(top, #3396cd 0%, #2080b5 100%); background: -o-linear-gradient(top, #3396cd 0%, #2080b5 100%); background: -ms-linear-gradient(top, #3396cd 0%, #2080b5 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 ); background: linear-gradient(top, #3396cd 0%, #2080b5 100%); cursor: pointer; }
 header nav .content .areas_selector.open .handle { background-position: 0 -141px; }
@@ -138,7 +138,7 @@ Article
 #container article .t { top: -10px; background-position: 0 0; }
 #container article .f { bottom: -10px; background-position: 0 -10px; }
 #container article .inner { clear: both; width: 928px; padding: 15px 31px 10px 35px; background: white; border-left: 1px solid #b4bdc4; border-right: 1px solid #b4bdc4; }
-#container article .inner .left { font-size: 17px; color: #465866; }
+#container article .inner div.left { font-size: 17px; color: #465866; }
 #container article .inner p { margin-bottom: 20px; color: #465866; }
 #container article .inner h1 { color: #465866; }
 
@@ -776,7 +776,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .subtitle { margin: 0 0 10px 0; }
 
 /* meta */
-#container article .inner .meta { margin: 10px 0 10px 0; padding: 0; font-size: 15px; }
+#container article .inner .meta { margin: 10px 0 10px 0; padding: 0; font-size: 15px; color: #465866; }
 #container article .inner .meta span.comments a { background-position: 0 -49px; }
 #container article .inner .meta span.requests { background-position: 0 -383px; }
 
@@ -891,13 +891,23 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 
 #container article .right .content ul.tags { clear: both; overflow: hidden; list-style: none; margin-bottom: 20px; }
 #container article .right .content ul.tags li { float: left; position: relative; clear: both; margin: 0 0 5px 0; left: 15px; height: 24px; background: url("/images/tag_sprite.png") repeat-x right 0; }
-#container article .right .content ul.tags li.add { background: url("/images/tag_sprite.png") repeat-x left -105px; width: 88px; height: 26px; left: 0; }
-#container article .right .content ul.tags li.add a { background: none; height: 26px; padding: 0; line-height: 26px; float: none; text-align: center; color: #f10063; left: 0; }
+#container article .right .content ul.tags li.new { display: none; width: 88px; height: 26px; padding: 0; left: 0; background: url("/images/tag_sprite.png") no-repeat -96px -105px; }
+#container article .right .content ul.tags li.new:hover { background-position: -96px -105px; }
+#container article .right .content ul.tags li.new input[type="text"] { border: none; outline: none; width: 68px; height: 26px; color: #666666; font-size: 13px; line-height: 18px; float: left; position: relative; display: block; left: 0; padding: 0 0 0 10px; background: none; }
+#container article .right .content ul.tags li.editable { height: 26px; background-position: right -226px; line-height: 18px; }
+#container article .right .content ul.tags li.editable a { height: 18px; background-position: 0 -197px; color: #666666; line-height: 18px; }
+#container article .right .content ul.tags li.editable a.remove { height: 5px; width: 5px; padding: 0; position: relative; top: 11px; left: -10px; float: right; margin: 0; background: url("/images/tag_sprite.png") repeat-x -200px -105px; text-indent: -99999px; }
+#container article .right .content ul.tags li.editable a.remove:hover { background-position: -200px -105px; }
+#container article .right .content ul.tags li.editable:hover { background-position: right -226px; }
+#container article .right .content ul.tags li.editable:hover a { color: #666666; background-position: 0 -197px; }
+#container article .right .content ul.tags li.editable:hover a.remove { background-position: -200px -105px; }
 #container article .right .content ul.tags li a { float: left; position: relative; display: block; line-height: 16px; left: -15px; height: 16px; padding: 4px 0 4px 12px; background: url("/images/tag_sprite.png") no-repeat 0 -26px; }
 #container article .right .content ul.tags li:hover { background-position: right -53px; }
 #container article .right .content ul.tags li:hover a { color: #fff; background-position: 0 -79px; }
 #container article .right .content ul.tags li:hover.add { background-position: left -105px; }
 #container article .right .content ul.tags li:hover.add a { background: none; color: #465866; }
+#container article .right .content ul.tags li.add { background: url("/images/tag_sprite.png") repeat-x left -105px; width: 88px; height: 26px; left: 0; }
+#container article .right .content ul.tags li.add a { background: none; height: 26px; padding: 0; line-height: 26px; float: none; text-align: center; color: #f10063; left: 0; }
 
 /* Sharing */
 .ie7 ul.sharing li { margin: 0 3px 0 3px; }
