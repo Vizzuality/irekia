@@ -396,14 +396,14 @@ class User < ActiveRecord::Base
   end
 
   def his_opinion(content)
-
     case content
     when Question
       content.answer.where('user_id = ?', id)
     when Proposal
       content.votes.where('user_id = ?', id)
+    else
+      0
     end
-
   end
 
   def update_with_password(params={})

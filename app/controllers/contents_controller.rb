@@ -64,10 +64,7 @@ class ContentsController < ApplicationController
 
         end
       else
-        return if current_user && current_user.has_given_his_opinion?(@content.answer)
-
         @answer = @content.answer
-
       end
 
     when Proposal
