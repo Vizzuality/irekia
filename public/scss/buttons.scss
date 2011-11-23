@@ -472,6 +472,22 @@ a.radio {
   }
 }
 
+/* =============================================================================
+Edition forms
+========================================================================== */
+
+form.editable,
+#container article .inner .left  form.editable {
+  float:left;
+  clear:both;
+  margin: 0 0 10px 0;
+  padding: 8px 17px 0 8px;
+  border:1px solid #ccc;
+  @include border-radius(3px);
+  background: $editable_color;
+
+  h1, h2, p, .meta { margin: 0 0 9px 0; padding: 0; clear:none; }
+}
 
 /**
  * Default DropKick theme

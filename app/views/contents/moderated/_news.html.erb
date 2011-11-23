@@ -7,27 +7,67 @@
 <div class="inner">
   <div class="left">
 
-    <div class="context">
-      <h3><%= t(@content.content_type) %></h3>
-       <% if @content.content_area %> <span class="middot">&middot;</span> <%= link_to @content.content_area.name, @content.content_area %> <% end %>
-    </div>
 
-    <h1><%= @content.title %></h1>
-    <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => :subtitle if @content.subtitle %>
+    <% if true %>
 
-    <div class="meta">
-    <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
-    &middot;
-    <% if !@content.areas.blank? %>
-      <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
-      &middot;
+      <div class="context">
+        <h3><%= t(@content.content_type) %></h3>
+        <% if @content.content_area %> <span class="middot">&middot;</span> <%= link_to @content.content_area.name, @content.content_area %> <% end %>
+      </div>
+
+      <form action="#" class="editable">
+        <%= content_tag :h1, @content.title %>
+      </form>
+
+      <form action="#" class="editable">
+        <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => :subtitle if @content.subtitle %>
+      </form>
+
+
+      <form action="#" class="editable">
+      <div class="meta">
+        <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
+        &middot;
+        <% if !@content.areas.blank? %>
+          <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+          &middot;
+        <% end %>
+        <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
+      </div>
+    </form>
+
+      <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+
+      <form action="#" class="editable">
+        <%= simple_format (sanitize @content.body.try(:strip), :tags => %w(strong), :attributes => nil)  %>
+      </form>
+
+      <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
+    <% else %>
+
+      <div class="context">
+        <h3><%= t(@content.content_type) %></h3>
+        <% if @content.content_area %> <span class="middot">&middot;</span> <%= link_to @content.content_area.name, @content.content_area %> <% end %>
+      </div>
+
+      <%= content_tag :h1, @content.title %>
+      <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => :subtitle if @content.subtitle %>
+
+      <div class="meta">
+        <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
+        &middot;
+        <% if !@content.areas.blank? %>
+          <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+          &middot;
+        <% end %>
+        <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
+      </div>
+
+      <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+      <%= simple_format (sanitize @content.body.try(:strip), :tags => %w(strong), :attributes => nil)  %>
+      <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
     <% end %>
-    <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
-    </div>
 
-    <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
-    <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil  %>
-    <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
 
     <%= render "participations/comments" %>
 

@@ -31,6 +31,7 @@ create_news :title        => 'La Behobia-SS abandona el calendario de la Españo
 La popularísima prueba pedestre de la Behobia-San Sebastián se sale del calendario nacional establecido por la Real Federación Española de Atletismo por su desacuerdo y disconformidad con el reglamento que obliga a los organizadores a pagar un canon de tres euros por atleta participante.
 
 De esta manera, la Behobia no podrá contar con atletas becados por el ente federativo ya que estos no pueden disputar carreras que no estén en el programa oficial de competición.
+
 La consecuencia más directa de esta decisión del fortuna repercute a dos atletas profesionales asiduos a este circuito guipuzcoano, el madrileño Chema Martínez –cuatro veces ganador– y el salmantino Rafa Iglesias, vencedor de las dos últimas ediciones.
             EOF
             ),
