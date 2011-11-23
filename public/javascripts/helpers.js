@@ -264,17 +264,21 @@ jQuery.fn.enableEditTags = function(opt){
   // submit tag
   $new.find("form").submit(function(e) {
     $new.fadeOut(speed, function() {
-      //$(this).find("input").val("");
       $add.fadeIn(fadeInSpeed);
+
+      var val = $new.find('input[type="text"]').val();
+
+      $add.before("<li class='editable'><a href='#'>" + val + "</a>");
     });
   });
 
   // add tag
-  $add.find("a").click(function(e){
+  $add.find("a").live("click", function(e){
     e.preventDefault();
+    $new.find('input[type="text"]').val("");
     $(this).parent().fadeOut(speed, function() {
       $ul.find(".new").fadeIn(fadeInSpeed, function() {
-        $(this).find("input").focus();
+        $(this).find('input[type="text"]').focus();
       });
     });
   });
