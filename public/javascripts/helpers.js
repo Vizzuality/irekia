@@ -262,14 +262,11 @@ jQuery.fn.enableEditTags = function(opt){
   $add = $(this).find(".add");
 
   // submit tag
-  $new.find("input").keyup(function(e) {
-    if (e.keyCode == 13) {
-      // TODO: add submit code
-      $new.fadeOut(speed, function() {
-        $(this).find("input").val("");
-        $add.fadeIn(fadeInSpeed);
-      });
-    }
+  $new.find("form").submit(function(e) {
+    $new.fadeOut(speed, function() {
+      $(this).find("input").val("");
+      $add.fadeIn(fadeInSpeed);
+    });
   });
 
   // add tag
