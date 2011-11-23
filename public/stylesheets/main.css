@@ -775,7 +775,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 
 /* meta */
 #container article .inner .meta { margin: 10px 0 10px 0; padding: 0; font-size: 15px; }
-#container article .inner .meta p.info span.comments a { background-position: 0 -44px; }
+#container article .inner .meta span.comments a { background-position: 0 -49px; }
 #container article .inner .meta span.requests { background-position: 0 -383px; }
 
 /* context */
