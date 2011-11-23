@@ -12,19 +12,22 @@
         <% if @content.content_area %> <span class="middot">&middot;</span> <%= link_to @content.content_area.name, @content.content_area %> <% end %>
       </div>
 
-      <form action="#" class="editable">
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
         <%= content_tag :h1, @content.title %>
-      </form>
+        <%= form.text_field :title %>
+      <% end -%>
 
       <% unless @content.subtitle.blank? %>
-        <form action="#" class="editable">
+        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
           <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => :subtitle if @content.subtitle %>
-        </form>
+          <%= form.text_field :subtitle %>
+        <% end -%>
       <% end %>
 
-      <form action="#" class="editable">
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
         <div class="meta">
           <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
+          <%= form.date_select :published_at %>
           &middot;
           <% if !@content.areas.blank? %>
             <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
@@ -32,16 +35,20 @@
           <% end %>
           <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
         </div>
-      </form>
+      <% end -%>
 
-      <form action="#" class="editable">
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
         <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
-      </form>
+        <% form.fields_for :news_data do |news_data| %>
+        <%= news_data.file_field :image %>
+        <% end -%>
+      <% end -%>
 
-      <form action="#" class="editable">
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
         <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil  %>
         <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
-      </form>
+        <%= form.text_area :body %>
+      <% end -%>
 
     <%= render "participations/comments" %>
 
