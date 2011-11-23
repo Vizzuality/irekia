@@ -37,6 +37,20 @@ class ContentsController < ApplicationController
     end
   end
 
+  def edit
+    @editable = true;
+    @content = @content_class.by_id(params[:id])
+
+    @comments = @content.comments.moderated.all
+    @comments_count = @content.comments_count
+    @last_contents = @content.last_contents(3)
+
+    @comment = @content.comments.build
+    @comment.build_comment_data
+
+    @tags = @content.tags.present?? @content.tags.split(',') : []
+  end
+
   def show
     @content = @content_class.by_id(params[:id])
     @moderation_status = @content.moderated?? 'moderated' : 'not_moderated'

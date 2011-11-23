@@ -176,7 +176,8 @@ jQuery.fn.enableRegistration = function(opt){
 
 /* Enables tag editing */
 jQuery.fn.enableEditTags = function(opt){
-  var speed     = (opt && opt.speed) || 200,
+  var speed     = (opt && opt.speed) || 100,
+  fadeInSpeed   = (opt && opt.speed) || 10,
   $ul = $(this),
   $new = $ul.find(".new"),
   $add = $(this).find(".add");
@@ -187,7 +188,7 @@ jQuery.fn.enableEditTags = function(opt){
       // TODO: add submit code
       $new.fadeOut(speed, function() {
         $(this).find("input").val("");
-        $add.fadeIn(speed);
+        $add.fadeIn(fadeInSpeed);
       });
     }
   });
@@ -196,7 +197,7 @@ jQuery.fn.enableEditTags = function(opt){
   $add.find("a").click(function(e){
     e.preventDefault();
     $(this).parent().fadeOut(speed, function() {
-      $ul.find(".new").fadeIn(speed, function() {
+      $ul.find(".new").fadeIn(fadeInSpeed, function() {
         $(this).find("input").focus();
       });
 
