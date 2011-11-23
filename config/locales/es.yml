@@ -782,6 +782,7 @@
             facebook: Facebook
           tags:
             title: Tags
+            add_tags: 'Añadir tag'
           related_politicians:
             title: Políticos relacionados
           related_content:

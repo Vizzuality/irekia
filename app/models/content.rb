@@ -36,6 +36,7 @@ class Content < ActiveRecord::Base
   accepts_nested_attributes_for :comments, :areas_contents, :contents_users
 
   attr_accessor :location, :parent
+  attr_reader :tag
 
   def self.find_or_initialize(params = nil)
     new(params)
@@ -89,6 +90,14 @@ class Content < ActiveRecord::Base
 
   def text
 
+  end
+
+  def tag=(new_tag)
+    return if new_tag.blank?
+
+    tags_array = (self.tags || '').split(',')
+    tags_array << new_tag
+    self.tags = tags_array.join(',')
   end
 
   def last_contents(limit = 5)

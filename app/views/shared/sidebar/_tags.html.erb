@@ -1,8 +1,8 @@
-<% if @tags.size > 0 or @editable %>
+<% if @tags.present? || @editable %>
   <h4><%= t('.title') %></h4>
   <ul class="tags<%= " editable" if @editable %>">
     <% @tags.each do |tag| -%>
-      <% if true %>
+      <% if @editable %>
         <li<%=" class='editable'" if @editable %>><%= link_to tag.strip, search_path(:search => {:query => tag}), :class => :content %> <a href="#" class="remove">x</a></li>
       <% else %>
         <li><%= link_to tag.strip, search_path(:search => {:query => tag}), :class => :content %></li>
@@ -10,8 +10,12 @@
     <% end -%>
 
     <% if @editable %>
-      <li class="add"><%= link_to "Añadir tag", "/in_development", :class => :content %></li>
-      <li class="new"> <input type="text" /> </li>
+      <li class="add"><%= link_to t('.add_tags'), "/in_development", :class => :content %></li>
+      <li class="new">
+        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+          <%= form.text_field :tag %>
+        <% end -%>
+      </li>
     <% end %>
   </ul>
 <% end %>
