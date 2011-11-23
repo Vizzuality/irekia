@@ -858,9 +858,13 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .right ul.people.extra-margin-bottom { margin-bottom: 30px; }
 #container article .inner .right ul.people li { clear: both; overflow: hidden; margin: 0 0 12px 0; padding: 0; font-size: 15px; color: #465866; }
 #container article .inner .right ul.people li.more a.name { margin-top: 8px; }
-#container article .inner .right ul.people li.add { width: 263px; height: 59px; margin-left: -8px; background: url("/images/tag_sprite.png") no-repeat 0 -133px; }
+#container article .inner .right ul.people li.add { position: relative; text-align: center; width: 255px; height: 59px; background: url("/images/tag_sprite.png") no-repeat 0 -133px; }
+#container article .inner .right ul.people li.add.yourself { text-align: left; }
 #container article .inner .right ul.people li.add a.add { margin-top: 22px; font-size: 13px; color: #f10063; }
 #container article .inner .right ul.people li.add .avatar { margin: 9px 10px 0 8px; }
+#container article .inner .right ul.people li.add .spinner { top: 30px; right: 26px; position: absolute; }
+#container article .inner .right ul.people li.add .input_field { display: none; width: 216px; height: 39px; padding: 0 10px; margin: 10px; background: url("/images/tag_sprite.png") no-repeat 0 -261px; text-align: left; }
+#container article .inner .right ul.people li.add .input_field input[type="text"] { width: 190px; height: 39px; padding: 0; margin: 0; outline: none; border: none; background: none; color: #666; font-size: 15px; -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
 #container article .inner .right ul.people li a { display: block; font-weight: normal; color: #1d79b0; }
 #container article .inner .right ul.people li a:hover { color: #114c6e; }
 #container article .inner .right ul.people li .avatar { float: left; margin: 0 9px 0 0; }

@@ -4,6 +4,10 @@ $(function() {
 	$('.home_last_activity').verticalHomeLoop();
 
   $(".tags.editable").enableEditTags();
+  $(".people.editable").enablePoliticianTags();
+
+
+
   $(".more_proposals").enablePagination({name: "proposals"});
   $(".more_months").enablePagination({name: "months"});
   $(".more_questions").enablePagination({name: "questions"});

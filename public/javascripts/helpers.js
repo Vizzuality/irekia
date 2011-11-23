@@ -174,6 +174,85 @@ jQuery.fn.enableRegistration = function(opt){
   });
 }
 
+/* Enables politician taggin */
+jQuery.fn.enablePoliticianTags = function(opt){
+  var speed     = (opt && opt.speed) || 100,
+  interval,
+  spin_element   = document.getElementById('politician_spinner'),
+  spinner        = new Spinner(SPINNER_OPTIONS),
+  fadeInSpeed    = (opt && opt.speed) || 10,
+  $ul            = $(this),
+  $add           = $(this).find(".add"),
+  $addLink       = $add.find("a"),
+  $addInputField = $add.find(".input_field"),
+  $addInput      = $add.find("input");
+
+  $addLink.click(function() {
+    $(this).fadeOut(speed, function() {
+      $addInputField.fadeIn(fadeInSpeed);
+      $addInput.focus();
+    });
+  });
+
+  $addInput.keyup(function(ev){
+
+    if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+
+    clearTimeout(interval);
+
+    if ($(this).val().length > 3) {
+      interval = setTimeout(function(){
+
+        var query = $addInput.val();
+
+        console.log(query);
+        spinner.spin(spin_element);
+
+        var params = { name : query };
+
+        $.ajax({ url: "/search/politicians_and_areas", data: { search: params }, type: "GET", success: function(response) {
+
+          var $response = $(response);
+          console.log(response);
+
+          spinner.stop();
+
+          // When the user clicks on a result…
+         // $response.find("li").unbind();
+         // $response.find("li").bind("click", function(e) {
+         //   var id = $(this).attr("id");
+
+         //   var name = $(this).find(".name").html();
+
+         //   $currentSection.find('.autosuggest_field input[type="text"]').val(name);
+         //   $(this).hasClass("user") ? _updateHiddenTarget("user", id) : _updateHiddenTarget("area", id);
+
+         //   _bindSubmit(data, "Publicar", true, "publish");
+         //   _clearAutosuggest(data);
+         //   _enableSubmit(data.$submit);
+
+         // });
+
+          // $currentSection.find(".autosuggest").fadeOut(150, function() {
+          //   $(this).remove();
+          // });
+
+          // if ($response.find("li").length > 0) {
+          //   $response.hide();
+          //   $response.css("top", $currentSection.find(".autosuggest_field").position().top + 220);
+          //   $ps.find('.content').append($response);
+          //   $response.fadeIn(150);
+          // }
+        }});
+
+      }, 500);
+    }
+  });
+
+
+
+}
+
 /* Enables tag editing */
 jQuery.fn.enableEditTags = function(opt){
   var speed     = (opt && opt.speed) || 100,
@@ -212,6 +291,7 @@ jQuery.fn.enableEditTags = function(opt){
     });
   });
 }
+
 /* Enables checkboxes */
 jQuery.fn.enableCheckbox = function(opt){
 
@@ -235,23 +315,23 @@ jQuery.fn.enableOpinion = function(opt){
 
   this.each(function(){
 
-  $(this).find("input[type='submit'], .my_opinion button").click(function(e) {
+    $(this).find("input[type='submit'], .my_opinion button").click(function(e) {
       $(".my_opinion .selected").removeClass("selected");
       $(this).addClass("selected");
       console.log($(this));
-  });
-
-  $(this).find("form").bind('ajax:success', function(evt, xhr, status) {
-    $(this).parents(".my_opinion").find(".result").fadeOut(250, function() {
-      $(this).html(xhr);
-
-      $(this).parent().removeClass("in_favor");
-      $(this).parent().removeClass("against");
-      $(this).parent().addClass($(xhr).attr('class'));
-
-      $(this).fadeIn(250);
     });
-  });
+
+    $(this).find("form").bind('ajax:success', function(evt, xhr, status) {
+      $(this).parents(".my_opinion").find(".result").fadeOut(250, function() {
+        $(this).html(xhr);
+
+        $(this).parent().removeClass("in_favor");
+        $(this).parent().removeClass("against");
+        $(this).parent().addClass($(xhr).attr('class'));
+
+        $(this).fadeIn(250);
+      });
+    });
 
 
   });
@@ -869,7 +949,7 @@ jQuery.fn.verticalHomeLoop = function(opt){
 
   var ele = this,
   onElement = false,
-	interval = null;
+  interval = null;
 
   function loopContent() {
     if ($(ele).find('div.left ul li').size()>0 && !onElement) {
@@ -894,15 +974,15 @@ jQuery.fn.verticalHomeLoop = function(opt){
     onElement = false;
   });
 
-	$(window).blur(function(){
-	  clearInterval(interval);
-		interval = null;
-	});
-	$(window).focus(function(){
-		if (!interval) {
-		  interval = setInterval(function(){loopContent()},5000);
-		}
-	});
+  $(window).blur(function(){
+    clearInterval(interval);
+    interval = null;
+  });
+  $(window).focus(function(){
+    if (!interval) {
+      interval = setInterval(function(){loopContent()},5000);
+    }
+  });
 
-	interval = setInterval(function(){loopContent()},5000);
+  interval = setInterval(function(){loopContent()},5000);
 }
