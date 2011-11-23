@@ -392,7 +392,7 @@ class User < ActiveRecord::Base
   end
 
   def has_given_his_opinion?(content)
-    his_opinion(content)
+    his_opinion(content).count > 0
   end
 
   def his_opinion(content)
@@ -402,7 +402,7 @@ class User < ActiveRecord::Base
     when Proposal
       content.votes.where('user_id = ?', id)
     else
-      0
+      []
     end
   end
 
