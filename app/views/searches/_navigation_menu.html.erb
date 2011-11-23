@@ -13,7 +13,7 @@
     <h2><%= t(".no_results") %></h2>
     </header>
     <div class="content">
-      <p><%= t(".change_the_search_terms") %> <%= t(".you_can_also") %> <%= link_to t(".explore_irekia_contents"), "/in_development" %>.</p>
+      <p><%= t(".change_the_search_terms") %> <% unless current_user %><%= t(".you_can_also") %> <%= link_to t(".explore_irekia_contents"), root_path %>.<% end %></p>
     </div>
   </div>
   <div class="t"></div><div class="f"></div>
