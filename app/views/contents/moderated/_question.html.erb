@@ -11,7 +11,7 @@
     <div class="context">
       <h3><%= t(@content.content_type) %></h3>
       <% if @content.target_area %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_area.name, @content.target_area %> <% end %>
-       <% if @content.target_user %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_user.fullname, @content.target_user %> <% end %>
+      <% if @content.target_user %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_user.fullname, @content.target_user %> <% end %>
     </div>
 
     <h2><%= @content.question_text %></h2>
@@ -45,15 +45,15 @@
             <%= form.hidden_field :related_content_id %>
             <%= form.fields_for :answer_data, @new_answer.answer_data do |answer_data| -%>
 
-              <h3>Contesta a esta pregunta</h3>
+              <h3><%= t(".answer_this_question") %></h3>
               <div id="123" class="input-counter">
                 <%= answer_data.text_area :answer_text, :class => :grow %>
               </div>
 
-              <h3>Añade un video si quieres</h3>
+              <h3><%= t(".add_a_video") %></h3>
               <div class="input_field placeholder">
                 <%= answer_data.text_field :answer_text %>
-                <span class="holder">Dirección de YouTube o Vimeo</span>
+                <span class="holder"><%= t(".youtube_or_vimeo_url") %></span>
               </div>
 
             <% end -%>
@@ -63,7 +63,7 @@
                 <div class="checkbox_button facebook"><a href="#" class="checkbox"><div class="icon"></div> </a></div>
                 <div class="checkbox_button twitter"><a href="#" class="checkbox"><div class="icon"></div> </a></div>
               </div>
-              <div class="right"><%= form.submit 'Publicar respuesta', :id => "submit-123", :class => 'white_button pink disabled', :disabled => :disabled %></div>
+              <div class="right"><%= form.submit t(".publish"), :id => "submit-123", :class => 'white_button pink disabled', :disabled => :disabled %></div>
             </div>
 
           <% end -%>

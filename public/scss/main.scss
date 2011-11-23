@@ -3121,7 +3121,7 @@ a.editable {
 
           /* meta */
           #container article .inner .meta {
-            margin: 0 0 10px 0; padding:0; font-size:15px;
+            margin: 10px 0 10px 0; padding:0; font-size:15px;
 
             p.info span.comments a {
               background-position: 0 -44px;
@@ -3136,7 +3136,7 @@ a.editable {
           #container article .inner .context {
             float:left;
             clear:right;
-            margin: 0 0 10px 0; padding: 0 0 5px 0;
+            margin: 0 0 6px 0; padding: 0 0 3px 0;
             border-bottom: 1px solid #e4e8da;
             font-size:15px;
             line-height: normal;

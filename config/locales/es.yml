@@ -856,6 +856,10 @@
           one: Por ahora sólo tú quieres que sea contestada
           other: Por ahora sólo tú y otra persona queréis que sea contestada
         you_and_thousands: Por ahora sólo tú y otras %{count} personas queréis que sea contestada
+        answer_this_question: Contesta a esta pregunta
+        add_a_video:  Añade un video si quieres
+        publish: 'Publicar respuesta'
+        youtube_or_vimeo_url: Dirección de YouTube o Vimeo
         people_demanding_answer:
           zero: Nadie ha pedido que sea contestada,
           one: 1 persona quiere que sea contestada,
