@@ -259,16 +259,23 @@ jQuery.fn.enableEditing = function(opt){
   fadeInSpeed   = (opt && opt.speed) || 10,
   $ul = $(this),
   $new = $ul.find(".new"),
-  $add = $(this).find(".add");
+  $add = $(this).find(".add"),
+  content;
 
   $(this).click(function() {
     $(this).find(".content").fadeOut(speed);
     $(this).find('.input_field, .submit').fadeIn(fadeInSpeed);
+    $(this).find('.input_field :text, .input_field textarea').focus();
+  });
+
+  $(this).bind('ajax:success', function(evt, xhr, status) {
+    $(this).find(".content").html(content);
+    $(this).find(".content").fadeIn(fadeInSpeed);
+    $(this).find('.input_field, .submit').fadeOut(speed);
   });
 
   $(this).submit(function(e) {
-   // $(this).find(".content").fadeIn(fadeInSpeed);
-   // $(this).find('.input_field, .submit').fadeOut(speed);
+    content = $(this).find('.input_field :text, .input_field textarea').val();
   });
 }
 
