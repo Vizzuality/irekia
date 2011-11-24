@@ -3,6 +3,7 @@ class News < Content
           :dependent => :destroy
 
   delegate :title, :subtitle, :body, :source_url, :to => :news_data, :allow_nil => true
+  accepts_nested_attributes_for :news_data
 
   def self.from_area(area)
     includes(:areas, :users => :areas).where('areas.id = ? OR areas_users.id = ?', area.id, area.id)
