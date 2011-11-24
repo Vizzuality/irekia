@@ -473,7 +473,7 @@ a.radio {
 }
 
 /* =============================================================================
-Edition forms
+Editing forms
 ========================================================================== */
 
 form.editable,
@@ -482,6 +482,15 @@ form.editable,
   float:left;
   margin: 0 0 10px 0;
   width:607px;
+  position:relative;
+
+  .spinner {
+    top:10px;
+    right:0px;
+    z-index:1000;
+    position:absolute;
+    background:red;
+  }
 
   .content {
     padding: 10px 17px;
@@ -494,13 +503,15 @@ form.editable,
   .submit { display:none; }
 
   .input_field {
-    width:592px;
+    width:585px;
     display:none;
     padding: 10px;
     border:1px solid #ccc;
     @include border-radius(3px);
-    height:auto;
-    margin: 0 0 10px 0;
+    height:200px;
+    margin: 0 0 5px 0;
+
+    textarea { height: 100%; }
 
     textarea,
     input[type="text"] {
@@ -511,19 +522,6 @@ form.editable,
   }
 }
 
-// form.editable,
-// #container article .inner .left  form.editable {
-//   float:left;
-//   clear:both;
-//   margin: 0 0 10px 0;
-//   padding: 8px 17px 0 8px;
-//   border:1px solid #ccc;
-//   @include border-radius(3px);
-//   background: $editable_color;
-//
-//   h1, h2, p, .meta { margin: 0 0 9px 0; padding: 0; clear:none; }
-//   input[type="text"] { display:none; }
-// }
 
 /**
  * Default DropKick theme

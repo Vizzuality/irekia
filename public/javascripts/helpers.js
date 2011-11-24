@@ -185,12 +185,14 @@ jQuery.fn.enablePoliticianTags = function(opt){
   $add           = $(this).find(".add"),
   $addLink       = $add.find("a"),
   $addInputField = $add.find(".input_field"),
-  $addInput      = $add.find("input");
+  $addInput      = $add.find('input[type="text"]');
 
-  $addLink.click(function() {
+  $addLink.click(function(e) {
+    e.preventDefault();
     $(this).fadeOut(speed, function() {
-      $addInputField.fadeIn(fadeInSpeed);
-      $addInput.focus();
+      $addInputField.fadeIn(fadeInSpeed, function() {
+        $addInput.focus();
+      });
     });
   });
 
@@ -255,27 +257,35 @@ jQuery.fn.enablePoliticianTags = function(opt){
 
 /* Enables content editing */
 jQuery.fn.enableEditing = function(opt){
-  var speed     = (opt && opt.speed) || 100,
-  fadeInSpeed   = (opt && opt.speed) || 10,
+  var speed     = (opt && opt.speed) || 120,
+  fadeInSpeed   = (opt && opt.speed) || 80,
   $ul = $(this),
   $new = $ul.find(".new"),
   $add = $(this).find(".add"),
+  spinner = new Spinner(SPINNER_OPTIONS),
   content;
 
   $(this).click(function() {
-    $(this).find(".content").fadeOut(speed);
-    $(this).find('.input_field, .submit').fadeIn(fadeInSpeed);
+    $(this).find(".content").slideUp(speed);
+    $(this).find('.input_field').slideDown(fadeInSpeed);
+    $(this).find('.submit').fadeIn(fadeInSpeed);
     $(this).find('.input_field :text, .input_field textarea').focus();
   });
 
   $(this).bind('ajax:success', function(evt, xhr, status) {
     $(this).find(".content").html(content);
-    $(this).find(".content").fadeIn(fadeInSpeed);
-    $(this).find('.input_field, .submit').fadeOut(speed);
+    $(this).find(".content").slideDown(fadeInSpeed);
+    $(this).find('.input_field').slideUp(speed);
+    $(this).find('.submit').fadeOut(speed);
+    $(this).find('.submit').removeClass("disabled");
+    $(this).find('.submit').removeAttr("disabled");
   });
 
   $(this).submit(function(e) {
     content = $(this).find('.input_field :text, .input_field textarea').val();
+    $(this).find('.submit').addClass("disabled");
+    $(this).find('.submit').attr("disabled", "disabled");
+
   });
 }
 
