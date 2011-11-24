@@ -3,7 +3,7 @@ task :setup => %w(irekia:setup_database irekia:validate_all_not_moderated irekia
 
 namespace :irekia do
   desc "Setup Irekia Database"
-  task :setup_database => %w(irekia:drop_tables db:migrate db:seed irekia:import_news irekia:import_events irekia:import_areas_and_politicians)
+  task :setup_database => %w(irekia:drop_tables db:migrate db:seed irekia:import_news irekia:import_events)
 
   desc "Empties all irekia tables"
   task :drop_tables => :environment do
