@@ -14,6 +14,7 @@ gem 'json', '1.6.1'
 gem 'mini_fb', '1.1.7'
 gem 'twitter', '1.7.2'
 gem 'feedzirra', '0.1.1'
+gem 'ri_cal'
 
 group :development do
   gem 'capistrano'

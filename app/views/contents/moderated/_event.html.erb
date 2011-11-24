@@ -1,7 +1,7 @@
 <% content_for :facebook_meta do -%>
   <meta property="og:title" content="Irekia - <%= @content.title %>" />
   <meta property="og:description" content="<%= @content.body.strip.truncate(128) %>" />
-  <meta property="og:image" content="<%= image_url @content.event_data.image.content_url %>" />
+  <meta property="og:image" content="<%= image_url @content.event_data.image.content_url if @content.event_data.image.present? %>" />
 <% end -%>
 <article class="activity with_footer">
 <div class="inner">
@@ -26,7 +26,7 @@
     </div>
 
 
-    <%= image_tag @content.event_data.image.content_url %>
+    <%= image_tag @content.event_data.image.content_url if @content.event_data.image.present? %>
     <%= simple_format @content.body %>
     <%= render "participations/comments" %>
   </div>

@@ -189,7 +189,7 @@ class Content < ActiveRecord::Base
 
   def publish
 
-    return unless self.moderated?
+    return unless self.moderated? && self.author.present?
 
     user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
     user_action.published_at = self.published_at
