@@ -14,13 +14,17 @@
 
       <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
         <%= content_tag :h1, @content.title %>
-        <%= form.text_field :title %>
+        <%= form.fields_for :news_data do |news_data| %>
+          <%= news_data.text_field :title %>
+        <% end -%>
       <% end -%>
 
       <% unless @content.subtitle.blank? %>
         <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
           <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => :subtitle if @content.subtitle %>
-          <%= form.text_field :subtitle %>
+          <%= form.fields_for :news_data do |news_data| %>
+            <%= news_data.text_field :subtitle %>
+          <% end -%>
         <% end -%>
       <% end %>
 
@@ -39,15 +43,17 @@
 
       <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
         <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
-        <% form.fields_for :news_data do |news_data| %>
-        <%= news_data.file_field :image %>
+        <%= form.fields_for :news_data do |news_data| %>
+          <%= news_data.file_field :image %>
         <% end -%>
       <% end -%>
 
       <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
         <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil  %>
         <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
-        <%= form.text_area :body %>
+        <%= form.fields_for :news_data do |news_data| %>
+          <%= news_data.text_area :body %>
+        <% end -%>
       <% end -%>
 
     <%= render "participations/comments" %>
