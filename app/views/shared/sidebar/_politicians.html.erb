@@ -1,4 +1,4 @@
-<% if @content.users.size > 0 or @editable %>
+<% if @content.users.size > 0 || @editable %>
   <h4><%= t('.title') %></h4>
   <ul class="people no-border no-padding extra-margin-bottom<%= ' editable' if @editable %>">
     <% @content.users.each do |politician| -%>

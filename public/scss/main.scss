@@ -3429,6 +3429,19 @@ a.editable {
                   font-size: 15px;
                   color: #465866;
 
+                  // Edit tag
+                  &.editable {
+                    width:255px;
+                    height:60px;
+                    padding: 12px 0 0 10px;
+                    background:url('/images/tag_sprite.png') no-repeat 0 -310px;
+                    line-height:18px;
+                    color: #7D8A92;
+                    margin: 0;
+                    a { color: #666666; }
+                    .avatar:before { border-color: $editable_color; }
+                  }
+
                   &.more a.name { margin-top: 8px; }
 
                   &.add {
