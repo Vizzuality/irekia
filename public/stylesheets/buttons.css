@@ -116,7 +116,7 @@ Edition forms
 form.editable, #container article .inner .left form.editable { float: left; margin: 0 0 10px 0; }
 form.editable .content, #container article .inner .left form.editable .content { padding: 10px 17px; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; background: #ffffeb; cursor: pointer; }
 form.editable .submit, #container article .inner .left form.editable .submit { display: none; }
-form.editable .input_field, #container article .inner .left form.editable .input_field { width: 595px; display: none; padding: 10px; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; height: auto; margin: 0 0 10px 0; }
+form.editable .input_field, #container article .inner .left form.editable .input_field { width: 592px; display: none; padding: 10px; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; height: auto; margin: 0 0 10px 0; }
 form.editable .input_field textarea, form.editable .input_field input[type="text"], #container article .inner .left form.editable .input_field textarea, #container article .inner .left form.editable .input_field input[type="text"] { border: none; width: 100%; outline: none; }
 
 /** Default DropKick theme  Feel free to edit the default theme or even add your own.  See the readme for themeing help  */

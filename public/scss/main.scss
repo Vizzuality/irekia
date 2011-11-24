@@ -3597,11 +3597,40 @@ a.editable {
           }
 
           // Tagging system
+          #container article .inner .context ul.tags {
+            float: left;
+            position:relative;
+            top:-5px;
+            margin:0px;
+
+            li {
+              @include inline-block;
+              margin: 0 20px 0 0;
+              a { color: $medium_dark; }
+              &.add {
+                float:none;
+                width:26px;
+                height:26px;
+                background:url('/images/tag_sprite.png') no-repeat -216px -105px;
+                padding:0;
+                text-align:center;
+                a {
+                  width:auto;
+                  float:none;
+                  margin: 3px 0 0 0;
+                  color:$pink;
+                }
+              }
+            }
+          }
+
           #container article .right .content ul.tags {
-            clear:both;
-            overflow:hidden;
-            list-style:none;
             margin-bottom:20px;
+          }
+
+          ul.tags,
+          #container article .right .content ul.tags {
+            list-style:none;
 
             li {
               float:left;

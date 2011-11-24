@@ -3,6 +3,7 @@
   <meta property="og:description" content="<%= @content.body.strip.truncate(128) %>" />
   <meta property="og:image" content="<%= image_url @content.news_data.image.content_url if @content.news_data.image.present? %>" />
 <% end -%>
+
 <article class="activity with_footer">
 <div class="inner">
   <div class="left">
@@ -10,8 +11,23 @@
       <div class="context">
         <h3><%= t(@content.content_type) %></h3>
         <% if !@content.areas.blank? %>
-          <span class="middot">&middot;</span>
-          <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+          <!--<span class="middot">&middot;</span>-->
+          <ul class="tags editable">
+            <% @content.areas.each do |a| %>
+              <li<%=" class='editable'" if @editable %>>
+              <%= link_to a.name, area_path(a) %>
+
+              <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+                <%= form.submit 'x', :class => 'remove' %>
+              <% end -%>
+
+              </li>
+            <% end %>
+
+            <% if @editable %>
+              <li class="add"><%= link_to "+", "#", :class => :content %></li>
+            <% end %>
+          </ul>
         <% end %>
       </div>
 
@@ -34,11 +50,6 @@
         <div class="meta">
           <span class="date content"><%= l @content.published_at.to_date, :format => :long %></span>
           <%= form.date_select :published_at %>
-          &middot;
-          <% if !@content.areas.blank? %>
-            <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
-            &middot;
-          <% end %>
         </div>
       <% end -%>
 
