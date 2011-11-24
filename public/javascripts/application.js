@@ -3,6 +3,7 @@ $(function() {
 
 	$('.home_last_activity').verticalHomeLoop();
 
+  $("form.editable").enableEditing();
   $(".tags.editable").enableEditTags();
   $(".people.editable").enablePoliticianTags();
 

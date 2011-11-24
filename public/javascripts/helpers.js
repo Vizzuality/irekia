@@ -253,6 +253,25 @@ jQuery.fn.enablePoliticianTags = function(opt){
 
 }
 
+/* Enables content editing */
+jQuery.fn.enableEditing = function(opt){
+  var speed     = (opt && opt.speed) || 100,
+  fadeInSpeed   = (opt && opt.speed) || 10,
+  $ul = $(this),
+  $new = $ul.find(".new"),
+  $add = $(this).find(".add");
+
+  $(this).click(function() {
+    $(this).find(".content").fadeOut(speed);
+    $(this).find('.input_field, .submit').fadeIn(fadeInSpeed);
+  });
+
+  $(this).submit(function(e) {
+   // $(this).find(".content").fadeIn(fadeInSpeed);
+   // $(this).find('.input_field, .submit').fadeOut(speed);
+  });
+}
+
 /* Enables tag editing */
 jQuery.fn.enableEditTags = function(opt){
   var speed     = (opt && opt.speed) || 100,

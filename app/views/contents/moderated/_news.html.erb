@@ -9,7 +9,12 @@
 
     <div class="context">
       <h3><%= t(@content.content_type) %></h3>
-      <% if @content.content_area %> <span class="middot">&middot;</span> <%= link_to @content.content_area.name, @content.content_area %> <% end %>
+
+      <% if !@content.areas.blank? %>
+        <span class="middot">&middot;</span>
+        <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+      <% end %>
+
     </div>
 
     <%= content_tag :h1, @content.title %>
@@ -18,10 +23,6 @@
     <div class="meta">
       <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
       &middot;
-      <% if !@content.areas.blank? %>
-        <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
-        &middot;
-      <% end %>
       <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
     </div>
 
