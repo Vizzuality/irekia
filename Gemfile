@@ -23,7 +23,6 @@ end
 
 group :development, :test do
   gem 'ruby-debug19'
-  gem 'ruby-debug-base19', '>= 0.11.25', '<= 0.11.26'
   gem 'rspec-rails', '~> 2.6'
   gem 'capybara', '~> 1.0.1'
   gem 'selenium-webdriver', '2.7.0'
@@ -41,5 +40,4 @@ group :development, :test, :staging do
   gem 'delorean'
   gem 'ffaker', '1.8.1'
   gem 'colored', '~> 1.2'
-  gem 'awesome_print'
 end

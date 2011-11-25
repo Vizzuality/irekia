@@ -11,7 +11,7 @@ class Area < ActiveRecord::Base
            :through => :areas_users,
            :source => :user,
            :select => 'users.id, users.name, users.lastname, users.title_id, users.role_id, display_order',
-           :order => 'display_order ASC'
+           :order => 'display_order ASC, external_id ASC'
 
   has_many :areas_contents,
            :class_name => 'AreaContent'
