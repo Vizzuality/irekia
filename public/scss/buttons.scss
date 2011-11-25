@@ -489,6 +489,17 @@ form.editable,
   -webkit-perspective: 1000;
   -webkit-backface-visibility: hidden;
 
+  &.date {
+    z-index:20000;
+    margin: 0 0 20px 0;
+    select { display: none; }
+    .meta { margin: 0; }
+    .dk_container {
+      margin: 0 10px 0 0;
+      li { margin-bottom: 0; }
+    }
+  }
+
   &.image {
     .input_field {
       width:605px;

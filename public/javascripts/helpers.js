@@ -218,69 +218,26 @@ jQuery.fn.enablePoliticianTags = function(opt){
           console.log(response);
 
           spinner.stop();
-
-          // When the user clicks on a result…
-         // $response.find("li").unbind();
-         // $response.find("li").bind("click", function(e) {
-         //   var id = $(this).attr("id");
-
-         //   var name = $(this).find(".name").html();
-
-         //   $currentSection.find('.autosuggest_field input[type="text"]').val(name);
-         //   $(this).hasClass("user") ? _updateHiddenTarget("user", id) : _updateHiddenTarget("area", id);
-
-         //   _bindSubmit(data, "Publicar", true, "publish");
-         //   _clearAutosuggest(data);
-         //   _enableSubmit(data.$submit);
-
-         // });
-
-          // $currentSection.find(".autosuggest").fadeOut(150, function() {
-          //   $(this).remove();
-          // });
-
-          // if ($response.find("li").length > 0) {
-          //   $response.hide();
-          //   $response.css("top", $currentSection.find(".autosuggest_field").position().top + 220);
-          //   $ps.find('.content').append($response);
-          //   $response.fadeIn(150);
-          // }
         }});
-
       }, 500);
     }
   });
-
-
-
 }
 
-/* Enables content editing */
-jQuery.fn.enableEditing = function(opt){
+/* Enables text editing */
+jQuery.fn.enableTextEditing = function(opt){
   var speed     = (opt && opt.speed) || 120,
   fadeInSpeed   = (opt && opt.speed) || 80,
   spinner       = new Spinner(SPINNER_OPTIONS),
   content;
 
-
-  $(this).find(".add_image a").click(function(e) {
-    e.preventDefault();
-    var $form = $(this).parents("form");
-    $(this).parent().slideUp(speed);
-    $form.find(".input_field").fadeIn(speed, function() {
-      $(this).find(':text').focus();
-    });
-  });
-
   $(this).click(function() {
-    if (!$(this).hasClass("image")) {
-      var that = $(this);
-      $(this).find(".content").slideUp(speed);
-      that.find('.input_field').slideDown(speed, function() {
-        that.find('.submit').fadeIn(fadeInSpeed);
-        that.find('.input_field :text, .input_field textarea').focus();
-      });
-    }
+    var that = $(this);
+    $(this).find(".content").slideUp(speed);
+    that.find('.input_field').slideDown(speed, function() {
+      that.find('.submit').fadeIn(fadeInSpeed);
+      that.find('.input_field :text, .input_field textarea').focus();
+    });
   });
 
   $(this).bind('ajax:success', function(evt, xhr, status) {
@@ -296,9 +253,72 @@ jQuery.fn.enableEditing = function(opt){
     content = $(this).find('.input_field :text, .input_field textarea').val();
     $(this).find('.submit').addClass("disabled");
     $(this).find('.submit').attr("disabled", "disabled");
+  });
+}
 
+/* Enables image editing */
+jQuery.fn.enableImageEditing = function(opt){
+  var speed     = (opt && opt.speed) || 120,
+  fadeInSpeed   = (opt && opt.speed) || 80,
+  spinner       = new Spinner(SPINNER_OPTIONS),
+  content;
+
+  $(this).find(".add_image a").click(function(e) {
+    e.preventDefault();
+    var $form = $(this).parents("form");
+    $(this).parent().slideUp(speed);
+    $form.find(".input_field").fadeIn(speed, function() {
+      $(this).find(':text').focus();
+    });
   });
 
+  $(this).bind('ajax:success', function(evt, xhr, status) {
+    $(this).find(".content").html(content);
+    $(this).find(".content").slideDown(fadeInSpeed);
+    $(this).find('.input_field').slideUp(speed);
+    $(this).find('.submit').fadeOut(speed);
+    $(this).find('.submit').removeClass("disabled");
+    $(this).find('.submit').removeAttr("disabled");
+  });
+
+  $(this).submit(function(e) {
+    content = $(this).find('.input_field :text, .input_field textarea').val();
+    $(this).find('.submit').addClass("disabled");
+    $(this).find('.submit').attr("disabled", "disabled");
+  });
+}
+/* Enables date editing */
+jQuery.fn.enableDateEditing = function(opt){
+  var speed     = (opt && opt.speed) || 120,
+  fadeInSpeed   = (opt && opt.speed) || 80,
+  spinner       = new Spinner(SPINNER_OPTIONS),
+  content;
+
+  $(this).click(function() {
+
+    $(this).find('select:eq(0)').dropkick({width:-20});
+    $(this).find('select:eq(1)').dropkick({width:77});
+    $(this).find('select:eq(2)').dropkick({width:-10});
+
+    $(this).find(".content").slideUp(speed);
+    $(this).find('.submit').fadeIn(fadeInSpeed);
+    $(this).find('.input_field :text, .input_field textarea').focus();
+  });
+
+  $(this).bind('ajax:success', function(evt, xhr, status) {
+    $(this).find(".content").html(content);
+    $(this).find(".content").slideDown(fadeInSpeed);
+    $(this).find('.input_field').slideUp(speed);
+    $(this).find('.submit').fadeOut(speed);
+    $(this).find('.submit').removeClass("disabled");
+    $(this).find('.submit').removeAttr("disabled");
+  });
+
+  $(this).submit(function(e) {
+    content = $(this).find('.input_field :text, .input_field textarea').val();
+    $(this).find('.submit').addClass("disabled");
+    $(this).find('.submit').attr("disabled", "disabled");
+  });
 }
 
 /* Enables tag editing */

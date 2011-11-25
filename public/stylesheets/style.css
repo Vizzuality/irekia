@@ -1632,6 +1632,11 @@ a.radio.selected:hover { cursor: pointer; text-decoration: none; }
 Editing forms
 ========================================================================== */
 form.editable, #container article .inner .left form.editable { float: left; margin: 0 0 10px 0; width: 607px; position: relative; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; }
+form.editable.date, #container article .inner .left form.editable.date { z-index: 20000; margin: 0 0 20px 0; }
+form.editable.date select, #container article .inner .left form.editable.date select { display: none; }
+form.editable.date .meta, #container article .inner .left form.editable.date .meta { margin: 0; }
+form.editable.date .dk_container, #container article .inner .left form.editable.date .dk_container { margin: 0 10px 0 0; }
+form.editable.date .dk_container li, #container article .inner .left form.editable.date .dk_container li { margin-bottom: 0; }
 form.editable.image .input_field, #container article .inner .left form.editable.image .input_field { width: 605px; height: 36px; padding: 0; border: none; }
 form.editable.image .input_field .holder, #container article .inner .left form.editable.image .input_field .holder { width: 600px; }
 form.editable.image .input_field input[type="text"], #container article .inner .left form.editable.image .input_field input[type="text"] { width: 585px; border: 1px solid #ccc; font-size: 15px; }

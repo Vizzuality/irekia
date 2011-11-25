@@ -8,7 +8,10 @@ $(function() {
 	$('.home_last_activity').verticalHomeLoop();
 
   // Editing tools
-  $("form.editable").enableEditing();
+  $(".editable.text").enableTextEditing();
+  $(".editable.date").enableDateEditing();
+  $(".editable.image").enableImageEditing();
+
   $(".right .tags.editable").enableEditTags();
   $(".people.editable").enablePoliticianTags();
   $(".add_area").enableAreaEditing();
