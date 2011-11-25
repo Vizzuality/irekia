@@ -146,7 +146,7 @@ module Irekia
 
                   user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ')
                   user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')
-                  user.email                 =  politician['email'].first.present?? politician['email'].first : "#{politician_id}@ej-gv.es"
+                  user.email                 =  politician['email'].try(:first).present?? politician['email'].try(:first) : "#{politician_id}@ej-gv.es"
                   user.password              = 'virekia'
                   user.password_confirmation = 'virekia'
                   user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
