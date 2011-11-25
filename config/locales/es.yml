@@ -1636,14 +1636,6 @@
           administrator: Administrador
           politician: Político
           citizen: Ciudadano
-      title:
-        name:
-          adviser:
-            male: Consejero
-            female: Consejera
-          co_adviser:
-            male: Vice-consejero
-            female: Vice-consejera
 
 #######################################
 # IREKIA - Mailers

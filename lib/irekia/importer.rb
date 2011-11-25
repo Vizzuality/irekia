@@ -152,7 +152,14 @@ module Irekia
                   user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
                   user.city                  = (politician['address'][2] || '').split(' ').map(&:capitalize).join(' ')
                   user.role                  = Role.politician.first
-                  user.title                 = Title.find_or_create_by_name(politician['works_for'].first.first)
+
+                  title_name = politician['works_for'].first.first.try(:capitalize)
+                  if user.title.present?
+                    user.title.update_attribute('translated_name', (user.title.translated_name || {}).merge({"#{lang}" => title_name}))
+                  else
+                    user.title = Title.create(:translated_name => {"#{lang}" => title_name}, :name => title_name)
+                  end
+
                   user.facebook_username     = politician[''].first.delete('http://facebook.com/') rescue nil
                   user.areas                 = Area.where(:external_id => area['id'])
                   user.last_import           = Time.at(politician['update_date'])

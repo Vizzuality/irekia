@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def get_politician_title(user)
-    translates_model_value(user.title, :name)[user.is_woman?? :female : :male] if user.title
+    user.title.get_translated_name if user.title
   end
 
   def menu(options)

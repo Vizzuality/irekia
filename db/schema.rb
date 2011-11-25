@@ -258,7 +258,7 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
 
   create_table "titles", :force => true do |t|
     t.string   "name"
-    t.string   "name_i18n_key"
+    t.text     "translated_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

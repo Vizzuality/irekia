@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   belongs_to :role,
              :select => 'id, name_i18n_key'
   belongs_to :title,
-             :select => 'id, name_i18n_key'
+             :select => 'id, translated_name'
 
   has_many :notifications
 
