@@ -3436,6 +3436,7 @@ a.editable {
 
                   // Edit tag
                   &.editable {
+                    position:relative;
                     width:255px;
                     height:54px;
                     padding: 12px 0 0 10px;
@@ -3443,11 +3444,29 @@ a.editable {
                     line-height:18px;
                     color: #7D8A92;
                     margin: 0;
+
                     a { color: #666666; }
                     .avatar:before { border-color: $editable_color; }
+
+                    form {
+                      position: absolute;
+                      top: 0px;
+                      right: 20px;
+                      float: right;
+                      height: 5px; width: 5px;
+
+                      .remove {
+                        height: 5px; width: 5px;
+                        margin: 0; padding: 0;
+                        background:url('/images/tag_sprite.png') repeat-x -200px -105px;
+                        border:0;
+                        outline:none;
+                        z-index:1000;
+                      }
+                    }
                   }
 
-                  &.more a.name { margin-top: 8px; }
+                  &.more a.name { margin-top: 8px; width: 215px; background:red; }
 
                   &.add {
                     position:relative;

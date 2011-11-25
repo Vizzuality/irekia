@@ -595,35 +595,66 @@ form.editable,
 
 // List of areas for the area selector
 #container .inner .left .areas_editable_selector {
-  .popover {
-    display:none;
+
+  position:absolute;
+  display:none;
+  width:247px;
+  height:auto;
+  padding:14px 0 0 0;
+  background: url("/images/box_notifications_selector.png") no-repeat 0 -30px;
+  z-index:1000;
+
+  &.open {
+    display:block;
+    .popover { display: block; }
+    .handle { background-position: 0 -141px; }
+  }
+
+  .handle {
     position:absolute;
-    width:246px;
-    height: 311px;
+    display:block;
+    width:6px;
+    height:5px;
+    right: 11px;
+    top: 15px;
+    background: url('/images/icons/icon_sprite.png') no-repeat 0 -128px;
+  }
+
+  .popover {
+    display:block;
+    position:absolute;
+    width:230px;
+    height:230px;
+    padding:8px 0 18px 17px;
     z-index:1000;
-    background: url("/images/popovers_bkg.png") no-repeat -3px -536px;
+    background: url("/images/box_notifications_selector.png") no-repeat right bottom;
 
     .scroll-pane {
-      height: 232px;
-      width: 210px;
+      height: 100%;
+      width: 221px;
       overflow: hidden;
-      margin: 20px 0 0 17px;
       outline:none;
 
       ul {
-        margin:0; padding:12px 0 0 0;
-        width:210px;
+        margin:0; padding:0;
+        width:221px;
 
         li {
           text-shadow:none;
-          color:#333;
-          margin: 0 0 11px 0;
+          font-size:13px;
+          margin:0 0 10px 0;
+          padding: 0;
+          color:$medium_dark;
 
-          &.last a { border:none; }
-          a { display:block; padding: 0; margin: 0; color:#666666; }
+          a { color: $medium_dark; }
+
+          &.last { margin: 0; }
+          &.last-child { margin: 0; }
+          &.selected { display:none; }
         }
-      } // ul
-    } // scroll-pane
+      }
+    }
+
   }
 }
 

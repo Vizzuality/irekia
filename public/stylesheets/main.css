@@ -859,10 +859,12 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .right ul.people.no-padding { margin: 0; padding: 0; }
 #container article .inner .right ul.people.extra-margin-bottom { margin-bottom: 30px; }
 #container article .inner .right ul.people li { clear: both; overflow: hidden; margin: 0 0 12px 0; padding: 0; font-size: 15px; color: #465866; }
-#container article .inner .right ul.people li.editable { width: 255px; height: 54px; padding: 12px 0 0 10px; background: url("/images/tag_sprite.png") no-repeat 0 -310px; line-height: 18px; color: #7D8A92; margin: 0; }
+#container article .inner .right ul.people li.editable { position: relative; width: 255px; height: 54px; padding: 12px 0 0 10px; background: url("/images/tag_sprite.png") no-repeat 0 -310px; line-height: 18px; color: #7D8A92; margin: 0; }
 #container article .inner .right ul.people li.editable a { color: #666666; }
 #container article .inner .right ul.people li.editable .avatar:before { border-color: #ffffeb; }
-#container article .inner .right ul.people li.more a.name { margin-top: 8px; }
+#container article .inner .right ul.people li.editable form { position: absolute; top: 0px; right: 20px; float: right; height: 5px; width: 5px; }
+#container article .inner .right ul.people li.editable form .remove { height: 5px; width: 5px; margin: 0; padding: 0; background: url("/images/tag_sprite.png") repeat-x -200px -105px; border: 0; outline: none; z-index: 1000; }
+#container article .inner .right ul.people li.more a.name { margin-top: 8px; width: 215px; background: red; }
 #container article .inner .right ul.people li.add { position: relative; text-align: center; width: 255px; height: 59px; background: url("/images/tag_sprite.png") no-repeat 0 -133px; }
 #container article .inner .right ul.people li.add.yourself { text-align: left; }
 #container article .inner .right ul.people li.add a.add { margin-top: 22px; font-size: 13px; color: #f10063; }

@@ -187,6 +187,11 @@ jQuery.fn.enablePoliticianTags = function(opt){
   $addInputField = $add.find(".input_field"),
   $addInput      = $add.find('input[type="text"]');
 
+
+  $ul.find("input.remove").click(function (e) {
+    $(this).parents("li").fadeOut(speed);
+  });
+
   $addLink.click(function(e) {
     e.preventDefault();
     $(this).fadeOut(speed, function() {

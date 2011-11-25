@@ -1015,10 +1015,12 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .right ul.people.no-padding { margin: 0; padding: 0; }
 #container article .inner .right ul.people.extra-margin-bottom { margin-bottom: 30px; }
 #container article .inner .right ul.people li { clear: both; overflow: hidden; margin: 0 0 12px 0; padding: 0; font-size: 15px; color: #465866; }
-#container article .inner .right ul.people li.editable { width: 255px; height: 54px; padding: 12px 0 0 10px; background: url("/images/tag_sprite.png") no-repeat 0 -310px; line-height: 18px; color: #7D8A92; margin: 0; }
+#container article .inner .right ul.people li.editable { position: relative; width: 255px; height: 54px; padding: 12px 0 0 10px; background: url("/images/tag_sprite.png") no-repeat 0 -310px; line-height: 18px; color: #7D8A92; margin: 0; }
 #container article .inner .right ul.people li.editable a { color: #666666; }
 #container article .inner .right ul.people li.editable .avatar:before { border-color: #ffffeb; }
-#container article .inner .right ul.people li.more a.name { margin-top: 8px; }
+#container article .inner .right ul.people li.editable form { position: absolute; top: 0px; right: 20px; float: right; height: 5px; width: 5px; }
+#container article .inner .right ul.people li.editable form .remove { height: 5px; width: 5px; margin: 0; padding: 0; background: url("/images/tag_sprite.png") repeat-x -200px -105px; border: 0; outline: none; z-index: 1000; }
+#container article .inner .right ul.people li.more a.name { margin-top: 8px; width: 215px; background: red; }
 #container article .inner .right ul.people li.add { position: relative; text-align: center; width: 255px; height: 59px; background: url("/images/tag_sprite.png") no-repeat 0 -133px; }
 #container article .inner .right ul.people li.add.yourself { text-align: left; }
 #container article .inner .right ul.people li.add a.add { margin-top: 22px; font-size: 13px; color: #f10063; }
@@ -1655,12 +1657,19 @@ form.editable .input_field, #container article .inner .left form.editable .input
 form.editable .input_field textarea, #container article .inner .left form.editable .input_field textarea { height: 100%; }
 form.editable .input_field textarea, form.editable .input_field input[type="text"], #container article .inner .left form.editable .input_field textarea, #container article .inner .left form.editable .input_field input[type="text"] { border: none; width: 100%; outline: none; }
 
-#container .inner .left .areas_editable_selector .popover { display: none; position: absolute; width: 246px; height: 311px; z-index: 1000; background: url("/images/popovers_bkg.png") no-repeat -3px -536px; }
-#container .inner .left .areas_editable_selector .popover .scroll-pane { height: 232px; width: 210px; overflow: hidden; margin: 20px 0 0 17px; outline: none; }
-#container .inner .left .areas_editable_selector .popover .scroll-pane ul { margin: 0; padding: 12px 0 0 0; width: 210px; }
-#container .inner .left .areas_editable_selector .popover .scroll-pane ul li { text-shadow: none; color: #333; margin: 0 0 11px 0; }
-#container .inner .left .areas_editable_selector .popover .scroll-pane ul li.last a { border: none; }
-#container .inner .left .areas_editable_selector .popover .scroll-pane ul li a { display: block; padding: 0; margin: 0; color: #666666; }
+#container .inner .left .areas_editable_selector { position: absolute; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 -30px; z-index: 1000; }
+#container .inner .left .areas_editable_selector.open { display: block; }
+#container .inner .left .areas_editable_selector.open .popover { display: block; }
+#container .inner .left .areas_editable_selector.open .handle { background-position: 0 -141px; }
+#container .inner .left .areas_editable_selector .handle { position: absolute; display: block; width: 6px; height: 5px; right: 11px; top: 15px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -128px; }
+#container .inner .left .areas_editable_selector .popover { display: block; position: absolute; width: 230px; height: 230px; padding: 8px 0 18px 17px; z-index: 1000; background: url("/images/box_notifications_selector.png") no-repeat right bottom; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane { height: 100%; width: 221px; overflow: hidden; outline: none; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 221px; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane ul li { text-shadow: none; font-size: 13px; margin: 0 0 10px 0; padding: 0; color: #666666; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane ul li a { color: #666666; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane ul li.last { margin: 0; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane ul li.last-child { margin: 0; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane ul li.selected { display: none; }
 
 /** Default DropKick theme  Feel free to edit the default theme or even add your own.  See the readme for themeing help  */
 /***** Begin Theme, feel free to edit in here! ******/

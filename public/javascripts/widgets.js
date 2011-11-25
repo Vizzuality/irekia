@@ -1334,6 +1334,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 
       $ps.find("li a").bind('click', function(e) {
         e.preventDefault();
+        $(this).parent().addClass("selected");
         $this.before("<li class='editable'><a href='#'>" + $(this).html() + "</a></li>")
       });
 
@@ -1383,6 +1384,14 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   function _open(data) {
     var $ps = data.$ps;
 
+
+		// Check height if it pass 230px nothing
+		var h_ = $ps.find("ul").height();
+
+		if (h_ < 230) {
+      $ps.find(".popover").height(h_);
+		}
+
     _triggerOpenAnimation($ps, data);
     $ps.find('.scroll-pane').jScrollPane();
 
@@ -1392,7 +1401,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   }
 
   function _getTopPosition(data) {
-    return data.$this.position().top + 27;
+    return data.$this.position().top + 25;
   }
 
   function _getLeftPosition(data) {
@@ -1403,9 +1412,8 @@ jQuery.fn.enablePoliticianPublish = function(opt){
     var top  = _getTopPosition(data);
     var left = _getLeftPosition(data);
 
-    console.log(top, left);
-    $ps.find(".popover").css({"top":(top) + "px", "left": left + "px"});
-    $ps.find(".popover").fadeIn(data.settings.transitionSpeed, data.settings.easingMethod);
+    $ps.css({"top":(top) + "px", "left": left + "px"});
+    $ps.fadeIn(data.settings.transitionSpeed, data.settings.easingMethod);
   }
 
   // Close popover
