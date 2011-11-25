@@ -113,7 +113,7 @@ a.radio.selected:hover { cursor: pointer; text-decoration: none; }
 /* =============================================================================
 Editing forms
 ========================================================================== */
-#container article.editable .inner .left { z-index: 2000; }
+#container article.editable .inner .left { z-index: 500; }
 
 form.editable, #container article .inner .left form.editable { float: left; margin: 0 0 10px 0; width: 607px; position: relative; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; }
 form.editable.date, #container article .inner .left form.editable.date { z-index: 20000; margin: 0 0 20px 0; }
