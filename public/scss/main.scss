@@ -1606,7 +1606,9 @@ article .inner { h2, h3 { color: $dark_blue; } }
           }
 
           .holder {
-            span { float:left; }
+            span { float:left;
+              &.upload { cursor:pointer; }
+            }
           }
         }
 
@@ -2356,7 +2358,9 @@ span.where, .map .infowindow ul.details li.where {
     font-size:15px;
     font-weight:normal;
     text-shadow:none;
-    span { float:left; }
+    span { float:left;
+      &.upload { cursor:pointer; }
+    }
   }
 
 
@@ -3432,7 +3436,7 @@ a.editable {
                   // Edit tag
                   &.editable {
                     width:255px;
-                    height:60px;
+                    height:54px;
                     padding: 12px 0 0 10px;
                     background:url('/images/tag_sprite.png') no-repeat 0 -310px;
                     line-height:18px;
@@ -3985,7 +3989,6 @@ a.editable {
                 .ribbon {background-position:-39px bottom;}
               }
             }
-
 
 
             footer .inner .right { float: right; }

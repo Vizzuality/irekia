@@ -484,6 +484,55 @@ form.editable,
   width:607px;
   position:relative;
 
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+
+  &.image {
+    .input_field {
+      width:605px;
+      height: 36px;
+      padding:0;
+      border:none;
+
+      .holder { width: 600px; }
+
+      input[type="text"] {
+        width:585px;
+        border:1px solid #ccc;
+        font-size:15px;
+      }
+    }
+
+    .add_image {
+      width:606px;
+      height:83px - 30;
+      text-align:center;
+      background:url('/images/tag_sprite.png') no-repeat 0 -376px;
+      padding: 30px 0 0 0;
+      a { color: $pink; font-size:13px; }
+    }
+
+    .content {
+      cursor:default;
+      border:none;
+      background:none;
+      padding:0;
+      position:relative;
+
+      .remove {
+        width:34px;
+        height:35px;
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        display: block;
+        background: url('/images/icons/icon_sprite.png') no-repeat 0 -406px;
+      }
+    }
+  }
+
   .spinner {
     top:10px;
     right:0px;
@@ -498,9 +547,12 @@ form.editable,
     @include border-radius(3px);
     background: $editable_color;
     cursor: pointer;
+
   }
 
   .submit { display:none; }
+
+  input[type="file"] { display:none; }
 
   .input_field {
     width:585px;
@@ -522,6 +574,40 @@ form.editable,
   }
 }
 
+
+#container .inner .left .areas_editable_selector {
+
+  .popover {
+    display:none;
+    position:absolute;
+    width:246px;
+    height: 311px;
+    z-index:1000;
+    background: url("/images/popovers_bkg.png") no-repeat -3px -536px;
+
+    .scroll-pane {
+      height: 232px;
+      width: 210px;
+      overflow: hidden;
+      margin: 20px 0 0 17px;
+      outline:none;
+
+      ul {
+        margin:0; padding:12px 0 0 0;
+        width:210px;
+
+        li {
+          text-shadow:none;
+          color:#333;
+          margin: 0 0 11px 0;
+
+          &.last a { border:none; }
+          a { display:block; padding: 0; margin: 0; color:#666666; }
+        }
+      } // ul
+    } // scroll-pane
+  }
+}
 
 /**
  * Default DropKick theme
@@ -780,18 +866,18 @@ form.editable,
 .qq-upload-button-focus {outline:1px dotted black;}
 
 .qq-upload-drop-area {
-    position:absolute; top:0; left:0; width:100%; height:100%; min-height: 70px; z-index:2;
-    background:#FF9797; text-align:center;
+  position:absolute; top:0; left:0; width:100%; height:100%; min-height: 70px; z-index:2;
+  background:#FF9797; text-align:center;
 }
 .qq-upload-drop-area span {
-    display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
+  display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
 }
 .qq-upload-drop-area-active {background:#FF7171;}
 
 .qq-upload-list { display:none; }
 .qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
 .qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
-    margin-right: 7px;
+  margin-right: 7px;
 }
 
 .qq-upload-file {}

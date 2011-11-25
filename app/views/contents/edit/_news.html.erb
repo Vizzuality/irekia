@@ -8,36 +8,47 @@
 <div class="inner">
   <div class="left">
 
-      <div class="context">
-        <h3><%= t(@content.content_type) %></h3>
-        <% if !@content.areas.blank? %>
-          <!--<span class="middot">&middot;</span>-->
-          <ul class="tags editable">
-            <% @content.areas.each do |a| %>
-              <li<%=" class='editable'" if @editable %>>
-              <%= link_to a.name, area_path(a) %>
+    <div class="context">
+      <h3><%= t(@content.content_type) %></h3>
+      <!--<span class="middot">&middot;</span>-->
+      <ul class="tags editable">
+        <% @content.areas.each do |a| %>
+          <li<%=" class='editable'" if @editable %>>
+          <%= link_to a.name, area_path(a) %>
 
-              <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
-                <%= form.submit 'x', :class => 'remove' %>
-              <% end -%>
+          <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+            <%= form.submit 'x', :class => 'remove' %>
+          <% end -%>
 
-              </li>
-            <% end %>
-
-            <% if @editable %>
-              <li class="add"><%= link_to "+", "#", :class => :content %></li>
-            <% end %>
-          </ul>
+          </li>
         <% end %>
+
+        <% if @editable %>
+          <li class="add add_area"><%= link_to "+", "#", :class => :content %></li>
+        <% end %>
+      </ul>
+
+      <div class="areas_editable_selector">
+        <div class="popover">
+          <div class="scroll-pane">
+            <ul>
+              <% @areas.each do |area| %>
+                <li class="<%= current_area?(area) %><%= ' last' if @areas.last == area %>"><%= link_to area.name, area_path(area) %></li>
+                <% end if @areas %>
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
         <%= content_tag :h1, @content.title, :class => :content %>
-          <%= form.fields_for :news_data do |news_data| %>
-            <div class="input_field textarea">
-              <%= news_data.text_area :title, :value => @content.title %>
-            <% end -%>
-          </div>
+        <%= form.fields_for :news_data do |news_data| %>
+          <div class="input_field textarea">
+            <%= news_data.text_area :title, :value => @content.title %>
+          <% end -%>
+        </div>
         <%= button "Publicar", :class => "submit white_button" %>
       <% end -%>
 
@@ -50,7 +61,7 @@
               <%= news_data.text_area :subtitle, :value => @content.subtitle %>
             </div>
           <% end -%>
-        <%= button "Publicar", :class => "submit white_button" %>
+          <%= button "Publicar", :class => "submit white_button" %>
         <% end -%>
       <% end %>
 
@@ -61,8 +72,24 @@
         </div>
       <% end -%>
 
-      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable'} do |form| %>
-        <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable image'} do |form| %>
+        <div class="content">
+          <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+          <a href="#" class="remove"></a>
+        </div>
+
+        <div class="add_image">
+          <a href="#">Añadir foto</a>
+        </div>
+
+        <div class="input_field uploader placeholder">
+          <input type="text" />
+          <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_new_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
+          <span class="percentage">0%</span>
+          <span class="loading">Cargando imagen...</span>
+          <div class="progress"></div>
+        </div>
+
         <%= form.fields_for :news_data do |news_data| %>
           <%= news_data.file_field :image %>
         <% end -%>

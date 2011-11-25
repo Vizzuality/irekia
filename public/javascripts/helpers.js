@@ -259,17 +259,28 @@ jQuery.fn.enablePoliticianTags = function(opt){
 jQuery.fn.enableEditing = function(opt){
   var speed     = (opt && opt.speed) || 120,
   fadeInSpeed   = (opt && opt.speed) || 80,
-  $ul = $(this),
-  $new = $ul.find(".new"),
-  $add = $(this).find(".add"),
-  spinner = new Spinner(SPINNER_OPTIONS),
+  spinner       = new Spinner(SPINNER_OPTIONS),
   content;
 
+
+  $(this).find(".add_image a").click(function(e) {
+    e.preventDefault();
+    var $form = $(this).parents("form");
+    $(this).parent().slideUp(speed);
+    $form.find(".input_field").fadeIn(speed, function() {
+      $(this).find(':text').focus();
+    });
+  });
+
   $(this).click(function() {
-    $(this).find(".content").slideUp(speed);
-    $(this).find('.input_field').slideDown(fadeInSpeed);
-    $(this).find('.submit').fadeIn(fadeInSpeed);
-    $(this).find('.input_field :text, .input_field textarea').focus();
+    if (!$(this).hasClass("image")) {
+      var that = $(this);
+      $(this).find(".content").slideUp(speed);
+      that.find('.input_field').slideDown(speed, function() {
+        that.find('.submit').fadeIn(fadeInSpeed);
+        that.find('.input_field :text, .input_field textarea').focus();
+      });
+    }
   });
 
   $(this).bind('ajax:success', function(evt, xhr, status) {
@@ -287,6 +298,7 @@ jQuery.fn.enableEditing = function(opt){
     $(this).find('.submit').attr("disabled", "disabled");
 
   });
+
 }
 
 /* Enables tag editing */
@@ -547,7 +559,6 @@ jQuery.fn.enableGotoComments = function(opt){
 }
 
 jQuery.fn.enablePagination = function(opt){
-
   var speed      = (opt && opt.speed) || 200;
   var name       = (opt && opt.name)  || "proposals";
   var cellHeight = (opt && opt.cellHeight)  || 132;
@@ -749,7 +760,6 @@ jQuery.fn.viewMap = function(opt){
   });
 }
 
-
 /* Hides/shows input placeholders */
 jQuery.fn.smartPlaceholder = function(opt){
 
@@ -861,9 +871,9 @@ jQuery.fn.enableCommentBox = function(opt){
     $input.keydown(function(e) {
       textCounter($input);
     });
-
   });
 }
+
 /* Allow to count characters in a input à la Twitter */
 jQuery.fn.inputCounter = function(opt){
 
@@ -899,7 +909,6 @@ jQuery.fn.inputCounter = function(opt){
     $input.keydown(function(e) {
       textCounter(id, $input, $counter, limit);
     });
-
   });
 }
 
@@ -1021,3 +1030,50 @@ jQuery.fn.verticalHomeLoop = function(opt){
 
   interval = setInterval(function(){loopContent()},5000);
 }
+
+jQuery.fn.enableQuestion = function(opt){
+
+  if (this.length < 1) return;
+
+  var speed  = (opt && opt.speed) || 200;
+
+  var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
+  var spin_element = document.getElementById("politician_question_spinner");
+  var spinner = new Spinner(opts);
+
+  this.each(function(){
+    $(this).submit(function(e) {
+      spinner.spin(spin_element);
+      $("#notice_success").fadeOut(150);
+      $(this).find('input[type="submit"]').addClass("disabled");
+      $(this).find('input[type="submit"]').attr("disabled", "disabled");
+    });
+
+    $(this).bind('ajax:success', function(evt, xhr, status) {
+      spinner.stop();
+      $(this).find(".notice_success").fadeIn(220);
+
+      $icon = $("<span class='icon success' />");
+      $(this).find(".input-counter").append($icon);
+
+      $("#notice_success").css("left", "447px");
+      $("#notice_success").css("bottom", "80px");
+      $(this).find('input[type="text"]').val("");
+      $(this).find(".holder").fadeIn(150);
+      $(this).find(".counter").html(140);
+
+      var $that = $(this);
+
+      setTimeout(function() {
+        $("#notice_success").fadeOut(150);
+
+        $that.find('input[type="submit"]').removeClass("disabled");
+        $that.find('input[type="submit"]').removeAttr("disabled");
+
+        $that.find(".icon").fadeOut(150, function() { $(this).remove();});
+      }, 2000);
+
+    });
+  });
+};
+

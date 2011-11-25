@@ -113,13 +113,28 @@ a.radio.selected:hover { cursor: pointer; text-decoration: none; }
 /* =============================================================================
 Editing forms
 ========================================================================== */
-form.editable, #container article .inner .left form.editable { float: left; margin: 0 0 10px 0; width: 607px; position: relative; }
+form.editable, #container article .inner .left form.editable { float: left; margin: 0 0 10px 0; width: 607px; position: relative; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; }
+form.editable.image .input_field, #container article .inner .left form.editable.image .input_field { width: 605px; height: 36px; padding: 0; border: none; }
+form.editable.image .input_field .holder, #container article .inner .left form.editable.image .input_field .holder { width: 600px; }
+form.editable.image .input_field input[type="text"], #container article .inner .left form.editable.image .input_field input[type="text"] { width: 585px; border: 1px solid #ccc; font-size: 15px; }
+form.editable.image .add_image, #container article .inner .left form.editable.image .add_image { width: 606px; height: 53px; text-align: center; background: url("/images/tag_sprite.png") no-repeat 0 -376px; padding: 30px 0 0 0; }
+form.editable.image .add_image a, #container article .inner .left form.editable.image .add_image a { color: #f10063; font-size: 13px; }
+form.editable.image .content, #container article .inner .left form.editable.image .content { cursor: default; border: none; background: none; padding: 0; position: relative; }
+form.editable.image .content .remove, #container article .inner .left form.editable.image .content .remove { width: 34px; height: 35px; position: absolute; top: 20px; right: 15px; display: block; background: url("/images/icons/icon_sprite.png") no-repeat 0 -406px; }
 form.editable .spinner, #container article .inner .left form.editable .spinner { top: 10px; right: 0px; z-index: 1000; position: absolute; background: red; }
 form.editable .content, #container article .inner .left form.editable .content { padding: 10px 17px; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; background: #ffffeb; cursor: pointer; }
 form.editable .submit, #container article .inner .left form.editable .submit { display: none; }
+form.editable input[type="file"], #container article .inner .left form.editable input[type="file"] { display: none; }
 form.editable .input_field, #container article .inner .left form.editable .input_field { width: 585px; display: none; padding: 10px; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; height: 200px; margin: 0 0 5px 0; }
 form.editable .input_field textarea, #container article .inner .left form.editable .input_field textarea { height: 100%; }
 form.editable .input_field textarea, form.editable .input_field input[type="text"], #container article .inner .left form.editable .input_field textarea, #container article .inner .left form.editable .input_field input[type="text"] { border: none; width: 100%; outline: none; }
+
+#container .inner .left .areas_editable_selector .popover { display: none; position: absolute; width: 246px; height: 311px; z-index: 1000; background: url("/images/popovers_bkg.png") no-repeat -3px -536px; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane { height: 232px; width: 210px; overflow: hidden; margin: 20px 0 0 17px; outline: none; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane ul { margin: 0; padding: 12px 0 0 0; width: 210px; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane ul li { text-shadow: none; color: #333; margin: 0 0 11px 0; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane ul li.last a { border: none; }
+#container .inner .left .areas_editable_selector .popover .scroll-pane ul li a { display: block; padding: 0; margin: 0; color: #666666; }
 
 /** Default DropKick theme  Feel free to edit the default theme or even add your own.  See the readme for themeing help  */
 /***** Begin Theme, feel free to edit in here! ******/
