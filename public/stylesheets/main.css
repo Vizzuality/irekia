@@ -161,6 +161,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 
 .ie7 #container article.publish textarea, .ie7 #container article.publish input[type="text"], .ie8 #container article.publish textarea, .ie8 #container article.publish input[type="text"] { border: 1px solid #7d8a92; }
 
+/* Static article */
 #container article.static .inner header h3 { text-transform: none; font-size: 19px; font-family: "Helvetica", sans-serif; font-weight: normal; }
 
 #container article .inner .left h1 { margin-bottom: 10px; line-height: 41px; clear: left; }
@@ -181,7 +182,7 @@ article .inner h2, article .inner h3 { color: #465866; }
 #container article.with_filters div.left span.empty { display: block; width: 100%; margin: 80px 0 80px 0; color: #7D8A92; font: normal 17px Arial; text-align: center; }
 #container article.with_filters div.right { position: relative; }
 #container article.with_filters div.right li p { padding: 0; margin: 0; font-style: normal; font-size: 15px!important; line-height: 15px!important; color: #CCC; }
-#container article.with_filters div.right span.spinner { position: absolute; display: block; right: 7px; top: 7px; width: 20px; height: 20px; z-index: 10; }
+#container article.with_filters div.right span.spinner { position: absolute; display: block; top: 7px; right: 7px; width: 20px; height: 20px; z-index: 10; }
 #container article.with_footer .inner { width: 933px; padding: 15px 31px 5px 30px; }
 #container article.with_footer .f { bottom: -10px; background-position: 0 -22px; }
 #container article.with_footer footer { padding: 0; border: none; clear: both; border-left: 1px solid #b4bdc4; border-right: 1px solid #b4bdc4; background: #f8f8f9; }
@@ -862,9 +863,9 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container article .inner .right ul.people li.editable { position: relative; width: 255px; height: 54px; padding: 12px 0 0 10px; background: url("/images/tag_sprite.png") no-repeat 0 -310px; line-height: 18px; color: #7D8A92; margin: 0; }
 #container article .inner .right ul.people li.editable a { color: #666666; }
 #container article .inner .right ul.people li.editable .avatar:before { border-color: #ffffeb; }
-#container article .inner .right ul.people li.editable form { position: absolute; top: 0px; right: 20px; float: right; height: 5px; width: 5px; }
-#container article .inner .right ul.people li.editable form .remove { height: 5px; width: 5px; margin: 0; padding: 0; background: url("/images/tag_sprite.png") repeat-x -200px -105px; border: 0; outline: none; z-index: 1000; }
-#container article .inner .right ul.people li.more a.name { margin-top: 8px; width: 215px; background: red; }
+#container article .inner .right ul.people li.editable form .remove { position: absolute; top: 10px; right: 10px; float: right; height: 15px; width: 5px; text-indent: -99999px; height: 15px; width: 15px; margin: 0; padding: 0; background: url("/images/tag_sprite.png") repeat-x -200px -105px; border: 0; outline: none; z-index: 1000; }
+#container article .inner .right ul.people li a.name { width: 230px; }
+#container article .inner .right ul.people li.more a.name { margin-top: 8px; }
 #container article .inner .right ul.people li.add { position: relative; text-align: center; width: 255px; height: 59px; background: url("/images/tag_sprite.png") no-repeat 0 -133px; }
 #container article .inner .right ul.people li.add.yourself { text-align: left; }
 #container article .inner .right ul.people li.add a.add { margin-top: 22px; font-size: 13px; color: #f10063; }

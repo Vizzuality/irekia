@@ -301,26 +301,30 @@ jQuery.fn.enableDateEditing = function(opt){
 
   $(this).click(function() {
 
-    $(this).find('select:eq(0)').dropkick({width:-20});
-    $(this).find('select:eq(1)').dropkick({width:77});
-    $(this).find('select:eq(2)').dropkick({width:-10});
+    if ($(this).find(".dk_container").length > 0) {
+      $(this).find(".dk_container").slideDown(speed);
+    } else {
+      $(this).find('select:eq(0)').dropkick({width:-20});
+      $(this).find('select:eq(1)').dropkick({width:77});
+      $(this).find('select:eq(2)').dropkick({width:-10});
+    }
 
     $(this).find(".content").slideUp(speed);
     $(this).find('.submit').fadeIn(fadeInSpeed);
-    $(this).find('.input_field :text, .input_field textarea').focus();
+    //$(this).find('.input_field :text, .input_field textarea').focus();
   });
 
   $(this).bind('ajax:success', function(evt, xhr, status) {
-    $(this).find(".content").html(content);
+    // $(this).find(".content").html(content);
+    $(this).find('.dk_container').slideUp(speed);
     $(this).find(".content").slideDown(fadeInSpeed);
-    $(this).find('.input_field').slideUp(speed);
     $(this).find('.submit').fadeOut(speed);
     $(this).find('.submit').removeClass("disabled");
     $(this).find('.submit').removeAttr("disabled");
   });
 
   $(this).submit(function(e) {
-    content = $(this).find('.input_field :text, .input_field textarea').val();
+    //content = $(this).find('.input_field :text, .input_field textarea').val();
     $(this).find('.submit').addClass("disabled");
     $(this).find('.submit').attr("disabled", "disabled");
   });
@@ -337,9 +341,14 @@ jQuery.fn.enableEditTags = function(opt){
   // submit tag
   $new.find("form").submit(function(e) {
     $new.fadeOut(speed, function() {
-      $add.fadeIn(fadeInSpeed);
+      //$add.fadeIn(fadeInSpeed);
       var val = $new.find('input[type="text"]').val();
       $add.before("<li class='editable'><a href='#'>" + val + "</a>");
+
+      $ul.find(".new").fadeIn(fadeInSpeed, function() {
+        $(this).find('input[type="text"]').val("");
+        $(this).find('input[type="text"]').focus();
+      });
     });
   });
 

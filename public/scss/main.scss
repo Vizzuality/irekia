@@ -40,8 +40,7 @@ blockquote { width:574px; padding:0; margin:0; font-size:31px; color:$dark_blue;
 hr { border-color:rgba(70, 88, 102, .14); }
 
 ul {
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   list-style: none;
 
   li { margin: 0; padding: 0; }
@@ -588,6 +587,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 //   }
 // }
 
+/* Static article */
 #container article.static .inner header h3 {text-transform:none; font-size:19px; font-family: "Helvetica", sans-serif; font-weight:normal;}
 #container article {
   .inner {
@@ -616,12 +616,11 @@ article .inner { h2, h3 { color: $dark_blue; } }
       h3 { font-size: 17px; }
       h2 { font-size: 31px; line-height:normal; }
     }
-
-  }
+  } // inner
 
   &.with_filters {
 
-    div.left span.empty{
+    div.left span.empty {
       display:block;
       width:100%;
       margin:80px 0 80px 0;
@@ -645,14 +644,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
       span.spinner {
         position:absolute;
         display:block;
-        right:7px;
-        top:7px;
+        top:7px; right:7px;
         width:20px;
         height:20px;
         z-index:10;
       }
-    }
-  }
+    } // div.right
+  } // .with_filters
 
   &.with_footer {
     .inner { width: 933px; padding: 15px 31px 5px 30px; }
@@ -681,20 +679,22 @@ article .inner { h2, h3 { color: $dark_blue; } }
         a.left { width:auto; float:left; clear:none; }
 
         .spinner { display:block; top:-7px; float:left; margin: 0 0 0 5px; position:relative; width:33px; height:33px; z-index:10000; }
-      }
+      } // .inner
+
       .right {
         position:relative;
         right: 23px;
         text-align: right;
 
         a { display:block; clear:both; float:right; }
-      }
+      } // .right
+
       .left {
         a { display:block; clear:both; }
       }
     }
     .separator { height: 2px; background: url('/images/box_simple_bkg.png') repeat-x; background-position: 0 -36px; }
-  }
+  } // .with_footer
 
   &.with_sidebar {
     position: relative;
@@ -712,7 +712,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
       .left { position: relative; float: left; left: 0; width: 605px; }
       .right { position: relative; float: left; left: 30px; width: 262px; }
     }
-  }
+  } // .with_sidebar
 
   &.with_form {
     clear:both;
@@ -747,7 +747,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
             font-size:15px;
             color: #E96F5F;
           }
-        }
+        } // ul.errors
 
         a:hover { text-decoration:none; }
 
@@ -2266,11 +2266,11 @@ span.where, .map .infowindow ul.details li.where {
             span { top: 9px; color: #ccc; }
           }
           input[type="submit"] { position: absolute; top: 13px; right: 17px; color: #FF0066; background: none; height: 30px; border: none;
-              &:hover{text-decoration:underline;}
-              &.blue {
-                color:$link_color;
-                &:hover {color:$link_color_hover;}
-              }
+            &:hover{text-decoration:underline;}
+            &.blue {
+              color:$link_color;
+              &:hover {color:$link_color_hover;}
+            }
           }
 
         }
@@ -3434,7 +3434,7 @@ a.editable {
                   font-size: 15px;
                   color: #465866;
 
-                  // Edit tag
+                  // Edit mode
                   &.editable {
                     position:relative;
                     width:255px;
@@ -3449,14 +3449,16 @@ a.editable {
                     .avatar:before { border-color: $editable_color; }
 
                     form {
-                      position: absolute;
-                      top: 0px;
-                      right: 20px;
-                      float: right;
-                      height: 5px; width: 5px;
-
                       .remove {
-                        height: 5px; width: 5px;
+
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        float: right;
+                        height: 15px; width: 5px;
+                        text-indent: -99999px;
+
+                        height: 15px; width: 15px;
                         margin: 0; padding: 0;
                         background:url('/images/tag_sprite.png') repeat-x -200px -105px;
                         border:0;
@@ -3466,7 +3468,8 @@ a.editable {
                     }
                   }
 
-                  &.more a.name { margin-top: 8px; width: 215px; background:red; }
+                  a.name { width:230px; }
+                  &.more a.name { margin-top: 8px; }
 
                   &.add {
                     position:relative;
@@ -4069,78 +4072,66 @@ a.editable {
                 //   background:#f1f1f1;
                 //   &.first { margin-right: 40px; }
                 //   &.last {
-                  //     width: 280px!Important;
-                  //     background:#ccc;
-                  //   }
-                  // }
-                  .column {
-                    float:left;
-                    margin-right: 40px;
-                    width: 282px!important;
-                    padding:0 0 20px 0;
-                    p { margin-top: 0; font-size: 15px; line-height: 18px; }
-                    &.last { margin-right: 0px; width: 280px!important; }
-                  }
-                }
-              }
-
-              footer {
-                inner.with_avatar { position: relative; }
-                img.xlAvatar { position: absolute; bottom: 22px; right: 30px; background: url('/images/circle_bkg.png') no-repeat 2px center; z-index: 10; }
-              }
-
-              ul.suggestions {
-                padding:0 0 20px 0;
-                li {
-                  width: 275px;
-                  padding: 14px 16px 16px 16px;
-                  margin: 0 0 5px 0;
-                  font-size: 15px;
-                  color: $standard_gray;
-                  @include inline-block;
-                  .avatar { float: left; margin: 0 8px 0 0; }
-                  .content {
-                    float: left;
-                    width: 200px;
-
-                    p { padding: 0; margin: 0 0 13px 0; font-size: 15px; line-height: 15px; }
-                    a, button {
-                      display: block;
-                      font-weight: 300;
-                      font-size: 13px;
-                      color: #FF0066;
-                      background-color: transparent;
-                      border: 0 none;
-
-                      &.name { margin-bottom: 3px; color: $link_color; font-size: 17px; font-weight: 300; }
-                      &.follow { display: block; margin-top: 16px; font-weight: 300; font-size: 13px; }
-                      &:hover {color:$link_color_hover;}
-                    }
-                  }
-                  &.selected {
-                    background: #F2F5F8;
-                    @include border-radius(5px);
-
-                    .avatar:before { border-color: #F2F5F8; }
-                    .content a { color: $link_color; }
-                    .content button { color: $link_color;}
-                  }
-                }
-              } // ul.suggestions
-
-              &.with_footer footer .inner a {
-                &.facebook, &.twitter {
-                  width: 37px;
-                  height: 35px;
-                  margin-right: 3px;
-                  text-indent: -99999px;
-                  background: url('/images/icons/share.png') no-repeat;
-                  @include inline-block;
+                //     width: 280px!Important;
+                //     background:#ccc;
+                //   }
+                // }
+                .column {
+                  float:left;
+                  margin-right: 40px;
+                  width: 282px!important;
+                  padding:0 0 20px 0;
+                  p { margin-top: 0; font-size: 15px; line-height: 18px; }
+                  &.last { margin-right: 0px; width: 280px!important; }
                 }
               }
             }
 
-            .content footer a {
+            footer {
+              inner.with_avatar { position: relative; }
+              img.xlAvatar { position: absolute; bottom: 22px; right: 30px; background: url('/images/circle_bkg.png') no-repeat 2px center; z-index: 10; }
+            }
+
+            ul.suggestions {
+              padding:0 0 20px 0;
+              li {
+                width: 275px;
+                padding: 14px 16px 16px 16px;
+                margin: 0 0 5px 0;
+                font-size: 15px;
+                color: $standard_gray;
+                @include inline-block;
+                .avatar { float: left; margin: 0 8px 0 0; }
+                .content {
+                  float: left;
+                  width: 200px;
+
+                  p { padding: 0; margin: 0 0 13px 0; font-size: 15px; line-height: 15px; }
+                  a, button {
+                    display: block;
+                    font-weight: 300;
+                    font-size: 13px;
+                    color: #FF0066;
+                    background-color: transparent;
+                    border: 0 none;
+
+                    &.name { margin-bottom: 3px; color: $link_color; font-size: 17px; font-weight: 300; }
+                    &.follow { display: block; margin-top: 16px; font-weight: 300; font-size: 13px; }
+                    &:hover {color:$link_color_hover;}
+                  }
+                }
+                &.selected {
+                  background: #F2F5F8;
+                  @include border-radius(5px);
+
+                  .avatar:before { border-color: #F2F5F8; }
+                  .content a { color: $link_color; }
+                  .content button { color: $link_color;}
+                }
+              }
+            } // ul.suggestions
+
+            &.with_footer footer .inner a {
               &.facebook, &.twitter {
                 width: 37px;
                 height: 35px;
@@ -4150,28 +4141,40 @@ a.editable {
                 @include inline-block;
               }
             }
+          }
 
-            .content footer a {
-              &.facebook:hover {
-                background-position: 0 -114px;
-              }
+          .content footer a {
+            &.facebook, &.twitter {
+              width: 37px;
+              height: 35px;
+              margin-right: 3px;
+              text-indent: -99999px;
+              background: url('/images/icons/share.png') no-repeat;
+              @include inline-block;
+            }
+          }
 
-              &.twitter:hover {
-                background-position: -40px -114px;
-              }
+          .content footer a {
+            &.facebook:hover {
+              background-position: 0 -114px;
             }
 
-            #container article.with_footer footer .inner a.facebook, .content footer a.facebook {
-              background-position: 0 -75px;
+            &.twitter:hover {
+              background-position: -40px -114px;
             }
+          }
 
-            #container article.with_footer footer .inner a.twitter, .content footer a.twitter {
-              background-position: -40px -75px;
-            }
+          #container article.with_footer footer .inner a.facebook, .content footer a.facebook {
+            background-position: 0 -75px;
+          }
 
-            /* =============================================================================
-            Forms
-            ========================================================================== */
+          #container article.with_footer footer .inner a.twitter, .content footer a.twitter {
+            background-position: -40px -75px;
+          }
+
+          /* =============================================================================
+          Forms
+          ========================================================================== */
 
 input {
   &.mInput {
@@ -5046,14 +5049,3 @@ body.home {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
