@@ -1,5 +1,5 @@
 <% if @questions_done_count <= 0 -%>
-<article class="help">
+<div class="article help">
 <div class="inner">
     <div class="info icon"></div>
     <div class="content">
@@ -9,12 +9,12 @@
     </div>
 </div>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>
 
 <%= render "/shared/question_form" %>
 <% else -%>
 
-<article class="questions with_filters broken-bottom">
+<div class="article questions with_filters broken-bottom">
 <div class="inner">
   <header>
   <div class="left">
@@ -38,9 +38,9 @@
   </div>
 </div>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>
 
-<article class="questions with_filters broken-top">
+<div class="article questions with_filters broken-top">
 <div class="inner">
   <header>
   <div class="left">
@@ -64,6 +64,6 @@
   </div>
 </div>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>
 
 <% end -%>

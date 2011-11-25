@@ -4,7 +4,7 @@
   <meta property="og:image" content="<%= image_url @content.news_data.image.content_url if @content.news_data.image.present? %>" />
 <% end -%>
 
-<article class="activity editable with_footer">
+<div class="article activity editable with_footer">
 <div class="inner">
   <div class="left">
 
@@ -118,6 +118,7 @@
         <%= sharing_partial(news_url(@content), @content.title) %>
         <%= render "shared/sidebar/tags" %>
         <%= render "shared/sidebar/politicians" %>
+        <%= render "shared/sidebar/location" %>
         <%= render "shared/sidebar/related_content" %>
 
       </div>
@@ -135,4 +136,4 @@
   </div>
   </footer>
   <div class="t"></div><div class="f"></div>
-  </article>
+  </div>

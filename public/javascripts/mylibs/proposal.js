@@ -18,7 +18,7 @@
   var spin_element = document.getElementById('proposal_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
   templates = {
-    main:['<article id="<%= name %>_<%= id %>" class="mini popover with_footer" >',
+    main:['<div id="<%= name %>_<%= id %>" class="article mini popover with_footer" >',
    '  <form action="">',
    '    <div class="inner">',
    '      <header><h2><%= title %></h2></header>',
@@ -40,8 +40,8 @@
    '    </footer>',
    '    <div class="t"></div><div class="f"></div>',
    '  </form>',
-   '  </article>'].join(''),
-   success: ['<article id="<%= name %>_<%= id %>" class="mini with_icon popover with_footer">',
+   '  </div>'].join(''),
+   success: ['<div id="<%= name %>_<%= id %>" class="article mini with_icon popover with_footer">',
    '  <div class="inner">',
    '    <div class="icon success"></div>',
    '    <div class="content">',
@@ -57,7 +57,7 @@
    '  </div>',
    '  </footer>',
    '  <div class="t"></div><div class="f"></div>',
-   '</article>'].join(' ')
+   '</div>'].join(' ')
   },
   store = "proposal-popover",
   // Public methods
@@ -160,7 +160,7 @@
   }
 
   function _open(data) {
-    data.$ps = $(document).find("article#" + data.id);
+    data.$ps = $(document).find(".article#" + data.id);
     var $ps = data.$ps;
 
     // bindings

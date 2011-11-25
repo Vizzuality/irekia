@@ -1,5 +1,5 @@
 <% if @proposals_done_count == 0 -%>
-<article class="help">
+<div class="article help">
 <div class="inner">
     <div class="info icon"></div>
     <div class="content">
@@ -9,13 +9,13 @@
     </div>
 </div>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>
 
 <%= render "/shared/proposal_form" %>
 
 <% else -%>
 
-<article class="proposals with_filters with_footer">
+<div class="article proposals with_filters with_footer">
 <div class="inner">
   <header>
   <div class="left">
@@ -49,6 +49,6 @@
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>
 
 <% end -%>

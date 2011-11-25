@@ -2,7 +2,7 @@
   <meta property="og:title" content="Irekia - Pregunta para <%= @content.target_user ? @content.target_user.fullname : @content.target_area.name %>" />
   <meta property="og:description" content="<%= @content.question_text.strip %>" />
 <% end -%>
-<article class="questions with_footer">
+<div class="article questions with_footer">
 <%= link_to "", "/in_develop", :class => :editable if current_user && current_user.politician? %>
 
 <div class="inner">
@@ -118,4 +118,4 @@
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>

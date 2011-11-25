@@ -1,4 +1,4 @@
-<article class="total_info">
+<div class="article total_info">
   <div class="inner">
     <div class="content">
       <%= render 'moderation_info' %>
@@ -12,10 +12,10 @@
     </div>
   </div>
   <div class="t"></div><div class="f"></div>
-</article>
+</div>
 
 <% if (@items.size>0) %>
-<article class="activity">
+<div class="article activity">
   <div class="inner">
     <div class="content">
       <ul>
@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="t"></div><div class="f"></div>
-</article>
+</div>
 <% end %>
 
 <span class="no_content" <% if (@items.blank?) %>style="display:block"<% end %>>No hay más contenidos<br/>pendientes de ser<br/>moderados</span>

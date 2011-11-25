@@ -24,10 +24,10 @@ $(function() {
 
   $("textarea.grow").autogrow();
   $(".cycle").enableRegistration();
-  //$("article.signup").enableSocialRegistration();
+  //$(".article.signup").enableSocialRegistration();
 
   // Resize agenda_map container
-  $("article.agenda .agenda_map").animate({height:$(".agenda_map ul.agenda").height() }, 0);
+  $(".article.agenda .agenda_map").animate({height:$(".agenda_map ul.agenda").height() }, 0);
 
   // Map/Agenda behaviour
   $(".view_calendar").viewCalendar();
@@ -81,11 +81,11 @@ $(function() {
     });
 
 		// Ribbon
-		var $el2 = $('article.summary').find("form.follow_ribbon");
+		var $el2 = $('.article.summary').find("form.follow_ribbon");
     $el2.fadeOut(150, function() {
       $(this).remove();
-			$('article.summary').append(xhr);
-			$('article.summary > form.follow_button').remove();
+			$('.article.summary').append(xhr);
+			$('.article.summary > form.follow_button').remove();
       $(this).fadeIn(150);
     });
 
@@ -132,7 +132,7 @@ $(function() {
   });
 
   $('.my_opinion').enableOpinion();
-  $('.proposals .proposal').enableArguments();
+  $('.article.proposal .proposals .proposal').enableArguments();
   $('form.add_comment').enableComments();
   $(".comment-box form").enableCommentBox();
   $(".notifications").enableNotificationSelector();
@@ -190,8 +190,8 @@ $(".share.inline, .share.more, .share.email").sharePopover();
 $(".with_filters").filterWidget();
 $(".with_filters").filterWidget();
 
-// $("article.politician.publish").enablePoliticianPublish();
-// $("article.politician.publish").enablePoliticianPublish();
+// $(".article.politician.publish").enablePoliticianPublish();
+// $(".article.politician.publish").enablePoliticianPublish();
 
 $(".areas_selector").areasPopover();
 $(".toggle_notifications").notificationPopover();
@@ -210,10 +210,10 @@ $(".answer_placeholder form").bind('ajax:success', function(evt, xhr, status) {
 // HOME, grow all areas
 $("a.see_all_areas").click(function(ev){
   ev.preventDefault();
-  $(this).closest('article.areas').find('div.areas_list').animate({height:'635px'},500);
-  $(this).closest('article.areas').find('div.all_areas').show();
-  $(this).closest('article.areas').find('footer').animate({opacity:0,height:0},500,function(){
-    $(this).closest('article.areas').removeClass('with_footer');
+  $(this).closest('.article.areas').find('div.areas_list').animate({height:'635px'},500);
+  $(this).closest('.article.areas').find('div.all_areas').show();
+  $(this).closest('.article.areas').find('footer').animate({opacity:0,height:0},500,function(){
+    $(this).closest('.article.areas').removeClass('with_footer');
     $(this).remove();
   });
 });

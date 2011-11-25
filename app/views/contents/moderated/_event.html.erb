@@ -3,7 +3,7 @@
   <meta property="og:description" content="<%= @content.body.strip.truncate(128) %>" />
   <meta property="og:image" content="<%= image_url @content.event_data.image.content_url if @content.event_data.image.present? %>" />
 <% end -%>
-<article class="activity with_footer">
+<div class="article activity with_footer">
 <div class="inner">
   <div class="left">
 
@@ -54,5 +54,5 @@
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>
 

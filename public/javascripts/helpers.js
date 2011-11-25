@@ -146,7 +146,7 @@ jQuery.fn.enableRegistration = function(opt){
   }
 
   this.each(function(){
-    $article = $container.find("article");
+    $article = $container.find(".article");
 
     if ($article.hasClass("step2")) {
       marginBottom = 50;
@@ -165,7 +165,7 @@ jQuery.fn.enableRegistration = function(opt){
       $(".advance").click(function(e) {
         e.preventDefault();
 
-        $article = $(this).parents("article");
+        $article = $(this).parents(".article");
 
         $("html, body").animate({scrollTop:"100px"}, 950, "easeInOutQuad");
         $.ajax({ url: "/users/new", data: {}, type: "GET", success: step1});
@@ -639,7 +639,7 @@ jQuery.fn.enablePagination = function(opt){
       if (name != "months") {
         id = $(this).attr("id").replace(name + '_', '');
       }
-      $article = $(this).parents("article");
+      $article = $(this).parents(".article");
 
       spin_element = document.getElementById(name + '_spinner');
       IrekiaSpinner.spin(spin_element);

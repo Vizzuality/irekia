@@ -1,5 +1,5 @@
 <% if @citizens.count > 0  %>
-<article class="results with_footer">
+<div class="article results with_footer">
 <div class="inner">
   <header>
   <h2><%= t('.results.title', :count => @citizens.count) %></h2>
@@ -36,5 +36,5 @@
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>
 <% end %>

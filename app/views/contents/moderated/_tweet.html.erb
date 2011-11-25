@@ -2,7 +2,7 @@
   <meta property="og:title" content="Irekia - Estado de <%= @content.author.fullname %>" />
   <meta property="og:description" content="<%= @content.message %>" />
 <% end -%>
-<article class="activity with_footer">
+<div class="article activity with_footer">
 <div class="inner">
   <div class="left">
 
@@ -34,10 +34,10 @@
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>
 
 <!--
-<article><div id="tweet">
+<div class="article"><div id="tweet">
   <h1><%= @content.message %></h1>
   <span class="author">
     <%= raw t('.author', :name => link_to(@content.author.fullname, path_for_user(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
@@ -63,5 +63,5 @@
     </div>
   </div>
 </div>
-</article>
+</div>
 -->

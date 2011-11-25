@@ -1981,7 +1981,7 @@ p.info span.comments a {
   }
 }
 
-.footer.where, ul.locations .footer {
+.footer.where, span.where, ul.locations .footer {
   padding: 0 0 0 17px;
   background: url('/images/maps_sprite.png') no-repeat -51px -65px;
 }
@@ -3012,11 +3012,12 @@ a.editable {
           background:none;
           float:right;
           position:absolute;
-          top: 6px;
+          top: 5px;
           right:4px;
           display:block;
           background:#fff;
           height:18px;
+          font-size:15px;
         }
 
         .icon {
@@ -3973,15 +3974,29 @@ a.editable {
           }
 
           #container article .right .content ul.locations {
+
+            &.editable {
+              li {
+                .footer {
+                  padding: 10px 10px 8px 10px;
+                  border:1px solid #ccc;
+                  @include border-radius(5px);
+                  background: $editable_color;
+                  cursor: pointer;
+                }
+              }
+            }
+
             li {
               padding:0;
+
               .map {
                 background:#f1f1f1;
                 width: 253px;
                 height: 129px;
                 margin-bottom:9px;
-              }
-            }
+              } // .map
+            } // li
           }
 
           /* Ribbons */

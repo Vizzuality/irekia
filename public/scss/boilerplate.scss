@@ -41,10 +41,10 @@ audio, canvas, video {
 html {
   font-size: 100%;
   overflow-y: scroll;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -webkit-perspective: 1000;
-  -webkit-backface-visibility: hidden;
+ // -webkit-text-size-adjust: 100%;
+ // -ms-text-size-adjust: 100%;
+  //-webkit-perspective: 1000;
+  //-webkit-backface-visibility: hidden;
 }
 
 body {
@@ -53,8 +53,8 @@ body {
   line-height: 1.231;
   font-family: sans-serif;
   color: #222;
-  -webkit-perspective: 1000;
-  -webkit-backface-visibility: hidden;
+ // -webkit-perspective: 1000;
+ // -webkit-backface-visibility: hidden;
 }
 
 button, input, select, textarea {
@@ -74,8 +74,7 @@ button, input, select, textarea {
   color: #fff;
   text-shadow: none;
 }
-:-moz-focus-inner {
-border: 0;  }
+:-moz-focus-inner { border: 0;  }
 
 /* =============================================================================
 Links

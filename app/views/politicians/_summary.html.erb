@@ -1,4 +1,4 @@
-<article class="profile summary with_footer">
+<div class="article profile summary with_footer">
 <div class="inner">
   <header>
   <h1><%= @politician.fullname %></h1>
@@ -49,7 +49,7 @@
       </div>
       <input type="submit" value="Preguntar" id="submit-counter-124" class="disabled white_button" disabled="disabled" />
 
-      <article id="notice_success" class="notice_success notice">
+      <div id="notice_success" class="article notice_success notice">
       <div class="inner">
         <div class="content">
           <p>
@@ -59,9 +59,9 @@
         </div>
         <div class="t"></div><div class="f"></div>
       </div>
-      </article>
+      </div>
 
-      <article class="notice_error notice">
+      <div class="article notice_error notice">
       <div class="inner">
         <div class="content">
           <p>
@@ -71,7 +71,7 @@
         </div>
         <div class="t"></div><div class="f"></div>
       </div>
-      </article>
+      </div>
     <% end %>
   <% end %>
 
@@ -83,7 +83,7 @@
   <%= render 'follows/destroy_ribbon' %>
 <% end -%>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>
 
 <% if user_signed_in? %>
   <% if flash[:notice] %>

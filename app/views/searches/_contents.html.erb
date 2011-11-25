@@ -1,5 +1,5 @@
 <% if @contents_count[:total] > 0 %>
-<article class="<%= "activity " if @contents_count[:total] > 0 %>results with_footer with_filters">
+<div class="article <%= "activity " if @contents_count[:total] > 0 %>results with_footer with_filters">
 <div class="inner">
   <header>
   <div class="left">
@@ -71,5 +71,5 @@
 </div>
 </footer>
 <div class="t"></div><div class="f"></div>
-</article>
+</div>
 <% end %>

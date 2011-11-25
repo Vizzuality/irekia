@@ -1,18 +1,24 @@
-<% if @content.location %>
-<h4><%= t(".title") %></h4>
+<% if @content.location || @editable %>
+  <h4><%= t(".title") %></h4>
 
-<ul class="locations no-bullets">
-  <li>
-  <div class="map" id="map_<%= @content.id %>"></div>
-  <div class="footer"><%= @content.location %></div>
+  <ul class="locations no-bullets<%= ' editable' if @editable -%>">
+    <li>
+    <div class="map" id="map_<%= @content.id %>"></div>
 
+    <div class="footer">
+      <% if @content.location %>
+        <%= @content.location %>
+      <% else %>
+        <span class="where">Añade un lugar</span>
+      <% end %>
+    </div>
 
-  <%= content_for :js_data do %>
-    <script type="text/javascript" charset="utf-8">
-      startMiniMap("map_<%= @content.id %>", <%= @content.latitude %>, <%= @content.longitude %>);
-      </script>
-    <% end %>
+    <%= content_for :js_data do %>
+      <script type="text/javascript" charset="utf-8">
+        startMiniMap("map_<%= @content.id %>", <%= @content.latitude %>, <%= @content.longitude %>);
+        </script>
+      <% end if @content.location %>
 
-    </li>
-  </ul>
-<% end %>
+      </li>
+    </ul>
+  <% end %>
