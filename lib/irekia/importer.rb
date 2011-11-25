@@ -2,13 +2,21 @@ module Irekia
 		class Importer
 
 			def self.get_news_from_rss
+        puts 'Importing news from Irekia'
+        puts '============================'
+
+        puts '=> reading feed rss'
 				news_feed_url = 'http://www.irekia.euskadi.net/es/news.rss'
+
+        puts '=> parsing feed'
 				feed = Feedzirra::Feed.fetch_and_parse(news_feed_url)
 				last_news_date = News.maximum('published_at')
 
 				news_entries = feed.entries
 				news_entries = feed.entries.select{|news| news.published > last_news_date} if last_news_date.present?
 
+
+        puts "=> loading #{news_entries.count} news found"
 				news_entries.each do |news_item|
 					begin
 						news = News.new
@@ -18,15 +26,144 @@ module Irekia
 						news.areas << Area.find(7)
 						news.moderated = true
 						news.save!
+            print '.'
 					rescue Exception => ex
 						puts ex
 						puts ex.backtrace
 					end
 				end
+      puts ''
+      puts '=> import complete!'
 			rescue Exception => ex
 				puts ex
 				puts ex.backtrace
 			end
 
+#BEGIN:VEVENT
+#CREATED;VALUE=DATE-TIME:20111023T184057Z
+#DTEND;VALUE=DATE-TIME:20111024T093000Z
+#STATUS:TENTATIVE
+#DTSTART;VALUE=DATE-TIME:20111024T090000Z
+#DTSTAMP;VALUE=DATE-TIME:20111123T183827Z
+#LAST-MODIFIED;VALUE=DATE-TIME:20111109T122444Z
+#UID:uid_7807_irekia_euskadi_net
+#DESCRIPTION:Presidencia.\nLehendakari.\nEl Lehendakari\, Patxi López\, se reunirá mañana\, a las 11:00\, Iñigo Urkullu en Lehendakaritza como comienzo de la ronda de partidos para analizar la situación tras el comunicado de ETA.\nTras el cese definitivo de la actividad armada\, el Lehendakari anunció el inicio de una ronda de reuniones con los partidos que empezará mañana con su encuentro con el presidente del PNV.\nLos medios gráficos podrán tomar imágenes del encuentro.
+#URL:http://www.irekia.euskadi.net/es/events/7807-lehendakari-comienza-ronda-partidos
+#SUMMARY:El Lehendakari comienza la ronda de partidos
+#LOCATION:Lehendakaritza\, Vitoria-Gasteiz
+#SEQUENCE:3
+#END:VEVENT
+      def self.get_events_from_ics
+        require 'open-uri'
+
+        puts 'Importing events from Irekia'
+        puts '============================'
+
+        puts '=> reading feeds'
+        events_ics_url = 'http://www.irekia.euskadi.net/es/events/myfeed.ics?dept_label=all'
+        open(events_ics_url) do |ical_file|
+          puts '=> parsing calendar file'
+          calendar = RiCal.parse_string(ical_file.read).first rescue nil
+          events = calendar.events
+          puts "=> loading #{events.count} events found"
+          events.each do |event_data|
+            begin
+              event = Event.new
+              event.event_data = EventData.new(:title      => event_data.summary,
+                                               :body       => event_data.description,
+                                               :event_date => event_data.dtstart,
+                                               :duration   => event_data.dtend - event_data.dtstart,
+                                               :location   => event_data.location)
+              event.users << User.politicians.sample
+              event.moderated = true
+              event.save!
+              print '.'
+            rescue Exception => e
+              puts e
+              puts e.backtrace
+            end
+          end
+          puts ''
+          puts '=> import complete!'
+        end
+
+      rescue Exception => e
+        puts e
+        puts e.backtrace
+      end
+
+      def self.get_areas_and_politicians
+        require 'open-uri'
+        require 'awesome_print'
+
+        communication_guide_server = {
+          :production => {:url => 'http://www2.irekia.euskadi.net'},
+          :others     => {
+            :url      => 'http://gc.efaber.net',
+            :options  => {
+              :http_basic_authentication => ['direcciones', 'helbideak']
+            }
+          }
+        }
+        languages             = %w(es eu)
+        server                = communication_guide_server[Rails.env.production?? :production : :others]
+        server_options        = server[:options] || {}
+        categories_url        = lambda{ |language| "#{server[:url]}/#{language}/categories.json" }
+        areas_url             = lambda{ |language, id| "#{server[:url]}/#{language}/categories/#{id}.json" }
+        area_detail_url       = lambda{ |language, id| "#{server[:url]}/#{language}/entities/#{id}.json" }
+        politician_detail_url = lambda{ |language, id| "#{server[:url]}/#{language}/people/#{id}.json" }
+
+        languages.each do |lang|
+          categories = get_json(categories_url.call(lang), server_options)['categories']
+
+          basque_government = categories.select{|c| ['gobierno vasco', 'eusko jaurlaritza'].include?((c['name'] || '').downcase.strip)}.first
+          if basque_government.present?
+            areas = get_json(areas_url.call(lang, basque_government['id']), server_options)['categories']
+
+            politicians_ids = []
+            areas.each do |area|
+              area_detail = get_json(area_detail_url.call(lang, area['id']), server_options)
+              politicians_ids << area_detail['people'].map(&:first)
+            end
+
+            politicians = politicians_ids.uniq.flatten.map{|id| get_json(politician_detail_url.call(lang, id), server_options)['person']}
+
+            Area.destroy_all
+            User.politicians.destroy_all
+
+            politicians.each do |politician|
+
+              begin
+                user = User.find_or_initialize_by_name_and_lastname_and_email(politician['first_name'], politician['last_name'], politician['email'].try(:first))
+                user.password              = 'virekia'
+                user.password_confirmation = 'virekia'
+                user.province              = politician['address'][3]
+                user.city                  = politician['address'][2]
+                user.role                  = Role.politician.first
+                user.title                 = Title.find_or_create_by_name(politician['works_for'].first.first)
+                user.facebook_username     = politician[''].first.delete('http://facebook.com/') rescue nil
+                politician['works_for'].each do |work|
+                  user.areas << Area.find_or_create_by_name(work[1])
+                end
+                # user.profile_pictures << params[:profile_picture] if params[:profile_picture]
+                user.save!
+              rescue Exception => ex
+                ap politician
+                puts ex
+                puts ex.backtrace
+              end
+            end
+        end
+        end
+
+      end
+
+      private
+
+      def self.get_json(url, server_options)
+        JSON.parse(open(url, server_options).read)
+      end
+
 		end
+
 end

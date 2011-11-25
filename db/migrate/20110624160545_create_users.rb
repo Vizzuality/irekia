@@ -21,6 +21,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :twitter_username
       t.string   :facebook_username
 
+      t.string   :external_id
+
       t.string   :facebook_oauth_token
       t.string   :facebook_oauth_token_secret
       t.string   :twitter_oauth_token

@@ -14,6 +14,7 @@ gem 'json', '1.6.1'
 gem 'mini_fb', '1.1.7'
 gem 'twitter', '1.7.2'
 gem 'feedzirra', '0.1.1'
+gem 'ri_cal', '0.8.8'
 
 group :development do
   gem 'capistrano'
@@ -40,4 +41,5 @@ group :development, :test, :staging do
   gem 'delorean'
   gem 'ffaker', '1.8.1'
   gem 'colored', '~> 1.2'
+  gem 'awesome_print'
 end
