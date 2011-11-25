@@ -301,6 +301,7 @@ header {
 
         }
       }
+
       .areas_selector {
         float: left;
         margin: 0 15px 0 0;
@@ -3147,7 +3148,7 @@ a.editable {
             color: #465866;
 
             a { line-height: normal; }
-            .middot { color:#ccc; }
+            .middot { float:left; color:#ccc; }
             h3 { float: left; margin: 0 4px 0 0; padding: 0; line-height: 19px; font-size: 12px; }
           }
 
@@ -3613,31 +3614,32 @@ a.editable {
             }
           }
 
-          // Tagging system
+          // Tagging system for areas
           #container article .inner .context ul.tags {
-            float: left;
             position:relative;
+            float: left;
             top:-5px;
-            margin:0px;
+            margin:0px 0 0 5px;
+            width: 544px;
+            z-index:2000;
 
             li {
               @include inline-block;
-              margin: 0 20px 0 0;
+              margin: 0 20px 10px 0;
+              float:none;
+
               a { color: $medium_dark; }
+
               &.add {
                 float:none;
                 width:26px;
                 height:26px;
-                background:url('/images/tag_sprite.png') no-repeat -216px -105px;
                 padding:0;
+                margin: 0 0 0 5px;
+                background:url('/images/tag_sprite.png') no-repeat -216px -105px;
                 text-align:center;
 
-                a {
-                  width:auto;
-                  float:none;
-                  margin: 3px 0 0 0;
-                  color:$pink;
-                }
+                a { display:block; font-size: 15px; line-height: 1.6; width:26px; float:none; color:$pink; }
               }
             }
           }

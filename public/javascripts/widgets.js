@@ -1327,8 +1327,14 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 
       $(this).click(_toggle);
 
-      $(this).find("ul li a").bind('click', function(e) {
-        window.location = $(this).attr('href');
+     // $ps.bind('click', function(e) {
+     //   e.preventDefault();
+     //   e.stopPropagation();
+     // });
+
+      $ps.find("li a").bind('click', function(e) {
+        e.preventDefault();
+        $this.before("<li class='editable'><a href='#'>" + $(this).html() + "</a></li>")
       });
 
       // Save the updated $ps reference into our data object
@@ -1386,11 +1392,11 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   }
 
   function _getTopPosition(data) {
-    return data.$ps.height() + 27;
+    return data.$this.position().top + 27;
   }
 
   function _getLeftPosition(data) {
-    return -1 * ((data.$ps.outerWidth() / 2) + (data.$this.outerWidth() / 2) + 3);
+    return data.$this.position().left - 42;
   }
 
   function _triggerOpenAnimation($ps, data) {
@@ -1409,38 +1415,6 @@ jQuery.fn.enablePoliticianPublish = function(opt){
     $ps.find(".popover").fadeOut(data.settings.transitionSpeed, data.settings.easingMethod);
   }
 
-  function _addSubmitAction(data) {
-    data.$ps.find("form").die();
-
-    data.$ps.find("form").submit(function(e) {
-      spinner.spin(spin_element);
-      disableSending(data.$ps);
-    });
-
-    data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
-      spinner.stop();
-      enableSending(data.$ps);
-      _close(data, false, function() {
-        _gotoSuccess(data);
-      });
-    });
-
-    data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
-      spinner.stop();
-      enableSending(data.$ps);
-    });
-
-  }
-
-  function _addCloseAction2(data) {
-    data.$ps.find(".close").unbind("click");
-    data.$ps.find(".close").bind('click', function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      _close2(data, true);
-    });
-  }
-
   function _addCloseAction(data) {
     data.$ps.find(".close").unbind("click");
     data.$ps.find(".close").bind('click', function(e) {
@@ -1455,22 +1429,6 @@ jQuery.fn.enablePoliticianPublish = function(opt){
     data.$ps.bind('click', function(e) {
       e.stopPropagation();
     });
-  }
-
-  function _gotoSuccess(data) {
-
-    data.$ps = _build(data, "success");
-    var $ps  = data.$ps;
-
-
-    _addCloseAction2(data);
-    _addDefaultAction(data);
-
-    $("#container").prepend($ps);
-    _subscribeToEvent(data.event);
-    _triggerOpenAnimation($ps, data);
-
-    $ps.find(".input-counter").inputCounter();
   }
 
   $(function() { });

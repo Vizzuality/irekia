@@ -333,9 +333,7 @@ jQuery.fn.enableEditTags = function(opt){
   $new.find("form").submit(function(e) {
     $new.fadeOut(speed, function() {
       $add.fadeIn(fadeInSpeed);
-
       var val = $new.find('input[type="text"]').val();
-
       $add.before("<li class='editable'><a href='#'>" + val + "</a>");
     });
   });

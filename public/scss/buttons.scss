@@ -476,6 +476,10 @@ a.radio {
 Editing forms
 ========================================================================== */
 
+#container article.editable .inner .left  {
+  z-index:2000;
+}
+
 form.editable,
 #container article .inner .left  form.editable {
 
@@ -496,7 +500,10 @@ form.editable,
     .meta { margin: 0; }
     .dk_container {
       margin: 0 10px 0 0;
-      li { margin-bottom: 0; }
+      li {
+        margin-bottom: 0;
+        a { color: $medium_dark; }
+      }
     }
   }
 
@@ -586,8 +593,8 @@ form.editable,
 }
 
 
+// List of areas for the area selector
 #container .inner .left .areas_editable_selector {
-
   .popover {
     display:none;
     position:absolute;

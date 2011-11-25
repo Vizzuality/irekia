@@ -4,13 +4,13 @@
   <meta property="og:image" content="<%= image_url @content.news_data.image.content_url if @content.news_data.image.present? %>" />
 <% end -%>
 
-<article class="activity with_footer">
+<article class="activity editable with_footer">
 <div class="inner">
   <div class="left">
 
     <div class="context">
       <h3><%= t(@content.content_type) %></h3>
-      <!--<span class="middot">&middot;</span>-->
+      <span class="middot">&middot;</span>
       <ul class="editable tags">
         <% @content.areas.each do |a| %>
           <li<%=" class='editable'" if @editable %>>
