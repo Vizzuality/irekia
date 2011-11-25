@@ -5,6 +5,8 @@ class CreateAreas < ActiveRecord::Migration
       t.text :description
       t.text :description_1
       t.text :description_2
+      t.string  :long_name
+      t.integer :external_id
 
       t.integer :areas_users_count,        :default => 0
       t.integer :follows_count,            :default => 0
@@ -23,6 +25,8 @@ class CreateAreas < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :areas, :external_id
   end
 
   def self.down

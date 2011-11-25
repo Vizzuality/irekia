@@ -23,9 +23,9 @@ module Irekia
 						news.news_data = NewsData.new(:title      => news_item.title.sanitize,
 																					:body       => news_item.summary.sanitize,
 																				  :source_url => news_item.url)
-						news.areas << Area.find(7)
-						news.moderated = true
-						news.save!
+            news.areas << Area.find(7)
+            news.moderated = true
+            news.save!
             print '.'
 					rescue Exception => ex
 						puts ex
@@ -93,8 +93,9 @@ module Irekia
       end
 
       def self.get_areas_and_politicians
+        puts "Importing politicians' data from communication guide"
+        puts '===================================================='
         require 'open-uri'
-        require 'awesome_print'
 
         communication_guide_server = {
           :production => {:url => 'http://www2.irekia.euskadi.net'},
@@ -114,48 +115,60 @@ module Irekia
         politician_detail_url = lambda{ |language, id| "#{server[:url]}/#{language}/people/#{id}.json" }
 
         languages.each do |lang|
+          puts "=> getting data for #{lang} language"
+          puts "=> getting all categories"
           categories = get_json(categories_url.call(lang), server_options)['categories']
 
           basque_government = categories.select{|c| ['gobierno vasco', 'eusko jaurlaritza'].include?((c['name'] || '').downcase.strip)}.first
           if basque_government.present?
+
+            puts '=> getting all government areas'
             areas = get_json(areas_url.call(lang, basque_government['id']), server_options)['categories']
 
-            politicians_ids = []
             areas.each do |area|
-              area_detail = get_json(area_detail_url.call(lang, area['id']), server_options)
-              politicians_ids << area_detail['people'].map(&:first)
-            end
+              area_id = area['id']
+              area_detail = get_json(area_detail_url.call(lang, area_id), server_options)
 
-            politicians = politicians_ids.uniq.flatten.map{|id| get_json(politician_detail_url.call(lang, id), server_options)['person']}
+              Area.where(:long_name => area['name']).each do |area|
+                area.external_id = area_id
+                area.save!
+              end
 
-            Area.destroy_all
-            User.politicians.destroy_all
+              puts "=> getting politicians data for #{area['name']}"
 
-            politicians.each do |politician|
+              politicians_ids = area_detail['people'].map(&:first)
 
-              begin
-                user = User.find_or_initialize_by_name_and_lastname_and_email(politician['first_name'], politician['last_name'], politician['email'].try(:first))
-                user.password              = 'virekia'
-                user.password_confirmation = 'virekia'
-                user.province              = politician['address'][3]
-                user.city                  = politician['address'][2]
-                user.role                  = Role.politician.first
-                user.title                 = Title.find_or_create_by_name(politician['works_for'].first.first)
-                user.facebook_username     = politician[''].first.delete('http://facebook.com/') rescue nil
-                politician['works_for'].each do |work|
-                  user.areas << Area.find_or_create_by_name(work[1])
+              politicians_ids.each do |politician_id|
+                politician = get_json(politician_detail_url.call(lang, politician_id), server_options)['person']
+
+                begin
+                  user = User.find_or_initialize_by_external_id(politician_id)
+
+                  user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ')
+                  user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')
+                  user.email                 =  politician['email'].first.present?? politician['email'].first : "#{politician_id}@ej-gv.es"
+                  user.password              = 'virekia'
+                  user.password_confirmation = 'virekia'
+                  user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
+                  user.city                  = (politician['address'][2] || '').split(' ').map(&:capitalize).join(' ')
+                  user.role                  = Role.politician.first
+                  user.title                 = Title.find_or_create_by_name(politician['works_for'].first.first)
+                  user.facebook_username     = politician[''].first.delete('http://facebook.com/') rescue nil
+                  user.areas                 = Area.where(:external_id => area['id'])
+                  user.last_import           = Time.at(politician['update_date'])
+                  # user.profile_pictures << params[:profile_picture] if params[:profile_picture]
+                  user.save!
+                rescue Exception => ex
+                  puts politician.inspect
+                  puts ex
+                  puts ex.backtrace
                 end
-                # user.profile_pictures << params[:profile_picture] if params[:profile_picture]
-                user.save!
-              rescue Exception => ex
-                ap politician
-                puts ex
-                puts ex.backtrace
               end
             end
-        end
+          end
         end
 
+        puts '=> import complete!'
       end
 
       private

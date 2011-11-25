@@ -21,7 +21,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :twitter_username
       t.string   :facebook_username
 
-      t.string   :external_id
+      t.integer  :external_id
+      t.datetime :last_import
 
       t.string   :facebook_oauth_token
       t.string   :facebook_oauth_token_secret
@@ -97,6 +98,7 @@ class CreateUsers < ActiveRecord::Migration
     # add_index :users, :confirmation_token,                                 :unique => true
     # add_index :users, :unlock_token,                                       :unique => true
     # add_index :users, :authentication_token,                               :unique => true
+    add_index :users, :external_id, :unique => true
 
     add_index :users, [:facebook_oauth_token, :facebook_oauth_token_secret], :unique => true, :name => 'facebook_credentials'
     add_index :users, [:twitter_oauth_token, :twitter_oauth_token_secret],   :unique => true, :name => 'twitter_credentials'

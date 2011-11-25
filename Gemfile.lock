@@ -137,7 +137,7 @@ GEM
       rails (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
-    linecache19 (0.5.12)
+    linecache19 (0.5.13)
       ruby_core_source (>= 0.1.4)
     loofah (1.2.0)
       nokogiri (>= 1.4.4)
@@ -229,7 +229,7 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.7.0)
-    ruby-debug-base19 (0.11.25)
+    ruby-debug-base19 (0.11.26)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
       ruby_core_source (>= 0.1.4)
@@ -283,7 +283,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_print
   bullet
   capistrano
   capistrano-ext
@@ -311,7 +310,6 @@ DEPENDENCIES
   rake (= 0.9.2)
   ri_cal (= 0.8.8)
   rspec-rails (~> 2.6)
-  ruby-debug-base19 (>= 0.11.25, <= 0.11.26)
   ruby-debug19
   sass (= 3.1.7)
   selenium-webdriver (= 2.7.0)

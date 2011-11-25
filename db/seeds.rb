@@ -10,3 +10,5 @@ puts ''
 puts "- Loading testing data"
 
 load Rails.root.join('db/seeds/seeds.rb')
+
+puts ''

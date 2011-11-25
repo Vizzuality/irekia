@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
     t.text     "description"
     t.text     "description_1"
     t.text     "description_2"
+    t.string   "long_name"
+    t.integer  "external_id"
     t.integer  "areas_users_count",     :default => 0
     t.integer  "follows_count",         :default => 0
     t.integer  "proposals_count",       :default => 0
@@ -59,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "areas", ["external_id"], :name => "index_areas_on_external_id"
 
   create_table "areas_contents", :force => true do |t|
     t.integer  "area_id"
@@ -311,6 +315,8 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
     t.string   "phone_number"
     t.string   "twitter_username"
     t.string   "facebook_username"
+    t.integer  "external_id"
+    t.datetime "last_import"
     t.string   "facebook_oauth_token"
     t.string   "facebook_oauth_token_secret"
     t.string   "twitter_oauth_token"
@@ -372,6 +378,7 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["external_id"], :name => "index_users_on_external_id", :unique => true
   add_index "users", ["facebook_oauth_token", "facebook_oauth_token_secret"], :name => "facebook_credentials", :unique => true
   add_index "users", ["id"], :name => "index_users_on_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
