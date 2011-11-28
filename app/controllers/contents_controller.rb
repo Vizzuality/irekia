@@ -138,8 +138,11 @@ class ContentsController < ApplicationController
   def update
     render :json => @image and return if @image.present?
 
-    @content = @content_class.moderated.where(:id => params[:id]).first
-    @content.update_attributes(params[@content_type])
+    @content        = @content_class.moderated.where(:id => params[:id]).first
+    @content_params = params[@content_type]
+    @content.update_attributes(@content_params)
+
+    render :partial => "contents/responses/#{current_user.role.name_i18n_key}/#{params[:partial]}" and return if params[:partial].present?
     redirect_to @content
   end
 
