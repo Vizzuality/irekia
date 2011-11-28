@@ -85,7 +85,7 @@
       // bindings
       _addCloseAction();
       _addDefaultAction();
-      _bindSubmit(, true, "continue");
+      _bindSubmit("Continuar", true, "continue");
     });
   };
 

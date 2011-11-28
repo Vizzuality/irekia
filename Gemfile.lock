@@ -132,7 +132,7 @@ GEM
       wirb (>= 0.4.1)
       zucker (>= 11)
     json (1.6.1)
-    json_pure (1.6.1)
+    json_pure (1.6.2)
     kaminari (0.12.4)
       rails (>= 3.0.0)
     launchy (2.0.5)
@@ -157,7 +157,7 @@ GEM
       rest-client
     mini_magick (3.3)
       subexec (~> 0.1.0)
-    multi_json (1.0.3)
+    multi_json (1.0.4)
     multi_xml (0.4.1)
     multipart-post (1.1.4)
     net-scp (1.0.4)

@@ -78,7 +78,7 @@
                 <li class="youtube selected">
                 <a href="#" class="radio selected"></a>
                 <div class="logo"></div>
-                <div class="input_field placeholder">
+                <div class="input_field youtube placeholder">
                   <%= form.fields_for :video_data do |video_data| %>
                     <%= video_data.text_field :youtube_url %>
                   <% end -%>
@@ -89,7 +89,7 @@
                 <li class="vimeo">
                 <a href="#" class="radio"></a>
                 <div class="logo"></div>
-                <div class="input_field placeholder">
+                <div class="input_field vimeo placeholder">
                   <%= form.fields_for :video_data do |video_data| %>
                     <%= video_data.text_field :vimeo_url %>
                   <% end -%>

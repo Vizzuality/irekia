@@ -11,7 +11,7 @@
   }
 
   var
-  $article      = $(this),
+  $popover,
   currentHeight = 0,
   $currentSection,
   $currentMenuOption,
@@ -62,6 +62,8 @@
         data.sectionID = 0;
         data.spinner = spinner;
       }
+
+      $popover = $(this);
 
       // Update the reference to $ps
       $ps = $('#' + store);
@@ -169,7 +171,9 @@
   }
 
   function _hasContent($section) {
-    return !isEmpty($section.find(":text, textarea").val());
+    if (_video()) {
+      return $section.find("input").val();
+    } else return !isEmpty($section.find(":text, textarea").val());
   }
 
   function _enableSubmit($submit) {
@@ -183,8 +187,10 @@
   }
 
   function _selectOption(data, $option) {
-    var $ps = data.$ps;
-    var $menu = $ps.find(".menu");
+    var
+    $ps   = data.$ps,
+    $menu = $ps.find(".menu");
+
     $menu.find("li.selected").removeClass("selected");
     $option.addClass("selected");
   }
@@ -205,14 +211,16 @@
       $ps.find(".percentage").hide();
       $ps.find(".progress").css("width", "0");
     });
-
   }
 
   function _bindTextInputs(data) {
     _enableInputCounter(data, $("#status_message_status_message_data_attributes_message"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
     _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
     _enableInputCounter(data, $(".autosuggest_field input"), null, function() { _clearAutosuggest(data); _resetHiddenFields(); } );
-    _enableInputCounter(data, $(".section.video .input_field input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+
+    _enableInputCounter(data, $(".section.video .input_field.vimeo input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+    _enableInputCounter(data, $(".section.video .input_field.youtube input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+
     _enableInputCounter(data, $(".section.photo .input_field input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
   }
 
@@ -233,20 +241,25 @@
     });
 
     // Video section binding
-    $ps.find(".section.video li").click(function(e) {
-      e && e.preventDefault();
+    $ps.find(".section.video li").click(_changeVideoSource);
+    $ps.find("a.radio").click(_toggleVideoSourceClass);
+  }
 
-      $(this).siblings("li").removeClass("selected");
-      $(this).addClass("selected");
-      $ps.find(".radio.selected").removeClass("selected");
-      $(this).find(".radio").addClass("selected");
-    });
+  function _changeVideoSource(e) {
+    e && e.preventDefault();
 
-    $ps.find("a.radio").click(function(e) {
-      e && e.preventDefault();
-      $ps.find(".section.video li").toggleClass("selected");
-    });
+    var data = $popover.data(store);
 
+    $(this).siblings("li").removeClass("selected");
+    $(this).addClass("selected");
+    data.$ps.find(".radio.selected").removeClass("selected");
+    $(this).find(".radio").addClass("selected");
+  }
+
+  function _toggleVideoSourceClass(e) {
+    e && e.preventDefault();
+    var data = $popover.data(store);
+    data.$ps.find(".section.video li").toggleClass("selected");
   }
 
   function _resizeSection(data, $section, callback) {
@@ -266,15 +279,14 @@
   }
 
   function _clearSection(data) {
-    var $ps = data.$ps;
-    $ps.find(":text, textarea").val("");
-    $ps.find(".uploader").show();
-    $ps.find(".holder").show();
-    $ps.find(".loading").hide();
-    $ps.find(".percentage").hide();
-    $ps.find(".progress").css("width", "0");
-    $ps.find(".image_container").hide();
-    $ps.find(".image_container img").remove();
+    data.$ps.find(":text, textarea").val("");
+    data.$ps.find(".uploader").show();
+    data.$ps.find(".holder").show();
+    data.$ps.find(".loading").hide();
+    data.$ps.find(".percentage").hide();
+    data.$ps.find(".progress").css("width", "0");
+    data.$ps.find(".image_container").hide();
+    data.$ps.find(".image_container img").remove();
   }
 
   function _clearAutosuggest(data) {
@@ -379,13 +391,24 @@
 
  // function _doMessage(data) {
  //   var $ps = data.$ps;
-
  //   _showExtraFields(data.settings.transitionSpeed);
  //   _resizeSection(data, $currentSection);
  //   _disableSubmit(data.$submit);
  //   _changeSubmitTitle(data.$submit, "Publicar");
  //   data.$submit.unbind();
  // }
+
+  function _publishVideo(data) {
+    console.log("publishing video");
+    var $ps = data.$ps;
+    var $form = $currentSection.find("form");
+
+    $form.submit();
+    data.spinner.spin(spin_element);
+
+    $form.unbind();
+    $form.bind('ajax:success', function(event, xhr, status) { _successMessage(data, $form, xhr); })
+  }
 
   function _publishMessage(data) {
     var $ps = data.$ps;
@@ -436,7 +459,15 @@
   }
 
   function _getCurrentSectionName() {
-    return _message() ? "dashboard" : "proposal";
+    if ($currentSection.hasClass("dashboard")) return "dashboard";
+    if ($currentSection.hasClass("question"))  return "question";
+    if ($currentSection.hasClass("proposal"))  return "proposal";
+    if ($currentSection.hasClass("video"))     return "video";
+    if ($currentSection.hasClass("image"))     return "image";
+  }
+
+  function _video() {
+    return $currentSection.hasClass("video");
   }
 
   function _message() {
@@ -459,13 +490,42 @@
   function _submitPublish(data) {
     if (!_hasContent($currentSection)) return;
     _disableSubmit(data.$submit);
-    _message() ?  _publishMessage(data) : _publishProposal(data);
+    _submit(data);
+  }
+
+  function _do(data) {
+    switch(_getCurrentSectionName()) {
+      case 'dashboard':
+        _doMessage(data);
+      break;
+
+      case 'proposal':
+        _doProposal(data);
+      break;
+    }
+  }
+
+  function _submit(data) {
+    switch(_getCurrentSectionName()) {
+      case 'dashboard':
+        _publishMessage(data);
+      break;
+
+      case 'proposal':
+        _publishProposal(data);
+      break;
+
+      case 'video':
+        _publishVideo(data);
+      break;
+    }
   }
 
   function _submitContinue(data) {
     if (!_hasContent($currentSection)) return;
     _disableSubmit(data.$submit);
-    _message() ?  _doMessage(data) : _doProposal(data);
+    _do(data);
+    //_message() ?  _doMessage(data) : _doProposal(data);
   }
 
   function _bindSubmit(data, title, initiallyDisabled, callback) {
