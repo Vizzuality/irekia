@@ -3164,7 +3164,7 @@ a.editable {
             color: #465866;
 
             a { line-height: normal; }
-            .middot { float:left; color:#ccc; }
+            .middot { float:left; margin: 0 3px 0 0; color:#ccc; }
             h3 { float: left; margin: 0 4px 0 0; padding: 0; line-height: 19px; font-size: 12px; }
           }
 
@@ -3649,7 +3649,7 @@ a.editable {
               @include transition-duration(300ms);
               &:focus { border: 1px solid #ccc; }
               &:hover { border: 1px solid $dark; }
-            }
+            } // textarea
           }
 
           // Tagging system for areas
@@ -3672,15 +3672,14 @@ a.editable {
                 float:none;
                 width:26px;
                 height:26px;
-                padding:0;
-                margin: 0 0 0 5px;
+                padding:0; margin: 0;
                 background:url('/images/tag_sprite.png') no-repeat -216px -105px;
                 text-align:center;
 
                 a { display:block; font-size: 15px; line-height: 1.6; width:26px; float:none; color:$pink; }
               }
             }
-          }
+          } // ul.tags
 
           #container .article .right .content ul.tags {
             margin-bottom:20px;
@@ -3751,15 +3750,14 @@ a.editable {
                       background-position: -200px -105px;
                     }
                   }
-                }
+                } // form
 
                 a {
                   height:26px - 8;
                   background-position: 0 -197px;
                   color: $medium_dark;
                   line-height: 18px;
-
-                }
+                } // a
 
                 &:hover {
                   background-position:right -226px;
@@ -3771,7 +3769,7 @@ a.editable {
                     }
                   }
                 }
-              }
+              } // editable
 
               a {
                 float:left;
@@ -3782,7 +3780,7 @@ a.editable {
                 height:24px - 8;
                 padding:4px 0 4px 12px;
                 background:url('/images/tag_sprite.png') no-repeat 0 -26px;
-              }
+              } // a
 
               &:hover {
                 background-position:right -53px;
@@ -3817,9 +3815,7 @@ a.editable {
                   color:$pink;
                   left:0;
                 }
-              }
-
-
+              } // add
             }
           }
 

@@ -399,8 +399,18 @@
  //   data.$submit.unbind();
  // }
 
+  function _publishPhoto(data) {
+    var $ps = data.$ps;
+    var $form = $currentSection.find("form");
+
+    $form.submit();
+    data.spinner.spin(spin_element);
+
+    $form.unbind();
+    $form.bind('ajax:success', function(event, xhr, status) { _successMessage(data, $form, xhr); })
+  }
+
   function _publishVideo(data) {
-    console.log("publishing video");
     var $ps = data.$ps;
     var $form = $currentSection.find("form");
 
@@ -464,7 +474,7 @@
     if ($currentSection.hasClass("question"))  return "question";
     if ($currentSection.hasClass("proposal"))  return "proposal";
     if ($currentSection.hasClass("video"))     return "video";
-    if ($currentSection.hasClass("image"))     return "image";
+    if ($currentSection.hasClass("photo"))     return "photo";
   }
 
   function _video() {
@@ -514,6 +524,10 @@
 
       case 'proposal':
         _publishProposal(data);
+      break;
+
+      case 'photo':
+        _publishPhoto(data);
       break;
 
       case 'video':

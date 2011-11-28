@@ -791,7 +791,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* context */
 #container .article .inner .context { float: left; clear: right; margin: 0 0 6px 0; padding: 0 0 3px 0; border-bottom: 1px solid #e4e8da; font-size: 15px; line-height: normal; color: #465866; }
 #container .article .inner .context a { line-height: normal; }
-#container .article .inner .context .middot { float: left; color: #ccc; }
+#container .article .inner .context .middot { float: left; margin: 0 3px 0 0; color: #ccc; }
 #container .article .inner .context h3 { float: left; margin: 0 4px 0 0; padding: 0; line-height: 19px; font-size: 12px; }
 
 /* info */
@@ -909,7 +909,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .inner .context ul.tags { position: relative; float: left; top: -5px; margin: 0px 0 0 5px; width: 544px; z-index: 2000; }
 #container .article .inner .context ul.tags li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; margin: 0 20px 10px 0; float: none; }
 #container .article .inner .context ul.tags li a { color: #666666; }
-#container .article .inner .context ul.tags li.add { float: none; width: 26px; height: 26px; padding: 0; margin: 0 0 0 5px; background: url("/images/tag_sprite.png") no-repeat -216px -105px; text-align: center; }
+#container .article .inner .context ul.tags li.add { float: none; width: 26px; height: 26px; padding: 0; margin: 0; background: url("/images/tag_sprite.png") no-repeat -216px -105px; text-align: center; }
 #container .article .inner .context ul.tags li.add a { display: block; font-size: 15px; line-height: 1.6; width: 26px; float: none; color: #f10063; }
 
 #container .article .right .content ul.tags { margin-bottom: 20px; }
