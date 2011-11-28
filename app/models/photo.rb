@@ -3,6 +3,8 @@ class Photo < Content
 
   delegate :title, :description, :original_url, :content_url, :list_element_url, :to => :image, :allow_nil => true
 
+  accepts_nested_attributes_for :image
+
   def as_json(options = {})
     super({
       :title            => title,
