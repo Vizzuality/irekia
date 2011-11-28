@@ -113,10 +113,10 @@ a.radio.selected:hover { cursor: pointer; text-decoration: none; }
 /* =============================================================================
 Editing forms
 ========================================================================== */
-#container .article.editable .inner .left { z-index: 500; }
+#container .article.editable .inner .left { z-index: 60; }
 
 form.editable, #container .article .inner .left form.editable { float: left; margin: 0 0 10px 0; width: 607px; position: relative; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; }
-form.editable.date, #container .article .inner .left form.editable.date { z-index: 20000; margin: 0 0 20px 0; }
+form.editable.date, #container .article .inner .left form.editable.date { z-index: 70; margin: 0 0 20px 0; }
 form.editable.date select, #container .article .inner .left form.editable.date select { display: none; }
 form.editable.date .meta, #container .article .inner .left form.editable.date .meta { margin: 0; }
 form.editable.date .dk_container, #container .article .inner .left form.editable.date .dk_container { margin: 0 10px 0 0; }
@@ -129,7 +129,7 @@ form.editable.image .add_image, #container .article .inner .left form.editable.i
 form.editable.image .add_image a, #container .article .inner .left form.editable.image .add_image a { color: #f10063; font-size: 13px; }
 form.editable.image .content, #container .article .inner .left form.editable.image .content { cursor: default; border: none; background: none; padding: 0; position: relative; }
 form.editable.image .content .remove, #container .article .inner .left form.editable.image .content .remove { width: 34px; height: 35px; position: absolute; top: 20px; right: 15px; display: block; background: url("/images/icons/icon_sprite.png") no-repeat 0 -406px; }
-form.editable .spinner, #container .article .inner .left form.editable .spinner { top: 10px; right: 0px; z-index: 1000; position: absolute; background: red; }
+form.editable .spinner, #container .article .inner .left form.editable .spinner { top: 10px; right: 0px; z-index: 80; position: absolute; background: red; }
 form.editable .content, #container .article .inner .left form.editable .content { padding: 10px 17px; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; background: #ffffeb; cursor: pointer; }
 form.editable .submit, #container .article .inner .left form.editable .submit { display: none; margin: 0 0 10px 0; }
 form.editable input[type="file"], #container .article .inner .left form.editable input[type="file"] { display: none; }
@@ -137,7 +137,7 @@ form.editable .input_field, #container .article .inner .left form.editable .inpu
 form.editable .input_field textarea, #container .article .inner .left form.editable .input_field textarea { height: 100%; }
 form.editable .input_field textarea, form.editable .input_field input[type="text"], #container .article .inner .left form.editable .input_field textarea, #container .article .inner .left form.editable .input_field input[type="text"] { border: none; width: 100%; outline: none; }
 
-#container .inner .left .areas_editable_selector { position: absolute; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 -30px; z-index: 1000; }
+#container .inner .left .areas_editable_selector { position: absolute; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 -30px; z-index: 80; }
 #container .inner .left .areas_editable_selector.open { display: block; }
 #container .inner .left .areas_editable_selector.open .popover { display: block; }
 #container .inner .left .areas_editable_selector.open .handle { background-position: 0 -141px; }

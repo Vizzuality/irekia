@@ -1,7 +1,7 @@
 <% if @content.location || @editable %>
   <h4><%= t(".title") %></h4>
 
-  <ul class="locations no-bullets<%= ' editable' if @editable -%>">
+  <ul class="location no-bullets<%= ' editable' if @editable -%>">
     <li>
     <div class="map" id="map_<%= @content.id %>"></div>
 

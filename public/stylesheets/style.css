@@ -414,6 +414,11 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.help .inner .content { float: left; width: 544px; }
 #container .article.help .inner p { margin: 0 0 16px 0; color: #7D8A92; font-size: 17px; }
 #container .article.publish { width: 757px; margin: 0 auto 0px auto; }
+#container .article.publish.event .inner .content .container { background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; padding: 8px; }
+#container .article.publish.event .inner .content .container .inner_container { margin: 0; }
+#container .article.publish.event .inner .content .container .input_field { width: 666px; }
+#container .article.publish.event .inner .content .container .input_field input[type="text"] { width: 100%; color: #666666; }
+#container .article.publish.event .inner .content .container .map { width: 685px; }
 #container .article.publish.politician .inner .content .container { height: 79px; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .triangle { left: 388px; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0; }
@@ -660,7 +665,7 @@ p.info span.comments a { background-position: 0 -49px; }
 
 .footer.comments a, span.comments a { padding: 0 0 0 13px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -50px; }
 
-.footer.where, span.where, ul.locations .footer { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
+.footer.where, span.where, ul.location .footer { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
 
 span.where, .map .infowindow ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 
@@ -1132,17 +1137,17 @@ ul.tags li.add a, #container .article .right .content ul.tags li.add a { backgro
 .left-border { border-left: 1px solid #eaeaea; border-left: 1px solid rgba(70, 88, 102, 0.12); padding-left: 20px; }
 
 /* Lists */
-#container .article .right .content ul.locations, #container .article .right .content ul.proposals, #container .article .right .content ul.photos, #container .article .right .content ul.questions, #container .article .right .content ul.related, #container .article .right .content ul.previously, #container .article .right .content ul.events { width: 253px; padding: 0 0 20px 0px; }
-#container .article .right .content ul.locations.no-bullets li, #container .article .right .content ul.proposals.no-bullets li, #container .article .right .content ul.photos.no-bullets li, #container .article .right .content ul.questions.no-bullets li, #container .article .right .content ul.related.no-bullets li, #container .article .right .content ul.previously.no-bullets li, #container .article .right .content ul.events.no-bullets li { background: none; }
-#container .article .right .content ul.locations li, #container .article .right .content ul.proposals li, #container .article .right .content ul.photos li, #container .article .right .content ul.questions li, #container .article .right .content ul.related li, #container .article .right .content ul.previously li, #container .article .right .content ul.events li { background: url("/images/icons/bullet.png") no-repeat 0 7px; padding: 0 0 8px 7px; font-size: 13px; color: #7d8a92; margin: 0 0 7px 0; }
-#container .article .right .content ul.locations li a, #container .article .right .content ul.proposals li a, #container .article .right .content ul.photos li a, #container .article .right .content ul.questions li a, #container .article .right .content ul.related li a, #container .article .right .content ul.previously li a, #container .article .right .content ul.events li a { margin-bottom: 1px; display: block; color: #465866; font-weight: bold; font-size: 15px; }
-#container .article .right .content ul.locations li.twitter-link, #container .article .right .content ul.proposals li.twitter-link, #container .article .right .content ul.photos li.twitter-link, #container .article .right .content ul.questions li.twitter-link, #container .article .right .content ul.related li.twitter-link, #container .article .right .content ul.previously li.twitter-link, #container .article .right .content ul.events li.twitter-link { margin: 0 0 0 5px; padding: 0 0 0 25px; background: url("/images/twitter_sprite.png") no-repeat 0 -90px; }
-#container .article .right .content ul.locations li.twitter-link a, #container .article .right .content ul.proposals li.twitter-link a, #container .article .right .content ul.photos li.twitter-link a, #container .article .right .content ul.questions li.twitter-link a, #container .article .right .content ul.related li.twitter-link a, #container .article .right .content ul.previously li.twitter-link a, #container .article .right .content ul.events li.twitter-link a { font-weight: normal; font-size: 13px; color: #2c8cc5; }
-#container .article .right .content ul.locations li .footer a, #container .article .right .content ul.proposals li .footer a, #container .article .right .content ul.photos li .footer a, #container .article .right .content ul.questions li .footer a, #container .article .right .content ul.related li .footer a, #container .article .right .content ul.previously li .footer a, #container .article .right .content ul.events li .footer a { margin: 0px; display: inline; color: #1d79b0; font-weight: normal; font-size: 13px; }
+#container .article .right .content ul.location, #container .article .right .content ul.proposals, #container .article .right .content ul.photos, #container .article .right .content ul.questions, #container .article .right .content ul.related, #container .article .right .content ul.previously, #container .article .right .content ul.events { width: 253px; padding: 0 0 20px 0px; }
+#container .article .right .content ul.location.no-bullets li, #container .article .right .content ul.proposals.no-bullets li, #container .article .right .content ul.photos.no-bullets li, #container .article .right .content ul.questions.no-bullets li, #container .article .right .content ul.related.no-bullets li, #container .article .right .content ul.previously.no-bullets li, #container .article .right .content ul.events.no-bullets li { background: none; }
+#container .article .right .content ul.location li, #container .article .right .content ul.proposals li, #container .article .right .content ul.photos li, #container .article .right .content ul.questions li, #container .article .right .content ul.related li, #container .article .right .content ul.previously li, #container .article .right .content ul.events li { background: url("/images/icons/bullet.png") no-repeat 0 7px; padding: 0 0 8px 7px; font-size: 13px; color: #7d8a92; margin: 0 0 7px 0; }
+#container .article .right .content ul.location li a, #container .article .right .content ul.proposals li a, #container .article .right .content ul.photos li a, #container .article .right .content ul.questions li a, #container .article .right .content ul.related li a, #container .article .right .content ul.previously li a, #container .article .right .content ul.events li a { margin-bottom: 1px; display: block; color: #465866; font-weight: bold; font-size: 15px; }
+#container .article .right .content ul.location li.twitter-link, #container .article .right .content ul.proposals li.twitter-link, #container .article .right .content ul.photos li.twitter-link, #container .article .right .content ul.questions li.twitter-link, #container .article .right .content ul.related li.twitter-link, #container .article .right .content ul.previously li.twitter-link, #container .article .right .content ul.events li.twitter-link { margin: 0 0 0 5px; padding: 0 0 0 25px; background: url("/images/twitter_sprite.png") no-repeat 0 -90px; }
+#container .article .right .content ul.location li.twitter-link a, #container .article .right .content ul.proposals li.twitter-link a, #container .article .right .content ul.photos li.twitter-link a, #container .article .right .content ul.questions li.twitter-link a, #container .article .right .content ul.related li.twitter-link a, #container .article .right .content ul.previously li.twitter-link a, #container .article .right .content ul.events li.twitter-link a { font-weight: normal; font-size: 13px; color: #2c8cc5; }
+#container .article .right .content ul.location li .footer a, #container .article .right .content ul.proposals li .footer a, #container .article .right .content ul.photos li .footer a, #container .article .right .content ul.questions li .footer a, #container .article .right .content ul.related li .footer a, #container .article .right .content ul.previously li .footer a, #container .article .right .content ul.events li .footer a { margin: 0px; display: inline; color: #1d79b0; font-weight: normal; font-size: 13px; }
 
-#container .article .right .content ul.locations.editable li .footer { padding: 10px 10px 8px 10px; border: 1px solid #ccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; background: #ffffeb; cursor: pointer; }
-#container .article .right .content ul.locations li { padding: 0; }
-#container .article .right .content ul.locations li .map { background: #f1f1f1; width: 253px; height: 129px; margin-bottom: 9px; }
+#container .article .right .content ul.location.editable li .footer { padding: 10px 10px 8px 10px; border: 1px solid #ccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; background: #ffffeb; cursor: pointer; }
+#container .article .right .content ul.location li { padding: 0; }
+#container .article .right .content ul.location li .map { background: #f1f1f1; width: 253px; height: 129px; margin-bottom: 9px; }
 
 /* Ribbons */
 #container .article form.follow_ribbon { position: absolute; top: -14px; right: 25px; display: block; width: 36px; height: 75px; padding: 0px 0 0 1px; background: url("/images/ribbon.png") no-repeat -76px 0; z-index: 10; }
@@ -1635,10 +1640,10 @@ a.radio.selected:hover { cursor: pointer; text-decoration: none; }
 /* =============================================================================
 Editing forms
 ========================================================================== */
-#container .article.editable .inner .left { z-index: 500; }
+#container .article.editable .inner .left { z-index: 60; }
 
 form.editable, #container .article .inner .left form.editable { float: left; margin: 0 0 10px 0; width: 607px; position: relative; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; }
-form.editable.date, #container .article .inner .left form.editable.date { z-index: 20000; margin: 0 0 20px 0; }
+form.editable.date, #container .article .inner .left form.editable.date { z-index: 70; margin: 0 0 20px 0; }
 form.editable.date select, #container .article .inner .left form.editable.date select { display: none; }
 form.editable.date .meta, #container .article .inner .left form.editable.date .meta { margin: 0; }
 form.editable.date .dk_container, #container .article .inner .left form.editable.date .dk_container { margin: 0 10px 0 0; }
@@ -1651,7 +1656,7 @@ form.editable.image .add_image, #container .article .inner .left form.editable.i
 form.editable.image .add_image a, #container .article .inner .left form.editable.image .add_image a { color: #f10063; font-size: 13px; }
 form.editable.image .content, #container .article .inner .left form.editable.image .content { cursor: default; border: none; background: none; padding: 0; position: relative; }
 form.editable.image .content .remove, #container .article .inner .left form.editable.image .content .remove { width: 34px; height: 35px; position: absolute; top: 20px; right: 15px; display: block; background: url("/images/icons/icon_sprite.png") no-repeat 0 -406px; }
-form.editable .spinner, #container .article .inner .left form.editable .spinner { top: 10px; right: 0px; z-index: 1000; position: absolute; background: red; }
+form.editable .spinner, #container .article .inner .left form.editable .spinner { top: 10px; right: 0px; z-index: 80; position: absolute; background: red; }
 form.editable .content, #container .article .inner .left form.editable .content { padding: 10px 17px; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; background: #ffffeb; cursor: pointer; }
 form.editable .submit, #container .article .inner .left form.editable .submit { display: none; margin: 0 0 10px 0; }
 form.editable input[type="file"], #container .article .inner .left form.editable input[type="file"] { display: none; }
@@ -1659,7 +1664,7 @@ form.editable .input_field, #container .article .inner .left form.editable .inpu
 form.editable .input_field textarea, #container .article .inner .left form.editable .input_field textarea { height: 100%; }
 form.editable .input_field textarea, form.editable .input_field input[type="text"], #container .article .inner .left form.editable .input_field textarea, #container .article .inner .left form.editable .input_field input[type="text"] { border: none; width: 100%; outline: none; }
 
-#container .inner .left .areas_editable_selector { position: absolute; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 -30px; z-index: 1000; }
+#container .inner .left .areas_editable_selector { position: absolute; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 -30px; z-index: 80; }
 #container .inner .left .areas_editable_selector.open { display: block; }
 #container .inner .left .areas_editable_selector.open .popover { display: block; }
 #container .inner .left .areas_editable_selector.open .handle { background-position: 0 -141px; }

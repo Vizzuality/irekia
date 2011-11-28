@@ -5,7 +5,7 @@ $(function() {
   // Preloading of popover assets
   $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
 
-	$('.home_last_activity').verticalHomeLoop();
+  $('.home_last_activity').verticalHomeLoop();
 
   // Editing tools
   $(".editable.text").enableTextEditing();
@@ -56,7 +56,7 @@ $(function() {
   $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});
   $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
 
-	// FOLLOW FORMS!!
+  // FOLLOW FORMS!!
   $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();
     $el.fadeOut(150, function() {
@@ -65,71 +65,70 @@ $(function() {
       $(this).fadeIn(150);
     });
   }).live('ajax:error', function(evt, xhr, status) {
-		$(this).effect("shake", { times:4 }, 100);
-	});
+    $(this).effect("shake", { times:4 }, 100);
+  });
 
 
-  $("form.follow_button,form.follow_ribbon").live('ajax:success', function(evt, xhr, status) {
+  $("form.follow_button, form.follow_ribbon").live('ajax:success', function(evt, xhr, status) {
 
-		// Button
-		var $el1 = $("div.column form.follow_button");
+    // Button
+    var $el1 = $("div.column form.follow_button");
     $el1.fadeOut(150, function() {
-			var parent = $(this).parent();
+      var parent = $(this).parent();
       $(this).remove();
-			parent.append(xhr);
-			parent.find('form.follow_ribbon').remove();
+      parent.append(xhr);
+      parent.find('form.follow_ribbon').remove();
       parent.find('form.follow_button').fadeIn(150);
     });
 
-		// Ribbon
-		var $el2 = $('.article.summary').find("form.follow_ribbon");
+    // Ribbon
+    var $el2 = $('.article.summary').find("form.follow_ribbon");
     $el2.fadeOut(150, function() {
       $(this).remove();
-			$('.article.summary').append(xhr);
-			$('.article.summary > form.follow_button').remove();
+      $('.article.summary').append(xhr);
+      $('.article.summary > form.follow_button').remove();
       $(this).fadeIn(150);
     });
 
   }).live('ajax:error', function(evt, xhr, status) {
-		$(this).effect("shake", { times:4 }, 100);
-	});
+    $(this).effect("shake", { times:4 }, 100);
+  });
+
+  // Grow ribbon
+  $('.follow_ribbon .ribbon').live('mouseenter',function(){
+    var form_ = $(this).closest('form');
+    form_.stop(true).animate({height:'90px'},300);
+  }).live('mouseleave',function() {
+    var form_ = $(this).closest('form');
+    form_.stop(true).animate({height:'75px'},300);
+  });
+
+  // END FOLLOW FORMS!!
 
 
-	// Grow ribbon
-	$('.follow_ribbon .ribbon').live('mouseenter',function(){
-		var form_ = $(this).closest('form');
-		form_.stop(true).animate({height:'90px'},300);
-	}).live('mouseleave',function() {
-		var form_ = $(this).closest('form');
-		form_.stop(true).animate({height:'75px'},300);
-	});
+  // ANSWER FORM
+  $('div.answering form').live('ajax:success',function(evt, xhr, status) {
+    var parent = $(this).closest('div.answering');
+    var response = $(xhr);
+    response.hide();
 
-	// END FOLLOW FORMS!!
-
-
-	// ANSWER FORM
-	$('div.answering form').live('ajax:success',function(evt, xhr, status) {
-		var parent = $(this).closest('div.answering');
-		var response = $(xhr);
-		response.hide();
-
-		parent.fadeOut(function(){
-			parent.before(response);
-			response.fadeIn();
-		});
-	});
-	// END ANSWER FORM
+    parent.fadeOut(function(){
+      parent.before(response);
+      response.fadeIn();
+    });
+  });
+  // END ANSWER FORM
 
 
   // This button close welcome message for new users
   $(".close-welcome").submit(function(e) {
     $(".welcome .close-welcome").fadeOut(250, function(){
-			$(this).remove();
-		});
+      $(this).remove();
+    });
     $(".welcome ul.actions").slideUp(250, function(){
-			$(this).remove();
-			$('.welcome a.config.first-time').fadeIn(250);
-		});
+      $(this).remove();
+      $('.welcome a.config.first-time').fadeIn(250);
+    });
   });
 
   $('.my_opinion').enableOpinion();
@@ -141,15 +140,15 @@ $(function() {
   $(".goto_comments").enableGotoComments();
   $('.floating-login').floatingLoginPopover();
 
-	// If is politicians - 105 | areas - 140 >> HACK
-	// var h_ = 0;
-	// if ($('div#main').hasClass('politicians')) {
-	// 	h_ = (7 * 18) + 5;
-	// } else {
-	// 	h_ = $('.two_columns').height() + 30;
-	// }
-	//
-	//   $('.two_columns').columnize({width:282, height:h_, columns:2});
+  // If is politicians - 105 | areas - 140 >> HACK
+  // var h_ = 0;
+  // if ($('div#main').hasClass('politicians')) {
+  // 	h_ = (7 * 18) + 5;
+  // } else {
+  // 	h_ = $('.two_columns').height() + 30;
+  // }
+  //
+  //   $('.two_columns').columnize({width:282, height:h_, columns:2});
 
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
@@ -158,15 +157,15 @@ $(function() {
 
   $(".share.twitter").click(function() {
     var width  = 611,
-        height = 400,
-        left   = 21,
-        top    = 44,
-        url    = this.href,
-        opts   = 'status=1' +
-                 ',width='  + width  +
-                 ',height=' + height +
-                 ',top='    + top    +
-                 ',left='   + left;
+    height = 400,
+    left   = 21,
+    top    = 44,
+    url    = this.href,
+    opts   = 'status=1' +
+      ',width='  + width  +
+        ',height=' + height +
+          ',top='    + top    +
+            ',left='   + left;
 
     window.open(url, 'twitter', opts);
 
@@ -179,44 +178,43 @@ $(function() {
   $(".show_event").infoEventPopover();
   $(".ask_question").questionPopover();
 
-$(".make_question").enableQuestion();
+  $(".make_question").enableQuestion();
 
-$(".user_publish").userPublishPopover();
-$(".politician_publish").politicianPublishPopover();
-$(".create_proposal").proposalPopover();
-$(".auth a.login").loginPopover();
-$(".share.inline, .share.more, .share.email").sharePopover();
+  $(".user_publish").userPublishPopover();
+  $(".politician_publish").politicianPublishPopover();
+  $(".create_proposal").proposalPopover();
+  $(".auth a.login").loginPopover();
+  $(".share.inline, .share.more, .share.email").sharePopover();
 
-//$('.avatar').prepend("<div class='ieframe'></div>");
-$(".with_filters").filterWidget();
-$(".with_filters").filterWidget();
+  //$('.avatar').prepend("<div class='ieframe'></div>");
+  $(".with_filters").filterWidget();
+  $(".with_filters").filterWidget();
 
-// $(".article.politician.publish").enablePoliticianPublish();
-// $(".article.politician.publish").enablePoliticianPublish();
+  // $(".article.politician.publish").enablePoliticianPublish();
+  // $(".article.politician.publish").enablePoliticianPublish();
 
-$(".areas_selector").areasPopover();
-$(".toggle_notifications").notificationPopover();
+  $(".areas_selector").areasPopover();
+  $(".toggle_notifications").notificationPopover();
 
-// After requesting an answer, reload the text
-$(".answer_placeholder form").bind('ajax:success', function(evt, xhr, status) {
-  var $ps = $(this).parents(".answer_placeholder").find(".has_requested_answer");
+  // After requesting an answer, reload the text
+  $(".answer_placeholder form").bind('ajax:success', function(evt, xhr, status) {
+    var $ps = $(this).parents(".answer_placeholder").find(".has_requested_answer");
 
-  $(this).fadeOut(150);
-  $ps.fadeOut(150, function() {
-    $ps.html(xhr);
-    $ps.fadeIn(150);
+    $(this).fadeOut(150);
+    $ps.fadeOut(150, function() {
+      $ps.html(xhr);
+      $ps.fadeIn(150);
+    });
   });
-});
 
-// HOME, grow all areas
-$("a.see_all_areas").click(function(ev){
-  ev.preventDefault();
-  $(this).closest('.article.areas').find('div.areas_list').animate({height:'635px'},500);
-  $(this).closest('.article.areas').find('div.all_areas').show();
-  $(this).closest('.article.areas').find('footer').animate({opacity:0,height:0},500,function(){
-    $(this).closest('.article.areas').removeClass('with_footer');
-    $(this).remove();
+  // HOME, grow all areas
+  $("a.see_all_areas").click(function(ev){
+    ev.preventDefault();
+    $(this).closest('.article.areas').find('div.areas_list').animate({height:'635px'},500);
+    $(this).closest('.article.areas').find('div.all_areas').show();
+    $(this).closest('.article.areas').find('footer').animate({opacity:0,height:0},500,function(){
+      $(this).closest('.article.areas').removeClass('with_footer');
+      $(this).remove();
+    });
   });
-});
-
 });

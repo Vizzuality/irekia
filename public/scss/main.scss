@@ -950,6 +950,22 @@ div#main.show div.left img {margin:4px 0 7px;}
     width: 757px;
     margin: 0 auto 0px auto;
 
+    &.event {
+      .inner .content .container {
+        .inner_container { margin: 0; }
+        background:#F6F6F7;
+        @include border-radius(4px);
+        padding:8px;
+        .input_field {
+          width:666px;
+          input[type="text"] { width: 100%; color: $medium_dark; }
+        }
+        .map {
+          width:685px;
+        }
+      }
+    }
+
     &.politician {
       .inner .content .container {
 
@@ -1981,7 +1997,7 @@ p.info span.comments a {
   }
 }
 
-.footer.where, span.where, ul.locations .footer {
+.footer.where, span.where, ul.location .footer {
   padding: 0 0 0 17px;
   background: url('/images/maps_sprite.png') no-repeat -51px -65px;
 }
@@ -3940,7 +3956,7 @@ a.editable {
           }
 
           /* Lists */
-          #container .article .right .content ul.locations,
+          #container .article .right .content ul.location,
           #container .article .right .content ul.proposals,
           #container .article .right .content ul.photos,
           #container .article .right .content ul.questions,
@@ -3973,7 +3989,7 @@ a.editable {
             }
           }
 
-          #container .article .right .content ul.locations {
+          #container .article .right .content ul.location {
 
             &.editable {
               li {

@@ -5,135 +5,138 @@
 <% end -%>
 
 <div class="article activity editable with_footer">
-<div class="inner">
-  <div class="left">
+  <div class="inner">
+    <div class="left">
 
-    <div class="context">
-      <h3><%= t(@content.content_type) %></h3>
-      <span class="middot">&middot;</span>
-      <ul class="editable tags">
-        <% @content.areas.each do |a| %>
-          <li<%=" class='editable'" if @editable %>>
-          <%= link_to a.name, area_path(a) %>
+      <div class="context">
+        <h3><%= t(@content.content_type) %></h3>
+        <span class="middot">&middot;</span>
+        <ul class="editable tags">
+          <% @content.areas.each do |a| %>
+            <li<%=" class='editable'" if @editable %>>
+            <%= link_to a.name, area_path(a) %>
 
-          <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
-            <%= form.submit 'x', :class => 'remove' %>
-          <% end -%>
+            <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+              <%= form.submit 'x', :class => 'remove' %>
+            <% end -%>
 
-          </li>
-        <% end %>
+            </li>
+          <% end %>
 
-        <% if @editable %>
-          <li class="add add_area"><%= link_to "+", "#", :class => :content %></li>
-        <% end %>
-      </ul>
+          <% if @editable %>
+            <li class="add add_area"><%= link_to "+", "#", :class => :content %></li>
+          <% end %>
+        </ul>
 
-      <div class="areas_editable_selector">
-        <div class="popover">
-          <div class="scroll-pane">
-            <ul>
-              <% @areas.each do |area| %>
-                <li<%= ' class="last"' if @areas.last == area %>><%= link_to area.name, area_path(area) %></li>
-                <% end if @areas %>
-              </ul>
+        <div class="areas_editable_selector">
+          <div class="popover">
+            <div class="scroll-pane">
+              <ul>
+                <% @areas.each do |area| %>
+                  <li<%= ' class="last"' if @areas.last == area %>><%= link_to area.name, area_path(area) %></li>
+                  <% end if @areas %>
+                </ul>
+              </div>
             </div>
           </div>
+
         </div>
 
-      </div>
-
-      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
-        <%= content_tag :h1, @content.title, :class => :content %>
-        <%= form.fields_for :news_data do |news_data| %>
-          <div class="input_field textarea">
-            <%= news_data.text_area :title, :value => @content.title %>
-          <% end -%>
-        </div>
-        <%= button "Publicar", :class => "submit white_button" %>
-      <% end -%>
-
-      <% unless @content.subtitle.blank? %>
         <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
-          <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => "subtitle content" if @content.subtitle %>
+          <%= content_tag :h1, @content.title, :class => :content %>
+          <%= form.fields_for :news_data do |news_data| %>
+            <div class="input_field textarea">
+              <%= news_data.text_area :title, :value => @content.title %>
+            <% end -%>
+          </div>
+          <%= button "Publicar", :class => "submit white_button" %>
+        <% end -%>
+
+        <% unless @content.subtitle.blank? %>
+          <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
+            <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => "subtitle content" if @content.subtitle %>
+
+            <%= form.fields_for :news_data do |news_data| %>
+              <div class="input_field textarea">
+                <%= news_data.text_area :subtitle, :value => @content.subtitle %>
+              </div>
+            <% end -%>
+            <%= button "Publicar", :class => "submit white_button" %>
+          <% end -%>
+        <% end %>
+
+        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable date'} do |form| %>
+          <div class="meta">
+            <span class="date content"><%= l @content.published_at.to_date, :format => :long %></span>
+            <%= form.date_select :published_at, :value => @content.published_at.to_date, :format => :long  %>
+            <%= button "Guardar", :class => "submit white_button" %>
+          </div>
+        <% end -%>
+
+        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable image'} do |form| %>
+          <div class="content">
+            <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+            <a href="#" class="remove"></a>
+          </div>
+
+          <div class="add_image">
+            <a href="#">Añadir foto</a>
+          </div>
+
+          <div class="input_field uploader placeholder">
+            <input type="text" />
+            <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_new_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
+            <span class="percentage">0%</span>
+            <span class="loading">Cargando imagen...</span>
+            <div class="progress"></div>
+          </div>
+
+          <%= form.fields_for :news_data do |news_data| %>
+            <%= news_data.file_field :image %>
+          <% end -%>
+        <% end -%>
+
+        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
+          <%= content_tag :div, (sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil), :class => :content  %>
+          <p><%#= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
 
           <%= form.fields_for :news_data do |news_data| %>
             <div class="input_field textarea">
-              <%= news_data.text_area :subtitle, :value => @content.subtitle %>
+              <%= news_data.text_area :body, :value => @content.body %>
             </div>
           <% end -%>
+
           <%= button "Publicar", :class => "submit white_button" %>
         <% end -%>
-      <% end %>
 
-      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable date'} do |form| %>
-        <div class="meta">
-          <span class="date content"><%= l @content.published_at.to_date, :format => :long %></span>
-          <%= form.date_select :published_at, :value => @content.published_at.to_date, :format => :long  %>
-          <%= button "Guardar", :class => "submit white_button" %>
-        </div>
-      <% end -%>
-
-      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable image'} do |form| %>
-        <div class="content">
-          <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
-          <a href="#" class="remove"></a>
-        </div>
-
-        <div class="add_image">
-          <a href="#">Añadir foto</a>
-        </div>
-
-        <div class="input_field uploader placeholder">
-          <input type="text" />
-          <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_new_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
-          <span class="percentage">0%</span>
-          <span class="loading">Cargando imagen...</span>
-          <div class="progress"></div>
-        </div>
-
-        <%= form.fields_for :news_data do |news_data| %>
-          <%= news_data.file_field :image %>
-        <% end -%>
-      <% end -%>
-
-      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
-        <%= content_tag :div, (sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil), :class => :content  %>
-        <p><%#= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
-
-        <%= form.fields_for :news_data do |news_data| %>
-          <div class="input_field textarea">
-            <%= news_data.text_area :body, :value => @content.body %>
-          </div>
-        <% end -%>
-
-        <%= button "Publicar", :class => "submit white_button" %>
-      <% end -%>
-
-      <%= render "participations/comments" %>
-
-    </div>
-    <div class="right">
-      <div class="content left-border">
-
-        <%= sharing_partial(news_url(@content), @content.title) %>
-        <%= render "shared/sidebar/tags" %>
-        <%= render "shared/sidebar/politicians" %>
-        <%= render "shared/sidebar/location" %>
-        <%= render "shared/sidebar/related_content" %>
+        <%= render "participations/comments" %>
 
       </div>
+      <div class="right">
+        <div class="content left-border">
+
+          <%= sharing_partial(news_url(@content), @content.title) %>
+          <%= render "shared/sidebar/tags" %>
+          <%= render "shared/sidebar/politicians" %>
+          <%= render "shared/sidebar/location" %>
+          <%= render "shared/sidebar/related_content" %>
+
+        </div>
+      </div>
     </div>
-  </div>
 
-  <footer>
-  <div class="separator"></div>
-  <div class="inner">
+    <footer>
+    <div class="separator"></div>
+    <div class="inner">
 
-    <div class="left">
-      <%= link_to t(".back"), "/in_development", :class => :left_arrow %>
+      <div class="left">
+        <%= link_to t(".back"), "/in_development", :class => :left_arrow %>
+      </div>
+
     </div>
+    </footer>
+    <div class="t"></div><div class="f"></div>
+  </div>
 
-  </div>
-  </footer>
-  <div class="t"></div><div class="f"></div>
-  </div>
+
+        <%= render "shared/event_edit" %>
