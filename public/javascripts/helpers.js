@@ -292,6 +292,7 @@ jQuery.fn.enableImageEditing = function(opt){
     $(this).find('.submit').attr("disabled", "disabled");
   });
 }
+
 /* Enables date editing */
 jQuery.fn.enableDateEditing = function(opt){
   var speed     = (opt && opt.speed) || 120,

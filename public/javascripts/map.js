@@ -136,13 +136,13 @@ function startMiniMap (mapID, lat, lng, enableZoom) {
 
 function IrekiaMarker(_latlng, _info, _map) {
   this.latlng = _latlng;
-  this.info = _info;
-  this.map = _map;
+  this.info   = _info;
+  this.map    = _map;
 
-  this.offsetVertical_ = -12;
+  this.offsetVertical_   = -12;
   this.offsetHorizontal_ = -13;
-  this.width = 25;
-  this.height = 34;
+  this.width             = 25;
+  this.height            = 34;
   this.setMap(this.map);
 }
 

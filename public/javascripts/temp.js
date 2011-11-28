@@ -22,6 +22,8 @@
   // Public methods
   methods = { },
   interval,
+  lat,
+  lng
   // Default values
   defaults = {
     easingMethod:'easeInOutQuad',
@@ -107,7 +109,15 @@
       e.stopPropagation();
     }
 
-    startMiniMap("editable_map", miniLat, miniLng, true);
+    try {
+      lat = miniLat;
+      lng = miniLng;
+    } catch(err) {
+      lat = 42.85;
+      lng = -2.683333;
+    }
+
+    _startMiniMap("editable_map", lat, lng, true);
 
     var data  = $(this).data(store);
     var $ps   = $('#' + data.id);
@@ -239,6 +249,53 @@
   function _getLeftPosition($ps) {
     return (($(window).width() - $ps.width()) / 2);
   }
+
+
+  function _startMiniMap (mapID, lat, lng) {
+  var center = new google.maps.LatLng(lat, lng);
+  var defaultZoom = 15;
+  var latlng = center;
+  var myOptions = {
+    zoom: defaultZoom,
+    zoomControl:false,
+    center: latlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    navigationControl: false,
+    disableDefaultUI: false,
+    streetViewControl: false,
+    mapTypeControl: false,
+    navigationControlOptions: {
+      style: google.maps.NavigationControlStyle.SMALL
+    },
+    maxZoom: 16
+  };
+
+  map = new google.maps.Map(document.getElementById(mapID), myOptions);
+
+  // zoomIn
+  var zoomInControlDiv = document.createElement('DIV');
+  var zoomInControl = new ZoomInControl(zoomInControlDiv, map);
+  zoomInControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(zoomInControlDiv);
+
+  // zoomOut
+  var zoomOutControlDiv = document.createElement('DIV');
+  var zoomOutControl = new ZoomOutControl(zoomOutControlDiv, map);
+  zoomOutControlDiv.index = 2;
+  map.controls[google.maps.ControlPosition.LEFT].push(zoomOutControlDiv);
+
+  var center = new google.maps.LatLng(lat, lng);
+
+	var image = new google.maps.MarkerImage('/images/maps_sprite.png',
+	      new google.maps.Size(24, 34),
+	      new google.maps.Point(0,67),
+	      new google.maps.Point(12, 30));
+
+  var marker = new google.maps.Marker({ position: center, map: map, icon: image, draggable:true });
+  var mapBounds = new google.maps.LatLngBounds();
+  mapBounds.extend(center);
+  map.fitBounds(mapBounds);
+}
 
   // Close popover
   function _close(data, hideLockScreen, callback) {
