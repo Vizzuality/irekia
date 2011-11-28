@@ -10,11 +10,7 @@
   }
 
   var
-  $article      = $(this),
-  currentHeight = 0,
-  $currentSection,
-  $currentMenuOption,
-  $menu,
+  $popover,
   spin_element = document.getElementById('publish_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
   submitting = false,
@@ -57,7 +53,7 @@
       if (data.id) {
         return $this;
       } else {
-        data.id = id;
+        data.id = store;
         data.$this = $this;
         data.settings = settings;
         data.name = store;
@@ -65,13 +61,10 @@
         data.spinner = spinner;
       }
 
+      $popover = $(this);
+
       // Update the reference to $ps
-      $ps = $('#' + store);
-
-      $(this).click(_toggle);
-
-      $(window).unbind();
-      $(window).bind(data.event, function() { _close(data, true); });
+      $ps = $('#' + data.id);
 
       // Save the updated $ps reference into our data object
       data.$ps = $ps;
@@ -84,10 +77,15 @@
 
       data.$submit = $ps.find("footer .publish");
 
+      $(this).click(_toggle);
+
+      $(window).unbind();
+      $(window).bind(data.event, function() { _close(true); });
+
       // bindings
-      _addCloseAction(data);
-      _addDefaultAction(data);
-      _bindSubmit(data, "Continuar", true, "continue");
+      _addCloseAction();
+      _addDefaultAction();
+      _bindSubmit(, true, "continue");
     });
   };
 
@@ -113,39 +111,27 @@
       lat = miniLat;
       lng = miniLng;
     } catch(err) {
+      // Vitoria's coordinates
       lat = 42.85;
       lng = -2.683333;
     }
 
-    _startMiniMap("editable_map", lat, lng, true);
+    var data  = $popover.data(store);
 
-    var data  = $(this).data(store);
-    var $ps   = $('#' + data.id);
+    _initMap("editable_map", { lat:lat, lng: lng});
 
     LockScreen.show(function(){
-      $ps.length ?  null : _open(data);
+      data.$ps.length ?  _open() : null;
     });
   }
 
-  function _open(data) {
-    var $ps = data.$ps;
+  function _open() {
+    var data = $popover.data(store);
 
-    _bindSubmit(data, "Continuar", true, "continue");
+    _bindSubmit("Continuar", true, "continue");
 
     _subscribeToEvent(data.event);
-    _triggerOpenAnimation(data);
-  }
-
-  function _enableInputCounter(data, $input, on, off) {
-    var $ps = data.$ps;
-
-    $input.keyup(function(e) {
-      textCounter($(this), on, off);
-    });
-
-    $input.keydown(function(e) {
-      textCounter($(this), on, off);
-    });
+    _triggerOpenAnimation();
   }
 
   function textCounter($input, on, off) {
@@ -158,7 +144,9 @@
     }
   }
 
-  function _resetSection(data, $section) {
+  function _resetSection($section) {
+    var data = $popover.data(store);
+
     $section.find(":text, textarea").val("");
     $section.find(".holder").fadeIn(data.settings.transitionSpeed);
   }
@@ -181,14 +169,16 @@
     $submit.find("span").text(title);
   }
 
-  function _submitPublish(data) {
+  function _submitPublish() {
+    var data = $popover.data(store);
+
     if (!_hasContent($currentSection)) return;
     _disableSubmit(data.$submit);
     _question() ?  _publishQuestion(data) : _publishProposal(data);
   }
 
-  function _bindSubmit(data, title, initiallyDisabled, callback) {
-    var $ps = data.$ps;
+  function _bindSubmit(title, initiallyDisabled, callback) {
+    var data = $popover.data(store);
 
     _changeSubmitTitle(data.$submit, title);
 
@@ -197,12 +187,17 @@
     data.$submit.unbind("click");
     data.$submit.click(function(e) {
       e.preventDefault();
-      callback && _doCallback(callback, data);
+      callback && _doCallback(callback);
     });
   }
 
-  function _showMessage(data, kind, callback) {
-    var $ps = data.$ps;
+  function _doCallback(callback) {
+
+  }
+
+  function _showMessage(kind, callback) {
+    var data = $popover.data(store);
+
     IrekiaSpinner.spin(spin_element);
 
     var currentHeight = $currentSection.find(".form").outerHeight(true);
@@ -217,7 +212,7 @@
 
         data.$submit.unbind("click");
         data.$submit.bind("click", function() {
-          _close(data, true);
+          _close(true);
         });
 
       });
@@ -228,13 +223,15 @@
 
     var successHeight = $success.outerHeight(true);
 
-    $ps.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, data.settings.transitionSpeed * 2, "easeInOutQuad", function() {
+    data.$ps.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, data.settings.transitionSpeed * 2, "easeInOutQuad", function() {
       IrekiaSpinner.stop();
       callback && callback();
     });
   }
 
-  function _triggerOpenAnimation(data) {
+  function _triggerOpenAnimation() {
+    var data = $popover.data(store);
+
     var top  = _getTopPosition(data.$ps);
     var left = _getLeftPosition(data.$ps);
 
@@ -250,55 +247,68 @@
     return (($(window).width() - $ps.width()) / 2);
   }
 
+  function _initMap(mapID, opt) {
+    var data = $popover.data(store);
 
-  function _startMiniMap (mapID, lat, lng) {
-  var center = new google.maps.LatLng(lat, lng);
-  var defaultZoom = 15;
-  var latlng = center;
-  var myOptions = {
-    zoom: defaultZoom,
-    zoomControl:false,
-    center: latlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    navigationControl: false,
-    disableDefaultUI: false,
-    streetViewControl: false,
-    mapTypeControl: false,
-    navigationControlOptions: {
-      style: google.maps.NavigationControlStyle.SMALL
-    },
-    maxZoom: 16
-  };
+    var
+    maxZoom = (opt && opt.maxZoom) || 16,
+    zoom    = (opt && opt.zoom)    || 15,
+    lat     = (opt && opt.lat)     || 80,
+    lng     = (opt && opt.lng)     || 80;
 
-  map = new google.maps.Map(document.getElementById(mapID), myOptions);
+    var center  = new google.maps.LatLng(opt.lat, opt.lng);
 
-  // zoomIn
-  var zoomInControlDiv = document.createElement('DIV');
-  var zoomInControl = new ZoomInControl(zoomInControlDiv, map);
-  zoomInControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(zoomInControlDiv);
+    var latlng = center;
+    var myOptions = {
+      maxZoom: maxZoom,
+      zoom: zoom,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      zoomControl:       false,
+      navigationControl: false,
+      disableDefaultUI:  false,
+      streetViewControl: false,
+      mapTypeControl:    false,
+      navigationControlOptions: {
+        style: google.maps.NavigationControlStyle.SMALL
+      },
+    };
 
-  // zoomOut
-  var zoomOutControlDiv = document.createElement('DIV');
-  var zoomOutControl = new ZoomOutControl(zoomOutControlDiv, map);
-  zoomOutControlDiv.index = 2;
-  map.controls[google.maps.ControlPosition.LEFT].push(zoomOutControlDiv);
+    map = new google.maps.Map(document.getElementById(mapID), myOptions);
 
-  var center = new google.maps.LatLng(lat, lng);
+    // zoomIn
+    var zoomInControlDiv = document.createElement('DIV');
+    var zoomInControl = new ZoomInControl(zoomInControlDiv, map);
+    zoomInControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(zoomInControlDiv);
 
-	var image = new google.maps.MarkerImage('/images/maps_sprite.png',
-	      new google.maps.Size(24, 34),
-	      new google.maps.Point(0,67),
-	      new google.maps.Point(12, 30));
+    // zoomOut
+    var zoomOutControlDiv = document.createElement('DIV');
+    var zoomOutControl = new ZoomOutControl(zoomOutControlDiv, map);
+    zoomOutControlDiv.index = 2;
+    map.controls[google.maps.ControlPosition.LEFT].push(zoomOutControlDiv);
 
-  var marker = new google.maps.Marker({ position: center, map: map, icon: image, draggable:true });
-  var mapBounds = new google.maps.LatLngBounds();
-  mapBounds.extend(center);
-  map.fitBounds(mapBounds);
-}
+    var center = new google.maps.LatLng(lat, lng);
+
+    var image = new google.maps.MarkerImage('/images/maps_sprite.png', new google.maps.Size(24, 34), new google.maps.Point(0,67), new google.maps.Point(12, 30));
+
+    var marker = new google.maps.Marker({ position: center, map: map, icon: image, draggable: true });
+
+    google.maps.event.addListener(marker, 'dragend', _dragEnd);
+
+    var mapBounds = new google.maps.LatLngBounds();
+    mapBounds.extend(center);
+    map.fitBounds(mapBounds);
+  }
+
+  function _dragEnd(args) {
+    var data = $popover.data(store);
+    _enableSubmit(data.$submit);
+  }
 
   // Close popover
-  function _close(data, hideLockScreen, callback) {
+  function _close(hideLockScreen, callback) {
+    var data = $popover.data(store);
 
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.closeTransitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).css("top", "-900px");
@@ -313,16 +323,18 @@
     GOD.subscribe(event);
   }
 
-  function _addCloseAction(data) {
+  function _addCloseAction() {
+    var data = $popover.data(store);
     data.$ps.find(".close").unbind("click");
     data.$ps.find(".close").bind('click', function(e) {
       e.stopPropagation();
       e.preventDefault();
-      _close(data, true);
+      _close(true);
     });
   }
 
-  function _addDefaultAction(data){
+  function _addDefaultAction(){
+    var data = $popover.data(store);
     data.$ps.unbind("click");
     data.$ps.bind('click', function(e) {
       e.stopPropagation();

@@ -233,8 +233,7 @@ header {
               border: 0;
               z-index: 100;
             }
-          }
-
+          } // input
           span#autocomplete_spinner {position:absolute; right:17px; top:17px;}
         }
       }
@@ -295,11 +294,10 @@ header {
                 &.last { border:none; padding: 10px 0 0 0; }
 
               }
-            }
-          }
-
-        }
-      }
+            } // ul
+          } // scroll-pane
+        } // popover
+      } // notification_selector
 
       .areas_selector {
         float: left;
@@ -391,12 +389,11 @@ header {
                   padding: 10px 0 10px 0;
                   border-bottom: 1px solid #f1f1f1;
                 }
-              }
-            }
-          }
-
-        }
-      }
+              } // li
+            } // ul
+          } // .scroll-pane
+        } // .popover
+      } // .areas_selector
 
       ul.auth {
         float: right;
@@ -421,8 +418,8 @@ header {
             &.sign_out { float:none; background: url('/images/icons/icon_sprite.png') no-repeat 0 -265px; width:7px; height:17px; text-indent: -999em; position: relative; top:4px; }
             &.settings { float:none; background: url('/images/icons/icon_sprite.png') no-repeat 0 -299px; width:1px; height:17px; text-indent: -999em; position: relative; top:4px; }
           }
-        }
-      }
+        } // li
+      } // ul.auth
     }
   }
 }
@@ -840,7 +837,7 @@ div#main.show div.left img {margin:4px 0 7px;}
       p  { width: 282px; display: inline-block; margin:0; font-size: 15px; line-height:18px;}
       form { float:none; width:auto; display:inline-block; margin:10px 0 0 0;}
     }
-  }
+  } // profile .inner
 
   &.micro {
     width: 390px;
@@ -953,6 +950,7 @@ div#main.show div.left img {margin:4px 0 7px;}
     &.event {
       .inner .content .container {
         height:auto;
+        @include disable-selection();
         .inner_container { height:auto; margin: 0; }
         background:#F6F6F7;
         @include border-radius(4px);
@@ -1269,8 +1267,7 @@ div#main.show div.left img {margin:4px 0 7px;}
                         height:46px;
                         background-position:0px -617px;
                       }
-                    }
-
+                    } // li.youtube
 
                     .input_field {
                       width:263px;

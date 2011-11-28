@@ -258,7 +258,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.help .inner .content { float: left; width: 544px; }
 #container .article.help .inner p { margin: 0 0 16px 0; color: #7D8A92; font-size: 17px; }
 #container .article.publish { width: 757px; margin: 0 auto 0px auto; }
-#container .article.publish.event .inner .content .container { height: auto; background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; padding: 8px; }
+#container .article.publish.event .inner .content .container { height: auto; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; user-select: none; background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; padding: 8px; }
 #container .article.publish.event .inner .content .container .inner_container { height: auto; margin: 0; }
 #container .article.publish.event .inner .content .container .input_field { width: 666px; margin: 0 0 10px 0; }
 #container .article.publish.event .inner .content .container .input_field input[type="text"] { width: 100%; color: #666666; }
