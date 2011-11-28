@@ -46,11 +46,13 @@
 
           <%= form_for @photo, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
 
+            <%= form.fields_for :image do |image| %>
+              <%= image.hidden_field :image_cache, :class => :image_cache_name %>
+            <% end %>
+
               <div class="form clearfix">
-                <div class="input_field placeholder">
-                  <%= form.fields_for :image do |image| %>
-                    <%= image.hidden_field :image_cache, :class => :image_cache_name %>
-                  <% end %>
+                <div class="input_field placeholder uploader">
+
                   <input type="text" />
                   <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_photo" data-url="<%= photos_path %>">Sube una nueva</span></span>
                   <span class="percentage">0%</span>

@@ -200,8 +200,7 @@
 
     var
     $ps = data.$ps,
-    $proposal = $ps.find(".section.proposal"),
-    $image_container = $proposal.find(".image_container");
+    $image_container = $ps.find(".image_container");
 
     $image_container.fadeOut(data.settings.transitionSpeed, function() {
       $image_container.find("img").remove();
@@ -210,6 +209,8 @@
       $ps.find(".loading").hide();
       $ps.find(".percentage").hide();
       $ps.find(".progress").css("width", "0");
+
+      _resizeSection(data, $currentSection);
     });
   }
 
@@ -228,8 +229,8 @@
     var $ps = data.$ps;
 
     // Image uploader
-    _setupUpload(data, "upload_proposal_image");
-    _setupUpload(data, "upload_photo", function() { _enableSubmit(data.$submit); });
+    _setupUpload(data, "proposal", "upload_proposal_image");
+    _setupUpload(data, "photo", "upload_photo", function() { _enableSubmit(data.$submit); });
 
     // Remove image link
     $ps.find(".image_container a.remove").unbind();
@@ -542,15 +543,16 @@
     });
   }
 
-  function _setupUpload(data, id, callback) {
+  function _setupUpload(data, section, id, callback) {
 
     var $ps = data.$ps,
 				$span  = $ps.find("#" + id);
 
     if ($span.length > 0) {
 
-      var speed = data.settings.transitionSpeed;
-      var $uploader = $ps.find(".uploader");
+      var speed     = data.settings.transitionSpeed;
+      var $section  = data.$ps.find(".section." + section);
+      var $uploader = $section.find(".uploader");
 
       var uploader = new qq.FileUploader({
         element: document.getElementById(id),
@@ -563,9 +565,10 @@
         text:"sube una nueva",
         onSubmit: function(id, fileName){
           data.spinner.spin(spin_element);
-          $currentSection.find(".holder").fadeOut(speed);
-          console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
-					$ps.find(".progress").show();
+
+          console.log("Submit", $section);
+
+					$section.find(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
 					$uploader.find("input").blur();
           $uploader.find(".holder").fadeOut(speed);
@@ -575,34 +578,41 @@
 					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
 					var width = parseInt(665 * parseInt(p, 10) / 100, 10);
 
-					console.debug(p, width, arguments, arguments[2], arguments[3]);
+          console.log("uploading…");
+					//console.debug(p, width, arguments, arguments[2], arguments[3]);
 
-					if (parseInt(p) >= 75) $ps.find(".uploader").find(".loading").fadeOut(speed);
-					if (parseInt(p) >= 46) $ps.find(".uploader").find(".percentage").css("color", "#fff");
+					if (parseInt(p) >= 75) $section.find(".uploader").find(".loading").fadeOut(speed);
+					if (parseInt(p) >= 46) $section.find(".uploader").find(".percentage").css("color", "#fff");
 
           $uploader.find(".percentage").html(parseInt(p, 10) + "%");
-				  $ps.find(".progress").css("width", width);
+				  $section.find(".progress").css("width", width);
 				},
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();
 
-					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+          console.log("complete", $section);
+					//console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);
           $uploader.find(".percentage").fadeOut(speed);
 
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
-					$ps.find('.image_cache_name').val(responseJSON.image_cache_name);
+
+					$section.find('.image_cache_name').val(responseJSON.image_cache_name);
 
           $(cacheImage).bind("load", function () {
-            $ps.find(".image_container").prepend(cacheImage);
-            $ps.find(".image_container").fadeIn(speed);
-            $ps.find(".image_container img").fadeIn(speed);
+
+            $section.find(".image_container").prepend(cacheImage);
+            $section.find(".image_container").fadeIn(speed);
+            $section.find(".image_container img").fadeIn(speed);
+
             $uploader.fadeOut(speed, function() {
-              _resizeSection(data, $currentSection);
+              _resizeSection(data, $section);
               callback && callback();
             });
+
           });
 
           $uploader.find(".progress").fadeOut(speed, function() {
