@@ -1,5 +1,9 @@
-<%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
-  <%= hidden_field_tag :partial, 'tag' %>
-  <%= form.hidden_field :tags, :value => @content.all_tags_but(@content_params['tag'].strip) %>
-  <%= form.submit 'x', :class => 'remove' %>
-<% end -%>
+<li class='editable'>
+  <%= link_to @content_params['tag'].strip, search_path(:search => {:query => @content_params['tag']}), :class => :content %>
+
+  <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+    <%= hidden_field_tag :partial, 'tag' %>
+    <%= form.hidden_field :tags, :value => @content.all_tags_but(@content_params['tag'].strip) %>
+    <%= form.submit 'x', :class => 'remove' %>
+  <% end -%>
+</li>
