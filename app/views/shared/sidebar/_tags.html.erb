@@ -21,6 +21,7 @@
       <li class="add"><%= link_to t('.add_tags'), "#", :class => :content %></li>
       <li class="new">
       <%= form_for @content, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+        <%= hidden_field_tag :partial, 'tag' %>
         <%= form.text_field :tag %>
       <% end -%>
       </li>
