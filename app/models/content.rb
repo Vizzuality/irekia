@@ -33,7 +33,8 @@ class Content < ActiveRecord::Base
   before_save   :author_is_politician?
   after_save    :publish
 
-  accepts_nested_attributes_for :comments, :areas_contents, :contents_users
+  accepts_nested_attributes_for :comments, :contents_users
+  accepts_nested_attributes_for :areas_contents, :allow_destroy => true
 
   attr_accessor :location, :parent
   attr_reader :tag
@@ -103,6 +104,10 @@ class Content < ActiveRecord::Base
   def all_tags_but(tag_to_remove)
     tags_array = (self.tags || '').split(',')
     tags_array.select{|t| t != tag_to_remove}.join(',')
+  end
+
+  def all_areas_but(area_to_remove)
+    areas_contents.where('area_id <> ?', area_to_remove)
   end
 
   def last_contents(limit = 5)

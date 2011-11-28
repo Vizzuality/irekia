@@ -12,11 +12,14 @@
         <h3><%= t(@content.content_type) %></h3>
         <span class="middot">&middot;</span>
         <ul class="editable tags">
-          <% @content.areas.each do |a| %>
+          <% @content.areas_contents.each do |ac| %>
             <li<%=" class='editable'" if @editable %>>
-            <%= link_to a.name, area_path(a) %>
+            <%= link_to ac.area.name, area_path(ac.area) %>
 
             <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+              <%= form.fields_for :areas_contents, ac do |areas_contents| %>
+                <%= areas_contents.hidden_field :_destroy, :value => true %>
+              <% end -%>
               <%= form.submit 'x', :class => 'remove' %>
             <% end -%>
 
@@ -33,7 +36,15 @@
             <div class="scroll-pane">
               <ul>
                 <% @areas.each do |area| %>
-                  <li<%= ' class="last"' if @areas.last == area %>><%= link_to area.name, area_path(area) %></li>
+                  <li<%= ' class="last"' if @areas.last == area %>>
+                    <%= form_for @content do |form| %>
+                      <%= hidden_field_tag :partial, 'tagged_area' %>
+                      <%= form.fields_for :areas_contents, @content.areas_contents.build do |areas_contents| %>
+                        <%= areas_contents.hidden_field :area_id, :value => area.id %>
+                      <% end -%>
+                      <%= form.submit area.name %>
+                    <% end -%>
+                  </li>
                   <% end if @areas %>
                 </ul>
               </div>
