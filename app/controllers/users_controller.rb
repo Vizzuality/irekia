@@ -192,7 +192,11 @@ class UsersController < ApplicationController
       @status_message = StatusMessage.new
       @status_message.status_message_data = @status_message.build_status_message_data
 
-      @photo                     = Photo.new
+      @photo            = Photo.new
+      @photo.image      = @photo.build_image
+
+      @video            = Video.new
+      @video.video_data = @video.build_video_data
     end
   end
   private :models_for_forms

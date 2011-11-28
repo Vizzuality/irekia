@@ -585,6 +585,11 @@
           you: 'Has subido una foto:'
           other: '%{name} ha subido una foto:'
         author: '%{author} hace %{time}'
+      video:
+        title:
+          you: 'Has subido un vídeo:'
+          other: '%{name} ha subido un vídeo:'
+        author: '%{author} hace %{time}'
       proposal_mini:
         author: '%{author} hace %{time}'
         votes_in_favor:

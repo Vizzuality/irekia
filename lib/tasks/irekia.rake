@@ -7,7 +7,7 @@ namespace :irekia do
 
   desc "Empties all irekia tables"
   task :drop_tables => :environment do
-    tables = %w(answer_data area_public_streams areas areas_contents areas_users argument_data comment_data contents contents_users event_data follows images news_data notifications participations proposal_data question_data roles schema_migrations status_message_data titles tweet_data user_private_streams user_public_streams users vote_data)
+    tables = %w(answer_data area_public_streams areas areas_contents areas_users argument_data comment_data contents contents_users event_data follows images news_data notifications participations proposal_data question_data roles schema_migrations status_message_data titles tweet_data user_private_streams user_public_streams users vote_data video_data)
     tables.each do |table_name|
       begin
         ActiveRecord::Base.connection.execute("DROP TABLE #{table_name};")

@@ -1,0 +1,20 @@
+<%= avatar data.author %>
+<div class="content">
+  <%= content_tag 'p', t(".title.#{am_I?(data.author) ? 'you' : 'other'}", :name => data.author.name) %>
+  <div class="photo_block">
+    <%= link_to image_tag(data.thumbnail_url), video_path(data.id) if data.thumbnail_url.present? %>
+    <p class="excerpt inline"><%= link_to data.title, video_path(data.id) %></p>
+  </div>
+  <div class="footer">
+    <span class="published_at">
+      <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
+    </span>
+    <% unless show_last_comments?(data) -%>
+    &middot;
+      <span class="comments"><%= link_to data.comments_count, status_message_path(data.id), :class => "comment-count" %></span>
+    <% end -%>
+    &middot;
+    <%= render "/shared/inline_sharing" %>
+  </div>
+  <%= render 'shared/lists_elements/last_comments', :data => data %>
+</div>
