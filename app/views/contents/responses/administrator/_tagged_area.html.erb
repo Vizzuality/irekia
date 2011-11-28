@@ -1,6 +1,11 @@
-<%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
-  <%= form.fields_for :areas_contents, @content.all_areas_but(@content_params[:areas_contents_attributes]['0'][:area_id]) do |areas_contents| %>
-    <%= areas_contents.hidden_field :area_id %>
+<li class="editable">
+  <%= link_to @content.areas_contents.last.area.name, area_path(@content.areas_contents.last.area) %>
+
+  <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+    <%= form.fields_for :areas_contents, @content.areas_contents.last do |areas_contents| %>
+      <%= areas_contents.hidden_field :_destroy, :value => true %>
+    <% end -%>
+    <%= form.submit 'x', :class => 'remove' %>
   <% end -%>
-  <%= form.submit 'x', :class => 'remove' %>
-<% end -%>
+</li>
+
