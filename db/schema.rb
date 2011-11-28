@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111113180737) do
+ActiveRecord::Schema.define(:version => 20111128124203) do
 
   create_table "answer_data", :force => true do |t|
     t.integer  "answer_id"
@@ -384,6 +384,18 @@ ActiveRecord::Schema.define(:version => 20111113180737) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["twitter_oauth_token", "twitter_oauth_token_secret"], :name => "twitter_credentials", :unique => true
   add_index "users", ["twitter_username"], :name => "index_users_on_twitter_username", :unique => true
+
+  create_table "video_data", :force => true do |t|
+    t.integer  "video_id"
+    t.string   "title"
+    t.string   "description"
+    t.string   "youtube_url"
+    t.string   "vimeo_url"
+    t.string   "thumbnail_url"
+    t.text     "html"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "vote_data", :force => true do |t|
     t.integer  "vote_id"

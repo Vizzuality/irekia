@@ -96,6 +96,9 @@ Irekia::Application.routes.draw do
   resources :photos,          :controller => 'contents', :type => 'Photo' do
     resources :shares
   end
+  resources :videos,          :controller => 'contents', :type => 'Video' do
+    resources :shares
+  end
 
   # TODO: delete this
   resources :demo
