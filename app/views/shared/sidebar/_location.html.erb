@@ -15,10 +15,14 @@
 
     <%= content_for :js_data do %>
       <script type="text/javascript" charset="utf-8">
-        startMiniMap("map_<%= @content.id %>", <%= @content.latitude %>, <%= @content.longitude %>);
-        </script>
-      <% end if @content.location %>
+        var
+        miniLat = <%= @content.latitude %>,
+        miniLng = <%= @content.longitude %>;
 
-      </li>
-    </ul>
-  <% end %>
+        startMiniMap("map_<%= @content.id %>", <%= @content.latitude %>, <%= @content.longitude %>, false);
+        </script>
+        <% end if @content.location %>
+
+        </li>
+      </ul>
+    <% end %>

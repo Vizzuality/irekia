@@ -86,7 +86,7 @@ function startMap() {
     map.fitBounds(mapBounds);
 }
 
-function startMiniMap (mapID, lat, lng) {
+function startMiniMap (mapID, lat, lng, enableZoom) {
   var center = new google.maps.LatLng(lat, lng);
   var defaultZoom = 15;
   var latlng = center;
@@ -104,8 +104,22 @@ function startMiniMap (mapID, lat, lng) {
     },
     maxZoom: 16
   };
+
   map = new google.maps.Map(document.getElementById(mapID), myOptions);
 
+  if (enableZoom == true) {
+    // zoomIn
+    var zoomInControlDiv = document.createElement('DIV');
+    var zoomInControl = new ZoomInControl(zoomInControlDiv, map);
+    zoomInControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(zoomInControlDiv);
+
+    // zoomOut
+    var zoomOutControlDiv = document.createElement('DIV');
+    var zoomOutControl = new ZoomOutControl(zoomOutControlDiv, map);
+    zoomOutControlDiv.index = 2;
+    map.controls[google.maps.ControlPosition.LEFT].push(zoomOutControlDiv);
+  }
 
   var center = new google.maps.LatLng(lat, lng);
 
@@ -192,7 +206,7 @@ IrekiaMarker.prototype.draw = function() {
                   var addSeparator = (count > 1 && i < count - 1) ? true : false;
                   events +=  _.template(templates.event, {event_id:event.event_id ,title:event.title, date:event.date, where:event.where, when:event.when, separator:addSeparator});
                 }
-								
+
                 var contentTemplate = _.template(templates.infowindow, {count:count, events:events});
                 $(div).append(markerTemplate);
                 $(div).append(contentTemplate);

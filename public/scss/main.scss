@@ -952,12 +952,14 @@ div#main.show div.left img {margin:4px 0 7px;}
 
     &.event {
       .inner .content .container {
-        .inner_container { margin: 0; }
+        height:auto;
+        .inner_container { height:auto; margin: 0; }
         background:#F6F6F7;
         @include border-radius(4px);
         padding:8px;
         .input_field {
           width:666px;
+          margin: 0 0 10px 0;
           input[type="text"] { width: 100%; color: $medium_dark; }
         }
         .map {

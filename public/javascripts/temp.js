@@ -27,6 +27,7 @@
     easingMethod:'easeInOutQuad',
     sectionWidth: 687,
     transitionSpeed: 200,
+    closeTransitionSpeed: 100,
     maxLimit: 140
   };
 
@@ -106,6 +107,8 @@
       e.stopPropagation();
     }
 
+    startMiniMap("editable_map", miniLat, miniLng, true);
+
     var data  = $(this).data(store);
     var $ps   = $('#' + data.id);
 
@@ -162,24 +165,6 @@
   function _disableSubmit($submit) {
     submitting = true;
     $submit.addClass("disabled");
-  }
-
-  function _resizeSection(data, $section, callback) {
-    var $ps = data.$ps;
-    height = $ps.find(".inner_container").outerHeight(true);
-    $ps.find(".container").animate({ scrollTop: 0, height: height }, data.settings.transitionSpeed, function() {
-      callback && callback();
-    });
-  }
-
-  // Update target depending on the selected element
-  function _updateHiddenTarget(targetClass, id) {
-    var id = id.replace("item_", "");
-    var otherTarget =  (targetClass == "user") ? "area" : "user";
-    var name = _getCurrentSectionName();
-
-    $currentSection.find('#' + name + '_' + name + '_data_attributes_' + targetClass + '_id').val(id)
-    $currentSection.find('#' + name + '_' + name + '_data_attributes_' + otherTarget + '_id').val("");
   }
 
   function _changeSubmitTitle($submit, title) {
@@ -255,26 +240,11 @@
     return (($(window).width() - $ps.width()) / 2);
   }
 
-  function _clearInfo($ps) {
-    $ps.find("textarea").val("");
-    $ps.find(".counter").html(140);
-    _disableSubmit($ps);
-  }
-
   // Close popover
   function _close(data, hideLockScreen, callback) {
 
-    data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+    data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.closeTransitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).css("top", "-900px");
-      _clearInfo(data.$ps);
-
-      data.questionStep = 0;
-      data.proposalStep = 0;
-
-      data.$ps.find(".extra").hide();
-      data.$ps.find(".holder").show();
-      _resizeSection(data, $currentSection);
-      data.$ps.find(".message").remove();
 
       hideLockScreen && LockScreen.hide();
       callback && callback();

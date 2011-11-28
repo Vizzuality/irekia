@@ -11,7 +11,7 @@ $(function() {
   $(".editable.text").enableTextEditing();
   $(".editable.date").enableDateEditing();
   $(".editable.image").enableImageEditing();
-  $(".editable.location").enableLocationEditing();
+  $(".editable.location .footer").enableLocationEditing();
 
   $(".right .tags.editable").enableEditTags();
   $(".people.editable").enablePoliticianTags();
