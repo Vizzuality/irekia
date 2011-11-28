@@ -1442,3 +1442,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   $(function() { });
 
 })(jQuery, window, document);
+
+
+
+

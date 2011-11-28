@@ -42,32 +42,32 @@ textarea {
 header nav .content a.blue_button,
 header nav .content ul.auth li a.blue_button,
 header nav .content ul li .blue_button a,
-article .blue_button a { padding:7px 14px; }
+.article .blue_button a { padding:7px 14px; }
 
 .ie9 .white_button.disabled:hover,
-.ie9 article .white_button.disabled:hover,
-.ie9 .white_button, .ie9 article .white_button {
+.ie9 .article .white_button.disabled:hover,
+.ie9 .white_button, .ie9 .article .white_button {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f6f9',GradientType=0 ); /* IE6-9 */
 }
 
 .ie9 .white_button.disabled,
-.ie9 article .white_button.disabled {
+.ie9 .article .white_button.disabled {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f6f9',GradientType=0 ); /* IE6-9 */
 }
 
-.ie9 article .blue_button,
+.ie9 .article .blue_button,
 .ie9 header nav .content .blue_button,
 .ie9 header nav .content ul li .blue_button {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 ); /* IE6-9 */
 }
 
-.ie9 article .blue_button:active,
+.ie9 .article .blue_button:active,
 .ie9 header nav .content ul li .blue_button:active {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2080b5', endColorstr='#3396cd',GradientType=0 ); /* IE6-9 */
 }
 
 /* Blue buttons */
-article .blue_button,
+.article .blue_button,
 header nav .content .blue_button, header nav .content ul li .blue_button {
   color:#fff;
   font-size:15px;
@@ -89,7 +89,7 @@ header nav .content .blue_button, header nav .content ul li .blue_button {
   &.no_shadow {box-shadow:none;}
 }
 
-article .blue_button:active, header nav .content ul li .blue_button:active {
+.article .blue_button:active, header nav .content ul li .blue_button:active {
   background: #3396cd; /* Old browsers */
   background: -moz-linear-gradient(top,  #2080b5 0%, #3396cd 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2080b5), color-stop(100%, #3396cd)); /* Chrome,Safari4+ */
@@ -133,7 +133,7 @@ body.admin  header nav .content ul li .blue_button:active {
 White buttons
 ========================================================================== */
 
-.white_button, article.white_button {
+.white_button, .article.white_button {
 /* ------------------------------------------------------------------------------ Colors */
   &.pink   { color:$pink; }
   &.blue   { color:$link_color; }
@@ -181,33 +181,33 @@ White buttons
 }
 
 // white button right-aligned
-#container article footer .white_button.right,
-#container article .white_button.right,
-#container article article .white_button.right {
+#container .article footer .white_button.right,
+#container .article .white_button.right,
+#container .article .article .white_button.right {
   float:right;
   right:0;
   width:auto;
 }
 
 // white button left-aligned
-#container article footer .white_button.left,
-#container article .white_button.left,
-#container article article .white_button.left {
+#container .article footer .white_button.left,
+#container .article .white_button.left,
+#container .article .article .white_button.left {
   float:left;
   left:0;
   width:auto;
 }
 
 // white button left-aligned
-#container article footer .white_button.center,
-#container article .white_button.center,
-#container article article .white_button.center {
+#container .article footer .white_button.center,
+#container .article .white_button.center,
+#container .article .article .white_button.center {
   float:none;
   margin:auto;
 }
 
 .white_button.disabled,
-article .white_button.disabled {
+.article .white_button.disabled {
   color:#bbb; border: 1px solid #eee;
   background: rgb(255,255,255); /* Old browsers */
   background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(244,246,249,1) 100%); /* FF3.6+ */
@@ -219,7 +219,7 @@ article .white_button.disabled {
 }
 
 .white_button.disabled:hover,
-article .white_button.disabled:hover {
+.article .white_button.disabled:hover {
   color:#bbb;
   border: 1px solid #eee;
 
@@ -234,7 +234,7 @@ article .white_button.disabled:hover {
   @include box-shadow(none);
 }
 
-.white_button:hover, article .white_button:hover, li.publish a:hover {
+.white_button:hover, .article .white_button:hover, li.publish a:hover {
   color:#333;
   background-color:rgba(244,246,249,0.76);
   @include box-shadow(0 0 7px rgba(43, 140, 194, .3));
@@ -242,7 +242,7 @@ article .white_button.disabled:hover {
 }
 
 .white_button:active,
-article .white_button:active {
+.article .white_button:active {
   color:#333;
   font-weight:bold;
   font-size:15px;
@@ -328,14 +328,14 @@ article .white_button:active {
 }
 
 /* Hacks & fixes */
-.ie9 .white_button:active, .ie9 article .white_button:active {
+.ie9 .white_button:active, .ie9 .article .white_button:active {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2f4f6f9', endColorstr='#c2ffffff',GradientType=0 ); /* IE6-9 */
 }
 
-.ie7 #container article .inner .right button,
-.ie8 #container article .inner .right button,
-.ie7 #container article .inner .left .comments ul li.comment form button,
-.ie8 #container article .inner .left .comments ul li.comment form button,
+.ie7 #container .article .inner .right button,
+.ie8 #container .article .inner .right button,
+.ie7 #container .article .inner .left .comments ul li.comment form button,
+.ie8 #container .article .inner .left .comments ul li.comment form button,
 .ie7 button.white_button,
 .ie8 button.white_button {
   position: relative;
@@ -476,12 +476,12 @@ a.radio {
 Editing forms
 ========================================================================== */
 
-#container article.editable .inner .left  {
+#container .article.editable .inner .left  {
   z-index:500;
 }
 
 form.editable,
-#container article .inner .left  form.editable {
+#container .article .inner .left  form.editable {
 
   float:left;
   margin: 0 0 10px 0;

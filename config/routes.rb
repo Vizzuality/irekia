@@ -97,9 +97,11 @@ Irekia::Application.routes.draw do
     resources :shares
   end
 
+  # TODO: delete this
   resources :demo
   match 'user_publish', :to => 'demo#user_publish'
   match 'politician_publish', :to => 'demo#politician_publish'
+  match 'event_edit', :to => 'demo#event_edit'
 
   resources :arguments,       :controller => 'participations', :type => 'Argument'
   resources :votes,           :controller => 'participations', :type => 'Vote'

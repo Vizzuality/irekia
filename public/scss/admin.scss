@@ -44,7 +44,7 @@
     }
 
 
-    article.total_info {
+    .article.total_info {
       margin:5px auto 0!important;
       div.inner {padding:20px;}
 
@@ -123,7 +123,7 @@
       }
     }
 
-    #container article {
+    #container .article {
       width:($w - 10) + px;
       margin:10px 0 0 0;
       overflow:hidden;
@@ -212,7 +212,7 @@
     }
 
 
-    article.total_info {
+    .article.total_info {
       margin:20px 0 0 0;
 
       div.inner {padding:20px;}
@@ -295,7 +295,7 @@
     }
 
 
-    article.activity {
+    .article.activity {
       div.inner {padding-top:0!important; padding-bottom:0!important;}
 
        ul li.content {

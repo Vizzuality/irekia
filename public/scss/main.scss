@@ -21,7 +21,7 @@ header {
   margin: auto;
 }
 
-#main .content article .content { width:auto; }
+#main .content .article .content { width:auto; }
 #main.content {
   margin: 60px;
 }
@@ -96,10 +96,10 @@ h1, h2, h3, h4, h5, h6 { margin: 0; padding: 0; }
 h1 { letter-spacing: -1px; font-family: "ClarendonLTMedium", Georgia, serif; }
 h2 { letter-spacing: -1px; }
 
-article h4 { margin-bottom:14px; font-size:15px; font-weight:normal; color:#7D8A92; }
-article .right h4 { margin-bottom:14px; font-size:12px; font-weight:bold; color:$dark_blue; text-transform:uppercase;}
+.article h4 { margin-bottom:14px; font-size:15px; font-weight:normal; color:#7D8A92; }
+.article .right h4 { margin-bottom:14px; font-size:12px; font-weight:bold; color:$dark_blue; text-transform:uppercase;}
 
-article .inner {
+.article .inner {
   header h2, h2 {
     font-family: "ClarendonLTMedium", Georgia, serif;
   }
@@ -429,10 +429,10 @@ header {
 
 
 /* =============================================================================
-Article
+.article
 ========================================================================== */
 
-#container article {
+#container .article {
   position: relative;
   width: 996px;
   margin: 0 auto 45px auto;
@@ -462,11 +462,11 @@ Article
 div#main.searches .inner {padding-bottom:25px;}
 div#main.show div.left img {margin:4px 0 7px;}
 
-article .inner { h2, h3 { color: $dark_blue; } }
+.article .inner { h2, h3 { color: $dark_blue; } }
 
 // NOTICE
-#container article.notice,
-#container article .inner .notice {
+#container .article.notice,
+#container .article .inner .notice {
   display:none;
   position:absolute;
   width: 173px;
@@ -516,16 +516,16 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 }
 
-.ie7 #container article.publish,
-.ie8 #container article.publish {
+.ie7 #container .article.publish,
+.ie8 #container .article.publish {
   textarea, input[type="text"] {
     border: 1px solid $standard_gray;
 
   }
 }
 
-// .ie7 #container article.publish,
-// .ie8 #container article.publish {
+// .ie7 #container .article.publish,
+// .ie8 #container .article.publish {
 //   .inner .content .container .inner_container {
 //
 //     .input_fieldx {
@@ -587,9 +587,9 @@ article .inner { h2, h3 { color: $dark_blue; } }
 //   }
 // }
 
-/* Static article */
-#container article.static .inner header h3 {text-transform:none; font-size:19px; font-family: "Helvetica", sans-serif; font-weight:normal;}
-#container article {
+/* Static .article */
+#container .article.static .inner header h3 {text-transform:none; font-size:19px; font-family: "Helvetica", sans-serif; font-weight:normal;}
+#container .article {
   .inner {
     .left h1 { margin-bottom: 10px; line-height: 41px; clear:left; }
     .left h2 { clear:left; }
@@ -1770,7 +1770,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 }
 
 /* Agenda */
-#container article.agenda .inner {
+#container .article.agenda .inner {
   padding: 15px 33px 38px 33px;
 
   .content {
@@ -1799,7 +1799,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 }
 
-#container article.agenda {
+#container .article.agenda {
   .inner .content ul li.day {
     h3 { margin: 0; padding: 5px 0 0 5px; line-height: 20px; font-family: "ClarendonLTMedium", Georgia, serif; font-weight: normal; font-size: 23px; }
     span { padding: 0 0 0 5px; font-size: 15px; color: #bbb; color: rgba(70, 88, 102, 0.3); }
@@ -1836,7 +1836,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
 /* -- events */
 
 .map .infowindow,
-#container article.agenda .inner .content ul li.day .info {
+#container .article.agenda .inner .content ul li.day .info {
   display: none;
   position: absolute;
   top: 0;
@@ -1847,7 +1847,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   z-index: 10;
 }
 
-.map .infowindow span.close, #container article.agenda .inner .content ul li.day .info span.close {
+.map .infowindow span.close, #container .article.agenda .inner .content ul li.day .info span.close {
   position: absolute;
   top: 13px;
   right: 5px;
@@ -1858,23 +1858,23 @@ article .inner { h2, h3 { color: $dark_blue; } }
   cursor: pointer;
 }
 
-.map .infowindow.large ul.details, #container article.agenda .inner .content ul li.day .info.large ul.details {
+.map .infowindow.large ul.details, #container .article.agenda .inner .content ul li.day .info.large ul.details {
   position: relative;
   bottom: auto;
 }
 
-.map .infowindow strong, #container article.agenda .inner .content ul li.day .info strong {
+.map .infowindow strong, #container .article.agenda .inner .content ul li.day .info strong {
   display: block;
   margin-bottom: 5px;
   font-size: 12px;
   color: $dark_blue;
 }
 
-.map .infowindow ul.events, #container article.agenda .inner .content ul li.day .info ul.events {
+.map .infowindow ul.events, #container .article.agenda .inner .content ul li.day .info ul.events {
   margin: 0;
 }
 
-.map .infowindow ul.events li, #container article.agenda .inner .content ul li.day .info ul.events li {
+.map .infowindow ul.events li, #container .article.agenda .inner .content ul li.day .info ul.events li {
   width: auto;
   height: auto;
 }
@@ -1893,7 +1893,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   overflow-y: hidden;
 }
 
-#container article.agenda .inner .content ul li.day .info {
+#container .article.agenda .inner .content ul li.day .info {
   a, &.large ul.events li a {
     display: block;
     margin: 0 0 13px 0;
@@ -1908,13 +1908,13 @@ article .inner { h2, h3 { color: $dark_blue; } }
 
 /* large */
 
-.map .infowindow.large, #container article.agenda .inner .content ul li.day .info.large {
+.map .infowindow.large, #container .article.agenda .inner .content ul li.day .info.large {
   height: 191px;
   padding: 22px 22px;
   background-position: 0 -164px;
 }
 
-.map .infowindow .scroll-pane, #container article.agenda .inner .content ul li.day .info.large .scroll-pane {
+.map .infowindow .scroll-pane, #container .article.agenda .inner .content ul li.day .info.large .scroll-pane {
   overflow: auto;
   height: 177px;
   width: 235px;
@@ -1925,7 +1925,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   margin-bottom: 3px;
 }
 
-#container article {
+#container .article {
   &.agenda .inner .content ul li.day .info.large ul.events li {
     margin-bottom: 3px;
   }
@@ -1937,7 +1937,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 }
 
-.map .infowindow ul.details, #container article.agenda .inner .content ul li.day .info ul.details {
+.map .infowindow ul.details, #container .article.agenda .inner .content ul li.day .info ul.details {
   position: absolute;
   bottom: 34px;
 }
@@ -1948,7 +1948,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   margin-bottom: 0;
 }
 
-#container article.agenda .inner .content ul li.day .info {
+#container .article.agenda .inner .content ul li.day .info {
   ul.details li, &.large ul.details li {
     font-size: 13px;
     color: $standard_gray;
@@ -1956,7 +1956,7 @@ article .inner { h2, h3 { color: $dark_blue; } }
   }
 }
 
-.footer.when, span.when, .map .infowindow ul.details li.when, #container article.agenda .inner .content ul li.day .info ul.details li.when {
+.footer.when, span.when, .map .infowindow ul.details li.when, #container .article.agenda .inner .content ul li.day .info ul.details li.when {
   padding: 0 0 0 17px;
   background: url('/images/icons/icon_sprite.png') no-repeat 0 -35px;
 }
@@ -1996,7 +1996,7 @@ span.where, .map .infowindow ul.details li.where {
   white-space:nowrap;
 }
 
-#container article {
+#container .article {
   &.agenda .inner .content ul li.day .info ul.details li.where {
     width:207px;
     max-height:26px;
@@ -2296,8 +2296,8 @@ span.where, .map .infowindow ul.details li.where {
   }
 }
 
-.ie7 #container article,
-.ie8 #container article {
+.ie7 #container .article,
+.ie8 #container .article {
   &.actions .inner .left ul li .content .comment-box ,
   &.proposal .inner .left ul li .content .comment-box,
   &.photos .inner .left ul li .content .comment-box ,
@@ -2332,7 +2332,7 @@ span.where, .map .infowindow ul.details li.where {
   }
 }
 
-.ie7 #container article {
+.ie7 #container .article {
   &.actions .inner .left ul li .content .comment-box form,
   &.proposal .inner .left ul li .content .comment-box form,
   &.photos .inner .left ul li .content .comment-box form,
@@ -2343,9 +2343,9 @@ span.where, .map .infowindow ul.details li.where {
   }
 }
 
-/* Article addons */
+/* .article addons */
 
-#container article {
+#container .article {
   &.initialy_hidden { @include opacity(0); }
 
   .caption, .caption p { color: $standard_gray; }
@@ -2415,7 +2415,7 @@ span.where, .map .infowindow ul.details li.where {
 
 }
 
-#container article .social-links {
+#container .article .social-links {
   margin: 0 auto 40px auto;
   width: 447px;
   clear:both;
@@ -2454,7 +2454,7 @@ span.where, .map .infowindow ul.details li.where {
 }
 
 
-#container article.with_remark {
+#container .article.with_remark {
 
   margin-bottom: 40px!important;
 
@@ -2466,7 +2466,7 @@ span.where, .map .infowindow ul.details li.where {
   }
 }
 
-#container article.with_form.signup {
+#container .article.with_form.signup {
   clear:none;
   margin: 10px 100px 0 0;
 
@@ -2585,7 +2585,7 @@ span.where, .map .infowindow ul.details li.where {
     width:9000px;
     height:333px;
 
-    article {
+    .article {
       float:left;
       clear:none;
       margin: 10px 100px 0 0;
@@ -2724,14 +2724,14 @@ span.where, .map .infowindow ul.details li.where {
   }
 }
 
-.ie7 #container article .inner .avatar-uploader,
-.ie8 #container article .inner .avatar-uploader {
+.ie7 #container .article .inner .avatar-uploader,
+.ie8 #container .article .inner .avatar-uploader {
   .explanation button, input[type="submit"] {
     margin: 0 0 7px 10px;
   }
 }
 
-#container article .inner .avatar-uploader {
+#container .article .inner .avatar-uploader {
   clear: both;
   overflow: hidden;
   border-right: 1px solid #e3e6e8;
@@ -2761,7 +2761,7 @@ span.where, .map .infowindow ul.details li.where {
   }
 }
 
-#container article .inner .right .proposal-support {
+#container .article .inner .right .proposal-support {
   background:#F6F6F7;
   p { padding:13px 13px 0 13px; margin:0 0 13px 0; font-size:15px; color: #465866; }
   .count {
@@ -2806,18 +2806,18 @@ span.where, .map .infowindow ul.details li.where {
 
 }
 
-#container article .inner .right .map a {
+#container .article .inner .right .map a {
   font-size:10px!important;
 }
 
-.ie7 #container article .my_opinion,
-.ie8 #container article .my_opinion {
+.ie7 #container .article .my_opinion,
+.ie8 #container .article .my_opinion {
   button, input[type="submit"] {
     margin: 0 0 0 20px;
   }
 }
 
-#container article .my_opinion {
+#container .article .my_opinion {
   padding:10px;
   margin: 0 0 10px 0;
   background:#EDF3E5;
@@ -2841,7 +2841,7 @@ span.where, .map .infowindow ul.details li.where {
   }
 }
 
-#container article .inner .content ul.notifications {
+#container .article .inner .content ul.notifications {
   float:left;
   margin:10px 0 20px 0;
 
@@ -2935,7 +2935,7 @@ a.editable {
 }
 
 /* Proposals blocks */
-#container article .inner .left .proposals {
+#container .article .inner .left .proposals {
   margin: 0 0 61px 0;
   position:relative;
 
@@ -3054,28 +3054,28 @@ a.editable {
   }
 }
 
-/* Complete article / read more link */
-#container article a.more {
+/* Complete .article / read more link */
+#container .article a.more {
   padding:0 0 0 15px;
   background:url('/images/icons/read_more.png') no-repeat 0 5px;
 }
 
 /* Questions' preview */
-#container article footer .left .question,
-#container article footer .right .question {
+#container .article footer .left .question,
+#container .article footer .right .question {
   font-size:13px;
   color:rgba(125, 138, 146, .5);
 }
 
 /* answer */
-#container article div.answer {
+#container .article div.answer {
   margin: 20px 0 0 0;
   background:url('/images/notebook_bkg.png') repeat-y 0 16px;
   p { margin: 0 0 20px 0; font-size:17px; color:$dark_blue; line-height:20px; }
 }
 
 /* answer placeholder */
-#container article .inner .left .answer_placeholder {
+#container .article .inner .left .answer_placeholder {
   margin: 20px 0 0 0;
   border:3px dashed #f1f1f1;
   text-align:center;
@@ -3120,12 +3120,12 @@ a.editable {
           }
 
           /* subtitle */
-          #container article .inner .subtitle {
+          #container .article .inner .subtitle {
             margin: 0 0 10px 0;
           }
 
           /* meta */
-          #container article .inner .meta {
+          #container .article .inner .meta {
             margin: 10px 0 10px 0; padding:0; font-size:15px;
             color:#465866;
 
@@ -3139,7 +3139,7 @@ a.editable {
           }
 
           /* context */
-          #container article .inner .context {
+          #container .article .inner .context {
             float:left;
             clear:right;
             margin: 0 0 6px 0; padding: 0 0 3px 0;
@@ -3154,13 +3154,13 @@ a.editable {
           }
 
           /* info */
-          #container article .inner p.info {
+          #container .article .inner p.info {
             margin: 0 0 1px 0; padding:0; font-size:15px;
             &.extra-margin-bottom { margin-bottom:10px; }
           }
 
           /* comments */
-          #container article .inner .left div.comments {
+          #container .article .inner .left div.comments {
             position:relative;
             float:left;
             margin: 40px 0 0 0;
@@ -3328,7 +3328,7 @@ a.editable {
 
           /* close */
 
-          #container article {
+          #container .article {
             span.close {
               position: absolute;
               top: 3px;
@@ -3638,7 +3638,7 @@ a.editable {
           }
 
           // Tagging system for areas
-          #container article .inner .context ul.tags {
+          #container .article .inner .context ul.tags {
             position:relative;
             float: left;
             top:-5px;
@@ -3667,12 +3667,12 @@ a.editable {
             }
           }
 
-          #container article .right .content ul.tags {
+          #container .article .right .content ul.tags {
             margin-bottom:20px;
           }
 
           ul.tags,
-          #container article .right .content ul.tags {
+          #container .article .right .content ul.tags {
             list-style:none;
 
             li {
@@ -3811,14 +3811,14 @@ a.editable {
           /* Sharing */
           .ie7 ul.sharing li { margin: 0 3px 0 3px; }
 
-          .ie7 #container article ul.sharing li .sharebox.email .input_field input,
-          .ie8 #container article ul.sharing li .sharebox.email .input_field input {
+          .ie7 #container .article ul.sharing li .sharebox.email .input_field input,
+          .ie8 #container .article ul.sharing li .sharebox.email .input_field input {
             line-height:23px;
             position:static;
             border:1px solid #ccc;
           }
 
-          #container article .inner .left .inline-sharing {
+          #container .article .inner .left .inline-sharing {
             //position:absolute;
             display:inline-block;
             //@include inline-block;
@@ -3833,8 +3833,8 @@ a.editable {
             .sharebox { position:absolute; top:-86px; }
           }
 
-          #container article .left .content,
-          #container article .right .content ul.sharing li {
+          #container .article .left .content,
+          #container .article .right .content ul.sharing li {
             .sharebox { display:none; position:absolute; top:-60px; margin-left:-16px; z-index:1000; }
 
             .sharebox.email {
@@ -3843,7 +3843,7 @@ a.editable {
             }
           }
 
-          #container article .right .content ul.sharing {
+          #container .article .right .content ul.sharing {
             margin: 3px 0 0 0;
             padding: 0 0 25px 0;
 
@@ -3853,8 +3853,8 @@ a.editable {
 
           .ie7 .sharebox ul li { margin: 0 3px 0 3px; }
 
-          #container article .left .content .sharebox,
-          #container article .right .content .sharebox {
+          #container .article .left .content .sharebox,
+          #container .article .right .content .sharebox {
 
             background:url('/images/share_box.png') repeat-x right 0;
             float:left;
@@ -3940,13 +3940,13 @@ a.editable {
           }
 
           /* Lists */
-          #container article .right .content ul.locations,
-          #container article .right .content ul.proposals,
-          #container article .right .content ul.photos,
-          #container article .right .content ul.questions,
-          #container article .right .content ul.related,
-          #container article .right .content ul.previously,
-          #container article .right .content ul.events {
+          #container .article .right .content ul.locations,
+          #container .article .right .content ul.proposals,
+          #container .article .right .content ul.photos,
+          #container .article .right .content ul.questions,
+          #container .article .right .content ul.related,
+          #container .article .right .content ul.previously,
+          #container .article .right .content ul.events {
 
             width:253px;
             padding: 0 0 20px 0px;
@@ -3973,7 +3973,7 @@ a.editable {
             }
           }
 
-          #container article .right .content ul.locations {
+          #container .article .right .content ul.locations {
 
             &.editable {
               li {
@@ -4001,7 +4001,7 @@ a.editable {
 
           /* Ribbons */
 
-          #container article {
+          #container .article {
 
             form.follow_ribbon {
               position:absolute;
@@ -4179,11 +4179,11 @@ a.editable {
             }
           }
 
-          #container article.with_footer footer .inner a.facebook, .content footer a.facebook {
+          #container .article.with_footer footer .inner a.facebook, .content footer a.facebook {
             background-position: 0 -75px;
           }
 
-          #container article.with_footer footer .inner a.twitter, .content footer a.twitter {
+          #container .article.with_footer footer .inner a.twitter, .content footer a.twitter {
             background-position: -40px -75px;
           }
 
@@ -4217,7 +4217,7 @@ input {
   }
 }
 
-#container article.settings .inner {
+#container .article.settings .inner {
   .left {
     fieldset {
       .field {
@@ -4278,15 +4278,15 @@ input {
 }
 
 /* Fields with errors */
-#container article.with_form .inner .content .field p.error,
-#container article.with_form .inner .left .field p.error,
-#container article.with_form .inner .content .field p.error a,
-#container article.with_form .inner .left .field p.error a {
+#container .article.with_form .inner .content .field p.error,
+#container .article.with_form .inner .left .field p.error,
+#container .article.with_form .inner .content .field p.error a,
+#container .article.with_form .inner .left .field p.error a {
   color: #E96F5F;
 }
 
-#container article .left .content .sharebox .input_field.error,
-#container article .right .content .sharebox .input_field.error {
+#container .article .left .content .sharebox .input_field.error,
+#container .article .right .content .sharebox .input_field.error {
   input[type="text"],
   input[type="email"],
   input[type="password"] {
@@ -4294,7 +4294,7 @@ input {
   }
 }
 
-#container article.with_form .inner .field.error {
+#container .article.with_form .inner .field.error {
   padding: 0;
   .input_field input[type="text"],
   .input_field input[type="email"],
@@ -4569,17 +4569,17 @@ Explorer fixes
 .ie7 .xlInput, .ie8 .xlInput,
 .ie7 .input_field input[type="email"],
 .ie7 .input_field input[type="text"],
-.ie7 article.micro input[type="email"],
-.ie7 article.micro input[type="text"],
-.ie7 article.micro input[type="password"],
+.ie7 .article.micro input[type="email"],
+.ie7 .article.micro input[type="text"],
+.ie7 .article.micro input[type="password"],
 .ie7 #sign_in input[type="email"],
 .ie7 #sign_in input[type="text"],
 .ie7 #sign_in input[type="password"],
 .ie8 .input_field input[type="email"],
 .ie8 .input_field input[type="text"],
-.ie8 article.micro input[type="email"],
-.ie8 article.micro input[type="text"],
-.ie8 article.micro input[type="password"],
+.ie8 .article.micro input[type="email"],
+.ie8 .article.micro input[type="text"],
+.ie8 .article.micro input[type="password"],
 .ie8 #sign_in input[type="email"],
 .ie8 #sign_in input[type="text"],
 .ie8 #sign_in input[type="password"] {
@@ -4626,15 +4626,15 @@ Explorer fixes
 }
 
 /* --------------------------------------------------------------------------------- Calendar days */
-.ie7 #container article.agenda .inner .content ul li.day {
+.ie7 #container .article.agenda .inner .content ul li.day {
   &.disabled h3, span { color: #bbb; }
 }
 
 /* --------------------------------------------------------------------------------- Questions' preview */
-.ie7 #container article footer .left .question,
-.ie7 #container article footer .right .question,
-.ie8 #container article footer .left .question,
-.ie8 #container article footer .right .question {
+.ie7 #container .article footer .left .question,
+.ie7 #container .article footer .right .question,
+.ie8 #container .article footer .left .question,
+.ie8 #container .article footer .right .question {
   color:$gray;
 }
 
@@ -4804,7 +4804,7 @@ Error pages
   .page_error,
   .not_found{
     padding: 125px 0;
-    article.with_footer{
+    .article.with_footer{
       margin: 0 auto;
       & > .inner{
         width: 636px;
@@ -4837,7 +4837,7 @@ body.home {
   #container {
     background:url('/images/illustration.png') no-repeat center 0 #F2F5F8;
 
-    article.participation {
+    .article.participation {
       height:255px;
       padding:0;
       margin:0 auto!important;
@@ -4923,7 +4923,7 @@ body.home {
       }
     }
 
-    article#areas {
+    .article#areas {
 
       div.areas_list {
         position:relative;
