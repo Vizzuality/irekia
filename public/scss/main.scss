@@ -5236,7 +5236,7 @@ ul.playlist {
    margin: 0 10px 0 0;
    background: url('/images/icons/icon_sprite.png') no-repeat 0 -450px;
    &.pdf {
-   background-position: 0 -520px;
+     background-position: 0 -520px;
    }
  }
 }
@@ -5260,13 +5260,13 @@ ul.playlist li.sm2_paused {
 
 ul.playlist li.sm2_playing {
   .footer { display:none;}
-   .icon { background-position: 0 -450px; }
+   .icon { background-position: 0 -483px; }
    .controls {float: left;}
 }
 
 ul.playlist li.sm2_paused {
   .footer { display:none; }
-   .icon { background-position: 0 -483px; }
+   .icon { background-position: 0 -450px; }
    .controls {float: left;}
 }
 

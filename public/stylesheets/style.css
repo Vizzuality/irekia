@@ -1458,11 +1458,11 @@ ul.playlist li .timing { display: none; }
 ul.playlist li.sm2_playing, ul.playlist li.sm2_paused { color: #7D8A92; }
 
 ul.playlist li.sm2_playing .footer { display: none; }
-ul.playlist li.sm2_playing .icon { background-position: 0 -450px; }
+ul.playlist li.sm2_playing .icon { background-position: 0 -483px; }
 ul.playlist li.sm2_playing .controls { float: left; }
 
 ul.playlist li.sm2_paused .footer { display: none; }
-ul.playlist li.sm2_paused .icon { background-position: 0 -483px; }
+ul.playlist li.sm2_paused .icon { background-position: 0 -450px; }
 ul.playlist li.sm2_paused .controls { float: left; }
 
 ul.playlist li .controls { display: none; }
