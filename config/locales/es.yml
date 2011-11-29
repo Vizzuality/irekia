@@ -317,6 +317,8 @@
       no_activity: Sin actividad
   shared:
     politician_publish:
+      photo: Foto
+      video: Vídeo
       publish: Publicar
       dashboard: Estado
       proposal: Propuesta
@@ -631,6 +633,7 @@
         answer: la respuesta
         news: la noticia
         photo: la foto
+        video: el vídeo
         tweet: el tweet
         event: el evento
         author: 'Publicado por %{author} hace %{time}'
@@ -833,7 +836,7 @@
               one: Un comentario
               other: '%{count} comentarios'
       video:
-        published_by: 'Publicada por'
+        published_by: 'Publicado por'
         back: volver
         title_author_and_comments:
           time: 'hace %{time}'
