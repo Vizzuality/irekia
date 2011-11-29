@@ -101,6 +101,8 @@ Irekia::Application.routes.draw do
   end
 
   # TODO: delete this
+  match 'demo/news', :to => 'demo#news'
+
   resources :demo
   match 'user_publish', :to => 'demo#user_publish'
   match 'politician_publish', :to => 'demo#politician_publish'
