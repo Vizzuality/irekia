@@ -335,7 +335,7 @@ jQuery.fn.enableDateEditing = function(opt){
 jQuery.fn.enableEditTags = function(opt){
   var speed     = (opt && opt.speed) || 100,
   fadeInSpeed   = (opt && opt.speed) || 10,
-  $ul = $(this),
+  $ul  = $(this),
   $new = $ul.find(".new"),
   $add = $(this).find(".add");
 
