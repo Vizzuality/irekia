@@ -948,6 +948,11 @@ div#main.show div.left img {margin:4px 0 7px;}
     width: 757px;
     margin: 0 auto 0px auto;
 
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
+
     &.event {
       .inner .content .container {
         height:auto;
@@ -973,6 +978,12 @@ div#main.show div.left img {margin:4px 0 7px;}
         height:79px;
 
         .inner_container .section {
+
+
+          .image_container {
+            width: 667px;
+          }
+
 
           &.proposal {
             .triangle { left:388px; }
@@ -1044,6 +1055,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
           .inner_container {
             width:9000px;
+            height: 2000px;
             margin-top:19px;
 
             strong { float:left; }
@@ -1056,6 +1068,7 @@ div#main.show div.left img {margin:4px 0 7px;}
               margin: 0 0 20px 0;
               line-height:normal;
               background:#EDF3E5;
+              @include border-radius(3px);
 
               img { display:none; float:left; margin: 0 10px 0 0; height:72px; }
               p { float:left; margin: 30px 0 0 0; line-height: normal; font-size: 15px; color: #7D8A92; }
@@ -1098,6 +1111,7 @@ div#main.show div.left img {margin:4px 0 7px;}
             .message {
               display:none;
               padding:31px;
+              margin: 10px 0 0 0;
               height:137px - 31*2;
               width: 687px - 31*2;
               @include border-radius(4px);
@@ -1220,10 +1234,14 @@ div#main.show div.left img {margin:4px 0 7px;}
 
               &.video {
                 height:auto;
-                background:#F6F6F7;
                 @include border-radius(4px);
 
                 .triangle { left: 268px; background-position: 0 -64px; }
+
+                .form {
+                  background:#F6F6F7;
+                  @include border-radius(4px);
+                }
 
                 ul {
                   margin: 0 0 20px 0;
@@ -1562,8 +1580,8 @@ div#main.show div.left img {margin:4px 0 7px;}
 
     footer .inner .spinner { float:right; display:block; width:33px; height:33px; margin-top: 7px; z-index:1000; }
     footer .inner .white_button { margin-left:5px; }
-    &.proposal {
 
+    &.proposal {
       .image_container {
         display:none;
         float: left;
@@ -1572,6 +1590,7 @@ div#main.show div.left img {margin:4px 0 7px;}
         margin: 0 0 20px 0;
         background:#EDF3E5;
         line-height:normal;
+        @include border-radius(3px);
 
         img { display:none; float:left; margin: 0 10px 0 0; height:72px; }
         p { float:left; margin: 30px 0 0 0; line-height:normal; font-size: 15px; color: #7D8A92; }
@@ -5083,7 +5102,9 @@ body.home {
   }
 }
 
-// TABS
+/* =============================================================================
+Tabs
+========================================================================== */
 .tabs, .pills {
   margin: 0 0 18px;
   padding: 0;
@@ -5200,6 +5221,7 @@ ul.playlist {
  margin: 0 0 20px 0;
 
  a { font-size:15px; }
+ a.download { display:inline; width:auto; font-size:12px; }
 
  .icon {
    float:left;
@@ -5232,7 +5254,7 @@ ul.playlist li.sm2_paused {
 
 ul.playlist li.sm2_playing {
   .footer { display:none;}
-   .icon { background-position: 0 -483px; }
+   .icon { background-position: 0 -450px; }
    .controls {float: left;}
 }
 
@@ -5398,4 +5420,10 @@ ul.playlist li .peak .r {
 #control-template {
  display:none;
 }
+
+#sm2-container {
+  position:relative;
+  left:-9999px;
+}
+
 

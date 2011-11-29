@@ -179,11 +179,13 @@
   function _enableSubmit($submit) {
     submitting = false;
     $submit.removeClass("disabled");
+    $submit.removeAttr("disabled");
   }
 
   function _disableSubmit($submit) {
     submitting = true;
     $submit.addClass("disabled");
+    $submit.attr("disabled", "disabled");
   }
 
   function _selectOption(data, $option) {
@@ -195,20 +197,22 @@
     $option.addClass("selected");
   }
 
+  // Empties the image preview container
   function _resetImageContainer(e, data) {
     e.preventDefault();
 
-    var
-    $ps = data.$ps,
-    $image_container = $ps.find(".image_container");
+    var $image_container = data.$ps.find(".image_container");
 
     $image_container.fadeOut(data.settings.transitionSpeed, function() {
-      $image_container.find("img").remove();
-      $ps.find(".uploader").show();
-      $image_container.find(".holder").show();
-      $ps.find(".loading").hide();
-      $ps.find(".percentage").hide();
-      $ps.find(".progress").css("width", "0");
+      data.$ps.find(".uploader").fadeIn(data.transitionSpeed, function() {
+        $image_container.find(".holder").fadeIn(data.transitionSpeed);
+      });
+
+      $image_container.find("img").fadeOut(data.transitionSpeed, function() { $(this).remove(); });
+
+      data.$ps.find(".loading").hide();
+      data.$ps.find(".percentage").hide();
+      data.$ps.find(".progress").css("width", "0");
 
       _resizeSection(data, $currentSection);
     });
@@ -540,7 +544,6 @@
     if (!_hasContent($currentSection)) return;
     _disableSubmit(data.$submit);
     _do(data);
-    //_message() ?  _doMessage(data) : _doProposal(data);
   }
 
   function _bindSubmit(data, title, initiallyDisabled, callback) {
@@ -719,7 +722,8 @@
 
     var successHeight = $success.outerHeight(true);
 
-    $ps.find(".container").animate({scrollTop: currentHeight + 20, height:successHeight + 20 }, data.settings.transitionSpeed * 2, "easeInOutQuad", function() {
+    console.log("-", successHeight, $success.position().top, $success.offset().top);
+    $ps.find(".container").animate({scrollTop: $success.position().top + 20, height: successHeight }, data.settings.transitionSpeed * 2, "easeInOutQuad", function() {
       IrekiaSpinner.stop();
       callback && callback();
     });

@@ -1,54 +1,54 @@
 <div id="publish-popover" class="article politician publish with_footer popover initialy_hidden">
-<div class="inner clearfix">
-  <div class="content">
+  <div class="inner clearfix">
+    <div class="content">
 
-    <h2><%= t(".publish") %></h2>
-    <p>¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!</p>
+      <h2><%= t(".publish") %></h2>
+      <p>¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!</p>
 
-    <%= menu ([
-              { :link => (link_to t(".dashboard"), "#"), :class => :selected},
-              { :link => (link_to t(".photo"), "#") },
-              { :link => (link_to t(".video"), "#") },
-              { :link => (link_to t(".proposal"), "#") }
-    ]) %>
+      <%= menu ([
+                { :link => (link_to t(".dashboard"), "#"), :class => :selected},
+                { :link => (link_to t(".photo"), "#") },
+                { :link => (link_to t(".video"), "#") },
+                { :link => (link_to t(".proposal"), "#") }
+      ]) %>
 
-    <div class="container">
-      <div class="inner_container clearfix">
+      <div class="container">
+        <div class="inner_container clearfix">
 
-        <!-- DASHBOARD -->
-        <div class="section dashboard">
-          <div class="triangle"></div>
-          <%= form_for @status_message, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+          <!-- DASHBOARD -->
+          <div class="section dashboard">
+            <div class="triangle"></div>
+            <%= form_for @status_message, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
 
-            <div class="form clearfix">
-              <%= form.fields_for :status_message_data, @status_message.status_message_data do |status_message_data| %>
-                <div class="input_field placeholder textarea">
-                  <div id="question-counter" class="input-counter">
-                    <%= status_message_data.text_area :message %>
-                    <span class="holder">Introduce el texto que quieras publicar aquí.</span>
+              <div class="form clearfix">
+                <%= form.fields_for :status_message_data, @status_message.status_message_data do |status_message_data| %>
+                  <div class="input_field placeholder textarea">
+                    <div id="question-counter" class="input-counter">
+                      <%= status_message_data.text_area :message %>
+                      <span class="holder">Introduce el texto que quieras publicar aquí.</span>
+                    </div>
                   </div>
-                </div>
+                <% end %>
+              <% end -%>
+            </div>
+
+            <div class="success message">
+              <div class="icon"></div>
+              <h2>Tu mensaje ha sido publicado</h2>
+              <p>Mensaje de estado publicado correctamente.</p>
+            </div>
+
+          </div>
+
+          <!-- PHOTO -->
+          <div class="section photo">
+            <div class="triangle"></div>
+
+            <%= form_for @photo, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+
+              <%= form.fields_for :image do |image| %>
+                <%= image.hidden_field :image_cache, :class => :image_cache_name %>
               <% end %>
-            <% end -%>
-          </div>
-
-          <div class="success message">
-            <div class="icon"></div>
-            <h2>Tu mensaje ha sido publicado</h2>
-            <p>Mensaje de estado publicado correctamente.</p>
-          </div>
-
-        </div>
-
-        <!-- PHOTO -->
-        <div class="section photo">
-          <div class="triangle"></div>
-
-          <%= form_for @photo, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
-
-            <%= form.fields_for :image do |image| %>
-              <%= image.hidden_field :image_cache, :class => :image_cache_name %>
-            <% end %>
 
               <div class="form clearfix">
                 <div class="input_field placeholder uploader">
@@ -65,134 +65,134 @@
                   <a href="#" class="remove">Eliminar</a>
                 </div>
               </div>
-          <% end %>
+            <% end %>
 
-          <div class="success message">
-            <div class="icon"></div>
-            <h2>Tu video ha sido importado</h2>
-            <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
-          </div>
-
-          <div class="error message">
-            <div class="icon"></div>
-            <h2>Error</h2>
-            <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
-          </div>
-        </div>
-
-
-        <!-- VIDEO -->
-        <div class="section video">
-          <div class="triangle"></div>
-          <%= form_for @video, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
-
-            <div class="form clearfix">
-              <ul class="clearfix">
-                <li class="youtube selected">
-                <a href="#" class="radio selected"></a>
-                <div class="logo"></div>
-                <div class="input_field youtube placeholder">
-                  <%= form.fields_for :video_data do |video_data| %>
-                    <%= video_data.text_field :youtube_url %>
-                  <% end -%>
-                  <span class="holder">URL de Youtube</span>
-                </div>
-                </li>
-
-                <li class="vimeo">
-                <a href="#" class="radio"></a>
-                <div class="logo"></div>
-                <div class="input_field vimeo placeholder">
-                  <%= form.fields_for :video_data do |video_data| %>
-                    <%= video_data.text_field :vimeo_url %>
-                  <% end -%>
-                  <span class="holder">URL de Vimeo</span>
-                </div>
-                </li>
-
-              </ul>
+            <div class="success message">
+              <div class="icon"></div>
+              <h2>Tu video ha sido importado</h2>
+              <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
             </div>
 
-          <% end -%>
-
-          <div class="success message">
-            <div class="icon"></div>
-            <h2>Tu video ha sido importado</h2>
-            <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+            <div class="error message">
+              <div class="icon"></div>
+              <h2>Error</h2>
+              <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+            </div>
           </div>
 
-          <div class="error message">
-            <div class="icon"></div>
-            <h2>Error</h2>
-            <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
-          </div>
-        </div>
 
-        <!-- PROPOSAL -->
-        <div class="section proposal">
-          <div class="triangle"></div>
-          <%= form_for @proposal, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
-            <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %>
-              <%= proposal_data.hidden_field :area_id %>
-
-              <%= proposal_data.fields_for :image, @proposal_data.image do |image| %>
-                <%= image.hidden_field :proposal_data_id %>
-                <%= image.hidden_field :image_cache, :class => :image_cache_name %>
-              <% end %>
+          <!-- VIDEO -->
+          <div class="section video">
+            <div class="triangle"></div>
+            <%= form_for @video, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
 
               <div class="form clearfix">
-
-                <div class="input_field placeholder textarea clearfix">
-                  <div id="proposal-counter" class="input-counter">
-                    <%= proposal_data.text_area :title, :class => :title %>
-                    <span class="holder">Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.</span>
+                <ul class="clearfix">
+                  <li class="youtube selected">
+                  <a href="#" class="radio selected"></a>
+                  <div class="logo"></div>
+                  <div class="input_field youtube placeholder">
+                    <%= form.fields_for :video_data do |video_data| %>
+                      <%= video_data.text_field :youtube_url %>
+                    <% end -%>
+                    <span class="holder">URL de Youtube</span>
                   </div>
-                </div>
+                  </li>
 
-                <div class="input_field placeholder uploader">
-                  <input type="text" />
-                  <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
-                  <span class="percentage">0%</span>
-                  <span class="loading">Cargando imagen...</span>
-                  <div class="progress"></div>
-                </div>
+                  <li class="vimeo">
+                  <a href="#" class="radio"></a>
+                  <div class="logo"></div>
+                  <div class="input_field vimeo placeholder">
+                    <%= form.fields_for :video_data do |video_data| %>
+                      <%= video_data.text_field :vimeo_url %>
+                    <% end -%>
+                    <span class="holder">URL de Vimeo</span>
+                  </div>
+                  </li>
 
-                <div class="image_container clearfix">
-                  <p>Se incluirá esta imagen en la propuesta.</p>
-                  <a href="#" class="remove">Eliminar</a>
-                </div>
+                </ul>
+              </div>
 
-                <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
-                <div class="input_field description placeholder textarea">
-                  <%= proposal_data.text_area :body, :class => :body %>
-                  <span class="holder">Describe la propuesta en pocas palabras</span>
-                </div>
-              <% end -%>
             <% end -%>
 
+            <div class="success message">
+              <div class="icon"></div>
+              <h2>Tu video ha sido importado</h2>
+              <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+            </div>
+
+            <div class="error message">
+              <div class="icon"></div>
+              <h2>Error</h2>
+              <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+            </div>
           </div>
 
-          <div class="success message">
-            <div class="icon"></div>
-            <h2>Tu propuesta ha sido publicada</h2>
-            <p>Propuesta publicada correctamente.</p>
+          <!-- PROPOSAL -->
+          <div class="section proposal">
+            <div class="triangle"></div>
+            <%= form_for @proposal, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
+              <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %>
+                <%= proposal_data.hidden_field :area_id %>
+
+                <%= proposal_data.fields_for :image, @proposal_data.image do |image| %>
+                  <%= image.hidden_field :proposal_data_id %>
+                  <%= image.hidden_field :image_cache, :class => :image_cache_name %>
+                <% end %>
+
+                <div class="form clearfix">
+
+                  <div class="input_field placeholder textarea clearfix">
+                    <div id="proposal-counter" class="input-counter">
+                      <%= proposal_data.text_area :title, :class => :title %>
+                      <span class="holder">Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.</span>
+                    </div>
+                  </div>
+
+                  <div class="input_field placeholder uploader">
+                    <input type="text" />
+                    <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
+                    <span class="percentage">0%</span>
+                    <span class="loading">Cargando imagen...</span>
+                    <div class="progress"></div>
+                  </div>
+
+                  <div class="image_container clearfix">
+                    <p>Se incluirá esta imagen en la propuesta.</p>
+                    <a href="#" class="remove">Eliminar</a>
+                  </div>
+
+                  <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
+                  <div class="input_field description placeholder textarea">
+                    <%= proposal_data.text_area :body, :class => :body %>
+                    <span class="holder">Describe la propuesta en pocas palabras</span>
+                  </div>
+                <% end -%>
+              <% end -%>
+
+            </div>
+
+            <div class="success message">
+              <div class="icon"></div>
+              <h2>Tu propuesta ha sido publicada</h2>
+              <p>Propuesta publicada correctamente.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <span class="close"></span>
   </div>
-  <span class="close"></span>
-</div>
 
-<footer>
-<div class="separator"></div>
-<div class="inner">
-  <div class="left"></div>
-  <div class="right">
-    <a href="#" class="white_button pink publish right disabled"><span>Continuar</span></a>
-    <span class="spinner" id="publish_spinner"></span>
+  <footer>
+  <div class="separator"></div>
+  <div class="inner">
+    <div class="left"></div>
+    <div class="right">
+      <%= button t('.continue'), :class => "white_button pink publish right disabled" %>
+      <span class="spinner" id="publish_spinner"></span>
+    </div>
   </div>
-</div>
-</footer>
-<div class="t"></div><div class="f"></div>
+  </footer>
+  <div class="t"></div><div class="f"></div>
 </div>

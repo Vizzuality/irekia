@@ -20,6 +20,13 @@ var LockScreen = (function() {
     if (!_isLocked()) {
       $("body").append("<div id='lock_screen'></div>");
       $("#lock_screen").height($(document).height());
+
+      $("#lock_screen").unbind()
+      $("#lock_screen").click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+
       $("#lock_screen").fadeIn(150, function() {
         callback && callback();
       });

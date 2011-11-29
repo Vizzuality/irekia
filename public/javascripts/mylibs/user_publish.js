@@ -180,11 +180,13 @@
   function _enableSubmit($submit) {
     submitting = false;
     $submit.removeClass("disabled");
+    $submit.removeAttr("disabled");
   }
 
   function _disableSubmit($submit) {
     submitting = true;
     $submit.addClass("disabled");
+    $submit.attr("disabled", "disabled");
   }
 
   function _selectOption(data, $option) {
