@@ -4789,7 +4789,8 @@ footer {
   .content { clear: both; overflow: hidden; padding: 0 0 23px 0; width: 900px; }
   ul.copyright { float: left; margin-right: 35px; }
 
-  .home, .areas { float: left; margin-right: 35px; }
+  .home, .areas { float: left; margin-right: 20px; }
+  .home, .about { float: left; }
 
   .content {
     .home { margin-right: 50px; }
