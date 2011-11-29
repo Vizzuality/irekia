@@ -1289,6 +1289,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   var
   store = "areas_editable_selector",
   // Public methods
+  $popover,
   methods = { },
   interval,
   // Default values
@@ -1329,20 +1330,26 @@ jQuery.fn.enablePoliticianPublish = function(opt){
         data.event = "_close." + store;
       }
 
+      $popover = $(this);
       // Update the reference to $ps
       $ps = $('.' + store);
 
-      $(this).click(_toggle);
+      $(this).find(".add_area a").click(_toggle);
 
-     // $ps.bind('click', function(e) {
-     //   e.preventDefault();
-     //   e.stopPropagation();
-     // });
+      $popover.find('li form.remove').live('submit', function(e) {
+        $(this).parent().fadeOut(250);
+      });
 
-      $ps.find("li a").bind('click', function(e) {
-        e.preventDefault();
+      $ps.find('li form').bind('submit', function(e) {
         $(this).parent().addClass("selected");
-        $this.before("<li class='editable'><a href='#'>" + $(this).html() + "</a></li>")
+      });
+
+      $ps.find('li form').bind('ajax:success', function(e, response) {
+        var $tag = $(response);
+        console.log($tag);
+        $tag.hide();
+        $popover.find(".add_area").before($tag);
+        $tag.fadeIn(250);
       });
 
       // Save the updated $ps reference into our data object
@@ -1375,7 +1382,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
       e.stopPropagation();
     }
 
-    var data  = $(this).data(store);
+    var data  = $popover.data(store);
     var $ps   = data.$ps;
 
     if ($ps.hasClass("open")) {
@@ -1408,11 +1415,11 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   }
 
   function _getTopPosition(data) {
-    return data.$this.position().top + 25;
+    return data.$this.find(".add_area").position().top + 25;
   }
 
   function _getLeftPosition(data) {
-    return data.$this.position().left - 42;
+    return data.$this.find(".add_area").position().left - 45;
   }
 
   function _triggerOpenAnimation($ps, data) {

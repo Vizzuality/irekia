@@ -15,7 +15,7 @@ $(function() {
 
   $(".right .tags.editable").enableEditTags();
   $(".people.editable").enablePoliticianTags();
-  $(".add_area").enableAreaEditing();
+  $(".context ul.editable.tags").enableAreaEditing();
 
   $('.tabs').tabs();
 

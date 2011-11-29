@@ -1,4 +1,4 @@
-<li class="editable">
+<li data-id="<%= @content.areas_contents.last.area_id %>" class="editable">
   <%= link_to @content.areas_contents.last.area.name, area_path(@content.areas_contents.last.area) %>
 
   <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>

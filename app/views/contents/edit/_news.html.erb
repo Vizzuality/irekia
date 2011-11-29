@@ -13,7 +13,7 @@
         <span class="middot">&middot;</span>
         <ul class="editable tags">
           <% @content.areas_contents.each do |ac| %>
-            <li<%=" class='editable'" if @editable %>>
+            <li data-id="<%= ac.area_id %>"<%=" class='editable'" if @editable %>>
             <%= link_to ac.area.name, area_path(ac.area) %>
 
             <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
@@ -36,7 +36,7 @@
             <div class="scroll-pane">
               <ul>
                 <% @areas.each do |area| %>
-                  <li<%= ' class="last"' if @areas.last == area %>>
+                  <li data-id="<%= area.id %>"<%= ' class="last"' if @areas.last == area %>>
                     <%= form_for @content, :remote => true, :html => { :'data-type' => 'html' } do |form| %>
                       <%= hidden_field_tag :partial, 'tagged_area' %>
                       <%= form.fields_for :areas_contents, @content.areas_contents.build do |areas_contents| %>
