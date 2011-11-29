@@ -762,13 +762,7 @@
       in_favor: Argumentos a favor
       against: Argumentos en contra
       add: Añadir
-    not_moderated:
-      event:
-        moderation_pending: Evento pendiente de moderación
-      news:
-        moderation_pending: Noticia pendiente de moderación
-      photo:
-        moderation_pending: Imagen pendiente de moderación
+    create:
       proposal:
         title: Tu propuesta ha sido enviada
         moderation_pending: Propuesta pendiente de moderación
@@ -777,12 +771,25 @@
         title: Tu pregunta ha sido enviada
         moderation_pending: Pregunta pendiente de moderación
         description: En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.
-      tweet:
-        moderation_pending: Tweet pendiente de moderación
-    moderated:
-      video:
-        back: volver
-        published_by: Publicado por
+      politician:
+        status_message:
+          title: Tu mensaje ha sido publicado
+          description: Mensaje de estado publicado correctamente.
+        photo:
+          title: Tu fotografía ha sido publicada
+          description: Fotografía publicada correctamente.
+        video:
+          title: Tu vídeo ha sido publicado
+          description: Vídeo publicado correctamente.
+        question:
+          title: Tu pregunta ha sido publicada
+          description: Pregunta publicada correctamente.
+        proposal:
+          title: Tu propuesta ha sido publicada
+          description: Propuesta publicada correctamente.
+    update:
+
+    show:
       news:
         back: volver
         date_area_and_comments:

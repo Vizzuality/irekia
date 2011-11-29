@@ -1,0 +1,60 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="Irekia - <%= @content.title %>" />
+  <meta property="og:description" content="<%= @content.body.strip.truncate(128) %>" />
+  <meta property="og:image" content="<%= image_url @content.news_data.image.content_url if @content.news_data.image.present? %>" />
+<% end -%>
+<div class="article activity with_footer">
+  <%= link_to '', edit_news_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
+  <div class="inner">
+    <div class="left">
+
+      <div class="context">
+        <h3><%= t(@content.content_type) %></h3>
+
+        <% if !@content.areas.blank? %>
+          <span class="middot">&middot;</span>
+          <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
+        <% end %>
+
+      </div>
+
+      <%= content_tag :h1, @content.title %>
+      <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => :subtitle if @content.subtitle %>
+
+      <div class="meta">
+        <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
+        &middot;
+        <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
+      </div>
+
+      <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+      <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil %>
+      <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
+
+      <%= render "participations/comments" %>
+
+    </div>
+    <div class="right">
+      <div class="content left-border">
+
+        <%= sharing_partial(news_url(@content), @content.title) %>
+        <%= render "shared/sidebar/tags" %>
+        <%= render "shared/sidebar/politicians" %>
+        <%= render "shared/sidebar/related_content" %>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+  <div class="separator"></div>
+  <div class="inner">
+
+    <div class="left">
+      <%= link_to t(".back"), "/in_development", :class => :left_arrow %>
+    </div>
+
+  </div>
+  </footer>
+  <div class="t"></div><div class="f"></div>
+</div>

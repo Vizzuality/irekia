@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   validates :lastname, :presence => true, :on => :update
 
   belongs_to :role,
-             :select => 'id, name_i18n_key'
+             :select => 'id, name, name_i18n_key'
   belongs_to :title,
              :select => 'id, translated_name'
 
