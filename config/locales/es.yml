@@ -298,7 +298,7 @@
     your_questions: Tus preguntas
     your_proposals: Tus propuestas
     your_activity: Tu actividad
-    what_to_follow: ¿Qué seguir?
+    what_to_follow: Siguiendo
     publish: Publicar
     configure_your_account: Configura tu cuenta
   home:
@@ -1418,7 +1418,7 @@
         your_questions: Tus preguntas
         your_proposals: Tus propuestas
         your_activity: Tu actividad
-        what_to_follow: ¿Qué seguir?
+        what_to_follow: Siguiendo
         publish: Publicar
       questions:
         answered_title:
