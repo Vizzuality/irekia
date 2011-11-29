@@ -5,26 +5,33 @@ module Irekia
         puts 'Importing news from Irekia'
         puts '============================'
 
-        puts '=> reading feed rss'
-				news_feed_url = 'http://www.irekia.euskadi.net/es/news.rss'
-
-        puts '=> parsing feed'
-				feed = Feedzirra::Feed.fetch_and_parse(news_feed_url)
 				last_news_date = News.maximum('published_at')
 
+        puts '=> reading and parsing the rss feed'
+				news_feed_url        = 'http://www.irekia.euskadi.net/es/news/news.rss'
+        news_feed_url        = news_feed_url + "?since=#{last_news_date.strftime('%Y%m%d')}" if last_news_date.present?
+				news_photos_feed_url = lambda{|news_id| "http://www.irekia.euskadi.net/api/photos/#{news_id}"}
+
+				feed = Feedzirra::Feed.fetch_and_parse(news_feed_url)
 				news_entries = feed.entries
 				news_entries = feed.entries.select{|news| news.published > last_news_date} if last_news_date.present?
-
 
         puts "=> loading #{news_entries.count} news found"
 				news_entries.each do |news_item|
 					begin
+            news_images    = get_json(news_photos_feed_url.call(news_item.entry_id))
+            news_image_url = news_images.first['original'] if news_images.present?
+
 						news = News.new
 						news.news_data = NewsData.new(:title      => news_item.title.sanitize,
 																					:body       => news_item.summary.sanitize,
 																				  :source_url => news_item.url)
+            news.external_id = news_item.entry_id
             news.areas << Area.find(7)
             news.moderated = true
+            news.news_data.image = Image.new({
+              :remote_image_url => news_image_url
+            }) if news_image_url.present?
             news.save!
             print '.'
 					rescue Exception => ex
@@ -180,7 +187,7 @@ module Irekia
 
       private
 
-      def self.get_json(url, server_options)
+      def self.get_json(url, server_options = {})
         JSON.parse(open(url, server_options).read)
       end
 

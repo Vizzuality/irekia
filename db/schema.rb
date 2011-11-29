@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.datetime "moderated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "external_id"
     t.integer  "comments_count",        :default => 0
     t.integer  "answer_requests_count", :default => 0
     t.datetime "created_at"
