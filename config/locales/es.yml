@@ -290,6 +290,7 @@
   Event: Evento
   Photo: Foto
   Question: Pregunta
+  Video: Vídeo
   Proposal: Propuesta
   unknown_user: Invitado
   menu:
@@ -586,6 +587,7 @@
           other: '%{name} ha subido una foto:'
         author: '%{author} hace %{time}'
       video:
+        published_by: 'Publicado por'
         title:
           you: 'Has subido un vídeo:'
           other: '%{name} ha subido un vídeo:'
@@ -773,6 +775,9 @@
       tweet:
         moderation_pending: Tweet pendiente de moderación
     moderated:
+      video:
+        back: volver
+        published_by: Publicado por
       news:
         back: volver
         date_area_and_comments:
@@ -986,6 +991,7 @@
         news:  '¿Algo que decir?&hellip; comenta esta noticia'
         tweet: '¿Algo que decir?&hellip; comenta este tweet'
         event: '¿Algo que decir?&hellip; comenta este evento'
+        video: '¿Algo que decir?&hellip; comenta este vídeo'
         statusmessage: '¿Algo que decir?&hellip; comenta este estado'
         proposal: '¿Algo que decir?&hellip; comenta esta propuesta'
         photo: '¿Algo que decir?&hellip; comenta esta foto'
