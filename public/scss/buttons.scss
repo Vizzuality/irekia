@@ -646,6 +646,14 @@ form.editable,
           padding: 0;
           color:$medium_dark;
 
+          input[type="submit"] {
+            -webkit-appearance: none;
+            padding:0;
+            border:none;
+            background:none;
+            color: $medium_dark;
+          }
+
           a { color: $medium_dark; }
 
           &.last { margin: 0; }

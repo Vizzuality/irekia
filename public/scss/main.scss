@@ -5221,7 +5221,13 @@ ul.playlist {
  margin: 0 0 20px 0;
 
  a { font-size:15px; }
- a.download { display:inline; width:auto; font-size:12px; }
+ a.download {
+   display:inline;
+   width:auto;
+   padding: 0 8px 0 0px;
+   font-size:12px;
+   background: url("/images/icons/download.png") no-repeat right 5px;
+ }
 
  .icon {
    float:left;

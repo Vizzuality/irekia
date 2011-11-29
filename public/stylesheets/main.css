@@ -282,7 +282,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.publish .inner header { margin: 0; width: 691px; }
 #container .article.publish .inner header h2 { line-height: normal; }
 #container .article.publish .inner .content .container { overflow: hidden; clear: both; width: 687px; height: 79px; }
-#container .article.publish .inner .content .container .inner_container { width: 9000px; height: 10000px; margin-top: 19px; }
+#container .article.publish .inner .content .container .inner_container { width: 9000px; height: 2000px; margin-top: 19px; }
 #container .article.publish .inner .content .container .inner_container strong { float: left; }
 #container .article.publish .inner .content .container .inner_container .image_container { display: none; float: left; width: 534px; padding: 10px; margin: 0 0 20px 0; line-height: normal; background: #EDF3E5; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
 #container .article.publish .inner .content .container .inner_container .image_container img { display: none; float: left; margin: 0 10px 0 0; height: 72px; }
@@ -1291,7 +1291,7 @@ ul.playlist { list-style-type: none; margin: 0px; padding: 0px; }
 
 .pill-content ul li { position: relative; display: block; height: 29px; font-size: 12px; color: #7D8A92; border: none; margin: 0 0 20px 0; }
 .pill-content ul li a { font-size: 15px; }
-.pill-content ul li a.download { display: inline; width: auto; font-size: 12px; }
+.pill-content ul li a.download { display: inline; width: auto; padding: 0 8px 0 0px; font-size: 12px; background: url("/images/icons/download.png") no-repeat right 5px; }
 .pill-content ul li .icon { float: left; width: 28px; height: 28px; margin: 0 10px 0 0; background: url("/images/icons/icon_sprite.png") no-repeat 0 -450px; }
 .pill-content ul li .icon.pdf { background-position: 0 -520px; }
 
