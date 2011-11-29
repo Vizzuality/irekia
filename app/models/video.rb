@@ -18,7 +18,12 @@ class Video < Content
 
   def get_embed_html
     if youtube_url.present? || vimeo_url.present?
-      oembed_json = JSON.parse(open("http://www.youtube.com/oembed?url=#{youtube_url || vimeo_url}&format=json&maxwidth=608").read) rescue nil
+      if youtube_url.present?
+        oembed_json = JSON.parse(open("http://www.youtube.com/oembed?url=#{vimeo_url}&format=json&maxwidth=608").read) rescue nil
+      elsif vimeo_url.present?
+        oembed_json = JSON.parse(open("http://vimeo.com/api/oembed.json?url=#{vimeo_url}&maxwidth=608").read) rescue nil
+      end
+
       if oembed_json.present?
         video_data.title         = oembed_json['title']
         video_data.thumbnail_url = oembed_json['thumbnail_url']
