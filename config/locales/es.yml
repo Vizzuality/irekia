@@ -825,6 +825,34 @@
               zero: Aún no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
+      video:
+        published_by: 'Publicada por'
+        back: volver
+        title_author_and_comments:
+          time: 'hace %{time}'
+          comments:
+            zero: Todavía no hay comentarios
+            one: Un comentario
+            other: '%{count} comentarios'
+        title:
+          comments:
+            zero: Todavía no hay comentarios
+            one: Un comentario
+            other: '%{count} comentarios'
+        sidebar:
+          sharing_links:
+            mail: Mail
+            twitter: Twitter
+            facebook: Facebook
+          tags:
+            title: Tags
+          related_politicians:
+            title: Políticos relacionados
+          related_photos:
+            title: Últimas fotos
+            comments:
+              zero: Aún no hay comentarios
+              one: Un comentario
       event:
         back: volver
         back_to_the_agenda: "volver a la agenda"
