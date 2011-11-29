@@ -1331,6 +1331,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
       }
 
       $popover = $(this);
+
       // Update the reference to $ps
       $ps = $('.' + store);
 
@@ -1340,13 +1341,17 @@ jQuery.fn.enablePoliticianPublish = function(opt){
         $(this).parent().fadeOut(250);
       });
 
+      $popover.find('li input.remove').live('click', function(e) {
+        var areaID = $(this).parents("li").attr("data-id");
+        $ps.find("li[data-id='" + areaID + "']").removeClass("selected");
+      });
+
       $ps.find('li form').bind('submit', function(e) {
         $(this).parent().addClass("selected");
       });
 
       $ps.find('li form').bind('ajax:success', function(e, response) {
         var $tag = $(response);
-        console.log($tag);
         $tag.hide();
         $popover.find(".add_area").before($tag);
         $tag.fadeIn(250);

@@ -36,7 +36,7 @@
             <div class="scroll-pane">
               <ul>
                 <% @areas.each do |area| %>
-                  <li data-id="<%= area.id %>"<%= ' class="last"' if @areas.last == area %>>
+                  <li data-id="<%= area.id %>" class="<%= 'selected' if @content.areas.map(&:id).include?(area.id) %><%= ' last' if @areas.last == area %>">
                     <%= form_for @content, :remote => true, :html => { :'data-type' => 'html' } do |form| %>
                       <%= hidden_field_tag :partial, 'tagged_area' %>
                       <%= form.fields_for :areas_contents, @content.areas_contents.build do |areas_contents| %>
