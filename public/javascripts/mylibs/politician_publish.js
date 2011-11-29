@@ -722,7 +722,6 @@
 
     var successHeight = $success.outerHeight(true);
 
-    console.log("-", successHeight, $success.position().top, $success.offset().top);
     $ps.find(".container").animate({scrollTop: $success.position().top + 20, height: successHeight }, data.settings.transitionSpeed * 2, "easeInOutQuad", function() {
       IrekiaSpinner.stop();
       callback && callback();
