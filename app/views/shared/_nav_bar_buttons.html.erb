@@ -15,7 +15,7 @@
     <div class="scroll-pane">
       <ul>
         <% notifications_list.each_with_index do |notification, index| -%>
-        <%= render_notification_item(notification, notifications_list.count == (index + 1) ? 'last' : nil) %>
+        <%= render_notification_item(notification[0], notification[1], notifications_list.count == (index + 1) ? 'last' : nil) %>
         <% end -%>
       </ul>
     </div>

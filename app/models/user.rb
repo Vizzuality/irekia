@@ -452,12 +452,8 @@ class User < ActiveRecord::Base
   end
 
   def notifications_grouped
-    Notification
-    .select([:item_type, :parent_id, :parent_type, :'count(id) as count'])
-    .from("(#{Notification.where(:user_id => id).order('created_at desc').to_sql}) notifications")
-    .group('item_type, parent_id, parent_type, created_at')
-    .includes(:parent)
-    .all
+    @notifications_grouped ||= notifications.includes(:parent).order('updated_at desc').group_by{|n| n.attributes.slice('item_type', 'parent_id', 'parent_type')}.map{|n,g| [g.first, g.count]}
+    @notifications_grouped
   end
 
   def reset_counter(counter)

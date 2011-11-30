@@ -27,7 +27,9 @@
         <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
       </div>
 
-      <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+      <object width="608" height="342" data="http://www.irekia.euskadi.net/video/flowplayer-3.2.4.swf" type="application/x-shockwave-flash">  <param name="movie" value="http://www.irekia.euskadi.net/video/flowplayer-3.2.4.swf" /><param name="allowfullscreen" value="true" />  <param name="allowscriptaccess" value="always" />  <param name="flashvars" value='config={"key":"#$61de7613ee9761041ce",    "playlist":["http://bideoak2.euskadi.net/2011/11/30/batera_hobeto/la_etica_en_la_relacion_entre_niveles_asistenciales.jpg", {"url":"http://bideoak2.euskadi.net/2011/11/30/batera_hobeto/la_etica_en_la_relacion_entre_niveles_asistenciales.flv?emb=1","autoPlay":false,"provider":"lighttpd"}],    "canvas":{"backgroundColor":"#1180B8"},    "plugins":{"lighttpd":{"url":"http://www.irekia.euskadi.net/video/flowplayer.pseudostreaming-3.2.4.swf"},"gatracker":{"url":"http://www.irekia.euskadi.net/video/flowplayer.analytics-3.2.1.swf","googleId": "UA-10951282-1"}}}' /></object><p style="color:#BBB">Fuente: Irekia - Gobierno Vasco</p>
+
+      <%#= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
       <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil %>
       <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
 
