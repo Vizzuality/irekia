@@ -315,14 +315,28 @@ jQuery.fn.enableTextEditing = function(opt){
 
 /* Enables image editing */
 jQuery.fn.enableImageEditing = function(opt){
-  var speed     = (opt && opt.speed) || 120,
-  fadeInSpeed   = (opt && opt.speed) || 80,
-  spinner       = new Spinner(SPINNER_OPTIONS),
+  var
+  $this       = $(this),
+  speed       = (opt && opt.speed) || 120,
+  fadeInSpeed = (opt && opt.speed) || 80,
+  spinner     = new Spinner(SPINNER_OPTIONS),
   content;
+
+  $(this).find(".remove").click(function(e) {
+    e.preventDefault();
+    $this.find(".content .remove").fadeOut(speed);
+    $this.find(".content img").fadeOut(speed, function() {
+      $(this).remove();
+    });
+
+    $this.find(".add_image").fadeIn(speed);
+  });
 
   $(this).find(".add_image a").click(function(e) {
     e.preventDefault();
+
     _setupUpload("upload_new_image");
+
     var $form = $(this).parents("form");
     $(this).parent().slideUp(speed);
     $form.find(".input_field").fadeIn(speed, function() {
@@ -344,8 +358,6 @@ jQuery.fn.enableImageEditing = function(opt){
     $(this).find('.submit').addClass("disabled");
     $(this).find('.submit').attr("disabled", "disabled");
   });
-
-
 
   function _setupUpload(id, callback) {
 
@@ -376,7 +388,7 @@ jQuery.fn.enableImageEditing = function(opt){
         },
         onProgress: function(id, fileName, loaded, total){
 					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
-					var width = parseInt(665 * parseInt(p, 10) / 100, 10);
+					var width = parseInt(585 * parseInt(p, 10) / 100, 10);
 
           console.log("uploading…");
 					//console.debug(p, width, arguments, arguments[2], arguments[3]);
@@ -400,13 +412,14 @@ jQuery.fn.enableImageEditing = function(opt){
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
 
-					$('.image_cache_name').val(responseJSON.image_cache_name);
+					//$('.image_cache_name').val(responseJSON.image_cache_name);
 
           $(cacheImage).bind("load", function () {
 
-            $(".image_container").prepend(cacheImage);
-            $(".image_container").fadeIn(speed);
-            $(".image_container img").fadeIn(speed);
+            $this.find(".content").prepend(cacheImage);
+            $this.find(".content").fadeIn(speed);
+            $this.find(".content img").fadeIn(speed);
+            $this.find(".content .remove").fadeIn(speed);
 
             $uploader.fadeOut(speed, function() {
               callback && callback();
@@ -421,6 +434,7 @@ jQuery.fn.enableImageEditing = function(opt){
         onCancel: function(id, fileName){ }
       });
     }
+    console.log(uploader);
   }
 
 

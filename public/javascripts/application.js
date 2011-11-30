@@ -7,6 +7,86 @@ $(function() {
 
   $('.home_last_activity').verticalHomeLoop();
 
+
+
+  function _setupUpload(id, callback) {
+
+    $span  = $("#" + id);
+
+    if ($span.length > 0) {
+
+      var speed     = 100;
+      var $uploader = $(".uploader");
+
+      var uploader = new qq.FileUploader({
+        element: document.getElementById(id),
+        action: $span.attr('data-url'),
+				params: {
+					utf8: $span.closest('form').find('input[name=utf8]').val(),
+					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
+				},
+        debug: true,
+        text:"sube una nueva",
+        onSubmit: function(id, fileName){
+          //data.spinner.spin(spin_element);
+
+					$(".progress").show();
+          $uploader.find(".percentage").css("color", "#FF0066");
+					$uploader.find("input").blur();
+          $uploader.find(".holder").fadeOut(speed);
+          $uploader.find(".loading, .percentage").fadeIn(speed);
+        },
+        onProgress: function(id, fileName, loaded, total){
+					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
+					var width = parseInt(665 * parseInt(p, 10) / 100, 10);
+
+          console.log("uploading…");
+					//console.debug(p, width, arguments, arguments[2], arguments[3]);
+
+					if (parseInt(p) >= 75) $uploader.find(".loading").fadeOut(speed);
+					if (parseInt(p) >= 46) $uploader.find(".percentage").css("color", "#fff");
+
+          $uploader.find(".percentage").html(parseInt(p, 10) + "%");
+				  $(".progress").css("width", width);
+				},
+        onComplete: function(id, fileName, responseJSON){
+          //data.spinner.stop();
+
+          console.log("complete");
+					//console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+
+          $uploader.find(".loading").fadeOut(speed);
+          $uploader.find(".holder").fadeIn(speed);
+          $uploader.find(".percentage").fadeOut(speed);
+
+          var cacheImage = document.createElement('img');
+          cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
+
+					$('.image_cache_name').val(responseJSON.image_cache_name);
+
+          $(cacheImage).bind("load", function () {
+
+            $(".image_container").prepend(cacheImage);
+            $(".image_container").fadeIn(speed);
+            $(".image_container img").fadeIn(speed);
+
+            $uploader.fadeOut(speed, function() {
+              callback && callback();
+            });
+
+          });
+
+          $uploader.find(".progress").fadeOut(speed, function() {
+            $(this).width(0);
+          });
+				},
+        onCancel: function(id, fileName){ }
+      });
+    }
+  }
+
+      _setupUpload("upload_new_image");
+
   // Editing tools
   $(".editable.text").enableTextEditing();
   $(".editable.date").enableDateEditing();

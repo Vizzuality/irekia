@@ -1747,16 +1747,25 @@ Editing forms
 ========================================================================== */
 #container .article.editable .inner .left { z-index: 60; }
 
-form.editable, #container .article .inner .left form.editable { float: left; margin: 0 0 10px 0; width: 607px; position: relative; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; }
+form.editable, #container .article .inner .left form.editable { float: left; margin: 0 0 10px 0; width: 607px; position: relative; }
 form.editable.date, #container .article .inner .left form.editable.date { z-index: 70; margin: 0 0 20px 0; }
 form.editable.date select, #container .article .inner .left form.editable.date select { display: none; }
 form.editable.date .meta, #container .article .inner .left form.editable.date .meta { margin: 0; }
 form.editable.date .dk_container, #container .article .inner .left form.editable.date .dk_container { margin: 0 10px 0 0; }
 form.editable.date .dk_container li, #container .article .inner .left form.editable.date .dk_container li { margin-bottom: 0; }
 form.editable.date .dk_container li a, #container .article .inner .left form.editable.date .dk_container li a { color: #666666; }
-form.editable.image .input_field, #container .article .inner .left form.editable.image .input_field { width: 605px; height: 36px; padding: 0; border: none; }
+form.editable.image, #container .article .inner .left form.editable.image { margin: 0; }
+form.editable.image .add_image, #container .article .inner .left form.editable.image .add_image { display: none; }
+form.editable.image .input_field, #container .article .inner .left form.editable.image .input_field { width: 605px; height: 36px; padding: 0; margin: 10px 0 0 0; border: none; }
 form.editable.image .input_field .holder, #container .article .inner .left form.editable.image .input_field .holder { width: 600px; }
 form.editable.image .input_field input[type="text"], #container .article .inner .left form.editable.image .input_field input[type="text"] { width: 585px; border: 1px solid #ccc; font-size: 15px; }
+form.editable.image .image_container, #container .article .inner .left form.editable.image .image_container { display: none; float: left; width: 534px; padding: 10px; margin: 0 0 20px 0; background: #EDF3E5; line-height: normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
+form.editable.image .image_container img, #container .article .inner .left form.editable.image .image_container img { display: none; float: left; margin: 0 10px 0 0; height: 72px; }
+form.editable.image .image_container p, #container .article .inner .left form.editable.image .image_container p { float: left; margin: 30px 0 0 0; line-height: normal; font-size: 15px; color: #7D8A92; }
+form.editable.image .image_container a, #container .article .inner .left form.editable.image .image_container a { float: right; margin: 30px 10px 0 0; line-height: normal; font-size: 15px; }
+form.editable.image .percentage, #container .article .inner .left form.editable.image .percentage { display: none; margin-left: -343px; position: absolute; top: 10px; right: 50%; font-size: 15px; color: #FF0066; z-index: 2010; font-weight: bold; }
+form.editable.image .loading, #container .article .inner .left form.editable.image .loading { display: none; position: absolute; top: 10px; right: 10px; font-size: 15px; color: #CCCCCC; z-index: 2010; }
+form.editable.image .progress, #container .article .inner .left form.editable.image .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
 form.editable.image .add_image, #container .article .inner .left form.editable.image .add_image { width: 606px; height: 53px; text-align: center; background: url("/images/tag_sprite.png") no-repeat 0 -376px; padding: 30px 0 0 0; }
 form.editable.image .add_image a, #container .article .inner .left form.editable.image .add_image a { color: #f10063; font-size: 13px; }
 form.editable.image .content, #container .article .inner .left form.editable.image .content { cursor: default; border: none; background: none; padding: 0; position: relative; }
@@ -1764,7 +1773,7 @@ form.editable.image .content .remove, #container .article .inner .left form.edit
 form.editable .spinner, #container .article .inner .left form.editable .spinner { top: 10px; right: 0px; z-index: 80; position: absolute; background: red; }
 form.editable .content, #container .article .inner .left form.editable .content { padding: 10px 17px; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; background: #ffffeb; cursor: pointer; }
 form.editable .submit, #container .article .inner .left form.editable .submit { display: none; margin: 0 0 10px 0; }
-form.editable input[type="file"], #container .article .inner .left form.editable input[type="file"] { display: none; }
+form.editable input[type="file"], #container .article .inner .left form.editable input[type="file"] { position: relative; left: -9999px; }
 form.editable .input_field, #container .article .inner .left form.editable .input_field { width: 585px; display: none; padding: 10px; border: 1px solid #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; height: 200px; margin: 0 0 5px 0; }
 form.editable .input_field textarea, #container .article .inner .left form.editable .input_field textarea { height: 100%; }
 form.editable .input_field textarea, form.editable .input_field input[type="text"], #container .article .inner .left form.editable .input_field textarea, #container .article .inner .left form.editable .input_field input[type="text"] { border: none; width: 100%; outline: none; }
@@ -1894,7 +1903,7 @@ form.editable .input_field textarea, form.editable .input_field input[type="text
 
 .qq-upload-button-focus { outline: 1px dotted black; }
 
-.qq-upload-drop-area { position: absolute; top: 0; left: 0; width: 100%; height: 100%; min-height: 70px; z-index: 2; background: #FF9797; text-align: center; }
+.qq-upload-drop-area { position: absolute; top: 0; left: 0; width: 585px; height: 20px; color: #fff; z-index: 2; text-align: center; padding: 0; background: #FF0066; font-size: 13px; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; }
 
 .qq-upload-drop-area span { display: block; position: absolute; top: 50%; width: 100%; margin-top: -8px; font-size: 16px; }
 

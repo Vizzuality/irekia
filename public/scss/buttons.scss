@@ -488,11 +488,6 @@ form.editable,
   width:607px;
   position:relative;
 
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -webkit-perspective: 1000;
-  -webkit-backface-visibility: hidden;
-
   &.date {
     z-index:70;
     margin: 0 0 20px 0;
@@ -508,11 +503,16 @@ form.editable,
   }
 
   &.image {
+    margin: 0;
+
+    .add_image { display: none; }
+
     .input_field {
-      width:605px;
+      width: 605px;
       height: 36px;
-      padding:0;
-      border:none;
+      padding: 0;
+      margin: 10px 0 0 0;
+      border: none;
 
       .holder { width: 600px; }
 
@@ -521,6 +521,54 @@ form.editable,
         border:1px solid #ccc;
         font-size:15px;
       }
+    }
+
+    .image_container {
+      display:none;
+      float: left;
+      width: 534px;
+      padding:10px;
+      margin: 0 0 20px 0;
+      background:#EDF3E5;
+      line-height:normal;
+      @include border-radius(3px);
+
+      img { display:none; float:left; margin: 0 10px 0 0; height:72px; }
+      p { float:left; margin: 30px 0 0 0; line-height:normal; font-size: 15px; color: #7D8A92; }
+      a { float:right; margin: 30px 10px 0 0; line-height:normal; font-size:15px; }
+    }
+
+    .percentage {
+      display:none;
+      margin-left:-343px;
+      position: absolute;
+      top: 10px;
+      right: 50%;
+      font-size:15px;
+      color: #FF0066;
+      z-index:2010;
+      font-weight:bold;
+    }
+
+    .loading {
+      display:none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size:15px;
+      color:#CCCCCC;
+      z-index:2010;
+    }
+
+    .progress {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      height: 16px;
+      width: 0px;
+      background: #FF0066;
+      @include border-radius(2px);
+      z-index:2000;
     }
 
     .add_image {
@@ -549,7 +597,7 @@ form.editable,
         background: url('/images/icons/icon_sprite.png') no-repeat 0 -406px;
       }
     }
-  }
+  } // &.image
 
   .spinner {
     top:10px;
@@ -570,7 +618,10 @@ form.editable,
 
   .submit { display:none; margin: 0 0 10px 0; }
 
-  input[type="file"] { display:none; }
+  input[type="file"] {
+    position:relative;
+    left:-9999px;
+  }
 
   .input_field {
     width:585px;
@@ -923,9 +974,20 @@ form.editable,
 .qq-upload-button-focus {outline:1px dotted black;}
 
 .qq-upload-drop-area {
-  position:absolute; top:0; left:0; width:100%; height:100%; min-height: 70px; z-index:2;
-  background:#FF9797; text-align:center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 585px;
+  height: 20px;
+  color: #fff;
+  z-index: 2;
+  text-align: center;
+  padding: 0;
+  background: #FF0066;
+  font-size:13px;
+  @include border-radius(2px);
 }
+
 .qq-upload-drop-area span {
   display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
 }
