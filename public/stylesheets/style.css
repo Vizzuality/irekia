@@ -757,6 +757,12 @@ span.where, .map .infowindow ul.details li.where { width: 207px; max-height: 26p
 #container .article .holder span, #container .article .input_field .holder span { float: left; }
 #container .article .holder span.upload, #container .article .input_field .holder span.upload { cursor: pointer; }
 #container .article .autosuggest { width: 691px; position: absolute; padding-bottom: 10px; top: 20px; z-index: 2000; }
+#container .article .autosuggest.mini { width: 264px; }
+#container .article .autosuggest.mini li { background: url("/images/box_mini_autosuggest_bkg.png") repeat-y -305px 0; font-size: 15px; }
+#container .article .autosuggest.mini li p { width: 180px; }
+#container .article .autosuggest.mini li p, #container .article .autosuggest.mini li span { font-size: 15px; }
+#container .article .autosuggest.mini .a_t { background: url("/images/box_mini_autosuggest_bkg.png") no-repeat -1px top; width: 264px; }
+#container .article .autosuggest.mini .a_f { background: url("/images/box_mini_autosuggest_bkg.png") no-repeat -1px bottom; width: 264px; }
 #container .article .autosuggest li { cursor: pointer; padding: 7px 0 7px 10px; background: url("/images/box_autosuggest_bkg.png") repeat-y -713px 0; }
 #container .article .autosuggest li .name { margin: 0 0 2px 0; }
 #container .article .autosuggest li .avatar { float: left; margin: 0 10px 0 0; }

@@ -176,19 +176,71 @@ jQuery.fn.enableRegistration = function(opt){
 
 /* Enables politician taggin */
 jQuery.fn.enablePoliticianTags = function(opt){
-  var speed     = (opt && opt.speed) || 100,
+  var
+  serviceURL = "/search/politicians_and_areas",
+  speed     = (opt && opt.speed) || 100,
   interval,
   spin_element   = document.getElementById('politician_spinner'),
   spinner        = new Spinner(SPINNER_OPTIONS),
   fadeInSpeed    = (opt && opt.speed) || 10,
   $ul            = $(this),
-  $add           = $(this).find(".add"),
+  $add           = $ul.find(".add"),
+  $remove        = $ul.find("input.remove"),
   $addLink       = $add.find("a"),
   $addInputField = $add.find(".input_field"),
   $addInput      = $add.find('input[type="text"]');
 
+  function _onSuccess(response) {
+    _hidePopover();
+    _appendPopover(response);
+  }
 
-  $ul.find("input.remove").click(function (e) {
+  function _hidePopover() {
+    if ($(".autosuggest.mini").length > 0 ) {
+      $(".autosuggest.mini").fadeOut(speed, function() { $(this).remove(); });
+    }
+  }
+
+  function _centerPopover($response) {
+    var left =  $add.position().left - ($response.outerWidth(true) / 2) + ($add.outerWidth(true) / 2);
+    var top  =  $add.position().top  + $add.outerHeight(true) + 8;
+
+    $response.css({left: left + "px", top: top + "px"});
+  }
+
+  function _appendPopover(response) {
+    spinner.stop();
+
+    var $response = $(response);
+
+    if ($response.find("ul li").length > 0) {
+
+      $response.addClass("mini");
+      $ul.after($response);
+      _centerPopover($response);
+      $response.hide();
+      $response.fadeIn(speed);
+    }
+  }
+
+  function _onKeyUp(ev){
+    if (_.any([13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+
+    clearTimeout(interval);
+
+    if ($(this).val().length > 3) {
+      interval = setTimeout(function(){
+        spinner.spin(spin_element);
+
+        var query = $addInput.val();
+        var params = { name : query };
+
+        $.ajax({ url: serviceURL, data: { search: params }, type: "GET", success: _onSuccess}, 500);
+      });
+    }
+  }
+
+  $remove.click(function (e) {
     $(this).parents("li").fadeOut(speed);
   });
 
@@ -201,31 +253,11 @@ jQuery.fn.enablePoliticianTags = function(opt){
     });
   });
 
-  $addInput.keyup(function(ev){
+  $addInput.keyup(_onKeyUp);
 
-    if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
-
-    clearTimeout(interval);
-
-    if ($(this).val().length > 3) {
-      interval = setTimeout(function(){
-
-        var query = $addInput.val();
-
-        console.log(query);
-        spinner.spin(spin_element);
-
-        var params = { name : query };
-
-        $.ajax({ url: "/search/politicians_and_areas", data: { search: params }, type: "GET", success: function(response) {
-
-          var $response = $(response);
-          console.log(response);
-
-          spinner.stop();
-        }});
-      }, 500);
-    }
+  $(".autosuggest.mini li").live("click", function() {
+    _hidePopover();
+    // TODO: add code to manage response from the server
   });
 }
 

@@ -3,7 +3,7 @@ $(function() {
   watchHash(); // this function watches the url hashes and acts accordingly
 
   // Preloading of popover assets
-  $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
+  // $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
 
   $('.home_last_activity').verticalHomeLoop();
 

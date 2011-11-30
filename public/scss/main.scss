@@ -2415,6 +2415,26 @@ span.where, .map .infowindow ul.details li.where {
     top:20px;
     z-index:2000;
 
+    &.mini {
+      width: 264px;
+      li {
+        background:url('/images/box_mini_autosuggest_bkg.png') repeat-y -305px 0;
+        font-size:15px;
+        p { width:180px; }
+        p, span { font-size: 15px; }
+      }
+
+      .a_t {
+        background:url('/images/box_mini_autosuggest_bkg.png') no-repeat -1px top;
+        width: 264px;
+      }
+
+      .a_f {
+        background:url('/images/box_mini_autosuggest_bkg.png') no-repeat -1px bottom;
+        width: 264px;
+      }
+    } // mini
+
     li {
       cursor: pointer;
       padding: 7px 0 7px 10px;
@@ -2449,9 +2469,7 @@ span.where, .map .infowindow ul.details li.where {
       bottom:0px;
       width: 691px;
     }
-
   }
-
 }
 
 #container .article .social-links {
