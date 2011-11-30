@@ -18,37 +18,10 @@
   var spin_element = document.getElementById('proposal_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
   templates = {
-    main:['<div id="<%= name %>_<%= id %>" class="article mini popover with_footer" >',
-   '  <form action="">',
-   '    <div class="inner">',
-   '      <header><h2><%= title %></h2></header>',
-   '      <div class="content">',
-   '        <p><%= description %></p>',
-   '        <h3><%= your_question %></h3>',
-   '        <div id="<%= id %>" class="input-counter">',
-   '          <span class="counter"><%= maxLimit %></span>',
-   '          <textarea name=""></textarea>',
-   '        </div>',
-   '       </div>',
-   '      <span class="close"></span>',
-   '    </div>',
-   '    <footer>',
-   '    <div class="separator"></div>',
-   '    <div class="inner">',
-   '      <input type="submit" value="Enviar pregunta" id="submit-<%= id %>" class="disabled white_button right" disabled="disabled" />',
-   '    </div>',
-   '    </footer>',
-   '    <div class="t"></div><div class="f"></div>',
-   '  </form>',
-   '  </div>'].join(''),
    success: ['<div id="<%= name %>_<%= id %>" class="article mini with_icon popover with_footer">',
    '  <div class="inner">',
-   '    <div class="icon success"></div>',
-   '    <div class="content">',
-   '      <h2>Tu propuesta ha sido enviada</h2>',
-   '      <p>En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.</p>',
-   '    </div>',
    '    <span class="close"></span>',
+   '    <%= content %> ',
    '  </div>',
    '  <footer>',
    '  <div class="separator"></div>',
@@ -138,8 +111,8 @@
     }
   };
 
-  function _build(data, templateName, extraParams) {
-    var params = _.extend({id:data.id + "_success", name:data.name}, extraParams);
+  function _build(data, response, templateName, extraParams) {
+    var params = _.extend({id:data.id + "_success", name:data.name, content:response }, extraParams);
     var $ps = $(_.template(data.templates[templateName], params ));
     return $ps;
   }
@@ -237,7 +210,6 @@
   }
 
   function _close2(data, hideLockScreen, callback) {
-
     data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).remove();
       _clearInfo(data.$ps);
@@ -245,9 +217,9 @@
       callback && callback();
     }});
   }
+
   // Close popover
   function _close(data, hideLockScreen, callback) {
-
     data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
       $(this).css("top", "-900px");
       _clearInfo(data.$ps);
@@ -269,15 +241,15 @@
       disableSending(data.$ps);
     });
 
-    data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
+    data.$ps.find("form").live('ajax:success', function(event, response, status) {
       spinner.stop();
       enableSending(data.$ps);
       _close(data, false, function() {
-        _gotoSuccess(data);
+        _gotoSuccess(data, response);
       });
     });
 
-    data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
+    data.$ps.find("form").live('ajax:error', function(event, response, status) {
       spinner.stop();
       enableSending(data.$ps);
     });
@@ -380,12 +352,10 @@
     }
   }
 
+  function _gotoSuccess(data, response) {
 
-  function _gotoSuccess(data) {
-
-    data.$ps = _build(data, "success");
+    data.$ps = _build(data, response, "success");
     var $ps  = data.$ps;
-
 
     _addCloseAction2(data);
     _addDefaultAction(data);
@@ -400,5 +370,3 @@
   $(function() { });
 
 })(jQuery, window, document);
-
-

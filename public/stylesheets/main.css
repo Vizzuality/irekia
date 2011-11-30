@@ -895,8 +895,8 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .map a.marker.with_counter { background-position: -26px -67px; }
 #container .article .map a.marker .counter { position: absolute; display: block; top: 6px; width: 25px; text-align: center; color: white; font-size: 11px; font-weight: bold; }
 #container .article .input_field { position: relative; clear: both; height: 39px; }
-#container .article .input_field span.holder { position: absolute; left: 11px; top: 8px; width: 300px; color: #D7D8DD; }
-#container .article .input_field.textarea span.holder { position: absolute; left: 11px; top: 8px; width: 300px; color: #D7D8DD; }
+#container .article .input_field span.holder { position: absolute; left: 11px; top: 8px; width: auto; color: #D7D8DD; }
+#container .article .input_field.textarea span.holder { position: absolute; left: 11px; top: 8px; width: auto; color: #D7D8DD; }
 #container .article .input-counter span.holder { position: absolute; left: 11px; top: 10px; color: #D7D8DD; }
 #container .article .input_field span.holder.large { font-size: 15px; }
 #container .article .input-counter span.holder.large { top: 8px; font-size: 15px; }

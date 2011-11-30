@@ -3603,9 +3603,9 @@ a.editable {
               clear: both;
               //overflow: hidden;
               height: 39px;
-              span.holder { position: absolute; left: 11px; top: 8px; width:300px; color: #D7D8DD; }
+              span.holder { position: absolute; left: 11px; top: 8px; width:auto; color: #D7D8DD; }
               &.textarea {
-                span.holder { position: absolute; left: 11px; top: 8px; width:300px; color: #D7D8DD; }
+                span.holder { position: absolute; left: 11px; top: 8px; width:auto; color: #D7D8DD; }
               }
             }
             .input-counter span.holder {

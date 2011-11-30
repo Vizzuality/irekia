@@ -18,36 +18,9 @@
   var spin_element = document.getElementById('question_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
   templates = {
-    main:['<div id="<%= name %>_<%= id %>" class="article mini popover with_footer" >',
-   '  <form action="">',
-   '    <div class="inner">',
-   '      <header><h2><%= title %></h2></header>',
-   '      <div class="content">',
-   '        <p><%= description %></p>',
-   '        <h3><%= your_question %></h3>',
-   '        <div id="<%= id %>" class="input-counter">',
-   '          <span class="counter"><%= maxLimit %></span>',
-   '          <textarea name=""></textarea>',
-   '        </div>',
-   '       </div>',
-   '      <span class="close"></span>',
-   '    </div>',
-   '    <footer>',
-   '    <div class="separator"></div>',
-   '    <div class="inner">',
-   '      <input type="submit" value="Enviar pregunta" id="submit-<%= id %>" class="disabled white_button right" disabled="disabled" />',
-   '    </div>',
-   '    </footer>',
-   '    <div class="t"></div><div class="f"></div>',
-   '  </form>',
-   '  </div>'].join(''),
    success: ['<div id="<%= name %>_<%= id %>" class="article mini with_icon popover with_footer">',
    '  <div class="inner">',
-   '    <div class="icon success"></div>',
-   '    <div class="content">',
-   '      <h2>Tu pregunta ha sido enviada</h2>',
-   '      <p>En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.</p>',
-   '    </div>',
+   '    <%= content %> ',
    '    <span class="close"></span>',
    '  </div>',
    '  <footer>',
@@ -168,41 +141,6 @@
 
     $ps.find("textarea.grow").autogrow();
 
-     // $ps.find('textarea').keyup(function(ev){
-
-     //   if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
-
-     //   clearTimeout(interval);
-
-     //   var $related = $ps.find("div.related");
-     //   var $relatedTitle = $ps.find("h3.related");
-
-     //   if ($(this).val().length > 5) {
-     //     interval = setTimeout(function(){
-
-     //       var query = $ps.find("textarea").val();
-     //       $.ajax({ url: "/questions", data: { query: query, per_page: 2, mini: true }, type: "GET", success: function(data){
-     //         $related.slideUp(250, function() {
-
-     //           var $data = $(data);
-
-     //           if ($data.find("li").length > 0) {
-     //             $(this).html($data);
-     //             $(this).slideDown(250);
-     //             $relatedTitle.fadeIn(250);
-     //           } else {
-     //             $relatedTitle.fadeOut(250);
-
-     //           }
-     //         });
-     //       }});
-     //     }, 500);
-     //   } else {
-     //     $related.fadeOut(350);
-     //     $relatedTitle.fadeOut(350);
-     //   }
-     // });
-
     _subscribeToEvent(data.event);
     _triggerOpenAnimation($ps, data);
     $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
@@ -246,8 +184,9 @@
       $ps.find("form input[type='submit']").addClass("disabled");
     }
   }
-  function _build(data, templateName, extraParams) {
-    var params = _.extend({id:data.id + "_success", name:data.name}, extraParams);
+
+  function _build(data, response, templateName, extraParams) {
+    var params = _.extend({id:data.id + "_success", name:data.name, content:response }, extraParams);
     var $ps = $(_.template(data.templates[templateName], params ));
     return $ps;
   }
@@ -285,19 +224,19 @@
       disableSending(data.$ps);
     });
 
-    data.$ps.find("form").live('ajax:success', function(event, xhr, status) {
+    data.$ps.find("form").live('ajax:success', function(event, response, status) {
       spinner.stop();
       enableSending(data.$ps);
+
       _close(data, false, function() {
-        _gotoSuccess(data);
+        _gotoSuccess(data, response);
       });
     });
 
-    data.$ps.find("form").live('ajax:error', function(event, xhr, status) {
+    data.$ps.find("form").live('ajax:error', function(event, response, status) {
       spinner.stop();
       enableSending(data.$ps);
     });
-
   }
 
   function _addCloseAction2(data) {
@@ -325,11 +264,10 @@
     });
   }
 
-  function _gotoSuccess(data) {
+  function _gotoSuccess(data, response) {
 
-    data.$ps = _build(data, "success");
+    data.$ps = _build(data, response, "success");
     var $ps  = data.$ps;
-
 
     _addCloseAction2(data);
     _addDefaultAction(data);
@@ -344,4 +282,3 @@
   $(function() { });
 
 })(jQuery, window, document);
-
