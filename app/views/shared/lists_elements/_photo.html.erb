@@ -2,8 +2,10 @@
 <div class="content">
   <%= content_tag 'p', t(".title.#{am_I?(data.author) ? 'you' : 'other'}", :name => data.author.name) %>
   <div class="photo_block">
-    <%= link_to image_tag(data.list_element_url), photo_path(data.id) %>
-    <p class="excerpt inline"><%= link_to data.title, photo_path(data.id) %></p>
+    <%= link_to image_tag(data.list_element_url), photo_path(data.id) if data.list_element_url.present? %>
+    <% if data.title.present? -%>
+      <p class="excerpt inline"><%= link_to data.title, photo_path(data.id) %></p>
+    <% end -%>
   </div>
   <div class="footer">
     <span class="published_at">
