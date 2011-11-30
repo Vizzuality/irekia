@@ -143,8 +143,7 @@
     $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
   }
 
-  function _enableInputCounter(data, $input, on, off) {
-    var $ps = data.$ps;
+  function _enableInputCounter($input, on, off) {
 
     $input.keyup(function(e) {
       textCounter($(this), on, off);
@@ -219,14 +218,12 @@
   }
 
   function _bindTextInputs(data) {
-    _enableInputCounter(data, $("#status_message_status_message_data_attributes_message"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
-    _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
-    _enableInputCounter(data, $(".autosuggest_field input"), null, function() { _clearAutosuggest(data); _resetHiddenFields(); } );
-
-    _enableInputCounter(data, $(".section.video .input_field.vimeo input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
-    _enableInputCounter(data, $(".section.video .input_field.youtube input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
-
-    _enableInputCounter(data, $(".section.photo .input_field input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+    _enableInputCounter($("#status_message_status_message_data_attributes_message"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+    _enableInputCounter($("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+    _enableInputCounter($(".autosuggest_field input"), null, function() { _clearAutosuggest(data); _resetHiddenFields(); } );
+    _enableInputCounter($(".section.video .input_field.vimeo input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+    _enableInputCounter($(".section.video .input_field.youtube input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+    _enableInputCounter($(".section.photo .input_field input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
   }
 
   function _bindActions(data) {
@@ -332,7 +329,7 @@
           var params = { name : query };
 
           if (_getCurrentSectionName() == "proposal") {
-            params = $.extend(params, { only_areas : true} );
+            params = $.extend(params, { only_areas : true } );
           }
 
           $.ajax({ url: "/search/politicians_and_areas", data: { search: params }, type: "GET", success: function(response) {

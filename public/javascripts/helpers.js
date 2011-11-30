@@ -196,6 +196,8 @@ jQuery.fn.enablePoliticianTags = function(opt){
   }
 
   function _hidePopover() {
+    spinner.stop();
+
     if ($(".autosuggest.mini").length > 0 ) {
       $(".autosuggest.mini").fadeOut(speed, function() { $(this).remove(); });
     }
@@ -209,7 +211,6 @@ jQuery.fn.enablePoliticianTags = function(opt){
   }
 
   function _appendPopover(response) {
-    spinner.stop();
 
     var $response = $(response);
 
@@ -219,25 +220,43 @@ jQuery.fn.enablePoliticianTags = function(opt){
       $ul.after($response);
       _centerPopover($response);
       $response.hide();
-      $response.fadeIn(speed);
+      $response.fadeIn(speed, function() {
+        spinner.stop();
+      });
+    } else {
+      spinner.stop();
     }
   }
 
-  function _onKeyUp(ev){
-    if (_.any([13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+  function _observeInput($input) {
+
+    function _do(e) {
+
+      if ($input.val().length <= 0) {
+        _hidePopover();
+      } else {
+
+        if (_.any([13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return e.keyCode == i } ) && (e.keyCode == 65 && (e.metaKey || e.ctrlKey))) { return; }
+        if ($addInput.val().length > 3) _onKeyUp(e);
+      }
+    }
+
+    $input.keyup(_do);
+    $input.keydown(_do);
+  }
+
+  function _onKeyUp(e){
 
     clearTimeout(interval);
 
-    if ($(this).val().length > 3) {
-      interval = setTimeout(function(){
-        spinner.spin(spin_element);
+    interval = setTimeout(function(){
+      if ($addInput.val().length > 0) spinner.spin(spin_element);
 
-        var query = $addInput.val();
-        var params = { name : query };
+      var query = $addInput.val();
+      var params = { name : query };
 
-        $.ajax({ url: serviceURL, data: { search: params }, type: "GET", success: _onSuccess}, 500);
-      });
-    }
+      $.ajax({ url: serviceURL, data: { search: params }, type: "GET", success: _onSuccess});
+    }, 500);
   }
 
   $remove.click(function (e) {
@@ -253,7 +272,8 @@ jQuery.fn.enablePoliticianTags = function(opt){
     });
   });
 
-  $addInput.keyup(_onKeyUp);
+  //$addInput.keyup(_onKeyUp);
+ _observeInput($addInput);
 
   $(".autosuggest.mini li").live("click", function() {
     _hidePopover();
