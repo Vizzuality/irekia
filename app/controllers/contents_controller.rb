@@ -130,6 +130,7 @@ class ContentsController < ApplicationController
     @partial     = params[:partial] || @content_type
 
     head :error and return unless @content.save
+    render :layout => !request.xhr?
   end
 
   def update

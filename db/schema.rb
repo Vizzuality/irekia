@@ -388,6 +388,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
 
   create_table "video_data", :force => true do |t|
     t.integer  "video_id"
+    t.integer  "answer_data_id"
     t.string   "title"
     t.string   "description"
     t.string   "youtube_url"
