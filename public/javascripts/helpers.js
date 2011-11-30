@@ -253,7 +253,7 @@ jQuery.fn.enablePoliticianTags = function(opt){
       if ($addInput.val().length > 0) spinner.spin(spin_element);
 
       var query = $addInput.val();
-      var params = { name : query };
+      var params = { name : query, only_politicians : true };
 
       $.ajax({ url: serviceURL, data: { search: params }, type: "GET", success: _onSuccess});
     }, 500);
@@ -322,8 +322,7 @@ jQuery.fn.enableImageEditing = function(opt){
   spinner     = new Spinner(SPINNER_OPTIONS),
   content;
 
-  $(this).find(".remove").click(function(e) {
-    e.preventDefault();
+  $(this).find(".remove").submit(function(e) {
     $this.find(".content .remove").fadeOut(speed);
     $this.find(".content img").fadeOut(speed, function() {
       $(this).remove();

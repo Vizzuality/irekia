@@ -17,7 +17,9 @@
         <%= avatar politician, 'small' %>
         <p>
         <span class="name"><%= politician.fullname %></span>
-        <span class="description"><%= t('.title_area', :title => get_politician_title(politician), :area => politician.areas.first.name) %></span>
+        <span class="description">
+          <%= t('.title_area', :title => get_politician_title(politician), :area => politician.areas.first.name) if politician.areas.present? %>
+        </span>
         </p>
         </li>
       <% end %>
