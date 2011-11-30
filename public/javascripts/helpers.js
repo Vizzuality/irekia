@@ -476,12 +476,16 @@ jQuery.fn.enableEditTags = function(opt){
   $add = $(this).find(".add");
 
   // submit tag
+
+  $new.bind('ajax:success', function(e, response) {
+    var $tag = $(response);
+    $tag.hide();
+    $add.before($tag);
+    $tag.fadeIn(250);
+  });
+
   $new.find("form").submit(function(e) {
     $new.fadeOut(speed, function() {
-      //$add.fadeIn(fadeInSpeed);
-      var val = $new.find('input[type="text"]').val();
-      $add.before("<li class='editable'><a href='#'>" + val + "</a>");
-
       $ul.find(".new").fadeIn(fadeInSpeed, function() {
         $(this).find('input[type="text"]').val("");
         $(this).find('input[type="text"]').focus();
@@ -501,7 +505,7 @@ jQuery.fn.enableEditTags = function(opt){
   });
 
   // remove tag
-  $(this).find("form.remove").submit(function(e){
+  $(this).find("form.remove").live("submit", function(e){
     $(this).parent().fadeOut(speed, function() {
       $(this).remove();
     });
