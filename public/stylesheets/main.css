@@ -1359,3 +1359,27 @@ ul.playlist li .peak .r { left: 10px; }
 #control-template { display: none; }
 
 #sm2-container { position: relative; left: -9999px; }
+
+.slideshow, #container .article .slideshow { position: relative; width: 610px; }
+.slideshow .inner_slideshow, #container .article .slideshow .inner_slideshow { clear: both; overflow: hidden; }
+.slideshow .inner_slideshow ul.contents, #container .article .slideshow .inner_slideshow ul.contents { margin: 0; padding: 0; width: 90000px; }
+.slideshow .inner_slideshow ul.contents li.section, #container .article .slideshow .inner_slideshow ul.contents li.section { margin: 0; padding: 0; position: relative; float: left; }
+.slideshow .inner_slideshow ul.contents li.section textarea, #container .article .slideshow .inner_slideshow ul.contents li.section textarea { display: none; }
+.slideshow .embed_window, #container .article .slideshow .embed_window { display: none; position: absolute; width: 498px; height: 259px; top: 0; left: 0; background: url("/images/slideshow_sprite.png") no-repeat 0 -85px; z-index: 200; }
+.slideshow .embed_window .close, #container .article .slideshow .embed_window .close { position: absolute; top: 10px; right: 10px; width: 8px; height: 9px; background: url("/images/slideshow_sprite.png") no-repeat -264px 0px; }
+.slideshow .embed_window .input_field, #container .article .slideshow .embed_window .input_field { top: 40px; margin: auto; width: 447px; height: 125px; resize: none; overflow-y: none; position: relative; padding: 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); background: #fff; }
+.slideshow .embed_window .input_field textarea, #container .article .slideshow .embed_window .input_field textarea { width: 440px; height: 100%; padding: 0 10px 0 0; outline: none; border: none; font-family: "Courier"; color: #999; font-size: 12px; }
+.slideshow .embed_window .footer, #container .article .slideshow .embed_window .footer { position: absolute; bottom: 20px; }
+.slideshow .embed_window .footer .white_button, #container .article .slideshow .embed_window .footer .white_button { left: 20px; width: auto; }
+.slideshow .options, #container .article .slideshow .options { -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; user-select: none; }
+.slideshow .options .handle, #container .article .slideshow .options .handle { display: none; position: absolute; display: block; top: 10px; right: 10px; width: 20px; height: 21px; background: url("/images/slideshow_sprite.png") no-repeat 0 -44px; z-index: 100; cursor: pointer; }
+.slideshow .options .inner_options, #container .article .slideshow .options .inner_options { display: none; position: absolute; background: url("/images/slideshow_sprite.png") no-repeat -96px 0; top: 10px; right: -38px; width: 203px; height: 83px; }
+.slideshow .options .inner_options ul, #container .article .slideshow .options .inner_options ul { position: relative; top: 25px; left: 7px; }
+.slideshow .options .inner_options ul li, #container .article .slideshow .options .inner_options ul li { margin: 0!important; padding: 0!important; }
+.slideshow .options .inner_options ul li.embed, #container .article .slideshow .options .inner_options ul li.embed { margin-bottom: 10px!important; }
+.slideshow .options .inner_options ul li a, #container .article .slideshow .options .inner_options ul li a { color: #fff!important; font-size: 10px; filter: alpha(opacity=50); -khtml-opacity: 0.5; -moz-opacity: 0.5; opacity: 0.5; text-transform: uppercase; }
+.slideshow .slideshow_controls, #container .article .slideshow .slideshow_controls { display: none; }
+.slideshow .slideshow_controls a, #container .article .slideshow .slideshow_controls a { position: absolute; display: block; width: 40px; height: 40px; background: url("/images/slideshow_sprite.png") no-repeat; cursor: pointer; z-index: 100; }
+.slideshow .slideshow_controls a.disabled, .slideshow .slideshow_controls a.disabled:hover, #container .article .slideshow .slideshow_controls a.disabled, #container .article .slideshow .slideshow_controls a.disabled:hover { opacity: .3; }
+.slideshow .slideshow_controls a.next, #container .article .slideshow .slideshow_controls a.next { right: 20px; background-position: -44px 0; }
+.slideshow .slideshow_controls a.prev, #container .article .slideshow .slideshow_controls a.prev { left: 20px; background-position: 0 0; }

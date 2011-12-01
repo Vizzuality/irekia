@@ -175,6 +175,153 @@ jQuery.fn.enableRegistration = function(opt){
 }
 
 /* Enables politician taggin */
+jQuery.fn.enableSlideshow = function(opt){
+
+  var
+  speed        = (opt && opt.speed) || 100,
+  controlSpeed = (opt && opt.speed) || 250,
+  $this        = $(this),
+  width        = 610,
+  pos          = 0,
+  section      = 0,
+  sectionNum,
+  disabledControls = false;
+
+  sectionNum = $this.find(".section").length;
+  _positionControls();
+
+  $this.find(".embed_window a.close").click(function(e) {
+    e.preventDefault();
+    $this.find(".embed_window").fadeOut(speed);
+    _enableControls();
+  });
+
+  $this.find(".options li.embed a").click(function(e) {
+    e.preventDefault();
+
+    _disableControls();
+
+    var h  = $this.outerHeight(true);
+    var w  = $this.outerWidth(true);
+    var l  = (w / 2) - ($this.find(".embed_window").width() / 2);
+
+    var embed_code = $this.find(".section:eq(" + section + ") textarea").html();
+    $this.find(".embed_window textarea").html(embed_code);
+    $this.find(".embed_window").css({ top: 20 + "px", left: l });
+    $this.find(".embed_window").fadeIn(speed);
+  });
+
+  $this.find(".options .handle").click(function(e) {
+    e.preventDefault();
+  });
+
+  $this.find(".options").bind("mouseenter", function() {
+    if (disabledControls) return;
+    $(this).find("> a").fadeOut(speed);
+    $(this).find(".inner_options").fadeIn(speed);
+  });
+
+  $this.find(".options").bind("mouseleave", function() {
+    $(this).find("> a").fadeIn(speed);
+    $(this).find(".inner_options").fadeOut(speed);
+  });
+
+  $this.bind("mouseenter", function() {
+    _showControls();
+  });
+
+  $this.bind("mouseleave", function() {
+    _hideControls();
+  });
+
+  $this.append("<ul class='items'/>");
+
+  function _positionControls() {
+    var h  = $this.outerHeight(true);
+    var ah = $this.find(".slideshow_controls a").height();
+    $this.find(".slideshow_controls a").css("top", (h / 2) - (ah)  + "px");
+  }
+
+  function _enableControls() {
+    disabledControls = false;
+    _showControls();
+    _showVideoControls();
+  }
+
+  function _disableControls() {
+    disabledControls = true;
+    _hideVideoControls();
+    _hideControls();
+  }
+
+  function _toggleVideoControls() {
+    if (disabledControls) return;
+
+    if ($this.find(".section:eq(" + section + ") .options").length > 0) {
+     _showVideoControls();
+    } else {
+     _hideVideoControls();
+    }
+  }
+
+  function _showVideoControls() {
+    if (disabledControls) return;
+    if ($this.find(".section:eq(" + section + ") .options").length > 0) {
+      $this.find(".options").fadeIn(controlSpeed);
+    }
+  }
+
+  function _hideVideoControls(force) {
+    $this.find(".options").fadeOut(controlSpeed);
+  }
+
+  function _showControls() {
+    if (disabledControls) return;
+    _showVideoControls();
+    $this.find(".slideshow_controls").fadeIn(controlSpeed);
+  }
+
+  function _hideControls() {
+    _hideVideoControls(true);
+    $this.find(".slideshow_controls").fadeOut(controlSpeed);
+    $this.find(".slideshow_controls").fadeOut(controlSpeed);
+  }
+
+  function _hideControl(name) {
+    $this.find(".slideshow_controls ." + name).addClass("disabled");
+  }
+
+  function _showControl(name) {
+    if (disabledControls) return;
+    $this.find(".slideshow_controls ." + name).removeClass("disabled");
+  }
+
+  $this.find(".next").click(function(e) {
+    e.preventDefault();
+    if ($(this).hasClass("disabled")) return;
+      section++;
+      _showControl("prev");
+      $this.find(".inner_slideshow").animate({scrollLeft: section * width}, speed, function() {
+        _toggleVideoControls();
+        if (section + 1 >= sectionNum) _hideControl("next");
+      });
+  });
+
+  $this.find(".prev").click(function(e) {
+    e.preventDefault();
+    if ($(this).hasClass("disabled")) return;
+
+    section--;
+    pos = section * width;
+    _showControl("next");
+    $this.find(".inner_slideshow").animate({scrollLeft: section * width}, speed, function() {
+      _toggleVideoControls();
+      if (section <= 0) _hideControl("prev");
+    });
+  });
+}
+
+/* Enables politician taggin */
 jQuery.fn.enablePoliticianTags = function(opt){
   var
   serviceURL = "/search/politicians_and_areas",

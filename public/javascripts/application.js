@@ -20,6 +20,9 @@ $(function() {
 
   $('.tabs').tabs();
 
+  $(".slideshow").enableSlideshow();
+
+
   // Pagination
   $(".more_proposals").enablePagination({name: "proposals"});
   $(".more_months").enablePagination({name: "months"});
