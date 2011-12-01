@@ -34,7 +34,7 @@ class Content < ActiveRecord::Base
   after_save    :publish
 
   accepts_nested_attributes_for :comments, :contents_users
-  accepts_nested_attributes_for :areas_contents, :allow_destroy => true
+  accepts_nested_attributes_for :areas_contents, :contents_users, :allow_destroy => true
 
   attr_accessor :location, :parent
   attr_reader :tag

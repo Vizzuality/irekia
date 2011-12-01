@@ -3,7 +3,9 @@
 <li class="content">
   <div class="left">
     <%= render "admin/moderation/lists_elements/#{item.type.downcase}", :data => item %>
-    <p class="time">Hace <%= distance_of_time_in_words_to_now(item.created_at) %> &middot; <%= link_to item.author.fullname, path_for_user(item.author)%></p>
+    <% if item.author.present? -%>
+      <p class="time">Hace <%= distance_of_time_in_words_to_now(item.created_at) %> &middot; <%= link_to item.author.fullname, path_for_user(item.author)%></p>
+    <% end -%>
   </div>
   <div class="right">
     <div class="moderation">

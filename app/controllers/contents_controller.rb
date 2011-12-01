@@ -54,8 +54,6 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @moderation_status = @content.moderated?? 'moderated' : 'not_moderated'
-
     @comments = @content.comments.moderated.all
     @comments_count = @content.comments_count
     @last_contents = @content.last_contents(3)
@@ -125,14 +123,14 @@ class ContentsController < ApplicationController
   def create
     render :json => @image and return if @image.present?
 
-    @content = @content_class.new params[@content_type]
+    @content        = @content_class.new params[@content_type]
     @content.author = current_user
 
-    if @content.save
-      redirect_to @content
-    else
-      head :error
-    end
+    @author_role = 'politician' if current_user.politician?
+    @partial     = params[:partial] || @content_type
+
+    head :error and return unless @content.save
+    render :layout => !request.xhr?
   end
 
   def update
@@ -142,8 +140,10 @@ class ContentsController < ApplicationController
     @content_params = params[@content_type]
     @content.update_attributes(@content_params)
 
-    render :partial => "contents/responses/#{current_user.role.name_i18n_key}/#{params[:partial]}" and return if params[:partial].present?
-    redirect_to @content
+    @author_role = 'politician' if current_user.politician?
+    @partial     = params[:partial] || @content_type
+
+    head :error and return unless @content.save
   end
 
   def get_content_class

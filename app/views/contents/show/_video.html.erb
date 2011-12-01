@@ -1,0 +1,53 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="Irekia - <%= @content.title %>" />
+  <meta property="og:description" content="<%= @content.description.strip.truncate(128) if@content.description.present? %>" />
+<% end -%>
+<div class="article videos with_footer">
+<div class="inner">
+  <div class="left">
+
+    <div class="context">
+      <h3><%= t(@content.content_type) %></h3>
+      <% if @content.author %> <span class="middot">&middot;</span> <%= t(".published_by") %> <%= link_to @content.author.fullname, @content.author %> <% end %>
+    </div>
+
+    <h1><%= @content.title %></h1>
+
+    <div class="meta">
+    <span><%= l @content.published_at.to_date, :format => :long %></span>
+    &middot;
+    <% if !@content.title.blank? %>
+      <%= link_to @content.title, video_path(@content) %>
+      &middot;
+    <% end %>
+    <span class="comments">    <%= link_to @comments_count, '#', :class => :goto_comments %></span>
+    </div>
+
+    <%= raw @content.html if @content.html.present? %>
+    <div class="caption"><%= simple_format @content.description %></div>
+
+    <%= render "participations/comments" %>
+
+  </div>
+  <div class="right">
+    <div class="content left-border">
+
+      <%= sharing_partial(video_url(@content), @content.title) %>
+      <%= render "shared/sidebar/tags" %>
+      <%= render "shared/sidebar/location" %>
+      <%= render "shared/sidebar/related_politicians" %>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+<div class="separator"></div>
+<div class="inner">
+  <div class="left">
+    <%= link_to t('.back'), "/in_development", :class => :left_arrow %>
+  </div>
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</div>

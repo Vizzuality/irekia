@@ -6,6 +6,7 @@ class Photo < Content
   accepts_nested_attributes_for :image
 
   def as_json(options = {})
+    image.image.recreate_versions! if image.present?
     super({
       :title            => title,
       :description      => description,

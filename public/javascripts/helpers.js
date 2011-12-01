@@ -190,7 +190,15 @@ jQuery.fn.enablePoliticianTags = function(opt){
   $addInputField = $add.find(".input_field"),
   $addInput      = $add.find('input[type="text"]');
 
+
+  $(window).bind('_close.politician_suggest', function() {
+    _hidePopover();
+  });
+
   function _onSuccess(response) {
+    GOD.subscribe("_close.politician_suggest");
+    GOD.broadcast("_close.politician_suggest");
+
     _hidePopover();
     _appendPopover(response);
   }
@@ -253,14 +261,14 @@ jQuery.fn.enablePoliticianTags = function(opt){
       if ($addInput.val().length > 0) spinner.spin(spin_element);
 
       var query = $addInput.val();
-      var params = { name : query };
+      var params = { name : query, only_politicians : true };
 
       $.ajax({ url: serviceURL, data: { search: params }, type: "GET", success: _onSuccess});
     }, 500);
   }
 
   $remove.click(function (e) {
-    $(this).parents("li").fadeOut(speed);
+    $ul.find("li").fadeOut(speed);
   });
 
   $addLink.click(function(e) {
@@ -322,8 +330,7 @@ jQuery.fn.enableImageEditing = function(opt){
   spinner     = new Spinner(SPINNER_OPTIONS),
   content;
 
-  $(this).find(".remove").click(function(e) {
-    e.preventDefault();
+  $(this).find(".remove").submit(function(e) {
     $this.find(".content .remove").fadeOut(speed);
     $this.find(".content img").fadeOut(speed, function() {
       $(this).remove();

@@ -6,6 +6,9 @@ class ParticipationsController < ApplicationController
 
   def show
     @moderation_status = @participation.moderated?? 'moderated' : 'not_moderated'
+    @content           = @participation.content
+
+    @partial = params[:partial] || @participation_type
 
     respond_with(@participation) do |format|
       format.html { render :layout => !request.xhr? }
@@ -17,17 +20,20 @@ class ParticipationsController < ApplicationController
     participation_params[:user_id] = current_user.id
 
     @participation = @participation_class.find_or_initialize participation_params
+    @partial       = params[:partial] || @participation_type
 
     if @participation.save
-      redirect_to @participation
+      redirect_to polymorphic_path(@participation, :partial => @partial)
     else
-      head :error
+      head :error and return unless @participation.save
     end
   end
 
   def update
+    @partial = params[:partial] || @participation_type
+
     if @participation.update_attributes params[@participation_type]
-      redirect_to @participation
+      redirect_to polymorphic_path(@participation, :partial => @partial)
     else
       head :error
     end

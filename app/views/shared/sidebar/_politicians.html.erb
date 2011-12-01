@@ -1,28 +1,39 @@
 <% if @content.users.size > 0 || @editable %>
   <h4><%= t('.title') %></h4>
   <ul class="people no-border no-padding extra-margin-bottom<%= ' editable' if @editable %>">
-    <% @content.users.each do |politician| -%>
+    <% @content.contents_users.each do |content_user| -%>
+      <% politician = content_user.user -%>
       <li<%=" class='editable'" if @editable %>>
       <%= avatar politician, 'small' %>
       <%= link_to politician.fullname, path_for_user(politician), :class => :name %>
       <span class="position"><%= get_politician_title(politician) %></span>
 
       <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
-        <%= form.hidden_field :tags, :value => "test" %>
+        <%= form.fields_for :contents_users, content_user do |content_user_fields| %>
+          <%= content_user_fields.hidden_field :_destroy, :value => true %>
+        <% end -%>
         <%= form.submit 'x', :class => 'remove' %>
-        <% end if @editable -%>
+      <% end if @editable -%>
 
         </li>
       <% end -%>
 
-      <% if @editable %>
-        <li class="add">
-        <%= link_to "Etiquetar político", "#", :class => :add %>
-        <div class="input_field">
-          <input type="text" />
-        </div>
-        <span class="spinner" id="politician_spinner"></span>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
+    <% if @editable %>
+      <li class="add">
+      <%= link_to "Etiquetar político", "#", :class => :add %>
+      <div class="input_field">
+        <input type="text" />
+      </div>
+      <span class="spinner" id="politician_spinner"></span>
+
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+        <%= form.fields_for :contents_users, @content.contents_users.build do |contents_users| %>
+          <%= contents_users.hidden_field :content_id %>
+          <%= contents_users.hidden_field :user_id, :id => 'wadus' %>
+        <% end -%>
+      <% end -%>
+
+      </li>
+    <% end %>
+  </ul>
+<% end %>

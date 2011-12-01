@@ -1,0 +1,67 @@
+<% content_for :facebook_meta do -%>
+  <meta property="og:title" content="Irekia - Estado de <%= @content.author.fullname %>" />
+  <meta property="og:description" content="<%= @content.message %>" />
+<% end -%>
+<div class="article activity with_footer">
+<div class="inner">
+  <div class="left">
+
+    <div class="quotation">
+      <blockquote>
+        <span class="quote"><%= @content.message %></span>
+        <span class="bqstart">&#8220;</span> <span class="bqend">&#8221;</span>
+      </blockquote>
+      <div class="author">
+        <%= raw t('.author', :name => link_to(@content.author.fullname, path_for_user(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+      </div>
+    </div>
+    <%= render "participations/comments", :birdie => true %>
+  </div>
+  <div class="right">
+    <div class="content left-border">
+      <%= sharing_partial(tweet_url(@content), @content.message) %>
+      <%= render "shared/sidebar/previous_tweets" %>
+    </div>
+  </div>
+</div>
+
+<footer>
+<div class="separator"></div>
+<div class="inner">
+  <div class="left">
+    <%= link_to t(".back"), path_for_user(@content.author), :class => :left_arrow %>
+  </div>
+</div>
+</footer>
+<div class="t"></div><div class="f"></div>
+</div>
+
+<!--
+<div class="article"><div id="tweet">
+  <h1><%= @content.message %></h1>
+  <span class="author">
+    <%= raw t('.author', :name => link_to(@content.author.fullname, path_for_user(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+  </span>
+  <%= render 'participations/comments' %>
+  <div class="sidebar">
+    <ul class="sharing_links">
+      <li><%= link_to t('.sidebar.sharing_links.mail'), '/in_development' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.twitter'), '/in_development' %></li>
+      <li><%= link_to t('.sidebar.sharing_links.facebook'), '/in_development' %></li>
+    </ul>
+    <div class="last_tweets">
+      <h3><%= t('.sidebar.last_tweets.title', :name => @content.author.name) %></h3>
+      <ul>
+        <% @last_contents.each do |tweet| %>
+          <li>
+          <p class="tweet"><%= link_to tweet.message, tweet_path(tweet) %></p>
+          <span class="when"><%= t('.sidebar.last_tweets.time', :time => distance_of_time_in_words_to_now(tweet.published_at)) %></span>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to "@#{@content.username}", '/in_development' %>
+    </div>
+  </div>
+</div>
+</div>
+-->
