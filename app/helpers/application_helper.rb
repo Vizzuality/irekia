@@ -100,7 +100,7 @@ module ApplicationHelper
   end
 
   def button(value=nil, options={})
-    content_tag :button, :type => :submit, :class => options[:class] do
+    content_tag :button, :type => :submit, :disabled => options[:disabled], :id => options[:id], :class => options[:class] do
       content_tag :span, value
     end
   end

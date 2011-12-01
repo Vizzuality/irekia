@@ -373,6 +373,10 @@ White buttons
   &:hover, &:hover span { color: #333; }
   &.blue span { color:$link_color; }
 
+  &.in_favor {
+    span { color: $agree_color; }
+  }
+
   &.disabled:active,
   &.disabled:hover,
   &.disabled {
