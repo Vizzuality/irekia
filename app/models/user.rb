@@ -180,12 +180,12 @@ class User < ActiveRecord::Base
 
 
   pg_search_scope :search_by_name,
-                  :against => [:name],
+                  :against => [:name, :lastname],
                   :using => {
                     :tsearch => {:prefix => true, :any_word => true}
                   }
   pg_search_scope :search_by_name_description_province_and_city,
-                  :against => [:name, :description, :province, :city],
+                  :against => [:name, :lastname, :description, :province, :city],
                   :using => {
                     :tsearch => {:prefix => true, :any_word => true}
                   }
