@@ -3,10 +3,8 @@
 
 * html .clearfix, * html .inner { zoom: 1; }
 
-/* IE6 */
 *:first-child + html .clearfix, *:first-child + html .inner { zoom: 1; }
 
-/* IE7 */
 textarea { resize: none; }
 
 /* Textarea scrollbar */

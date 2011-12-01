@@ -3,10 +3,8 @@
 
 * html .clearfix, * html .inner { zoom: 1; }
 
-/* IE6 */
 *:first-child + html .clearfix, *:first-child + html .inner { zoom: 1; }
 
-/* IE7 */
 body.admin header nav { background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b5c229), color-stop(100%, #99a322)); background: -webkit-linear-gradient(top, #b5c229, #99a322); background: -moz-linear-gradient(top, #b5c229, #99a322); background: -o-linear-gradient(top, #b5c229, #99a322); background: -ms-linear-gradient(top, #b5c229, #99a322); background: linear-gradient(top, #b5c229, #99a322); background: #B5C229\9; border-top: 1px solid #7b8301; border-bottom: 1px solid #7b8301; }
 body.admin header nav .content span.currently_viewing { display: none; }
 body.admin header nav .content ul.areas { display: none; }

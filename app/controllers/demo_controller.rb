@@ -6,4 +6,8 @@ class DemoController < ApplicationController
 
   end
 
+  def slideshow
+    render :layout => "slideshow"
+  end
+
 end

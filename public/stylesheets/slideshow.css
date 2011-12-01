@@ -1,0 +1,42 @@
+/* New clearfix */
+.inner:after, .clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+
+* html .clearfix, * html .inner { zoom: 1; }
+
+*:first-child + html .clearfix, *:first-child + html .inner { zoom: 1; }
+
+html { font-size: 100%; }
+
+body { margin: 0; font-size: 13px; line-height: 1.231; font-family: sans-serif; color: #222; }
+
+.slideshow { position: relative; overflow: hidden; width: 610px; font-family: "Helvetica", sans-serif; font-size: 17px; font-weight: 400; line-height: 21px; color: #6C777F; }
+.slideshow ul { list-style: none; margin: 0; padding: 0; }
+.slideshow p, .slideshow li { font-family: "Helvetica", sans-serif; font-size: 17px; font-weight: 400; line-height: 21px; color: #6C777F; }
+.slideshow .inner_slideshow { clear: both; overflow: hidden; height: 450px; }
+.slideshow .inner_slideshow ul.contents { margin: 0; padding: 0; width: 90000px; }
+.slideshow .inner_slideshow ul.contents li.section { margin: 0; padding: 0; position: relative; float: left; width: 610px; }
+.slideshow .inner_slideshow ul.contents li.section textarea { display: none; }
+.slideshow .inner_slideshow ul.contents li.section .caption { width: 490px; color: #7D8A92; font-size: 13px; }
+.slideshow .inner_slideshow ul.contents li.section .caption p { margin: 0; font-size: 13px; }
+.slideshow .inner_slideshow ul.contents li.section .caption p.source { color: #7D8A92; margin: 0; }
+.slideshow ul.navigation { display: none; position: absolute; top: 0; right: 0; z-index: 200; }
+.slideshow ul.navigation li { float: left; margin-left: 5px!important; }
+.slideshow ul.navigation li.selected a { background-position: 0 -71px; }
+.slideshow ul.navigation li a { display: block; width: 7px; height: 7px; background: url("/images/slideshow_sprite.png") no-repeat -12px -71px; }
+.slideshow .embed_window { display: none; position: absolute; width: 498px; height: 259px; top: 0; left: 0; background: url("/images/slideshow_sprite.png") no-repeat 0 -85px; z-index: 200; }
+.slideshow .embed_window .close { position: absolute; top: 11px; right: 10px; width: 8px; height: 9px; background: url("/images/slideshow_sprite.png") no-repeat -264px 0px; }
+.slideshow .embed_window .input_field { top: 40px; margin: auto; width: 431px; height: 110px; overflow-y: none; position: relative; padding: 9px; font-size: 13px; background: url("/images/slideshow_sprite.png") no-repeat 0 -349px; }
+.slideshow .embed_window .input_field textarea { resize: none; width: 420px; height: 110px; padding: 0 10px 0 0; outline: none; border: none; font-family: "Courier"; color: #999; font-size: 12px; background: transparent; }
+.slideshow .embed_window .footer { position: absolute; bottom: 30px; left: 20px; font-size: 13px; color: #999; width: auto; }
+.slideshow .options { display: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; user-select: none; }
+.slideshow .options .handle { position: absolute; display: block; top: 10px; right: 10px; width: 20px; height: 21px; background: url("/images/slideshow_sprite.png") no-repeat 0 -44px; z-index: 100; cursor: pointer; }
+.slideshow .options .inner_options { display: none; position: absolute; background: url("/images/slideshow_sprite.png") no-repeat -96px 0; top: 10px; right: -38px; width: 203px; height: 83px; }
+.slideshow .options .inner_options ul { position: relative; top: 25px; left: 7px; }
+.slideshow .options .inner_options ul li { margin: 0; padding: 0; }
+.slideshow .options .inner_options ul li.embed { margin: 0 0 8px 0; }
+.slideshow .options .inner_options ul li a { color: #fff; text-decoration: none; font-size: 10px; filter: alpha(opacity=50); -khtml-opacity: 0.5; -moz-opacity: 0.5; opacity: 0.5; text-transform: uppercase; }
+.slideshow .slideshow_controls { display: none; }
+.slideshow .slideshow_controls a { position: absolute; display: block; width: 40px; height: 40px; background: url("/images/slideshow_sprite.png") no-repeat; cursor: pointer; z-index: 100; }
+.slideshow .slideshow_controls a.disabled, .slideshow .slideshow_controls a.disabled:hover { opacity: .3; }
+.slideshow .slideshow_controls a.next { right: 20px; background-position: -44px 0; }
+.slideshow .slideshow_controls a.prev { left: 20px; background-position: 0 0; }

@@ -189,6 +189,22 @@ jQuery.fn.enableSlideshow = function(opt){
 
   sectionNum = $this.find(".section").length;
   _positionControls();
+  _setupNavigation();
+  _updateHeight(0);
+
+  function _updateHeight(s, callback) {
+    var height = $this.find(".section:eq(" + s + ")").height();
+
+    $this.find(".inner_slideshow").animate({ height:height }, speed, function() {
+      callback && callback();
+    });
+  }
+
+  $this.find(".navigation li a").click(function(e) {
+    e.preventDefault();
+    section = $this.find(".navigation li").index($(this).parent());
+    _move(section);
+  });
 
   $this.find(".embed_window a.close").click(function(e) {
     e.preventDefault();
@@ -233,8 +249,6 @@ jQuery.fn.enableSlideshow = function(opt){
   $this.bind("mouseleave", function() {
     _hideControls();
   });
-
-  $this.append("<ul class='items'/>");
 
   function _positionControls() {
     var h  = $this.outerHeight(true);
@@ -287,6 +301,19 @@ jQuery.fn.enableSlideshow = function(opt){
     $this.find(".slideshow_controls").fadeOut(controlSpeed);
   }
 
+  function _toggleControls(s) {
+    if (s + 1 >= sectionNum) {
+      _hideControl("next");
+      _showControl("prev");
+    } else  if (s <= 0) {
+      _hideControl("prev");
+      _showControl("next");
+    } else {
+      _showControl("prev");
+      _showControl("next");
+    }
+  }
+
   function _hideControl(name) {
     $this.find(".slideshow_controls ." + name).addClass("disabled");
   }
@@ -296,30 +323,59 @@ jQuery.fn.enableSlideshow = function(opt){
     $this.find(".slideshow_controls ." + name).removeClass("disabled");
   }
 
+  function _positionNavigation(s) {
+    var p = $this.find(".section:eq(" + s + ") .caption").position().top + 13;
+
+    $this.find(".navigation").fadeOut(speed, function() {
+      $this.find(".navigation").css({top: p + "px"});
+    });
+  }
+
+  function _setupNavigation() {
+    var b = $this.find(".section:eq(0)").height() - $this.find(".section:eq(0) .caption").height();
+
+    for (var i = 0; i <= sectionNum - 1; i++) {
+      $this.find(".navigation").append('<li><a href="#"></a></li>');
+    }
+
+    $this.find(".navigation li:first-child").addClass("selected");
+    $this.find(".navigation").css({top: b + "px"});
+    $this.find(".navigation").fadeIn(speed);
+  }
+
+  function _updateNavigation() {
+    $this.find(".navigation li").removeClass("selected");
+    $this.find(".navigation li:eq(" + section + ")").addClass("selected");
+  }
+
+  function _move(s) {
+    _positionNavigation(s);
+
+    _updateHeight(s, function() {
+      $this.find(".section:eq(" + section + ") .caption").fadeOut(speed, function() {
+        $this.find(".inner_slideshow").animate({scrollLeft: s * width}, speed, function() {
+          _toggleVideoControls();
+          _updateNavigation();
+          _toggleControls(s);
+          $this.find(".section:eq(" + section + ") .caption").fadeIn(speed);
+          $this.find(".navigation").fadeIn(speed);
+        });
+      });
+    });
+  }
+
   $this.find(".next").click(function(e) {
     e.preventDefault();
-
     if ($(this).hasClass("disabled")) return;
-      section++;
-      _showControl("prev");
-      $this.find(".inner_slideshow").animate({scrollLeft: section * width}, speed, function() {
-        _toggleVideoControls();
-        $this.find(".caption").fadeIn(250);
-        if (section + 1 >= sectionNum) _hideControl("next");
-      });
+    section++;
+    _move(section);
   });
 
   $this.find(".prev").click(function(e) {
     e.preventDefault();
     if ($(this).hasClass("disabled")) return;
-
     section--;
-    pos = section * width;
-    _showControl("next");
-    $this.find(".inner_slideshow").animate({scrollLeft: section * width}, speed, function() {
-      _toggleVideoControls();
-      if (section <= 0) _hideControl("prev");
-    });
+    _move(section);
   });
 }
 

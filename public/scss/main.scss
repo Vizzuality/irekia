@@ -5453,7 +5453,6 @@ ul.playlist li .peak .r {
 
 
 // Slideshow
-
 .slideshow,
 #container .article .slideshow {
   position:relative;
@@ -5462,6 +5461,7 @@ ul.playlist li .peak .r {
   .inner_slideshow {
     clear:both;
     overflow:hidden;
+    height:400px;
 
     ul.contents {
       margin: 0; padding:0;
@@ -5471,6 +5471,7 @@ ul.playlist li .peak .r {
         margin: 0; padding:0;
         position:relative;
         float:left;
+        width:610px;
         textarea { display: none; }
 
         .caption {
@@ -5485,13 +5486,28 @@ ul.playlist li .peak .r {
             &.source { color: #7D8A92; margin: 0; }
           }
         }
-
       }
     } // .contents
   } // .inner_slideshow
 
-  ul.items {
+  ul.navigation {
+    display:none;
+    position:absolute;
+    top:0; right: 0;
+    z-index:200;
+
     li {
+      float:left;
+      margin-left: 5px!important;
+      &.selected a {
+        background-position: 0 -71px;
+      }
+
+      a {
+        display:block;
+        width: 7px; height: 7px;
+        background: url('/images/slideshow_sprite.png') no-repeat -12px -71px;
+      }
 
     }
   }
@@ -5545,19 +5561,19 @@ ul.playlist li .peak .r {
 
     .footer {
       position:absolute;
-      bottom: 20px;
-      .white_button {
-        left: 20px;
-        width:auto;
-      }
+      bottom: 30px;
+      left:20px;
+      font-size: 13px;
+      color:#999;
+      width:auto;
     }
   }
 
   .options {
+    display:none;
     @include disable-selection;
 
     .handle {
-      display:none;
       position:absolute;
       display:block;
       top: 10px; right: 10px;
