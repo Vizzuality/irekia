@@ -373,6 +373,7 @@
         title: Políticos etiquetados en la imagen
       tags:
         title: Tags
+        add_tags: "Añadir tags"
       related_content:
         title: Contenidos similares
         comments:
@@ -756,8 +757,64 @@
           zero: 'Ningún argumento nuevo'
           one: 'Un voto argumento en una %{content} en la que has participado'
           other: '%{count} nuevos argumentos en una %{content} en la que has participado'
-
   contents:
+    edit:
+      question:
+        addressed_to: 'Dirigida a'
+        not_answered_yet: Esta pregunta aún no ha sido contestada.
+        you_and_other:
+          zero: Nadie ha pedido que sea contestada
+          one: Por ahora sólo tú quieres que sea contestada
+          other: Por ahora sólo tú y otra persona queréis que sea contestada
+        you_and_thousands: Por ahora sólo tú y otras %{count} personas queréis que sea contestada
+        answer_this_question: Contesta a esta pregunta
+        add_a_video:  Añade un video si quieres
+        publish: 'Publicar respuesta'
+        youtube_or_vimeo_url: Dirección de YouTube o Vimeo
+        people_demanding_answer:
+          zero: Nadie ha pedido que sea contestada,
+          one: 1 persona quiere que sea contestada,
+          other: '%{count} personas quieren que sea contestada,'
+        join_them:
+          zero: sé el primero
+          one: únete a ella
+          other: sumáte a ellos
+        question_content:
+          author_and_comments:
+            time: 'hace %{time}'
+            answered: 'Contestada tras %{time}'
+            not_answered:
+              zero: No contestada
+              one: 'No contestada, solicitada por 1'
+              other: 'No contestada, solicitada por %{count}'
+            comments:
+              zero: Todavía no hay comentarios
+              one: Un comentario
+              other: '%{count} comentarios'
+          answer_requests:
+            do_request: Solicitar respuesta
+          answer:
+            has_answered: 'Ha contestado %{name}'
+          answer_opinion: ¿Qué te parece la respuesta?
+          answer_satisfactory: 'Satisfactoria'
+          answer_not_satisfactory: 'No satisfactoria'
+        sidebar:
+          sharing_links:
+            mail: Mail
+            twitter: Twitter
+            facebook: Facebook
+          tags:
+            title: Tags
+          related_questions:
+            title: 'Otras preguntas similares'
+            time: 'Hace %{time}'
+            comments:
+              zero: Aún no hay comentarios
+              one: Un comentario
+              other: '%{count} comentarios'
+        footer:
+          all_questions_to_user: 'Todas las preguntas para %{name}'
+          all_questions_to_area: 'Todas las preguntas para el área de %{name}'
     arguments:
       in_favor: Argumentos a favor
       against: Argumentos en contra

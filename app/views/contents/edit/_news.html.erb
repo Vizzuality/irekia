@@ -109,7 +109,6 @@
 
         <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
           <%= content_tag :div, (sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil), :class => :content  %>
-          <p><%#= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
 
           <%= form.fields_for :news_data do |news_data| %>
             <div class="input_field textarea">

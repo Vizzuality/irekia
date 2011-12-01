@@ -3,7 +3,6 @@
   <meta property="og:description" content="<%= @content.question_text.strip %>" />
 <% end -%>
 <div class="article questions with_footer">
-  <%= link_to '', edit_question_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
 
   <div class="inner">
     <div class="left">
@@ -11,7 +10,24 @@
       <div class="context">
         <h3><%= t(@content.content_type) %></h3>
         <% if @content.target_area %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_area.name, @content.target_area %> <% end %>
-        <% if @content.target_user %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_user.fullname, @content.target_user %> <% end %>
+
+
+        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable target'} do |form| %>
+          <% if @content.target_user %>
+            <div class="content">
+              <span class="target"><%= t(".addressed_to") -%> <%= @content.target_user.fullname -%></span>
+            </div>
+
+            <div class="add_target">
+              <div class="input_field placeholder">
+                <input type="text" />
+                <span class="holder">Introduce el nuevo destinatario</span>
+              </div>
+              <span class="spinner" id="target_spinner"></span>
+            </div>
+          <% end -%>
+        <% end %>
+
       </div>
 
       <h2><%= @content.question_text %></h2>

@@ -597,7 +597,7 @@ span.where, .map .infowindow ul.details li.where { width: 207px; max-height: 26p
 /* .article addons */
 #container .article.initialy_hidden { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; }
 #container .article .caption, #container .article .caption p { color: #7d8a92; }
-#container .article .holder, #container .article .input_field .holder { width: 100%; position: absolute; left: 11px; color: #D7DADD; font-size: 15px; font-weight: normal; text-shadow: none; }
+#container .article .holder, #container .article .input_field .holder { width: 100%; position: absolute; left: 11px; color: #D7DADD; font-size: 15px; font-weight: normal; text-shadow: none; cursor: text; }
 #container .article .holder span, #container .article .input_field .holder span { float: left; }
 #container .article .holder span.upload, #container .article .input_field .holder span.upload { cursor: pointer; }
 #container .article .autosuggest { width: 691px; position: absolute; padding-bottom: 10px; top: 20px; z-index: 2000; }

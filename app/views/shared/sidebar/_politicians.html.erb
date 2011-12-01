@@ -7,22 +7,22 @@
       <%= link_to politician.fullname, path_for_user(politician), :class => :name %>
       <span class="position"><%= get_politician_title(politician) %></span>
 
-        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
-          <%= form.hidden_field :tags, :value => "test" %>
-          <%= form.submit 'x', :class => 'remove' %>
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+        <%= form.hidden_field :tags, :value => "test" %>
+        <%= form.submit 'x', :class => 'remove' %>
         <% end if @editable -%>
 
-      </li>
-    <% end -%>
+        </li>
+      <% end -%>
 
-    <% if @editable %>
-      <li class="add">
-      <%= link_to "Etiquetar político", "#", :class => :add %>
-      <div class="input_field">
-        <input type="text" />
-      </div>
-      <span class="spinner" id="politician_spinner"></span>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+      <% if @editable %>
+        <li class="add">
+        <%= link_to "Etiquetar político", "#", :class => :add %>
+        <div class="input_field">
+          <input type="text" />
+        </div>
+        <span class="spinner" id="politician_spinner"></span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>

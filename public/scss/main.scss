@@ -2398,6 +2398,7 @@ span.where, .map .infowindow ul.details li.where {
     font-size:15px;
     font-weight:normal;
     text-shadow:none;
+    cursor: text;
     span { float:left;
       &.upload { cursor:pointer; }
     }

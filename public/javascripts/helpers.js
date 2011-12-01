@@ -434,13 +434,7 @@ jQuery.fn.enableImageEditing = function(opt){
         onCancel: function(id, fileName){ }
       });
     }
-    console.log(uploader);
   }
-
-
-
-
-
 }
 
 /* Enables date editing */
@@ -804,6 +798,110 @@ jQuery.fn.enablePagination = function(opt){
 
     });
   })
+}
+
+jQuery.fn.enableTargetEditing = function(opt){
+
+  var
+  $this          = $(this),
+  interval,
+  $add           = $this.find(".add_target");
+  $addInput      = $this.find('.input_field input[type="text"]'),
+  $addInputField = $this.find(".input_field"),
+  serviceURL     = "/search/politicians_and_areas",
+  speed          = (opt && opt.speed) || 100,
+  spin_element   = document.getElementById('target_spinner'),
+  spinner        = new Spinner(SPINNER_OPTIONS),
+  fadeInSpeed    = (opt && opt.speed) || 10;
+
+  console.log($addInput, $addInputField);
+
+  $(this).find(".content").click(function(e) {
+    e.preventDefault();
+    $(this).fadeOut(speed, function() {
+      $this.find(".add_target").fadeIn(speed, function() {
+        $this.find('.add_target input[type="text"]').focus();
+      });
+    });
+  });
+
+  function _onSuccess(response) {
+    _hidePopover();
+    _appendPopover(response);
+  }
+
+  function _hidePopover() {
+    spinner.stop();
+
+    if ($(".autosuggest.mini").length > 0 ) {
+      $(".autosuggest.mini").fadeOut(speed, function() { $(this).remove(); });
+    }
+  }
+
+  function _centerPopover($response) {
+    var left =  $add.position().left - ($response.outerWidth(true) / 2) + ($add.outerWidth(true) / 2);
+    var top  =  $add.position().top  + $add.outerHeight(true) + 8;
+
+    console.log($add, left, top);
+
+    $response.css({left: left + "px", top: top + "px"});
+  }
+
+  function _appendPopover(response) {
+
+    var $response = $(response);
+
+    if ($response.find("ul li").length > 0) {
+
+      $response.addClass("mini");
+      $this.after($response);
+      _centerPopover($response);
+      $response.hide();
+      $response.fadeIn(speed, function() {
+        spinner.stop();
+      });
+    } else {
+      spinner.stop();
+    }
+  }
+
+  function _observeInput($input) {
+
+    function _do(e) {
+
+      if ($input.val().length <= 0) {
+        _hidePopover();
+      } else {
+
+        if (_.any([13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return e.keyCode == i } ) && (e.keyCode == 65 && (e.metaKey || e.ctrlKey))) { return; }
+        if ($addInput.val().length > 3) _onKeyUp(e);
+      }
+    }
+
+    $input.keyup(_do);
+    $input.keydown(_do);
+  }
+
+  function _onKeyUp(e){
+
+    clearTimeout(interval);
+
+    interval = setTimeout(function(){
+      if ($addInput.val().length > 0) spinner.spin(spin_element);
+
+      var query = $addInput.val();
+      var params = { name : query };
+
+      $.ajax({ url: serviceURL, data: { search: params }, type: "GET", success: _onSuccess});
+    }, 500);
+  }
+
+  _observeInput($addInput);
+
+  $(".autosuggest.mini li").live("click", function() {
+    _hidePopover();
+    // TODO: add code to manage response from the server
+  });
 }
 
 jQuery.fn.enableNotificationSelector = function(opt){
