@@ -298,11 +298,13 @@ jQuery.fn.enableSlideshow = function(opt){
 
   $this.find(".next").click(function(e) {
     e.preventDefault();
+
     if ($(this).hasClass("disabled")) return;
       section++;
       _showControl("prev");
       $this.find(".inner_slideshow").animate({scrollLeft: section * width}, speed, function() {
         _toggleVideoControls();
+        $this.find(".caption").fadeIn(250);
         if (section + 1 >= sectionNum) _hideControl("next");
       });
   });

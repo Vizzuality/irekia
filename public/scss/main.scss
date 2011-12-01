@@ -5472,6 +5472,20 @@ ul.playlist li .peak .r {
         position:relative;
         float:left;
         textarea { display: none; }
+
+        .caption {
+          margin-top: 7px;
+          width:490px;
+          color: #7D8A92;
+          font-size: 13px;
+
+          p {
+            margin: 0;
+            font-size: 13px;
+            &.source { color: #7D8A92; margin: 0; }
+          }
+        }
+
       }
     } // .contents
   } // .inner_slideshow
