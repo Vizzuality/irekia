@@ -473,7 +473,7 @@ jQuery.fn.enablePoliticianTags = function(opt){
     }, 500);
   }
 
-  $remove.click(function (e) {
+  $remove.live("click", function (e) {
     $(this).parents("li").fadeOut(speed);
   });
 
@@ -490,15 +490,19 @@ jQuery.fn.enablePoliticianTags = function(opt){
  _observeInput($addInput);
 
  $add.find(".add_politician").bind('ajax:success', function(evt, xhr, status) {
-   console.log(evt, xhr);
-   //$response.hide();
-   //$addInputField.before($response);
-   //$addInput.html("");
+   var $response = $(xhr);
+   $response.hide();
+   $addInputField.parents("li").before($response);
+   console.log($response);
+   $response.fadeIn(speed);
+   $addInput.html("");
  });
 
   $(".autosuggest.mini li").live("click", function() {
     _hidePopover();
     var pID = $(this).attr("data-id");
+
+    alert(pID);
 
     $add.find(".add_politician #editable_politician_id").attr("value", pID);
     $add.find(".add_politician").submit();
