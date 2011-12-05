@@ -27,6 +27,7 @@
       <span class="spinner" id="politician_spinner"></span>
 
       <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+        <%= hidden_field_tag :partial, 'tagged_politician' %>
         <%= form.fields_for :contents_users, @content.contents_users.build do |contents_users| %>
           <%= contents_users.hidden_field :content_id %>
           <%= contents_users.hidden_field :user_id, :id => 'wadus' %>
