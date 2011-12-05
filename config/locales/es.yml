@@ -629,6 +629,16 @@
         author: '%{author} participó hace %{time}'
       event:
         author: '%{author} hace %{time}'
+      content_user:
+        title: 'Has sido etiquetado en %{content_type} &quot;%{content}&quot;'
+        proposal: la propuesta
+        question: la pregunta
+        news: la noticia
+        photo: la foto
+        video: el vídeo
+        tweet: el tweet
+        event: el evento
+        author: 'hace %{time}'
       comment:
         title: 'Nuevo comentario en %{content_type}'
         status_message: un mensaje de estado

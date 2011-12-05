@@ -241,7 +241,7 @@ class UsersController < ApplicationController
   private :get_proposals
 
   def get_actions
-    if (action_name == 'show' || params[:referer] == 'show') && private_profile?
+    if (action_name == 'show' || params[:referer] == 'show') && (private_profile? || politician_profile?)
       @actions = @user.get_private_actions(params.slice(:type, :referer, :more_polemic, :page))
     else
       @actions = @user.get_actions(params.slice(:type, :referer, :more_polemic, :page))

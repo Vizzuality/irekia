@@ -165,22 +165,25 @@ def create_event(params)
   }
   params = defaults.merge(params)
 
-  event = Event.create(
-    :author                => params[:user],
-    :latitude              => params[:latitude],
-    :longitude             => params[:longitude],
-    :tags                  => params[:tags],
-    :areas                 => params[:areas_tagged] || [],
-    :users                 => params[:users_tagged] || [],
-    :event_data_attributes => {
-      :title      => params[:title],
-      :subtitle   => params[:subtitle],
-      :body       => params[:body],
-      :event_date => params[:date],
-      :location   => params[:location],
-      :image      => params[:image]
-    }
-  )
+  event = Event.new
+  event.author     = params[:user]
+  event.latitude   = params[:latitude]
+  event.longitude  = params[:longitude]
+  event.tags       = params[:tags]
+  event.event_data = EventData.create({
+    :title      => params[:title],
+    :subtitle   => params[:subtitle],
+    :body       => params[:body],
+    :event_date => params[:date],
+    :location   => params[:location],
+    :image      => params[:image]
+  })
+  event.save!
+
+  event.areas = params[:areas_tagged] || []
+  event.users = params[:users_tagged] || []
+
+  event.save!
 
   print '.'
 
@@ -189,26 +192,26 @@ end
 
 def create_news(params)
 
-  news_data = NewsData.find_or_initialize_by_title(params[:title])
+  news_data = NewsData.find_or_create_by_title(params[:title])
 
-  if news_data.new_record?
-    news_data.subtitle = params[:subtitle]
-    news_data.body     = params[:body]
-    news_data.image    = Image.create :image => params[:image]
-    news               = News.new
-    news.tags          = params[:tags]
-    news.author        = params[:author]
-    news.areas         = params[:areas_tagged] if params[:areas_tagged]
-    news.users         = params[:users_tagged] if params[:users_tagged]
-    news.news_data     = news_data
-    news.comments      = params[:comments]
+  news_data.subtitle = params[:subtitle]
+  news_data.body     = params[:body]
+  news_data.image    = Image.create :image => params[:image]
+  news               = News.new
+  news.news_data     = news_data
+  news.tags          = params[:tags]
+  news.author        = params[:author]
+  news.comments      = params[:comments]
+  news.save!
 
-    print '.'
+  news.areas         = params[:areas_tagged] if params[:areas_tagged]
+  news.users         = params[:users_tagged] if params[:users_tagged]
 
-    news.save!
+  news.save!
 
-    news
-  end
+  print '.'
+
+  news
 end
 
 def create_photo(params)

@@ -63,7 +63,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :private_status_messages_count,                                  :default => 0
       t.integer :private_tweets_count,                                           :default => 0
       t.integer :private_comments_count,                                         :default => 0
-
+      t.integer :private_contents_users_count,                                   :default => 0
 
       t.integer :new_news_count,                                                 :default => 0
       t.integer :new_events_count,                                               :default => 0
