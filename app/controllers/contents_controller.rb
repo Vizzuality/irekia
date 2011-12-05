@@ -140,10 +140,12 @@ class ContentsController < ApplicationController
     @content_params = params[@content_type]
     @content.update_attributes(@content_params)
 
-    @author_role = 'politician' if current_user.politician?
+    @author_role = 'politician'    if current_user.politician?
+    @author_role = 'administrator' if current_user.administrator?
     @partial     = params[:partial] || @content_type
 
     head :error and return unless @content.save
+    render :layout => !request.xhr?
   end
 
   def get_content_class
