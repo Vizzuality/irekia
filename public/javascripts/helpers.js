@@ -489,9 +489,19 @@ jQuery.fn.enablePoliticianTags = function(opt){
   //$addInput.keyup(_onKeyUp);
  _observeInput($addInput);
 
+ $add.find(".add_politician").bind('ajax:success', function(evt, xhr, status) {
+   console.log(evt, xhr);
+   //$response.hide();
+   //$addInputField.before($response);
+   //$addInput.html("");
+ });
+
   $(".autosuggest.mini li").live("click", function() {
     _hidePopover();
-    // TODO: add code to manage response from the server
+    var pID = $(this).attr("data-id");
+
+    $add.find(".add_politician #editable_politician_id").attr("value", pID);
+    $add.find(".add_politician").submit();
   });
 }
 
@@ -759,7 +769,6 @@ jQuery.fn.enableOpinion = function(opt){
     $(this).find("input[type='submit'], .my_opinion button").click(function(e) {
       $(".my_opinion .selected").removeClass("selected");
       $(this).addClass("selected");
-      console.log($(this));
     });
 
     $(this).find("form").bind('ajax:success', function(evt, xhr, status) {
@@ -781,21 +790,26 @@ jQuery.fn.enableOpinion = function(opt){
 /* Enables comment submission */
 jQuery.fn.enableArguments = function(opt){
 
+  var $plugin = $(this);
   var speed     = (opt && opt.speed) || 200;
   var duration  = (opt && opt.speed) || 3000;
   var maxHeight = 0;
 
   this.each(function(){
-    if (($(this).find("ul").height()) > maxHeight) {
-      maxHeight = $(this).find("ul").height();
+    if (($plugin.find("ul").height()) > maxHeight) {
+      maxHeight = $plugin.find("ul").height();
     }
   });
 
-  this.each(function(){
+  function updateHeight(maxHeight) {
+    $plugin.find("ul").animate({ height:maxHeight}, speed);
+  }
 
+  this.each(function(){
     $(this).find("ul").animate({height:maxHeight});
 
     var that = this;
+    var $el = $(this);
 
     var spin_element = $(that).hasClass("in_favor") ? document.getElementById('spinner_in_favor') : document.getElementById('spinner_against');
     var spinner      = new Spinner(SPINNER_OPTIONS);
@@ -850,9 +864,31 @@ jQuery.fn.enableArguments = function(opt){
     $(this).find(".new_argument").bind('ajax:success', function(evt, xhr, status) {
       spinner.stop();
 
-      $icon = $("<span class='icon success' />");
-      $(that).find(".footer .input_text").append($icon);
-      showIcon("in_favor");
+      if (xhr) {
+        var $response = $(xhr);
+        $response.hide();
+        $el.find("ul").append($response);
+
+        $response.fadeIn(speed);
+
+        var c = 0;
+        $el.find("ul li").each(function(i, el) { c+= $(el).outerHeight(true) });
+        console.log($el.find("ul").outerHeight(true), $el.find("ul").height(), c);
+
+        if (c > $el.find("ul").outerHeight(true)) {
+          updateHeight(c);
+        }
+
+        $input.removeAttr("disabled");
+        $submit.fadeIn(speed);
+        $input.val('');
+        $input.removeClass('disabled');
+
+      } else {
+        $icon = $("<span class='icon success' />");
+        $(that).find(".footer .input_text").append($icon);
+        showIcon("in_favor");
+      }
     });
   });
 }
@@ -1027,8 +1063,6 @@ jQuery.fn.enableTargetEditing = function(opt){
   spinner        = new Spinner(SPINNER_OPTIONS),
   fadeInSpeed    = (opt && opt.speed) || 10;
 
-  console.log($addInput, $addInputField);
-
   $(this).find(".content").click(function(e) {
     e.preventDefault();
     $(this).fadeOut(speed, function() {
@@ -1054,8 +1088,6 @@ jQuery.fn.enableTargetEditing = function(opt){
   function _centerPopover($response) {
     var left =  $add.position().left - ($response.outerWidth(true) / 2) + ($add.outerWidth(true) / 2);
     var top  =  $add.position().top  + $add.outerHeight(true) + 8;
-
-    console.log($add, left, top);
 
     $response.css({left: left + "px", top: top + "px"});
   }

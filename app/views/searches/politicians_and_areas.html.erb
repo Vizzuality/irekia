@@ -13,7 +13,7 @@
     <% end %>
     <% if @search_results[:politicians] %>
       <% @search_results[:politicians].each do |politician| %>
-        <li id="item_<%= politician.id%>" class="user clearfix">
+        <li id="item_<%= politician.id %>" data-id="<%= politician.id %>" class="user clearfix">
         <%= avatar politician, 'small' %>
         <p>
         <span class="name"><%= politician.fullname %></span>
