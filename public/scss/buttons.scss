@@ -674,6 +674,19 @@ form.editable,
     a { color: $pink; font-size:13px; }
   }
 
+  form.remove {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    input.remove {
+      width:34px;
+      height:35px;
+      display: block;
+      background: url('/images/icons/icon_sprite.png') no-repeat 0 -406px;
+      z-index:2000;
+    }
+  }
+
   .content {
     cursor:default;
     border:none;
@@ -681,15 +694,6 @@ form.editable,
     padding:0;
     position:relative;
 
-    .remove {
-      width:34px;
-      height:35px;
-      position: absolute;
-      top: 20px;
-      right: 15px;
-      display: block;
-      background: url('/images/icons/icon_sprite.png') no-repeat 0 -406px;
-    }
   }
 } // &.image
 

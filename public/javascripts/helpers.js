@@ -474,7 +474,7 @@ jQuery.fn.enablePoliticianTags = function(opt){
   }
 
   $remove.click(function (e) {
-    $ul.find("li").fadeOut(speed);
+    $(this).parents("li").fadeOut(speed);
   });
 
   $addLink.click(function(e) {
@@ -552,7 +552,6 @@ jQuery.fn.enableImageEditing = function(opt){
 
     var $form = $(this).parents("form");
     $(this).parent().slideUp(speed);
-    console.log($this.find(".input_field"));
     $this.find(".input_field").fadeIn(speed, function() {
       $(this).find(':text').focus();
     });

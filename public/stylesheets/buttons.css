@@ -150,8 +150,9 @@ form.editable .input_field textarea, form.editable .input_field input[type="text
 #container .article .inner .left .image_editor .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
 #container .article .inner .left .image_editor .add_image { width: 606px; height: 53px; text-align: center; background: url("/images/tag_sprite.png") no-repeat 0 -376px; padding: 30px 0 0 0; }
 #container .article .inner .left .image_editor .add_image a { color: #f10063; font-size: 13px; }
+#container .article .inner .left .image_editor form.remove { position: absolute; top: 20px; right: 15px; }
+#container .article .inner .left .image_editor form.remove input.remove { width: 34px; height: 35px; display: block; background: url("/images/icons/icon_sprite.png") no-repeat 0 -406px; z-index: 2000; }
 #container .article .inner .left .image_editor .content { cursor: default; border: none; background: none; padding: 0; position: relative; }
-#container .article .inner .left .image_editor .content .remove { width: 34px; height: 35px; position: absolute; top: 20px; right: 15px; display: block; background: url("/images/icons/icon_sprite.png") no-repeat 0 -406px; }
 
 #container .inner .left .areas_editable_selector { position: absolute; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 -30px; z-index: 2000; }
 #container .inner .left .areas_editable_selector.open { display: block; }

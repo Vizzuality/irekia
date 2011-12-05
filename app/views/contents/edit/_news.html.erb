@@ -86,6 +86,7 @@
 
         <!-- IMAGE -->
         <div class="image_editor">
+          <div class="image_container">
           <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
 
           <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'remove'} do |form| %>
@@ -96,8 +97,9 @@
               <% end -%>
             <% end -%>
           <% end -%>
+        </div>
 
-          <div class="add_image<%= ' hidden' if @content.news_data.image.present? -%>">
+          <div class="add_image" <%= " style='display:none'" unless @content.news_data.image.present? -%>>
             <a href="#">Añadir foto</a>
           </div>
 
