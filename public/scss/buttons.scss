@@ -553,103 +553,6 @@ form.editable,
     }
   }
 
-  &.image {
-    margin: 0;
-
-    .add_image { display: none; }
-
-    .input_field {
-      width: 605px;
-      height: 36px;
-      padding: 0;
-      margin: 10px 0 0 0;
-      border: none;
-
-      .holder { width: 600px; }
-
-      input[type="text"] {
-        width:585px;
-        border:1px solid #ccc;
-        font-size:15px;
-      }
-    }
-
-    .image_container {
-      display:none;
-      float: left;
-      width: 534px;
-      padding:10px;
-      margin: 0 0 20px 0;
-      background:#EDF3E5;
-      line-height:normal;
-      @include border-radius(3px);
-
-      img { display:none; float:left; margin: 0 10px 0 0; height:72px; }
-      p { float:left; margin: 30px 0 0 0; line-height:normal; font-size: 15px; color: #7D8A92; }
-      a { float:right; margin: 30px 10px 0 0; line-height:normal; font-size:15px; }
-    }
-
-    .percentage {
-      display:none;
-      margin-left:-343px;
-      position: absolute;
-      top: 10px;
-      right: 50%;
-      font-size:15px;
-      color: #FF0066;
-      z-index:2010;
-      font-weight:bold;
-    }
-
-    .loading {
-      display:none;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size:15px;
-      color:#CCCCCC;
-      z-index:2010;
-    }
-
-    .progress {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      height: 16px;
-      width: 0px;
-      background: #FF0066;
-      @include border-radius(2px);
-      z-index:2000;
-    }
-
-    .add_image {
-      width:606px;
-      height:83px - 30;
-      text-align:center;
-      background:url('/images/tag_sprite.png') no-repeat 0 -376px;
-      padding: 30px 0 0 0;
-      a { color: $pink; font-size:13px; }
-    }
-
-    .content {
-      cursor:default;
-      border:none;
-      background:none;
-      padding:0;
-      position:relative;
-
-      .remove {
-        width:34px;
-        height:35px;
-        position: absolute;
-        top: 20px;
-        right: 15px;
-        display: block;
-        background: url('/images/icons/icon_sprite.png') no-repeat 0 -406px;
-      }
-    }
-  } // &.image
-
   .spinner {
     top:10px;
     right:0px;
@@ -691,6 +594,107 @@ form.editable,
     }
   }
 }
+
+.image_editor {
+  float:left;
+  margin: 0;
+
+  .hidden { display: none; }
+
+  .input_field {
+    width: 605px;
+    height: 36px;
+    padding: 0;
+    margin: 10px 0 0 0;
+    border: none;
+
+    .holder { width: 600px; }
+
+    input[type="text"] {
+      width:585px;
+      border:1px solid #ccc;
+      font-size:15px;
+    }
+  }
+
+  .image_container {
+    display:none;
+    float: left;
+    width: 534px;
+    padding:10px;
+    margin: 0 0 20px 0;
+    background:#EDF3E5;
+    line-height:normal;
+    @include border-radius(3px);
+
+    img { display:none; float:left; margin: 0 10px 0 0; height:72px; }
+    p { float:left; margin: 30px 0 0 0; line-height:normal; font-size: 15px; color: #7D8A92; }
+    a { float:right; margin: 30px 10px 0 0; line-height:normal; font-size:15px; }
+  }
+
+  .percentage {
+    display:none;
+    margin-left:-343px;
+    position: absolute;
+    top: 10px;
+    right: 50%;
+    font-size:15px;
+    color: #FF0066;
+    z-index:2010;
+    font-weight:bold;
+  }
+
+  .loading {
+    display:none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size:15px;
+    color:#CCCCCC;
+    z-index:2010;
+  }
+
+  .progress {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 16px;
+    width: 0px;
+    background: #FF0066;
+    @include border-radius(2px);
+    z-index:2000;
+  }
+
+  .add_image {
+    width:606px;
+    height:83px - 30;
+    text-align:center;
+    background:url('/images/tag_sprite.png') no-repeat 0 -376px;
+    padding: 30px 0 0 0;
+    a { color: $pink; font-size:13px; }
+  }
+
+  .content {
+    cursor:default;
+    border:none;
+    background:none;
+    padding:0;
+    position:relative;
+
+    .remove {
+      width:34px;
+      height:35px;
+      position: absolute;
+      top: 20px;
+      right: 15px;
+      display: block;
+      background: url('/images/icons/icon_sprite.png') no-repeat 0 -406px;
+    }
+  }
+} // &.image
+
+
+
 
 
 // List of areas for the area selector

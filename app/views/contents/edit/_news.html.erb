@@ -37,13 +37,13 @@
               <ul>
                 <% @areas.each do |area| %>
                   <li data-id="<%= area.id %>" class="<%= 'selected' if @content.areas.map(&:id).include?(area.id) %><%= ' last' if @areas.last == area %>">
-                    <%= form_for @content, :remote => true, :html => { :'data-type' => 'html' } do |form| %>
-                      <%= hidden_field_tag :partial, 'tagged_area' %>
-                      <%= form.fields_for :areas_contents, @content.areas_contents.build do |areas_contents| %>
-                        <%= areas_contents.hidden_field :area_id, :value => area.id %>
-                      <% end -%>
-                      <%= form.submit area.name %>
+                  <%= form_for @content, :remote => true, :html => { :'data-type' => 'html' } do |form| %>
+                    <%= hidden_field_tag :partial, 'tagged_area' %>
+                    <%= form.fields_for :areas_contents, @content.areas_contents.build do |areas_contents| %>
+                      <%= areas_contents.hidden_field :area_id, :value => area.id %>
                     <% end -%>
+                    <%= form.submit area.name %>
+                  <% end -%>
                   </li>
                   <% end if @areas %>
                 </ul>
@@ -84,23 +84,24 @@
           </div>
         <% end -%>
 
-          <div class="content">
-            <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
-            <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'remove'} do |form| %>
-              <%= form.fields_for :news_data do |news_data| %>
-                <%= news_data.fields_for :image do |image| %>
-                  <%= image.hidden_field :_destroy, :value => true %>
-                  <%= image.submit '', :class => :remove %>
-                <% end -%>
+        <!-- IMAGE -->
+        <div class="image_editor">
+          <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+
+          <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'remove'} do |form| %>
+            <%= form.fields_for :news_data do |news_data| %>
+              <%= news_data.fields_for :image do |image| %>
+                <%= image.hidden_field :_destroy, :value => true %>
+                <%= image.submit '', :class => :remove %>
               <% end -%>
             <% end -%>
-          </div>
+          <% end -%>
 
-          <div class="add_image">
+          <div class="add_image<%= ' hidden' if @content.news_data.image.present? -%>">
             <a href="#">Añadir foto</a>
           </div>
 
-          <div class="input_field uploader placeholder">
+          <div class="input_field uploader placeholder<%= ' hidden' if @content.news_data.image.present? -%>">
             <input type="text" />
             <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_new_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
             <span class="percentage">0%</span>
@@ -108,11 +109,13 @@
             <div class="progress"></div>
           </div>
 
-        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable image'} do |form| %>
-          <%= form.fields_for :news_data do |news_data| %>
-            <%= news_data.file_field :image %>
+          <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable image'} do |form| %>
+            <%= form.fields_for :news_data do |news_data| %>
+              <%= news_data.file_field :image %>
+            <% end -%>
           <% end -%>
-        <% end -%>
+        </div>
+        <!-- IMAGE -->
 
         <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
           <%= content_tag :div, (sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil), :class => :content  %>
@@ -156,4 +159,4 @@
   </div>
 
 
-        <%= render "shared/event_edit" %>
+  <%= render "shared/event_edit" %>

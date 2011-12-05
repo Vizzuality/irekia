@@ -11,7 +11,8 @@ $(function() {
   $(".editable.text").enableTextEditing();
   $(".editable.target").enableTargetEditing();
   $(".editable.date").enableDateEditing();
-  $(".editable.image").enableImageEditing();
+  //$(".editable.image").enableImageEditing();
+  $(".image_editor").enableImageEditing();
   $(".editable.location .footer").enableLocationEditing();
 
   $(".right .tags.editable").enableEditTags();
@@ -21,7 +22,6 @@ $(function() {
   $('.tabs').tabs();
 
   $(".slideshow").enableSlideshow();
-
 
   // Pagination
   $(".more_proposals").enablePagination({name: "proposals"});
