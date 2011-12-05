@@ -101,7 +101,7 @@
             <a href="#">Añadir foto</a>
           </div>
 
-          <div class="input_field uploader placeholder<%= ' hidden' if @content.news_data.image.present? -%>">
+          <div class="input_field uploader placeholder"<%= " style='display:none'" unless @content.news_data.image.present? -%>>
             <input type="text" />
             <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_new_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
             <span class="percentage">0%</span>
