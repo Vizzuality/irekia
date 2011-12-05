@@ -1,7 +1,7 @@
 <div class="autosuggest">
   <ul>
-    <% if @areas %>
-      <% @areas.each do |area| %>
+    <% if @search_results[:areas] %>
+      <% @search_results[:areas].each do |area| %>
         <li id="item_<%= area.id %>" class="area clearfix">
         <%= avatar area, 'small' %>
         <p>
@@ -11,8 +11,8 @@
         </li>
       <% end %>
     <% end %>
-    <% if @politicians %>
-      <% @politicians.each do |politician| %>
+    <% if @search_results[:politicians] %>
+      <% @search_results[:politicians].each do |politician| %>
         <li id="item_<%= politician.id%>" class="user clearfix">
         <%= avatar politician, 'small' %>
         <p>
