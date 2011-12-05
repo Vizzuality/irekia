@@ -552,6 +552,9 @@
           you: 'Has contestado a "%{question}"'
           other: '%{author} ha contestado a "%{question}"'
         author: '%{author} &middot; <span class="answered">Contestada hace %{time}</span>'
+      answer_request:
+        title: 'Ha sido reclamada la pregunta %{question}'
+        author: '%{author} &middot; <span class="answered">Contestada hace %{time}</span>'
       question:
         title: 'Pregunta para %{receiver}:'
         author: '%{author} hace %{time}'

@@ -17,6 +17,39 @@ class AnswerRequest < Participation
     question
   end
 
+  def as_json(options = {})
+    super({
+      :question_text         => question.question_text,
+      :answer_requests_count => question.answer_requests_count
+    })
+  end
+
+  def publish
+    super
+
+    case
+    when question.target_user
+      user_action              = question.target_user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
+      user_action.published_at = self.published_at
+      user_action.message      = self.to_json
+      user_action.save!
+
+      question.target_user.areas.each do |area|
+        area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
+        area_action.published_at = self.published_at
+        area_action.message      = self.to_json
+        area_action.save!
+      end
+
+    when question.target_area
+      area_action              = question.target_area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
+      area_action.published_at = self.published_at
+      area_action.message      = self.to_json
+      area_action.save!
+    end
+  end
+  private :publish
+
   def set_as_moderated
     self.moderated = true
   end

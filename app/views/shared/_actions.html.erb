@@ -50,7 +50,7 @@
 
       <li>
       <% if @questions_count > 0 || @answers_count > 0 %>
-        <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => [:question, :answer], :referer => action_name), :class => "filter" %>
+        <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => [:question, :answer, :answer_request], :referer => action_name), :class => "filter" %>
       <% else %>
         <p><%= t('.no_content_filters.questions') %></p>
       <% end %>
