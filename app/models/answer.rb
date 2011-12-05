@@ -23,11 +23,16 @@ class Answer < Content
     answer_text
   end
 
+  def question_published_at
+    question.published_at
+  end
+
   def as_json(options = {})
     super({
-      :question_id     => question.try(:id),
-      :question_text   => question_text,
-      :answer_text     => answer_text
+      :question_id           => question.try(:id),
+      :question_text         => question_text,
+      :question_published_at => question_published_at,
+      :answer_text           => answer_text
     })
   end
 

@@ -551,14 +551,14 @@
         title:
           you: 'Has contestado a "%{question}"'
           other: '%{author} ha contestado a "%{question}"'
-        author: '%{author} &middot; <span class="answered">Contestada hace %{time}</span>'
+        author: '%{author} &middot; <span class="answered">Contestada %{time} después</span>'
       answer_request:
         title: 'Ha sido reclamada la pregunta %{question}'
-        author: '%{author} &middot; <span class="answered">Contestada hace %{time}</span>'
+        author: '%{author} hace %{time}'
       question:
         title: 'Pregunta para %{receiver}:'
         author: '%{author} hace %{time}'
-        answered: 'Contestada hace %{time}'
+        answered: 'Contestada %{time} después'
         not_answered: 'Aún no contestada'
         read_more: 'Leer más'
       question_mini:
