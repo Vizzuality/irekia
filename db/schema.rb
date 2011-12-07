@@ -22,15 +22,6 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
 
   add_index "answer_data", ["answer_id"], :name => "index_answer_data_on_answer_id"
 
-  create_table "answer_opinion_data", :force => true do |t|
-    t.integer  "answer_opinion_id"
-    t.boolean  "satisfactory",      :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "answer_opinion_data", ["answer_opinion_id"], :name => "index_answer_opinion_data_on_answer_opinion_id"
-
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
     t.text     "message"
@@ -166,16 +157,6 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
   add_index "follows", ["follow_item_id"], :name => "index_follows_on_follow_item_id"
   add_index "follows", ["follow_item_type"], :name => "index_follows_on_follow_item_type"
 
-  create_table "geometry_columns", :id => false, :force => true do |t|
-    t.string  "f_table_catalog",   :limit => 256, :null => false
-    t.string  "f_table_schema",    :limit => 256, :null => false
-    t.string  "f_table_name",      :limit => 256, :null => false
-    t.string  "f_geometry_column", :limit => 256, :null => false
-    t.integer "coord_dimension",                  :null => false
-    t.integer "srid",                             :null => false
-    t.string  "type",              :limit => 30,  :null => false
-  end
-
   create_table "images", :force => true do |t|
     t.integer  "photo_id"
     t.integer  "user_id"
@@ -266,14 +247,6 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.string   "name_i18n_key"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "spatial_ref_sys", :id => false, :force => true do |t|
-    t.integer "srid",                      :null => false
-    t.string  "auth_name", :limit => 256
-    t.integer "auth_srid"
-    t.string  "srtext",    :limit => 2048
-    t.string  "proj4text", :limit => 2048
   end
 
   create_table "status_message_data", :force => true do |t|
