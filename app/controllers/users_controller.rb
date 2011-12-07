@@ -112,6 +112,10 @@ class UsersController < ApplicationController
     render :layout => !request.xhr?
   end
 
+  def settings
+    session[:return_to] = settings_user_path(@user)
+  end
+
   def redirect_to_politician_page?
     redirect_to politician_path(@user) if @user.politician? unless current_user == @user
   end
