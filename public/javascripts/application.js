@@ -40,7 +40,7 @@ $(function() {
   $(".view_calendar").viewCalendar();
   $(".view_map").viewMap();
 
-  $('nav form').autocomplete();
+  $('nav form').autocompleteSearch();
 
   // Radio binding
   $('a.radio').click(function(e){

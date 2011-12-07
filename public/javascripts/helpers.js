@@ -633,11 +633,14 @@ jQuery.fn.enableImageEditing = function(opt){
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);
           $uploader.find(".percentage").fadeOut(speed);
+          //$uploader.find("form").submit();
 
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
 
-					//$('.image_cache_name').val(responseJSON.image_cache_name);
+					$('.image_cache_name').val(responseJSON.image_cache_name);
+
+          //console.log($(".image_cache_name"));
 
           $(cacheImage).bind("load", function () {
 
@@ -903,7 +906,7 @@ jQuery.preloadImages = function(){
 }
 
 /* Autocomplete */
-jQuery.fn.autocomplete = function(opt){
+jQuery.fn.autocompleteSearch = function(opt){
 
   var speed  = (opt && opt.speed) || 200;
   var interval;
