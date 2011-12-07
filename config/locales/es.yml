@@ -1043,11 +1043,11 @@
         back: volver
         see_all_proposals: Ver todas las propuestas a este área
         in_favor:
-            zero: '%{percentage}% a favor (%{count} votos)'
+            zero: '%{percentage}% a favor (nadie ha votado todavía)'
             one:  '%{percentage}% a favor (%{count} voto)'
             other: '%{percentage}% a favor (%{count} votos)'
         against:
-            zero: '%{percentage}% en contra (%{count} votos)'
+            zero: '%{percentage}% en contra (nadie ha votado todavía)'
             one:  '%{percentage}% en contra (%{count} voto)'
             other: '%{percentage}% en contra (%{count} votos)'
         title_author_and_comments:
