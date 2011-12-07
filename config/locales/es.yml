@@ -370,7 +370,7 @@
           one: Un comentario
           other: '%{count} comentarios'
       politicians:
-        title: Políticos etiquetados en la imagen
+        title: Políticos etiquetados en la noticia
       tags:
         title: Tags
         add_tags: "Añadir tags"
@@ -669,7 +669,7 @@
         Send: Enviar
 
     questions:
-      no_questions: 
+      no_questions:
         user: "No hay preguntas para %{target}"
         area: "No hay preguntas en este área"
       title: Preguntas de los ciudadanos
@@ -688,7 +688,7 @@
       more: ver más preguntas
 
     proposals:
-      no_proposals: 
+      no_proposals:
         user: "No hay propuestas para %{target}"
         area: "No hay propuestas en este área"
       title: Propuestas
@@ -755,10 +755,18 @@
           zero: 'Ningún nuevo seguidor'
           one: '%{name} te ha empezado a seguir'
           other: '%{count} te han empezado a seguir'
+        question:
+          zero: 'Ninguna pregunta nueva'
+          one: 'Tienes una nueva %{question}'
+          other: 'Tienes %{count} nuevas preguntas'
         answer:
           zero: 'Ninguna respuesta nueva a tus preguntas'
           one: '%{question} ha sido respondida'
           other: 'Tus preguntas han sido respondidas'
+        proposal:
+          zero: 'Ninguna propuesta nueva'
+          one: 'Tienes una nueva %{proposal}'
+          other: 'Tienes %{count} nuevas propuestas'
         vote_proposal_author:
           zero: 'Ningún voto nuevo'
           one: 'Nuevo voto en %{content}'
@@ -1773,6 +1781,5 @@
       content_link: contenido que has enviado
       thanks: Gracias por participar en Irekia.
     rejected:
-      rejected: 'El %{link} ha sido rechazado.'
-      content_link: contenido que has enviado
+      rejected: 'El contenido que has enviado ha sido rechazado.'
       thanks: Gracias por participar en Irekia.

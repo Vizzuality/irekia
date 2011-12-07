@@ -63,8 +63,18 @@
 
             <div class="footer clearfix">
               <div class="left">
-                <div class="checkbox_button facebook"><a href="#" class="checkbox"><div class="icon"></div> </a></div>
-                <div class="checkbox_button twitter"><a href="#" class="checkbox"><div class="icon"></div> </a></div>
+                <div class="checkbox_button facebook">
+                  <%= check_box_tag :share_in_facebook %>
+                  <a href="#" class="checkbox">
+                    <div class="icon"></div>
+                  </a>
+                </div>
+                <div class="checkbox_button twitter">
+                  <%= check_box_tag :share_in_twitter %>
+                  <a href="#" class="checkbox">
+                    <div class="icon"></div>
+                  </a>
+                </div>
               </div>
               <div class="right"><%= form.submit t(".publish"), :id => "submit-123", :class => 'white_button pink disabled', :disabled => :disabled %></div>
             </div>

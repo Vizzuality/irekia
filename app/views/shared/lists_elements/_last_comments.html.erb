@@ -14,7 +14,7 @@
       </ul>
     <% end -%>
     <%= form_for Comment.new, :remote => true, :html => {:id => "comment_#{data.id}", :class => "clearfix", :'data-type' => 'html'} do |form| %>
-      <%= hidden_field_tag :partial, 'comment_mini' %>
+      <%= hidden_field_tag :partial, 'comment' %>
       <div class="input_field textarea placeholder">
         <% if user_signed_in? -%>
           <%= form.hidden_field :user_id, :value => current_user.id %>

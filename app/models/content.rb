@@ -225,7 +225,7 @@ class Content < ActiveRecord::Base
   end
   private :publish
 
-  def notification_for(user)
+  def notification_for(user = nil)
     tagged_politicians.each{|politician| Notification.for(politician, self)}
   end
 
