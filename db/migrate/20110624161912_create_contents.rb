@@ -10,6 +10,7 @@ class CreateContents < ActiveRecord::Migration
       t.boolean  :moderated, :default => false
       t.boolean  :rejected, :default => false
       t.datetime :moderated_at
+      t.string   :location
       t.float    :latitude
       t.float    :longitude
 

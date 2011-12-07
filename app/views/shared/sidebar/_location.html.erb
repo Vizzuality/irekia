@@ -4,6 +4,11 @@
   <ul class="location no-bullets<%= ' editable' if @editable -%>">
     <li>
     <div class="map" id="map_<%= @content.id %>"></div>
+    <%= form_for @content, :remote => true, :html => { :'data-type' => :html, :id => 'wadus' } do |f| %>
+      <%= f.hidden_field :location,  :id => :location %>
+      <%= f.hidden_field :latitude,  :id => :latitude %>
+      <%= f.hidden_field :longitude, :id => :longitude %>
+    <% end -%>
 
     <div class="footer">
       <% if @content.location %>
