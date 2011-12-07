@@ -871,7 +871,7 @@ jQuery.fn.enableArguments = function(opt){
     $(this).find(".new_argument").bind('ajax:success', function(evt, xhr, status) {
       spinner.stop();
 
-      if (xhr) {
+      if (!$(xhr).hasClass("empty")) {
         var $response = $(xhr);
         $response.hide();
         $el.find("ul").append($response);
