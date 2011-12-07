@@ -370,7 +370,7 @@
           one: Un comentario
           other: '%{count} comentarios'
       politicians:
-        title: Políticos etiquetados en la imagen
+        title: Políticos etiquetados en la noticia
       tags:
         title: Tags
         add_tags: "Añadir tags"
