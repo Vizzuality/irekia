@@ -8,7 +8,6 @@ class CreateEventData < ActiveRecord::Migration
       t.string :title
       t.string :subtitle
       t.text :body
-      t.string :location
 
       t.timestamps
     end

@@ -2995,3 +2995,196 @@ soundManager.onready(function() {
   pagePlayer.init(typeof PP_CONFIG !== 'undefined' ? PP_CONFIG : null);
 });
 
+
+
+
+
+/*
+ * jQuery UI addresspicker @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Progressbar
+ *
+ * Depends:
+ *   jquery.ui.core.js
+ *   jquery.ui.widget.js
+ *   jquery.ui.autocomplete.js
+ */
+(function( $, undefined ) {
+
+$.widget( "ui.addresspicker", {
+	options: {
+	  appendAddressString: "",
+		mapOptions: {
+		  zoom: 5, 
+		  center: new google.maps.LatLng(46, 2), 
+		  scrollwheel: false,
+		  mapTypeId: google.maps.MapTypeId.ROADMAP
+		},
+		elements: {
+		  map: false,
+		  lat: false,
+		  lng: false,
+		  locality: false,
+		  country: false
+		},
+		geocoder: {},
+	  draggableMarker: true
+	},
+
+	marker: function() {
+		return this.gmarker;
+	},
+	
+	map: function() {
+	  return this.gmap;
+	},
+
+  updatePosition: function() {
+    this._updatePosition(this.gmarker.getPosition());
+  },
+  
+  reloadPosition: function() {
+    this.gmarker.setVisible(true);
+    this.gmarker.setPosition(new google.maps.LatLng(this.lat.val(), this.lng.val()));
+    this.gmap.setCenter(this.gmarker.getPosition());
+  },
+  
+  selected: function() {
+    return this.selectedResult;
+  },
+  
+	_create: function() {
+	  this.geocoder = new google.maps.Geocoder();
+	  this.element.autocomplete({
+			source: $.proxy(this._geocode, this),  
+			focus:  $.proxy(this._focusAddress, this),
+			select: $.proxy(this._selectAddress, this)
+		});
+		
+		this.lat      = $(this.options.elements.lat);
+		this.lng      = $(this.options.elements.lng);
+		this.locality = $(this.options.elements.locality);
+		this.country  = $(this.options.elements.country);
+		if (this.options.elements.map) {
+		  this.mapElement = $(this.options.elements.map);
+  		this._initMap();
+		}
+	},
+
+  _initMap: function() {
+    if (this.lat && this.lat.val()) {
+      this.options.mapOptions.center = new google.maps.LatLng(this.lat.val(), this.lng.val());
+    }
+    // Map
+    this.gmap = new google.maps.Map(this.mapElement[0], this.options.mapOptions);
+    // Marker
+    var image = new google.maps.MarkerImage('/images/maps_sprite.png', new google.maps.Size(24, 34), new google.maps.Point(0,67), new google.maps.Point(12, 30));
+    this.gmarker = new google.maps.Marker({ position: this.options.mapOptions.center, map: this.gmap, icon: image, draggable: this.options.draggableMarker });
+    google.maps.event.addListener(this.gmarker, 'dragend', $.proxy(this._markerMoved, this));
+    this.gmarker.setVisible(false);
+
+		// geocoder (geocoder and reverse)
+    this.geocoder = new google.maps.Geocoder();
+
+    //Zooms
+    // zoomIn
+    var zoomInControlDiv = document.createElement('DIV');
+    var zoomInControl = new ZoomInControl(zoomInControlDiv, this.gmap);
+    zoomInControlDiv.index = 1;
+    this.gmap.controls[google.maps.ControlPosition.TOP_LEFT].push(zoomInControlDiv);
+
+    // zoomOut
+    var zoomOutControlDiv = document.createElement('DIV');
+    var zoomOutControl = new ZoomOutControl(zoomOutControlDiv, this.gmap);
+    zoomOutControlDiv.index = 2;
+    this.gmap.controls[google.maps.ControlPosition.LEFT].push(zoomOutControlDiv);
+  },
+  
+  _updatePosition: function(location) {
+    if (this.lat) {
+      this.lat.val(location.lat());
+    }
+    if (this.lng) {
+      this.lng.val(location.lng());
+    }
+  },
+  
+  _markerMoved: function() {
+  	this.element.autocomplete("close");
+  	this._reverseGeocode(this.gmarker.getPosition());
+    this._updatePosition(this.gmarker.getPosition());
+  },
+  
+  // Autocomplete source method: fill its suggests with google geocoder results
+  _geocode: function(request, response) {
+    var address = request.term, self = this,
+        options = this.options.geocoder;
+    options.address = address + this.options.appendAddressString;
+    this.geocoder.geocode(options, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+          results[i].label =  results[i].formatted_address;
+        };
+      } 
+      response(results);
+    });
+  },
+
+  _reverseGeocode: function(latlng) {
+  	var that = this;
+  	this.geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+        	that.element.val(results[1].formatted_address);
+        	that.element.trigger('autocompletechange');
+        }
+      }
+    });
+  },
+  
+  _findInfo: function(result, type) {
+    for (var i = 0; i < result.address_components.length; i++) {
+      var component = result.address_components[i];
+      if (component.types.indexOf(type) !=-1) {
+        return component.long_name;
+      }
+    }
+    return false;
+  },
+  
+  _focusAddress: function(event, ui) {
+    var address = ui.item;
+    if (!address) {
+      return;
+    }
+    
+    if (this.gmarker) {
+      this.gmarker.setPosition(address.geometry.location);
+      this.gmarker.setVisible(true);
+
+      this.gmap.fitBounds(address.geometry.viewport);
+    }
+    this._updatePosition(address.geometry.location);
+    
+    if (this.locality) {
+      this.locality.val(this._findInfo(address, 'locality'));
+    }
+    if (this.country) {
+      this.country.val(this._findInfo(address, 'country'));
+    }
+  },
+  
+  _selectAddress: function(event, ui) {
+    this.selectedResult = ui.item;
+  }
+});
+
+$.extend( $.ui.addresspicker, {
+	version: "@VERSION"
+});
+
+})( jQuery );

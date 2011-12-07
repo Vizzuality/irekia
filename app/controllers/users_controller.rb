@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :private_politician_or_public?
   before_filter :user_is_current_user?,        :only => [:edit, :update]
   before_filter :per_page,                     :only => [:show, :actions, :questions, :proposals]
-  before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
+  before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda, :settings]
   before_filter :get_counters,                 :only => [:show, :actions, :questions, :proposals]
   before_filter :models_for_forms,             :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :get_questions,                :only => [:questions]

@@ -167,6 +167,7 @@ def create_event(params)
 
   event = Event.new
   event.author     = params[:user]
+  event.location   = params[:location]
   event.latitude   = params[:latitude]
   event.longitude  = params[:longitude]
   event.tags       = params[:tags]
@@ -175,7 +176,6 @@ def create_event(params)
     :subtitle   => params[:subtitle],
     :body       => params[:body],
     :event_date => params[:date],
-    :location   => params[:location],
     :image      => params[:image]
   })
   event.save!

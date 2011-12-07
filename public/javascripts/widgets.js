@@ -1492,7 +1492,8 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   methods = { },
   interval,
   lat,
-  lng
+  lng,
+  geocoder,
   // Default values
   defaults = {
     easingMethod:'easeInOutQuad',
@@ -1725,14 +1726,14 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 
     var
     maxZoom = (opt && opt.maxZoom) || 16,
-    zoom    = (opt && opt.zoom)    || 15,
-    lat     = (opt && opt.lat)     || 80,
-    lng     = (opt && opt.lng)     || 80;
+    zoom    = (opt && opt.zoom)    || 12,
+    lat     = (opt && opt.lat)     || 40.463667,
+    lng     = (opt && opt.lng)     || -3.74922;
 
     var center  = new google.maps.LatLng(opt.lat, opt.lng);
 
     var latlng = center;
-    var myOptions = {
+    var mapOptions = {
       maxZoom: maxZoom,
       zoom: zoom,
       center: latlng,
@@ -1747,37 +1748,21 @@ jQuery.fn.enablePoliticianPublish = function(opt){
       },
     };
 
-    map = new google.maps.Map(document.getElementById(mapID), myOptions);
 
-    // zoomIn
-    var zoomInControlDiv = document.createElement('DIV');
-    var zoomInControl = new ZoomInControl(zoomInControlDiv, map);
-    zoomInControlDiv.index = 1;
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(zoomInControlDiv);
+    var addresspicker = data.$ps.find('.input_field input');
+    addresspicker.addresspicker({
+      elements: {
+        map:      "#"+mapID
+      },
+      mapOptions: mapOptions
+    });
 
-    // zoomOut
-    var zoomOutControlDiv = document.createElement('DIV');
-    var zoomOutControl = new ZoomOutControl(zoomOutControlDiv, map);
-    zoomOutControlDiv.index = 2;
-    map.controls[google.maps.ControlPosition.LEFT].push(zoomOutControlDiv);
+    addresspicker.bind('autocompletechange',function(){
+      _enableSubmit(data.$submit);
+    });
 
-    var center = new google.maps.LatLng(lat, lng);
-
-    var image = new google.maps.MarkerImage('/images/maps_sprite.png', new google.maps.Size(24, 34), new google.maps.Point(0,67), new google.maps.Point(12, 30));
-
-    var marker = new google.maps.Marker({ position: center, map: map, icon: image, draggable: true });
-
-    google.maps.event.addListener(marker, 'dragend', _dragEnd);
-
-    var mapBounds = new google.maps.LatLngBounds();
-    mapBounds.extend(center);
-    map.fitBounds(mapBounds);
   }
 
-  function _dragEnd(args) {
-    var data = $popover.data(store);
-    _enableSubmit(data.$submit);
-  }
 
   // Close popover
   function _close(hideLockScreen, callback) {
