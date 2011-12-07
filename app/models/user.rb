@@ -261,7 +261,7 @@ class User < ActiveRecord::Base
 
   def get_private_actions(filters)
     actions = self.private_actions
-    actions = actions.where(:event_type => filters[:type].camelize) if filters[:type].present?
+    actions = actions.where(:event_type => [filters[:type]].flatten.map(&:camelize)) if filters[:type].present?
 
     actions = if filters[:more_polemic] == 'true'
       actions.more_polemic
