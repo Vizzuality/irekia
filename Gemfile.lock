@@ -135,6 +135,8 @@ GEM
     json_pure (1.6.3)
     kaminari (0.12.4)
       rails (>= 3.0.0)
+    kss (0.1.1)
+      sass (>= 3.1)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     linecache19 (0.5.12)
@@ -298,6 +300,7 @@ DEPENDENCIES
   irbtools
   json (= 1.6.1)
   kaminari (= 0.12.4)
+  kss
   launchy
   mini_fb (= 1.1.7)
   mini_magick (= 3.3)

@@ -1,6 +1,8 @@
+// general spinner configuration
 var SPINNER_OPTIONS = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
 var IrekiaSpinner = new Spinner(SPINNER_OPTIONS);
 
+// String methods
 String.prototype.trim=function(){return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');};
 String.prototype.ltrim=function(){return this.replace(/^\s+/,'');}
 String.prototype.rtrim=function(){return this.replace(/\s+$/,'');}
@@ -493,7 +495,6 @@ jQuery.fn.enablePoliticianTags = function(opt){
    var $response = $(xhr);
    $response.hide();
    $addInputField.parents("li").before($response);
-   console.log($response);
    $response.fadeIn(speed);
    $addInput.html("");
  });

@@ -1150,7 +1150,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
         return $this;
       } else {
         data.id = id;
-        data.$this = $this;
+        data.$handle = $this;
         data.settings = settings;
         data.name = store;
         data.event = "_close." + store;
@@ -1168,11 +1168,10 @@ jQuery.fn.enablePoliticianPublish = function(opt){
       // Save the updated $ps reference into our data object
       data.$ps = $ps;
 
-      // Save the notificationPopover data onto the <select> element
+      // Save the notificationPopover data
       $this.data(store, data);
-
-      // Do the same for the dropdown, but add a few helpers
       $ps.data(store, data);
+
       $(window).bind(data.event, function() { _close(data); });
     });
   };
@@ -1205,6 +1204,12 @@ jQuery.fn.enablePoliticianPublish = function(opt){
       _close(data);
     } else {
       $(".notification_selector").addClass("open");
+
+      // reset the counter
+      data.$handle.html(0);
+      data.$handle.addClass("empty_count");
+      data.$handle.removeClass("count");
+
       _addDefaultAction(data);
       _open(data);
       GOD.subscribe(data.event);

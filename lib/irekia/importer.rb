@@ -24,8 +24,8 @@ module Irekia
 
             news = News.new
             news.news_data = NewsData.create(:title      => news_item.title.sanitize,
-                                          :body          => news_item.summary.sanitize,
-                                          :source_url    => news_item.url)
+                                             :body          => news_item.summary.sanitize,
+                                             :source_url    => news_item.url)
             news.external_id = news_item.entry_id
             news.moderated = true
             news.news_data.image = Image.new({
@@ -80,8 +80,9 @@ module Irekia
               event.event_data = EventData.new(:title      => event_data.summary,
                                                :body       => event_data.description,
                                                :event_date => event_data.dtstart,
-                                               :duration   => event_data.dtend - event_data.dtstart,
-                                               :location   => event_data.location)
+                                               :duration   => event_data.dtend - event_data.dtstart)
+
+              event.location  = event_data.location
               event.moderated = true
               event.users << User.politicians.sample
               event.save!

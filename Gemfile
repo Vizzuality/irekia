@@ -15,6 +15,7 @@ gem 'mini_fb', '1.1.7'
 gem 'twitter', '1.7.2'
 gem 'feedzirra', '0.1.1'
 gem 'ri_cal', '0.8.8'
+gem 'kss'
 
 group :development do
   gem 'capistrano'
