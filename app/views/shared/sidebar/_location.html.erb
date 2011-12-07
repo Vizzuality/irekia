@@ -11,16 +11,14 @@
     <% end -%>
 
     <div class="footer">
-      <% if @content.location %>
-        <%= @content.location %>
-      <% else %>
-        <span class="where">Añade un lugar</span>
-      <% end %>
+      <span class="where"><%= @content.location || 'Añade un lugar' %></span>
     </div>
 
     <%= content_for :js_data do %>
       <script type="text/javascript" charset="utf-8">
-        startMiniMap("map_<%= @content.id %>", <%= @content.latitude || 43.2740737 %>, <%= @content.longitude || -2.9588895 %>, false);
+        var miniLat = <%= @content.latitude || 42.8464027 %>,
+            miniLng = <%= @content.longitude ||  -2.6716728 %>;
+        startMiniMap("map_<%= @content.id %>", miniLat, miniLng, false);
       </script>
     <% end %>
     </li>

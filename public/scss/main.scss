@@ -2022,7 +2022,9 @@ p.info span.comments a {
 }
 
 span.where, .map .infowindow ul.details li.where {
+  display:block;
   width:207px;
+  max-width:207px;
   max-height:26px;
   padding: 0 0 0 17px;
   background: url('/images/maps_sprite.png') no-repeat -51px -65px;

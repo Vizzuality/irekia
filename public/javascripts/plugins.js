@@ -3017,6 +3017,7 @@ soundManager.onready(function() {
 
 $.widget( "ui.addresspicker", {
 	options: {
+		defaultAddress: '',
 	  appendAddressString: "",
 		mapOptions: {
 		  zoom: 5, 
@@ -3085,7 +3086,15 @@ $.widget( "ui.addresspicker", {
     var image = new google.maps.MarkerImage('/images/maps_sprite.png', new google.maps.Size(24, 34), new google.maps.Point(0,67), new google.maps.Point(12, 30));
     this.gmarker = new google.maps.Marker({ position: this.options.mapOptions.center, map: this.gmap, icon: image, draggable: this.options.draggableMarker });
     google.maps.event.addListener(this.gmarker, 'dragend', $.proxy(this._markerMoved, this));
-    this.gmarker.setVisible(false);
+
+    // If we have a location defined, show the marker.
+    if (this.options.defaultAddress=='') {
+    	this.element.val('');
+    	this.gmarker.setVisible(false);
+    }	else {
+    	this.element.val(this.options.defaultAddress);
+    	this.gmarker.setVisible(true);
+    }
 
 		// geocoder (geocoder and reverse)
     this.geocoder = new google.maps.Geocoder();
@@ -3125,6 +3134,7 @@ $.widget( "ui.addresspicker", {
         options = this.options.geocoder;
     options.address = address + this.options.appendAddressString;
     this.geocoder.geocode(options, function(results, status) {
+    	console.log(results);
       if (status == google.maps.GeocoderStatus.OK) {
         for (var i = 0; i < results.length; i++) {
           results[i].label =  results[i].formatted_address;

@@ -18,7 +18,7 @@
       <% if @proposals.count > 0 %>
         <%= render 'shared/proposals_list' if @proposals %>
       <% else %>
-        <span class="empty">No hay propuestas en este area</span>
+        <span class="empty"><%= t(".no_proposals.#{(@area || @user).class.name.downcase}", :target => (@area || @user).name ) %></span>
       <% end %>
     </div>
   </div>
