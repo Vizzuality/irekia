@@ -1804,17 +1804,15 @@ form.editable .input_field textarea, form.editable .input_field input[type="text
 #container .article .inner .left .image_editor .input_field { width: 605px; height: 36px; padding: 0; margin: 10px 0 0 0; border: none; }
 #container .article .inner .left .image_editor .input_field .holder { width: 600px; }
 #container .article .inner .left .image_editor .input_field input[type="text"] { width: 585px; border: 1px solid #ccc; font-size: 15px; }
-#container .article .inner .left .image_editor .image_container { display: none; float: left; width: 534px; padding: 10px; margin: 0 0 20px 0; background: #EDF3E5; line-height: normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
-#container .article .inner .left .image_editor .image_container img { display: none; float: left; margin: 0 10px 0 0; height: 72px; }
-#container .article .inner .left .image_editor .image_container p { float: left; margin: 30px 0 0 0; line-height: normal; font-size: 15px; color: #7D8A92; }
-#container .article .inner .left .image_editor .image_container a { float: right; margin: 30px 10px 0 0; line-height: normal; font-size: 15px; }
+#container .article .inner .left .image_editor .image_container { float: left; position: relative; width: 605px; }
+#container .article .inner .left .image_editor .image_container img { float: left; width: 605px; }
 #container .article .inner .left .image_editor .percentage { display: none; margin-left: -343px; position: absolute; top: 10px; right: 50%; font-size: 15px; color: #FF0066; z-index: 2010; font-weight: bold; }
 #container .article .inner .left .image_editor .loading { display: none; position: absolute; top: 10px; right: 10px; font-size: 15px; color: #CCCCCC; z-index: 2010; }
 #container .article .inner .left .image_editor .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
 #container .article .inner .left .image_editor .add_image { width: 606px; height: 53px; padding: 30px 0 0 0; background: url("/images/tag_sprite.png") no-repeat 0 -376px; text-align: center; }
 #container .article .inner .left .image_editor .add_image a { color: #f10063; font-size: 13px; }
 #container .article .inner .left .image_editor form.remove { position: absolute; top: 20px; right: 15px; }
-#container .article .inner .left .image_editor form.remove input.remove { width: 34px; height: 35px; display: block; background: url("/images/icons/icon_sprite.png") no-repeat 0 -406px; z-index: 2000; }
+#container .article .inner .left .image_editor form.remove input.remove { width: 34px; height: 35px; display: block; background: url("/images/icons/icon_sprite.png") no-repeat 0 -406px; border: none; outline: none; z-index: 2000; }
 #container .article .inner .left .image_editor .content { cursor: default; border: none; background: none; padding: 0; position: relative; }
 
 #container .inner .left .areas_editable_selector { position: absolute; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 -30px; z-index: 2000; }

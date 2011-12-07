@@ -550,12 +550,12 @@ jQuery.fn.enableImageEditing = function(opt){
   content;
 
   $(this).find(".remove").submit(function(e) {
-    $this.find(".content .remove").fadeOut(speed);
-    $this.find(".content img").fadeOut(speed, function() {
+    $this.find(".image_container .remove").fadeOut(speed);
+    $this.find(".image_container img").fadeOut(speed, function() {
       $(this).remove();
     });
 
-    $this.find(".add_image").fadeIn(speed);
+    //$this.find(".add_image").fadeIn(speed);
   });
 
   $(this).find(".add_image a").click(function(e) {
@@ -633,7 +633,6 @@ jQuery.fn.enableImageEditing = function(opt){
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);
           $uploader.find(".percentage").fadeOut(speed);
-          //$uploader.find("form").submit();
 
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
@@ -644,12 +643,15 @@ jQuery.fn.enableImageEditing = function(opt){
 
           $(cacheImage).bind("load", function () {
 
-            $this.find(".content").prepend(cacheImage);
-            $this.find(".content").fadeIn(speed);
-            $this.find(".content img").fadeIn(speed);
-            $this.find(".content .remove").fadeIn(speed);
+            $this.find(".image_container").prepend(cacheImage);
+            $this.find(".image_container").fadeIn(speed);
+            $this.find(".image_container img").fadeIn(speed);
+            $this.find(".image_container .remove").fadeIn(speed);
+
+            //$uploader.find("form #image_attributes").val()
 
             $uploader.fadeOut(speed, function() {
+              $uploader.find("form").submit();
               callback && callback();
             });
 

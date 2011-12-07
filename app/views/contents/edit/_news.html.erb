@@ -102,7 +102,7 @@
             <!-- remove -->
           </div>
 
-          <div class="add_image"<%= ' style="display:none"' if @content.news_data.image.present? %>>
+          <div class="add_image"<%= " style='display:none'" if @content.news_data.image.present? %>>
             <a href="#">Añadir foto</a>
           </div>
 
@@ -113,7 +113,7 @@
               <%= form.fields_for :news_data do |news_data| %>
                 <%= news_data.fields_for :image, (@content.news_data.image || @content.news_data.build_image) do |image|%>
                   <%= image.hidden_field :remote_image_url %>
-                  <%= image.hidden_field :image %>
+                  <%= image.hidden_field :image, :class => :image_cache_name %>
                   <%#= image.text_area :description %>
                 <% end -%>
               <% end -%>
