@@ -3134,13 +3134,14 @@ $.widget( "ui.addresspicker", {
         options = this.options.geocoder;
     options.address = address + this.options.appendAddressString;
     this.geocoder.geocode(options, function(results, status) {
-    	console.log(results);
       if (status == google.maps.GeocoderStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
+      	var array = [];
+        for (var i = 0; i < Math.min(results.length,3); i++) {
           results[i].label =  results[i].formatted_address;
+          array.push(results[i]);
         };
       } 
-      response(results);
+      response(array);
     });
   },
 
@@ -3150,7 +3151,7 @@ $.widget( "ui.addresspicker", {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
         	that.element.val(results[1].formatted_address);
-        	that.element.trigger('autocompletechange');
+        	that.element.trigger('reversegeocode');
         }
       }
     });
@@ -3190,7 +3191,7 @@ $.widget( "ui.addresspicker", {
   
   _selectAddress: function(event, ui) {
     this.selectedResult = ui.item;
-    this.element.trigger('autocompletechange');
+    this.element.val(ui.item.formatted_address);
   }
 });
 

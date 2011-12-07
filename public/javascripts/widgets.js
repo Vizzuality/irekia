@@ -1647,7 +1647,9 @@ jQuery.fn.enablePoliticianPublish = function(opt){
     data.$submit.unbind("click");
     data.$submit.click(function(e) {
       e.preventDefault();
-      callback && _doCallback(callback);
+      if (!$(this).hasClass('disabled')) {
+        callback && _doCallback(callback);
+      }
     });
   }
 
@@ -1756,12 +1758,22 @@ jQuery.fn.enablePoliticianPublish = function(opt){
       defaultAddress: $('#event_location_text').val() || ''
     });
 
-    addresspicker.bind('autocompletechange',function(ev){
+    addresspicker.bind('autocompleteselect reversegeocode',function(ev,ui){
+      ev.stopPropagation();
+      ev.preventDefault();
+
       var position = addresspickerMap.addresspicker('marker').getPosition(),
-          location = addresspicker.val();
-      $('#event_location_text').val(location),
-      $('#event_location_latitude').val(position.lat()),
+          location = '';
+      if (ui) {
+        location = ui.item.formatted_address;
+      } else {
+        location = data.$ps.find('.input_field input').val();
+      }
+
+      $('#event_location_text').val(location);
+      $('#event_location_latitude').val(position.lat());
       $('#event_location_longitude').val(position.lng());
+      
       _enableSubmit(data.$submit);
     });
 

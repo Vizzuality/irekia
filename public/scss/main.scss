@@ -5653,3 +5653,33 @@ ul.playlist li .peak .r {
   }
 }
 
+
+// Map autocomplete
+.ui-autocomplete {
+  width:213px!important;
+  height:auto;
+  margin:30px 0 0 0;
+  padding:8px 17px 8px 17px;
+  background:url("/images/box_notifications_selector.png") no-repeat right bottom;
+
+  span.peak {
+    position:absolute;
+    top:-10px;
+    left:0;
+    height:15px;
+    width:100%;
+    background:url("/images/box_notifications_selector.png") no-repeat left top;
+  }
+
+  li {
+    width:213px;
+    padding:10px 0;
+    font:normal 13px Arial;
+    color:#666666;
+    border-bottom:1px solid #F1F1F1;
+    a:hover {cursor:pointer;}
+    &:last-child {border:none}
+  }
+}
+
+
