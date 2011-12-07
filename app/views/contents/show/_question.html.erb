@@ -39,7 +39,7 @@
         <%= raw @content.answer.video_data.html if @content.answer.video_data && @content.answer.video_data.html.present? %>
       </div>
     <% else %>
-      <% if current_user && current_user.politician? -%>
+      <% if can_i_answer_the_question? -%>
         <div class="answering clearfix">
           <span class="peak"></span>
           <%= form_for @new_answer, :remote => true, :html => {:'data-type' => :html} do |form| %>
