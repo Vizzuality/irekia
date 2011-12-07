@@ -630,8 +630,7 @@ jQuery.fn.enableImageEditing = function(opt){
         onComplete: function(id, fileName, responseJSON){
           //data.spinner.stop();
 
-          console.log("complete");
-					//console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
 
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);

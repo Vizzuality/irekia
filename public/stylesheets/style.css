@@ -784,6 +784,9 @@ span.where, .map .infowindow ul.details li.where { width: 207px; max-height: 26p
 #container .article .social-links .twitter.disabled a { background-position: right -572px; }
 #container .article .social-links .twitter.disabled a:hover { text-decoration: none; cursor: default; }
 
+#container .article.connect.with_remark { margin-bottom: 40px!important; }
+#container .article.connect.with_remark .remark { position: absolute; width: 100%; bottom: -35px; text-align: center; }
+
 #container .article.with_remark { margin-bottom: 40px!important; }
 #container .article.with_remark .remark { position: absolute; width: 100%; bottom: -35px; text-align: center; }
 

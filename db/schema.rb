@@ -166,7 +166,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.integer  "event_data_id"
     t.string   "image"
     t.string   "title"
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

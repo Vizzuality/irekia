@@ -2516,6 +2516,18 @@ span.where, .map .infowindow ul.details li.where {
 }
 
 
+#container .article.connect.with_remark {
+
+  margin-bottom: 40px!important;
+
+  .remark {
+    position:absolute;
+    width:100%;
+    bottom:-35px;
+    text-align:center;
+  }
+}
+// Style for articles that have a link beneath them
 #container .article.with_remark {
 
   margin-bottom: 40px!important;
