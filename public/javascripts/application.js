@@ -40,7 +40,7 @@ $(function() {
   $(".view_calendar").viewCalendar();
   $(".view_map").viewMap();
 
-  $('nav form').autocomplete();
+  $('nav form').autocompleteSearch();
 
   // Radio binding
   $('a.radio').click(function(e){
@@ -161,22 +161,20 @@ $(function() {
 
   //$(".share.twitter, .share.facebook").share();
 
-  $(".share.twitter").click(function() {
+  $(".share.twitter").live("click", function() {
     var width  = 611,
     height = 400,
     left   = 21,
     top    = 44,
     url    = this.href,
-    opts   = 'status=1' +
-      ',width='  + width  +
-        ',height=' + height +
-          ',top='    + top    +
-            ',left='   + left;
+    opts   = 'status=1' + ',width='  + width  + ',height=' + height + ',top='    + top    + ',left='   + left;
 
     window.open(url, 'twitter', opts);
 
     return false;
   });
+
+  $(".share.inline, .share.more, .share.email").sharePopover();
 
   $(".show-hidden-comments").showHiddenComments();
 
@@ -190,7 +188,6 @@ $(function() {
   $(".politician_publish").politicianPublishPopover();
   $(".create_proposal").proposalPopover();
   $(".auth a.login").loginPopover();
-  $(".share.inline, .share.more, .share.email").sharePopover();
 
   //$('.avatar').prepend("<div class='ieframe'></div>");
   $(".with_filters").filterWidget();

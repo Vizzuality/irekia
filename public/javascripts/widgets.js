@@ -449,7 +449,7 @@ var GOD = (function() {
         return $this;
       } else {
         data.id = id;
-        data.$this = $this;
+        data.$handler = $this;
         data.settings = settings;
         data.$submit = $(this).next(".sharebox.email").find('input[type="submit"]');
         data.$input = $(this).next(".sharebox.email").find('input[type="text"]');
@@ -474,6 +474,22 @@ var GOD = (function() {
         $(this).fadeOut(data.settings.transitionSpeed);
         _shareWith($(this), "email", data.settings.transitionSpeed, data.settings.easing);
       });
+
+      $ps.next(".sharebox .share.twitter").bind('click', function(e) {
+        e.stopPropagation();
+
+          var width  = 611,
+          height = 400,
+          left   = 21,
+          top    = 44,
+          url    = this.href,
+          opts   = 'status=1' + ',width='  + width  + ',height=' + height + ',top='    + top    + ',left='   + left;
+
+          window.open(url, 'twitter', opts);
+
+          return false;
+      });
+
 
       $ps.next(".sharebox").bind('click', function(e) {
         e.stopPropagation();

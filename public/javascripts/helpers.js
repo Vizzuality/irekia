@@ -550,12 +550,12 @@ jQuery.fn.enableImageEditing = function(opt){
   content;
 
   $(this).find(".remove").submit(function(e) {
-    $this.find(".content .remove").fadeOut(speed);
-    $this.find(".content img").fadeOut(speed, function() {
+    $this.find(".image_container .remove").fadeOut(speed);
+    $this.find(".image_container img").fadeOut(speed, function() {
       $(this).remove();
     });
 
-    $this.find(".add_image").fadeIn(speed);
+    //$this.find(".add_image").fadeIn(speed);
   });
 
   $(this).find(".add_image a").click(function(e) {
@@ -637,16 +637,21 @@ jQuery.fn.enableImageEditing = function(opt){
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
 
-					//$('.image_cache_name').val(responseJSON.image_cache_name);
+					$('.image_cache_name').val(responseJSON.image_cache_name);
+
+          //console.log($(".image_cache_name"));
 
           $(cacheImage).bind("load", function () {
 
-            $this.find(".content").prepend(cacheImage);
-            $this.find(".content").fadeIn(speed);
-            $this.find(".content img").fadeIn(speed);
-            $this.find(".content .remove").fadeIn(speed);
+            $this.find(".image_container").prepend(cacheImage);
+            $this.find(".image_container").fadeIn(speed);
+            $this.find(".image_container img").fadeIn(speed);
+            $this.find(".image_container .remove").fadeIn(speed);
+
+            //$uploader.find("form #image_attributes").val()
 
             $uploader.fadeOut(speed, function() {
+              $uploader.find("form").submit();
               callback && callback();
             });
 
@@ -866,7 +871,7 @@ jQuery.fn.enableArguments = function(opt){
     $(this).find(".new_argument").bind('ajax:success', function(evt, xhr, status) {
       spinner.stop();
 
-      if (xhr) {
+      if (!$(xhr).hasClass("empty")) {
         var $response = $(xhr);
         $response.hide();
         $el.find("ul").append($response);
@@ -903,7 +908,7 @@ jQuery.preloadImages = function(){
 }
 
 /* Autocomplete */
-jQuery.fn.autocomplete = function(opt){
+jQuery.fn.autocompleteSearch = function(opt){
 
   var speed  = (opt && opt.speed) || 200;
   var interval;

@@ -31,7 +31,7 @@ module Irekia
             news.news_data.image = Image.new({
               :remote_image_url => news_image_url
             }) if news_image_url.present?
-            news.areas << Area.find(7)
+            news.areas << Area.all.sample
             news.users << User.politicians.sample
             news.save!
             print '.'

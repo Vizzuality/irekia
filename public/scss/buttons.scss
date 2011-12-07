@@ -597,7 +597,7 @@ form.editable,
 
 #container .article .inner .left .image_editor {
   float:left;
-  margin: 0;
+  margin: 0 0 10px 0;
 
   .hidden { display: none; }
 
@@ -618,18 +618,11 @@ form.editable,
   }
 
   .image_container {
-    display:none;
     float: left;
-    width: 534px;
-    padding:10px;
-    margin: 0 0 20px 0;
-    background:#EDF3E5;
-    line-height:normal;
-    @include border-radius(3px);
+    position:relative;
+    width:605px;
 
-    img { display:none; float:left; margin: 0 10px 0 0; height:72px; }
-    p { float:left; margin: 30px 0 0 0; line-height:normal; font-size: 15px; color: #7D8A92; }
-    a { float:right; margin: 30px 10px 0 0; line-height:normal; font-size:15px; }
+    img { float:left; width:605px; }
   }
 
   .percentage {
@@ -665,12 +658,15 @@ form.editable,
     z-index:2000;
   }
 
+  .uploader {
+  }
+
   .add_image {
     width:606px;
     height:83px - 30;
-    text-align:center;
-    background:url('/images/tag_sprite.png') no-repeat 0 -376px;
     padding: 30px 0 0 0;
+    background:url('/images/tag_sprite.png') no-repeat 0 -376px;
+    text-align:center;
     a { color: $pink; font-size:13px; }
   }
 
@@ -678,12 +674,16 @@ form.editable,
     position: absolute;
     top: 20px;
     right: 15px;
+
     input.remove {
       width:34px;
       height:35px;
       display: block;
       background: url('/images/icons/icon_sprite.png') no-repeat 0 -406px;
+      border:none;
+      outline:none;
       z-index:2000;
+
     }
   }
 

@@ -669,7 +669,7 @@
         Send: Enviar
 
     questions:
-      no_questions: 
+      no_questions:
         user: "No hay preguntas para %{target}"
         area: "No hay preguntas en este área"
       title: Preguntas de los ciudadanos
@@ -688,7 +688,7 @@
       more: ver más preguntas
 
     proposals:
-      no_proposals: 
+      no_proposals:
         user: "No hay propuestas para %{target}"
         area: "No hay propuestas en este área"
       title: Propuestas
@@ -1781,6 +1781,5 @@
       content_link: contenido que has enviado
       thanks: Gracias por participar en Irekia.
     rejected:
-      rejected: 'El %{link} ha sido rechazado.'
-      content_link: contenido que has enviado
+      rejected: 'El contenido que has enviado ha sido rechazado.'
       thanks: Gracias por participar en Irekia.
