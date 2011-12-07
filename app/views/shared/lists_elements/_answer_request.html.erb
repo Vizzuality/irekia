@@ -17,7 +17,7 @@
 
       <% unless show_last_comments?(data) -%>
         &middot;
-        <span class="comments"><%= link_to data.comments_count, question_path(data.id, :anchor => :comments), :class => "comment-count" %></span>
+        <span class="comments"><%= link_to data.comments_count, question_path(data.content.id, :anchor => :comments), :class => "comment-count" %></span>
       <% end -%>
       &middot;
       <%= render "/shared/inline_sharing" %>

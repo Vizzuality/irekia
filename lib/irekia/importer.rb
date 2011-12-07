@@ -23,15 +23,16 @@ module Irekia
             news_image_url = news_images.first['original'] if news_images.present?
 
             news = News.new
-            news.news_data = NewsData.new(:title      => news_item.title.sanitize,
-                                          :body       => news_item.summary.sanitize,
-                                          :source_url => news_item.url)
+            news.news_data = NewsData.create(:title      => news_item.title.sanitize,
+                                          :body          => news_item.summary.sanitize,
+                                          :source_url    => news_item.url)
             news.external_id = news_item.entry_id
-            news.areas << Area.find(7)
             news.moderated = true
             news.news_data.image = Image.new({
               :remote_image_url => news_image_url
             }) if news_image_url.present?
+            news.areas << Area.find(7)
+            news.users << User.politicians.sample
             news.save!
             print '.'
           rescue Exception => ex
@@ -81,8 +82,8 @@ module Irekia
                                                :event_date => event_data.dtstart,
                                                :duration   => event_data.dtend - event_data.dtstart,
                                                :location   => event_data.location)
-              event.users << User.politicians.sample
               event.moderated = true
+              event.users << User.politicians.sample
               event.save!
               print '.'
             rescue Exception => e

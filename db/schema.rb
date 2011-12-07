@@ -354,6 +354,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.integer  "private_status_messages_count",                :default => 0
     t.integer  "private_tweets_count",                         :default => 0
     t.integer  "private_comments_count",                       :default => 0
+    t.integer  "private_contents_users_count",                 :default => 0
     t.integer  "new_news_count",                               :default => 0
     t.integer  "new_events_count",                             :default => 0
     t.integer  "new_proposals_count",                          :default => 0
