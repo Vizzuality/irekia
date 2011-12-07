@@ -72,8 +72,8 @@
         <label for="">Conexión con redes sociales</label>
 
         <div class="social-links">
-          <div class="facebook"><%= link_to t('.connect_with', :name => 'Facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
-          <div class="twitter"><%= link_to t('.connect_with', :name => 'Twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
+          <div class="facebook <%='disabled' if @user.connected_with_facebook? %>"><%= link_to t('.connect_with', :name => 'Facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+          <div class="twitter <%='disabled' if @user.connected_with_twitter? %>"><%= link_to t('.connect_with', :name => 'Twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
         </div>
       </div>
       </fieldset>
