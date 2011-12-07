@@ -4,10 +4,10 @@
   <ul class="location no-bullets<%= ' editable' if @editable -%>">
     <li>
     <div class="map" id="map_<%= @content.id %>"></div>
-    <%= form_for @content, :remote => true, :html => { :'data-type' => :html, :id => 'wadus' } do |f| %>
-      <%= f.hidden_field :location,  :id => :location %>
-      <%= f.hidden_field :latitude,  :id => :latitude %>
-      <%= f.hidden_field :longitude, :id => :longitude %>
+    <%= form_for @content, :remote => true, :html => { :'data-type' => :html, :id => 'event_location' } do |f| %>
+      <%= f.hidden_field :location,  :id => :event_location_text %>
+      <%= f.hidden_field :latitude,  :id => :event_location_latitude %>
+      <%= f.hidden_field :longitude, :id => :event_location_longitude %>
     <% end -%>
 
     <div class="footer">
@@ -20,14 +20,9 @@
 
     <%= content_for :js_data do %>
       <script type="text/javascript" charset="utf-8">
-        var
-        miniLat = <%= @content.latitude %>,
-        miniLng = <%= @content.longitude %>;
-
-        startMiniMap("map_<%= @content.id %>", <%= @content.latitude %>, <%= @content.longitude %>, false);
-        </script>
-        <% end if @content.location %>
-
-        </li>
-      </ul>
+        startMiniMap("map_<%= @content.id %>", <%= @content.latitude || 43.2740737 %>, <%= @content.longitude || -2.9588895 %>, false);
+      </script>
     <% end %>
+    </li>
+  </ul>
+<% end %>

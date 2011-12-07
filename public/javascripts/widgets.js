@@ -1647,6 +1647,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   }
 
   function _bindSubmit(title, initiallyDisabled, callback) {
+    console.log('jamon');
     var data = $popover.data(store);
 
     _changeSubmitTitle(data.$submit, title);
@@ -1746,13 +1747,12 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 
     var addresspicker = data.$ps.find('.input_field input');
     addresspicker.addresspicker({
-      elements: {
-        map:      "#"+mapID
-      },
+      elements: {map: "#"+mapID},
       mapOptions: mapOptions
     });
 
-    addresspicker.bind('autocompletechange',function(){
+    addresspicker.bind('autocompletechange',function(ev){
+      console.log('cambio');
       _enableSubmit(data.$submit);
     });
 

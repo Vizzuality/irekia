@@ -3180,6 +3180,7 @@ $.widget( "ui.addresspicker", {
   
   _selectAddress: function(event, ui) {
     this.selectedResult = ui.item;
+    this.element.trigger('autocompletechange');
   }
 });
 
