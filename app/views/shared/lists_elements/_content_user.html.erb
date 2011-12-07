@@ -1,4 +1,4 @@
-<div class="tag"></div>
+<%= link_to "", (send("#{data.content.type}_path", data.content.id)), :class => "icon tag" %>
 
 <div class="content">
   <%= content_tag 'p', raw(t('.title', :name => data.author.name, :content_type => t(".#{data.content.type}"), :content => content_tag('strong', link_to(data.content.title, send("#{data.content.type}_path", data.content.id))))) %>
@@ -6,10 +6,9 @@
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
-      &middot;
     </span>
-
       &middot;
+
       <%= render "/shared/inline_sharing" %>
   </div>
   <%= render 'shared/lists_elements/last_comments', :data => data %>

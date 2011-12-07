@@ -2118,26 +2118,30 @@ span.where, .map .infowindow ul.details li.where {
           // overflow: hidden;
           margin-bottom: 39px;
 
-          &.proposal, &.argument {
+          &.proposal, &.argument, &.content_user {
             a.icon {
               display:block;
               float:left;
               background:url('/images/icons/in_favor_against.png') no-repeat 0 0;
-              width:65px;
-              height:65px;
+              width:65px; height:65px;
               margin: 0 13px 0 0;
               text-align:center;
               font-size:11px;
               color:$agree_color;
               text-decoration:none;
               line-height:12px;
+
               strong {
                 display:block;
                 margin:18px 0 0 2px;
                 font-size:18px;
-                .percentage {
-                  font-size:11px;
-                }
+                .percentage { font-size:11px; }
+              }
+
+              &.tag {
+                margin: 0 13px 0 36px;
+                background:url('/images/icons/icon_sprite.png') no-repeat 0 -669px;
+                width:28px; height:28px;
               }
 
               &.against { background-position: right 0; color:$against_color; }
@@ -3009,14 +3013,7 @@ a.editable {
 
     @include border-radius(5px);
 
-    a.icon {
-      display:block;
-      float:left;
-      width:10px;
-      height:10px;
-      float: left;
-      margin-right: 20px;
-    }
+    a.icon { display:block; float:left; width:10px; height:10px; float: left; margin-right: 20px; }
 
     h3 { margin:0; padding: 16px 0 12px 16px; font-size:17px; text-transform: none; }
 
