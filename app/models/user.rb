@@ -444,7 +444,7 @@ class User < ActiveRecord::Base
 
   def notifications_count
     count = if politician?
-      (new_questions_count + new_comments_count + new_arguments_count + new_votes_count + new_contents_users_count + new_follows_count) rescue 0
+      (new_proposals_count + new_questions_count + new_comments_count + new_arguments_count + new_votes_count + new_contents_users_count + new_follows_count) rescue 0
     elsif citizen?
       (new_answers_count + new_comments_count + new_arguments_count + new_votes_count + new_answer_requests_count) rescue 0
     else
@@ -455,8 +455,7 @@ class User < ActiveRecord::Base
   end
 
   def notifications_grouped
-    @notifications_grouped ||= notifications.includes(:parent).order('updated_at desc').group_by{|n| n.attributes.slice('item_type', 'parent_id', 'parent_type')}.map{|n,g| [g.first, g.count]}
-    @notifications_grouped
+    notifications.includes(:parent).order('updated_at desc').group_by{|n| n.attributes.slice('item_type', 'parent_id', 'parent_type')}.map{|n,g| [g.first, g.count]}
   end
 
   def reset_counter(counter)

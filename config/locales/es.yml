@@ -755,10 +755,18 @@
           zero: 'Ningún nuevo seguidor'
           one: '%{name} te ha empezado a seguir'
           other: '%{count} te han empezado a seguir'
+        question:
+          zero: 'Ninguna pregunta nueva'
+          one: 'Tienes una nueva %{question}'
+          other: 'Tienes %{count} nuevas preguntas'
         answer:
           zero: 'Ninguna respuesta nueva a tus preguntas'
           one: '%{question} ha sido respondida'
           other: 'Tus preguntas han sido respondidas'
+        proposal:
+          zero: 'Ninguna propuesta nueva'
+          one: 'Tienes una nueva %{proposal}'
+          other: 'Tienes %{count} nuevas propuestas'
         vote_proposal_author:
           zero: 'Ningún voto nuevo'
           one: 'Nuevo voto en %{content}'

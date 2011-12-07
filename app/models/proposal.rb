@@ -137,7 +137,7 @@ class Proposal < Content
         user_action.save!
       end
     end
-    super
+
   end
   private :publish
 

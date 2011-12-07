@@ -3,7 +3,7 @@ class ModerationMailer < ActionMailer::Base
 
   def accepted(item)
     @item = item
-    author = item.respond_to?(:users) ? item.users.first : item.user
+    author = item.respond_to?(:users) && item.users.present? ? item.users.first : item.author
 
     I18n.with_locale author.locale do
       mail(
@@ -15,7 +15,7 @@ class ModerationMailer < ActionMailer::Base
 
   def rejected(item)
     @item = item
-    author = item.respond_to?(:users) ? item.users.first : item.user
+    author = item.respond_to?(:users) && item.users.present? ? item.users.first : item.author
 
     I18n.with_locale author.locale do
       mail(
