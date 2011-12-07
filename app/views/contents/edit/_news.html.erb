@@ -111,6 +111,7 @@
                   <%= news_data.fields_for :image, (@content.news_data.image || @content.news_data.build_image) do |image|%>
                     <%= image.hidden_field :remote_image_url %>
                     <%= image.hidden_field :image %>
+                    <%#= image.text_area :description %>
                   <% end -%>
                 <% end -%>
               <% end -%>
