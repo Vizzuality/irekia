@@ -140,7 +140,7 @@ module ApplicationHelper
     when 'Follow'
       content_tag :li, raw(t('.notifications.follow', :count => count, :name => link_to(notification.parent.fullname, user_path(notification.parent)))), :class => li_class
     when 'Question'
-      content_tag :li, raw(t('.notifications.question', :count => count, :question => link_to(notification.item.class.model_name.human, question_path(notification.item)))), :class => li_class
+      content_tag :li, raw(t('.notifications.question', :count => count, :question => link_to(notification.item.class.model_name.human.downcase, question_path(notification.item)))), :class => li_class
     when 'Answer'
       content_tag :li, raw(t('.notifications.answer', :count => count, :question => link_to(t('.notifications.your_content.question'), question_path(notification.parent)))), :class => li_class
     when 'Comment'
@@ -153,7 +153,7 @@ module ApplicationHelper
 
       content_tag :li, raw(t(i18n_key, :count => count, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     when 'Proposal'
-      content_tag :li, raw(t('.notifications.proposal', :count => count, :proposal => link_to(notification.item.class.model_name.human, proposal_path(notification.item)))), :class => li_class
+      content_tag :li, raw(t('.notifications.proposal', :count => count, :proposal => link_to(notification.item.class.model_name.human.downcase, proposal_path(notification.item)))), :class => li_class
     when 'Argument'
 
       i18n_key, i18n_scope = if notification.parent && notification.parent.author == current_user

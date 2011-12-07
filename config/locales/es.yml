@@ -777,12 +777,12 @@
           other: '%{count} nuevos argumentos en %{content}'
         vote_proposal:
           zero: 'Ningún voto nuevo'
-          one: 'Un voto nuevo en una %{content} en la que has participado'
-          other: '%{count} nuevos votos en una %{content} en la que has participado'
+          one: 'Un voto nuevo en %{content} en la que has participado'
+          other: '%{count} nuevos votos en %{content} en la que has participado'
         argument_proposal:
           zero: 'Ningún argumento nuevo'
-          one: 'Un voto argumento en una %{content} en la que has participado'
-          other: '%{count} nuevos argumentos en una %{content} en la que has participado'
+          one: 'Un nuevo argumento en %{content} en la que has participado'
+          other: '%{count} nuevos argumentos en %{content} en la que has participado'
   contents:
     edit:
       question:
