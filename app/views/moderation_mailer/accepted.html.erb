@@ -1,5 +1,5 @@
 <p>
-  <%= raw t '.rejected', :link => link_to(t('.content_link'), send("#{@item.class.name.downcase}_url", @item)) %>
+  <%= raw t '.accepted', :link => link_to(t('.content_link'), send("#{@item.class.name.downcase}_url", @item)) %>
 </p>
 <p>
   <%= t '.thanks' %>
