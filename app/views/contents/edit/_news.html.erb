@@ -99,23 +99,26 @@
           <% end -%>
         </div>
 
-          <div class="add_image" <%= " style='display:none'" unless @content.news_data.image.present? -%>>
-            <a href="#">Añadir foto</a>
-          </div>
+            <div class="add_image">
+              <a href="#">Añadir foto</a>
+            </div>
 
-          <div class="input_field uploader placeholder"<%= " style='display:none'" unless @content.news_data.image.present? -%>>
-            <input type="text" />
-            <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_new_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
-            <span class="percentage">0%</span>
-            <span class="loading">Cargando imagen...</span>
-            <div class="progress"></div>
-          </div>
+            <div class="input_field uploader placeholder">
+              <input type="text" />
+              <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable image'} do |form| %>
+                <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_new_image" data-url="<%= polymorphic_path(@content) %>">Sube una nueva</span></span>
+                <%= form.fields_for :news_data do |news_data| %>
+                  <%= news_data.fields_for :image, (@content.news_data.image || @content.news_data.build_image) do |image|%>
+                    <%= image.hidden_field :remote_image_url %>
+                    <%= image.hidden_field :image %>
+                  <% end -%>
+                <% end -%>
+              <% end -%>
+              <span class="percentage">0%</span>
+              <span class="loading">Cargando imagen...</span>
+              <div class="progress"></div>
+            </div>
 
-          <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable image'} do |form| %>
-            <%= form.fields_for :news_data do |news_data| %>
-              <%= news_data.file_field :image %>
-            <% end -%>
-          <% end -%>
         </div>
         <!-- IMAGE -->
 
