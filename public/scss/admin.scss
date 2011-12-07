@@ -78,6 +78,13 @@
             font:normal 13px "Helvetica",Arial;
             color:#A3ABB2!important;
           }
+          img {
+            float:left;
+            width:190px;
+            border:1px solid #7D8A92;
+            padding:3px;
+            background:white;
+          }
         }
       }
 
@@ -147,8 +154,16 @@
           border-bottom:1px solid rgba(70, 88, 102, 0.14);
           font-size:13px!important;
 
-
-          p {font:normal 13px "Helvetica",Arial!important;}
+          h4 {display:block; font:bold 17px "Helvetica",Arial; color:#465866}
+          p {@include inline-block(); font:normal 13px "Helvetica",Arial!important;}
+          img {
+            @include inline-block();
+            width:190px;
+            margin:0 10px 0 0;
+            padding:3px;
+            border:1px solid #BEB5C9;
+            background:white;
+          }
         }
       }
 
@@ -309,18 +324,30 @@
           margin:0!important;
           padding:0!important;
 
+          h4 {display:block; font:bold 17px "Helvetica",Arial; color:#465866}
+
           p {
             margin:0!important;
             padding:0!important;
             font:normal 17px "Helvetica",Arial;
             color:#465866;
             &.time {
+              display:block;
+              margin:5px 0 0 0;
               padding:6px 0 0 16px!important;
               font:normal 13px "Helvetica",Arial;
               color:#919AA3!important;
               background:url('/images/admin/clock.png') no-repeat 0 7px;
               a {color:#7D8700!important;}
             }
+          }
+          img {
+            @include inline-block();
+            width:190px;
+            margin:0 10px 0 0;
+            padding:3px;
+            border:1px solid #BEB5C9;
+            background:white;
           }
         }
 
