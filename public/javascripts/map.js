@@ -1,5 +1,6 @@
 var map,
-		dblclick = false;		// If the user cliks double, just zoom in, not open the infowindow
+		dblclick = false,   // If the user cliks double, just zoom in, not open the infowindow
+    mini_marker;		    // If we need to edit the position of the mini marker
 
 $(function() {
   if ($("#map_canvas").length) startMap();
@@ -88,7 +89,7 @@ function startMap() {
 
 function startMiniMap (mapID, lat, lng, enableZoom) {
   var center = new google.maps.LatLng(lat, lng);
-  var defaultZoom = 15;
+  var defaultZoom = defaultZoom || 15;
   var latlng = center;
   var myOptions = {
     zoom: defaultZoom,
@@ -128,10 +129,15 @@ function startMiniMap (mapID, lat, lng, enableZoom) {
 	      new google.maps.Point(0,67),
 	      new google.maps.Point(12, 30));
 
-  var marker = new google.maps.Marker({ position: center, map: map, icon: image });
+  mini_marker = new google.maps.Marker({ position: center, map: map, icon: image });
   var mapBounds = new google.maps.LatLngBounds();
   mapBounds.extend(center);
   map.fitBounds(mapBounds);
+}
+
+function editMiniMap(center) {
+  mini_marker.setPosition(center);
+  map.setCenter(center);
 }
 
 function IrekiaMarker(_latlng, _info, _map) {

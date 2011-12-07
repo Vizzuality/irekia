@@ -528,7 +528,7 @@
         more_polemic: Más polémicas
       no_content:
         area: No hay contenido en este área.
-        user: No hay contenido para este usuario.
+        user: 'No hay contenido para %{target}'
       content_type_filters:
        all: Todos los tipos
        news: Noticias
@@ -669,7 +669,9 @@
         Send: Enviar
 
     questions:
-      no_questions_in_this_area: "No hay preguntas en este area"
+      no_questions: 
+        user: "No hay preguntas para %{target}"
+        area: "No hay preguntas en este área"
       title: Preguntas de los ciudadanos
       main_filters:
         more_recent: Más recientes
@@ -686,6 +688,9 @@
       more: ver más preguntas
 
     proposals:
+      no_proposals: 
+        user: "No hay propuestas para %{target}"
+        area: "No hay propuestas en este área"
       title: Propuestas
       in_favor: '%{percentage}% a favor (%{count} votos)'
       against: '%{percentage}% en contra (%{count} votos)'

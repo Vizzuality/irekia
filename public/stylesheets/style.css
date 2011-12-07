@@ -668,7 +668,7 @@ p.info span.comments a { background-position: 0 -49px; }
 
 .footer.where, span.where, ul.location .footer { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
 
-span.where, .map .infowindow ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+span.where, .map .infowindow ul.details li.where { display: block; width: 207px; max-width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 
 #container .article.agenda .inner .content ul li.day .info ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; -o-text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 #container .article .inner .left .answering { position: relative; padding: 12px; margin: 25px 0 0 0; background: #F6F6F7; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }

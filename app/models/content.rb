@@ -36,7 +36,7 @@ class Content < ActiveRecord::Base
   accepts_nested_attributes_for :comments, :contents_users
   accepts_nested_attributes_for :areas_contents, :contents_users, :allow_destroy => true
 
-  attr_accessor :location, :parent
+  attr_accessor :parent
   attr_reader :tag
 
   def self.find_or_initialize(params = nil)

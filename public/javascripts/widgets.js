@@ -1576,18 +1576,9 @@ jQuery.fn.enablePoliticianPublish = function(opt){
       e.stopPropagation();
     }
 
-    try {
-      lat = miniLat;
-      lng = miniLng;
-    } catch(err) {
-      // Vitoria's coordinates
-      lat = 42.85;
-      lng = -2.683333;
-    }
-
     var data  = $popover.data(store);
 
-    _initMap("editable_map", { lat:lat, lng: lng});
+    _initMap("editable_map", { lat: miniLat, lng: miniLng});
 
     LockScreen.show(function(){
       data.$ps.length ?  _open() : null;
@@ -1661,7 +1652,21 @@ jQuery.fn.enablePoliticianPublish = function(opt){
   }
 
   function _doCallback(callback) {
+    var data = $popover.data(store);
 
+    var center = new google.maps.LatLng($('#event_location_latitude').val(),$('#event_location_longitude').val());
+
+    // Change map
+    editMiniMap(center);
+
+    // Change text
+    $('span.where').text($('#event_location_text').val());
+
+    // Submit form
+    $('#event_location').submit();
+
+    // Close popover
+    _close(true);
   }
 
   function _showMessage(kind, callback) {
@@ -1722,8 +1727,8 @@ jQuery.fn.enablePoliticianPublish = function(opt){
     var
     maxZoom = (opt && opt.maxZoom) || 16,
     zoom    = (opt && opt.zoom)    || 12,
-    lat     = (opt && opt.lat)     || 40.463667,
-    lng     = (opt && opt.lng)     || -3.74922;
+    lat     = (opt && opt.lat),
+    lng     = (opt && opt.lng);
 
     var center  = new google.maps.LatLng(opt.lat, opt.lng);
 
@@ -1745,14 +1750,18 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 
 
     var addresspicker = data.$ps.find('.input_field input');
-    addresspicker.addresspicker({
-      elements: {
-        map:      "#"+mapID
-      },
-      mapOptions: mapOptions
+    var addresspickerMap = addresspicker.addresspicker({
+      elements: {map: "#"+mapID},
+      mapOptions: mapOptions,
+      defaultAddress: $('#event_location_text').val() || ''
     });
 
-    addresspicker.bind('autocompletechange',function(){
+    addresspicker.bind('autocompletechange',function(ev){
+      var position = addresspickerMap.addresspicker('marker').getPosition(),
+          location = addresspicker.val();
+      $('#event_location_text').val(location),
+      $('#event_location_latitude').val(position.lat()),
+      $('#event_location_longitude').val(position.lng());
       _enableSubmit(data.$submit);
     });
 
