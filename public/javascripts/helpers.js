@@ -398,7 +398,6 @@ jQuery.fn.enablePoliticianTags = function(opt){
   $addInputField = $add.find(".input_field"),
   $addInput      = $add.find('input[type="text"]');
 
-
   $(window).bind('_close.politician_suggest', function() {
     _hidePopover();
   });
@@ -496,14 +495,13 @@ jQuery.fn.enablePoliticianTags = function(opt){
    $response.hide();
    $addInputField.parents("li").before($response);
    $response.fadeIn(speed);
-   $addInput.html("");
  });
 
   $(".autosuggest.mini li").live("click", function() {
-    _hidePopover();
     var pID = $(this).attr("data-id");
 
-    alert(pID);
+    $addInput.val("");
+    _hidePopover();
 
     $add.find(".add_politician #editable_politician_id").attr("value", pID);
     $add.find(".add_politician").submit();
@@ -630,8 +628,7 @@ jQuery.fn.enableImageEditing = function(opt){
         onComplete: function(id, fileName, responseJSON){
           //data.spinner.stop();
 
-          console.log("complete");
-					//console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
 
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);

@@ -1269,11 +1269,6 @@ jQuery.fn.enablePoliticianPublish = function(opt){
 })(jQuery, window, document);
 
 
-
-
-
-
-
 /*
 * ============
 * AREA EDITING

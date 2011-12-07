@@ -2118,7 +2118,7 @@ span.where, .map .infowindow ul.details li.where {
           // overflow: hidden;
           margin-bottom: 39px;
 
-          &.proposal, &.argument, &.content_user {
+          &.proposal, &.argument, &.content_user, &.answer_request {
             a.icon {
               display:block;
               float:left;
@@ -2136,6 +2136,13 @@ span.where, .map .infowindow ul.details li.where {
                 margin:18px 0 0 2px;
                 font-size:18px;
                 .percentage { font-size:11px; }
+              }
+
+              &.plus {
+                margin: 0 13px 0 36px;
+                background:url('/images/icons/icon_sprite.png') no-repeat 0 -704px;
+                width:28px; height:28px;
+                padding: 7px 0;
               }
 
               &.tag {
@@ -2518,6 +2525,18 @@ span.where, .map .infowindow ul.details li.where {
 }
 
 
+#container .article.connect.with_remark {
+
+  margin-bottom: 40px!important;
+
+  .remark {
+    position:absolute;
+    width:100%;
+    bottom:-35px;
+    text-align:center;
+  }
+}
+// Style for articles that have a link beneath them
 #container .article.with_remark {
 
   margin-bottom: 40px!important;

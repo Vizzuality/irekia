@@ -1,8 +1,8 @@
-<div class="icon plus">+1</div>
+<%= link_to "", question_path(data.content.id), :class => "icon plus" %>
 
 <div class="content">
   <p>
-    <%= raw t(".title", :question => content_tag('strong', (link_to %Q{"#{data.question_text}"}, question_path(data.content.id)))) %>
+  <%= raw t(".title", :question => content_tag('strong', (link_to %Q{"#{data.question_text}"}, question_path(data.content.id)))) %>
   </p>
 
   <div class="footer">
@@ -11,14 +11,14 @@
       &middot;
     </span>
 
-      <span class="requests positive"><%= data.answer_requests_count %></span>
+    <span class="requests positive"><%= data.answer_requests_count %></span>
 
-      <% unless show_last_comments?(data) -%>
-        &middot;
-        <span class="comments"><%= link_to data.comments_count, question_path(data.content.id, :anchor => :comments), :class => "comment-count" %></span>
-      <% end -%>
+    <% unless show_last_comments?(data) -%>
       &middot;
-      <%= render "/shared/inline_sharing" %>
+      <span class="comments"><%= link_to data.comments_count, question_path(data.content.id, :anchor => :comments), :class => "comment-count" %></span>
+    <% end -%>
+    &middot;
+    <%= render "/shared/inline_sharing" %>
   </div>
   <%= render 'shared/lists_elements/last_comments', :data => data %>
 </div>
