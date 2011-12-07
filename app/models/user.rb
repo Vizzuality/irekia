@@ -211,6 +211,9 @@ class User < ActiveRecord::Base
     credentials = access_token['credentials']
 
     if user = (signed_in_resource || User.find_by_email(data['email']))
+      user.facebook_oauth_token        = credentials['token']
+      #user.facebook_oauth_token_secret = credentials['secret']
+      user.save!
       user
     else
       user = User.new :name  => data['name'],
