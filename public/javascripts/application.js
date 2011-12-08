@@ -1,9 +1,10 @@
+/*
+* Binds css selectors with javascript plugins.
+*/
+
 $(function() {
 
-  watchHash(); // this function watches the url hashes and acts accordingly
-
-  // Preloading of popover assets
-  // $.preloadImages("/images/box_mini_bkg.png", "/images/box_micro_bkg.png");
+  watchHash(); // watches the url hashes and acts accordingly
 
   $('.home_last_activity').verticalHomeLoop();
 
@@ -11,10 +12,8 @@ $(function() {
   $(".editable.text").enableTextEditing();
   $(".editable.target").enableTargetEditing();
   $(".editable.date").enableDateEditing();
-  //$(".editable.image").enableImageEditing();
   $(".image_editor").enableImageEditing();
   $(".editable.location .footer").enableLocationEditing();
-
   $(".right .tags.editable").enableEditTags();
   $(".people.editable").enablePoliticianTags();
   $(".context ul.editable.tags").enableAreaEditing();
@@ -62,7 +61,7 @@ $(function() {
   $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});
   $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
 
-  // FOLLOW FORMS!!
+  // Follow forms
   $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();
     $el.fadeOut(150, function() {
@@ -174,7 +173,8 @@ $(function() {
     return false;
   });
 
-  $(".share.inline, .share.more, .share.email").sharePopover();
+  $(".share.more, .share.email").sharePopover();
+  $(".share.inline").inlineSharePopover();
 
   $(".show-hidden-comments").showHiddenComments();
 
