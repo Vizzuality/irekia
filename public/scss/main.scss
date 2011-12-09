@@ -35,8 +35,8 @@ header {
 Basics
 ========================================================================== */
 
-blockquote { width:574px; padding:0; margin:0; font-size:31px; color:$dark_blue; font-family: "ClarendonLTMedium", Georgia, serif; }
-
+blockquote {position:relative; width:574px; padding:0; margin:0; font-size:31px; color:$dark_blue; font-family: "ClarendonLTMedium", Georgia, serif;}
+  
 hr { border-color:rgba(70, 88, 102, .14); }
 
 ul {
@@ -3328,12 +3328,58 @@ a.editable {
                     font-family:"Helvetica", sans-serif;
                     line-height:20px;
                     p { margin:0; padding:0; } // fix for the simple_format helper
+                    span.quote {position:relative; z-index:100; }
+
+                    .bqstart, .bqend {
+                      font-family: "Times", serif;
+                      font-size: 60px!important;
+                      color: #eaeaea;
+                      color: rgba(70, 88, 102, 0.15);
+                      z-index:0;
+                    }
+
+                    .bqstart { position:absolute; left:-15px; top:10px; }
+                    .bqend { position:absolute; right:-29px; bottom:-19px; }
+                    
                   }
                   .footer {
                     float:left;
                     font-size:13px;
                     a { font-size:13px; }
                   }
+                }                
+              }
+            }
+          }
+
+          /* tweets */
+          #container .article .inner .left li.tweet {
+            .content {
+              blockquote {
+                width:100%;
+                margin-bottom:5px;
+                font-size:17px;
+                color:$standard_gray;
+                font-family:"Helvetica", sans-serif;
+                line-height:20px;
+
+                p { margin:0; padding:0; } // fix for the simple_format helper
+                span.quote {position:relative; z-index:100; }
+                .bqstart, .bqend {
+                  font-family: "Times", serif;
+                  font-size: 60px!important;
+                  color: #eaeaea;
+                  color: rgba(70, 88, 102, 0.15);
+                  z-index:0;
+                  text-decoration:none!important;
+                }
+
+                .bqstart { position:absolute; left:-15px; top:10px; }
+                .bqend { position:absolute; right:-29px; bottom:-19px; }
+
+                a {
+                  color:#465866; font:bold 17px Arial; line-height:19px; text-decoration:none;
+                  &:hover .bqstart, &:hover .bqend {text-decoration:none!important;}
                 }
               }
             }
@@ -3358,8 +3404,10 @@ a.editable {
                 z-index:0;
               }
 
+              .comment .bqstart, .comment .bqend {font-size:40px}
+
               .bqstart { position:absolute; left:-20px; top:10px; }
-              .bqend { position:absolute; right:5px; bottom:-30px; }
+              .bqend { position:absolute; right:-40px; bottom:-30px; }
             }
 
             .author {
@@ -5659,26 +5707,25 @@ ul.playlist li .peak .r {
 .ui-autocomplete {
   width:213px!important;
   height:auto;
-  margin:30px 0 0 0;
-  padding:8px 17px 8px 17px;
+  margin:40px 0 0 0;
+  padding:0px 17px 8px 17px;
   background:url("/images/box_notifications_selector.png") no-repeat right bottom;
 
   span.peak {
     position:absolute;
-    top:-10px;
+    top:-14px;
     left:0;
     height:15px;
     width:100%;
-    background:url("/images/box_notifications_selector.png") no-repeat left top;
+    background:url("/images/box_notifications_selector.png") no-repeat left -30px;
   }
 
   li {
     width:213px;
-    padding:10px 0;
     font:normal 13px Arial;
     color:#666666;
     border-bottom:1px solid #F1F1F1;
-    a:hover {cursor:pointer;}
+    a {display:block; width:100%; padding:10px 0; a:hover {cursor:pointer;}}
     &:last-child {border:none}
   }
 }

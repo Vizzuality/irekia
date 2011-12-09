@@ -5,11 +5,10 @@
 <div class="article activity with_footer">
 <div class="inner">
   <div class="left">
-
     <div class="quotation">
       <blockquote>
-        <span class="quote"><%= @content.message %></span>
-        <span class="bqstart">&#8220;</span> <span class="bqend">&#8221;</span>
+        <span class="quote"><%= @content.message %><span class="bqend">&#8221;</span></span>
+        <span class="bqstart">&#8220;</span>
       </blockquote>
       <div class="author">
         <%= raw t('.author', :name => link_to(@content.author.fullname, path_for_user(@content.author)), :time => distance_of_time_in_words_to_now(@content.published_at)) %>

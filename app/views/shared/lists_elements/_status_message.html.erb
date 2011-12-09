@@ -1,6 +1,6 @@
 <%= avatar data.author %>
 <div class="content">
-  <p class="excerpt"><%= link_to data.message, status_message_path(data.id) %></p>
+  <blockquote><a href="%= status_message_path(data.id) %>"><span class="bqstart">&#8220;</span><span class="quote"><%= data.message %><span class="bqend">&#8221;</span></span></a></blockquote>
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
