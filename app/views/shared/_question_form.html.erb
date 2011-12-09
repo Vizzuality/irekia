@@ -16,6 +16,13 @@
             <%= question_data.text_area :question_text, :class => :grow %>
           </div>
 
+          <h3><%= t(".do_you_want_to_explain_the_question") %></h3>
+
+          <div class="input_field textarea placeholder">
+            <%= question_data.text_area :body, :class => "grow body" %>
+            <span class="holder"><%= t(".describe_the_question") %></span>
+          </div>
+
         <% end %>
 
       </div>

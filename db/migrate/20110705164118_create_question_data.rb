@@ -6,6 +6,7 @@ class CreateQuestionData < ActiveRecord::Migration
       t.references :area
 
       t.text     :question_text
+      t.text     :body
       t.datetime :answered_at
 
       t.timestamps

@@ -244,6 +244,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.integer  "user_id"
     t.integer  "area_id"
     t.text     "question_text"
+    t.text     "body"
     t.datetime "answered_at"
     t.datetime "created_at"
     t.datetime "updated_at"

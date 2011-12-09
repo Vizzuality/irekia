@@ -381,6 +381,8 @@
           one: Un comentario
           other: '%{count} comentarios'
     question_form:
+      describe_the_question: Describe la pregunta en pocas palabras
+      do_you_want_to_explain_the_question: ¿Quieres explicar la pregunta con más detalle?
       make_a_question:
         submit: Enviar pregunta
     proposal_form:
