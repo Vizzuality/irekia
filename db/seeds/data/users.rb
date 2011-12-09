@@ -36,7 +36,7 @@ puts '================='
 
 @aitor = create_user :name                  => 'Aitor',
                      :lastname              => 'García Ibarra',
-                     :email                 => 'aitor_garcia_ibarra@hotmail.com',
+                     :email                 => 'dcano@vizzuality.com',
                      :is_woman              => false,
                      :description_1         => (<<-EOF
                        Aitor dirige y tramita la Sanidad del Gobierno Vasco. Entre sus principales funciones destaca velar por el desarrollo del sistema sanitario y reducir tanto listas de espera como los tiempos de atención a pacientes, además de construir un hospital con las últimas tecnologías para la
