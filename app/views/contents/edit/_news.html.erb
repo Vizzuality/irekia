@@ -5,6 +5,7 @@
 <% end -%>
 
 <div class="article activity editable with_footer">
+  <%= link_to '', news_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
   <div class="inner">
     <div class="left">
 

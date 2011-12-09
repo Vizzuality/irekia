@@ -785,6 +785,47 @@
           other: '%{count} nuevos argumentos en una %{content} en la que has participado'
   contents:
     edit:
+      proposal:
+        addressed_to: 'Dirigida a'
+        back: volver
+        see_all_proposals: Ver todas las propuestas a este área
+        in_favor:
+            zero: '%{percentage}% a favor (%{count} votos)'
+            one:  '%{percentage}% a favor (%{count} voto)'
+            other: '%{percentage}% a favor (%{count} votos)'
+        against:
+            zero: '%{percentage}% en contra (%{count} votos)'
+            one:  '%{percentage}% en contra (%{count} voto)'
+            other: '%{percentage}% en contra (%{count} votos)'
+        title_author_and_comments:
+          time: 'hace %{time}'
+          comments:
+            zero: Todavía no hay comentarios
+            one: Un comentario
+            other: '%{count} comentarios'
+          total_in_favor: '%{percent}% a favor (de %{total})'
+        content:
+          in_favor: A favor
+          against: En contra
+          add: Añadir
+          your_opinion:
+            title: ¿Qué opinas tú?
+            subtitle: Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión.
+            vote_in_favor: Votar a favor
+            vote_against: Votar en contra
+        sidebar:
+          sharing_links:
+            mail: Mail
+            twitter: Twitter
+            facebook: Facebook
+          tags:
+            title: Tags
+          related_content:
+            title: Últimos contenidos
+            comments:
+              zero: Aún no hay comentarios
+              one: Un comentario
+              other: '%{count} comentarios'
       question:
         addressed_to: 'Dirigida a'
         not_answered_yet: Esta pregunta aún no ha sido contestada.
