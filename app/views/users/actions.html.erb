@@ -1,4 +1,25 @@
 <%= render "users/#{@viewing_access}/welcome" %>
 <%= render "users/#{@viewing_access}/navigation_menu" %>
+
+<% unless @actions.present? -%>
+  <div class="article help">
+  <div class="inner">
+    <div class="content centered clearfix">
+      <div class="info icon"></div>
+      <div class="message">
+        <h2><%= t('.no_activity.title') %></h2>
+        <p><%= t('.no_activity.description') %></p>
+        <%= link_to (content_tag :span, t('.no_activity.homepage')), '/', :class => "white_button pink" %>
+      </div>
+    </div>
+  </div>
+  <div class="t"></div><div class="f"></div>
+  </div>
+
+  <%= render "/shared/question_form" %>
+
+<% else -%>
 <%= render "shared/actions" %>
+<% end -%>
+
 <%= render "shared/#{current_user.politician? ? 'politician' : 'user' }_publish" if private_profile? or politician_profile? %>
