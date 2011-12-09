@@ -17,7 +17,8 @@
   </div>
 
   <div class="sharebox email">
-    <%= form_for content, :url => send("#{content_type}_shares_path", content), :remote => true, :html => {:'data-type' => 'html', :method => :post, :novalidate => 'novalidate'} do |form| %>
+    <% content = Content.find(content.id) %>
+    <%= form_for content, :url => polymorphic_url(content), :remote => true, :html => {:'data-type' => 'html', :method => :post, :novalidate => 'novalidate'} do |form| %>
       <div class="input_field placeholder">
         <%= hidden_field_tag :provider, :email %>
         <%= text_field_tag :email, "", :placeholder => "", :autocomplete => :off  %>

@@ -19,8 +19,7 @@
     &middot;
     <%= t('.votes', :count => data.participation) %>
     &middot;
-    <%#= render "/shared/inline_sharing" %>
-    <%= link_to "Compartir", "/in_development" %>
+    <%= inline_sharing_partial(data, 'proposal', proposal_url(data.id), data.title) %>
   </div>
   <%= render 'shared/lists_elements/last_comments', :data => data %>
 </div>
