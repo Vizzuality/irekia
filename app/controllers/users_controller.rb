@@ -287,7 +287,7 @@ class UsersController < ApplicationController
   private :private_profile?
 
   def show_private_actions?
-    (action_name == 'show' || params[:referer] == 'show') && private_profile?
+    (action_name == 'show' || params[:referer] == 'show') && (private_profile? || politician_profile?)
   end
   private :show_private_actions?
 
