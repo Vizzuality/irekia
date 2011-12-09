@@ -457,9 +457,11 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.publish .inner .content .container .inner_container .section .input_field input[type="text"] { width: 666px; font-size: 15px; }
 #container .article.publish .inner .content .container .inner_container .section .extra { display: none; margin: 0 0 0 0; }
 #container .article.publish .inner .content .container .inner_container .section .extra strong { text-transform: uppercase; }
-#container .article.publish .inner .content .container .inner_container .section .extra .search_box { margin: 0; padding: 0; }
+#container .article.publish .inner .content .container .inner_container .section .extra .search_box { margin: 0; padding: 0; position: relative; width: 685px; height: 35px; }
 #container .article.publish .inner .content .container .inner_container .section .extra .input_field { margin: 0 0 20px 0!important; }
-#container .article.publish .inner .content .container .inner_container .section .extra .input_field .holder { width: 600px; }
+#container .article.publish .inner .content .container .inner_container .section .extra .input_field .holder { width: 670px; }
+#container .article.publish .inner .content .container .inner_container .section .extra .input_field .all { position: absolute; right: 10px; text-align: right; }
+#container .article.publish .inner .content .container .inner_container .section .extra .input_field .all a { color: #f10063; }
 #container .article.publish .inner .content .container .inner_container .section.photo .triangle { left: 155px; }
 #container .article.publish .inner .content .container .inner_container .section.photo .input_field { width: 100%; margin: 0 0 20px 0; }
 #container .article.publish .inner .content .container .inner_container .section.photo .input_field .holder { width: 600px; }
@@ -1049,6 +1051,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .inner .right ul.people li.add .avatar { margin: 9px 10px 0 8px; }
 #container .article .inner .right ul.people li.add .spinner { top: 30px; right: 26px; position: absolute; }
 #container .article .inner .right ul.people li.add .input_field { display: none; width: 216px; height: 39px; padding: 0 10px; margin: 10px; background: url("/images/tag_sprite.png") no-repeat 0 -261px; text-align: left; }
+#container .article .inner .right ul.people li.add .input_field.grow { height: auto; }
 #container .article .inner .right ul.people li.add .input_field input[type="text"] { width: 190px; height: 39px; padding: 0; margin: 0; outline: none; border: none; background: none; color: #666; font-size: 15px; -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
 #container .article .inner .right ul.people li a { display: block; font-weight: normal; color: #1d79b0; }
 #container .article .inner .right ul.people li a:hover { color: #114c6e; }
@@ -1064,6 +1067,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .map a.marker.with_counter { background-position: -26px -67px; }
 #container .article .map a.marker .counter { position: absolute; display: block; top: 6px; width: 25px; text-align: center; color: white; font-size: 11px; font-weight: bold; }
 #container .article .input_field { position: relative; clear: both; height: 39px; }
+#container .article .input_field.grow { height: auto; }
 #container .article .input_field span.holder { position: absolute; left: 11px; top: 8px; width: auto; color: #D7D8DD; }
 #container .article .input_field.textarea span.holder { position: absolute; left: 11px; top: 8px; width: auto; color: #D7D8DD; }
 #container .article .input-counter span.holder { position: absolute; left: 11px; top: 10px; color: #D7D8DD; }

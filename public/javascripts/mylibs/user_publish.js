@@ -1,14 +1,5 @@
 (function($, window, document) {
 
-  var ie6 = false;
-
-  // Help prevent flashes of unstyled content
-  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
-    ie6 = true;
-  } else {
-    document.documentElement.className = document.documentElement.className + ' ps_fouc';
-  }
-
   var
   $article      = $(this),
   currentHeight = 0,
@@ -35,7 +26,7 @@
 
     return this.each(function() {
       var
-      // The current <select> element
+      // The current selected element
       $this = $(this),
 
       // We store lots of great stuff using jQuery data
@@ -76,17 +67,15 @@
       // Save the updated $ps reference into our data object
       data.$ps = $ps;
 
-      // Save the userPublishPopover data onto the <select> element
+      // Save the userPublishPopover data
       $this.data(store, data);
-
-      // Do the same for the dropdown, but add a few helpers
       $ps.data(store, data);
-
       data.$submit = $ps.find("footer .publish");
 
       // bindings
       _addCloseAction(data);
       _addDefaultAction(data);
+      _addAllAreasAction(data);
       _bindMenu(data);
       _bindSubmit(data, "Continuar", true, "continue");
       _bindActions(data);
@@ -94,18 +83,15 @@
       _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
 
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
-
     });
   };
 
   // Expose the plugin
   $.fn.userPublishPopover = function(method) {
-    if (!ie6) {
-      if (methods[method]) {
-        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-      } else if (typeof method === 'object' || !method) {
-        return methods.init.apply(this, arguments);
-      }
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
     }
   };
 
@@ -688,6 +674,16 @@
       e.stopPropagation();
       e.preventDefault();
       _close(data, true);
+    });
+  }
+
+  function _addAllAreasAction(data){
+    data.$ps.find(".all a").bind('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      $.ajax({ url: '/areas', data: {}, success: function(data) {
+        console.log(data);
+      }});
     });
   }
 

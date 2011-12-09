@@ -259,7 +259,8 @@
     });
 
     _removeOk(data);
-    $email.css({ left: data.$this.offset().left - 90 - ($email.width() / 2) + (data.$this.width() / 2) , top: data.$this.position().top - $email.outerHeight(true) - 15 });
+
+    $email.css({ left: data.$this.offset().left - 82 - ($email.width() / 2) + (data.$this.width() / 2) , top: data.$this.position().top - $email.outerHeight(true) - 15 });
     $email.fadeIn(data.settings.transitionSpeed);
   }
 

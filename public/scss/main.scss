@@ -971,11 +971,9 @@ div#main.show div.left img {margin:4px 0 7px;}
           margin: 0 0 10px 0;
           input[type="text"] { width: 100%; color: $medium_dark; }
         }
-        .map {
-          width:685px;
-        }
+        .map { width:685px; }
       }
-    }
+    } // .event
 
     &.politician {
       .inner .content .container {
@@ -984,22 +982,13 @@ div#main.show div.left img {margin:4px 0 7px;}
 
         .inner_container .section {
 
-
-          .image_container {
-            width: 667px;
-          }
-
+          .image_container { width: 667px; }
 
           &.proposal {
             .triangle { left:388px; }
-            .input_field.textarea { margin:0; }
-
-            .input_field.uploader {
-              margin-bottom: 20px;
-            }
-            .input_field.description {
-              margin-bottom: 20px;
-            }
+            .input_field.textarea    { margin:0; }
+            .input_field.uploader    { margin-bottom: 20px; }
+            .input_field.description { margin-bottom: 20px; }
 
             .input_field {
               width:100%;
@@ -1041,7 +1030,7 @@ div#main.show div.left img {margin:4px 0 7px;}
             }
           } // section.proposal
         } // .section
-      }
+      } // .container
     } // user
 
     .inner {
@@ -1158,10 +1147,23 @@ div#main.show div.left img {margin:4px 0 7px;}
                 display: none;
                 margin: 0 0 0 0;
                 strong { text-transform:uppercase; }
-                .search_box { margin:0; padding:0; }
+                .search_box {
+                  margin:0; padding:0;
+                  position: relative;
+                  width: 685px; height: 35px;
+                }
+
                 .input_field {
                   margin: 0 0 20px 0!important;
-                  .holder { width: 600px; }
+                  .holder { width: 670px; }
+                  .all {
+                    position:absolute;
+                    right: 10px;
+                    text-align:right;
+                    a {
+                      color: $pink;
+                    }
+                  }
                 }
               }
 
@@ -3487,9 +3489,6 @@ a.editable {
                 z-index:10;
               }
 
-
-
-
               span.peak{
                 position:absolute;
                 bottom:-7px;
@@ -3581,6 +3580,8 @@ a.editable {
                       background:url('/images/tag_sprite.png') no-repeat 0 -261px;
                       text-align:left;
 
+                      &.grow { height: auto; }
+
                       input[type="text"] {
                         width: 190px;
                         height: 39px;
@@ -3649,6 +3650,7 @@ a.editable {
               clear: both;
               //overflow: hidden;
               height: 39px;
+              &.grow { height: auto; }
               span.holder { position: absolute; left: 11px; top: 8px; width:auto; color: #D7D8DD; }
               &.textarea {
                 span.holder { position: absolute; left: 11px; top: 8px; width:auto; color: #D7D8DD; }

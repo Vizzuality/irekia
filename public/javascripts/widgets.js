@@ -2,6 +2,7 @@
 * LockScreen Systems Inc.
 */
 var LockScreen = (function() {
+  var enableOutsideClickToClose = true;
 
   function _isLocked() {
     return $("#lock_screen").length != 0;
@@ -21,11 +22,13 @@ var LockScreen = (function() {
       $("body").append("<div id='lock_screen'></div>");
       $("#lock_screen").height($(document).height());
 
-      $("#lock_screen").unbind()
-      $("#lock_screen").click(function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-      });
+      if (!enableOutsideClickToClose) {
+        $("#lock_screen").unbind()
+        $("#lock_screen").click(function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+      }
 
       $("#lock_screen").fadeIn(150, function() {
         callback && callback();
@@ -1789,7 +1792,7 @@ jQuery.fn.enablePoliticianPublish = function(opt){
       $('#event_location_text').val(location);
       $('#event_location_latitude').val(position.lat());
       $('#event_location_longitude').val(position.lng());
-      
+
       _enableSubmit(data.$submit);
     });
 
