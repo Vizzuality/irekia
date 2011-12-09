@@ -1,11 +1,14 @@
-<% politician = @content.tagged_politicians.last -%>
+<%
+  politician_tag = @content.contents_users.last
+  politician     = politician_tag.user
+-%>
 <li class='editable'>
 <%= avatar politician, 'small' %>
 <%= link_to politician.fullname, path_for_user(politician), :class => :name %>
 <span class="position"><%= get_politician_title(politician) %></span>
 
 <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
-  <%= form.fields_for :contents_users, @content.contents_users.last do |content_user_fields| %>
+  <%= form.fields_for :contents_users, politician_tag do |content_user_fields| %>
     <%= content_user_fields.hidden_field :_destroy, :value => true %>
   <% end -%>
   <%= form.submit 'x', :class => 'remove' %>
