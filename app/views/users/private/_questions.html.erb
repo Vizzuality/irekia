@@ -49,12 +49,10 @@
         <h2><%= t(".not_answered_title") %></h2>
       </div>
       <div class="right">
-
         <ul class="switch">
           <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:more_polemic => false, :referer => 'all'), :class => 'filter' %></li>
           <li><%= link_to t('.more_polemic'), link_for_questions(:more_polemic => true, :referer => 'all'), :class => 'filter' %></li>
         </ul>
-
       </div>
       </header>
       <div class="left">
@@ -63,6 +61,10 @@
         </div>
       </div>
       <div class="right">
+        <ul class="selector">
+          <li><%= link_to_with_login (content_tag :span, t('.no_questions.create_question')), '#', :class => "white_button pink publish_question user_publish" %></li>
+          <li></li>
+        </ul>
       </div>
     </div>
     <div class="t"></div><div class="f"></div>
