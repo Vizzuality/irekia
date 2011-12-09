@@ -42,6 +42,7 @@
         <div class="proposal-support">
           <%= simple_format t('.proposal_support') %>
           <div class="count"> <div class="icon"></div>     <%= t('.proposal_support_count', :count => @proposals_in_favor_count) %></div>
+          <%= link_to_with_login (content_tag :span, t('.no_proposals.create_proposal')), '#', :class => "white_button pink publish_proposal user_publish margin" %>
         </div>
       </div>
     </div>
