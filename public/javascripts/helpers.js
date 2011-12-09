@@ -1203,7 +1203,8 @@ jQuery.fn.enableComments = function(opt){
     var $input  = $(this).find("textarea");
     var $submit = $(this).find('button');
 
-    disableSubmit($submit);
+    // Check textarea at the begining
+    textCounter($input, $submit);
 
     $input.keyup(function(e) {
       textCounter($input, $submit);
