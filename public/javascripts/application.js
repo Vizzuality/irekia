@@ -171,7 +171,7 @@ $(function() {
     return false;
   });
 
-  $(".share.more, .share.single_email").sharePopover();
+  $(".share.more, .share.email").sharePopover();
   $(".share.inline").inlineSharePopover();
 
   $(".show-hidden-comments").showHiddenComments();
