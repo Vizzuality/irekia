@@ -1,12 +1,14 @@
 <% if @proposals_done_count == 0 -%>
 <div class="article help">
 <div class="inner">
+  <div class="content centered clearfix">
     <div class="info icon"></div>
-    <div class="content">
-        <h2><%= t('.no_proposals.title') %></h2>
-        <p><%= t('.no_proposals.description') %></p>
-        <%= link_to_with_login (content_tag :span, t('.no_proposals.create_proposal')), '#', :class => "white_button pink publish_proposal user_publish" %>
+    <div class="message">
+      <h2><%= t('.no_proposals.title') %></h2>
+      <p><%= t('.no_proposals.description') %></p>
+      <%= link_to_with_login (content_tag :span, t('.no_proposals.create_proposal')), '#', :class => "white_button pink publish_proposal user_publish" %>
     </div>
+  </div>
 </div>
 <div class="t"></div><div class="f"></div>
 </div>
@@ -15,40 +17,40 @@
 
 <% else -%>
 
-<div class="article proposals with_filters with_footer">
-<div class="inner">
-  <header>
-  <div class="left">
-    <h2><%= t(".title", :count => @proposals_count) %></h2>
-  </div>
-  <div class="right">
+  <div class="article proposals with_filters with_footer">
+    <div class="inner">
+      <header>
+      <div class="left">
+        <h2><%= t(".title", :count => @proposals_count) %></h2>
+      </div>
+      <div class="right">
 
-    <ul class="switch">
-      <li class="selected"><%= link_to t('.more_recent'), link_for_proposals(:more_polemic => false), :class => 'filter' %></li>
-      <li><%= link_to t('.more_commented'), link_for_proposals(:more_polemic => true), :class => 'filter' %></li>
-    </ul>
+        <ul class="switch">
+          <li class="selected"><%= link_to t('.more_recent'), link_for_proposals(:more_polemic => false), :class => 'filter' %></li>
+          <li><%= link_to t('.more_commented'), link_for_proposals(:more_polemic => true), :class => 'filter' %></li>
+        </ul>
 
-  </div>
-  </header>
-  <div class="left">
-    <div class="listing">
-      <%= render 'shared/proposals_list' if @proposals %>
+      </div>
+      </header>
+      <div class="left">
+        <div class="listing">
+          <%= render 'shared/proposals_list' if @proposals %>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="proposal-support">
+          <%= simple_format t('.proposal_support') %>
+          <div class="count"> <div class="icon"></div>     <%= t('.proposal_support_count', :count => @proposals_in_favor_count) %></div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="right">
-    <div class="proposal-support">
-      <%= simple_format t('.proposal_support') %>
-      <div class="count"> <div class="icon"></div>     <%= t('.proposal_support_count', :count => @proposals_in_favor_count) %></div>
+    <footer>
+    <div class="separator"></div>
+    <div class="inner">
     </div>
+    </footer>
+    <div class="t"></div><div class="f"></div>
   </div>
-</div>
-<footer>
-<div class="separator"></div>
-<div class="inner">
-</div>
-</footer>
-<div class="t"></div><div class="f"></div>
-</div>
 
 <% end -%>

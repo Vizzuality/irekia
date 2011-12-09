@@ -24,4 +24,18 @@ class ModerationMailer < ActionMailer::Base
       )
     end
   end
+
+
+  class Preview < MailView
+    # Pull data from existing fixtures
+    def accepted
+      ::ModerationMailer.accepted(Question.first)
+    end
+
+    # Factory-like pattern
+    def rejected
+      ::ModerationMailer.accepted(Question.first)
+    end
+  end
+
 end

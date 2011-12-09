@@ -3,6 +3,7 @@
   <meta property="og:description" content="<%= @content.question_text.strip %>" />
 <% end -%>
 <div class="article questions with_footer">
+  <%= link_to '', question_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
 
   <div class="inner">
     <div class="left">

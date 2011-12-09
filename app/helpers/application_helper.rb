@@ -187,5 +187,17 @@ module ApplicationHelper
   def image_url(image_path)
     request.protocol + request.host_with_port + image_path
   end
-end
 
+  def inline_sharing_partial(content, content_type, url, message)
+    render "shared/inline_sharing", :content_id => content.id, :content => content, :content_type => content_type, :facebook_url    => url,
+                             :twitter_message => message_for_twitter(url, message)
+  end
+
+  def inline_message_for_twitter(url, message)
+    message = "Irekia - #{message.truncate(131 - url.length)} - #{url}" if message
+  end
+
+  def message_for_twitter(url, message)
+    message = "Irekia - #{message.truncate(131 - url.length)} - #{url}" if message
+  end
+end

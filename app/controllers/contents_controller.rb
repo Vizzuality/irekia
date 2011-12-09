@@ -51,6 +51,60 @@ class ContentsController < ApplicationController
     @comment.build_comment_data
 
     @tags = @content.tags.present?? @content.tags.split(',') : []
+
+    case @content
+    when Question
+
+      if @content.answer.blank?
+        @user_has_requested_answer = current_user && current_user.has_requested_answer(params[:id])
+
+        if current_user.present? && current_user.politician?
+          @new_answer = @content.build_answer
+          @new_answer.answer_data = @new_answer.build_answer_data
+        elsif current_user.blank? || current_user.has_not_requested_answer(params[:id])
+          @new_request = @content.answer_requests.build
+
+        end
+      else
+        @answer = @content.answer
+      end
+    when Proposal
+      #votes
+      @vote_in_favor               = @content.votes.in_favor.build
+      @vote_in_favor.user          = current_user if current_user.present?
+      @vote_in_favor.vote_data     = @vote_in_favor.build_vote_data
+
+      @vote_against                = @content.votes.against.build
+      @vote_against.user           = current_user if current_user.present?
+      @vote_against.vote_data      = @vote_against.build_vote_data
+
+      if current_user && current_user.has_given_his_opinion?(@content)
+        @vote = current_user.his_opinion(@content).first
+      elsif current_user
+        @vote = @content.votes.where('user_id = ?', current_user.id).build
+        @vote.vote_data = VoteData.new
+      else
+        @vote = @content.votes.build
+        @vote.vote_data = @vote.build_vote_data
+      end
+
+      #arguments
+      @arguments_in_favor = @content.arguments.moderated.in_favor.all
+      @arguments_against  = @content.arguments.moderated.against.all
+
+      @argument_in_favor               = @content.arguments.in_favor.build
+      @argument_in_favor.user          = current_user if current_user.present?
+      @argument_in_favor.argument_data = @argument_in_favor.build_argument_data
+
+      @argument_against               = @content.arguments.against.build
+      @argument_against.user          = current_user if current_user.present?
+      @argument_against.argument_data = @argument_against.build_argument_data
+    end
+
+    respond_with(@content) do |format|
+      format.html{ render :layout => !request.xhr?}
+      format.json
+    end
   end
 
   def show
@@ -81,15 +135,14 @@ class ContentsController < ApplicationController
       end
 
     when Proposal
-
       #votes
       @vote_in_favor               = @content.votes.in_favor.build
       @vote_in_favor.user          = current_user if current_user.present?
       @vote_in_favor.vote_data     = @vote_in_favor.build_vote_data
 
-      @vote_against               = @content.votes.against.build
-      @vote_against.user          = current_user if current_user.present?
-      @vote_against.vote_data     = @vote_against.build_vote_data
+      @vote_against                = @content.votes.against.build
+      @vote_against.user           = current_user if current_user.present?
+      @vote_against.vote_data      = @vote_against.build_vote_data
 
       if current_user && current_user.has_given_his_opinion?(@content)
         @vote = current_user.his_opinion(@content).first

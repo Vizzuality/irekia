@@ -21,10 +21,6 @@ module ContentsHelper
                              :twitter_message => message_for_twitter(url, message)
   end
 
-  def message_for_twitter(url, message)
-    message = "Irekia - #{message.truncate(131 - url.length)} - #{url}" if message
-  end
-
   def can_i_answer_the_question?
     current_user && current_user.politician? && (@content.target_area.present? || current_user == @content.target_user)
   end

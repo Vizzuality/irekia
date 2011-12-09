@@ -598,8 +598,8 @@ div#main.show div.left img {margin:4px 0 7px;}
     h2 { margin-bottom: 5px; font-size: 31px; line-height:31px; font-weight: 300; }
     h3 { margin-bottom: 7px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
 
-    .left { position: relative; float: left; left: 0; width: 605px; z-index:0;}
-    .right { position: none; margin-left: 29px; float: left; width: 291px; z-index:4;}
+    .left { position: relative; float: left; left: 0; width: 605px; z-index:1;}
+    .right { position: none; margin-left: 29px; float: left; width: 291px; z-index:0;}
     .right p { margin: 0 0 25px 0; padding: 0; font-size: 15px; color: #465866; }
 
     header {
@@ -921,8 +921,8 @@ div#main.show div.left img {margin:4px 0 7px;}
 
   &.help {
     .inner {
-      width: 851px;
-      padding: 105px 31px 100px 112px;
+      width: 994px;
+      padding: 105px 0 100px 0;
 
       h2 { margin: 0 0 14px 0; }
 
@@ -935,8 +935,13 @@ div#main.show div.left img {margin:4px 0 7px;}
       }
 
       .content {
+        width: 666px;
+        .centered { margin: auto; }
+      }
+
+      .message {
         float:left;
-        width:544px;
+        width:555px;
       }
 
       p { margin: 0 0 16px 0; color: #7D8A92; font-size: 17px; }
@@ -1152,9 +1157,11 @@ div#main.show div.left img {margin:4px 0 7px;}
               .extra {
                 display: none;
                 margin: 0 0 0 0;
+                strong { text-transform:uppercase; }
                 .search_box { margin:0; padding:0; }
                 .input_field {
                   margin: 0 0 20px 0!important;
+                  .holder { width: 600px; }
                 }
               }
 

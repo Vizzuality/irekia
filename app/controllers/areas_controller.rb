@@ -1,6 +1,6 @@
 class AreasController < ApplicationController
 
-  skip_before_filter :authenticate_user!,    :only => [:show, :actions, :questions, :proposals, :agenda, :team]
+  skip_before_filter :authenticate_user!,    :only => [:index, :show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_area,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_area_data,              :only => [:show, :actions, :questions, :proposals, :agenda, :team]
   before_filter :get_counters,               :only => [:show, :actions, :questions, :proposals, :agenda, :team]
@@ -13,6 +13,12 @@ class AreasController < ApplicationController
   before_filter :paginate,                   :only => [:show, :actions, :questions, :proposals]
 
   respond_to :html, :json
+
+  def index
+    @all_areas = Area.includes(:image).order('name').all
+
+    render :layout => !request.xhr?
+  end
 
   def show
   end
