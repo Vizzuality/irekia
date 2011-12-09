@@ -1,4 +1,8 @@
 Irekia::Application.routes.draw do
+  if Rails.env.development?
+    mount ModerationMailer::Preview => 'mail_view'
+  end
+
 
   devise_for :users, :controllers => {
     :sessions => 'sessions',
@@ -130,4 +134,5 @@ Irekia::Application.routes.draw do
 
   match '/in_development', :to => 'application#in_development'
   match '*a', :to => 'application#render_not_found'
+
 end

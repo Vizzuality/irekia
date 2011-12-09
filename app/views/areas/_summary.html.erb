@@ -28,7 +28,7 @@
           <li>
           <%= avatar(user, :small) %>
           <%= link_to user.fullname, path_for_user(user), :class => :name %>
-          <span><%= get_politician_title(user) %></span>
+          <span><%= truncate(get_politician_title(user), :length => 25) %></span>
           </li>
         <% end %>
 

@@ -34,7 +34,7 @@
           <div class="content">
             <%= link_to user.fullname, path_for_user(user), :class => :name %>
             <p>
-              <%= t('.title_and_area', :title => get_politician_title(user), :area => user.areas.map(&:name).to_sentence) if user.politician? %>
+              <%= truncate(t('.title_and_area', :title => get_politician_title(user), :area => user.areas.map(&:name).to_sentence),:length => 25) if user.politician? %>
             </p>
             <div class="follow basic">
               <% if current_user -%>

@@ -8,7 +8,7 @@
       <li class="clearfix">
       <%= avatar comment.author %>
       <div class="comment">
-        <blockquote><%= simple_format comment.body %></blockquote>
+        <blockquote><span class="bqstart">&#8220;</span><span class="quote"><%= comment.body %><span class="bqend">&#8221;</span></span></blockquote>
         <div class="footer when">
           <%= link_to comment.author.fullname, user_path(comment.author), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
         </div>

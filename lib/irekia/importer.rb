@@ -172,7 +172,7 @@ module Irekia
                   user.facebook_username     = politician[''].first.delete('http://facebook.com/') rescue nil
                   user.areas                 = Area.where(:external_id => area['id'])
                   user.last_import           = Time.at(politician['update_date'])
-                  # user.profile_pictures << params[:profile_picture] if params[:profile_picture]
+                  user.profile_pictures << Image.create(:remote_image_url => "http://www2.irekia.euskadi.net/#{politician['image']}") if politician['image']
                   user.save!
                 rescue Exception => ex
                   puts politician.inspect
