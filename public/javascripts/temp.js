@@ -24,14 +24,13 @@
 
     return this.each(function() {
       var
-      // The current <select> element
       $this = $(this),
 
       // We store lots of great stuff using jQuery data
       data = $this.data(store) || {},
 
       // This gets applied to the 'ps_container' element
-      id = $this.attr('class').fulltrim().replace(/ /g, "_");
+      id = $this.attr('id'),
 
       // This gets updated to be equal to the longest <option> element
       width = settings.width || $this.outerWidth(),
@@ -44,11 +43,11 @@
         return $this;
       } else {
         data.id = id;
-        data.$handler = $this;
-        data.settings = settings;
+        data.$this = $this;
+        data.settings  = settings;
         data.$sharebox = $(this).next(".sharebox");
-        data.$submit = $(this).next(".sharebox.email").find('input[type="submit"]');
-        data.$input = $(this).next(".sharebox.email").find('input[type="text"]');
+        data.$submit   = $(this).parent().find(".sharebox.email").find('input[type="submit"]');
+        data.$input    = $(this).parent().find(".sharebox.email").find('input[type="text"]');
       }
 
       // Update the reference to $ps
@@ -65,12 +64,29 @@
         }
 
         spinner.spin(spin_element);
-        _removeOk(data);
 
         $(this).fadeOut(data.settings.transitionSpeed);
-        _shareWith($(this), "email", data.settings.transitionSpeed, data.settings.easing);
+        _shareWith($this.parent().find(".sharebox.email"), "email", data.settings.transitionSpeed, data.settings.easing, function() {
+          _open(data);
+        });
       });
 
+      // Email sharing
+      data.$sharebox.find(".share.email").bind('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        _close($this);
+        _openEmail($this);
+        _removeOk(data);
+      });
+
+      // Facebook sharing
+      data.$sharebox.find(".share.facebook").bind('click', function(e) {
+        e.stopPropagation();
+        _close($this);
+      });
+
+      // Twitter sharing
       data.$sharebox.find(".share.twitter").bind('click', function(e) {
         e.stopPropagation();
 
@@ -82,16 +98,20 @@
           opts   = 'status=1' + ',width='  + width  + ',height=' + height + ',top='    + top    + ',left='   + left;
 
           window.open(url, 'twitter', opts);
+          _close($this);
 
           return false;
       });
-
 
       data.$sharebox.bind('click', function(e) {
         e.stopPropagation();
       });
 
-      $(this).click(_toggle);
+      $this.click(_toggle);
+
+      $(window).bind('_close.'+ data.id + '_email', function() {
+        _closeEmail($this);
+      });
 
       $(window).bind('_close.'+ data.id, function() {
         _close($this);
@@ -99,11 +119,7 @@
 
       // Save the updated $ps reference into our data object
       data.$ps = $ps;
-
-      // Save the inlineSharePopover data onto the <select> element
       $this.data(store, data);
-
-      // Do the same for the dropdown, but add a few helpers
       $ps.data(store, data);
     });
   };
@@ -126,15 +142,16 @@
     }
   };
 
-  function _shareWith($el, service, speed, easing) {
+  function _shareWith($el, service, speed, easing, callback) {
     var $form;
 
     function success(argument) {
       spinner.stop();
-			$form.fadeOut('fast',function(){
+			$form.parent().fadeOut('fast',function(){
 				$form.find('input[type="submit"]').fadeIn(speed);
 	      $form.find('input[type="text"]').val("");
 	      $form.find('.holder').fadeIn(speed);
+	      callback && callback();
 			});
 
       $ok = $('<div class="ok" />');
@@ -159,7 +176,7 @@
 
     removeOk($el.parents("li").find(".share.email .ok"), speed, easing);
 
-    $form = $el.parents("li").find("form");
+    $form = $el.find("form");
     $form.unbind();
     $form.find(".input_field").removeClass("error");
     $form.bind('ajax:success', success);
@@ -182,10 +199,25 @@
     })
   }
 
+  function _open(data) {
+
+    var $ps = data.$ps;
+
+      $ps.addClass("open");
+      data.$sharebox.css({ left: data.$this.position().left - 3, top: data.$this.position().top - data.$sharebox.outerHeight(true) - 15 });
+      data.$sharebox.fadeIn(data.settings.transitionSpeed);
+
+      // setup the close event & signal the other subscribers
+      var event = "_close."+data.id;
+      GOD.subscribe(event);
+      GOD.broadcast(event);
+  }
   // Toggle popover
   function _toggle(e) {
+    if (e) {
     e.preventDefault();
     e.stopPropagation();
+    }
 
     var $this = $(this);
     var data = $this.data(store);
@@ -195,9 +227,10 @@
 
     if (!$ps.hasClass("open")) {
       $ps.addClass("open");
-      data.$sharebox.css({ left: data.$handler.position().left, top: data.$handler.position().top - data.$sharebox.outerHeight(true) - 15 });
+      data.$sharebox.css({ left: data.$this.position().left - 3, top: data.$this.position().top - data.$sharebox.outerHeight(true) - 15 });
       data.$sharebox.fadeIn(data.settings.transitionSpeed);
       _removeOk(data);
+
       // setup the close event & signal the other subscribers
       var event = "_close."+data.id;
       GOD.subscribe(event);
@@ -207,6 +240,37 @@
     }
   }
 
+  function _removeOk(data) {
+    data.$ps.parent().find(".ok").animate({ opacity:0, top: "20px" }, data.settings.transitionSpeed, data.settings.easing, function() {
+      $(this).remove();
+    })
+  }
+
+  function _openEmail($this) {
+    var data   = $this.data(store);
+    var $email = data.$ps.parent().find(".sharebox.email");
+
+    var event = "_close."+data.id;
+    GOD.subscribe(event + "_email");
+    GOD.broadcast(event + "_email");
+
+    $email.click(function(e) {
+      e.stopPropagation();
+    });
+
+    _removeOk(data);
+    $email.css({ left: data.$this.offset().left - 90 - ($email.width() / 2) + (data.$this.width() / 2) , top: data.$this.position().top - $email.outerHeight(true) - 15 });
+    $email.fadeIn(data.settings.transitionSpeed);
+  }
+
+  // Close email popover
+  function _closeEmail($this) {
+    var data = $this.data(store);
+
+    var $email = data.$ps.parent().find(".sharebox.email");
+
+    $email.fadeOut(data.settings.transitionSpeed);
+  }
   // Close popover
   function _close($this) {
     var data = $this.data(store);
@@ -218,4 +282,3 @@
   $(function() {});
 
 })(jQuery, window, document);
-

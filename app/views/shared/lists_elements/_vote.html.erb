@@ -16,6 +16,7 @@
     &middot;
     <span class="comments"><%= link_to data.comments_count, proposal_path(data.content_id, :anchor => :comments), :class => "comment-count" %></span>
     &middot;
-      <%= render "/shared/inline_sharing" %>
+    <%= link_to "Compartir", "/in_development" %>
+      <%#= render "/shared/inline_sharing" %>
   </div>
 </div>

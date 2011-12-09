@@ -158,8 +158,6 @@ $(function() {
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
 
-  //$(".share.twitter, .share.facebook").share();
-
   $(".share.twitter").live("click", function() {
     var width  = 611,
     height = 400,
@@ -173,7 +171,7 @@ $(function() {
     return false;
   });
 
-  $(".share.more, .share.email").sharePopover();
+  $(".share.more, .share.single_email").sharePopover();
   $(".share.inline").inlineSharePopover();
 
   $(".show-hidden-comments").showHiddenComments();

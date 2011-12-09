@@ -20,8 +20,4 @@ module ContentsHelper
     render "shared/sharing", :facebook_url    => url,
                              :twitter_message => message_for_twitter(url, message)
   end
-
-  def message_for_twitter(url, message)
-    message = "Irekia - #{message.truncate(131 - url.length)} - #{url}" if message
-  end
 end

@@ -4,6 +4,7 @@
   <meta property="og:image" content="<%#= image_url @content.proposal_data.image.content_url %>" />
 <% end -%>
 <div class="article proposal with_footer">
+  <%= link_to '', edit_proposal_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
 <div class="inner">
   <div class="left">
 
