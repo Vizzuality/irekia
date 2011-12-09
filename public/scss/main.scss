@@ -1659,6 +1659,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
         &.textarea {
           height:76px;
+          &.grow { height: auto; }
           margin:0 0 10px 0;
 
           textarea.body { height:53px; }

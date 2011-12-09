@@ -43,9 +43,12 @@
 
                     <strong>¿A quién le quieres dirigir la pregunta?</strong>
                     <div class="input_field autosuggest_field placeholder">
-                      <div class="search_box">
+                      <div class="search_box clearfix">
                         <input type="text" class="search" />
-                        <span class="holder">Nombre de persona o área...</span>
+                        <span class="holder">
+                          Nombre de persona o área...
+                          <span class="all">... o <a href="#">ver todas las áreas</a></span>
+                        </span>
                         <span class="spinner" id="search_question_spinner"></span>
                       </div>
                     </div>
@@ -94,7 +97,7 @@
                       <a href="#" class="remove">Eliminar</a>
                     </div>
 
-                    <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
+                    <strong>¿Quieres explicar la propuesta con más detalle?</strong>
                     <div class="input_field placeholder textarea">
                       <%= proposal_data.text_area :body, :class => :body %>
                       <span class="holder">Describe la propuesta en pocas palabras</span>
@@ -105,11 +108,17 @@
 
               <div class="extra">
 
-                <strong>¿A QUÉ ÁREA QUIERES DIRIGIR LA PROPUESTA?</strong>
+                <strong>¿A qué area le quieres dirigir la pregunta?</strong>
                 <div class="input_field autosuggest_field placeholder">
-                  <input type="text" />
-                  <span class="holder">Nombre de área...</span>
-                </div>
+                  <div class="search_box clearfix">
+                    <input type="text" class="search" />
+                    <span class="holder">
+                      Nombre de área...
+                      <span class="all">... o <a href="#">ver todas las áreas</a></span>
+                    </span>
+                    <span class="spinner" id="search_question_spinner"></span>
+                  </div>
+                  </div>
 
               </div>
             </div>

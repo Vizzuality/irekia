@@ -568,6 +568,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.popover.proposal .input_field.uploader .holder span { float: left; }
 #container .article.popover.proposal .input_field.uploader .holder span.upload { cursor: pointer; }
 #container .article.popover.proposal .input_field.textarea { height: 76px; margin: 0 0 10px 0; }
+#container .article.popover.proposal .input_field.textarea.grow { height: auto; }
 #container .article.popover.proposal .input_field.textarea textarea.body { height: 53px; }
 #container .article.popover.proposal .input_field.textarea .holder { top: 10px; font-size: 15px; }
 #container .article.popover h3.related { display: none; }
