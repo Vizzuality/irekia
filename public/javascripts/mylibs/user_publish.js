@@ -458,8 +458,8 @@
 
   function _setupUpload(data, id) {
 
-    var $ps = data.$ps,
-				$span  = $ps.find("#" + id);
+    var $ps   = data.$ps,
+				$span = $ps.find("#" + id);
 
     if ($span.length > 0) {
 
