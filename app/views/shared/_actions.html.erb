@@ -91,22 +91,24 @@
     </ul>
   </div>
 </div>
-<footer>
-<div class="separator"></div>
-<div class="inner with_spinner">
+<% if controller.action_name == "home" %>
+  <footer>
+    <div class="separator"></div>
+    <div class="inner with_spinner">
 
-  <% if controller.action_name == "actions" %>
-    <div class="left">
-      <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" if @actions.present? %>
-      <span id="actions_spinner" class="spinner"></span>
-    </div>
-  <% else %>
-    <div class="right">
-      <%= link_to t('.more'), link_for_actions(:anchor => :actions), :id => "actions_#{params[:id]}", :class => "right_arrow" %>
-    </div>
-  <% end %>
+      <% if controller.action_name == "actions" %>
+        <div class="left">
+          <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" if @actions.present? %>
+          <span id="actions_spinner" class="spinner"></span>
+        </div>
+      <% else %>
+        <div class="right">
+          <%= link_to t('.more'), link_for_actions(:anchor => :actions), :id => "actions_#{params[:id]}", :class => "right_arrow" %>
+        </div>
+      <% end %>
 
-</div>
-</footer>
+    </div>
+  </footer>
+<% end %>
 <div class="t"></div><div class="f"></div>
 </div>
