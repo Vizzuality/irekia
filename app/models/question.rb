@@ -96,7 +96,7 @@ class Question < Content
     user_action.save!
 
     if target_user
-      user_action              = target_user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
+      user_action              = target_user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
       user_action.published_at = self.published_at
       user_action.message      = self.to_json
       user_action.save!
@@ -126,6 +126,13 @@ class Question < Content
       area_action.published_at = self.published_at
       area_action.message      = self.to_json
       area_action.save!
+
+      target_area.team.each do |politician|
+        user_action              = politician.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
+        user_action.published_at = self.published_at
+        user_action.message      = self.to_json
+        user_action.save!
+      end
     end
   end
 
