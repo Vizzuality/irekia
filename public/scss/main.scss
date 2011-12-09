@@ -36,7 +36,7 @@ Basics
 ========================================================================== */
 
 blockquote {position:relative; width:574px; padding:0; margin:0; font-size:31px; color:$dark_blue; font-family: "ClarendonLTMedium", Georgia, serif;}
-  
+
 hr { border-color:rgba(70, 88, 102, .14); }
 
 ul {
@@ -990,16 +990,10 @@ div#main.show div.left img {margin:4px 0 7px;}
             .input_field.uploader    { margin-bottom: 20px; }
             .input_field.description { margin-bottom: 20px; }
 
-            .input_field {
+            .uploader {
               width:100%;
-              margin:0 0 10px 0;
-
-              .holder { width:666px; }
-
-              input[type="text"] {
-                width:666px;
-                font-size:15px;
-              }
+              margin:0 0 20px 0;
+              .qq-upload-button { margin: 0; }
             }
           } // section.proposal
         } // .section
@@ -1017,16 +1011,11 @@ div#main.show div.left img {margin:4px 0 7px;}
             .triangle { left:152px; }
             .input_field.textarea { margin:0; }
 
-            .input_field {
-              width:100%;
-              margin:0 0 10px 0;
+            .uploader {
 
-              .holder { width:666px; }
+              margin:0 0 20px 0;
 
-              input[type="text"] {
-                width:666px;
-                font-size:15px;
-              }
+              .qq-upload-button { margin: 0; }
             }
           } // section.proposal
         } // .section
@@ -1057,7 +1046,7 @@ div#main.show div.left img {margin:4px 0 7px;}
             .image_container {
               display:none;
               float: left;
-              width: 534px;
+              width: 669px;
               padding:10px;
               margin: 0 0 20px 0;
               line-height:normal;
@@ -1155,6 +1144,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
                 .input_field {
                   margin: 0 0 20px 0!important;
+                  &.uploader .holder { left: 0; }
                   .holder { width: 670px; }
                   .all {
                     position:absolute;
@@ -1639,21 +1629,17 @@ div#main.show div.left img {margin:4px 0 7px;}
         z-index:2000;
       }
 
-      .input_field {
+      .uploader {
+        float:left;
 
-        &.uploader {
-          width:534px;
-          margin:0 0 10px 0;
+        width:534px;
+        margin: 0 0 20px 0;
 
-          input[type="text"] {
-            width:534px;
-            font-size:15px;
-          }
+        .qq-upload-button { margin: 0; }
 
-          .holder {
-            span { float:left;
-              &.upload { cursor:pointer; }
-            }
+        .holder {
+          span { float:left;
+            &.upload { cursor:pointer; }
           }
         }
 
@@ -2673,6 +2659,10 @@ span.where, .map .infowindow ul.details li.where {
     }
   }
 
+  &.extra-margin {
+    height:800px;
+  }
+
   .inner-cycle {
     position:relative;
     clear:both;
@@ -3350,14 +3340,14 @@ a.editable {
 
                     .bqstart { position:absolute; left:-15px; top:10px; }
                     .bqend { position:absolute; right:-29px; bottom:-19px; }
-                    
+
                   }
                   .footer {
                     float:left;
                     font-size:13px;
                     a { font-size:13px; }
                   }
-                }                
+                }
               }
             }
           }

@@ -602,7 +602,7 @@ jQuery.fn.enableImageEditing = function(opt){
 					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
 				},
         debug: true,
-        text:"sube una nueva",
+        text:"Sube una nueva",
         onSubmit: function(id, fileName){
           //data.spinner.spin(spin_element);
 

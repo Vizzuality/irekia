@@ -213,7 +213,9 @@
       data.$ps.find(".percentage").hide();
       data.$ps.find(".progress").css("width", "0");
 
-      _resizeSection(data, $currentSection);
+      _resizeSection(data, $currentSection, function() {
+        _center(data);
+      });
     });
   }
 
@@ -377,9 +379,11 @@
       data.proposalStep++;
 
       _showExtraFields(data.settings.transitionSpeed);
-      _resizeSection(data, $currentSection);
+      _resizeSection(data, $currentSection, function() {
+      _center(data);
+      });
+
       _disableSubmit(data.$submit);
-      //data.$submit.unbind();
       _changeSubmitTitle(data.$submit, "Publicar");
     } else {
       var $form = $currentSection.find("form");
@@ -390,15 +394,6 @@
       $form.bind('ajax:success', function(event, xhr, status) { _successProposal(data, $form, xhr); })
     }
   }
-
- // function _doMessage(data) {
- //   var $ps = data.$ps;
- //   _showExtraFields(data.settings.transitionSpeed);
- //   _resizeSection(data, $currentSection);
- //   _disableSubmit(data.$submit);
- //   _changeSubmitTitle(data.$submit, "Publicar");
- //   data.$submit.unbind();
- // }
 
   function _publishPhoto(data) {
     var $ps = data.$ps;
@@ -576,11 +571,11 @@
 					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
 				},
         debug: true,
-        text:"sube una nueva",
+        text: $span.html(),
         onSubmit: function(id, fileName){
           data.spinner.spin(spin_element);
 
-          console.log("Submit", $section);
+        //  console.log("Submit", $section);
 
 					$section.find(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
@@ -624,6 +619,7 @@
 
             $uploader.fadeOut(speed, function() {
               _resizeSection(data, $section);
+              _center(data);
               callback && callback();
             });
 
@@ -682,6 +678,7 @@
 
           _gotoSection(data);
           _bindSubmit(data, "Publicar", true, "publish");
+          _center(data);
         });
 
       } else {
@@ -723,6 +720,11 @@
       IrekiaSpinner.stop();
       callback && callback();
     });
+  }
+
+  function _center(data) {
+    var top  = _getTopPosition(data.$ps);
+    data.$ps.animate({ top:top }, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
   }
 
   function _triggerOpenAnimation(data) {

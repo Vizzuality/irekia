@@ -79,8 +79,8 @@
       _bindMenu(data);
       _bindSubmit(data, "Continuar", true, "continue");
       _bindActions(data);
-      _enableInputCounter(data, $("#question_question_data_attributes_question_text"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
-      _enableInputCounter(data, $("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+      _enableInputCounter(data, $ps.find("#question_question_data_attributes_question_text"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+      _enableInputCounter(data, $ps.find("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
 
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
     });
@@ -333,7 +333,10 @@
       data.proposalStep++;
 
       _showExtraFields(data.settings.transitionSpeed);
-      _resizeSection(data, $currentSection);
+      _resizeSection(data, $currentSection, function() {
+        _center(data);
+      });
+
       _disableSubmit(data.$submit);
       _changeSubmitTitle(data.$submit, "Publicar");
     } else {
@@ -350,7 +353,9 @@
     var $ps = data.$ps;
 
     _showExtraFields(data.settings.transitionSpeed);
-    _resizeSection(data, $currentSection);
+      _resizeSection(data, $currentSection, function() {
+        _center(data);
+      });
     _disableSubmit(data.$submit);
     _changeSubmitTitle(data.$submit, "Publicar");
     data.$submit.unbind();
@@ -468,12 +473,12 @@
 					utf8: $span.closest('form').find('input[name=utf8]').val(),
 					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
 				},
-        debug: true,
-        text:"sube una nueva",
+        debug: false,
+        text: $span.html(),
         onSubmit: function(id, fileName){
           data.spinner.spin(spin_element);
-          $currentSection.find(".holder").fadeOut(speed);
-          console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
+          //$currentSection.find(".holder").fadeOut(speed);
+          //console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
 					$ps.find(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
 					$uploader.find("input").blur();
@@ -484,7 +489,7 @@
 					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
 					var width = parseInt(665 * parseInt(p, 10) / 100, 10);
 
-					console.debug(p, width, arguments, arguments[2], arguments[3]);
+					//console.debug(p, width, arguments, arguments[2], arguments[3]);
 
 					if (parseInt(p) >= 75) $ps.find(".uploader").find(".loading").fadeOut(speed);
 					if (parseInt(p) >= 46) $ps.find(".uploader").find(".percentage").css("color", "#fff");
@@ -495,7 +500,7 @@
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();
 
-					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+					//console.debug(fileName, responseJSON, responseJSON.image_cache_name);
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);
           $uploader.find(".percentage").fadeOut(speed);
@@ -508,9 +513,11 @@
             $ps.find(".image_container").prepend(cacheImage);
             $ps.find(".image_container").fadeIn(speed);
             $ps.find(".image_container img").fadeIn(speed);
+
             $uploader.fadeOut(speed, function() {
-              _resizeSection(data, $currentSection);
+              _resizeSection(data, $currentSection, function() { _center(data); });
             });
+
           });
 
 
@@ -576,6 +583,7 @@
 
           _gotoSection(data);
           _bindSubmit(data, "Continuar", true, "continue");
+          _center(data);
         });
 
       } else {
@@ -617,6 +625,11 @@
       IrekiaSpinner.stop();
       callback && callback();
     });
+  }
+
+  function _center(data) {
+    var top  = _getTopPosition(data.$ps);
+    data.$ps.animate({ top:top }, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
   }
 
   function _triggerOpenAnimation(data) {
@@ -682,7 +695,7 @@
       e.stopPropagation();
       e.preventDefault();
       $.ajax({ url: '/areas', data: {}, success: function(data) {
-        console.log(data);
+        //console.log(data);
       }});
     });
   }

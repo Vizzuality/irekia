@@ -298,14 +298,12 @@
 					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
 				},
         debug: true,
-        text:"sube una nueva",
+        text:$span.html(),
         onSubmit: function(id, fileName){
           data.spinner.spin(spin_element);
-          $uploader.find(".holder").fadeOut(speed);
-          console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
+          //console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
 					$ps.find(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
-					$uploader.find("input").blur();
           $uploader.find(".holder").fadeOut(speed);
           $uploader.find(".loading, .percentage").fadeIn(speed);
         },

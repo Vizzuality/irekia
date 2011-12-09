@@ -1,4 +1,4 @@
-<div class="cycle extra">
+<div class="cycle extra <%= 'extra-margin' if current_user.invalid? && current_user.errors[:email].present? %>">
   <div class="inner-cycle">
     <div class="article thin with_footer with_remark with_form signup step2">
     <%= form_for current_user, { :remote => true, :html => { :novalidate => :novalidate, "data-type" => :html }} do |f| %>
@@ -10,7 +10,7 @@
 
           <fieldset>
 
-            <div class="field name">
+            <div class="field name<%= ' error' if current_user.invalid? && current_user.errors[:name].present? %>">
               <%= f.label :name %>
               <div class="input_field">
                 <%= f.text_field :name, :placeholder => "", :autocomplete => :off %>
@@ -18,7 +18,7 @@
               <span class="mandatory">obligatorio</span>
             </div>
 
-            <div class="field lastname">
+            <div class="field lastname<%= ' error' if current_user.invalid? && current_user.errors[:lastname].present? %>">
               <%= f.label :lastname %>
               <div class="input_field">
                 <%= f.text_field :lastname, :placeholder => "",:autocomplete => :off %>

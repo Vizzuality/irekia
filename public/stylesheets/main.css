@@ -270,21 +270,19 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.uploader { margin-bottom: 20px; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.description { margin-bottom: 20px; }
-#container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
-#container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
-#container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
+#container .article.publish.politician .inner .content .container .inner_container .section.proposal .uploader { width: 100%; margin: 0 0 20px 0; }
+#container .article.publish.politician .inner .content .container .inner_container .section.proposal .uploader .qq-upload-button { margin: 0; }
 #container .article.publish.user .inner .content .container { height: 79px; }
 #container .article.publish.user .inner .content .container .inner_container .section.proposal .triangle { left: 152px; }
 #container .article.publish.user .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0; }
-#container .article.publish.user .inner .content .container .inner_container .section.proposal .input_field { width: 100%; margin: 0 0 10px 0; }
-#container .article.publish.user .inner .content .container .inner_container .section.proposal .input_field .holder { width: 666px; }
-#container .article.publish.user .inner .content .container .inner_container .section.proposal .input_field input[type="text"] { width: 666px; font-size: 15px; }
+#container .article.publish.user .inner .content .container .inner_container .section.proposal .uploader { margin: 0 0 20px 0; }
+#container .article.publish.user .inner .content .container .inner_container .section.proposal .uploader .qq-upload-button { margin: 0; }
 #container .article.publish .inner header { margin: 0; width: 691px; }
 #container .article.publish .inner header h2 { line-height: normal; }
 #container .article.publish .inner .content .container { overflow: hidden; clear: both; width: 687px; height: 79px; }
 #container .article.publish .inner .content .container .inner_container { width: 9000px; height: 2000px; margin-top: 19px; }
 #container .article.publish .inner .content .container .inner_container strong { float: left; }
-#container .article.publish .inner .content .container .inner_container .image_container { display: none; float: left; width: 534px; padding: 10px; margin: 0 0 20px 0; line-height: normal; background: #EDF3E5; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
+#container .article.publish .inner .content .container .inner_container .image_container { display: none; float: left; width: 669px; padding: 10px; margin: 0 0 20px 0; line-height: normal; background: #EDF3E5; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
 #container .article.publish .inner .content .container .inner_container .image_container img { display: none; float: left; margin: 0 10px 0 0; height: 72px; }
 #container .article.publish .inner .content .container .inner_container .image_container p { float: left; margin: 30px 0 0 0; line-height: normal; font-size: 15px; color: #7D8A92; }
 #container .article.publish .inner .content .container .inner_container .image_container a { float: right; margin: 30px 10px 0 0; line-height: normal; font-size: 15px; }
@@ -303,6 +301,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.publish .inner .content .container .inner_container .section .extra strong { text-transform: uppercase; }
 #container .article.publish .inner .content .container .inner_container .section .extra .search_box { margin: 0; padding: 0; position: relative; width: 685px; height: 35px; }
 #container .article.publish .inner .content .container .inner_container .section .extra .input_field { margin: 0 0 20px 0!important; }
+#container .article.publish .inner .content .container .inner_container .section .extra .input_field.uploader .holder { left: 0; }
 #container .article.publish .inner .content .container .inner_container .section .extra .input_field .holder { width: 670px; }
 #container .article.publish .inner .content .container .inner_container .section .extra .input_field .all { position: absolute; right: 10px; text-align: right; }
 #container .article.publish .inner .content .container .inner_container .section .extra .input_field .all a { color: #f10063; }
@@ -407,14 +406,14 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.popover.proposal .percentage { display: none; margin-left: -343px; position: absolute; top: 10px; right: 50%; font-size: 15px; color: #FF0066; z-index: 2010; font-weight: bold; }
 #container .article.popover.proposal .loading { display: none; position: absolute; top: 10px; right: 10px; font-size: 15px; color: #CCCCCC; z-index: 2010; }
 #container .article.popover.proposal .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
-#container .article.popover.proposal .input_field.uploader { width: 534px; margin: 0 0 10px 0; }
-#container .article.popover.proposal .input_field.uploader input[type="text"] { width: 534px; font-size: 15px; }
-#container .article.popover.proposal .input_field.uploader .holder span { float: left; }
-#container .article.popover.proposal .input_field.uploader .holder span.upload { cursor: pointer; }
-#container .article.popover.proposal .input_field.textarea { height: 76px; margin: 0 0 10px 0; }
-#container .article.popover.proposal .input_field.textarea.grow { height: auto; }
-#container .article.popover.proposal .input_field.textarea textarea.body { height: 53px; }
-#container .article.popover.proposal .input_field.textarea .holder { top: 10px; font-size: 15px; }
+#container .article.popover.proposal .uploader { float: left; width: 534px; margin: 0 0 20px 0; }
+#container .article.popover.proposal .uploader .qq-upload-button { margin: 0; }
+#container .article.popover.proposal .uploader .holder span { float: left; }
+#container .article.popover.proposal .uploader .holder span.upload { cursor: pointer; }
+#container .article.popover.proposal .uploader.textarea { height: 76px; margin: 0 0 10px 0; }
+#container .article.popover.proposal .uploader.textarea.grow { height: auto; }
+#container .article.popover.proposal .uploader.textarea textarea.body { height: 53px; }
+#container .article.popover.proposal .uploader.textarea .holder { top: 10px; font-size: 15px; }
 #container .article.popover h3.related { display: none; }
 #container .article.popover div.related ul li { clear: both; overflow: hidden; margin: 0 0 10px 0; padding: 11px 10px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: #F2F5F8; }
 #container .article.popover div.related ul li .content { float: left; width: 490px; clear: right; margin: 0; }
@@ -668,6 +667,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 
 #container .cycle { overflow: hidden; clear: both; }
 #container .cycle.extra .inner-cycle { height: 750px; }
+#container .cycle.extra-margin { height: 800px; }
 #container .cycle .inner-cycle { position: relative; clear: both; width: 9000px; height: 333px; }
 #container .cycle .inner-cycle .article { float: left; clear: none; margin: 10px 100px 0 0; }
 #container .cycle .inner-cycle .article.step1 .inner .content { padding: 30px 0 0 0; }

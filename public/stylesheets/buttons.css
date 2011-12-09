@@ -271,7 +271,7 @@ form.editable .input_field textarea, form.editable .input_field input[type="text
 * html .jspCorner { margin: 0 -3px 0 0; }
 
 /* Ajax file uploader */
-.qq-upload-button { width: 120px; margin: 0 0 0 5px; display: inline-block; color: #1D79B0; font-size: 15px; }
+.qq-upload-button { width: 120px; margin: 0 0 0 0px; display: inline-block; color: #1D79B0; font-size: 15px; }
 
 .qq-upload-button-hover { color: #333; }
 
