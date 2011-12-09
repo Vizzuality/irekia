@@ -1,69 +1,71 @@
 <% if @questions_done_count <= 0 -%>
-<div class="article help">
-<div class="inner">
-    <div class="info icon"></div>
-    <div class="content">
+  <div class="article help">
+    <div class="inner">
+      <div class="content centered clearfix">
+        <div class="info icon"></div>
         <h2><%= t('.no_questions.title') %></h2>
-        <p><%= t('.no_questions.description') %></p>
-        <%= link_to_with_login (content_tag :span, t('.no_questions.create_question')), '#', :class => "white_button pink publish_question user_publish" %>
+        <div class="message">
+          <p><%= t('.no_questions.description') %></p>
+          <%= link_to_with_login (content_tag :span, t('.no_questions.create_question')), '#', :class => "white_button pink publish_question user_publish" %>
+        </div>
+      </div>
     </div>
-</div>
-<div class="t"></div><div class="f"></div>
-</div>
+    <div class="t"></div><div class="f"></div>
+  </div>
 
-<%= render "/shared/question_form" %>
+  <%= render "/shared/question_form" %>
 <% else -%>
 
-<div class="article questions with_filters broken-bottom">
-<div class="inner">
-  <header>
-  <div class="left">
-    <h2><%= t(".answered_title", :count => @questions_top_count) %></h2>
-  </div>
-  <div class="right">
+  <div class="article questions with_filters broken-bottom">
+    <div class="inner">
+      <header>
+      <div class="left">
+        <h2><%= t(".answered_title", :count => @questions_top_count) %></h2>
+      </div>
+      <div class="right">
 
-    <ul class="switch">
-      <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:more_polemic => false, :referer => 'answered'), :class => 'filter' %></li>
-      <li><%= link_to t('.more_polemic'), link_for_questions(:more_polemic => true, :referer => 'answered'), :class => 'filter' %></li>
-    </ul>
+        <ul class="switch">
+          <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:more_polemic => false, :referer => 'answered'), :class => 'filter' %></li>
+          <li><%= link_to t('.more_polemic'), link_for_questions(:more_polemic => true, :referer => 'answered'), :class => 'filter' %></li>
+        </ul>
 
-  </div>
-  </header>
-  <div class="left">
-    <div class="listing">
-      <%= render 'shared/questions_list', :questions => @questions_top %>
+      </div>
+      </header>
+      <div class="left">
+        <div class="listing">
+          <%= render 'shared/questions_list', :questions => @questions_top %>
+        </div>
+      </div>
+      <div class="right">
+      </div>
     </div>
+    <div class="t"></div><div class="f"></div>
   </div>
-  <div class="right">
-  </div>
-</div>
-<div class="t"></div><div class="f"></div>
-</div>
 
-<div class="article questions with_filters broken-top">
-<div class="inner">
-  <header>
-  <div class="left">
-    <h2><%= t(".not_answered_title") %></h2>
-  </div>
-  <div class="right">
+  <div class="article questions with_filters broken-top">
+    <div class="inner">
+      <header>
+      <div class="left">
+        <h2><%= t(".not_answered_title") %></h2>
+      </div>
+      <div class="right">
 
-    <ul class="switch">
-      <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:more_polemic => false, :referer => 'all'), :class => 'filter' %></li>
-      <li><%= link_to t('.more_polemic'), link_for_questions(:more_polemic => true, :referer => 'all'), :class => 'filter' %></li>
-    </ul>
+        <ul class="switch">
+          <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:more_polemic => false, :referer => 'all'), :class => 'filter' %></li>
+          <li><%= link_to t('.more_polemic'), link_for_questions(:more_polemic => true, :referer => 'all'), :class => 'filter' %></li>
+        </ul>
 
-  </div>
-  </header>
-  <div class="left">
-    <div class="listing">
-      <%= render 'shared/questions_list' %>
+      </div>
+      </header>
+      <div class="left">
+        <div class="listing">
+          <%= render 'shared/questions_list' %>
+        </div>
+      </div>
+      <div class="right">
+      </div>
     </div>
+    <div class="t"></div><div class="f"></div>
   </div>
-  <div class="right">
-  </div>
-</div>
-<div class="t"></div><div class="f"></div>
-</div>
 
 <% end -%>
