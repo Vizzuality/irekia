@@ -1850,7 +1850,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
   &.with_footer {
     .inner { width: 928px; }
-    footer .right { right: 0; }
+    footer .right { right: 0; width:auto}
   }
 
   .inner .content ul li.day ul.events {
