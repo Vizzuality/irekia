@@ -6,8 +6,6 @@ class AnswerRequest < Participation
   before_save :set_as_moderated
   after_save :update_question
 
-  delegate :publish, :to => :question
-
   def self.find_or_initialize(params = nil)
     new_request = new(params)
     answer_request = User.find(params[:user_id]).answer_request(params[:content_id]).readonly(false).first if params.present?

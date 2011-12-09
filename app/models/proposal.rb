@@ -135,7 +135,7 @@ class Proposal < Content
         user_action.published_at = self.published_at
         user_action.message      = self.to_json
         user_action.save!
-      end
+      end if target_area
     end
 
   end

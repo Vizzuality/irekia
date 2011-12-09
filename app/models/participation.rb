@@ -136,7 +136,6 @@ class Participation < ActiveRecord::Base
       user_action.save!
     end
 
-    require 'ruby-debug'; debugger
     content.publish
   end
 
