@@ -31,7 +31,6 @@ class Content < ActiveRecord::Base
   before_create :update_published_at
   before_save   :update_moderated_at
   before_save   :author_is_politician?
-  after_save    :publish
 
   accepts_nested_attributes_for :comments, :contents_users
   accepts_nested_attributes_for :areas_contents, :contents_users, :allow_destroy => true

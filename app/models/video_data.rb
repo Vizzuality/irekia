@@ -20,6 +20,11 @@ class VideoData < ActiveRecord::Base
     end
   end
 
+  def publish
+    video.publish       if video.present?
+    answer_data.publish if answer_data.present?
+  end
+
   def store_oembed(oembed_json)
     if oembed_json.present?
       self.title         = oembed_json['title']

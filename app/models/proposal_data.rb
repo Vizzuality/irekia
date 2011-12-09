@@ -11,4 +11,9 @@ class ProposalData < ActiveRecord::Base
   accepts_nested_attributes_for :image
 
   delegate :content_url, :to => :image
+
+  def publish
+    proposal.publish if proposal.present?
+  end
+
 end
