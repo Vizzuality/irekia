@@ -5703,7 +5703,7 @@ ul.playlist li .peak .r {
       cursor:pointer;
       z-index:100;
 
-      &.disabled, &.disabled:hover { opacity: .3; }
+      &.disabled, &.disabled:hover {display:none}
 
       &.next { right:20px; background-position: -44px 0; }
       &.prev { left:20px; background-position: 0 0; }

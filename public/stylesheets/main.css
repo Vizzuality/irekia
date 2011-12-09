@@ -1409,7 +1409,7 @@ ul.playlist li .peak .r { left: 10px; }
 .slideshow .options .inner_options ul li a, #container .article .slideshow .options .inner_options ul li a { color: #fff!important; font-size: 10px; filter: alpha(opacity=50); -khtml-opacity: 0.5; -moz-opacity: 0.5; opacity: 0.5; text-transform: uppercase; }
 .slideshow .slideshow_controls, #container .article .slideshow .slideshow_controls { display: none; }
 .slideshow .slideshow_controls a, #container .article .slideshow .slideshow_controls a { position: absolute; display: block; width: 40px; height: 40px; background: url("/images/slideshow_sprite.png") no-repeat; cursor: pointer; z-index: 100; }
-.slideshow .slideshow_controls a.disabled, .slideshow .slideshow_controls a.disabled:hover, #container .article .slideshow .slideshow_controls a.disabled, #container .article .slideshow .slideshow_controls a.disabled:hover { opacity: .3; }
+.slideshow .slideshow_controls a.disabled, .slideshow .slideshow_controls a.disabled:hover, #container .article .slideshow .slideshow_controls a.disabled, #container .article .slideshow .slideshow_controls a.disabled:hover { display: none; }
 .slideshow .slideshow_controls a.next, #container .article .slideshow .slideshow_controls a.next { right: 20px; background-position: -44px 0; }
 .slideshow .slideshow_controls a.prev, #container .article .slideshow .slideshow_controls a.prev { left: 20px; background-position: 0 0; }
 
