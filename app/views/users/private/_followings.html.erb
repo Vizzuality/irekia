@@ -1,10 +1,14 @@
 <div class="article with_footer">
 <div class="inner">
   <header>
-  <h2><%= t('.title') %></h2>
+  <h2><%= t('.title', :count => @followings_count) %></h2>
+  <% if @followings_count == 0 -%>
+  <p><%= t('.subtitle')  %></p>
+  <% end -%>
   </header>
   <div class="content">
     <ul class="suggestions">
+      <%#// AREAS%>
       <% @areas_following.first(9).each do |area| %>
         <li class="selected">
           <%= avatar area %>
@@ -20,6 +24,7 @@
       <% if @areas_following.present? && @users_following.present? -%>
         <hr/>
       <% end -%>
+      <%#// USERS%>
       <% @users_following.first(9).each do |user| %>
         <li class="selected">
           <%= link_to avatar(user), path_for_user(user) %>
@@ -34,6 +39,25 @@
           </div>
         </li>
       <% end %>
+      <%#// SUGGESTIONS%>
+      <% @suggestions.each do |user| %>
+        <li class="<%= 'selected' unless @suggestions_follows[user.id] && @suggestions_follows[user.id].new_record? %>">
+          <%= link_to avatar(user), path_for_user(user) %>
+          <div class="content">
+            <%= link_to user.fullname, path_for_user(user), :class => :name %>
+            <p><%= translate(t('.title_and_area', :title => get_politician_title(user), :area => user.areas.map(&:name).to_sentence),:length => 25) %></p>
+
+            <div class="follow basic">
+            <% if @suggestions_follows[user.id] && @suggestions_follows[user.id].new_record? -%>
+              <%= render 'follows/create_mini', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '', :button_label => t('.follow') %>
+            <% else -%>
+              <%= render 'follows/destroy_mini', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '' %>
+            <% end -%>
+            </div>
+
+          </div>
+          </li>
+        <% end %>
     </ul>
   </div>
 </div>

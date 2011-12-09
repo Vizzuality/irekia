@@ -1,8 +1,10 @@
 <div class="article with_footer">
 <div class="inner">
   <header>
-  <h2><%= raw t('.title') %></h2>
-  <p><%= t('.we_suggest_you_the_most_active') %></p>
+  <h2><%= raw t('.title', :count => @actions_count ) %></h2>
+  <% if @actions_count == 0 -%>
+    <p><%= t('.we_suggest_you_the_most_active') %></p>
+  <% end -%>
   </header>
   <div class="content">
     <ul class="suggestions">
@@ -19,7 +21,7 @@
             <% else -%>
               <%= render 'follows/destroy_mini', :follow => @suggestions_follows[user.id], :follow_parent => user, :button_class => '' %>
             <% end -%>
-          </div>
+            </div>
 
           </div>
           </li>

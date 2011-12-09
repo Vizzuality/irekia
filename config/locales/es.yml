@@ -1551,7 +1551,10 @@
           subtitle: 'Esta es la actividad relacionada con tus contenidos, o con los %{link}.'
           profiles_or_areas_following: perfiles o áreas que sigues
       follow_suggestions:
-        title: Tu dashboard está vacío.
+        title:
+          zero: Tu dashboard está vacío.
+          one: ¿Quieres más? Te sugerimos...
+          other: ¿Quieres más? Te sugerimos...
         we_suggest_you_the_most_active: "Seguramente no sigues al número suficiente de políticos o áreas. Te sugerimos los más activos:"
         title_and_area: '%{title} de %{area}'
         follow: Seguir
@@ -1606,8 +1609,12 @@
          videos: Vídeos
         more: ver más acciones
       followings:
-        title: A quién sigues en Irekia
-        all_profiles: Ver todos los perfiles a los que sigues
+        title:
+          zero: Actualmente no sigues a nadie en Irekia.
+          one: A quién sigues en Irekia.
+          other: A quién sigues en Irekia.
+        subtitle: Esta es una lista de los políticos más activos en Irekia a quienes puedes seguir.
+        all_profiles: Ver todos los perfiles a los que sigues.
         title_and_area: '%{title} de %{area}'
         area: Área
     politician:

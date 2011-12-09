@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_filter :user_is_current_user?,        :only => [:edit, :update]
   before_filter :per_page,                     :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda, :settings]
+  before_filter :get_follow_suggestions,       :only => [:show, :followings]
   before_filter :get_counters,                 :only => [:show, :actions, :questions, :proposals]
   before_filter :models_for_forms,             :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :get_questions,                :only => [:questions]
@@ -17,21 +18,6 @@ class UsersController < ApplicationController
 
   def show
     redirect_to_politician_page?
-
-
-    if current_user
-      @suggestions         = current_user.follow_suggestions.limit(6)
-      @suggestions_follows = @suggestions.inject({}) do |suggestions_follows, user|
-        suggestions_follows[user.id] = if @user.blank? || @user.not_following(user)
-          follow          = user.follows.build
-          follow.user     = current_user
-          follow
-        else
-          follow = @user.followed_item(user)
-        end
-        suggestions_follows
-      end
-    end
   end
 
   def questions
@@ -55,8 +41,9 @@ class UsersController < ApplicationController
   end
 
   def followings
-    @areas_following = @user.areas_following.all
-    @users_following = @user.users_following.all
+    @areas_following  = @user.areas_following.all
+    @users_following  = @user.users_following.all
+    @followings_count = @areas_following.size + @users_following.size
 
     if private_profile?
       @areas_follows   = Hash[@user.followed_items.areas.map{|follow| [follow.follow_item_id, follow]}]
@@ -139,6 +126,23 @@ class UsersController < ApplicationController
     redirect_to root_path if current_user.present? && params[:id].to_i != current_user.id
   end
   private :user_is_current_user?
+
+  def get_follow_suggestions
+    if current_user
+      @suggestions         = current_user.follow_suggestions.limit(6)
+      @suggestions_follows = @suggestions.inject({}) do |suggestions_follows, user|
+        suggestions_follows[user.id] = if @user.blank? || @user.not_following(user)
+          follow          = user.follows.build
+          follow.user     = current_user
+          follow
+        else
+          follow = @user.followed_item(user)
+        end
+        suggestions_follows
+      end
+    end
+  end
+  private :get_follow_suggestions
 
   def get_user
     return unless params[:id].present?
@@ -250,6 +254,7 @@ class UsersController < ApplicationController
     else
       @actions = @user.get_actions(params.slice(:type, :referer, :more_polemic, :page))
     end
+    @actions_count = @actions.count
   end
   private :get_actions
 

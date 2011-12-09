@@ -237,6 +237,7 @@ class User < ActiveRecord::Base
       user
     else
       user = User.new :name             => data['name'],
+                      :email            => data['nickname'],
                       :twitter_username => data['nickname']
 
       user.password                   = Devise.friendly_token[0,20]
@@ -435,7 +436,7 @@ class User < ActiveRecord::Base
   end
 
   def follow_suggestions
-    User.includes(:role, :profile_pictures, :title, :areas).politicians.where('users.id <> ?', id)
+    User.includes(:role, :profile_pictures, :title, :areas).politicians.where('users.id not in (?)', ([id] + users_following_ids))
   end
 
   def new_followers(last_seen_at)

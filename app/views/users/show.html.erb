@@ -1,6 +1,6 @@
 <%= render "users/#{@viewing_access}/welcome" %>
 <%= render "users/#{@viewing_access}/navigation_menu" %>
-<%= render "shared/actions" %>
+<%= render "shared/actions" if @actions.present? %>
 <%= render "users/#{@viewing_access}/follow_suggestions" if private_profile? %>
 <%= render "shared/#{current_user.politician? ? 'politician' : 'user' }_publish" if private_profile? or politician_profile? %>
 
