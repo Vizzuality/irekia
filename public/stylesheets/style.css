@@ -976,7 +976,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .inner .left div.comments .birdie { width: 185px; height: 87px; position: absolute; right: 0; top: -57px; background: url("/images/twitter_sprite.png") no-repeat; }
 #container .article .inner .left div.comments .textarea-comment { float: left; }
 #container .article .inner .left div.comments ul { margin-top: 10px; }
-#container .article .inner .left div.comments ul li { color: #7d8a92; padding: 30px 0 20px 0; border-top: 1px solid #eaeaea; border-top: 1px solid rgba(70, 88, 102, 0.12); margin-bottom: 10px; }
+#container .article .inner .left div.comments ul li { color: #7d8a92; padding: 20px 0 20px 0; border-top: 1px solid #eaeaea; border-top: 1px solid rgba(70, 88, 102, 0.12); margin-bottom: 10px; }
 #container .article .inner .left div.comments ul li.moderated { border-top: 1px solid #e4e8da; border-top: 1px solid rgba(208, 214, 219, 0.4); font-size: 15px; color: #7D8A92; }
 #container .article .inner .left div.comments ul li.moderated strong { display: block; margin: 16px 0 3px 0; color: #666666; font-size: 17px; }
 #container .article .inner .left div.comments ul li.moderated .icon.ok { background: url("/images/icons/ok.png") no-repeat 0 -101px; width: 65px; height: 69px; margin-right: 13px; float: left; }
