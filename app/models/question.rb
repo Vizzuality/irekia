@@ -128,7 +128,6 @@ class Question < Content
       area_action.save!
     end
   end
-  private :publish
 
   def notification_for(user)
     if target_user.present?

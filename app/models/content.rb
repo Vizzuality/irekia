@@ -130,7 +130,7 @@ class Content < ActiveRecord::Base
   end
 
   def last_comments
-    comments.last(2)
+    self.reload.comments.last(2)
   end
 
   def as_json(options = {})
@@ -223,7 +223,6 @@ class Content < ActiveRecord::Base
     end
 
   end
-  private :publish
 
   def notification_for(user = nil)
     tagged_politicians.each{|politician| Notification.for(politician, self)}

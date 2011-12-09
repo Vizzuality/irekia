@@ -78,6 +78,5 @@ class News < Content
       end
     end
   end
-  private :publish
 
 end

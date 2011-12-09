@@ -139,7 +139,6 @@ class Proposal < Content
     end
 
   end
-  private :publish
 
   def notification_for(user)
     target_area.team.each{|politician| Notification.for(politician, self)} if target_area

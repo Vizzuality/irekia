@@ -11,7 +11,6 @@ class Participation < ActiveRecord::Base
   before_create :update_published_at
   before_save   :update_moderated_at
   before_save   :author_is_politician?
-  after_save    :publish
 
   accepts_nested_attributes_for :user
 
@@ -130,16 +129,16 @@ class Participation < ActiveRecord::Base
       user_action.save!
     end
 
-    user_action              = content.author.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-    user_action.published_at = self.published_at
-    user_action.message      = self.to_json
-    user_action.save!
-
-    if content.respond_to?(:target_area) && content.target_area.present?
+    if content.author.present?
+      user_action              = content.author.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
+      user_action.published_at = self.published_at
+      user_action.message      = self.to_json
+      user_action.save!
     end
 
+    require 'ruby-debug'; debugger
+    content.publish
   end
-  private :publish
 
   def notification_for(user)
     Notification.for(author, self)

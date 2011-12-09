@@ -63,7 +63,6 @@ class ContentUser < ActiveRecord::Base
     end
 
   end
-  private :publish
 
   def send_notification
     return unless content && content.moderated?
