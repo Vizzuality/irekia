@@ -3,7 +3,7 @@ class Participation < ActiveRecord::Base
   belongs_to :author,
              :class_name => 'User',
              :foreign_key => :user_id,
-             :select => 'id, role_id, title_id, name, lastname'
+             :select => 'id, name, lastname, locale, email, title_id, role_id'
   belongs_to :content
 
   attr_protected :moderated, :rejected
