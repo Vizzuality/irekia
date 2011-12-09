@@ -153,7 +153,7 @@
     $ps.css({"top":(top + 100) + "px", "left": left + "px"});
 
     $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function() {
-      $(this).find("textarea").focus();
+      $(this).find("textarea.title").focus();
     }});
   }
 

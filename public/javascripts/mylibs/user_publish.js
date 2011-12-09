@@ -157,6 +157,7 @@
   function _resetSection(data, $section) {
     $section.find(":text, textarea").val("");
     $section.find(".holder").fadeIn(data.settings.transitionSpeed);
+    $section.find(".message").remove();
   }
 
   function _hasContent($section) {
@@ -205,7 +206,7 @@
     var $ps = data.$ps;
 
     // Image uploader
-    _setupUpload(data, "upload_image");
+    _setupUpload(data, "upload_proposal_image");
 
     // Remove image link
     $ps.find(".image_container a.remove").unbind();
@@ -477,11 +478,9 @@
         text: $span.html(),
         onSubmit: function(id, fileName){
           data.spinner.spin(spin_element);
-          //$currentSection.find(".holder").fadeOut(speed);
-          //console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
+
 					$ps.find(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
-					$uploader.find("input").blur();
           $uploader.find(".holder").fadeOut(speed);
           $uploader.find(".loading, .percentage").fadeIn(speed);
         },
@@ -568,6 +567,8 @@
 
       if (_sectionName($section) != _sectionName($currentSection)) {
         _resetSection(data, $section);
+      } else {
+        $section.find(".message").fadeOut(data.settings.transitionSpeed, function() { $(this).remove(); });
       }
 
       _selectOption(data, $(this).parent());

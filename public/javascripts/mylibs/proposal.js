@@ -324,7 +324,6 @@
 
 					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
           $uploader.find(".loading").fadeOut(speed);
-          $uploader.find(".holder").fadeIn(speed);
           $uploader.find(".percentage").fadeOut(speed);
 
           var cacheImage = document.createElement('img');
@@ -335,9 +334,11 @@
             $ps.find(".image_container").prepend(cacheImage);
             $ps.find(".image_container").fadeIn(speed);
             $ps.find(".image_container img").fadeIn(speed);
+
             $uploader.fadeOut(speed, function() {
-            //  _resizeSection(data, $currentSection);
+              $uploader.find(".holder").fadeIn(speed);
             });
+
           });
 
 
