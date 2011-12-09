@@ -3359,8 +3359,8 @@ a.editable {
             }
           }
 
-          /* tweets */
-          #container .article .inner .left li.tweet {
+          /* tweets - status_message*/
+          #container .article .inner .left li.tweet, #container .article .inner .left li.status_message {
             .content {
               blockquote {
                 width:100%;
@@ -3371,7 +3371,7 @@ a.editable {
                 line-height:20px;
 
                 p { margin:0; padding:0; } // fix for the simple_format helper
-                span.quote {position:relative; z-index:100; }
+                span.quote {position:relative; z-index:100; border-bottom:1px solid white;}
                 .bqstart, .bqend {
                   font-family: "Times", serif;
                   font-size: 60px!important;
@@ -3381,12 +3381,13 @@ a.editable {
                   text-decoration:none!important;
                 }
 
-                .bqstart { position:absolute; left:-15px; top:10px; }
+                .bqstart { position:absolute; left:-15px; top:10px;}
                 .bqend { position:absolute; right:-29px; bottom:-19px; }
 
                 a {
                   color:#465866; font:bold 17px Arial; line-height:19px; text-decoration:none;
-                  &:hover .bqstart, &:hover .bqend {text-decoration:none!important;}
+                  &:hover span.quote {border-bottom:1px solid $link_color_hover;}
+                  &:hover span.quote .bqend {border:none; text-decoration:none!important}
                 }
               }
             }

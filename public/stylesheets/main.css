@@ -842,15 +842,16 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .inner .left div.comments ul li .comment .footer { float: left; font-size: 13px; }
 #container .article .inner .left div.comments ul li .comment .footer a { font-size: 13px; }
 
-/* tweets */
-#container .article .inner .left li.tweet .content blockquote { width: 100%; margin-bottom: 5px; font-size: 17px; color: #7d8a92; font-family: "Helvetica", sans-serif; line-height: 20px; }
-#container .article .inner .left li.tweet .content blockquote p { margin: 0; padding: 0; }
-#container .article .inner .left li.tweet .content blockquote span.quote { position: relative; z-index: 100; }
-#container .article .inner .left li.tweet .content blockquote .bqstart, #container .article .inner .left li.tweet .content blockquote .bqend { font-family: "Times", serif; font-size: 60px!important; color: #eaeaea; color: rgba(70, 88, 102, 0.15); z-index: 0; text-decoration: none!important; }
-#container .article .inner .left li.tweet .content blockquote .bqstart { position: absolute; left: -15px; top: 10px; }
-#container .article .inner .left li.tweet .content blockquote .bqend { position: absolute; right: -29px; bottom: -19px; }
-#container .article .inner .left li.tweet .content blockquote a { color: #465866; font: bold 17px Arial; line-height: 19px; text-decoration: none; }
-#container .article .inner .left li.tweet .content blockquote a:hover .bqstart, #container .article .inner .left li.tweet .content blockquote a:hover .bqend { text-decoration: none!important; }
+/* tweets - status_message*/
+#container .article .inner .left li.tweet .content blockquote, #container .article .inner .left li.status_message .content blockquote { width: 100%; margin-bottom: 5px; font-size: 17px; color: #7d8a92; font-family: "Helvetica", sans-serif; line-height: 20px; }
+#container .article .inner .left li.tweet .content blockquote p, #container .article .inner .left li.status_message .content blockquote p { margin: 0; padding: 0; }
+#container .article .inner .left li.tweet .content blockquote span.quote, #container .article .inner .left li.status_message .content blockquote span.quote { position: relative; z-index: 100; border-bottom: 1px solid white; }
+#container .article .inner .left li.tweet .content blockquote .bqstart, #container .article .inner .left li.tweet .content blockquote .bqend, #container .article .inner .left li.status_message .content blockquote .bqstart, #container .article .inner .left li.status_message .content blockquote .bqend { font-family: "Times", serif; font-size: 60px!important; color: #eaeaea; color: rgba(70, 88, 102, 0.15); z-index: 0; text-decoration: none!important; }
+#container .article .inner .left li.tweet .content blockquote .bqstart, #container .article .inner .left li.status_message .content blockquote .bqstart { position: absolute; left: -15px; top: 10px; }
+#container .article .inner .left li.tweet .content blockquote .bqend, #container .article .inner .left li.status_message .content blockquote .bqend { position: absolute; right: -29px; bottom: -19px; }
+#container .article .inner .left li.tweet .content blockquote a, #container .article .inner .left li.status_message .content blockquote a { color: #465866; font: bold 17px Arial; line-height: 19px; text-decoration: none; }
+#container .article .inner .left li.tweet .content blockquote a:hover span.quote, #container .article .inner .left li.status_message .content blockquote a:hover span.quote { border-bottom: 1px solid #114c6e; }
+#container .article .inner .left li.tweet .content blockquote a:hover span.quote .bqend, #container .article .inner .left li.status_message .content blockquote a:hover span.quote .bqend { border: none; text-decoration: none!important; }
 
 /* quotation */
 .quotation blockquote { margin-bottom: 12px; position: relative; line-height: 34px; letter-spacing: -1px; background: none; }
