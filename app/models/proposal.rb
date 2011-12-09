@@ -135,11 +135,10 @@ class Proposal < Content
         user_action.published_at = self.published_at
         user_action.message      = self.to_json
         user_action.save!
-      end
+      end if target_area
     end
 
   end
-  private :publish
 
   def notification_for(user)
     target_area.team.each{|politician| Notification.for(politician, self)} if target_area

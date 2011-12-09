@@ -5,4 +5,8 @@ class VoteData < ActiveRecord::Base
   def against
     !in_favor
   end
+
+  def publish
+    vote.publish if vote.present?
+  end
 end

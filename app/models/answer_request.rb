@@ -48,7 +48,6 @@ class AnswerRequest < Participation
       area_action.save!
     end
   end
-  private :publish
 
   def set_as_moderated
     self.moderated = true

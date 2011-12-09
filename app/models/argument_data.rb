@@ -5,4 +5,8 @@ class ArgumentData < ActiveRecord::Base
   def against
     !in_favor
   end
+
+  def publish
+    argument.publish if argument.present?
+  end
 end

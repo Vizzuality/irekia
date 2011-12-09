@@ -2,7 +2,7 @@
 <ul class="questions">
   <% @last_contents.each do |question| %>
     <li>
-    <p><%= link_to question.question_text, question_path(question) %></p>
+    <p><%= link_to truncate(question.question_text,:length => 90), question_path(question) %></p>
     <div class="footer">
       <span ><%= t('.time', :time => distance_of_time_in_words_to_now(question.published_at)) %></span>
       &middot;

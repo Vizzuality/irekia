@@ -218,4 +218,15 @@ $(function() {
       $(this).remove();
     });
   });
+
+
+  // Tipsy tooltips (add here all possible tooltips)
+  $('input.ribbon').tipsy({live: true, gravity: 's', offset: 3, title: function() {
+    if ($(this).closest('form').hasClass('remove')) {
+      return 'Dejar de seguir';
+    } else {
+      return 'Seguir';
+    }
+  }});
+
 });
