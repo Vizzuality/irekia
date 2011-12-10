@@ -168,20 +168,21 @@
   function _clearInfo($ps) {
     $ps.find("textarea").val("");
     $ps.find(".counter").html(140);
-    disableSending($ps);
+    $ps.find(".holder").fadeIn(150);
+    _disableSending($ps);
   }
 
   function enableSending($ps) {
     if ($ps) {
-      $ps.find("input[type='submit']").removeAttr("disabled");
-      $ps.find("input[type='submit']").removeClass("disabled");
+      $ps.find("footer button").removeAttr("disabled");
+      $ps.find("footer button").removeClass("disabled");
     }
   }
 
-  function disableSending($ps) {
+  function _disableSending($ps) {
     if ($ps) {
-      $ps.find("form input[type='submit']").attr("disabled", "true");
-      $ps.find("form input[type='submit']").addClass("disabled");
+      $ps.find("footer button").attr("disabled", "true");
+      $ps.find("footer button").addClass("disabled");
     }
   }
 
@@ -221,7 +222,7 @@
 
     data.$ps.find("form").submit(function(e) {
       spinner.spin(spin_element);
-      disableSending(data.$ps);
+      _disableSending(data.$ps);
     });
 
     data.$ps.find("form").live('ajax:success', function(event, response, status) {

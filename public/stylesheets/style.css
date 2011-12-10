@@ -1046,7 +1046,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 
 /* close */
 #container .article { /* Maps */ }
-#container .article a.close, #container .article span.close { position: absolute; top: 3px; right: 10px; display: block; width: 9px; height: 8px; background: url("/images/icons/icon_sprite.png") no-repeat; cursor: pointer; }
+#container .article span.close { position: absolute; top: 3px; right: 10px; display: block; width: 9px; height: 8px; background: url("/images/icons/icon_sprite.png") no-repeat; cursor: pointer; }
 #container .article .map span.close { top: 11px; }
 #container .article .inner .content ul.questions li { clear: both; overflow: hidden; margin: 0 0 13px 0; padding: 10px; background: #F2F5F8; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container .article .inner .content ul.questions li:last-child, #container .article .inner .content ul.questions li.last { margin-bottom: 0; }
