@@ -87,7 +87,7 @@ class Participation < ActiveRecord::Base
   end
 
   def publish
-    return unless content.present? && self.moderated?
+    return unless content.present? && moderated?
 
     user_action              = user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
     user_action.published_at = self.published_at
@@ -138,7 +138,7 @@ class Participation < ActiveRecord::Base
   end
 
   def notification_for(user)
-    Notification.for(author, self)
+    Notification.for(user, self) unless author == user
   end
 
 end
