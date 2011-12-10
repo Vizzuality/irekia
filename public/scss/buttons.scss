@@ -69,7 +69,7 @@ header nav .content ul li .blue_button a,
 /* Blue buttons */
 .article .blue_button,
 header nav .content .blue_button, header nav .content ul li .blue_button {
-  color:#fff;
+  color:$white;
   font-size:15px;
   text-shadow:0px 1px 1px #0F4768;
 
@@ -101,7 +101,7 @@ header nav .content .blue_button, header nav .content ul li .blue_button {
 
 /* Blue buttons in admin site */
 body.admin header nav .content ul li .blue_button {
-  color:#fff;
+  color:$white;
   font-size:15px;
   text-shadow:0px 1px 1px #58620F;
 
@@ -143,7 +143,7 @@ White buttons
     color: $agree_color;
     &.selected {
       background: #75B100;
-      color: #fff;
+      color: $white;
       text-shadow: #4E7500 1px 1px 0;
     }
   }
@@ -153,8 +153,19 @@ White buttons
 
     &.selected {
       background:#FF6600;
-      color:#fff;
+      color:$white;
       text-shadow: #B74400 1px 1px 0;
+    }
+  }
+
+  &.remove {
+    color: $white;
+    background: $pink;
+    text-shadow: #AC0743 1px 1px 0;
+
+    &:hover {
+      color: $white!important;
+      background: $pink!important;
     }
   }
 
@@ -167,7 +178,7 @@ White buttons
   border:1px solid rgba(0,0,0,.2);
 
   @include border-radius(5px);
-  @include box-shadow(0 1px 1px 0 #fff);
+  @include box-shadow(0 1px 1px 0 $white);
   @include transition-property(all);
   @include transition-duration(300ms);
 
@@ -198,7 +209,7 @@ White buttons
   width:auto;
 }
 
-// white button left-aligned
+// white button centered
 #container .article footer .white_button.center,
 #container .article .white_button.center,
 #container .article .article .white_button.center {
@@ -250,7 +261,7 @@ White buttons
   border:1px solid rgba(0,0,0,.2);
 
   @include border-radius(5px);
-  @include box-shadow(0 1px 1px 0 #fff);
+  @include box-shadow(0 1px 1px 0 $white);
 
   background: -moz-linear-gradient(top, rgba(244,246,249,0.76) 0%, rgba(255,255,255,0.76) 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,246,249,0.76)), color-stop(100%,rgba(255,255,255,0.76))); /* Chrome,Safari4+ */
@@ -262,12 +273,10 @@ White buttons
   span {background-position:0 0;}
 }
 
-
-
 .ie8 .white_button.remove_person,
 .ie7 .white_button.remove_person,
 .white_button.remove_person {
-    color:#fff;
+    color:$white;
     text-shadow:1px 1px 1px #0F4869;
 
     background: #3396cd; /* Old browsers */
@@ -290,7 +299,7 @@ White buttons
 
 
 
-    &:hover { color: #fff; }
+    &:hover { color: $white; }
     &:active {
     background: #3396cd; /* Old browsers */
     background: -moz-linear-gradient(top,  #3396cd 0%, #2485ba 100%); /* FF3.6+ */
@@ -431,7 +440,7 @@ White buttons
   padding: 7px 8px;
   border: 1px solid #ccc;
   @include border-radius(4px);
-  background:#fff;
+  background:$white;
   height:auto;
 }
 
@@ -801,7 +810,7 @@ form.editable,
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 
-  &.dk_open { background:#fff; }
+  &.dk_open { background:$white; }
 
   &:focus {
     outline: 0;

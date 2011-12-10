@@ -1,3 +1,24 @@
+<div id="remove_account_popover" class="article popover thin remove_account with_footer">
+  <a href="#" class="close"></a>
+<div class="inner">
+  <div class="content centered">
+    <h2>¿Podemos hacer algo para<br />que cambies de idea?</h2>
+    <p>Si has tenido una mala experiencia en Irekia, <a href="#">contacta con nosotros</a> y lo arreglaremos. </p>
+  </div>
+</div>
+  <footer>
+  <div class="separator"></div>
+  <div class="inner">
+    <div class="center clearfix">
+      <%= button "Eliminar perfil", :class => "white_button remove" %>
+      <%= button "Cancelar", :class => "white_button close pink" %>
+    </div>
+  </div>
+  </footer>
+
+<div class="t"></div><div class="f"></div>
+</div>
+
 <div class="article settings with_form with_footer">
 <form action="#" novalidate>
   <div class="inner">
@@ -79,7 +100,7 @@
       </fieldset>
 
       <div class="delete_profile">
-        <p>Por supuesto, si lo deseas puedes <a href="/in_development">borrar tu perfil</a> de Irekia en cualquier momento.</p>
+        <p>Por supuesto, si lo deseas puedes <a href="/in_development" class="remove_account" id="remove_account">borrar tu perfil</a> de Irekia en cualquier momento.</p>
         <p class="last">Esperamos que no sea así :-)</p>
       </div>
 

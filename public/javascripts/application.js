@@ -182,6 +182,8 @@ $(function() {
 
   $(".make_question").enableQuestion();
 
+  $(".remove_account").removeAccountPopover();
+
   $(".user_publish").userPublishPopover();
   $(".politician_publish").politicianPublishPopover();
   $(".create_proposal").proposalPopover();
@@ -228,5 +230,4 @@ $(function() {
       return 'Seguir';
     }
   }});
-
 });
