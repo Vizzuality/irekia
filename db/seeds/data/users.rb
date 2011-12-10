@@ -52,7 +52,7 @@ puts '================='
 
 @javier = create_user :name                  => 'Javier',
                       :lastname              => 'Jimenez Alvarez',
-                      :email                 => 'jamal@gmail.com',
+                      :email                 => 'saleiva@vizzuality.com',
                       :is_woman              => false,
                       :description_1         => (<<-EOF
                         Javier actualmente trabaja en el Departamento de Educación. Su día a día se desarrolla dirigiendo los organismos autónomicos, entes públicos de derecho privado y sociedades públicas adscritos al Departamento encargadas de todos los
