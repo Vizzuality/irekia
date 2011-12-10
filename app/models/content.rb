@@ -120,16 +120,16 @@ class Content < ActiveRecord::Base
         .where('contents.id' => self.id)
   end
 
-  def commenters
-    participers.where('participations.type' => 'Comment')
+  def commenters(author)
+    participers.where('participations.type = ? AND participations.user_id <> ?', 'Comment', author.id)
   end
 
   def comments_count
-    comments.reload.size
+    comments.size
   end
 
   def last_comments
-    comments.reload.last(2)
+    comments.last(2)
   end
 
   def as_json(options = {})
