@@ -124,6 +124,11 @@ class Proposal < Content
 
     return unless self.moderated?
 
+    user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
+    user_action.published_at = self.published_at
+    user_action.message      = self.to_json
+    user_action.save!
+
     if target_area
       area_action              = target_area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
       area_action.published_at = self.published_at
@@ -135,7 +140,7 @@ class Proposal < Content
         user_action.published_at = self.published_at
         user_action.message      = self.to_json
         user_action.save!
-      end if target_area
+      end
     end
 
   end

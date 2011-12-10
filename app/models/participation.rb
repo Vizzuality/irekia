@@ -135,8 +135,6 @@ class Participation < ActiveRecord::Base
       user_action.message      = self.to_json
       user_action.save!
     end
-
-    content.publish
   end
 
   def notification_for(user)
