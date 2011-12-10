@@ -60,7 +60,7 @@
     </nav>
     </header>
 
-    <div id="main" class="<%= controller.controller_name %> <%= controller.action_name %> role="main">
+    <div id="main" class="<%= controller.controller_name %> <%= controller.action_name %>" role="main">
       <div class="content">
         <div class"article" style="display:none">
         <div class="inner">
@@ -79,8 +79,7 @@
       </div>
     </div>
 
-    <footer> <%= render 'shared/footer' %>
-    </footer>
+    <footer><%= render 'shared/footer' %></footer>
   </div>
 
 
@@ -93,8 +92,6 @@
 
     <%= javascript_include_tag 'rails', 'libs/spin.min', 'temp', 'libs/jquery-ui-1.8.16.custom.min', 'libs/jquery.dropkick-1.0.0', 'moderation' %>
     <%= yield :js_data %>
-
-
 
     <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
     chromium.org/developers/how-tos/chrome-frame-getting-started -->

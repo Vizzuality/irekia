@@ -40,10 +40,10 @@ body.admin .article.activity ul li.content div.right div.moderation span.buttons
 body.admin .article.activity ul li.content div.right div.moderation span.buttons div { float: left; display: block; width: auto; }
 body.admin .article.activity ul li.content div.right div.moderation span.buttons button { float: left!important; height: 29px; width: auto; padding: 7px 9px; color: #7D8700; font: normal 15px "Helvetica",Arial; line-height: 15px; border: none; background: none; }
 body.admin .article.activity ul li.content div.right div.moderation span.buttons button.null { height: 29px; width: 27px; padding: 0 9px; text-indent: -9999px; background: url("/images/admin/null_bkg.png") no-repeat 7px 11px; }
-body.admin footer .content h4 { color: #7D8700; }
+body.admin .bfooter .content h4 { color: #7D8700; }
 body.admin span.loader { position: relative; display: none; left: 50%; height: 42px; padding: 7px 0 8px 42px; margin: 0 0 0 -125px; font: normal 17px "Helvetica",Arial; color: #7D7F80; background: url("/images/admin/ajax-loader.gif") no-repeat 0 0; }
 body.admin span.no_content { position: relative; display: none; left: 50%; width: 600px; padding: 0 0 50px 0; margin: 0 0 0 -300px; font: bold 45px "Helvetica",Arial; color: #A1ABB2; text-align: center; }
-@media screen and (max-width:320px) { body.admin #main .content, body.admin header .content, body.admin footer .content { width: 320px; overflow: hidden; }
+@media screen and (max-width:320px) { body.admin #main .content, body.admin header .content, body.admin .bfooter .content { width: 320px; overflow: hidden; }
   body.admin header { padding: 12px 0 0; margin: 0 0 10px 0; }
   body.admin header .content { height: 51px; }
   body.admin header div.top_nav a.logo { width: 201px; height: 39px; margin: 0 0 0 7px; background: url("/images/admin/logo.jpg") no-repeat 0 0; }
@@ -79,8 +79,8 @@ body.admin span.no_content { position: relative; display: none; left: 50%; width
   body.admin #container .article div.right div.moderation { width: 190px; float: right; }
   body.admin #container .article div.right div.moderation a.null { float: left; height: 15px; width: auto; padding: 7px 9px; color: #7D8700; font: normal 15px "Helvetica",Arial; line-height: 15px; text-indent: 0; background: none; }
   body.admin span.no_content { position: relative; display: none; width: 320; padding: 0 0 50px 0; font: bold 25px "Helvetica",Arial; color: #A1ABB2; text-align: center; }
-  body.admin footer { display: none; } }
-@media screen and (min-width: 321px) and (max-width:480px) { body.admin #main .content, body.admin header .content, body.admin footer .content { width: 480px; overflow: hidden; }
+  body.admin .bfooter { display: none; } }
+@media screen and (min-width: 321px) and (max-width:480px) { body.admin #main .content, body.admin header .content, body.admin .bfooter .content { width: 480px; overflow: hidden; }
   body.admin header { padding: 12px 0 0; margin: 0 0 10px 0; }
   body.admin header .content { height: 51px; }
   body.admin header div.top_nav a.logo { width: 201px; height: 39px; margin: 0 0 0 7px; background: url("/images/admin/logo.jpg") no-repeat 0 0; }
@@ -116,4 +116,4 @@ body.admin span.no_content { position: relative; display: none; left: 50%; width
   body.admin #container .article div.right div.moderation { width: 190px; float: right; }
   body.admin #container .article div.right div.moderation a.null { float: left; height: 15px; width: auto; padding: 7px 9px; color: #7D8700; font: normal 15px "Helvetica",Arial; line-height: 15px; text-indent: 0; background: none; }
   body.admin span.no_content { position: relative; display: none; width: 480; padding: 0 0 50px 0; font: bold 25px "Helvetica",Arial; color: #A1ABB2; text-align: center; }
-  body.admin footer { display: none; } }
+  body.admin .bfooter { display: none; } }

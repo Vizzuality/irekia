@@ -9,7 +9,7 @@
       <p<%= " class='error'" if flash and flash[:alert] %>><%= f.label :password %> <%= f.password_field :password, :class => :mInput %></p>
       <p class="remember_me"><%= f.check_box :remember_me, :class => "hidden" %> <a class="checkbox">Recordar mis datos</a></p>
 
-      <footer class="clearfix">
+      <div class="bfooter clearfix">
       <div class="left">
         <%= link_to t('.facebook_signin'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin, :class => :facebook %>
         <%= link_to t('.twitter_signin'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin, :class => :twitter %>
@@ -17,7 +17,7 @@
       <div class="right">
         <button class="white_button right"><span><%= t('.sign_in') %></span></button>
       </div>
-      </footer>
+      </div>
     <% end %>
   </div>
 </div>

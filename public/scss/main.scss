@@ -16,7 +16,7 @@ header {
   }
 }
 
-#main .content, footer .content {
+#main .content, .bfooter .content {
   width: 996px;
   margin: auto;
 }
@@ -167,12 +167,17 @@ header {
           font-size: 12px;
 
           &:after {content: "|"; padding: 0 5px; }
-          &.last, &:last-child:after { content: ""; padding: 0; }
+
+          &.last { content: ""; padding: 0; }
+          &.last:after { content: ""; padding: 0; }
+          &:last-child:after { content: ""; padding: 0; }
+
           a {
             color: $link_color;
             text-transform: lowercase;
             &:hover {text-decoration:underline; color:$link_color_hover;}
           }
+
         }
       }
     }
@@ -599,7 +604,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 //   }
 //
 //   &.with_footer {
-//     footer {
+//     .bfooter {
 //       padding: 0;
 //       border: none;
 //       background: none;
@@ -658,7 +663,7 @@ div#main.show div.left img {margin:4px 0 7px;}
     .inner { width: 933px; padding: 15px 31px 5px 30px; }
     .f { bottom: -10px; background-position: 0 -22px; }
 
-    footer {
+    .bfooter {
       padding: 0;
       border: none;
       clear: both;
@@ -819,7 +824,7 @@ div#main.show div.left img {margin:4px 0 7px;}
     }
 
     &.with_icon {
-      footer .inner, &.with_footer footer .inner {
+      .bfooter .inner, &.with_footer .bfooter .inner {
         padding-top: 25px;
         padding-bottom: 25px;
       }
@@ -854,7 +859,7 @@ div#main.show div.left img {margin:4px 0 7px;}
       padding: 49px 0 6px 0;
       a { color: $standard_gray; }
     }
-    footer .inner {
+    .bfooter .inner {
       padding: 26px 0 24px 0!important;
       .white_button { width:130px; }
     }
@@ -907,7 +912,7 @@ div#main.show div.left img {margin:4px 0 7px;}
         bottom: -10px;
         background-position: 0 -22px;
       }
-      footer {
+      .bfooter {
         padding: 0;
         border: none;
         background: none;
@@ -923,7 +928,7 @@ div#main.show div.left img {margin:4px 0 7px;}
         background: url('/images/box_micro_bkg.png') repeat-x;
         background-position: 0 -33px;
       }
-      footer .inner {
+      .bfooter .inner {
         .left {
           position: relative;
           float: left;
@@ -1312,11 +1317,9 @@ div#main.show div.left img {margin:4px 0 7px;}
                       input[type="text"] { float:right; width:263px; font-size:15px; }
                       .holder { top:11px; font-size: 15px; }
                     } // input_field
-                  }
-                }
+                  } // li
+                } // ul
               } // section.video
-
-              // -----------------------------------------------------
             }
           }
         }
@@ -1403,7 +1406,7 @@ div#main.show div.left img {margin:4px 0 7px;}
         bottom: -10px;
         background-position: 0 -23px;
       }
-      footer {
+      .bfooter {
         padding: 0;
         border: none;
         background: none;
@@ -1485,7 +1488,7 @@ div#main.show div.left img {margin:4px 0 7px;}
         bottom: -10px;
         background-position: 0 -24px;
       }
-      footer {
+      .bfooter {
         padding: 0;
         border: none;
         background: none;
@@ -1505,7 +1508,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
     &.signup {
       text-align: center;
-      footer .inner {
+      .bfooter .inner {
         .white_button {
           padding-left: 40px;
           padding-right: 40px;
@@ -1522,8 +1525,8 @@ div#main.show div.left img {margin:4px 0 7px;}
         a { font-size:15px; }
 
         p { margin:0 0 46px 0; padding:0; font-size: 17px; }
-      }
-    }
+      } // .inner .content
+    } // .signup
   }
 
   &.mini {
@@ -1573,7 +1576,7 @@ div#main.show div.left img {margin:4px 0 7px;}
         bottom: -10px;
         background-position: 0 -20px;
       }
-      footer {
+      .bfooter {
         padding: 0;
         border: none;
         background: none;
@@ -1597,8 +1600,8 @@ div#main.show div.left img {margin:4px 0 7px;}
     top:-900px;
     z-index: 1000;
 
-    footer .inner .spinner { float:right; display:block; width:33px; height:33px; margin-top: 7px; z-index:1000; }
-    footer .inner .white_button { margin-left:5px; }
+    .bfooter .inner .spinner { float:right; display:block; width:33px; height:33px; margin-top: 7px; z-index:1000; }
+    .bfooter .inner .white_button { margin-left:5px; }
 
     &.proposal {
       .image_container {
@@ -1616,38 +1619,9 @@ div#main.show div.left img {margin:4px 0 7px;}
         a { float:right; margin: 30px 10px 0 0; line-height:normal; font-size:15px; }
       }
 
-      .percentage {
-        display:none;
-        margin-left:-343px;
-        position: absolute;
-        top: 10px;
-        right: 50%;
-        font-size:15px;
-        color: #FF0066;
-        z-index:2010;
-        font-weight:bold;
-      }
-
-      .loading {
-        display:none;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size:15px;
-        color:#CCCCCC;
-        z-index:2010;
-      }
-
-      .progress {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        height: 16px;
-        width: 0px;
-        background: #FF0066;
-        @include border-radius(2px);
-        z-index:2000;
-      }
+      .percentage { display:none; margin-left:-343px; position: absolute; top: 10px; right: 50%; font-size:15px; color: #FF0066; z-index:2010; font-weight:bold; }
+      .loading { display:none; position: absolute; top: 10px; right: 10px; font-size:15px; color:#CCCCCC; z-index:2010; }
+      .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; @include border-radius(2px); z-index:2000; }
 
       .uploader {
         float:left;
@@ -1674,7 +1648,7 @@ div#main.show div.left img {margin:4px 0 7px;}
           .holder { top: 10px; font-size: 15px; }
         }
       } // input_field
-    }
+    } // &.proposal
 
     h3.related { display:none; }
 
@@ -1861,7 +1835,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
   &.with_footer {
     .inner { width: 928px; }
-    footer .right { right: 0; width:auto}
+    .bfooter .right { right: 0; width:auto}
   }
 
   .inner .content ul li.day ul.events {
@@ -3162,8 +3136,8 @@ a.editable {
 }
 
 /* Questions' preview */
-#container .article footer .left .question,
-#container .article footer .right .question {
+#container .article .bfooter .left .question,
+#container .article .bfooter .right .question {
   font-size:13px;
   color:rgba(125, 138, 146, .5);
 }
@@ -3521,7 +3495,7 @@ a.editable {
                 }
               }
             }
-            footer .inner.with_question form div.input-counter {position:relative; margin-right: 10px;
+            .bfooter .inner.with_question form div.input-counter {position:relative; margin-right: 10px;
 
               .icon {
                 display:block;
@@ -4178,7 +4152,7 @@ a.editable {
             }
 
 
-            footer .inner .right { float: right; }
+            .bfooter .inner .right { float: right; }
             .inner {
               .right ul.selector li {
                 padding: 10px;
@@ -4250,7 +4224,7 @@ a.editable {
               }
             }
 
-            footer {
+            .bfooter {
               inner.with_avatar { position: relative; }
               img.xlAvatar { position: absolute; bottom: 22px; right: 30px; background: url('/images/circle_bkg.png') no-repeat 2px center; z-index: 10; }
             }
@@ -4294,7 +4268,7 @@ a.editable {
               }
             } // ul.suggestions
 
-            &.with_footer footer .inner a {
+            &.with_footer .bfooter .inner a {
               &.facebook, &.twitter {
                 width: 37px;
                 height: 35px;
@@ -4306,7 +4280,7 @@ a.editable {
             }
           }
 
-          .content footer a {
+          .content .bfooter a {
             &.facebook, &.twitter {
               width: 37px;
               height: 35px;
@@ -4317,7 +4291,7 @@ a.editable {
             }
           }
 
-          .content footer a {
+          .content .bfooter a {
             &.facebook:hover {
               background-position: 0 -114px;
             }
@@ -4327,11 +4301,11 @@ a.editable {
             }
           }
 
-          #container .article.with_footer footer .inner a.facebook, .content footer a.facebook {
+          #container .article.with_footer .bfooter .inner a.facebook, .content .bfooter a.facebook {
             background-position: 0 -75px;
           }
 
-          #container .article.with_footer footer .inner a.twitter, .content footer a.twitter {
+          #container .article.with_footer .bfooter .inner a.twitter, .content .bfooter a.twitter {
             background-position: -40px -75px;
           }
 
@@ -4779,10 +4753,10 @@ Explorer fixes
 }
 
 /* --------------------------------------------------------------------------------- Questions' preview */
-.ie7 #container .article footer .left .question,
-.ie7 #container .article footer .right .question,
-.ie8 #container .article footer .left .question,
-.ie8 #container .article footer .right .question {
+.ie7 #container .article .bfooter .left .question,
+.ie7 #container .article .bfooter .right .question,
+.ie8 #container .article .bfooter .left .question,
+.ie8 #container .article .bfooter .right .question {
   color:$gray;
 }
 
@@ -4825,7 +4799,7 @@ Login & sign in
 
     h1 { color: $dark_blue; font-weight: 300; line-height: normal; font-size:31px; }
 
-    footer {
+    .bfooter {
       clear: both;
       border: 0;
       padding: 0;

@@ -6,14 +6,7 @@
 
 (function($, window, document) {
 
-  var ie6 = false;
-
-  // Help prevent flashes of unstyled content
-  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
-    ie6 = true;
-  } else {
-    document.documentElement.className = document.documentElement.className + ' ps_fouc';
-  }
+  var ie = ($.browser.msie && $.browser.version.substr(0, 1) < 9);
 
   var spin_element = document.getElementById('question_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
@@ -23,12 +16,12 @@
    '    <%= content %> ',
    '    <span class="close"></span>',
    '  </div>',
-   '  <footer>',
+   '  <div class="bfooter">',
    '  <div class="separator"></div>',
    '  <div class="inner">',
    '    <a href="#" class="white_button pink close right">Aceptar</a>',
    '  </div>',
-   '  </footer>',
+   '  </div>',
    '  <div class="t"></div><div class="f"></div>',
    '</div>'].join(' ')
   };
@@ -104,12 +97,10 @@
 
   // Expose the plugin
   $.fn.questionPopover = function(method) {
-    if (!ie6) {
-      if (methods[method]) {
-        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-      } else if (typeof method === 'object' || !method) {
-        return methods.init.apply(this, arguments);
-      }
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
     }
   };
 
@@ -132,8 +123,6 @@
     data.$ps = $(document).find(".article#" + data.id);
     var $ps = data.$ps;
 
-    console.log("_open", $ps, data);
-
     // bindings
     _addCloseAction(data);
     _addSubmitAction(data);
@@ -150,15 +139,25 @@
     var top  = _getTopPosition($ps);
     var left = _getLeftPosition($ps);
 
-    $ps.css({"top":(top + 100) + "px", "left": left + "px"});
+    if (ie) {
+      $ps.removeClass("initialy_hidden");
+      $ps.css({top: top + "px", left: left + "px"});
 
-    $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function() {
-      $(this).find("textarea.title").focus();
-    }});
+      $ps.fadeIn(data.settings.transitionSpeed, function() {
+        $(this).find("textarea.title").focus();
+      });
+
+    } else {
+      $ps.css({top:(top + 100) + "px", left: left + "px"});
+
+      $ps.animate({opacity: 1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function() {
+        $(this).find("textarea.title").focus();
+      }});
+    }
   }
 
   function _getTopPosition($ps) {
-    return (($(window).height() - $ps.height()) / 2) + $(window).scrollTop();
+    return (($(window).height() - $ps.outerHeight(true)) / 2) + $(window).scrollTop();
   }
 
   function _getLeftPosition($ps) {
@@ -193,23 +192,40 @@
   }
 
   function _close2(data, hideLockScreen, callback) {
+    if (ie) {
+      data.$ps.fadeOut(data.settings.transitionSpeed, function() {
+        $(this).remove();
+        _clearInfo(data.$ps);
+        hideLockScreen && LockScreen.hide();
+        callback && callback();
+      });
+    } else {
 
-    data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
-      $(this).remove();
-      _clearInfo(data.$ps);
-      hideLockScreen && LockScreen.hide();
-      callback && callback();
-    }});
+      data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+        $(this).remove();
+        _clearInfo(data.$ps);
+        hideLockScreen && LockScreen.hide();
+        callback && callback();
+      }});
+    }
   }
+
   // Close popover
   function _close(data, hideLockScreen, callback) {
-
-    data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
-      $(this).css("top", "-900px");
-      _clearInfo(data.$ps);
-      hideLockScreen && LockScreen.hide();
-      callback && callback();
-    }});
+    if (ie) {
+      data.$ps.fadeOut(data.settings.transitionSpeed, function() {
+        _clearInfo(data.$ps);
+        hideLockScreen && LockScreen.hide();
+        callback && callback();
+      });
+    } else {
+      data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+        $(this).css("top", "-900px");
+        _clearInfo(data.$ps);
+        hideLockScreen && LockScreen.hide();
+        callback && callback();
+      }});
+    }
   }
 
   // setup the close event & signal the other subscribers

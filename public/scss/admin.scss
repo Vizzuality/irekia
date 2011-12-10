@@ -5,7 +5,7 @@
 
 
   @mixin mobile($w) {
-    #main .content, header .content, footer .content {
+    #main .content, header .content, .bfooter .content {
       width:$w + px;
       overflow:hidden;
     }
@@ -202,7 +202,7 @@
       text-align:center;
     }
 
-    footer {display:none;}
+    .bfooter {display:none;}
   }
 
 
@@ -417,7 +417,7 @@
       }
     }
 
-    footer .content h4 {color:#7D8700;}
+    .bfooter .content h4 {color:#7D8700;}
 
     span.loader {
       position:relative;

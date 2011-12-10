@@ -6,14 +6,7 @@
 
 (function($, window, document) {
 
-  var ie6 = false;
-
-  // Help prevent flashes of unstyled content
-  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
-    ie6 = true;
-  } else {
-    document.documentElement.className = document.documentElement.className + ' ps_fouc';
-  }
+  var ie = ($.browser.msie && $.browser.version.substr(0, 1) < 9);
 
   var
   store = "login",
@@ -84,12 +77,10 @@
 
   // Expose the plugin
   $.fn.floatingLoginPopover = function(method) {
-    if (!ie6) {
-      if (methods[method]) {
-        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-      } else if (typeof method === 'object' || !method) {
-        return methods.init.apply(this, arguments);
-      }
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
     }
   };
 
@@ -131,9 +122,18 @@
     var top  = _getTopPosition($ps);
     var left = _getLeftPosition($ps);
 
-    $ps.css({"top":(top + 100) + "px", "left": left + "px"});
-    $ps.show();
-    $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){$ps.find('#user_email').focus()}});
+    if (ie) {
+      $ps.css({"top": top + "px", "left": left + "px"});
+
+      $ps.fadeIn(data.settings.transitionSpeed, function() {
+        $ps.find('#user_email').focus();
+      });
+
+    } else {
+      $ps.css({"top":(top + 100) + "px", "left": left + "px"});
+      $ps.show();
+      $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){$ps.find('#user_email').focus()}});
+    }
   }
 
   function _getTopPosition($ps) {
@@ -147,11 +147,18 @@
   // Close popover
   function _close(data, hideLockScreen, callback) {
 
-    data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
-      data.$ps.hide();
-      hideLockScreen && LockScreen.hide();
-      callback && callback();
-    }});
+    if (ie) {
+      data.$ps.fadeOut(data.settings.transitionSpeed, function() {
+        hideLockScreen && LockScreen.hide();
+        callback && callback();
+      });
+    } else {
+      data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+        data.$ps.hide();
+        hideLockScreen && LockScreen.hide();
+        callback && callback();
+      }});
+    }
   }
 
   // setup the close event
@@ -186,9 +193,9 @@
         });
       } else {
         _close(data, true);
-				// If user is in the home reload page!!
-				if ($('body').hasClass('home'))
-					window.location.reload();
+        // If user is in the home reload page!!
+        if ($('body').hasClass('home'))
+          window.location.reload();
       }
 
       loginInLinks();
