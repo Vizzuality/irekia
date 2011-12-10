@@ -27,6 +27,7 @@ class Area < ActiveRecord::Base
            :through => :proposal_data,
            :source => :proposal,
            :include => [{:users => [:profile_pictures]}, :proposal_data, { :comments => [:author, :comment_data] }],
+           :conditions => {:moderated => true},
            :order => 'published_at desc'
 
   has_many :actions,
