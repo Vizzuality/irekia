@@ -113,15 +113,15 @@ class Content < ActiveRecord::Base
     self.class.moderated.includes(:"#{self.class.name.underscore}_data", :comments).order('published_at desc').where('id <> ?', id).first(limit)
   end
 
-  def participers
+  def participers(author)
     User.select(User.column_names.map{|c| "users.#{c}"})
         .group(User.column_names.map{|c| "users.#{c}"})
         .joins(:participations => :content)
-        .where('contents.id' => self.id)
+        .where('contents.id = ? AND participations.user_id <> ?', self.id, author.id)
   end
 
   def commenters(author)
-    participers.where('participations.type = ? AND participations.user_id <> ?', 'Comment', author.id)
+    participers(author).where('participations.type' => 'Comment')
   end
 
   def comments_count
