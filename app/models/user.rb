@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
                   :description_1,
                   :description_2,
                   :is_woman,
-                  :province_id,
+                  :province,
                   :city_id,
                   :postal_code,
                   :first_time,
@@ -247,6 +247,19 @@ class User < ActiveRecord::Base
 
       user
     end
+  end
+
+  def change_password(current_password, new_password)
+    valid_user = false
+    if valid_password?(current_password)
+      self.password              = new_password
+      self.password_confirmation = new_password
+
+      valid_user = save
+    else
+      errors.on(:current_password)
+    end
+    valid_user
   end
 
   def get_actions(filters)
