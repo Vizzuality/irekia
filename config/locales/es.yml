@@ -1707,10 +1707,7 @@
       area:
         follow: 'Seguir a este área'
       user:
-        follow:
-          zero: 'Seguir a %{name}'
-          one: 'Seguir a %{name}'
-          other: 'Seguir a %{name}'
+        follow: 'Seguir a %{name}'
     create_mini:
       follow: Seguir
     destroy:
