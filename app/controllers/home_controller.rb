@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     @areas                 = Area.areas_for_homepage
     @areas_by_name         = Area.names_and_ids.all
-    @actions               = AreaPublicStream.order('published_at desc')
+    @actions               = AreaPublicStream.for_homepage
     @news_count            = @actions.news.count            || 0
     @questions_count       = @actions.questions.count       || 0
     @answers_count         = @actions.answers.count         || 0
@@ -18,7 +18,7 @@ class HomeController < ApplicationController
     @tweets_count          = @actions.tweets.count          || 0
 
     @actions = @actions.where(:event_type => [params[:type]].flatten.map(&:camelize)) if params[:type]
-    @actions = @actions.page(1).per(10)
+    @actions = @actions.page(1).per(10).sort{|a, b| b.published_at <=> a.published_at}
 
     render :partial => 'shared/actions_list' and return if request.xhr?
   end
