@@ -1166,7 +1166,6 @@ jQuery.fn.enableNotificationSelector = function(opt){
       e.preventDefault();
       $(this).siblings("li.selected").removeClass("selected")
       $(this).addClass("selected")
-      // TODO: add ajax communication
     });
   });
 }

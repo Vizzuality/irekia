@@ -300,7 +300,8 @@ header {
                 color:$medium_dark;
 
                 &.last { border:none; padding: 10px 0 0 0; }
-
+                &:last-child { border:none; padding: 10px 0 0 0; }
+                &.submit { display:none; border:none; }
               }
             } // ul
           } // scroll-pane

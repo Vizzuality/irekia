@@ -1102,6 +1102,7 @@ var GOD = (function() {
 
     _triggerOpenAnimation($ps, data);
     $ps.find('.scroll-pane').jScrollPane();
+    $ps.find("li.submit form").submit();
 
     $ps.find(".jspDrag").bind('click', function(e) {
       e.stopPropagation();

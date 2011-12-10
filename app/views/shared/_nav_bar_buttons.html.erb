@@ -14,17 +14,20 @@
   <div class="popover">
     <div class="scroll-pane">
       <ul>
+
+        <li class="submit">
+        <%= form_for current_user, :remote => true, :html => {:'data-type' => :html} do |form| %>
+          <%= form.fields_for :notifications do |notification| %>
+            <%= notification.hidden_field :_destroy, :value => true %>
+          <% end -%>
+        <% end -%>
+        </li>
+
         <% notifications_list_count = notifications_count -%>
         <% notifications_list.each_with_index do |notification, index| -%>
-        <%= render_notification_item(notification[0], notification[1], notifications_list_count == (index + 1) ? 'last' : nil) %>
+          <%= render_notification_item(notification[0], notification[1], notifications_list_count == (index + 1) ? 'last' : nil) %>
         <% end -%>
       </ul>
-      <%= form_for current_user, :remote => true, :html => {:'data-type' => :html} do |form| %>
-        <%= form.fields_for :notifications do |notification| %>
-          <%= notification.hidden_field :_destroy, :value => true %>
-        <% end -%>
-        <%= form.submit 'Eliminar notificaciones' %>
-      <% end -%>
     </div>
   </div>
 </div>
