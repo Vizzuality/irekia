@@ -1,6 +1,6 @@
 <%= avatar data.author %>
 <div class="content">
-  <blockquote><a href="%= status_message_path(data.id) %>"><span class="bqstart">&#8220;</span><span class="quote"><%= data.message %><span class="bqend">&#8221;</span></span></a></blockquote>
+  <blockquote><a href="<%= status_message_path(data.id) %>"><span class="bqstart">&#8220;</span><span class="quote"><%= data.message %><span class="bqend">&#8221;</span></span></a></blockquote>
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
@@ -10,7 +10,7 @@
       <span class="comments"><%= link_to data.comments_count, status_message_path(data.id, :anchor => :comments), :class => "comment-count" %></span>
     <% end -%>
     &middot;
-    <%#= inline_sharing_partial(data, 'status_message', status_message_path(data.id), data.title) %>
+    <%= inline_sharing_partial(data, 'status_message', status_message_path(data.id), data.title) %>
   </div>
   <%= render 'shared/lists_elements/last_comments', :data => data %>
 </div>
