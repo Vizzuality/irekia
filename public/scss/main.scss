@@ -504,6 +504,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
 // NOTICE
 #container .article.notice,
+#container .article.with_footer .inner .notice,
 #container .article .inner .notice {
   display:none;
   position:absolute;
@@ -4719,7 +4720,22 @@ Explorer fixes
   overflow: hidden;
   width: $avatar_normal_size;
   height: $avatar_normal_size;
+}
 
+.ie7 .actions .inner .avatar,
+.ie7 .proposals .inner .avatar,
+.ie7 .photos .inner .avatar,
+.ie7 .proposal .inner .avatar,
+.ie7 .questions .inner .avatar,
+.ie7 .videos .inner .avatar,
+.ie7 .activity .inner .avatar,
+.ie8 .actions .inner .avatar,
+.ie8 .proposals .inner .avatar,
+.ie8 .photos .inner .avatar,
+.ie8 .proposal .inner .avatar,
+.ie8 .questions .inner .avatar,
+.ie8 .videos .inner .avatar,
+.ie8 .activity .inner .avatar {
   &>img { top: -4px; position:absolute;}
 }
 
@@ -4727,6 +4743,7 @@ Explorer fixes
 .ie8 .avatar.medium {
   &>img { top: 0px; position:absolute;}
 }
+
 .ie7 .avatar.small,
 .ie8 .avatar.small {
   &>img { top: 0px; position:absolute;}
@@ -4739,7 +4756,7 @@ Explorer fixes
   width: $avatar_normal_size;
   height: $avatar_normal_size;
   background: url('/images/avatar_frame.png') no-repeat 0 0;
-  z-index: 100;
+  z-index: 90;
 
 }
 

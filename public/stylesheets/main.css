@@ -165,16 +165,16 @@ div#main.searches .inner { padding-bottom: 25px; }
 
 div#main.show div.left img { margin: 4px 0 7px; }
 
-#container .article.notice, #container .article .inner .notice { display: none; position: absolute; width: 173px; margin: 0; z-index: 1000; }
-#container .article.notice .inner, #container .article .inner .notice .inner { width: 173px; }
-#container .article.notice .inner .content p, #container .article .inner .notice .inner .content p { margin: 0; padding: 0; font-size: 15px; color: #7d8a92; }
-#container .article.notice .t, #container .article.notice .f, #container .article .inner .notice .t, #container .article .inner .notice .f { height: 11px; background: url("/images/box_notice_bkg.png") no-repeat; }
-#container .article.notice .t, #container .article .inner .notice .t { top: -11px; background-position: 0 0; }
-#container .article.notice .f, #container .article .inner .notice .f { bottom: -27px; height: 27px; background-position: 0 -21px; }
-#container .article.notice .inner, #container .article .inner .notice .inner { width: 174px; padding: 0 10px; background: url("/images/box_notice_bkg.png") repeat-y -175px 0; border: none; }
-#container .article.notice .inner .content, #container .article .inner .notice .inner .content { margin: 0; width: 147px; padding: 0 13px; }
-#container .article.notice .inner .content p, #container .article .inner .notice .inner .content p { font-size: 13px; color: #7D8A92; line-height: 16px; }
-#container .article.notice .inner .content p strong, #container .article .inner .notice .inner .content p strong { display: block; font-size: 13px; color: #465866; }
+#container .article.notice, #container .article.with_footer .inner .notice, #container .article .inner .notice { display: none; position: absolute; width: 173px; margin: 0; z-index: 1000; }
+#container .article.notice .inner, #container .article.with_footer .inner .notice .inner, #container .article .inner .notice .inner { width: 173px; }
+#container .article.notice .inner .content p, #container .article.with_footer .inner .notice .inner .content p, #container .article .inner .notice .inner .content p { margin: 0; padding: 0; font-size: 15px; color: #7d8a92; }
+#container .article.notice .t, #container .article.notice .f, #container .article.with_footer .inner .notice .t, #container .article.with_footer .inner .notice .f, #container .article .inner .notice .t, #container .article .inner .notice .f { height: 11px; background: url("/images/box_notice_bkg.png") no-repeat; }
+#container .article.notice .t, #container .article.with_footer .inner .notice .t, #container .article .inner .notice .t { top: -11px; background-position: 0 0; }
+#container .article.notice .f, #container .article.with_footer .inner .notice .f, #container .article .inner .notice .f { bottom: -27px; height: 27px; background-position: 0 -21px; }
+#container .article.notice .inner, #container .article.with_footer .inner .notice .inner, #container .article .inner .notice .inner { width: 174px; padding: 0 10px; background: url("/images/box_notice_bkg.png") repeat-y -175px 0; border: none; }
+#container .article.notice .inner .content, #container .article.with_footer .inner .notice .inner .content, #container .article .inner .notice .inner .content { margin: 0; width: 147px; padding: 0 13px; }
+#container .article.notice .inner .content p, #container .article.with_footer .inner .notice .inner .content p, #container .article .inner .notice .inner .content p { font-size: 13px; color: #7D8A92; line-height: 16px; }
+#container .article.notice .inner .content p strong, #container .article.with_footer .inner .notice .inner .content p strong, #container .article .inner .notice .inner .content p strong { display: block; font-size: 13px; color: #465866; }
 
 .ie7 #container .article.publish textarea, .ie7 #container .article.publish input[type="text"], .ie8 #container .article.publish textarea, .ie8 #container .article.publish input[type="text"] { border: 1px solid #7d8a92; }
 
@@ -1183,13 +1183,14 @@ Explorer fixes
 
 /* --------------------------------------------------------------------------------------- Avatars */
 .ie7 .avatar, .ie8 .avatar { position: relative; overflow: hidden; width: 65px; height: 65px; }
-.ie7 .avatar > img, .ie8 .avatar > img { top: -4px; position: absolute; }
+
+.ie7 .actions .inner .avatar > img, .ie7 .proposals .inner .avatar > img, .ie7 .photos .inner .avatar > img, .ie7 .proposal .inner .avatar > img, .ie7 .questions .inner .avatar > img, .ie7 .videos .inner .avatar > img, .ie7 .activity .inner .avatar > img, .ie8 .actions .inner .avatar > img, .ie8 .proposals .inner .avatar > img, .ie8 .photos .inner .avatar > img, .ie8 .proposal .inner .avatar > img, .ie8 .questions .inner .avatar > img, .ie8 .videos .inner .avatar > img, .ie8 .activity .inner .avatar > img { top: -4px; position: absolute; }
 
 .ie7 .avatar.medium > img, .ie8 .avatar.medium > img { top: 0px; position: absolute; }
 
 .ie7 .avatar.small > img, .ie8 .avatar.small > img { top: 0px; position: absolute; }
 
-.ie7 .avatar .ieframe, .ie8 .avatar .ieframe { position: absolute; top: 0px; left: 0px; width: 65px; height: 65px; background: url("/images/avatar_frame.png") no-repeat 0 0; z-index: 100; }
+.ie7 .avatar .ieframe, .ie8 .avatar .ieframe { position: absolute; top: 0px; left: 0px; width: 65px; height: 65px; background: url("/images/avatar_frame.png") no-repeat 0 0; z-index: 90; }
 
 .ie7 .avatar.medium, .ie8 .avatar.medium, .ie7 .avatar.medium .ieframe, .ie8 .avatar.medium .ieframe { top: 0px; left: 0px; width: 40px; height: 40px; background: url("/images/avatar_frame.png") no-repeat 0 -70px; }
 

@@ -353,6 +353,8 @@ White buttons
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2f4f6f9', endColorstr='#c2ffffff',GradientType=0 ); /* IE6-9 */
 }
 
+.ie7 form.make_question  .white_button, .ie8 form.make_question .white_button { margin-left: 10px; }
+
 // Submit button in popovers
 .ie7 #container .article.popover,
 .ie8 #container .article.popover {
