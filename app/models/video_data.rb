@@ -5,7 +5,7 @@ class VideoData < ActiveRecord::Base
   def youtube_url=(url)
     write_attribute(:youtube_url, url)
     if url.present?
-      oembed_json = JSON.parse(open("http://www.youtube.com/oembed?url=#{vimeo_url}&format=json&maxwidth=608").read) rescue nil
+      oembed_json = JSON.parse(open("http://www.youtube.com/oembed?url=#{url}&format=json&maxwidth=608").read) rescue nil
 
       store_oembed(oembed_json)
     end
@@ -14,7 +14,7 @@ class VideoData < ActiveRecord::Base
   def vimeo_url=(url)
     write_attribute(:vimeo_url, url)
     if url.present?
-      oembed_json = JSON.parse(open("http://vimeo.com/api/oembed.json?url=#{vimeo_url}&maxwidth=608").read) rescue nil
+      oembed_json = JSON.parse(open("http://vimeo.com/api/oembed.json?url=#{url}&maxwidth=608").read) rescue nil
 
       store_oembed(oembed_json)
     end
