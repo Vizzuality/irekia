@@ -274,7 +274,29 @@ White buttons
 }
 
 .ie8 .white_button.remove_person,
-.ie7 .white_button.remove_person,
+.ie7 .white_button.remove_person {
+  color:$white;
+  text-shadow:1px 1px 1px #0F4869;
+  background:url('/images/buttons_sprite.png') repeat-x right -83px!important;
+  filter:none;
+
+  span {
+    color:$white;
+    background-position: 0 -120px;
+    span.remove { // icon
+      float:left;
+      width:18px;
+      height:15px;
+      padding: 0;
+      margin: 0 7px 0 -5px;
+      background:url('/images/icons/icon_sprite.png') no-repeat 0 -104px;
+      filter:none;
+    }
+  } // span
+
+  &:hover { color: $white; span { color: $white; } }
+} // .remove_person
+
 .white_button.remove_person {
     color:$white;
     text-shadow:1px 1px 1px #0F4869;
