@@ -19,7 +19,7 @@
    '  <div class="bfooter">',
    '  <div class="separator"></div>',
    '  <div class="inner">',
-   '    <a href="#" class="white_button pink close right">Aceptar</a>',
+   '    <a href="#" class="white_button pink close right"><span>Aceptar</span></a>',
    '  </div>',
    '  </div>',
    '  <div class="t"></div><div class="f"></div>',
@@ -75,7 +75,7 @@
 
       $(this).click(_toggle);
 
-      $(window).bind(data.event, function() { _close(data, true); });
+      !ie && $(window).bind(data.event, function() { _close(data, true); });
 
       // Save the updated $ps reference into our data object
       data.$ps = $ps;
@@ -126,7 +126,7 @@
     // bindings
     _addCloseAction(data);
     _addSubmitAction(data);
-    _addDefaultAction(data);
+    !ie && _addDefaultAction(data);
 
     $ps.find("textarea.grow").autogrow();
 
@@ -173,15 +173,15 @@
 
   function enableSending($ps) {
     if ($ps) {
-      $ps.find("footer button").removeAttr("disabled");
-      $ps.find("footer button").removeClass("disabled");
+      $ps.find(".bfooter button").removeAttr("disabled");
+      $ps.find(".bfooter button").removeClass("disabled");
     }
   }
 
   function _disableSending($ps) {
     if ($ps) {
-      $ps.find("footer button").attr("disabled", "true");
-      $ps.find("footer button").addClass("disabled");
+      $ps.find(".bfooter button").attr("disabled", "true");
+      $ps.find(".bfooter button").addClass("disabled");
     }
   }
 
@@ -236,7 +236,7 @@
   function _addSubmitAction(data) {
     data.$ps.find("form").die();
 
-    data.$ps.find("form").submit(function(e) {
+    data.$ps.find("form").live("submit", function(e) {
       spinner.spin(spin_element);
       _disableSending(data.$ps);
     });
@@ -275,7 +275,7 @@
   }
 
   function _addDefaultAction(data){
-    data.$ps.unbind("click");
+    // data.$ps.unbind("click");
     data.$ps.bind('click', function(e) {
       e.stopPropagation();
     });

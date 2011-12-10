@@ -127,7 +127,6 @@ header {
 
   .content {
     clear: both;
-    //position: relative;
     height: 74px;
 
     .top_nav {
@@ -145,11 +144,13 @@ header {
           width:auto;
           border-right:1px solid $medium_dark;
           padding:0 4px!important;
-          a {padding:1px 0; font:normal 10px "Helvetica",Arial; color:$link_color; &:hover{color:$link_color_hover;}}
+
+          a { padding:1px 0; font:normal 10px "Helvetica",Arial; color:$link_color; &:hover {color:$link_color_hover;} }
+
           &.last {border:none; padding-right:0;}
           &.selected a {color:$medium_dark; &:hover {text-decoration:none; color:$medium_dark; cursor:default;}}
-        }
-      }
+        } // li
+      } // ul.languages
 
       .logo { float:left; left: 0; top: 0; position: relative; display: block; }
       .net_logo {top:5px; right:0; position:absolute; display: block; }
@@ -177,9 +178,8 @@ header {
             text-transform: lowercase;
             &:hover {text-decoration:underline; color:$link_color_hover;}
           }
-
-        }
-      }
+        } // li
+      } // ul.user_options
     }
   }
 
@@ -4880,11 +4880,9 @@ section.get_mobile_app {
         @include transition-property(all);
         @include transition-duration(600ms);
       }
-    }
-  }
-
-
-}
+    } // a
+  } // .inner
+} // .get_mobile_app
 
 footer {
   padding-top: 38px;

@@ -1840,6 +1840,8 @@ White buttons
 /* Hacks & fixes */
 .ie9 .white_button:active, .ie9 .article .white_button:active { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c2f4f6f9', endColorstr='#c2ffffff',GradientType=0 ); /* IE6-9 */ }
 
+.ie7 #container .article.popover .bfooter .white_button.right, .ie8 #container .article.popover .bfooter .white_button.right { margin-left: 10px; }
+
 .ie7 #container .article .inner .right button, .ie8 #container .article .inner .right button, .ie7 #container .article .inner .left .comments ul li.comment form button, .ie8 #container .article .inner .left .comments ul li.comment form button, .ie7 button.white_button, .ie8 button.white_button { position: relative; cursor: pointer; margin: 0; overflow: visible; /* removes extra side padding in IE */ width: auto; }
 .ie7 #container .article .inner .right button span, .ie8 #container .article .inner .right button span, .ie7 #container .article .inner .left .comments ul li.comment form button span, .ie8 #container .article .inner .left .comments ul li.comment form button span, .ie7 button.white_button span, .ie8 button.white_button span { position: relative; left: 0px; }
 .ie7 #container .article .inner .right button.right, .ie8 #container .article .inner .right button.right, .ie7 #container .article .inner .left .comments ul li.comment form button.right, .ie8 #container .article .inner .left .comments ul li.comment form button.right, .ie7 button.white_button.right, .ie8 button.white_button.right { float: right; right: 0; margin: 0 0 0 10px; }

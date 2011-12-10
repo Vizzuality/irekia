@@ -200,8 +200,8 @@
 
   function enableSending($ps) {
     if ($ps) {
-      $ps.find("footer button").removeAttr("disabled");
-      $ps.find("footer button").removeClass("disabled");
+      $ps.find(".bfooter button").removeAttr("disabled");
+      $ps.find(".bfooter button").removeClass("disabled");
     }
   }
 
