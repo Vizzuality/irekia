@@ -66,9 +66,12 @@ def create_proposal(params)
   proposal.tags = params[:tags]
   proposal.author = params[:author]
   proposal.proposal_data = proposal_data
-  proposal.comments = params[:comments]
 
   proposal.save!
+
+  (params[:comments] || []).each do |comment|
+    proposal.comments.create(comment)
+  end
 
   print '.'
 
@@ -121,7 +124,6 @@ def create_question(params)
 
   question               = Question.new
   question.question_data = question_data
-  question.comments      = params[:comments] || []
   question.tags          = params[:tags]
   question.author        = params[:author]
 
@@ -131,12 +133,16 @@ def create_question(params)
     question.answer_requests.create :user => user
   end
 
-  print '.'
+  (params[:comments] || []).each do |comment|
+    question.comments.create(comment)
+  end
 
   if params[:answer]
     params[:answer][:question] = question.reload
     create_answer params[:answer]
   end
+
+  print '.'
 
   question
 end
@@ -145,15 +151,18 @@ def create_answer(params)
 
   answer = Answer.new
   answer.author = params[:author]
-  answer.comments = params[:comments] || []
   answer.question = params[:question]
 
   answer_data = answer.build_answer_data
   answer_data.answer_text = params[:text]
 
-  print '.'
-
   answer.save!
+
+  (params[:comments] || []).each do |comment|
+    answer.comments.create(comment)
+  end
+
+  print '.'
 
   answer
 end
@@ -201,13 +210,16 @@ def create_news(params)
   news.news_data     = news_data
   news.tags          = params[:tags]
   news.author        = params[:author]
-  news.comments      = params[:comments]
   news.save!
 
   news.areas         = params[:areas_tagged] if params[:areas_tagged]
   news.users         = params[:users_tagged] if params[:users_tagged]
 
   news.save!
+
+  (params[:comments] || []).each do |comment|
+    news.comments.create(comment)
+  end
 
   print '.'
 
@@ -222,8 +234,11 @@ def create_photo(params)
 
   photo = Photo.create :image    => image,
                        :tags     => params[:tags],
-                       :author   => params[:author],
-                       :comments => params[:comments]
+                       :author   => params[:author]
+
+  (params[:comments] || []).each do |comment|
+    photo.comments.create(comment)
+  end
 
   print '.'
 
@@ -253,6 +268,11 @@ def create_status_message(params)
 end
 
 def create_comment(user, comment = Faker::Lorem.sentence)
-  user.comments.new.create_with_body(comment)
+  {
+    :user_id => user.id,
+    :comment_data_attributes => {
+      :body => comment
+    }
+  }
 end
 

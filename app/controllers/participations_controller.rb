@@ -20,20 +20,17 @@ class ParticipationsController < ApplicationController
     participation_params[:user_id] = current_user.id
 
     @participation = @participation_class.find_or_initialize participation_params
-    @partial       = params[:partial] || @participation_type
 
     if @participation.save
-      redirect_to polymorphic_path(@participation, :partial => @partial)
+      redirect_to polymorphic_path(@participation, :partial => (params[:partial] || @participation_type))
     else
       head :error and return unless @participation.save
     end
   end
 
   def update
-    @partial = params[:partial] || @participation_type
-
     if @participation.update_attributes params[@participation_type]
-      redirect_to polymorphic_path(@participation, :partial => @partial)
+      redirect_to polymorphic_path(@participation, :partial => (params[:partial] || @participation_type))
     else
       head :error
     end

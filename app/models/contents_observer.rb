@@ -1,7 +1,7 @@
 class ContentsObserver < ActiveRecord::Observer
-  observe :content, :answer_data, :event_data, :image, :news_data, :proposal_data, :question_data, :status_message_data, :tweet_data, :video_data
+  observe :content
 
-  def after_save(model)
+  def after_commit(model)
     model.publish if model.present?
   end
 end

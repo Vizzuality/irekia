@@ -1,8 +1,9 @@
 class ParticipationsObserver < ActiveRecord::Observer
-  observe :participation, :comment_data, :argument_data, :vote_data, :answer_request
+  observe :participation
 
-  def after_save(model)
+  def after_commit(model)
     model.publish
+    model.content.publish
   end
 
 end
