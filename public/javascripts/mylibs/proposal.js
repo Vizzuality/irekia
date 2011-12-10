@@ -19,7 +19,7 @@
    '  <div class="bfooter">',
    '  <div class="separator"></div>',
    '  <div class="inner">',
-   '    <a href="#" class="white_button pink close right">Aceptar</a>',
+   '    <a href="#" class="white_button pink close right"><span>Aceptar</span></a>',
    '  </div>',
    '  </div>',
    '  <div class="t"></div><div class="f"></div>',
@@ -73,7 +73,7 @@
 
       $(this).click(_toggle);
 
-      $(window).bind(data.event, function() { _close(data, true); });
+      !ie && $(window).bind(data.event, function() { _close(data, true); });
 
       // Save the updated $ps reference into our data object
       data.$ps = $ps;
@@ -130,7 +130,7 @@
     // bindings
     _addCloseAction(data);
     _addSubmitAction(data);
-    _addDefaultAction(data);
+    !ie && _addDefaultAction(data);
     _setupUpload(data, "upload_image");
 
     // Remove image link
