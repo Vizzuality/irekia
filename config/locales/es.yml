@@ -1705,10 +1705,7 @@
   follows:
     create:
       area:
-        follow:
-          zero: 'Seguir a este área (0)'
-          one: 'Seguir a este área (1)'
-          other: 'Seguir a este área (%{count})'
+        follow: 'Seguir a este área'
       user:
         follow:
           zero: 'Seguir a %{name}'
