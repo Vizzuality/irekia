@@ -35,7 +35,8 @@ class User < ActiveRecord::Base
                   :questions_attributes,
                   :question_data_attributes,
                   :areas_users_attributes,
-                  :follows_attributes
+                  :follows_attributes,
+                  :notifications_attributes
 
   attr_accessor :terms_of_service
 
@@ -176,7 +177,7 @@ class User < ActiveRecord::Base
            :source => :user
 
   accepts_nested_attributes_for :profile_pictures, :questions, :question_data, :areas_users
-  accepts_nested_attributes_for :follows, :allow_destroy => true
+  accepts_nested_attributes_for :follows, :notifications, :allow_destroy => true
 
 
   pg_search_scope :search_by_name,
