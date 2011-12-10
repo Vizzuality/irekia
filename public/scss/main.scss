@@ -4889,7 +4889,7 @@ footer {
   background: $white;
   border-top: 1px solid #c2c4c6;
 
-  .content { clear: both; overflow: hidden; padding: 0 0 23px 0; width: 900px; }
+  .content { clear: both; overflow: hidden; margin:auto; padding: 0 0 23px 0; width: 900px; }
   ul.copyright { float: left; margin-right: 35px; }
 
   .home, .areas { float: left; margin-right: 20px; }
