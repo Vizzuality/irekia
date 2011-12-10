@@ -2352,10 +2352,13 @@ span.where, .map .infowindow ul.details li.where {
   &.activity .inner .left ul li .content .comment-box {
 
     ul li {
-      .avatar .ieframe {
-        background-position: -75px -115px;
-      }
-    }
+      .avatar {
+        .ieframe {
+          background-position: -75px -115px;
+        }
+        &>img { top: -4px; position:absolute;}
+      } // .avatar
+    } // ul li
 
     form {
 
@@ -4716,23 +4719,35 @@ Explorer fixes
   overflow: hidden;
   width: $avatar_normal_size;
   height: $avatar_normal_size;
+
+  &>img { top: -4px; position:absolute;}
+}
+
+.ie7 .avatar.medium,
+.ie8 .avatar.medium {
+  &>img { top: 0px; position:absolute;}
+}
+.ie7 .avatar.small,
+.ie8 .avatar.small {
+  &>img { top: 0px; position:absolute;}
 }
 
 .ie7 .avatar .ieframe,
 .ie8 .avatar .ieframe {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0px; left: 0px;
   width: $avatar_normal_size;
   height: $avatar_normal_size;
-  background: url('/images/avatar_frame.png') no-repeat;
+  background: url('/images/avatar_frame.png') no-repeat 0 0;
   z-index: 100;
+
 }
 
 .ie7 .avatar.medium,
 .ie8 .avatar.medium,
 .ie7 .avatar.medium .ieframe,
 .ie8 .avatar.medium .ieframe {
+  top: 0px; left: 0px;
   width: $avatar_medium_size;
   height: $avatar_medium_size;
   background: url('/images/avatar_frame.png') no-repeat 0 -70px;
@@ -4742,6 +4757,7 @@ Explorer fixes
 .ie8 .avatar.small,
 .ie7 .avatar.small .ieframe,
 .ie8 .avatar.small .ieframe {
+  top: 0px; left: 0px;
   width: $avatar_small_size;
   height: $avatar_small_size;
   background: url('/images/avatar_frame.png') no-repeat 0 -115px;

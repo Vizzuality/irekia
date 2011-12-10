@@ -16,8 +16,7 @@
     <span class="comments"><%= link_to data.comments_count, question_path(data.question_id, :anchor => :comments), :class => "comment-count" %></span>
     <% end -%>
     &middot;
-    <%#= render "/shared/inline_sharing" %>
-    <%= link_to "Compartir", "/in_development" %>
+    <%= inline_sharing_partial(data, 'answer', answer_url(data.id), data.answer_text) %>
   </div>
   <%= render 'shared/lists_elements/last_comments', :data => data %>
 </div>
