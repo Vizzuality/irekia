@@ -283,8 +283,8 @@ class User < ActiveRecord::Base
   end
 
   def get_proposals(filters)
-    proposals = Proposal.from_politician(self) if politician?
-    proposals = Proposal.from_citizen(self)    if citizen? || administrator?
+    proposals = Proposal.from_politician(self)         if politician?
+    proposals = Proposal.from_citizen(self)            if citizen? || administrator?
 
     proposals = proposals.from_politicians     if filters[:from_politicians]
     proposals = proposals.from_citizens        if filters[:from_citizens]

@@ -122,6 +122,15 @@ class Area < ActiveRecord::Base
 
   def get_proposals(filters)
     proposals = proposals_received
+    filter_proposals(proposals, filters)
+  end
+
+  def get_proposals_from_politician_areas(politician, filters)
+    proposals = Proposal.from_politician_areas(self)
+    filter_proposals(proposals, filters)
+  end
+
+  def filter_proposals(proposals, filters)
     proposals = proposals.from_politicians if filters[:from_politicians]
     proposals = proposals.from_citizens if filters[:from_citizens]
 

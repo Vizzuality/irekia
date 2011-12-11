@@ -37,8 +37,13 @@ class Proposal < Content
     joins(:proposal_data).where('proposal_data.close' => true)
   end
 
-  def self.from_politicians
-    joins(:author => :role).where('roles.name = ?', 'Politician')
+  def self.from_politicians(politician)
+    joins(:author => :role, :votes => :author, :arguments => :author)
+    .where('roles.name = ? AND (authors_contents.id = ? OR users.id = ? OR authors_participations.id = ? OR authors_participations_2.id = ?)', 'Politician', politician.id, politician.id, politician.id, politician.id)
+  end
+
+  def self.from_politician_areas(politician)
+    joins(:author => {:areas => :team}).where('teams_areas.id = ?', politician.id)
   end
 
   def self.from_citizens
