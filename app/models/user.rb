@@ -54,9 +54,10 @@ class User < ActiveRecord::Base
   before_validation :check_blank_name, :on => :create
   before_create :check_user_role
 
-  validates :terms_of_service, :acceptance => true
-  validates :name, :presence => true, :on => :update
-  validates :lastname, :presence => true, :on => :update
+  validates           :terms_of_service,  :acceptance => true
+  validates           :name,              :presence   => true,        :on => :update
+  validates           :lastname,          :presence   => true,        :on => :update
+  validates_format_of :email,             :with       => email_regexp
 
   belongs_to :role,
              :select => 'id, name, name_i18n_key'
