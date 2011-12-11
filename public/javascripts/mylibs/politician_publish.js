@@ -82,7 +82,7 @@
       // Do the same for the dropdown, but add a few helpers
       $ps.data(store, data);
 
-      data.$submit = $ps.find("footer .publish");
+      data.$submit = $ps.find(".bfooter .publish");
 
       // bindings
       _addCloseAction(data);

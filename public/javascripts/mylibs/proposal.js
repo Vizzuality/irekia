@@ -207,8 +207,8 @@
 
   function _disableSending($ps) {
     if ($ps) {
-      $ps.find("footer button").attr("disabled", "true");
-      $ps.find("footer button").addClass("disabled");
+      $ps.find(".bfooter button").attr("disabled", "true");
+      $ps.find(".bfooter button").addClass("disabled");
     }
   }
 

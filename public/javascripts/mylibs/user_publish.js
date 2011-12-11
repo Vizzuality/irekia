@@ -70,7 +70,7 @@
       // Save the userPublishPopover data
       $this.data(store, data);
       $ps.data(store, data);
-      data.$submit = $ps.find("footer .publish");
+      data.$submit = $ps.find(".bfooter .publish");
 
       // bindings
       _addCloseAction(data);
