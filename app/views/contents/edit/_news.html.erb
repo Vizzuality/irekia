@@ -61,7 +61,7 @@
               <%= news_data.text_area :title, :value => @content.title %>
             <% end -%>
           </div>
-          <%= button "Publicar", :class => "submit white_button" %>
+          <%= button "Guardar", :class => "submit white_button" %>
         <% end -%>
 
         <% unless @content.subtitle.blank? %>
@@ -73,7 +73,7 @@
                 <%= news_data.text_area :subtitle, :value => @content.subtitle %>
               </div>
             <% end -%>
-            <%= button "Publicar", :class => "submit white_button" %>
+            <%= button "Guardar", :class => "submit white_button" %>
           <% end -%>
         <% end %>
 
@@ -137,7 +137,7 @@
             </div>
           <% end -%>
 
-          <%= button "Publicar", :class => "submit white_button" %>
+          <%= button "Guardar", :class => "submit white_button" %>
         <% end -%>
 
         <%= render "participations/comments" %>
