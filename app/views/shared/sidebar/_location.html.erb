@@ -11,7 +11,7 @@
     <% end -%>
 
     <div class="footer">
-      <span class="where"><%= @content.location || 'Añade un lugar' %></span>
+      <%= @content.location || 'Añade un lugar' %>
     </div>
 
     <%= content_for :js_data do %>
