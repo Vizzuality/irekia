@@ -388,11 +388,10 @@
             $response.find("li").unbind();
             $response.find("li").bind("click", function(e) {
               var id = $(this).attr("id");
-
               var name = $(this).find(".name").html();
 
               $ps.find('.autosuggest_field input[type="text"]').val(name);
-              $ps.find('#proposal_proposal_data_attributes_area_id').val(id)
+              $ps.find('#proposal_proposal_data_attributes_area_id').val(id.replace("item_", ""))
 
               if (!isEmpty($ps.find("textarea.title").val())) {
                 _enableSending(data.$ps);
@@ -407,6 +406,7 @@
 
             if ($response.find("li").length > 0) {
               $response.hide();
+              $response.addClass("small");
               $response.css("top", $ps.find(".autosuggest_field").position().top + 60);
               $ps.find('.content').append($response);
               $response.fadeIn(150);
