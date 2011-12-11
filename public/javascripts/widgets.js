@@ -17,6 +17,15 @@ var LockScreen = (function() {
     }
   }
 
+  function _showIfHidden(callback) {
+    if (!$("#lock_screen").length) {
+      _show(callback);
+    }
+    else {
+      callback && callback();
+    }
+  }
+
   function _show(callback) {
     if (!_isLocked()) {
       $("body").append("<div id='lock_screen'></div>");
@@ -43,6 +52,7 @@ var LockScreen = (function() {
   return {
     toggle:_toggle,
     show:_show,
+    showIfHidden:_showIfHidden,
     hide:_hide
   };
 })();

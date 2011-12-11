@@ -6,8 +6,6 @@
         <div class="content">
           <p><%= t(".subtitle") %></p>
 
-          <h3><%= t(".title") %></h3>
-
           <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %>
             <%= proposal_data.hidden_field :area_id %>
 
@@ -16,28 +14,48 @@
               <%= image.hidden_field :image_cache, :class => :image_cache_name %>
             <% end %>
 
-            <div id="124" class="input-counter">
-              <span class="counter">140</span>
-              <%= proposal_data.text_area :title, :class => "grow title" -%>
+            <div class="field clearfix">
+              <h3><%= t(".title") %></h3>
+              <div id="124" class="input-counter">
+                <span class="counter">140</span>
+                <%= proposal_data.text_area :title, :class => "grow title" -%>
+              </div>
             </div>
 
-            <div class="input_field uploader">
-              <span class="holder"><span class="upload" id="upload_image" data-url="<%= proposals_path -%>">Sube una foto</span></span>
-              <span class="percentage">0%</span>
-              <span class="loading">Cargando imagen...</span>
-              <div class="progress"></div>
-            </div>
+            <div class="extra">
+              <div class="field clearfix">
+                <div class="input_field uploader">
+                  <span class="holder"><span class="upload" id="upload_image" data-url="<%= proposals_path -%>">Sube una foto</span></span>
+                  <span class="percentage">0%</span>
+                  <span class="loading">Cargando imagen...</span>
+                  <div class="progress"></div>
+                </div>
 
-            <div class="image_container clearfix">
-              <p>Se incluirá esta imagen en la propuesta.</p>
-              <a href="#" class="remove">Eliminar</a>
-            </div>
+                <div class="image_container clearfix">
+                  <p>Se incluirá esta imagen en la propuesta.</p>
+                  <a href="#" class="remove">Eliminar</a>
+                </div>
+              </div>
 
-            <h3><%= t(".do_you_want_to_explain_the_proposal") %></h3>
+              <div class="field clearfix">
+                <h3><%= t(".do_you_want_to_explain_the_proposal") %></h3>
 
-            <div class="input_field textarea grow placeholder">
-              <%= proposal_data.text_area :body, :class => "grow body" %>
-              <span class="holder"><%= t(".describe_the_proposal") %></span>
+                <div class="input_field textarea grow placeholder">
+                  <%= proposal_data.text_area :body, :class => "grow body" %>
+                  <span class="holder"><%= t(".describe_the_proposal") %></span>
+                </div>
+              </div>
+
+              <div class="field last clearfix">
+                <h3>¿A qué area le quieres dirigir la pregunta?</h3>
+                <div class="input_field autosuggest_field placeholder">
+                  <div class="search_box clearfix">
+                    <input type="text" class="search" />
+                    <span class="holder">Nombre de área...</span>
+                    <span class="spinner" id="search_question_spinner"></span>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -45,11 +63,11 @@
         <span class="close"></span>
       </div>
       <div class="bfooter">
-      <div class="separator"></div>
-      <div class="inner">
-        <button class="disabled white_button right" id="submit-124" disabled="disabled"><span><%= t('.make_a_proposal.continue') %></span></button>
-        <span id="proposal_spinner" class="spinner"></span>
-      </div>
+        <div class="separator"></div>
+        <div class="inner">
+          <button class="disabled white_button action right" id="submit-124" disabled="disabled"><span><%= t('.make_a_proposal.continue') %></span></button>
+          <span id="proposal_spinner" class="spinner"></span>
+        </div>
       </div>
       <div class="t"></div><div class="f"></div>
     <% end %>

@@ -1618,7 +1618,39 @@ div#main.show div.left img {margin:4px 0 7px;}
         img { display:none; float:left; margin: 0 10px 0 0; height:72px; }
         p { float:left; margin: 30px 0 0 0; line-height:normal; font-size: 15px; color: #7D8A92; }
         a { float:right; margin: 30px 10px 0 0; line-height:normal; font-size:15px; }
+
       }
+
+      .extra {
+        display: none;
+        margin: 0 0 0 0;
+
+        .search_box {
+          margin:0; padding:0;
+          position: relative;
+          width: 685px; height: 35px;
+        }
+      }
+
+      .field {
+        margin: 0 0 20px 0;
+        // background: red;
+        .input-counter { margin-bottom: 0; } // TODO: After adding .field, remove input-counter margin: 24px;
+        .uploader { margin: 0; }
+
+        &.last { margin-bottom: 0; }
+        &:last-child { margin-bottom: 0; }
+      }
+
+      .autosuggest_field {
+        .search_box { margin: 0; padding: 0; }
+        width:534px;
+        input[type="text"],
+        .holder {
+          font-size:14px;
+          width:534px;
+        }
+      } // autosuggest_field
 
       .percentage { display:none; margin-left:-343px; position: absolute; top: 10px; right: 50%; font-size:15px; color: #FF0066; z-index:2010; font-weight:bold; }
       .loading { display:none; position: absolute; top: 10px; right: 10px; font-size:15px; color:#CCCCCC; z-index:2010; }

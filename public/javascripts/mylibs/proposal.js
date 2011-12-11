@@ -28,6 +28,7 @@
   store = "proposal-popover",
   // Public methods
   methods = { },
+  interval,
   // Default values
   defaults = {
     easingMethod:'easeInOutQuad',
@@ -40,7 +41,7 @@
 
     return this.each(function() {
       var
-      // The current <select> element
+      // The current element
       $this = $(this),
 
       // We store lots of great stuff using jQuery data
@@ -78,10 +79,8 @@
       // Save the updated $ps reference into our data object
       data.$ps = $ps;
 
-      // Save the proposalPopover data onto the <select> element
+      // Save the proposalPopover data
       $this.data(store, data);
-
-      // Do the same for the dropdown, but add a few helpers
       $ps.data(store, data);
 
       // Autolaunch of the widget
@@ -123,25 +122,27 @@
     });
   }
 
-  function _open(data) {
-    data.$ps = $(document).find(".article#" + data.id);
-    var $ps = data.$ps;
-
-    // bindings
+  function _setupBindings(data) {
     _addCloseAction(data);
     _addSubmitAction(data);
     !ie && _addDefaultAction(data);
     _setupUpload(data, "upload_image");
+    _subscribeToEvent(data.event);
+
+    _bindSearch(data);
 
     // Remove image link
-    $ps.find(".image_container a.remove").unbind();
-    $ps.find(".image_container a.remove").bind("click", function(e) { _resetImageContainer(e, data); } );
+    data.$ps.find(".image_container a.remove").unbind();
+    data.$ps.find(".image_container a.remove").bind("click", function(e) { _resetImageContainer(e, data); } );
 
-    $ps.find("textarea.grow").autogrow();
+    data.$ps.find("textarea.grow").autogrow();
+    data.$ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
+  }
 
-    _subscribeToEvent(data.event);
-    _triggerOpenAnimation($ps, data);
-    $ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
+  function _open(data) {
+    data.$ps = $(document).find(".article#" + data.id);
+    _setupBindings(data);
+    _triggerOpenAnimation(data.$ps, data);
   }
 
   function _resetImageContainer(e, data) {
@@ -158,6 +159,7 @@
       $ps.find(".loading").hide();
       $ps.find(".percentage").hide();
       $ps.find(".progress").css("width", "0");
+      _center(data);
     });
   }
 
@@ -191,14 +193,16 @@
     return (($(window).width() - $ps.width()) / 2);
   }
 
-  function _clearInfo($ps) {
+  function _afterClosingSetup($ps) {
     $ps.find("textarea").val("");
     $ps.find(".counter").html(140);
-    $ps.find(".holder").fadeIn(150);
+    $ps.find(".holder").fadeIn(100);
     _disableSending($ps);
+    $ps.find(".extra").fadeOut(100);
+    $ps.find(".bfooter .action").unbind();
   }
 
-  function enableSending($ps) {
+  function _enableSending($ps) {
     if ($ps) {
       $ps.find(".bfooter button").removeAttr("disabled");
       $ps.find(".bfooter button").removeClass("disabled");
@@ -216,7 +220,7 @@
     if (ie) {
       data.$ps.fadeOut(data.settings.transitionSpeed, function() {
         $(this).remove();
-        _clearInfo(data.$ps);
+        _afterClosingSetup(data.$ps);
         hideLockScreen && LockScreen.hide();
         callback && callback();
       });
@@ -224,7 +228,7 @@
 
       data.$ps.animate({opacity:.5, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
         $(this).remove();
-        _clearInfo(data.$ps);
+        _afterClosingSetup(data.$ps);
         hideLockScreen && LockScreen.hide();
         callback && callback();
       }});
@@ -235,14 +239,14 @@
   function _close(data, hideLockScreen, callback) {
     if (ie) {
       data.$ps.fadeOut(data.settings.transitionSpeed, function() {
-        _clearInfo(data.$ps);
+        _afterClosingSetup(data.$ps);
         hideLockScreen && LockScreen.hide();
         callback && callback();
       });
     } else {
       data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
         $(this).css("top", "-900px");
-        _clearInfo(data.$ps);
+        _afterClosingSetup(data.$ps);
         hideLockScreen && LockScreen.hide();
         callback && callback();
       }});
@@ -256,16 +260,23 @@
     GOD.broadcast(event);
   }
 
-  function _addSubmitAction(data) {
+  function _center(data) {
+    var top  = _getTopPosition(data.$ps);
+    data.$ps.animate({ top:top }, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+  }
+
+  function _enableSubmitAction(data) {
     data.$ps.find("form").die();
-    data.$ps.find("form").submit(function(e) {
+
+    data.$ps.find(".bfooter .action").click(function(e) {
       spinner.spin(spin_element);
+      data.$ps.find("form").submit();
       _disableSending(data.$ps);
     });
 
     data.$ps.find("form").live('ajax:success', function(event, response, status) {
       spinner.stop();
-      enableSending(data.$ps);
+      _enableSending(data.$ps);
       _close(data, false, function() {
         _gotoSuccess(data, response);
       });
@@ -273,7 +284,17 @@
 
     data.$ps.find("form").live('ajax:error', function(event, response, status) {
       spinner.stop();
-      enableSending(data.$ps);
+      _enableSending(data.$ps);
+    });
+  }
+
+  function _addSubmitAction(data) {
+    data.$ps.find(".bfooter .action").click(function(e) {
+      e.preventDefault();
+      data.$ps.find(".extra").slideDown(data.settings.transitionSpeed, function() {
+        _center(data);
+        _enableSubmitAction(data); // After the user shows the extra options, we enable the real submit
+      });
     });
   }
 
@@ -301,6 +322,103 @@
       e.stopPropagation();
     });
   }
+
+  function _enableInputCounter(data, $input, on, off) {
+    var $ps = data.$ps;
+
+    $input.keyup(function(e) {
+      textCounter($(this), on, off);
+    });
+
+    $input.keydown(function(e) {
+      textCounter($(this), on, off);
+    });
+  }
+
+  function textCounter($input, on, off) {
+    var count = $input.val().length;
+
+    if (count <= 0) {
+      off && off();
+    } else {
+      on && on();
+    }
+  }
+
+  function _clearAutosuggest($ps) {
+    $ps.find(".autosuggest").fadeOut(100, function() {
+      $(this).remove();
+    });
+  }
+
+  function _resetHiddenFields($ps) {
+    $("#proposal_proposal_data_attributes_area_id").val("");
+    _disableSending($ps);
+  }
+
+  function _bindSearch(data) {
+    var $ps = data.$ps;
+
+    _enableInputCounter(data, $(".autosuggest_field input"), null, function() { _clearAutosuggest($ps); _resetHiddenFields($ps); } );
+
+    $ps.find('.autosuggest_field input').keyup(function(ev){
+
+      if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+
+      clearTimeout(interval);
+
+      if ($(this).val().length > 3) {
+        interval = setTimeout(function(){
+
+          var query = $ps.find('.extra .autosuggest_field input[type="text"]').val();
+
+          data.spinner.spin(spin_element);
+
+          var params = { name : query };
+
+          params = $.extend(params, { only_areas : true} );
+
+          $.ajax({ url: "/search/politicians_and_areas", data: { search: params }, type: "GET", success: function(response) {
+
+            var $response = $(response);
+
+            data.spinner.stop();
+
+            // When the user clicks on a result…
+            $response.find("li").unbind();
+            $response.find("li").bind("click", function(e) {
+              var id = $(this).attr("id");
+
+              var name = $(this).find(".name").html();
+
+              $ps.find('.autosuggest_field input[type="text"]').val(name);
+              $ps.find('#proposal_proposal_data_attributes_area_id').val(id)
+
+              if (!isEmpty($ps.find("textarea.title").val())) {
+                _enableSending(data.$ps);
+              }
+
+              _clearAutosuggest($ps);
+            });
+
+            $ps.find(".autosuggest").fadeOut(150, function() {
+              $(this).remove();
+            });
+
+            if ($response.find("li").length > 0) {
+              $response.hide();
+              $response.css("top", $ps.find(".autosuggest_field").position().top + 60);
+              $ps.find('.content').append($response);
+              $response.fadeIn(150);
+            }
+          }});
+
+        }, 500);
+      }
+    });
+  }
+
+
 
   function _setupUpload(data, id) {
 
@@ -356,13 +474,12 @@
             $ps.find(".image_container").prepend(cacheImage);
             $ps.find(".image_container").fadeIn(speed);
             $ps.find(".image_container img").fadeIn(speed);
+            _center(data);
 
             $uploader.fadeOut(speed, function() {
               $uploader.find(".holder").fadeIn(speed);
             });
-
           });
-
 
           $uploader.find(".progress").fadeOut(speed, function() {
             $(this).width(0);
@@ -380,6 +497,8 @@
 
     _addCloseAction2(data);
     _addDefaultAction(data);
+
+    LockScreen.showIfHidden();
 
     $("#container").prepend($ps);
     _subscribeToEvent(data.event);
