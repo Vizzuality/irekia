@@ -16,11 +16,11 @@
   <%= render "/shared/question_form" %>
 <% else -%>
 
-  <div class="article questions with_filters broken-bottom">
+  <div class="article questions with_filters">
     <div class="inner">
       <header>
       <div class="left">
-        <h2><%= t(".answered_title", :count => @questions_top_count) %></h2>
+        <h2><%= t(".title", :count => @questions_count) %></h2>
       </div>
       <div class="right">
 
@@ -33,38 +33,10 @@
       </header>
       <div class="left">
         <div class="listing">
-          <%= render 'shared/questions_list', :questions => @questions_top %>
+          <%= render 'shared/questions_list', :questions => @questions %>
         </div>
       </div>
       <div class="right">
-      </div>
-    </div>
-    <div class="t"></div><div class="f"></div>
-  </div>
-
-  <div class="article questions with_filters broken-top">
-    <div class="inner">
-      <header>
-      <div class="left">
-        <h2><%= t(".not_answered_title") %></h2>
-      </div>
-      <div class="right">
-        <ul class="switch">
-          <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:more_polemic => false, :referer => 'all'), :class => 'filter' %></li>
-          <li><%= link_to t('.more_polemic'), link_for_questions(:more_polemic => true, :referer => 'all'), :class => 'filter' %></li>
-        </ul>
-      </div>
-      </header>
-      <div class="left">
-        <div class="listing">
-          <%= render 'shared/questions_list' %>
-        </div>
-      </div>
-      <div class="right">
-        <ul class="selector">
-          <li><%= link_to_with_login (content_tag :span, t('.no_questions.create_question')), '#', :class => "white_button pink publish_question user_publish" %></li>
-          <li></li>
-        </ul>
       </div>
     </div>
     <div class="t"></div><div class="f"></div>

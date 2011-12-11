@@ -1,40 +1,14 @@
-<div class="article questions with_filters broken-bottom">
+<div class="article questions with_filters">
 <div class="inner">
   <header>
   <div class="left">
-    <h2><%= t(".without_answer_title", :count => @questions_top_count) %></h2>
+    <h2><%= t(".title", :count => @questions_count) %></h2>
   </div>
   <div class="right">
 
     <ul class="switch">
       <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:more_polemic => false, :referer => 'answered'), :class => 'filter' %></li>
       <li><%= link_to t('.more_polemic'), link_for_questions(:more_polemic => true, :referer => 'answered'), :class => 'filter' %></li>
-    </ul>
-
-  </div>
-  </header>
-  <div class="left">
-    <div class="listing">
-      <%= render 'shared/questions_list', :questions => @questions_top %>
-    </div>
-  </div>
-  <div class="right">
-  </div>
-</div>
-<div class="t"></div><div class="f"></div>
-</div>
-
-<div class="article questions with_filters broken-top">
-<div class="inner">
-  <header>
-  <div class="left">
-    <h2><%= t(".for_you_title") %></h2>
-  </div>
-  <div class="right">
-
-    <ul class="switch">
-      <li class="selected"><%= link_to t('.more_recent'), link_for_questions(:more_polemic => false, :referer => 'all'), :class => 'filter' %></li>
-      <li><%= link_to t('.more_polemic'), link_for_questions(:more_polemic => true, :referer => 'all'), :class => 'filter' %></li>
     </ul>
 
   </div>
