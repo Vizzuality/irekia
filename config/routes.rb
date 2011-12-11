@@ -128,8 +128,8 @@ Irekia::Application.routes.draw do
     end
   end
 
-  root :to => "home#index"
-
+  root :to                      => "home#index"
+  match '/agenda'               => "home#agenda"
   match '/nav_bar_buttons', :to => 'home#nav_bar_buttons'
 
   match '/in_development', :to => 'application#in_development'

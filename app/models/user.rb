@@ -31,6 +31,17 @@ class User < ActiveRecord::Base
                   :city_id,
                   :postal_code,
                   :first_time,
+                  :new_news_count,
+                  :new_events_count,
+                  :new_proposals_count,
+                  :new_answers_count,
+                  :new_comments_count,
+                  :new_votes_count,
+                  :new_arguments_count,
+                  :new_questions_count,
+                  :new_answer_requests_count,
+                  :new_contents_users_count,
+                  :new_follows_count,
                   :profile_pictures_attributes,
                   :questions_attributes,
                   :question_data_attributes,
@@ -43,9 +54,10 @@ class User < ActiveRecord::Base
   before_validation :check_blank_name, :on => :create
   before_create :check_user_role
 
-  validates :terms_of_service, :acceptance => true
-  validates :name, :presence => true, :on => :update
-  validates :lastname, :presence => true, :on => :update
+  validates           :terms_of_service,  :acceptance => true
+  validates           :name,              :presence   => true,        :on => :update
+  validates           :lastname,          :presence   => true,        :on => :update
+  validates_format_of :email,             :with       => email_regexp
 
   belongs_to :role,
              :select => 'id, name, name_i18n_key'
@@ -67,34 +79,6 @@ class User < ActiveRecord::Base
   has_many :news_being_tagged,
            :through => :contents_users,
            :source => :news
-# has_many :photos_being_tagged,
-#          :through => :contents_users
-# has_many :videos_being_tagged,
-#          :through => :contents_users
-# has_many :questions_being_tagged,
-#          :through => :contents_users,
-#          :include => [{:users => :profile_pictures}, :question_data, :comments ],
-#          :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
-# has_many :answers_being_tagged,
-#          :through => :contents_users,
-#          :include => [{:users => :profile_pictures}, :comments ],
-#          :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
-# has_many :proposals_being_tagged,
-#          :through => :contents_users,
-#          :source => :proposal,
-#          :include => [{:users => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }],
-#          :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
-# has_many :events_being_tagged,
-#          :through => :contents_users,
-#          :include => :event_data,
-#          :order => 'event_data.event_date asc'
-# has_many :tweets_being_tagged,
-#          :through => :contents_users,
-#          :include => :tweet_data
-# has_many :status_messages_being_tagged,
-#          :through => :contents_users,
-#          :include => :status_message_data
-
 
   has_many :contents,
            :foreign_key => :user_id
@@ -177,7 +161,7 @@ class User < ActiveRecord::Base
            :source => :user
 
   accepts_nested_attributes_for :profile_pictures, :questions, :question_data, :areas_users
-  accepts_nested_attributes_for :follows, :notifications, :allow_destroy => true
+  accepts_nested_attributes_for :follows, :allow_destroy => true
 
 
   pg_search_scope :search_by_name,
@@ -366,30 +350,9 @@ class User < ActiveRecord::Base
   end
 
   def agenda_between(weeks, filters)
-    calendar_date = Date.current
-    if filters[:next_month].present?
-      calendar_date = Date.current.advance(:months => filters[:next_month].to_i)
-    end
-
-    beginning_of_calendar = calendar_date.beginning_of_week
-    end_of_calendar = calendar_date.advance(:weeks => weeks).end_of_week
-
-    events = Event.from_user(self, beginning_of_calendar, end_of_calendar)
-
-    agenda      = events.group_by{|e| e.event_date.day }
-    days        = beginning_of_calendar..end_of_calendar
-    agenda_json = JSON.generate(events.map{|event| {
-      :title    => event.title,
-      :date     => I18n.localize(event.event_date, :format => '%d, %B de %Y'),
-      :when     => event.event_date.strftime('%H:%M'),
-      :where    => event.try(:location),
-      :lat      => event.latitude,
-      :lon      => event.longitude,
-      :event_id => event.id
-    }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
-
-    return agenda, days, agenda_json
+    Event.from_area(self, weeks, filters)
   end
+
   def has_requested_answer(question_id)
     answer_request(question_id).count >= 1
   end

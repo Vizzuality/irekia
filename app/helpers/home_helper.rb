@@ -7,4 +7,7 @@ module HomeHelper
     root_path(filters)
   end
 
+  def link_for_agenda(filters = {})
+    agenda_path(@area, filters)
+  end
 end

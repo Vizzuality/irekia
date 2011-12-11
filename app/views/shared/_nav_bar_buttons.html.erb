@@ -3,7 +3,7 @@
     <li><span class="username"><%= raw t('.hello', :name => link_to(current_user.name, user_path(current_user))) %>.</span></li>
     <li>
     <div class="blue_button">
-      <%= content_tag 'div', notifications_count, :class => "#{'empty_' if notifications_count.zero? }count#{' toggle_notifications' unless notifications_count.zero? }" %>
+      <%= content_tag 'div', notifications_count, :class => "toggle_notifications #{'empty_' if notifications_count.zero? }count" %>
       <%= link_to t('.settings'), settings_user_path(current_user), :class => :settings %>
       <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => :sign_out %>
     </div>
@@ -17,9 +17,17 @@
 
         <li class="submit">
         <%= form_for current_user, :remote => true, :html => {:'data-type' => :html} do |form| %>
-          <%= form.fields_for :notifications do |notification| %>
-            <%= notification.hidden_field :_destroy, :value => true %>
-          <% end -%>
+          <%= form.hidden_field :new_news_count,            :value => 0 %>
+          <%= form.hidden_field :new_events_count,          :value => 0 %>
+          <%= form.hidden_field :new_proposals_count,       :value => 0 %>
+          <%= form.hidden_field :new_answers_count,         :value => 0 %>
+          <%= form.hidden_field :new_comments_count,        :value => 0 %>
+          <%= form.hidden_field :new_votes_count,           :value => 0 %>
+          <%= form.hidden_field :new_arguments_count,       :value => 0 %>
+          <%= form.hidden_field :new_questions_count,       :value => 0 %>
+          <%= form.hidden_field :new_answer_requests_count, :value => 0 %>
+          <%= form.hidden_field :new_contents_users_count,  :value => 0 %>
+          <%= form.hidden_field :new_follows_count,         :value => 0 %>
         <% end -%>
         </li>
 
