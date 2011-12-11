@@ -765,8 +765,8 @@
           other: 'Tienes %{count} nuevas preguntas'
         answer:
           zero: 'Ninguna respuesta nueva a tus preguntas'
-          one: '%{question} ha sido respondida'
-          other: 'Tus preguntas han sido respondidas'
+          one: '%{question} ha sido contestada'
+          other: 'Tus preguntas han sido contestadas'
         proposal:
           zero: 'Ninguna propuesta nueva'
           one: 'Tienes una nueva %{proposal}'
