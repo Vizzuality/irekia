@@ -1,35 +1,35 @@
 <div class="article proposals with_filters with_footer">
-<div class="inner">
-  <header>
-  <div class="left">
-    <h2><%= t(".title", :count => @proposals_count) %></h2>
-  </div>
-  <div class="right">
+  <div class="inner">
+    <header>
+    <div class="left">
+      <h2><%= t(".title", :count => @proposals_count) %></h2>
+    </div>
+    <div class="right">
 
-    <ul class="switch">
-      <li class="selected"><%= link_to t('.more_recent'), link_for_proposals(:more_polemic => false), :class => 'filter' %></li>
-      <li><%= link_to t('.more_commented'), link_for_proposals(:more_polemic => true), :class => 'filter' %></li>
-    </ul>
+      <ul class="switch">
+        <li class="selected"><%= link_to t('.more_recent'), link_for_proposals(:more_polemic => false), :class => 'filter' %></li>
+        <li><%= link_to t('.more_commented'), link_for_proposals(:more_polemic => true), :class => 'filter' %></li>
+      </ul>
 
-  </div>
-  </header>
-  <div class="left">
-    <div class="listing">
-      <%= render 'shared/proposals_list' if @proposals %>
+    </div>
+    </header>
+    <div class="left">
+      <div class="listing">
+        <%= render 'shared/proposals_list' if @proposals %>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="proposal-support">
+        <%= simple_format t('.proposal_support') %>
+        <div class="count"> <div class="icon"></div>     <%= t('.proposal_support_count', :count => @proposals_in_favor_count) %></div>
+      </div>
     </div>
   </div>
-
-  <div class="right">
-    <div class="proposal-support">
-      <%= simple_format t('.proposal_support') %>
-      <div class="count"> <div class="icon"></div>     <%= t('.proposal_support_count', :count => @proposals_in_favor_count) %></div>
+  <div class="bfooter">
+    <div class="separator"></div>
+    <div class="inner">
     </div>
   </div>
-</div>
-<div class="bfooter">
-<div class="separator"></div>
-<div class="inner">
-</div>
-</div>
-<div class="t"></div><div class="f"></div>
+  <div class="t"></div><div class="f"></div>
 </div>

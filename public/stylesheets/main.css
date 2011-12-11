@@ -1087,6 +1087,7 @@ ul.tags li.add a, #container .article .right .content ul.tags li.add a { backgro
 #container .article ul.suggestions li .avatar { float: left; margin: 0 8px 0 0; }
 #container .article ul.suggestions li .content { float: left; width: 200px; }
 #container .article ul.suggestions li .content p { padding: 0; margin: 0 0 13px 0; font-size: 15px; line-height: 15px; }
+#container .article ul.suggestions li .content p span { line-height: 18px; }
 #container .article ul.suggestions li .content a, #container .article ul.suggestions li .content button { display: block; font-weight: 300; font-size: 13px; color: #FF0066; background-color: transparent; border: 0 none; }
 #container .article ul.suggestions li .content a.name, #container .article ul.suggestions li .content button.name { margin-bottom: 3px; color: #1d79b0; font-size: 17px; font-weight: 300; }
 #container .article ul.suggestions li .content a.follow, #container .article ul.suggestions li .content button.follow { display: block; margin-top: 16px; font-weight: 300; font-size: 13px; }
