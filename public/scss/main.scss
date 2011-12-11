@@ -1609,6 +1609,37 @@ div#main.show div.left img {margin:4px 0 7px;}
       .holder { top: 10px; }
     }
 
+    .extra {
+      display: none;
+      margin: 0 0 0 0;
+
+      .search_box {
+        margin:0; padding:0;
+        position: relative;
+        width: 685px; height: 35px;
+      }
+    } // .extra
+
+    .field {
+      margin: 0 0 20px 0;
+      // background: red;
+      .input-counter { margin-bottom: 0; } // TODO: After adding .field, remove input-counter margin: 24px;
+      .uploader { margin: 0; }
+
+      &.last { margin-bottom: 0; }
+      &:last-child { margin-bottom: 0; }
+    } // .field
+
+    .autosuggest_field {
+      .search_box { margin: 0; padding: 0; }
+      width:534px;
+      input[type="text"],
+      .holder {
+        font-size:14px;
+        width:534px;
+      }
+    } // autosuggest_field
+
     &.proposal {
       .image_container {
         display:none;
@@ -1625,37 +1656,6 @@ div#main.show div.left img {margin:4px 0 7px;}
         a { float:right; margin: 30px 10px 0 0; line-height:normal; font-size:15px; }
 
       }
-
-      .extra {
-        display: none;
-        margin: 0 0 0 0;
-
-        .search_box {
-          margin:0; padding:0;
-          position: relative;
-          width: 685px; height: 35px;
-        }
-      }
-
-      .field {
-        margin: 0 0 20px 0;
-        // background: red;
-        .input-counter { margin-bottom: 0; } // TODO: After adding .field, remove input-counter margin: 24px;
-        .uploader { margin: 0; }
-
-        &.last { margin-bottom: 0; }
-        &:last-child { margin-bottom: 0; }
-      }
-
-      .autosuggest_field {
-        .search_box { margin: 0; padding: 0; }
-        width:534px;
-        input[type="text"],
-        .holder {
-          font-size:14px;
-          width:534px;
-        }
-      } // autosuggest_field
 
       .percentage { display:none; margin-left:-343px; position: absolute; top: 10px; right: 50%; font-size:15px; color: #FF0066; z-index:2010; font-weight:bold; }
       .loading { display:none; position: absolute; top: 10px; right: 10px; font-size:15px; color:#CCCCCC; z-index:2010; }
@@ -2472,7 +2472,7 @@ span.where, .map .infowindow ul.details li.where {
         width: 545px;
         background:url('/images/box_autosuggest_small_bkg.png') repeat-y -581px 0;
         font-size:15px;
-        p { width:180px; }
+        p { width:487px; }
         p, span { font-size: 15px; }
       }
 

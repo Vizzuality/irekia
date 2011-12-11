@@ -566,20 +566,20 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.popover .bfooter .inner .spinner { float: right; display: block; width: 33px; height: 33px; margin-top: 7px; z-index: 1000; }
 #container .article.popover .bfooter .inner .white_button { margin-left: 5px; }
 #container .article.popover .input_field.textarea.grow.placeholder .holder, #container .article.popover .input_field.placeholder .holder { top: 10px; }
+#container .article.popover .extra { display: none; margin: 0 0 0 0; }
+#container .article.popover .extra .search_box { margin: 0; padding: 0; position: relative; width: 685px; height: 35px; }
+#container .article.popover .field { margin: 0 0 20px 0; }
+#container .article.popover .field .input-counter { margin-bottom: 0; }
+#container .article.popover .field .uploader { margin: 0; }
+#container .article.popover .field.last { margin-bottom: 0; }
+#container .article.popover .field:last-child { margin-bottom: 0; }
+#container .article.popover .autosuggest_field { width: 534px; }
+#container .article.popover .autosuggest_field .search_box { margin: 0; padding: 0; }
+#container .article.popover .autosuggest_field input[type="text"], #container .article.popover .autosuggest_field .holder { font-size: 14px; width: 534px; }
 #container .article.popover.proposal .image_container { display: none; float: left; width: 534px; padding: 10px; margin: 0 0 20px 0; background: #EDF3E5; line-height: normal; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
 #container .article.popover.proposal .image_container img { display: none; float: left; margin: 0 10px 0 0; height: 72px; }
 #container .article.popover.proposal .image_container p { float: left; margin: 30px 0 0 0; line-height: normal; font-size: 15px; color: #7D8A92; }
 #container .article.popover.proposal .image_container a { float: right; margin: 30px 10px 0 0; line-height: normal; font-size: 15px; }
-#container .article.popover.proposal .extra { display: none; margin: 0 0 0 0; }
-#container .article.popover.proposal .extra .search_box { margin: 0; padding: 0; position: relative; width: 685px; height: 35px; }
-#container .article.popover.proposal .field { margin: 0 0 20px 0; }
-#container .article.popover.proposal .field .input-counter { margin-bottom: 0; }
-#container .article.popover.proposal .field .uploader { margin: 0; }
-#container .article.popover.proposal .field.last { margin-bottom: 0; }
-#container .article.popover.proposal .field:last-child { margin-bottom: 0; }
-#container .article.popover.proposal .autosuggest_field { width: 534px; }
-#container .article.popover.proposal .autosuggest_field .search_box { margin: 0; padding: 0; }
-#container .article.popover.proposal .autosuggest_field input[type="text"], #container .article.popover.proposal .autosuggest_field .holder { font-size: 14px; width: 534px; }
 #container .article.popover.proposal .percentage { display: none; margin-left: -343px; position: absolute; top: 10px; right: 50%; font-size: 15px; color: #FF0066; z-index: 2010; font-weight: bold; }
 #container .article.popover.proposal .loading { display: none; position: absolute; top: 10px; right: 10px; font-size: 15px; color: #CCCCCC; z-index: 2010; }
 #container .article.popover.proposal .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
@@ -789,7 +789,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .autosuggest { width: 691px; position: absolute; padding-bottom: 10px; top: 20px; z-index: 2000; }
 #container .article .autosuggest.small { width: 558px; }
 #container .article .autosuggest.small li { width: 545px; background: url("/images/box_autosuggest_small_bkg.png") repeat-y -581px 0; font-size: 15px; }
-#container .article .autosuggest.small li p { width: 180px; }
+#container .article .autosuggest.small li p { width: 487px; }
 #container .article .autosuggest.small li p, #container .article .autosuggest.small li span { font-size: 15px; }
 #container .article .autosuggest.small .a_t { background: url("/images/box_autosuggest_small_bkg.png") no-repeat -1px top; width: 558px; }
 #container .article .autosuggest.small .a_f { background: url("/images/box_autosuggest_small_bkg.png") no-repeat -1px bottom; width: 558px; }
