@@ -47,7 +47,7 @@
             <%= form.fields_for :answer_data, @new_answer.answer_data do |answer_data| -%>
 
               <h3><%= t(".answer_this_question") %></h3>
-              <div id="123" class="input-counter">
+              <div id="counter_answer" data-limit="-1" class="input-counter">
                 <%= answer_data.text_area :answer_text, :class => :grow %>
               </div>
 
@@ -76,7 +76,7 @@
                   </a>
                 </div>
               </div>
-              <div class="right"><%= form.submit t(".publish"), :id => "submit-123", :class => 'white_button pink disabled', :disabled => :disabled %></div>
+              <div class="right"><%= form.submit t(".publish"), :id => "submit-counter_answer", :class => 'white_button pink disabled', :disabled => :disabled %></div>
             </div>
 
           <% end -%>

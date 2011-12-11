@@ -1414,7 +1414,9 @@ jQuery.fn.enableCommentBox = function(opt){
 /* Allow to count characters in a input à la Twitter */
 jQuery.fn.inputCounter = function(opt){
 
-  var limit  = (opt && opt.limit) || 140;
+  var limit  = (opt && opt.limit) || $(this).attr("data-limit") || 140;
+
+  if (limit == -1) limit = 999999;
 
   this.each(function(){
 
