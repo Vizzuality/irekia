@@ -759,10 +759,10 @@ jQuery.fn.enableCheckbox = function(opt){
       e.preventDefault();
       if (!$(this).hasClass('selected')) {
         $(this).addClass('selected');
-        $(this).closest('p').find('input[type="checkbox"]').val(1).attr('checked', true);
+        $(this).closest('p, div').find('input[type="checkbox"]').val(1).attr('checked', true);
       } else {
         $(this).removeClass('selected');
-        $(this).closest('p').find('input[type="checkbox"]').val(0).attr('checked', false);
+        $(this).closest('p, div').find('input[type="checkbox"]').val(0).attr('checked', false);
       }
     });
 

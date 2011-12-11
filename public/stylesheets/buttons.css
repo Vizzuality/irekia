@@ -107,6 +107,7 @@ White buttons
 
 /*Checkboxs, radiobuttons, ...*/
 .checkbox_button { float: left; margin: 0 9px 0 0; width: 36px; padding: 7px 8px; border: 1px solid #ccc; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; background: white; height: auto; }
+.checkbox_button.facebook { text-indent: -99999px; }
 .checkbox_button.facebook .checkbox .icon { margin-left: 2px; background: url("/images/icons/share.png") no-repeat -128px 0; height: 18px; width: 14px; }
 .checkbox_button.twitter { text-indent: -99999px; }
 .checkbox_button.twitter .checkbox .icon { margin-left: 2px; background: url("/images/icons/share.png") no-repeat -149px 0; height: 18px; width: 14px; }
