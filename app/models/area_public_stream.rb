@@ -12,6 +12,10 @@ class AreaPublicStream < ActiveRecord::Base
                     :tsearch => {:prefix => true, :any_word => true}
                   }
 
+  def self.for_homepage
+    select('distinct on(event_id, event_type) *')
+  end
+
   def self.this_week
     where('EXTRACT(WEEK FROM published_at) = ?', DateTime.now.cweek)
   end

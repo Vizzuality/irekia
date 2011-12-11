@@ -85,7 +85,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(params[:user])
+    if params[:user].slice(:current_password, :password).present?
+      if @user.change_password(*params[:user].slice(:current_password, :password).values)
+        sign_in(@user, :bypass => true)
+        redirect_back_or_default user_path(@user)
+      else
+        render :settings
+      end
+    elsif @user.update_attributes(params[:user])
       flash[:notice] = :question_created if params['user']['question_data_attributes'].present?
       redirect_back_or_default user_path(@user)
     else

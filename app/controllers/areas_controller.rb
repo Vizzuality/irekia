@@ -102,6 +102,7 @@ class AreasController < ApplicationController
     @proposal.areas_contents   << @proposal.areas_contents.build(:area => @area)
     @proposal_data             = @proposal.build_proposal_data
     @proposal_data.target_area = @area
+    @proposal_data.image       = @proposal_data.build_image
   end
   private :build_new_proposal
 

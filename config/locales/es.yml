@@ -1462,7 +1462,18 @@
 
   users:
     settings:
+      man: 'Hombre'
+      woman: 'Mujer'
+      name: 'Nombre'
+      lastname: 'Apellidos'
+      province: 'Territorio'
+      city_id: 'Municipio'
+      birthday: 'Fecha de nacimiento'
       connect_with: "Conectar con %{name}"
+      save_changes: 'Guardar cambios'
+      email: 'Tu email'
+      current_password: 'Tu contraseña actual'
+      password: 'Tu nueva contraseña'
     actions:
       no_activity:
         title: 'Aún no hay actividad tuya en Irekia.'

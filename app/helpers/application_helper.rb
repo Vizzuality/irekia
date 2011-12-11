@@ -1,9 +1,16 @@
 module ApplicationHelper
 
   def am_I?(user)
-    current_user && user && current_user.try(:id) == user.try(:id)
+    current_user && user && current_user.try(:id) == user.try(:id) && (private_profile? || politician_profile?)
   end
 
+  def private_profile?
+    @viewing_access == 'private'
+  end
+
+  def politician_profile?
+    @viewing_access == 'politician'
+  end
   def current_area?(area)
     area.eql?(@area) ? 'selected' : nil
   end

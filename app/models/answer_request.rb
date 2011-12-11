@@ -61,7 +61,7 @@ class AnswerRequest < Participation
 
   def notification_for(user)
     super(user)
-    content.participers.where('participations.type' => 'AnswerRequest').each{|user| Notification.for(user, self)}
+    content.participers(author).where('participations.type' => 'AnswerRequest').each{|user| Notification.for(user, self)}
     if question.target_user
       Notification.for(question.target_user, self)
     elsif question.target_area

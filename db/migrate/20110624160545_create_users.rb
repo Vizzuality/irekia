@@ -32,6 +32,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean  :inactive,                                                      :default => false
       t.boolean  :first_time,                                                    :default => true
       t.string   :locale,                                                        :default => 'es'
+      t.integer  :notifications_level,                                           :default => 2
 
       t.integer :follows_count,                                                  :default => 0
       t.integer :areas_users_count,                                              :default => 0
