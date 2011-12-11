@@ -23,6 +23,14 @@ class Answer < Content
     answer_text
   end
 
+  def facebook_share_message
+    I18n.t('sharing.facebook.answer', :question => question_text)
+  end
+
+  def twitter_share_message
+    I18n.t('sharing.twitter.answer', :question => question_text).truncate(140)
+  end
+
   def question_published_at
     question.published_at
   end

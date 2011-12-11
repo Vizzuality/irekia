@@ -191,7 +191,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :facebook, APP_CONFIG['facebook_app_id'], APP_CONFIG['facebook_app_secret'], {:scope => 'email, offline_access, publish_stream', :client_options => {:ssl => {:ca_path => "/etc/ssl/certs"}}}
+  config.omniauth :facebook, APP_CONFIG['facebook_app_id'], APP_CONFIG['facebook_app_secret'], {:scope => 'email, offline_access, publish_stream', :client_options => {:ssl => {:ca_path => Rails.env.development?? nil : "/etc/ssl/certs"}}}
   config.omniauth :twitter, APP_CONFIG['twitter_app_id'], APP_CONFIG['twitter_app_secret']
 
 
