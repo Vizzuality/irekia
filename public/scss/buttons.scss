@@ -133,7 +133,13 @@ body.admin  header nav .content ul li .blue_button:active {
 White buttons
 ========================================================================== */
 
-.white_button, .article.white_button {
+@-moz-document url-prefix() {
+.white_button, .article.white_button, #container .article .my_opinion .white_button {
+  padding:9px 14px 7px 14px!important;
+  }
+}
+
+.white_button, .article.white_button, #container .article .my_opinion .white_button {
 /* ------------------------------------------------------------------------------ Colors */
   &.pink   { color:$pink; }
   &.blue   { color:$link_color; }
@@ -141,10 +147,25 @@ White buttons
   &.green  { color:$green; }
   &.in_favor {
     color: $agree_color;
+
     &.selected {
       background: #75B100;
       color: $white;
       text-shadow: #4E7500 1px 1px 0;
+    }
+
+    &.selected:hover {
+      background:#75B100;
+      color:$white;
+      span { color: $white; }
+      text-shadow: #4E7500 1px 1px 0;
+    }
+
+    &:hover {
+      background:#75B100;
+      color:$white;
+      span { color: white; }
+      text-shadow: none;
     }
   }
 
@@ -155,6 +176,20 @@ White buttons
       background:#FF6600;
       color:$white;
       text-shadow: #B74400 1px 1px 0;
+    }
+
+    &.selected:hover {
+      background:#FF6600;
+      color:$white;
+      span { color: $white; }
+      text-shadow: #B74400 1px 1px 0;
+    }
+
+    &:hover {
+      background:#FF6600;
+      color:$white;
+      span { color: white; }
+      text-shadow: none;
     }
   }
 
@@ -349,6 +384,12 @@ White buttons
 } // .add_person
 
 /* Hacks & fixes */
+
+@-moz-document url-prefix() {
+  header nav ul.auth li .count  { line-height:16px!important; }
+  .proposals .proposal .footer form .input_text input[type="submit"] { top: 7px!Important; }
+}
+
 .ie9 .white_button:active, .ie9 .article .white_button:active {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2f4f6f9', endColorstr='#c2ffffff',GradientType=0 ); /* IE6-9 */
 }
