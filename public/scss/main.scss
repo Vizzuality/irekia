@@ -1604,6 +1604,10 @@ div#main.show div.left img {margin:4px 0 7px;}
     .bfooter .inner .spinner { float:right; display:block; width:33px; height:33px; margin-top: 7px; z-index:1000; }
     .bfooter .inner .white_button { margin-left:5px; }
 
+    .input_field.textarea.grow.placeholder {
+      .holder { top: 10px; }
+    }
+
     &.proposal {
       .image_container {
         display:none;
