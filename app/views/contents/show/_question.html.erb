@@ -54,7 +54,7 @@
               <h3><%= t(".add_a_video") %></h3>
               <div class="input_field placeholder">
                 <%= answer_data.fields_for :video_data, @new_answer.answer_data.build_video_data do |video_data| %>
-                  <%= video_data.text_field :vimeo_url %>
+                  <%= video_data.text_field :video_url %>
                 <% end -%>
                 <span class="holder"><%= t(".youtube_or_vimeo_url") %></span>
               </div>

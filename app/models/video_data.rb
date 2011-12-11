@@ -2,6 +2,16 @@ class VideoData < ActiveRecord::Base
   belongs_to :video
   belongs_to :answer_data
 
+  attr_reader :video_url
+
+  def video_url=(url)
+    if url.match(/http:\/\/www.youtube.com/)
+      self.youtube_url = url
+    elsif url.match(/http:\/\/vimeo.com/)
+      self.vimeo_url = url
+    end
+  end
+
   def youtube_url=(url)
     write_attribute(:youtube_url, url)
     if url.present?
