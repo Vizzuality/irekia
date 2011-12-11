@@ -199,6 +199,11 @@ module ApplicationHelper
     request.protocol + request.host_with_port + image_path
   end
 
+  def inline_sharing_partial_for_contents(content, content_type, url, message)
+    render "shared/inline_content_sharing", :url => url, :content_id => content.id, :content => content, :content_type => content_type, :facebook_url    => url,
+                             :twitter_message => message_for_twitter(url, message)
+  end
+
   def inline_sharing_partial(content, content_type, url, message)
     render "shared/inline_sharing", :content_id => content.id, :content => content, :content_type => content_type, :facebook_url    => url,
                              :twitter_message => message_for_twitter(url, message)

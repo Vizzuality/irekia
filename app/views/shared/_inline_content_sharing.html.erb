@@ -1,0 +1,31 @@
+<div class="inline-sharing clearfix">
+  <%= link_to t('shared.lists_elements.share'), '#', :id => "inline_sharing_#{content_type}_#{content_id}", :class => "share inline" %>
+
+  <div class="sharebox">
+    <ul>
+      <li><div class="<%= class_for_modal_login %> <%= class_for_after_login %>share email"></div></li>
+      <li><%= link_to '', "https://twitter.com/share?text=#{twitter_message}", :class => 'share twitter' %></li>
+      <% if defined?(facebook_url) -%>
+        <li>
+        <%= link_to '', '#', :name => 'fb_share', :class => 'share facebook', :type => 'icon', :share_url => facebook_url %>
+        <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
+        </script>
+        </li>
+      <% end -%>
+    </ul>
+    <div class="arrow"></div>
+  </div>
+
+  <div class="sharebox email">
+    <%= form_for :content, :url => url, :remote => true, :html => {:'data-type' => 'html', :method => :post, :novalidate => 'novalidate'} do |form| %>
+      <div class="input_field placeholder">
+        <%= hidden_field_tag :provider, :email %>
+        <%= text_field_tag :email, "", :placeholder => "", :autocomplete => :off  %>
+        <span class="holder">Escribe la dirección de email</span>
+      </div>
+      <span class="spinner" id="share_via_email"></span>
+      <%= form.submit 'Enviar', :class => "share" %>
+      <div class="arrow"></div>
+    <% end -%>
+  </div>
+</div>
