@@ -221,20 +221,18 @@ class UsersController < ApplicationController
       @questions = @user.questions.moderated
     elsif private_profile?
       @questions     = @user.questions.moderated
-      @questions_top = @questions.answered
     elsif politician_profile?
       @questions     = @user.questions_received.moderated
-      @questions_top = @questions.not_answered
     end
 
-    if @questions_top && (params[:referer].blank? || params[:referer] == 'answered')
-      @questions_top = if params[:more_polemic] == "true"
-        @questions_top.more_polemic
+    if @questions && (params[:referer].blank? || params[:referer] == 'answered')
+      @questions = if params[:more_polemic] == "true"
+        @questions.more_polemic
       else
-        @questions_top.more_recent
+        @questions.more_recent
       end
-      @questions_top_count = @questions_top.length
-      @questions = @questions_top if params[:referer] == 'answered'
+      @questions_count = @questions.length
+      @questions = @questions.answered if params[:referer] == 'answered'
     end
 
     if params[:referer].blank? || params[:referer] == 'all'
@@ -249,6 +247,7 @@ class UsersController < ApplicationController
 
   def get_proposals
     @proposals = @user.get_proposals(params.slice(:from_politicians, :from_citizens, :more_polemic))
+    @proposals = Area.get_proposals_from_politician_areas(@user, params.slice(:from_politicians, :from_citizens, :more_polemic)) if politician_profile? && @proposals.blank?
 
     @proposals_in_favor_count = @proposals.approved_by_majority.count
   end
@@ -283,7 +282,6 @@ class UsersController < ApplicationController
     @actions   = @actions.page(1).per(@per_page).all   if @actions
     @proposals = @proposals.page(1).per(@per_page).all if @proposals
     @questions = @questions.all if @questions
-    @questions_top = @questions_top.all if @questions_top
   end
   private :paginate
 

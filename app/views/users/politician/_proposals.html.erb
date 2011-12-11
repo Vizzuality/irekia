@@ -20,6 +20,10 @@
   </div>
 
   <div class="right">
+    <div class="proposal-support">
+      <%= simple_format t('.proposal_support') %>
+      <div class="count"> <div class="icon"></div>     <%= t('.proposal_support_count', :count => @proposals_in_favor_count) %></div>
+    </div>
   </div>
 </div>
 <div class="bfooter">
