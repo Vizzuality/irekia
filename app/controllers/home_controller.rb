@@ -26,4 +26,11 @@ class HomeController < ApplicationController
   def nav_bar_buttons
     render :partial => 'shared/nav_bar_buttons', :layout => false
   end
+
+  def agenda
+    @agenda, @days, @agenda_json = Event.general_agenda(params.slice(:next_month))
+
+    render :partial => 'shared/agenda_list',
+           :layout  => nil and return if request.xhr?
+  end
 end

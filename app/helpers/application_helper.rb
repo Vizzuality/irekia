@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def homepage?
+    controller_name == 'home' && action_name == 'index'
+  end
+
   def am_I?(user)
     current_user && user && current_user.try(:id) == user.try(:id) && (private_profile? || politician_profile?)
   end

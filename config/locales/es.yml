@@ -305,6 +305,8 @@
     index:
       search: ¿Qué buscas?
       button: Buscar
+    agenda:
+      title: 'Agenda de Irekia'
     areas:
       questions:
         zero: Ninguna pregunta

@@ -134,29 +134,7 @@ class Area < ActiveRecord::Base
   end
 
   def agenda_between(weeks, filters)
-    calendar_date = Date.current
-    if filters[:next_month].present?
-      calendar_date = Date.current.advance(:months => filters[:next_month].to_i)
-    end
-
-    beginning_of_calendar = calendar_date.beginning_of_week
-    end_of_calendar = calendar_date.advance(:weeks => weeks).end_of_week
-
-    events = Event.from_area(self, beginning_of_calendar, end_of_calendar)
-
-    agenda      = events.group_by{|e| e.event_date.day }
-    days        = beginning_of_calendar..end_of_calendar
-    agenda_json = JSON.generate(events.map{|event| {
-      :title      => event.title,
-      :date       => I18n.localize(event.event_date, :format => '%d, %B de %Y'),
-      :when       => event.event_date.strftime('%H:%M'),
-      :where      => event.try(:location),
-      :lat        => event.latitude,
-      :lon        => event.longitude,
-      :event_id   => event.id
-    }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
-
-    return agenda, days, agenda_json
+    Event.from_area(self, weeks, filters)
   end
 
   def thumbnail
@@ -184,4 +162,5 @@ class Area < ActiveRecord::Base
       ).where('participations.user_id' => user.id, 'user_private_streams.user_id' => exfollower.id).destroy_all
     end
   end
+
 end
