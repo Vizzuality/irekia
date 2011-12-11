@@ -151,7 +151,7 @@ class Proposal < Content
   end
 
   def notification_for(user)
-    target_area.team.each{|politician| Notification.for(politician, self)} if target_area
+    target_area.team.reject{|politician| politician == author}.each{|politician| Notification.for(politician, self)} if target_area
   end
 
 end

@@ -65,7 +65,7 @@ class AnswerRequest < Participation
     if question.target_user
       Notification.for(question.target_user, self)
     elsif question.target_area
-      question.target_area.team.each{|politician| Notification.for(politician, self)}
+      question.target_area.team.reject{|politician| politician == author}.each{|politician| Notification.for(politician, self)}
     end
   end
 end

@@ -138,7 +138,7 @@ class Participation < ActiveRecord::Base
   end
 
   def notification_for(user)
-    Notification.for(user, self) unless author == user
+    Notification.for(user, self) unless author == user || content.author == user
   end
 
 end

@@ -47,7 +47,7 @@ class Argument < Participation
   def notification_for(user)
     super(user)
     content.participers(author).where('participations.type' => 'Argument').each{|user| Notification.for(user, self)}
-    proposal.target_area.team.each{|politician| Notification.for(politician, self)} if proposal.target_area
+    proposal.target_area.team.reject{|politician| politician == author}.each{|politician| Notification.for(politician, self)} if proposal.target_area
   end
 
 end
