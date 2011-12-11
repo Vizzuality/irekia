@@ -10,7 +10,7 @@
 
           <fieldset>
 
-            <div class="field name<%= ' error' if current_user.invalid? && current_user.errors[:name].present? %>">
+            <div class="field name">
               <%= f.label :name %>
               <div class="input_field">
                 <%= f.text_field :name, :placeholder => "", :autocomplete => :off %>
@@ -18,7 +18,7 @@
               <span class="mandatory">obligatorio</span>
             </div>
 
-            <div class="field lastname<%= ' error' if current_user.invalid? && current_user.errors[:lastname].present? %>">
+            <div class="field lastname">
               <%= f.label :lastname %>
               <div class="input_field">
                 <%= f.text_field :lastname, :placeholder => "",:autocomplete => :off %>
@@ -27,7 +27,7 @@
             </div>
 
             <% if current_user.invalid? && current_user.errors[:email].present? %>
-              <div class="field email error">
+              <div class="field email">
                 <%= f.label :email %>
                 <div class="input_field">
                   <%= f.text_field :email, :value => nil, :placeholder => "", :autocomplete => :off %>
