@@ -1639,7 +1639,7 @@
           zero: ninguno nuevo desde la última vez que entraste.
           one: 1 nuevo desde la última vez que entraste.
           other: '%{count} nuevos desde la última vez que entraste.'
-        edit_your_profile: Edita tu perfil
+        configure_your_account: Configura tu cuenta
       navigation_menu:
         dashboard: Dashboard
         your_questions: Preguntas

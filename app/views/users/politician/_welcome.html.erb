@@ -11,7 +11,7 @@
       <%= t('.new_followers_count', :count => @new_followers_count) %>
     </p>
   </div>
-  <%= link_to t('.edit_your_profile'), "#", :class => :config %>
+  <%= link_to t('.configure_your_account'), settings_user_path(current_user), :class => :config %>
 </ul>
 </div>
 
