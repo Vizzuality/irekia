@@ -21,7 +21,7 @@
       <span class="not_answered"><%= t('.not_answered') %></span>
     <% end %>
 
-      &middot;
+    &middot;
 
     <span class="requests positive"><%= data.answer_requests_count %></span>
 
@@ -29,11 +29,7 @@
       &middot;
       <span class="comments"><%= link_to data.comments_count, question_path(data.id, :anchor => :comments), :class => "comment-count" %></span>
     <% end -%>
-
-    &middot;
-
-    <%= inline_sharing_partial(data, 'question', question_url(data.id), data.question_text) %>
-
+    <%#= inline_sharing_partial(data, 'question', question_url(data.id), data.question_text) %>
   </div>
   <%= render 'shared/lists_elements/last_comments', :data => data %>
 </div>

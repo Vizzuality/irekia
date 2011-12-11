@@ -7,10 +7,7 @@
     <span class="published_at">
       <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
     </span>
-      &middot;
-
-    <%= inline_sharing_partial_for_contents(data, data.content.type, send("#{data.content.type}_path", data.content.id), data.content.title) %>
-
+    <%#= inline_sharing_partial_for_contents(data, data.content.type, send("#{data.content.type}_path", data.content.id), data.content.title) %>
   </div>
   <%= render 'shared/lists_elements/last_comments', :data => data %>
 </div>

@@ -15,9 +15,5 @@
     <span class="comments"><%= link_to data.comments_count, proposal_path(data.content_id, :anchor => :comments), :class => "participants-count" %></span>
     &middot;
     <%= t('.votes', :count => data.participation) %>
-    &middot;
-    <%#= render "/shared/inline_sharing" %>
-    <%= link_to "Compartir", "/in_development" %>
   </div>
-
 </div>
