@@ -17,7 +17,7 @@
     <span class="comments"><%= link_to data.comments_count, proposal_path(data.id, :anchor => :comments), :class => "participants-count" %></span>
     <% end -%>
     &middot;
-    <%= t('.votes', :count => data.participation) %>
+    <%= link_to t('.votes', :count => data.participation), proposal_path(data.id) %>
     <%#= inline_sharing_partial(data, 'proposal', proposal_url(data.id), data.title) %>
   </div>
   <%= render 'shared/lists_elements/last_comments', :data => data %>
