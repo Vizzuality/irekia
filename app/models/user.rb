@@ -31,6 +31,17 @@ class User < ActiveRecord::Base
                   :city_id,
                   :postal_code,
                   :first_time,
+                  :new_news_count,
+                  :new_events_count,
+                  :new_proposals_count,
+                  :new_answers_count,
+                  :new_comments_count,
+                  :new_votes_count,
+                  :new_arguments_count,
+                  :new_questions_count,
+                  :new_answer_requests_count,
+                  :new_contents_users_count,
+                  :new_follows_count,
                   :profile_pictures_attributes,
                   :questions_attributes,
                   :question_data_attributes,
@@ -67,34 +78,6 @@ class User < ActiveRecord::Base
   has_many :news_being_tagged,
            :through => :contents_users,
            :source => :news
-# has_many :photos_being_tagged,
-#          :through => :contents_users
-# has_many :videos_being_tagged,
-#          :through => :contents_users
-# has_many :questions_being_tagged,
-#          :through => :contents_users,
-#          :include => [{:users => :profile_pictures}, :question_data, :comments ],
-#          :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
-# has_many :answers_being_tagged,
-#          :through => :contents_users,
-#          :include => [{:users => :profile_pictures}, :comments ],
-#          :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
-# has_many :proposals_being_tagged,
-#          :through => :contents_users,
-#          :source => :proposal,
-#          :include => [{:users => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }],
-#          :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
-# has_many :events_being_tagged,
-#          :through => :contents_users,
-#          :include => :event_data,
-#          :order => 'event_data.event_date asc'
-# has_many :tweets_being_tagged,
-#          :through => :contents_users,
-#          :include => :tweet_data
-# has_many :status_messages_being_tagged,
-#          :through => :contents_users,
-#          :include => :status_message_data
-
 
   has_many :contents,
            :foreign_key => :user_id
@@ -177,7 +160,7 @@ class User < ActiveRecord::Base
            :source => :user
 
   accepts_nested_attributes_for :profile_pictures, :questions, :question_data, :areas_users
-  accepts_nested_attributes_for :follows, :notifications, :allow_destroy => true
+  accepts_nested_attributes_for :follows, :allow_destroy => true
 
 
   pg_search_scope :search_by_name,
