@@ -125,11 +125,11 @@ class Content < ActiveRecord::Base
   end
 
   def comments_count
-    comments.size
+    comments.reload.size
   end
 
   def last_comments
-    comments.last(2)
+    comments.reload.last(2)
   end
 
   def as_json(options = {})
