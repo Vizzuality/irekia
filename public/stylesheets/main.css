@@ -1110,7 +1110,7 @@ ul.tags li.add a, #container .article .right .content ul.tags li.add a { backgro
 #container .article ul.suggestions { padding: 0 0 20px 0; }
 #container .article ul.suggestions li { width: 275px; padding: 14px 16px 16px 16px; margin: 0 0 5px 0; font-size: 15px; color: #7d8a92; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 #container .article ul.suggestions li .avatar { float: left; margin: 0 8px 0 0; }
-#container .article ul.suggestions li .content { float: left; width: 200px; }
+#container .article ul.suggestions li .content { position: relative; float: left; width: 200px; }
 #container .article ul.suggestions li .content p { padding: 0; margin: 0 0 13px 0; font-size: 15px; line-height: 15px; }
 #container .article ul.suggestions li .content p span { line-height: 18px; }
 #container .article ul.suggestions li .content a, #container .article ul.suggestions li .content button { display: block; font-weight: 300; font-size: 13px; color: #FF0066; background-color: transparent; border: 0 none; }
