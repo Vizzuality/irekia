@@ -1459,6 +1459,7 @@ div#main.show div.left img {margin:4px 0 7px;}
         padding: 0;
         font-size: 15px;
         color: $standard_gray;
+        &.end {margin:0; padding:20px 30px 0 30px;}
       }
     }
     .t, .f {
@@ -2597,7 +2598,7 @@ span.where, .map .infowindow ul.details li.where {
 // Style for articles that have a link beneath them
 #container .article.with_remark {
 
-  margin-bottom: 40px!important;
+  margin-bottom: 60px!important;
 
   .remark {
     position:absolute;
