@@ -217,7 +217,6 @@ class UsersController < ApplicationController
   private :models_for_forms
 
   def get_questions
-    require 'ruby-debug'; debugger
     if public_profile?
       @questions = @user.questions.moderated
     elsif private_profile?
