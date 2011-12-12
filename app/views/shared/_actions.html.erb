@@ -1,4 +1,4 @@
-<div id="actions" class="article actions with_filters<%= " with_footer" if viewing_dashboard? or controller.action_name == "home" %>">
+<div id="actions" class="article actions with_filters<%= " with_footer" if viewing_dashboard? or controller.action_name == "home" or (@area) %>">
 <div class="inner">
   <header>
   <div class="left">
@@ -91,7 +91,7 @@
     </ul>
   </div>
 </div>
-<% if viewing_dashboard? or controller.action_name == "home" %>
+<% if viewing_dashboard? or controller.action_name == "home" or (@area)  %>
   <div class="bfooter">
     <div class="separator"></div>
     <div class="inner with_spinner">
