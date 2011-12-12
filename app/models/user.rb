@@ -271,7 +271,7 @@ class User < ActiveRecord::Base
   end
 
   def get_questions(filters = {})
-    questions = Question.from_politician(self)
+    questions = Question.from_politician(self, filters)
     questions = questions.answered if filters[:answered] == "true"
 
     questions = if filters[:more_polemic] == 'true'

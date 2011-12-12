@@ -42,10 +42,16 @@ class Question < Content
     .order('published_at desc')
   end
 
-  def self.from_politician(politician)
-    joins(:question_data)
-    .moderated
-    .where('question_data.user_id = ? OR question_data.area_id in (?)', politician.id, politician.area_ids)
+  def self.from_politician(politician, filters = {})
+    query_scope = joins(:question_data).moderated
+
+    if filters.has_key?(:to_you)
+      query_scope.where('question_data.user_id = ?', politician.id)
+    elsif filters.has_key?(:to_your_area)
+      query_scope.where('question_data.area_id in (?)', politician.area_ids)
+    else
+      query_scope.where('question_data.user_id = ? OR question_data.area_id in (?)', politician.id, politician.area_ids)
+    end
   end
 
   def text

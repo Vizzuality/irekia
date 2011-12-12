@@ -2,7 +2,7 @@
 <div class="inner">
   <header>
   <div class="left">
-    <h2><%= t(".title", :count => @questions_count) %></h2>
+    <h2><%= t(".title", :count => @unanswered_questions_count) %></h2>
   </div>
   <div class="right">
 
@@ -19,6 +19,11 @@
     </div>
   </div>
   <div class="right">
+    <ul class="selector">
+      <li class="selected"><%= link_to t('.filters.all'), link_for_questions(:referer => action_name), :class => 'filter' %></li>
+      <li><%= link_to t('.filters.to_you'), link_for_questions(:to_you => true, :referer => action_name), :class => 'filter' %></li>
+      <li><%= link_to t('.filters.to_your_area'), link_for_questions(:to_your_area => true, :referer => action_name), :class => 'filter' %></li>
+    </ul>
   </div>
 </div>
 <div class="t"></div><div class="f"></div>
