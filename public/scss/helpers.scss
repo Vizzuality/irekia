@@ -51,7 +51,7 @@ $editable_color:   #FFFFEB;
 
 @mixin textShadow($h,$v,$c) {
   text-shadow:$h $v $c;
-  filter: progid:DXImageTransform.Microsoft.Shadow(color='$c', Direction=135, Strength=1);
+  // filter: progid:DXImageTransform.Microsoft.Shadow(color='$c', Direction=135, Strength=1);
 }
 
 @mixin text-overflow() {

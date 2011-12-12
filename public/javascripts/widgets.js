@@ -642,14 +642,7 @@ var GOD = (function() {
 /* FILTER WIDGET */
 (function($, window, document) {
 
-  var ie6 = false;
-
-  // Help prevent flashes of unstyled content
-  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
-    ie6 = true;
-  } else {
-    document.documentElement.className = document.documentElement.className + ' ps_fouc';
-  }
+  var ie = ($.browser.msie && $.browser.version.substr(0, 1) < 9);
 
   var
   store = "filter-widget",
@@ -701,7 +694,9 @@ var GOD = (function() {
         if ($(this).closest('ul.switch').length==0) {
           filter_spinner.spin();
           var top = $(this).position().top;
-          $(filter_spinner.el).css({ top:top+8+"px", position:"absolute", right:'3px', height:'15px', width:'15px', 'z-index':'1000'});
+          var right = 3;
+          if (ie) right = 10;
+          $(filter_spinner.el).css({ top:top+8+"px", position:"absolute", right:right + 'px', height:'15px', width:'15px', 'z-index':'1000'});
           $(this).closest('div.right').append(filter_spinner.el);
         } else {
           switch_spinner.spin();
@@ -760,12 +755,10 @@ var GOD = (function() {
 
   // Expose the plugin
   $.fn.filterWidget = function(method) {
-    if (!ie6) {
-      if (methods[method]) {
-        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-      } else if (typeof method === 'object' || !method) {
-        return methods.init.apply(this, arguments);
-      }
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
     }
   };
 

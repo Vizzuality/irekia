@@ -5036,12 +5036,14 @@ section.get_mobile_app {
       padding:12px 18px 12px 50px;
       border:1px solid #13587F;
       @include border-radius(4px);
+
       box-shadow:0 1px #2CA4E4;
+      @include box-shadow(rgba(255,255,255,0),0,0,5px,5px);
+
       font:normal 10px "Helvetica",Arial;
       color:#19597A;
       @include textShadow(0,1px,#2F9CD8);
       background:url('/images/mobile_icons.png') no-repeat 14px 12px;
-      @include box-shadow(rgba(255,255,255,0),0,0,5px,5px);
       @include transition-property(all);
       @include transition-duration(300ms);
 

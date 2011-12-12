@@ -103,6 +103,15 @@ White buttons
 
 .ie9 .white_button:active, .ie9 .article .white_button:active { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c2f4f6f9', endColorstr='#c2ffffff',GradientType=0 ); /* IE6-9 */ }
 
+.ie7 #container .article .right .content ul.tags li.new input[type="text"], .ie8 #container .article .right .content ul.tags li.new input[type="text"] { line-height: 26px; }
+
+.ie7 #container .article.thin.signup input[type="password"], .ie8 #container .article.thin.signup input[type="password"] { line-height: 30px; }
+
+.ie7 #container .article.thin.connect .bfooter .inner, .ie8 #container .article.thin.connect .bfooter .inner { position: relative; }
+.ie7 #container .article.thin.connect .bfooter .inner .white_button.center, .ie8 #container .article.thin.connect .bfooter .inner .white_button.center { position: absolute; padding: 0; margin: 0 auto; float: left; left: 300px; top: 10px; }
+
+.ie7 #container .article.thin.signup .bfooter .inner .white_button, .ie8 #container .article.thin.signup .bfooter .inner .white_button { padding: 0; }
+
 .ie7 form.make_question .white_button, .ie8 form.make_question .white_button { margin-left: 10px; }
 
 .ie7 #container .article.popover .bfooter .white_button.right, .ie8 #container .article.popover .bfooter .white_button.right { margin-left: 10px; }
