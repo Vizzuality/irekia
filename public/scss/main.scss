@@ -413,26 +413,48 @@ header {
 
       ul.auth {
         float: right;
+        
+        div.blue_button {
+          height:32px;  
+        }
+
         li {
           position: relative;
           margin: 0 0 0 10px;
           @include inline-block;
 
-          .pending-counter { right: 5px; }
-          .empty_count  { @include inline-block; background: url('/images/icons/icon_sprite.png') no-repeat 3px -339px; width:24px; text-shadow: none; line-height:15px; height:19px; color:$blue; font-size:10px; position: relative; top:7px; margin: 0 0 0 7px; text-align:center; }
-          .count  { @include inline-block; background: url('/images/icons/icon_sprite.png') no-repeat 1px -358px; width:24px; line-height:15px; height:20px; text-shadow:none; color:#fff; font-size:10px; font-weight:bold; position: relative; top:7px;  margin: 0 0 0 10px; text-align:center; cursor:pointer;}
-
-          span.username  { @include inline-block; margin: 0 0 0 10px; font-size:15px; color:#fff; position:relative; top:8px;text-shadow: 1px 1px 1px #0F4869;  }
+          span.username  {float:none; @include inline-block; margin: 0 0 0 10px; font-size:15px; color:#fff; position:relative; top:8px;text-shadow: 1px 1px 1px #0F4869;  
+            a {float:none!important;}
+          }
 
           a {
-            @include inline-block;
+            float:left;
             font-size: 15px;
             color: $white;
 
-            &.twitter  { background: url('/images/icons/twitter.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
-            &.facebook { background: url('/images/icons/facebook.png') no-repeat; text-indent: -999em; position: relative; top: 5px; }
-            &.sign_out { float:none; background: url('/images/icons/icon_sprite.png') no-repeat 0 -265px; width:7px; height:17px; text-indent: -999em; position: relative; top:4px; }
-            &.settings { float:none; background: url('/images/icons/icon_sprite.png') no-repeat 0 -299px; width:1px; height:17px; text-indent: -999em; position: relative; top:4px; }
+            &.toggle_notifications {
+              @include menu-button(url('/images/icons/icon_sprite.png') no-repeat 9px -351px);
+              width:27px; line-height:15px; height:18px; padding:8px 6px 6px; margin:0; text-shadow:none; color:#fff; font-size:10px; font-weight:bold; position: relative; text-align:center; cursor:pointer; @include textShadow(0,1px,#90003A); @include border-left-radius(4px); text-decoration:none;
+
+              &.empty_count {
+                @include menu-button(url('/images/icons/icon_sprite.png') no-repeat -28px -351px); color:$blue; text-shadow:none;
+              } 
+            }
+            &.twitter  {float:left; width:3px; height:18px; text-indent: -999em; position: relative; @include menu-button(url('/images/icons/twitter.png') no-repeat 0 5px);
+              @include border-right-radius(4px);
+            }
+            &.facebook {float:left; width:3px; height:18px; text-indent: -999em; position: relative; @include menu-button(url('/images/icons/facebook.png') no-repeat 0 5px);
+            }
+            &.sign_out { float:left; width:6px; height:18px; text-indent: -999em; position: relative; @include menu-button(url('/images/icons/icon_sprite.png') no-repeat 0 -260px);
+              @include border-right-radius(4px);}
+            &.settings {              
+              float:left; width:6px; height:18px; text-indent: -9999em; position: relative;
+              @include menu-button(url('/images/icons/icon_sprite.png') no-repeat 0 -294px);
+            }
+            &.login {
+              @include menu-button(none);
+              @include border-left-radius(4px);
+            }
           }
         } // li
       } // ul.auth

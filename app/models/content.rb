@@ -223,6 +223,29 @@ class Content < ActiveRecord::Base
 
   end
 
+  def notify_of_new_participation(participation)
+    users.each do |user|
+      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type participation.id, participation.class.name
+      user_action.published_at = participation.published_at
+      user_action.message      = participation.to_json
+      user_action.save!
+    end
+
+    if author.present?
+      user_action              = author.private_actions.find_or_create_by_event_id_and_event_type participation.id, participation.class.name
+      user_action.published_at = participation.published_at
+      user_action.message      = participation.to_json
+      user_action.save!
+    end
+
+    participers(author).each do |user|
+      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type participation.id, participation.class.name
+      user_action.published_at = participation.published_at
+      user_action.message      = participation.to_json
+      user_action.save!
+    end
+  end
+
   def notification_for(user = nil)
     tagged_politicians.each{|politician| Notification.for(politician, self)}
   end

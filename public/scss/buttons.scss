@@ -89,7 +89,8 @@ header nav .content .blue_button, header nav .content ul li .blue_button {
   &.no_shadow {box-shadow:none;}
 }
 
-.article .blue_button:active, header nav .content ul li .blue_button:active {
+
+.article .blue_button:active, header nav .content ul li .blue_button.active:active {
   background: #3396cd; /* Old browsers */
   background: -moz-linear-gradient(top,  #2080b5 0%, #3396cd 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2080b5), color-stop(100%, #3396cd)); /* Chrome,Safari4+ */
