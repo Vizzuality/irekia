@@ -1624,7 +1624,7 @@ div#main.show div.left img {margin:4px 0 7px;}
       margin: 0 0 20px 0;
       // background: red;
       .input-counter { margin-bottom: 0; } // TODO: After adding .field, remove input-counter margin: 24px;
-      .uploader { margin: 0; }
+      .uploader { height: 29px; margin: 0; }
 
       &.last { margin-bottom: 0; }
       &:last-child { margin-bottom: 0; }
@@ -1665,7 +1665,6 @@ div#main.show div.left img {margin:4px 0 7px;}
         float:left;
 
         width:534px;
-        margin: 0 0 10px 0;
 
         .qq-upload-button { margin: 0; }
 
@@ -5268,7 +5267,7 @@ body.home {
           span.right p {color:#727F8B}
         }
       }
-      
+
     }
 
     section.banners {
