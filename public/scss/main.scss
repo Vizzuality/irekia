@@ -1034,7 +1034,7 @@ div#main.show div.left img {margin:4px 0 7px;}
               width:100%;
               margin:0 0 20px 0;
               .holder { left: 0; }
-              .qq-upload-button { margin: 0; }
+              .qq-upload-button { margin: 0 0 0 10px; }
             }
           } // section.proposal
         } // .section
@@ -1189,9 +1189,7 @@ div#main.show div.left img {margin:4px 0 7px;}
                     position:absolute;
                     right: 10px;
                     text-align:right;
-                    a {
-                      color: $pink;
-                    }
+                    a { color: $pink; }
                   }
                 }
               }
@@ -1376,14 +1374,9 @@ div#main.show div.left img {margin:4px 0 7px;}
           li {
             margin-right:6px;
             &.last { margin: 0;}
-            a {
-              height:14px;
-              padding:12px 0 16px 0;
-              width: 106px;
-              font-size:15px;
-            }
-          }
-        }
+            a { height:14px; padding:12px 0 16px 0; width: 106px; font-size:15px; }
+          } // li
+        } // ul.menu
 
         p {
           margin: 0 0 20px 0;
@@ -1678,7 +1671,6 @@ div#main.show div.left img {margin:4px 0 7px;}
         img { display:none; float:left; margin: 0 10px 0 0; height:72px; }
         p { float:left; margin: 30px 0 0 0; line-height:normal; font-size: 15px; color: #7D8A92; }
         a { float:right; margin: 30px 10px 0 0; line-height:normal; font-size:15px; }
-
       }
 
       .percentage { display:none; margin-left:-343px; position: absolute; top: 10px; right: 50%; font-size:15px; color: #FF0066; z-index:2010; font-weight:bold; }

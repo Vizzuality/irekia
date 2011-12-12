@@ -380,9 +380,9 @@
         var id = $(this).attr("id");
         var name = $(this).find(".name").html();
 
+        $ps.find('.autosuggest_field .holder').fadeOut(150);
         $ps.find('.autosuggest_field input[type="text"]').val(name);
         $ps.find('#proposal_proposal_data_attributes_area_id').val(id.replace("item_", ""))
-
 
         if (!isEmpty($ps.find("textarea.title").val())) {
           _enableSending(data.$ps);

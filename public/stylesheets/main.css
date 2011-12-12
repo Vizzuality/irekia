@@ -295,7 +295,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.description { margin-bottom: 20px; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .uploader { width: 100%; margin: 0 0 20px 0; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .uploader .holder { left: 0; }
-#container .article.publish.politician .inner .content .container .inner_container .section.proposal .uploader .qq-upload-button { margin: 0; }
+#container .article.publish.politician .inner .content .container .inner_container .section.proposal .uploader .qq-upload-button { margin: 0 0 0 10px; }
 #container .article.publish.user .inner .content .container { height: 79px; }
 #container .article.publish.user .inner .content .container .inner_container .section.proposal .triangle { left: 152px; }
 #container .article.publish.user .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0; }
