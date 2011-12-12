@@ -215,7 +215,9 @@ class User < ActiveRecord::Base
     data        = access_token['user_info']
     credentials = access_token['credentials']
 
-    if user = (signed_in_resource || User.find_by_twitter_username(data['nickname']))
+    if user = User.where(:twitter_oauth_token => credentials['token'], :twitter_oauth_token_secret => credentials['secret']).first
+      user
+    elsif user = (signed_in_resource || User.find_by_twitter_username(data['nickname']))
       user.twitter_oauth_token        = credentials['token']
       user.twitter_oauth_token_secret = credentials['secret']
       user.save!
