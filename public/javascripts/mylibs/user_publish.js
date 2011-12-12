@@ -115,6 +115,13 @@
 
     _bindSubmit(data, "Continuar", true, "continue");
 
+    data.$ps.find(".autosuggest_field span.all a").unbind();
+    data.$ps.find(".autosuggest_field span.all a").click(function(e) {
+      e.preventDefault();
+      data.spinner.spin(spin_element);
+      _showAllAreas(data);
+    });
+
     data.questionStep = 0;
     data.proposalStep = 0;
 
@@ -272,7 +279,21 @@
 
     $currentSection.find('.autosuggest_field input').keyup(function(ev){
 
-      if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+      var alreadySelectedTarget;
+
+      if (_getCurrentSectionName() == "proposal") {
+        alreadySelectedTarget = !isEmpty($("#proposal_proposal_data_attributes_area_id").val());
+      } else {
+        alreadySelectedTarget = !isEmpty($("#question_question_data_attributes_area_id").val()) || !isEmpty($("#question_question_data_attributes_user_id").val());
+      }
+
+      if (ev.keyCode == 8 && alreadySelectedTarget) {
+        $(this).val("");
+
+        $currentSection.find(".autosuggest_field .holder").fadeIn(100);
+        _disableSubmit(data.$submit);
+        _resetHiddenFields($ps);
+      } else if (_.any([13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
 
       clearTimeout(interval);
 
@@ -308,18 +329,29 @@
               _bindSubmit(data, "Publicar", true, "publish");
               _clearAutosuggest(data);
               _enableSubmit(data.$submit);
-
-            });
-
-            $currentSection.find(".autosuggest").fadeOut(150, function() {
-              $(this).remove();
             });
 
             if ($response.find("li").length > 0) {
               $response.hide();
-              $response.css("top", $currentSection.find(".autosuggest_field").position().top + 220);
+              $response.addClass("small");
+
+              $response.css("top", 0);
+
               $ps.find('.content').append($response);
               $response.fadeIn(150);
+
+               var h_ = $response.find("ul").height();
+
+               if (h_< 160) {
+                 $response.find(".popover").height(h_);
+               } else {
+                 $ps.find('.scroll-pane').jScrollPane();
+                 $ps.find(".jspDrag").bind('click', function(e) {
+                   e.stopPropagation();
+                 });
+               }
+            } else {
+              _disableSubmit(data.$submit);
             }
           }});
 
@@ -548,6 +580,59 @@
     var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
     var height    = $section.find(".form").outerHeight(true);
     $ps.find(".container").animate({scrollLeft: data.sectionID * data.settings.sectionWidth, height: height }, data.settings.transitionSpeed, "easeInOutQuad");
+
+  }
+
+  function _showAllAreas(data) {
+
+    var $ps = data.$ps;
+
+    $.ajax({url:"/areas", data: {}, success: function(response) {
+      var $response = $(response);
+
+      data.spinner.stop();
+
+      // When the user clicks on a result…
+      $response.find("li").unbind();
+      $response.find("li").bind("click", function(e) {
+        var id = $(this).attr("id");
+        var name = $(this).find(".name").html();
+
+        $currentSection.find('.autosuggest_field .holder').fadeOut(250);
+        $currentSection.find('.autosuggest_field input[type="text"]').val(name);
+        $(this).hasClass("user") ? _updateHiddenTarget("user", id) : _updateHiddenTarget("area", id);
+
+        _bindSubmit(data, "Publicar", true, "publish");
+        _clearAutosuggest(data);
+        _enableSubmit(data.$submit);
+
+      });
+
+      $currentSection.find(".autosuggest").fadeOut(150, function() {
+        $(this).remove();
+      });
+
+      if ($response.find("li").length > 0) {
+        $response.hide();
+        $response.addClass("small");
+
+        $response.css("top", 0);
+
+        $ps.find('.content').append($response);
+        $response.fadeIn(150);
+
+        var h_ = $response.find("ul").height();
+
+        if (h_< 160) {
+          $response.find(".popover").height(h_);
+        } else {
+          $ps.find('.scroll-pane').jScrollPane();
+          $ps.find(".jspDrag").bind('click', function(e) {
+            e.stopPropagation();
+          });
+        }
+      }
+    }});
   }
 
   function _bindMenu(data) {

@@ -806,7 +806,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .autosuggest.small .popover { display: block; position: absolute; width: 545px; height: 160px; padding: 8px 0 18px 17px; z-index: 1000; background: url("/images/box_autosuggest_small_bkg_new.png") no-repeat -580px bottom; }
 #container .article .autosuggest.small .popover .scroll-pane { height: 100%; width: 521px; overflow: hidden; outline: none; }
 #container .article .autosuggest.small .popover .scroll-pane ul { margin: 0; padding: 0; width: 521px; }
-#container .article .autosuggest.small .popover .scroll-pane ul li { width: 511px; text-shadow: none; font-size: 13px; border-bottom: 1px solid #f1f1f1; padding: 10px 0 10px 0; color: #666666; background: none; }
+#container .article .autosuggest.small .popover .scroll-pane ul li { width: 511px; text-shadow: none; font-size: 13px; border-bottom: 1px solid #f1f1f1; padding: 10px 0 10px 0; color: #666666; background: none; height: 34px; }
 #container .article .autosuggest.small .popover .scroll-pane ul li p { width: 460px; }
 #container .article .autosuggest.small .popover .scroll-pane ul li p, #container .article .autosuggest.small .popover .scroll-pane ul li span { font-size: 15px; }
 #container .article .autosuggest.small .popover .scroll-pane ul li.last { border: none; }

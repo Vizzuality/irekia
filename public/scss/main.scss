@@ -413,9 +413,9 @@ header {
 
       ul.auth {
         float: right;
-        
+
         div.blue_button {
-          height:32px;  
+          height:32px;
         }
 
         li {
@@ -423,7 +423,7 @@ header {
           margin: 0 0 0 10px;
           @include inline-block;
 
-          span.username  {float:none; @include inline-block; margin: 0 0 0 10px; font-size:15px; color:#fff; position:relative; top:8px;text-shadow: 1px 1px 1px #0F4869;  
+          span.username  {float:none; @include inline-block; margin: 0 0 0 10px; font-size:15px; color:#fff; position:relative; top:8px;text-shadow: 1px 1px 1px #0F4869;
             a {float:none!important;}
           }
 
@@ -438,7 +438,7 @@ header {
 
               &.empty_count {
                 @include menu-button(url('/images/icons/icon_sprite.png') no-repeat -28px -351px); color:$blue; text-shadow:none;
-              } 
+              }
             }
             &.twitter  {float:left; width:3px; height:18px; text-indent: -999em; position: relative; @include menu-button(url('/images/icons/twitter.png') no-repeat 0 5px);
               @include border-right-radius(4px);
@@ -447,7 +447,7 @@ header {
             }
             &.sign_out { float:left; width:6px; height:18px; text-indent: -999em; position: relative; @include menu-button(url('/images/icons/icon_sprite.png') no-repeat 0 -260px);
               @include border-right-radius(4px);}
-            &.settings {              
+            &.settings {
               float:left; width:6px; height:18px; text-indent: -9999em; position: relative;
               @include menu-button(url('/images/icons/icon_sprite.png') no-repeat 0 -294px);
             }
@@ -2532,6 +2532,7 @@ span.where, .map .infowindow ul.details li.where {
                 padding: 10px 0 10px 0;
                 color:$medium_dark;
                 background:none;
+                height:34px;
 
                 p { width:460px; }
                 p, span { font-size: 15px; }
