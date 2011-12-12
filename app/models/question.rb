@@ -42,6 +42,12 @@ class Question < Content
     .order('published_at desc')
   end
 
+  def self.from_politician(politician)
+    joins(:question_data)
+    .moderated
+    .where('question_data.user_id = ? OR question_data.area_id in (?)', politician.id, politician.area_ids)
+  end
+
   def text
     question_text
   end

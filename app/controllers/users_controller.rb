@@ -222,7 +222,7 @@ class UsersController < ApplicationController
     elsif private_profile?
       @questions     = @user.questions.moderated
     elsif politician_profile?
-      @questions     = @user.questions_received.moderated
+      @questions     = @user.get_questions
     end
 
     if @questions && (params[:referer].blank? || params[:referer] == 'answered')
