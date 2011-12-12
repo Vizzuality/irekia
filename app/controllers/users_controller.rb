@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_filter :per_page,                     :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda, :settings]
   before_filter :get_follow_suggestions,       :only => [:show, :followings]
-  before_filter :get_counters,                 :only => [:show, :actions, :questions, :proposals]
+  before_filter :get_counters,                 :only => [:show, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :models_for_forms,             :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :get_questions,                :only => [:questions]
   before_filter :get_proposals,                :only => [:proposals]
@@ -163,16 +163,6 @@ class UsersController < ApplicationController
       @random_area = Area.select(:id).all.sample
     end
 
-    if politician_profile?
-      @followers_count         = @user.followers.count
-      @new_followers_count     = @user.new_follows_count
-      @questions_notifications = @user.new_questions_count
-    else
-      # TODO: Temporally commented code until all list items are finished
-      # @questions_notifications = @user.new_answers_count + @user.new_answer_requests_count
-      @questions_notifications = @user.new_answers_count# + @user.new_answer_requests_count
-    end
-    @proposals_notifications = @user.new_arguments_count + @user.new_votes_count
   end
   private :get_user
 
@@ -190,6 +180,15 @@ class UsersController < ApplicationController
     @videos_count          = @user.send("#{'private_' if show_private_actions?}videos_count")          || 0
     @status_messages_count = @user.send("#{'private_' if show_private_actions?}status_messages_count") || 0
     @tweets_count          = @user.send("#{'private_' if show_private_actions?}tweets_count")          || 0
+
+    if politician_profile?
+      @followers_count         = @user.followers.count
+      @new_followers_count     = @user.new_follows_count
+      @questions_notifications = @user.new_questions_count
+    else
+      @questions_notifications = @user.new_answers_count + @user.new_answer_requests_count
+    end
+    @proposals_notifications = @user.new_arguments_count + @user.new_votes_count
   end
   private :get_counters
 
@@ -222,7 +221,7 @@ class UsersController < ApplicationController
     elsif private_profile?
       @questions     = @user.questions.moderated
     elsif politician_profile?
-      @questions     = @user.get_questions
+      @questions     = @user.get_questions(params.slice(:to_you, :to_your_area))
     end
 
     if @questions && (params[:referer].blank? || params[:referer] == 'answered')
@@ -231,7 +230,7 @@ class UsersController < ApplicationController
       else
         @questions.more_recent
       end
-      @questions_count = @questions.length
+      @unanswered_questions_count = @questions.not_answered.length
       @questions = @questions.answered if params[:referer] == 'answered'
     end
 

@@ -19,6 +19,8 @@ module UsersHelper
   def link_for_questions(filters = {})
     filters[:more_polemic] = params[:more_polemic] unless filters.key?(:more_polemic)
     filters[:answered]     = params[:answered] unless filters.key?(:answered)
+    filters[:to_you]       = params[:to_you] unless filters.key?(:to_you)
+    filters[:to_your_area] = params[:to_your_area] unless filters.key?(:to_your_area)
 
     questions_user_path(@user, filters)
   end

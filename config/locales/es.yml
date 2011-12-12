@@ -1653,6 +1653,10 @@
           zero: Ninguna pregunta sin contestar
           one: 1 pregunta sin contestar
           other: '%{count} preguntas sin contestar'
+        filters:
+          all: 'Todas'
+          to_you: 'Dirigidas a ti'
+          to_your_area: 'Dirigidas al área'
         more_recent: Más recientes
         more_polemic: Más polémicas
       proposals:
