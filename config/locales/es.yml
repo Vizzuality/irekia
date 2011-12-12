@@ -1712,7 +1712,7 @@
       continue: Continuar
       with_this_data: ¿Qué vamos a hacer con estos datos?
     connect:
-      connect: Ya estás registrado en Irekia.
+      connect: Bienvenido a irekia.
       works_better: A partir de ahora podrás seguir a los políticos o áreas que mas te interesen, crear propuestas, preguntar al gobierno o comentar los contenidos con tus vecinos.
       signin: "Conectar con <strong>%{name}</strong>"
       continue: Continuar
