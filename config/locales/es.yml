@@ -396,6 +396,10 @@
       write_the_photo_url_or: Introduce la URL de la foto o
       do_you_want_to_explain_the_proposal: ¿Quieres explicar la propuesta con más detalle?
       describe_the_proposal: Describe la propuesta en pocas palabras
+      the_image_will_be_included_in_the_proposal: Se incluirá esta imagen en la propuesta.
+      who_is_the_target: ¿A qué area le quieres dirigir la pregunta?
+      name_of_the_area: Nombre de área...
+      loading: Cargando imagen...
       upload_a_new_one: Sube una nueva
       title: Título de la propuesta
       subtitle: Recuerda ser breve y conciso.
