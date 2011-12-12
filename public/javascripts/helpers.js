@@ -860,6 +860,9 @@ jQuery.fn.enableArguments = function(opt){
       }, duration);
     }
 
+    
+    $(this).find(".placeholder").smartPlaceholder();
+
     $(this).find(".new_argument").bind('ajax:error', function(evt, xhr, status) {
       spinner.stop();
       $icon = $("<span class='icon error' />");
