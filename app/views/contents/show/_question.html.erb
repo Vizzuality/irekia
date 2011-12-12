@@ -85,9 +85,10 @@
         <div class="answer_placeholder">
           <p><strong><%= t('.not_answered_yet') %></strong></p>
           <p class="has_requested_answer">
+
           <% if @user_has_requested_answer -%>
             <% if @content.answer_requests_count <= 2 -%>
-              <%= t('.you_and_other', :count => @content.answer_requests_count) -%>&#44;
+              <%= t('.you_and_other', :count => @content.answer_requests_count) -%>
             <% else -%>
               <%= t('.you_and_thousands', :count => @content.answer_requests_count - 1) -%>&#44;
             <% end -%>
