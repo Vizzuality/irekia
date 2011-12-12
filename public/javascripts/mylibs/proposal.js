@@ -131,6 +131,13 @@
 
     _bindSearch(data);
 
+    data.$ps.find(".autosuggest_field span.all a").unbind();
+    data.$ps.find(".autosuggest_field span.all a").click(function(e) {
+      e.preventDefault();
+      data.spinner.spin(spin_element);
+      _showAllAreas(data);
+    });
+
     // Remove image link
     data.$ps.find(".image_container a.remove").unbind();
     data.$ps.find(".image_container a.remove").bind("click", function(e) { _resetImageContainer(e, data); } );
@@ -198,6 +205,7 @@
     $ps.find(".counter").html(140);
     if ($ps.find("input.search").length > 0 &&  isEmpty($ps.find("input.search").val())) $ps.find(".holder").fadeIn(100);
     _disableSending($ps);
+    _clearAutosuggest($ps);
     $ps.find(".extra").fadeOut(100);
     $ps.find(".bfooter .action").unbind();
   }
@@ -356,6 +364,61 @@
     _disableSending($ps);
   }
 
+  function _showAllAreas(data) {
+    var $ps = data.$ps;
+
+    $.ajax({url:"/areas", data: {}, success: function(response) {
+
+      var $response = $(response);
+
+      data.spinner.stop();
+
+      // When the user clicks on a result…
+      $response.find("li").unbind();
+      $response.find("li").bind("click", function(e) {
+
+        var id = $(this).attr("id");
+        var name = $(this).find(".name").html();
+
+        $ps.find('.autosuggest_field input[type="text"]').val(name);
+        $ps.find('#proposal_proposal_data_attributes_area_id').val(id.replace("item_", ""))
+
+
+        if (!isEmpty($ps.find("textarea.title").val())) {
+          _enableSending(data.$ps);
+        }
+
+        _clearAutosuggest($ps);
+      });
+
+      $ps.find(".autosuggest").fadeOut(150, function() {
+        $(this).remove();
+      });
+
+      if ($response.find("li").length > 0) {
+        $response.hide();
+        $response.addClass("small");
+
+        $response.css("top", 0);
+
+        $ps.find('.content').append($response);
+
+        $response.fadeIn(150);
+
+        var h_ = $response.find("ul").height();
+
+        if (h_< 160) {
+          $response.find(".popover").height(h_);
+        } else {
+          $response.find('.scroll-pane').jScrollPane();
+          $response.find(".jspDrag").bind('click', function(e) {
+            e.stopPropagation();
+          });
+        }
+      }
+    }});
+  }
+
   function _bindSearch(data) {
     var $ps = data.$ps;
 
@@ -363,7 +426,15 @@
 
     $ps.find('.autosuggest_field input').keyup(function(ev){
 
-      if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+      var alreadySelectedTarget = !isEmpty($("#proposal_proposal_data_attributes_area_id").val());
+
+      if (ev.keyCode == 8 && alreadySelectedTarget) {
+        $(this).val("");
+
+        $ps.find(".autosuggest_field .holder").fadeIn(100);
+
+        _resetHiddenFields($ps);
+      } else if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
 
       clearTimeout(interval);
 
@@ -414,16 +485,16 @@
 
               $response.fadeIn(150);
 
-               var h_ = $response.find("ul").height();
+              var h_ = $response.find("ul").height();
 
-               if (h_< 160) {
-                 $response.find(".popover").height(h_);
-               } else {
-                 $ps.find('.scroll-pane').jScrollPane();
-                 $ps.find(".jspDrag").bind('click', function(e) {
-                   e.stopPropagation();
-                 });
-               }
+              if (h_< 160) {
+                $response.find(".popover").height(h_);
+              } else {
+                $response.find('.scroll-pane').jScrollPane();
+                $response.find(".jspDrag").bind('click', function(e) {
+                  e.stopPropagation();
+                });
+              }
             }
           }});
 
@@ -437,7 +508,7 @@
   function _setupUpload(data, id) {
 
     var $ps = data.$ps,
-				$span  = $ps.find("#" + id);
+    $span  = $ps.find("#" + id);
 
     if ($span.length > 0) {
 
@@ -447,42 +518,42 @@
       var uploader = new qq.FileUploader({
         element: document.getElementById(id),
         action: $span.attr('data-url'),
-				params: {
-					utf8: $span.closest('form').find('input[name=utf8]').val(),
-					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
-				},
+        params: {
+          utf8: $span.closest('form').find('input[name=utf8]').val(),
+          authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
+        },
         debug: true,
         text:$span.html(),
         onSubmit: function(id, fileName){
           data.spinner.spin(spin_element);
           //console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
-					$ps.find(".progress").show();
+          $ps.find(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
           $uploader.find(".holder").fadeOut(speed);
           $uploader.find(".loading, .percentage").fadeIn(speed);
         },
         onProgress: function(id, fileName, loaded, total){
-					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
-					var width = parseInt(534 * parseInt(p, 10) / 100, 10);
+          var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
+          var width = parseInt(534 * parseInt(p, 10) / 100, 10);
 
-					console.debug(p, width, arguments, arguments[2], arguments[3]);
+          console.debug(p, width, arguments, arguments[2], arguments[3]);
 
-					if (parseInt(p) >= 75) $ps.find(".uploader").find(".loading").fadeOut(speed);
-					if (parseInt(p) >= 46) $ps.find(".uploader").find(".percentage").css("color", "#fff");
+          if (parseInt(p) >= 75) $ps.find(".uploader").find(".loading").fadeOut(speed);
+          if (parseInt(p) >= 46) $ps.find(".uploader").find(".percentage").css("color", "#fff");
 
           $uploader.find(".percentage").html(parseInt(p, 10) + "%");
-				  $ps.find(".progress").css("width", width);
-				},
+          $ps.find(".progress").css("width", width);
+        },
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();
 
-					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+          console.debug(fileName, responseJSON, responseJSON.image_cache_name);
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".percentage").fadeOut(speed);
 
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
-					$ps.find('.image_cache_name').val(responseJSON.image_cache_name);
+          $ps.find('.image_cache_name').val(responseJSON.image_cache_name);
 
           $(cacheImage).bind("load", function () {
             $ps.find(".image_container").prepend(cacheImage);
@@ -498,7 +569,7 @@
           $uploader.find(".progress").fadeOut(speed, function() {
             $(this).width(0);
           });
-				},
+        },
         onCancel: function(id, fileName){ }
       });
     }
