@@ -122,26 +122,8 @@ class Participation < ActiveRecord::Base
       user_action.save!
     end
 
-    content.users.each do |user|
-      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      user_action.published_at = self.published_at
-      user_action.message      = self.to_json
-      user_action.save!
-    end
+    content.notify_of_new_participation(self)
 
-    if content.author.present?
-      user_action              = content.author.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      user_action.published_at = self.published_at
-      user_action.message      = self.to_json
-      user_action.save!
-    end
-
-    content.participers(author).each do |user|
-      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      user_action.published_at = self.published_at
-      user_action.message      = self.to_json
-      user_action.save!
-    end
   end
 
   def notification_for(user)
