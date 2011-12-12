@@ -490,6 +490,9 @@ div#main.show div.left img { margin: 4px 0 7px; }
 
 /* Agenda */
 #container .article.agenda .inner { padding: 15px 33px 38px 33px; }
+#container .article.agenda .inner div.left h2 { display: inline; width: auto; }
+#container .article.agenda .inner div.left a.ical { float: none!important; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; height: 28px; width: 29px; margin: 3px 0 0 16px; text-indent: -999em; background: url("/images/icons/share.png") no-repeat -176px 0; }
+#container .article.agenda .inner div.left a.ical:hover { background-position: -176px -30px; }
 #container .article.agenda .inner .content { width: 929px; }
 #container .article.agenda .inner .content ul { margin: 0; padding: 0; }
 #container .article.agenda .inner .content ul li.day { width: 121px; height: 120px; float: left; margin: 0 2px 2px 0; padding: 6px 5px; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; background: #f1f1f1; }

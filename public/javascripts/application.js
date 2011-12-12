@@ -229,18 +229,23 @@ $(function() {
     return type;
   }});
 
-  // Follow mail
+  //  Follow mail
   $('.share.email').tipsy({live: true, gravity: 's', offset: 3, title: function() {
     return 'Compartir vía email';
   }});
 
-  // Follow twitter
+  //  Follow twitter
   $('.share.twitter').tipsy({live: true, gravity: 's', offset: 3, title: function() {
     return 'Compartir vía twitter';
   }});
 
-  // Follow facebook
+  //  Follow facebook
   $('.share.facebook').tipsy({live: true, gravity: 's', offset: 3, title: function() {
     return 'Compartir vía facebook';
+  }});
+
+  //  Export to iCal
+  $('.share.ical').tipsy({live: true, gravity: 's', offset: 3, title: function() {
+    return 'Exportar para iCal';
   }});
 });

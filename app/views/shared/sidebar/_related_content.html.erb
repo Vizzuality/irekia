@@ -3,7 +3,7 @@
   <ul class="related bullets">
     <% @last_contents.each do |content| %>
       <li><%= link_to content.title, url_for(content) %>
-      <div class="footer"><%= distance_of_time_in_words_to_now(content.published_at) %> &middot; <%= link_to t('.comments', :count => content.comments_count), :controller => :contents, :id => content.id, :action => :show, :type => content.class.to_s, :anchor => :comments %></div>
+      <div class="footer"><%= distance_of_time_in_words_to_now(content.published_at) %> &middot; <span class="comments"><%= link_to content.comments_count, :controller => :contents, :id => content.id, :action => :show, :type => content.class.to_s, :anchor => :comments %></span></div>
       </li>
     <% end %>
   </ul>

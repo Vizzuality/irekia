@@ -1870,6 +1870,23 @@ div#main.show div.left img {margin:4px 0 7px;}
 #container .article.agenda .inner {
   padding: 15px 33px 38px 33px;
 
+  div.left {
+    h2 {
+      display:inline;
+      width:auto;
+    }
+    a.ical {
+      float:none!important;
+      @include inline-block();
+      height:28px;
+      width:29px;
+      margin:3px 0 0 16px;
+      text-indent:-999em;
+      background:url('/images/icons/share.png') no-repeat -176px 0;
+      &:hover {background-position:-176px -30px}
+    }
+  }
+
   .content {
     width: 929px;
 
