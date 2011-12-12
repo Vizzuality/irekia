@@ -2,16 +2,16 @@
   <a href="#" class="close"></a>
 <div class="inner">
   <div class="content centered">
-    <h2>¿Podemos hacer algo para<br />que cambies de idea?</h2>
-    <p>Si has tenido una mala experiencia en Irekia, <a href="#">contacta con nosotros</a> y lo arreglaremos. </p>
+    <h2><%= t(".can_we_change_your_mind") %></h2>
+    <p><%= t(".if_you_had_a_bad_experience") %> <a href="#"><%= t(".get_in_touch_with_us") %></a> <%= t(".and_well_fix_it") %>.</p>
   </div>
 </div>
   <div class="bfooter">
   <div class="separator"></div>
   <div class="inner">
     <div class="center clearfix">
-      <%= button "Eliminar perfil", :class => "white_button remove" %>
-      <%= button "Cancelar", :class => "white_button close pink" %>
+      <%= button t(".remove_profile"), :class => "white_button remove" %>
+      <%= button t(".cancel"), :class => "white_button close pink" %>
     </div>
   </div>
   </div>
@@ -24,15 +24,15 @@
   <div class="inner">
     <header>
     <div class="left">
-      <h2>Tu perfil</h2>
-      <h4>Recuerda que son datos públicos y visibles en Irekia.</h3>
+      <h2><%= t(".your_profile") %></h2>
+      <h4><%= t(".remember_this_information_is_public") %></h4>
     </div>
     <div class="right"></div>
     </header>
     <div class="left">
       <fieldset>
         <div class="field">
-          <label for="">Sexo</label>
+          <label for=""><%= t(".gender") %></label>
           <%= form.radio_button :is_woman, false, :checked => !@user.is_woman %>
           <%= form.label :is_woman_false, t('.man') %>
           <%= form.radio_button :is_woman, true, :checked => @user.is_woman %>
@@ -105,7 +105,7 @@
   <div class="separator"></div>
   <div class="inner">
     <div class="left">
-      <%= form.submit t('.save_changes'), :class => 'white_button blue' %>
+      <%= button t('.save_changes'), :class => 'white_button blue' %>
     </div>
   </div>
   </div>
@@ -146,7 +146,7 @@
 <div class="article">
 <div class="inner">
   <div class="content">
-    <h2>Notificaciones</h2>
+    <h2><%= t(".notifications.title") %></h2>
 
     <%= form_for @user do |form| %>
 
@@ -155,8 +155,8 @@
       <li class="<%= 'selected' if @user.notifications_level == 1 %>">
       <a href="#" class="letter minimun"></a>
       <div class="content">
-        <strong>Mínimas</strong>
-        <p>Recibirás los emails estrictamente necesarios para la gestión de tu cuenta.</p>
+        <strong><%= t(".notifications.minimal.title") %></strong>
+        <p><%= t(".notifications.minimal.description") %></p>
       </div>
       <%= form.hidden_field :notifications_level, :value => 1, :disabled => @user.notifications_level != 1 %>
       </li>
@@ -164,8 +164,8 @@
       <li class="<%= 'selected' if @user.notifications_level == 2 %>">
       <a href="#" class="letter basics"></a>
       <div class="content">
-        <strong>Básicas</strong>
-        <p>Recibirás los resultados finales de las propuestas y preguntas en las que has participado.</p>
+        <strong><%= t(".notifications.basic.title") %></strong>
+        <p><%= t(".notifications.basic.description") %></p>
       </div>
       <%= form.hidden_field :notifications_level, :value => 2, :disabled => @user.notifications_level != 2 %>
       </li>
@@ -173,8 +173,8 @@
       <li class="last <%= 'selected' if @user.notifications_level == 3 %>">
       <a href="#" class="letter all"></a>
       <div class="content">
-        <strong>Todas</strong>
-        <p>Te avisaremos también cuando haya novedades en un hilo en el que has participado.</p>
+        <strong><%= t(".notifications.all.title") %></strong>
+        <p><%= t(".notifications.all.description") %></p>
       </div>
       <%= form.hidden_field :notifications_level, :value => 3, :disabled => @user.notifications_level != 3 %>
       </li>
@@ -194,8 +194,8 @@
   <div class="inner">
     <header>
     <div class="left">
-      <h2>Configuración de tu cuenta</h2>
-      <h4>Datos de acceso a Irekia</h3>
+      <h2><%= t(".account_configuration") %></h2>
+      <h4><%= t(".access_data") %></h3>
     </div>
     <div class="right">
     </div>
@@ -203,7 +203,6 @@
 
 
     <div class="left">
-
 
       <fieldset>
         <div class="field email">
@@ -216,14 +215,14 @@
         <div class="field password left">
           <%= form.label :current_password, t('.current_password') %>
           <div class="input_field">
-            <%= form.text_field :current_password %>
+            <%= form.password_field :current_password %>
           </div>
         </div>
 
         <div class="field confirm_password pull-right">
           <%= form.label :password, t('.password') %>
           <div class="input_field">
-            <%= form.text_field :password %>
+            <%= form.password_field :password %>
           </div>
         </div>
       </fieldset>
@@ -235,7 +234,7 @@
   <div class="separator"></div>
   <div class="inner">
     <div class="left">
-      <%= form.submit t('.save_changes'), :class => 'white_button blue' %>
+      <%= button t('.save_changes'), :class => 'white_button blue' %>
     </div>
   </div>
   </div>

@@ -9,12 +9,11 @@
       <span class="when"><%= raw t('.author', :author => data.author.fullname, :time => distance_of_time_in_words_to_now(data.published_at)) %></span>
       &middot;
 
-      <% if data.answer.present? %>
-        <span class="answered"><%= t('.answered', :time => distance_of_time_in_words_to_now(data.answer.updated_at)) %></span>
-      <% else %>
-        <span class="not_answered"><%= t('.not_answered') %></span>
-      <% end %>
-    </span>
+    <% if data.answered_at.present? %>
+      <span class="answered"><%= link_to t('.answered', :time => distance_of_time_in_words(data.published_at, data.answered_at)), question_path(data.id) %></span>
+    <% else %>
+      <span class="not_answered"><%= link_to t('.not_answered'), question_path(data.id) %></span>
+    <% end %>
 
   </div>
 </div>

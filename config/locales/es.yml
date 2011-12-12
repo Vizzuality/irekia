@@ -1482,6 +1482,27 @@
       birthday: 'Fecha de nacimiento'
       connect_with: "Conectar con %{name}"
       save_changes: 'Guardar cambios'
+      can_we_change_your_mind: "¿Podemos hacer algo para<br />que cambies de idea?"
+      if_you_had_a_bad_experience: Si has tenido una mala experiencia en Irekia,
+      get_in_touch_with_us: contacta con nosotros
+      and_well_fix_it: y lo arreglaremos
+      remove_profile: Eliminar perfil
+      cancel: Cancelar
+      your_profile: Tu perfil
+      remember_this_information_is_public: Recuerda que son datos públicos y visibles en Irekia.
+      gender: Sexo
+      account_configuration: Configuración de tu cuenta
+      access_data: Datos de acceso a Irekia
+      notifications:
+        minimal:
+          title: Mínimas
+          description: Recibirás los emails estrictamente necesarios para la gestión de tu cuenta.
+        basic:
+          title: Básicas
+          description: Recibirás los resultados finales de las propuestas y preguntas en las que has participado.
+        all:
+          title: Todas
+          description: Te avisaremos también cuando haya novedades en un hilo en el que has participado.
       email: 'Tu email'
       current_password: 'Tu contraseña actual'
       password: 'Tu nueva contraseña'

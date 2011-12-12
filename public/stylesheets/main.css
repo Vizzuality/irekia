@@ -1150,7 +1150,8 @@ input.xlInput { width: 508px; height: 32px; padding: 0 9px; border: 1px solid rg
 #container .article.settings .inner .left .delete_profile p { margin: 0 0 9px 0; padding: 3px 10px; color: #465866; font-size: 15px; }
 #container .article.settings .inner .left .delete_profile p:last-child { margin: 0; }
 #container .article.settings .inner .left .delete_profile p.last { margin: 0; }
-#container .article.settings .inner .right { width: 263px; background: red; }
+#container .article.settings .inner .right { width: 263px; }
+#container .article.settings .bfooter, #container .article.settings .bfooter .left, #container .article.settings .bfooter .inner { z-index: 0!important; }
 
 /* Fields with errors */
 #container .article.with_form .inner .content .field p.error, #container .article.with_form .inner .left .field p.error, #container .article.with_form .inner .content .field p.error a, #container .article.with_form .inner .left .field p.error a { color: #E96F5F; }
