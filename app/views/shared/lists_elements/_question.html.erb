@@ -16,7 +16,7 @@
     </span>
 
     <% if data.answered_at.present? %>
-      <span class="answered"><%= t('.answered', :time => distance_of_time_in_words(data.published_at, data.answered_at)) %></span>
+      <span class="answered"><%= link_to t('.answered', :time => distance_of_time_in_words(data.published_at, data.answered_at)), question_path(data.id) %></span>
     <% else %>
       <span class="not_answered"><%= t('.not_answered') %></span>
     <% end %>

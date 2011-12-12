@@ -575,7 +575,7 @@
         onSubmit: function(id, fileName){
           data.spinner.spin(spin_element);
 
-        //  console.log("Submit", $section);
+          //console.log("Submit", $section);
 
 					$section.find(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");

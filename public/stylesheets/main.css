@@ -59,6 +59,8 @@ h2 { letter-spacing: -1px; }
 #lock_screen { filter: alpha(opacity=80); -khtml-opacity: 0.8; -moz-opacity: 0.8; opacity: 0.8; }
 
 span.answered { color: #00AA54; }
+span.answered a { color: #00AA54!important; }
+span.answered a:hover { text-decoration: underline; color: #00AA54; }
 span.not_answered { color: #FF3300; }
 span.positive { color: #FF0066; }
 span.in_favor { color: #669900; }
@@ -376,6 +378,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.thin .inner header { margin: 0; width: 635px; }
 #container .article.thin .inner header h2 { line-height: normal; }
 #container .article.thin .inner .content p { margin: 0 0 20px 0; padding: 0; font-size: 15px; color: #7d8a92; }
+#container .article.thin .inner .content p.end { margin: 0; padding: 20px 30px 0 30px; }
 #container .article.thin .t, #container .article.thin .f { height: 10px; background: url("/images/box_thin_bkg.png") no-repeat; }
 #container .article.thin .t { top: -10px; background-position: 0 0; }
 #container .article.thin .f { bottom: -10px; background-position: 0 -28px; }
@@ -674,7 +677,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article.connect.with_remark { margin-bottom: 40px!important; }
 #container .article.connect.with_remark .remark { position: absolute; width: 100%; bottom: -35px; text-align: center; }
 
-#container .article.with_remark { margin-bottom: 40px!important; }
+#container .article.with_remark { margin-bottom: 60px!important; }
 #container .article.with_remark .remark { position: absolute; width: 100%; bottom: -35px; text-align: center; }
 
 #container .article.with_form.signup { clear: none; margin: 10px 100px 0 0; }
@@ -762,7 +765,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 
 .ie7 #container .article .my_opinion button, .ie7 #container .article .my_opinion input[type="submit"], .ie8 #container .article .my_opinion button, .ie8 #container .article .my_opinion input[type="submit"] { margin: 0 0 0 20px; }
 
-#container .article .my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EDF3E5; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
+#container .article .my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EEEEEE; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
 #container .article .my_opinion.against { background: #FFF3E1; }
 #container .article .my_opinion.in_favor { background: #EDF3E5; }
 #container .article .my_opinion .result { float: left; padding: 8px 0; width: 200px; font-size: 15px; }
@@ -796,6 +799,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* Proposals blocks */
 #container .article .inner .left .proposals { margin: 0 0 61px 0; position: relative; }
 #container .article .inner .left .proposals .proposal { position: relative; float: left; width: 286px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
+#container .article .inner .left .proposals .proposal span.holder { top: 6px; }
 #container .article .inner .left .proposals .proposal.in_favor { background: #E9F0DE; margin: 0 42px 0 0; }
 #container .article .inner .left .proposals .proposal.against { background: #FFF0D9; margin: 0; }
 #container .article .inner .left .proposals .proposal a.icon { display: block; float: left; width: 10px; height: 10px; float: left; margin-right: 20px; }

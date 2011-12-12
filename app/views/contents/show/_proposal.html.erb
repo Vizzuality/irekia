@@ -26,12 +26,27 @@
     <span class="comments"><%= link_to @comments_count, "#", :class => :goto_comments %></span>
     </div>
 
-    <div class="my_opinion <%= @content.percent_in_favor >= 50 ? "in_favor" : "against" %>">
+    <%  if (@content.percent_in_favor == 50 || @content.participation==0) 
+          @class = ''
+        else 
+          if (@content.percent_in_favor > 50) 
+            @class = 'in_favor'
+          else 
+            @class = 'against'
+          end
+        end
+    %>
+
+    <div class="my_opinion <%= @class %>">
       <div class="result">
-        <% if @content.percent_in_favor >= 50 %>
-          <%= content_tag :span, t(".in_favor", :percentage => @content.percent_in_favor, :count => @content.participation), :class => :in_favor %>
+        <% if @content.participation==0 || @content.percent_in_favor==50 %>
+          <%= content_tag :span, t(".in_favor", :percentage => @content.percent_in_favor, :count => @content.participation) %>
         <% else %>
-          <%= content_tag :span, t(".against", :percentage => @content.percent_against, :count => @content.participation), :class => :against %>
+          <% if @content.percent_in_favor > 50 %>
+            <%= content_tag :span, t(".in_favor", :percentage => @content.percent_in_favor, :count => @content.participation), :class => :in_favor %>
+          <% else %>
+            <%= content_tag :span, t(".against", :percentage => @content.percent_against, :count => @content.participation), :class => :against %>
+          <% end %>
         <% end %>
       </div>
 

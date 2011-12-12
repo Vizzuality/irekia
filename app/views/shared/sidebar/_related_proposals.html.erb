@@ -4,8 +4,8 @@
     <% @last_contents.each do |proposal| %>
       <li><%= link_to proposal.title, url_for(proposal) %>
       <div class="footer">
-        <% if proposal.participation==0 %>
-          <%= content_tag :span, t(".against", :percentage => proposal.percent_against, :count => proposal.against) %>
+        <% if proposal.participation==0 || proposal.percent_against==50 %>
+          <%= content_tag :span, t(".in_favor", :percentage => proposal.percent_against, :count => proposal.against) %>
         <% else %>
           <% if proposal.percent_in_favor >= proposal.percent_against %>
             <%= content_tag :span, t(".in_favor", :percentage => proposal.percent_in_favor, :count => proposal.in_favor), :class => :in_favor %>

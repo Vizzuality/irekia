@@ -230,7 +230,7 @@ $(function() {
   }});
 
   // Follow mail
-  $('div.after_share.email').tipsy({live: true, gravity: 's', offset: 3, title: function() {
+  $('.share.email').tipsy({live: true, gravity: 's', offset: 3, title: function() {
     return 'Compartir vía email';
   }});
 
