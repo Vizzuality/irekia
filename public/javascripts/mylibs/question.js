@@ -169,7 +169,7 @@
   function _afterClosingSetup($ps) {
     $ps.find("textarea").val("");
     $ps.find(".counter").html(140);
-    if (isEmpty($ps.find("input.search").val())) $ps.find(".holder").fadeIn(100);
+    if ($ps.find("input.search").length > 0 &&  isEmpty($ps.find("input.search").val())) $ps.find(".holder").fadeIn(100);
     _disableSending($ps);
     $ps.find(".extra").fadeOut(100);
     $ps.find(".bfooter .action").unbind();
@@ -329,6 +329,7 @@
 
   function _resetHiddenFields($ps) {
     $("#question_question_data_attributes_area_id").val("");
+    $("#question_question_data_attributes_user_id").val("");
     _disableSending($ps);
   }
 
@@ -349,7 +350,12 @@
 
     $ps.find('.autosuggest_field input').keyup(function(ev){
 
-      if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+      var alreadySelectedTarget = !isEmpty($("#question_question_data_attributes_area_id").val()) || !isEmpty($("#question_question_data_attributes_user_id").val());
+
+      if (ev.keyCode == 8 && alreadySelectedTarget) {
+        $(this).val("");
+        _resetHiddenFields($ps);
+      } else if (_.any([8, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
 
       clearTimeout(interval);
 
@@ -391,9 +397,23 @@
             if ($response.find("li").length > 0) {
               $response.hide();
               $response.addClass("small");
-              $response.css("top", $ps.find(".autosuggest_field").position().top + 60);
+
+              $response.css("top", 0);
+
               $ps.find('.content').append($response);
+
               $response.fadeIn(150);
+
+               var h_ = $response.find("ul").height();
+
+               if (h_< 160) {
+                 $response.find(".popover").height(h_);
+               } else {
+                 $ps.find('.scroll-pane').jScrollPane();
+                 $ps.find(".jspDrag").bind('click', function(e) {
+                   e.stopPropagation();
+                 });
+               }
             }
           }});
 
