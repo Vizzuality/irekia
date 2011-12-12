@@ -4,9 +4,7 @@
     <li>
     <p><%= link_to truncate(question.question_text,:length => 90), question_path(question) %></p>
     <div class="footer">
-      <span ><%= t('.time', :time => distance_of_time_in_words_to_now(question.published_at)) %></span>
-      &middot;
-      <%= link_to t('.comments', :count => question.comments_count), question_path(question, :anchor => 'comments') %>
+      <span ><%= t('.time', :time => distance_of_time_in_words_to_now(question.published_at)) %></span> &middot; <span class="comments"><%= link_to question.comments_count, question_path(question, :anchor => 'comments'), :class => :goto_comments %></span>
     </div>
     </li>
   <% end %>
