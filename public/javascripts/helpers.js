@@ -1513,8 +1513,8 @@ jQuery.fn.verticalHomeLoop = function(opt){
   if (this.length < 1) return;
 
   var ele = this,
-  onElement = false,
-  interval = null;
+      onElement = false,
+      interval = null;
 
   function loopContent() {
     if ($(ele).find('div.left ul li').size()>0 && !onElement) {
@@ -1533,7 +1533,7 @@ jQuery.fn.verticalHomeLoop = function(opt){
     }
   }
 
-  $(ele).find('div.left > ul').hover(function(){
+  $(ele).find('div.left').hover(function(){
     onElement = true;
   },function(){
     onElement = false;

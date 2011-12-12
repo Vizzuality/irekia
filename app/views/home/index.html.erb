@@ -3,15 +3,18 @@
     <div class="wrap">
       <h1>Participa en tu gobierno.</h1>
       <p>Irekia es la plataforma que te permite hacer oir tu voz en la toma de decisiones de Euskadi. Haz tus propuestas, reclama respuestas, contribuye y opina.</p>
-      <div class="login_block">
-        <p><a href="#" class="floating-login">Accede a tu cuenta</a> o <a href="/users/intro" class="blue_button no_shadow">Regístrate ya</a></p>
-      </div>
-      <%= form_for :search, :url => search_path, :html => {:method => :get, :autocomplete => :off } do |search_form| %>
-        <div class="input_field search placeholder">
-          <%= search_form.text_field :query %>
-          <%= search_form.submit t(".button"), :class => "blue_button no_shadow" %>
-          <span class="holder"><%= raw t(".search") %></span>
+      <% if @current_user.blank? %>
+        <div class="login_block">
+          <p><a href="#" class="floating-login">Accede a tu cuenta</a> o <a href="/users/intro" class="blue_button no_shadow">Regístrate ya</a></p>
         </div>
+      <% else %>
+        <%= form_for :search, :url => search_path, :html => {:method => :get, :autocomplete => :off } do |search_form| %>
+          <div class="input_field search placeholder">
+            <%= search_form.text_field :query %>
+            <%= search_form.submit t(".button"), :class => "blue_button no_shadow" %>
+            <span class="holder"><%= raw t(".search") %></span>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -26,6 +29,45 @@
       <div class="inner with_spinner">
         <a class="see_all_areas middle" href="#see_all_areas">ver todas las áreas</a>
       </div>
+    </div>
+    <div class="f"></div>
+  </div>
+
+  <div class="article stats">
+    <div class="t"></div>
+    <div class="inner">
+      <ul>
+        <li>
+          <span class="left">
+            <p>2321</p>
+            <label>ciudadanos</label>
+          </span>
+          <span class="right">
+            <p>63</p>
+            <label>políticos</label>
+          </span>
+        </li>
+        <li>
+          <span class="left">
+            <p>210</p>
+            <label>preguntas</label>
+          </span>
+          <span class="right">
+            <p>83</p>
+            <label>respondidas</label>
+          </span>
+        </li>
+        <li class="last">
+          <span class="left">
+            <p>345</p>
+            <label>propuestas</label>
+          </span>
+          <span class="right">
+            <p>11.312</p>
+            <label>votos</label>
+          </span>
+        </li>
+      </ul>
     </div>
     <div class="f"></div>
   </div>
