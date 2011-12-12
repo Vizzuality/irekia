@@ -1547,7 +1547,7 @@ var GOD = (function() {
     editMiniMap(center);
 
     // Change text
-    $('span.where').text($('#event_location_text').val());
+    $('ul.location div.footer span.where').text($('#event_location_text').val());
 
     // Submit form
     $('#event_location').submit();

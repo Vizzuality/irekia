@@ -694,7 +694,7 @@ p.info span.comments a { background-position: 0 -49px; }
 
 .footer.comments a, span.comments a { padding: 0 0 0 13px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -50px; }
 
-.footer.where, span.where, ul.location .footer { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
+.footer.where, span.where { padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; }
 
 span.where, .map .infowindow ul.details li.where { display: block; width: 207px; max-width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 
