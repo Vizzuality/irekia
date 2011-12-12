@@ -1,6 +1,6 @@
 class IrekiaLoginFailure < Devise::FailureApp
   def redirect_url
-		root_path
+		session[:return_to] || root_path
   end
 
   def respond
