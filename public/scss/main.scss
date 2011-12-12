@@ -5122,7 +5122,6 @@ body.home {
 
 
         div.login_block {
-          display:none;
           width:100%;
           height:46px;
 
@@ -5131,7 +5130,7 @@ body.home {
             font-size:18px;
 
             a {font:bold 18px "Helvetica",Arial;}
-            a.blue_button {padding:13px 30px; text-align:center; margin:0 0 0 10px;}
+            a.blue_button {padding:11px 30px; text-align:center; margin:0 0 0 10px;}
           }
         }
       }
@@ -5239,6 +5238,38 @@ body.home {
       li.loop {display:none;}
     }
 
+    div.stats div.inner {
+      ul {
+        height:92px;
+        margin:10px 0 0 0;
+        padding:0 0 15px!important;
+        li {
+          float:left;
+          width:289px;
+          height:92px;
+          margin:0 30px 0 0;
+          background:url('/images/home_stats_bkg.png') no-repeat 0 0;
+          text-align:center;
+          &.last {margin:0}
+
+          span.left {
+            float:left;
+            width:144px;
+            color:#465866;
+          }
+          span.right {
+            float:right;
+            width:143px;
+            color: #727F8B;
+          }
+
+          p {margin:16px 0 0 0; padding:0; font:bold 36px "Helvetica",Arial; letter-spacing:-1px; line-height:36px;}
+          label {margin:0; padding:0; font:normal 17px "Helvetica",Arial;}
+          span.right p {color:#727F8B}
+        }
+      }
+      
+    }
 
     section.banners {
       ul {

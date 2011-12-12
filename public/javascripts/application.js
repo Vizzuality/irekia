@@ -215,7 +215,7 @@ $(function() {
     ev.preventDefault();
     $(this).closest('.article.areas').find('div.areas_list').animate({height:'635px'},500);
     $(this).closest('.article.areas').find('div.all_areas').show();
-    $(this).closest('.article.areas').find('footer').animate({opacity:0,height:0},500,function(){
+    $(this).closest('.article.areas').find('.bfooter').animate({opacity:0,height:0},500,function(){
       $(this).closest('.article.areas').removeClass('with_footer');
       $(this).remove();
     });
