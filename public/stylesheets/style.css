@@ -215,6 +215,8 @@ h2 { letter-spacing: -1px; }
 #lock_screen { filter: alpha(opacity=80); -khtml-opacity: 0.8; -moz-opacity: 0.8; opacity: 0.8; }
 
 span.answered { color: #00AA54; }
+span.answered a { color: #00AA54!important; }
+span.answered a:hover { text-decoration: underline; color: #00AA54; }
 span.not_answered { color: #FF3300; }
 span.positive { color: #FF0066; }
 span.in_favor { color: #669900; }

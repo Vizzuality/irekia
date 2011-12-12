@@ -109,7 +109,7 @@ h2 { letter-spacing: -1px; }
 #lock_screen { @include opacity(0.8); }
 
 span {
-  &.answered     { color: #00AA54; }
+  &.answered     { color: #00AA54; a {color:#00AA54!important; &:hover {text-decoration:underline; color:#00AA54;}} }
   &.not_answered { color: #FF3300; }
   &.positive     { color: #FF0066; }
   &.in_favor     { color: $agree_color; }
