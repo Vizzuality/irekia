@@ -223,11 +223,13 @@ $(function() {
 
 
   // Tipsy tooltips (add here all possible tooltips)
+  //  Follow area or politician tooltip
   $('input.ribbon').tipsy({live: true, gravity: 's', offset: 3, title: function() {
-    if ($(this).closest('form').hasClass('remove')) {
-      return 'Dejar de seguir';
-    } else {
-      return 'Seguir';
-    }
+    var type = $(this).closest('div.content').find('button.add_to_favorites span').text();
+    return type;
   }});
+
+  // Follow twitter
+
+
 });
