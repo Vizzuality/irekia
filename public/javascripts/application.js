@@ -229,7 +229,18 @@ $(function() {
     return type;
   }});
 
+  // Follow mail
+  $('div.after_share.email').tipsy({live: true, gravity: 's', offset: 3, title: function() {
+    return 'Compartir vía email';
+  }});
+
   // Follow twitter
+  $('.share.twitter').tipsy({live: true, gravity: 's', offset: 3, title: function() {
+    return 'Compartir vía twitter';
+  }});
 
-
+  // Follow facebook
+  $('.share.facebook').tipsy({live: true, gravity: 's', offset: 3, title: function() {
+    return 'Compartir vía facebook';
+  }});
 });
