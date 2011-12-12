@@ -687,6 +687,7 @@ var GOD = (function() {
       // Let's create the spinner dom element
       if ($(this).find('div.right ul.selector').length > 0) {
         var filter_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: 'white',speed: 1,trail: 100,shadow: false});
+        var switch_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: '#3786C0',speed: 1,trail: 100,shadow: false});
       }
 
       $(this).find(".filter").unbind("click");
@@ -695,11 +696,19 @@ var GOD = (function() {
 
         // Place spinner and show it (if exists)
         filter_spinner.stop();
-        filter_spinner.spin();
+        switch_spinner.stop();
 
-        var top = $(this).position().top;
-        $(filter_spinner.el).css({ top:top+8+"px", position:"absolute", right:'3px', height:'15px', width:'15px' });
-        $(this).closest('div.right').append(filter_spinner.el);
+        if ($(this).closest('ul.switch').length==0) {
+          filter_spinner.spin();
+          var top = $(this).position().top;
+          $(filter_spinner.el).css({ top:top+8+"px", position:"absolute", right:'3px', height:'15px', width:'15px', 'z-index':'1000'});
+          $(this).closest('div.right').append(filter_spinner.el);
+        } else {
+          switch_spinner.spin();
+          var left = $(this).position().left;
+          $(switch_spinner.el).css({ top:"16px", position:"absolute", left:'5px', height:'15px', width:'15px', 'z-index':'1000'});
+          $(this).closest('div.right').append(switch_spinner.el);
+        }
 
         var classes = $(this).attr("class");
 
@@ -733,6 +742,7 @@ var GOD = (function() {
 
             $ps.find(".listing").slideDown(settings.transitionSpeed, function() {
               filter_spinner.stop();
+              switch_spinner.stop();
             });
 
             // Activate
