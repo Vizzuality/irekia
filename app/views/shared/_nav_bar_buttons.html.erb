@@ -3,7 +3,7 @@
     <li><span class="username"><%= raw t('.hello', :name => link_to(current_user.name, user_path(current_user))) %>.</span></li>
     <li>
     <div class="blue_button">
-      <%= content_tag 'div', notifications_count, :class => "toggle_notifications #{'empty_' if notifications_count.zero? }count" %>
+      <%= link_to notifications_count, '#show_notifications', :class => "toggle_notifications #{'empty_' if notifications_count.zero? }count" %>
       <%= link_to t('.settings'), settings_user_path(current_user), :class => :settings %>
       <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => :sign_out %>
     </div>
@@ -43,7 +43,7 @@
 
 <% else %>
   <ul class="auth">
-    <li><%= link_to t('.sign_up'), intro_users_path, :class => :blue_button %></li>
+    <li><%= link_to t('.sign_up'), intro_users_path, :class => 'blue_button active' %></li>
     <li>
     <div class="blue_button">
       <%= link_to t('.sign_in'), new_user_session_path, :class => :login %>
