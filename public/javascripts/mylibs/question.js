@@ -118,7 +118,6 @@
     });
   }
 
-
   function _setupBindings(data) {
     _addCloseAction(data);
     _addSubmitAction(data);
@@ -126,6 +125,13 @@
     _subscribeToEvent(data.event);
 
     _bindSearch(data);
+
+    data.$ps.find(".autosuggest_field span.all a").unbind();
+    data.$ps.find(".autosuggest_field span.all a").click(function(e) {
+      e.preventDefault();
+      data.spinner.spin(spin_element);
+      _showAllAreas(data);
+    });
 
     data.$ps.find("textarea.grow").autogrow();
     data.$ps.find(".input-counter").inputCounter({limit:data.settings.maxLimit});
@@ -169,8 +175,9 @@
   function _afterClosingSetup($ps) {
     $ps.find("textarea").val("");
     $ps.find(".counter").html(140);
-    $ps.find(".holder").fadeIn(100);
+    if ($ps.find("input.search").length > 0 &&  isEmpty($ps.find("input.search").val())) $ps.find(".holder").fadeIn(100);
     _disableSending($ps);
+    _clearAutosuggest($ps);
     $ps.find(".extra").fadeOut(100);
     $ps.find(".bfooter .action").unbind();
   }
@@ -329,6 +336,7 @@
 
   function _resetHiddenFields($ps) {
     $("#question_question_data_attributes_area_id").val("");
+    $("#question_question_data_attributes_user_id").val("");
     _disableSending($ps);
   }
 
@@ -342,6 +350,60 @@
     data.$ps.find('#' + name + '_' + name + '_data_attributes_' + otherTarget + '_id').val("");
   }
 
+  function _showAllAreas(data) {
+    var $ps = data.$ps;
+
+    $.ajax({url:"/areas", data: {}, success: function(response) {
+
+      var $response = $(response);
+
+      data.spinner.stop();
+
+      // When the user clicks on a result…
+      $response.find("li").unbind();
+      $response.find("li").bind("click", function(e) {
+        var id = $(this).attr("id");
+        var name = $(this).find(".name").html();
+
+        $ps.find('.autosuggest_field .holder').fadeOut(250);
+        $ps.find('.autosuggest_field input[type="text"]').val(name);
+        $(this).hasClass("user") ? _updateHiddenTarget(data, "user", id) : _updateHiddenTarget(data, "area", id);
+
+        if (!isEmpty($ps.find("textarea.title").val())) {
+          _enableSending(data.$ps);
+        }
+
+        _clearAutosuggest($ps);
+      });
+
+      $ps.find(".autosuggest").fadeOut(150, function() {
+        $(this).remove();
+      });
+
+      if ($response.find("li").length > 0) {
+        $response.hide();
+        $response.addClass("small");
+
+        $response.css("top", 0);
+
+        $ps.find('.content').append($response);
+
+        $response.fadeIn(150);
+
+        var h_ = $response.find("ul").height();
+
+        if (h_< 160) {
+          $response.find(".popover").height(h_);
+        } else {
+          $ps.find('.scroll-pane').jScrollPane();
+          $ps.find(".jspDrag").bind('click', function(e) {
+            e.stopPropagation();
+          });
+        }
+      }
+    }});
+  }
+
   function _bindSearch(data) {
     var $ps = data.$ps;
 
@@ -349,7 +411,15 @@
 
     $ps.find('.autosuggest_field input').keyup(function(ev){
 
-      if (_.any([8, 13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
+      var alreadySelectedTarget = !isEmpty($("#question_question_data_attributes_area_id").val()) || !isEmpty($("#question_question_data_attributes_user_id").val());
+
+      if (ev.keyCode == 8 && alreadySelectedTarget) {
+        $(this).val("");
+
+        $ps.find(".autosuggest_field .holder").fadeIn(100);
+
+        _resetHiddenFields($ps);
+      } else if (_.any([8, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return ev.keyCode == i} )) { return; }
 
       clearTimeout(interval);
 
@@ -391,9 +461,23 @@
             if ($response.find("li").length > 0) {
               $response.hide();
               $response.addClass("small");
-              $response.css("top", $ps.find(".autosuggest_field").position().top + 60);
+
+              $response.css("top", 0);
+
               $ps.find('.content').append($response);
+
               $response.fadeIn(150);
+
+               var h_ = $response.find("ul").height();
+
+               if (h_< 160) {
+                 $response.find(".popover").height(h_);
+               } else {
+                 $ps.find('.scroll-pane').jScrollPane();
+                 $ps.find(".jspDrag").bind('click', function(e) {
+                   e.stopPropagation();
+                 });
+               }
             }
           }});
 

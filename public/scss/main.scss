@@ -405,9 +405,9 @@ header {
 
       ul.auth {
         float: right;
-        
+
         div.blue_button {
-          height:32px;  
+          height:32px;
         }
 
         li {
@@ -415,7 +415,7 @@ header {
           margin: 0 0 0 10px;
           @include inline-block;
 
-          span.username  {float:none; @include inline-block; margin: 0 0 0 10px; font-size:15px; color:#fff; position:relative; top:8px;text-shadow: 1px 1px 1px #0F4869;  
+          span.username  {float:none; @include inline-block; margin: 0 0 0 10px; font-size:15px; color:#fff; position:relative; top:8px;text-shadow: 1px 1px 1px #0F4869;
             a {float:none!important;}
           }
 
@@ -430,7 +430,7 @@ header {
 
               &.empty_count {
                 @include menu-button(url('/images/icons/icon_sprite.png') no-repeat -28px -351px); color:$blue; text-shadow:none;
-              } 
+              }
             }
             &.twitter  {float:left; width:3px; height:18px; text-indent: -999em; position: relative; @include menu-button(url('/images/icons/twitter.png') no-repeat 0 5px);
               @include border-right-radius(4px);
@@ -439,7 +439,7 @@ header {
             }
             &.sign_out { float:left; width:6px; height:18px; text-indent: -999em; position: relative; @include menu-button(url('/images/icons/icon_sprite.png') no-repeat 0 -260px);
               @include border-right-radius(4px);}
-            &.settings {              
+            &.settings {
               float:left; width:6px; height:18px; text-indent: -9999em; position: relative;
               @include menu-button(url('/images/icons/icon_sprite.png') no-repeat 0 -294px);
             }
@@ -1633,13 +1633,22 @@ div#main.show div.left img {margin:4px 0 7px;}
         position: relative;
         width: 685px; height: 35px;
       }
+
+      .all {
+        position:absolute;
+        right: 10px;
+        text-align:right;
+        a {
+          color: $pink;
+        }
+      }
     } // .extra
 
     .field {
       margin: 0 0 20px 0;
       // background: red;
       .input-counter { margin-bottom: 0; } // TODO: After adding .field, remove input-counter margin: 24px;
-      .uploader { margin: 0; }
+      .uploader { height: 29px; margin: 0; }
 
       &.last { margin-bottom: 0; }
       &:last-child { margin-bottom: 0; }
@@ -1680,7 +1689,6 @@ div#main.show div.left img {margin:4px 0 7px;}
         float:left;
 
         width:534px;
-        margin: 0 0 10px 0;
 
         .qq-upload-button { margin: 0; }
 
@@ -2497,27 +2505,77 @@ span.where, .map .infowindow ul.details li.where {
     top:20px;
     z-index:2000;
 
+      &.small {
+        float: left;
+        position:relative;
+        display:none;
+        width: 565px;
+        height:auto;
+        padding:14px 0 0 0;
+        background: url("/images/box_autosuggest_small_bkg_new.png") no-repeat 0 0;
 
-    &.small {
-      width: 558px;
-      li {
-        width: 545px;
-        background:url('/images/box_autosuggest_small_bkg.png') repeat-y -581px 0;
-        font-size:15px;
-        p { width:487px; }
-        p, span { font-size: 15px; }
+        .popover {
+          display:block;
+          position:absolute;
+          width:545px;
+          height:160px;
+          padding:8px 0 18px 17px;
+          z-index:1000;
+          background: url("/images/box_autosuggest_small_bkg_new.png") no-repeat -580px bottom;
+
+          .scroll-pane {
+            height: 100%;
+            width: 521px;
+            overflow: hidden;
+            outline: none;
+
+            ul {
+              margin:0; padding:0;
+              width:521px;
+
+              li {
+                width:511px;
+                text-shadow:none;
+                font-size:13px;
+                border-bottom: 1px solid #f1f1f1;
+                padding: 10px 0 10px 0;
+                color:$medium_dark;
+                background:none;
+                height:34px;
+
+                p { width:460px; }
+                p, span { font-size: 15px; }
+
+                &.last { border:none; }
+                &:last-child { border:none; }
+              }
+            } // ul
+          } // scroll-pane
+        } // popover
+        .a_t, .a_f { display:none; }
       }
 
-      .a_t {
-        background:url('/images/box_autosuggest_small_bkg.png') no-repeat -1px top;
-        width: 558px;
-      }
 
-      .a_f {
-        background:url('/images/box_autosuggest_small_bkg.png') no-repeat -1px bottom;
-        width: 558px;
-      }
-    }
+    // &.small {
+    //   width: 558px;
+    //   li {
+    //     width: 545px;
+    //     background:url('/images/box_autosuggest_small_bkg.png') repeat-y -581px 0;
+    //     font-size:15px;
+    //     p { width:487px; }
+    //     p, span { font-size: 15px; }
+    //   }
+
+    //   .a_t {
+    //     background:url('/images/box_autosuggest_small_bkg.png') no-repeat -1px top;
+    //     width: 558px;
+    //   }
+
+    //   .a_f {
+    //     background:url('/images/box_autosuggest_small_bkg.png') no-repeat -1px bottom;
+    //     width: 558px;
+    //   }
+    // }
 
     &.mini {
       width: 264px;
@@ -5304,7 +5362,7 @@ body.home {
           span.right p {color:#727F8B}
         }
       }
-      
+
     }
 
     section.banners {

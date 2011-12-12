@@ -680,7 +680,10 @@ form.editable,
     margin: 10px 0 0 0;
     border: none;
 
-    .holder { width: 600px; }
+    .holder {
+      width: 600px;
+      span { margin: 0 0 0 4px; }
+    }
 
     input[type="text"] {
       width:585px;
@@ -694,7 +697,7 @@ form.editable,
     position:relative;
     width:605px;
 
-    img { float:left; width:605px; }
+    img { float:left; }
   }
 
   .percentage {
@@ -730,8 +733,7 @@ form.editable,
     z-index:2000;
   }
 
-  .uploader {
-  }
+  .uploader { }
 
   .add_image {
     width:606px;
@@ -1089,8 +1091,6 @@ form.editable,
 * html .jspCorner { margin: 0 -3px 0 0; }
 
 /* Ajax file uploader */
-
-.qq-uploader { }
 
 .qq-upload-button {
   width:120px;

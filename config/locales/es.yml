@@ -384,13 +384,22 @@
           other: '%{count} comentarios'
     question_form:
       describe_the_question: Describe la pregunta en pocas palabras
+      remember_to_be_concise: Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo.
+      your_question: Tu pregunta
+      who_is_the_target: ¿A quién le quieres dirigir la pregunta?
+      name_of_the_area_or_politician: Nombre de área o político...
       do_you_want_to_explain_the_question: ¿Quieres explicar la pregunta con más detalle?
       make_a_question:
+        title: Haz una pregunta
         submit: Enviar pregunta
     proposal_form:
       write_the_photo_url_or: Introduce la URL de la foto o
       do_you_want_to_explain_the_proposal: ¿Quieres explicar la propuesta con más detalle?
       describe_the_proposal: Describe la propuesta en pocas palabras
+      the_image_will_be_included_in_the_proposal: Se incluirá esta imagen en la propuesta.
+      who_is_the_target: ¿A qué area le quieres dirigir la pregunta?
+      name_of_the_area: Nombre de área...
+      loading: Cargando imagen...
       upload_a_new_one: Sube una nueva
       title: Título de la propuesta
       subtitle: Recuerda ser breve y conciso.

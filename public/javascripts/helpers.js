@@ -549,13 +549,12 @@ jQuery.fn.enableImageEditing = function(opt){
   spinner     = new Spinner(SPINNER_OPTIONS),
   content;
 
-  $(this).find(".remove").submit(function(e) {
-    $this.find(".image_container .remove").fadeOut(speed);
+  $(this).find("form.remove").submit(function(e) {
+    $this.find(".image_container form.remove").fadeOut(speed);
     $this.find(".image_container img").fadeOut(speed, function() {
       $(this).remove();
+      $this.find(".add_image").fadeIn(speed);
     });
-
-    //$this.find(".add_image").fadeIn(speed);
   });
 
   $(this).find(".add_image a").click(function(e) {
@@ -568,21 +567,6 @@ jQuery.fn.enableImageEditing = function(opt){
     $this.find(".input_field").fadeIn(speed, function() {
       $(this).find(':text').focus();
     });
-  });
-
-  $(this).bind('ajax:success', function(evt, xhr, status) {
-    $(this).find(".content").html(content);
-    $(this).find(".content").slideDown(fadeInSpeed);
-    $(this).find('.input_field').slideUp(speed);
-    $(this).find('.submit').fadeOut(speed);
-    $(this).find('.submit').removeClass("disabled");
-    $(this).find('.submit').removeAttr("disabled");
-  });
-
-  $(this).submit(function(e) {
-    content = $(this).find('.input_field :text, .input_field textarea').val();
-    $(this).find('.submit').addClass("disabled");
-    $(this).find('.submit').attr("disabled", "disabled");
   });
 
   function _setupUpload(id, callback) {
@@ -602,7 +586,7 @@ jQuery.fn.enableImageEditing = function(opt){
 					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
 				},
         debug: true,
-        text:"Sube una nueva",
+        text: $span.html(),
         onSubmit: function(id, fileName){
           //data.spinner.spin(spin_element);
 
@@ -646,15 +630,13 @@ jQuery.fn.enableImageEditing = function(opt){
             $this.find(".image_container").prepend(cacheImage);
             $this.find(".image_container").fadeIn(speed);
             $this.find(".image_container img").fadeIn(speed);
-            $this.find(".image_container .remove").fadeIn(speed);
+            $this.find(".image_container form.remove").fadeIn(speed);
 
             //$uploader.find("form #image_attributes").val()
 
             $uploader.fadeOut(speed, function() {
               $uploader.find("form").submit();
-              callback && callback();
             });
-
           });
 
           $uploader.find(".progress").fadeOut(speed, function() {
