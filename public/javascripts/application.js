@@ -61,21 +61,40 @@ $(function() {
   $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});
   $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
 
-  // Follow forms
-  $(".follow.basic form").live('ajax:success', function(evt, xhr, status) {
+
+
+
+
+
+
+  // FOLLOW FORMS
+  var basic_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: '#3786C0',speed: 1,trail: 100,shadow: false});
+  $(".follow.basic form").live('submit',function(){
+    basic_spinner.stop();
+    basic_spinner.spin();
+    $(basic_spinner.el).css({ bottom:"-8px", position:"absolute", right:'0', height:'15px', width:'15px', 'z-index':'1000'});
+    $(this).closest('div.content').append(basic_spinner.el);
+  }).live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();
     $el.fadeOut(150, function() {
       $el.parents("li").toggleClass("selected");
       $(this).html(xhr);
       $(this).fadeIn(150);
     });
+    basic_spinner.stop();
   }).live('ajax:error', function(evt, xhr, status) {
     $(this).effect("shake", { times:4 }, 100);
+    basic_spinner.stop();
   });
 
 
-  $("form.follow_button, form.follow_ribbon").live('ajax:success', function(evt, xhr, status) {
-
+  var main_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: '#3786C0',speed: 1,trail: 100,shadow: false});;
+  $("form.follow_button, form.follow_ribbon").live('submit',function(ev){
+    main_spinner.stop();
+    main_spinner.spin();
+    $(main_spinner.el).css({position:"relative", float:'none', display:'inline', right:'-20px', top:'27px', height:'15px', width:'15px'});
+    $(this).closest('div.content').find('h1 a').append(main_spinner.el);
+  }).live('ajax:success', function(evt, xhr, status) {
     // Button
     var $el1 = $("div.column form.follow_button");
     $el1.fadeOut(150, function() {
@@ -94,9 +113,10 @@ $(function() {
       $('.article.summary > form.follow_button').remove();
       $(this).fadeIn(150);
     });
-
+    main_spinner.stop();
   }).live('ajax:error', function(evt, xhr, status) {
     $(this).effect("shake", { times:4 }, 100);
+    main_spinner.stop();
   });
 
   // Grow ribbon
@@ -109,6 +129,8 @@ $(function() {
   });
 
   // END FOLLOW FORMS!!
+
+
 
 
   // ANSWER FORM
