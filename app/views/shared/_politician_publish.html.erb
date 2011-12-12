@@ -46,7 +46,7 @@
                 <div class="input_field placeholder uploader">
 
                   <%= image.text_field :remote_image_url %>
-                  <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_photo" data-url="<%= photos_path %>">Sube una nueva</span></span>
+                  <span class="holder"><span class="upload" id="upload_photo" data-url="<%= photos_path %>">Sube una foto</span></span>
                   <span class="percentage">0%</span>
                   <span class="loading">Cargando imagen...</span>
                   <div class="progress"></div>
@@ -138,7 +138,7 @@
 
                   <div class="input_field placeholder uploader">
                     <input type="text" />
-                    <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>">Sube una nueva</span></span>
+                    <span class="holder"><span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>">Sube una foto</span></span>
                     <span class="percentage">0%</span>
                     <span class="loading">Cargando imagen...</span>
                     <div class="progress"></div>
