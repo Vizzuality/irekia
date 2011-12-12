@@ -679,7 +679,10 @@ form.editable,
     margin: 10px 0 0 0;
     border: none;
 
-    .holder { width: 600px; }
+    .holder {
+      width: 600px;
+      span { margin: 0 0 0 4px; }
+    }
 
     input[type="text"] {
       width:585px;
@@ -693,7 +696,7 @@ form.editable,
     position:relative;
     width:605px;
 
-    img { float:left; width:605px; }
+    img { float:left; }
   }
 
   .percentage {
