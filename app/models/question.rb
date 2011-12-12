@@ -148,6 +148,16 @@ class Question < Content
     end
   end
 
+  def notify_of_new_participation(participation)
+    super(participation)
+    if answer.present?
+      user_action              = answer.author.private_actions.find_or_create_by_event_id_and_event_type participation.id, participation.class.name
+      user_action.published_at = participation.published_at
+      user_action.message      = participation.to_json
+      user_action.save!
+    end
+  end
+
   def notification_for(user)
     if target_user.present?
       Notification.for(target_user, self)
