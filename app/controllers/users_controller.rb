@@ -21,9 +21,14 @@ class UsersController < ApplicationController
   end
 
   def questions
-    if current_user && current_user.answers_count > 0 && !request.xhr?
-      current_user.reset_counter('answers')
-      @answers_count = 0
+    if current_user && !request.xhr?
+      if private_profile?
+        current_user.reset_counter('new_answers')
+        current_user.reset_counter('new_answer_requests')
+      elsif politician_profile?
+        current_user.reset_counter('new_questions')
+      end
+      @questions_notifications = 0
     end
 
     render :partial => 'shared/questions_list',
@@ -31,6 +36,12 @@ class UsersController < ApplicationController
   end
 
   def proposals
+    if current_user && !request.xhr?
+      current_user.reset_counter('new_arguments')
+      current_user.reset_counter('new_votes')
+      @proposals_notifications = 0
+    end
+
     render :partial => 'shared/proposals_list',
            :layout  => nil and return if request.xhr?
   end
