@@ -169,7 +169,7 @@
   function _afterClosingSetup($ps) {
     $ps.find("textarea").val("");
     $ps.find(".counter").html(140);
-    $ps.find(".holder").fadeIn(100);
+    if (isEmpty($ps.find("input.search").val())) $ps.find(".holder").fadeIn(100);
     _disableSending($ps);
     $ps.find(".extra").fadeOut(100);
     $ps.find(".bfooter .action").unbind();
