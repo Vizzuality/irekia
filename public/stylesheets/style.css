@@ -388,7 +388,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.with_form .inner .content, #container .article.with_form .inner .left { clear: both; overflow: none; }
 #container .article.with_form .inner .content fieldset, #container .article.with_form .inner .left fieldset { text-align: left; border-right: 1px solid #e3e6e8; }
 #container .article.with_form .inner .content .field, #container .article.with_form .inner .left .field { margin: 0 0 20px 0; width: 200px; color: #7D8A92; font-size: 15px; position: relative; }
-#container .article.with_form .inner .content .field ul.errors, #container .article.with_form .inner .left .field ul.errors { position: absolute; top: 30px; right: -684px; margin: 0; padding: 0; }
+#container .article.with_form .inner .content .field ul.errors, #container .article.with_form .inner .left .field ul.errors { position: absolute; top: 30px; left: 665px; margin: 0; padding: 0; }
 #container .article.with_form .inner .content .field ul.errors li, #container .article.with_form .inner .left .field ul.errors li { background: url("/images/icons/icon_sprite.png") no-repeat -62px 2px; margin: 0; padding: 0 0 0 21px; font-size: 15px; color: #E96F5F; }
 #container .article.with_form .inner .content .field a:hover, #container .article.with_form .inner .left .field a:hover { text-decoration: none; }
 #container .article.with_form .inner .content .field.pull-left, #container .article.with_form .inner .left .field.pull-left { float: left; clear: left; margin-right: 6px; }

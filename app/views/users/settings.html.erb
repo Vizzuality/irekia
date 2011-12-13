@@ -46,19 +46,27 @@
 
         </div>
 
-        <div class="field clearfix name pull-left">
+        <div class="field clearfix name pull-left<%= ' error' if @user.errors[:name].present? %>">
           <%= form.label :name, t('.name') %>
           <div class="input_field">
             <%= form.text_field :name %>
           </div>
-          <!-- <ul class="errors"><li>La URL no parece ser correcta</li></ul> -->
+
+          <% if @user.errors[:name].present? || @user.errors[:lastname].present? %>
+            <ul class="errors">
+              <% if @user.errors[:name].present? %> <li>El nombre es obligatorio</li> <% end %>
+              <% if @user.errors[:lastname].present? %> <li>El apellido es obligatorio</li> <% end %>
+            </ul>
+          <% end %>
+
         </div>
 
-        <div class="field clearfix lastname pull-right">
+        <div class="field clearfix lastname pull-right<%= ' error' if @user.errors[:lastname].present? %>">
           <%= form.label :lastname, t('.lastname') %>
           <div class="input_field">
             <%= form.text_field :lastname %>
           </div>
+
         </div>
 
         <div class="field clearfix territory pull-left">

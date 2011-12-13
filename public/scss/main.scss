@@ -752,14 +752,15 @@ div#main.show div.left img {margin:4px 0 7px;}
         ul.errors {
           position: absolute;
           top:30px;
-          right: -684px;
+          left: 665px;
           margin:0;
           padding: 0;
 
           li {
             background: url('/images/icons/icon_sprite.png') no-repeat -62px 2px;
-            margin:0;
+            margin:0 0 5px 0;
             padding: 0 0 0 21px;
+            width:200px;
             font-size:15px;
             color: #E96F5F;
           }
