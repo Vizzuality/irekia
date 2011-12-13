@@ -113,6 +113,10 @@ $(function() {
       $('.article.summary > form.follow_button').remove();
       $(this).fadeIn(150);
     });
+
+    // Hide tooltip in any case
+    $('input.ribbon').tipsy("hide");
+    
     main_spinner.stop();
   }).live('ajax:error', function(evt, xhr, status) {
     $(this).effect("shake", { times:4 }, 100);
