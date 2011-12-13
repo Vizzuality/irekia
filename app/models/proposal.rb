@@ -37,25 +37,35 @@ class Proposal < Content
     joins(:proposal_data).where('proposal_data.close' => true)
   end
 
-  def self.from_politicians(politician)
-    joins(:author => :role, :votes => :author, :arguments => :author)
-    .where('roles.name = ? AND (authors_contents.id = ? OR users.id = ? OR authors_participations.id = ? OR authors_participations_2.id = ?)', 'Politician', politician.id, politician.id, politician.id, politician.id)
+  def self.from_politicians
+    joins(:author => :role)
+    .moderated
+    .where('roles.name' => 'Politician')
   end
 
   def self.from_politician_areas(politician)
-    joins(:author => {:areas => :team}).where('teams_areas.id = ?', politician.id)
+    joins(:author => {:areas => :team})
+    .moderated
+    .where('teams_areas.id = ?', politician.id)
   end
 
   def self.from_citizens
-    joins(:author => :role).where('roles.name = ?', 'Citizen')
+    joins(:author => :role)
+    .moderated
+    .where('roles.name = ?', 'Citizen')
   end
 
   def self.from_area(area)
-    joins(:proposal_data => :target_area, :author => :areas).moderated.where('areas.id => ? OR target_areas_proposal_data.id = ?', area.id, area.id)
+    joins(:proposal_data => :target_area, :author => :areas)
+    .moderated
+    .where('areas.id => ? OR target_areas_proposal_data.id = ?', area.id, area.id)
   end
 
-  def self.from_politician(user)
-    joins(:author, :proposal_data => {:target_area => :users}).moderated.where('users.id = ? OR users_areas.id = ?', user.id, user.id)
+  def self.from_politician(politician)
+    select('distinct contents.*')
+    .joins(:author => :role, :votes => {:author => :role}, :arguments => {:author => :role})
+    .moderated
+    .where('(users.id = ? AND roles.name = ?) OR (authors_contents.id = ? AND roles_users.name = ?) OR (authors_participations.id = ? AND roles_users_2.name = ?)', *([politician.id, 'Politician'] * 3))
   end
 
   def self.from_citizen(user)

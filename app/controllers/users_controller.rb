@@ -187,8 +187,8 @@ class UsersController < ApplicationController
 
   def get_counters
     @followers_count       = @user.followers.count                                                     || 0
-    @questions_done_count  = @user.questions_count                                                     || 0
-    @proposals_done_count  = @user.proposals_count                                                     || 0
+    @questions_done_count  = @user.questions.count                                                     || 0
+    @proposals_done_count  = @user.proposals.count                                                     || 0
     @news_count            = @user.send("#{'private_' if show_private_actions?}news_count")            || 0
     @questions_count       = @user.send("#{'private_' if show_private_actions?}questions_count")       || 0
     @answers_count         = @user.send("#{'private_' if show_private_actions?}answers_count")         || 0
@@ -265,7 +265,6 @@ class UsersController < ApplicationController
 
   def get_proposals
     @proposals = @user.get_proposals(params.slice(:from_politicians, :from_citizens, :more_polemic))
-    @proposals = Area.get_proposals_from_politician_areas(@user, params.slice(:from_politicians, :from_citizens, :more_polemic)) if politician_profile? && @proposals.blank?
 
     @proposals_in_favor_count = @proposals.approved_by_majority.count
   end

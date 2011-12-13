@@ -39,9 +39,9 @@ class Vote < Participation
 
   def as_json(options = {})
     super({
-      :title            => title,
-      :in_favor        => in_favor,
-      :against         => against
+      :title    => title,
+      :in_favor => in_favor,
+      :against  => against
     })
   end
 
