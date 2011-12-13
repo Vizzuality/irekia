@@ -14,17 +14,13 @@
     <h1><%= @content.title %></h1>
 
     <div class="meta">
-    <span><%= l @content.published_at.to_date, :format => :long %></span>
-    &middot;
-    <% if !@content.title.blank? %>
-      <%= link_to @content.title, video_path(@content) %>
-      &middot;
-    <% end %>
-    <span class="comments">    <%= link_to @comments_count, '#', :class => :goto_comments %></span>
+    <span><%= l @content.published_at.to_date, :format => :long -%></span>
+
+    <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments -%></span>
     </div>
 
-    <%= raw @content.html if @content.html.present? %>
-    <div class="caption"><%= simple_format @content.description %></div>
+    <%= raw @content.html if @content.html.present? -%>
+    <div class="caption"><%= simple_format @content.description -%></div>
 
     <%= render "participations/comments" %>
 

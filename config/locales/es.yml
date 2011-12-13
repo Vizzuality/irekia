@@ -403,6 +403,10 @@
       upload_a_new_one: Sube una nueva
       title: Título de la propuesta
       subtitle: Recuerda ser breve y conciso.
+      upload_a_photo: Sube una foto
+      see_all_the_areas: ver todas las áreas
+      remove: Eliminar
+      or: o
       make_a_proposal:
         title: Haz una propuesta.
         continue: Continuar

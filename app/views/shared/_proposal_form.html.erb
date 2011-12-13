@@ -25,7 +25,7 @@
             <div class="extra">
               <div class="field clearfix">
                 <div class="input_field uploader">
-                  <span class="holder"><span class="upload" id="upload_image" data-url="<%= proposals_path -%>">Sube una foto</span></span>
+                  <span class="holder"><span class="upload" id="upload_image" data-url="<%= proposals_path -%>"><%= t(".upload_a_photo") %></span></span>
                   <span class="percentage">0%</span>
                   <span class="loading"><%= t(".loading") %></span>
                   <div class="progress"></div>
@@ -33,7 +33,7 @@
 
                 <div class="image_container clearfix">
                   <p><%= t(".the_image_will_be_included_in_the_proposal") %></p>
-                  <a href="#" class="remove">Eliminar</a>
+                  <a href="#" class="remove"><%= t(".remove") %></a>
                 </div>
               </div>
 
@@ -51,7 +51,7 @@
                 <div class="input_field autosuggest_field placeholder">
                   <div class="search_box clearfix">
                     <input type="text" class="search" value="<%= @area.name if @area %>" />
-                    <span class="holder"><%= t(".name_of_the_area") %><span class="all">... o <a href="#">ver todas las áreas</a></span></span>
+                    <span class="holder"><%= t(".name_of_the_area") %><span class="all">... <%= t(".or") %> <a href="#"><%= t(".see_all_the_areas") %></a></span></span>
                     <span class="spinner" id="search_question_spinner"></span>
                   </div>
                 </div>
