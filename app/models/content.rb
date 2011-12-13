@@ -71,7 +71,7 @@ class Content < ActiveRecord::Base
   end
 
   def self.validate_all_not_moderated
-    self.not_moderated.find_each do |content|
+    not_moderated.find_each do |content|
       content.update_attribute('moderated', true)
     end
   end
@@ -95,13 +95,13 @@ class Content < ActiveRecord::Base
   def tag=(new_tag)
     return if new_tag.blank?
 
-    tags_array = (self.tags || '').split(',')
+    tags_array = (tags || '').split(',')
     tags_array << new_tag
     self.tags = tags_array.join(',')
   end
 
   def all_tags_but(tag_to_remove)
-    tags_array = (self.tags || '').split(',')
+    tags_array = (tags || '').split(',')
     tags_array.select{|t| t != tag_to_remove}.join(',')
   end
 
@@ -117,7 +117,7 @@ class Content < ActiveRecord::Base
     User.select(User.column_names.map{|c| "users.#{c}"})
         .group(User.column_names.map{|c| "users.#{c}"})
         .joins(:participations => :content)
-        .where('contents.id = ? AND participations.user_id <> ?', self.id, author.id)
+        .where('contents.id = ? AND participations.user_id <> ?', id, author.id)
   end
 
   def commenters(author)
@@ -177,77 +177,45 @@ class Content < ActiveRecord::Base
   end
 
   def update_published_at
-    self.published_at = Time.now
+    published_at = Time.now
   end
   private :update_published_at
 
   def update_moderated_at
-    self.moderated_at = Time.now if moderated? && moderated_changed?
+    moderated_at = Time.now if moderated? && moderated_changed?
   end
   private :update_moderated_at
 
   def author_is_politician?
-    self.moderated = true if author && author.politician? && not_moderated?
+    moderated = true if author && author.politician? && not_moderated?
   end
   private :author_is_politician?
 
   def publish
 
-    return unless self.moderated? && self.author.present?
+    return unless moderated? && author.present?
 
-    user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-    user_action.published_at = self.published_at
-    user_action.message      = self.to_json
-    user_action.save!
+    author.create_public_action(self)
 
     author.areas.each do |area|
-      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      area_action.published_at = self.published_at
-      area_action.message      = self.to_json
-      area_action.save!
-
-      area.followers.each do |follower|
-        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-        user_action.published_at = self.published_at
-        user_action.message      = self.to_json
-        user_action.save!
-      end
+      area.create_public_action(self)
+      area.followers.each{|follower| follower.create_private_action(self)}
     end
 
-    author.followers.each do |follower|
-      user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      user_action.published_at = self.published_at
-      user_action.message      = self.to_json
-      user_action.save!
-    end
+    author.followers.each{|follower| follower.create_private_action(self)}
 
+    tagged_politicians.each do |politician|
+      politician.create_public_action(self)
+      politician.create_private_action(self)
+    end
   end
 
   def notify_of_new_participation(participation)
-    users.each do |user|
-      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type participation.id, participation.class.name
-      user_action.published_at = participation.published_at
-      user_action.message      = participation.to_json
-      user_action.save!
-    end
+    users.each{|user| user.create_private_action(participation)}
 
-    if author.present?
-      user_action              = author.private_actions.find_or_create_by_event_id_and_event_type participation.id, participation.class.name
-      user_action.published_at = participation.published_at
-      user_action.message      = participation.to_json
-      user_action.save!
-    end
+    author.create_private_action(participation) if author.present?
 
-    participers(author).each do |user|
-      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type participation.id, participation.class.name
-      user_action.published_at = participation.published_at
-      user_action.message      = participation.to_json
-      user_action.save!
-    end
-  end
-
-  def notification_for(user = nil)
-    tagged_politicians.each{|politician| Notification.for(politician, self)}
+    participers(author).each{|user| user.create_private_action(participation)}
   end
 
 end

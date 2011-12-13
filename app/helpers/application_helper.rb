@@ -143,10 +143,11 @@ module ApplicationHelper
   end
 
   def notifications_list
-    user_signed_in?? current_user.notifications_grouped : []
+    @notifications_list ||= user_signed_in?? current_user.notifications_grouped : []
   end
 
   def render_notification_item(notification, count, li_class = nil)
+
     case notification.item_type
     when 'Follow'
       content_tag :li, raw(t('.notifications.follow', :count => count, :name => link_to(notification.parent.fullname, user_path(notification.parent)))), :class => li_class

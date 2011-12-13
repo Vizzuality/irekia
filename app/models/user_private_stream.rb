@@ -73,7 +73,7 @@ class UserPrivateStream < ActiveRecord::Base
   end
 
   def send_notification
-    event.notification_for(user)
+    Notification.for(user, event)
   end
   private :send_notification
 

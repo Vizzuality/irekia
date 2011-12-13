@@ -44,14 +44,17 @@ class Answer < Content
     })
   end
 
+  def publish
+    super
+
+    return unless self.moderated? && self.author.present?
+
+    question.answer_requests.map(&:author).each{|user| user.create_private_action(self)}
+  end
+
   def mark_question_as_answered
     question.mark_as_answered(published_at) if question
   end
   private :mark_question_as_answered
-
-  def notification_for(user)
-    Notification.for(question.author, self)
-    question.answer_requests.map(&:author).each{|user| Notification.for(user, self)}
-  end
 
 end

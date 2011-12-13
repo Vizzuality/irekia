@@ -9,8 +9,14 @@ class Notification < ActiveRecord::Base
   after_destroy :decrement_user_counter
 
   def self.for(user, item)
-    find_or_create_by_user_id_and_item_type_and_item_id(user.id, item.class.name, item.id, :parent_id => item.parent.try(:id),
-                                                                                           :parent_type => item.parent.try(:class).try(:name))
+    return if item && item.is_a?(Content)       && item.author == user
+    return if item && item.is_a?(Participation) && (item.author == user || item.content.author == user)
+
+    create(:user_id => user.id,
+           :item_type => item.class.name,
+           :item_id => item.id,
+           :parent_id => item.parent.try(:id),
+           :parent_type => item.parent.try(:class).try(:name))
   end
 
   def increment_user_counter

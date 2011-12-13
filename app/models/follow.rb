@@ -34,16 +34,10 @@ class Follow < ActiveRecord::Base
 
   def update_follower_activity
     follow_item.contents.where('published_at > ?', 1.day.ago).each do |content|
-      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type content.id, content.class.name
-      user_action.published_at = content.published_at
-      user_action.message      = content.to_json
-      user_action.save!
+      user.create_private_action(content)
     end
-    follow_item.participations.where('published_at > ?', 1.day.ago).each do |content|
-      user_action              = user.private_actions.find_or_create_by_event_id_and_event_type content.id, content.class.name
-      user_action.published_at = content.published_at
-      user_action.message      = content.to_json
-      user_action.save!
+    follow_item.participations.where('published_at > ?', 1.day.ago).each do |participation|
+      user.create_private_action(participation)
     end
   end
   private :update_follower_activity

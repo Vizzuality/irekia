@@ -87,6 +87,13 @@ class Area < ActiveRecord::Base
     .all
   end
 
+  def create_action(item)
+    public_action              = actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
+    public_action.published_at = item.published_at
+    public_action.message      = item.to_json
+    public_action.save!
+  end
+
   def contents
     Content.joins(:author => :areas).where('areas.id' => self.id)
   end

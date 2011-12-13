@@ -45,6 +45,19 @@ class Vote < Participation
     })
   end
 
+  def publish
+    super
+
+    return unless moderated? && author.present?
+
+    if proposal.target_area
+      proposal.target_area.team.each do |politician|
+        politician.create_public_action(self)
+        politician.create_private_action(self)
+      end
+    end
+  end
+
   def set_as_moderated
     self.moderated = true
   end
@@ -54,11 +67,5 @@ class Vote < Participation
     proposal.update_statistics if moderated?
   end
   private :update_proposal
-
-  def notification_for(user)
-    super(user)
-    content.participers(author).where('participations.type' => 'Vote').each{|user| Notification.for(user, self)}
-    proposal.target_area.team.reject{|politician| politician == author}.each{|politician| Notification.for(politician, self)} if proposal.target_area
-  end
 
 end
