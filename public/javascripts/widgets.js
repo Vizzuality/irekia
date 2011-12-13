@@ -95,18 +95,28 @@ var GOD = (function() {
     });
   }
 
-  $(function() {
+  function _unBindEscKey() {
+    $(document).unbind("keyup");
+  }
+
+  function _bindEscKey() {
     $(document).keyup(function(e) {
+      e.stopPropagation();
       e.keyCode == 27 && _signalAll();
     });
+  }
 
+  $(function() {
+    _bindEscKey();
     $('html').click(_signalAll);
   });
 
   return {
     subscribe: subscribe,
     unsubscribe: unsubscribe,
-    broadcast: broadcast
+    broadcast: broadcast,
+    bindEsc: _bindEscKey,
+    unbindEsc: _unBindEscKey
   };
 })();
 

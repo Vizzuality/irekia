@@ -714,8 +714,10 @@
   }
 
   function _center(data) {
-    var top  = _getTopPosition(data.$ps);
-    data.$ps.animate({ top:top }, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    setTimeout(function() {
+      var top  = _getTopPosition(data.$ps);
+      data.$ps.animate({ top:top }, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    }, 200);
   }
 
   function _triggerOpenAnimation(data) {
