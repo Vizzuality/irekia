@@ -13,8 +13,4 @@ class QuestionData < ActiveRecord::Base
 
   accepts_nested_attributes_for :question, :target_user, :target_area
 
-  def publish
-    question.publish if question.present?
-  end
-
 end

@@ -12,8 +12,4 @@ class ProposalData < ActiveRecord::Base
 
   delegate :content_url, :to => :image
 
-  def publish
-    proposal.publish if proposal.present?
-  end
-
 end

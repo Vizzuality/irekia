@@ -1501,6 +1501,7 @@
       account_configuration: Configuración de tu cuenta
       access_data: Datos de acceso a Irekia
       notifications:
+        title: Notificaciones
         minimal:
           title: Mínimas
           description: Recibirás los emails estrictamente necesarios para la gestión de tu cuenta.
@@ -1698,7 +1699,7 @@
         more_polemic: Más polémicas
       proposals:
         title:
-          zero: No has hecho ninguna propuesta
+          zero: Propuestas en las que participas
           one: Has hecho 1 propuesta
           other: 'Has hecho %{count} propuestas'
         proposal_support: Estas propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;

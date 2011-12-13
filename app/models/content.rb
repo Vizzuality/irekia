@@ -125,7 +125,7 @@ class Content < ActiveRecord::Base
   end
 
   def comments_count
-    comments.reload.size
+    comments.reload.size || 0
   end
 
   def last_comments
@@ -177,17 +177,17 @@ class Content < ActiveRecord::Base
   end
 
   def update_published_at
-    published_at = Time.now
+    self.published_at = Time.now
   end
   private :update_published_at
 
   def update_moderated_at
-    moderated_at = Time.now if moderated? && moderated_changed?
+    self.moderated_at = Time.now if moderated? && moderated_changed?
   end
   private :update_moderated_at
 
   def author_is_politician?
-    moderated = true if author && author.politician? && not_moderated?
+    self.moderated = true if author && author.politician? && not_moderated?
   end
   private :author_is_politician?
 
@@ -198,7 +198,7 @@ class Content < ActiveRecord::Base
     author.create_public_action(self)
 
     author.areas.each do |area|
-      area.create_public_action(self)
+      area.create_action(self)
       area.followers.each{|follower| follower.create_private_action(self)}
     end
 

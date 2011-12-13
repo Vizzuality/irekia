@@ -244,10 +244,11 @@ class User < ActiveRecord::Base
   end
 
   def create_private_action(item)
-    return if item && item.is_a?(Content)       && item.author == self
-    return if item && item.is_a?(Participation) && (item.author == self || item.content.author == self)
+    return if item && item.is_a?(Content)       && item.author.id == id
+    return if item && item.is_a?(Participation) && (item.author.id == id || item.content.author.id == item.author.id)
 
     private_action              = private_actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
+    #private_action              = private_actions.create :event_id => item.id, :event_type => item.class.name
     private_action.published_at = item.published_at
     private_action.message      = item.to_json
     private_action.save!
