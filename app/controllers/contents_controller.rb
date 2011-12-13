@@ -245,7 +245,9 @@ class ContentsController < ApplicationController
           config.oauth_token        = current_user.twitter_oauth_token
           config.oauth_token_secret = current_user.twitter_oauth_token_secret
         end
-        Twitter.update(@content.twitter_share_message)
+        twitter_message_link = url_for(@content.parent || @content)
+        twitter_message = @content.twitter_share_message.truncate(139 - twitter_message_link.length) + ' ' + twitter_message_link
+        Twitter.update(twitter_message)
       rescue => e
         Rails.logger.error e
       end

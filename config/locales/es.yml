@@ -1878,9 +1878,9 @@
           citizen: Ciudadano
   sharing:
     facebook:
-      answer: 'He respondido a la pregunta %{question}'
+      answer: 'He respondido a la pregunta: %{question}'
     twitter:
-      answer: 'He respondido a la pregunta %{question}'
+      answer: 'He respondido a la pregunta: %{question}'
 
 #######################################
 # IREKIA - Mailers
