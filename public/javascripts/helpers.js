@@ -732,6 +732,23 @@ jQuery.fn.enableEditTags = function(opt){
   });
 }
 
+/* Enables radio buttons */
+jQuery.fn.enableRadio = function(opt){
+  this.each(function(){
+    var $this = $(this);
+
+    $this.find("a.radio").click(function(e){
+      console.log($(this));
+      e.preventDefault();
+      $this.find("a.radio").removeClass("selected");
+      $(this).addClass('selected');
+      $this.find('input[type="radio"]').val(0).attr('checked', false);
+      $(this).find('input[type="radio"]').val(1).attr('checked', true);
+
+    });
+  });
+}
+
 /* Enables checkboxes */
 jQuery.fn.enableCheckbox = function(opt){
 
@@ -747,7 +764,6 @@ jQuery.fn.enableCheckbox = function(opt){
         $(this).closest('p, div').find('input[type="checkbox"]').val(0).attr('checked', false);
       }
     });
-
   });
 }
 
@@ -842,7 +858,6 @@ jQuery.fn.enableArguments = function(opt){
       }, duration);
     }
 
-    
     $(this).find(".placeholder").smartPlaceholder();
 
     $(this).find(".new_argument").bind('ajax:error', function(evt, xhr, status) {

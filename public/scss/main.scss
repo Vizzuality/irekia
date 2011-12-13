@@ -463,7 +463,7 @@ Articles
     header p { margin: 14px 0 0 0; font-size:17px; color:$standard_gray; }
     header p.position { padding: 0; margin: 0; font-size:17px; color:$standard_gray; }
 
-    h1 { margin-bottom: 5px; font-size: 41px; color: $dark_blue; font-weight: 300; 
+    h1 { margin-bottom: 5px; font-size: 41px; color: $dark_blue; font-weight: 300;
       a {
         float:left; color:#465866; text-decoration:none;
         &:hover {color:#465866; text-decoration:none;}
@@ -1610,6 +1610,7 @@ div#main.show div.left img {margin:4px 0 7px;}
       display: none;
       margin: 0 0 0 0;
 
+
       .search_box {
         margin:0; padding:0;
         position: relative;
@@ -1628,7 +1629,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
     .field {
       margin: 0 0 20px 0;
-      // background: red;
+
       .input-counter { margin-bottom: 0; } // TODO: After adding .field, remove input-counter margin: 24px;
       .uploader { height: 29px; margin: 0; }
 
@@ -1652,7 +1653,7 @@ div#main.show div.left img {margin:4px 0 7px;}
         float: left;
         width: 534px;
         padding:10px;
-        margin: 0 0 20px 0;
+        //margin: 0 0 20px 0;
         background:#EDF3E5;
         line-height:normal;
         @include border-radius(3px);
@@ -4485,18 +4486,36 @@ input {
     .left {
       fieldset {
         .field {
+          margin-bottom: 20px;
           .input_field { width:415px; z-index:299999; }
 
-          &.social { float:left; }
+          .radios {
+            a { display:block; float:left; position:relative; }
+            input[type="radio"] { left: -9000px; position: absolute; }
+          }
+
+          &.social {
+            float:left;
+
+            margin: 0;
+            .social-links { margin: 0 0 10px 0; }
+
+          }
+
+          &.password {
+            margin: 0 10px 0 0;
+          }
+
+          select, .dk_container { float:left; margin:0 5px 0 0; }
 
           &.born_at {
             float:left;
             width:415px;
             clear:right;
 
-            select, .dk_container { float:left; margin:0 5px 0 0; }
             .input_field { width:415px; }
           }
+
           &.pull-left { float:left; clear:left; margin-right:6px; }
           &.pull-right { float:left;  }
         } // field
@@ -4509,7 +4528,10 @@ input {
         position:absolute;
         background:#f1f1f1;
         padding:5px;
+        color: #465866;
+        font-size:15px;
         @include border-radius(5px);
+
         a { color:#465866; font-size:15px; text-decoration:underline; }
 
         p {
