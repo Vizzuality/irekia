@@ -7,9 +7,9 @@
     <div class="areas_selector">
 
       <% if @content && (area = @content.content_area) %>
-        <%= area.try(:name) %>
+        <span><%= area.try(:name) %></span>
       <% else %>
-        <%= @area ? @area.name : (content_tag :span, t(".choose_an_area")) %>
+        <span><%= @area ? @area.name : (content_tag :span, t(".choose_an_area")) %></span>
       <% end %>
 
       <span class="handle"></span>
