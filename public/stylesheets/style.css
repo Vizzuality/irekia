@@ -280,9 +280,11 @@ header nav .content .areas_selector .handle { position: absolute; display: block
 header nav .content .areas_selector .popover { display: none; position: absolute; width: 246px; height: 311px; z-index: 1000; background: url("/images/popovers_bkg.png") no-repeat -3px -536px; }
 header nav .content .areas_selector .popover .scroll-pane { height: 232px; width: 210px; overflow: hidden; margin: 20px 0 0 17px; outline: none; }
 header nav .content .areas_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 210px; }
-header nav .content .areas_selector .popover .scroll-pane ul li { text-shadow: none; color: #333; }
-header nav .content .areas_selector .popover .scroll-pane ul li.last a { border: none; }
-header nav .content .areas_selector .popover .scroll-pane ul li a { display: block; padding: 10px 0 10px 0; border-bottom: 1px solid #f1f1f1; }
+header nav .content .areas_selector .popover .scroll-pane ul li { text-shadow: none; color: #333; border-bottom: 1px solid #f1f1f1; padding: 8px 0; }
+header nav .content .areas_selector .popover .scroll-pane ul li.last { border: none; }
+header nav .content .areas_selector .popover .scroll-pane ul li a { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; padding: 5px 0 0 0; }
+header nav .content .areas_selector .popover .scroll-pane ul li a img { width: 28px; height: 28; }
+header nav .content .areas_selector .popover .scroll-pane ul li a.avatar { width: 33px; padding: 0; }
 header nav .content .areas_selector .popover .scroll-pane ul li a:hover { text-decoration: underline; }
 header nav .content ul.auth { float: right; }
 header nav .content ul.auth div.blue_button { height: 32px; }
@@ -316,8 +318,10 @@ Articles
 #container .article .inner header p { margin: 14px 0 0 0; font-size: 17px; color: #7d8a92; }
 #container .article .inner header p.position { padding: 0; margin: 0; font-size: 17px; color: #7d8a92; }
 #container .article .inner h1 { margin-bottom: 5px; font-size: 41px; color: #465866; font-weight: 300; }
-#container .article .inner h1 a { color: #465866; text-decoration: none; }
+#container .article .inner h1 a { float: left; color: #465866; text-decoration: none; }
 #container .article .inner h1 a:hover { color: #465866; text-decoration: none; }
+#container .article .inner h1 a.avatar { margin: 0 15px 0 0; padding: 0; }
+#container .article .inner h1 a.area_title { padding: 5px 0 0 0; }
 #container .article .inner h2 { margin-bottom: 5px; font-size: 31px; color: #465866; line-height: 31px; font-weight: 300; }
 #container .article .inner h3 { margin-bottom: 7px; font-size: 12px; color: #465866; font-weight: bold; text-transform: uppercase; }
 #container .article .inner p { margin-bottom: 20px; color: #465866; }
@@ -1095,6 +1099,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* close */
 #container .article { /* Maps */ }
 #container .article span.close { position: absolute; top: 3px; right: 10px; display: block; width: 9px; height: 8px; background: url("/images/icons/icon_sprite.png") no-repeat; cursor: pointer; }
+#container .article span.close:hover { background-position: 0 -9px; }
 #container .article .map span.close { top: 11px; }
 #container .article .inner .content ul.questions li { clear: both; overflow: hidden; margin: 0 0 13px 0; padding: 10px; background: #F2F5F8; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container .article .inner .content ul.questions li:last-child, #container .article .inner .content ul.questions li.last { margin-bottom: 0; }

@@ -8,31 +8,24 @@
   <div class="home">
     <h4><%= t('.home.title') %></h4>
     <ul>
-      <li><%= link_to t('.home.agenda'), '/in_development' %></li>
-      <li><%= link_to t('.home.proposals'), '/in_development' %></li>
-      <li><%= link_to t('.home.sign_up'), '/in_development' %></li>
-      <li><%= link_to t('.home.sign_in'), '/in_development' %></li>
+      <li><%= link_to t('.home.agenda'), '/agenda' %></li>
+      <!-- <li><%= link_to t('.home.proposals'), '/in_development' %></li> -->
+      <li><%= link_to t('.home.sign_up'), '/users/intro' %></li>
+      <li><%= link_to t('.home.sign_in'), '#login', :class => "floating-login" %></li>
     </ul>
   </div>
   <div class="areas">
     <h4><%= t('.areas.title') %></h4>
     <ul>
-      <li><%= link_to t('.areas.vasque_government'), '/in_development' %></li>
-      <li><%= link_to t('.areas.presidence'), '/in_development' %></li>
-      <li><%= link_to t('.areas.interior'), '/in_development' %></li>
-      <li><%= link_to t('.areas.education'), '/in_development' %></li>
-      <li><%= link_to t('.areas.economy'), '/in_development' %></li>
-      <li><%= link_to t('.areas.justice'), '/in_development' %></li>
-      <li><%= link_to t('.areas.housing'), '/in_development' %></li>
+      <li><%= link_to t('.areas.vasque_government'), 'http://www.euskadi.net' %></li>
+      <% Area.all.first(8).each do |area| %>
+        <li><%= link_to area.name, area %></li>
+      <% end %>
     </ul>
     <ul>
-      <li><%= link_to t('.areas.public_works'), '/in_development' %></li>
-      <li><%= link_to t('.areas.industry'), '/in_development' %></li>
-      <li><%= link_to t('.areas.comerce'), '/in_development' %></li>
-      <li><%= link_to t('.areas.employment'), '/in_development' %></li>
-      <li><%= link_to t('.areas.health'), '/in_development' %></li>
-      <li><%= link_to t('.areas.environment'), '/in_development' %></li>
-      <li><%= link_to t('.areas.culture'), '/in_development' %></li>
+      <% Area.all.first(9).each do |area| %>
+        <li><%= link_to area.name, area %></li>
+      <% end %>
     </ul>
   </div>
   <div class="about">
