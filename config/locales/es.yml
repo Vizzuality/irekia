@@ -598,6 +598,7 @@
         author: '%{author} hace %{time}'
         against: en contra
         in_favor: a favor
+        neutral: a favor
         votes:
           zero: 0 votos
           one: 1 voto
