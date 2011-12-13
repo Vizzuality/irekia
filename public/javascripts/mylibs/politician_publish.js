@@ -1,16 +1,7 @@
-
 (function($, window, document) {
 
-  var ie6 = false;
-
-  // Help prevent flashes of unstyled content
-  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
-    ie6 = true;
-  } else {
-    document.documentElement.className = document.documentElement.className + ' ps_fouc';
-  }
-
   var
+  ie = ($.browser.msie && $.browser.version.substr(0, 1) < 9),
   $popover,
   currentHeight = 0,
   $currentSection,
@@ -18,7 +9,6 @@
   $menu,
   spin_element = document.getElementById('publish_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
-  submitting = false,
   store = "publish-popover",
   // Public methods
   methods = { },
@@ -91,12 +81,10 @@
 
   // Expose the plugin
   $.fn.politicianPublishPopover = function(method) {
-    if (!ie6) {
-      if (methods[method]) {
-        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-      } else if (typeof method === 'object' || !method) {
-        return methods.init.apply(this, arguments);
-      }
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
     }
   };
 
@@ -176,13 +164,11 @@
   }
 
   function _enableSubmit($submit) {
-    submitting = false;
     $submit.removeClass("disabled");
     $submit.removeAttr("disabled");
   }
 
   function _disableSubmit($submit) {
-    submitting = true;
     $submit.addClass("disabled");
     $submit.attr("disabled", "disabled");
   }
@@ -380,7 +366,7 @@
 
       _showExtraFields(data.settings.transitionSpeed);
       _resizeSection(data, $currentSection, function() {
-      _center(data);
+        _center(data);
       });
 
       _disableSubmit(data.$submit);
@@ -555,7 +541,7 @@
   function _setupUpload(data, section, id, callback) {
 
     var $ps = data.$ps,
-				$span  = $ps.find("#" + id);
+    $span  = $ps.find("#" + id);
 
     if ($span.length > 0) {
 
@@ -566,10 +552,10 @@
       var uploader = new qq.FileUploader({
         element: document.getElementById(id),
         action: $span.attr('data-url'),
-				params: {
-					utf8: $span.closest('form').find('input[name=utf8]').val(),
-					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
-				},
+        params: {
+          utf8: $span.closest('form').find('input[name=utf8]').val(),
+          authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
+        },
         debug: true,
         text: $span.html(),
         onSubmit: function(id, fileName){
@@ -577,30 +563,30 @@
 
           //console.log("Submit", $section);
 
-					$section.find(".progress").show();
+          $section.find(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
-					$uploader.find("input").blur();
+          $uploader.find("input").blur();
           $uploader.find(".holder").fadeOut(speed);
           $uploader.find(".loading, .percentage").fadeIn(speed);
         },
         onProgress: function(id, fileName, loaded, total){
-					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
-					var width = parseInt(665 * parseInt(p, 10) / 100, 10);
+          var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
+          var width = parseInt(665 * parseInt(p, 10) / 100, 10);
 
           console.log("uploading…");
-					//console.debug(p, width, arguments, arguments[2], arguments[3]);
+          //console.debug(p, width, arguments, arguments[2], arguments[3]);
 
-					if (parseInt(p) >= 75) $section.find(".uploader").find(".loading").fadeOut(speed);
-					if (parseInt(p) >= 46) $section.find(".uploader").find(".percentage").css("color", "#fff");
+          if (parseInt(p) >= 75) $section.find(".uploader").find(".loading").fadeOut(speed);
+          if (parseInt(p) >= 46) $section.find(".uploader").find(".percentage").css("color", "#fff");
 
           $uploader.find(".percentage").html(parseInt(p, 10) + "%");
-				  $section.find(".progress").css("width", width);
-				},
+          $section.find(".progress").css("width", width);
+        },
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();
 
           console.log("complete", $section);
-					//console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+          //console.debug(fileName, responseJSON, responseJSON.image_cache_name);
 
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);
@@ -609,7 +595,7 @@
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
 
-					$section.find('.image_cache_name').val(responseJSON.image_cache_name);
+          $section.find('.image_cache_name').val(responseJSON.image_cache_name);
 
           $(cacheImage).bind("load", function () {
 
@@ -628,7 +614,7 @@
           $uploader.find(".progress").fadeOut(speed, function() {
             $(this).width(0);
           });
-				},
+        },
         onCancel: function(id, fileName){ }
       });
     }
@@ -733,8 +719,17 @@
     var top  = _getTopPosition(data.$ps);
     var left = _getLeftPosition(data.$ps);
 
-    data.$ps.css({"top":(top + 100) + "px", "left": left + "px"});
-    data.$ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    if (ie) {
+      $ps.removeClass("initialy_hidden");
+      $ps.css({top: top + "px", left: left + "px"});
+
+      $ps.fadeIn(data.settings.transitionSpeed, function() {
+        $(this).find("textarea.title").focus();
+      });
+    } else {
+      data.$ps.css({"top":(top + 100) + "px", "left": left + "px"});
+      data.$ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    }
   }
 
   function _getTopPosition($ps) {
@@ -745,9 +740,21 @@
     return (($(window).width() - $ps.width()) / 2);
   }
 
-  function _clearInfo($ps) {
-    $ps.find("textarea").val("");
-    _disableSubmit($ps);
+  function _clearInfo(data) {
+    data.$ps.find("textarea").val("");
+    _disableSubmit(data.$submit);
+  }
+
+  function _afterClose(data, hideLockScreen, callback) {
+    _clearInfo(data.$ps);
+
+    data.$ps.find(".extra").hide();
+    data.$ps.find(".holder").show();
+    _resizeSection(data, $currentSection);
+    data.$ps.find(".message").fadeOut(150);
+
+    hideLockScreen && LockScreen.hide();
+    callback && callback();
   }
 
   // Close popover
@@ -755,18 +762,16 @@
 
     _clearAutosuggest(data);
 
-    data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
-      $(this).css("top", "-900px");
-      _clearInfo(data.$ps);
-
-      data.$ps.find(".extra").hide();
-      data.$ps.find(".holder").show();
-      _resizeSection(data, $currentSection);
-      data.$ps.find(".message").fadeOut(150);
-
-      hideLockScreen && LockScreen.hide();
-      callback && callback();
-    }});
+    if (ie) {
+      data.$ps.fadeOut(data.settings.transitionSpeed, function() {
+        _afterClose(data, hideLockScreen, callback);
+      });
+    } else {
+      data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+        $(this).css("top", "-900px");
+        _afterClose(data, hideLockScreen, callback);
+      }});
+    }
   }
 
   // setup the close event & signal the other subscribers

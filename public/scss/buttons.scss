@@ -398,6 +398,10 @@ White buttons
 .ie7 #container .article.mini.popover.with_footer,
 .ie8 #container .article.mini.popover.with_footer {
 
+  .input_field.uploader {
+    input[type="text"] { line-height:33px; border: 1px solid #ccc; width:535px;}
+  }
+
   .input_field.autosuggest_field {
     input[type="text"] { line-height:33px; border: 1px solid #ccc; width:535px;}
     .holder { width:535px; }

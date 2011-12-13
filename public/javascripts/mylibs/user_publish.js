@@ -1,6 +1,7 @@
 (function($, window, document) {
 
   var
+  ie = ($.browser.msie && $.browser.version.substr(0, 1) < 9),
   $article      = $(this),
   currentHeight = 0,
   $currentSection,
@@ -8,7 +9,6 @@
   $menu,
   spin_element = document.getElementById('publish_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
-  submitting = false,
   store = "publish-popover",
   // Public methods
   methods = { },
@@ -172,13 +172,11 @@
   }
 
   function _enableSubmit($submit) {
-    submitting = false;
     $submit.removeClass("disabled");
     $submit.removeAttr("disabled");
   }
 
   function _disableSubmit($submit) {
-    submitting = true;
     $submit.addClass("disabled");
     $submit.attr("disabled", "disabled");
   }
@@ -724,8 +722,17 @@
     var top  = _getTopPosition(data.$ps);
     var left = _getLeftPosition(data.$ps);
 
-    data.$ps.css({"top":(top + 100) + "px", "left": left + "px"});
-    data.$ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    if (ie) {
+      $ps.removeClass("initialy_hidden");
+      $ps.css({top: top + "px", left: left + "px"});
+
+      $ps.fadeIn(data.settings.transitionSpeed, function() {
+        $(this).find("textarea.title").focus();
+      });
+    } else {
+      data.$ps.css({"top":(top + 100) + "px", "left": left + "px"});
+      data.$ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    }
   }
 
   function _getTopPosition($ps) {
@@ -736,32 +743,41 @@
     return (($(window).width() - $ps.width()) / 2);
   }
 
-  function _clearInfo($ps) {
-    $ps.find("textarea").val("");
-    $ps.find(".counter").html(140);
-    _disableSubmit($ps);
+  function _clearInfo(data) {
+    data.$ps.find("textarea").val("");
+    data.$ps.find(".counter").html(140);
+    _disableSubmit(data.$submit);
+  }
+
+  function _afterClose(data, hideLockScreen, callback) {
+     _clearInfo(data);
+
+     data.questionStep = 0;
+     data.proposalStep = 0;
+
+     data.$ps.find(".extra").hide();
+     data.$ps.find(".holder").show();
+     _resizeSection(data, $currentSection);
+     data.$ps.find(".message").remove();
+
+    hideLockScreen && LockScreen.hide();
+    callback && callback();
   }
 
   // Close popover
   function _close(data, hideLockScreen, callback) {
-
     _clearAutosuggest(data);
 
-    data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
-      $(this).css("top", "-900px");
-      _clearInfo(data.$ps);
-
-      data.questionStep = 0;
-      data.proposalStep = 0;
-
-      data.$ps.find(".extra").hide();
-      data.$ps.find(".holder").show();
-      _resizeSection(data, $currentSection);
-      data.$ps.find(".message").remove();
-
-      hideLockScreen && LockScreen.hide();
-      callback && callback();
-    }});
+    if (ie) {
+      data.$ps.fadeOut(data.settings.transitionSpeed, function() {
+        _afterClose(data, hideLockScreen, callback);
+      });
+    } else {
+      data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+        $(this).css("top", "-900px");
+        _afterClose(data, hideLockScreen, callback);
+      }});
+    }
   }
 
   // setup the close event & signal the other subscribers

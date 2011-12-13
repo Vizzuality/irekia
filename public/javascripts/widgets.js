@@ -62,7 +62,7 @@ var LockScreen = (function() {
 */
 var GOD = (function() {
   var subscribers = {};
-  var debug = true;
+  var debug = false;
 
   function unsubscribe(event) {
     debug && console.log("Unsubscribe ->", event);
