@@ -220,12 +220,12 @@
   }
 
   function _bindTextInputs(data) {
-    _enableInputCounter($("#status_message_status_message_data_attributes_message"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
-    _enableInputCounter($("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
-    _enableInputCounter($(".autosuggest_field input"), null, function() { _clearAutosuggest(data); _resetHiddenFields(); } );
-    _enableInputCounter($(".section.video .input_field.vimeo input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
-    _enableInputCounter($(".section.video .input_field.youtube input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
-    _enableInputCounter($(".section.photo .input_field input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+    _enableInputCounter(data.$ps.find("#status_message_status_message_data_attributes_message"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+    _enableInputCounter(data.$ps.find("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
+    _enableInputCounter(data.$ps.find(".autosuggest_field input"), null, function() { _clearAutosuggest(data); _resetHiddenFields(); } );
+    _enableInputCounter(data.$ps.find(".section.video .input_field.vimeo input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+    _enableInputCounter(data.$ps.find(".section.video .input_field.youtube input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
+    _enableInputCounter(data.$ps.find(".section.photo .input_field input"), function() { _enableSubmit(data.$submit); }, function() { _disableSubmit(data.$submit); } );
   }
 
   function _bindActions(data) {
@@ -723,8 +723,10 @@
   }
 
   function _center(data) {
-    var top  = _getTopPosition(data.$ps);
-    data.$ps.animate({ top:top }, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    setTimeout(function() {
+      var top  = _getTopPosition(data.$ps);
+      data.$ps.animate({ top:top }, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }});
+    }, 200);
   }
 
   function _triggerOpenAnimation(data) {
