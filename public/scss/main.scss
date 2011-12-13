@@ -2290,11 +2290,11 @@ span.where, .map .infowindow ul.details li.where {
         p { line-height: 16px; }
 
         ul {
-          border-bottom: 1px solid $white;
           li {
             padding: 10px;
             margin:0;
             background: rgba(237, 237, 239, 0.7);
+            border-bottom: 1px solid $white;
 
             a {color:$link_color;}
             &.previous { padding:0; border:none; display:none;}
