@@ -216,11 +216,6 @@
     // Remove image link
     $ps.find(".image_container a.remove").unbind();
     $ps.find(".image_container a.remove").bind("click", function(e) { _resetImageContainer(e, data); } );
-
-    $ps.find(".section .open_upload").click(function(e) {
-      e && e.preventDefault();
-      $(this).closest("input[type='file']").click();
-    });
   }
 
   function _resizeSection(data, $section, callback) {
@@ -504,7 +499,7 @@
 					utf8: $span.closest('form').find('input[name=utf8]').val(),
 					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
 				},
-        debug: false,
+        debug: true,
         text: $span.html(),
         onSubmit: function(id, fileName){
           data.spinner.spin(spin_element);
@@ -518,7 +513,7 @@
 					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
 					var width = parseInt(665 * parseInt(p, 10) / 100, 10);
 
-					//console.debug(p, width, arguments, arguments[2], arguments[3]);
+					console.debug(p, width, arguments, arguments[2], arguments[3]);
 
 					if (parseInt(p) >= 75) $ps.find(".uploader").find(".loading").fadeOut(speed);
 					if (parseInt(p) >= 46) $ps.find(".uploader").find(".percentage").css("color", "#fff");
@@ -529,7 +524,7 @@
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();
 
-					//console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);
           $uploader.find(".percentage").fadeOut(speed);
@@ -603,7 +598,6 @@
         _bindSubmit(data, "Publicar", true, "publish");
         _clearAutosuggest(data);
         _enableSubmit(data.$submit);
-
       });
 
       $currentSection.find(".autosuggest").fadeOut(150, function() {
@@ -799,7 +793,7 @@
       e.stopPropagation();
       e.preventDefault();
       $.ajax({ url: '/areas', data: {}, success: function(data) {
-        //console.log(data);
+        console.log(data);
       }});
     });
   }

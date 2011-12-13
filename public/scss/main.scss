@@ -952,8 +952,9 @@ div#main.show div.left img {margin:4px 0 7px;}
     .inner {
       width: 994px;
       padding: 105px 0 100px 0;
+      text-align:left;
 
-      h2 { margin: 0 0 14px 0; }
+      h2 { text-align:left; margin: 0 0 14px 0; }
 
       .icon {
         width:93px;
@@ -970,10 +971,11 @@ div#main.show div.left img {margin:4px 0 7px;}
 
       .message {
         float:left;
+        text-align:left;
         width:555px;
       }
 
-      p { margin: 0 0 16px 0; color: #7D8A92; font-size: 17px; }
+      p { text-align: left; margin: 0 0 16px 0; color: #7D8A92; font-size: 17px; }
     } // inner
   } // help
 
@@ -1172,7 +1174,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
                 .input_field {
                   margin: 0 0 20px 0!important;
-                  &.uploader .holder { left: 0; }
+                  &.uploader .holder { width:600px; left: 10px; }
                   .holder { width: 670px; }
                   .all {
                     position:absolute;
@@ -1610,12 +1612,7 @@ div#main.show div.left img {margin:4px 0 7px;}
       display: none;
       margin: 0 0 0 0;
 
-
-      .search_box {
-        margin:0; padding:0;
-        position: relative;
-        width: 685px; height: 35px;
-      }
+      .search_box { margin:0; padding:0; position: relative; width: 685px; height: 35px; }
 
       .all {
         position:absolute;
@@ -2805,9 +2802,7 @@ span.where, .map .infowindow ul.details li.where {
   clear:both;
 
   &.extra {
-    .inner-cycle {
-      height:750px;
-    }
+    .inner-cycle { height:750px; }
   }
 
   &.extra-margin {

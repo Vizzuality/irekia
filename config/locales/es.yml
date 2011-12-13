@@ -1699,10 +1699,7 @@
         more_recent: Más recientes
         more_polemic: Más polémicas
       proposals:
-        title:
-          zero: Propuestas en las que participas
-          one: Has hecho 1 propuesta
-          other: 'Has hecho %{count} propuestas'
+        title: "Propuestas en las que participas"
         proposal_support: Estas propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;
         proposal_support_count:
           zero: Ninguna a favor

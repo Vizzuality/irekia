@@ -83,7 +83,8 @@
                   </div>
 
                   <div class="extra">
-                    <div class="input_field uploader">
+                    <div class="input_field placeholder uploader">
+                      <input type="text" />
                       <span class="holder"><span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>">Sube una imagen.</span></span>
                       <span class="percentage">0%</span>
                       <span class="loading">Cargando imagen...</span>
@@ -100,23 +101,22 @@
                       <%= proposal_data.text_area :body, :class => :body %>
                       <span class="holder">Describe la propuesta en pocas palabras</span>
                     </div>
-                  </div>
+
+
+                    <strong>¿A qué area le quieres dirigir la pregunta?</strong>
+                    <div class="input_field autosuggest_field placeholder">
+                      <div class="search_box clearfix">
+                        <input type="text" class="search" />
+                        <span class="holder">
+                          Nombre de área...
+                          <span class="all">... o <a href="#">ver todas las áreas</a></span>
+                        </span>
+                        <span class="spinner" id="search_question_spinner"></span>
+                      </div>
+                    </div>
+
+                  <% end -%>
                 <% end -%>
-              <% end -%>
-
-              <div class="extra">
-
-                <strong>¿A qué area le quieres dirigir la pregunta?</strong>
-                <div class="input_field autosuggest_field placeholder">
-                  <div class="search_box clearfix">
-                    <input type="text" class="search" />
-                    <span class="holder">
-                      Nombre de área...
-                      <span class="all">... o <a href="#">ver todas las áreas</a></span>
-                    </span>
-                    <span class="spinner" id="search_question_spinner"></span>
-                  </div>
-                </div>
 
               </div>
             </div>
@@ -130,14 +130,14 @@
   </div>
 
   <div class="bfooter">
-  <div class="separator"></div>
-  <div class="inner">
-    <div class="left"></div>
-    <div class="right">
-      <%= button t('.continue'), :class => "white_button pink publish right disabled" %>
-      <span class="spinner" id="publish_spinner"></span>
+    <div class="separator"></div>
+    <div class="inner">
+      <div class="left"></div>
+      <div class="right">
+        <%= button t('.continue'), :class => "white_button pink publish right disabled" %>
+        <span class="spinner" id="publish_spinner"></span>
+      </div>
     </div>
-  </div>
   </div>
   <div class="t"></div><div class="f"></div>
 </div>

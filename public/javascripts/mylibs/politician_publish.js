@@ -746,7 +746,7 @@
   }
 
   function _afterClose(data, hideLockScreen, callback) {
-    _clearInfo(data.$ps);
+    _clearInfo(data);
 
     data.$ps.find(".extra").hide();
     data.$ps.find(".holder").show();
