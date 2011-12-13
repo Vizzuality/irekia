@@ -21,11 +21,4 @@ class Image < ActiveRecord::Base
     image.list_element.url
   end
 
-  def publish
-    photo.publish         if photo.present?
-    news_data.publish     if news_data.present?
-    proposal_data.publish if proposal_data.present?
-    event_data.publish    if event_data.present?
-  end
-
 end

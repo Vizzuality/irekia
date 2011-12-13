@@ -4,8 +4,4 @@ class NewsData < ActiveRecord::Base
 
   accepts_nested_attributes_for :image, :allow_destroy => true
 
-  def publish
-    news.publish if news.present?
-  end
-
 end

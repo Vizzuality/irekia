@@ -1,4 +1,5 @@
 class VoteData < ActiveRecord::Base
+
   belongs_to :vote,
              :foreign_key => :vote_id
 
@@ -6,7 +7,4 @@ class VoteData < ActiveRecord::Base
     !in_favor
   end
 
-  def publish
-    vote.publish if vote.present?
-  end
 end

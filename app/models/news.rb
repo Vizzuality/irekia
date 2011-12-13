@@ -41,6 +41,8 @@ class News < Content
   end
 
   def publish
+    super
+
     return unless self.moderated?
 
     areas.each{|area| area.create_action(self)}
