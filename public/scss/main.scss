@@ -1684,9 +1684,9 @@ div#main.show div.left img {margin:4px 0 7px;}
         width:534px;
 
         .qq-upload-button { margin: 0; }
-
+        input[type="text"] { width: 534px; }
         .holder {
-          left: 0;
+          left: 10px;
           span {
             float:left;
             &.upload { cursor:pointer; }

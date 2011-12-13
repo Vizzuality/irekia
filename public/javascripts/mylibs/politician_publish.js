@@ -444,8 +444,8 @@
     var $response = $(xhr);
 
     data.spinner.stop();
-    //$response.hide();
-    //$form.after($response);
+    $response.hide();
+    $form.after($response);
     data.$ps.find(".extra").hide();
     data.$ps.find(".holder").show();
     data.$ps.find(":text, textarea").val("");
@@ -453,7 +453,6 @@
   }
 
   function _successMessage(data, $form, xhr) {
-    console.log(data, $form, xhr);
     var $ps = data.$ps;
     var $response = $(xhr);
 

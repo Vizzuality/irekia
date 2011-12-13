@@ -603,7 +603,8 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.popover.proposal .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
 #container .article.popover.proposal .uploader { float: left; width: 534px; }
 #container .article.popover.proposal .uploader .qq-upload-button { margin: 0; }
-#container .article.popover.proposal .uploader .holder { left: 0; }
+#container .article.popover.proposal .uploader input[type="text"] { width: 534px; }
+#container .article.popover.proposal .uploader .holder { left: 10px; }
 #container .article.popover.proposal .uploader .holder span { float: left; }
 #container .article.popover.proposal .uploader .holder span.upload { cursor: pointer; }
 #container .article.popover.proposal .uploader.textarea { height: 76px; margin: 0 0 10px 0; }
