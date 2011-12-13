@@ -395,6 +395,16 @@ White buttons
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2f4f6f9', endColorstr='#c2ffffff',GradientType=0 ); /* IE6-9 */
 }
 
+.ie7 #container .article.mini.popover.with_footer,
+.ie8 #container .article.mini.popover.with_footer {
+
+  .input_field.autosuggest_field {
+    input[type="text"] { line-height:33px; border: 1px solid #ccc; width:535px;}
+    .holder { width:535px; }
+    .search_box { width: 535px; }
+  }
+}
+
 .ie7 #container .article .right .content ul.tags li.new input[type="text"],
 .ie8 #container .article .right .content ul.tags li.new input[type="text"] {
   line-height:26px;

@@ -275,8 +275,9 @@
   }
   function _addSubmitAction(data) {
     data.$ps.find(".bfooter .action").click(function(e) {
+      e.stopPropagation();
       e.preventDefault();
-      data.$ps.find(".extra").slideDown(data.settings.transitionSpeed, function() {
+      data.$ps.find(".extra").slideDown(data.settings.transitionSpeed, function(e) {
         _center(data);
         _enableSubmitAction(data); // After the user shows the extra options, we enable the real submit
       });
@@ -449,16 +450,12 @@
               $ps.find('.autosuggest_field input[type="text"]').val(name);
               $(this).hasClass("user") ? _updateHiddenTarget(data, "user", id) : _updateHiddenTarget(data, "area", id);
 
-              if (!isEmpty($ps.find("textarea.title").val())) {
-                _enableSending(data.$ps);
-              }
+              if (!isEmpty($ps.find("textarea.title").val())) { _enableSending(data.$ps); }
 
               _clearAutosuggest($ps);
             });
 
-            $ps.find(".autosuggest").fadeOut(150, function() {
-              $(this).remove();
-            });
+            $ps.find(".autosuggest").fadeOut(150, function() { $(this).remove(); });
 
             if ($response.find("li").length > 0) {
               $response.hide();

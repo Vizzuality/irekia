@@ -2401,6 +2401,23 @@ span.where, .map .infowindow ul.details li.where {
   }
 }
 
+.ie7 #container .article.actions .inner .left   .comments ul li .avatar,
+.ie7 #container .article.proposals .inner .left .comments ul li .avatar,
+.ie7 #container .article.photos .inner .left    .comments ul li .avatar,
+.ie7 #container .article.proposal .inner .left  .comments ul li .avatar,
+.ie7 #container .article.questions .inner .left .comments ul li .avatar,
+.ie7 #container .article.videos .inner .left    .comments ul li .avatar,
+.ie7 #container .article.activity .inner .left  .comments ul li .avatar,
+.ie8 #container .article.actions .inner .left   .comments ul li .avatar,
+.ie8 #container .article.proposals .inner .left .comments ul li .avatar,
+.ie8 #container .article.photos .inner .left    .comments ul li .avatar,
+.ie8 #container .article.proposal .inner .left  .comments ul li .avatar,
+.ie8 #container .article.questions .inner .left .comments ul li .avatar,
+.ie8 #container .article.videos .inner .left    .comments ul li .avatar,
+.ie8 #container .article.activity .inner .left  .comments ul li .avatar {
+  &>img { top: -4px; position:absolute;}
+}
+
 .ie7 #container .article,
 .ie8 #container .article {
   &.actions .inner .left ul li .content .comment-box ,
@@ -2416,7 +2433,7 @@ span.where, .map .infowindow ul.details li.where {
         .ieframe {
           background-position: -75px -115px;
         }
-        &>img { top: -4px; position:absolute;}
+        &>img { top: 0px; position:absolute;}
       } // .avatar
     } // ul li
 
@@ -4882,7 +4899,7 @@ Explorer fixes
 .ie8 .questions .inner .avatar,
 .ie8 .videos .inner .avatar,
 .ie8 .activity .inner .avatar {
-  &>img { top: -4px; position:absolute;}
+  &>img { top: 0px; position:absolute;}
 }
 
 .ie7 .avatar.medium,

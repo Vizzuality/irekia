@@ -26,12 +26,12 @@
     <span class="comments"><%= link_to @comments_count, "#", :class => :goto_comments %></span>
     </div>
 
-    <%  if (@content.percent_in_favor == 50 || @content.participation==0) 
+    <%  if (@content.percent_in_favor == 50 || @content.participation==0)
           @class = ''
-        else 
-          if (@content.percent_in_favor > 50) 
+        else
+          if (@content.percent_in_favor > 50)
             @class = 'in_favor'
-          else 
+          else
             @class = 'against'
           end
         end
