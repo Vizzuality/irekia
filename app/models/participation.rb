@@ -8,7 +8,7 @@ class Participation < ActiveRecord::Base
 
   attr_protected :moderated, :rejected
 
-  before_create :update_published_at
+  before_save   :update_published_at
   before_save   :update_moderated_at
   before_save   :author_is_politician?
 
@@ -89,45 +89,18 @@ class Participation < ActiveRecord::Base
   def publish
     return unless content.present? && moderated?
 
-    user_action              = user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-    user_action.published_at = self.published_at
-    user_action.message      = self.to_json
-    user_action.save!
+    user.create_public_action(self)
 
     user.areas.each do |area|
-      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      area_action.published_at = self.published_at
-      area_action.message      = self.to_json
-      area_action.save!
-
-      area.users.each do |user|
-        user_action              = user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-        user_action.published_at = self.published_at
-        user_action.message      = self.to_json
-        user_action.save!
-      end
-
-      area.followers.each do |follower|
-        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-        user_action.published_at = self.published_at
-        user_action.message      = self.to_json
-        user_action.save!
-      end
+      area.create_action(self)
+      area.users.each{|user| user.create_private_action(self)}
+      area.followers.each{|follower| follower.create_private_action(self)}
     end
 
-    user.followers.each do |follower|
-      user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      user_action.published_at = self.published_at
-      user_action.message      = self.to_json
-      user_action.save!
-    end
+    user.followers.each{|follower| follower.create_private_action(self)}
 
     content.notify_of_new_participation(self)
 
-  end
-
-  def notification_for(user)
-    Notification.for(user, self) unless author == user || content.author == user
   end
 
 end

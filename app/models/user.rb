@@ -64,7 +64,9 @@ class User < ActiveRecord::Base
   belongs_to :title,
              :select => 'id, translated_name'
 
-  has_many :notifications
+  has_many :notifications,
+           :include => [:item, :parent],
+           :order => 'updated_at desc'
 
   has_many :areas_users,
            :class_name => 'AreaUser'
@@ -128,8 +130,7 @@ class User < ActiveRecord::Base
   has_many :actions,
            :class_name => 'UserPublicStream'
   has_many :private_actions,
-           :class_name => 'UserPrivateStream',
-           :order      => 'published_at desc'
+           :class_name => 'UserPrivateStream'
 
   has_many :profile_pictures,
            :class_name => 'Image',
@@ -233,6 +234,23 @@ class User < ActiveRecord::Base
 
       user
     end
+  end
+
+  def create_public_action(item)
+    public_action              = actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
+    public_action.published_at = item.published_at
+    public_action.message      = item.to_json
+    public_action.save!
+  end
+
+  def create_private_action(item)
+    return if item && item.is_a?(Content)       && item.author == self
+    return if item && item.is_a?(Participation) && (item.author == self || item.content.author == self)
+
+    private_action              = private_actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
+    private_action.published_at = item.published_at
+    private_action.message      = item.to_json
+    private_action.save!
   end
 
   def change_password(current_password, new_password)
@@ -435,7 +453,16 @@ class User < ActiveRecord::Base
   end
 
   def notifications_grouped
-    notifications.includes(:parent).order('updated_at desc').group_by{|n| n.attributes.slice('item_type', 'parent_id', 'parent_type')}.map{|n,g| [g.first, g.count]}
+    @notifications_grouped = []
+    notifications.each do |n|
+      last_added = @notifications_grouped.last.try(:last)
+      if last_added.present? && last_added.attributes.slice('item_type', 'parent_id', 'parent_type') == n.attributes.slice('item_type', 'parent_id', 'parent_type')
+        @notifications_grouped.last << n
+      else
+        @notifications_grouped << [n]
+      end
+    end
+    @notifications_grouped.map{|n| [n.first, n.count]}.first(10)
   end
 
   def reset_counter(counter)

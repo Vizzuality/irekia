@@ -3,7 +3,7 @@
   <%= content_tag 'p', t(".title.#{am_I?(data.author) ? 'you' : 'other'}", :name => data.author.name) %>
   <div class="photo_block">
     <%= link_to image_tag(data.thumbnail_url), video_path(data.id) if data.thumbnail_url.present? %>
-    <p class="excerpt inline"><%= link_to "Ver el video", video_path(data.id) %></p>
+    <p class="excerpt inline"><%= link_to data.title, video_path(data.id) %></p>
   </div>
   <div class="footer">
     <span class="published_at">

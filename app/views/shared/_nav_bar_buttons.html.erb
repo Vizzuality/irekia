@@ -10,35 +10,36 @@
     </li>
   </ul>
 
-<div class="notification_selector">
-  <div class="popover">
-    <div class="scroll-pane">
-      <ul>
+  <% if notifications_list.size > 0 -%>
+    <div class="notification_selector">
+      <div class="popover">
+        <div class="scroll-pane">
+          <ul>
 
-        <li class="submit">
-        <%= form_for current_user, :remote => true, :html => {:'data-type' => :html} do |form| %>
-          <%= form.hidden_field :new_news_count,            :value => 0 %>
-          <%= form.hidden_field :new_events_count,          :value => 0 %>
-          <%= form.hidden_field :new_proposals_count,       :value => 0 %>
-          <%= form.hidden_field :new_answers_count,         :value => 0 %>
-          <%= form.hidden_field :new_comments_count,        :value => 0 %>
-          <%= form.hidden_field :new_votes_count,           :value => 0 %>
-          <%= form.hidden_field :new_arguments_count,       :value => 0 %>
-          <%= form.hidden_field :new_questions_count,       :value => 0 %>
-          <%= form.hidden_field :new_answer_requests_count, :value => 0 %>
-          <%= form.hidden_field :new_contents_users_count,  :value => 0 %>
-          <%= form.hidden_field :new_follows_count,         :value => 0 %>
-        <% end -%>
-        </li>
+            <li class="submit">
+            <%= form_for current_user, :remote => true, :html => {:'data-type' => :html} do |form| %>
+              <%= form.hidden_field :new_news_count,            :value => 0 %>
+              <%= form.hidden_field :new_events_count,          :value => 0 %>
+              <%= form.hidden_field :new_proposals_count,       :value => 0 %>
+              <%= form.hidden_field :new_answers_count,         :value => 0 %>
+              <%= form.hidden_field :new_comments_count,        :value => 0 %>
+              <%= form.hidden_field :new_votes_count,           :value => 0 %>
+              <%= form.hidden_field :new_arguments_count,       :value => 0 %>
+              <%= form.hidden_field :new_questions_count,       :value => 0 %>
+              <%= form.hidden_field :new_answer_requests_count, :value => 0 %>
+              <%= form.hidden_field :new_contents_users_count,  :value => 0 %>
+              <%= form.hidden_field :new_follows_count,         :value => 0 %>
+            <% end -%>
+            </li>
 
-        <% notifications_list_count = notifications_count -%>
-        <% notifications_list.each_with_index do |notification, index| -%>
-          <%= render_notification_item(notification[0], notification[1], notifications_list_count == (index + 1) ? 'last' : nil) %>
+        <% last_notification = notifications_list.pop -%>
+        <% notifications_list.each do |notification| -%>
+          <%= render_notification_item(notification[0], notification[1]) %>
         <% end -%>
+        <%= render_notification_item(last_notification[0], last_notification[1], 'last') if last_notification.present? %>
       </ul>
     </div>
-  </div>
-</div>
+  <% end %>
 
 
 <% else %>

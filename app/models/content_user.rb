@@ -13,8 +13,9 @@ class ContentUser < ActiveRecord::Base
 
   accepts_nested_attributes_for :question, :user
 
-  after_save :publish
-  after_save :send_notification
+  def published_at
+    updated_at
+  end
 
   def parent
     content
@@ -47,27 +48,12 @@ class ContentUser < ActiveRecord::Base
     default.merge(options || {})
   end
 
-  def notification_for(user)
-    content.tagged_politicians.each{|politician| Notification.for(politician, self)}
-  end
-
   def publish
+    return unless content && content.moderated? && content.author.present?
 
-    return unless self.content.moderated? && self.content.author.present?
-
-    content.tagged_politicians.each do |politician|
-      user_action              = politician.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      user_action.published_at = self.updated_at
-      user_action.message      = self.to_json
-      user_action.save!
-    end
-
-  end
-
-  def send_notification
-    return unless content && content.moderated?
+    content.tagged_politicians.each{|politician| politician.create_private_action(self)}
 
     Notification.for(user, self)
   end
-  private :send_notification
+
 end

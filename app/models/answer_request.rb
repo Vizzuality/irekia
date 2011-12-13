@@ -29,23 +29,12 @@ class AnswerRequest < Participation
 
     case
     when question.target_user
-      user_action              = question.target_user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      user_action.published_at = self.published_at
-      user_action.message      = self.to_json
-      user_action.save!
-
-      question.target_user.areas.each do |area|
-        area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-        area_action.published_at = self.published_at
-        area_action.message      = self.to_json
-        area_action.save!
-      end
-
+      question.target_user.create_public_action(self)
+      question.target_user.create_private_action(self)
+      question.target_user.areas.each{|area| area.create_action(self)}
     when question.target_area
-      area_action              = question.target_area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      area_action.published_at = self.published_at
-      area_action.message      = self.to_json
-      area_action.save!
+      question.target_area.create_action(self)
+      question.target_area.team.each{|politician| politician.create_public_action(self)}
     end
   end
 
@@ -59,13 +48,4 @@ class AnswerRequest < Participation
   end
   private :update_question
 
-  def notification_for(user)
-    super(user)
-    content.participers(author).where('participations.type' => 'AnswerRequest').each{|user| Notification.for(user, self)}
-    if question.target_user
-      Notification.for(question.target_user, self)
-    elsif question.target_area
-      question.target_area.team.reject{|politician| politician == author}.each{|politician| Notification.for(politician, self)}
-    end
-  end
 end

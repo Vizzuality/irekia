@@ -10,7 +10,8 @@ class CreateNotifications < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :notifications, [:user_id, :item_id, :item_type], :unique => true
+    add_index :notifications, [:item_id,   :item_type]
+    add_index :notifications, [:parent_id, :parent_type]
   end
 
   def self.down

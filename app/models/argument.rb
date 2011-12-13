@@ -44,10 +44,13 @@ class Argument < Participation
     })
   end
 
-  def notification_for(user)
-    super(user)
-    content.participers(author).where('participations.type' => 'Argument').each{|user| Notification.for(user, self)}
-    proposal.target_area.team.reject{|politician| politician == author}.each{|politician| Notification.for(politician, self)} if proposal.target_area
+  def publish
+    super
+
+    return unless self.moderated? && self.author.present?
+
+    content.participers(author).where('participations.type' => 'Argument').each{|user| user.create_private_action(self)}
+    proposal.target_area.team.reject{|politician| politician == author}.each{|politician| politician.create_private_action(self)}
   end
 
 end
