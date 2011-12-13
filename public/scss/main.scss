@@ -174,9 +174,9 @@ header {
           &:last-child:after { content: ""; padding: 0; }
 
           a {
-            color: $link_color;
+            color: #333333;
             text-transform: lowercase;
-            &:hover {text-decoration:underline; color:$link_color_hover;}
+            &:hover {text-decoration:underline;}
           }
         } // li
       } // ul.user_options
@@ -330,7 +330,7 @@ header {
         @include box-shadow(0 1px 1px 0 #369acf);
         @include menu-button(none);
 
-        &:hover {text-decoration:underline}
+        span:hover {text-decoration:underline;}
         &.open {
           .handle { background-position: 0 -141px; }
         }
@@ -396,6 +396,7 @@ header {
                   display:block;
                   padding: 10px 0 10px 0;
                   border-bottom: 1px solid #f1f1f1;
+                  &:hover {text-decoration:underline}
                 }
               } // li
             } // ul
