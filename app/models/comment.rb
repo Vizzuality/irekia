@@ -25,9 +25,4 @@ class Comment < Participation
     })
   end
 
-  def notification_for(user)
-    super(user)
-    content.commenters(author).each{|user| Notification.for(user, self)}
-  end
-
 end

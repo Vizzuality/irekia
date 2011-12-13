@@ -32,13 +32,12 @@
             <% end -%>
             </li>
 
-            <% notifications_list_count = notifications_count -%>
-            <% notifications_list.each_with_index do |notification, index| -%>
-              <%= render_notification_item(notification[0], notification[1], notifications_list_count == (index + 1) ? 'last' : nil) %>
-            <% end -%>
-          </ul>
-        </div>
-      </div>
+        <% last_notification = notifications_list.pop -%>
+        <% notifications_list.each do |notification| -%>
+          <%= render_notification_item(notification[0], notification[1]) %>
+        <% end -%>
+        <%= render_notification_item(last_notification[0], last_notification[1], 'last') if last_notification.present? %>
+      </ul>
     </div>
   <% end %>
 

@@ -22,15 +22,6 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
 
   add_index "answer_data", ["answer_id"], :name => "index_answer_data_on_answer_id"
 
-  create_table "answer_opinion_data", :force => true do |t|
-    t.integer  "answer_opinion_id"
-    t.boolean  "satisfactory",      :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "answer_opinion_data", ["answer_opinion_id"], :name => "index_answer_opinion_data_on_answer_opinion_id"
-
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
     t.text     "message"
@@ -203,7 +194,8 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.datetime "updated_at"
   end
 
-  add_index "notifications", ["user_id", "item_id", "item_type"], :name => "index_notifications_on_user_id_and_item_id_and_item_type", :unique => true
+  add_index "notifications", ["item_id", "item_type"], :name => "index_notifications_on_item_id_and_item_type"
+  add_index "notifications", ["parent_id", "parent_type"], :name => "index_notifications_on_parent_id_and_parent_type"
 
   create_table "participations", :force => true do |t|
     t.integer  "user_id"

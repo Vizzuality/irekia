@@ -43,39 +43,18 @@ class News < Content
   def publish
     return unless self.moderated?
 
-    areas.each do |area|
-      area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      area_action.published_at = self.published_at
-      area_action.message      = self.to_json
-      area_action.save!
-    end
+    areas.each{|area| area.create_action(self)}
 
     users.each do |user|
-      user_action              = user.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      user_action.published_at = self.published_at
-      user_action.message      = self.to_json
-      user_action.save!
+      user.create_public_action(self)
 
       user.areas.each do |area|
-        area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-        area_action.published_at = self.published_at
-        area_action.message      = self.to_json
-        area_action.save!
+        area.create_action(self)
 
-        area.followers.each do |follower|
-          user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-          user_action.published_at = self.published_at
-          user_action.message      = self.to_json
-          user_action.save!
-        end
+        area.followers.each{|follower| follower.create_private_action(self)}
       end
 
-      user.followers.each do |follower|
-        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-        user_action.published_at = self.published_at
-        user_action.message      = self.to_json
-        user_action.save!
-      end
+      user.followers.each{|follower| follower.create_private_action(self)}
     end
   end
 

@@ -129,29 +129,17 @@ class Proposal < Content
 
     return unless self.moderated?
 
-    user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-    user_action.published_at = self.published_at
-    user_action.message      = self.to_json
-    user_action.save!
+    author.create_public_action(self)
 
     if target_area
-      area_action              = target_area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      area_action.published_at = self.published_at
-      area_action.message      = self.to_json
-      area_action.save!
-
-      target_area.followers.each do |follower|
-        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-        user_action.published_at = self.published_at
-        user_action.message      = self.to_json
-        user_action.save!
+      target_area.create_answer(self)
+      target_area.followers.each{|follower| follower.create_private_action(self)}
+      target_area.team.each do |politician|
+        politician.create_public_action(self)
+        politician.create_private_action(self)
       end
     end
 
-  end
-
-  def notification_for(user)
-    target_area.team.reject{|politician| politician == author}.each{|politician| Notification.for(politician, self)} if target_area
   end
 
 end

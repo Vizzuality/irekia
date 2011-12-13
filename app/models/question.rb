@@ -102,48 +102,23 @@ class Question < Content
 
     return unless self.moderated?
 
-    user_action              = author.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-    user_action.published_at = self.published_at
-    user_action.message      = self.to_json
-    user_action.save!
+    author.create_public_action(self)
 
     if target_user
-      user_action              = target_user.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      user_action.published_at = self.published_at
-      user_action.message      = self.to_json
-      user_action.save!
+      target_user.create_private_action(self)
 
       target_user.areas.each do |area|
-        area_action              = area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-        area_action.published_at = self.published_at
-        area_action.message      = self.to_json
-        area_action.save!
-
-        area.followers.each do |follower|
-          user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-          user_action.published_at = self.published_at
-          user_action.message      = self.to_json
-          user_action.save!
-        end
+        area.create_action(self)
+        area.followers.each{|follower| follower.create_private_action(self)}
       end
+      target_user.followers.each{|follower| follower.create_private_action(self)}
 
-      target_user.followers.each do |follower|
-        user_action              = follower.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-        user_action.published_at = self.published_at
-        user_action.message      = self.to_json
-        user_action.save!
-      end
     elsif target_area
-      area_action              = target_area.actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-      area_action.published_at = self.published_at
-      area_action.message      = self.to_json
-      area_action.save!
+      target_area.create_action(self)
 
       target_area.team.each do |politician|
-        user_action              = politician.private_actions.find_or_create_by_event_id_and_event_type self.id, self.class.name
-        user_action.published_at = self.published_at
-        user_action.message      = self.to_json
-        user_action.save!
+        politician.create_public_action(self)
+        politician.create_private_action(self)
       end
     end
   end
@@ -151,18 +126,7 @@ class Question < Content
   def notify_of_new_participation(participation)
     super(participation)
     if answer.present?
-      user_action              = answer.author.private_actions.find_or_create_by_event_id_and_event_type participation.id, participation.class.name
-      user_action.published_at = participation.published_at
-      user_action.message      = participation.to_json
-      user_action.save!
-    end
-  end
-
-  def notification_for(user)
-    if target_user.present?
-      Notification.for(target_user, self)
-    elsif target_area.present?
-      target_area.team.each{|politician| Notification.for(politician, self)}
+      answer.author.create_private_action(participation)
     end
   end
 
