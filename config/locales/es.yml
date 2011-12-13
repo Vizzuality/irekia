@@ -598,6 +598,7 @@
         author: '%{author} hace %{time}'
         against: en contra
         in_favor: a favor
+        neutral: a favor
         votes:
           zero: 0 votos
           one: 1 voto
@@ -1183,6 +1184,9 @@
         news: ¿Algo que decir?&hellip; comenta esta noticia
     not_moderated:
       comment:
+        comment_sent: "Tu comentario ha sido enviado :)"
+        the_comment_will_be_published_soon: "Será publicado en cuanto nuestros <u>moderadores</u> puedan revisarlo"
+      comment_mini:
         comment_sent: "Tu comentario ha sido enviado :)"
         the_comment_will_be_published_soon: "Será publicado en cuanto nuestros <u>moderadores</u> puedan revisarlo"
       argument:

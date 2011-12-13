@@ -1,4 +1,9 @@
-<% position = data.percent_in_favor >= data.percent_against ? "in_favor" : "against" %>
+<% if (data.percent_in_favor==50 || data.participation==0) 
+    position = "neutral"
+  else 
+    position = data.percent_in_favor > data.percent_against ? "in_favor" : "against" 
+  end
+%>
 
 <%= link_to raw("<strong>#{data.percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>"), proposal_path(data.id), :class => "icon #{ position }" %>
 <div class="content">

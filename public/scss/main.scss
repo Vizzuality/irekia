@@ -2175,12 +2175,12 @@ span.where, .map .infowindow ul.details li.where {
             a.icon {
               display:block;
               float:left;
-              background:url('/images/icons/in_favor_against.png') no-repeat 0 0;
+              background:url('/images/icons/in_favor_against.png') no-repeat right 0;
               width:65px; height:65px;
               margin: 0 13px 0 0;
               text-align:center;
               font-size:11px;
-              color:$agree_color;
+              color:#666666;
               text-decoration:none;
               line-height:12px;
 
@@ -2204,7 +2204,8 @@ span.where, .map .infowindow ul.details li.where {
                 width:28px; height:28px;
               }
 
-              &.against { background-position: right 0; color:$against_color; }
+              &.against { background-position: -68px 0; color:$against_color; }
+              &.in_favor { background-position: left 0; color:$agree_color; }
             }
           }
 
@@ -2291,11 +2292,11 @@ span.where, .map .infowindow ul.details li.where {
         p { line-height: 16px; }
 
         ul {
-          border-bottom: 1px solid $white;
           li {
             padding: 10px;
             margin:0;
             background: rgba(237, 237, 239, 0.7);
+            border-bottom: 1px solid $white;
 
             a {color:$link_color;}
             &.previous { padding:0; border:none; display:none;}
