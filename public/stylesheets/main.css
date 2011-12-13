@@ -90,8 +90,8 @@ header .content .top_nav ul.user_options li:after { content: "|"; padding: 0 5px
 header .content .top_nav ul.user_options li.last { content: ""; padding: 0; }
 header .content .top_nav ul.user_options li.last:after { content: ""; padding: 0; }
 header .content .top_nav ul.user_options li:last-child:after { content: ""; padding: 0; }
-header .content .top_nav ul.user_options li a { color: #1d79b0; text-transform: lowercase; }
-header .content .top_nav ul.user_options li a:hover { text-decoration: underline; color: #114c6e; }
+header .content .top_nav ul.user_options li a { color: #333333; text-transform: lowercase; }
+header .content .top_nav ul.user_options li a:hover { text-decoration: underline; }
 header nav { height: 55px; background: url("/images/nav_bkg.png") repeat-x; }
 header nav .content { padding: 10px 0 0 0; }
 header nav .content span.currently_viewing { float: left; margin: 10px 10px 0 0; font-size: 15px; font-weight: bold; color: #19597A; text-shadow: 1px 1px 1px #2F9CD8; }
