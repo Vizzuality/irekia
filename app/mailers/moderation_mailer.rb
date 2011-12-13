@@ -26,15 +26,17 @@ class ModerationMailer < ActionMailer::Base
   end
 
 
-  class Preview < MailView
-    # Pull data from existing fixtures
-    def accepted
-      ::ModerationMailer.accepted(Question.first)
-    end
+  if Rails.env.development?
+    class Preview < MailView
+      # Pull data from existing fixtures
+      def accepted
+        ::ModerationMailer.accepted(Question.first)
+      end
 
-    # Factory-like pattern
-    def rejected
-      ::ModerationMailer.accepted(Question.first)
+      # Factory-like pattern
+      def rejected
+        ::ModerationMailer.accepted(Question.first)
+      end
     end
   end
 

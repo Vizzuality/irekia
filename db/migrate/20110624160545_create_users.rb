@@ -78,6 +78,10 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :new_answer_requests_count,                                      :default => 0
       t.integer :new_contents_users_count,                                       :default => 0
       t.integer :new_follows_count,                                              :default => 0
+      t.integer :new_tweets_count,                                               :default => 0
+      t.integer :new_status_messages_count,                                      :default => 0
+      t.integer :new_photos_count,                                               :default => 0
+      t.integer :new_videos_count,                                               :default => 0
 
       t.database_authenticatable :null => false
       t.recoverable
