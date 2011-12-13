@@ -20,6 +20,10 @@
     </div>
 
     <div class="right">
+      <ul class="selector">
+        <li class="selected"><%= link_to t('.filters.all'), link_for_proposals(:referer => action_name), :class => 'filter' %></li>
+        <li><%= link_to t('.filters.by_you'), link_for_proposals(:as_author => true, :referer => action_name), :class => 'filter' %></li>
+      </ul>
       <div class="proposal-support">
         <%= simple_format t('.proposal_support') %>
         <div class="count"> <div class="icon"></div>     <%= t('.proposal_support_count', :count => @proposals_in_favor_count) %></div>

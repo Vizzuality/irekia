@@ -61,11 +61,11 @@ class Proposal < Content
     .where('areas.id => ? OR target_areas_proposal_data.id = ?', area.id, area.id)
   end
 
-  def self.from_politician(politician)
+  def self.user_is_author_or_participer(user)
     select('distinct contents.*')
-    .joins(:author => :role, :votes => {:author => :role}, :arguments => {:author => :role})
+    .joins(:author, :votes => :author, :arguments => :author)
     .moderated
-    .where('(users.id = ? AND roles.name = ?) OR (authors_contents.id = ? AND roles_users.name = ?) OR (authors_participations.id = ? AND roles_users_2.name = ?)', *([politician.id, 'Politician'] * 3))
+    .where('users.id = ? OR authors_participations.id = ? OR authors_participations_2.id = ?', *([user.id] * 3))
   end
 
   def self.from_citizen(user)

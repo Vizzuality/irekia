@@ -264,7 +264,7 @@ class UsersController < ApplicationController
   private :get_questions
 
   def get_proposals
-    @proposals = @user.get_proposals(params.slice(:from_politicians, :from_citizens, :more_polemic))
+    @proposals = @user.get_proposals(params.slice(:as_author, :from_politicians, :from_citizens, :more_polemic))
 
     @proposals_in_favor_count = @proposals.approved_by_majority.count
   end

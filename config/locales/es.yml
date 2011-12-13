@@ -1634,6 +1634,9 @@
           zero: No has hecho ninguna propuesta
           one: Has hecho 1 propuesta
           other: 'Has hecho %{count} propuestas'
+        filters:
+          all: 'Todas'
+          by_you: 'Propuestas creadas por ti'
         proposal_support: Tus propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;
         proposal_support_count:
           zero: Ninguna a favor
@@ -1700,6 +1703,9 @@
         more_polemic: Más polémicas
       proposals:
         title: "Propuestas en las que participas"
+        filters:
+          all: 'Todas'
+          by_you: 'Propuestas creadas por ti'
         proposal_support: Estas propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;
         proposal_support_count:
           zero: Ninguna a favor

@@ -12,6 +12,7 @@ module UsersHelper
     filters[:more_polemic]     = params[:more_polemic] unless filters.key?(:more_polemic)
     filters[:from_politicians] = params[:from_politicians] unless filters.key?(:from_politicians)
     filters[:from_citizens]    = params[:from_citizens] unless filters.key?(:from_citizens)
+    filters[:as_author]        = params[:as_author] unless filters.key?(:as_author)
 
     proposals_user_path(@user, filters)
   end
