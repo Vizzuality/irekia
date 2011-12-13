@@ -1498,6 +1498,7 @@
       account_configuration: Configuración de tu cuenta
       access_data: Datos de acceso a Irekia
       notifications:
+        title: Notificaciones
         minimal:
           title: Mínimas
           description: Recibirás los emails estrictamente necesarios para la gestión de tu cuenta.
