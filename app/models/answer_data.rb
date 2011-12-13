@@ -5,8 +5,4 @@ class AnswerData < ActiveRecord::Base
 
   accepts_nested_attributes_for :video_data, :allow_destroy => true
 
-  def publish
-    answer.publish if answer.present?
-  end
-
 end

@@ -99,6 +99,7 @@ class Question < Content
   end
 
   def publish
+    super
 
     return unless self.moderated?
 

@@ -126,13 +126,14 @@ class Proposal < Content
   end
 
   def publish
+    super
 
-    return unless self.moderated?
+    return unless moderated?
 
     author.create_public_action(self)
 
     if target_area
-      target_area.create_answer(self)
+      target_area.create_action(self)
       target_area.followers.each{|follower| follower.create_private_action(self)}
       target_area.team.each do |politician|
         politician.create_public_action(self)
