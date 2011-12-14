@@ -60,6 +60,7 @@ class ApplicationController < ActionController::Base
 
   def get_areas
     @areas = Area.names_and_ids.all
+    @areas_footer = Area.for_footer.all
   end
   private :get_areas
 
