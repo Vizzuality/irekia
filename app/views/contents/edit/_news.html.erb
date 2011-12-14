@@ -1,9 +1,3 @@
-<% content_for :facebook_meta do -%>
-  <meta property="og:title" content="Irekia - <%= @content.title %>" />
-  <meta property="og:description" content="<%= @content.body.strip.truncate(128) %>" />
-  <meta property="og:image" content="<%= image_url @content.news_data.image.content_url if @content.news_data.image.present? %>" />
-<% end -%>
-
 <div class="article activity editable with_footer">
   <%= link_to '', news_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
   <div class="inner">
@@ -88,20 +82,7 @@
         <!-- IMAGE -->
         <div class="image_editor">
 
-          <div class="image_container">
-            <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
-
-            <!-- remove -->
-            <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'remove'} do |form| %>
-              <%= form.fields_for :news_data do |news_data| %>
-                <%= news_data.fields_for :image do |image| %>
-                  <%= image.hidden_field :_destroy, :value => true %>
-                  <%= image.submit '', :class => :remove %>
-                <% end -%>
-              <% end -%>
-            <% end -%>
-            <!-- remove -->
-          </div>
+          <%= render :partial => 'contents/edit/image' %>
 
           <div class="add_image"<%= " style='display:none'" if @content.news_data.image.present? %>>
             <a href="#">Añadir foto</a>
@@ -110,6 +91,7 @@
           <div class="input_field uploader placeholder" style="display:none">
             <input type="text" />
             <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable image'} do |form| %>
+              <%= hidden_field_tag :partial, 'image' %>
               <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_new_image" data-url="<%= news_index_path %>">sube una nueva</span></span>
               <%= form.fields_for :news_data do |news_data| %>
                 <%= news_data.fields_for :image, (@content.news_data.image || @content.news_data.build_image) do |image|%>

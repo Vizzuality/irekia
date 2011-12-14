@@ -200,7 +200,7 @@ class ContentsController < ApplicationController
 
     head :error and return unless @content.save
     share_content
-    render :layout => !request.xhr?
+    render :partial => "contents/edit/#{@partial}"
   end
 
   def get_content_class
