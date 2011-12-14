@@ -4,6 +4,10 @@ module ApplicationHelper
     controller_name == 'home' && action_name == 'index'
   end
 
+  def get_root_url
+    user_signed_in?? user_path(current_user) : root_path
+  end
+
   def am_I?(user)
     current_user && user && current_user.try(:id) == user.try(:id) && (private_profile? || politician_profile?)
   end
