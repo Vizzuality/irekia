@@ -5,7 +5,7 @@ module Irekia
         puts 'Importing news from Irekia'
         puts '============================'
 
-        last_news_date = News.maximum('published_at')
+        last_news_date = 1.month.ago #News.maximum('published_at')
 
         puts '=> reading and parsing the rss feed'
         news_feed_url        = 'http://www.irekia.euskadi.net/es/news/news.rss'
@@ -32,7 +32,7 @@ module Irekia
               :remote_image_url => news_image_url
             }) if news_image_url.present?
             news.areas << Area.all.sample
-            news.users << User.politicians.sample
+            news.users << [User.patxi_lopez, User.politicians.sample].sample
             news.save!
             print '.'
           rescue Exception => ex
@@ -84,7 +84,7 @@ module Irekia
 
               event.location  = event_data.location
               event.moderated = true
-              event.users << User.politicians.sample
+              event.users << [User.patxi_lopez, User.politicians.sample].sample
               event.save!
               print '.'
             rescue Exception => e
