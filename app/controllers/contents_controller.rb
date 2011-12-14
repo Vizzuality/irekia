@@ -174,7 +174,7 @@ class ContentsController < ApplicationController
   end
 
   def create
-    render :json => @image and return if @image.present?
+    render :text => @image.to_json and return if @image.present?
 
     @content        = @content_class.new params[@content_type]
     @content.author = current_user
