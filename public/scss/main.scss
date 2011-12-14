@@ -1634,7 +1634,7 @@ div#main.show div.left img {margin:4px 0 7px;}
       margin: 0 0 20px 0;
 
       .input-counter { margin-bottom: 0; } // TODO: After adding .field, remove input-counter margin: 24px;
-      .uploader { height: 29px; margin: 0; }
+      .uploader { height: 36px; margin: 0; }
 
       &.last { margin-bottom: 0; }
       &:last-child { margin-bottom: 0; }
@@ -1741,8 +1741,8 @@ div#main.show div.left img {margin:4px 0 7px;}
       width: 933px;
       padding: 15px 31px 5px 30px;
 
-      a.config { float: right;
-        &.first-time { display: none; visibility: vivible;}
+      a.config { position:absolute; display:block; right:20px; bottom:5px;
+        &.first-time { display: none; visibility: visible;}
       }
       img.avatar { position: relative; float: left; }
 
@@ -1769,7 +1769,7 @@ div#main.show div.left img {margin:4px 0 7px;}
       .content {
         position: relative;
         float: left;
-        margin: 3px 0 18px 14px;
+        margin: 3px 0 13px 14px;
         width: 851px;
 
         a  { font-size: 15px; }
