@@ -1,7 +1,3 @@
-<% content_for :facebook_meta do -%>
-  <meta property="og:title" content="Irekia - Pregunta para <%= @content.target_user ? @content.target_user.fullname : @content.target_area.name %>" />
-  <meta property="og:description" content="<%= @content.question_text.strip %>" />
-<% end -%>
 <div class="article questions with_footer editable">
   <%= link_to '', question_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
 
@@ -14,19 +10,25 @@
 
 
         <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable target'} do |form| %>
-          <% if @content.target_user %>
-            <div class="content">
-              <span class="target"><%= t(".addressed_to") -%> <%= @content.target_user.fullname -%></span>
-            </div>
-
-            <div class="add_target">
-              <div class="input_field placeholder">
-                <input type="text" />
-                <span class="holder">Introduce el nuevo destinatario</span>
-              </div>
-              <span class="spinner" id="target_spinner"></span>
-            </div>
+          <%= form.fields_for :question_data do |question_data| %>
+            <%= question_data.hidden_field :area_id, :value => nil %>
+            <%= question_data.hidden_field :user_id, :value => nil %>
           <% end -%>
+          <div class="content">
+            <% if @content.target_user %>
+              <span class="target"><%= t(".addressed_to") -%> <%= @content.target_user.fullname -%></span>
+            <% elsif @content.target_area -%>
+              <span class="target"><%= t(".addressed_to") -%> <%= @content.target_area.name -%></span>
+            <% end -%>
+          </div>
+
+          <div class="add_target">
+            <div class="input_field placeholder">
+              <input type="text" />
+              <span class="holder">Introduce el nuevo destinatario</span>
+            </div>
+            <span class="spinner" id="target_spinner"></span>
+          </div>
         <% end %>
 
       </div>
