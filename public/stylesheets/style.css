@@ -594,7 +594,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.popover .extra .all a { color: #f10063; }
 #container .article.popover .field { margin: 0 0 20px 0; }
 #container .article.popover .field .input-counter { margin-bottom: 0; }
-#container .article.popover .field .uploader { height: 29px; margin: 0; }
+#container .article.popover .field .uploader { height: 36px; margin: 0; }
 #container .article.popover .field.last { margin-bottom: 0; }
 #container .article.popover .field:last-child { margin-bottom: 0; }
 #container .article.popover .autosuggest_field { width: 534px; }
