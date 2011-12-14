@@ -83,6 +83,8 @@ header .content .top_nav ul.languages li.last { border: none; padding-right: 0; 
 header .content .top_nav ul.languages li.selected a { color: #666666; }
 header .content .top_nav ul.languages li.selected a:hover { text-decoration: none; color: #666666; cursor: default; }
 header .content .top_nav .logo { float: left; left: 0; top: 0; position: relative; display: block; }
+header .content .top_nav .logo span.beta { position: absolute; top: -20px; right: -34px; width: 36px; height: 37px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -733px; text-indent: -9999px; }
+header .content .top_nav .logo span.beta.white { background-position: -36px -733px; }
 header .content .top_nav .net_logo { top: 5px; right: 0; position: absolute; display: block; }
 header .content .top_nav ul.user_options { right: 0; bottom: 0; float: right; position: absolute; clear: both; overflow: hidden; }
 header .content .top_nav ul.user_options li { float: left; font-size: 12px; }

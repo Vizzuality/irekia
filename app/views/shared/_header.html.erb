@@ -14,7 +14,7 @@
       <li class="last"><%= link_to t('.management'), t('.management_url') %></li>
     </ul>
 
-    <%= link_to (image_tag 'logo.png'), get_root_url, :class => "logo" %>
+    <%= link_to (content_tag(:span, "", :class => (homepage?)?'beta white':'beta' ) + image_tag('logo.png')), get_root_url, :class => "logo" %>
     <%= link_to (image_tag 'euskadi_net_logo.png'), t('.euskadi_net_url'), :class => :net_logo %>
   </div>
 </div>
