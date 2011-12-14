@@ -605,7 +605,7 @@ Editing forms
 
 #container .article.editable {
   .inner .left { z-index:60; }
-  &.questions {
+  &.questions, &.proposals {
     .context { height: 40px; }
   }
 }

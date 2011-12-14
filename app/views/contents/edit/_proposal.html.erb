@@ -3,19 +3,37 @@
   <meta property="og:description" content="<%= @content.body.strip.truncate(128) %>" />
   <meta property="og:image" content="<%#= image_url @content.proposal_data.image.content_url %>" />
 <% end -%>
-<div class="article proposal with_footer">
+<div class="article proposal with_footer editable">
   <%= link_to '', proposal_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
 <div class="inner">
   <div class="left">
 
-    <div class="context">
-      <h3><%= t(@content.content_type) %></h3>
-      <% if @content.target_area %>
-        <span class="middot">&middot;</span> <%= t(".addressed_to") %> <%= link_to @content.target_area.name, @content.target_area %>
-        <% elsif @content.target_user %>
-        <span class="middot">&middot;</span> <%= t(".addressed_to") %> <%= link_to @content.target_user.fullname, @content.target_user %>
-      <% end %>
-    </div>
+      <div class="context">
+        <h3><%= t(@content.content_type) %></h3>
+
+        <%= form_for @content, :remote => true, :html => {:'data-search' => 'areas', :'data-addressed-to' => "#{t(".addressed_to")}", :'data-type' => 'html', :class => 'editable target'} do |form| %>
+          <%= form.fields_for :proposal_data do |proposal_data| %>
+            <%= proposal_data.hidden_field :area_id, :value => "", :id => "editable_target_area_id" %>
+          <% end -%>
+
+          <div class="content">
+            <% if @content.target_area -%>
+              <span class="target"><%= t(".addressed_to") -%> <%= @content.target_area.name -%></span>
+            <% else -%>
+              <span class="target">Dirige la pregunta</span>
+            <% end -%>
+          </div>
+
+          <div class="add_target" >
+            <div class="input_field placeholder">
+              <input type="text" />
+              <span class="holder">Introduce el nuevo destinatario</span>
+            </div>
+            <span class="spinner" id="target_spinner"></span>
+          </div>
+        <% end %>
+
+      </div>
 
     <h1><%= @content.title %></h1>
 

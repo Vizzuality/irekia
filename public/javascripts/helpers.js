@@ -1188,7 +1188,6 @@ jQuery.fn.enableTargetEditing = function(opt){
 
             _hidePopover();
 
-
             var name = $(this).attr("data-content");
 
             if ($(this).attr("data-type") == "area") {
@@ -1238,6 +1237,10 @@ jQuery.fn.enableTargetEditing = function(opt){
 
         var query = $addInput.val();
         var params = { name : query };
+
+        if ($this.attr("data-search") == 'areas') {
+          params = $.extend(params, { only_areas : true} );
+        }
 
         $.ajax({ url: serviceURL, data: { search: params }, type: "GET", success: _onSuccess});
       }, 500);
