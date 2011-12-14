@@ -249,7 +249,7 @@ $(function() {
   });
 
 
-  // Tipsy tooltips (add here all possible tooltips)
+  // TIPSY TOOLTIPS (add here all possible tooltips)
   //  Follow area or politician tooltip
   $('input.ribbon').tipsy({live: true, gravity: 's', offset: 3, title: function() {
     var type = $(this).closest('div.content').find('button.add_to_favorites span').text();
@@ -274,5 +274,28 @@ $(function() {
   //  Export to iCal
   $('.share.ical').tipsy({live: true, gravity: 's', offset: 3, title: function() {
     return 'Exportar para iCal';
+  }});
+
+  //  Notifications
+  $('.toggle_notifications').tipsy({gravity: 's', offset: 3, title: function() {
+    var count = parseInt($(this).text());
+    if (count)
+      return 'No tienes notificaciones';
+    else
+      if (count>1) 
+        return count + ' notificaciones';
+      else
+        return count + ' notificación';
+  }});
+
+
+  //  Notifications
+  $('.settings').tipsy({gravity: 's', offset: 3, title: function() {
+    return 'Tu perfil';
+  }});
+
+  //  Log out
+  $('.sign_out').tipsy({gravity: 's', offset: 3, title: function() {
+    return 'Cerrar sesión';
   }});
 });

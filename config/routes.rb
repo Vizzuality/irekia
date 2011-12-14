@@ -73,6 +73,7 @@ Irekia::Application.routes.draw do
       get 'questions'
       get 'proposals'
       get 'agenda'
+      get 'detail'
     end
   end
 

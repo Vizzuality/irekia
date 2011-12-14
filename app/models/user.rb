@@ -53,6 +53,7 @@ class User < ActiveRecord::Base
 
   before_validation :check_blank_name, :on => :create
   before_create :check_user_role
+  after_create :follow_presidencia
 
   validates           :terms_of_service,  :acceptance => true
   validates           :name,              :presence   => true,        :on => :update
@@ -234,6 +235,10 @@ class User < ActiveRecord::Base
 
       user
     end
+  end
+
+  def self.patxi_lopez
+    where('(name = ? AND lastname = ?) OR external_id = ?', 'Patxi', 'Lopez Alvarez', 8080).first
   end
 
   def create_public_action(item)
@@ -504,5 +509,13 @@ class User < ActiveRecord::Base
     self.role = Role.citizen.first unless self.role.present?
   end
   private :check_user_role
+
+  def follow_presidencia
+    if citizen?
+      areas_following << Area.presidencia
+      save(false)
+    end
+  end
+  private :follow_presidencia
 
 end

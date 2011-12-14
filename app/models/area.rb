@@ -78,6 +78,10 @@ class Area < ActiveRecord::Base
     select([:id, :name]).order('name asc')
   end
 
+  def self.for_footer
+    select([:id, :name]).order('external_id asc')
+  end
+
   def self.areas_for_homepage
     select([:'areas.id', :name, :questions_count, :proposals_count])
     .joins("LEFT JOIN (#{AreaPublicStream.select('area_id, max(published_at) date').group('area_id').order('date desc').to_sql}) aps ON aps.area_id = areas.id")
@@ -85,6 +89,10 @@ class Area < ActiveRecord::Base
     .page(1)
     .per(17)
     .all
+  end
+
+  def self.presidencia
+    where('external_id = ? OR name = ?', 1, 'Presidencia').first
   end
 
   def create_action(item)

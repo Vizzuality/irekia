@@ -8,6 +8,7 @@
 <span class="position"><%= get_politician_title(politician) %></span>
 
 <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+  <%= hidden_field_tag :partial, 'tagged_politician' %>
   <%= form.fields_for :contents_users, politician_tag do |content_user_fields| %>
     <%= content_user_fields.hidden_field :_destroy, :value => true %>
   <% end -%>
