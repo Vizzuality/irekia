@@ -87,7 +87,7 @@ module ApplicationHelper
         area = user_or_area
         link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => area.name, :class => "avatar #{size}"
       else
-        image_tag "icons/faceless_#{size}_avatar.png", :class => "avatar #{size}", :title => t('unknown_user')
+        image_tag "icons/faceless#{ "_" + size unless size.blank? }_avatar.png", :class => "avatar #{size}", :title => t('unknown_user')
       end
     end
   end

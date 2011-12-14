@@ -51,7 +51,6 @@
               </div>
             </div>
           </div>
-
         </div>
 
         <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
@@ -64,9 +63,11 @@
           <%= button "Guardar", :class => "submit white_button" %>
         <% end -%>
 
-        <% unless @content.subtitle.blank? %>
+        <% subtitle = @content.subtitle %>
+        <% subtitle = "Añadir subtítulo" if @content.subtitle.blank? %>
+
           <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
-            <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => "subtitle content" if @content.subtitle %>
+            <%= content_tag :p, (content_tag :strong, subtitle), :class => "subtitle content" %>
 
             <%= form.fields_for :news_data do |news_data| %>
               <div class="input_field textarea">
@@ -75,7 +76,6 @@
             <% end -%>
             <%= button "Guardar", :class => "submit white_button" %>
           <% end -%>
-        <% end %>
 
         <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable date'} do |form| %>
           <div class="meta">
@@ -168,6 +168,5 @@
     </div>
     <div class="t"></div><div class="f"></div>
   </div>
-
 
   <%= render "shared/event_edit" %>

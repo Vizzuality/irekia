@@ -1072,103 +1072,175 @@ jQuery.fn.enablePagination = function(opt){
 
 jQuery.fn.enableTargetEditing = function(opt){
 
-  var
-  $this          = $(this),
-  interval,
-  $add           = $this.find(".add_target");
-  $addInput      = $this.find('.input_field input[type="text"]'),
-  $addInputField = $this.find(".input_field"),
-  serviceURL     = "/search/politicians_and_areas",
-  speed          = (opt && opt.speed) || 100,
-  spin_element   = document.getElementById('target_spinner'),
-  spinner        = new Spinner(SPINNER_OPTIONS),
-  fadeInSpeed    = (opt && opt.speed) || 10;
+  this.each(function(){
+    var
+    $this          = $(this),
+    interval,
+    $add           = $this.find(".add_target");
+    $addInput      = $this.find('.input_field input[type="text"]'),
+    $addInputField = $this.find(".input_field"),
+    serviceURL     = "/search/politicians_and_areas",
+    speed          = (opt && opt.speed) || 100,
+    spin_element   = document.getElementById('target_spinner'),
+    spinner        = new Spinner(SPINNER_OPTIONS),
+    fadeInSpeed    = (opt && opt.speed) || 10;
 
-  $(this).find(".content").click(function(e) {
-    e.preventDefault();
-    $(this).fadeOut(speed, function() {
-      $this.find(".add_target").fadeIn(speed, function() {
-        $this.find('.add_target input[type="text"]').focus();
+    function _setup() {
+
+      $addInputField.click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
       });
-    });
-  });
 
-  function _onSuccess(response) {
-    _hidePopover();
-    _appendPopover(response);
-  }
+      $addInput.click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
 
-  function _hidePopover() {
-    spinner.stop();
+      $this.find(".content").click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-    if ($(".autosuggest.mini").length > 0 ) {
-      $(".autosuggest.mini").fadeOut(speed, function() { $(this).remove(); });
+        GOD.subscribe("_close.target_popover");
+        GOD.broadcast("_close.target_popover");
+
+        $(this).fadeOut(speed, function() {
+          $this.find(".add_target").fadeIn(speed, function() {
+            $this.find(".add_target").addClass("open");
+            $this.find('.add_target input[type="text"]').focus();
+          });
+        });
+      });
+
+      $(window).bind('_close.target_popover', function() {
+        _close();
+      });
+
     }
-  }
 
-  function _centerPopover($response) {
-    var left =  $add.position().left - ($response.outerWidth(true) / 2) + ($add.outerWidth(true) / 2);
-    var top  =  $add.position().top  + $add.outerHeight(true) + 8;
+    function _onSuccess(response) {
+      _hidePopover();
+      _appendPopover(response);
+    }
+    function _hidePopover() {
 
-    $response.css({left: left + "px", top: top + "px"});
-  }
-
-  function _appendPopover(response) {
-
-    var $response = $(response);
-
-    if ($response.find("ul li").length > 0) {
-
-      $response.addClass("mini");
-      $this.after($response);
-      _centerPopover($response);
-      $response.hide();
-      $response.fadeIn(speed, function() {
-        spinner.stop();
-      });
-    } else {
       spinner.stop();
-    }
-  }
 
-  function _observeInput($input) {
-
-    function _do(e) {
-
-      if ($input.val().length <= 0) {
-        _hidePopover();
-      } else {
-
-        if (_.any([13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return e.keyCode == i } ) && (e.keyCode == 65 && (e.metaKey || e.ctrlKey))) { return; }
-        if ($addInput.val().length > 3) _onKeyUp(e);
+      if ($(".autosuggest.small").length > 0 ) {
+        $(".autosuggest.small").fadeOut(speed, function() { $(this).remove(); });
       }
     }
 
-    $input.keyup(_do);
-    $input.keydown(_do);
-  }
+    function _close() {
+      _hidePopover();
 
-  function _onKeyUp(e){
+      $this.find(".add_target").fadeOut(speed, function() {
+        $this.find(".content").fadeIn(fadeInSpeed);
+        $this.find(".holder").fadeIn(fadeInSpeed);
+        $this.find(".add_target").find("input").val("");
+        $this.find(".add_target").removeClass("open");
+      });
+    }
 
-    clearTimeout(interval);
+    function _centerPopover($response) {
+      var left =  $addInputField.position().left + 72;
+      var top  =  $addInputField.position().top  + $addInputField.outerHeight(true) + 15;
 
-    interval = setTimeout(function(){
-      if ($addInput.val().length > 0) spinner.spin(spin_element);
+      $response.css({left: left + "px", top: top + "px"});
+    }
 
-      var query = $addInput.val();
-      var params = { name : query };
+    function _resizePopover($popover) {
+      var h_ = $popover.find("ul").height();
 
-      $.ajax({ url: serviceURL, data: { search: params }, type: "GET", success: _onSuccess});
-    }, 500);
-  }
+      if (h_< 160) {
+        $popover.find(".popover").height(h_);
+      } else {
+        $popover.find('.scroll-pane').jScrollPane();
+        $popover.find(".jspDrag").bind('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+    }
 
-  _observeInput($addInput);
+    function _appendPopover(response) {
 
-  $(".autosuggest.mini li").live("click", function() {
-    _hidePopover();
-    // TODO: add code to manage response from the server
+      var $response = $(response);
+
+      if ($response.find("ul li").length > 0) {
+
+        // Append and configure the popover
+        $response.addClass("small");
+        $response.hide();
+
+        $this.after($response);
+        _centerPopover($response);
+
+        if (!$this.find(".add_target").hasClass("open")) return;
+
+        // Show the popover
+        $response.fadeIn(speed, function() {
+          spinner.stop();
+          _resizePopover($response);
+
+          $response.find("li").click(function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            _hidePopover();
+
+            var name = $(this).attr("data-content");
+            $this.find("span.target").html("Dirigida a " + name);
+            _close();
+          });
+        });
+      } else {
+        spinner.stop();
+      }
+    }
+
+    function _observeInput($input) {
+
+      function _do(e) {
+
+        if (e.keyCode == 27) return;
+
+        if ($input.val().length <= 0) {
+          _hidePopover();
+        } else {
+
+          if (_.any([13, 16, 17, 18, 20, 27, 32, 37, 38, 39, 40, 91], function(i) { return e.keyCode == i } ) && (e.keyCode == 65 && (e.metaKey || e.ctrlKey))) { return; }
+          if ($addInput.val().length > 3) _onKeyUp(e);
+        }
+      }
+
+      $input.keyup(_do);
+      $input.keydown(_do);
+    }
+
+    function _onKeyUp(e){
+
+      clearTimeout(interval);
+
+      interval = setTimeout(function(){
+        if ($addInput.val().length > 0) spinner.spin(spin_element);
+
+        var query = $addInput.val();
+        var params = { name : query };
+
+        $.ajax({ url: serviceURL, data: { search: params }, type: "GET", success: _onSuccess});
+      }, 500);
+    }
+
+    _observeInput($addInput);
+    _setup();
   });
-}
+} // jQuery.fn.enableTargetEditing
+
+
+
+
+
+
 
 jQuery.fn.enableNotificationSelector = function(opt){
 
