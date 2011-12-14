@@ -21,6 +21,7 @@ class HomeController < ApplicationController
   end
 
   def get_areas
+    super
     @areas                 = Area.areas_for_homepage
     @areas_by_name         = Area.names_and_ids.all
   end
