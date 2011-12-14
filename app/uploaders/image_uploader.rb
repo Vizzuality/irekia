@@ -52,7 +52,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :content do
-    process :resize_to_fit => [608, 1000]
+    process :contents_size
+  end
+
+  def contents_size
+    manipulate! do |img|
+      img.resize_to_fit(608, 1000) if img[:width] > 608
+      img
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
