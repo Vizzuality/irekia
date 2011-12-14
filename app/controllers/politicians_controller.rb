@@ -2,10 +2,10 @@ class PoliticiansController < UsersController
   skip_before_filter :authenticate_user!, :only => [:show, :actions, :questions, :proposals, :agenda, :detail]
 
   before_filter :per_page,                   :only => [:show, :actions, :questions, :proposals]
-  before_filter :get_user,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda]
+  before_filter :get_user,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda, :detail]
   before_filter :models_for_forms,           :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :current_user_is_politician?
-  before_filter :get_politician,             :only => [:show, :update, :actions, :questions, :proposals, :agenda]
+  before_filter :get_politician,             :only => [:show, :update, :actions, :questions, :proposals, :agenda, :detail]
   before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_counters,               :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_actions,                :only => [:show, :actions]

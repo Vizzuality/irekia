@@ -33,7 +33,10 @@
             </li>
 
         <% last_notification = notifications_list.pop -%>
-        <% notifications_list.each do |notification| -%>
+        <% first_notification = notifications_list.shift -%>
+
+        <%= render_notification_item(first_notification[0], first_notification[1], 'first') if first_notification.present? %>
+        <% notifications_list.each_with_index do |notification,i| -%>          
           <%= render_notification_item(notification[0], notification[1]) %>
         <% end -%>
         <%= render_notification_item(last_notification[0], last_notification[1], 'last') if last_notification.present? %>

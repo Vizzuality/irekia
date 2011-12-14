@@ -21,25 +21,25 @@
               <li class="<%= current_area?(area) %><%= ' last' if @areas.last == area %>">
                 <%= avatar(area, 'small') %>
                 <%= link_to area.name, area_path(area) %></li>
-              <% end if @areas %>
-            </ul>
-          </div>
+            <% end if @areas %>
+          </ul>
         </div>
       </div>
+    </div>
 
-      <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get, :autocomplete => :off } do |search_form| %>
-        <div class="input_field search placeholder">
-          <%= search_form.text_field :query %>
-          <%= search_form.submit '' %>
-          <span id="autocomplete_spinner"></span>
-          <span class="holder"><%= raw t(".search") %></span>
-        </div>
-        <field></field>
-        <div class="autocomplete">
-          <div class="inner"></div>
-          <div class="t"></div><div class="f"></div>
-        </div>
-      <% end %>
-      <%= render 'shared/nav_bar_buttons' %>
+    <%= form_for :search, :remote => true, :url => search_path, :html => {:'data-type' => 'html', :method => :get, :autocomplete => :off } do |search_form| %>
+      <div class="input_field search placeholder">
+        <%= search_form.text_field :query %>
+        <%= search_form.submit '' %>
+        <span id="autocomplete_spinner"></span>
+        <span class="holder"><%= raw t(".search") %></span>
+      </div>
+      <field></field>
+      <div class="autocomplete">
+        <div class="inner"></div>
+        <div class="t"></div><div class="f"></div>
+      </div>
     <% end %>
-  </div>
+    <%= render 'shared/nav_bar_buttons' %>
+  <% end %>
+</div>
