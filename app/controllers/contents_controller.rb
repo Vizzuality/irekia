@@ -174,6 +174,8 @@ class ContentsController < ApplicationController
   end
 
   def create
+    require "ruby-debug"; debugger;
+
     render :json => @image and return if @image.present?
 
     @content        = @content_class.new params[@content_type]
@@ -220,6 +222,7 @@ class ContentsController < ApplicationController
   private :check_edition_permission
 
   def process_file_upload
+    require "ruby-debug"; debugger; puts "HI!!!!!!!!"
     return unless params[:qqfile].present?
 
     uploader = ImageUploader.cache_from_io!(request.body, params.delete(:qqfile))

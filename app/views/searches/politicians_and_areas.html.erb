@@ -4,7 +4,7 @@
       <ul>
         <% if @search_results[:areas] %>
           <% @search_results[:areas].each do |area| %>
-            <li id="item_<%= area.id %>" class="area clearfix">
+            <li id="item_<%= area.id %>" data-content="<%= area.name %>" class="area clearfix">
             <%= avatar area, 'small' %>
             <p>
             <span class="name"><%= area.name %></span>
@@ -15,7 +15,7 @@
         <% end %>
         <% if @search_results[:politicians] %>
           <% @search_results[:politicians].each do |politician| %>
-            <li id="item_<%= politician.id %>" data-id="<%= politician.id %>" class="user clearfix">
+            <li id="item_<%= politician.id %>" data-id="<%= politician.id %>" data-content="<%= politician.fullname %>" " class="user clearfix">
             <%= avatar politician, 'small' %>
             <p>
             <span class="name"><%= politician.fullname %></span>
@@ -27,7 +27,6 @@
           <% end %>
         <% end %>
       </ul>
-
       <div class="a_t"></div>
       <div class="a_f"></div>
     </div>

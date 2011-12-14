@@ -2505,7 +2505,7 @@ span.where, .map .infowindow ul.details li.where {
 
       &.small {
         float: left;
-        position:relative;
+        position:absolute;
         display:none;
         width: 565px;
         height:auto;
@@ -2533,13 +2533,14 @@ span.where, .map .infowindow ul.details li.where {
 
               li {
                 width:511px;
+                padding: 10px 0 10px 0;
+                margin: 0;
+                height:auto;
                 text-shadow:none;
                 font-size:13px;
                 border-bottom: 1px solid #f1f1f1;
-                padding: 10px 0 10px 0;
                 color:$medium_dark;
                 background:none;
-                height:34px;
 
                 p { width:460px; }
                 p, span { font-size: 15px; }

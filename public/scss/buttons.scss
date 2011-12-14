@@ -603,8 +603,11 @@ a.radio {
 Editing forms
 ========================================================================== */
 
-#container .article.editable .inner .left  {
-  z-index:60;
+#container .article.editable {
+  .inner .left { z-index:60; }
+  &.questions {
+    .context { height: 40px; }
+  }
 }
 
 form.editable,
@@ -630,6 +633,7 @@ form.editable,
   }
 
   &.target {
+
    -webkit-text-size-adjust: 100%;
    -ms-text-size-adjust: 100%;
    -webkit-perspective: 1000;
@@ -638,10 +642,9 @@ form.editable,
     float:left;
     width:auto;
     position:relative;
-    top: -13px;
+    top:-12px;
 
     .content { float:left; }
-
 
     .add_target {
       clear:both;
@@ -653,17 +656,15 @@ form.editable,
       width:255px;
       height:59px;
 
-
-      .spinner { top:28px; right:25px; }
+      .spinner { top:28px; right: 35px; }
 
       .input_field {
         display:block;
         width:195px;
         border:none;
-        padding: 10px;
         @include border-radius(3px);
-        height:33px;
-        margin: 2px 0 0 0;
+        height: auto;
+        margin: 0 0 0 -7px;
 
         .holder { width: 215px; left: 19px; top: 18px; }
 

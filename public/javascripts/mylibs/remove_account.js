@@ -6,15 +6,6 @@
 
 (function($, window, document) {
 
-  var ie6 = false;
-
-  // Help prevent flashes of unstyled content
-  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
-    ie6 = true;
-  } else {
-    document.documentElement.className = document.documentElement.className + ' ps_fouc';
-  }
-
   var spin_element = document.getElementById('remove_account_spinner'),
   spinner      = new Spinner(SPINNER_OPTIONS),
   store = "remove-account-popover",
@@ -76,12 +67,10 @@
 
   // Expose the plugin
   $.fn.removeAccountPopover = function(method) {
-    if (!ie6) {
-      if (methods[method]) {
-        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-      } else if (typeof method === 'object' || !method) {
-        return methods.init.apply(this, arguments);
-      }
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
     }
   };
 
