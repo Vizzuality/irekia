@@ -6,23 +6,24 @@
 
       <div class="context">
         <h3><%= t(@content.content_type) %></h3>
-        <% if @content.target_area %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_area.name, @content.target_area %> <% end %>
 
-
-        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable target'} do |form| %>
+        <%= form_for @content, :remote => true, :html => {:'data-addressed-to' => "#{t(".addressed_to")}", :'data-type' => 'html', :class => 'editable target'} do |form| %>
           <%= form.fields_for :question_data do |question_data| %>
-            <%= question_data.hidden_field :area_id, :value => nil %>
-            <%= question_data.hidden_field :user_id, :value => nil %>
+            <%= question_data.hidden_field :area_id, :value => "", :id => "editable_target_area_id" %>
+            <%= question_data.hidden_field :user_id, :value => "", :id => "editable_target_user_id" %>
           <% end -%>
+
           <div class="content">
             <% if @content.target_user %>
               <span class="target"><%= t(".addressed_to") -%> <%= @content.target_user.fullname -%></span>
             <% elsif @content.target_area -%>
               <span class="target"><%= t(".addressed_to") -%> <%= @content.target_area.name -%></span>
+            <% else -%>
+              <span class="target">Añadir destinatario</span>
             <% end -%>
           </div>
 
-          <div class="add_target">
+          <div class="add_target" >
             <div class="input_field placeholder">
               <input type="text" />
               <span class="holder">Introduce el nuevo destinatario</span>
@@ -130,7 +131,7 @@
     <div class="left">
       <% if @content.target_user -%>
         <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user, :anchor => :questions), :class => :left_arrow %>
-      <% else -%>
+      <% elsif @content.target_area -%>
         <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area, :anchor => :questions), :class => :left_arrow %>
       <% end -%>
     </div>

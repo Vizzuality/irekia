@@ -1188,8 +1188,20 @@ jQuery.fn.enableTargetEditing = function(opt){
 
             _hidePopover();
 
+
             var name = $(this).attr("data-content");
-            $this.find("span.target").html("Dirigida a " + name);
+
+            if ($(this).attr("data-type") == "area") {
+              $this.find("#editable_target_area_id").val($(this).attr("data-id"));
+              $this.find("#editable_target_user_id").val();
+            } else if ($(this).attr("data-type") == "politician") {
+              $this.find("#editable_target_area_id").val();
+              $this.find("#editable_target_user_id").val($(this).attr("data-id"));
+            }
+
+            $this.find("span.target").html($this.attr("data-addressed-to") + " " + name);
+            $this.submit();
+
             _close();
           });
         });
