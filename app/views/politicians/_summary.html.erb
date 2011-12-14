@@ -14,7 +14,7 @@
         <%= simple_format(@politician.description_1.try(:strip)) %>
       </div>
       <div class="last column">
-        <%= simple_format("#{@politician.description_2.try(:strip)} #{link_to(t('.description.read_more'), '/in_development')}") %>
+        <%= simple_format("#{@politician.description_2.try(:strip)} #{link_to(t('.description.read_more'), detail_politician_path(@politician))}") %>
         <% if @follow.new_record? -%>
           <%= render 'follows/create' %>
         <% else -%>

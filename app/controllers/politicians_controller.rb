@@ -1,5 +1,5 @@
 class PoliticiansController < UsersController
-  skip_before_filter :authenticate_user!, :only => [:show, :actions, :questions, :proposals, :agenda]
+  skip_before_filter :authenticate_user!, :only => [:show, :actions, :questions, :proposals, :agenda, :detail]
 
   before_filter :per_page,                   :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                   :only => [:show, :update, :actions, :questions, :proposals, :agenda]
@@ -48,6 +48,10 @@ class PoliticiansController < UsersController
   def agenda
     render :partial => 'shared/agenda_list',
            :layout  => nil and return if request.xhr?
+  end
+
+  def detail
+
   end
 
   def current_user_is_politician?
