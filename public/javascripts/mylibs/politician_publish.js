@@ -339,7 +339,6 @@
               _bindSubmit(data, "Publicar", true, "publish");
               _clearAutosuggest(data);
               _enableSubmit(data.$submit);
-
             });
 
             $currentSection.find(".autosuggest").fadeOut(150, function() {

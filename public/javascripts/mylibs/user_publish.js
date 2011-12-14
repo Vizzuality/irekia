@@ -327,7 +327,7 @@
             if ($response.find("li").length > 0) {
               $response.hide();
               $response.addClass("small");
-
+              $response.css({position:"relative"});
               $response.css("top", 0);
 
               $ps.find('.content').append($response);
@@ -608,6 +608,7 @@
         $response.hide();
         $response.addClass("small");
 
+        $response.css({position:"relative"});
         $response.css("top", 0);
 
         $ps.find('.content').append($response);

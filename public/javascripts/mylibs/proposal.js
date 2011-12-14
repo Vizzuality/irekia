@@ -402,7 +402,8 @@
         $response.hide();
         $response.addClass("small");
 
-        $response.css("top", 0);
+        console.log($ps.find(".autosuggest").position().top, $ps.find(".autosuggest").offset().top);
+        $response.css("top", $ps.find(".autosuggest").position().top);
 
         $ps.find('.content').append($response);
 
@@ -482,6 +483,7 @@
               $response.hide();
               $response.addClass("small");
 
+              $response.css({position:"relative"});
               $response.css("top", 0);
 
               $ps.find('.content').append($response);
