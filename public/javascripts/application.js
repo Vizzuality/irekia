@@ -279,7 +279,7 @@ $(function() {
   //  Notifications
   $('.toggle_notifications').tipsy({gravity: 's', offset: 3, title: function() {
     var count = parseInt($(this).text());
-    if (count)
+    if (count==0)
       return 'No tienes notificaciones';
     else
       if (count>1) 
