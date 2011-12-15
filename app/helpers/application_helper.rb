@@ -83,13 +83,7 @@ module ApplicationHelper
     else
       if user_or_area.present? && user_or_area.profile_image.present?
         user = user_or_area
-
-        if size.to_s == 'big'
-          link_to (image_tag(user.profile_image_big) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar xlAvatar"
-        else
-          link_to (image_tag(user.profile_image) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
-        end
-
+        link_to (image_tag(user.profile_image) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
       elsif user_or_area.present? && user_or_area.thumbnail.present?
         area = user_or_area
         link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => area.name, :class => "avatar #{size}"
@@ -226,12 +220,13 @@ module ApplicationHelper
   end
 
   def render_list_element(item, item_type, options = {})
+    default_class = ' clearfix'
     defaults = {
-      :class       => 'clearfix',
       :inline      => false,
       :path_suffix => ''
     }
     options = options.merge(defaults)
+    options[:class] << default_class
 
     defaults[:class] << ' not_moderated' unless item.moderated
 
