@@ -1,7 +1,8 @@
-<h4><%= data.title %></h4>
-<% begin %>
-<%= link_to image_tag(data.image.image_url), proposal_path(data.id) %>
-<% rescue %>
-<% end %>
-<%= data.body %>
-</p>
+<div class="photo_moderation">
+	<h4><%= data.title %></h4>
+	<% begin %>
+		<%= link_to image_tag(data.image.image_url), proposal_path(data.id) %>
+		<% rescue %>
+	<% end %>
+	<p><%= data.body %></p>
+</div>
