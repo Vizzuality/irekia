@@ -2306,7 +2306,7 @@ span.where, .map .infowindow ul.details li.where {
 
           &.not_moderated {
             div.content p,.avatar,.icon {opacity:0.3!important; filter: alpha(opacity = 30)!important; -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30)!important;}
-            .footer span.moderation_pending {color:#FF6600}
+          .footer span.moderation_pending {color:#FF6600}
           }
         }
       }
@@ -2451,6 +2451,7 @@ span.where, .map .infowindow ul.details li.where {
       }
       .input_field, .white_button { margin-left: 28px; }
       .white_button.margin {margin:20px 0 0 0;}
+      .white_button.margin-bottom {margin:0 0 20px 28px;}
       .input_field { margin-bottom: 28px; }
     }
   }
@@ -3077,6 +3078,7 @@ span.where, .map .infowindow ul.details li.where {
 }
 
 #container .article .inner .right .proposal-support {
+  float:left;
   background:#F6F6F7;
   p { padding:13px 13px 0 13px; margin:0 0 13px 0; font-size:15px; color: #465866; }
   .count {
