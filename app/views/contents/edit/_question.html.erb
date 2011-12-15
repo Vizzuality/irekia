@@ -111,7 +111,6 @@
     </div>
     <div class="right">
       <div class="content left-border">
-        <%= sharing_partial(question_url(@content), @content.question_text) %>
         <%= render "shared/sidebar/tags" %>
         <%= render "shared/sidebar/answered_by" if @answer %>
         <%= render "shared/sidebar/related_questions" %>
