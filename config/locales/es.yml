@@ -844,7 +844,10 @@
               zero: Aún no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
+      news:
+        back: volver
       question:
+        back: volver
         addressed_to: 'Dirigida a'
         not_answered_yet: Esta pregunta aún no ha sido contestada.
         you_and_other:

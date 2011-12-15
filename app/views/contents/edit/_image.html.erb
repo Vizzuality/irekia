@@ -1,5 +1,5 @@
 <div class="image_container">
-  <%#= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+  <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
 
   <!-- remove -->
   <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'remove'} do |form| %>
