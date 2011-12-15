@@ -4,10 +4,6 @@ module ApplicationHelper
     controller_name == 'home' && action_name == 'index'
   end
 
-  def get_root_url
-    user_signed_in?? user_path(current_user) : root_path
-  end
-
   def am_I?(user)
     current_user && user && current_user.try(:id) == user.try(:id) && (private_profile? || politician_profile?)
   end
@@ -37,19 +33,19 @@ module ApplicationHelper
   end
 
   def viewing_dashboard?
-    controller_name == 'users' && action_name == 'show' && current_user && params[:id].to_i == current_user.id
+    controller_name == 'users' && action_name == 'show' && current_user && @user == current_user
   end
 
   def viewing_politician_dashboard?
-    controller_name == 'politicians' && action_name == 'show' && current_user && params[:id].to_i == current_user.id && current_user.is_politician
+    controller_name == 'politicians' && action_name == 'show' && current_user && @user == current_user && current_user.is_politician
   end
 
   def viewing_private_activity?
-    controller_name == 'users' && action_name == 'actions' && current_user && params[:id].to_i == current_user.id
+    controller_name == 'users' && action_name == 'actions' && current_user && @user == current_user
   end
 
   def viewing_public_profile?
-    controller_name == 'users' && action_name == 'show' && ((current_user && params[:id].to_i != current_user.id) || current_user.blank?)
+    controller_name == 'users' && action_name == 'show' && (@user != current_user || current_user.blank?)
   end
 
   def current_action?(action)
@@ -87,13 +83,8 @@ module ApplicationHelper
     else
       if user_or_area.present? && user_or_area.profile_image.present?
         user = user_or_area
-
-        if size.to_s == 'big'
-          link_to (image_tag(user.profile_image_big) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar xlAvatar"
-        else
-          link_to (image_tag(user.profile_image) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
-        end
-
+        image_url = size == 'big' ? user.profile_image_big : user.profile_image
+        link_to (image_tag(image_url) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
       elsif user_or_area.present? && user_or_area.thumbnail.present?
         area = user_or_area
         link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => area.name, :class => "avatar #{size}"
@@ -230,12 +221,14 @@ module ApplicationHelper
   end
 
   def render_list_element(item, item_type, options = {})
+    default_class = ' clearfix'
     defaults = {
-      :class       => 'clearfix',
       :inline      => false,
       :path_suffix => ''
     }
     options = options.merge(defaults)
+    options[:class] ||= ''
+    options[:class] << default_class
 
     defaults[:class] << ' not_moderated' unless item.moderated
 

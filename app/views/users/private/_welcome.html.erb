@@ -107,9 +107,9 @@
       <%= form.hidden_field :first_time, :value => false %>
       <%= form.submit '', :class => 'close' %>
     <% end -%>
-    <%= link_to t('.configure_your_account'), settings_user_path, :class => 'config first-time' %>
+    <%= link_to t('.configure_your_account'), settings_user_path(current_user), :class => 'config first-time' %>
   <% else -%>
-    <%= link_to t('.configure_your_account'), settings_user_path, :class => :config %>
+    <%= link_to t('.configure_your_account'), settings_user_path(current_user), :class => :config %>
   <% end -%>
 </div>
 

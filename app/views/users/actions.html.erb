@@ -19,7 +19,7 @@
   <%= render "/shared/question_form" %>
 
 <% else -%>
-<%= render "shared/actions" %>
+<%= render "shared/actions", :title => t(viewing_dashboard?? 'show.activity.title' : 'actions.title', :scope => "users.#{@viewing_access}") if @actions.present? %>
 <% end -%>
 
 <%= render "shared/#{current_user.politician? ? 'politician' : 'user' }_publish" if private_profile? or politician_profile? %>

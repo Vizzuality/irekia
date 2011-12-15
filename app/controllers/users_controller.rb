@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   skip_before_filter :authenticate_user!,      :only => [:intro, :new, :create, :show, :questions, :proposals, :actions, :followings, :edit]
   skip_before_filter :current_user_valid?,     :only => [:edit, :update]
-  before_filter :private_politician_or_public?
-  before_filter :user_is_current_user?,        :only => [:edit, :update]
   before_filter :per_page,                     :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda, :settings]
+  before_filter :private_politician_or_public?
   before_filter :get_follow_suggestions,       :only => [:show, :followings]
   before_filter :get_counters,                 :only => [:show, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :models_for_forms,             :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
@@ -135,7 +134,7 @@ class UsersController < ApplicationController
   private :redirect_to_politician_page?
 
   def private_politician_or_public?
-    @viewing_access = if current_user && params[:id].present? && current_user.id == params[:id].to_i
+    @viewing_access = if @user == current_user
       current_user.politician?? 'politician' : 'private'
     else
       'public'
@@ -147,11 +146,6 @@ class UsersController < ApplicationController
     @section = params[:section] || 'dashboard'
   end
   private :get_section
-
-  def user_is_current_user?
-    redirect_to root_path if current_user.present? && params[:id].to_i != current_user.id
-  end
-  private :user_is_current_user?
 
   def get_follow_suggestions
     if current_user
@@ -171,9 +165,8 @@ class UsersController < ApplicationController
   private :get_follow_suggestions
 
   def get_user
-    return unless params[:id].present?
+    @user            = params[:id].present? ? User.by_id(params[:id]) : current_user
 
-    @user            = User.by_id(params[:id])
     @users_following = @user.users_following.politicians.all
     @areas_following = @user.areas_following.all
 

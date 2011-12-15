@@ -1757,6 +1757,9 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
         title_and_area: '%{title} de %{area}'
         area: Área
     politician:
+      show:
+        activity:
+          title: Última actividad
       welcome:
         hi_again: 'Hola de nuevo %{name}.'
         followers_count:
@@ -1802,7 +1805,7 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
         title: Tu agenda
         next_month: Siguiente mes
       actions:
-        title: Lo último
+        title: 'Tus últimas acciones'
         main_filters:
           more_recent: Más recientes
           more_polemic: Más polémicas

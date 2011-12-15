@@ -1,6 +1,13 @@
 <%= render "users/#{@viewing_access}/welcome" %>
 <%= render "users/#{@viewing_access}/navigation_menu" %>
-<%= render "shared/actions" if @actions.present? %>
+<%
+  @actions_description = if viewing_dashboard?
+    i18n_scope = 'users.private.show.activity'
+    t('subtitle', :link => link_to(t('profiles_or_areas_following', :scope => i18n_scope), followings_user_path(@user, :anchor => :followings )), :scope => i18n_scope)
+  end
+-%>
+<%= render "shared/actions", :title => t(viewing_dashboard?? 'show.activity.title' : 'actions.title', :scope => "users.#{@viewing_access}"),
+                             :description => @actions_description if @actions.present? %>
 <%= render "users/#{@viewing_access}/follow_suggestions" if private_profile? %>
 <%= render "shared/#{current_user.politician? ? 'politician' : 'user' }_publish" if private_profile? or politician_profile? %>
 
