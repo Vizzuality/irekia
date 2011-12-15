@@ -4,10 +4,6 @@ module ApplicationHelper
     controller_name == 'home' && action_name == 'index'
   end
 
-  def get_root_url
-    user_signed_in?? user_path(current_user) : root_path
-  end
-
   def am_I?(user)
     current_user && user && current_user.try(:id) == user.try(:id) && (private_profile? || politician_profile?)
   end
@@ -37,19 +33,19 @@ module ApplicationHelper
   end
 
   def viewing_dashboard?
-    controller_name == 'users' && action_name == 'show' && current_user && params[:id].to_i == current_user.id
+    controller_name == 'users' && action_name == 'show' && current_user && @user == current_user
   end
 
   def viewing_politician_dashboard?
-    controller_name == 'politicians' && action_name == 'show' && current_user && params[:id].to_i == current_user.id && current_user.is_politician
+    controller_name == 'politicians' && action_name == 'show' && current_user && @user == current_user && current_user.is_politician
   end
 
   def viewing_private_activity?
-    controller_name == 'users' && action_name == 'actions' && current_user && params[:id].to_i == current_user.id
+    controller_name == 'users' && action_name == 'actions' && current_user && @user == current_user
   end
 
   def viewing_public_profile?
-    controller_name == 'users' && action_name == 'show' && ((current_user && params[:id].to_i != current_user.id) || current_user.blank?)
+    controller_name == 'users' && action_name == 'show' && (@user != current_user || current_user.blank?)
   end
 
   def current_action?(action)
