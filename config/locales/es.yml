@@ -1556,7 +1556,7 @@
       name: 'Nombre'
       lastname: 'Apellidos'
       province: 'Territorio'
-      city_id: 'Municipio'
+      city: 'Municipio'
       birthday: 'Fecha de nacimiento'
       connect_with: "Conectar con %{name}"
       save_changes: 'Guardar cambios'
