@@ -719,10 +719,10 @@
     var left = _getLeftPosition(data.$ps);
 
     if (ie) {
-      $ps.removeClass("initialy_hidden");
-      $ps.css({top: top + "px", left: left + "px"});
+      data.$ps.removeClass("initialy_hidden");
+      data.$ps.css({top: top + "px", left: left + "px"});
 
-      $ps.fadeIn(data.settings.transitionSpeed, function() {
+      data.$ps.fadeIn(data.settings.transitionSpeed, function() {
         $(this).find("textarea.title").focus();
       });
     } else {

@@ -448,7 +448,13 @@
   }
 
   function _sectionName($section) {
-    return $section.attr("class").replace(/section/g, "").fulltrim();
+    if ($section.hasClass("dashboard")) return "dashboard";
+    if ($section.hasClass("proposal"))  return "proposal";
+    if ($section.hasClass("video"))     return "video";
+    if ($section.hasClass("question"))  return "question";
+    if ($section.hasClass("photo"))     return "photo";
+
+    //return $section.attr("class").replace(/section/g, "").fulltrim();
   }
 
   function _doCallback(name, data) {
@@ -718,10 +724,10 @@
     var left = _getLeftPosition(data.$ps);
 
     if (ie) {
-      $ps.removeClass("initialy_hidden");
-      $ps.css({top: top + "px", left: left + "px"});
+      data.$ps.removeClass("initialy_hidden");
+      data.$ps.css({top: top + "px", left: left + "px"});
 
-      $ps.fadeIn(data.settings.transitionSpeed, function() {
+      data.$ps.fadeIn(data.settings.transitionSpeed, function() {
         $(this).find("textarea.title").focus();
       });
     } else {
