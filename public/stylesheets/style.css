@@ -1412,7 +1412,7 @@ Explorer fixes
 /* --------------------------------------------------------------------------------------- Avatars */
 .ie7 .avatar, .ie8 .avatar { position: relative; overflow: hidden; width: 65px; height: 65px; }
 
-.ie7 .actions .inner .avatar > img, .ie7 .proposals .inner .avatar > img, .ie7 .photos .inner .avatar > img, .ie7 .proposal .inner .avatar > img, .ie7 .questions .inner .avatar > img, .ie7 .videos .inner .avatar > img, .ie7 .activity .inner .avatar > img, .ie8 .actions .inner .avatar > img, .ie8 .proposals .inner .avatar > img, .ie8 .photos .inner .avatar > img, .ie8 .proposal .inner .avatar > img, .ie8 .questions .inner .avatar > img, .ie8 .videos .inner .avatar > img, .ie8 .activity .inner .avatar > img { top: 0px; position: absolute; }
+.ie7 .actions .inner .avatar > img, .ie7 .proposals .inner .avatar > img, .ie7 .photos .inner .avatar > img, .ie7 .proposal .inner .avatar > img, .ie7 .questions .inner .avatar > img, .ie7 .videos .inner .avatar > img, .ie7 .activity .inner .avatar > img, .ie8 .actions .inner .avatar > img, .ie8 .proposals .inner .avatar > img, .ie8 .photos .inner .avatar > img, .ie8 .proposal .inner .avatar > img, .ie8 .questions .inner .avatar > img, .ie8 .videos .inner .avatar > img, .ie8 .activity .inner .avatar > img { top: -4px; position: absolute; }
 
 .ie7 .avatar.medium > img, .ie8 .avatar.medium > img { top: 0px; position: absolute; }
 
@@ -1941,6 +1941,9 @@ White buttons
   .proposals .proposal .footer form .input_text input[type="submit"] { top: 7px!Important; } }
 
 .ie9 .white_button:active, .ie9 .article .white_button:active { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c2f4f6f9', endColorstr='#c2ffffff',GradientType=0 ); /* IE6-9 */ }
+
+.ie7 #container .article .with_question .avatar_box, .ie8 #container .article .with_question .avatar_box { bottom: 17px; }
+.ie7 #container .article .with_question .avatar_box .xlAvatar.avatar, .ie7 #container .article .with_question .avatar_box .avatar, .ie8 #container .article .with_question .avatar_box .xlAvatar.avatar, .ie8 #container .article .with_question .avatar_box .avatar { width: 280px; height: 280px; }
 
 .ie7 #container .article.mini.popover.with_footer .input_field.uploader input[type="text"], .ie8 #container .article.mini.popover.with_footer .input_field.uploader input[type="text"] { line-height: 33px; border: 1px solid #ccc; width: 535px; }
 .ie7 #container .article.mini.popover.with_footer .input_field.autosuggest_field input[type="text"], .ie8 #container .article.mini.popover.with_footer .input_field.autosuggest_field input[type="text"] { line-height: 33px; border: 1px solid #ccc; width: 535px; }

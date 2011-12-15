@@ -94,7 +94,6 @@ jQuery.fn.enableRegistration = function(opt){
     $currentArticle = $data;
     $form           = $currentArticle.find("form");
 
-
     forward($article, $currentArticle);
   }
 

@@ -4952,7 +4952,7 @@ Explorer fixes
 .ie8 .questions .inner .avatar,
 .ie8 .videos .inner .avatar,
 .ie8 .activity .inner .avatar {
-  &>img { top: 0px; position:absolute;}
+  &>img { top: -4px; position:absolute;}
 }
 
 .ie7 .avatar.medium,
@@ -4973,7 +4973,6 @@ Explorer fixes
   height: $avatar_normal_size;
   background: url('/images/avatar_frame.png') no-repeat 0 0;
   z-index: 90;
-
 }
 
 .ie7 .avatar.medium,

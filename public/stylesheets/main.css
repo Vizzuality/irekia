@@ -1256,7 +1256,7 @@ Explorer fixes
 /* --------------------------------------------------------------------------------------- Avatars */
 .ie7 .avatar, .ie8 .avatar { position: relative; overflow: hidden; width: 65px; height: 65px; }
 
-.ie7 .actions .inner .avatar > img, .ie7 .proposals .inner .avatar > img, .ie7 .photos .inner .avatar > img, .ie7 .proposal .inner .avatar > img, .ie7 .questions .inner .avatar > img, .ie7 .videos .inner .avatar > img, .ie7 .activity .inner .avatar > img, .ie8 .actions .inner .avatar > img, .ie8 .proposals .inner .avatar > img, .ie8 .photos .inner .avatar > img, .ie8 .proposal .inner .avatar > img, .ie8 .questions .inner .avatar > img, .ie8 .videos .inner .avatar > img, .ie8 .activity .inner .avatar > img { top: 0px; position: absolute; }
+.ie7 .actions .inner .avatar > img, .ie7 .proposals .inner .avatar > img, .ie7 .photos .inner .avatar > img, .ie7 .proposal .inner .avatar > img, .ie7 .questions .inner .avatar > img, .ie7 .videos .inner .avatar > img, .ie7 .activity .inner .avatar > img, .ie8 .actions .inner .avatar > img, .ie8 .proposals .inner .avatar > img, .ie8 .photos .inner .avatar > img, .ie8 .proposal .inner .avatar > img, .ie8 .questions .inner .avatar > img, .ie8 .videos .inner .avatar > img, .ie8 .activity .inner .avatar > img { top: -4px; position: absolute; }
 
 .ie7 .avatar.medium > img, .ie8 .avatar.medium > img { top: 0px; position: absolute; }
 
