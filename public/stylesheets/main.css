@@ -1167,6 +1167,7 @@ input.xlInput { width: 508px; height: 32px; padding: 0 9px; border: 1px solid rg
 #container .article.settings .inner .left fieldset .field .radios input[type="radio"] { left: -9000px; position: absolute; }
 #container .article.settings .inner .left fieldset .field.social { float: left; margin: 0; }
 #container .article.settings .inner .left fieldset .field.social .social-links { margin: 0 0 10px 0; }
+#container .article.settings .inner .left fieldset .field.social .social-links .facebook { margin: 0 10px 0 0; }
 #container .article.settings .inner .left fieldset .field select, #container .article.settings .inner .left fieldset .field .dk_container { float: left; margin: 0 10px 0 0; }
 #container .article.settings .inner .left fieldset .field.born_at { float: left; width: 415px; clear: right; }
 #container .article.settings .inner .left fieldset .field.born_at .input_field { width: 415px; }

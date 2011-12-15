@@ -4569,7 +4569,10 @@ input {
             float:left;
             margin: 0;
 
-            .social-links { margin: 0 0 10px 0; }
+            .social-links {
+              margin: 0 0 10px 0;
+              .facebook { margin: 0 10px 0 0; }
+            }
           }
 
 
