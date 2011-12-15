@@ -1315,7 +1315,18 @@
       agenda:
         title: 'Agenda de %{name}'
     detail:
-      back: 'Volver'
+      back: 'volver'
+      title: '%{title} de %{areas}'
+      description:
+        title: Quién es y qué hace
+        activity: Actividad en IREKIA
+        contact: Información de contacto
+      stats:
+        actions: 'Acciones en IREKIA'
+        week: '%{count} esta semana'
+        questions: 'preguntas contestadas'
+        comments: 'comentarios en propuestas'
+        respond: 'tarda en responder %{time}'
   searches:
     header:
       your_search_results: Resultados de tu búsqueda

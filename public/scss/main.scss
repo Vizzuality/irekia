@@ -116,6 +116,11 @@ span {
   &.against      { color: $against_color; }
 }
 
+.margin30 {
+  margin-top:30px;
+  display:block;
+} 
+
 /* =============================================================================
 /* Header
 /* ========================================================================== */
@@ -863,6 +868,48 @@ div#main.show div.left img {margin:4px 0 7px;}
       form { float:none; width:auto; display:inline-block; margin:10px 0 0 0;}
     }
   } // profile .inner
+
+
+  &.detail {
+    .inner {
+      padding-top:25px;
+      padding-bottom:40px;
+
+      h1 {margin-bottom:0!important; padding:0 0 7px 0;}
+      img {float:left}
+      div.left {margin-left:30px;}
+      .contact p {padding:0 0 3px; margin:0; color:#A3ABB2;
+        a {color:#A3ABB2; &:hover {color:#666666; text-decoration:underline}}
+      }
+      .stats {
+        width:100%;
+        display:block;
+
+        li {
+          @include inline-block();
+          width:176px;
+          height:80px;
+          margin:0 7px 0 0;
+          background:url('/images/detail_stats_bkg.png') no-repeat 0 0;
+          .top {
+            display:block;          
+            height:37px;
+            padding:15px 0 0 15px;
+            h5 {@include inline-block(); margin:0; padding:0; font:bold 31px Arial; color:#465866; letter-spacing:-2px; line-height:24px;}
+            label {@include inline-block(); max-width:97px; padding:1px 0 0 3px; font:bold 11px Arial; color:#465866; text-transform:uppercase;}
+          }
+          .bottom {
+            display:block;
+            height:28px;
+            p {width:100%; padding:7px 0 0 0; margin:0; text-align:center; font:bold 11px Arial; text-transform:uppercase; color:#8C97A2}
+          }
+
+        }
+      }
+    }
+    .bfooter .inner div.left {margin-left:0}
+  } // detail .inner
+
 
   &.remove_account {
     .inner .content {
