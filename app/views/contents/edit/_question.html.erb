@@ -1,9 +1,7 @@
 <div class="article questions with_footer editable">
   <%= link_to '', question_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
-
   <div class="inner">
     <div class="left">
-
       <div class="context">
         <h3><%= t(@content.content_type) %></h3>
 
@@ -31,11 +29,8 @@
             <span class="spinner" id="target_spinner"></span>
           </div>
         <% end %>
-
       </div>
-
       <h2><%= @content.question_text %></h2>
-
       <div class="meta">
         <%= link_to @content.author.try(:fullname), path_for_user(@content.author) %>
         <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
@@ -126,16 +121,16 @@
   </div>
 
   <div class="bfooter">
-  <div class="separator"></div>
-  <div class="inner">
-    <div class="left">
-      <% if @content.target_user -%>
-        <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user, :anchor => :questions), :class => :left_arrow %>
-      <% elsif @content.target_area -%>
-        <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area, :anchor => :questions), :class => :left_arrow %>
-      <% end -%>
+    <div class="separator"></div>
+    <div class="inner">
+      <div class="left">
+        <% if @content.target_user -%>
+          <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user, :anchor => :questions), :class => :left_arrow %>
+        <% elsif @content.target_area -%>
+          <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area, :anchor => :questions), :class => :left_arrow %>
+        <% end -%>
+      </div>
     </div>
-  </div>
   </div>
   <div class="t"></div><div class="f"></div>
 </div>

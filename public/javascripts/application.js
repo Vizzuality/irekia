@@ -9,7 +9,7 @@ $(function() {
   $('.home_last_activity').verticalHomeLoop();
 
   // Editing tools
-  $(".editable.text").enableTextEditing();
+  // $(".editable.text").enableTextEditing();
   $(".editable.target").enableTargetEditing();
   $(".editable.date").enableDateEditing();
   $(".image_editor").enableImageEditing();
@@ -282,7 +282,7 @@ $(function() {
     if (count==0)
       return 'No tienes notificaciones';
     else
-      if (count>1) 
+      if (count>1)
         return count + ' notificaciones';
       else
         return count + ' notificación';

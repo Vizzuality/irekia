@@ -510,33 +510,39 @@ jQuery.fn.enablePoliticianTags = function(opt){
 
 /* Enables text editing */
 jQuery.fn.enableTextEditing = function(opt){
-  var speed     = (opt && opt.speed) || 120,
-  fadeInSpeed   = (opt && opt.speed) || 80,
-  spinner       = new Spinner(SPINNER_OPTIONS),
-  content;
 
-  $(this).click(function() {
-    var that = $(this);
-    $(this).find(".content").slideUp(speed);
-    that.find('.input_field').slideDown(speed, function() {
-      that.find('.submit').fadeIn(fadeInSpeed);
-      that.find('.input_field :text, .input_field textarea').focus();
+  this.each(function(){
+    var $form = $(this);
+
+    var speed     = (opt && opt.speed) || 120,
+    fadeInSpeed   = (opt && opt.speed) || 80,
+    spinner       = new Spinner(SPINNER_OPTIONS),
+    content;
+
+    $form.find(".content").click(function() {
+      var that = $(this).parent();
+
+      $form.find(".content").slideUp(speed);
+      that.find('.input_field').slideDown(speed, function() {
+        that.find('.submit').fadeIn(fadeInSpeed);
+        that.find('.input_field :text, .input_field textarea').focus();
+      });
     });
-  });
 
-  $(this).bind('ajax:success', function(evt, xhr, status) {
-    $(this).find(".content").html(content);
-    $(this).find(".content").slideDown(fadeInSpeed);
-    $(this).find('.input_field').slideUp(speed);
-    $(this).find('.submit').fadeOut(speed);
-    $(this).find('.submit').removeClass("disabled");
-    $(this).find('.submit').removeAttr("disabled");
-  });
+    $form.bind('ajax:success', function(evt, xhr, status) {
+      $form.find(".content").html(content);
+      $form.find(".content").slideDown(fadeInSpeed);
+      $form.find('.input_field').slideUp(speed);
+      $form.find('.submit').fadeOut(speed);
+      $form.find('.submit').removeClass("disabled");
+      $form.find('.submit').removeAttr("disabled");
+    });
 
-  $(this).submit(function(e) {
-    content = $(this).find('.input_field :text, .input_field textarea').val();
-    $(this).find('.submit').addClass("disabled");
-    $(this).find('.submit').attr("disabled", "disabled");
+    $form.submit(function(e) {
+      content = $form.find('.input_field :text, .input_field textarea').val();
+      $form.find('.submit').addClass("disabled");
+      $form.find('.submit').attr("disabled", "disabled");
+    });
   });
 }
 
@@ -621,7 +627,7 @@ jQuery.fn.enableImageEditing = function(opt){
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
 
-					$('.image_cache_name').val(responseJSON.image_cache_name);
+					$('.image_cache_name').val(responseJSON);
 
           //console.log($(".image_cache_name"));
 
