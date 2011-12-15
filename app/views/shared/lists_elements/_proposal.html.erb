@@ -5,8 +5,8 @@
   end
 %>
 
-<%= link_to raw("<strong>#{data.percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>"), proposal_path(data.id), :class => "icon #{ position }" %>
-<div class="content">
+  <%= link_to raw("<strong>#{data.percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>"), proposal_path(data.id), :class => "icon #{ position }" %>
+  <div class="content">
 
   <p>
     <%= t(".title.#{am_I?(data.author) ? 'you' : 'other'}", :name => data.author.name) %>

@@ -14,13 +14,12 @@
             <%= link_to comment.author.fullname, user_path(comment.author), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
           <% else -%>
             <span class="published_at">
-              <%= raw t('.not_moderated.author', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
+              <%= raw t('.not_moderated.author', :author_url => user_path(comment.author), :time => distance_of_time_in_words_to_now(comment.published_at)) %>
             </span>
             &middot;
             <span class="moderation_pending">
               <%= t('.not_moderated.moderation_pending') %>
             </span>
-            <%= t('.not_moderated.rest_of_users') %>
           <% end -%>
         </div>
       </div>

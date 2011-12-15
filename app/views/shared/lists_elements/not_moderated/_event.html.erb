@@ -2,5 +2,5 @@
 <div class="content">
   <p><strong><%= link_to data.title, event_path(data.id) %></strong></p>
 
-  <%= render 'footer', :data => data %>
+  <%= render 'shared/lists_elements/not_moderated/footer', :data => data %>
 </div>

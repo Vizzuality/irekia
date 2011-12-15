@@ -3,5 +3,5 @@
   <p><strong><%= data.title %></strong></p>
   <p class="excerpt"><%= strip_tags raw(truncate(data.body.try(:strip), :length => 66))  %></p>
 
-  <%= render 'footer', :data => data %>
+  <%= render 'shared/lists_elements/not_moderated/footer', :data => data %>
 </div>
