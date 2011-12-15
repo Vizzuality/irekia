@@ -685,6 +685,63 @@
           other: '%{count} comentarios anteriores'
         write_your_comment: 'Escribe tu comentario...'
         Send: Enviar
+      not_moderated:
+        answer:
+          title:
+            you: 'Has contestado a "%{question}"'
+            other: '%{author} ha contestado a "%{question}"'
+        answer_request:
+          title: 'Ha sido reclamada la pregunta %{question}'
+        question:
+          title: 'Pregunta para %{receiver}:'
+        question_mini:
+        status_message:
+        tweet:
+        news:
+        proposal:
+          title:
+            you: 'Has creado una nueva propuesta: '
+            other: '%{name} ha creado una nueva propuesta: '
+        photo:
+          title:
+            you: 'Has subido una foto:'
+            other: '%{name} ha subido una foto:'
+        video:
+          title:
+            you: 'Has subido un vídeo:'
+            other: '%{name} ha subido un vídeo:'
+        proposal_mini:
+        argument:
+          title: Nuevo argumento en la propuesta %{proposal}
+        vote:
+          title:
+            in_favor: '%{name} ha votado a favor de la propuesta "%{proposal}"'
+            against: '%{name} ha votado en contra de la propuesta "%{proposal}"'
+        event:
+        content_user:
+          title: 'Has sido etiquetado en %{content_type} &quot;%{content}&quot;'
+          proposal: la propuesta
+          question: la pregunta
+          news: la noticia
+          photo: la foto
+          video: el vídeo
+          tweet: el tweet
+          event: el evento
+        comment:
+          title: 'Nuevo comentario en %{content_type}'
+          status_message: un mensaje de estado
+          proposal: la propuesta
+          question: la pregunta
+          answer: la respuesta
+          news: la noticia
+          photo: la foto
+          video: el vídeo
+          tweet: el tweet
+          event: el evento
+        footer:
+          author: 'Tú hace %{time}'
+          moderation_pending: 'Pendiente de moderar'
+          rest_of_users: ': el resto de usuarios no lo puede ver aún.'
 
     questions:
       no_questions:
@@ -1185,6 +1242,10 @@
         submit: Comentar
       label:
         news: ¿Algo que decir?&hellip; comenta esta noticia
+      not_moderated:
+          author: 'Tú hace %{time}'
+          moderation_pending: 'Pendiente de moderar'
+          rest_of_users: ': el resto de usuarios no lo puede ver aún.'
     not_moderated:
       comment:
         comment_sent: "Tu comentario ha sido enviado :)"
@@ -1497,6 +1558,12 @@
 
   users:
     settings:
+      avatar:
+        title: Tu avatar
+        pick_your_avatar: Selecciona tu avatar
+        upload_an_image: Subir una nueva imagen
+        subtitle: Necesitas una imagen que te represente en Irekia. Los usuarios con avatar son mas populares
+        size: Tamaño máximo 500x500.
       man: 'Hombre'
       woman: 'Mujer'
       name: 'Nombre'

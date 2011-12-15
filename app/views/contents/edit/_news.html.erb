@@ -106,14 +106,11 @@
         <%= button "Guardar", :class => "submit white_button" %>
       <% end -%>
       <!-- /Body -->
-
-      <%#= render "participations/comments" %>
     </div>
 
     <div class="right">
       <div class="content left-border">
 
-        <%= sharing_partial(news_url(@content), @content.title) %>
         <%= render "shared/sidebar/tags" %>
         <%= render "shared/sidebar/politicians" %>
         <%= render "shared/sidebar/location" %>

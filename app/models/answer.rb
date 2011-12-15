@@ -47,7 +47,7 @@ class Answer < Content
   def publish
     super
 
-    return unless self.moderated? && self.author.present?
+    return if self.author.blank?
 
     question.answer_requests.map(&:author).each{|user| user.create_private_action(self)}
   end

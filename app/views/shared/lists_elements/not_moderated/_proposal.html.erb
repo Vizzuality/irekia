@@ -1,0 +1,17 @@
+<% if (data.percent_in_favor==50 || data.participation==0)
+    position = "neutral"
+  else
+    position = data.percent_in_favor > data.percent_against ? "in_favor" : "against"
+  end
+%>
+
+<%= raw("<strong>#{data.percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>") %>
+<div class="content">
+
+  <p>
+    <%= t(".title.#{am_I?(data.author) ? 'you' : 'other'}", :name => data.author.name) %>
+    <%= content_tag 'strong', (link_to %Q{"#{data.title}"}, proposal_path(data.id)) %>
+  </p>
+
+  <%= render 'footer', :data => data %>
+</div>

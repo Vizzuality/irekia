@@ -107,7 +107,7 @@ class AreasController < ApplicationController
   private :build_new_proposal
 
   def get_actions
-    @actions = @area.get_actions(params.slice(:type, :more_polemic))
+    @actions = @area.get_actions(params.slice(:type, :more_polemic), current_user)
   end
   private :get_actions
 

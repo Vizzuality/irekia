@@ -1155,18 +1155,7 @@ form.editable,
 .qq-upload-button-focus {outline:1px dotted black;}
 
 .qq-upload-drop-area {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 585px;
-  height: 20px;
-  color: #fff;
-  z-index: 2;
-  text-align: center;
-  padding: 0;
-  background: #FF0066;
-  font-size:13px;
-  @include border-radius(2px);
+  display: none;
 }
 
 .qq-upload-drop-area span {

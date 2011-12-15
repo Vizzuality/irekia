@@ -1,0 +1,7 @@
+<%= content_tag :span, "", :class => "icon tag" %>
+
+<div class="content">
+  <%= content_tag 'p', raw(t('.title', :name => data.author.name, :content_type => t(".#{data.content.type}"), :content => content_tag('strong', data.content.title))) %>
+
+  <%= render 'shared/lists_elements/not_moderated/footer', :data => data %>
+</div>

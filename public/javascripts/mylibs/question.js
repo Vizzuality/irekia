@@ -203,6 +203,7 @@
   }
 
   function _close2(data, hideLockScreen, callback) {
+    _unsubscribeToEvent(data.event);
     if (ie) {
       data.$ps.fadeOut(data.settings.transitionSpeed, function() {
         $(this).remove();
@@ -223,6 +224,7 @@
 
   // Close popover
   function _close(data, hideLockScreen, callback) {
+    _unsubscribeToEvent(data.event);
     if (ie) {
       data.$ps.fadeOut(data.settings.transitionSpeed, function() {
         _afterClosingSetup(data.$ps);
@@ -242,6 +244,11 @@
   // setup the close event & signal the other subscribers
   function _subscribeToEvent(event) {
     GOD.subscribe(event);
+    GOD.broadcast(event);
+  }
+
+  function _unsubscribeToEvent(event) {
+    GOD.unsubscribe(event);
   }
 
   function _center(data) {

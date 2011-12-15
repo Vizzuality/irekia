@@ -1,9 +1,7 @@
 <ul>
   <% if @actions.count > 0 %>
     <% @actions.each_with_index do |action,i| %>
-      <li class="<%= action.event_type.underscore %> <% if i>4 %>loop<% end %> clearfix">
-      <%= render "shared/lists_elements/#{action.event_type.underscore}", :data => action.item, :inline => true %>
-      </li>
+      <%= render_list_element(action.item, action.event_type, :class => "#{'loop' if i > 4} clearfix", :inline => true) %>
     <% end %>
   <% else %>
     <span class="empty">No hay contenido en este área.</span>

@@ -829,6 +829,10 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 
 /* .article addons */
 #container .article.initialy_hidden { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; }
+#container .article .avatar_box { float: left; margin-right: 20px; position: relative; width: 291px; height: 290px; clear: both; overflow: hidden; }
+#container .article .avatar_box .avatar.xlAvatar { overflow: none; left: 4px; top: 4px; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
+#container .article .avatar_box .avatar.xlAvatar > img { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
+#container .article .avatar_box .frame { width: 100%; height: 100%; position: absolute; background: url("/images/big_avatar_bkg.png") no-repeat; z-index: 100; }
 #container .article .caption, #container .article .caption p { color: #7d8a92; }
 #container .article .holder, #container .article .input_field .holder { width: 100%; position: absolute; left: 11px; color: #D7DADD; font-size: 15px; font-weight: normal; text-shadow: none; cursor: text; }
 #container .article .holder span, #container .article .input_field .holder span { float: left; }
@@ -938,7 +942,6 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 .ie7 #container .article .inner .avatar-uploader .explanation button, .ie7 #container .article .inner .avatar-uploader input[type="submit"], .ie8 #container .article .inner .avatar-uploader .explanation button, .ie8 #container .article .inner .avatar-uploader input[type="submit"] { margin: 0 0 7px 10px; }
 
 #container .article .inner .avatar-uploader { clear: both; overflow: hidden; border-right: 1px solid #e3e6e8; width: 634px; margin: 15px 0 20px 0; }
-#container .article .inner .avatar-uploader .xlAvatar { background: url("/images/circle_bkg.png") no-repeat -293px center; z-index: 10; }
 #container .article .inner .avatar-uploader .avatar { float: left; width: 281px; height: 281px; margin: 0 25px 0 0; }
 #container .article .inner .avatar-uploader .explanation { float: left; width: 314px; color: #465866; margin: 43px 0 0 0; }
 #container .article .inner .avatar-uploader .explanation h3 { margin: 0 0 3px 0; }
@@ -2165,7 +2168,7 @@ form.editable .input_field textarea, form.editable .input_field input[type="text
 
 .qq-upload-button-focus { outline: 1px dotted black; }
 
-.qq-upload-drop-area { position: absolute; top: 0; left: 0; width: 585px; height: 20px; color: #fff; z-index: 2; text-align: center; padding: 0; background: #FF0066; font-size: 13px; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; }
+.qq-upload-drop-area { display: none; }
 
 .qq-upload-drop-area span { display: block; position: absolute; top: 50%; width: 100%; margin-top: -8px; font-size: 16px; }
 

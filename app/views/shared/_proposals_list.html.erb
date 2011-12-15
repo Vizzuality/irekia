@@ -1,9 +1,8 @@
 <% if @proposals.size > 0%>
   <ul>
     <% @proposals.each do |proposal| %>
-      <li class="proposal clearfix">
-      <%= render "shared/lists_elements/#{proposal.class.name.downcase}#{'_mini' if defined?(mini) && proposal.is_a?(Proposal)}", :data => proposal %>
-    <% end %>
+      <%= render_list_element(proposal, proposal.class.name, :path_suffix => (defined?(mini) && proposal.is_a?(Proposal)) ? '_mini' : '') %>
+    <% end -%>
   </ul>
 <% else %>
   <span class="empty">No hay propuestas en este área.</span>

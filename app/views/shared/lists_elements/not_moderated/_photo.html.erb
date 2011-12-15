@@ -1,0 +1,12 @@
+<%= avatar data.author %>
+<div class="content">
+  <%= content_tag 'p', t(".title.#{am_I?(data.author) ? 'you' : 'other'}", :name => data.author.name) %>
+  <div class="photo_block">
+    <%= image_tag(data.list_element_url) if data.list_element_url.present? %>
+    <% if data.title.present? -%>
+      <p class="excerpt inline"><%= data.title %></p>
+    <% end -%>
+  </div>
+
+  <%= render 'footer', :data => data %>
+</div>

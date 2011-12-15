@@ -19,6 +19,7 @@ module ApplicationHelper
   def politician_profile?
     @viewing_access == 'politician'
   end
+
   def current_area?(area)
     area.eql?(@area) ? 'selected' : nil
   end
@@ -220,5 +221,22 @@ module ApplicationHelper
 
   def message_for_twitter(url, message)
     message = "Irekia - #{message.truncate(131 - url.length)} - #{url}" if message
+  end
+
+  def render_list_element(item, item_type, options = {})
+    defaults = {
+      :class       => 'clearfix',
+      :inline      => false,
+      :path_suffix => ''
+    }
+    options = options.merge(defaults)
+
+    defaults[:class] << ' not_moderated' unless item.moderated
+
+    relative_path = 'not_moderated/' unless item.moderated
+
+    content_tag :li, :class => "#{options[:class]} #{item_type.underscore}" do
+      render "shared/lists_elements/#{relative_path}#{item_type.underscore}#{options[:path_suffix]}", :data => item, :inline => options[:inline]
+    end
   end
 end

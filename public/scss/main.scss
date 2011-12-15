@@ -2526,6 +2526,34 @@ span.where, .map .infowindow ul.details li.where {
 #container .article {
   &.initialy_hidden { @include opacity(0); }
 
+  .avatar_box {
+    float:left;
+    margin-right: 20px;
+    position:relative;
+    width:291px;
+    height:290px;
+
+    clear:both;
+    overflow:hidden;
+
+    .avatar.xlAvatar {
+      overflow:none;
+      left: 4px; top: 4px;
+      @include border-radius(0);
+      &>img { @include border-radius(0); }
+    }
+
+    .frame {
+      width:100%;
+      height:100%;
+      position:absolute;
+      background: url("/images/big_avatar_bkg.png") no-repeat;
+      z-index:100;
+    }
+  } // .avatar_box
+
+
+
   .caption, .caption p { color: $standard_gray; }
 
   .holder,
@@ -3022,7 +3050,6 @@ span.where, .map .infowindow ul.details li.where {
   width:634px;
   margin: 15px 0 20px 0;
 
-  .xlAvatar { background: url('/images/circle_bkg.png') no-repeat -293px center; z-index: 10; }
   .avatar {
     float:left;
     width:281px;
