@@ -1,1 +1,72 @@
-<%= @politician.name %>
+
+<div class="article detail with_footer">
+	<div class="inner">
+		<%= image_tag @politician.profile_image_big, :class => "avatar xlAvatar" if @politician.profile_image_big.present? %>
+		<div class="left">
+		  <header>
+			  <h1><%= @politician.fullname %></h1>
+			  <p class="position">
+			  <%= raw t('.title', :title => get_politician_title(@politician), :areas => @politician.areas.map{|area| link_to area.name, area_path(area)}.join(', ')) %>
+			  </p>
+	  	</header>
+	  	<div class="margin30">
+	  		<h3><%= t(".description.title") %></h3>
+	    	<%= @politician.description %>
+	    </div>
+	    <div class="margin30">
+	    	<h3><%= t(".description.activity") %></h3>
+	    	<ul class="stats">
+	    		<li>
+	    			<div class="top">
+	    				<h5>126</h5>
+	    				<label><%= t(".stats.actions") %></label>
+	    			</div>
+	    			<div class="bottom">
+	    				<p><%= t(".stats.week", :count => "11") %></p>
+	    			</div>
+	    		</li>
+	    		<li>
+	    			<div class="top">
+	    				<h5>32</h5>
+	    				<label><%= t(".stats.questions") %></label>
+	    			</div>
+	    			<div class="bottom">
+	    				<p><%= t(".stats.respond", :time => "43h") %></p>
+	    			</div>
+	    		</li>
+	    		<li>
+	    			<div class="top">
+	    				<h5>126</h5>
+	    				<label><%= t(".stats.comments") %></label>
+	    			</div>
+	    			<div class="bottom">
+	    				<p><%= t(".stats.week", :count => "43") %></p>
+	    			</div>
+	    		</li>
+	    	</ul>
+	    </div>
+	    <div class="margin30 contact">
+	    	<h3><%= t(".description.contact") %></h3>
+	    	<p>Navarra, 2, 01007 Vitoria-Gasteiz. Álava/Araba</p>
+	    	<p><%= link_to 'n.delosrios@ej-gv.es', 'mailto:n.delosrios@ej-gv.es' %> | 945 018 049</p>
+	    	<p><%= link_to '@irekia', 'http://twitter.com/irekia', :target => "_blank" %> | <%= link_to 'www.facebook.com/GobiernoVascoIrekia', 'http://www.facebook.com/GobiernoVascoIrekia', :target => "_blank" %></p>
+	   	</div>
+	  </div>
+	</div>
+	<!-- content footer -->
+	<div class="bfooter">
+  	<div class="separator"></div>
+  	<div class="inner">
+    	<div class="left">
+      	<%= link_to t(".back"), "javascript: history.go(-1)", :class => :left_arrow %>
+    	</div>
+  	</div>
+  </div>
+  
+	<% if @follow.new_record? -%>
+	  <%= render 'follows/create_ribbon' %>
+	<% else -%>
+	  <%= render 'follows/destroy_ribbon' %>
+	<% end -%>
+  <div class="t"></div><div class="f"></div>
+</div>

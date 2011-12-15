@@ -94,7 +94,13 @@ $(function() {
     main_spinner.stop();
     main_spinner.spin();
     $(main_spinner.el).css({position:"relative", float:'none', display:'inline', right:'-20px', top:'27px', height:'15px', width:'15px'});
-    $(this).closest('div.content').find('h1 a').append(main_spinner.el);
+
+    if ($(this).closest('div.content').find('h1').children().length>0) {
+      $(this).closest('div.content').find('h1 a').append(main_spinner.el);
+    } else {
+      $(this).closest('div.content').find('h1').append(main_spinner.el);
+    }
+
   }).live('ajax:success', function(evt, xhr, status) {
     // Button
     var $el1 = $("div.column form.follow_button");
@@ -107,11 +113,12 @@ $(function() {
     });
 
     // Ribbon
-    var $el2 = $('.article.summary').find("form.follow_ribbon");
+    var $el2 = $('.article').find("form.follow_ribbon");
     $el2.fadeOut(150, function() {
+      var parent = $(this).parent();
       $(this).remove();
-      $('.article.summary').append(xhr);
-      $('.article.summary > form.follow_button').remove();
+      parent.append(xhr);
+      parent.find('form.follow_button').last().remove();
       $(this).fadeIn(150);
     });
 
@@ -253,6 +260,7 @@ $(function() {
   //  Follow area or politician tooltip
   $('input.ribbon').tipsy({live: true, gravity: 's', offset: 3, title: function() {
     var type = $(this).closest('div.content').find('button.add_to_favorites span').text();
+    if (type=='') type = "Seguir a este político"
     return type;
   }});
 

@@ -6,7 +6,7 @@ class PoliticiansController < UsersController
   before_filter :models_for_forms,           :only => [:show, :update, :actions, :questions, :proposals, :agenda]
   before_filter :current_user_is_politician?
   before_filter :get_politician,             :only => [:show, :update, :actions, :questions, :proposals, :agenda, :detail]
-  before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda]
+  before_filter :get_politician_data,        :only => [:show, :actions, :questions, :proposals, :agenda, :detail]
   before_filter :get_counters,               :only => [:show, :actions, :questions, :proposals, :agenda]
   before_filter :get_actions,                :only => [:show, :actions]
   before_filter :get_questions,              :only => [:show, :questions]
