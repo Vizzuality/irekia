@@ -739,7 +739,7 @@
           tweet: el tweet
           event: el evento
         footer:
-          author: 'Tú hace %{time}'
+          author: '<a href="%{author_url}">Tú</a> hace %{time}'
           moderation_pending: 'Pendiente de moderar'
           rest_of_users: ': el resto de usuarios no lo puede ver aún.'
 
@@ -1243,7 +1243,7 @@
       label:
         news: ¿Algo que decir?&hellip; comenta esta noticia
       not_moderated:
-          author: 'Tú hace %{time}'
+          author: '<a href="%{author_url}">Tú</a> hace %{time}'
           moderation_pending: 'Pendiente de moderar'
           rest_of_users: ': el resto de usuarios no lo puede ver aún.'
     not_moderated:

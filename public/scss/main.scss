@@ -2304,6 +2304,10 @@ span.where, .map .infowindow ul.details li.where {
             p {display:inline-block; vertical-align:top; zoom:1; *display:inline; margin:0 0 0 11px;}
           }
 
+          &.not_moderated {
+            div.content p,.avatar,.icon {opacity:0.3!important; filter: alpha(opacity = 30)!important; -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30)!important;}
+            .footer span.moderation_pending {color:#FF6600}
+          }
         }
       }
     }
@@ -3533,6 +3537,11 @@ a.editable {
                     font-weight:bold;
                     text-transform:uppercase;
                   }
+                }
+
+                &.not_moderated {
+                  blockquote,.avatar {opacity:0.3; filter: alpha(opacity = 30); -ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=30);}
+                  .footer span.moderation_pending {color:#FF6600}
                 }
 
                 &.comment {padding-top:33px; border:none; background: url('/images/comment_border.png') no-repeat;

@@ -2,5 +2,5 @@
 <div class="content">
   <blockquote><a href="<%= status_message_path(data.id) %>"><span class="bqstart">&#8220;</span><span class="quote"><%= data.message %><span class="bqend">&#8221;</span></span></a></blockquote>
 
-  <%= render 'footer', :data => data %>
+  <%= render 'shared/lists_elements/not_moderated/footer', :data => data %>
 </div>
