@@ -134,7 +134,7 @@ class UsersController < ApplicationController
   private :redirect_to_politician_page?
 
   def private_politician_or_public?
-    @viewing_access = if @user == current_user
+    @viewing_access = if current_user.present? && @user == current_user
       current_user.politician?? 'politician' : 'private'
     else
       'public'
