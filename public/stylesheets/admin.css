@@ -29,6 +29,10 @@ body.admin .article.activity div.inner { padding-top: 0!important; padding-botto
 body.admin .article.activity ul li.content { float: left; padding: 30px 0; border-bottom: 1px solid #e5e5e5; }
 body.admin .article.activity ul li.content:last-child { border: none; }
 body.admin .article.activity ul li.content div.left { width: 685px!important; margin: 0!important; padding: 0!important; }
+body.admin .article.activity ul li.content div.left div.photo_moderation { display: block; }
+body.admin .article.activity ul li.content div.left div.photo_moderation a { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+body.admin .article.activity ul li.content div.left div.photo_moderation a img { width: 180px; }
+body.admin .article.activity ul li.content div.left div.photo_moderation p { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; width: 480px; }
 body.admin .article.activity ul li.content div.left h4 { display: block; font: bold 17px "Helvetica",Arial; color: #465866; }
 body.admin .article.activity ul li.content div.left p { margin: 0!important; padding: 0!important; font: normal 17px "Helvetica",Arial; color: #465866; }
 body.admin .article.activity ul li.content div.left p.time { display: block; margin: 5px 0 0 0; padding: 6px 0 0 16px!important; font: normal 13px "Helvetica",Arial; color: #919AA3!important; background: url("/images/admin/clock.png") no-repeat 0 7px; }

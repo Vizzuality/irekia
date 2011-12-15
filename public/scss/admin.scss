@@ -324,6 +324,12 @@
           margin:0!important;
           padding:0!important;
 
+          div.photo_moderation {
+            display:block;
+            a {@include inline-block(); img {width:180px}}
+            p {@include inline-block(); width:480px}
+          }
+
           h4 {display:block; font:bold 17px "Helvetica",Arial; color:#465866}
 
           p {

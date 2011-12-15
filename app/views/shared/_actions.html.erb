@@ -2,17 +2,9 @@
 <div class="inner">
   <header>
   <div class="left">
-    <% if viewing_dashboard? -%>
-      <h2><%= t('users.private.show.activity.title') %></h2>
-      <p><%= raw t('users.private.show.activity.subtitle', :link => link_to(t('users.private.show.activity.profiles_or_areas_following'), followings_user_path(@user, :anchor => :followings ))) %></p>
-    <% elsif viewing_politician_dashboard? -%>
-      <h2><%= t('users.politician.actions.title') %></h2>
-    <% elsif viewing_private_activity? %>
-      <h2><%= t('users.private.actions.title') %></h2>
-    <% elsif viewing_public_profile? -%>
-      <h2><%= t('users.public.actions.title') %></h2>
-    <% else -%>
-      <h2><%= raw t('.title') %></h2>
+    <h2><%= raw title rescue t('.title') %></h2>
+    <% if defined?(description) -%>
+      <p><%= raw description %></p>
     <% end -%>
   </div>
   <div class="right">
