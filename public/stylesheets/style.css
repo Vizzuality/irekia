@@ -223,8 +223,6 @@ span.positive { color: #FF0066; }
 span.in_favor { color: #669900; }
 span.against { color: #ff9933; }
 
-.margin30 { margin-top: 30px; display: block; }
-
 /* =============================================================================
 /* Header
 /* ========================================================================== */
@@ -419,21 +417,6 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.profile .inner .left h3 { margin-bottom: 5px; }
 #container .article.profile .inner .left p { width: 282px; display: inline-block; margin: 0; font-size: 15px; line-height: 18px; }
 #container .article.profile .inner .left form { float: none; width: auto; display: inline-block; margin: 10px 0 0 0; }
-#container .article.detail .inner { padding-top: 25px; padding-bottom: 40px; }
-#container .article.detail .inner h1 { margin-bottom: 0!important; padding: 0 0 7px 0; }
-#container .article.detail .inner img { float: left; }
-#container .article.detail .inner div.left { margin-left: 30px; }
-#container .article.detail .inner .contact p { padding: 0 0 3px; margin: 0; color: #A3ABB2; }
-#container .article.detail .inner .contact p a { color: #A3ABB2; }
-#container .article.detail .inner .contact p a:hover { color: #666666; text-decoration: underline; }
-#container .article.detail .inner .stats { width: 100%; display: block; }
-#container .article.detail .inner .stats li { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; width: 176px; height: 80px; margin: 0 7px 0 0; background: url("/images/detail_stats_bkg.png") no-repeat 0 0; }
-#container .article.detail .inner .stats li .top { display: block; height: 37px; padding: 15px 0 0 15px; }
-#container .article.detail .inner .stats li .top h5 { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; margin: 0; padding: 0; font: bold 31px Arial; color: #465866; letter-spacing: -2px; line-height: 24px; }
-#container .article.detail .inner .stats li .top label { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; max-width: 97px; padding: 1px 0 0 3px; font: bold 11px Arial; color: #465866; text-transform: uppercase; }
-#container .article.detail .inner .stats li .bottom { display: block; height: 28px; }
-#container .article.detail .inner .stats li .bottom p { width: 100%; padding: 7px 0 0 0; margin: 0; text-align: center; font: bold 11px Arial; text-transform: uppercase; color: #8C97A2; }
-#container .article.detail .bfooter .inner div.left { margin-left: 0; }
 #container .article.remove_account .inner .content { padding: 49px 0 6px 0; }
 #container .article.remove_account .inner .content a { color: #7d8a92; }
 #container .article.remove_account .bfooter .inner { padding: 26px 0 24px 0!important; }
@@ -832,7 +815,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .avatar_box { float: left; margin-right: 20px; position: relative; width: 291px; height: 290px; clear: both; overflow: hidden; }
 #container .article .avatar_box .avatar.xlAvatar { overflow: none; left: 4px; top: 4px; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
 #container .article .avatar_box .avatar.xlAvatar > img { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
-#container .article .avatar_box .frame { width: 100%; height: 100%; position: absolute; background: url("/images/big_avatar_bkg.png") no-repeat; z-index: 100; }
+#container .article .avatar_box .frame { width: 100%; height: 100%; position: absolute; background: url("/images/big_avatar_bkg.png") no-repeat; z-index: 10; }
 #container .article .caption, #container .article .caption p { color: #7d8a92; }
 #container .article .holder, #container .article .input_field .holder { width: 100%; position: absolute; left: 11px; color: #D7DADD; font-size: 15px; font-weight: normal; text-shadow: none; cursor: text; }
 #container .article .holder span, #container .article .input_field .holder span { float: left; }
