@@ -767,6 +767,7 @@
         user: "No hay propuestas para %{target}"
         area: "No hay propuestas en este área"
       title: Propuestas
+      politician_proposals: Propuestas en las que participa
       in_favor: '%{percentage}% a favor (%{count} votos)'
       against: '%{percentage}% en contra (%{count} votos)'
       main_filters:

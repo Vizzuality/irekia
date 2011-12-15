@@ -2,7 +2,11 @@
 <div class="inner">
   <header>
   <div class="left">
-  <h2><%= t(".title") %></h2>
+    <% if @politician%>
+      <h2><%= t(".politician_proposals") %></h2>
+    <% else %>
+      <h2><%= t(".title") %></h2>
+    <% end %>
   </div>
 
   <div class="right">

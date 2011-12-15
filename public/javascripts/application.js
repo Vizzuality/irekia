@@ -42,17 +42,17 @@ $(function() {
   $('nav form').autocompleteSearch();
 
   // Radio binding
-//   $('a.radio').click(function(e){
-//     e.preventDefault();
-//     $("a.radio").removeClass("selected");
-//     $(this).addClass('selected');
-//     $(this).closest('input[type="radio"]').val(0);
-//
-//     if (!$(this).hasClass('selected')) {
-//       $(this).addClass('selected');
-//       $(this).closest('input[type="radio"]').val(1);
-//     }
-//   });
+  //   $('a.radio').click(function(e){
+  //     e.preventDefault();
+  //     $("a.radio").removeClass("selected");
+  //     $(this).addClass('selected');
+  //     $(this).closest('input[type="radio"]').val(0);
+  //
+  //     if (!$(this).hasClass('selected')) {
+  //       $(this).addClass('selected');
+  //       $(this).closest('input[type="radio"]').val(1);
+  //     }
+  //   });
 
   $('a.checkbox').enableCheckbox();
   $('.radios').enableRadio();
@@ -61,12 +61,6 @@ $(function() {
   $('form .field.born_at select[name="user[birthday(1i)]"]').dropkick({width:-10});
   $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});
   $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
-
-
-
-
-
-
 
   // FOLLOW FORMS
   var basic_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: '#3786C0',speed: 1,trail: 100,shadow: false});
