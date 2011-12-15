@@ -1665,13 +1665,14 @@
         first_time:
           follow:
             title: Sigue lo que te interese
-            text: "Busca los perfiles o áreas que más te interesen y síguelos.
+            text: "Busca los políticos o áreas que mas te interesen del Gobierno Vasco y síguelos.<br/>
 
-            De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo."
+De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: toda la actividad de los políticos y áreas que sigas aparecerá en tu dashboard."
             link: Ir a un área cualquiera
           participate:
             title: Participa y aprende
-            text: "%{make_questions_link} a los responsables del Gobierno Vasco, %{launch_proposals_link} a los ciudadanos, o participa en las propuestas de otros.
+            text: "%{make_questions_link} a los responsables del Gobierno Vasco, %{launch_proposals_link} a los ciudadanos, o participa en las propuestas de otros.<br/>
+            
             Todo con un simple click."
             make_questions: Haz preguntas
             launch_proposals: lanza tus propuestas

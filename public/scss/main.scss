@@ -1737,9 +1737,14 @@ div#main.show div.left img {margin:4px 0 7px;}
   &.welcome {
     margin-bottom: 40px;
 
+    div.f {height:4px; bottom:-4px; background-position:0 -16px;}
+    div.t {height:5px; top:-5px; background-position:0 0;}
+
     .inner {
-      width: 933px;
-      padding: 15px 31px 5px 30px;
+      width: 994px;
+      height: 270px;
+      padding: 0;
+      overflow:hidden;
 
       a.config { position:absolute; display:block; right:20px; bottom:5px;
         &.first-time { display: none; visibility: visible;}
@@ -1748,7 +1753,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
       .close {
         position: absolute;
-        top: 0px;
+        top: 5px;
         right: 10px;
         display: block;
         width: 17px;
@@ -1766,38 +1771,31 @@ div#main.show div.left img {margin:4px 0 7px;}
         }
       }
 
-      .content {
-        position: relative;
-        float: left;
-        margin: 3px 0 13px 14px;
-        width: 851px;
 
-        a  { font-size: 15px; }
-        h1 { margin-bottom: 5px; line-height: 40px; }
-        p  { margin: 0; padding: 0; line-height: 15px; font-size: 15px; }
-      }
-
-      .avatar { float: left; }
+      .avatar { float: left; margin:0 20px 0 0;}
 
       ul.actions {
-        float:left;
-        margin:10px 0 20px 0;
+        float:left;        
+        width:4000px;
+        margin:0;
 
         li {
-          padding:17px 20px 20px 20px;
-          background:#F2F7F9;
-          width:289px - 40;
-          margin-right:16px;
+          float:left;
+          width:474px;
+          height:221px;
+          padding:23px 489px 26px 31px;
+          background:url('/images/welcome_illustrations.jpg') no-repeat 0 275px;
 
           @include inline-block;
           @include border-radius(4px);
 
-          &.collaborate {width:315px - 40;}
-          &.last { margin-right:0; }
-          &:last-child { margin-right:0; }
+          &.collaborate {background-position:460px -314px;}
+          &.follow {background-position:460px 0;}
+          &.configure {}
+          &.user {width:932px; padding:23px 31px 26px; }
 
           h3 { font-family: "ClarendonLTMedium", Georgia, serif; text-transform:none; font-weight:normal; color:$dark_blue; font-size:21px; margin-bottom:10px; }
-          p { padding:0; margin:0 0 12px 0; font-size:15px; }
+          p { padding:0; margin:0 0 12px 0; font-size:15px; line-height:18px}
 
           .white_button { float:left; }
         }
