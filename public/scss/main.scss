@@ -2482,12 +2482,11 @@ span.where, .map .infowindow ul.details li.where {
   .with_question {
     .avatar_box {
       position:absolute;
-      right: 0;
-      bottom: 15px;
+      right: 0; bottom: 15px;
       .avatar.xlAvatar { top: 2px; left: 6px; }
       .frame { background-position: 0 bottom; }
     }
-  }
+  } // .with_question
 
   .avatar_box {
     float:left;

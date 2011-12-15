@@ -72,10 +72,10 @@
         </div>
 
         <div class="input_field uploader placeholder" style="display:none">
-          <input type="text" />
+          <input type="text" disabled="disabled" />
           <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable image'} do |form| %>
             <%= hidden_field_tag :partial, 'image' %>
-            <span class="holder"><span>Introduce la URL de la foto o</span> <span class="upload" id="upload_new_image" data-url="<%= news_index_path %>">sube una nueva</span></span>
+            <span class="holder"><span class="upload" id="upload_new_image" data-url="<%= news_index_path %>">Sube una nueva</span></span>
             <%= form.fields_for :news_data do |news_data| %>
               <%= news_data.fields_for :image, (@content.news_data.image || @content.news_data.build_image) do |image|%>
                 <%#= image.hidden_field :remote_image_url %>

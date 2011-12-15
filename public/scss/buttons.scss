@@ -734,7 +734,7 @@ form.editable,
 
     .holder {
       width: 600px;
-      span { margin: 0 0 0 4px; }
+      span { margin: 0; }
     }
 
     input[type="text"] {
@@ -742,14 +742,14 @@ form.editable,
       border:1px solid #ccc;
       font-size:15px;
     }
-  }
+  } // .input_field
 
   .image_container {
     float: left;
     position:relative;
     width:605px;
 
-    img { float:left; }
+    img { float:left; max-width: 607px; }
   }
 
   .percentage {

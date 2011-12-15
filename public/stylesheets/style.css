@@ -2016,10 +2016,10 @@ form.editable .input_field textarea, form.editable .input_field input[type="text
 #container .article .inner .left .image_editor .hidden { display: none; }
 #container .article .inner .left .image_editor .input_field { width: 605px; height: 36px; padding: 0; margin: 10px 0 0 0; border: none; }
 #container .article .inner .left .image_editor .input_field .holder { width: 600px; }
-#container .article .inner .left .image_editor .input_field .holder span { margin: 0 0 0 4px; }
+#container .article .inner .left .image_editor .input_field .holder span { margin: 0; }
 #container .article .inner .left .image_editor .input_field input[type="text"] { width: 585px; border: 1px solid #ccc; font-size: 15px; }
 #container .article .inner .left .image_editor .image_container { float: left; position: relative; width: 605px; }
-#container .article .inner .left .image_editor .image_container img { float: left; }
+#container .article .inner .left .image_editor .image_container img { float: left; max-width: 607px; }
 #container .article .inner .left .image_editor .percentage { display: none; margin-left: -343px; position: absolute; top: 10px; right: 50%; font-size: 15px; color: #FF0066; z-index: 2010; font-weight: bold; }
 #container .article .inner .left .image_editor .loading { display: none; position: absolute; top: 10px; right: 10px; font-size: 15px; color: #CCCCCC; z-index: 2010; }
 #container .article .inner .left .image_editor .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }

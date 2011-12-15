@@ -570,9 +570,7 @@ jQuery.fn.enableImageEditing = function(opt){
 
     var $form = $(this).parents("form");
     $(this).parent().slideUp(speed);
-    $this.find(".input_field").fadeIn(speed, function() {
-      $(this).find(':text').focus();
-    });
+    $this.find(".input_field").fadeIn(speed);
   });
 
   function _setupUpload(id, callback) {
