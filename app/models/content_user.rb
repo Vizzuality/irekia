@@ -49,7 +49,7 @@ class ContentUser < ActiveRecord::Base
   end
 
   def publish
-    return unless content && content.moderated? && content.author.present?
+    return if content.blank? || content.author.blank?
 
     content.tagged_politicians.each{|politician| politician.create_private_action(self)}
 

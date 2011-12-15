@@ -1,0 +1,11 @@
+<% position = data.percent_in_favor >= data.percent_against ? "in_favor" : "against" %>
+
+<%= content_tag :span, raw("<strong>#{data.percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>"), :class => "icon #{ position }" %>
+<div class="content">
+
+  <p>
+    <%= raw t('.title', :proposal => content_tag('strong', %Q{"#{data.title}"})) %>
+  </p>
+
+  <%= render 'footer', :data => data %>
+</div>

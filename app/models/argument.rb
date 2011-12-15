@@ -47,7 +47,7 @@ class Argument < Participation
   def publish
     super
 
-    return unless self.moderated? && self.author.present?
+    return if self.author.blank?
 
     content.participers(author).where('participations.type' => 'Argument').each{|user| user.create_private_action(self)}
     proposal.target_area.team.reject{|politician| politician == author}.each{|politician| politician.create_private_action(self)}

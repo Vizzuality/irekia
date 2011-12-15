@@ -99,6 +99,8 @@ class Area < ActiveRecord::Base
     public_action              = actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
     public_action.published_at = item.published_at
     public_action.message      = item.to_json
+    public_action.author       = item.author
+    public_action.moderated    = item.moderated
     public_action.save!
   end
 
@@ -110,8 +112,12 @@ class Area < ActiveRecord::Base
     Participation.joins(:author => :areas).where('areas.id' => self.id)
   end
 
-  def get_actions(filters)
-    actions = self.actions
+  def get_actions(filters, current_user)
+    actions = if current_user.present?
+      self.actions.moderated_or_author_is(current_user)
+    else
+      self.actions.moderated
+    end
     actions = actions.where(:event_type => [filters[:type]].flatten.map(&:camelize)) if filters[:type].present?
 
     actions = if filters[:more_polemic] == 'true'

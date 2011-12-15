@@ -1,0 +1,10 @@
+<div class="footer">
+    <span class="published_at">
+      <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
+    </span>
+    &middot;
+    <span class="moderation_pending">
+      <%= t('.moderation_pending') %>
+    </span>
+    <%= t('.rest_of_users') %>
+</div>

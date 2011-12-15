@@ -272,9 +272,9 @@ class UsersController < ApplicationController
 
   def get_actions
     if (action_name == 'show' || params[:referer] == 'show') && (private_profile? || politician_profile?)
-      @actions = @user.get_private_actions(params.slice(:type, :referer, :more_polemic, :page))
+      @actions = @user.get_private_actions(params.slice(:type, :referer, :more_polemic, :page), current_user)
     else
-      @actions = @user.get_actions(params.slice(:type, :referer, :more_polemic, :page))
+      @actions = @user.get_actions(params.slice(:type, :referer, :more_polemic, :page), current_user)
     end
     @actions_count = @actions.count
   end

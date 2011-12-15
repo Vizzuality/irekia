@@ -2,6 +2,8 @@ class AreaPublicStream < ActiveRecord::Base
   include PgSearch
 
   belongs_to :area
+  belongs_to :author,
+             :class_name => 'User'
 
   after_create  :increment_user_counter
   after_destroy :decrement_user_counter
@@ -12,8 +14,16 @@ class AreaPublicStream < ActiveRecord::Base
                     :tsearch => {:prefix => true, :any_word => true}
                   }
 
+  def self.moderated
+    where(:moderated => true)
+  end
+
+  def self.moderated_or_author_is(user)
+    where('(moderated = ? OR (moderated = ? AND author_id = ?))', true, false, user.id)
+  end
+
   def self.for_homepage
-    select('distinct on(event_id, event_type) *')
+    select('distinct on(event_id, event_type) *').moderated
   end
 
   def self.this_week
@@ -21,7 +31,7 @@ class AreaPublicStream < ActiveRecord::Base
   end
 
   def self.only_contents
-    where(:event_type => %w(Proposal Argument Question Answer News Event Tweet Photo))
+    moderated.where(:event_type => %w(Proposal Argument Question Answer News Event Tweet Photo))
   end
 
   def self.questions
@@ -86,7 +96,8 @@ class AreaPublicStream < ActiveRecord::Base
       ) comments_count ON comments_count.content_id = area_public_streams.event_id
                        AND area_public_streams.event_type IN ('Question', 'Answer', 'Proposal', 'Event', 'News', 'Tweet')
     SQL
-    ).order('comments_count.count desc, published_at desc')
+    )
+    .order('comments_count.count desc, published_at desc')
   end
 
   def item

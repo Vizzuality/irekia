@@ -1,0 +1,7 @@
+<%= avatar data.author, :small %>
+
+<div class="content">
+  <p><strong><%= data.question_text.truncate(60) %></strong></p>
+
+  <%= render 'footer', :data => data %>
+</div>

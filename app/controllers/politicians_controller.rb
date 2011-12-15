@@ -91,7 +91,7 @@ class PoliticiansController < UsersController
   private :get_counters
 
   def get_actions
-    @actions = @politician.get_actions(params.slice(:type, :more_polemic))
+    @actions = @politician.get_actions(params.slice(:type, :more_polemic), current_user)
   end
   private :get_actions
 

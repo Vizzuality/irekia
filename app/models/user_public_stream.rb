@@ -1,10 +1,20 @@
 class UserPublicStream < ActiveRecord::Base
   belongs_to :user
+  belongs_to :author,
+             :class_name => 'User'
   belongs_to :event,
              :polymorphic => true
 
   after_create  :increment_user_counter
   after_destroy :decrement_user_counter
+
+  def self.moderated
+    where(:moderated => true)
+  end
+
+  def self.moderated_or_author_is(user)
+    where('(moderated = ? OR (moderated = ? AND author_id = ?))', true, false, user.id)
+  end
 
   def self.questions
     where(:event_type => 'Question')

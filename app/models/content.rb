@@ -23,7 +23,6 @@ class Content < ActiveRecord::Base
   has_many   :participations
   has_many   :comments,
              :include => [{:author => :profile_pictures}, :comment_data],
-             :conditions => {:moderated => true},
              :order => 'published_at asc'
 
   attr_protected :moderated, :rejected
@@ -125,11 +124,11 @@ class Content < ActiveRecord::Base
   end
 
   def comments_count
-    comments.reload.size || 0
+    comments.moderated.reload.size || 0
   end
 
   def last_comments
-    comments.reload.last(2)
+    comments.moderated.reload.last(2)
   end
 
   def as_json(options = {})
@@ -147,6 +146,7 @@ class Content < ActiveRecord::Base
       :content_type    => type,
       :published_at    => published_at,
       :tags            => tags,
+      :moderated       => moderated,
       :comments_count  => comments_count,
       :last_comments   => last_comments
     }
@@ -193,7 +193,7 @@ class Content < ActiveRecord::Base
 
   def publish
 
-    return unless moderated? && author.present?
+    return if author.blank?
 
     author.create_public_action(self)
 
@@ -211,10 +211,10 @@ class Content < ActiveRecord::Base
   end
 
   def notify_of_new_participation(participation)
+    areas.each{|area| area.create_action(participation)}
+
     users.each{|user| user.create_private_action(participation)}
-
     author.create_private_action(participation) if author.present?
-
     participers(author).each{|user| user.create_private_action(participation)}
   end
 
