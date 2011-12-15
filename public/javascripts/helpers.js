@@ -627,7 +627,7 @@ jQuery.fn.enableImageEditing = function(opt){
           var cacheImage = document.createElement('img');
           cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
 
-					$('.image_cache_name').val(responseJSON);
+					$('.image_cache_name').val(responseJSON.image_cache_name);
 
           //console.log($(".image_cache_name"));
 
