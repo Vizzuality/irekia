@@ -226,6 +226,7 @@ module ApplicationHelper
       :path_suffix => ''
     }
     options = options.merge(defaults)
+    options[:class] ||= ''
     options[:class] << default_class
 
     defaults[:class] << ' not_moderated' unless item.moderated
