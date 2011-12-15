@@ -9,7 +9,7 @@ $(function() {
   $('.home_last_activity').verticalHomeLoop();
 
   // Editing tools
-  // $(".editable.text").enableTextEditing();
+  $(".editable.text").enableTextEditing();
   $(".editable.target").enableTargetEditing();
   $(".editable.date").enableDateEditing();
   $(".image_editor").enableImageEditing();
