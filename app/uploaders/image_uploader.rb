@@ -63,6 +63,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   def contents_size
     manipulate! do |img|
       img.resize "#{608}x#{1000}" if img[:width] > 608
+      img = yield(img) if block_given?
       img
     end
   end
