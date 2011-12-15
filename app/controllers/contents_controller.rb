@@ -108,7 +108,11 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @comments = @content.comments.moderated.all
+    @comments = if current_user.present?
+      @content.comments.moderated_or_author_is(current_user).all
+    else
+      @content.comments.moderated.all
+    end
     @comments_count = @content.comments_count
     @last_contents = @content.last_contents(3)
 

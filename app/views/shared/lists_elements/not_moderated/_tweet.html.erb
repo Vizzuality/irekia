@@ -1,0 +1,6 @@
+<%= avatar data.author %>
+<div class="content">
+  <blockquote><a href="<%= tweet_path(data.id) %>"><span class="bqstart">&#8220;</span><span class="quote"><%= data.message %><span class="bqend">&#8221;</span></span></a></blockquote>
+
+  <%= render 'shared/lists_elements/not_moderated/footer', :data => data %>
+</div>

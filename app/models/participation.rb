@@ -80,6 +80,7 @@ class Participation < ActiveRecord::Base
         :text => content.try(:text)
       },
       :published_at     => published_at,
+      :moderated        => moderated,
       :comments_count   => content.try(:comments_count)
     }
 
@@ -87,7 +88,7 @@ class Participation < ActiveRecord::Base
   end
 
   def publish
-    return unless content.present? && moderated?
+    return unless content.present?
 
     user.create_public_action(self)
 

@@ -7,6 +7,10 @@ class Comment < Participation
 
   accepts_nested_attributes_for :comment_data
 
+  def self.moderated_or_author_is(user)
+    where('(moderated = ? OR (moderated = ? AND user_id = ?))', true, false, user.id)
+  end
+
   def create_with_body(body)
     self.comment_data = CommentData.create :body => body
     self.save!

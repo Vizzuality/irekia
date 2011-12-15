@@ -4,9 +4,7 @@
 <ul>
   <% if @contents.size > 0 %>
     <% @contents.each do |content| %>
-      <li class="clearfix <%= content.event_type.underscore %>">
-      <%= render "shared/lists_elements/#{content.event_type.underscore}", :data => content.item %>
-      </li>
+      render_list_element(content.item, content.event_type)
     <% end %>
   <% else %>
     <li>&nbsp;</li>

@@ -5,12 +5,23 @@
   <div class="count"><%= t('.title', :count => @comments_count) %></div>
   <ul>
     <% @comments.reject{|c| c.new_record?}.each do |comment| %>
-      <li class="clearfix">
+      <li class="clearfix <%= 'not_moderated' unless comment.moderated %>">
       <%= avatar comment.author %>
       <div class="comment">
         <blockquote><span class="bqstart">&#8220;</span><span class="quote"><%= comment.body %><span class="bqend">&#8221;</span></span></blockquote>
         <div class="footer when">
-          <%= link_to comment.author.fullname, user_path(comment.author), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
+          <% if comment.moderated -%>
+            <%= link_to comment.author.fullname, user_path(comment.author), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
+          <% else -%>
+            <span class="published_at">
+              <%= raw t('.not_moderated.author', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
+            </span>
+            &middot;
+            <span class="moderation_pending">
+              <%= t('.not_moderated.moderation_pending') %>
+            </span>
+            <%= t('.not_moderated.rest_of_users') %>
+          <% end -%>
         </div>
       </div>
       </li>

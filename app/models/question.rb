@@ -101,8 +101,6 @@ class Question < Content
   def publish
     super
 
-    return unless self.moderated?
-
     author.create_public_action(self)
 
     if target_user

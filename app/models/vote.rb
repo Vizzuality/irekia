@@ -48,7 +48,7 @@ class Vote < Participation
   def publish
     super
 
-    return unless moderated? && author.present?
+    return if author.blank?
 
     if proposal.target_area
       proposal.target_area.team.each do |politician|
