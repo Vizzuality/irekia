@@ -1167,11 +1167,10 @@ input.xlInput { width: 508px; height: 32px; padding: 0 9px; border: 1px solid rg
 #container .article.settings .inner .left fieldset .field .radios input[type="radio"] { left: -9000px; position: absolute; }
 #container .article.settings .inner .left fieldset .field.social { float: left; margin: 0; }
 #container .article.settings .inner .left fieldset .field.social .social-links { margin: 0 0 10px 0; }
-#container .article.settings .inner .left fieldset .field.password { margin: 0 10px 0 0; }
-#container .article.settings .inner .left fieldset .field select, #container .article.settings .inner .left fieldset .field .dk_container { float: left; margin: 0 5px 0 0; }
+#container .article.settings .inner .left fieldset .field select, #container .article.settings .inner .left fieldset .field .dk_container { float: left; margin: 0 10px 0 0; }
 #container .article.settings .inner .left fieldset .field.born_at { float: left; width: 415px; clear: right; }
 #container .article.settings .inner .left fieldset .field.born_at .input_field { width: 415px; }
-#container .article.settings .inner .left fieldset .field.pull-left { float: left; clear: left; margin-right: 6px; }
+#container .article.settings .inner .left fieldset .field.pull-left { float: left; clear: left; margin-right: 8px; }
 #container .article.settings .inner .left fieldset .field.pull-right { float: left; }
 #container .article.settings .inner .left .delete_profile { width: 237px; right: -270px; bottom: 40px; position: absolute; background: #f1f1f1; padding: 5px; color: #465866; font-size: 15px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 #container .article.settings .inner .left .delete_profile a { color: #465866; font-size: 15px; text-decoration: underline; }

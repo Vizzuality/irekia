@@ -4550,32 +4550,30 @@ input {
   }
 }
 
+// Settings page
 #container .article.settings  {
   .inner {
     .left {
       fieldset {
         .field {
           margin-bottom: 20px;
+
           .input_field { width:415px; z-index:299999; }
 
           .radios {
             a { display:block; float:left; position:relative; }
             input[type="radio"] { left: -9000px; position: absolute; }
-          }
+          } // radios
 
           &.social {
             float:left;
-
             margin: 0;
+
             .social-links { margin: 0 0 10px 0; }
-
           }
 
-          &.password {
-            margin: 0 10px 0 0;
-          }
 
-          select, .dk_container { float:left; margin:0 5px 0 0; }
+          select, .dk_container { float:left; margin:0 10px 0 0; }
 
           &.born_at {
             float:left;
@@ -4585,7 +4583,7 @@ input {
             .input_field { width:415px; }
           }
 
-          &.pull-left { float:left; clear:left; margin-right:6px; }
+          &.pull-left { float:left; clear:left; margin-right:8px; }
           &.pull-right { float:left;  }
         } // field
       } // fieldset
