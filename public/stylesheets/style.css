@@ -812,10 +812,13 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 
 /* .article addons */
 #container .article.initialy_hidden { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; }
+#container .article .with_question .avatar_box { position: absolute; right: 0; bottom: 15px; }
+#container .article .with_question .avatar_box .avatar.xlAvatar { top: 2px; left: 6px; }
+#container .article .with_question .avatar_box .frame { background-position: 0 bottom; }
 #container .article .avatar_box { float: left; margin-right: 20px; position: relative; width: 291px; height: 290px; clear: both; overflow: hidden; }
 #container .article .avatar_box .avatar.xlAvatar { overflow: none; left: 4px; top: 4px; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
 #container .article .avatar_box .avatar.xlAvatar > img { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
-#container .article .avatar_box .frame { width: 100%; height: 100%; position: absolute; background: url("/images/big_avatar_bkg.png") no-repeat; z-index: 10; }
+#container .article .avatar_box .frame { width: 100%; height: 100%; position: absolute; background: url("/images/big_avatar_bkg_sprite.png") no-repeat; z-index: 10; }
 #container .article .caption, #container .article .caption p { color: #7d8a92; }
 #container .article .holder, #container .article .input_field .holder { width: 100%; position: absolute; left: 11px; color: #D7DADD; font-size: 15px; font-weight: normal; text-shadow: none; cursor: text; }
 #container .article .holder span, #container .article .input_field .holder span { float: left; }

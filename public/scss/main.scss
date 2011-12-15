@@ -2479,6 +2479,16 @@ span.where, .map .infowindow ul.details li.where {
 #container .article {
   &.initialy_hidden { @include opacity(0); }
 
+  .with_question {
+    .avatar_box {
+      position:absolute;
+      right: 0;
+      bottom: 15px;
+      .avatar.xlAvatar { top: 2px; left: 6px; }
+      .frame { background-position: 0 bottom; }
+    }
+  }
+
   .avatar_box {
     float:left;
     margin-right: 20px;
@@ -2500,7 +2510,7 @@ span.where, .map .infowindow ul.details li.where {
       width:100%;
       height:100%;
       position:absolute;
-      background: url("/images/big_avatar_bkg.png") no-repeat;
+      background: url("/images/big_avatar_bkg_sprite.png") no-repeat;
       z-index:10;
     }
   } // .avatar_box
