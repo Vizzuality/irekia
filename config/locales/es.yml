@@ -1484,6 +1484,12 @@
 
   users:
     settings:
+      avatar:
+        title: Tu avatar
+        pick_your_avatar: Selecciona tu avatar
+        upload_an_image: Subir una nueva imagen
+        subtitle: Necesitas una imagen que te represente en Irekia. Los usuarios con avatar son mas populares
+        size: Tamaño máximo 500x500.
       man: 'Hombre'
       woman: 'Mujer'
       name: 'Nombre'

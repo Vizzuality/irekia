@@ -127,33 +127,36 @@
 <% end -%>
 </div>
 
-<div class="article">
-<div class="inner">
-  <div class="content">
-    <h2>Tu avatar</h2>
+<div class="article settings">
+  <div class="inner">
+    <div class="content">
+      <h2><%= t(".avatar.title") %></h2>
 
-    <%= form_for @user do |form| %>
-      <div class="avatar-uploader">
+      <%= form_for @user, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+        <div class="avatar-uploader">
 
-        <%= avatar @user, 'xlAvatar' %>
+          <div class="avatar_box">
+            <%= avatar @user, 'xlAvatar' %>
+            <div class="frame"></div>
+          </div>
 
-        <div class="explanation">
-          <h3>Selecciona tu avatar</h3>
-          <p>Necesitas una imagen que te represente en Irekia. Los usuarios con avatar son mas populares</p>
+          <div class="explanation">
+            <h3><%= t(".avatar.pick_your_avatar") %></h3>
+            <p><%= t(".avatar.subtitle") %></p>
 
-              <%= form.fields_for :profile_pictures, (@user.profile_pictures.last || @user.profile_pictures.new) do |profile_picture| %>
-                <%= profile_picture.hidden_field :image_cache, :class => :image_cache_name %>
-              <% end %>
+            <%= form.fields_for :profile_pictures, (@user.profile_pictures.last || @user.profile_pictures.new) do |profile_picture| %>
+              <%= profile_picture.hidden_field :image_cache, :class => :image_cache_name %>
+            <% end %>
 
-          <%= button "Subir una nueva imagen", :class => "white_button clear blue", :'data-url' => photos_path %>
-          <div class="small">Tamaño máximo 500x500.</div>
+            <%= button t(".avatar.upload_an_image"), :id => :avatar_uploader, :class => "white_button clear blue", :'data-url' => photos_path %>
+            <div class="small"><%= t(".avatar.size") %></div>
+          </div>
         </div>
-      </div>
-    <% end -%>
+      <% end -%>
+    </div>
   </div>
-</div>
 
-<div class="t"></div><div class="f"></div>
+  <div class="t"></div><div class="f"></div>
 </div>
 
 <div class="article">

@@ -320,7 +320,7 @@ form.editable .input_field textarea, form.editable .input_field input[type="text
 
 .qq-upload-button-focus { outline: 1px dotted black; }
 
-.qq-upload-drop-area { position: absolute; top: 0; left: 0; width: 585px; height: 20px; color: #fff; z-index: 2; text-align: center; padding: 0; background: #FF0066; font-size: 13px; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; }
+.qq-upload-drop-area { display: none; }
 
 .qq-upload-drop-area span { display: block; position: absolute; top: 50%; width: 100%; margin-top: -8px; font-size: 16px; }
 
