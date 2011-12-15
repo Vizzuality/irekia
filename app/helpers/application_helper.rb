@@ -83,7 +83,8 @@ module ApplicationHelper
     else
       if user_or_area.present? && user_or_area.profile_image.present?
         user = user_or_area
-        link_to (image_tag(user.profile_image) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
+        image_url = size == 'big' ? user.profile_image_big : user.profile_image
+        link_to (image_tag(image_url) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
       elsif user_or_area.present? && user_or_area.thumbnail.present?
         area = user_or_area
         link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => area.name, :class => "avatar #{size}"
