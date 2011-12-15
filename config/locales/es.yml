@@ -1311,6 +1311,8 @@
     show:
       agenda:
         title: 'Agenda de %{name}'
+    detail:
+      back: 'Volver'
   searches:
     header:
       your_search_results: Resultados de tu búsqueda

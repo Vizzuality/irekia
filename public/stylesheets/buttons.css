@@ -154,7 +154,7 @@ a.radio.selected:hover { cursor: pointer; text-decoration: none; }
 Editing forms
 ========================================================================== */
 #container .article.editable .inner .left { z-index: 60; }
-#container .article.editable.questions .context { height: 40px; }
+#container .article.editable.questions .context, #container .article.editable.proposals .context { height: 40px; }
 
 form.editable, #container .article .inner .left form.editable { float: left; margin: 0 0 10px 0; width: 607px; position: relative; }
 form.editable.date, #container .article .inner .left form.editable.date { z-index: 70; margin: 0 0 20px 0; }

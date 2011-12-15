@@ -1,1 +1,20 @@
-<%= @politician.name %>
+
+<div class="article politician with_footer">
+
+	<div class="inner">
+		<%= image_tag @politician.profile_image_big, :class => "avatar xlAvatar" if @politician.profile_image_big.present? %>
+	  <div class="left">
+	  	<h1><%= @politician.name %></h1>
+	  </div>
+	</div>
+	<!-- content footer -->
+	<div class="bfooter">
+  	<div class="separator"></div>
+  	<div class="inner">
+    	<div class="left">
+      	<%= link_to t(".back"), "javascript: history.go(-1)", :class => :left_arrow %>
+    	</div>
+  	</div>
+  </div>
+  <div class="t"></div><div class="f"></div>
+</div>
