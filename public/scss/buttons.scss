@@ -140,12 +140,12 @@ White buttons
   }
 }
 
-.white_button, .article.white_button, #container .article .my_opinion .white_button {
+.white_button, .article .white_button, #container .article .my_opinion .white_button {
 /* ------------------------------------------------------------------------------ Colors */
   &.pink   { color:$pink; }
   &.blue   { color:$link_color; }
   &.orange { color:$orange; }
-  &.green  { color:$green; }
+  &.green  { color:$agree_color; }
   &.in_favor {
     color: $agree_color;
 
@@ -200,8 +200,8 @@ White buttons
     text-shadow: #AC0743 1px 1px 0;
 
     &:hover {
-      color: $white!important;
-      background: $pink!important;
+      color: $white;
+      background: $pink;
     }
   }
 
@@ -507,8 +507,9 @@ Hacks and fixes
 .ie7, .ie8  {
   #container .article {
     .with_question .avatar_box {
-      bottom: 17px;
+      bottom: 19px;
       .big.avatar, .avatar {
+        .ieframe { display: none; }
         width: $avatar_big_size;
         height: $avatar_big_size;
       }
@@ -603,22 +604,77 @@ Hacks and fixes
   }
 }
 
+.ie7 button.white_button,
+.ie7 .article button.white_button,
+.ie7  #container .article .my_opinion button.white_button,
+.ie8 button.white_button,
+.ie8 .article button.white_button,
+.ie8 #container .article .my_opinion button.white_button {
+  margin-left: 2px;
+  span {
+    left:7px;
+    margin-right: 10px;
+  }
+}
+
+.ie7 .white_button,
+.ie7 .article .white_button,
+.ie7  #container .article .my_opinion .white_button,
 .ie8 .white_button,
-.ie7 .white_button {
+.ie8 .article .white_button,
+.ie8 #container .article .my_opinion .white_button {
   float:left;
   height: 37px;
-  padding: 0;
-  margin: 0 10px;
+  padding: 0; margin: 0 10px;
   border: none;
-  padding: 0;
   background:url('/images/buttons_sprite.png') repeat-x right 0!important;
 
   &:hover, &:hover span { color: #333; }
-  &.blue span { color:$link_color; }
+
+  &.pink   { span {color:$pink; } }
+  &.blue   { span {color:$link_color }; }
+  &.orange { span {color:$orange; }    }
+  &.green  { span {color:$agree_color; } }
+
+  &.against {
+    span { color: $against_color; }
+
+    &.selected, &.selected:hover, &:hover {
+      background-position:right -160px!important;
+      span {
+        color: $white;
+        background-position:left -200px;
+      }
+    }
+  } // against
 
   &.in_favor {
     span { color: $agree_color; }
-  }
+
+    &.selected, &.selected:hover, &:hover {
+      background-position:right -240px!important;
+      span {
+        color: $white;
+        background-position:left -280px;
+      }
+    }
+  } // in_favor
+
+  &.remove {
+    background-position:right -320px!important;
+    span {
+      color: $white;
+      background-position:left -360px;
+    }
+
+    &.selected, &.selected:hover, &:hover {
+      background-position:right -320px!important;
+      span {
+        color: $white;
+        background-position:left -360px;
+      }
+    }
+  } // remove
 
   &.disabled:active,
   &.disabled:hover,
@@ -1298,3 +1354,7 @@ form.editable,
 .qq-upload-failed-text {display:none;}
 .qq-upload-fail .qq-upload-failed-text {display:inline;}
 
+
+.demo_separator {
+ clear:both; height:20px;
+}
