@@ -1,6 +1,6 @@
-<div class="article welcome">
+<div class="article welcome <%= 'first' if @first_time %>">
 <div class="inner">
-  
+
   <% if @first_time -%>
     <ul class="actions">
       <li class="follow">
@@ -39,23 +39,23 @@
       <%= form.submit '', :class => 'close' %>
     <% end -%>
     <%= link_to t('.configure_your_account'), settings_user_path, :class => 'config first-time' %>
+    <a href="#next" class="next-welcome"></a>
   <% else -%>
-
     <div class="content">
-    <div class="avatar">
-      <%= avatar @user %>
+      <div class="avatar">
+        <%= avatar @user %>
+      </div>
+      <% if @first_time -%>
+        <h1><%= t('.hello', :name => current_user.name) %></h1>
+      <% else -%>
+        <h1><%= t('.hi_again', :name => current_user.name) %></h1>
+      <% end -%>
+      <% if @users_following.blank? && @areas_following.blank? -%>
+        <p><%= t('.following_nobody') %></p>
+      <% else -%>
+        <p><%= raw t('.currently', :politicians => link_to(t('.politicians_following', :count => @users_following.count), followings_user_path(@user, :anchor => :politicians)) , :areas => link_to(t('.areas_following', :count => @areas_following.count), followings_user_path(@user, :anchor => :areas))) %></p>
+      <% end -%>
     </div>
-    <% if @first_time -%>
-      <h1><%= t('.hello', :name => current_user.name) %></h1>
-    <% else -%>
-      <h1><%= t('.hi_again', :name => current_user.name) %></h1>
-    <% end -%>
-    <% if @users_following.blank? && @areas_following.blank? -%>
-      <p><%= t('.following_nobody') %></p>
-    <% else -%>
-      <p><%= raw t('.currently', :politicians => link_to(t('.politicians_following', :count => @users_following.count), followings_user_path(@user, :anchor => :politicians)) , :areas => link_to(t('.areas_following', :count => @areas_following.count), followings_user_path(@user, :anchor => :areas))) %></p>
-    <% end -%>
-  </div>
     <%= link_to t('.configure_your_account'), settings_user_path, :class => :config %>
   <% end -%>
 </div>
