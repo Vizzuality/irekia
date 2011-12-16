@@ -384,7 +384,116 @@ White buttons
   } // span
 } // .add_person
 
-/* Hacks & fixes */
+/* =============================================================================
+Hacks and fixes
+========================================================================== */
+
+/* ------------------------------------------------------------------------------ Inputs line-height */
+
+.ie7 #search_query, .ie8 #search_query,
+.ie7 .xlInput, .ie8 .xlInput,
+.ie7 .input_field input[type="email"],
+.ie7 .input_field input[type="text"],
+.ie7 .article.micro input[type="email"],
+.ie7 .article.micro input[type="text"],
+.ie7 .article.micro input[type="password"],
+.ie7 #sign_in input[type="email"],
+.ie7 #sign_in input[type="text"],
+.ie7 #sign_in input[type="password"],
+.ie8 .input_field input[type="email"],
+.ie8 .input_field input[type="text"],
+.ie8 .article.micro input[type="email"],
+.ie8 .article.micro input[type="text"],
+.ie8 .article.micro input[type="password"],
+.ie8 #sign_in input[type="email"],
+.ie8 #sign_in input[type="text"],
+.ie8 #sign_in input[type="password"] {
+  line-height:29px;
+}
+
+
+/* --------------------------------------------------------------------------------- Calendar days */
+.ie7 #container .article.agenda .inner .content ul li.day {
+  &.disabled h3, span { color: #bbb; }
+}
+
+/* --------------------------------------------------------------------------------- Questions' preview */
+.ie7 #container .article .bfooter .left .question,
+.ie7 #container .article .bfooter .right .question,
+.ie8 #container .article .bfooter .left .question,
+.ie8 #container .article .bfooter .right .question {
+  color:$gray;
+}
+
+
+
+
+.ie7 .avatar,
+.ie8 .avatar {
+  position: relative;
+  overflow: hidden;
+  width: $avatar_normal_size;
+  height: $avatar_normal_size;
+}
+
+.ie7 .actions .inner .avatar,
+.ie7 .proposals .inner .avatar,
+.ie7 .photos .inner .avatar,
+.ie7 .proposal .inner .avatar,
+.ie7 .questions .inner .avatar,
+.ie7 .videos .inner .avatar,
+.ie7 .activity .inner .avatar,
+.ie8 .actions .inner .avatar,
+.ie8 .proposals .inner .avatar,
+.ie8 .photos .inner .avatar,
+.ie8 .proposal .inner .avatar,
+.ie8 .questions .inner .avatar,
+.ie8 .videos .inner .avatar,
+.ie8 .activity .inner .avatar {
+  &>img { top: -4px; position:absolute;}
+}
+
+.ie7 .avatar.medium,
+.ie8 .avatar.medium {
+  &>img { top: 0px; position:absolute;}
+}
+
+.ie7 .avatar.small,
+.ie8 .avatar.small {
+  &>img { top: 0px; position:absolute;}
+}
+
+.ie7 .avatar .ieframe,
+.ie8 .avatar .ieframe {
+  position: absolute;
+  top: 0px; left: 0px;
+  width: $avatar_normal_size;
+  height: $avatar_normal_size;
+  background: url('/images/avatar_frame.png') no-repeat 0 0;
+  z-index: 90;
+}
+
+.ie7 .avatar.medium,
+.ie8 .avatar.medium,
+.ie7 .avatar.medium .ieframe,
+.ie8 .avatar.medium .ieframe {
+  top: 0px; left: 0px;
+  width: $avatar_medium_size;
+  height: $avatar_medium_size;
+  background: url('/images/avatar_frame.png') no-repeat 0 -70px;
+}
+
+.ie7 .avatar.small,
+.ie8 .avatar.small,
+.ie7 .avatar.small .ieframe,
+.ie8 .avatar.small .ieframe {
+  top: 0px; left: 0px;
+  width: $avatar_small_size;
+  height: $avatar_small_size;
+  background: url('/images/avatar_frame.png') no-repeat 0 -115px;
+}
+
+
 
 @-moz-document url-prefix() {
   header nav ul.auth li .count  { line-height:16px!important; }
@@ -399,7 +508,7 @@ White buttons
   #container .article {
     .with_question .avatar_box {
       bottom: 17px;
-      .xlAvatar.avatar, .avatar {
+      .big.avatar, .avatar {
         width: $avatar_big_size;
         height: $avatar_big_size;
       }

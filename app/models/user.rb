@@ -350,7 +350,7 @@ class User < ActiveRecord::Base
   end
 
   def profile_image_big
-    @profile_image ||= self.profile_pictures.first.image.url if self.profile_pictures.present?
+    @profile_image_big ||= self.profile_pictures.first.image.url if self.profile_pictures.present?
   end
 
   def sex

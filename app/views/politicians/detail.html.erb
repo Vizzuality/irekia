@@ -1,7 +1,7 @@
 
 <div class="article detail with_footer">
 	<div class="inner">
-		<%= image_tag @politician.profile_image_big, :class => "avatar xlAvatar" if @politician.profile_image_big.present? %>
+		<%= image_tag @politician.profile_image_big, :class => "avatar big" if @politician.profile_image_big.present? %>
 		<div class="left">
 		  <header>
 			  <h1><%= @politician.fullname %></h1>
@@ -62,7 +62,7 @@
     	</div>
   	</div>
   </div>
-  
+
 	<% if @follow.new_record? -%>
 	  <%= render 'follows/create_ribbon' %>
 	<% else -%>

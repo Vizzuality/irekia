@@ -30,7 +30,7 @@
 <div class="inner with_avatar with_question">
 
   <div class="avatar_box">
-    <%= image_tag @politician.profile_image_big, :class => "avatar xlAvatar" if @politician.profile_image_big.present? %>
+    <%= avatar @politician, :big %>
     <div class="frame"></div>
   </div>
 

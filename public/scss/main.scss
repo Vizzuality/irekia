@@ -1749,6 +1749,7 @@ div#main.show div.left img {margin:4px 0 7px;}
       a.config { position:absolute; display:block; right:20px; bottom:5px;
         &.first-time { display: none; visibility: visible;}
       }
+
       img.avatar { position: relative; float: left; }
 
       .close {
@@ -1775,7 +1776,7 @@ div#main.show div.left img {margin:4px 0 7px;}
       .avatar { float: left; margin:0 20px 0 0;}
 
       ul.actions {
-        float:left;        
+        float:left;
         width:4000px;
         margin:0;
 
@@ -1804,14 +1805,11 @@ div#main.show div.left img {margin:4px 0 7px;}
   }
 }
 
+// =============================================================================
 // Avatars
-.avatar {
-  &.xlAvatar {
-    width: $avatar_big_size;
-    height: $avatar_big_size;
-    &>img { width: $avatar_big_size; height: auto; @include border-radius(100em); }
-  }
+// =============================================================================
 
+.avatar {
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -1824,24 +1822,24 @@ div#main.show div.left img {margin:4px 0 7px;}
   &>img { width: $avatar_normal_size; height: auto; @include border-radius(100em); }
   &.small, &.small>img { width: $avatar_small_size; height: auto; }
   &.medium, &.medium>img { width: $avatar_medium_size; height: auto; }
+  &.big, &.big>img { width: $avatar_big_size; height: auto; }
 
   &:before {
-
-    @include border-radius(100em);
-
     content: '';
     display: block;
     position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+    left: 0; right: 0;
+    width: 100%; height: 100%;
     margin: -10em;
     border: 10em solid $white;
+    @include border-radius(100em);
   }
 }
 
-/* Agenda */
+// =============================================================================
+// Agenda
+// =============================================================================
+
 #container .article.agenda .inner {
   padding: 15px 33px 38px 33px;
 
@@ -2477,7 +2475,9 @@ span.where, .map .infowindow ul.details li.where {
   }
 }
 
-/* .article addons */
+// =============================================================================
+// Article addons
+// =============================================================================
 
 #container .article {
   &.initialy_hidden { @include opacity(0); }
@@ -2485,39 +2485,55 @@ span.where, .map .infowindow ul.details li.where {
   .with_question {
     .avatar_box {
       position:absolute;
-      right: 0; bottom: 15px;
-      .avatar.xlAvatar { top: 2px; left: 6px; }
-      .frame { background-position: 0 bottom; }
+      right: 10px; bottom: 17px;
+      clear:both;
+      overflow:hidden;
+
+      .avatar {
+        position:absolute;
+        overflow:none;
+        top: 3px;
+        left: 0px;
+        width: $avatar_big_size;
+        height: $avatar_big_size;
+        @include border-radius(0);
+
+        &:before {
+          @include border-radius(0);
+        }
+
+        &>img { @include border-radius(0); }
+      } // avatar
+      .frame { width:291px; height:290px; position:relative; background: url("/images/big_avatar_bkg_sprite.png") no-repeat 0 bottom; z-index: 10; }
     }
   } // .with_question
 
-  .avatar_box {
-    float:left;
-    margin-right: 20px;
-    position:relative;
-    width:291px;
-    height:290px;
+ //  .avatar_box {
+ //    float:left;
+ //    margin-right: 20px;
+ //    position:relative;
+ //    width:291px; height:290px;
 
-    clear:both;
-    overflow:hidden;
+ //    clear:both;
+ //    overflow:hidden;
 
-    .avatar.xlAvatar {
-      overflow:none;
-      left: 4px; top: 4px;
-      @include border-radius(0);
-      &>img { @include border-radius(0); }
-    }
+ //    .avatar {
+ //      overflow:none;
+ //      left: 4px; top: 4px;
+ //      @include border-radius(0);
+ //      &>img { @include border-radius(0); }
 
-    .frame {
-      width:100%;
-      height:100%;
-      position:absolute;
-      background: url("/images/big_avatar_bkg_sprite.png") no-repeat;
-      z-index:10;
-    }
-  } // .avatar_box
-
-
+ //      &.big {
+ //        .frame {
+ //          width:291px;
+ //          height:100%;
+ //          position:absolute;
+ //          background: url("/images/big_avatar_bkg_sprite.png") no-repeat;
+ //          z-index:10;
+ //        }
+ //      }
+ //    }
+ //  } // .avatar_box
 
   .caption, .caption p { color: $standard_gray; }
 
@@ -4433,7 +4449,7 @@ a.editable {
 
             .bfooter {
               inner.with_avatar { position: relative; }
-              img.xlAvatar { position: absolute; bottom: 22px; right: 30px; background: url('/images/circle_bkg.png') no-repeat 2px center; z-index: 10; }
+              img.big { position: absolute; bottom: 22px; right: 30px; background: url('/images/circle_bkg.png') no-repeat 2px center; z-index: 10; }
             }
 
             ul.suggestions {
@@ -4898,115 +4914,6 @@ Autocomplete
     }
   }
 }
-
-/* =============================================================================
-Explorer fixes
-========================================================================== */
-
-/* ------------------------------------------------------------------------------ Inputs line-height */
-
-.ie7 #search_query, .ie8 #search_query,
-.ie7 .xlInput, .ie8 .xlInput,
-.ie7 .input_field input[type="email"],
-.ie7 .input_field input[type="text"],
-.ie7 .article.micro input[type="email"],
-.ie7 .article.micro input[type="text"],
-.ie7 .article.micro input[type="password"],
-.ie7 #sign_in input[type="email"],
-.ie7 #sign_in input[type="text"],
-.ie7 #sign_in input[type="password"],
-.ie8 .input_field input[type="email"],
-.ie8 .input_field input[type="text"],
-.ie8 .article.micro input[type="email"],
-.ie8 .article.micro input[type="text"],
-.ie8 .article.micro input[type="password"],
-.ie8 #sign_in input[type="email"],
-.ie8 #sign_in input[type="text"],
-.ie8 #sign_in input[type="password"] {
-  line-height:29px;
-}
-
-/* --------------------------------------------------------------------------------------- Avatars */
-
-.ie7 .avatar,
-.ie8 .avatar {
-  position: relative;
-  overflow: hidden;
-  width: $avatar_normal_size;
-  height: $avatar_normal_size;
-}
-
-.ie7 .actions .inner .avatar,
-.ie7 .proposals .inner .avatar,
-.ie7 .photos .inner .avatar,
-.ie7 .proposal .inner .avatar,
-.ie7 .questions .inner .avatar,
-.ie7 .videos .inner .avatar,
-.ie7 .activity .inner .avatar,
-.ie8 .actions .inner .avatar,
-.ie8 .proposals .inner .avatar,
-.ie8 .photos .inner .avatar,
-.ie8 .proposal .inner .avatar,
-.ie8 .questions .inner .avatar,
-.ie8 .videos .inner .avatar,
-.ie8 .activity .inner .avatar {
-  &>img { top: -4px; position:absolute;}
-}
-
-.ie7 .avatar.medium,
-.ie8 .avatar.medium {
-  &>img { top: 0px; position:absolute;}
-}
-
-.ie7 .avatar.small,
-.ie8 .avatar.small {
-  &>img { top: 0px; position:absolute;}
-}
-
-.ie7 .avatar .ieframe,
-.ie8 .avatar .ieframe {
-  position: absolute;
-  top: 0px; left: 0px;
-  width: $avatar_normal_size;
-  height: $avatar_normal_size;
-  background: url('/images/avatar_frame.png') no-repeat 0 0;
-  z-index: 90;
-}
-
-.ie7 .avatar.medium,
-.ie8 .avatar.medium,
-.ie7 .avatar.medium .ieframe,
-.ie8 .avatar.medium .ieframe {
-  top: 0px; left: 0px;
-  width: $avatar_medium_size;
-  height: $avatar_medium_size;
-  background: url('/images/avatar_frame.png') no-repeat 0 -70px;
-}
-
-.ie7 .avatar.small,
-.ie8 .avatar.small,
-.ie7 .avatar.small .ieframe,
-.ie8 .avatar.small .ieframe {
-  top: 0px; left: 0px;
-  width: $avatar_small_size;
-  height: $avatar_small_size;
-  background: url('/images/avatar_frame.png') no-repeat 0 -115px;
-}
-
-/* --------------------------------------------------------------------------------- Calendar days */
-.ie7 #container .article.agenda .inner .content ul li.day {
-  &.disabled h3, span { color: #bbb; }
-}
-
-/* --------------------------------------------------------------------------------- Questions' preview */
-.ie7 #container .article .bfooter .left .question,
-.ie7 #container .article .bfooter .right .question,
-.ie8 #container .article .bfooter .left .question,
-.ie8 #container .article .bfooter .right .question {
-  color:$gray;
-}
-
-
 
 /* =============================================================================
 Login & sign in

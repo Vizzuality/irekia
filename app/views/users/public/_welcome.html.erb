@@ -1,17 +1,14 @@
 <div class="article welcome">
-<div class="inner">
-  <div class="avatar">
-    <%= avatar @user %>
+  <div class="inner">
+    <div class="content">
+      <div class="avatar"><%= avatar @user %></div>
+      <h1><%= @user.fullname %></h1>
+      <p><%= t('.address', :city => @user.city, :province => @user.province) if @user.city && @user.province %>
+      <%= t(@user.sex, :scope =>'users.public.welcome.birthday', :birthday => l(@user.birthday, :format => :long)) if @user.birthday %>
+      </p>
+    </div>
   </div>
-  <div class="content">
-    <h1><%= @user.fullname %></h1>
-    <p>
-    <%= t('.address', :city => @user.city, :province => @user.province) if @user.city && @user.province %>
-    <%= t(@user.sex, :scope =>'users.public.welcome.birthday', :birthday => l(@user.birthday, :format => :long)) if @user.birthday %>
-    </p>
-  </div>
-</ul>
-</div>
 
-<div class="t"></div><div class="f"></div>
+  <div class="t"></div>
+  <div class="f"></div>
 </div>

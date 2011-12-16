@@ -1,34 +1,34 @@
 <div id="login" class="article micro login popover with_footer">
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:'data-type' => 'html', :remote => true, :novalidate => "novalidate"}) do |f| %>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:'data-type' => 'html', :remote => true, :novalidate => "novalidate"}) do |f| %>
 
-  <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="mOoFPTs9xQUTOTplStCotWba1+xiF4SX6/vYt12YNPY=" /></div>
-  <div class="inner">
-    <div class="content">
-      <h2><%= t(".access_irekia") %></h2>
-      <p><%= t(".forgotten_password") %> <a href="/in_development" class="password_reminder"><%= t(".get_it_here") %></a></p>
-      <!-- <p><%#= t(".not_yet_registered") %> <%= link_to t('.register_here'), intro_users_path %></p> -->
+    <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="mOoFPTs9xQUTOTplStCotWba1+xiF4SX6/vYt12YNPY=" /></div>
+    <div class="inner">
+      <div class="content">
+        <h2><%= t(".access_irekia") %></h2>
+        <p><%= t(".forgotten_password") %> <a href="/in_development" class="password_reminder"><%= t(".get_it_here") %></a></p>
+        <!-- <p><%#= t(".not_yet_registered") %> <%= link_to t('.register_here'), intro_users_path %></p> -->
 
-      <p><%= f.label :email %> <%= f.email_field :email, :class => :mInput %></p>
-      <p><%= f.label :password %> <%= f.password_field :password, :class => :mInput %></p>
+        <p><%= f.label :email %> <%= f.email_field :email, :class => :mInput %></p>
+        <p><%= f.label :password %> <%= f.password_field :password, :class => :mInput %></p>
 
-      <p class="remember_me"><%= f.check_box :remember_me, :class => "hidden" %> <a class="checkbox">Recordar mis datos</a></p>
+        <p class="remember_me"><%= f.check_box :remember_me, :class => "hidden" %> <a class="checkbox">Recordar mis datos</a></p>
+      </div>
     </div>
-  </div>
-  <span class="close"></span>
+    <span class="close"></span>
 
-  <div class="bfooter">
-  <div class="separator"></div>
-  <div class="inner">
-    <div class="left">
-      <a href="/users/auth/facebook" class="facebook" id="facebook_signin">Facebook</a>
-      <a href="/users/auth/twitter" class="twitter" id="twitter_signin">Twitter</a>
+    <div class="bfooter">
+      <div class="separator"></div>
+      <div class="inner">
+        <div class="left">
+          <a href="/users/auth/facebook" class="facebook" id="facebook_signin">Facebook</a>
+          <a href="/users/auth/twitter" class="twitter" id="twitter_signin">Twitter</a>
+        </div>
+        <div class="right">
+          <button type="submit" class="white_button right"><span>Entra</span></button>
+        </div>
+      </div>
     </div>
-    <div class="right">
-      <button type="submit" class="white_button right"><span>Entra</span></button>
-    </div>
-  </div>
-  </div>
 
-  <div class="t"></div><div class="f"></div>
-<% end %>
+    <div class="t"></div><div class="f"></div>
+  <% end %>
 </div>
