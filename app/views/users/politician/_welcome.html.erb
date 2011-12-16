@@ -1,10 +1,10 @@
 <!-- Welcome article -->
 <div class="article welcome">
 <div class="inner">
-  <div class="avatar">
-    <%= avatar @user %>
-  </div>
   <div class="content">
+    <div class="avatar">
+      <%= avatar @user %>
+    </div>
     <h1><%= t('.hi_again', :name => current_user.name) %></h1>
     <p>
       <%= t('.followers_count', :count => @followers_count) %>,
