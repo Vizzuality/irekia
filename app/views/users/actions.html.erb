@@ -7,9 +7,15 @@
     <div class="content centered clearfix">
       <div class="info icon"></div>
       <div class="message">
-        <h2><%= t('.no_activity.title') %></h2>
+        <% if @viewing_access == "public" %>
+          <h2><%= t('.no_activity.other_title',:user => @user.name) %></h2>
+        <% else %>
+          <h2><%= t('.no_activity.title') %></h2>
+        <% end %>
         <p><%= t('.no_activity.description') %></p>
-        <%= link_to (content_tag :span, t('.no_activity.homepage')), '/', :class => "white_button pink" %>
+        <% if @viewing_access != "public" %>
+          <%= link_to (content_tag :span, t('.no_activity.homepage')), '/', :class => "white_button pink" %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -19,7 +25,7 @@
   <%= render "/shared/question_form" %>
 
 <% else -%>
-<%= render "shared/actions", :title => t(viewing_dashboard?? 'show.activity.title' : 'actions.title', :scope => "users.#{@viewing_access}") if @actions.present? %>
+  <%= render "shared/actions", :title => t(viewing_dashboard?? 'show.activity.title' : 'actions.title', :scope => "users.#{@viewing_access}") if @actions.present? %>
 <% end -%>
 
 <%= render "shared/#{current_user.politician? ? 'politician' : 'user' }_publish" if private_profile? or politician_profile? %>
