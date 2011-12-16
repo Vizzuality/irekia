@@ -153,16 +153,36 @@ $(function() {
   // END ANSWER FORM
 
 
-  // This button close welcome message for new users
+  // WELCOME WINDOW
+  //  close welcome window and show user thingy
   $(".close-welcome").submit(function(e) {
-    $(".welcome .close-welcome").fadeOut(250, function(){
-      $(this).remove();
-    });
-    $(".welcome ul.actions").slideUp(250, function(){
-      $(this).remove();
+
+    var move_li = $(this).closest('.inner').find('ul > li:last');
+    $(this).closest('.inner').find('ul > li:first').after(move_li);
+
+    $(this).closest('.inner').find('ul').animate({marginLeft:'-994px'},500,function(e){
       $('.welcome a.config.first-time').fadeIn(250);
     });
+
+    $(".welcome .close-welcome,.welcome .next-welcome").fadeOut(250, function(){
+      $(this).remove();
+    });
+    
+    $('.welcome > .inner').animate({height:'110px'},500);
   });
+
+  //  move between the differents illustrations
+  $(".next-welcome").click(function(e) {
+    e.preventDefault();
+    $(this).closest('.inner').find('ul').animate({marginLeft:'-994px'},500,function(e){
+      var move_li = $(this).find('li:first');
+      $(this).find('li:last').before(move_li);
+      $(this).removeAttr('style');
+    });
+  });
+
+
+
 
   $('.my_opinion').enableOpinion();
   $('.article.proposal .proposals .proposal').enableArguments();

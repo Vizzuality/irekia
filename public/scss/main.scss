@@ -1741,12 +1741,13 @@ div#main.show div.left img {margin:4px 0 7px;}
     div.t {height:5px; top:-5px; background-position:0 0;}
 
     .inner {
-      width: 994px;
-      height: 270px;
-      padding: 0;
+      position:relative;
+      width: 932px;
+      height: auto;
+      padding: 25px 31px;
       overflow:hidden;
 
-      a.config { position:absolute; display:block; right:20px; bottom:5px;
+      a.config { position:absolute; display:block; right:20px; bottom:10px;
         &.first-time { display: none; visibility: visible;}
       }
       img.avatar { position: relative; float: left; }
@@ -1771,8 +1772,25 @@ div#main.show div.left img {margin:4px 0 7px;}
         }
       }
 
-
       .avatar { float: left; margin:0 20px 0 0;}
+
+      .content, li.user {
+        position: relative;
+        float: left;
+        margin: 0;
+        width: 100%;
+
+        a  { font-size: 15px; }
+        h1 { margin-bottom: 5px; line-height: 40px; }
+        p  { margin: 0; padding: 0; line-height: 15px; font-size: 15px; }
+      }
+
+      a.next-welcome {
+        position:absolute; z-index:10; right:30px; top:100px; width:69px; height:70px;
+        background:url('/images/welcome_arrow.png') no-repeat 0 0;
+        &:hover {background-position:0 -70px}
+        &:focus {outline:none}
+      }
 
       ul.actions {
         float:left;        
@@ -1800,6 +1818,14 @@ div#main.show div.left img {margin:4px 0 7px;}
           .white_button { float:left; }
         }
       }
+    }
+    
+    &.first {
+      .inner {
+        width: 994px;
+        height: 270px;
+        padding: 0;
+      } 
     }
   }
 }

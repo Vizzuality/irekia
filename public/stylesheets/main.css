@@ -472,13 +472,20 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.welcome { margin-bottom: 40px; }
 #container .article.welcome div.f { height: 4px; bottom: -4px; background-position: 0 -16px; }
 #container .article.welcome div.t { height: 5px; top: -5px; background-position: 0 0; }
-#container .article.welcome .inner { width: 994px; height: 270px; padding: 0; overflow: hidden; }
-#container .article.welcome .inner a.config { position: absolute; display: block; right: 20px; bottom: 5px; }
+#container .article.welcome .inner { position: relative; width: 932px; height: auto; padding: 25px 31px; overflow: hidden; }
+#container .article.welcome .inner a.config { position: absolute; display: block; right: 20px; bottom: 10px; }
 #container .article.welcome .inner a.config.first-time { display: none; visibility: visible; }
 #container .article.welcome .inner img.avatar { position: relative; float: left; }
 #container .article.welcome .inner .close { position: absolute; top: 5px; right: 10px; display: block; width: 17px; height: 17px; background: url("/images/icons/icon_sprite.png") no-repeat -13px 0; border: 0; cursor: pointer; -webkit-appearance: none; font-size: 0; -moz-border-radius: 0px; -webkit-border-radius: 0px; -o-border-radius: 0px; -ms-border-radius: 0px; -khtml-border-radius: 0px; border-radius: 0px; }
 #container .article.welcome .inner .close:hover { background-position: -39px 0; }
 #container .article.welcome .inner .avatar { float: left; margin: 0 20px 0 0; }
+#container .article.welcome .inner .content, #container .article.welcome .inner li.user { position: relative; float: left; margin: 0; width: 100%; }
+#container .article.welcome .inner .content a, #container .article.welcome .inner li.user a { font-size: 15px; }
+#container .article.welcome .inner .content h1, #container .article.welcome .inner li.user h1 { margin-bottom: 5px; line-height: 40px; }
+#container .article.welcome .inner .content p, #container .article.welcome .inner li.user p { margin: 0; padding: 0; line-height: 15px; font-size: 15px; }
+#container .article.welcome .inner a.next-welcome { position: absolute; z-index: 10; right: 30px; top: 100px; width: 69px; height: 70px; background: url("/images/welcome_arrow.png") no-repeat 0 0; }
+#container .article.welcome .inner a.next-welcome:hover { background-position: 0 -70px; }
+#container .article.welcome .inner a.next-welcome:focus { outline: none; }
 #container .article.welcome .inner ul.actions { float: left; width: 4000px; margin: 0; }
 #container .article.welcome .inner ul.actions li { float: left; width: 474px; height: 221px; padding: 23px 489px 26px 31px; background: url("/images/welcome_illustrations.jpg") no-repeat 0 275px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
 #container .article.welcome .inner ul.actions li.collaborate { background-position: 460px -314px; }
@@ -487,6 +494,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.welcome .inner ul.actions li h3 { font-family: "ClarendonLTMedium", Georgia, serif; text-transform: none; font-weight: normal; color: #465866; font-size: 21px; margin-bottom: 10px; }
 #container .article.welcome .inner ul.actions li p { padding: 0; margin: 0 0 12px 0; font-size: 15px; line-height: 18px; }
 #container .article.welcome .inner ul.actions li .white_button { float: left; }
+#container .article.welcome.first .inner { width: 994px; height: 270px; padding: 0; }
 
 .avatar { display: inline-block; position: relative; overflow: hidden; width: 65px; height: auto; -moz-border-radius: 100em; -webkit-border-radius: 100em; -o-border-radius: 100em; -ms-border-radius: 100em; -khtml-border-radius: 100em; border-radius: 100em; }
 .avatar.xlAvatar { width: 280px; height: 280px; }

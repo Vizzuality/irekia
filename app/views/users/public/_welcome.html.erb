@@ -1,9 +1,10 @@
 <div class="article welcome">
 <div class="inner">
-  <div class="avatar">
-    <%= avatar @user %>
-  </div>
+
   <div class="content">
+    <div class="avatar">
+      <%= avatar @user %>
+    </div>
     <h1><%= @user.fullname %></h1>
     <p>
     <%= t('.address', :city => @user.city, :province => @user.province) if @user.city && @user.province %>
