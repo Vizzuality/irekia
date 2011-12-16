@@ -2528,7 +2528,7 @@ span.where, .map .infowindow ul.details li.where {
 
         &>img { @include border-radius(0); }
       } // avatar
-      .frame { width:291px; height:290px; position:relative; background: url("/images/big_avatar_bkg_sprite.png") no-repeat 0 0; z-index: 10; }
+      .frame { width:291px; height:291px; position:relative; background: url("/images/big_avatar_bkg_sprite.png") no-repeat 0 0; z-index: 10; }
     }
 
     &.settings {
