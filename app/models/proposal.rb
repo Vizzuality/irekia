@@ -63,7 +63,7 @@ class Proposal < Content
 
   def self.user_is_author_or_participer(user)
     select('distinct contents.*')
-    .joins(:author, :votes => :author, :arguments => :author)
+    .includes(:author, :votes => :author, :arguments => :author)
     .moderated
     .where('users.id = ? OR authors_participations.id = ? OR authors_participations_2.id = ?', *([user.id] * 3))
   end
