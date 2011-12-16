@@ -2516,8 +2516,7 @@ span.where, .map .infowindow ul.details li.where {
       .avatar {
         position:absolute;
         overflow:none;
-        top: 3px;
-        left: 0px;
+        top: 3px; left: 3px;
         width: $avatar_big_size;
         height: $avatar_big_size;
         @include border-radius(0);
@@ -4930,10 +4929,31 @@ Autocomplete
 Login & sign in
 ========================================================================== */
 
-#login {
+.article.popover.login {
   display: none;
   position: absolute;
   z-index:100;
+  .content {
+    p {
+      margin:0 0 20px 0; font-size:15px;
+      label { clear:both; float:left; }
+
+      &.error {
+        color: #E96F5F;
+        span { float:left; font-size: 12px; }
+        label { color: #E96F5F; margin: 0 5px 0 0; }
+        input { border:1px solid #E96F5F;}
+      }
+    }
+  }
+}
+
+
+.article.popover.password_reminder {
+  display: none;
+  position: absolute;
+  z-index:100;
+
 }
 
 #sign_in {

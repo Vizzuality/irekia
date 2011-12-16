@@ -53,24 +53,18 @@
         data.event = "_close." + store + "_" + id;
       }
 
-      // Update the reference to $ps
+      // Update the reference to $ps and the password popover
       $ps = $('#' + store);
+      data.$password = $ps.next(".article.password_reminder");
 
       _setupCallback(data, $this.attr('class'));
 
       $(this).unbind("click");
       $(this).click(_toggle);
 
-      $(window).unbind(data.event);
-      $(window).bind(data.event, function() { _close(data, true); });
-
       // Save the updated $ps reference into our data object
       data.$ps = $ps;
-
-      // Save the floatingLoginPopover data onto the <select> element
       $this.data(store, data);
-
-      // Do the same for the dropdown, but add a few helpers
       $ps.data(store, data);
     });
   };
@@ -108,17 +102,22 @@
   function _open(data) {
     var $ps = data.$ps;
 
+    $(window).unbind(data.event);
+    $(window).bind(data.event, function() { _close($ps, data, true); });
+
     // bindings
     _addCloseAction(data);
     _addSubmitAction(data);
-    _addPassworRecoverAction(data);
     _addDefaultAction(data);
+    _addRememberPasswordAction(data);
 
     _subscribeToEvent(data.event);
-    _triggerOpenAnimation($ps, data);
+    _triggerOpenAnimation($ps, data, function() {
+      $ps.find('#user_email').focus()
+    });
   }
 
-  function _triggerOpenAnimation($ps, data) {
+  function _triggerOpenAnimation($ps, data, callback) {
     var top  = _getTopPosition($ps);
     var left = _getLeftPosition($ps);
 
@@ -126,13 +125,16 @@
       $ps.css({"top": top + "px", "left": left + "px"});
 
       $ps.fadeIn(data.settings.transitionSpeed, function() {
-        $ps.find('#user_email').focus();
+        callback && callback();
       });
 
     } else {
       $ps.css({"top":(top + 100) + "px", "left": left + "px"});
       $ps.show();
-      $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){$ps.find('#user_email').focus()}});
+      $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+        callback && callback();
+      }
+      });
     }
   }
 
@@ -145,16 +147,16 @@
   }
 
   // Close popover
-  function _close(data, hideLockScreen, callback) {
+  function _close($ps, data, hideLockScreen, callback) {
 
     if (ie) {
-      data.$ps.fadeOut(data.settings.transitionSpeed, function() {
+      $ps.fadeOut(data.settings.transitionSpeed, function() {
         hideLockScreen && LockScreen.hide();
         callback && callback();
       });
     } else {
-      data.$ps.animate({opacity:0, top:data.$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
-        data.$ps.hide();
+      $ps.animate({opacity:0, top:$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+        $ps.hide();
         hideLockScreen && LockScreen.hide();
         callback && callback();
       }});
@@ -167,6 +169,13 @@
   }
 
   function _addSubmitAction(data) {
+
+    data.$ps.find('form button').unbind();
+    data.$ps.find('form button').bind('click', function(e) {
+      e.stopPropagation();
+      data.$ps.find("p").removeClass("error");
+      // data.$ps.find('form').submit();
+    });
 
     data.$ps.find("form").unbind();
     data.$ps.find("form").bind('ajax:success', function(event, xhr, status) {
@@ -184,7 +193,7 @@
       });
 
       if (data.callback) {
-        _close(data, false, function() {
+        _close(data.$ps, data, false, function() {
           if (data.callback == "question") {
             $el.questionPopover({open:true});
           } else if (data.callback == "proposal") {
@@ -192,7 +201,7 @@
           }
         });
       } else {
-        _close(data, true);
+        _close(data.$ps, data, true);
         // If user is in the home reload page!!
         if ($('body').hasClass('home'))
           window.location.reload();
@@ -203,29 +212,23 @@
 
     data.$ps.find("form").bind('ajax:error', function(event, xhr, status) {
       $(this).effect("shake", { times:4 }, 100);
+      data.$ps.find("p").addClass("error");
     });
   }
 
   function _addSubmitRecoverPasswordAction(data) {
-    data.$ps.find('input[type="submit"]').bind('click', function(e) {
+    data.$password.find('inder input[type="submit"]').bind('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       if (data.$ps.find("input.email").val().replace(/\s/g,"") == "") {
         data.$ps.effect("shake", { times:4 }, 100);
       } else {
-        _close(data, true);
+        _close(data.$ps, data, true);
       }
     });
   }
 
-  function _addPassworRecoverAction(data) {
-    data.$ps.find(".recover-password").bind('click', function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      _close(data, false, function(){
-        _loadTemplate(data, "password");
-      });
-    });
+  function _addPasswordRecoverAction(data) {
   }
 
   function _addCloseAction(data) {
@@ -233,29 +236,210 @@
     data.$ps.find(".close").bind('click', function(e) {
       e.stopPropagation();
       e.preventDefault();
-      _close(data, true);
+      _close(data.$ps, data, true);
+    });
+  }
+
+  function _addRememberPasswordAction(data){
+    data.$ps.find("a.password_reminder").unbind();
+    data.$ps.find("a.password_reminder").bind('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      _close(data.$ps, data);
+
+      _triggerOpenAnimation(data.$password, data);
+
+      data.$password.find(".close").bind('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        _close(data.$password, data, true);
+      });
+
+      data.$password.find(".recover-password").bind('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        _close(data.$password, data, true);
+      });
+
+      $(window).unbind(data.event);
+      $(window).bind(data.event, function() {
+        _close(data.$password, data, true);
+      });
+
     });
   }
 
   function _addDefaultAction(data){
+    data.$password.bind('click', function(e) {
+      e.stopPropagation();
+    });
+
     data.$ps.bind('click', function(e) {
       e.stopPropagation();
     });
-  }
-
-  function _loadTemplate(data, template) {
-    var $ps = data.$ps;
-
-    _addCloseAction(data);
-    _addDefaultAction(data);
-    _addSubmitRecoverPasswordAction(data);
-
-    $("#container").prepend($ps);
-    _subscribeToEvent(data.event);
-    _triggerOpenAnimation($ps, data);
   }
 
   $(function() {});
 
 })(jQuery, window, document);
 
+/*
+* =============
+* LOGIN POPOVER
+* =============
+*/
+
+(function($, window, document) {
+
+  var ie6 = false;
+
+  // Help prevent flashes of unstyled content
+  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
+    ie6 = true;
+  } else {
+    document.documentElement.className = document.documentElement.className + ' ps_fouc';
+  }
+
+  var
+  store = "login-popover",
+  // Public methods exposed to $.fn.loginPopover()
+  methods = {},
+  // Some nice default values
+  defaults = {
+    transitionSpeed: 250
+  };
+  // Called by using $('foo').loginPopover();
+  methods.init = function(settings) {
+    settings = $.extend({}, defaults, settings);
+
+    return this.each(function() {
+      var
+      // The current <select> element
+      $this = $(this),
+
+      // We store lots of great stuff using jQuery data
+      data = $this.data(store) || {},
+
+      // This gets applied to the 'ps_container' element
+      id = "sign_in",
+
+      // This gets updated to be equal to the longest <option> element
+      width = settings.width || $this.outerWidth(),
+
+      // The completed ps_container element
+      $ps = false;
+
+      // Dont do anything if we've already setup loginPopover on this element
+      if (data.id) {
+        return $this;
+      } else {
+        data.id = id;
+        data.$this = $this;
+        data.settings = settings;
+      }
+
+      // Hide the <select> list and place our new one in front of it
+      $this.before($ps);
+
+      // Update the reference to $ps
+      $ps = $("#" + data.id);
+      $ps.bind('click', function(e) {
+        e.stopPropagation();
+      });
+
+      $(this).click(_toggle);
+
+      $(window).bind('resize.' + data.id, function() {
+        _position($this);
+      });
+
+      $(window).bind('_close.'+ data.id, function() {
+        _close($this);
+      });
+
+      // Save the updated $ps reference into our data object
+      data.$ps = $ps;
+      $this.data(store, data);
+      $ps.data(store, data);
+
+      if ($ps.attr('class') == 'error') {
+        _open($this);
+      }
+
+    });
+  };
+
+  // Expose the plugin
+  $.fn.loginPopover = function(method) {
+    if (!ie6) {
+      if (methods[method]) {
+        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+      } else if (typeof method === 'object' || !method) {
+        return methods.init.apply(this, arguments);
+      }
+    }
+  };
+
+
+  function _open($this) {
+    var data = $this.data(store);
+    var $ps = data.$ps;
+
+    _position($this);
+    _addRememberPasswordAction(data);
+
+    // setup the close event & signal the other subscribers
+    var event = "_close."+data.id;
+    GOD.subscribe(event);
+
+    if (!$ps.hasClass("open")) {
+      $ps.addClass("open");
+      $ps.fadeIn(data.settings.transitionSpeed, function(){
+				// Focus on email input
+				$ps.find('#user_email').focus();
+			});
+    } else {
+      _close($this);
+    }
+  }
+
+  // Toggle popover
+  function _toggle(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    _open($(this));
+  }
+
+  function _addRememberPasswordAction(data){
+    data.$ps.find("a.password_reminder").unbind();
+    data.$ps.find("a.password_reminder").bind('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      alert('a');
+    });
+  }
+
+  // Close popover
+  function _close($this) {
+    var data = $this.data(store);
+    data.$ps.removeClass("open");
+    data.$ps.fadeOut(data.settings.transitionSpeed);
+  }
+
+  function _position($this) {
+    var data = $this.data(store);
+    var $ps = $("#sign_in");
+    var $link = data.$this;
+    var x = $link.offset().left - $ps.width()  + 30;
+    var y = $link.offset().top + 20;
+
+    $ps.css("left", x);
+    $ps.css("top", y);
+  }
+
+  $(function() {});
+
+})(jQuery, window, document);
