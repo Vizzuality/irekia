@@ -979,7 +979,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .my_opinion { padding: 10px; margin: 0 0 10px 0; background: #EEEEEE; clear: both; overflow: hidden; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
 #container .article .my_opinion.against { background: #FFF3E1; }
 #container .article .my_opinion.in_favor { background: #EDF3E5; }
-#container .article .my_opinion .result { float: left; padding: 8px 0; width: 200px; font-size: 15px; }
+#container .article .my_opinion .result { float: left; padding: 8px 0; width: 310px; font-size: 15px; }
 #container .article .my_opinion form { float: right; margin: 0 0 0 10px; }
 
 #container .article .inner .content ul.notifications { float: left; margin: 10px 0 20px 0; }

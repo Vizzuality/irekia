@@ -891,7 +891,7 @@ div#main.show div.left img {margin:4px 0 7px;}
           margin:0 7px 0 0;
           background:url('/images/detail_stats_bkg.png') no-repeat 0 0;
           .top {
-            display:block;          
+            display:block;
             height:37px;
             padding:15px 0 0 15px;
             h5 {@include inline-block(); margin:0; padding:0; font:bold 31px Arial; color:#465866; letter-spacing:-2px; line-height:24px;}
@@ -3179,7 +3179,7 @@ span.where, .map .infowindow ul.details li.where {
   .result {
     float:left;
     padding:8px 0;
-    width:200px;
+    width: 310px;
     font-size:15px;
   }
 
