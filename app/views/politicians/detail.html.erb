@@ -18,38 +18,38 @@
 	    	<ul class="stats">
 	    		<li>
 	    			<div class="top">
-	    				<h5>126</h5>
+	    				<h5><%= @actions %></h5>
 	    				<label><%= t(".stats.actions") %></label>
 	    			</div>
 	    			<div class="bottom">
-	    				<p><%= t(".stats.week", :count => "11") %></p>
+	    				<p><%= t(".stats.week", :count => @actions_this_week) %></p>
 	    			</div>
 	    		</li>
 	    		<li>
 	    			<div class="top">
-	    				<h5>32</h5>
+	    				<h5><%= @questions_answered %></h5>
 	    				<label><%= t(".stats.questions") %></label>
 	    			</div>
 	    			<div class="bottom">
-	    				<p><%= t(".stats.respond", :time => "43h") %></p>
+	    				<p><%= t(".stats.respond", :time => @time_to_answer) %></p>
 	    			</div>
 	    		</li>
 	    		<li>
 	    			<div class="top">
-	    				<h5>126</h5>
+	    				<h5><%= @comments_in_proposals %></h5>
 	    				<label><%= t(".stats.comments") %></label>
 	    			</div>
 	    			<div class="bottom">
-	    				<p><%= t(".stats.week", :count => "43") %></p>
+	    				<p><%= t(".stats.week", :count => @comments_in_proposals_this_week) %></p>
 	    			</div>
 	    		</li>
 	    	</ul>
 	    </div>
 	    <div class="margin30 contact">
 	    	<h3><%= t(".description.contact") %></h3>
-	    	<p>Navarra, 2, 01007 Vitoria-Gasteiz. Álava/Araba</p>
-	    	<p><%= link_to 'n.delosrios@ej-gv.es', 'mailto:n.delosrios@ej-gv.es' %> | 945 018 049</p>
-	    	<p><%= link_to '@irekia', 'http://twitter.com/irekia', :target => "_blank" %> | <%= link_to 'www.facebook.com/GobiernoVascoIrekia', 'http://www.facebook.com/GobiernoVascoIrekia', :target => "_blank" %></p>
+        <%= politician_address %>
+        <%= politician_mail_and_phone %>
+        <%= politician_twitter_and_facebook %>
 	   	</div>
 	  </div>
 	</div>

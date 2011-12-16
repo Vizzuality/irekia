@@ -51,7 +51,12 @@ class PoliticiansController < UsersController
   end
 
   def detail
-
+    @actions                         = @user.actions.count                         || 0
+    @actions_this_week               = @user.actions.this_week.count               || 0
+    @questions_answered              = @user.questions_received.answered.count     || 0
+    @time_to_answer                  = @user.time_to_answer                        || 0
+    @comments_in_proposals           = @user.comments_in_proposals.count           || 0
+    @comments_in_proposals_this_week = @user.comments_in_proposals.this_week.count || 0
   end
 
   def current_user_is_politician?

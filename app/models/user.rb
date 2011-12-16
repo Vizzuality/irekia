@@ -198,9 +198,11 @@ class User < ActiveRecord::Base
     credentials = access_token['credentials']
 
     if user = (signed_in_resource || User.find_by_email(data['email']))
-      user.facebook_oauth_token        = credentials['token']
-      #user.facebook_oauth_token_secret = credentials['secret']
+      user.facebook_oauth_token         = credentials['token']
+      user.facebook_username            = data['nickname']
+      user.facebook_url                 = data['urls']['Facebook'] if data['urls'].present?
       user.save!
+
       user
     else
       user = User.new :name  => data['name'],
@@ -208,6 +210,8 @@ class User < ActiveRecord::Base
 
       user.password                    = Devise.friendly_token[0,20]
       user.facebook_oauth_token        = credentials['token']
+      user.facebook_username           = data['nickname']
+      user.facebook_url                = data['urls']['Facebook'] if data['urls'].present?
 
       user
     end
@@ -222,6 +226,7 @@ class User < ActiveRecord::Base
     elsif user = (signed_in_resource || User.find_by_twitter_username(data['nickname']))
       user.twitter_oauth_token        = credentials['token']
       user.twitter_oauth_token_secret = credentials['secret']
+      user.twitter_username           = data['nickname']
       user.save!
       user
     else
@@ -509,6 +514,16 @@ class User < ActiveRecord::Base
       INNER JOIN participations ON participations.id = user_private_streams.event_id AND lower(participations.type) = user_private_streams.event_type
     SQL
     ).where('participations.user_id' => self.id, 'user_private_streams.user_id' => exfollower.id).destroy_all
+  end
+
+  def time_to_answer
+    time = Answer.moderated.where('contents.user_id = ?', id).answer_time
+    hours = time.to_i / 3600
+    "%02dH" % hours
+  end
+
+  def comments_in_proposals
+    comments.moderated.joins(:proposal)
   end
 
   def check_blank_name

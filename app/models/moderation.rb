@@ -2,8 +2,8 @@ class Moderation
 
   def self.get_moderation_time
     time = Content.moderation_time
-    # participations_moderation_time = Participation.moderation_time
-    #     time = (contents_moderation_time + participations_moderation_time) / 2
+    participations_moderation_time = Participation.moderation_time
+    time = (time + participations_moderation_time) / 2
 
     moderation_time = {}
 
