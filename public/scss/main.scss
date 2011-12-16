@@ -1745,7 +1745,6 @@ div#main.show div.left img {margin:4px 0 7px;}
       width: 932px;
       height: auto;
       padding: 25px 31px;
-      overflow:hidden;
 
       a.config { position:absolute; display:block; right:20px; bottom:10px;
         &.first-time { display: none; visibility: visible;}
@@ -1826,6 +1825,7 @@ div#main.show div.left img {margin:4px 0 7px;}
         width: 994px;
         height: 270px;
         padding: 0;
+        overflow:hidden!important;
       } 
     }
   }
