@@ -1,3 +1,32 @@
+<div class="article">
+<div class="inner">
+  <div class="content">
+    <a href="#" class="white_button"><span>This is a test button</span></a> <div class="demo_separator"></div>
+    <a href="#" class="white_button pink"><span>Pink button</span></a> <div class="demo_separator"></div>
+    <a href="#" class="white_button orange"><span>Orange button</span></a> <div class="demo_separator"></div>
+    <a href="#" class="white_button green"><span>Green button</span></a> <div class="demo_separator"></div>
+    <a href="#" class="white_button in_favor"><span>In favor button</span></a> <div class="demo_separator"></div>
+    <a href="#" class="white_button in_favor selected"><span>In favor selected button</span></a> <div class="demo_separator"></div>
+    <a href="#" class="white_button against"><span>Against button</span></a> <div class="demo_separator"></div>
+    <a href="#" class="white_button against selected"><span>Against selected button</span></a> <div class="demo_separator"></div>
+    <a href="#" class="white_button remove"><span>Remove button</span></a>
+
+    <div class="demo_separator"></div>
+    <button class="white_button against" type="submit"><span>Against
+        button</span></button>
+    <div class="demo_separator"></div>
+    <button class="white_button" type="submit"><span>normal button</span></button>
+  </div>
+</div>
+<div class="t"></div><div class="f"></div>
+</div>
+
+
+
+
+
+<div class="article">
+<div class="inner">
 <%
 @proposal                  = Proposal.new
 @proposal_data             = @proposal.build_proposal_data
@@ -9,3 +38,10 @@
   <%= form.fields_for :proposal_data, @proposal_data do |proposal_data| %> <% end %>
   <a href="#" data-url="/proposals" id="file_uploader">Upload</a>
   <% end %>
+</div>
+
+
+
+</div>
+<div class="t"></div><div class="f"></div>
+</div>
