@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   skip_before_filter :current_user_valid?,     :only => [:edit, :update]
   before_filter :per_page,                     :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda, :settings]
-  before_filter :private_politician_or_public?
   before_filter :get_follow_suggestions,       :only => [:show, :followings]
   before_filter :get_counters,                 :only => [:show, :questions, :proposals, :actions, :followings, :agenda]
   before_filter :models_for_forms,             :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda]
@@ -133,15 +132,6 @@ class UsersController < ApplicationController
   end
   private :redirect_to_politician_page?
 
-  def private_politician_or_public?
-    @viewing_access = if current_user.present? && @user == current_user
-      current_user.politician?? 'politician' : 'private'
-    else
-      'public'
-    end
-  end
-  private :private_politician_or_public?
-
   def get_section
     @section = params[:section] || 'dashboard'
   end
@@ -169,6 +159,12 @@ class UsersController < ApplicationController
 
     @users_following = @user.users_following.politicians.all
     @areas_following = @user.areas_following.all
+
+    @viewing_access = if current_user.present? && @user == current_user
+      current_user.politician?? 'politician' : 'private'
+    else
+      'public'
+    end
 
     if private_profile?
       @first_time      = @user.first_time

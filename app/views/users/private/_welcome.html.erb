@@ -33,12 +33,12 @@
           <p><%= raw t('.currently', :politicians => link_to(t('.politicians_following', :count => @users_following.count), followings_user_path(@user, :anchor => :politicians)) , :areas => link_to(t('.areas_following', :count => @areas_following.count), followings_user_path(@user, :anchor => :areas))) %></p>
         <% end -%>
       </li>
-    </ul> 
+    </ul>
     <%= form_for @user, :remote => true, :html => {:class => 'close-welcome'} do |form| %>
       <%= form.hidden_field :first_time, :value => false %>
       <%= form.submit '', :class => 'close' %>
     <% end -%>
-    <%= link_to t('.configure_your_account'), settings_user_path, :class => 'config first-time' %>
+    <%= link_to t('.configure_your_account'), settings_user_path(current_user), :class => 'config first-time' %>
     <a href="#next" class="next-welcome"></a>
   <% else -%>
     <div class="content">
@@ -56,7 +56,7 @@
         <p><%= raw t('.currently', :politicians => link_to(t('.politicians_following', :count => @users_following.count), followings_user_path(@user, :anchor => :politicians)) , :areas => link_to(t('.areas_following', :count => @areas_following.count), followings_user_path(@user, :anchor => :areas))) %></p>
       <% end -%>
     </div>
-    <%= link_to t('.configure_your_account'), settings_user_path, :class => :config %>
+    <%= link_to t('.configure_your_account'), settings_user_path(current_user), :class => :config %>
   <% end -%>
 </div>
 
