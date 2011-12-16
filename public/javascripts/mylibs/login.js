@@ -55,7 +55,7 @@
 
       // Update the reference to $ps and the password popover
       $ps = $('#' + store);
-      data.$password = $ps.next(".article.password_reminder");
+      data.$password = $("#password_reminder");
 
       _setupCallback(data, $this.attr('class'));
 
@@ -228,9 +228,6 @@
     });
   }
 
-  function _addPasswordRecoverAction(data) {
-  }
-
   function _addCloseAction(data) {
     data.$ps.find(".close").unbind();
     data.$ps.find(".close").bind('click', function(e) {
@@ -291,14 +288,7 @@
 
 (function($, window, document) {
 
-  var ie6 = false;
-
-  // Help prevent flashes of unstyled content
-  if ($.browser.msie && $.browser.version.substr(0, 1) < 7) {
-    ie6 = true;
-  } else {
-    document.documentElement.className = document.documentElement.className + ' ps_fouc';
-  }
+  var ie = ($.browser.msie && $.browser.version.substr(0, 1) < 9);
 
   var
   store = "login-popover",
@@ -362,6 +352,8 @@
       $this.data(store, data);
       $ps.data(store, data);
 
+      data.$password = $("#password_reminder");
+
       if ($ps.attr('class') == 'error') {
         _open($this);
       }
@@ -371,21 +363,20 @@
 
   // Expose the plugin
   $.fn.loginPopover = function(method) {
-    if (!ie6) {
-      if (methods[method]) {
-        return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-      } else if (typeof method === 'object' || !method) {
-        return methods.init.apply(this, arguments);
-      }
+    if (methods[method]) {
+      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method) {
+      return methods.init.apply(this, arguments);
     }
   };
-
 
   function _open($this) {
     var data = $this.data(store);
     var $ps = data.$ps;
 
     _position($this);
+
+    _addDefaultAction(data);
     _addRememberPasswordAction(data);
 
     // setup the close event & signal the other subscribers
@@ -413,13 +404,88 @@
     _open($(this));
   }
 
+  function _addDefaultAction(data){
+    data.$password.bind('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  function _getTopPosition($ps) {
+    return (($(window).height() - $ps.height()) / 2) + $(window).scrollTop();
+  }
+
+  function _getLeftPosition($ps) {
+    return (($(window).width() - $ps.width()) / 2);
+  }
+
+  function _triggerOpenAnimation($ps, data, callback) {
+    var top  = _getTopPosition($ps);
+    var left = _getLeftPosition($ps);
+
+    if (ie) {
+      $ps.css({"top": top + "px", "left": left + "px"});
+
+      $ps.fadeIn(data.settings.transitionSpeed, function() {
+        callback && callback();
+      });
+
+    } else {
+      $ps.css({"top":(top + 100) + "px", "left": left + "px"});
+      $ps.show();
+      $ps.animate({opacity:1, top:top}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+        callback && callback();
+      }
+      });
+    }
+  }
+
   function _addRememberPasswordAction(data){
     data.$ps.find("a.password_reminder").unbind();
     data.$ps.find("a.password_reminder").bind('click', function(e) {
       e.stopPropagation();
       e.preventDefault();
-      alert('a');
+      _close(data.$this);
+
+      LockScreen.show(function(){
+        GOD.subscribe("_close.password_reminder");
+        _triggerOpenAnimation(data.$password, data);
+      });
+
+      data.$password.find(".close").bind('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        _closePassword(data.$password, data, true);
+      });
+
+      data.$password.find(".recover-password").bind('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        _closePassword(data.$password, data, true);
+      });
+
+      $(window).unbind(data.event);
+      $(window).bind("_close.password_reminder", function() {
+        _closePassword(data.$password, data, true);
+      });
     });
+  }
+
+  function _closePassword($ps, data, hideLockScreen, callback) {
+
+    GOD.unsubscribe("_close.password_reminder");
+
+    if (ie) {
+      $ps.fadeOut(data.settings.transitionSpeed, function() {
+        hideLockScreen && LockScreen.hide();
+        callback && callback();
+      });
+    } else {
+      $ps.animate({opacity:0, top:$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+        $ps.hide();
+        hideLockScreen && LockScreen.hide();
+        callback && callback();
+      }});
+    }
   }
 
   // Close popover
