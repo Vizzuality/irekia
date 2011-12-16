@@ -230,7 +230,7 @@ module ApplicationHelper
     options[:class] ||= ''
     options[:class] << default_class
 
-    defaults[:class] << ' not_moderated' unless item.moderated
+    options[:class] << ' not_moderated' unless item.moderated
 
     relative_path = 'not_moderated/' unless item.moderated
 
