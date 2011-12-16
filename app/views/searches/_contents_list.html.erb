@@ -4,7 +4,7 @@
 <ul>
   <% if @contents.size > 0 %>
     <% @contents.each do |content| %>
-      render_list_element(content.item, content.event_type)
+      <%= render_list_element(content.item, content.event_type) %>
     <% end %>
   <% else %>
     <li>&nbsp;</li>

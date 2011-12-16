@@ -1340,7 +1340,7 @@
       proposals: Propuestas
       agenda: Agenda
     summary:
-      title: '%{title} de %{areas}'
+      title: '%{title}'
       description:
         title: Quién es y qué hace
         read_more: Leer más
@@ -1672,7 +1672,7 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
           participate:
             title: Participa y aprende
             text: "%{make_questions_link} a los responsables del Gobierno Vasco, %{launch_proposals_link} a los ciudadanos, o participa en las propuestas de otros.<br/>
-            
+
             Todo con un simple click."
             make_questions: Haz preguntas
             launch_proposals: lanza tus propuestas
