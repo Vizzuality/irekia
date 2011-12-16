@@ -277,19 +277,19 @@ class UsersController < ApplicationController
   def per_page
     @page = params[:page] || 0
     @per_page = if action_name == 'show' || params[:referer] == 'show'
-      4
+      5
     else
       10
     end
   end
-  private :per_page
+  protected :per_page
 
   def paginate
     @actions   = @actions.page(1).per(@per_page).all   if @actions
     @proposals = @proposals.page(1).per(@per_page).all if @proposals
-    @questions = @questions.all if @questions
+    @questions = @questions.page(1).per(@per_page).all if @questions
   end
-  private :paginate
+  protected :paginate
 
   def private_profile?
     @viewing_access == 'private'

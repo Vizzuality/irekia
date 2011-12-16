@@ -112,20 +112,4 @@ class PoliticiansController < UsersController
   end
   private :get_agenda
 
-  def per_page
-    @page = params[:page] || 0
-    @per_page = if action_name == 'show' || params[:referer] == 'show'
-      4
-    else
-      10
-    end
-  end
-  private :per_page
-
-  def paginate
-    @actions   = @actions.page(1).per(@per_page).all   if @actions
-    @proposals = @proposals.page(1).per(@per_page).all if @proposals
-    @questions = @questions.page(1).per(@per_page).all if @questions
-  end
-  private :paginate
 end
