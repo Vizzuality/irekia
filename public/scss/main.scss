@@ -1820,13 +1820,13 @@ div#main.show div.left img {margin:4px 0 7px;}
         }
       }
     }
-    
+
     &.first {
       .inner {
         width: 994px;
         height: 270px;
         padding: 0;
-      } 
+      }
     }
   }
 }
@@ -2508,10 +2508,8 @@ span.where, .map .infowindow ul.details li.where {
 #container .article {
   &.initialy_hidden { @include opacity(0); }
 
-  .with_question {
     .avatar_box {
       position:absolute;
-      right: 10px; bottom: 17px;
       clear:both;
       overflow:hidden;
 
@@ -2530,36 +2528,23 @@ span.where, .map .infowindow ul.details li.where {
 
         &>img { @include border-radius(0); }
       } // avatar
-      .frame { width:291px; height:290px; position:relative; background: url("/images/big_avatar_bkg_sprite.png") no-repeat 0 bottom; z-index: 10; }
+      .frame { width:291px; height:290px; position:relative; background: url("/images/big_avatar_bkg_sprite.png") no-repeat 0 0; z-index: 10; }
     }
-  } // .with_question
 
- //  .avatar_box {
- //    float:left;
- //    margin-right: 20px;
- //    position:relative;
- //    width:291px; height:290px;
+    &.settings {
+      .avatar_box {
+        float:left;
+        position:relative;
+        margin: 0 20px 0 0;
+      }
+    }
 
- //    clear:both;
- //    overflow:hidden;
-
- //    .avatar {
- //      overflow:none;
- //      left: 4px; top: 4px;
- //      @include border-radius(0);
- //      &>img { @include border-radius(0); }
-
- //      &.big {
- //        .frame {
- //          width:291px;
- //          height:100%;
- //          position:absolute;
- //          background: url("/images/big_avatar_bkg_sprite.png") no-repeat;
- //          z-index:10;
- //        }
- //      }
- //    }
- //  } // .avatar_box
+    .with_question {
+      .avatar_box {
+        right: 10px; bottom: 17px;
+        .frame { background-position: 0 bottom; }
+      }
+    } // .with_question
 
   .caption, .caption p { color: $standard_gray; }
 

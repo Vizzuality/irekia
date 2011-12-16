@@ -472,13 +472,8 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.welcome { margin-bottom: 40px; }
 #container .article.welcome div.f { height: 4px; bottom: -4px; background-position: 0 -16px; }
 #container .article.welcome div.t { height: 5px; top: -5px; background-position: 0 0; }
-<<<<<<< HEAD
-#container .article.welcome .inner { width: 994px; padding: 0; overflow: hidden; }
-#container .article.welcome .inner a.config { position: absolute; display: block; right: 20px; bottom: 5px; }
-=======
 #container .article.welcome .inner { position: relative; width: 932px; height: auto; padding: 25px 31px; overflow: hidden; }
 #container .article.welcome .inner a.config { position: absolute; display: block; right: 20px; bottom: 10px; }
->>>>>>> 828afa9b3f82150701aa5df74201e96501b4e9aa
 #container .article.welcome .inner a.config.first-time { display: none; visibility: visible; }
 #container .article.welcome .inner img.avatar { position: relative; float: left; }
 #container .article.welcome .inner .close { position: absolute; top: 5px; right: 10px; display: block; width: 17px; height: 17px; background: url("/images/icons/icon_sprite.png") no-repeat -13px 0; border: 0; cursor: pointer; -webkit-appearance: none; font-size: 0; -moz-border-radius: 0px; -webkit-border-radius: 0px; -o-border-radius: 0px; -ms-border-radius: 0px; -khtml-border-radius: 0px; border-radius: 0px; }
@@ -667,11 +662,14 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 .ie7 #container .article.actions .inner .left ul li .content .comment-box form input[type="submit"], .ie7 #container .article.proposal .inner .left ul li .content .comment-box form input[type="submit"], .ie7 #container .article.photos .inner .left ul li .content .comment-box form input[type="submit"], .ie7 #container .article.proposals .inner .left ul li .content .comment-box form input[type="submit"], .ie7 #container .article.questions .inner .left ul li .content .comment-box form input[type="submit"], .ie7 #container .article.videos .inner .left ul li .content .comment-box form input[type="submit"], .ie7 #container .article.activity .inner .left ul li .content .comment-box form input[type="submit"] { right: 27px; top: 12px; }
 
 #container .article.initialy_hidden { filter: alpha(opacity=0); -khtml-opacity: 0; -moz-opacity: 0; opacity: 0; }
-#container .article .with_question .avatar_box { position: absolute; right: 10px; bottom: 17px; clear: both; overflow: hidden; }
-#container .article .with_question .avatar_box .avatar { position: absolute; overflow: none; top: 3px; left: 0px; width: 280px; height: 280px; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
-#container .article .with_question .avatar_box .avatar:before { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
-#container .article .with_question .avatar_box .avatar > img { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
-#container .article .with_question .avatar_box .frame { width: 291px; height: 290px; position: relative; background: url("/images/big_avatar_bkg_sprite.png") no-repeat 0 bottom; z-index: 10; }
+#container .article .avatar_box { position: absolute; clear: both; overflow: hidden; }
+#container .article .avatar_box .avatar { position: absolute; overflow: none; top: 3px; left: 0px; width: 280px; height: 280px; -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
+#container .article .avatar_box .avatar:before { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
+#container .article .avatar_box .avatar > img { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
+#container .article .avatar_box .frame { width: 291px; height: 290px; position: relative; background: url("/images/big_avatar_bkg_sprite.png") no-repeat 0 0; z-index: 10; }
+#container .article.settings .avatar_box { float: left; position: relative; margin: 0 20px 0 0; }
+#container .article .with_question .avatar_box { right: 10px; bottom: 17px; }
+#container .article .with_question .avatar_box .frame { background-position: 0 bottom; }
 #container .article .caption, #container .article .caption p { color: #7d8a92; }
 #container .article .holder, #container .article .input_field .holder { width: 100%; position: absolute; left: 11px; color: #D7DADD; font-size: 15px; font-weight: normal; text-shadow: none; cursor: text; }
 #container .article .holder span, #container .article .input_field .holder span { float: left; }
