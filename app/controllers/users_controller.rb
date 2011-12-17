@@ -227,7 +227,7 @@ class UsersController < ApplicationController
     if public_profile?
       @questions = @user.questions.moderated
     elsif private_profile?
-      @questions     = @user.questions.moderated
+      @questions     = @user.questions
     elsif politician_profile?
       @questions     = @user.get_questions(params.slice(:to_you, :to_your_area))
     end
@@ -253,7 +253,7 @@ class UsersController < ApplicationController
   private :get_questions
 
   def get_proposals
-    @proposals = @user.get_proposals(params.slice(:as_author, :from_politicians, :from_citizens, :more_polemic))
+    @proposals = @user.get_proposals(params.slice(:as_author, :from_politicians, :from_citizens, :more_polemic), current_user)
 
     @proposals_in_favor_count = @proposals.approved_by_majority.count
   end

@@ -324,11 +324,12 @@ class User < ActiveRecord::Base
     questions
   end
 
-  def get_proposals(filters)
+  def get_proposals(filters, show_not_moderated = nil)
     if filters[:as_author]
-      proposals = self.proposals.moderated
+      proposals = self.proposals
+      proposals = proposals.moderated unless show_not_moderated
     else
-      proposals = Proposal.user_is_author_or_participer(self)
+      proposals = Proposal.user_is_author_or_participer(self, show_not_moderated)
     end
 
     proposals = proposals.from_politicians     if filters[:from_politicians]
