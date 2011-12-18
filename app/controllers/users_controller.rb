@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    session['user_return_to'] = connect_user_path(@user)
+    session['user_return_to'] = user_path(@user)
     render :layout => !request.xhr?
   end
 
