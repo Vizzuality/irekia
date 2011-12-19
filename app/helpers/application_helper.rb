@@ -57,7 +57,7 @@ module ApplicationHelper
   end
 
   def get_politician_title(user)
-    user.title.get_translated_name if user.title
+    user.title.get_translated_name.truncate(27) if user.title
   end
 
   def menu(options)
