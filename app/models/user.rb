@@ -347,6 +347,10 @@ class User < ActiveRecord::Base
     "#{name} #{lastname}".strip
   end
 
+  def truncated_fullname(length = 40)
+    fullname.truncate(length)
+  end
+
   def thumbnail
     profile_image
   end

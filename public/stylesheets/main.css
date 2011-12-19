@@ -63,6 +63,8 @@ span.answered { color: #00AA54; }
 span.answered a { color: #00AA54!important; }
 span.answered a:hover { text-decoration: underline; color: #00AA54; }
 span.not_answered { color: #FF3300; }
+span.not_answered a { color: #FF3300!important; }
+span.not_answered a:hover { text-decoration: underline; color: #FF3300; }
 span.positive { color: #FF0066; }
 span.in_favor { color: #669900; }
 span.against { color: #ff9933; }
@@ -262,10 +264,9 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.profile .inner .left { width: 100%; }
 #container .article.profile .inner .left h3 { margin-bottom: 5px; }
 #container .article.profile .inner .left p { width: 282px; display: inline-block; margin: 0; font-size: 15px; line-height: 18px; }
-#container .article.profile .inner .left form { float: none; width: auto; display: inline-block; margin: 10px 0 0 0; }
+#container .article.profile .inner .left form { float: none; width: auto; display: inline-block; margin: 18px 0 0 0; }
 #container .article.detail .inner { padding-top: 25px; padding-bottom: 40px; }
 #container .article.detail .inner h1 { margin-bottom: 0!important; padding: 0 0 7px 0; }
-#container .article.detail .inner img { float: left; }
 #container .article.detail .inner div.left { margin-left: 30px; }
 #container .article.detail .inner .contact p { padding: 0 0 3px; margin: 0; color: #A3ABB2; }
 #container .article.detail .inner .contact p a { color: #A3ABB2; }
@@ -684,6 +685,8 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .avatar_box .avatar:before { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
 #container .article .avatar_box .avatar > img { -moz-border-radius: 0; -webkit-border-radius: 0; -o-border-radius: 0; -ms-border-radius: 0; -khtml-border-radius: 0; border-radius: 0; }
 #container .article .avatar_box .frame { width: 291px; height: 291px; position: relative; background: url("/images/big_avatar_bkg_sprite.png") no-repeat 0 0; z-index: 10; }
+#container .article.detail .avatar_box { width: 291px; height: 291px; float: left; position: relative; margin: 0; }
+#container .article.detail .avatar_box .avatar { top: 3px; left: 3px; }
 #container .article.settings .avatar_box { float: left; position: relative; margin: 0 20px 0 0; }
 #container .article .with_question .avatar_box { right: 10px; bottom: 17px; }
 #container .article .with_question .avatar_box .frame { background-position: 0 bottom; }
