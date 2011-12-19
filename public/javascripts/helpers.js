@@ -1051,10 +1051,12 @@ jQuery.fn.enablePagination = function(opt){
     $(this).click(function(e) {
       e.preventDefault();
 
-      url = window.location.href;
+      url = $(this).attr("href");
+
       if (name != "months") {
         id = $(this).attr("id").replace(name + '_', '');
       }
+
       $article = $(this).parents(".article");
 
       spin_element = document.getElementById(name + '_spinner');

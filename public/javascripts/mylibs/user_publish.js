@@ -353,85 +353,45 @@
     });
   }
 
-  function _doProposal(data) {
-    var $ps = data.$ps;
-    if (data.proposalStep == 0) {
-      data.proposalStep++;
-
-      _showExtraFields(data.settings.transitionSpeed);
-      _resizeSection(data, $currentSection, function() {
-        _center(data);
-      });
-
-      _disableSubmit(data.$submit);
-      _changeSubmitTitle(data.$submit, "Publicar");
-    } else {
-      var $form = $currentSection.find("form");
-      $form.submit();
-      data.spinner.spin(spin_element);
-
-      $form.unbind();
-      $form.bind('ajax:success', function(event, xhr, status) { _successProposal(data, $form, xhr); })
-    }
-  }
-
-  function _doQuestion(data) {
-    var $ps = data.$ps;
-
+  function _do(data) {
     _showExtraFields(data.settings.transitionSpeed);
       _resizeSection(data, $currentSection, function() {
         _center(data);
       });
+
     _disableSubmit(data.$submit);
     _changeSubmitTitle(data.$submit, "Publicar");
     data.$submit.unbind();
   }
 
-  function _publishQuestion(data) {
-    var $ps = data.$ps;
+  function _publish(data) {
     var $form = $currentSection.find("form");
 
     $form.submit();
     data.spinner.spin(spin_element);
 
     $form.unbind();
-    $form.bind('ajax:success', function(event, xhr, status) { _successQuestion(data, $form, xhr); })
+    $form.bind('ajax:success', function(event, xhr, status) { _successMessage(data, $form, xhr); })
   }
 
-  function _publishProposal(data) {
-    var $ps = data.$ps;
-    var $form = $currentSection.find("form");
-
-    $form.submit();
-    data.spinner.spin(spin_element);
-
-    $form.unbind();
-    $form.bind('ajax:success', function(event, xhr, status) { _successQuestion(data, $form, xhr); })
+  function trace(s) {
+    try { console.log(s) } catch (e) { alert(s) }
   }
 
-  function _successProposal(data, $form, xhr) {
-    var $ps = data.$ps;
+  function _successMessage(data, $form, xhr) {
     var $response = $(xhr);
 
     data.spinner.stop();
     $response.hide();
+    trace($currentSection);
     $form.after($response);
+
+    trace($form);
+
     data.$ps.find(".extra").hide();
     data.$ps.find(".holder").show();
     data.$ps.find(":text, textarea").val("");
-    _showMessage(data, "success");
-  }
 
-  function _successQuestion(data, $form, xhr) {
-    var $ps = data.$ps;
-    var $response = $(xhr);
-
-    data.spinner.stop();
-    $response.hide();
-    $form.after($response);
-    data.$ps.find(".extra").hide();
-    data.$ps.find(".holder").show();
-    data.$ps.find(":text, textarea").val("");
     _showMessage(data, "success");
   }
 
@@ -465,13 +425,13 @@
   function _submitPublish(data) {
     if (!_hasContent($currentSection)) return;
     _disableSubmit(data.$submit);
-    _question() ?  _publishQuestion(data) : _publishProposal(data);
+    _publish(data);
   }
 
   function _submitContinue(data) {
     if (!_hasContent($currentSection)) return;
     _disableSubmit(data.$submit);
-    _question() ?  _doQuestion(data) : _doProposal(data);
+    _do(data);
   }
 
   function _bindSubmit(data, title, initiallyDisabled, callback) {

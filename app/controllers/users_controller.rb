@@ -45,8 +45,7 @@ class UsersController < ApplicationController
   end
 
   def actions
-    render :partial => 'shared/actions_list',
-           :layout  => nil and return if request.xhr?
+    render :partial => 'shared/actions_list', :layout  => nil and return if request.xhr?
   end
 
   def followings

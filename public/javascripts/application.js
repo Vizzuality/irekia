@@ -167,7 +167,7 @@ $(function() {
     $(".welcome .close-welcome,.welcome .next-welcome").fadeOut(250, function(){
       $(this).remove();
     });
-    
+
     $('.welcome > .inner').animate({height:'110px'},500);
   });
 
