@@ -1398,7 +1398,8 @@ body.home #container div.stats div.inner ul li label { margin: 0; padding: 0; fo
 body.home #container div.stats div.inner ul li span.right p { color: #727F8B; }
 body.home #container section.banners ul { display: block; width: auto; height: 117px; padding: 0 0 0 1px; overflow: visible; }
 body.home #container section.banners ul li { float: left; position: relative; width: 174px; height: 117px; margin: 0 31px 0 0; background: url("/images/banner_bkg.png") no-repeat 0 0; overflow: visible; }
-body.home #container section.banners ul li:last-child, body.home #container section.banners ul li.last { margin: 0; }
+body.home #container section.banners ul li.last { margin: 0; }
+body.home #container section.banners ul li:last-child { margin: 0; }
 body.home #container section.banners ul li a { position: absolute; left: 2px; width: 171px; height: 115px; text-indent: -9999px; font-size: 0; line-height: 0; background: url("/images/banners_example.png") no-repeat 0 -4px; z-index: 5; }
 body.home #container section.banners ul li a.guia_com { top: 1px; background-position: -220px 0; }
 body.home #container section.banners ul li a.opacity { top: 1px; background-position: -409px -9px; }
