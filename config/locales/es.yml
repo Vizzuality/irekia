@@ -1604,6 +1604,7 @@
         title: 'Aún no hay actividad tuya en Irekia.'
         other_title: "Aún no hay actividad de %{user}"
         description: 'Te invitamos a participar en el debate sobre las propuestas de otros usuarios de Irekia, a conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda tu actividad aparecerá aquí.'
+        other_description: '%{user} podrá participar en el debate sobre las propuestas de otros usuarios de Irekia, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí.'
         homepage: Página de inicio
     public:
       welcome:
