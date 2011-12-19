@@ -36,7 +36,9 @@ function loginInLinks() {
 }
 
 function isEmpty(str) {
-  return !str.match(/\S/)
+  if (str) {
+    return !str.match(/\S/)
+  } else { return true; }
 }
 
 function watchHash(opt) {

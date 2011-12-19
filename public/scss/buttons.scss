@@ -568,12 +568,12 @@ Hacks and fixes
   padding: 0;
 }
 
-.ie7 form.make_question  .white_button, .ie8 form.make_question .white_button { margin-left: 10px; }
+// .ie7 form.make_question  .white_button, .ie8 form.make_question .white_button { margin-left: 10px; }
 
 // Submit button in popovers
 .ie7 #container .article.popover,
 .ie8 #container .article.popover {
-  .bfooter .white_button.right { margin-left: 10px; }
+  //.bfooter .white_button.right { margin-left: 10px; }
 }
 
 .ie7 #container .article .inner .right button,
@@ -596,7 +596,7 @@ Hacks and fixes
   &.right {
     float:right;
     right: 0;
-    margin: 0 0 0 10px;
+    // margin: 0 0 0 10px;
   }
 
   &.blue span {
@@ -613,7 +613,7 @@ Hacks and fixes
   margin-left: 2px;
   span {
     left:7px;
-    margin-right: 10px;
+    // margin-right: 10px;
   }
 }
 

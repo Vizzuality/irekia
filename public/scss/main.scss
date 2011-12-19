@@ -1068,6 +1068,8 @@ div#main.show div.left img {margin:4px 0 7px;}
           .image_container { width: 667px; }
 
           &.proposal {
+            display:block;
+
             .triangle { left:388px; }
             .input_field.textarea    { margin:0; }
             .input_field.uploader    { margin-bottom: 20px; }
@@ -1198,7 +1200,6 @@ div#main.show div.left img {margin:4px 0 7px;}
               float:left;
               position:relative;
               width:687px;
-              //height:900px;
 
               strong {
                 display:block;
@@ -1214,6 +1215,7 @@ div#main.show div.left img {margin:4px 0 7px;}
               }
 
               .extra {
+                clear:both; float:left;
                 display: none;
                 margin: 0 0 0 0;
                 strong { text-transform:uppercase; }
@@ -1661,6 +1663,7 @@ div#main.show div.left img {margin:4px 0 7px;}
     }
 
     .extra {
+      clear:both; float:left;
       display: none;
       margin: 0 0 0 0;
 
@@ -5448,7 +5451,8 @@ body.home {
           margin:0 31px 0 0;
           background:url('/images/banner_bkg.png') no-repeat 0 0;
           overflow:visible;
-          &:last-child,&.last {margin:0;}
+          &.last {margin:0;}
+          &:last-child {margin:0;}
 
           a {
             position:absolute;
@@ -6041,3 +6045,22 @@ ul.playlist li .peak .r {
 .tipsy-se .tipsy-arrow { bottom: 0; right: 10px; border-top-style: solid; border-bottom: none; border-left-color: transparent; border-right-color: transparent; }
 .tipsy-e .tipsy-arrow { right: 0; top: 50%; margin-top: -5px; border-left-style: solid; border-right: none; border-top-color: transparent; border-bottom-color: transparent; }
 .tipsy-w .tipsy-arrow { left: 0; top: 50%; margin-top: -5px; border-right-style: solid; border-left: none; border-top-color: transparent; border-bottom-color: transparent; }
+
+#container .article.popover.publish.showme {
+  position:relative!important;
+  top:0!Important;
+  z-index:10px!important;
+  .section .extra { clear:both; float:left; display:block!important; }
+  .inner .content .container { height:400px;}
+}
+
+// #container .article.popover.publish .container {
+//   clear:both; float:left; background:green;
+// }
+// #container .article.popover.publish ul.menu {
+//   clear:both; float:left; background:red;
+// }
+// #container .article.popover.publish .triangle {
+//   height:20px;
+// }
+

@@ -470,6 +470,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.publish.event .inner .content .container .map { width: 685px; }
 #container .article.publish.politician .inner .content .container { height: 79px; }
 #container .article.publish.politician .inner .content .container .inner_container .section .image_container { width: 667px; }
+#container .article.publish.politician .inner .content .container .inner_container .section.proposal { display: block; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .triangle { left: 388px; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.uploader { margin-bottom: 20px; }
@@ -502,7 +503,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.publish .inner .content .container .inner_container .section strong { display: block; margin: 0 0 7px 0; color: #465866; font-size: 12px; }
 #container .article.publish .inner .content .container .inner_container .section .input_field { width: 100%; margin: 0 0 10px 0; }
 #container .article.publish .inner .content .container .inner_container .section .input_field input[type="text"] { width: 666px; font-size: 15px; }
-#container .article.publish .inner .content .container .inner_container .section .extra { display: none; margin: 0 0 0 0; }
+#container .article.publish .inner .content .container .inner_container .section .extra { clear: both; float: left; display: none; margin: 0 0 0 0; }
 #container .article.publish .inner .content .container .inner_container .section .extra strong { text-transform: uppercase; }
 #container .article.publish .inner .content .container .inner_container .section .extra .search_box { margin: 0; padding: 0; position: relative; width: 685px; height: 35px; }
 #container .article.publish .inner .content .container .inner_container .section .extra .input_field { margin: 0 0 20px 0!important; }
@@ -606,7 +607,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.popover .bfooter .inner .spinner { float: right; display: block; width: 33px; height: 33px; margin-top: 7px; z-index: 1000; }
 #container .article.popover .bfooter .inner .white_button { margin-left: 5px; }
 #container .article.popover .input_field.textarea.grow.placeholder .holder, #container .article.popover .input_field.placeholder .holder { top: 10px; }
-#container .article.popover .extra { display: none; margin: 0 0 0 0; }
+#container .article.popover .extra { clear: both; float: left; display: none; margin: 0 0 0 0; }
 #container .article.popover .extra .search_box { margin: 0; padding: 0; position: relative; width: 685px; height: 35px; }
 #container .article.popover .extra .all { position: absolute; right: 10px; text-align: right; }
 #container .article.popover .extra .all a { color: #f10063; }
@@ -1554,7 +1555,8 @@ body.home #container div.stats div.inner ul li label { margin: 0; padding: 0; fo
 body.home #container div.stats div.inner ul li span.right p { color: #727F8B; }
 body.home #container section.banners ul { display: block; width: auto; height: 117px; padding: 0 0 0 1px; overflow: visible; }
 body.home #container section.banners ul li { float: left; position: relative; width: 174px; height: 117px; margin: 0 31px 0 0; background: url("/images/banner_bkg.png") no-repeat 0 0; overflow: visible; }
-body.home #container section.banners ul li:last-child, body.home #container section.banners ul li.last { margin: 0; }
+body.home #container section.banners ul li.last { margin: 0; }
+body.home #container section.banners ul li:last-child { margin: 0; }
 body.home #container section.banners ul li a { position: absolute; left: 2px; width: 171px; height: 115px; text-indent: -9999px; font-size: 0; line-height: 0; background: url("/images/banners_example.png") no-repeat 0 -4px; z-index: 5; }
 body.home #container section.banners ul li a.guia_com { top: 1px; background-position: -220px 0; }
 body.home #container section.banners ul li a.opacity { top: 1px; background-position: -409px -9px; }
@@ -1727,6 +1729,10 @@ ul.playlist li .peak .r { left: 10px; }
 .tipsy-e .tipsy-arrow { right: 0; top: 50%; margin-top: -5px; border-left-style: solid; border-right: none; border-top-color: transparent; border-bottom-color: transparent; }
 
 .tipsy-w .tipsy-arrow { left: 0; top: 50%; margin-top: -5px; border-right-style: solid; border-left: none; border-top-color: transparent; border-bottom-color: transparent; }
+
+#container .article.popover.publish.showme { position: relative!important; top: 0!Important; z-index: 10px!important; }
+#container .article.popover.publish.showme .section .extra { clear: both; float: left; display: block!important; }
+#container .article.popover.publish.showme .inner .content .container { height: 400px; }
 
 /*Blue buttons in the nav_menu*/
 /* New clearfix */
@@ -2001,17 +2007,13 @@ Hacks and fixes
 
 .ie7 #container .article.thin.signup .bfooter .inner .white_button, .ie8 #container .article.thin.signup .bfooter .inner .white_button { padding: 0; }
 
-.ie7 form.make_question .white_button, .ie8 form.make_question .white_button { margin-left: 10px; }
-
-.ie7 #container .article.popover .bfooter .white_button.right, .ie8 #container .article.popover .bfooter .white_button.right { margin-left: 10px; }
-
 .ie7 #container .article .inner .right button, .ie8 #container .article .inner .right button, .ie7 #container .article .inner .left .comments ul li.comment form button, .ie8 #container .article .inner .left .comments ul li.comment form button, .ie7 button.white_button, .ie8 button.white_button { position: relative; cursor: pointer; margin: 0; overflow: visible; /* removes extra side padding in IE */ width: auto; }
 .ie7 #container .article .inner .right button span, .ie8 #container .article .inner .right button span, .ie7 #container .article .inner .left .comments ul li.comment form button span, .ie8 #container .article .inner .left .comments ul li.comment form button span, .ie7 button.white_button span, .ie8 button.white_button span { position: relative; left: 0px; }
-.ie7 #container .article .inner .right button.right, .ie8 #container .article .inner .right button.right, .ie7 #container .article .inner .left .comments ul li.comment form button.right, .ie8 #container .article .inner .left .comments ul li.comment form button.right, .ie7 button.white_button.right, .ie8 button.white_button.right { float: right; right: 0; margin: 0 0 0 10px; }
+.ie7 #container .article .inner .right button.right, .ie8 #container .article .inner .right button.right, .ie7 #container .article .inner .left .comments ul li.comment form button.right, .ie8 #container .article .inner .left .comments ul li.comment form button.right, .ie7 button.white_button.right, .ie8 button.white_button.right { float: right; right: 0; }
 .ie7 #container .article .inner .right button.blue span, .ie8 #container .article .inner .right button.blue span, .ie7 #container .article .inner .left .comments ul li.comment form button.blue span, .ie8 #container .article .inner .left .comments ul li.comment form button.blue span, .ie7 button.white_button.blue span, .ie8 button.white_button.blue span { color: #1d79b0; }
 
 .ie7 button.white_button, .ie7 .article button.white_button, .ie7 #container .article .my_opinion button.white_button, .ie8 button.white_button, .ie8 .article button.white_button, .ie8 #container .article .my_opinion button.white_button { margin-left: 2px; }
-.ie7 button.white_button span, .ie7 .article button.white_button span, .ie7 #container .article .my_opinion button.white_button span, .ie8 button.white_button span, .ie8 .article button.white_button span, .ie8 #container .article .my_opinion button.white_button span { left: 7px; margin-right: 10px; }
+.ie7 button.white_button span, .ie7 .article button.white_button span, .ie7 #container .article .my_opinion button.white_button span, .ie8 button.white_button span, .ie8 .article button.white_button span, .ie8 #container .article .my_opinion button.white_button span { left: 7px; }
 
 .ie7 .white_button, .ie7 .article .white_button, .ie7 #container .article .my_opinion .white_button, .ie8 .white_button, .ie8 .article .white_button, .ie8 #container .article .my_opinion .white_button { float: left; height: 37px; padding: 0; margin: 0 10px; border: none; background: url("/images/buttons_sprite.png") repeat-x right 0 !important; }
 .ie7 .white_button:hover, .ie7 .white_button:hover span, .ie7 .article .white_button:hover, .ie7 .article .white_button:hover span, .ie7 #container .article .my_opinion .white_button:hover, .ie7 #container .article .my_opinion .white_button:hover span, .ie8 .white_button:hover, .ie8 .white_button:hover span, .ie8 .article .white_button:hover, .ie8 .article .white_button:hover span, .ie8 #container .article .my_opinion .white_button:hover, .ie8 #container .article .my_opinion .white_button:hover span { color: #333; }
