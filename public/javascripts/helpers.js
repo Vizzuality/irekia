@@ -754,8 +754,8 @@ jQuery.fn.enableRadio = function(opt){
       e.preventDefault();
       $this.find("a.radio").removeClass("selected");
       $(this).addClass('selected');
-      $this.find('input[type="radio"]').val(0).attr('checked', false);
-      $(this).find('input[type="radio"]').val(1).attr('checked', true);
+      $this.find('input[type="radio"]').val(false).attr('checked', false);
+      $(this).find('input[type="radio"]').val(true).attr('checked', true);
     });
   });
 }
