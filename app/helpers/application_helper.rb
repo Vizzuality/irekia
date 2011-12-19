@@ -16,6 +16,10 @@ module ApplicationHelper
     @viewing_access == 'politician'
   end
 
+  def public_profile?
+    @viewing_access == "public"
+  end
+
   def current_area?(area)
     area.eql?(@area) ? 'selected' : nil
   end
