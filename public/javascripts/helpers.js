@@ -1740,9 +1740,10 @@ jQuery.fn.enableAvatarUpload = function(opt){
       debug: true,
       template: '<span class="qq-uploader">' +
         '<span class="qq-upload-drop-area"></span>' +
-          '<span class="qq-upload-button"><span class="title">'+$("#avatar_uploader span").html()+'</span></span>' +
-            '<span class="qq-upload-list"></span>' +
-              '</span>',
+          '<span class="qq-upload-button"><span class="progress"></span>' +
+            '<span class="title">'+$("#avatar_uploader span").html()+'</span></span>' +
+              '<span class="qq-upload-list"></span>' +
+                '</span>',
       text: $("#avatar_uploader span").html(),
       onSubmit: function(id, fileName){
         console.log("Submit");
@@ -1752,12 +1753,24 @@ jQuery.fn.enableAvatarUpload = function(opt){
         $("#avatar_uploader span.title").html("");
       },
       onProgress: function(id, fileName, loaded, total){
+
         console.log("Progress");
+
+        var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
+
+        console.log("uploading…");
+        //console.debug(p, width, arguments, arguments[2], arguments[3]);
+        //$this.find(".percentage").html(parseInt(p, 10) + "%");
+        $this.find(".progress").css("width", (parseInt(p, 10) + "%"));
       },
       onComplete: function(id, fileName, responseJSON){
         console.debug(fileName, responseJSON, responseJSON.image_cache_name);
 
         $("#avatar_uploader span.title").html(t);
+        $this.find(".progress").fadeOut(250, function() {
+          $(this).width("0");
+        });
+
         var cacheImage = document.createElement('img');
         cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
 
@@ -1766,7 +1779,6 @@ jQuery.fn.enableAvatarUpload = function(opt){
         console.log($(".image_cache_name"));
 
         $(cacheImage).bind("load", function () {
-          console.log(cacheImage, responseJSON);
           $(".avatar_uploader_form").submit();
           var src = $(cacheImage).attr("src");
           $(".avatar_box a img").attr("src", src);

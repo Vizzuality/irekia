@@ -1725,6 +1725,7 @@ div#main.show div.left img {margin:4px 0 7px;}
         width:534px;
 
         .qq-upload-button { margin: 0; }
+
         input[type="text"] { width: 534px; }
         .holder {
           left: 10px;
@@ -3120,7 +3121,17 @@ span.where, .map .infowindow ul.details li.where {
     .small { display:block; font-size:13px; color: #b1b9be; }
     h3 { font-size:12px; }
 
-    .qq-upload-button { width:auto; }
+    .qq-upload-button { position:relative; width:auto; }
+
+    .progress {
+      position: absolute;
+      top: 0px; left: 0px;
+      height: 16px;
+      width: 0px;
+      background: #FF0066;
+      @include border-radius(2px);
+      z-index:2000;
+    }
   }
 }
 
