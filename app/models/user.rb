@@ -275,7 +275,7 @@ class User < ActiveRecord::Base
 
       valid_user = save
     else
-      errors.on(:current_password)
+      errors.add(:password)
     end
     valid_user
   end
