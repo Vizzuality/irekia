@@ -3,7 +3,7 @@
     <ul class="languages">
       <% available_locales.each_with_index do |locale, i| %>
         <% if locale == I18n.locale -%>
-          <li class="selected"><span><%= I18n.locale.upcase %></span></li>
+          <li class="selected <%= 'last' if (i + 1) == available_locales.length %>"><span><%= I18n.locale.upcase %></span></li>
         <% else -%>
           <li class="<%= 'last' if (i + 1) == available_locales.length %>"><%= button_to locale.upcase, change_locale_path(:new_locale => locale) %></li>
         <% end -%>

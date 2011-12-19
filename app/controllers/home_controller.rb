@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => :index
+  skip_before_filter :authenticate_user!, :only => [:index, :change_locale]
 
   def index
     get_areas
