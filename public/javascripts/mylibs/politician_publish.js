@@ -115,11 +115,12 @@
     _bindTextInputs(data);
 
     _bindSubmit(data, "Publicar", true, "publish");
+    data.$ps.find("input,:text,textarea").attr("tabindex", "-1");
 
     // Initialize the initial section
-    $currentSection    = $ps.find(".container .section:nth-child(1)");
-    $currentMenuOption = $ps.find(".menu").find("li:nth-child(" + (data.sectionID + 1) + ")");
-    $currentSection    = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
+    $currentSection    = $ps.find(".container .section:nth(0)");
+    $currentMenuOption = $ps.find(".menu").find("li:eq(" + (data.sectionID) + ")");
+    $currentSection    = $ps.find(".container .section:eq(" + (data.sectionID) + ")");
 
     _gotoSection(data);
     _bindSearch(data);
@@ -430,10 +431,12 @@
 
     data.spinner.stop();
     $response.hide();
-    $form.after($response);
+    $currentSection.append($response);
+
     data.$ps.find(".extra").hide();
     data.$ps.find(".holder").show();
     data.$ps.find(":text, textarea").val("");
+
     _showMessage(data, "success");
   }
 
@@ -629,7 +632,7 @@
     _clearSection(data);
     _resetHiddenFields();
 
-    var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
+    var $section  = $ps.find(".container .section:eq(" + (data.sectionID) + ")");
     var height    = $section.find(".form").outerHeight(true);
     $ps.find(".container").animate({scrollLeft: data.sectionID * data.settings.sectionWidth, height: height }, data.settings.transitionSpeed, "easeInOutQuad");
   }
@@ -644,7 +647,7 @@
       _hideExtraFields(data.settings.transitionSpeed);
 
       data.sectionID = $(this).parent().index();
-      $section       = $(this).parents(".content").find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
+      $section       = $(this).parents(".content").find(".container .section:eq(" + (data.sectionID) + ")");
 
       if (_sectionName($section) != _sectionName($currentSection)) {
         _resetSection(data, $section);

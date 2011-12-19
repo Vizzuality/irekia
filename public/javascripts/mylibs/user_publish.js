@@ -114,6 +114,7 @@
     var $ps = data.$ps;
 
     _bindSubmit(data, "Continuar", true, "continue");
+    data.$ps.find("input,:text,textarea").attr("tabindex", "-1");
 
     data.$ps.find(".autosuggest_field span.all a").unbind();
     data.$ps.find(".autosuggest_field span.all a").click(function(e) {
