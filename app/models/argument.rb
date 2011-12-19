@@ -12,7 +12,7 @@ class Argument < Participation
   validates :reason, :presence => true
 
   def self.by_id(id)
-    scoped.includes([{:user => :profile_pictures}, :argument_data, :proposal]).find(id)
+    scoped.includes([{:user => :profile_picture}, :argument_data, :proposal]).find(id)
   end
 
   def self.from_area(area)

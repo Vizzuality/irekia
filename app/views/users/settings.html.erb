@@ -144,7 +144,7 @@
             <h3><%= t(".avatar.pick_your_avatar") %></h3>
             <p><%= t(".avatar.subtitle") %></p>
 
-            <%= form.fields_for :profile_pictures, (@user.profile_pictures.last || @user.profile_pictures.new) do |profile_picture| %>
+            <%= form.fields_for :profile_picture, (@user.profile_picture || @user.build_profile_picture) do |profile_picture| %>
               <%= profile_picture.hidden_field :image_cache, :class => :image_cache_name %>
             <% end %>
 

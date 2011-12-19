@@ -105,7 +105,6 @@ class UsersController < ApplicationController
       redirect_back_or_default user_path(@user)
     else
       flash[:notice] = :question_failed if params['user']['question_data_attributes'].present?
-      # render :json => @user.errors.to_json, :status => :error
 
       respond_with(@user) do |format|
         format.html {

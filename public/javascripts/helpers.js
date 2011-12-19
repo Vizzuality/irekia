@@ -1264,7 +1264,7 @@ jQuery.fn.enableNotificationSelector = function(opt){
     $(this).find("li").click(function(e) {
       e.preventDefault();
       $(this).siblings("li.selected").removeClass("selected")
-      $this.find("input").attr("disabled", "disabled");
+      $this.find("li input").attr("disabled", "disabled");
 
       $(this).addClass("selected")
       $(this).find("input").removeAttr("disabled");

@@ -1,7 +1,7 @@
 <h4>Contestada por</h4>
 <ul class="people no-border no-padding extra-margin-bottom">
   <li>
-  <%= avatar (@content.answer.author), :small if @content.answer.author.try(:profile_pictures).present? %>
+  <%= avatar (@content.answer.author), :small if @content.answer.author.try(:profile_picture).present? %>
   <%= link_to @content.answer.author.fullname, path_for_user(@content.answer.author), :class => :name  %>
   <span class="position"><%= get_politician_title(@content.answer.author) %></span>
   </li>

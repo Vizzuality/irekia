@@ -22,7 +22,7 @@ class Content < ActiveRecord::Base
   has_many   :follows
   has_many   :participations
   has_many   :comments,
-             :include => [{:author => :profile_pictures}, :comment_data],
+             :include => [{:author => :profile_picture}, :comment_data],
              :order => 'published_at asc'
 
   attr_protected :moderated, :rejected

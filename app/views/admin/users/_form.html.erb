@@ -36,7 +36,7 @@
     </p>
   <% end %>
 
-  <%= f.fields_for :profile_pictures, @user.profile_pictures.first do |profile_picture_field| %>
+  <%= f.fields_for :profile_picture, @user.profile_picture do |profile_picture_field| %>
     <% if @user.profile_image %>
       <%= image_tag @user.profile_image %><br />
     <% end %>

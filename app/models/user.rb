@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
                   :province,
                   :city_id,
                   :postal_code,
+                  :notifications_level,
                   :first_time,
                   :new_news_count,
                   :new_events_count,
@@ -42,7 +43,7 @@ class User < ActiveRecord::Base
                   :new_answer_requests_count,
                   :new_contents_users_count,
                   :new_follows_count,
-                  :profile_pictures_attributes,
+                  :profile_picture_attributes,
                   :questions_attributes,
                   :question_data_attributes,
                   :areas_users_attributes,
@@ -93,16 +94,16 @@ class User < ActiveRecord::Base
            :foreign_key => :user_id
   has_many :questions,
            :foreign_key => :user_id,
-           :include => [{:author => :profile_pictures}, :question_data, :comments ],
+           :include => [{:author => :profile_picture}, :question_data, :comments ],
            :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
   has_many :answers,
            :foreign_key => :user_id,
-           :include => [{:author => :profile_pictures}, :comments ],
+           :include => [{:author => :profile_picture}, :comments ],
            :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
   has_many :proposals,
            :foreign_key => :user_id,
            :source => :proposal,
-           :include => [{:author => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }],
+           :include => [{:author => :profile_picture}, :proposal_data, { :comments => [:author, :comment_data] }],
            :select => 'contents.id, contents.type, contents.published_at, contents.moderated'
   has_many :events,
            :foreign_key => :user_id,
@@ -120,7 +121,7 @@ class User < ActiveRecord::Base
   has_many :questions_received,
            :through => :question_data,
            :source => :question,
-           :include => [{:author => [:role, :profile_pictures]}, :question_data, :comments]
+           :include => [{:author => [:role, :profile_picture]}, :question_data, :comments]
 
   has_many :participations
   has_many :comments
@@ -133,7 +134,7 @@ class User < ActiveRecord::Base
   has_many :private_actions,
            :class_name => 'UserPrivateStream'
 
-  has_many :profile_pictures,
+  has_one  :profile_picture,
            :class_name => 'Image',
            :select => 'id, photo_id, user_id, image'
 
@@ -153,7 +154,7 @@ class User < ActiveRecord::Base
            :through      => :followed_items,
            :source       => :follow_item,
            :source_type  => 'User',
-           :include => [:profile_pictures, :areas]
+           :include => [:profile_picture, :areas]
 
   # Required to get followers of this user
   has_many :follows,
@@ -162,7 +163,7 @@ class User < ActiveRecord::Base
            :through => :follows,
            :source => :user
 
-  accepts_nested_attributes_for :profile_pictures, :questions, :question_data, :areas_users
+  accepts_nested_attributes_for :profile_picture, :questions, :question_data, :areas_users
   accepts_nested_attributes_for :follows, :allow_destroy => true
 
 
@@ -356,11 +357,11 @@ class User < ActiveRecord::Base
   end
 
   def profile_image
-    @profile_image ||= self.profile_pictures.first.image.thumb.url if self.profile_pictures.present?
+    @profile_image ||= self.profile_picture.image.thumb.url if self.profile_picture.present?
   end
 
   def profile_image_big
-    @profile_image_big ||= self.profile_pictures.first.image.url if self.profile_pictures.present?
+    @profile_image_big ||= self.profile_picture.image.url if self.profile_picture.present?
   end
 
   def sex
@@ -463,7 +464,7 @@ class User < ActiveRecord::Base
   end
 
   def follow_suggestions
-    User.includes(:role, :profile_pictures, :title, :areas).politicians.where('users.id not in (?)', ([id] + users_following_ids))
+    User.includes(:role, :profile_picture, :title, :areas).politicians.where('users.id not in (?)', ([id] + users_following_ids))
   end
 
   def new_followers(last_seen_at)

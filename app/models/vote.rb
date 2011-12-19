@@ -22,7 +22,7 @@ class Vote < Participation
   end
 
   def self.by_id(id)
-    scoped.includes([{:user => :profile_pictures}, :vote_data]).find(id)
+    scoped.includes([{:user => :profile_picture}, :vote_data]).find(id)
   end
 
   def self.from_area(area)

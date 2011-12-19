@@ -45,7 +45,7 @@ def create_user(params)
   elsif params[:area_user]
     user.areas_users << params[:area_user]
   end
-  user.profile_pictures << params[:profile_picture] if params[:profile_picture]
+  user.profile_picture = params[:profile_picture] if params[:profile_picture]
   user.users_following = params[:users_following] if params[:users_following]
   user.areas_following = params[:areas_following] if params[:areas_following]
   user.save!

@@ -26,7 +26,7 @@ class Proposal < Content
   delegate :in_favor, :against, :participation, :title, :body, :target_area, :image, :build_image, :to => :proposal_data, :allow_nil => true
 
   def self.by_id(id)
-    scoped.includes([{:author => :profile_pictures}, :proposal_data, { :comments => [:author, :comment_data] }]).find(id)
+    scoped.includes([{:author => :profile_picture}, :proposal_data, { :comments => [:author, :comment_data] }]).find(id)
   end
 
   def self.open

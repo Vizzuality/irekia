@@ -22,9 +22,8 @@ class ApplicationController < ActionController::Base
     user_locale    = current_user.locale if user_signed_in? && current_user.locale.present?
     params_locale  = params[:locale]
     cookie_locale  = cookies[:current_locale] || {}
-    browser_locale = request.env['rack.locale']
 
-    I18n.locale = user_locale || cookie_locale || params_locale || browser_locale || I18n.default_locale
+    I18n.locale = user_locale || cookie_locale || params_locale || I18n.default_locale
   end
 
   def default_url_options(options = {})

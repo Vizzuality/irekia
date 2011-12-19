@@ -11,7 +11,7 @@ class Admin::UsersController < Admin::AdminController
   def new
     @user = User.new
     @user.areas_users.build
-    @user.profile_pictures.build
+    @user.build_profile_picture
   end
 
   def create
@@ -28,7 +28,7 @@ class Admin::UsersController < Admin::AdminController
 
   def edit
     @user.areas_users.build
-    @user.profile_pictures.build
+    @user.build_profile_picture
   end
 
   def update
@@ -53,7 +53,7 @@ class Admin::UsersController < Admin::AdminController
 
   private
   def get_user
-    @user = User.includes(:areas_users, :profile_pictures).find(params[:id])
+    @user = User.includes(:areas_users, :profile_picture).find(params[:id])
   end
 
   def get_roles

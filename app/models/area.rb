@@ -5,7 +5,7 @@ class Area < ActiveRecord::Base
            :class_name => 'AreaUser'
   has_many :users,
            :through => :areas_users,
-           :include => [:title, :role, :profile_pictures],
+           :include => [:title, :role, :profile_picture],
            :select => 'users.id, users.name, users.lastname, users.title_id, users.role_id'
   has_many :team,
            :through => :areas_users,
@@ -26,7 +26,7 @@ class Area < ActiveRecord::Base
   has_many :proposals_received,
            :through => :proposal_data,
            :source => :proposal,
-           :include => [{:users => [:profile_pictures]}, :proposal_data, { :comments => [:author, :comment_data] }],
+           :include => [{:users => [:profile_picture]}, :proposal_data, { :comments => [:author, :comment_data] }],
            :conditions => {:moderated => true},
            :order => 'published_at desc'
 

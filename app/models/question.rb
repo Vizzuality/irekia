@@ -8,7 +8,7 @@ class Question < Content
 
   has_one :answer,
           :foreign_key => :related_content_id,
-          :include => [:answer_data, {:author => :profile_pictures}]
+          :include => [:answer_data, {:author => :profile_picture}]
 
   has_many :answer_requests,
            :foreign_key => :content_id
@@ -35,7 +35,7 @@ class Question < Content
 
   def self.from_area(area, author)
     query = select('contents.id, contents.user_id, contents.type, contents.published_at, contents.moderated, contents.answer_requests_count')
-    .includes({:author => :profile_pictures}, :question_data, :comments)
+    .includes({:author => :profile_picture}, :question_data, :comments)
     .joins(:question_data)
     .where('question_data.area_id = ? OR question_data.user_id IN (?)', area.id, area.user_ids)
     .order('published_at desc')
