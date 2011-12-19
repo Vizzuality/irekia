@@ -15,6 +15,10 @@ class Answer < Content
     joins(:author => :areas).moderated.where('areas.id' => area.id)
   end
 
+  def self.answer_time
+    joins(:question).select('extract(epoch from avg(contents.published_at - questions_contents.published_at)) as moderation_time').first.moderation_time.try(:to_f) || 0
+  end
+
   def parent
     question
   end

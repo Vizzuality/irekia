@@ -55,17 +55,27 @@ class Proposal < Content
     .where('roles.name = ?', 'Citizen')
   end
 
-  def self.from_area(area)
-    joins(:proposal_data => :target_area, :author => :areas)
-    .moderated
-    .where('areas.id => ? OR target_areas_proposal_data.id = ?', area.id, area.id)
+  def self.from_area(area, author)
+    query = joins(:proposal_data => :target_area)
+    .where('areas.id = ?', area.id)
+    if author.present?
+      query.where('contents.moderated = ? OR (contents.moderated = ? AND contents.user_id = ?)', true, false, author.id)
+    else
+      query.moderated
+    end
   end
 
-  def self.user_is_author_or_participer(user)
-    select('distinct contents.*')
+  def self.user_is_author_or_participer(user, show_not_moderated = nil)
+    query = select('distinct contents.*')
     .includes(:author, :votes => :author, :arguments => :author)
-    .moderated
-    .where('users.id = ? OR authors_participations.id = ? OR authors_participations_2.id = ?', *([user.id] * 3))
+    if show_not_moderated
+      query
+      .where('users.id = ? OR (contents.moderated = ? AND authors_participations.id = ?) OR (contents.moderated = ? AND authors_participations_2.id = ?)', user.id, true, user.id, true, user.id)
+    else
+      query
+      .moderated
+      .where('users.id = ? OR authors_participations.id = ? OR authors_participations_2.id = ?', *([user.id] * 3))
+    end
   end
 
   def self.from_citizen(user)

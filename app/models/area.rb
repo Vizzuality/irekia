@@ -129,8 +129,8 @@ class Area < ActiveRecord::Base
     actions
   end
 
-  def get_questions(filters)
-    questions = Question.from_area(self)
+  def get_questions(filters, author)
+    questions = Question.from_area(self, author)
     questions = questions.answered if filters[:answered]
 
     questions = if filters[:more_polemic] == 'true'
@@ -141,8 +141,8 @@ class Area < ActiveRecord::Base
     questions
   end
 
-  def get_proposals(filters)
-    proposals = proposals_received
+  def get_proposals(filters, author)
+    proposals = Proposal.from_area(self, author)
     filter_proposals(proposals, filters)
   end
 
