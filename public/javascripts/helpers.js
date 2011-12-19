@@ -85,16 +85,8 @@ jQuery.fn.enableRegistration = function(opt){
     });
   }
 
-  function step3(evt, xhr, status) {
-    var $data = $(xhr);
-
-    $currentArticle.after($data);
-
-    $article        = $currentArticle;
-    $currentArticle = $data;
-    $form           = $currentArticle.find("form");
-
-    forward($article, $currentArticle);
+  function redirectToRoot(evt, xhr, status) {
+    window.location.href = '/';
   }
 
   function step2(evt, xhr, status) {
@@ -116,7 +108,7 @@ jQuery.fn.enableRegistration = function(opt){
       $(this).find(".error").removeClass("error");
     });
 
-    $form.bind('ajax:success', step3);
+    $form.bind('ajax:success', redirectToRoot);
     $form.bind('ajax:error', validateErrors);
   }
 
