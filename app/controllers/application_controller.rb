@@ -11,11 +11,25 @@ class ApplicationController < ActionController::Base
 
   clear_helpers
   protect_from_forgery
+  before_filter :set_locale
   before_filter :authentication_check
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
   before_filter :current_user_valid?
   before_filter :get_areas
   before_filter :setup_search
+
+  def set_locale
+    user_locale    = current_user.locale if user_signed_in? && current_user.locale.present?
+    params_locale  = params[:locale]
+    cookie_locale  = cookies[:current_locale]
+    browser_locale = request.env['rack.locale']
+
+    I18n.locale = user_locale || cookie_locale || params_locale || browser_locale || I18n.default_locale
+  end
+
+  def default_url_options(options = {})
+    {:locale => I18n.locale}
+  end
 
   def authentication_check
     return unless Rails.env.production?

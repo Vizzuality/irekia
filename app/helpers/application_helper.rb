@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def available_locales
+    [:es, :eu, :en]
+  end
 
   def homepage?
     controller_name == 'home' && action_name == 'index'

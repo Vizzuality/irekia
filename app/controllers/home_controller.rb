@@ -20,6 +20,16 @@ class HomeController < ApplicationController
            :layout  => nil and return if request.xhr?
   end
 
+  def change_locale
+    if params[:new_locale]
+      locale = params[:new_locale]
+      cookies[:current_locale] = {:value => locale, :expires => 1.year.from_now}
+      current_user.update_attribute 'locale', locale if user_signed_in?
+    end
+
+    redirect_back_or_default root_path
+  end
+
   def get_areas
     super
     @areas                 = Area.areas_for_homepage
