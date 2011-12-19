@@ -18,6 +18,8 @@ $(function() {
   $(".people.editable").enablePoliticianTags();
   $(".context ul.editable.tags").enableAreaEditing();
 
+  $("#avatar_uploader").enableAvatarUpload();
+
   $('.tabs').tabs();
 
   $(".slideshow").enableSlideshow();
@@ -320,52 +322,5 @@ $(function() {
   $('.sign_out').tipsy({gravity: 's', offset: 3, title: function() {
     return 'Cerrar sesión';
   }});
-
-
-  if ($("#avatar_uploader").length > 0) {
-  var uploader = new qq.FileUploader({
-    element: document.getElementById("avatar_uploader"),
-    action: $("avatar_uploader").attr("data-url"),
-    params: {
-      utf8: $("#avatar_uploader").closest("form").find('input[name=utf8]').val(),
-      authenticity_token: $("#avatar_uploader").closest("form").find('input[name=authenticity_token]').val()
-    },
-    debug: true,
-    template: '<span class="qq-uploader">' +
-              '<span class="qq-upload-drop-area"></span>' +
-              '<span class="qq-upload-button">'+$("#avatar_uploader span").html()+'</span>' +
-              '<span class="qq-upload-list"></span>' +
-          '</span>',
-    text: $("#avatar_uploader span").html(),
-    onSubmit: function(id, fileName){
-      console.log("Submit");
-    },
-    onProgress: function(id, fileName, loaded, total){
-      console.log("Progress");
-    },
-    onComplete: function(id, fileName, responseJSON){
-      console.log("Complete");
-      console.debug(fileName, responseJSON, responseJSON.image_cache_name);
-
-      var cacheImage = document.createElement('img');
-      cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
-
-      $('.image_cache_name').val(responseJSON);
-
-      //console.log($(".image_cache_name"));
-
-      $(cacheImage).bind("load", function () {
-
-        $(".image_container").prepend(cacheImage);
-
-      });
-
-
-    },
-    onCancel: function(id, fileName){
-      console.log("Cancel");
-    }
-  });
-  }
 
 });

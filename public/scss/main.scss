@@ -3119,6 +3119,8 @@ span.where, .map .infowindow ul.details li.where {
     button, input[type="submit"] { margin: 0 0 7px 0; float:none; }
     .small { display:block; font-size:13px; color: #b1b9be; }
     h3 { font-size:12px; }
+
+    .qq-upload-button { width:auto; }
   }
 }
 
@@ -4668,8 +4670,7 @@ input {
               margin: 0 0 10px 0;
               .facebook { margin: 0 10px 0 0; }
             }
-          }
-
+          } // social
 
           select, .dk_container { float:left; margin:0 10px 0 0; }
 

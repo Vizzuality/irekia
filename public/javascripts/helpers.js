@@ -1716,3 +1716,64 @@ jQuery.fn.enableQuestion = function(opt){
   });
 };
 
+/* Enables image editing */
+jQuery.fn.enableAvatarUpload = function(opt){
+  var
+  $this       = $(this),
+  speed       = (opt && opt.speed) || 120,
+  fadeInSpeed = (opt && opt.speed) || 80,
+  t,
+  content;
+
+  this.each(function(){
+
+    var uploader = new qq.FileUploader({
+      element: document.getElementById("avatar_uploader"),
+      action: $("#avatar_uploader").attr("data-url"),
+      params: {
+        utf8: $("#avatar_uploader").closest("form").find('input[name=utf8]').val(),
+        authenticity_token: $("#avatar_uploader").closest("form").find('input[name=authenticity_token]').val()
+      },
+      debug: true,
+      template: '<span class="qq-uploader">' +
+        '<span class="qq-upload-drop-area"></span>' +
+          '<span class="qq-upload-button"><span class="title">'+$("#avatar_uploader span").html()+'</span></span>' +
+            '<span class="qq-upload-list"></span>' +
+              '</span>',
+      text: $("#avatar_uploader span").html(),
+      onSubmit: function(id, fileName){
+        console.log("Submit");
+        var w = $("#avatar_uploader .qq-upload-button").outerWidth(true);
+        t = $("#avatar_uploader span.title").html();
+        $("#avatar_uploader .qq-upload-button").css("width", w);
+        $("#avatar_uploader span.title").html("");
+      },
+      onProgress: function(id, fileName, loaded, total){
+        console.log("Progress");
+      },
+      onComplete: function(id, fileName, responseJSON){
+        console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+
+        $("#avatar_uploader span.title").html(t);
+        var cacheImage = document.createElement('img');
+        cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
+
+        $('.image_cache_name').val(responseJSON.image_cache_name);
+
+        console.log($(".image_cache_name"));
+
+        $(cacheImage).bind("load", function () {
+          console.log(cacheImage, responseJSON);
+          $(".avatar_uploader_form").submit();
+          var src = $(cacheImage).attr("src");
+          $(".avatar_box a img").attr("src", src);
+        });
+
+
+      },
+      onCancel: function(id, fileName){
+        console.log("Cancel");
+      }
+    });
+  })
+}
