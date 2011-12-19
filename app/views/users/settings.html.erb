@@ -164,9 +164,9 @@
   <div class="content">
     <h2><%= t(".notifications.title") %></h2>
 
-    <%= form_for @user do |form| %>
+    <%= form_for @user, :remote => true, :html => { :class => 'notifications', :'data-type' => 'html'} do |form| %>
 
-    <ul class="notifications">
+    <ul>
 
       <li class="<%= 'selected' if @user.notifications_level == 1 %>">
       <a href="#" class="letter minimun"></a>

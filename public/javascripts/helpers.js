@@ -1257,15 +1257,18 @@ jQuery.fn.enableTargetEditing = function(opt){
 
 
 jQuery.fn.enableNotificationSelector = function(opt){
-
   var speed  = (opt && opt.speed) || 200;
 
   this.each(function(){
-
+    var $this = $(this);
     $(this).find("li").click(function(e) {
       e.preventDefault();
       $(this).siblings("li.selected").removeClass("selected")
+      $this.find("input").attr("disabled", "disabled");
+
       $(this).addClass("selected")
+      $(this).find("input").removeAttr("disabled");
+      $this.submit();
     });
   });
 }
