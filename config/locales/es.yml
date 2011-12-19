@@ -1640,10 +1640,18 @@
         title: 'Todas las preguntas hechas por %{name}'
         more_recent: Más recientes
         more_polemic: Más polémicas
+      no_questions:
+        title: "Aún no hay preguntas de %{user}"
+        description: '%{user} puede participar en el debate sobre las propuestas de otros usuarios de Irekia, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí.'
+        homepage: Página de inicio
       proposals:
         title: 'Propuestas de %{name}'
         more_recent: Más recientes
         more_commented: Más comentadas
+      no_proposals:
+        title: 'Aún no hay propuestas de %{user}.'
+        description: '%{user} puede participar en el debate sobre las propuestas de otros usuarios de Irekia, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí.'
+        homepage: Página de inicio
       followings:
         title: 'A quien sigue %{name} en Irekia'
         all_profiles: 'Ver todos los perfiles a los que sigue %{name}'

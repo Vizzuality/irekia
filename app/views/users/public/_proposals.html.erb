@@ -4,8 +4,8 @@
     <div class="content centered clearfix">
       <div class="info icon"></div>
       <div class="message">
-        <h2><%= t('.no_proposals.title') %></h2>
-        <p><%= t('.no_proposals.description') %></p>
+        <h2><%= t('users.public.no_proposals.title', :user => @user.name) %></h2>
+        <p><%= t('users.public.no_proposals.description', :user => @user.name) %></p>
       </div>
     </div>
   </div>
