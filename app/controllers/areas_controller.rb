@@ -112,12 +112,12 @@ class AreasController < ApplicationController
   private :get_actions
 
   def get_questions
-    @questions = @area.get_questions(params.slice(:answered, :more_polemic))
+    @questions = @area.get_questions(params.slice(:answered, :more_polemic), current_user)
   end
   private :get_questions
 
   def get_proposals
-    @proposals = @area.get_proposals(params.slice(:from_politicians, :from_citizens, :more_polemic))
+    @proposals = @area.get_proposals(params.slice(:from_politicians, :from_citizens, :more_polemic), current_user)
   end
   private :get_proposals
 

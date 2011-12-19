@@ -26,4 +26,27 @@ module PoliticiansHelper
     agenda_politician_path(@politician, filters)
   end
 
+  def politician_address
+    return unless @politician.city.present? && @politician.province.present?
+
+    content_tag :p, "#{@politician.city}, #{@politician.province}"
+  end
+
+  def politician_mail_and_phone
+    return unless @politician.email.present? || @politician.phone_number.present?
+    arr = []
+    arr << @politician.email if @politician.email.present?
+    arr << @politician.phone_number if @politician.phone_number.present?
+
+    content_tag :p, arr.join(' | ')
+  end
+
+  def politician_twitter_and_facebook
+    return unless @politician.twitter_username.present? || @politician.facebook_url.present?
+    arr = []
+    arr << link_to("@#{@politician.twitter_username}", "http://twitter.com/#{@politician.twitter_username}") if @politician.twitter_username.present?
+    arr << link_to(@politician.facebook_url, @politician.facebook_url) if @politician.facebook_url.present?
+
+    content_tag :p, raw(arr.join(' | '))
+  end
 end

@@ -33,13 +33,18 @@ class Question < Content
     includes(:question_data).where('question_data.answered_at IS NULL')
   end
 
-  def self.from_area(area)
-    select('contents.id, contents.user_id, contents.type, contents.published_at, contents.moderated, contents.answer_requests_count')
+  def self.from_area(area, author)
+    query = select('contents.id, contents.user_id, contents.type, contents.published_at, contents.moderated, contents.answer_requests_count')
     .includes({:author => :profile_pictures}, :question_data, :comments)
     .joins(:question_data)
-    .moderated
     .where('question_data.area_id = ? OR question_data.user_id IN (?)', area.id, area.user_ids)
     .order('published_at desc')
+
+    if author.present?
+      query.where('contents.moderated = ? OR (contents.moderated = ? AND contents.user_id = ?)', true, false, author.id)
+    else
+      query.moderated
+    end
   end
 
   def self.from_politician(politician, filters = {})

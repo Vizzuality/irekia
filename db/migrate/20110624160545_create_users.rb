@@ -20,6 +20,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :phone_number
       t.string   :twitter_username
       t.string   :facebook_username
+      t.string   :facebook_url
 
       t.integer  :external_id
       t.datetime :last_import
