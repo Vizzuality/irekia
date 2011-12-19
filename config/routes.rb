@@ -104,6 +104,7 @@ Irekia::Application.routes.draw do
   resources :videos,          :controller => 'contents', :type => 'Video' do
     resources :shares
   end
+  resources :images, :only => [:create, :update, :destroy]
 
   # TODO: delete this
   match 'demo/news', :to => 'demo#news'

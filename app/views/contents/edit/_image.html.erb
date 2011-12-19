@@ -1,14 +1,34 @@
-<div class="image_container">
-  <%= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
+<div class="image_editor">
 
-  <!-- remove -->
-  <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'remove', :style => "#{'display:none' unless @content.news_data.image.present?} "} do |form| %>
-    <%= form.fields_for :news_data do |news_data| %>
-      <%= news_data.fields_for :image do |image| %>
-        <%= image.hidden_field :_destroy, :value => true %>
-      <% end -%>
-        <%= submit_tag '', :class => :remove %>
+  <div class="image_container">
+    <%= image_tag @image.content_url if @image.present? && @image.content_url.present? %>
+
+    <!-- remove -->
+    <%= form_for @image, :remote => true, :html => {:'data-type' => 'html', :method => :delete, :class => 'remove'} do |form| %>
+      <%= submit_tag '', :class => :remove %>
+    <% end if @image.present? && @image.persisted? -%>
+    <!-- remove -->
+  </div>
+
+  <div class="add_image"<%= " style='display:none'" unless @image.present? && @image.new_record? %>>
+    <a href="#">Añadir foto</a>
+  </div>
+
+  <div class="input_field uploader placeholder" style="display:none">
+    <input type="text" disabled="disabled" />
+    <%= form_for @image, :remote => true, :html => {:'data-type' => 'html', :class => 'editable image'} do |form| %>
+      <span class="holder"><span class="upload" id="upload_new_image" data-url="<%= news_index_path %>">Sube una nueva</span></span>
+      <%= form.hidden_field :news_data_id %>
+      <%= form.hidden_field :proposal_data_id %>
+      <%= form.hidden_field :event_data_id %>
+      <%#= form.hidden_field :remote_image_url %>
+      <%= form.hidden_field :image_cache, :class => :image_cache_name %>
+      <%#= form.text_area :description %>
     <% end -%>
-  <% end -%>
-  <!-- remove -->
+    <span class="percentage">0%</span>
+    <span class="loading">Cargando imagen...</span>
+    <div class="progress"></div>
+  </div>
+
+
 </div>
