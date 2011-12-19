@@ -1784,7 +1784,7 @@ div#main.show div.left img {margin:4px 0 7px;}
     margin-bottom: 40px;
 
     div.f {height:4px; bottom:-4px; background-position:0 -16px;}
-    div.t {height:5px; top:-5px; background-position:0 0;}
+    div.t {height:3px; top:-3px; background-position:0 0;}
 
     .inner {
       position:relative;
@@ -1855,7 +1855,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
           &.collaborate {background-position:460px -314px;}
           &.follow {background-position:460px 0;}
-          &.configure {}
+          &.configure {background-position:391px bottom;}
           &.user {width:932px; padding:23px 31px 26px; }
 
           h3 { font-family: "ClarendonLTMedium", Georgia, serif; text-transform:none; font-weight:normal; color:$dark_blue; font-size:21px; margin-bottom:10px; }
