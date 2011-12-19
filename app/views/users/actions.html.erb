@@ -9,10 +9,11 @@
       <div class="message">
         <% if @viewing_access == "public" %>
           <h2><%= t('.no_activity.other_title',:user => @user.name) %></h2>
+          <p><%= t('.no_activity.other_description',:user => @user.name) %></p>
         <% else %>
           <h2><%= t('.no_activity.title') %></h2>
-        <% end %>
-        <p><%= t('.no_activity.description') %></p>
+          <p><%= t('.no_activity.description') %></p>
+        <% end %>      
         <% if @viewing_access != "public" %>
           <%= link_to (content_tag :span, t('.no_activity.homepage')), '/', :class => "white_button pink" %>
         <% end %>

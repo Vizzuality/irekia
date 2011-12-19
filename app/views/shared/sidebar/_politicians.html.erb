@@ -4,9 +4,10 @@
     <% @content.contents_users.each do |content_user| -%>
       <% politician = content_user.user -%>
       <li<%=" class='editable'" if @editable %>>
-      <%= avatar politician, 'small' %>
-      <%= link_to politician.truncated_fullname(17), path_for_user(politician), :class => :name %>
-      <span class="position"><%= get_politician_title(politician) %></span>
+      <div class="bottom">
+        <%= avatar politician, 'small' %>
+        <%= link_to politician.truncated_fullname(17), path_for_user(politician), :class => :name %>
+        <span class="position"><%= get_politician_title(politician) %></span>
 
       <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
         <%= form.fields_for :contents_users, content_user do |content_user_fields| %>
@@ -14,7 +15,7 @@
         <% end -%>
         <%= form.submit 'x', :class => 'remove' %>
       <% end if @editable -%>
-
+        </div>
         </li>
       <% end -%>
 

@@ -42,6 +42,7 @@ class ContentsController < ApplicationController
   def edit
     @editable = true
     @content = @content_class.by_id(params[:id])
+    @image   = @content.image || @content.build_image
 
     @comments = @content.comments.moderated.all
     @comments_count = @content.comments_count

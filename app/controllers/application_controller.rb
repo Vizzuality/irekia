@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
   clear_helpers
   protect_from_forgery
   before_filter :authentication_check
-  before_filter :store_user_path
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
   before_filter :current_user_valid?
   before_filter :get_areas
@@ -26,17 +25,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def store_user_path
-    session[:return_to] = request.fullpath if current_user.blank? && request.get?
-  end
-
   def after_sign_in_path_for(resource)
     if request.xhr?
-      session[:return_to] = nil
+      session['user_return_to'] = nil
       nav_bar_buttons_path
     else
-      return_to = session[:return_to] || root_path
-      session[:return_to] = nil
+      return_to = session['user_return_to'] || root_path
+      session['user_return_to'] = nil
       return_to.to_s
     end
   end
@@ -70,21 +65,21 @@ class ApplicationController < ActionController::Base
   private :setup_search
 
   def redirect_back_or_default(default)
-    if session[:return_to].nil?
+    if session['user_return_to'].nil?
       redirect_to default
     else
-      redirect_to session[:return_to]
-      session[:return_to] = nil
+      redirect_to session['user_return_to']
+      session['user_return_to'] = nil
     end
   end
   private :redirect_back_or_default
 
   def redirect_back_or_render_action(action)
-    if session[:return_to].nil?
+    if session['user_return_to'].nil?
       render action
     else
-      redirect_to session[:return_to]
-      session[:return_to] = nil
+      redirect_to session['user_return_to']
+      session['user_return_to'] = nil
     end
   end
   private :redirect_back_or_render_action

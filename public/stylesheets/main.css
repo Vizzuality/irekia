@@ -1007,10 +1007,12 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .inner .right ul.people.no-padding { margin: 0; padding: 0; }
 #container .article .inner .right ul.people.extra-margin-bottom { margin-bottom: 30px; }
 #container .article .inner .right ul.people li { clear: both; overflow: hidden; margin: 0 0 12px 0; padding: 0; font-size: 15px; color: #465866; }
-#container .article .inner .right ul.people li.editable { position: relative; width: 255px; height: 54px; padding: 12px 0 0 10px; background: url("/images/tag_sprite.png") no-repeat 0 -310px; line-height: 18px; color: #7D8A92; margin: 0; }
+#container .article .inner .right ul.people li.editable { position: relative; width: 255px; height: auto; padding: 5px 0 0 0; margin: 0 0 6px 0; background: url("/images/tag_sprite.png") no-repeat 0 -468px; line-height: 18px; color: #7D8A92; }
+#container .article .inner .right ul.people li.editable div.bottom { display: block; width: 100%; height: auto; padding: 5px 10px 10px 10px; background: url("/images/tag_sprite.png") no-repeat -255px bottom; }
 #container .article .inner .right ul.people li.editable a { color: #666666; }
 #container .article .inner .right ul.people li.editable .avatar:before { border-color: #ffffeb; }
-#container .article .inner .right ul.people li.editable form .remove { position: absolute; top: 10px; right: 10px; float: right; height: 15px; width: 5px; text-indent: -99999px; height: 15px; width: 15px; margin: 0; padding: 0; background: url("/images/tag_sprite.png") repeat-x -200px -105px; border: 0; outline: none; z-index: 1000; }
+#container .article .inner .right ul.people li.editable form .remove { position: absolute; top: 3px; right: 3px; float: right; height: 15px; width: 15px; margin: 0; padding: 0; background: url("/images/tag_sprite.png") repeat-x -535px -470px; border: 0; text-indent: -99999px; outline: none; z-index: 1000; }
+#container .article .inner .right ul.people li.editable form .remove:hover { background-position: -565px -470px; }
 #container .article .inner .right ul.people li a.name { width: 250px; }
 #container .article .inner .right ul.people li.more a.name { margin-top: 8px; }
 #container .article .inner .right ul.people li.add { position: relative; text-align: center; width: 255px; height: 59px; background: url("/images/tag_sprite.png") no-repeat 0 -133px; }
@@ -1066,7 +1068,7 @@ ul.tags li.new input[type="text"], #container .article .right .content ul.tags l
 ul.tags li.editable, #container .article .right .content ul.tags li.editable { height: 26px; background-position: right -226px; line-height: 18px; }
 ul.tags li.editable form, #container .article .right .content ul.tags li.editable form { float: left; }
 ul.tags li.editable form input.remove, #container .article .right .content ul.tags li.editable form input.remove { height: 5px; width: 5px; padding: 0; position: relative; top: 11px; left: -10px; float: right; margin: 0; background: url("/images/tag_sprite.png") repeat-x -200px -105px; text-indent: -99999px; border: 0; outline: none; }
-ul.tags li.editable form input.remove:hover, #container .article .right .content ul.tags li.editable form input.remove:hover { background-position: -200px -105px; }
+ul.tags li.editable form input.remove:hover, #container .article .right .content ul.tags li.editable form input.remove:hover { background-position: -570px -475px; }
 ul.tags li.editable a, #container .article .right .content ul.tags li.editable a { height: 18px; background-position: 0 -197px; color: #666666; line-height: 18px; }
 ul.tags li.editable:hover, #container .article .right .content ul.tags li.editable:hover { background-position: right -226px; }
 ul.tags li.editable:hover a, #container .article .right .content ul.tags li.editable:hover a { color: #666666; background-position: 0 -197px; }

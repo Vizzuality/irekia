@@ -1,37 +1,53 @@
-<div class="article proposals with_filters with_footer">
-<div class="inner">
-  <header>
-  <div class="left">
-    <h2><%= t(".title", :name => @user.name) %></h2>
-  </div>
-  <div class="right">
-
-    <ul class="switch">
-      <li class="selected"><%= link_to t('.more_recent'), link_for_proposals, :class => 'filter' %></li>
-      <li><%= link_to t('.more_commented'), link_for_proposals(:more_polemic => true), :class => 'filter' %></li>
-    </ul>
-
-  </div>
-  </header>
-  <div class="left">
-    <div class="listing">
-      <%= render 'shared/proposals_list' if @proposals %>
+<% if @proposals_done_count == 0 -%>
+  <div class="article help">
+  <div class="inner">
+    <div class="content centered clearfix">
+      <div class="info icon"></div>
+      <div class="message">
+        <h2><%= t('users.public.no_proposals.title', :user => @user.name) %></h2>
+        <p><%= t('users.public.no_proposals.description', :user => @user.name) %></p>
+      </div>
     </div>
   </div>
-
-  <div class="right">
-    <% if private_profile? -%>
-    <%= simple_format t('.proposal_support') %>
-    <p>
-      <%= t('.proposal_support_count', :count => @proposals_in_favor_count) %>
-    </p>
-    <% end -%>
+  <div class="t"></div><div class="f"></div>
   </div>
-</div>
-<div class="bfooter">
-<div class="separator"></div>
-<div class="inner">
-</div>
-</div>
-<div class="t"></div><div class="f"></div>
-</div>
+
+<% else -%>
+  <div class="article proposals with_filters with_footer">
+  <div class="inner">
+    <header>
+    <div class="left">
+      <h2><%= t(".title", :name => @user.name) %></h2>
+    </div>
+    <div class="right">
+
+      <ul class="switch">
+        <li class="selected"><%= link_to t('.more_recent'), link_for_proposals, :class => 'filter' %></li>
+        <li><%= link_to t('.more_commented'), link_for_proposals(:more_polemic => true), :class => 'filter' %></li>
+      </ul>
+
+    </div>
+    </header>
+    <div class="left">
+      <div class="listing">
+        <%= render 'shared/proposals_list' if @proposals %>
+      </div>
+    </div>
+
+    <div class="right">
+      <% if private_profile? -%>
+      <%= simple_format t('.proposal_support') %>
+      <p>
+        <%= t('.proposal_support_count', :count => @proposals_in_favor_count) %>
+      </p>
+      <% end -%>
+    </div>
+  </div>
+  <div class="bfooter">
+  <div class="separator"></div>
+  <div class="inner">
+  </div>
+  </div>
+  <div class="t"></div><div class="f"></div>
+  </div>
+<% end -%>

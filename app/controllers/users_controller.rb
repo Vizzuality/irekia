@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    session[:return_to] = connect_user_path(@user)
+    session['user_return_to'] = user_path(@user)
     render :layout => !request.xhr?
   end
 
@@ -119,12 +119,12 @@ class UsersController < ApplicationController
   end
 
   def connect
-    session[:return_to] = connect_user_path(@user)
+    session['user_return_to'] = connect_user_path(@user)
     render :layout => !request.xhr?
   end
 
   def settings
-    session[:return_to] = settings_user_path(@user)
+    session['user_return_to'] = settings_user_path(@user)
   end
 
   def redirect_to_politician_page?

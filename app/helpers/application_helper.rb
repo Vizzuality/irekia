@@ -16,6 +16,10 @@ module ApplicationHelper
     @viewing_access == 'politician'
   end
 
+  def public_profile?
+    @viewing_access == "public"
+  end
+
   def current_area?(area)
     area.eql?(@area) ? 'selected' : nil
   end
@@ -113,7 +117,7 @@ module ApplicationHelper
   end
 
   def button(value=nil, options={})
-    content_tag :button, :type => :submit, :disabled => options[:disabled], :id => options[:id], :class => options[:class] do
+    content_tag :button, :type => :submit, :disabled => options[:disabled], :id => options[:id], :class => options[:class], :'data-url' => options[:'data-url'] do
       content_tag :span, value
     end
   end

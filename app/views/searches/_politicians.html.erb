@@ -7,12 +7,18 @@
   <div class="content">
     <ul class="suggestions">
       <% @politicians.each do |politician| %>
-        <li>
+        <li class="<%= 'selected' unless @politicians_follows[politician.id] && @politicians_follows[politician.id].new_record? %>">
         <%= avatar politician %>
         <div class="content">
           <%= link_to politician.fullname, path_for_user(politician), :class => :name %>
           <p><%= t('.results.title_area', :title => get_politician_title(politician), :area => politician.areas.map(&:name).join(', ')) %></p>
-          <%= link_to t('.results.follow'), '/in_development' %>
+          <div class="follow basic">
+          <% if @politicians_follows[politician.id] && @politicians_follows[politician.id].new_record? -%>
+            <%= render 'follows/create_mini', :follow => @politicians_follows[politician.id], :follow_parent => politician, :button_class => '', :button_label => t('.follow') %>
+          <% else -%>
+            <%= render 'follows/destroy_mini', :follow => @politicians_follows[politician.id], :follow_parent => politician, :button_class => '' %>
+          <% end -%>
+          </div>
         </div>
         </li>
       <% end %>
