@@ -490,7 +490,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.broken-bottom .f { bottom: -15px; height: 15px; background-position: 0 -51px; }
 #container .article.welcome { margin-bottom: 40px; }
 #container .article.welcome div.f { height: 4px; bottom: -4px; background-position: 0 -16px; }
-#container .article.welcome div.t { height: 5px; top: -5px; background-position: 0 0; }
+#container .article.welcome div.t { height: 3px; top: -3px; background-position: 0 0; }
 #container .article.welcome .inner { position: relative; width: 932px; height: auto; padding: 25px 31px; }
 #container .article.welcome .inner a.config { position: absolute; display: block; right: 20px; bottom: 10px; }
 #container .article.welcome .inner a.config.first-time { display: none; visibility: visible; }
@@ -509,6 +509,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.welcome .inner ul.actions li { float: left; width: 474px; height: 221px; padding: 23px 489px 26px 31px; background: url("/images/welcome_illustrations.jpg") no-repeat 0 275px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }
 #container .article.welcome .inner ul.actions li.collaborate { background-position: 460px -314px; }
 #container .article.welcome .inner ul.actions li.follow { background-position: 460px 0; }
+#container .article.welcome .inner ul.actions li.configure { background-position: 391px bottom; }
 #container .article.welcome .inner ul.actions li.user { width: 932px; padding: 23px 31px 26px; }
 #container .article.welcome .inner ul.actions li h3 { font-family: "ClarendonLTMedium", Georgia, serif; text-transform: none; font-weight: normal; color: #465866; font-size: 21px; margin-bottom: 10px; }
 #container .article.welcome .inner ul.actions li p { padding: 0; margin: 0 0 12px 0; font-size: 15px; line-height: 18px; }
