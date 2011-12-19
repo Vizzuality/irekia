@@ -383,10 +383,7 @@
 
     data.spinner.stop();
     $response.hide();
-    trace($currentSection);
-    $form.after($response);
-
-    trace($form);
+    $currentSection.append($response);
 
     data.$ps.find(".extra").hide();
     data.$ps.find(".holder").show();
