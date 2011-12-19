@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => :index
+  skip_before_filter :authenticate_user!, :only => [:index, :change_locale]
 
   def index
     get_areas
@@ -18,6 +18,16 @@ class HomeController < ApplicationController
 
     render :partial => 'shared/agenda_list',
            :layout  => nil and return if request.xhr?
+  end
+
+  def change_locale
+    if params[:new_locale]
+      locale = params[:new_locale]
+      cookies[:current_locale] = {:value => locale, :expires => 1.year.from_now}
+      current_user.update_attribute 'locale', locale if user_signed_in?
+    end
+
+    redirect_back_or_default root_path
   end
 
   def get_areas

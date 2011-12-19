@@ -150,10 +150,10 @@ header {
           border-right:1px solid $medium_dark;
           padding:0 4px!important;
 
-          a { padding:1px 0; font:normal 10px "Helvetica",Arial; color:$link_color; &:hover {color:$link_color_hover;} }
+          input, span { background:none; border:none; padding:1px 0; font:normal 10px "Helvetica",Arial; color:$link_color; &:hover {color:$link_color_hover; text-decoration: underline;} }
 
           &.last {border:none; padding-right:0;}
-          &.selected a {color:$medium_dark; &:hover {text-decoration:none; color:$medium_dark; cursor:default;}}
+          &.selected span {color:$medium_dark; &:hover {text-decoration: none;}}
         } // li
       } // ul.languages
 
