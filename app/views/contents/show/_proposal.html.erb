@@ -20,10 +20,10 @@
     <h1><%= @content.title %></h1>
 
     <div class="meta">
-    <%= link_to @content.author.try(:fullname), path_for_user(@content.author)  %>
-    <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
-    &middot;
-    <span class="comments"><%= link_to @comments_count, "#", :class => :goto_comments %></span>
+      <%= link_to @content.author.try(:fullname), path_for_user(@content.author)  %>
+      <%= t('.title_author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+      &middot;
+      <span class="comments"><%= link_to @comments_count, "#", :class => :goto_comments %></span>
     </div>
 
     <%  if (@content.percent_in_favor == 50 || @content.participation==0)
@@ -75,11 +75,13 @@
             <%= button_with_login 'Estoy en contra', :class => "white_button against#{' selected' unless @vote.new_record? || @vote.in_favor }" %>
           </div>
         <% end -%>
-
-
     </div>
 
-    <%= image_tag @content.proposal_data.image.content_url if @content.has_image? %>
+    <% if @content.has_image? %>
+      <div class="mamufas">
+        <%= image_tag @content.proposal_data.image.content_url %>
+      </div>
+    <% end %>
     <%= simple_format @content.body %>
     <%= render "arguments" %>
     <%= render "participations/comments" %>

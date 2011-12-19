@@ -905,6 +905,10 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .inner .meta span.comments a { background-position: 0 -49px; }
 #container .article .inner .meta span.requests { background-position: 0 -383px; }
 
+/* image mamufas */
+#container .article .inner .mamufas { background: #f7f7f7; }
+#container .article .inner .mamufas img { display: block; margin: 0 auto; }
+
 /* context */
 #container .article .inner .context { float: left; clear: right; margin: 5px 0 12px 0; padding: 0 0 3px 0; border-bottom: 1px solid #e4e8da; font-size: 15px; line-height: normal; color: #465866; }
 #container .article .inner .context a { line-height: normal; }
