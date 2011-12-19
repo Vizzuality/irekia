@@ -1,7 +1,7 @@
 class Event < Content
   has_one :event_data
 
-  delegate :event_date, :title, :subtitle, :body, :to => :event_data, :allow_nil => true
+  delegate :event_date, :title, :subtitle, :body, :image, :build_image, :to => :event_data, :allow_nil => true
 
   accepts_nested_attributes_for :event_data
 

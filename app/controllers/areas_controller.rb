@@ -42,7 +42,7 @@ class AreasController < ApplicationController
     render :partial => 'shared/questions_list',
            :layout  => nil and return if request.xhr?
 
-    session[:return_to] = questions_area_path(@area)
+    session['user_return_to'] = questions_area_path(@area)
   end
 
   def proposals
