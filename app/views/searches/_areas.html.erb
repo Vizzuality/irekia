@@ -11,7 +11,11 @@
             <%= avatar(area) %>
           <div class="content">
             <%= link_to area.name, area_path(area), :class => :name %>
-            <%= link_to t('.results.follow'), '/in_development' %>
+            <% if @areas_follows[area.id] && @areas_follows[area.id].new_record? -%>
+              <%= render 'follows/create_mini', :follow => @areas_follows[area.id], :follow_parent => area, :button_class => '', :button_label => t('.follow') %>
+            <% else -%>
+              <%= render 'follows/destroy_mini', :follow => @areas_follows[area.id], :follow_parent => area, :button_class => '' %>
+            <% end -%>
           </div>
           </li>
         <% end %>

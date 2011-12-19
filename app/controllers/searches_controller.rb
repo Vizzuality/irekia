@@ -59,6 +59,29 @@ class SearchesController < ApplicationController
     @areas_found_count = @areas_found.count
     @politicians_count = @politicians.count
     @citizens_count    = @citizens.count
+
+
+    @areas_follows = @areas_found.inject({}) do |follows, area|
+      follows[area.id] = if current_user.blank? || current_user.not_following(area)
+        follow          = area.follows.build
+        follow.user     = current_user
+        follow
+      else
+        follow = current_user.followed_item(area)
+      end
+      follows
+    end
+
+    @politicians_follows = @politicians.inject({}) do |follows, user|
+      follows[user.id] = if current_user.blank? || current_user.not_following(user)
+        follow          = user.follows.build
+        follow.user     = current_user
+        follow
+      else
+        follow = current_user.followed_item(user)
+      end
+      follows
+    end
   end
   private :get_search_results
 
