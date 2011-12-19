@@ -3845,32 +3845,38 @@ a.editable {
                   &.editable {
                     position:relative;
                     width:255px;
-                    height:54px;
-                    padding: 12px 0 0 10px;
-                    background:url('/images/tag_sprite.png') no-repeat 0 -310px;
+                    height:auto;
+                    padding: 5px 0 0 0;
+                    margin:0 0 6px 0;
+                    background:url('/images/tag_sprite.png') no-repeat 0 -468px;
                     line-height:18px;
                     color: #7D8A92;
-                    margin: 0;
+
+                    div.bottom {
+                      display:block;
+                      width:100%;
+                      height:auto;
+                      padding: 5px 10px 10px 10px;
+                      background:url('/images/tag_sprite.png') no-repeat -255px bottom;
+                    }
 
                     a { color: #666666; }
                     .avatar:before { border-color: $editable_color; }
 
                     form {
                       .remove {
-
                         position: absolute;
-                        top: 10px;
-                        right: 10px;
+                        top: 3px;
+                        right: 3px;
                         float: right;
-                        height: 15px; width: 5px;
-                        text-indent: -99999px;
-
                         height: 15px; width: 15px;
                         margin: 0; padding: 0;
-                        background:url('/images/tag_sprite.png') repeat-x -200px -105px;
+                        background:url('/images/tag_sprite.png') repeat-x -535px -470px;
                         border:0;
+                        text-indent: -99999px;
                         outline:none;
                         z-index:1000;
+                        &:hover {background-position:-565px -470px}
                       }
                     }
                   }
@@ -4141,7 +4147,7 @@ a.editable {
                     outline:none;
 
                     &:hover {
-                      background-position: -200px -105px;
+                      background-position:-570px -475px;
                     }
                   }
                 } // form
