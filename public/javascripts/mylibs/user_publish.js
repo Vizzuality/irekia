@@ -126,9 +126,9 @@
     data.proposalStep = 0;
 
     // Initialize the initial section
-    $currentSection    = $ps.find(".container .section:nth-child(1)");
-    $currentMenuOption = $ps.find(".menu").find("li:nth-child(" + (data.sectionID + 1) + ")");
-    $currentSection    = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
+    $currentSection    = $ps.find(".container .section:eq(0)");
+    $currentMenuOption = $ps.find(".menu").find("li:eq(" + (data.sectionID ) + ")");
+    $currentSection    = $ps.find(".container .section:eq(" + (data.sectionID ) + ")");
 
     _gotoSection(data);
 
@@ -576,10 +576,9 @@
 
     _bindSearch(data);
 
-    var $section  = $ps.find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
+    var $section  = $ps.find('.container .section:eq('+data.sectionID+')');
     var height    = $section.find(".form").outerHeight(true);
     $ps.find(".container").animate({scrollLeft: data.sectionID * data.settings.sectionWidth, height: height }, data.settings.transitionSpeed, "easeInOutQuad");
-
   }
 
   function _showAllAreas(data) {
@@ -647,7 +646,7 @@
       _hideExtraFields(data.settings.transitionSpeed);
 
       data.sectionID = $(this).parent().index();
-      $section       = $(this).parents(".content").find(".container .section:nth-child(" + (data.sectionID + 1) + ")");
+      $section       = $(this).parents(".content").find(".container .section:eq(" + (data.sectionID) + ")");
 
       if (_sectionName($section) != _sectionName($currentSection)) {
         _resetSection(data, $section);
@@ -689,6 +688,7 @@
 
     if (kind == "success") {
       $error.hide();
+
       $success.show(0, function() {
         _changeSubmitTitle(data.$submit, "Cerrar");
         _enableSubmit(data.$submit);
@@ -697,8 +697,8 @@
         data.$submit.bind("click", function() {
           _close(data, true);
         });
-
       });
+
     } else {
       $error.show();
       $success.hide();
