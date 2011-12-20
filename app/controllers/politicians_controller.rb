@@ -14,7 +14,7 @@ class PoliticiansController < UsersController
   before_filter :get_agenda,                 :only => [:show, :agenda]
   before_filter :paginate,                   :only => [:show, :actions, :questions, :proposals]
 
-  respond_to :html, :json
+  respond_to :html, :json, :ics
 
   def show
     session['user_return_to'] = politician_path(@politician)
@@ -48,6 +48,13 @@ class PoliticiansController < UsersController
   def agenda
     render :partial => 'shared/agenda_list',
            :layout  => nil and return if request.xhr?
+
+    respond_with @agenda do |format|
+      format.html
+      format.ics do
+        render :text => Event.to_calendar(@agenda)
+      end
+    end
   end
 
   def detail

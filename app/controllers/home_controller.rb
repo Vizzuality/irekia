@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, :only => [:index, :change_locale]
+  skip_before_filter :authenticate_user!, :only => [:index, :agenda, :change_locale]
+
+  respond_to :html, :json, :ics
 
   def index
     get_areas
@@ -18,6 +20,13 @@ class HomeController < ApplicationController
 
     render :partial => 'shared/agenda_list',
            :layout  => nil and return if request.xhr?
+
+    respond_with @agenda do |format|
+      format.html
+      format.ics do
+        render :text => Event.to_calendar(@agenda)
+      end
+    end
   end
 
   def change_locale
