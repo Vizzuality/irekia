@@ -1,7 +1,7 @@
 <%= avatar data.area %>
 <div class="content">
   <p><strong><%= link_to data.title, news_path(data.id) %></strong></p>
-  <p class="excerpt"><%= strip_tags raw(truncate(data.body.try(:strip), :length => 66))  %></p>
+  <p class="excerpt"><%=  raw(truncate(strip_tags(data.body.try(:strip)), :length => 70))  %></p>
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
