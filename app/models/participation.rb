@@ -70,8 +70,7 @@ class Participation < ActiveRecord::Base
       :author           => {
         :id               => user.id,
         :name             => user.name,
-        :fullname         => user.fullname,
-        :profile_image    => user.profile_image
+        :fullname         => user.fullname
       },
       :content_id       => content_id,
       :content => {

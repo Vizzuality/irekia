@@ -9,6 +9,10 @@ class Image < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  def self.for(user)
+    Image.where(:user_id => user.id).first
+  end
+
   def original_url
     image.original.url
   end

@@ -80,24 +80,32 @@ module ApplicationHelper
   end
 
   def avatar(user_or_area, size = nil)
+    avatar_html = image_tag "icons/faceless#{ "_#{size}" unless size.blank? }_avatar.png", :class => "avatar #{size}", :title => t('unknown_user')
     size = size.present?? size.to_s : ''
 
     if user_or_area.is_a?(Area)
       area = user_or_area
       if area.present? && area.image.present?
-        link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area), :title => area.name, :class => "avatar #{size}"
+        avatar_html = link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area), :title => area.name, :class => "avatar #{size}"
       end
     else
       if user_or_area.present? && user_or_area.profile_image.present?
         user = user_or_area
         image_url = size == 'big' ? user.profile_image_big : user.profile_image
-        link_to (image_tag(image_url) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
+        avatar_html = link_to (image_tag(image_url) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
       elsif user_or_area.present? && user_or_area.thumbnail.present?
         area = user_or_area
-        link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => area.name, :class => "avatar #{size}"
-      else
-        image_tag "icons/faceless#{ "_" + size unless size.blank? }_avatar.png", :class => "avatar #{size}", :title => t('unknown_user')
+        avatar_html = link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => area.name, :class => "avatar #{size}"
+      elsif user_or_area.present? && user_or_area.id.present? && user_or_area.fullname.present?
+        user = user_or_area
+        profile_image = Image.for(user)
+        if profile_image.present?
+          image_url = size == 'big' ? profile_image.image.url : profile_image.image.thumb.url
+          avatar_html = link_to (image_tag(image_url) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
+        end
       end
+
+      avatar_html
     end
   end
 
