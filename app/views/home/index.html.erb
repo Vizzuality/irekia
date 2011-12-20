@@ -1,11 +1,10 @@
-
   <div class="article participation">
     <div class="wrap">
-      <h1>Participa en tu gobierno.</h1>
-      <p>Irekia es la plataforma que te permite hacer oir tu voz en la toma de decisiones de Euskadi. Haz tus propuestas, reclama respuestas, contribuye y opina.</p>
+      <h1><%= t(".title") %></h1>
+      <p><%= t(".description") %></p>
       <% if @current_user.blank? %>
         <div class="login_block">
-          <p><a href="#" class="floating-login">Accede a tu cuenta</a> o <a href="/users/intro" class="blue_button no_shadow">Regístrate ya</a></p>
+          <p><a href="#" class="floating-login"><%= t(".login") %></a> <%= t(".or") %> <a href="/users/intro" class="blue_button no_shadow"><%= t(".register_now") %></a></p>
         </div>
       <% else %>
         <%= form_for :search, :url => search_path, :html => {:method => :get, :autocomplete => :off } do |search_form| %>
@@ -27,7 +26,7 @@
     <div class="bfooter">
       <div class="separator"></div>
       <div class="inner with_spinner">
-        <a class="see_all_areas middle" href="#see_all_areas">ver todas las áreas</a>
+        <a class="see_all_areas middle" href="#see_all_areas"><%= t(".view_all_the_areas") %></a>
       </div>
     </div>
     <div class="f"></div>
@@ -40,31 +39,31 @@
         <li>
           <span class="left">
             <p><%= @all_citizens %></p>
-            <label>ciudadanos</label>
+            <label><%= t(".citizens") %></label>
           </span>
           <span class="right">
             <p><%= @all_politicians %></p>
-            <label>políticos</label>
+            <label><%= t(".politicians") %></label>
           </span>
         </li>
         <li>
           <span class="left">
             <p><%= @all_questions %></p>
-            <label>preguntas</label>
+            <label><%= t(".questions") %></label>
           </span>
           <span class="right">
             <p><%= @all_questions_answered %></p>
-            <label>respondidas</label>
+            <label><%= t(".answered") %></label>
           </span>
         </li>
         <li class="last">
           <span class="left">
             <p><%= @all_proposals %></p>
-            <label>propuestas</label>
+            <label><%= t(".proposals") %></label>
           </span>
           <span class="right">
             <p><%= @all_votes %></p>
-            <label>votos</label>
+            <label><%= t(".votes") %></label>
           </span>
         </li>
       </ul>
@@ -78,11 +77,11 @@
 
   <section class="banners">
     <ul>
-      <li><a href="http://opendata.euskadi.net" class="open_data" target="_blank">Open data euskadi</a></li>
-      <li><a href="https://www2.irekia.euskadi.net/" class="guia_com" target="_blank">Guía de comunicación abierta</a></li>
-      <li><a href="http://www.gardena.irekia.euskadi.net/y09-home/es" class="opacity" target="_blank">Transparencia</a></li>
-      <li><a href="#open_data!" class="press" target="_blank">Prensa :)</a></li>
-      <li class="last"><a href="http://opendata.euskadi.net" class="open_data" target="_blank">Open data euskadi</a></li>
+      <li><a href="http://opendata.euskadi.net" class="open_data" target="_blank"><%= t(".banners.opendata") %></a></li>
+      <li><a href="https://www2.irekia.euskadi.net/" class="guia_com" target="_blank"><%= t(".banners.guide") %></a></li>
+      <li><a href="http://www.gardena.irekia.euskadi.net/y09-home/es" class="opacity" target="_blank"><%= t(".banners.transparency") %></a></li>
+      <li><a href="#open_data!" class="press" target="_blank"><%= t(".banners.press") %></a></li>
+      <li class="last"><a href="http://opendata.euskadi.net" class="open_data" target="_blank"><%= t(".banners.opendata") %></a></li>
     </ul>
   </section>
 

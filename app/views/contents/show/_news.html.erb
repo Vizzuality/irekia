@@ -29,7 +29,6 @@
 
       <iframe src="/demo/slideshow" width="650" height="400" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
 
-      <%#= image_tag @content.news_data.image.content_url if @content.news_data.image.present? %>
       <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil %>
       <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
 
@@ -49,14 +48,14 @@
   </div>
 
   <div class="bfooter">
-  <div class="separator"></div>
-  <div class="inner">
+    <div class="separator"></div>
+    <div class="inner">
 
-    <div class="left">
-      <%= link_to t(".back"), "javascript: history.go(-1)", :class => :left_arrow %>
+      <div class="left">
+        <%= link_to t(".back"), "javascript: history.go(-1)", :class => :left_arrow %>
+      </div>
+
     </div>
-
-  </div>
   </div>
   <div class="t"></div><div class="f"></div>
 </div>

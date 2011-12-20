@@ -1,93 +1,93 @@
 <div class="article profile summary with_footer">
-<div class="inner">
-  <header>
-  <h1><%= @politician.truncated_fullname(30) %></h1>
-  <p class="position">
-  <%= raw t('.title', :title => get_politician_title(@politician, 40), :areas => @politician.areas.map{|area| link_to area.name, area_path(area)}.join(', ')) %>
-  </p>
-  </header>
+  <div class="inner">
+    <header>
+    <h1><%= @politician.truncated_fullname(30) %></h1>
+    <p class="position">
+    <%= raw t('.title', :title => get_politician_title(@politician, 40), :areas => @politician.areas.map{|area| link_to area.name, area_path(area)}.join(', ')) %>
+    </p>
+    </header>
 
-  <div class="left">
-    <h3><%= t(".description.title") %></h3>
-    <div class="description two_columns">
-      <div class="first column">
-        <%= simple_format(@politician.description_1.try(:strip)) %>
-      </div>
-      <div class="last column">
-        <%= simple_format("#{@politician.description_2.try(:strip)} #{link_to(t('.description.read_more'), detail_politician_path(@politician))}") %>
-        <% if @follow.new_record? -%>
-          <%= render 'follows/create' %>
-        <% else -%>
-          <%= render 'follows/destroy' %>
-        <% end -%>
+    <div class="left">
+      <h3><%= t(".description.title") %></h3>
+      <div class="description two_columns">
+        <div class="first column">
+          <%= simple_format(@politician.description_1.try(:strip)) %>
+        </div>
+        <div class="last column">
+          <%= simple_format("#{@politician.description_2.try(:strip)} #{link_to(t('.description.read_more'), detail_politician_path(@politician))}") %>
+          <% if @follow.new_record? -%>
+            <%= render 'follows/create' %>
+          <% else -%>
+            <%= render 'follows/destroy' %>
+          <% end -%>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="bfooter">
-<div class="separator"></div>
-<div class="inner with_avatar with_question">
+  <div class="bfooter">
+    <div class="separator"></div>
+    <div class="inner with_avatar with_question">
 
-  <div class="avatar_box">
-    <%= avatar @politician, :big %>
-    <div class="frame"></div>
+      <div class="avatar_box">
+        <%= avatar @politician, :big %>
+        <div class="frame"></div>
+      </div>
+
+      <h3><%= t(".ask.title", :name => @politician.name) %></h3>
+
+      <%= form_for @question, :remote => true, :html => {:'data-type' => 'html', :class => [:make_question, only_logged_class]} do |form| %>
+        <%= form.fields_for :areas_contents, @question.areas_contents.first do |area_content_data| %>
+          <%= area_content_data.hidden_field :area_id %>
+          <%= area_content_data.hidden_field :content_id %>
+        <% end -%>
+
+        <%= form.fields_for :question_data, @question_data do |question_data| %>
+          <%= question_data.hidden_field :user_id %>
+          <div id="counter-124" class="input-counter placeholder">
+            <span class="counter">140</span>
+            <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
+            <span class="holder large"><%= t(".ask.label", :name => @politician.name) %>...</span>
+            <span class="spinner" id="politician_question_spinner"></span>
+            <span class="peak"></span>
+          </div>
+
+          <%= button t(".ask.button"), :class => "disabled white_button", :disabled => :disabled, :id => "submit-counter-124" %>
+
+          <div id="notice_success" class="article notice_success notice">
+            <div class="inner">
+              <div class="content">
+                <p>
+                <strong><%= t(".success.title") %></strong>
+                <%= t(".success.description") %>
+                </p>
+              </div>
+              <div class="t"></div><div class="f"></div>
+            </div>
+          </div>
+
+          <div class="article notice_error notice">
+            <div class="inner">
+              <div class="content">
+                <p>
+                <strong><%= t(".error.title") %></strong>
+                <%= t(".error.description") %>
+                </p>
+              </div>
+              <div class="t"></div><div class="f"></div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
   </div>
-
-  <h3>Pregunta a <%= @politician.name %></h3>
-
-  <%= form_for @question, :remote => true, :html => {:'data-type' => 'html', :class => [:make_question, only_logged_class]} do |form| %>
-    <%= form.fields_for :areas_contents, @question.areas_contents.first do |area_content_data| %>
-      <%= area_content_data.hidden_field :area_id %>
-      <%= area_content_data.hidden_field :content_id %>
-    <% end -%>
-
-    <%= form.fields_for :question_data, @question_data do |question_data| %>
-      <%= question_data.hidden_field :user_id %>
-      <div id="counter-124" class="input-counter placeholder">
-        <span class="counter">140</span>
-        <%= question_data.text_field :question_text, :class => :xlInput, :id => "ask-question" %>
-        <span class="holder large">Haz una pregunta a <%= @politician.name %>...</span>
-        <span class="spinner" id="politician_question_spinner"></span>
-        <span class="peak"></span>
-      </div>
-
-      <%= button "Preguntar", :class => "disabled white_button", :disabled => :disabled, :id => "submit-counter-124" %>
-
-      <div id="notice_success" class="article notice_success notice">
-      <div class="inner">
-        <div class="content">
-          <p>
-          <strong>Pregunta enviada.</strong>
-          Te avisaremos en cuanto sea aprobada.
-          </p>
-        </div>
-        <div class="t"></div><div class="f"></div>
-      </div>
-      </div>
-
-      <div class="article notice_error notice">
-      <div class="inner">
-        <div class="content">
-          <p>
-          <strong>Error técnico.</strong>
-          Lo sentimos, no se ha podido guardar :-(
-          </p>
-        </div>
-        <div class="t"></div><div class="f"></div>
-      </div>
-      </div>
-    <% end %>
-  <% end %>
-
-</div>
-</div>
-<% if @follow.new_record? -%>
-  <%= render 'follows/create_ribbon' %>
-<% else -%>
-  <%= render 'follows/destroy_ribbon' %>
-<% end -%>
-<div class="t"></div><div class="f"></div>
+  <% if @follow.new_record? -%>
+    <%= render 'follows/create_ribbon' %>
+  <% else -%>
+    <%= render 'follows/destroy_ribbon' %>
+  <% end -%>
+  <div class="t"></div><div class="f"></div>
 </div>
 
 <% if user_signed_in? %>

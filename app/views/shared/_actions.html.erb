@@ -1,106 +1,106 @@
 <div id="actions" class="article actions with_filters<%= " with_footer" if viewing_dashboard? or controller.action_name == "home" or (@area) %>">
-<div class="inner">
-  <header>
-  <div class="left">
-    <h2><%= raw title rescue t('.title') %></h2>
-    <% if defined?(description) -%>
-      <p><%= raw description %></p>
-    <% end -%>
-  </div>
-  <div class="right">
-    <ul class="switch">
-      <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_actions(:more_polemic => false, :referer => action_name), :class => 'filter more_recent' %></li>
-      <li><%= link_to t('.main_filters.more_polemic'), link_for_actions(:more_polemic => true, :referer => action_name), :class => 'filter more_polemic' %></li>
-    </ul>
-
-  </div>
-  </header>
-
-  <div class="left">
-    <div class="listing listing_actions_<%= params[:id] %>">
-      <% if @actions.present? %>
-        <%= render 'shared/actions_list' %>
-      <% else %>
-        <span class="empty"><%= t((@area || @user).class.name.downcase, :scope => 'shared.actions.no_content', :target => (@area || @user).name ) %></span>
-      <% end %>
+  <div class="inner">
+    <header>
+    <div class="left">
+      <h2><%= raw title rescue t('.title') %></h2>
+      <% if defined?(description) -%>
+        <p><%= raw description %></p>
+      <% end -%>
     </div>
-    &nbsp;
-  </div>
-
-  <div class="right">
-    <ul class="selector">
-
-      <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_actions(:type => nil, :referer => action_name), :class => "filter" %></li>
-
-      <li>
-      <% if @news_count > 0 %>
-        <%= link_to t('.content_type_filters.news'), link_for_actions(:type => :news, :referer => action_name), :class => "filter" %>
-      <% else %>
-        <p><%= t('.no_content_filters.news') %></p>
-      <% end %>
-      </li>
-
-      <li>
-      <% if @questions_count > 0 || @answers_count > 0 %>
-        <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => [:question, :answer, :answer_request], :referer => action_name), :class => "filter" %>
-      <% else %>
-        <p><%= t('.no_content_filters.questions') %></p>
-      <% end %>
-      </li>
-
-      <li>
-      <% if @proposals_count > 0 || @arguments_count > 0 || @votes_count > 0 %>
-        <%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => [:proposal, :argument, :vote], :referer => action_name), :class => "filter" %>
-      <% else %>
-        <p><%= t('.no_content_filters.proposals') %></p>
-      <% end %>
-      </li>
-
-      <li>
-      <% if @photos_count > 0 %>
-        <%= link_to t('.content_type_filters.images'), link_for_actions(:type => :photo, :referer => action_name), :class => "filter" %>
-      <% else %>
-        <p><%= t('.no_content_filters.images') %></p>
-      <% end %>
-      </li>
-
-      <li>
-      <% if @videos_count > 0 %>
-        <%= link_to t('.content_type_filters.videos'), link_for_actions(:type => :video, :referer => action_name), :class => "filter" %>
-      <% else %>
-        <p><%= t('.no_content_filters.videos') %></p>
-      <% end %>
-      </li>
-
-      <li>
-      <% if @status_messages_count > 0 || @tweets_count > 0 %>
-        <%= link_to t('.content_type_filters.statuses'), link_for_actions(:type => [:tweet, :statusmessage], :referer => action_name), :class => "filter" %>
-      <% else %>
-        <p><%= t('.no_content_filters.statuses') %></p>
-      <% end %>
-      </li>
-
-    </ul>
-  </div>
-</div>
-<% if viewing_dashboard? or controller.action_name == "home" or (@area)  %>
-  <div class="bfooter">
-    <div class="separator"></div>
-    <div class="inner with_spinner">
-
-      <% if viewing_dashboard? or controller.action_name == "actions" %>
-        <div class="left">
-          <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" if @actions.present? %>
-          <span id="actions_spinner" class="spinner"></span>
-        </div>
-      <% else %>
-        <div class="right">
-          <%= link_to t('.more'), link_for_actions(:anchor => :actions), :id => "actions_#{params[:id]}", :class => "right_arrow" %>
-        </div>
-      <% end %>
+    <div class="right">
+      <ul class="switch">
+        <li class="selected"><%= link_to t('.main_filters.more_recent'), link_for_actions(:more_polemic => false, :referer => action_name), :class => 'filter more_recent' %></li>
+        <li><%= link_to t('.main_filters.more_polemic'), link_for_actions(:more_polemic => true, :referer => action_name), :class => 'filter more_polemic' %></li>
+      </ul>
 
     </div>
+    </header>
+
+    <div class="left">
+      <div class="listing listing_actions_<%= params[:id] %>">
+        <% if @actions.present? %>
+          <%= render 'shared/actions_list' %>
+        <% else %>
+          <span class="empty"><%= t((@area || @user).class.name.downcase, :scope => 'shared.actions.no_content', :target => (@area || @user).name ) %></span>
+        <% end %>
+      </div>
+      &nbsp;
+    </div>
+
+    <div class="right">
+      <ul class="selector">
+
+        <li class="selected"><%= link_to t('.content_type_filters.all'), link_for_actions(:type => nil, :referer => action_name), :class => "filter" %></li>
+
+        <li>
+        <% if @news_count > 0 %>
+          <%= link_to t('.content_type_filters.news'), link_for_actions(:type => :news, :referer => action_name), :class => "filter" %>
+        <% else %>
+          <p><%= t('.no_content_filters.news') %></p>
+        <% end %>
+        </li>
+
+        <li>
+        <% if @questions_count > 0 || @answers_count > 0 %>
+          <%= link_to t('.content_type_filters.questions'), link_for_actions(:type => [:question, :answer, :answer_request], :referer => action_name), :class => "filter" %>
+        <% else %>
+          <p><%= t('.no_content_filters.questions') %></p>
+        <% end %>
+        </li>
+
+        <li>
+        <% if @proposals_count > 0 || @arguments_count > 0 || @votes_count > 0 %>
+          <%= link_to t('.content_type_filters.proposals'), link_for_actions(:type => [:proposal, :argument, :vote], :referer => action_name), :class => "filter" %>
+        <% else %>
+          <p><%= t('.no_content_filters.proposals') %></p>
+        <% end %>
+        </li>
+
+        <li>
+        <% if @photos_count > 0 %>
+          <%= link_to t('.content_type_filters.images'), link_for_actions(:type => :photo, :referer => action_name), :class => "filter" %>
+        <% else %>
+          <p><%= t('.no_content_filters.images') %></p>
+        <% end %>
+        </li>
+
+        <li>
+        <% if @videos_count > 0 %>
+          <%= link_to t('.content_type_filters.videos'), link_for_actions(:type => :video, :referer => action_name), :class => "filter" %>
+        <% else %>
+          <p><%= t('.no_content_filters.videos') %></p>
+        <% end %>
+        </li>
+
+        <li>
+        <% if @status_messages_count > 0 || @tweets_count > 0 %>
+          <%= link_to t('.content_type_filters.statuses'), link_for_actions(:type => [:tweet, :statusmessage], :referer => action_name), :class => "filter" %>
+        <% else %>
+          <p><%= t('.no_content_filters.statuses') %></p>
+        <% end %>
+        </li>
+
+      </ul>
+    </div>
   </div>
-<% end %>
-<div class="t"></div><div class="f"></div>
+  <% if viewing_dashboard? or controller.action_name == "home" or (@area)  %>
+    <div class="bfooter">
+      <div class="separator"></div>
+      <div class="inner with_spinner">
+
+        <% if viewing_dashboard? or controller.action_name == "actions" %>
+          <div class="left">
+            <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" if @actions.present? %>
+            <span id="actions_spinner" class="spinner"></span>
+          </div>
+        <% else %>
+          <div class="right">
+            <%= link_to t('.more'), link_for_actions(:anchor => :actions), :id => "actions_#{params[:id]}", :class => "right_arrow" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  <% end %>
+  <div class="t"></div><div class="f"></div>
 </div>

@@ -1,35 +1,34 @@
 <div class="article team with_footer">
-<div class="inner">
-  <header>
-  <h2><%= t('.title', :count => @team.count) %></h2>
-  </header>
-  <div class="content">
-    <ul class="suggestions">
-      <% @team.each do |user| %>
-        <li class="<%= 'selected' unless (follow = (current_user.follow_for_user(user) rescue Follow.new)).new_record? %>">
-        <%= avatar user %>
-        <div class="content">
-          <%= link_to user.truncated_fullname(24), path_for_user(user), :title => user.fullname, :class => :name %>
-          <p class="title"><%= truncate(get_politician_title(user), :length => 25) %></p>
-          <div class="follow basic clearfix">
-          <% if follow.new_record? -%>
-            <%= render 'follows/create_mini', :follow => follow, :follow_parent => user %>
-          <% else -%>
-            <%= render 'follows/destroy_mini', :follow => follow, :follow_parent => user %>
-          <% end -%>
+  <div class="inner">
+    <header>
+    <h2><%= t('.title', :count => @team.count) %></h2>
+    </header>
+    <div class="content">
+      <ul class="suggestions">
+        <% @team.each do |user| %>
+          <li class="<%= 'selected' unless (follow = (current_user.follow_for_user(user) rescue Follow.new)).new_record? %>">
+          <%= avatar user %>
+          <div class="content">
+            <%= link_to user.truncated_fullname(24), path_for_user(user), :title => user.fullname, :class => :name %>
+            <p class="title"><%= truncate(get_politician_title(user), :length => 25) %></p>
+            <div class="follow basic clearfix">
+              <% if follow.new_record? -%>
+                <%= render 'follows/create_mini', :follow => follow, :follow_parent => user %>
+              <% else -%>
+                <%= render 'follows/destroy_mini', :follow => follow, :follow_parent => user %>
+              <% end -%>
+            </div>
           </div>
-        </div>
-        </li>
-      <% end %>
-    </ul>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="bfooter">
-<div class="separator"></div>
-<div class="inner">
-  <div class="right">
+  <div class="bfooter">
+    <div class="separator"></div>
+    <div class="inner">
+      <div class="right"></div>
+    </div>
   </div>
-</div>
-</div>
-<div class="t"></div><div class="f"></div>
+  <div class="t"></div><div class="f"></div>
 </div>

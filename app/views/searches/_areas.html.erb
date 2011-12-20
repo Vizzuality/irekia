@@ -1,45 +1,45 @@
 <% if @areas_found.count > 0  %>
   <div class="article results with_footer">
-  <div class="inner">
-    <header>
-    <h2><%= t('.results.title', :count => @areas_found.count) %></h2>
-    </header>
-    <div class="content">
-      <ul class="suggestions">
-        <% @areas_found.each do |area| %>
-          <li class="<%= 'selected' unless @areas_follows[area.id] && @areas_follows[area.id].new_record? %>">
+    <div class="inner">
+      <header>
+      <h2><%= t('.results.title', :count => @areas_found.count) %></h2>
+      </header>
+      <div class="content">
+        <ul class="suggestions">
+          <% @areas_found.each do |area| %>
+            <li class="<%= 'selected' unless @areas_follows[area.id] && @areas_follows[area.id].new_record? %>">
             <%= avatar(area) %>
-          <div class="content">
-            <%= link_to area.name, area_path(area), :class => :name %>
-            <div class="follow basic">
-            <% if @areas_follows[area.id] && @areas_follows[area.id].new_record? -%>
-              <%= render 'follows/create_mini', :follow => @areas_follows[area.id], :follow_parent => area, :button_class => '', :button_label => t('.follow') %>
-            <% else -%>
-              <%= render 'follows/destroy_mini', :follow => @areas_follows[area.id], :follow_parent => area, :button_class => '' %>
-            <% end -%>
+            <div class="content">
+              <%= link_to area.name, area_path(area), :class => :name %>
+              <div class="follow basic">
+                <% if @areas_follows[area.id] && @areas_follows[area.id].new_record? -%>
+                  <%= render 'follows/create_mini', :follow => @areas_follows[area.id], :follow_parent => area, :button_class => '', :button_label => t('.follow') %>
+                <% else -%>
+                  <%= render 'follows/destroy_mini', :follow => @areas_follows[area.id], :follow_parent => area, :button_class => '' %>
+                <% end -%>
+              </div>
             </div>
-          </div>
-          </li>
-        <% end %>
-      </ul>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
-  <div class="bfooter">
-  <div class="separator"></div>
-  <div class="inner">
-    <div class="left">
-      <% if action_name == 'show' %>
-        <% if @areas_found.count > 10 %>
-          <%= link_to t('.results.all', :count => @areas_found.count), '/in_development', :class => :right_arrow %>
-        <% end %>
-      <% else %>
-        <% if @areas_found.count > 10 %>
-          <%= link_to t('.results.more'), '/in_development', :class => :right_arrow %>
-        <% end %>
-      <% end %>
+    <div class="bfooter">
+      <div class="separator"></div>
+      <div class="inner">
+        <div class="left">
+          <% if action_name == 'show' %>
+            <% if @areas_found.count > 10 %>
+              <%= link_to t('.results.all', :count => @areas_found.count), '/in_development', :class => :right_arrow %>
+            <% end %>
+          <% else %>
+            <% if @areas_found.count > 10 %>
+              <%= link_to t('.results.more'), '/in_development', :class => :right_arrow %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
-  <div class="t"></div><div class="f"></div>
+    <div class="t"></div><div class="f"></div>
   </div>
 <% end %>

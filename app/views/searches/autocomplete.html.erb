@@ -1,7 +1,7 @@
 <ul class="results">
   <% if @politicians.size > 0 %>
     <li class="politicians">
-      <div class="summary"><h3><%= t('.politicians.summary.title') %></h3><%= link_to t('.politicians.summary.count', :count => @politicians.count), politicians_search_path(search_params) %></div>
+    <div class="summary"><h3><%= t('.politicians.summary.title') %></h3><%= link_to t('.politicians.summary.count', :count => @politicians.count), politicians_search_path(search_params) %></div>
     <ul>
       <% @politicians.first(2).each do |politician| %>
         <li>

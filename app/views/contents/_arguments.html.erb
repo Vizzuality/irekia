@@ -20,7 +20,7 @@
           <% end -%>
           <%= form.submit_with_login t('.add') %>
           <span id="spinner_in_favor" class="spinner"></span>
-          <span class="holder">Escribe aquí</span>
+          <span class="holder"><%= t(".write_here") %></span>
         </div>
       <% end -%>
     </div>
@@ -46,34 +46,33 @@
           <% end -%>
           <%= form.submit_with_login t('.add') %>
           <span id="spinner_against" class="spinner"></span>
-          <span class="holder">Escribe aquí</span>
+          <span class="holder"><%= t(".write_here") %></span>
         </div>
       <% end -%>
     </div>
   </div>
 
   <div id="notice_in_favor" class="article notice">
-  <div class="inner">
-    <div class="content">
-      <p>
-      <strong>Comentario enviado.</strong>
-      Te avisaremos en cuanto sea aprobado.
-      </p>
+    <div class="inner">
+      <div class="content">
+        <p>
+        <strong><%= t(".success.title") %></strong>
+        <%= t(".success.description") %>
+        </p>
+      </div>
+      <div class="t"></div><div class="f"></div>
     </div>
-    <div class="t"></div><div class="f"></div>
   </div>
-  </div>
-
 
   <div id="notice_against" class="article notice">
-  <div class="inner">
-    <div class="content">
-      <p>
-      <strong>Error técnico.</strong>
-      Lo sentimos, no se ha podido guardar :-(
-      </p>
+    <div class="inner">
+      <div class="content">
+        <p>
+        <strong><%= t(".error.title") %></strong>
+        <strong><%= t(".error.description") %></strong>
+        </p>
+      </div>
+      <div class="t"></div><div class="f"></div>
     </div>
-    <div class="t"></div><div class="f"></div>
-  </div>
   </div>
 </div>

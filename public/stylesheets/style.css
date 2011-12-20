@@ -1539,7 +1539,7 @@ body.home #container .article#areas div.areas_list ul li div.info span.total { d
 body.home #container .article#areas div.areas_list ul li div.info span.total a { font-size: 13px!important; }
 body.home #container .article#areas div.areas_list ul li.last { width: 272px; border-right: none; }
 body.home #container .article#areas div.areas_list div.all_areas { position: absolute; display: none; top: 400px; }
-body.home #container .article#areas div.areas_list div.all_areas h4 { width: 100%; display: block; margin: 0 0 0 30px; font: bold 12px "Helvetica",Arial; color: #465866; }
+body.home #container .article#areas div.areas_list div.all_areas h4 { width: 100%; display: block; margin: 0 0 0 30px; font: bold 12px "Helvetica",Arial; color: #465866; text-transform: uppercase; }
 body.home #container .article#areas div.areas_list div.all_areas ul.list { position: relative; padding: 20px 0 0 0; }
 body.home #container .article#areas div.areas_list div.all_areas ul.list li { height: auto; padding: 5px 30px; border: none; width: 271px; }
 body.home #container .article#areas div.areas_list div.all_areas ul.list li a { font: normal 17px "Helvetica",Arial!important; color: #1D79B0; }

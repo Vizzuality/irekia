@@ -1,48 +1,48 @@
 <% if @politicians.count > 0  %>
-<div class="article results with_footer">
-<div class="inner">
-  <header>
-  <h2><%= t('.results.title', :count => @politicians.count) %></h2>
-  </header>
-  <div class="content">
-    <ul class="suggestions">
-      <% @politicians.each do |politician| %>
-        <li class="<%= 'selected' unless @politicians_follows[politician.id] && @politicians_follows[politician.id].new_record? %>">
-        <%= avatar politician %>
-        <div class="content">
-          <%= link_to politician.fullname, path_for_user(politician), :class => :name %>
-          <p><%= t('.results.title_area', :title => get_politician_title(politician), :area => politician.areas.map(&:name).join(', ')) %></p>
-          <div class="follow basic">
-          <% if @politicians_follows[politician.id] && @politicians_follows[politician.id].new_record? -%>
-            <%= render 'follows/create_mini', :follow => @politicians_follows[politician.id], :follow_parent => politician, :button_class => '', :button_label => t('.follow') %>
-          <% else -%>
-            <%= render 'follows/destroy_mini', :follow => @politicians_follows[politician.id], :follow_parent => politician, :button_class => '' %>
-          <% end -%>
-          </div>
+  <div class="article results with_footer">
+    <div class="inner">
+      <header>
+      <h2><%= t('.results.title', :count => @politicians.count) %></h2>
+      </header>
+      <div class="content">
+        <ul class="suggestions">
+          <% @politicians.each do |politician| %>
+            <li class="<%= 'selected' unless @politicians_follows[politician.id] && @politicians_follows[politician.id].new_record? %>">
+            <%= avatar politician %>
+            <div class="content">
+              <%= link_to politician.fullname, path_for_user(politician), :class => :name %>
+              <p><%= t('.results.title_area', :title => get_politician_title(politician), :area => politician.areas.map(&:name).join(', ')) %></p>
+              <div class="follow basic">
+                <% if @politicians_follows[politician.id] && @politicians_follows[politician.id].new_record? -%>
+                  <%= render 'follows/create_mini', :follow => @politicians_follows[politician.id], :follow_parent => politician, :button_class => '', :button_label => t('.follow') %>
+                <% else -%>
+                  <%= render 'follows/destroy_mini', :follow => @politicians_follows[politician.id], :follow_parent => politician, :button_class => '' %>
+                <% end -%>
+              </div>
+            </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="bfooter">
+      <div class="separator"></div>
+      <div class="inner">
+        <div class="left">
+
+          <% if action_name == 'show' %>
+            <% if @politicians.count > 10 %>
+              <%= link_to t('.results.all', :count => @politicians.count), '/in_development', :right_arrow %>
+            <% end %>
+          <% else %>
+            <% if @politicians.count > 10 %>
+              <%= link_to t('.results.more'), '/in_development', :class => :down_arrow %>
+            <% end %>
+          <% end %>
+
         </div>
-        </li>
-      <% end %>
-    </ul>
+      </div>
+    </div>
+    <div class="t"></div><div class="f"></div>
   </div>
-</div>
-<div class="bfooter">
-<div class="separator"></div>
-<div class="inner">
-  <div class="left">
-
-    <% if action_name == 'show' %>
-      <% if @politicians.count > 10 %>
-        <%= link_to t('.results.all', :count => @politicians.count), '/in_development', :right_arrow %>
-      <% end %>
-    <% else %>
-      <% if @politicians.count > 10 %>
-        <%= link_to t('.results.more'), '/in_development', :class => :down_arrow %>
-      <% end %>
-    <% end %>
-
-  </div>
-</div>
-</div>
-<div class="t"></div><div class="f"></div>
-</div>
 <% end %>

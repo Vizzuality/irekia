@@ -1,63 +1,61 @@
-<!-- Article -->
 <div class="article summary">
-<div class="inner">
-  <div class="content">
-    <header>
-    <h1><%= avatar(@area) %> <%= link_to @area.name, area_path(@area), :class => 'area_title' %></h1>
-    </header>
-    <div class="left">
-      <h3> <%= t('.description.title') %></h3>
-      <div class="description two_columns">
-        <div class="first column">
-          <%= simple_format(@area.description_1) %>
-        </div>
-        <div class="last column">
-          <%= simple_format(@area.description_2) %>
-          <% if @follow.new_record? -%>
-            <%= render 'follows/create' %>
-          <% else -%>
-            <%= render 'follows/destroy' %>
-          <% end -%>
+  <div class="inner">
+    <div class="content">
+      <header>
+      <h1><%= avatar(@area) %> <%= link_to @area.name, area_path(@area), :class => 'area_title' %></h1>
+      </header>
+      <div class="left">
+        <h3> <%= t('.description.title') %></h3>
+        <div class="description two_columns">
+          <div class="first column">
+            <%= simple_format(@area.description_1) %>
+          </div>
+          <div class="last column">
+            <%= simple_format(@area.description_2) %>
+            <% if @follow.new_record? -%>
+              <%= render 'follows/create' %>
+            <% else -%>
+              <%= render 'follows/destroy' %>
+            <% end -%>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="right">
-      <ul class="people">
+      <div class="right">
+        <ul class="people">
 
-        <% @team.first(2).each do |user| %>
-          <li>
-          <%= avatar(user, :small) %>
-          <%= link_to user.fullname, path_for_user(user), :class => :name %>
-          <span><%= truncate(get_politician_title(user), :length => 25) %></span>
-          </li>
-        <% end %>
-
-        <% if @team.from(2).present? %>
-          <% if @team.from(2).size > 1 -%>
-            <li class="more">
-            <%= link_to (content_tag 'div', (image_tag 'icons/more_people_avatar.png'), :class => "avatar small"), team_area_path(@area, :anchor => :team) %>
-            <%= link_to t('.team.other_members', :count => @team.from(2).length), team_area_path(@area, :anchor => :team), :class => :name %>
+          <% @team.first(2).each do |user| %>
+            <li>
+            <%= avatar(user, :small) %>
+            <%= link_to user.fullname, path_for_user(user), :class => :name %>
+            <span><%= truncate(get_politician_title(user), :length => 25) %></span>
             </li>
-          <% else -%>
-            <% @team.from(2).each do |user| -%>
-              <li>
-              <%= avatar(user, :small) %>
-              <%= link_to user.fullname, path_for_user(user), :class => :name %>
-              <span><%= get_politician_title(user) %></span>
-              </li>
-            <% end -%>
-          <% end -%>
-        <% end %>
+          <% end %>
 
-      </ul>
+          <% if @team.from(2).present? %>
+            <% if @team.from(2).size > 1 -%>
+              <li class="more">
+              <%= link_to (content_tag 'div', (image_tag 'icons/more_people_avatar.png'), :class => "avatar small"), team_area_path(@area, :anchor => :team) %>
+              <%= link_to t('.team.other_members', :count => @team.from(2).length), team_area_path(@area, :anchor => :team), :class => :name %>
+              </li>
+            <% else -%>
+              <% @team.from(2).each do |user| -%>
+                <li>
+                <%= avatar(user, :small) %>
+                <%= link_to user.fullname, path_for_user(user), :class => :name %>
+                <span><%= get_politician_title(user) %></span>
+                </li>
+              <% end -%>
+            <% end -%>
+          <% end %>
+
+        </ul>
+      </div>
     </div>
   </div>
+  <% if @follow.new_record? -%>
+    <%= render 'follows/create_ribbon' %>
+  <% else -%>
+    <%= render 'follows/destroy_ribbon' %>
+  <% end -%>
+  <div class="t"></div><div class="f"></div>
 </div>
-<% if @follow.new_record? -%>
-  <%= render 'follows/create_ribbon' %>
-<% else -%>
-  <%= render 'follows/destroy_ribbon' %>
-<% end -%>
-<div class="t"></div><div class="f"></div>
-</div>
-<!-- /Article -->

@@ -303,11 +303,29 @@
     configure_your_account: Configura tu cuenta
   home:
     index:
+      title: Participa en tu gobierno.
+      description: Irekia es la plataforma que te permite hacer oir tu voz en la toma de decisiones de Euskadi. Haz tus propuestas, reclama respuestas, contribuye y opina.
+      login: Accede a tu cuenta
+      or: o
+      register_now: Regístrate ya
+      view_all_the_areas: ver todas las áreas
       search: ¿Qué buscas?
       button: Buscar
+      citizens: ciudadanos
+      politicians: políticos
+      questions: preguntas
+      answered: respondidas
+      proposals: propuestas
+      votes: votos
+      banners:
+        press: Prensa :)
+        transparency: Transparencia
+        guide: Guía de comunicación abierta
+        opendata: Open data euskadi
     agenda:
       title: 'Agenda de Irekia'
     areas:
+      all_the_areas: Todas las áreas
       questions:
         zero: Ninguna pregunta
         one: 1 pregunta
@@ -318,6 +336,10 @@
         other: '%{count} propuestas'
       no_activity: Sin actividad
   shared:
+    questions_list:
+      no_content: No hay preguntas en este área
+    proposals_list:
+      no_content: No hay propuestas en este área
     politician_publish:
       photo: Foto
       video: Vídeo
@@ -965,6 +987,13 @@
       in_favor: Argumentos a favor
       against: Argumentos en contra
       add: Añadir
+      write_here: Escribe aquí
+      success:
+        title: Comentario enviado.
+        description: Te avisaremos en cuanto sea aprobado.
+      error:
+        title: Error técnico.
+        description: Lo sentimos, no se ha podido guardar :-(
     create:
       proposal:
         title: Tu propuesta ha sido enviada
@@ -1366,6 +1395,16 @@
       make_a_question:
         label: 'Haz una pregunta a %{name}'
         submit: Preguntar
+      ask:
+        button: Preguntar
+        title: 'Pregunta a %{name}'
+        label: 'Haz una pregunta a %{name}'
+      success:
+        title: Comentario enviado.
+        description: Te avisaremos en cuanto sea aprobado.
+      error:
+        title: Error técnico.
+        description: Lo sentimos, no se ha podido guardar :-(
       question_sent:
         success: Tu pregunta se ha enviado correctamente
         waiting_moderation: 'y será publicada en cuanto nuestro equipo de moderación la haya %{review_link}. También te avisaremos cuando recibas respuesta.'
