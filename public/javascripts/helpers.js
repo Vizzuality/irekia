@@ -153,7 +153,7 @@ jQuery.fn.enableRegistration = function(opt){
         $(this).find(".error").removeClass("error");
       });
 
-      $form.bind('ajax:success', step3);
+      $form.bind('ajax:success', redirectToRoot);
       $form.bind('ajax:error', validateErrors);
 
     } else {
