@@ -244,8 +244,9 @@ class UsersController < ApplicationController
       else
         @questions.more_recent
       end
-      @unanswered_questions_count = @questions.not_answered.length
-      @questions = @questions.answered if params[:referer] == 'answered'
+      @unanswered_questions_count = @questions.not_answered.length if @user.politician?
+      @answered_questions_count   = @questions.answered.length     unless @user.politician?
+      @questions                  = @questions.answered            if params[:referer] == 'answered'
     end
 
     if params[:referer].blank? || params[:referer] == 'all'
