@@ -3,7 +3,7 @@ class ParticipationsObserver < ActiveRecord::Observer
 
   def after_commit(model)
     model.publish
-    model.content.publish
+    model.notify_content
   end
 
 end

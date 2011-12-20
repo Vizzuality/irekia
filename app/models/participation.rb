@@ -98,9 +98,10 @@ class Participation < ActiveRecord::Base
     end
 
     user.followers.each{|follower| follower.create_private_action(self)}
+  end
 
+  def notify_content
     content.notify_of_new_participation(self)
-
   end
 
 end
