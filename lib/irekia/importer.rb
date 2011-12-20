@@ -47,20 +47,20 @@ module Irekia
         puts ex.backtrace
       end
 
-#BEGIN:VEVENT
-#CREATED;VALUE=DATE-TIME:20111023T184057Z
-#DTEND;VALUE=DATE-TIME:20111024T093000Z
-#STATUS:TENTATIVE
-#DTSTART;VALUE=DATE-TIME:20111024T090000Z
-#DTSTAMP;VALUE=DATE-TIME:20111123T183827Z
-#LAST-MODIFIED;VALUE=DATE-TIME:20111109T122444Z
-#UID:uid_7807_irekia_euskadi_net
-#DESCRIPTION:Presidencia.\nLehendakari.\nEl Lehendakari\, Patxi López\, se reunirá mañana\, a las 11:00\, Iñigo Urkullu en Lehendakaritza como comienzo de la ronda de partidos para analizar la situación tras el comunicado de ETA.\nTras el cese definitivo de la actividad armada\, el Lehendakari anunció el inicio de una ronda de reuniones con los partidos que empezará mañana con su encuentro con el presidente del PNV.\nLos medios gráficos podrán tomar imágenes del encuentro.
-#URL:http://www.irekia.euskadi.net/es/events/7807-lehendakari-comienza-ronda-partidos
-#SUMMARY:El Lehendakari comienza la ronda de partidos
-#LOCATION:Lehendakaritza\, Vitoria-Gasteiz
-#SEQUENCE:3
-#END:VEVENT
+      #BEGIN:VEVENT
+      #CREATED;VALUE=DATE-TIME:20111023T184057Z
+      #DTEND;VALUE=DATE-TIME:20111024T093000Z
+      #STATUS:TENTATIVE
+      #DTSTART;VALUE=DATE-TIME:20111024T090000Z
+      #DTSTAMP;VALUE=DATE-TIME:20111123T183827Z
+      #LAST-MODIFIED;VALUE=DATE-TIME:20111109T122444Z
+      #UID:uid_7807_irekia_euskadi_net
+      #DESCRIPTION:Presidencia.\nLehendakari.\nEl Lehendakari\, Patxi López\, se reunirá mañana\, a las 11:00\, Iñigo Urkullu en Lehendakaritza como comienzo de la ronda de partidos para analizar la situación tras el comunicado de ETA.\nTras el cese definitivo de la actividad armada\, el Lehendakari anunció el inicio de una ronda de reuniones con los partidos que empezará mañana con su encuentro con el presidente del PNV.\nLos medios gráficos podrán tomar imágenes del encuentro.
+      #URL:http://www.irekia.euskadi.net/es/events/7807-lehendakari-comienza-ronda-partidos
+      #SUMMARY:El Lehendakari comienza la ronda de partidos
+      #LOCATION:Lehendakaritza\, Vitoria-Gasteiz
+      #SEQUENCE:3
+      #END:VEVENT
       def self.get_events_from_ics
         require 'open-uri'
 
