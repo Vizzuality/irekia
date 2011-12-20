@@ -124,7 +124,7 @@ class Content < ActiveRecord::Base
   end
 
   def comments_count
-    comments.moderated.reload.size || 0
+    comments.moderated.reload.count || 0
   end
 
   def last_comments
