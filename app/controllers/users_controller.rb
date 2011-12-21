@@ -238,23 +238,19 @@ class UsersController < ApplicationController
       @questions     = @user.get_questions(params.slice(:to_you, :to_your_area))
     end
 
-    if @questions && (params[:referer].blank? || params[:referer] == 'answered')
-      @questions = if params[:more_polemic] == "true"
-        @questions.more_polemic
-      else
-        @questions.more_recent
-      end
+    if @questions
       @unanswered_questions_count = @questions.not_answered.length if @user.politician?
       @answered_questions_count   = @questions.answered.length     unless @user.politician?
-      @questions                  = @questions.answered            if params[:referer] == 'answered'
-    end
+      @questions                  = @questions.answered            if params[:answered].present?
 
-    if params[:referer].blank? || params[:referer] == 'all'
-      @questions = if params[:more_polemic] == "true"
-        @questions.more_polemic
-      else
-        @questions.more_recent
+      if params[:referer].blank? || params[:referer] == 'all'
+        @questions = if params[:more_polemic] == "true"
+          @questions.more_polemic
+        else
+          @questions.more_recent
+        end
       end
+
     end
   end
   private :get_questions
