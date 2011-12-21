@@ -1746,27 +1746,23 @@ jQuery.fn.enableAvatarUpload = function(opt){
                 '</span>',
       text: $("#avatar_uploader span").html(),
       onSubmit: function(id, fileName){
-        console.log("Submit");
         var w = $("#avatar_uploader .qq-upload-button").outerWidth(true);
         t = $("#avatar_uploader span.title").html();
         $("#avatar_uploader .qq-upload-button").css("width", w);
         $("#avatar_uploader span.title").html("");
+
+        $this.find(".progress").fadeIn(250);
       },
       onProgress: function(id, fileName, loaded, total){
-
-        console.log("Progress");
-
         var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
 
-        console.log("uploading…");
-        //console.debug(p, width, arguments, arguments[2], arguments[3]);
         //$this.find(".percentage").html(parseInt(p, 10) + "%");
         $this.find(".progress").css("width", (parseInt(p, 10) + "%"));
       },
       onComplete: function(id, fileName, responseJSON){
-        console.debug(fileName, responseJSON, responseJSON.image_cache_name);
 
         $("#avatar_uploader span.title").html(t);
+
         $this.find(".progress").fadeOut(250, function() {
           $(this).width("0");
         });
@@ -1776,18 +1772,14 @@ jQuery.fn.enableAvatarUpload = function(opt){
 
         $('.image_cache_name').val(responseJSON.image_cache_name);
 
-        console.log($(".image_cache_name"));
-
         $(cacheImage).bind("load", function () {
           $(".avatar_uploader_form").submit();
           var src = $(cacheImage).attr("src");
           $(".avatar_box a img").attr("src", src);
         });
 
-
       },
       onCancel: function(id, fileName){
-        console.log("Cancel");
       }
     });
   })

@@ -1,130 +1,125 @@
 <div id="remove_account_popover" class="article popover thin remove_account with_footer">
   <a href="#" class="close"></a>
-<div class="inner">
-  <div class="content centered">
-    <h2><%= raw t(".can_we_change_your_mind") %></h2>
-    <p><%= raw t(".if_you_had_a_bad_experience") %> <a href="#"><%= t(".get_in_touch_with_us") %></a> <%= t(".and_well_fix_it") %>.</p>
-  </div>
-</div>
-  <div class="bfooter">
-  <div class="separator"></div>
   <div class="inner">
-    <div class="center clearfix">
-      <%= button t(".remove_profile"), :class => "white_button remove" %>
-      <%= button t(".cancel"), :class => "white_button close pink" %>
-    </div>
-  </div>
-  </div>
-
-<div class="t"></div><div class="f"></div>
-</div>
-
-<div class="article settings with_form with_footer">
-<%= form_for @user, :html => {:novalidate => 'novalidate'} do |form| %>
-  <div class="inner">
-    <header>
-    <div class="left">
-      <h2><%= t(".your_profile") %></h2>
-      <h4><%= t(".remember_this_information_is_public") %></h4>
-    </div>
-    <div class="right"></div>
-    </header>
-    <div class="left">
-      <fieldset>
-        <div class="field clearfix">
-          <label for=""><%= t(".gender") %></label>
-
-          <div class="radios">
-            <a href="#" class="radio gender male<%= ' selected' if !@user.is_woman %>">Hombre
-              <%= form.radio_button :is_woman, false, :checked => !@user.is_woman %>
-            </a>
-
-            <a href="#" class="radio gender female<%= ' selected' if @user.is_woman %>">Mujer
-              <%= form.radio_button :is_woman, true, :checked => @user.is_woman %>
-            </a>
-          </div>
-
-        </div>
-
-        <div class="field clearfix name pull-left<%= ' error' if @user.errors[:name].present? %>">
-          <%= form.label :name, t('.name') %>
-          <div class="input_field">
-            <%= form.text_field :name %>
-          </div>
-
-          <% if @user.errors[:name].present? || @user.errors[:lastname].present? %>
-            <ul class="errors">
-              <% if @user.errors[:name].present? %> <li>El nombre es obligatorio</li> <% end %>
-              <% if @user.errors[:lastname].present? %> <li>El apellido es obligatorio</li> <% end %>
-            </ul>
-          <% end %>
-
-        </div>
-
-        <div class="field clearfix lastname pull-right<%= ' error' if @user.errors[:lastname].present? %>">
-          <%= form.label :lastname, t('.lastname') %>
-          <div class="input_field">
-            <%= form.text_field :lastname %>
-          </div>
-
-        </div>
-
-        <div class="field clearfix territory pull-left">
-          <%= form.label :province, t('.province') %>
-          <div class="input_field">
-            <%= form.text_field :province %>
-          </div>
-          <!--<ul class="errors">
-            <li>La URL no parece ser correcta</li>
-            <li>La URL no parece ser correcta</li>
-          </ul>
-          -->
-        </div>
-
-        <div class="field clearfix municipality pull-right">
-          <%= form.label :city_id, t('.city') %>
-          <div class="input_field select">
-            <%= form.select :city_id, [['Vizcaya', 1]], {:include_blank => true}, :class => 'dropkick default' %>
-          </div>
-        </div>
-
-        <div class="field clearfix born_at">
-          <%= form.label :birthday, t('.birthday') %>
-          <%= form.date_select :birthday, :start_year => 1900, :include_blank => true %>
-        </div>
-
-      <div class="field clearfix social">
-        <label for="">Conexión con redes sociales</label>
-
-        <div class="social-links">
-          <div class="facebook <%='disabled' if @user.connected_with_facebook? %>"><%= link_to t('.connect_with', :name => 'Facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
-          <div class="twitter <%='disabled' if @user.connected_with_twitter? %>"><%= link_to t('.connect_with', :name => 'Twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
-        </div>
-      </div>
-      </fieldset>
-
-      <div class="delete_profile">
-        <p>Por supuesto, si lo deseas puedes <a href="/in_development" class="remove_account" id="remove_account">borrar tu perfil</a> de Irekia en cualquier momento.</p>
-        <p class="last">Esperamos que no sea así :-)</p>
-      </div>
-
-    </div>
-
-
-    <div class="right">
+    <div class="content centered">
+      <h2><%= raw t(".can_we_change_your_mind") %></h2>
+      <p><%= raw t(".if_you_had_a_bad_experience") %> <a href="#"><%= t(".get_in_touch_with_us") %></a> <%= t(".and_well_fix_it") %>.</p>
     </div>
   </div>
   <div class="bfooter">
-  <div class="separator"></div>
-  <div class="inner">
-    <div class="left">
-      <%= button t('.save_changes'), :class => 'white_button blue' %>
+    <div class="separator"></div>
+    <div class="inner">
+      <div class="center clearfix">
+        <%= button t(".remove_profile"), :class => "white_button remove" %>
+        <%= button t(".cancel"), :class => "white_button close pink" %>
+      </div>
     </div>
-  </div>
   </div>
 
   <div class="t"></div><div class="f"></div>
-<% end -%>
+</div>
+
+<div class="article settings with_form with_footer">
+  <%= form_for @user, :html => {:novalidate => 'novalidate'} do |form| %>
+    <div class="inner">
+      <header>
+      <div class="left">
+        <h2><%= t(".your_profile") %></h2>
+        <h4><%= t(".remember_this_information_is_public") %></h4>
+      </div>
+      <div class="right"></div>
+      </header>
+      <div class="left">
+        <fieldset>
+          <div class="field clearfix">
+            <label for=""><%= t(".gender") %></label>
+
+            <div class="radios">
+              <a href="#" class="radio gender male<%= ' selected' if !@user.is_woman %>">Hombre
+                <%= form.radio_button :is_woman, false, :checked => !@user.is_woman %>
+              </a>
+
+              <a href="#" class="radio gender female<%= ' selected' if @user.is_woman %>">Mujer
+                <%= form.radio_button :is_woman, true, :checked => @user.is_woman %>
+              </a>
+            </div>
+
+          </div>
+
+          <div class="field clearfix name pull-left<%= ' error' if @user.errors[:name].present? %>">
+            <%= form.label :name, t('.name') %>
+            <div class="input_field">
+              <%= form.text_field :name %>
+            </div>
+
+            <% if @user.errors[:name].present? || @user.errors[:lastname].present? %>
+              <ul class="errors">
+                <% if @user.errors[:name].present? %> <li><%= @user.errors[:name] %></li> <% end %>
+                <% if @user.errors[:lastname].present? %> <li><%= @user.errors[:lastname] %></li> <% end %>
+              </ul>
+            <% end %>
+
+          </div>
+
+          <div class="field clearfix lastname pull-right<%= ' error' if @user.errors[:lastname].present? %>">
+            <%= form.label :lastname, t('.lastname') %>
+            <div class="input_field">
+              <%= form.text_field :lastname %>
+            </div>
+
+          </div>
+
+          <div class="field clearfix territory pull-left">
+            <%= form.label :province, t('.province') %>
+            <div class="input_field">
+              <%= form.text_field :province %>
+            </div>
+          </div>
+
+          <div class="field clearfix municipality pull-right">
+            <%= form.label :city_id, t('.city') %>
+            <div class="input_field select">
+              <%= form.select :city_id, [['Vizcaya', 1]], {:include_blank => true}, :class => 'dropkick default' %>
+            </div>
+          </div>
+
+          <div class="field clearfix born_at">
+            <%= form.label :birthday, t('.birthday') %>
+            <%= form.date_select :birthday, :start_year => 1900, :include_blank => true %>
+          </div>
+
+          <div class="field clearfix social">
+            <label for="">Conexión con redes sociales</label>
+
+            <div class="social-links">
+              <div class="facebook <%='disabled' if @user.connected_with_facebook? %>"><%= link_to t('.connect_with', :name => 'Facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+              <div class="twitter <%='disabled' if @user.connected_with_twitter? %>"><%= link_to t('.connect_with', :name => 'Twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="delete_profile">
+          <p>Por supuesto, si lo deseas puedes <a href="/in_development" class="remove_account" id="remove_account">borrar tu perfil</a> de Irekia en cualquier momento.</p>
+          <p class="last">Esperamos que no sea así :-)</p>
+        </div>
+
+      </div>
+
+
+      <div class="right">
+      </div>
+    </div>
+    <div class="bfooter">
+      <div class="separator"></div>
+      <div class="inner">
+        <div class="left">
+          <%= button t('.save_changes'), :class => 'white_button blue' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="t"></div><div class="f"></div>
+  <% end -%>
 </div>
 
 <div class="article settings">
@@ -160,101 +155,106 @@
 </div>
 
 <div class="article">
-<div class="inner">
-  <div class="content">
-    <h2><%= t(".notifications.title") %></h2>
+  <div class="inner">
+    <div class="content">
+      <h2><%= t(".notifications.title") %></h2>
 
-    <%= form_for @user, :remote => true, :html => { :class => 'notifications', :'data-type' => 'html'} do |form| %>
+      <%= form_for @user, :remote => true, :html => { :class => 'notifications', :'data-type' => 'html'} do |form| %>
 
-    <ul>
+        <ul>
 
-      <li class="<%= 'selected' if @user.notifications_level == 1 %>">
-      <a href="#" class="letter minimun"></a>
-      <div class="content">
-        <strong><%= t(".notifications.minimal.title") %></strong>
-        <p><%= t(".notifications.minimal.description") %></p>
-      </div>
-      <%= form.hidden_field :notifications_level, :value => 1, :disabled => @user.notifications_level != 1 %>
-      </li>
+          <li class="<%= 'selected' if @user.notifications_level == 1 %>">
+          <a href="#" class="letter minimun"></a>
+          <div class="content">
+            <strong><%= t(".notifications.minimal.title") %></strong>
+            <p><%= t(".notifications.minimal.description") %></p>
+          </div>
+          <%= form.hidden_field :notifications_level, :value => 1, :disabled => @user.notifications_level != 1 %>
+          </li>
 
-      <li class="<%= 'selected' if @user.notifications_level == 2 %>">
-      <a href="#" class="letter basics"></a>
-      <div class="content">
-        <strong><%= t(".notifications.basic.title") %></strong>
-        <p><%= t(".notifications.basic.description") %></p>
-      </div>
-      <%= form.hidden_field :notifications_level, :value => 2, :disabled => @user.notifications_level != 2 %>
-      </li>
+          <li class="<%= 'selected' if @user.notifications_level == 2 %>">
+          <a href="#" class="letter basics"></a>
+          <div class="content">
+            <strong><%= t(".notifications.basic.title") %></strong>
+            <p><%= t(".notifications.basic.description") %></p>
+          </div>
+          <%= form.hidden_field :notifications_level, :value => 2, :disabled => @user.notifications_level != 2 %>
+          </li>
 
-      <li class="last <%= 'selected' if @user.notifications_level == 3 %>">
-      <a href="#" class="letter all"></a>
-      <div class="content">
-        <strong><%= t(".notifications.all.title") %></strong>
-        <p><%= t(".notifications.all.description") %></p>
-      </div>
-      <%= form.hidden_field :notifications_level, :value => 3, :disabled => @user.notifications_level != 3 %>
-      </li>
-    </ul>
+          <li class="last <%= 'selected' if @user.notifications_level == 3 %>">
+          <a href="#" class="letter all"></a>
+          <div class="content">
+            <strong><%= t(".notifications.all.title") %></strong>
+            <p><%= t(".notifications.all.description") %></p>
+          </div>
+          <%= form.hidden_field :notifications_level, :value => 3, :disabled => @user.notifications_level != 3 %>
+          </li>
+        </ul>
 
-    <% end -%>
+      <% end -%>
 
+    </div>
   </div>
-</div>
 
-<div class="t"></div><div class="f"></div>
+  <div class="t"></div><div class="f"></div>
 </div>
 
 
 <div class="article settings with_form with_footer">
   <%= form_for @user, :html => {:novalidate => 'novalidate'} do |form| %>
-  <div class="inner">
-    <header>
-    <div class="left">
-      <h2><%= t(".account_configuration") %></h2>
-      <h4><%= t(".access_data") %></h3>
-    </div>
-    <div class="right">
-    </div>
-    </header>
+    <div class="inner">
+      <header>
+      <div class="left">
+        <h2><%= t(".account_configuration") %></h2>
+        <h4><%= t(".access_data") %></h3>
+      </div>
+      <div class="right">
+      </div>
+      </header>
 
+      <div class="left">
 
-    <div class="left">
+        <fieldset>
+          <div class="field email">
+            <%= form.label :email, t('.email') %>
+            <div class="input_field">
+              <%= form.text_field :email %>
+            </div>
 
-      <fieldset>
-        <div class="field email">
-          <%= form.label :email, t('.email') %>
-          <div class="input_field">
-            <%= form.text_field :email %>
+            <% if @user.errors[:password].present? %>
+              <ul class="errors">
+                <% if @user.errors[:password].present? %> <li><%= @user.errors[:password] %></li> <% end %>
+              </ul>
+            <% end %>
           </div>
-        </div>
 
-        <div class="field password pull-left">
-          <%= form.label :current_password, t('.current_password') %>
-          <div class="input_field">
-            <%= form.password_field :current_password %>
+          <div class="field password pull-left<%= ' error' if @user.errors[:password].present? %>">
+            <%= form.label :current_password, t('.current_password') %>
+            <div class="input_field">
+              <%= form.password_field :current_password %>
+            </div>
           </div>
-        </div>
 
-        <div class="field confirm_password pull-right">
-          <%= form.label :password, t('.password') %>
-          <div class="input_field">
-            <%= form.password_field :password %>
+          <div class="field confirm_password pull-right">
+            <%= form.label :password, t('.password') %>
+            <div class="input_field">
+              <%= form.password_field :password %>
+            </div>
           </div>
+        </fieldset>
+
+      </div>
+      <div class="right"></div>
+    </div>
+    <div class="bfooter">
+      <div class="separator"></div>
+      <div class="inner">
+        <div class="left">
+          <%= button t('.save_changes'), :class => 'white_button blue' %>
         </div>
-      </fieldset>
-
+      </div>
     </div>
-    <div class="right"></div>
-  </div>
-  <div class="bfooter">
-  <div class="separator"></div>
-  <div class="inner">
-    <div class="left">
-      <%= button t('.save_changes'), :class => 'white_button blue' %>
-    </div>
-  </div>
-  </div>
 
-  <div class="t"></div><div class="f"></div>
-<% end -%>
+    <div class="t"></div><div class="f"></div>
+  <% end -%>
 </div>
