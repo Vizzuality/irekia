@@ -1,0 +1,88 @@
+<div class="article editable activity with_footer">
+  <%= link_to '', event_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
+  <div class="inner">
+    <div class="left">
+
+      <div class="context">
+        <h3><%= t(@content.content_type) %></h3>
+        <% if @content.content_area %> <span class="middot">&middot;</span> <%= link_to @content.content_area.name, @content.content_area %> <% end %>
+      </div>
+
+      <!-- Title -->
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
+        <%= content_tag :h1, @content.title, :class => :content %>
+        <%= form.fields_for :event_data do |event_data| %>
+          <div class="input_field textarea"><%= event_data.text_area :title, :value => @content.title %></div>
+        <% end -%>
+        <%= button "Guardar", :class => "submit white_button" %>
+      <% end -%>
+      <!-- /Title -->
+
+      <!-- Subtitle -->
+      <% subtitle = @content.subtitle %>
+      <% subtitle = "Añadir subtítulo" if @content.subtitle.blank? %>
+
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
+        <%= content_tag :p, (content_tag :strong, subtitle), :class => "subtitle content" %>
+
+        <%= form.fields_for :event_data do |event_data| %>
+          <div class="input_field textarea">
+            <%= event_data.text_area :subtitle, :value => @content.subtitle %>
+          </div>
+        <% end -%>
+        <%= button "Guardar", :class => "submit white_button" %>
+      <% end -%>
+      <!-- /Subtitle -->
+
+      <!-- Date -->
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable date'} do |form| %>
+        <div class="meta">
+          <span class="date content"><%= l @content.published_at.to_date, :format => :long %></span>
+          <%= form.date_select :published_at, :value => @content.published_at.to_date, :format => :long  %>
+          <%= button "Guardar", :class => "submit white_button" %>
+        </div>
+      <% end -%>
+      <!-- Date -->
+
+      <%#= image_tag @content.event_data.image.content_url if @content.event_data.image.present? %>
+
+      <!-- Body -->
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
+        <%= content_tag :div, (sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil), :class => :content  %>
+
+        <%= form.fields_for :event_data do |event_data| %>
+          <div class="input_field textarea">
+            <%= event_data.text_area :body, :value => @content.body %>
+          </div>
+        <% end -%>
+
+        <%= button "Guardar", :class => "submit white_button" %>
+      <% end -%>
+      <!-- /Body -->
+
+    </div>
+    <div class="right">
+      <div class="content left-border">
+
+        <%= sharing_partial(event_url(@content), @content.title) %>
+        <%= render "shared/sidebar/tags" %>
+        <%= render "shared/sidebar/location" %>
+        <%= render "shared/sidebar/politicians" %>
+        <%= render "shared/sidebar/related_events" %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="bfooter">
+    <div class="separator"></div>
+    <div class="inner">
+
+      <div class="left">
+        <%= link_to t(".back"), "javascript: history.go(-1)", :class => :left_arrow %>
+      </div>
+
+    </div>
+  </div>
+  <div class="t"></div><div class="f"></div>
+</div>

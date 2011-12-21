@@ -5,6 +5,7 @@
       <div class="context">
         <h3><%= t(@content.content_type) %></h3>
 
+        <!-- Target -->
         <%= form_for @content, :remote => true, :html => {:'data-addressed-to' => "#{t(".addressed_to")}", :'data-type' => 'html', :class => 'editable target'} do |form| %>
           <%= form.fields_for :question_data do |question_data| %>
             <%= question_data.hidden_field :area_id, :value => "", :id => "editable_target_area_id" %>
@@ -29,7 +30,10 @@
             <span class="spinner" id="target_spinner"></span>
           </div>
         <% end %>
+        <!-- Target -->
       </div>
+
+
       <h2><%= @content.question_text %></h2>
       <div class="meta">
         <%= link_to @content.author.try(:fullname), path_for_user(@content.author) %>

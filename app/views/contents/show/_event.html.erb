@@ -4,6 +4,7 @@
   <meta property="og:image" content="<%= image_url @content.event_data.image.content_url if @content.event_data.image.present? %>" />
 <% end -%>
 <div class="article activity with_footer">
+  <%= link_to '', edit_event_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
   <div class="inner">
     <div class="left">
 
