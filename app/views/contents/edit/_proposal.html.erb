@@ -22,7 +22,7 @@
           <div class="add_target" >
             <div class="input_field placeholder">
               <input type="text" />
-              <span class="holder">Introduce el nuevo destinatario</span>
+              <span class="holder"><%= t(".insert_the_new_target") %></span>
             </div>
             <span class="spinner" id="target_spinner"></span>
           </div>
@@ -39,49 +39,9 @@
         <span class="comments"><%= link_to @comments_count, "#", :class => :goto_comments %></span>
       </div>
 
-      <div class="my_opinion <%= @content.percent_in_favor >= 50 ? "in_favor" : "against" %>">
-        <div class="result">
-          <% if @content.percent_in_favor >= 50 %>
-            <%= content_tag :span, t(".in_favor", :percentage => @content.percent_in_favor, :count => @content.participation), :class => :in_favor %>
-          <% else %>
-            <%= content_tag :span, t(".against", :percentage => @content.percent_against, :count => @content.participation), :class => :against %>
-          <% end %>
-        </div>
-
-        <div class="footer">
-          <%= form_for @vote, :remote => true do |form| %>
-            <%= form.hidden_field :id %>
-            <%= form.hidden_field :content_id %>
-            <%= form.hidden_field :user_id %>
-            <div class="input_text">
-              <%= form.fields_for :vote_data do |vote_data_form| %>
-                <%= vote_data_form.hidden_field :id, :value => '' %>
-                <%= vote_data_form.hidden_field :in_favor, :value => false %>
-              <% end -%>
-              <%= button_with_login 'Estoy en contra', :class => "white_button against#{' selected' unless @vote.new_record? || @vote.in_favor }" %>
-            </div>
-          <% end -%>
-        </div>
-
-        <div class="footer">
-          <%= form_for @vote, :remote => true do |form| %>
-            <%= form.hidden_field :id %>
-            <%= form.hidden_field :content_id %>
-            <%= form.hidden_field :user_id %>
-            <div class="input_text">
-              <%= form.fields_for :vote_data do |vote_data_form| %>
-                <%= vote_data_form.hidden_field :id, :value => '' %>
-                <%= vote_data_form.hidden_field :in_favor, :value => true %>
-              <% end -%>
-              <%= button_with_login 'Estoy a favor', :class => "white_button in_favor#{' selected' unless @vote.new_record? || @vote.against }" %>
-            </div>
-          <% end -%>
-        </div>
-      </div>
-
       <%= image_tag @content.proposal_data.image.content_url if @content.has_image? %>
       <%= simple_format @content.body %>
-      <%= render "arguments" %>
+
     </div>
     <div class="right">
       <div class="content left-border">
@@ -97,7 +57,7 @@
     <div class="separator"></div>
     <div class="inner">
       <div class="left">
-        <%= link_to t('.see_all_proposals'), proposals_area_path(@content.target_area, :anchor => :proposals), :class => :left_arrow %>
+        <%= link_to t('.back'), proposal_path(@content), :class => :left_arrow %>
       </div>
     </div>
   </div>

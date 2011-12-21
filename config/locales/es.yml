@@ -919,6 +919,7 @@
     edit:
       proposal:
         addressed_to: 'Dirigida a'
+        insert_the_new_target: Introduce el nuevo destinatario
         back: volver
         see_all_proposals: Ver todas las propuestas a este área
         in_favor:
@@ -958,11 +959,20 @@
               zero: Aún no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
-      news:
+      event:
+        save: Guardar
         back: volver
+        add_subtitle: Añadir subtítulo
+      news:
+        save: Guardar
+        back: volver
+        add_subtitle: Añadir subtítulo
       question:
+        save: Guardar
         back: volver
         addressed_to: 'Dirigida a'
+        address_the_question: Dirige la pregunta
+        insert_the_new_target: Introduce el nuevo destinatario
         not_answered_yet: Esta pregunta aún no ha sido contestada.
         you_and_other:
           zero: Nadie ha pedido que sea contestada

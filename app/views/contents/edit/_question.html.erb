@@ -18,14 +18,14 @@
             <% elsif @content.target_area -%>
               <span class="target"><%= t(".addressed_to") -%> <%= @content.target_area.name -%></span>
             <% else -%>
-              <span class="target">Dirige la pregunta</span>
+              <span class="target"><%= t(".address_the_question") %></span>
             <% end -%>
           </div>
 
           <div class="add_target" >
             <div class="input_field placeholder">
               <input type="text" />
-              <span class="holder">Introduce el nuevo destinatario</span>
+              <span class="holder"><%= t(".insert_the_new_target") %></span>
             </div>
             <span class="spinner" id="target_spinner"></span>
           </div>
@@ -33,8 +33,8 @@
         <!-- Target -->
       </div>
 
-
       <h2><%= @content.question_text %></h2>
+
       <div class="meta">
         <%= link_to @content.author.try(:fullname), path_for_user(@content.author) %>
         <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
@@ -53,9 +53,7 @@
       </div>
 
       <% if @answer %>
-        <div class="answer">
-          <%= simple_format @answer.answer_text %>
-        </div>
+        <div class="answer"><%= simple_format @answer.answer_text %></div>
       <% else %>
         <% if current_user && current_user.politician? -%>
           <div class="answering clearfix">
@@ -126,11 +124,7 @@
     <div class="separator"></div>
     <div class="inner">
       <div class="left">
-        <% if @content.target_user -%>
-          <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user, :anchor => :questions), :class => :left_arrow %>
-        <% elsif @content.target_area -%>
-          <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area, :anchor => :questions), :class => :left_arrow %>
-        <% end -%>
+        <%= link_to t(".back"), question_path(@content), :class => :left_arrow %>
       </div>
     </div>
   </div>

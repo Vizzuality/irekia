@@ -14,13 +14,13 @@
         <%= form.fields_for :event_data do |event_data| %>
           <div class="input_field textarea"><%= event_data.text_area :title, :value => @content.title %></div>
         <% end -%>
-        <%= button "Guardar", :class => "submit white_button" %>
+        <%= button t(".save"), :class => "submit white_button" %>
       <% end -%>
       <!-- /Title -->
 
       <!-- Subtitle -->
       <% subtitle = @content.subtitle %>
-      <% subtitle = "Añadir subtítulo" if @content.subtitle.blank? %>
+      <% subtitle = t(".add_subtitle") if @content.subtitle.blank? %>
 
       <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
         <%= content_tag :p, (content_tag :strong, subtitle), :class => "subtitle content" %>
@@ -30,7 +30,7 @@
             <%= event_data.text_area :subtitle, :value => @content.subtitle %>
           </div>
         <% end -%>
-        <%= button "Guardar", :class => "submit white_button" %>
+        <%= button t(".save"), :class => "submit white_button" %>
       <% end -%>
       <!-- /Subtitle -->
 
@@ -39,7 +39,7 @@
         <div class="meta">
           <span class="date content"><%= l @content.published_at.to_date, :format => :long %></span>
           <%= form.date_select :published_at, :value => @content.published_at.to_date, :format => :long  %>
-          <%= button "Guardar", :class => "submit white_button" %>
+          <%= button t(".save"), :class => "submit white_button" %>
         </div>
       <% end -%>
       <!-- Date -->
@@ -56,7 +56,7 @@
           </div>
         <% end -%>
 
-        <%= button "Guardar", :class => "submit white_button" %>
+        <%= button t(".save"), :class => "submit white_button" %>
       <% end -%>
       <!-- /Body -->
 
@@ -79,7 +79,7 @@
     <div class="inner">
 
       <div class="left">
-        <%= link_to t(".back"), "javascript: history.go(-1)", :class => :left_arrow %>
+        <%= link_to t(".back"), event_path(@content), :class => :left_arrow %>
       </div>
 
     </div>
