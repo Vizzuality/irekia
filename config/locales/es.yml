@@ -428,6 +428,7 @@
           other: '%{count} comentarios'
       politicians:
         title: Políticos etiquetados en la noticia
+        tag: Etiquetar político
       tags:
         title: Tags
         add_tags: "Añadir tags"

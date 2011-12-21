@@ -6,36 +6,36 @@
       <li<%=" class='editable'" if @editable %>>
       <div class="bottom">
         <%= avatar politician, 'small' %>
-        <%= link_to politician.truncated_fullname(17), path_for_user(politician), :class => :name %>
+        <%= link_to politician.truncated_fullname(25), path_for_user(politician), :class => :name %>
         <span class="position"><%= get_politician_title(politician) %></span>
 
-      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
-        <%= form.fields_for :contents_users, content_user do |content_user_fields| %>
-          <%= content_user_fields.hidden_field :_destroy, :value => true %>
-        <% end -%>
-        <%= form.submit 'x', :class => 'remove' %>
-      <% end if @editable -%>
+        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
+          <%= form.fields_for :contents_users, content_user do |content_user_fields| %>
+            <%= content_user_fields.hidden_field :_destroy, :value => true %>
+          <% end -%>
+          <%= form.submit 'x', :class => 'remove' %>
+          <% end if @editable -%>
         </div>
         </li>
       <% end -%>
 
-    <% if @editable %>
-      <li class="add">
-      <%= link_to "Etiquetar político", "#", :class => :add %>
-      <div class="input_field">
-        <input type="text" />
-      </div>
-      <span class="spinner" id="politician_spinner"></span>
+      <% if @editable %>
+        <li class="add">
+        <%= link_to t(".tag"), "#", :class => :add %>
+        <div class="input_field">
+          <input type="text" />
+        </div>
+        <span class="spinner" id="politician_spinner"></span>
 
-      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :add_politician } do |form| %>
-        <%= hidden_field_tag :partial, 'tagged_politician' %>
-        <%= form.fields_for :contents_users, @content.contents_users.build do |contents_users| %>
-          <%= contents_users.hidden_field :content_id %>
-          <%= contents_users.hidden_field :user_id, :id => 'editable_politician_id' %>
+        <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :add_politician } do |form| %>
+          <%= hidden_field_tag :partial, 'tagged_politician' %>
+          <%= form.fields_for :contents_users, @content.contents_users.build do |contents_users| %>
+            <%= contents_users.hidden_field :content_id %>
+            <%= contents_users.hidden_field :user_id, :id => 'editable_politician_id' %>
+          <% end -%>
         <% end -%>
-      <% end -%>
 
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
