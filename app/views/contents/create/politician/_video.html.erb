@@ -3,3 +3,8 @@
   <h2><%= t('.title') %></h2>
   <p><%= t('.description') %></p>
 </div>
+<script>
+  setTimeout(function(){
+    window.location = "<%= url_for @content %>";
+  }, 1000);
+</script>
