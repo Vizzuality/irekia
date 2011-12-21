@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   before_filter :get_agenda,                   :only => [:agenda]
   before_filter :paginate,                     :only => [:show, :actions, :questions, :proposals]
 
-  respond_to :html, :json
+  respond_to :html, :json, :ics
 
   def show
     redirect_to_politician_page?
@@ -63,7 +63,15 @@ class UsersController < ApplicationController
   end
 
   def agenda
+    render :partial => 'shared/agenda_list',
+           :layout  => nil and return if request.xhr?
 
+    respond_with @agenda do |format|
+      format.html
+      format.ics do
+        render :text => Event.to_calendar(@agenda)
+      end
+    end
   end
 
   def intro
@@ -236,8 +244,9 @@ class UsersController < ApplicationController
       else
         @questions.more_recent
       end
-      @unanswered_questions_count = @questions.not_answered.length
-      @questions = @questions.answered if params[:referer] == 'answered'
+      @unanswered_questions_count = @questions.not_answered.length if @user.politician?
+      @answered_questions_count   = @questions.answered.length     unless @user.politician?
+      @questions                  = @questions.answered            if params[:referer] == 'answered'
     end
 
     if params[:referer].blank? || params[:referer] == 'all'

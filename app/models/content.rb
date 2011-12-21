@@ -124,7 +124,7 @@ class Content < ActiveRecord::Base
   end
 
   def comments_count
-    comments.moderated.reload.size || 0
+    comments.moderated.reload.count || 0
   end
 
   def last_comments
@@ -136,7 +136,6 @@ class Content < ActiveRecord::Base
       :id            => author.id,
       :name          => author.name,
       :fullname      => author.fullname,
-      :profile_image => author.profile_image,
       :is_politician => author.politician?
     } if author.present?
 
@@ -210,12 +209,14 @@ class Content < ActiveRecord::Base
     end
   end
 
-  def notify_of_new_participation(participation)
+  def notify_of_new_participation(participation, force_notification_creation = false)
+    publish
+
     areas.each{|area| area.create_action(participation)}
 
-    users.each{|user| user.create_private_action(participation)}
-    author.create_private_action(participation) if author.present?
-    participers(author).each{|user| user.create_private_action(participation)}
+    users.each{|user| user.create_private_action(participation, force_notification_creation)}
+    author.create_private_action(participation, force_notification_creation) if author.present?
+    participers(author).each{|user| user.create_private_action(participation, force_notification_creation)}
   end
 
 end

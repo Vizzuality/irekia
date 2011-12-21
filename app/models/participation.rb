@@ -70,8 +70,7 @@ class Participation < ActiveRecord::Base
       :author           => {
         :id               => user.id,
         :name             => user.name,
-        :fullname         => user.fullname,
-        :profile_image    => user.profile_image
+        :fullname         => user.fullname
       },
       :content_id       => content_id,
       :content => {
@@ -99,9 +98,10 @@ class Participation < ActiveRecord::Base
     end
 
     user.followers.each{|follower| follower.create_private_action(self)}
+  end
 
+  def notify_content
     content.notify_of_new_participation(self)
-
   end
 
 end

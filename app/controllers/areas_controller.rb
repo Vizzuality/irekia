@@ -12,7 +12,7 @@ class AreasController < ApplicationController
   before_filter :get_agenda,                 :only => [:show, :agenda]
   before_filter :paginate,                   :only => [:show, :actions, :questions, :proposals]
 
-  respond_to :html, :json
+  respond_to :html, :json, :ics
 
   def index
     @all_areas = Area.includes(:image).order('name').all
@@ -52,6 +52,13 @@ class AreasController < ApplicationController
   def agenda
     render :partial => 'shared/agenda_list',
            :layout  => nil and return if request.xhr?
+
+    respond_with @agenda do |format|
+      format.html
+      format.ics do
+        render :text => Event.to_calendar(@agenda)
+      end
+    end
   end
 
   def team

@@ -315,7 +315,7 @@ header {
 
 
                 &:last-child,&.last { border:none; padding: 10px 0 0 0; }
-                &:first-child,&.first { border:none; padding: 0 0 10px 0; }
+                &:first-child,&.first { padding: 5px 0 10px 0; }
                 &.submit { display:none; border:none; }
               }
             } // ul

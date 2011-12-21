@@ -29,7 +29,7 @@
       <% if @answer.blank? %>
         <span class="not_answered"><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
       <% else %>
-        <span class="<%= @answer ? 'answered' : 'not_answered' %>"><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words_to_now(@answer.published_at)) %></span>
+        <span class="<%= @answer ? 'answered' : 'not_answered' %>"><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words(@content.published_at, @content.answered_at)) %></span>
       <% end %>
     </div>
 

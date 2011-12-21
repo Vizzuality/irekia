@@ -1,7 +1,7 @@
 class Event < Content
   has_one :event_data
 
-  delegate :event_date, :title, :subtitle, :body, :image, :build_image, :to => :event_data, :allow_nil => true
+  delegate :event_date, :duration, :title, :subtitle, :body, :image, :build_image, :to => :event_data, :allow_nil => true
 
   accepts_nested_attributes_for :event_data
 
@@ -64,6 +64,7 @@ class Event < Content
   def as_json(options = {})
     super({
       :event_date      => event_date,
+      :duration        => duration,
       :title           => title,
       :subtitle        => subtitle,
       :body            => body,
@@ -110,6 +111,25 @@ class Event < Content
     }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
 
     return agenda, days, agenda_json
+  end
+
+  def self.to_calendar(agenda)
+    calendar = RiCal.Calendar do |cal|
+      agenda.values.flatten.each do |event_data|
+        cal.event do |event|
+          event.summary = event_data.title
+          event.description = event_data.body
+          event.dtstart = event_data.event_date
+          event.dtend = event_data.event_date + (event_data.duration || 0)
+          event.location = event_data.location
+          event_data.users.each do |politician|
+            event.add_attendee "#{politician.fullname}<#{politician.email}>"
+          end
+        end
+      end
+    end
+
+    calendar.to_s if calendar.present?
   end
 
 end

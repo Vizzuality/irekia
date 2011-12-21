@@ -48,14 +48,16 @@ class Vote < Participation
   def publish
     super
 
-    return if author.blank?
-
     if proposal.target_area
       proposal.target_area.team.each do |politician|
         politician.create_public_action(self)
         politician.create_private_action(self)
       end
     end
+  end
+
+  def notify_content
+    content.notify_of_new_participation(self, true)
   end
 
   def set_as_moderated
