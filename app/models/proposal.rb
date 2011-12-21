@@ -154,7 +154,6 @@ class Proposal < Content
       target_area.create_action(self)
       target_area.followers.each{|follower| follower.create_private_action(self)}
       target_area.team.each do |politician|
-        politician.create_public_action(self)
         politician.create_private_action(self)
       end
     end

@@ -1,9 +1,9 @@
-<div id="publish-popover" class="article politician publish with_footer popover initialy_hidden">
+<div id="publish-popover" class="article politician publish with_footer popover initialy_hidden" data-t-publish="<%= t(".publish") %>" data-t-continue="<%= t(".continue") %>" data-t-close="<%= t(".close") %>">
   <div class="inner clearfix">
     <div class="content">
 
-      <h2><%= t(".publish") %></h2>
-      <p>¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!</p>
+      <h2><%= t(".title") %></h2>
+      <p><%= t(".description") %></p>
 
       <%= menu ([
                 { :link => (link_to t(".dashboard"), "#"), :class => :selected},
@@ -25,7 +25,7 @@
                   <div class="input_field placeholder textarea">
                     <div id="question-counter" class="input-counter">
                       <%= status_message_data.text_area :message %>
-                      <span class="holder">Introduce el texto que quieras publicar aquí.</span>
+                      <span class="holder"><%= t(".section.status_message.label") %></span>
                     </div>
                   </div>
                 <% end %>
@@ -46,15 +46,15 @@
                 <div class="input_field placeholder uploader">
 
                   <%= image.text_field :remote_image_url %>
-                  <span class="holder"><span class="upload" id="upload_photo" data-url="<%= photos_path %>">Sube una foto</span></span>
+                  <span class="holder"><span class="upload" id="upload_photo" data-url="<%= photos_path %>"><%= t(".section.photo.upload") %></span></span>
                   <span class="percentage">0%</span>
-                  <span class="loading">Cargando imagen...</span>
+                  <span class="loading"><%= t(".section.photo.loading") %></span>
                   <div class="progress"></div>
                 </div>
 
                 <div class="image_container clearfix">
-                  <p>Se publicará esta imagen.</p>
-                  <a href="#" class="remove">Eliminar</a>
+                  <p><%= t(".section.photo.this_photo_will_be_published") %></p>
+                  <a href="#" class="remove"><%= t(".remove") %></a>
                 </div>
               </div>
               <% end %>
@@ -62,8 +62,8 @@
 
             <div class="error message">
               <div class="icon"></div>
-              <h2>Error</h2>
-              <p>Haz click en publicar y en la siguiente pantalla podrás añadir tags o etiquetar personas que aparecen en el.</p>
+              <h2><%= t(".section.photo.error.title") %></h2>
+              <p><%= t(".section.photo.error.description") %></p>
             </div>
           </div>
 
@@ -82,7 +82,7 @@
                     <%= form.fields_for :video_data do |video_data| %>
                       <%= video_data.text_field :youtube_url %>
                     <% end -%>
-                    <span class="holder">URL de Youtube</span>
+                    <span class="holder"><%= t(".section.video.youtube_url") %></span>
                   </div>
                   </li>
 
@@ -93,7 +93,7 @@
                     <%= form.fields_for :video_data do |video_data| %>
                       <%= video_data.text_field :vimeo_url %>
                     <% end -%>
-                    <span class="holder">URL de Vimeo</span>
+                    <span class="holder"><%= t(".section.video.vimeo_url") %></span>
                   </div>
                   </li>
 
@@ -104,14 +104,14 @@
 
             <div class="success message">
               <div class="icon"></div>
-              <h2>Tu video ha sido publicado</h2>
-              <p>Recuerda que podrás ver toda la actividad que ocurra alrededor de el en tu dashboard.</p>
+              <h2><%= t(".section.video.success.title") %></h2>
+              <p><%= t(".section.video.success.description") %></p>
             </div>
 
             <div class="error message">
               <div class="icon"></div>
-              <h2>Error</h2>
-              <p>Ha ocurrido un error al publicar el video, por favor vuelve a intentarlo en un momento.</p>
+              <h2><%= t(".section.video.error.title") %></h2>
+              <p><%= t(".section.video.error.description") %></p>
             </div>
           </div>
 
@@ -132,27 +132,27 @@
                   <div class="input_field placeholder textarea clearfix">
                     <div id="proposal-counter" class="input-counter">
                       <%= proposal_data.text_area :title, :class => :title %>
-                      <span class="holder">Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.</span>
+                      <span class="holder"><%= t(".section.status_message.label") %></span>
                     </div>
                   </div>
 
                   <div class="input_field placeholder uploader">
                     <input type="text" />
-                    <span class="holder"><span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>">Sube una foto</span></span>
+                    <span class="holder"><span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>"><%= t(".section.proposal.upload") %></span></span>
                     <span class="percentage">0%</span>
-                    <span class="loading">Cargando imagen...</span>
+                    <span class="loading"><%= t(".section.photo.loading") %></span>
                     <div class="progress"></div>
                   </div>
 
                   <div class="image_container clearfix">
-                    <p>Se incluirá esta imagen en la propuesta.</p>
-                    <a href="#" class="remove">Eliminar</a>
+                    <p><%= t(".section.proposal.this_photo_will_be_published") %></p>
+                    <a href="#" class="remove"><%= t(".remove") %></a>
                   </div>
 
-                  <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
+                  <strong><%= t(".section.proposal.explanation") %></strong>
                   <div class="input_field description placeholder textarea">
                     <%= proposal_data.text_area :body, :class => :body %>
-                    <span class="holder">Describe la propuesta en pocas palabras</span>
+                    <span class="holder"><%= t(".section.proposal.label") %></span>
                   </div>
                 <% end -%>
               <% end -%>
@@ -161,8 +161,8 @@
 
             <div class="success message">
               <div class="icon"></div>
-              <h2>Tu propuesta ha sido publicada</h2>
-              <p>Propuesta publicada correctamente.</p>
+              <h2><%= t(".section.proposal.success.title") %></h2>
+              <p><%= t(".section.proposal.success.description") %></p>
             </div>
           </div>
         </div>

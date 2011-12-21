@@ -51,6 +51,7 @@
         data.event = "_close." + store;
         data.sectionID = 0;
         data.spinner = spinner;
+        data.translations = {};
       }
 
       $popover = $(this);
@@ -76,6 +77,9 @@
 
       if ($(this).hasClass("publish_proposal")) data.sectionID = 1;
 
+      // Translation
+      data.translations.publish = $ps.attr("data-t-publish");
+      data.translations.close   = $ps.attr("data-t-close");
     });
   };
 
@@ -110,11 +114,11 @@
     _addCloseAction(data);
     _addDefaultAction(data);
     _bindMenu(data);
-    _bindSubmit(data, "Publicar", true, "publish");
+    _bindSubmit(data, data.translations.publish, true, "publish");
     _bindActions(data);
     _bindTextInputs(data);
 
-    _bindSubmit(data, "Publicar", true, "publish");
+    _bindSubmit(data, data.translations.publish, true, "publish");
     data.$ps.find("input,:text,textarea").attr("tabindex", "-1");
 
     // Initialize the initial section
@@ -337,7 +341,7 @@
               $currentSection.find('.autosuggest_field input[type="text"]').val(name);
               $(this).hasClass("user") ? _updateHiddenTarget("user", id) : _updateHiddenTarget("area", id);
 
-              _bindSubmit(data, "Publicar", true, "publish");
+              _bindSubmit(data, data.translations.publish, true, "publish");
               _clearAutosuggest(data);
               _enableSubmit(data.$submit);
             });
@@ -370,7 +374,7 @@
       });
 
       _disableSubmit(data.$submit);
-      _changeSubmitTitle(data.$submit, "Publicar");
+      _changeSubmitTitle(data.$submit, data.translations.publish);
     } else {
       var $form = $currentSection.find("form");
       $form.submit();
@@ -665,7 +669,7 @@
           $currentSection = $section;
 
           _gotoSection(data);
-          _bindSubmit(data, "Publicar", true, "publish");
+          _bindSubmit(data, data.translations.publish, true, "publish");
           _center(data);
         });
 
@@ -688,7 +692,7 @@
     if (kind == "success") {
       $error.hide();
       $success.show(0, function() {
-        _changeSubmitTitle(data.$submit, "Cerrar");
+        _changeSubmitTitle(data.$submit, data.translations.close);
         _enableSubmit(data.$submit);
 
         data.$submit.unbind("click");

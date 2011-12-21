@@ -341,12 +341,45 @@
     proposals_list:
       no_content: No hay propuestas en este área
     politician_publish:
+      description: ¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!
       photo: Foto
       video: Vídeo
+      title: Publicar
       publish: Publicar
+      continue: Continuar
+      close: Cerrar
       dashboard: Estado
       proposal: Propuesta
       photos: Fotos
+      remove: Eliminar
+      section:
+        proposal:
+          label: Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.
+          upload: Sube una foto
+          this_photo_will_be_published: Se publicará esta imagen.
+          explanation: ¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?
+          label: Describe la propuesta en pocas palabras
+          success:
+            title: Tu propuesta ha sido publicada
+            description: Propuesta publicada correctamente.
+        status_message:
+          label: Introduce el texto que quieras publicar aquí.
+        photo:
+          upload: Sube una foto
+          loading: Cargando imagen...
+          this_photo_will_be_published: Se publicará esta imagen.
+          error:
+            title: Error
+            description: Ha ocurrido un error al publicar la foto, por favor vuelve a intentarlo en un momento.
+        video:
+          youtube_url: URL de Youtube
+          vimeo_url: URL de Vimeo
+          success:
+            title: Tu video ha sido publicado
+            description: Recuerda que podrás ver toda la actividad que ocurra alrededor de el en tu dashboard.
+          error:
+            title: Error
+            description: Ha ocurrido un error al publicar el video, por favor vuelve a intentarlo en un momento.
     user_publish:
       question: Pregunta
       proposal: Propuesta
