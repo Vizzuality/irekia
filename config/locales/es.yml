@@ -1,19 +1,18 @@
+#######################################
+# Rails
+#######################################
 # Spanish translations for Rails
 # by Francisco Fernando García Nieto (ffgarcianieto@gmail.com)
 # contributors:
 #  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
 # Corrected by Eloy Serra Labán: http://goo.gl/i9Kts, /nQ928, /XfKaX
 
-#######################################
-# Rails
-#######################################
-
 "es":
   date:
     formats:
       default: "%d/%m/%Y"
       short: "%d de %b"
-      long: "%e de %B de %Y"
+      long: "%d de %B de %Y"
 
     day_names:
       - domingo
@@ -84,8 +83,8 @@
 
   number:
     format:
-      separator: "."
-      delimiter: ","
+      separator: ","
+      delimiter: "."
       precision: 3
       significant: false
       strip_insignificant_zeros: false
@@ -94,8 +93,8 @@
       format:
         format: "%n %u"
         unit: "€"
-        separator: "."
-        delimiter: ","
+        separator: ","
+        delimiter: "."
         precision: 2
         significant: false
         strip_insignificant_zeros: false
@@ -150,20 +149,20 @@
         one:  "1 minuto"
         other: "%{count} minutos"
       about_x_hours:
-        one:  " 1 hora"
-        other: " %{count} horas"
+        one:  "alrededor de 1 hora"
+        other: "alrededor de %{count} horas"
       x_days:
         one:  "1 día"
         other: "%{count} días"
       about_x_months:
-        one:  " 1 mes"
-        other: " %{count} meses"
+        one:  "alrededor de 1 mes"
+        other: "alrededor de %{count} meses"
       x_months:
         one:  "1 mes"
         other: "%{count} meses"
       about_x_years:
-        one:  " 1 año"
-        other: " %{count} años"
+        one:  "alrededor de 1 año"
+        other: "alrededor de %{count} años"
       over_x_years:
         one:  "más de 1 año"
         other: "más de %{count} años"
@@ -210,23 +209,66 @@
       less_than_or_equal_to: "debe ser menor que o igual a %{count}"
       odd: "debe ser impar"
       even: "debe ser par"
+      taken: "ya está en uso"
+      record_invalid: "La validación falló: %{errors}"
+    template: &errors_template
+      header:
+        one:   "No se pudo guardar este/a %{model} porque se encontró 1 error"
+        other:  "No se pudo guardar este/a %{model} porque se encontraron %{count} errores"
+      body: "Se encontraron problemas con los siguientes campos:"
 
   activerecord:
     errors:
-      template:
-        header:
-          one:   "No se pudo guardar este/a %{model} porque se encontró 1 error"
-          other:  "No se pudo guardar este/a %{model} porque se encontraron %{count} errores"
-        # The variable :count is also available
-        body: "Se encontraron problemas con los siguientes campos:"
-
       messages:
-        taken: "ya está en uso"
-        record_invalid: "La validación falló: %{errors}"
         <<: *errors_messages
+      template:
+        <<: *errors_template
 
       full_messages:
         format: "%{attribute} %{message}"
+    models:
+      answer: Respuesta
+      area: Area
+      argument: Argumento
+      comment: Comentario
+      content: Contenido
+      document: Documento
+      event: Evento
+      image: Imagen
+      like: Me gusta
+      news: Noticia
+      participation: Participación
+      proposal: Propuesta
+      question: Pregunta
+      Role: Rol
+      Title: Título
+      user: Usuario
+      vide: Vídeo
+
+    attributes:
+      user:
+        name: Nombre
+        lastname: Apellidos
+        email: Email
+        password: Contraseña
+        password_confirmation: Repetir contraseña
+        current_password: Contraseña actual
+        role_id: Rol
+        title_id: Título
+        province_id: Territorio
+        city_id: Municipio
+        birthday: Fecha de nacimiento
+        postal_code: Código postal
+      area_user:
+        area_id: Área
+      image:
+        image: Imagen
+    values:
+      role:
+        name:
+          administrator: Administrador
+          politician: Político
+          citizen: Ciudadano
 
 #######################################
 # Devise
@@ -2025,49 +2067,6 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
 # IREKIA - Models
 #######################################
 
-  activerecord:
-    models:
-      answer: Respuesta
-      area: Area
-      argument: Argumento
-      comment: Comentario
-      content: Contenido
-      document: Documento
-      event: Evento
-      image: Imagen
-      like: Me gusta
-      news: Noticia
-      participation: Participación
-      proposal: Propuesta
-      question: Pregunta
-      Role: Rol
-      Title: Título
-      user: Usuario
-      vide: Vídeo
-
-    attributes:
-      user:
-        name: Nombre
-        lastname: Apellidos
-        email: Email
-        password: Contraseña
-        password_confirmation: Repetir contraseña
-        role_id: Rol
-        title_id: Título
-        province_id: Territorio
-        city_id: Municipio
-        birthday: Fecha de nacimiento
-        postal_code: Código postal
-      area_user:
-        area_id: Área
-      image:
-        image: Imagen
-    values:
-      role:
-        name:
-          administrator: Administrador
-          politician: Político
-          citizen: Ciudadano
   sharing:
     facebook:
       answer: 'He respondido a la pregunta: %{question}'

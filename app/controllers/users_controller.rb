@@ -101,26 +101,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    if params[:user].slice(:current_password, :password).present?
-      if @user.change_password(*params[:user].slice(:current_password, :password).values)
-        sign_in(@user, :bypass => true)
-        redirect_back_or_default user_path(@user)
-      else
-        render :settings
-      end
-    elsif @user.update_attributes(params[:user])
-      flash[:notice] = :question_created if params['user']['question_data_attributes'].present?
-      redirect_back_or_default user_path(@user)
-    else
-      flash[:notice] = :question_failed if params['user']['question_data_attributes'].present?
+    if current_user.update_with_email_and_password params[:user]
+      sign_in(current_user, :bypass => true)
+    end
 
-      respond_with(@user) do |format|
-        format.html {
-          render :settings
-        }
-        format.json
-      end
-
+    respond_with(current_user) do |format|
+      format.html {
+        redirect_back_or_render_action :settings
+      }
+      format.json
     end
   end
 

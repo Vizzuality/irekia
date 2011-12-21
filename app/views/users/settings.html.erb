@@ -20,7 +20,7 @@
 </div>
 
 <div class="article settings with_form with_footer">
-  <%= form_for @user, :html => {:novalidate => 'novalidate'} do |form| %>
+  <%= form_for current_user, :html => {:novalidate => 'novalidate'} do |form| %>
     <div class="inner">
       <header>
       <div class="left">
@@ -35,38 +35,38 @@
             <label for=""><%= t(".gender") %></label>
 
             <div class="radios">
-              <a href="#" class="radio gender male<%= ' selected' if !@user.is_woman %>">Hombre
-                <%= form.radio_button :is_woman, false, :checked => !@user.is_woman %>
+              <a href="#" class="radio gender male<%= ' selected' if !current_user.is_woman %>">Hombre
+                <%= form.radio_button :is_woman, false, :checked => !current_user.is_woman %>
               </a>
 
-              <a href="#" class="radio gender female<%= ' selected' if @user.is_woman %>">Mujer
-                <%= form.radio_button :is_woman, true, :checked => @user.is_woman %>
+              <a href="#" class="radio gender female<%= ' selected' if current_user.is_woman %>">Mujer
+                <%= form.radio_button :is_woman, true, :checked => current_user.is_woman %>
               </a>
             </div>
 
           </div>
 
-          <div class="field clearfix name pull-left<%= ' error' if @user.errors[:name].present? %>">
+          <div class="field clearfix name pull-left<%= ' error' if current_user.errors[:name].present? %>">
             <%= form.label :name, t('.name') %>
             <div class="input_field">
               <%= form.text_field :name %>
             </div>
 
-            <% if @user.errors[:name].present? || @user.errors[:lastname].present? %>
+            <% if current_user.errors[:name].present? || current_user.errors[:lastname].present? %>
               <ul class="errors">
-                <% if @user.errors[:name].present? %> <li><%= @user.errors[:name] %></li> <% end %>
-                <% if @user.errors[:lastname].present? %> <li><%= @user.errors[:lastname] %></li> <% end %>
+                <% if current_user.errors[:name].present? %> <li><%= current_user.errors[:name] %></li> <% end %>
+                <% if current_user.errors[:lastname].present? %> <li><%= current_user.errors[:lastname] %></li> <% end %>
               </ul>
             <% end %>
 
           </div>
 
-          <div class="field clearfix lastname pull-right<%= ' error' if @user.errors[:lastname].present? %>">
+
+          <div class="field clearfix lastname pull-right<%= ' error' if current_user.errors[:lastname].present? %>">
             <%= form.label :lastname, t('.lastname') %>
             <div class="input_field">
               <%= form.text_field :lastname %>
             </div>
-
           </div>
 
           <div class="field clearfix territory pull-left">
@@ -92,8 +92,8 @@
             <label for="">Conexión con redes sociales</label>
 
             <div class="social-links">
-              <div class="facebook <%='disabled' if @user.connected_with_facebook? %>"><%= link_to t('.connect_with', :name => 'Facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
-              <div class="twitter <%='disabled' if @user.connected_with_twitter? %>"><%= link_to t('.connect_with', :name => 'Twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
+              <div class="facebook <%='disabled' if current_user.connected_with_facebook? %>"><%= link_to t('.connect_with', :name => 'Facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
+              <div class="twitter <%='disabled' if current_user.connected_with_twitter? %>"><%= link_to t('.connect_with', :name => 'Twitter'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin %></div>
             </div>
           </div>
         </fieldset>
@@ -127,11 +127,11 @@
     <div class="content">
       <h2><%= t(".avatar.title") %></h2>
 
-      <%= form_for @user, :remote => true, :html => {:class => "avatar_uploader_form", :'data-type' => 'html' } do |form| %>
+      <%= form_for current_user, :remote => true, :html => {:class => "avatar_uploader_form", :'data-type' => 'html' } do |form| %>
         <div class="avatar-uploader">
 
           <div class="avatar_box">
-            <%= avatar @user, :big %>
+            <%= avatar current_user, :big %>
             <div class="frame"></div>
           </div>
 
@@ -139,7 +139,7 @@
             <h3><%= t(".avatar.pick_your_avatar") %></h3>
             <p><%= t(".avatar.subtitle") %></p>
 
-            <%= form.fields_for :profile_picture, (@user.profile_picture || @user.build_profile_picture) do |profile_picture| %>
+            <%= form.fields_for :profile_picture, (current_user.profile_picture || current_user.build_profile_picture) do |profile_picture| %>
               <%= profile_picture.hidden_field :image_cache, :class => :image_cache_name %>
             <% end %>
 
@@ -159,35 +159,35 @@
     <div class="content">
       <h2><%= t(".notifications.title") %></h2>
 
-      <%= form_for @user, :remote => true, :html => { :class => 'notifications', :'data-type' => 'html'} do |form| %>
+      <%= form_for current_user, :remote => true, :html => { :class => 'notifications', :'data-type' => 'html'} do |form| %>
 
         <ul>
 
-          <li class="<%= 'selected' if @user.notifications_level == 1 %>">
+          <li class="<%= 'selected' if current_user.notifications_level == 1 %>">
           <a href="#" class="letter minimun"></a>
           <div class="content">
             <strong><%= t(".notifications.minimal.title") %></strong>
             <p><%= t(".notifications.minimal.description") %></p>
           </div>
-          <%= form.hidden_field :notifications_level, :value => 1, :disabled => @user.notifications_level != 1 %>
+          <%= form.hidden_field :notifications_level, :value => 1, :disabled => current_user.notifications_level != 1 %>
           </li>
 
-          <li class="<%= 'selected' if @user.notifications_level == 2 %>">
+          <li class="<%= 'selected' if current_user.notifications_level == 2 %>">
           <a href="#" class="letter basics"></a>
           <div class="content">
             <strong><%= t(".notifications.basic.title") %></strong>
             <p><%= t(".notifications.basic.description") %></p>
           </div>
-          <%= form.hidden_field :notifications_level, :value => 2, :disabled => @user.notifications_level != 2 %>
+          <%= form.hidden_field :notifications_level, :value => 2, :disabled => current_user.notifications_level != 2 %>
           </li>
 
-          <li class="last <%= 'selected' if @user.notifications_level == 3 %>">
+          <li class="last <%= 'selected' if current_user.notifications_level == 3 %>">
           <a href="#" class="letter all"></a>
           <div class="content">
             <strong><%= t(".notifications.all.title") %></strong>
             <p><%= t(".notifications.all.description") %></p>
           </div>
-          <%= form.hidden_field :notifications_level, :value => 3, :disabled => @user.notifications_level != 3 %>
+          <%= form.hidden_field :notifications_level, :value => 3, :disabled => current_user.notifications_level != 3 %>
           </li>
         </ul>
 
@@ -201,7 +201,7 @@
 
 
 <div class="article settings with_form with_footer">
-  <%= form_for @user, :html => {:novalidate => 'novalidate'} do |form| %>
+  <%= form_for current_user, :html => {:novalidate => 'novalidate'} do |form| %>
     <div class="inner">
       <header>
       <div class="left">
@@ -221,14 +221,14 @@
               <%= form.text_field :email %>
             </div>
 
-            <% if @user.errors[:password].present? %>
+            <% if current_user.errors[:password].present? %>
               <ul class="errors">
-                <% if @user.errors[:password].present? %> <li><%= @user.errors[:password] %></li> <% end %>
+                <% if current_user.errors[:password].present? %> <li><%= current_user.errors[:password] %></li> <% end %>
               </ul>
             <% end %>
           </div>
 
-          <div class="field password pull-left<%= ' error' if @user.errors[:password].present? %>">
+          <div class="field password pull-left<%= ' error' if current_user.errors[:password].present? %>">
             <%= form.label :current_password, t('.current_password') %>
             <div class="input_field">
               <%= form.password_field :current_password %>

@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
                   :lastname,
                   :twitter_username,
                   :email,
+                  :password,
+                  :password_confirmation,
                   :remember_me,
                   :terms_of_service,
                   :role_id,
@@ -247,6 +249,15 @@ class User < ActiveRecord::Base
     where('(name = ? AND lastname = ?) OR external_id = ?', 'Patxi', 'Lopez Alvarez', 8080).first
   end
 
+  def update_with_email_and_password(attributes = {})
+    if attributes.slice(:email, :password).present?
+      attributes[:password_confirmation] = attributes[:password] if attributes[:password].present?
+      self.update_with_password(attributes)
+    else
+      self.update_without_password(attributes)
+    end
+  end
+
   def create_public_action(item)
     public_action              = actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
     public_action.published_at = item.published_at
@@ -440,11 +451,6 @@ class User < ActiveRecord::Base
     else
       []
     end
-  end
-
-  def update_with_password(params={})
-    params.delete(:current_password)
-    self.update_without_password(params)
   end
 
   def connected_with_facebook?
