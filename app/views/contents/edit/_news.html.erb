@@ -29,8 +29,11 @@
       </div>
 
       <!-- Title -->
-      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
-        <%= content_tag :h1, @content.title, :class => :content %>
+      <% title = @content.title %>
+      <% title = t(".add_title") if @content.title.blank? %>
+
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable title text', :'data-t-empty' => t(".add_title")} do |form| %>
+        <%= content_tag :h1, title, :class => :content %>
         <%= form.fields_for :news_data do |news_data| %>
           <div class="input_field textarea"><%= news_data.text_area :title, :value => @content.title %></div>
         <% end -%>
@@ -42,8 +45,8 @@
       <% subtitle = @content.subtitle %>
       <% subtitle = t(".add_subtitle") if @content.subtitle.blank? %>
 
-      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
-        <%= content_tag :p, (content_tag :strong, subtitle), :class => "subtitle content" %>
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text', :'data-t-empty' => t(".add_subtitle")} do |form| %>
+        <%= content_tag :div, subtitle, :class => "subtitle content" %>
 
         <%= form.fields_for :news_data do |news_data| %>
           <div class="input_field textarea">
@@ -54,21 +57,22 @@
       <% end -%>
 
       <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable date'} do |form| %>
-        <div class="meta">
-          <span class="date content"><%= l @content.published_at.to_date, :format => :long %></span>
-          <%= form.date_select :published_at, :value => @content.published_at.to_date, :format => :long  %>
-          <%= button t(".save"), :class => "submit white_button" %>
-        </div>
+        <span class="date content"><%= l @content.published_at.to_date, :format => :long %></span>
+        <%= form.date_select :published_at, :value => @content.published_at.to_date, :format => :long  %>
+        <%= button t(".save"), :class => "submit white_button" %>
       <% end -%>
       <!-- /Subtitle -->
 
-      <!-- image -->
+      <!-- Image -->
       <%= render :partial => 'contents/edit/image' %>
       <!-- /Image -->
 
       <!-- Body -->
-      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text'} do |form| %>
-        <%= content_tag :div, (sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil), :class => :content  %>
+      <% body = @content.body.try(:strip) %>
+      <% body = t(".add_body") if @content.body.try(:strip).blank? %>
+
+      <%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => 'editable text', :'data-t-empty' => t(".add_body")} do |form| %>
+        <%= content_tag :div, (sanitize body, :tags => %w(p strong), :attributes => nil), :class => :content  %>
 
         <%= form.fields_for :news_data do |news_data| %>
           <div class="input_field textarea">

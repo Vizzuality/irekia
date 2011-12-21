@@ -2,6 +2,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new params[:image]
+
     if @image.save
       render :partial => 'contents/edit/image'
     else

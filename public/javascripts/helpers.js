@@ -505,17 +505,19 @@ jQuery.fn.enablePoliticianTags = function(opt){
 jQuery.fn.enableTextEditing = function(opt){
 
   this.each(function(){
-    var $form = $(this);
 
-    var speed     = (opt && opt.speed) || 120,
-    fadeInSpeed   = (opt && opt.speed) || 80,
-    spinner       = new Spinner(SPINNER_OPTIONS),
+    var
+    $form        = $(this),
+    speed        = (opt && opt.speed) || 120,
+    fadeInSpeed  = (opt && opt.speed) || 80,
+    spinner      = new Spinner(SPINNER_OPTIONS),
     content;
 
     $form.find(".content").click(function() {
       var that = $(this).parent();
 
       $form.find(".content").slideUp(speed);
+
       that.find('.input_field').slideDown(speed, function() {
         that.find('.submit').fadeIn(fadeInSpeed);
         that.find('.input_field :text, .input_field textarea').focus();
@@ -523,6 +525,7 @@ jQuery.fn.enableTextEditing = function(opt){
     });
 
     $form.bind('ajax:success', function(evt, xhr, status) {
+      spinner.stop();
       $form.find(".content").html(content);
       $form.find(".content").slideDown(fadeInSpeed);
       $form.find('.input_field').slideUp(speed);
@@ -532,7 +535,16 @@ jQuery.fn.enableTextEditing = function(opt){
     });
 
     $form.submit(function(e) {
+      spinner.spin();
+      $(spinner.el).addClass("spinner");
+      $(this).find('.submit').after(spinner.el);
+
       content = $form.find('.input_field :text, .input_field textarea').val();
+
+      if (isEmpty(content)) { // If the user doesn't introduce a text, let's show the default one
+        content = $form.attr("data-t-empty");
+      }
+
       $form.find('.submit').addClass("disabled");
       $form.find('.submit').attr("disabled", "disabled");
     });
@@ -548,23 +560,41 @@ jQuery.fn.enableImageEditing = function(opt){
   spinner     = new Spinner(SPINNER_OPTIONS),
   content;
 
-  $(this).find("form.remove").submit(function(e) {
-    $this.find(".image_container form.remove").fadeOut(speed);
-    $this.find(".image_container img").fadeOut(speed, function() {
-      $(this).remove();
-      $this.find(".add_image").fadeIn(speed);
+  function _setupRemove() {
+    $this.find("form.remove").die();
+    $this.find("form.remove").live("submit", function(e) {
+
+      $this.find(".image_container form.remove").fadeOut(speed, function() {
+        $(this).remove();
+      });
+
+      console.log("Deleting caption", $this, $(this).find(".image_editor"), $this.find(".caption"));
+
+      $this.find(".editable.caption").fadeOut(speed, function() {
+        $(this).remove();
+      });
+
+      $this.find(".image_container img").fadeOut(speed, function() {
+        $(this).remove();
+
+        $this.find(".add_image").fadeIn(speed);
+      });
+
     });
-  });
+  }
 
-  $(this).find(".add_image a").click(function(e) {
-    e.preventDefault();
+  function _setupAdd() {
+    $this.find(".add_image a").die();
+    $this.find(".add_image a").live("click", function(e) {
+      e.preventDefault();
 
-    _setupUpload("upload_new_image");
+      _setupUpload("upload_new_image");
 
-    var $form = $(this).parents("form");
-    $(this).parent().slideUp(speed);
-    $this.find(".input_field").fadeIn(speed);
-  });
+      var $form = $(this).parents("form");
+      $(this).parent().slideUp(speed);
+      $this.find(".input_field").fadeIn(speed);
+    });
+  }
 
   function _setupUpload(id, callback) {
 
@@ -578,109 +608,120 @@ jQuery.fn.enableImageEditing = function(opt){
       var uploader = new qq.FileUploader({
         element: document.getElementById(id),
         action: $span.attr('data-url'),
-				params: {
-					utf8: $span.closest('form').find('input[name=utf8]').val(),
-					authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
-				},
+        params: {
+          utf8: $span.closest('form').find('input[name=utf8]').val(),
+          authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
+        },
         debug: true,
         text: $span.html(),
         onSubmit: function(id, fileName){
           //data.spinner.spin(spin_element);
 
-					$(".progress").show();
+          $(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
-					$uploader.find("input").blur();
+          $uploader.find("input").blur();
           $uploader.find(".holder").fadeOut(speed);
           $uploader.find(".loading, .percentage").fadeIn(speed);
         },
         onProgress: function(id, fileName, loaded, total){
-					var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
-					var width = parseInt(585 * parseInt(p, 10) / 100, 10);
+          var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
+          var width = parseInt(585 * parseInt(p, 10) / 100, 10);
 
-          console.log("uploading…");
-					//console.debug(p, width, arguments, arguments[2], arguments[3]);
-
-					if (parseInt(p) >= 75) $uploader.find(".loading").fadeOut(speed);
-					if (parseInt(p) >= 46) $uploader.find(".percentage").css("color", "#fff");
+          if (parseInt(p) >= 75) $uploader.find(".loading").fadeOut(speed);
+          if (parseInt(p) >= 46) $uploader.find(".percentage").css("color", "#fff");
 
           $uploader.find(".percentage").html(parseInt(p, 10) + "%");
-				  $(".progress").css("width", width);
-				},
+          $(".progress").css("width", width);
+        },
         onComplete: function(id, fileName, responseJSON){
           //data.spinner.stop();
 
-					console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+          // var cacheImage = document.createElement('img');
+          // cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
 
-          $uploader.find(".loading").fadeOut(speed);
-          $uploader.find(".holder").fadeIn(speed);
-          $uploader.find(".percentage").fadeOut(speed);
+          $('.image_cache_name').val(responseJSON.image_cache_name);
 
-          var cacheImage = document.createElement('img');
-          cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
+          $uploader.find("form").unbind();
+          $uploader.find("form").submit();
 
-					$('.image_cache_name').val(responseJSON.image_cache_name);
+          $uploader.find("form").bind('ajax:success', function(evt, xhr, status) {
+            $uploader.find(".loading, .holder, .percentage").fadeOut(speed, function() {
+              $uploader.fadeOut(speed);
 
-          //console.log($(".image_cache_name"));
+              $uploader.find(".progress").fadeOut(speed, function() {
+                $(this).width(0);
+              });
 
-          $(cacheImage).bind("load", function () {
+            });
 
-            $this.find(".image_container").prepend(cacheImage);
             $this.find(".image_container").fadeIn(speed);
             $this.find(".image_container img").fadeIn(speed);
             $this.find(".image_container form.remove").fadeIn(speed);
 
-            //$uploader.find("form #image_attributes").val()
+            var $response = $(xhr);
+            $this.html($response);
 
-            $uploader.fadeOut(speed, function() {
-              $uploader.find("form").submit();
-            });
+            _setupRemove();
+            _setupAdd();
+            $this.find(".editable.caption").enableTextEditing();
           });
 
-          $uploader.find(".progress").fadeOut(speed, function() {
-            $(this).width(0);
-          });
-				},
+        },
         onCancel: function(id, fileName){ }
       });
     }
   }
+
+  _setupRemove();
+  _setupAdd();
+
 }
 
 /* Enables date editing */
 jQuery.fn.enableDateEditing = function(opt){
-  var speed     = (opt && opt.speed) || 120,
-  fadeInSpeed   = (opt && opt.speed) || 80,
-  spinner       = new Spinner(SPINNER_OPTIONS),
-  content;
 
-  $(this).click(function() {
+  this.each(function(){
 
-    if ($(this).find(".dk_container").length > 0) {
-      $(this).find(".dk_container").slideDown(speed);
-    } else {
-      $(this).find('select:eq(0)').dropkick({width:-20});
-      $(this).find('select:eq(1)').dropkick({width:77});
-      $(this).find('select:eq(2)').dropkick({width:-10});
-    }
+    var
+    $this       = $(this),
+    speed       = (opt && opt.speed) || 120,
+    fadeInSpeed = (opt && opt.speed) || 80,
+    spinner     = new Spinner(SPINNER_OPTIONS),
+    content;
 
-    $(this).find(".content").slideUp(speed);
-    $(this).find('.submit').fadeIn(fadeInSpeed);
-    //$(this).find('.input_field :text, .input_field textarea').focus();
-  });
+    $this.click(function() {
 
-  $(this).bind('ajax:success', function(evt, xhr, status) {
-    // $(this).find(".content").html(content);
-    $(this).find('.dk_container').slideUp(speed);
-    $(this).find(".content").slideDown(fadeInSpeed);
-    $(this).find('.submit').fadeOut(speed);
-    $(this).find('.submit').removeClass("disabled");
-    $(this).find('.submit').removeAttr("disabled");
-  });
+      if ($(this).find(".dk_container").length > 0) {
+        $(this).find(".dk_container").slideDown(speed);
+      } else {
+        $(this).find('select:eq(0)').dropkick({width:-20});
+        $(this).find('select:eq(1)').dropkick({width:77});
+        $(this).find('select:eq(2)').dropkick({width:-10});
+      }
 
-  $(this).submit(function(e) {
-    //content = $(this).find('.input_field :text, .input_field textarea').val();
-    $(this).find('.submit').addClass("disabled");
-    $(this).find('.submit').attr("disabled", "disabled");
+      $(this).find(".content").slideUp(speed);
+      $(this).find('.submit').fadeIn(fadeInSpeed);
+    });
+
+    $this.bind('ajax:success', function(evt, xhr, status) {
+      spinner.stop();
+
+      $(this).find('.dk_container').slideUp(speed);
+      $(this).find(".content").slideDown(fadeInSpeed);
+      $(this).find('.submit').fadeOut(speed);
+      $(this).find('.submit').removeClass("disabled");
+      $(this).find('.submit').removeAttr("disabled");
+    });
+
+    $this.submit(function(e) {
+
+      spinner.spin();
+      $(spinner.el).addClass("spinner");
+      $(this).find('.submit').after(spinner.el);
+
+      $(this).find('.submit').addClass("disabled");
+      $(this).find('.submit').attr("disabled", "disabled");
+    });
   });
 }
 
@@ -735,7 +776,6 @@ jQuery.fn.enableRadio = function(opt){
     var $this = $(this);
 
     $this.find("a.radio").click(function(e){
-      console.log($(this));
       e.preventDefault();
       $this.find("a.radio").removeClass("selected");
       $(this).addClass('selected');
@@ -750,7 +790,6 @@ jQuery.fn.enableRadio = function(opt){
     var $this = $(this);
 
     $this.find("a.radio").click(function(e){
-      console.log($(this));
       e.preventDefault();
       $this.find("a.radio").removeClass("selected");
       $(this).addClass('selected');
@@ -891,7 +930,6 @@ jQuery.fn.enableArguments = function(opt){
 
         var c = 0;
         $el.find("ul li").each(function(i, el) { c+= $(el).outerHeight(true) });
-        console.log($el.find("ul").outerHeight(true), $el.find("ul").height(), c);
 
         if (c > $el.find("ul").outerHeight(true)) {
           updateHeight(c);
@@ -1634,8 +1672,8 @@ jQuery.fn.verticalHomeLoop = function(opt){
   if (this.length < 1) return;
 
   var ele = this,
-      onElement = false,
-      interval = null;
+  onElement = false,
+  interval = null;
 
   function loopContent() {
     if ($(ele).find('div.left ul li').size()>0 && !onElement) {

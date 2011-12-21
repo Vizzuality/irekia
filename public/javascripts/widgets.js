@@ -566,7 +566,6 @@ var GOD = (function() {
 
         var classes = $(this).attr("class");
 
-
         if ($(this).hasClass("more_polemic") || $(this).hasClass("more_recent")) {
           data.filter = classes.replace("filter ", "");
         }

@@ -966,7 +966,15 @@
       news:
         save: Guardar
         back: volver
+        add_title: Añadir título
+        add_body: Añadir texto
         add_subtitle: Añadir subtítulo
+      image:
+        add_caption: Añadir pie de foto
+        save: Guardar
+        add_photo: Añadir foto
+        loading: Cargando imagen...
+        upload_a_new_one: Sube una nueva
       question:
         save: Guardar
         back: volver
