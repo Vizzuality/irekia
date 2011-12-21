@@ -65,12 +65,14 @@
               <div class="left">
                 <div class="checkbox_button facebook">
                   <%= check_box_tag :share_in_facebook %>
+                  <%= hidden_field_tag :facebook_message, message_for_facebook(@content) %>
                   <a href="#" class="checkbox">
                     <div class="icon"></div>
                   </a>
                 </div>
                 <div class="checkbox_button twitter">
                   <%= check_box_tag :share_in_twitter %>
+                  <%= hidden_field_tag :twitter_message, message_for_twitter(@content) %>
                   <a href="#" class="checkbox">
                     <div class="icon"></div>
                   </a>
@@ -111,7 +113,7 @@
   </div>
   <div class="right">
     <div class="content left-border">
-      <%= sharing_partial(question_url(@content), @content.question_text) %>
+      <%= render "shared/sharing" %>
       <%= render "shared/sidebar/tags" %>
       <%= render "shared/sidebar/answered_by" if @answer %>
       <%= render "shared/sidebar/related_questions" %>

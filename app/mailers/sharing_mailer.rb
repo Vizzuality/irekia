@@ -6,10 +6,10 @@ class SharingMailer < ActionMailer::Base
   #
   #   en.sharing_mailer.share_content.subject
   #
-  def share_content(from, to, content)
+  def share_content(from, to, url, message)
     @from_name = from.name
-    @content_text = content.email_share_message
-    @content_link = url_for(content)
+    @content_link = url
+    @content_text = message
 
     I18n.with_locale from.locale do
       mail(

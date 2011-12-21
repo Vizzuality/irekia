@@ -35,16 +35,4 @@ class Photo < Content
     self.class.moderated.includes(:image, :comments).order('published_at desc').where('id <> ?', id).first(limit)
   end
 
-  def facebook_share_message
-    title.truncate(140)
-  end
-
-  def twitter_share_message
-    title.truncate(140)
-  end
-
-  def email_share_message
-    title
-  end
-
 end

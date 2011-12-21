@@ -91,18 +91,6 @@ class Question < Content
     update_attribute('answer_requests_count', answer_requests.count)
   end
 
-  def facebook_share_message
-    question_text.truncate(140)
-  end
-
-  def twitter_share_message
-    question_text.truncate(140)
-  end
-
-  def email_share_message
-    question_text
-  end
-
   def publish
     super
 

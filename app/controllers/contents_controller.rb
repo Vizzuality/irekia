@@ -236,23 +236,21 @@ class ContentsController < ApplicationController
   private :process_file_upload
 
   def share_content
-    if params[:share_in_facebook] == '1'
+    if params[:share_in_facebook] == '1' && params[:facebook_message]
       begin
-        MiniFB.post(current_user.facebook_oauth_token, 'me', :type => 'feed', :message => "#{@content.facebook_share_message} #{url_for(@content)}")
+        MiniFB.post(current_user.facebook_oauth_token, 'me', :type => 'feed', :message => params[:facebook_message])
       rescue => e
         Rails.logger.error e
       end
     end
 
-    if params[:share_in_twitter] == '1'
+    if params[:share_in_twitter] == '1' && params[:twitter_message].present?
       begin
         Twitter.configure do |config|
           config.oauth_token        = current_user.twitter_oauth_token
           config.oauth_token_secret = current_user.twitter_oauth_token_secret
         end
-        twitter_message_link = url_for(@content.parent || @content)
-        twitter_message = @content.twitter_share_message.truncate(139 - twitter_message_link.length) + ' ' + twitter_message_link
-        Twitter.update(twitter_message)
+        Twitter.update(params[:twitter_message])
       rescue => e
         Rails.logger.error e
       end
