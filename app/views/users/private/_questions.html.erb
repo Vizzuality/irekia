@@ -37,6 +37,12 @@
         </div>
       </div>
       <div class="right">
+
+        <ul class="selector">
+          <li class="selected"><%= link_to t('.filters.all'), link_for_questions(:referer => action_name), :class => 'filter' %></li>
+          <li><%= link_to t('.filters.answered'), link_for_questions(:answered => true, :referer => action_name), :class => 'filter' %></li>
+        </ul>
+
       </div>
     </div>
     <div class="t"></div><div class="f"></div>

@@ -1792,6 +1792,9 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
           other: '%{count} preguntas contestadas'
         more_recent: Más recientes
         more_polemic: Más polémicas
+        filters:
+          all: Todas
+          answered: Contestadas
         no_questions:
           title: 'No has hecho ninguna pregunta aún.'
           description: 'Puedes preguntar cualquier cosa relacionada con el Gobierno Vasco: el presupuesto de un área, el motivo para tomar una decisión, el sueldo de un cargo político, etc.'
