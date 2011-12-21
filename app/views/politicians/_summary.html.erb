@@ -89,19 +89,3 @@
   <% end -%>
   <div class="t"></div><div class="f"></div>
 </div>
-
-<% if user_signed_in? %>
-  <% if flash[:notice] %>
-    <% if flash[:notice] == :question_created %>
-      <div class="question_sent">
-        <p class="title"><%= t('.question_sent.success') %></p>
-        <p><%= raw t('.question_sent.waiting_moderation', :review_link => link_to(t('.question_sent.review_link'), '#')) %></p>
-      </div>
-    <% elsif flash[:notice] == :question_failed %>
-      <div class="question_failed">
-        <p class="title"><%= t('.question_sent.fail') %></p>
-        <p></p>
-      </div>
-    <% end %>
-  <% end %>
-<% end %>

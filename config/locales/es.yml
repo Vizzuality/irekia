@@ -2044,6 +2044,7 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
         email: Email
         password: Contraseña
         password_confirmation: Repetir contraseña
+        current_password: Contraseña actual
         role_id: Rol
         title_id: Título
         province_id: Territorio
