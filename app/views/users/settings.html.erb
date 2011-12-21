@@ -67,6 +67,11 @@
               <%= form.text_field :lastname %>
             </div>
 
+
+        <div class="field clearfix lastname pull-right<%= ' error' if current_user.errors[:lastname].present? %>">
+          <%= form.label :lastname, t('.lastname') %>
+          <div class="input_field">
+            <%= form.text_field :lastname %>
           </div>
 
           <div class="field clearfix territory pull-left">
@@ -127,11 +132,11 @@
     <div class="content">
       <h2><%= t(".avatar.title") %></h2>
 
-      <%= form_for @user, :remote => true, :html => {:class => "avatar_uploader_form", :'data-type' => 'html' } do |form| %>
+      <%= form_for current_user, :remote => true, :html => {:class => "avatar_uploader_form", :'data-type' => 'html' } do |form| %>
         <div class="avatar-uploader">
 
           <div class="avatar_box">
-            <%= avatar @user, :big %>
+            <%= avatar current_user, :big %>
             <div class="frame"></div>
           </div>
 
@@ -139,7 +144,7 @@
             <h3><%= t(".avatar.pick_your_avatar") %></h3>
             <p><%= t(".avatar.subtitle") %></p>
 
-            <%= form.fields_for :profile_picture, (@user.profile_picture || @user.build_profile_picture) do |profile_picture| %>
+            <%= form.fields_for :profile_picture, (current_user.profile_picture || current_user.build_profile_picture) do |profile_picture| %>
               <%= profile_picture.hidden_field :image_cache, :class => :image_cache_name %>
             <% end %>
 
@@ -201,7 +206,7 @@
 
 
 <div class="article settings with_form with_footer">
-  <%= form_for @user, :html => {:novalidate => 'novalidate'} do |form| %>
+  <%= form_for current_user, :html => {:novalidate => 'novalidate'} do |form| %>
     <div class="inner">
       <header>
       <div class="left">

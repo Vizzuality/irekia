@@ -105,7 +105,7 @@ class UsersController < ApplicationController
       sign_in(current_user, :bypass => true)
     end
 
-    respond_with(@user) do |format|
+    respond_with(current_user) do |format|
       format.html {
         redirect_back_or_render_action :settings
       }
