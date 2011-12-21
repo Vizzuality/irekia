@@ -221,6 +221,7 @@
               <%= form.text_field :email %>
             </div>
 
+            <%= current_user.errors %>
             <% if current_user.errors[:password].present? %>
               <ul class="errors">
                 <% if current_user.errors[:password].present? %> <li><%= current_user.errors[:password] %></li> <% end %>
@@ -231,14 +232,14 @@
           <div class="field password pull-left<%= ' error' if current_user.errors[:password].present? %>">
             <%= form.label :current_password, t('.current_password') %>
             <div class="input_field">
-              <%= form.password_field :current_password %>
+              <%= form.password_field :current_password, :autocomplete => :off %>
             </div>
           </div>
 
           <div class="field confirm_password pull-right">
             <%= form.label :password, t('.password') %>
             <div class="input_field">
-              <%= form.password_field :password %>
+              <%= form.password_field :password, :autocomplete => :off %>
             </div>
           </div>
         </fieldset>
