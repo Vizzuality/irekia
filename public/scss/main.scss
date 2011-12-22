@@ -3123,6 +3123,17 @@ span.where, .map .infowindow ul.details li.where {
 
     .qq-upload-button { position:relative; width:auto; }
 
+    .percentage {
+      display:none;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      font-size:15px;
+      color: #FF0066;
+      z-index:2010;
+      font-weight:bold;
+    }
+
     .progress {
       position: absolute;
       top: 0px; left: 0px;

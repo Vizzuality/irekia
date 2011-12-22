@@ -137,9 +137,8 @@
     <div class="content">
       <h2><%= t(".avatar.title") %></h2>
 
-      <%= form_for current_user, :remote => true, :html => {:class => "avatar_uploader_form", :'data-type' => 'html' } do |form| %>
+      <%= form_for current_user, :remote => true, :html => {:class => "avatar_uploader_form", :'data-type' => 'html', :"data-t-default" => t(".avatar.size"), :"data-t-uploading" => t(".avatar.uploading") } do |form| %>
         <div class="avatar-uploader">
-
           <div class="avatar_box">
             <%= avatar current_user, :big %>
             <div class="frame"></div>

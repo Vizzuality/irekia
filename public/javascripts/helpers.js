@@ -1765,16 +1765,17 @@ jQuery.fn.enableQuestion = function(opt){
   });
 };
 
-/* Enables image editing */
+/* Enables avatar upload */
 jQuery.fn.enableAvatarUpload = function(opt){
-  var
-  $this       = $(this),
-  speed       = (opt && opt.speed) || 120,
-  fadeInSpeed = (opt && opt.speed) || 80,
-  t,
-  content;
 
   this.each(function(){
+
+    var
+    $this       = $(this),
+    speed       = (opt && opt.speed) || 120,
+    fadeInSpeed = (opt && opt.speed) || 80,
+    t,
+    content;
 
     var uploader = new qq.FileUploader({
       element: document.getElementById("avatar_uploader"),
@@ -1784,12 +1785,14 @@ jQuery.fn.enableAvatarUpload = function(opt){
         authenticity_token: $("#avatar_uploader").closest("form").find('input[name=authenticity_token]').val()
       },
       debug: true,
-      template: '<span class="qq-uploader">' +
+      template: [
+        '<span class="qq-uploader">' +
         '<span class="qq-upload-drop-area"></span>' +
-          '<span class="qq-upload-button"><span class="progress"></span>' +
-            '<span class="title">'+$("#avatar_uploader span").html()+'</span></span>' +
-              '<span class="qq-upload-list"></span>' +
-                '</span>',
+        '<span class="qq-upload-button"><span class="progress"></span>' +
+        '<span class="title">'+$("#avatar_uploader span").html()+'</span>' +
+        '<span class="percentage"></span></span>' +
+        '<span class="qq-upload-list"></span>' +
+        '</span>'].join(),
       text: $("#avatar_uploader span").html(),
       onSubmit: function(id, fileName){
         var w = $("#avatar_uploader .qq-upload-button").outerWidth(true);
@@ -1797,18 +1800,27 @@ jQuery.fn.enableAvatarUpload = function(opt){
         $("#avatar_uploader .qq-upload-button").css("width", w);
         $("#avatar_uploader span.title").html("");
 
+        $this.find(".percentage").fadeIn(250);
         $this.find(".progress").fadeIn(250);
+
+        var uploadingMessage = $this.attr("data-t-uploading");
+        $this.find(".explanation .small").html(uploadingMessage);
       },
       onProgress: function(id, fileName, loaded, total){
         var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
 
-        //$this.find(".percentage").html(parseInt(p, 10) + "%");
+        $this.find(".percentage").html(parseInt(p, 10) + "%");
+        $this.find(".percentage").css("left", parseInt(p, 10));
         $this.find(".progress").css("width", (parseInt(p, 10) + "%"));
       },
       onComplete: function(id, fileName, responseJSON){
 
+        var defaultMessage = $this.attr("data-t-default");
+        $this.find(".explanation .small").html(defaultMessage);
+
         $("#avatar_uploader span.title").html(t);
 
+        $this.find(".percentage").fadeOut(250);
         $this.find(".progress").fadeOut(250, function() {
           $(this).width("0");
         });
@@ -1826,6 +1838,10 @@ jQuery.fn.enableAvatarUpload = function(opt){
 
       },
       onCancel: function(id, fileName){
+
+        var defaultMessage = $this.attr("data-t-default");
+        $this.find(".explanation .small").html(defaultMessage);
+
       }
     });
   })

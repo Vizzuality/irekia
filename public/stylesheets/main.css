@@ -809,6 +809,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .inner .avatar-uploader .explanation .small { display: block; font-size: 13px; color: #b1b9be; }
 #container .article .inner .avatar-uploader .explanation h3 { font-size: 12px; }
 #container .article .inner .avatar-uploader .explanation .qq-upload-button { position: relative; width: auto; }
+#container .article .inner .avatar-uploader .explanation .percentage { display: none; position: absolute; top: 0px; left: 0px; font-size: 15px; color: #FF0066; z-index: 2010; font-weight: bold; }
 #container .article .inner .avatar-uploader .explanation .progress { position: absolute; top: 0px; left: 0px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
 
 #container .article .inner .right .proposal-support { float: left; background: #F6F6F7; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; }

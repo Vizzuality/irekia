@@ -418,7 +418,7 @@
           vimeo_url: URL de Vimeo
           success:
             title: Tu video ha sido publicado
-            description: Recuerda que podrás ver toda la actividad que ocurra alrededor de el en tu dashboard.
+            description: Recuerda que podrás ver toda la actividad que ocurra alrededor de él en tu dashboard.
           error:
             title: Error
             description: Ha ocurrido un error al publicar el video, por favor vuelve a intentarlo en un momento.
@@ -434,6 +434,13 @@
       forgotten_password: ¿Olvidaste tu contraseña?
       get_it_here: Recupérala aquí
       remember_me: Recordar mis datos
+      login: Entra
+      remember_me: Recordar mis datos
+      password_reminder:
+        title: Introduce tu email
+        description: y te mandaremos instrucciones para recuperar tu contraseña
+        email: Tu email
+        recover_password: Recuperar contraseña
     sidebar:
       location:
         title: "Localización del evento"
@@ -1696,6 +1703,7 @@
         title: Tu avatar
         pick_your_avatar: Selecciona tu avatar
         upload_an_image: Subir una nueva imagen
+        uploading: Subiendo nuevo avatar...
         subtitle: Necesitas una imagen que te represente en Irekia. Los usuarios con avatar son mas populares
         size: Tamaño máximo 500x500.
       man: 'Hombre'

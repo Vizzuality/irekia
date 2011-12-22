@@ -18,7 +18,7 @@ $(function() {
   $(".people.editable").enablePoliticianTags();
   $(".context ul.editable.tags").enableAreaEditing();
 
-  $("#avatar_uploader").enableAvatarUpload();
+  $(".avatar_uploader_form").enableAvatarUpload();
 
   $('.tabs').tabs();
 
