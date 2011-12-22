@@ -115,6 +115,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if current_user.destroy
+      redirect_to root_path
+    else
+      render :settings
+    end
+  end
+
   def connect
     session['user_return_to'] = connect_user_path(@user)
     render :layout => !request.xhr?

@@ -132,16 +132,16 @@ Irekia::Application.routes.draw do
       end
     end
 
+    root :to                 => 'users#show', :constraints => lambda { |r| r.env['warden'].authenticate? }
+    root :to                 => 'home#index'
+
     match '/agenda'          => 'home#agenda'
     match '/nav_bar_buttons' => 'home#nav_bar_buttons'
+    post  '/change_locale'   => 'home#change_locale'
+
+    match '/in_development', :to => 'application#in_development'
   end
 
-  root :to                 => 'users#show', :constraints => lambda { |r| r.env['warden'].authenticate? }
-  root :to                 => 'home#index'
-
-  post '/change_locale'   => 'home#change_locale'
-
-  match '/in_development', :to => 'application#in_development'
   match '*a',              :to => 'application#render_not_found'
 
 end
