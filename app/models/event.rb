@@ -74,18 +74,6 @@ class Event < Content
     })
   end
 
-  def facebook_share_message
-    title.truncate(140)
-  end
-
-  def twitter_share_message
-    title.truncate(140)
-  end
-
-  def email_share_message
-    title
-  end
-
   def self.calendar_bounds(weeks, filters)
     calendar_date = Date.current
     if filters[:next_month].present?

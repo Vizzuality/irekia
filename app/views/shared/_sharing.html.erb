@@ -5,6 +5,7 @@
     <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post, :novalidate => 'novalidate'} do |form| %>
       <div class="input_field placeholder">
         <%= hidden_field_tag :provider, :email %>
+        <%= hidden_field_tag :email_message, message_for_email(@content) %>
         <%= text_field_tag :email, "", :placeholder => "", :autocomplete => :off  %>
         <span class="holder">Escribe la dirección de email</span>
       </div>
@@ -16,16 +17,14 @@
   </li>
 
   <li>
-    <%= link_to '', "https://twitter.com/share?text=#{twitter_message}", :class => 'share twitter' %>
+    <%= link_to '', "https://twitter.com/share?text=#{message_for_twitter(@content)}", :class => 'share twitter' %>
   </li>
 
-  <% if defined?(facebook_url) -%>
-    <li>
-      <%= link_to '', '#', :name => 'fb_share', :class => 'share facebook', :type => 'icon', :share_url => facebook_url %>
-      <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
-      </script>
-    </li>
-  <% end -%>
+  <li>
+    <%= link_to '', '#', :name => 'fb_share', :class => 'share facebook', :type => 'icon', :share_url => polymorphic_url(@content) %>
+    <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
+    </script>
+  </li>
 
   <% if @content_type == 'event' %>
     <li>

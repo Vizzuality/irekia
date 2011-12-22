@@ -1,5 +1,5 @@
 <% content_for :facebook_meta do -%>
-  <meta property="og:title" content="Irekia - <%= @content.title %>" />
+  <meta property="og:title" content="Irekia - <%= @content.title if @content.title.present? %>" />
   <meta property="og:description" content="<%= @content.description.strip.truncate(128) if @content.description.present? %>" />
   <meta property="og:image" content="<%= image_url @content.content_url %>" />
 <% end -%>
@@ -29,7 +29,7 @@
   <div class="right">
     <div class="content left-border">
 
-      <%= sharing_partial(photo_url(@content), @content.title) %>
+      <%= render "shared/sharing" %>
       <%= render "shared/sidebar/tags" %>
       <%= render "shared/sidebar/location" %>
       <%= render "shared/sidebar/related_politicians" %>

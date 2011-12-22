@@ -153,18 +153,6 @@ class Content < ActiveRecord::Base
     default.merge(options)
   end
 
-  def facebook_share_message
-
-  end
-
-  def twitter_share_message
-
-  end
-
-  def email_share_message
-
-  end
-
   def content_area
     if respond_to?(:target_area) && target_area.present?
       target_area

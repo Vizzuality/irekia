@@ -2,7 +2,9 @@ class VideoData < ActiveRecord::Base
   belongs_to :video
   belongs_to :answer_data
 
-  attr_reader :video_url
+  def video_url
+    youtube_url || vimeo_url
+  end
 
   def video_url=(url)
     if url.match(/http:\/\/www.youtube.com/)

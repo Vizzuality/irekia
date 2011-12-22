@@ -217,22 +217,28 @@ module ApplicationHelper
     request.protocol + request.host_with_port + image_path
   end
 
-  def inline_sharing_partial_for_contents(content, content_type, url, message)
-    render "shared/inline_content_sharing", :url => url, :content_id => content.id, :content => content, :content_type => content_type, :facebook_url    => url,
-                             :twitter_message => message_for_twitter(url, message)
+  # def inline_sharing_partial_for_contents(content, content_type, url, message)
+  #   render "shared/inline_content_sharing", :url => url, :content_id => content.id, :content => content, :content_type => content_type, :facebook_url    => url,
+  #                            :twitter_message => message_for_twitter(content)
+  # end
+
+  # def inline_sharing_partial(content, content_type, url, message)
+  #   render "shared/inline_sharing", :content_id => content.id, :content => content, :content_type => content_type, :facebook_url    => url,
+  #                            :twitter_message => message_for_twitter(content)
+  # end
+
+  def message_for_twitter(content)
+    twitter_message_link = polymorphic_url(content.parent || content)
+    content.text.truncate(139 - twitter_message_link.length) + ' ' + twitter_message_link
   end
 
-  def inline_sharing_partial(content, content_type, url, message)
-    render "shared/inline_sharing", :content_id => content.id, :content => content, :content_type => content_type, :facebook_url    => url,
-                             :twitter_message => message_for_twitter(url, message)
+  def message_for_facebook(content)
+    twitter_message_link = polymorphic_url(content.parent || content)
+    content.text.truncate(139 - twitter_message_link.length) + ' ' + twitter_message_link
   end
 
-  def inline_message_for_twitter(url, message)
-    message = "Irekia - #{message.truncate(131 - url.length)} - #{url}" if message
-  end
-
-  def message_for_twitter(url, message)
-    message = "Irekia - #{message.truncate(131 - url.length)} - #{url}" if message
+  def message_for_email(content)
+    content.text
   end
 
   def render_list_element(item, item_type, options = {})

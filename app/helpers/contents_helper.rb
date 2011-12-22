@@ -16,11 +16,6 @@ module ContentsHelper
     questions_path(filters)
   end
 
-  def sharing_partial(url, message)
-    render "shared/sharing", :facebook_url    => url,
-                             :twitter_message => message_for_twitter(url, message)
-  end
-
   def can_i_answer_the_question?
     current_user && current_user.politician? && (@content.target_area.present? || current_user == @content.target_user)
   end

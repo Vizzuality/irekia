@@ -6,17 +6,17 @@ class SharesController < ApplicationController
 
     case params[:provider]
     when 'facebook'
-      MiniFB.post(current_user.facebook_oauth_token, 'me', :type => 'feed', :message => "#{@content.facebook_share_message} #{url_for(@content)}")
+      MiniFB.post(current_user.facebook_oauth_token, 'me', :type => 'feed', :message => params[:facebook_message])
     when 'twitter'
       Twitter.configure do |config|
         config.oauth_token = current_user.twitter_oauth_token
         config.oauth_token_secret = current_user.twitter_oauth_token_secret
       end
-      Twitter.update(@content.twitter_share_message)
+      Twitter.update(params[:twitter_message])
     when 'email'
       receiver = SharingTarget.new(params[:email])
       head :error and return  if receiver.invalid?
-      SharingMailer.share_content(current_user, receiver, @content).deliver
+      SharingMailer.share_content(current_user, receiver, url_for(@content), params[:email_message]).deliver
     end
 
     head :ok
