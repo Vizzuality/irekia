@@ -1,4 +1,4 @@
-// general spinner configuration
+// General spinner configuration
 var SPINNER_OPTIONS = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
 var IrekiaSpinner = new Spinner(SPINNER_OPTIONS);
 
@@ -7,6 +7,118 @@ String.prototype.trim=function(){return this.replace(/^\s\s*/, '').replace(/\s\s
 String.prototype.ltrim=function(){return this.replace(/^\s+/,'');}
 String.prototype.rtrim=function(){return this.replace(/\s+$/,'');}
 String.prototype.fulltrim=function(){return this.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');}
+
+/**
+ * Image preloader
+ *
+ * @param {String} [str] String to be checked
+*/
+
+jQuery.preloadImages = function(){
+  for(var i = 0; i < arguments.length; i++){
+    jQuery("<img>").attr("src", arguments[i]);
+  }
+}
+
+/**
+ * Enable element
+ *
+ * @param {jQuery} [$element] Element
+*/
+
+function enableElement($element) {
+  if ($element) {
+    $element.removeClass("disabled");
+    $element.removeAttr("disabled");
+  }
+}
+
+/**
+ * Disable element
+ *
+ * @param {jQuery} [$element] Element
+*/
+
+function disableElement($element) {
+  if ($element) {
+    $element.addClass("disabled");
+    $element.attr("disabled", "disabled");
+  }
+}
+
+/**
+ *
+ * @param {String} [str] String to be checked
+ * @returns {true/false} true if str is blank, false otherwise
+*/
+
+function isEmpty(str) {
+  if (str) {
+    return !str.match(/\S/)
+  } else { return true; }
+}
+
+
+/**
+ * Moves the scroll to the position of $el
+ *
+ * @param {jQuery} [$el] String to be checked
+ * @param {Hash} [opt] Optional arguments (speed, delay)
+ * @param {Function} [callback] Optional callback
+*/
+
+function goTo($el, opt, callback) {
+  var speed  = (opt && opt.speed)  || 200;
+  var delay  = (opt && opt.delay)  || 500;
+  var margin = (opt && opt.margin) || 30;
+
+  $('html, body').delay(delay).animate({scrollTop:$el.offset().top - margin}, speed, function() {
+    callback && callback();
+  });
+}
+
+/**
+ * Watches the URL hash and acts accordingly
+ *
+ * @param {Hash} [opt] Optional arguments (speed, delay)
+*/
+
+function watchHash(opt) {
+
+  var
+  speed  = (opt && opt.speed) || 200,
+  delay  = (opt && opt.delay) || 500,
+  margin = 0,
+  $el;
+
+  function removeHash() {
+    if ($.browser.msie) {
+      // ie doesn't allow to remove the hash
+    } else {
+      window.history.pushState("", document.title, window.location.pathname);
+    }
+  }
+
+  if (hash = window.location.hash) {
+
+    if (hash == "#comments") {
+      $el = $("div.comments");
+      margin = 10;
+    } else if (hash == "#team" || hash == "#questions" || hash == "#proposals" || hash == "#actions" || hash == "#agenda") {
+      $el = $("ul.menu");
+      margin = 40;
+    }
+
+    // After scrolling try to remove the hash
+    var callback = function() {
+      window.location.hash = '';
+      removeHash();
+    }
+
+    // Move the scroll to the desired element
+    goTo($el, { margin: margin, delay: delay }, callback);
+  }
+}
 
 function loginInLinks() {
   $(".floating-login").each(function(i, el) {
@@ -35,65 +147,30 @@ function loginInLinks() {
   });
 }
 
-function isEmpty(str) {
-  if (str) {
-    return !str.match(/\S/)
-  } else { return true; }
-}
+/**
+ * Enables the registration process
+ *
+ * @param {Hash} [opt] Optional arguments (speed, margin)
+*/
 
-
-function goTo($el, opt, callback) {
-  var speed  = (opt && opt.speed) || 200;
-  var delay  = (opt && opt.delay) || 500;
-
-  $('html, body').delay(delay).animate({scrollTop:$el.offset().top - 30}, speed, function() {
-    callback && callback();
-  });
-}
-
-function watchHash(opt) {
-
-  var speed  = (opt && opt.speed) || 200;
-
-  function removeHash() {
-    if (  $.browser.msie) {
-    } else {
-      window.history.pushState("", document.title, window.location.pathname);
-    }
-  }
-
-  if (hash = window.location.hash) {
-    if (hash == "#comments") {
-      $('html, body').delay(500).animate({scrollTop:$("div.comments").offset().top - 10}, speed, function() {
-        window.location.hash = '';
-        removeHash();
-      });
-    } else if (hash == "#team" || hash == "#questions" || hash == "#proposals" || hash == "#actions" || hash == "#agenda") {
-      $('html, body').delay(500).animate({scrollTop:$("ul.menu").offset().top - 40}, speed, function() {
-        removeHash();
-      });
-    }
-  }
-}
-
-/* Enables registration process */
 jQuery.fn.enableRegistration = function(opt){
 
-  var speed  = (opt && opt.speed) || 200,
-  marginBottom = 20,
-  $form = $(".cycle form"),
-  $container = $(".cycle .inner-cycle");
-
-  var $article, $newArticle, $currentArticle;
+  var
+  speed      = (opt && opt.speed)  || 200,
+  margin     = (opt && opt.margin) || 20,
+  $form      = $(".cycle form"),
+  $container = $(".cycle .inner-cycle"),
+  $article,
+  $newArticle,
+  $currentArticle;
 
   function error($article) {
-    ok = false;
     $article.effect("shake", { times:4 }, 100);
   }
 
   function forward($current, $next) {
     $(".cycle").animate({scrollLeft:$current.position().left + 850}, 350, "easeInOutQuad", function() {
-      $container.parent().animate({height:$next.outerHeight(true) + marginBottom}, 350, "easeInOutQuad");
+      $container.parent().animate({height:$next.outerHeight(true) + margin}, 350, "easeInOutQuad");
     });
   }
 
@@ -154,7 +231,7 @@ jQuery.fn.enableRegistration = function(opt){
     $article = $container.find(".article");
 
     if ($article.hasClass("step2")) {
-      marginBottom = 50;
+      margin = 50;
       $currentArticle = $article;
 
       $form = $currentArticle.find("form");
@@ -179,6 +256,11 @@ jQuery.fn.enableRegistration = function(opt){
   });
 }
 
+/**
+ * Enables the slideshow
+ *
+ * @param {Hash} [opt] Optional arguments (speed, controlSpeed)
+*/
 jQuery.fn.enableSlideshow = function(opt){
 
   var
@@ -299,7 +381,6 @@ jQuery.fn.enableSlideshow = function(opt){
   }
 
   function _move(s) {
-    //$this.find(".navigation").hide();
 
     _updateHeight(s, function() {
       $this.find(".section:eq(" + s + ") .caption").fadeOut(speed, function() {
@@ -308,7 +389,6 @@ jQuery.fn.enableSlideshow = function(opt){
           _toggleControls(s);
           _updateNavigation();
           $this.find(".section:eq(" + s + ") .caption").fadeIn(speed, function() {
-            //_positionNavigation(section);
             $this.find(".navigation").show();
           });
         });
@@ -540,8 +620,8 @@ jQuery.fn.enableTextEditing = function(opt){
       $form.find(".content").slideDown(fadeInSpeed);
       $form.find('.input_field').slideUp(speed);
       $form.find('.submit').fadeOut(speed);
-      $form.find('.submit').removeClass("disabled");
-      $form.find('.submit').removeAttr("disabled");
+
+      enableElement($form.find('.submit'));
     });
 
     $form.submit(function(e) {
@@ -555,8 +635,7 @@ jQuery.fn.enableTextEditing = function(opt){
         content = $form.attr("data-t-empty");
       }
 
-      $form.find('.submit').addClass("disabled");
-      $form.find('.submit').attr("disabled", "disabled");
+      disableElement($form.find('.submit'));
     });
   });
 }
@@ -717,8 +796,8 @@ jQuery.fn.enableDateEditing = function(opt){
       $(this).find('.dk_container').slideUp(speed);
       $(this).find(".content").slideDown(fadeInSpeed);
       $(this).find('.submit').fadeOut(speed);
-      $(this).find('.submit').removeClass("disabled");
-      $(this).find('.submit').removeAttr("disabled");
+
+      enableElement($(this).find('.submit'));
     });
 
     $this.submit(function(e) {
@@ -727,8 +806,7 @@ jQuery.fn.enableDateEditing = function(opt){
       $(spinner.el).addClass("spinner");
       $(this).find('.submit').after(spinner.el);
 
-      $(this).find('.submit').addClass("disabled");
-      $(this).find('.submit').attr("disabled", "disabled");
+      disableElement($(this).find('.submit'));
     });
   });
 }
@@ -789,20 +867,6 @@ jQuery.fn.enableRadio = function(opt){
       $(this).addClass('selected');
       $this.find('input[type="radio"]').val(0).attr('checked', false);
       $(this).find('input[type="radio"]').val(1).attr('checked', true);
-    });
-  });
-}
-/* Enables radio buttons */
-jQuery.fn.enableRadio = function(opt){
-  this.each(function(){
-    var $this = $(this);
-
-    $this.find("a.radio").click(function(e){
-      e.preventDefault();
-      $this.find("a.radio").removeClass("selected");
-      $(this).addClass('selected');
-      $this.find('input[type="radio"]').attr('checked', false);
-      $(this).find('input[type="radio"]').attr('checked', true);
     });
   });
 }
@@ -890,11 +954,8 @@ jQuery.fn.enableArguments = function(opt){
 
       spinner.spin(spin_element);
       $submit.hide();
-      $input.addClass("disabled");
 
-      setTimeout(function() {
-        $input.attr("disabled", "disabled");
-      }, 150);
+      setTimeout(function() { disableElement($input); }, 150);
     });
 
     function showIcon(noticeType) {
@@ -907,11 +968,12 @@ jQuery.fn.enableArguments = function(opt){
       setTimeout(function() {
         $("#notice_" + noticeType).fadeOut(speed);
         $icon.fadeOut(speed, function() {
-          $input.removeAttr("disabled");
+
+          enableElement($input);
+
           $submit.fadeIn(speed);
           $(this).remove();
           $input.val('');
-          $input.removeClass('disabled');
         });
       }, duration);
     }
@@ -943,10 +1005,9 @@ jQuery.fn.enableArguments = function(opt){
           updateHeight(c);
         }
 
-        $input.removeAttr("disabled");
+        enableElement($input);
         $submit.fadeIn(speed);
         $input.val('');
-        $input.removeClass('disabled');
 
       } else {
         $icon = $("<span class='icon success' />");
@@ -955,13 +1016,6 @@ jQuery.fn.enableArguments = function(opt){
       }
     });
   });
-}
-
-/* Preloading of images */
-jQuery.preloadImages = function(){
-  for(var i = 0; i < arguments.length; i++){
-    jQuery("<img>").attr("src", arguments[i]);
-  }
 }
 
 /* Autocomplete */
@@ -1324,23 +1378,9 @@ jQuery.fn.enableComments = function(opt){
 
   var speed  = (opt && opt.speed) || 200;
 
-  function disableSubmit($submit) {
-    if ($submit) {
-      $submit.addClass("disabled");
-      $submit.attr("disabled", "disabled");
-    }
-  }
-
-  function enableSubmit($submit) {
-    if ($submit) {
-      $submit.removeAttr('disabled');
-      $submit.removeClass("disabled");
-    }
-  }
-
   function textCounter($input, $submit) {
     var count = $input.val().length;
-    (count <= 0) ? disableSubmit($submit) : enableSubmit($submit);
+    (count <= 0) ? disableElement($submit) : enableElement($submit);
   }
 
   this.each(function(){
@@ -1367,7 +1407,6 @@ jQuery.fn.enableComments = function(opt){
         e.preventDefault();
         return false;
       }
-      disableSubmit();
       spinner.spin(spin_element);
     });
 
@@ -1382,7 +1421,7 @@ jQuery.fn.enableComments = function(opt){
       $(this).find("textarea").val("");
       $(this).find(".holder").fadeIn(speed);
       $comment.slideDown(speed);
-      disableSubmit($submit);
+      disableElement($submit);
     });
   });
 }
@@ -1575,12 +1614,10 @@ jQuery.fn.inputCounter = function(opt){
       if (count < 0 || count == limit) {
         if (count < 0) $counter.addClass("error");
         if (count == limit) $counter.removeClass("error");
-        $("#submit-" + id).addClass("disabled");
-        $("#submit-" + id).attr('disabled', 'disabled');
+        disableElement($("#submit-" + id));
       } else {
         $counter.removeClass("error");
-        $("#submit-" + id).removeClass("disabled");
-        $("#submit-" + id).removeAttr('disabled');
+        enableElement($("#submit-" + id));
       }
 
       $counter.html(count);
@@ -1600,33 +1637,17 @@ jQuery.fn.inputCounter = function(opt){
   });
 }
 
-// /* Adds sharing capabilities */
-// jQuery.fn.share = function(opt){
-//
-//   var speed   = (opt && opt.speed)  || 200;
-//   var easing  = (opt && opt.easing) || 'easeInExpo';
-//   var finishedSharing = true;
-//
-//   this.each(function(){
-//     var service = $(this).attr('class').replace('share ', '');
-//
-//     $(this).bind('click', function(e) {
-//       e.preventDefault();
-//       e.stopPropagation();
-//
-//       if (finishedSharing) {
-//         //finishedSharing = shareWith($(this), service, speed, easing);
-//       }
-//     });
-//   });
-// }
+/**
+ * Enables textarea autogrow
+*/
 
-jQuery.fn.autogrow = function(options){
+jQuery.fn.autogrow = function(){
 
   var resizing = false;
   this.filter('textarea').each(function() {
 
-    var $this   = $(this),
+    var
+    $this   = $(this),
     minHeight   = $this.height(),
     lineHeight  = $this.css('lineHeight');
 
@@ -1674,14 +1695,14 @@ jQuery.fn.autogrow = function(options){
   return this;
 }
 
-
 jQuery.fn.verticalHomeLoop = function(opt){
 
   if (this.length < 1) return;
 
-  var ele = this,
+  var
+  ele       = this,
   onElement = false,
-  interval = null;
+  interval  = null;
 
   function loopContent() {
     if ($(ele).find('div.left ul li').size()>0 && !onElement) {
@@ -1719,112 +1740,167 @@ jQuery.fn.verticalHomeLoop = function(opt){
   interval = setInterval(function(){loopContent()},5000);
 }
 
+/**
+ * Enables politicians question form
+ *
+ * @param {Hash} [opt] Optional arguments (speed)
+*/
 jQuery.fn.enableQuestion = function(opt){
 
-  if (this.length < 1) return;
-
-  var speed  = (opt && opt.speed) || 200;
-
-  var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
-  var spin_element = document.getElementById("politician_question_spinner");
-  var spinner = new Spinner(opts);
-
   this.each(function(){
-    $(this).submit(function(e) {
-      spinner.spin(spin_element);
-      $("#notice_success").fadeOut(150);
-      $(this).find('input[type="submit"]').addClass("disabled");
-      $(this).find('input[type="submit"]').attr("disabled", "disabled");
-    });
 
-    $(this).bind('ajax:success', function(evt, xhr, status) {
-      spinner.stop();
-      $(this).find(".notice_success").fadeIn(220);
+    var speed  = (opt && opt.speed) || 150;
 
-      $icon = $("<span class='icon success' />");
-      $(this).find(".input-counter").append($icon);
+    var spinnerID = "politician_question_spinner";
+    var spin_element = document.getElementById(spinnerID);
+    var spinner = new Spinner(SPINNER_OPTIONS);
+    var $form = $(this);
 
-      $("#notice_success").css("left", "447px");
-      $("#notice_success").css("bottom", "80px");
-      $(this).find('input[type="text"]').val("");
-      $(this).find(".holder").fadeIn(150);
-      $(this).find(".counter").html(140);
+    function _placeMessage($message) {
+      $message.css("left", "447px");
+      $message.css("bottom", "80px");
+      $message.fadeIn(220);
+    }
 
-      var $that = $(this);
+    function _appendIcon(iconClass) {
+      $icon = $("<span class='icon " + iconClass + "' />");
+      $form.find(".input-counter").append($icon);
+    }
 
+    function _gobackToInitialState($message) {
+
+      $form.find('input[type="text"]').val("");
+      $form.find(".holder").fadeIn(speed);
+      $form.find(".counter").html(140);
+
+      // After 2000 ms. show the success message and enable the button
+      // and the input text
       setTimeout(function() {
-        $("#notice_success").fadeOut(150);
+        $message.fadeOut(speed);
 
-        $that.find('input[type="submit"]').removeClass("disabled");
-        $that.find('input[type="submit"]').removeAttr("disabled");
+        enableElement($form.find('button'));
+        enableElement($form.find('input[type="text"]'));
 
-        $that.find(".icon").fadeOut(150, function() { $(this).remove();});
+        $form.find(".icon").fadeOut(speed, function() { $(this).remove();});
       }, 2000);
+    }
 
+    // onSubmit: disable the send button
+    $form.submit(function(e) {
+      spinner.spin(spin_element);
+
+      $(".notice").fadeOut(speed);
+      disableElement($form.find('button'));
+      disableElement($form.find('input[type="text"]'));
     });
+
+    // onSuccess: show the success message, enable the send button
+    $form.bind('ajax:success', function(evt, xhr, status) {
+      spinner.stop();
+
+      var status = "success";
+      var $message = $("#notice_" + status);
+
+      _appendIcon(status);
+      _placeMessage($message);
+      _gobackToInitialState($message);
+    });
+
+    // onError: show the error message, enable the send button
+    $form.bind('ajax:error', function(evt, xhr, status) {
+      spinner.stop();
+
+      var status = "error";
+      var $message = $("#notice_" + status);
+
+      _appendIcon(status);
+      _placeMessage($message);
+      _gobackToInitialState($message);
+    });
+
   });
 };
 
-/* Enables avatar upload */
+/**
+ * Enables avatar upload
+ *
+ * @param {Hash} [opt] Optional arguments (speed, fadeInSpeed)
+*/
 jQuery.fn.enableAvatarUpload = function(opt){
 
-  this.each(function(){
+  this.each(function() {
 
     var
     $this       = $(this),
     speed       = (opt && opt.speed) || 120,
     fadeInSpeed = (opt && opt.speed) || 80,
-    t,
-    content;
+    debug = false;
 
-    var uploader = new qq.FileUploader({
-      element: document.getElementById("avatar_uploader"),
-      action: $("#avatar_uploader").attr("data-url"),
-      params: {
-        utf8: $("#avatar_uploader").closest("form").find('input[name=utf8]').val(),
-        authenticity_token: $("#avatar_uploader").closest("form").find('input[name=authenticity_token]').val()
-      },
-      debug: true,
-      template: [
-        '<span class="qq-uploader">' +
-        '<span class="qq-upload-drop-area"></span>' +
-        '<span class="qq-upload-button"><span class="progress"></span>' +
-        '<span class="title">'+$("#avatar_uploader span").html()+'</span>' +
-        '<span class="percentage"></span></span>' +
-        '<span class="qq-upload-list"></span>' +
-        '</span>'].join(),
-      text: $("#avatar_uploader span").html(),
-      onSubmit: function(id, fileName){
-        var w = $("#avatar_uploader .qq-upload-button").outerWidth(true);
-        t = $("#avatar_uploader span.title").html();
-        $("#avatar_uploader .qq-upload-button").css("width", w);
-        $("#avatar_uploader span.title").html("");
+    var
+    $element = document.getElementById("avatar_uploader");
+    var params = {
+      utf8: $("#avatar_uploader").closest("form").find('input[name=utf8]').val(),
+      authenticity_token: $("#avatar_uploader").closest("form").find('input[name=authenticity_token]').val()
+    };
 
-        $this.find(".percentage").fadeIn(250);
-        $this.find(".progress").fadeIn(250);
+    var buttonTitle = $("#avatar_uploader span").html();
+    var template = [
+      '<span class="qq-uploader">',
+      '<span class="qq-upload-drop-area"></span>',
+      '<span class="qq-upload-button"><span class="progress"></span>',
+      '<span class="title">' + buttonTitle +'</span>',
+      '<span class="percentage"></span></span>',
+      '<span class="qq-upload-list"></span>',
+      '</span>'].join(' ');
 
-        var uploadingMessage = $this.attr("data-t-uploading");
-        $this.find(".explanation .small").html(uploadingMessage);
-      },
-      onProgress: function(id, fileName, loaded, total){
-        var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
+      function _gobackToInitialState() {
 
-        $this.find(".percentage").html(parseInt(p, 10) + "%");
-        $this.find(".percentage").css("left", parseInt(p, 10));
-        $this.find(".progress").css("width", (parseInt(p, 10) + "%"));
-      },
-      onComplete: function(id, fileName, responseJSON){
-
+        // Sets the original hint text
         var defaultMessage = $this.attr("data-t-default");
         $this.find(".explanation .small").html(defaultMessage);
 
-        $("#avatar_uploader span.title").html(t);
+        // Sets the original button title
+        var buttonTitle = $this.attr("data-t-button");
+        $("#avatar_uploader span.title").html(buttonTitle);
 
         $this.find(".percentage").fadeOut(250);
         $this.find(".progress").fadeOut(250, function() {
           $(this).width("0");
         });
+      }
 
+      // Event definition: onSubmit, onProgress, onComplete, onCancel
+
+      var onSubmit = function(id, fileName) {
+        var width = $("#avatar_uploader .qq-upload-button").outerWidth(true);
+
+        $("#avatar_uploader .qq-upload-button").css("width", width);
+
+        $this.find(".percentage").fadeIn(250);
+        $this.find(".progress").fadeIn(250);
+
+        // Sets the uploading hint message
+        var uploadingMessage = $this.attr("data-t-uploading");
+        $this.find(".explanation .small").html(uploadingMessage);
+
+        // Removes the button title
+        $("#avatar_uploader span.title").html("");
+      };
+
+      var onProgress = function(id, fileName, loaded, total) {
+        var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
+
+        // Updates the percentage and progress bar
+        $this.find(".percentage").html(parseInt(p, 10) + "%");
+        $this.find(".percentage").css("left", parseInt(p, 10));
+        $this.find(".progress").css("width", (parseInt(p, 10) + "%"));
+      };
+
+      var onComplete = function(id, fileName, responseJSON){
+
+        _gobackToInitialState();
+
+        // Adds the image to the page
         var cacheImage = document.createElement('img');
         cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
 
@@ -1832,17 +1908,28 @@ jQuery.fn.enableAvatarUpload = function(opt){
 
         $(cacheImage).bind("load", function () {
           $(".avatar_uploader_form").submit();
+
           var src = $(cacheImage).attr("src");
           $(".avatar_box a img").attr("src", src);
         });
+      };
 
-      },
-      onCancel: function(id, fileName){
+      var onCancel = function(id, fileName) {
+        _gobackToInitialState();
+      };
 
-        var defaultMessage = $this.attr("data-t-default");
-        $this.find(".explanation .small").html(defaultMessage);
+      var action = $("#avatar_uploader").attr("data-url");
 
-      }
-    });
+      setupUploader({ element: $element, action: action, params: params, debug: debug, template: template, onSubmit:  onSubmit, onProgress: onProgress, onComplete: onComplete, onCancel:  onCancel });
   })
+}
+
+/**
+ * Generates file uploader
+ *
+ * @param {Hash} [opt] Arguments (element, action, params, debug, template, text, onSubmit, onProgress, onComplete, onCancel)
+*/
+
+function setupUploader(opt) {
+  var uploader = new qq.FileUploader(opt);
 }

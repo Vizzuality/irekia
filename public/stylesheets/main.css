@@ -735,6 +735,8 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .social-links .twitter.disabled a { background-position: right -572px; }
 #container .article .social-links .twitter.disabled a:hover { text-decoration: none; cursor: default; }
 
+#container .article.with_form.change_password h1 { margin: 0 0 20px 0; }
+
 #container .article.connect.with_remark { margin-bottom: 40px!important; }
 #container .article.connect.with_remark .remark { position: absolute; width: 100%; bottom: -35px; text-align: center; }
 
