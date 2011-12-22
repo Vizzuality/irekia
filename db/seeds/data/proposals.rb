@@ -10,7 +10,7 @@ Y de paso, como he leído en otra propuesta, si no se va a actualizar la previsi
 Supongo que lo de la foto será un fallo, pero no da un buen ejemplo de profesionalidad.
                 EOF
                 ),
-                :target   => Area.find(7),
+                :target   => Area.find(3),
                 :tags     => %w(contaminación ecología Medio\ Ambiente).join(','),
                 :author   => @andres,
                 :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'proposal_00.jpg'))),
@@ -28,7 +28,7 @@ Los bajos niveles de acumulación podrían deberse, según la investigación, a 
 Se propone aumentar la superficie del bosque vasco con la plantación de árboles autóctonos para fijar el carbono, abrir corredores ecológicos, mejorar el estado de los nuestros ecosistemas naturales, la calidad de nuestro aire y generando puestos de trabajo verdes.
                 EOF
                 ),
-                :target   => Area.find(7),
+                :target   => Area.find(3),
                 :tags     => %w(arboles naturaleza Medio\ Ambiente).join(','),
                 :author   => @aitor,
                 :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'proposal_01.jpg'))),
@@ -48,7 +48,7 @@ Me gustaría ( que yo creo que es así) que en caso de ausencia de servicio de p
 Gracias
                 EOF
                 ),
-                :target   => Area.find(7),
+                :target   => Area.find(3),
                 :tags     => %w(policia seguridad ciudadanía).join(','),
                 :author   => @patricia,
                 :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'proposal_02.jpg'))),

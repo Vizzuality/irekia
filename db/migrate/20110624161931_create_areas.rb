@@ -5,7 +5,6 @@ class CreateAreas < ActiveRecord::Migration
       t.text :description
       t.text :description_1
       t.text :description_2
-      t.string  :long_name
       t.integer :external_id
 
       t.integer :areas_users_count,        :default => 0

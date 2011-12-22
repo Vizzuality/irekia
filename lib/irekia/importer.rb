@@ -138,7 +138,7 @@ module Irekia
               area_id = area['id']
               area_detail = get_json(area_detail_url.call(lang, area_id), server_options)
 
-              Area.where(:long_name => area['name']).each do |area|
+              Area.where(:name => area['name']).each do |area|
                 area.external_id = area_id
                 area.save!
               end

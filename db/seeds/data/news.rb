@@ -61,7 +61,7 @@ Junto a solistas de "primer nivel", estas formaciones interpretarán algunas de 
             :image        => File.open(Rails.root.join('db/seeds/support/images/news_3.jpg')),
             :tags         => %w(teatro cultura musica evento).join(','),
             :author       => @aitor,
-            :areas_tagged => [Area.find(7)],
+            :areas_tagged => [Area.find(3)],
             :users_tagged => User.politicians.sample((1..5).to_a.sample),
             :comments     => [
               create_comment(@iker, 'El año pasado estuve y me pareció muy bueno! Este año volveré!'),

@@ -92,7 +92,7 @@ class Area < ActiveRecord::Base
   end
 
   def self.presidencia
-    where('external_id = ? OR name = ?', 1, 'Presidencia').first
+    where('external_id = ? OR name = ?', 1, 'Lehendakaritza').first
   end
 
   def create_action(item)
