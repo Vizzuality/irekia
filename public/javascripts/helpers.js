@@ -78,6 +78,17 @@ function goTo($el, opt, callback) {
 }
 
 /**
+ * Generates file uploader
+ *
+ * @param {Hash} [opt] Arguments (element, action, params, debug, template, text, onSubmit, onProgress, onComplete, onCancel)
+ * @returns {FileUploader} returns a file uploader handler
+*/
+
+function setupUploader(opt) {
+  return new qq.FileUploader(opt);
+}
+
+/**
  * Watches the URL hash and acts accordingly
  *
  * @param {Hash} [opt] Optional arguments (speed, delay)
@@ -118,6 +129,46 @@ function watchHash(opt) {
     // Move the scroll to the desired element
     goTo($el, { margin: margin, delay: delay }, callback);
   }
+}
+
+/**
+ * Hides/shows placeholders
+ *
+ * @param {Hash} [opt] Optional arguments (speed, timeOut)
+*/
+
+jQuery.fn.smartPlaceholder = function(opt){
+
+  this.each(function(){
+    var
+    speed   = (opt && opt.speed)   || 150,
+    timeOut = (opt && opt.timeOut) || 100,
+    $span   = $(this).find("span.holder"),
+    $input  = $(this).find(":input").not("input[type='hidden'], input[type='submit']");
+
+    if ($input.val()) {
+      $span.hide();
+    }
+
+    $input.keydown(function(e) {
+
+      //TODO: check for ie
+      if (e.metaKey && e.keyCode == 88) { // command+x
+        setTimeout(function() {
+          isEmpty($input.val()) && $span.fadeIn(speed);
+        }, timeOut);
+      } else if (e.metaKey && e.keyCode == 86) { // command+v
+        setTimeout(function() {
+          !isEmpty($input.val()) && $span.fadeOut(speed);
+        }, timeOut);
+      } else {
+        setTimeout(function() { ($input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);
+      }
+    });
+
+    $span.click(function() { $input.focus(); });
+    $input.blur(function() { !$input.val() && $span.fadeIn(speed); });
+  });
 }
 
 function loginInLinks() {
@@ -165,7 +216,7 @@ jQuery.fn.enableRegistration = function(opt){
   $currentArticle;
 
   function error($article) {
-    $article.effect("shake", { times:4 }, 100);
+    $article.effect("shake", { times: 4 }, 100);
   }
 
   function forward($current, $next) {
@@ -570,7 +621,6 @@ jQuery.fn.enablePoliticianTags = function(opt){
     });
   });
 
-  //$addInput.keyup(_onKeyUp);
  _observeInput($addInput);
 
  $add.find(".add_politician").bind('ajax:success', function(evt, xhr, status) {
@@ -702,7 +752,6 @@ jQuery.fn.enableImageEditing = function(opt){
         debug: true,
         text: $span.html(),
         onSubmit: function(id, fileName){
-          //data.spinner.spin(spin_element);
 
           $(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
@@ -721,10 +770,6 @@ jQuery.fn.enableImageEditing = function(opt){
           $(".progress").css("width", width);
         },
         onComplete: function(id, fileName, responseJSON){
-          //data.spinner.stop();
-
-          // var cacheImage = document.createElement('img');
-          // cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
 
           $('.image_cache_name').val(responseJSON.image_cache_name);
 
@@ -1351,11 +1396,6 @@ jQuery.fn.enableTargetEditing = function(opt){
 } // jQuery.fn.enableTargetEditing
 
 
-
-
-
-
-
 jQuery.fn.enableNotificationSelector = function(opt){
   var speed  = (opt && opt.speed) || 200;
 
@@ -1426,28 +1466,11 @@ jQuery.fn.enableComments = function(opt){
   });
 }
 
-/* Show previous hidden comments */
-jQuery.fn.showHiddenComments = function(opt){
-
-  var delay  = (opt && opt.delay) || 300;
-  var speed  = (opt && opt.speed) || 200;
-
-  this.each(function(){
-    $(this).click(function(e){
-      e.preventDefault();
-      $(this).closest("ul").find("li.previous").each(function(i, comment) {
-        $(comment).delay(i * delay).slideDown(speed);
-      })
-    });
-  });
-}
-
 /* Click binding for the 'view calendar' link */
 jQuery.fn.viewCalendar = function(opt){
 
-  var speed  = (opt && opt.speed) || 150;
-
   this.each(function(){
+    var speed  = (opt && opt.speed) || 150;
     $(this).click(function(e){
       e.preventDefault();
       if ($(this).parent().hasClass("selected")) return;
@@ -1465,58 +1488,28 @@ jQuery.fn.viewCalendar = function(opt){
 /* Click binding for the 'view map' link */
 jQuery.fn.viewMap = function(opt){
 
-  var speed      = (opt && opt.speed) || 150;
-  var mapHeight  = (opt && opt.mapHeight) || 454;
-  var preloaded  = false;
-
   this.each(function(){
+
+  var
+  speed      = (opt && opt.speed)     || 150,
+  mapHeight  = (opt && opt.mapHeight) || 454,
+  preloaded  = false;
+
     $(this).click(function(e) {
 
       e.preventDefault();
+
       if ($(this).parent().hasClass("selected")) return;
 
       $(this).parent().toggleClass("selected");
+
       $(".view_calendar").parent().toggleClass("selected");
       $(".agenda_map .map, .agenda_map").animate({height:mapHeight}, speed);
       $(".agenda_map .map").animate({opacity:1}, speed);
       $(".agenda_map .agenda").fadeOut("fast");
+
       if (!preloaded) { setTimeout(function() { preloaded = true; startMap(); }, 100); }
     });
-  });
-}
-
-/* Hides/shows input placeholders */
-jQuery.fn.smartPlaceholder = function(opt){
-
-  var speed  = (opt && opt.speed) || 150;
-
-  this.each(function(){
-
-    var $span  = $(this).find("span.holder");
-    var $input = $(this).find(":input").not("input[type='hidden'], input[type='submit']");
-
-    if ($input.val()) {
-      $span.hide();
-    }
-
-    $input.keydown(function(e) {
-
-      //TODO: check for ie
-      if (e.metaKey && e.keyCode == 88) { // command+x
-        setTimeout(function() {
-          isEmpty($input.val()) && $span.fadeIn(speed);
-        }, 100);
-      } else if (e.metaKey && e.keyCode == 86) { // command+v
-        setTimeout(function() {
-          !isEmpty($input.val()) && $span.fadeOut(speed);
-        }, 100);
-      } else {
-        setTimeout(function() { ($input.val()) ?  $span.fadeOut(speed) : $span.fadeIn(speed); }, 0);
-      }
-    });
-
-    $span.click(function() { $input.focus(); });
-    $input.blur(function() { !$input.val() && $span.fadeIn(speed); });
   });
 }
 
@@ -1834,6 +1827,7 @@ jQuery.fn.enableAvatarUpload = function(opt){
     $this       = $(this),
     speed       = (opt && opt.speed) || 120,
     fadeInSpeed = (opt && opt.speed) || 80,
+    uploader,
     debug = false;
 
     var
@@ -1920,16 +1914,7 @@ jQuery.fn.enableAvatarUpload = function(opt){
 
       var action = $("#avatar_uploader").attr("data-url");
 
-      setupUploader({ element: $element, action: action, params: params, debug: debug, template: template, onSubmit:  onSubmit, onProgress: onProgress, onComplete: onComplete, onCancel:  onCancel });
+      uploader = setupUploader({ element: $element, action: action, params: params, debug: debug, template: template, onSubmit:  onSubmit, onProgress: onProgress, onComplete: onComplete, onCancel:  onCancel });
   })
 }
 
-/**
- * Generates file uploader
- *
- * @param {Hash} [opt] Arguments (element, action, params, debug, template, text, onSubmit, onProgress, onComplete, onCancel)
-*/
-
-function setupUploader(opt) {
-  var uploader = new qq.FileUploader(opt);
-}

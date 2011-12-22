@@ -224,8 +224,6 @@ $(function() {
   $(".share.more, .share.email").sharePopover();
   $(".share.inline").inlineSharePopover();
 
-  $(".show-hidden-comments").showHiddenComments();
-
   // Popovers
   $(".show_event").infoEventPopover();
   $(".ask_question").questionPopover();
