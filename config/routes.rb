@@ -142,6 +142,9 @@ Irekia::Application.routes.draw do
     match '/in_development', :to => 'application#in_development'
   end
 
+  root :to                 => 'users#show', :constraints => lambda { |r| r.env['warden'].authenticate? }
+  root :to                 => 'home#index'
+
   match '*a',              :to => 'application#render_not_found'
 
 end
