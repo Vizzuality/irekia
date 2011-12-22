@@ -8,7 +8,10 @@ $(function() {
 
   $('.home_last_activity').verticalHomeLoop();
 
-  // Editing tools
+  /*
+  /* Editing tools
+  */
+
   $(".editable.text").enableTextEditing();
   $(".editable.target").enableTargetEditing();
   $(".editable.date").enableDateEditing();
@@ -24,7 +27,9 @@ $(function() {
 
   $(".slideshow").enableSlideshow();
 
-  // Pagination
+  /*
+  /* Pagination
+  */
   $(".more_proposals").enablePagination({name: "proposals"});
   $(".more_months").enablePagination({name: "months"});
   $(".more_questions").enablePagination({name: "questions"});
@@ -43,19 +48,9 @@ $(function() {
 
   $('nav form').autocompleteSearch();
 
-  // Radio binding
-  //   $('a.radio').click(function(e){
-  //     e.preventDefault();
-  //     $("a.radio").removeClass("selected");
-  //     $(this).addClass('selected');
-  //     $(this).closest('input[type="radio"]').val(0);
-  //
-  //     if (!$(this).hasClass('selected')) {
-  //       $(this).addClass('selected');
-  //       $(this).closest('input[type="radio"]').val(1);
-  //     }
-  //   });
-
+  /*
+  /* Form elements
+  */
   $('a.checkbox').enableCheckbox();
   $('.radios').enableRadio();
   $('select.dropkick').dropkick();
@@ -185,25 +180,15 @@ $(function() {
 
 
 
-
+  // Comments, opinions and arguments
   $('.my_opinion').enableOpinion();
   $('.article.proposal .proposals .proposal').enableArguments();
   $('form.add_comment').enableComments();
   $(".comment-box form").enableCommentBox();
-  $(".notifications").enableNotificationSelector();
-
   $(".goto_comments").enableGotoComments();
-  $('.floating-login').floatingLoginPopover();
 
-  // If is politicians - 105 | areas - 140 >> HACK
-  // var h_ = 0;
-  // if ($('div#main').hasClass('politicians')) {
-  // 	h_ = (7 * 18) + 5;
-  // } else {
-  // 	h_ = $('.two_columns').height() + 30;
-  // }
-  //
-  //   $('.two_columns').columnize({width:282, height:h_, columns:2});
+  $(".notifications").enableNotificationSelector();
+  $('.floating-login').floatingLoginPopover();
 
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
