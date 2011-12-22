@@ -7,14 +7,13 @@ class VideoData < ActiveRecord::Base
   end
 
   def video_url=(url)
-    if url.match(/http:\/\/www.youtube.com/)
-      self.youtube_url = url
-    elsif url.match(/http:\/\/vimeo.com/)
-      self.vimeo_url = url
-    end
+    self.youtube_url = url
+    self.vimeo_url   = url
   end
 
   def youtube_url=(url)
+    return if url.blank?
+    return unless url.match(/http:\/\/www.youtube.com/) || url.match(/http:\/\/youtu.be/)
     write_attribute(:youtube_url, url)
     if url.present?
       oembed_json = JSON.parse(open("http://www.youtube.com/oembed?url=#{url}&format=json&maxwidth=608").read) rescue nil
@@ -24,6 +23,8 @@ class VideoData < ActiveRecord::Base
   end
 
   def vimeo_url=(url)
+    return if url.blank?
+    return unless url.match(/http:\/\/vimeo.com/)
     write_attribute(:vimeo_url, url)
     if url.present?
       oembed_json = JSON.parse(open("http://vimeo.com/api/oembed.json?url=#{url}&maxwidth=608").read) rescue nil

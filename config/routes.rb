@@ -12,7 +12,7 @@ Irekia::Application.routes.draw do
       :omniauth_callbacks => 'users/omniauth_callbacks'
     }
 
-    resources :users do
+    resources :users, :except => [:index] do
       resources :follows
       collection do
         get 'intro'
@@ -142,6 +142,6 @@ Irekia::Application.routes.draw do
   post '/change_locale'   => 'home#change_locale'
 
   match '/in_development', :to => 'application#in_development'
-  match '*a', :to => 'application#render_not_found'
+  match '*a',              :to => 'application#render_not_found'
 
 end

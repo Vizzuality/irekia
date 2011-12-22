@@ -216,6 +216,8 @@ class User < ActiveRecord::Base
       user.facebook_username           = data['nickname']
       user.facebook_url                = data['urls']['Facebook'] if data['urls'].present?
 
+      user.set_profile_picture data['image'] if data['image'].present?
+
       user
     end
   end
@@ -241,19 +243,28 @@ class User < ActiveRecord::Base
       user.twitter_oauth_token        = credentials['token']
       user.twitter_oauth_token_secret = credentials['secret']
 
+      user.set_profile_picture data['image'] if data['image'].present?
+
       user
     end
   end
 
+  def set_profile_picture(url)
+    image = profile_picture || build_profile_picture
+    image.remote_image_url = url
+    image.save
+  end
   def self.patxi_lopez
     where('(name = ? AND lastname = ?) OR external_id = ?', 'Patxi', 'Lopez Alvarez', 8080).first
   end
 
   def update_with_email_and_password(attributes = {})
-    if attributes.slice(:email, :password).present?
+    from_twitter = email == twitter_username
+    if attributes.slice(:email, :password).present? && !from_twitter
       attributes[:password_confirmation] = attributes[:password] if attributes[:password].present?
       self.update_with_password(attributes)
     else
+      attributes[:password], attributes[:current_password] = ''
       self.update_without_password(attributes)
     end
   end
