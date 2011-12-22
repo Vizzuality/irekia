@@ -1,14 +1,14 @@
 class ApplicationController < ActionController::Base
   DEMO_USER = {'virekia' => 'gub5mar'}
 
-  #unless Rails.application.config.consider_all_requests_local
+  unless Rails.application.config.consider_all_requests_local
     rescue_from Exception,                           :with => :render_error
     rescue_from AbstractController::ActionNotFound,  :with => :render_not_found
     rescue_from ActiveRecord::RecordNotFound,        :with => :render_not_found
     rescue_from ActionController::RoutingError,      :with => :render_not_found
     rescue_from ActionController::UnknownController, :with => :render_not_found
     rescue_from ActionController::UnknownAction,     :with => :render_not_found
-  #end
+  end
 
   clear_helpers
   protect_from_forgery

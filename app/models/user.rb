@@ -443,10 +443,7 @@ class User < ActiveRecord::Base
   end
 
   def has_not_given_his_opinion(content)
-    case content
-    when Proposal
-      content.arguments.where('user_id = ?', id).count == 0
-    end
+    his_opinion(content).count == 0
   end
 
   def has_given_his_opinion?(content)
@@ -456,7 +453,7 @@ class User < ActiveRecord::Base
   def his_opinion(content)
     case content
     when Question
-      content.answer.where('user_id = ?', id)
+      content.answer_requests.where('user_id = ?', id)
     when Proposal
       content.votes.where('user_id = ?', id)
     else

@@ -25,6 +25,8 @@ class Question < Content
 
   delegate :target_area, :target_user, :question_text, :answered_at, :to => :question_data, :allow_nil => true
 
+  after_save :answer_request_from_author
+
   def self.answered
     joins(:question_data).where('question_data.answered_at IS NOT NULL')
   end
@@ -121,5 +123,10 @@ class Question < Content
       answer.author.create_private_action(participation)
     end
   end
+
+  def answer_request_from_author
+    author.answer_requests.create :content_id => id if moderated? && author.has_not_given_his_opinion(self)
+  end
+  private :answer_request_from_author
 
 end
