@@ -1358,7 +1358,7 @@ qq.FileUploader = function(o) {
   this._button = this._createUploadButton(this._find(this._element, 'button'));
 
   this._bindCancelEvent();
-  this._setupDragDrop();
+  //this._setupDragDrop();
 };
 
 // inherit from Basic Uploader
@@ -2405,7 +2405,7 @@ qq.FileUploader = function(o) {
   this._button = this._createUploadButton(this._find(this._element, 'button'));
 
   this._bindCancelEvent();
-  this._setupDragDrop();
+  //this._setupDragDrop();
 };
 
 // inherit from Basic Uploader

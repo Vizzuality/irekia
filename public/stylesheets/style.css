@@ -2228,11 +2228,11 @@ form.editable .input_field textarea, form.editable .input_field input[type="text
 
 .qq-upload-button-focus { outline: 1px dotted black; }
 
-.qq-upload-drop-area { display: none; }
+.qq-upload-drop-area { display: none; top: 0; position: relative; width: 200px; float: right; background: red; }
 
-.qq-upload-drop-area span { display: block; position: absolute; top: 50%; width: 100%; margin-top: -8px; font-size: 16px; }
+.qq-upload-drop-area span { display: block; color: #f10063; font-size: 14px; }
 
-.qq-upload-drop-area-active { background: #FF7171; }
+.qq-upload-drop-area-active { font-weight: bold; }
 
 .qq-upload-list { display: none; }
 
