@@ -53,7 +53,7 @@ create_question :text     => '¿Por qué es tan dificil jugar al padel en Vizcay
 
 create_question :text     => 'Llevamos varios meses ya de inseguridad ciudadana y varias decenas de denuncias,  ¿hasta cuando vamos a tener que aguantar la inseguridad que hay en nuestras calles?',
                 :author   => @iker,
-                :for      => Area.find(7),
+                :for      => Area.find(3),
                 :want_an_answer => [@patricia],
                 :comments => [
                   create_comment(@gonzalo, 'Conozco a varios vecinos que han sufrido amenazas y robos. Al final acabaremos realizando patrullas callejeras, en plan americano.'),
