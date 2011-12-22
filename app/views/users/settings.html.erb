@@ -1,3 +1,13 @@
+<% content_for :js_data do %>
+  <% if flash[:error] == "password" %>
+    <script>
+      setTimeout(function(){
+        goTo($('#settings_<%= flash[:error] %>'));
+      }, 200);
+    </script>
+  <% end %>
+<% end %>
+
 <div id="remove_account_popover" class="article popover thin remove_account with_footer">
   <a href="#" class="close"></a>
   <div class="inner">
@@ -54,8 +64,8 @@
 
             <% if current_user.errors[:name].present? || current_user.errors[:lastname].present? %>
               <ul class="errors">
-                <% if current_user.errors[:name].present? %> <li><%= current_user.errors[:name] %></li> <% end %>
-                <% if current_user.errors[:lastname].present? %> <li><%= current_user.errors[:lastname] %></li> <% end %>
+                <% if current_user.errors[:name].present? %> <li><%= current_user.errors[:name].first %></li> <% end %>
+                <% if current_user.errors[:lastname].present? %> <li><%= current_user.errors[:lastname].first %></li> <% end %>
               </ul>
             <% end %>
 
@@ -200,7 +210,7 @@
 </div>
 
 
-<div class="article settings with_form with_footer">
+<div id="settings_password" class="article settings with_form with_footer">
   <%= form_for current_user, :html => {:novalidate => 'novalidate'} do |form| %>
     <div class="inner">
       <header>
@@ -215,28 +225,40 @@
       <div class="left">
 
         <fieldset>
-          <div class="field email">
+          <div class="field email<%= ' error' if current_user.errors[:email].present? %>">
             <%= form.label :email, t('.email') %>
             <div class="input_field">
-              <%= form.text_field :email %>
+              <%= form.text_field :email, :autocomplete => :off %>
             </div>
 
-            <%= current_user.errors %>
-            <% if current_user.errors[:password].present? %>
+            <% if current_user.errors.present? %>
               <ul class="errors">
-                <% if current_user.errors[:password].present? %> <li><%= current_user.errors[:password] %></li> <% end %>
+                <% if current_user.errors[:email].present? %><li><%= current_user.errors[:email].first %></li><% end %>
               </ul>
             <% end %>
+
           </div>
 
-          <div class="field password pull-left<%= ' error' if current_user.errors[:password].present? %>">
+          <div class="field password pull-left<%= ' error' if current_user.errors[:current_password].present? %>">
             <%= form.label :current_password, t('.current_password') %>
             <div class="input_field">
-              <%= form.password_field :current_password, :autocomplete => :off %>
+              <%= form.password_field :current_password %>
             </div>
+
+            <% if current_user.errors.present? %>
+              <ul class="errors">
+                <% if current_user.errors[:password].present? or current_user.errors[:current_password].present? %>
+                  <% current_user.errors[:password].each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                <% if current_user.errors[:current_password].present? %><li><%= current_user.errors[:current_password].first %></li><% end %>
+                <% end %>
+              </ul>
+            <% end %>
+
           </div>
 
-          <div class="field confirm_password pull-right">
+          <div class="field confirm_password pull-right<%= ' error' if current_user.errors[:password].present? %>">
             <%= form.label :password, t('.password') %>
             <div class="input_field">
               <%= form.password_field :password, :autocomplete => :off %>

@@ -107,7 +107,9 @@ class UsersController < ApplicationController
 
     respond_with(current_user) do |format|
       format.html {
-        redirect_back_or_render_action :settings
+
+        flash[:error] = "password" if current_user.errors[:current_password].present? or current_user.errors[:password].present? or current_user.errors[:email].present?
+        render :settings
       }
       format.json
     end

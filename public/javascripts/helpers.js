@@ -41,6 +41,16 @@ function isEmpty(str) {
   } else { return true; }
 }
 
+
+function goTo($el, opt, callback) {
+  var speed  = (opt && opt.speed) || 200;
+  var delay  = (opt && opt.delay) || 500;
+
+  $('html, body').delay(delay).animate({scrollTop:$el.offset().top - 30}, speed, function() {
+    callback && callback();
+  });
+}
+
 function watchHash(opt) {
 
   var speed  = (opt && opt.speed) || 200;
@@ -567,8 +577,6 @@ jQuery.fn.enableImageEditing = function(opt){
       $this.find(".image_container form.remove").fadeOut(speed, function() {
         $(this).remove();
       });
-
-      console.log("Deleting caption", $this, $(this).find(".image_editor"), $this.find(".caption"));
 
       $this.find(".editable.caption").fadeOut(speed, function() {
         $(this).remove();
