@@ -4,7 +4,7 @@ Irekia::Application.routes.draw do
     mount ModerationMailer::Preview => 'mail_view'
   end
 
-  scope '(/:locale)' do
+  scope '(:locale)' do
 
     devise_for :users, :controllers => {
       :sessions => 'sessions',
@@ -140,11 +140,8 @@ Irekia::Application.routes.draw do
     post  '/change_locale'   => 'home#change_locale'
 
     match '/in_development', :to => 'application#in_development'
+
+    match '*a',              :to => 'application#render_not_found'
   end
-
-  root :to                 => 'users#show', :constraints => lambda { |r| r.env['warden'].authenticate? }
-  root :to                 => 'home#index'
-
-  match '*a',              :to => 'application#render_not_found'
 
 end
