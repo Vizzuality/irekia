@@ -802,6 +802,13 @@ form.editable,
 
   &.title { margin: 0 0 0 0; }
 
+  &.text {
+    .input_field.error {
+      border-color:red;
+      input, textarea { color: #FF3300; }
+    }
+  }
+
   &.date {
     z-index:70;
     margin: 0 0 20px 0;

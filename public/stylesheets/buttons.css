@@ -199,6 +199,8 @@ Editing forms
 form.editable, #container .article .inner .left form.editable { float: left; margin: 0 0 10px 0; width: 607px; position: relative; }
 form.editable .spinner, #container .article .inner .left form.editable .spinner { float: left; margin: 8px 0 0 20px; }
 form.editable.title, #container .article .inner .left form.editable.title { margin: 0 0 0 0; }
+form.editable.text .input_field.error, #container .article .inner .left form.editable.text .input_field.error { border-color: red; }
+form.editable.text .input_field.error input, form.editable.text .input_field.error textarea, #container .article .inner .left form.editable.text .input_field.error input, #container .article .inner .left form.editable.text .input_field.error textarea { color: #FF3300; }
 form.editable.date, #container .article .inner .left form.editable.date { z-index: 70; margin: 0 0 20px 0; }
 form.editable.date select, #container .article .inner .left form.editable.date select { display: none; }
 form.editable.date .meta, #container .article .inner .left form.editable.date .meta { margin: 0; }

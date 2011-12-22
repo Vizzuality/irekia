@@ -208,7 +208,9 @@ jQuery.fn.enableRegistration = function(opt){
 
   var
   speed      = (opt && opt.speed)  || 200,
-  margin     = (opt && opt.margin) || 20,
+  margin     = (opt && opt.margin) || 20;
+
+  var
   $form      = $(".cycle form"),
   $container = $(".cycle .inner-cycle"),
   $article,
@@ -641,7 +643,9 @@ jQuery.fn.enablePoliticianTags = function(opt){
   });
 }
 
-/* Enables text editing */
+/**
+ * Enables text editing in the content pages
+*/
 jQuery.fn.enableTextEditing = function(opt){
 
   this.each(function(){
@@ -652,6 +656,19 @@ jQuery.fn.enableTextEditing = function(opt){
     fadeInSpeed  = (opt && opt.speed) || 80,
     spinner      = new Spinner(SPINNER_OPTIONS),
     content;
+
+    function _setupSpinner() {
+      spinner.spin();
+      $(spinner.el).addClass("spinner");
+      $form.find('.submit').after(spinner.el);
+    }
+
+    function _gobackToInitialState() {
+      $form.find(".content").html(content);
+      $form.find(".content").slideDown(fadeInSpeed);
+      $form.find('.input_field').slideUp(speed);
+      $form.find('.submit').fadeOut(speed);
+    }
 
     $form.find(".content").click(function() {
       var that = $(this).parent();
@@ -666,22 +683,32 @@ jQuery.fn.enableTextEditing = function(opt){
 
     $form.bind('ajax:success', function(evt, xhr, status) {
       spinner.stop();
-      $form.find(".content").html(content);
-      $form.find(".content").slideDown(fadeInSpeed);
-      $form.find('.input_field').slideUp(speed);
-      $form.find('.submit').fadeOut(speed);
+
+      _gobackToInitialState();
+      enableElement($form.find('.submit'));
+    });
+
+    // TODO: Improve error message
+    $form.bind('ajax:error', function(evt, xhr, status) {
+      spinner.stop();
+
+      // Adds error class
+      $form.find(".input_field").addClass("error");
 
       enableElement($form.find('.submit'));
     });
 
     $form.submit(function(e) {
-      spinner.spin();
-      $(spinner.el).addClass("spinner");
-      $(this).find('.submit').after(spinner.el);
+
+      _setupSpinner();
+
+      // Removes possible error class
+      $form.find(".input_field").removeClass("error");
 
       content = $form.find('.input_field :text, .input_field textarea').val();
 
-      if (isEmpty(content)) { // If the user doesn't introduce a text, let's show the default one
+      // If the user doesn't introduce a text, let's show the default one
+      if (isEmpty(content)) {
         content = $form.attr("data-t-empty");
       }
 
@@ -1071,9 +1098,8 @@ jQuery.fn.autocompleteSearch = function(opt){
   var id = "autocomplete";
 
   // Autocomplete spinner
-  var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
   var spin_element = document.getElementById('autocomplete_spinner');
-  var spinner = new Spinner(opts);
+  var spinner = new Spinner(SPINNER_OPTIONS);
 
   function _close(e) {
     GOD.broadcast('minimize.' + id);
@@ -1425,9 +1451,8 @@ jQuery.fn.enableComments = function(opt){
 
   this.each(function(){
 
-    var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
     var spin_element = document.getElementById('comment_spinner');
-    var spinner = new Spinner(opts);
+    var spinner = new Spinner(SPINNER_OPTIONS);
     var $input  = $(this).find("textarea");
     var $submit = $(this).find('button');
 
@@ -1523,9 +1548,8 @@ jQuery.fn.enableCommentBox = function(opt){
     var $that = $(this);
 
     var submitting = false;
-    var opts = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
     var spin_element = document.getElementById('spinner_' + $(this).attr("id"));
-    var spinner = new Spinner(opts);
+    var spinner = new Spinner(SPINNER_OPTIONS);
 
     var $input = $(this).find(':text, textarea');
     var $submit = $(this).find('input[type="submit"]');
