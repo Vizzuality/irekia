@@ -282,6 +282,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.remove_account .inner .content { padding: 49px 0 6px 0; }
 #container .article.remove_account .inner .content a { color: #7d8a92; }
 #container .article.remove_account .bfooter .inner { padding: 26px 0 24px 0!important; }
+#container .article.remove_account .bfooter .inner form { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
 #container .article.remove_account .bfooter .inner .white_button { width: 130px; }
 #container .article.micro { width: 390px; margin: 0 auto 40px auto; }
 #container .article.micro .inner header { margin: 0; }

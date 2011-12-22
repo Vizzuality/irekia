@@ -6,9 +6,11 @@
 
 (function($, window, document) {
 
-  var spin_element = document.getElementById('remove_account_spinner'),
+  var
+  spinnerID    =  'remove_account_spinner',
+  spin_element = document.getElementById(spinnerID),
   spinner      = new Spinner(SPINNER_OPTIONS),
-  store = "remove-account-popover",
+  store        = "remove-account-popover",
   // Public methods
   methods = { },
   interval,
@@ -61,7 +63,6 @@
       data.$ps = $ps;
       $this.data(store, data);
       $ps.data(store, data);
-
     });
   };
 
@@ -94,7 +95,7 @@
 
     // bindings
     _addCloseAction(data);
-   // _addDefaultAction(data);
+    _addDefaultAction(data);
 
     _subscribeToEvent(data.event);
     _triggerOpenAnimation($ps, data);

@@ -917,6 +917,7 @@ div#main.show div.left img {margin:4px 0 7px;}
     }
     .bfooter .inner {
       padding: 26px 0 24px 0!important;
+      form { @include inline-block; }
       .white_button { width:130px; }
     }
   }
