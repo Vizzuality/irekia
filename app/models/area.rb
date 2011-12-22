@@ -84,10 +84,7 @@ class Area < ActiveRecord::Base
 
   def self.areas_for_homepage
     select([:'areas.id', :name, :questions_count, :proposals_count])
-    .joins("LEFT JOIN (#{AreaPublicStream.select('area_id, max(published_at) date').group('area_id').order('date desc').to_sql}) aps ON aps.area_id = areas.id")
-    .order('aps.date desc NULLS LAST')
-    .page(1)
-    .per(17)
+    .order('created_at asc')
     .all
   end
 
