@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
   before_validation :check_blank_name, :on => :create
   before_create :check_user_role
   after_create :follow_presidencia
+  before_destroy :reassign_contents
 
   validates           :terms_of_service,  :acceptance => true
   validates           :name,              :presence   => true,        :on => :update
@@ -70,10 +71,12 @@ class User < ActiveRecord::Base
 
   has_many :notifications,
            :include => [:item, :parent],
-           :order => 'updated_at desc'
+           :order => 'updated_at desc',
+           :dependent => :destroy
 
   has_many :areas_users,
-           :class_name => 'AreaUser'
+           :class_name => 'AreaUser',
+           :dependent => :destroy
 
   has_many :areas,
            :through => :areas_users
@@ -138,14 +141,16 @@ class User < ActiveRecord::Base
 
   has_one  :profile_picture,
            :class_name => 'Image',
-           :select => 'id, photo_id, user_id, image'
+           :select => 'id, photo_id, user_id, image',
+           :dependent => :destroy
 
 
   ###
   ## Follows associations
   # Required to get areas_followed and users_followed by this user
   has_many :followed_items,
-           :class_name => 'Follow'
+           :class_name => 'Follow',
+           :dependent => :destroy
 
   has_many :areas_following,
            :through      => :followed_items,
@@ -160,7 +165,8 @@ class User < ActiveRecord::Base
 
   # Required to get followers of this user
   has_many :follows,
-           :as => :follow_item
+           :as => :follow_item,
+           :dependent => :destroy
   has_many :followers,
            :through => :follows,
            :source => :user
@@ -254,8 +260,13 @@ class User < ActiveRecord::Base
     image.remote_image_url = url
     image.save
   end
+
   def self.patxi_lopez
     where('(name = ? AND lastname = ?) OR external_id = ?', 'Patxi', 'Lopez Alvarez', 8080).first
+  end
+
+  def self.wadus
+    where('name = ? AND lastname = ?', 'Wadus', 'Wadus').first
   end
 
   def update_with_email_and_password(attributes = {})
@@ -266,6 +277,34 @@ class User < ActiveRecord::Base
     else
       attributes[:password], attributes[:current_password] = ''
       self.update_without_password(attributes)
+    end
+  end
+
+  def reassign_contents
+    return if self === User.wadus
+
+    (contents_users || []).each do |content_user|
+      content_user.update_attributes(:user_id => User.wadus.id)
+    end
+
+    (contents || []).each do |content|
+      content.update_attributes(:user_id => User.wadus.id)
+    end
+
+    (question_data || []).each do |question_data|
+      question_data.update_attributes(:user_id => User.wadus.id)
+    end
+
+    (participations || []).each do |participation|
+      participation.update_attributes(:user_id => User.wadus.id)
+    end
+
+    (actions || []).each do |action|
+      action.update_attributes(:user_id => User.wadus.id)
+    end
+
+    (private_actions || []).each do |private_action|
+      private_action.update_attributes(:user_id => User.wadus.id)
     end
   end
 

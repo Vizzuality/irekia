@@ -142,3 +142,13 @@ puts '================='
                     :is_woman              => false,
                     :profile_picture       => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'usuario_04.jpg'))),
                     :users_following       => [@joel]
+
+
+#############
+# Wadus
+#############
+
+create_user :name                  => 'Wadus',
+            :lastname              => 'Wadus',
+            :email                 => 'wadus@irekia.com',
+            :is_woman              => false
