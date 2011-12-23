@@ -1939,6 +1939,7 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
           other: '%{count} preguntas sin contestar'
         filters:
           all: 'Todas'
+          answered: 'Contestadas'
           to_you: 'Dirigidas a ti'
           to_your_area: 'Dirigidas al área'
         more_recent: Más recientes

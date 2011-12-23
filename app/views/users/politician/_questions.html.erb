@@ -21,6 +21,7 @@
   <div class="right">
     <ul class="selector">
       <li class="selected"><%= link_to t('.filters.all'), link_for_questions(:referer => action_name), :class => 'filter' %></li>
+      <li><%= link_to t('.filters.answered'), link_for_questions(:answered => true, :referer => action_name), :class => 'filter' %></li>
       <li><%= link_to t('.filters.to_you'), link_for_questions(:to_you => true, :referer => action_name), :class => 'filter' %></li>
       <li><%= link_to t('.filters.to_your_area'), link_for_questions(:to_your_area => true, :referer => action_name), :class => 'filter' %></li>
     </ul>
