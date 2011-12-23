@@ -1,19 +1,18 @@
+#######################################
+# Rails
+#######################################
 # Spanish translations for Rails
 # by Francisco Fernando García Nieto (ffgarcianieto@gmail.com)
 # contributors:
 #  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
 # Corrected by Eloy Serra Labán: http://goo.gl/i9Kts, /nQ928, /XfKaX
 
-#######################################
-# Rails
-#######################################
-
 "en":
   date:
     formats:
       default: "%d/%m/%Y"
       short: "%d de %b"
-      long: "%e de %B de %Y"
+      long: "%d de %B de %Y"
 
     day_names:
       - domingo
@@ -84,8 +83,8 @@
 
   number:
     format:
-      separator: "."
-      delimiter: ","
+      separator: ","
+      delimiter: "."
       precision: 3
       significant: false
       strip_insignificant_zeros: false
@@ -94,8 +93,8 @@
       format:
         format: "%n %u"
         unit: "€"
-        separator: "."
-        delimiter: ","
+        separator: ","
+        delimiter: "."
         precision: 2
         significant: false
         strip_insignificant_zeros: false
@@ -150,20 +149,20 @@
         one:  "1 minuto"
         other: "%{count} minutos"
       about_x_hours:
-        one:  " 1 hora"
-        other: " %{count} horas"
+        one:  "alrededor de 1 hora"
+        other: "alrededor de %{count} horas"
       x_days:
         one:  "1 día"
         other: "%{count} días"
       about_x_months:
-        one:  " 1 mes"
-        other: " %{count} meses"
+        one:  "alrededor de 1 mes"
+        other: "alrededor de %{count} meses"
       x_months:
         one:  "1 mes"
         other: "%{count} meses"
       about_x_years:
-        one:  " 1 año"
-        other: " %{count} años"
+        one:  "alrededor de 1 año"
+        other: "alrededor de %{count} años"
       over_x_years:
         one:  "más de 1 año"
         other: "más de %{count} años"
@@ -198,8 +197,8 @@
       accepted: "debe ser aceptado"
       empty: "no puede estar vacío"
       blank: "no puede estar en blanco"
-      too_long: "es demasiado largo (%{count} caracteres máximo)"
-      too_short: "es demasiado corto (%{count} caracteres mínimo)"
+      too_long: "es demasiado largo"
+      too_short: "es demasiado corto"
       wrong_length: "no tiene la longitud correcta (%{count} caracteres exactos)"
       not_a_number: "no es un número"
       not_an_integer: "debe ser un entero"
@@ -210,23 +209,66 @@
       less_than_or_equal_to: "debe ser menor que o igual a %{count}"
       odd: "debe ser impar"
       even: "debe ser par"
+      taken: "ya está en uso"
+      record_invalid: "La validación falló: %{errors}"
+    template: &errors_template
+      header:
+        one:   "No se pudo guardar este/a %{model} porque se encontró 1 error"
+        other:  "No se pudo guardar este/a %{model} porque se encontraron %{count} errores"
+      body: "Se encontraron problemas con los siguientes campos:"
 
   activerecord:
     errors:
-      template:
-        header:
-          one:   "No se pudo guardar este/a %{model} porque se encontró 1 error"
-          other:  "No se pudo guardar este/a %{model} porque se encontraron %{count} errores"
-        # The variable :count is also available
-        body: "Se encontraron problemas con los siguientes campos:"
-
       messages:
-        taken: "ya está en uso"
-        record_invalid: "La validación falló: %{errors}"
         <<: *errors_messages
+      template:
+        <<: *errors_template
 
       full_messages:
         format: "%{attribute} %{message}"
+    models:
+      answer: Respuesta
+      area: Area
+      argument: Argumento
+      comment: Comentario
+      content: Contenido
+      document: Documento
+      event: Evento
+      image: Imagen
+      like: Me gusta
+      news: Noticia
+      participation: Participación
+      proposal: Propuesta
+      question: Pregunta
+      Role: Rol
+      Title: Título
+      user: Usuario
+      vide: Vídeo
+
+    attributes:
+      user:
+        name: Nombre
+        lastname: Apellidos
+        email: Email
+        password: Contraseña
+        password_confirmation: Repetir contraseña
+        current_password: Contraseña actual
+        role_id: Rol
+        title_id: Título
+        province_id: Territorio
+        city_id: Municipio
+        birthday: Fecha de nacimiento
+        postal_code: Código postal
+      area_user:
+        area_id: Área
+      image:
+        image: Imagen
+    values:
+      role:
+        name:
+          administrator: Administrador
+          politician: Político
+          citizen: Ciudadano
 
 #######################################
 # Devise
@@ -303,11 +345,29 @@
     configure_your_account: Configura tu cuenta
   home:
     index:
+      title: Participa en tu gobierno.
+      description: Irekia es la plataforma que te permite hacer oir tu voz en la toma de decisiones de Euskadi. Haz tus propuestas, reclama respuestas, contribuye y opina.
+      login: Accede a tu cuenta
+      or: o
+      register_now: Regístrate ya
+      view_all_the_areas: ver todas las áreas
       search: ¿Qué buscas?
       button: Buscar
+      citizens: ciudadanos
+      politicians: políticos
+      questions: preguntas
+      answered: respondidas
+      proposals: propuestas
+      votes: votos
+      banners:
+        press: Prensa :)
+        transparency: Transparencia
+        guide: Guía de comunicación abierta
+        opendata: Open data euskadi
     agenda:
       title: 'Agenda de Irekia'
     areas:
+      all_the_areas: Todas las áreas
       questions:
         zero: Ninguna pregunta
         one: 1 pregunta
@@ -318,13 +378,50 @@
         other: '%{count} propuestas'
       no_activity: Sin actividad
   shared:
+    questions_list:
+      no_content: No hay preguntas en este área
+    proposals_list:
+      no_content: No hay propuestas en este área
     politician_publish:
+      description: ¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!
       photo: Foto
       video: Vídeo
+      title: Publicar
       publish: Publicar
+      continue: Continuar
+      close: Cerrar
       dashboard: Estado
       proposal: Propuesta
       photos: Fotos
+      remove: Eliminar
+      section:
+        proposal:
+          label: Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.
+          upload: Sube una foto
+          this_photo_will_be_published: Se publicará esta imagen.
+          explanation: ¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?
+          label: Describe la propuesta en pocas palabras
+          success:
+            title: Tu propuesta ha sido publicada
+            description: Propuesta publicada correctamente.
+        status_message:
+          label: Introduce el texto que quieras publicar aquí.
+        photo:
+          upload: Sube una foto
+          loading: Cargando imagen...
+          this_photo_will_be_published: Se publicará esta imagen.
+          error:
+            title: Error
+            description: Ha ocurrido un error al publicar la foto, por favor vuelve a intentarlo en un momento.
+        video:
+          youtube_url: URL de Youtube
+          vimeo_url: URL de Vimeo
+          success:
+            title: Tu video ha sido publicado
+            description: Recuerda que podrás ver toda la actividad que ocurra alrededor de él en tu dashboard.
+          error:
+            title: Error
+            description: Ha ocurrido un error al publicar el video, por favor vuelve a intentarlo en un momento.
     user_publish:
       question: Pregunta
       proposal: Propuesta
@@ -337,6 +434,13 @@
       forgotten_password: ¿Olvidaste tu contraseña?
       get_it_here: Recupérala aquí
       remember_me: Recordar mis datos
+      login: Entra
+      remember_me: Recordar mis datos
+      password_reminder:
+        title: Introduce tu email
+        description: y te mandaremos instrucciones para recuperar tu contraseña
+        email: Tu email
+        recover_password: Recuperar contraseña
     sidebar:
       location:
         title: "Localización del evento"
@@ -373,6 +477,7 @@
           other: '%{count} comentarios'
       politicians:
         title: Políticos etiquetados en la noticia
+        tag: Etiquetar político
       tags:
         title: Tags
         add_tags: "Añadir tags"
@@ -568,14 +673,14 @@
         title:
           you: 'Has contestado a "%{question}"'
           other: '%{author} ha contestado a "%{question}"'
-        author: '%{author} &middot; <span class="answered">Contestada %{time} después</span>'
+        author: '%{author} &middot; <span class="answered">Contestada tras %{time}</span>'
       answer_request:
         title: 'Ha sido reclamada la pregunta %{question}'
         author: '%{author} hace %{time}'
       question:
         title: 'Pregunta para %{receiver}:'
         author: '%{author} hace %{time}'
-        answered: 'Contestada %{time} después'
+        answered: 'Contestada tras %{time}'
         not_answered: 'Aún no contestada'
         read_more: 'Leer más'
       question_mini:
@@ -863,6 +968,7 @@
     edit:
       proposal:
         addressed_to: 'Dirigida a'
+        insert_the_new_target: Introduce el nuevo destinatario
         back: volver
         see_all_proposals: Ver todas las propuestas a este área
         in_favor:
@@ -902,11 +1008,28 @@
               zero: Aún no hay comentarios
               one: Un comentario
               other: '%{count} comentarios'
-      news:
+      event:
+        save: Guardar
         back: volver
+        add_subtitle: Añadir subtítulo
+      news:
+        save: Guardar
+        back: volver
+        add_title: Añadir título
+        add_body: Añadir texto
+        add_subtitle: Añadir subtítulo
+      image:
+        add_caption: Añadir pie de foto
+        save: Guardar
+        add_photo: Añadir foto
+        loading: Cargando imagen...
+        upload_a_new_one: Sube una nueva
       question:
+        save: Guardar
         back: volver
         addressed_to: 'Dirigida a'
+        address_the_question: Dirige la pregunta
+        insert_the_new_target: Introduce el nuevo destinatario
         not_answered_yet: Esta pregunta aún no ha sido contestada.
         you_and_other:
           zero: Nadie ha pedido que sea contestada
@@ -965,6 +1088,13 @@
       in_favor: Argumentos a favor
       against: Argumentos en contra
       add: Añadir
+      write_here: Escribe aquí
+      success:
+        title: Comentario enviado.
+        description: Te avisaremos en cuanto sea aprobado.
+      error:
+        title: Error técnico.
+        description: Lo sentimos, no se ha podido guardar :-(
     create:
       proposal:
         title: Tu propuesta ha sido enviada
@@ -1366,6 +1496,16 @@
       make_a_question:
         label: 'Haz una pregunta a %{name}'
         submit: Preguntar
+      ask:
+        button: Preguntar
+        title: 'Pregunta a %{name}'
+        label: 'Haz una pregunta a %{name}'
+      success:
+        title: Comentario enviado.
+        description: Te avisaremos en cuanto sea aprobado.
+      error:
+        title: Error técnico.
+        description: Lo sentimos, no se ha podido guardar :-(
       question_sent:
         success: Tu pregunta se ha enviado correctamente
         waiting_moderation: 'y será publicada en cuanto nuestro equipo de moderación la haya %{review_link}. También te avisaremos cuando recibas respuesta.'
@@ -1563,6 +1703,7 @@
         title: Tu avatar
         pick_your_avatar: Selecciona tu avatar
         upload_an_image: Subir una nueva imagen
+        uploading: Subiendo nuevo avatar...
         subtitle: Necesitas una imagen que te represente en Irekia. Los usuarios con avatar son mas populares
         size: Tamaño máximo 500x500.
       man: 'Hombre'
@@ -1720,6 +1861,9 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
           other: '%{count} preguntas contestadas'
         more_recent: Más recientes
         more_polemic: Más polémicas
+        filters:
+          all: Todas
+          answered: Contestadas
         no_questions:
           title: 'No has hecho ninguna pregunta aún.'
           description: 'Puedes preguntar cualquier cosa relacionada con el Gobierno Vasco: el presupuesto de un área, el motivo para tomar una decisión, el sueldo de un cargo político, etc.'
@@ -1931,49 +2075,6 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
 # IREKIA - Models
 #######################################
 
-  activerecord:
-    models:
-      answer: Respuesta
-      area: Area
-      argument: Argumento
-      comment: Comentario
-      content: Contenido
-      document: Documento
-      event: Evento
-      image: Imagen
-      like: Me gusta
-      news: Noticia
-      participation: Participación
-      proposal: Propuesta
-      question: Pregunta
-      Role: Rol
-      Title: Título
-      user: Usuario
-      vide: Vídeo
-
-    attributes:
-      user:
-        name: Nombre
-        lastname: Apellidos
-        email: Email
-        password: Contraseña
-        password_confirmation: Repetir contraseña
-        role_id: Rol
-        title_id: Título
-        province_id: Territorio
-        city_id: Municipio
-        birthday: Fecha de nacimiento
-        postal_code: Código postal
-      area_user:
-        area_id: Área
-      image:
-        image: Imagen
-    values:
-      role:
-        name:
-          administrator: Administrador
-          politician: Político
-          citizen: Ciudadano
   sharing:
     facebook:
       answer: 'He respondido a la pregunta: %{question}'
