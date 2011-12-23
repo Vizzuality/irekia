@@ -31,12 +31,12 @@ class HomeController < ApplicationController
 
   def change_locale
     if params[:new_locale]
-      locale = params[:new_locale]
-      cookies[:current_locale] = {:value => locale, :expires => 1.year.from_now}
-      current_user.update_attribute 'locale', locale if user_signed_in?
+      I18n.locale = params[:new_locale]
+      cookies[:current_locale] = {:value => I18n.locale, :expires => 1.year.from_now}
+      current_user.update_attribute 'locale', I18n.locale if user_signed_in?
     end
 
-    redirect_back_or_default root_path
+    redirect_to root_path
   end
 
   def get_areas

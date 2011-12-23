@@ -5,7 +5,7 @@
       <%= avatar(area) %>
     </div>
     <div class="info">
-      <h3><a href="/areas/<%= area.id %>"><%= area.name %></a></h3>
+      <h3><%= link_to area.name, area_path(area) %></h3>
       <span class="total">
         <% if area.questions_count > 0 && area.proposals_count > 0 -%>
           <%= link_to t('.questions', :count => area.questions_count), questions_area_path(area) %> y <%= link_to t('.proposals', :count => area.proposals_count), proposals_area_path(area) %>
