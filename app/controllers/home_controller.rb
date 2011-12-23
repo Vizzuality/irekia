@@ -34,6 +34,7 @@ class HomeController < ApplicationController
       I18n.locale = params[:new_locale]
       cookies[:current_locale] = {:value => I18n.locale, :expires => 1.year.from_now}
       current_user.update_attribute 'locale', I18n.locale if user_signed_in?
+      session['user_return_to'] = nil
     end
 
     redirect_to root_path
