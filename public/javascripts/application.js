@@ -254,13 +254,20 @@ $(function() {
     });
   });
 
+/**
+ * Image preloader
+ *
+ * @param {String} [str] String to be checked
+*/
 
-  // TIPSY TOOLTIPS (add here all possible tooltips)
-  //  Follow area or politician tooltip
+  // Follow area or politician tooltip
   $('input.ribbon').tipsy({live: true, gravity: 's', offset: 3, title: function() {
+
+    var type = $(this).attr("data-title");
     var type = $(this).closest('div.content').find('button.add_to_favorites span').text();
+
     if (type=='') type = "Seguir a este político"
-    return type;
+      return type;
   }});
 
   //  Follow mail
@@ -291,8 +298,8 @@ $(function() {
     else
       if (count>1)
         return count + ' notificaciones';
-      else
-        return count + ' notificación';
+    else
+      return count + ' notificación';
   }});
 
 
