@@ -1,6 +1,13 @@
 module PoliticiansHelper
   include ApplicationHelper
 
+  def title
+    @title = ['IREKIA']
+    @title << @politician.fullname
+    @title << t(params[:action], :scope => 'politicians.menu') if params[:action]
+    @title.join(' - ')
+  end
+
   def link_for_actions(filters = {})
     filters[:more_polemic] = params[:more_polemic] unless filters.key?(:more_polemic)
     filters[:type]         = params[:type] unless filters.key?(:type)

@@ -1,6 +1,13 @@
 module AreasHelper
   include ApplicationHelper
 
+  def title
+    @title = ['IREKIA']
+    @title << @area.name
+    @title << t(params[:action], :scope => 'areas.navigation_menu.menu') if params[:action]
+    @title.join(' - ')
+  end
+
   def link_for_actions(filters = {})
     filters[:more_polemic] = params[:more_polemic] unless filters.key?(:more_polemic)
     filters[:type]         = params[:type] unless filters.key?(:type)
