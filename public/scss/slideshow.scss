@@ -136,6 +136,40 @@ body {
     }
   }
 
+  .selector {
+    clear:both;
+    overflow:hidden;
+    position:absolute;
+    top: 10px; right: 10px;
+    background:#666;
+    background:rgba(0,0,0,.6);
+    @include border-radius(3px);
+
+    li {
+      padding: 3px;
+      float:left;
+
+      &.photo { float:right; }
+
+      &.selected a {
+        color:#666;
+        background:#fff;
+        @include border-radius(3px);
+      } // selected
+
+      a {
+        display:block;
+        padding: 0 3px;
+        height: 20px;
+        line-height:15px;
+        color:#fff;
+        font-size:13px;
+        text-decoration: none;
+
+      } // a
+    }
+  }
+
   .options {
     display:none;
     @include disable-selection;
@@ -143,7 +177,7 @@ body {
     .handle {
       position:absolute;
       display:block;
-      top: 10px; right: 10px;
+      top: 10px; left: 10px;
       width:20px; height:21px;
       background: url('/images/slideshow_sprite.png') no-repeat 0 -44px;
       z-index:100;
@@ -154,8 +188,8 @@ body {
       display:none;
       position:absolute;
       background: url('/images/slideshow_sprite.png') no-repeat -96px 0;
-      top:10px; right:-38px;
-      width:203px;
+      top:10px; left:10px;
+      width:155px;
       height:83px;
 
       ul {
@@ -196,5 +230,12 @@ body {
       &.next { right:20px; background-position: -44px 0; }
       &.prev { left:20px; background-position: 0 0; }
     }
+  }
+}
+
+
+@-moz-document url-prefix() {
+  .slideshow  .selector li a {
+    padding-top: 2px;
   }
 }
