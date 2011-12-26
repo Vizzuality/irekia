@@ -1332,18 +1332,20 @@ section.get_mobile_app div.inner a.iphone { background-position: -186px 12px; }
 section.get_mobile_app div.inner a span { font: normal 15px "Helvetica",Arial; color: white; text-shadow: 0 1px #0f4768; }
 section.get_mobile_app div.inner a:hover { text-decoration: none; -moz-box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2); -webkit-box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2); -o-box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2); box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2); -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 600ms; -webkit-transition-duration: 600ms; -o-transition-duration: 600ms; transition-duration: 600ms; }
 
-footer { padding-top: 38px; background: white; border-top: 1px solid #c2c4c6; }
+footer { padding: 38px 0 0 0; background: white; border-top: 1px solid #c2c4c6; }
 footer .content { clear: both; overflow: hidden; margin: auto; padding: 0 0 23px 0; width: 900px; }
 footer ul.copyright { float: left; margin-right: 35px; }
-footer .home, footer .areas { float: left; margin-right: 20px; }
-footer .home, footer .about { float: left; }
-footer .content .home { margin-right: 50px; }
-footer .content .areas ul { float: left; margin-right: 34px; }
-footer .content ul li { margin-bottom: 4px; color: #7d8a92; font-size: 13px; }
-footer .content h4 { padding: 0; margin: 0; margin-bottom: 10px; color: #1D7AB0; font-size: 15px; }
+footer .content .home, footer .content .areas, footer .content .about { float: left; }
+footer .content .home, footer .content .areas, footer .content .copyright, footer .content .areas ul { margin-right: 20px; }
+footer .content .areas ul, footer .content .copyright ul { width: 200px; }
+footer .content .home ul { width: auto; }
+footer .content .areas ul { float: left; }
+footer .content .areas ul.last { margin: 0; }
+footer .content ul li { margin: 0 0 7px 0; color: #7d8a92; font-size: 13px; }
+footer .content h4 { padding: 0; margin: 0 0 10px 0; color: #1D7AB0; font-size: 15px; }
+footer .content ul { _background: #f1f1f1; }
 footer .content ul li a { color: #7d8a92; font-size: 13px; }
 footer .content ul li a:hover { color: #333333; }
-footer .content ul.copyright { margin-right: 51px; }
 footer .content ul.copyright li.logo { margin-bottom: 21px; }
 footer .content ul.copyright li a { text-decoration: underline; }
 

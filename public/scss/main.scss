@@ -5171,38 +5171,41 @@ section.get_mobile_app {
   } // .inner
 } // .get_mobile_app
 
+// Main footer
 footer {
-  padding-top: 38px;
+  padding: 38px 0 0 0;
   background: $white;
   border-top: 1px solid #c2c4c6;
 
   .content { clear: both; overflow: hidden; margin:auto; padding: 0 0 23px 0; width: 900px; }
+
   ul.copyright { float: left; margin-right: 35px; }
 
-  .home, .areas { float: left; margin-right: 20px; }
-  .home, .about { float: left; }
-
   .content {
-    .home { margin-right: 50px; }
-    .areas ul { float: left; margin-right: 34px; }
-  }
+    .home, .areas, .about { float: left; }
+    .home, .areas, .copyright, .areas ul { margin-right: 20px; }
 
-  .content {
-    ul li { margin-bottom: 4px; color: $standard_gray; font-size: 13px; }
-    h4 { padding: 0; margin: 0; margin-bottom: 10px; color: #1D7AB0; font-size: 15px; }
-    ul { li a { color: $standard_gray; font-size: 13px; &:hover {color:$ultra_dark}}
+    .areas ul, .copyright ul { width: 200px; }
+    .home ul { width: auto; }
 
-      &.copyright { margin-right: 51px;
+    .areas ul { float: left; &.last { margin: 0; }}
+
+    ul li { margin: 0 0 7px 0; color: $standard_gray; font-size: 13px; }
+    h4 { padding: 0; margin: 0 0 10px 0; color: #1D7AB0; font-size: 15px; }
+
+    ul {
+      li a { color: $standard_gray; font-size: 13px; &:hover {color:$ultra_dark}}
+
+      &.copyright {
 
         li {
           &.logo { margin-bottom: 21px; }
           a { text-decoration: underline; }
         }
-
-      }
-    }
-  }
-}
+      } // copyright
+    } // ul
+  } // content
+} // footer
 
 /* =============================================================================
 Error pages
