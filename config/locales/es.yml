@@ -326,6 +326,61 @@
         subject: 'Unlock Instructions'
 
 #######################################
+# IREKIA - Routes
+#######################################
+  path_names: &common_pathnames
+    actions: 'acciones'
+    questions: 'preguntas'
+    proposals: 'propuestas'
+    agenda: 'agenda'
+  routes:
+    users:
+      as: usuarios
+      path_names:
+        <<: *common_pathnames
+        connect: 'conectar'
+        settings: 'preferencias'
+    areas:
+      as: areas
+      path_names:
+        <<: *common_pathnames
+        team: 'equipo'
+    politicians:
+      as: politicos
+      path_names:
+        <<: *common_pathnames
+        detail: 'detalle'
+    busqueda:
+      as: buscar
+      path_names:
+        contents: 'contenidos'
+        areas: 'areas'
+        politicians: 'politicos'
+        politicians_and_areas: 'politicos_y_areas'
+        citizens: 'ciudadanos'
+
+
+  resources:
+    users: usuarios
+    areas: areas
+    politicians: politicos
+    proposals: 'propuestas'
+    questions: 'preguntas'
+    answers: 'respuestas'
+    news: 'noticias'
+    events: 'eventos'
+    tweets: 'tweets'
+    status_messages: 'cambios_de_estado'
+    photos: 'fotos'
+    videos: 'videos'
+    images: 'imagenes'
+    arguments: 'argumentos'
+    votes: 'votos'
+    comments: 'comentarios'
+    answer_requests: 'solicitudes_de_respuesta'
+    search: buscar
+
+#######################################
 # IREKIA - Views
 #######################################
   News: Noticia
