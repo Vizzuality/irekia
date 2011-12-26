@@ -1,4 +1,5 @@
 <%= avatar data.author %>
+
 <div class="content">
   <%= content_tag 'p', t(".title", :receiver => data.target_area.name) if data.target_area %>
   <%= content_tag 'p', t(".title", :receiver => data.target_user.fullname) if data.target_user %>
@@ -28,7 +29,7 @@
 
     &middot;
 
-    <span class="requests positive"><%= data.answer_requests_count %></span>
+    <span class="requests positive"><%= link_to data.answer_requests_count, question_path(data.id) %></span>
 
     <% unless show_last_comments?(data) -%>
       &middot;

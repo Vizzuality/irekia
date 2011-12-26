@@ -11,7 +11,7 @@
       &middot;
     </span>
 
-    <span class="requests positive"><%= data.answer_requests_count %></span>
+    <span class="requests positive"><%= link_to data.answer_requests_count, question_path(data.content.id) %></span>
 
     <% unless show_last_comments?(data) -%>
       &middot;

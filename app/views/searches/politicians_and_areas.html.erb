@@ -5,11 +5,13 @@
         <% if @search_results[:areas] %>
           <% @search_results[:areas].each do |area| %>
             <li id="item_<%= area.id %>" data-type="area" data-id="<%= area.id %>" data-content="<%= area.name %>" class="area clearfix">
-            <%= avatar area, 'small' %>
-            <p>
-            <span class="name"><%= area.name %></span>
-            <span class="description"><%= t('.area_description') %></span>
-            </p>
+            <div class="bottom">
+              <%= avatar area, 'small' %>
+              <p>
+              <span class="name"><%= area.name %></span>
+              <span class="description"><%= t('.area_description') %></span>
+              </p>
+            </div>
             </li>
           <% end %>
         <% end %>

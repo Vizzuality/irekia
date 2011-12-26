@@ -222,6 +222,7 @@ span.not_answered { color: #FF3300; }
 span.not_answered a { color: #FF3300!important; }
 span.not_answered a:hover { text-decoration: underline; color: #FF3300; }
 span.positive { color: #FF0066; }
+span.positive a { color: #FF0066!important; }
 span.in_favor { color: #669900; }
 span.against { color: #ff9933; }
 
@@ -743,7 +744,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 
 p.info span.requests { background-position: 0 -383px; }
 
-span.requests { padding: 0 0 0 10px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -385px; }
+.footer.requests a, span.requests a { padding: 0 0 0 10px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -385px; }
 
 p.info span.comments a { background-position: 0 -49px; }
 
@@ -1069,7 +1070,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* meta */
 #container .article .inner .meta { margin: 10px 0 20px 0; padding: 0; font-size: 15px; color: #465866; }
 #container .article .inner .meta span.comments a { background-position: 0 -49px; }
-#container .article .inner .meta span.requests { background-position: 0 -383px; }
+#container .article .inner .meta span.requests { padding: 0 0 0 10px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -383px; }
 
 /* image mamufas */
 #container .article .inner .mamufas { background: #f7f7f7; }

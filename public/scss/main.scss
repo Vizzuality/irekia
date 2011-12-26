@@ -109,9 +109,9 @@ h2 { letter-spacing: -1px; }
 #lock_screen { @include opacity(0.8); }
 
 span {
-  &.answered     { color: #00AA54; a {color:#00AA54!important; &:hover {text-decoration:underline; color:#00AA54;}} }
-  &.not_answered { color: #FF3300; a {color:#FF3300!important; &:hover {text-decoration:underline; color:#FF3300;}} }
-  &.positive     { color: #FF0066; }
+  &.answered     { color: #00AA54; a { color:#00AA54!important; &:hover {text-decoration:underline; color:#00AA54;}} }
+  &.not_answered { color: #FF3300; a { color:#FF3300!important; &:hover {text-decoration:underline; color:#FF3300;}} }
+  &.positive     { color: #FF0066; a { color: #FF0066!important; } }
   &.in_favor     { color: $agree_color; }
   &.against      { color: $against_color; }
 }
@@ -2131,10 +2131,13 @@ p.info span.requests {
   background-position: 0 -383px;
 }
 
-span.requests {
-  padding: 0 0 0 10px;
-  background: url('/images/icons/icon_sprite.png') no-repeat 0 -385px;
+.footer.requests, span.requests {
+  a {
+    padding: 0 0 0 10px;
+    background: url('/images/icons/icon_sprite.png') no-repeat 0 -385px;
+  }
 }
+
 
 p.info span.comments a {
   background-position: 0 -49px;
@@ -3524,7 +3527,8 @@ a.editable {
             }
 
             span.requests {
-              background-position: 0 -383px;
+              padding: 0 0 0 10px;
+              background: url('/images/icons/icon_sprite.png') no-repeat 0 -383px;
             }
           }
 

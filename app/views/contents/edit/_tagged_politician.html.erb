@@ -3,8 +3,9 @@
   politician     = politician_tag.user
 -%>
 <li class='editable'>
+<div class="bottom">
 	<%= avatar politician, 'small' %>
-	<%= link_to politician.fullname, path_for_user(politician), :class => :name %>
+	<%= link_to politician.truncated_fullname(25), path_for_user(politician), :class => :name %>
 	<span class="position"><%= get_politician_title(politician) %></span>
 
 	<%= form_for @content, :remote => true, :html => {:'data-type' => 'html', :class => :remove} do |form| %>
@@ -14,4 +15,5 @@
 	  <% end -%>
 	  <%= form.submit 'x', :class => 'remove' %>
 	<% end -%>
+</div>
 </li>
