@@ -20,13 +20,13 @@ Irekia::Application.routes.draw do
           get 'intro'
         end
         member do
-          get 'connect'
-          get 'questions'
-          get 'proposals'
-          get 'actions'
-          get 'followings'
-          get 'agenda'
-          get 'settings'
+          get :connect
+          get :questions
+          get :proposals
+          get :actions
+          get :followings
+          get :agenda
+          get :settings
         end
       end
 
@@ -50,32 +50,32 @@ Irekia::Application.routes.draw do
       end
 
       resources :areas do
+        member do
+          get :actions
+          get :questions
+          get :proposals
+          get :agenda
+          get :team
+        end
         resources :follows do
           collection do
             get 'button'
           end
-        end
-        member do
-          get 'actions', :path => 'actions(/:type)(.:format)'
-          get 'questions'
-          get 'proposals'
-          get 'agenda'
-          get 'team'
         end
       end
 
       resources :politicians do
+        member do
+          get :actions
+          get :questions
+          get :proposals
+          get :agenda
+          get :detail
+        end
         resources :follows do
           collection do
             get 'button'
           end
-        end
-        member do
-          get 'actions'
-          get 'questions'
-          get 'proposals'
-          get 'agenda'
-          get 'detail'
         end
       end
 
