@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include PgSearch
+  extend FriendlyId
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -10,6 +11,8 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable,
          :omniauthable
+
+  friendly_id :fullname, :use => :slugged
 
   attr_reader :random_password
 

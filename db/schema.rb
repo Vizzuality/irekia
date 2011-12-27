@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.text     "description_1"
     t.text     "description_2"
     t.integer  "external_id"
+    t.string   "slug"
     t.integer  "areas_users_count",     :default => 0
     t.integer  "follows_count",         :default => 0
     t.integer  "proposals_count",       :default => 0
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
   end
 
   add_index "areas", ["external_id"], :name => "index_areas_on_external_id"
+  add_index "areas", ["slug"], :name => "index_areas_on_slug", :unique => true
 
   create_table "areas_contents", :force => true do |t|
     t.integer  "area_id"
@@ -340,6 +342,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.boolean  "inactive",                                     :default => false
     t.boolean  "first_time",                                   :default => true
     t.string   "locale",                                       :default => "es"
+    t.string   "slug"
     t.integer  "notifications_level",                          :default => 2
     t.integer  "follows_count",                                :default => 0
     t.integer  "areas_users_count",                            :default => 0
@@ -404,6 +407,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
   add_index "users", ["facebook_oauth_token", "facebook_oauth_token_secret"], :name => "facebook_credentials", :unique => true
   add_index "users", ["id"], :name => "index_users_on_id"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
   add_index "users", ["twitter_oauth_token", "twitter_oauth_token_secret"], :name => "twitter_credentials", :unique => true
   add_index "users", ["twitter_username"], :name => "index_users_on_twitter_username", :unique => true
 

@@ -3,8 +3,10 @@ module UsersHelper
 
   def title
     @title = ['IREKIA']
-    @title << @user.fullname
-    @title << t(params[:action], :scope => "users.#{@viewing_access}.navigation_menu") if params[:action]
+    if @user.present?
+      @title << @user.fullname
+      @title << t(params[:action], :scope => "users.#{@viewing_access}.navigation_menu") if params[:action]
+    end
     @title.join(' - ')
   end
 

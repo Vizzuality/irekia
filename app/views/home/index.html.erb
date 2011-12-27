@@ -4,7 +4,11 @@
       <p><%= t(".description") %></p>
       <% if @current_user.blank? %>
         <div class="login_block">
-          <p><a href="#" class="floating-login"><%= t(".login") %></a> <%= t(".or") %> <a href="/users/intro" class="blue_button no_shadow"><%= t(".register_now") %></a></p>
+          <p>
+            <%= link_to t('.login'), '#', :class => 'floating-login' %>
+            <%= t(".or") %>
+            <%= link_to t('.register_now'), intro_users_path, :class => 'blue_button no_shadow' %>
+          </p>
         </div>
       <% else %>
         <%= form_for :search, :url => search_path, :html => {:method => :get, :autocomplete => :off } do |search_form| %>

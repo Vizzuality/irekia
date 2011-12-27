@@ -78,9 +78,9 @@ module ApplicationHelper
 
   def path_for_user(user, params = {})
     if user.is_politician
-      politician_path(user.id, params)
+      politician_path(user.slug, params)
     else
-      user_path(user.id, params)
+      user_path(user.slug, params)
     end
   end
 

@@ -6,7 +6,7 @@ Irekia::Application.routes.draw do
 
   scope '(:locale)' do
 
-    localized(I18n.available_locales, :verbose => true) do
+    localized do
 
       devise_for :users, :controllers => {
         :sessions => 'sessions',

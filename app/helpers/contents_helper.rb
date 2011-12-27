@@ -3,8 +3,11 @@ module ContentsHelper
 
   def title
     @title = ['IREKIA']
-    @title << @content.author.fullname if @content.author.present?
-    @title << @content.text
+    if @content.present?
+      @title << @content.author.fullname if @content.author.present?
+      @title << @content.class.model_name.human
+      @title << @content.text
+    end
     @title.join(' - ')
   end
 

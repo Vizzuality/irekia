@@ -102,6 +102,7 @@ GEM
       sax-machine (~> 0.1.0)
     ffaker (1.8.1)
     ffi (1.0.11)
+    friendly_id (4.0.0.rc2)
     fssm (0.2.7)
     g (1.5.0)
       ruby_gntp
@@ -301,6 +302,7 @@ DEPENDENCIES
   escape_utils
   feedzirra (= 0.1.1)
   ffaker (= 1.8.1)
+  friendly_id (~> 4.0.0.rc2)
   i18n_routing (= 0.5.0)
   irbtools
   json (= 1.6.1)

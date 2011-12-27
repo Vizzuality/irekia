@@ -2,7 +2,7 @@ class Content < ActiveRecord::Base
   belongs_to :author,
              :class_name => 'User',
              :foreign_key => :user_id,
-             :select => 'id, name, lastname, locale, email, title_id, role_id'
+             :select => 'id, name, lastname, locale, email, title_id, role_id, slug'
 
   has_many   :areas_contents,
              :class_name => "AreaContent"
@@ -136,6 +136,7 @@ class Content < ActiveRecord::Base
       :id            => author.id,
       :name          => author.name,
       :fullname      => author.fullname,
+      :slug          => author.slug,
       :is_politician => author.politician?
     } if author.present?
 
