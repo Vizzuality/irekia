@@ -5,9 +5,9 @@
   <%= content_tag 'p', t(".title", :receiver => data.target_user.fullname) if data.target_user %>
 
   <% if data.target_user %>
-    <p class="excerpt"><%= link_to %Q{"#{data.question_text}"}, question_path(data.id) %></p>
+    <p class="excerpt"><%= link_to %Q{"#{data.question_text}"}, question_path(data.slug) %></p>
   <% else %>
-    <p class="excerpt"><%= link_to %Q{"#{data.question_text}"}, question_path(data.id) %></p>
+    <p class="excerpt"><%= link_to %Q{"#{data.question_text}"}, question_path(data.slug) %></p>
   <% end %>
 
   <div class="footer">
@@ -17,25 +17,25 @@
         &middot;
       </span>
 
-      <span class="answered"><%= link_to t('.answered', :time => distance_of_time_in_words(data.published_at, data.answered_at)), question_path(data.id) %></span>
+      <span class="answered"><%= link_to t('.answered', :time => distance_of_time_in_words(data.published_at, data.answered_at)), question_path(data.slug) %></span>
     <% else %>
       <span class="published_at">
         <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
         &middot;
       </span>
 
-      <span class="not_answered"><%= link_to t('.not_answered'), question_path(data.id) %></span>
+      <span class="not_answered"><%= link_to t('.not_answered'), question_path(data.slug) %></span>
     <% end %>
 
     &middot;
 
-    <span class="requests positive"><%= link_to data.answer_requests_count, question_path(data.id) %></span>
+    <span class="requests positive"><%= link_to data.answer_requests_count, question_path(data.slug) %></span>
 
     <% unless show_last_comments?(data) -%>
       &middot;
-      <span class="comments"><%= link_to data.comments_count, question_path(data.id, :anchor => :comments), :class => "comment-count" %></span>
+      <span class="comments"><%= link_to data.comments_count, question_path(data.slug, :anchor => :comments), :class => "comment-count" %></span>
     <% end -%>
-    <%#= inline_sharing_partial(data, 'question', question_url(data.id), data.question_text) %>
+    <%#= inline_sharing_partial(data, 'question', question_url(data.slug), data.question_text) %>
   </div>
   <%= render 'shared/lists_elements/last_comments', :data => data %>
 </div>

@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def title
+  def page_title
     'IREKIA'
   end
 
@@ -68,8 +68,8 @@ module ApplicationHelper
     t([model.class.name.downcase, key, model["#{key}_i18n_key"]].join('.'), :scope => 'activerecord.values')
   end
 
-  def get_politician_title(user, length = 27)
-    user.title.get_translated_name.truncate(length) if user.title
+  def get_politician_title(user)
+    user.title.get_translated_name if user.title
   end
 
   def menu(options)

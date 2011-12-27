@@ -1,7 +1,7 @@
 module PoliticiansHelper
   include ApplicationHelper
 
-  def title
+  def page_title
     @title = ['IREKIA']
     if @politician.present?
       @title << @politician.fullname

@@ -1,7 +1,7 @@
 module AreasHelper
   include ApplicationHelper
 
-  def title
+  def page_title
     @title = ['IREKIA']
     if @area.present?
       @title << @area.name

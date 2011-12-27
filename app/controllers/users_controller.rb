@@ -173,7 +173,7 @@ class UsersController < ApplicationController
 
     if private_profile?
       @first_time      = @user.first_time
-      @random_area = Area.select(:id).all.sample
+      @random_area = Area.select(:slug).all.sample
     end
 
   end

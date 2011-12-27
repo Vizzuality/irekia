@@ -1,7 +1,7 @@
 module ContentsHelper
   include ApplicationHelper
 
-  def title
+  def page_title
     @title = ['IREKIA']
     if @content.present?
       @title << @content.author.fullname if @content.author.present?

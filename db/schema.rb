@@ -22,15 +22,6 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
 
   add_index "answer_data", ["answer_id"], :name => "index_answer_data_on_answer_id"
 
-  create_table "answer_opinion_data", :force => true do |t|
-    t.integer  "answer_opinion_id"
-    t.boolean  "satisfactory",      :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "answer_opinion_data", ["answer_opinion_id"], :name => "index_answer_opinion_data_on_answer_opinion_id"
-
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
     t.integer  "author_id"
@@ -126,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "external_id"
+    t.string   "slug"
     t.integer  "comments_count",        :default => 0
     t.integer  "answer_requests_count", :default => 0
     t.datetime "created_at"
@@ -135,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
   add_index "contents", ["id", "published_at", "type"], :name => "index_contents_on_id_and_published_at_and_type"
   add_index "contents", ["id", "type", "moderated"], :name => "index_contents_on_id_and_type_and_moderated"
   add_index "contents", ["id", "type"], :name => "index_contents_on_id_and_type"
+  add_index "contents", ["slug", "type"], :name => "index_contents_on_slug_and_type", :unique => true
 
   create_table "contents_users", :force => true do |t|
     t.integer  "content_id"

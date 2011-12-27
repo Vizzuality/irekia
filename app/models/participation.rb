@@ -76,6 +76,7 @@ class Participation < ActiveRecord::Base
       :content_id       => content_id,
       :content => {
         :id   => content.try(:id),
+        :slug => content.slug,
         :type => content.try(:type).try(:underscore),
         :text => content.try(:text)
       },

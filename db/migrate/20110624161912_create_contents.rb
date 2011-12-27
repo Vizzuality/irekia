@@ -16,6 +16,8 @@ class CreateContents < ActiveRecord::Migration
 
       t.string   :external_id
 
+      t.string  :slug
+
       t.integer :comments_count, :default => 0
       t.integer :answer_requests_count, :default => 0
 
@@ -25,6 +27,7 @@ class CreateContents < ActiveRecord::Migration
     add_index :contents, [:id, :type]
     add_index :contents, [:id, :type, :moderated]
     add_index :contents, [:id, :published_at, :type ]
+    add_index :contents, [:slug, :type],              :unique => true
 
   end
 

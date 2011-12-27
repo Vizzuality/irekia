@@ -1,6 +1,6 @@
 module SearchesHelper
 
-  def title
+  def page_title
     @title = ['IREKIA']
     @title << t('title.search')
     @title << @search.query if @search.present? && @search.query.present?
