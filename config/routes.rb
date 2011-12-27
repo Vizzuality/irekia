@@ -116,10 +116,17 @@ Irekia::Application.routes.draw do
       end
       resources :images, :only => [:create, :update, :destroy]
 
-      resources :demo
-      match 'user_publish', :to => 'demo#user_publish'
-      match 'politician_publish', :to => 'demo#politician_publish'
-      match 'event_edit', :to => 'demo#event_edit'
+      resources :demo do
+        member do
+          get :user_publish
+          get :politician_publish
+          get :event_edit
+          # TODO: delete this
+          get :news
+          get :slideshow
+        end
+      end
+
 
       resources :arguments,       :controller => 'participations', :type => 'Argument'
       resources :votes,           :controller => 'participations', :type => 'Vote'

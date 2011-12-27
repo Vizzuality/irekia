@@ -28,7 +28,7 @@
         <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
       </div>
 
-      <iframe src="/demo/slideshow" width="650" height="400" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+      <iframe src="<%= slideshow_demo_path %>" width="650" height="400" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
 
       <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil %>
       <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
