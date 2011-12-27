@@ -92,6 +92,9 @@ $(function() {
   $(".areas_selector").areasPopover();
   $(".toggle_notifications").notificationPopover();
 
+  // Tipsy
+  $('input.ribbon, .toggle_notifications, .share.email, .share.twitter, .share.facebook, .share.ical, a.settings, .sign_out').tipsy({gravity: 's', offset: 3, title: 'data-label'});
+
   // Follow forms
 
   $(".follow.basic form").live('submit', function(){
@@ -162,7 +165,7 @@ $(function() {
     form_.stop(true).animate({height:'75px'},300);
   });
 
-  // ANSWER FORM
+  // Answer form
   $('div.answering form').live('ajax:success',function(evt, xhr, status) {
     var parent = $(this).closest('div.answering');
     var response = $(xhr);
@@ -173,8 +176,6 @@ $(function() {
       response.fadeIn();
     });
   });
-  // END ANSWER FORM
-
 
   $(".share.twitter").live("click", function() {
     var width  = 611,
@@ -201,6 +202,4 @@ $(function() {
     });
   });
 
-  // Tipsy
-  $('input.ribbon, .toggle_notifications, .share.email, .share.twitter, .share.facebook, .share.ical, a.settings, .sign_out').tipsy({gravity: 's', offset: 3, title: 'data-label'});
 });
