@@ -109,6 +109,8 @@ GEM
     highline (1.6.9)
     hirb (0.5.0)
     i18n (0.5.0)
+    i18n_routing (0.5.0)
+      i18n (> 0.3.5)
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
     irbtools (1.1.1)
@@ -299,6 +301,7 @@ DEPENDENCIES
   escape_utils
   feedzirra (= 0.1.1)
   ffaker (= 1.8.1)
+  i18n_routing (= 0.5.0)
   irbtools
   json (= 1.6.1)
   kaminari (= 0.12.4)

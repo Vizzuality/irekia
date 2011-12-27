@@ -1,9 +1,9 @@
 <%= menu [
-  { :link => link_to(t(".dashboard"), path_for_user(@user, :anchor => :actions)), :class => current_action?('show') },
-  { :link => link_to(t(".your_questions"), questions_user_path(@user, :anchor => :questions)), :class => current_action?('questions'), :count => @questions_notifications },
-  { :link => link_to(t(".your_proposals"), proposals_user_path(@user, :anchor => :proposals)), :class => current_action?('proposals'), :count => @proposals_notifications },
-  { :link => link_to(t(".your_activity"), actions_user_path(@user,  :anchor => :actions)), :class => current_action?('actions')  },
-  { :link => link_to(t(".your_agenda"), agenda_user_path(@user,  :anchor => :agenda)), :class => current_action?('agenda')  },
+  { :link => link_to(t(".show"), path_for_user(@user, :anchor => :actions)), :class => current_action?('show') },
+  { :link => link_to(t(".questions"), questions_user_path(@user, :anchor => :questions)), :class => current_action?('questions'), :count => @questions_notifications },
+  { :link => link_to(t(".proposals"), proposals_user_path(@user, :anchor => :proposals)), :class => current_action?('proposals'), :count => @proposals_notifications },
+  { :link => link_to(t(".actions"), actions_user_path(@user,  :anchor => :actions)), :class => current_action?('actions')  },
+  { :link => link_to(t(".agenda"), agenda_user_path(@user,  :anchor => :agenda)), :class => current_action?('agenda')  },
   { :link => link_to(t(".publish"), path_for_user(@user, :section => 'publish')), :class => "publish politician_publish #{current_action?('publish')}" },
 ] %>
 

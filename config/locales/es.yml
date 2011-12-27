@@ -326,6 +326,58 @@
         subject: 'Unlock Instructions'
 
 #######################################
+# IREKIA - Routes
+#######################################
+  routes:
+    users:
+      as: usuarios
+      path_names:
+        connect: 'conectar'
+        settings: 'preferencias'
+    areas:
+      as: areas
+      path_names:
+        team: 'equipo'
+    politicians:
+      as: politicos
+      member:
+        detail: 'detalle'
+    search:
+      as: buscar
+      path_names:
+        contents: 'contenidos'
+        areas: 'areas'
+        politicians: 'politicos'
+        politicians_and_areas: 'politicos_y_areas'
+        citizens: 'ciudadanos'
+
+  resources:
+    users: usuarios
+    areas: areas
+    politicians: politicos
+    proposals: 'propuestas'
+    questions: 'preguntas'
+    answers: 'respuestas'
+    news: 'noticias'
+    events: 'eventos'
+    tweets: 'tweets'
+    status_messages: 'cambios_de_estado'
+    photos: 'fotos'
+    videos: 'videos'
+    images: 'imagenes'
+    arguments: 'argumentos'
+    votes: 'votos'
+    comments: 'comentarios'
+    answer_requests: 'solicitudes_de_respuesta'
+  resource:
+    search: buscar
+  path_names:
+    actions: 'acciones'
+    questions: 'preguntas'
+    proposals: 'propuestas'
+    agenda: 'agenda'
+
+#######################################
 # IREKIA - Views
 #######################################
   News: Noticia
@@ -335,6 +387,8 @@
   Video: Vídeo
   Proposal: Propuesta
   unknown_user: Invitado
+  title:
+    search: 'Búsqueda'
   menu:
     dashboard: Dashboard
     your_questions: Tus preguntas
@@ -1411,7 +1465,7 @@
   areas:
     navigation_menu:
       menu:
-        summary: Resumen
+        show: Resumen
         actions: Actividad
         questions: Preguntas
         proposals: Propuestas
@@ -1464,7 +1518,7 @@
 
   politicians:
     menu:
-      summary: Resumen
+      show: Resumen
       actions: Actividad
       questions: Preguntas
       proposals: Propuestas
@@ -1759,9 +1813,9 @@
         follow: Seguir
         more: Más sugerencias
       navigation_menu:
-        his_activity: Su actividad
-        his_questions: Sus preguntas
-        his_proposals: Sus propuestas
+        show: Su actividad
+        questions: Sus preguntas
+        proposals: Sus propuestas
         following: Siguiendo
       actions:
         title: Sus últimas acciones
@@ -1848,11 +1902,11 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
         follow: Seguir
         more_politicians: Buscar más políticos
       navigation_menu:
-        dashboard: Dashboard
-        your_questions: Tus preguntas
-        your_proposals: Tus propuestas
-        your_activity: Tu actividad
-        what_to_follow: Siguiendo
+        show: Dashboard
+        questions: Tus preguntas
+        proposals: Tus propuestas
+        actions: Tu actividad
+        followings: Siguiendo
         publish: Publicar
       questions:
         title:
@@ -1926,11 +1980,11 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
           other: '%{count} nuevos desde la última vez que entraste.'
         configure_your_account: Configura tu cuenta
       navigation_menu:
-        dashboard: Dashboard
-        your_questions: Preguntas
-        your_proposals: Propuestas
-        your_activity: Tu actividad
-        your_agenda: Tu agenda
+        show: Dashboard
+        questions: Preguntas
+        proposals: Propuestas
+        actions: Tu actividad
+        agenda: Tu agenda
         publish: Publicar
       questions:
         title:

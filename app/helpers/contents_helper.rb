@@ -1,6 +1,13 @@
 module ContentsHelper
   include ApplicationHelper
 
+  def title
+    @title = ['IREKIA']
+    @title << @content.author.fullname if @content.author.present?
+    @title << @content.text
+    @title.join(' - ')
+  end
+
   def render_partial_for_content
     case params[:type]
     when 'Question'

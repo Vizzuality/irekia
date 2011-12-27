@@ -1,4 +1,9 @@
 module ApplicationHelper
+
+  def title
+    'IREKIA'
+  end
+
   def available_locales
     [:es, :eu, :en]
   end

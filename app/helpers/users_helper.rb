@@ -1,6 +1,13 @@
 module UsersHelper
   include ApplicationHelper
 
+  def title
+    @title = ['IREKIA']
+    @title << @user.fullname
+    @title << t(params[:action], :scope => "users.#{@viewing_access}.navigation_menu") if params[:action]
+    @title.join(' - ')
+  end
+
   def link_for_actions(filters = {})
     filters[:more_polemic] = params[:more_polemic] unless filters[:more_polemic].present?
     filters[:type]         = params[:type] unless filters[:type].present?

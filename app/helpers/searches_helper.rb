@@ -1,4 +1,12 @@
 module SearchesHelper
+
+  def title
+    @title = ['IREKIA']
+    @title << t('title.search')
+    @title << @search.query
+    @title.join(' - ')
+  end
+
   def current_type?(type = nil)
     return 'selected' if type.blank? && params[:search][:type].blank?
     'selected' if params[:search][:type].eql?(type)
