@@ -3,9 +3,9 @@
     <li><span class="username"><%= raw t('.hello', :name => link_to(current_user.name, user_path(current_user))) %>.</span></li>
     <li>
     <div class="blue_button">
-      <%= link_to notifications_count, '#show_notifications', :class => "toggle_notifications #{'empty_' if notifications_count.zero? }count" %>
-      <%= link_to t('.settings'), settings_user_path(current_user), :class => :settings %>
-      <%= link_to t('.sign_out'), destroy_user_session_path, :method => 'delete', :class => :sign_out %>
+      <%= link_to notifications_count, '#show_notifications', :class => "toggle_notifications #{'empty_' if notifications_count.zero? }count", :"data-label" => t(".notifications.pending", :count => notifications_count) %>
+      <%= link_to t('.settings.title'), settings_user_path(current_user), :"data-label" => t(".settings.label"), :class => :settings %>
+      <%= link_to t('.sign_out.title'), destroy_user_session_path, :method => 'delete', :"data-label" => t(".sign_out.label"), :class => :sign_out %>
     </div>
     </li>
   </ul>
@@ -36,7 +36,7 @@
         <% first_notification = notifications_list.shift -%>
 
         <%= render_notification_item(first_notification[0], first_notification[1], 'first') if first_notification.present? %>
-        <% notifications_list.each_with_index do |notification,i| -%>          
+        <% notifications_list.each_with_index do |notification,i| -%>
           <%= render_notification_item(notification[0], notification[1]) %>
         <% end -%>
         <%= render_notification_item(last_notification[0], last_notification[1], 'last') if last_notification.present? %>

@@ -56,6 +56,42 @@ $(function() {
   $("a.see_all_areas").enableSeeAllAreas();
   $(".welcome-slideshow").enableWelcomeSlideshow();
 
+  // Comments, opinions and arguments
+  $('.my_opinion').enableOpinion();
+  $('.article.proposal .proposals .proposal').enableArguments();
+  $('form.add_comment').enableComments();
+  $(".comment-box form").enableCommentBox();
+  $(".goto_comments").enableGotoComments();
+
+  $(".notifications").enableNotificationSelector();
+  $('.floating-login').floatingLoginPopover();
+
+  $(".placeholder").smartPlaceholder();
+  $(".input-counter").inputCounter();
+
+  // Sharing
+  $(".share.more, .share.email").sharePopover();
+  $(".share.inline").inlineSharePopover();
+
+  // Popovers
+  $(".show_event").infoEventPopover();
+  $(".ask_question").questionPopover();
+
+  $(".make_question").enableQuestion();
+
+  $(".remove_account").removeAccountPopover();
+
+  $(".user_publish").userPublishPopover();
+  $(".politician_publish").politicianPublishPopover();
+  $(".create_proposal").proposalPopover();
+  $(".auth a.login").loginPopover();
+
+  $(".with_filters").filterWidget();
+  $(".with_filters").filterWidget();
+
+  $(".areas_selector").areasPopover();
+  $(".toggle_notifications").notificationPopover();
+
   // Follow forms
 
   $(".follow.basic form").live('submit', function(){
@@ -126,9 +162,6 @@ $(function() {
     form_.stop(true).animate({height:'75px'},300);
   });
 
-
-
-
   // ANSWER FORM
   $('div.answering form').live('ajax:success',function(evt, xhr, status) {
     var parent = $(this).closest('div.answering');
@@ -142,18 +175,6 @@ $(function() {
   });
   // END ANSWER FORM
 
-  // Comments, opinions and arguments
-  $('.my_opinion').enableOpinion();
-  $('.article.proposal .proposals .proposal').enableArguments();
-  $('form.add_comment').enableComments();
-  $(".comment-box form").enableCommentBox();
-  $(".goto_comments").enableGotoComments();
-
-  $(".notifications").enableNotificationSelector();
-  $('.floating-login').floatingLoginPopover();
-
-  $(".placeholder").smartPlaceholder();
-  $(".input-counter").inputCounter();
 
   $(".share.twitter").live("click", function() {
     var width  = 611,
@@ -168,28 +189,6 @@ $(function() {
     return false;
   });
 
-  $(".share.more, .share.email").sharePopover();
-  $(".share.inline").inlineSharePopover();
-
-  // Popovers
-  $(".show_event").infoEventPopover();
-  $(".ask_question").questionPopover();
-
-  $(".make_question").enableQuestion();
-
-  $(".remove_account").removeAccountPopover();
-
-  $(".user_publish").userPublishPopover();
-  $(".politician_publish").politicianPublishPopover();
-  $(".create_proposal").proposalPopover();
-  $(".auth a.login").loginPopover();
-
-  //$('.avatar').prepend("<div class='ieframe'></div>");
-  $(".with_filters").filterWidget();
-  $(".with_filters").filterWidget();
-
-  $(".areas_selector").areasPopover();
-  $(".toggle_notifications").notificationPopover();
 
   // After requesting an answer, reload the text
   $(".answer_placeholder form").bind('ajax:success', function(evt, xhr, status) {
@@ -202,58 +201,6 @@ $(function() {
     });
   });
 
-
-  // Follow area or politician tooltip
-  $('input.ribbon').tipsy({live: true, gravity: 's', offset: 3, title: function() {
-
-    var type = $(this).attr("data-title");
-    var type = $(this).closest('div.content').find('button.add_to_favorites span').text();
-
-    if (type=='') type = "Seguir a este político"
-      return type;
-  }});
-
-  //  Follow mail
-  $('.share.email').tipsy({live: true, gravity: 's', offset: 3, title: function() {
-    return 'Compartir vía email';
-  }});
-
-  //  Follow twitter
-  $('.share.twitter').tipsy({live: true, gravity: 's', offset: 3, title: function() {
-    return 'Compartir vía twitter';
-  }});
-
-  //  Follow facebook
-  $('.share.facebook').tipsy({live: true, gravity: 's', offset: 3, title: function() {
-    return 'Compartir vía facebook';
-  }});
-
-  //  Export to iCal
-  $('.share.ical').tipsy({live: true, gravity: 's', offset: 3, title: function() {
-    return 'Exportar para iCal';
-  }});
-
-  //  Notifications
-  $('.toggle_notifications').tipsy({gravity: 's', offset: 3, title: function() {
-    var count = parseInt($(this).text());
-    if (count==0)
-      return 'No tienes notificaciones';
-    else
-      if (count>1)
-        return count + ' notificaciones';
-    else
-      return count + ' notificación';
-  }});
-
-
-  //  Notifications
-  $('a.settings').tipsy({gravity: 's', offset: 3, title: function() {
-    return 'Tu perfil';
-  }});
-
-  //  Log out
-  $('.sign_out').tipsy({gravity: 's', offset: 3, title: function() {
-    return 'Cerrar sesión';
-  }});
-
+  // Tipsy
+  $('input.ribbon, .toggle_notifications, .share.email, .share.twitter, .share.facebook, .share.ical, a.settings, .sign_out').tipsy({gravity: 's', offset: 3, title: 'data-label'});
 });

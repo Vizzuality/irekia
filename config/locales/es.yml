@@ -432,6 +432,11 @@
         other: '%{count} propuestas'
       no_activity: Sin actividad
   shared:
+    sharing:
+      ical: Exportar para iCal
+      twitter: 'Compartir vía twitter'
+      facebook: 'Compartir vía facebook'
+      email: 'Compartir vía email'
     questions_list:
       no_content: No hay preguntas en este área
     proposals_list:
@@ -946,14 +951,22 @@
       next_month: Siguiente mes
 
     nav_bar_buttons:
-      settings: Configuración
+      settings:
+        title: Configuración
+        label: Tu perfil
       sign_up: Regístrate
       sign_in: Login
       hello: 'Hola, %{name}'
-      sign_out: Salir
+      sign_out:
+        title: Salir
+        label: Cerrar sesión
       facebook: Facebook
       twitter: Twitter
       notifications:
+        pending:
+          zero: 'No tienes notificaciones'
+          one: '1 notificación'
+          other: '%{count} notificaciones'
         a_content:
           news: una noticia
           photo: una foto
@@ -2062,6 +2075,9 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
         follow: 'Seguir a este área'
       user:
         follow: 'Seguir a %{name}'
+    create_ribbon:
+      user: Seguir a este político
+      area: Seguir a este área
     create_mini:
       follow: Seguir
     destroy:

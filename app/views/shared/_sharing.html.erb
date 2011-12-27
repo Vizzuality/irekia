@@ -1,5 +1,5 @@
 <ul class="sharing">
-  <li><div class="<%= class_for_modal_login %> <%= class_for_after_login %>share email"></div>
+  <li><div class="<%= class_for_modal_login %> <%= class_for_after_login %>share email" data-label="<%= t(".email") %>"></div>
 
   <div class="sharebox email">
     <%= form_for @content, :url => send("#{@content_type}_shares_path", @content), :remote => true, :html => {:'data-type' => 'html', :method => :post, :novalidate => 'novalidate'} do |form| %>
@@ -17,31 +17,18 @@
   </li>
 
   <li>
-    <%= link_to '', "https://twitter.com/share?text=#{message_for_twitter(@content)}", :class => 'share twitter' %>
+  <%= link_to '', "https://twitter.com/share?text=#{message_for_twitter(@content)}", :class => 'share twitter', :"data-label" => t(".twitter") %>
   </li>
 
   <li>
-    <%= link_to '', '#', :name => 'fb_share', :class => 'share facebook', :type => 'icon', :share_url => polymorphic_url(@content) %>
-    <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
-    </script>
+  <%= link_to '', '#', :name => 'fb_share', :class => 'share facebook', :type => 'icon', :share_url => polymorphic_url(@content), :"data-label" => t(".facebook") %>
+  <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
+  </script>
   </li>
 
   <% if @content_type == 'event' %>
     <li>
-      <%= link_to '', '/in_development', :class => 'share ical', :type => 'icon' %>
+    <%= link_to '', '/in_development', :class => 'share ical', :type => 'icon', :"data-label" => t(".ical")  %>
     </li>
   <% end %>
-
-  <!--
-  <li><div class="share more"></div>
-
-  <div class="sharebox">
-    <ul>
-      <li><div class="share twitter"></div></li>
-      <li><div class="share facebook"></div></li>
-    </ul>
-    <div class="arrow"></div>
-  </div>
-  </li>
-  -->
 </ul>
