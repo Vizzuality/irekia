@@ -27,6 +27,10 @@ class Answer < Content
     answer_text
   end
 
+  def text_for_slug
+    question.text
+  end
+
   def question_published_at
     question.published_at
   end
@@ -34,6 +38,7 @@ class Answer < Content
   def as_json(options = {})
     super({
       :question_id           => question.try(:id),
+      :question_slug         => question.try(:slug),
       :question_text         => question_text,
       :question_published_at => question_published_at,
       :answer_text           => answer_text

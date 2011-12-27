@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def title
+  def page_title
     'IREKIA'
   end
 

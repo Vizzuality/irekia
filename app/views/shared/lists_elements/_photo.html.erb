@@ -2,9 +2,9 @@
 <div class="content">
   <%= content_tag 'p', t(".title.#{am_I?(data.author) ? 'you' : 'other'}", :name => data.author.name) %>
   <div class="photo_block">
-    <%= link_to image_tag(data.list_element_url), photo_path(data.id) if data.list_element_url.present? %>
+    <%= link_to image_tag(data.list_element_url), photo_path(data.slug) if data.list_element_url.present? %>
     <% if data.title.present? -%>
-      <p class="excerpt inline"><%= link_to data.title, photo_path(data.id) %></p>
+      <p class="excerpt inline"><%= link_to data.title, photo_path(data.slug) %></p>
     <% end -%>
   </div>
   <div class="footer">
@@ -13,7 +13,7 @@
     </span>
     <% unless show_last_comments?(data) -%>
       &middot;
-      <span class="comments"><%= link_to data.comments_count, status_message_path(data.id), :class => "comment-count" %></span>
+      <span class="comments"><%= link_to data.comments_count, status_message_path(data.slug), :class => "comment-count" %></span>
     <% end -%>
     <%#= inline_sharing_partial(data, 'photo', photo_url(data.id), data.title) %>
   </div>

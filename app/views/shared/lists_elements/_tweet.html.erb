@@ -1,6 +1,6 @@
 <%= avatar data.author %>
 <div class="content">
-  <blockquote><a href="<%= tweet_path(data.id) %>"><span class="bqstart">&#8220;</span><span class="quote"><%= data.message %><span class="bqend">&#8221;</span></span></a></blockquote>
+  <blockquote><a href="<%= tweet_path(data.slug) %>"><span class="bqstart">&#8220;</span><span class="quote"><%= data.message %><span class="bqend">&#8221;</span></span></a></blockquote>
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)),
@@ -9,7 +9,7 @@
     </span>
     <% unless show_last_comments?(data) -%>
     &middot;
-    <span class="comments"><%= link_to data.comments_count, tweet_path(data.id, :anchor => :comments), :class => "comment-count" %></span>
+    <span class="comments"><%= link_to data.comments_count, tweet_path(data.slug, :anchor => :comments), :class => "comment-count" %></span>
     <% end -%>
     <%#= inline_sharing_partial(data, 'status_message', status_message_url(data.id), data.message) %>
   </div>

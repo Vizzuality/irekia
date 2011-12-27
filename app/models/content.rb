@@ -1,4 +1,8 @@
 class Content < ActiveRecord::Base
+  extend FriendlyId
+
+  friendly_id :text_for_slug, :use => :slugged
+
   belongs_to :author,
              :class_name => 'User',
              :foreign_key => :user_id,
@@ -91,6 +95,10 @@ class Content < ActiveRecord::Base
 
   end
 
+  def text_for_slug
+    text
+  end
+
   def tag=(new_tag)
     return if new_tag.blank?
 
@@ -143,6 +151,7 @@ class Content < ActiveRecord::Base
     default = {
       :author          => content_author,
       :id              => id,
+      :slug            => slug,
       :content_type    => type,
       :published_at    => published_at,
       :tags            => tags,

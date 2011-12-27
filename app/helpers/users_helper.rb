@@ -1,7 +1,7 @@
 module UsersHelper
   include ApplicationHelper
 
-  def title
+  def page_title
     @title = ['IREKIA']
     if @user.present?
       @title << @user.fullname

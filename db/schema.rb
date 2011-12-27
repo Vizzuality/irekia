@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "external_id"
+    t.string   "slug"
     t.integer  "comments_count",        :default => 0
     t.integer  "answer_requests_count", :default => 0
     t.datetime "created_at"
@@ -135,6 +136,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
   add_index "contents", ["id", "published_at", "type"], :name => "index_contents_on_id_and_published_at_and_type"
   add_index "contents", ["id", "type", "moderated"], :name => "index_contents_on_id_and_type_and_moderated"
   add_index "contents", ["id", "type"], :name => "index_contents_on_id_and_type"
+  add_index "contents", ["slug", "type"], :name => "index_contents_on_slug_and_type", :unique => true
 
   create_table "contents_users", :force => true do |t|
     t.integer  "content_id"

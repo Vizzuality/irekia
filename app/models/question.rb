@@ -36,7 +36,7 @@ class Question < Content
   end
 
   def self.from_area(area, author)
-    query = select('contents.id, contents.user_id, contents.type, contents.published_at, contents.moderated, contents.answer_requests_count')
+    query = select('contents.id, contents.user_id, contents.type, contents.published_at, contents.moderated, contents.answer_requests_count, contents.slug')
     .includes({:author => :profile_picture}, :question_data, :comments)
     .joins(:question_data)
     .where('question_data.area_id = ? OR question_data.user_id IN (?)', area.id, area.user_ids)
