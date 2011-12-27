@@ -3,7 +3,7 @@ module SearchesHelper
   def title
     @title = ['IREKIA']
     @title << t('title.search')
-    @title << @search.query
+    @title << @search.query if @search.present? && @search.query.present?
     @title.join(' - ')
   end
 

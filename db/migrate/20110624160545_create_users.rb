@@ -34,6 +34,8 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean  :first_time,                                                    :default => true
       t.string   :locale,                                                        :default => 'es'
 
+      t.string   :slug
+
       t.integer  :notifications_level,                                           :default => 2
 
       t.integer :follows_count,                                                  :default => 0
@@ -105,7 +107,8 @@ class CreateUsers < ActiveRecord::Migration
     # add_index :users, :confirmation_token,                                 :unique => true
     # add_index :users, :unlock_token,                                       :unique => true
     # add_index :users, :authentication_token,                               :unique => true
-    add_index :users, :external_id, :unique => true
+    add_index :users, :external_id,                                          :unique => true
+    add_index :users, :slug,                                                 :unique => true
 
     add_index :users, [:facebook_oauth_token, :facebook_oauth_token_secret], :unique => true, :name => 'facebook_credentials'
     add_index :users, [:twitter_oauth_token, :twitter_oauth_token_secret],   :unique => true, :name => 'twitter_credentials'

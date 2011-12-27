@@ -1,5 +1,8 @@
 class Area < ActiveRecord::Base
   include PgSearch
+  extend FriendlyId
+
+  friendly_id :name, :use => :slugged
 
   has_many :areas_users,
            :class_name => 'AreaUser'
@@ -10,7 +13,7 @@ class Area < ActiveRecord::Base
   has_many :team,
            :through => :areas_users,
            :source => :user,
-           :select => 'users.id, users.name, users.lastname, users.title_id, users.role_id, display_order',
+           :select => 'users.id, users.name, users.lastname, users.title_id, users.role_id, users.slug, display_order',
            :order => 'display_order ASC, external_id ASC'
 
   has_many :areas_contents,
@@ -61,6 +64,7 @@ class Area < ActiveRecord::Base
                    :description,
                    :description_1,
                    :description_2,
+                   :slug,
                    :news_count,
                    :questions_count,
                    :answers_count,
@@ -75,15 +79,15 @@ class Area < ActiveRecord::Base
   end
 
   def self.names_and_ids
-    select([:id, :name]).order('name asc')
+    select([:id, :name, :slug]).order('name asc')
   end
 
   def self.for_footer
-    select([:id, :name]).order('external_id asc')
+    select([:id, :name, :slug]).order('external_id asc')
   end
 
   def self.areas_for_homepage
-    select([:'areas.id', :name, :questions_count, :proposals_count])
+    select([:'areas.id', :name, :slug, :questions_count, :proposals_count])
     .order('created_at asc')
     .all
   end

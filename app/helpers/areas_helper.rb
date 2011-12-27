@@ -3,8 +3,10 @@ module AreasHelper
 
   def title
     @title = ['IREKIA']
-    @title << @area.name
-    @title << t(params[:action], :scope => 'areas.navigation_menu.menu') if params[:action]
+    if @area.present?
+      @title << @area.name
+      @title << t(params[:action], :scope => 'areas.navigation_menu.menu') if params[:action]
+    end
     @title.join(' - ')
   end
 

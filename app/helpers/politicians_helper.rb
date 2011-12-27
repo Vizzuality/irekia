@@ -3,8 +3,10 @@ module PoliticiansHelper
 
   def title
     @title = ['IREKIA']
-    @title << @politician.fullname
-    @title << t(params[:action], :scope => 'politicians.menu') if params[:action]
+    if @politician.present?
+      @title << @politician.fullname
+      @title << t(params[:action], :scope => 'politicians.menu') if params[:action]
+    end
     @title.join(' - ')
   end
 
