@@ -387,6 +387,8 @@
   Video: Vídeo
   Proposal: Propuesta
   unknown_user: Invitado
+  title:
+    search: 'Búsqueda'
   menu:
     dashboard: Dashboard
     your_questions: Tus preguntas
