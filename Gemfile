@@ -47,4 +47,5 @@ group :development, :test, :staging do
   gem 'kss'
   gem 'mail_view'
   gem 'tilt'
+  gem 'translate-rails3', :require => 'translate'
 end
