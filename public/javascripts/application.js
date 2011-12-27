@@ -8,10 +8,7 @@ $(function() {
 
   $('.home_last_activity').verticalHomeLoop();
 
-  /*
-  /* Editing tools
-  */
-
+  // Editing tools
   $(".editable.text").enableTextEditing();
   $(".editable.target").enableTargetEditing();
   $(".editable.date").enableDateEditing();
@@ -27,9 +24,7 @@ $(function() {
 
   $(".slideshow").enableSlideshow();
 
-  /*
-  /* Pagination
-  */
+  // Pagination
   $(".more_proposals").enablePagination({name: "proposals"});
   $(".more_months").enablePagination({name: "months"});
   $(".more_questions").enablePagination({name: "questions"});
@@ -37,7 +32,6 @@ $(function() {
 
   $("textarea.grow").autogrow();
   $(".cycle").enableRegistration();
-  //$(".article.signup").enableSocialRegistration();
 
   // Resize agenda_map container
   $(".article.agenda .agenda_map").animate({height:$(".agenda_map ul.agenda").height() }, 0);
@@ -48,24 +42,27 @@ $(function() {
 
   $('nav form').autocompleteSearch();
 
-  /*
-  /* Form elements
-  */
+  // Form elements
   $('a.checkbox').enableCheckbox();
   $('.radios').enableRadio();
   $('select.dropkick').dropkick();
 
+  // Dropboxes
   $('form .field.born_at select[name="user[birthday(1i)]"]').dropkick({width:-10});
   $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});
   $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
 
-  // FOLLOW FORMS
-  var basic_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: '#3786C0',speed: 1,trail: 100,shadow: false});
-  $(".follow.basic form").live('submit',function(){
-    basic_spinner.stop();
-    basic_spinner.spin();
-    $(basic_spinner.el).css({ bottom:"-8px", position:"absolute", right:'0', height:'15px', width:'15px', 'z-index':'1000'});
-    $(this).closest('div.content').append(basic_spinner.el);
+  // Simple triggers
+  $("a.see_all_areas").enableSeeAllAreas();
+  $(".welcome-slideshow").enableWelcomeSlideshow();
+
+  // Follow forms
+
+  $(".follow.basic form").live('submit', function(){
+    BlueSpinner.stop();
+    BlueSpinner.spin();
+    $(BlueSpinner.el).css({ bottom:"-8px", position:"absolute", right:'0', height:'15px', width:'15px', 'z-index':'1000'});
+    $(this).closest('div.content').append(BlueSpinner.el);
   }).live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();
     $el.fadeOut(150, function() {
@@ -73,23 +70,21 @@ $(function() {
       $(this).html(xhr);
       $(this).fadeIn(150);
     });
-    basic_spinner.stop();
+    BlueSpinner.stop();
   }).live('ajax:error', function(evt, xhr, status) {
     $(this).effect("shake", { times:4 }, 100);
-    basic_spinner.stop();
+    BlueSpinner.stop();
   });
 
-
-  var main_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: '#3786C0',speed: 1,trail: 100,shadow: false});;
   $("form.follow_button, form.follow_ribbon").live('submit',function(ev){
-    main_spinner.stop();
-    main_spinner.spin();
-    $(main_spinner.el).css({position:"relative", float:'none', display:'inline', right:'-20px', top:'27px', height:'15px', width:'15px'});
+    BlueSpinner.stop();
+    BlueSpinner.spin();
+    $(BlueSpinner.el).css({position:"relative", float:'none', display:'inline', right:'-20px', top:'27px', height:'15px', width:'15px'});
 
     if ($(this).closest('div.content').find('h1').children().length>0) {
-      $(this).closest('div.content').find('h1 a').append(main_spinner.el);
+      $(this).closest('div.content').find('h1 a').append(BlueSpinner.el);
     } else {
-      $(this).closest('div.content').find('h1').append(main_spinner.el);
+      $(this).closest('div.content').find('h1').append(BlueSpinner.el);
     }
 
   }).live('ajax:success', function(evt, xhr, status) {
@@ -116,10 +111,10 @@ $(function() {
     // Hide tooltip in any case
     $('input.ribbon').tipsy("hide");
 
-    main_spinner.stop();
+    BlueSpinner.stop();
   }).live('ajax:error', function(evt, xhr, status) {
     $(this).effect("shake", { times:4 }, 100);
-    main_spinner.stop();
+    BlueSpinner.stop();
   });
 
   // Grow ribbon
@@ -130,8 +125,6 @@ $(function() {
     var form_ = $(this).closest('form');
     form_.stop(true).animate({height:'75px'},300);
   });
-
-  // END FOLLOW FORMS!!
 
 
 
@@ -148,37 +141,6 @@ $(function() {
     });
   });
   // END ANSWER FORM
-
-
-  // WELCOME WINDOW
-  //  close welcome window and show user thingy
-  $(".close-welcome").submit(function(e) {
-
-    var move_li = $(this).closest('.inner').find('ul > li:last');
-    $(this).closest('.inner').find('ul > li:first').after(move_li);
-
-    $(this).closest('.inner').find('ul').animate({marginLeft:'-994px'},500,function(e){
-      $('.welcome a.config.first-time').fadeIn(250);
-    });
-
-    $(".welcome .close-welcome,.welcome .next-welcome").fadeOut(250, function(){
-      $(this).remove();
-    });
-
-    $('.welcome > .inner').animate({height:'110px'},500);
-  });
-
-  //  move between the differents illustrations
-  $(".next-welcome").click(function(e) {
-    e.preventDefault();
-    $(this).closest('.inner').find('ul').animate({marginLeft:'-994px'},500,function(e){
-      var move_li = $(this).find('li:first');
-      $(this).find('li:last').before(move_li);
-      $(this).removeAttr('style');
-    });
-  });
-
-
 
   // Comments, opinions and arguments
   $('.my_opinion').enableOpinion();
@@ -226,9 +188,6 @@ $(function() {
   $(".with_filters").filterWidget();
   $(".with_filters").filterWidget();
 
-  // $(".article.politician.publish").enablePoliticianPublish();
-  // $(".article.politician.publish").enablePoliticianPublish();
-
   $(".areas_selector").areasPopover();
   $(".toggle_notifications").notificationPopover();
 
@@ -243,22 +202,6 @@ $(function() {
     });
   });
 
-  // HOME, grow all areas
-  $("a.see_all_areas").click(function(ev){
-    ev.preventDefault();
-    $(this).closest('.article.areas').find('div.areas_list').animate({height:'635px'},500);
-    $(this).closest('.article.areas').find('div.all_areas').show();
-    $(this).closest('.article.areas').find('.bfooter').animate({opacity:0,height:0},500,function(){
-      $(this).closest('.article.areas').removeClass('with_footer');
-      $(this).remove();
-    });
-  });
-
-/**
- * Image preloader
- *
- * @param {String} [str] String to be checked
-*/
 
   // Follow area or politician tooltip
   $('input.ribbon').tipsy({live: true, gravity: 's', offset: 3, title: function() {

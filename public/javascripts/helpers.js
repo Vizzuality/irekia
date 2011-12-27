@@ -1,6 +1,7 @@
 // General spinner configuration
-var SPINNER_OPTIONS = {lines: 12,length: 0,width: 3,radius: 6,color: '#333',speed: 1,trail: 100,shadow: false};
+var SPINNER_OPTIONS = { lines: 12, length: 0, width: 3, radius: 6, color: '#333', speed: 1, trail: 100, shadow: false };
 var IrekiaSpinner = new Spinner(SPINNER_OPTIONS);
+var BlueSpinner   = new Spinner($.extend(SPINNER_OPTIONS, { color : '#3786C0'}));
 
 // String methods
 String.prototype.trim=function(){return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');};
@@ -132,6 +133,77 @@ function watchHash(opt) {
     goTo($el, { margin: margin, delay: delay }, callback);
   }
 }
+
+/**
+ * Enables welcome slideshow navigation (next + close)
+ *
+ * @param {Hash} [opt] Optional arguments (speed, fadeSpeed, height,
+ * width)
+*/
+
+jQuery.fn.enableWelcomeSlideshow = function(opt){
+
+  this.each(function(){
+    var
+    speed      = (opt && opt.speed)      || 500,
+    fadeSpeed  = (opt && opt.fadeSpeed)  || 250,
+    height     = (opt && opt.height)     || 110,  // height of the window when closed
+    width      = (opt && opt.width)      || 994; // width of each items in the slideshow
+
+    // Close welcome window and show user thingy
+    $(this).find(".close-welcome").submit(function(e) {
+
+      var move_li = $(this).closest('.inner').find('ul > li:last');
+      $(this).closest('.inner').find('ul > li:first').after(move_li);
+
+      $(this).closest('.inner').find('ul').animate({marginLeft:-1*width}, speed,function(e){
+        $('.welcome a.config.first-time').fadeIn(fadeSpeed);
+      });
+
+      $(".welcome .close-welcome,.welcome .next-welcome").fadeOut(fadeSpeed, function(){
+        $(this).remove();
+      });
+
+      $('.welcome > .inner').animate({height:height}, speed);
+    });
+
+    // Move between the differents illustrations
+    $(this).find(".next-welcome").click(function(e) {
+      e.preventDefault();
+      $(this).closest('.inner').find('ul').animate({marginLeft:-1*width}, speed,function(e){
+        var move_li = $(this).find('li:first');
+        $(this).find('li:last').before(move_li);
+        $(this).removeAttr('style');
+      });
+    });
+  })
+};
+
+/**
+ * Shows all the areas.
+ *
+ * @param {Hash} [opt] Optional arguments (speed, height)
+*/
+
+jQuery.fn.enableSeeAllAreas = function(opt){
+
+  this.each(function(){
+
+    var
+    speed   = (opt && opt.speed)  || 500,
+    height  = (opt && opt.height) || 635;
+
+    $(this).click(function(ev){
+      ev.preventDefault();
+      $(this).closest('.article.areas').find('div.areas_list').animate({height:height}, speed);
+      $(this).closest('.article.areas').find('div.all_areas').show();
+      $(this).closest('.article.areas').find('.bfooter').animate({opacity:0,height:0}, speed,function(){
+        $(this).closest('.article.areas').removeClass('with_footer');
+        $(this).remove();
+      });
+    });
+  })
+};
 
 /**
  * Hides/shows placeholders
