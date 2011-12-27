@@ -340,7 +340,7 @@
         team: 'equipo'
     politicians:
       as: politicos
-      member:
+      path_names:
         detail: 'detalle'
     search:
       as: buscar
@@ -1536,8 +1536,9 @@
       questions: Preguntas
       proposals: Propuestas
       agenda: Agenda
+      detail: Detalle
     summary:
-      title: '%{title}'
+      title: '%{title} en el área de %{areas}'
       description:
         title: Quién es y qué hace
         read_more: Leer más
@@ -1585,7 +1586,7 @@
         title: 'Agenda de %{name}'
     detail:
       back: 'volver'
-      title: '%{title} de %{areas}'
+      title: '%{title} en el área de %{areas}'
       description:
         title: Quién es y qué hace
         activity: Actividad en IREKIA

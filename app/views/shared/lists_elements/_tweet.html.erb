@@ -11,7 +11,7 @@
     &middot;
     <span class="comments"><%= link_to data.comments_count, tweet_path(data.slug, :anchor => :comments), :class => "comment-count" %></span>
     <% end -%>
-    <%#= inline_sharing_partial(data, 'status_message', status_message_url(data.id), data.message) %>
+    <%#= inline_sharing_partial(data, 'status_message', status_message_url(data.slug), data.message) %>
   </div>
   <%= render 'shared/lists_elements/last_comments', :data => data %>
 </div>

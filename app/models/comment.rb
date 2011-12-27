@@ -28,6 +28,7 @@ class Comment < Participation
     super({
       :content => {
         :id   => comment_content.try(:id),
+        :slug => comment_content.try(:slug),
         :type => comment_content.try(:type).try(:underscore),
         :text => comment_content.try(:text)
       },
