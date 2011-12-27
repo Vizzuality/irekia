@@ -93,7 +93,7 @@ $(function() {
   $(".toggle_notifications").notificationPopover();
 
   // Tipsy
-  $('input.ribbon, .toggle_notifications, .share.email, .share.twitter, .share.facebook, .share.ical, a.settings, .sign_out').tipsy({gravity: 's', offset: 3, title: 'data-label'});
+  $('input.ribbon, .toggle_notifications, .after_share.email, .share.email, .share.twitter, .share.facebook, .share.ical, a.settings, .sign_out').tipsy({gravity: 's', offset: 3, title: 'data-label'});
 
   // Follow forms
 

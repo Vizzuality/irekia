@@ -386,7 +386,7 @@ header {
                 a {
                   &.title { float: left; width: 177px; }
                   @include inline-block();
-                  padding:5px 0 0 0;
+                  padding:0;
                   img {width:28px; height:28}
                   &.avatar {float:left; width:33px; padding:0}
                   &:hover {text-decoration:underline}

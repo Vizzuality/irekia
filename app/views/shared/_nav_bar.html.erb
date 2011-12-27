@@ -19,7 +19,6 @@
           <ul>
             <% @areas.each do |area| %>
               <li class="<%= current_area?(area) %> clearfix<%= ' last' if @areas.last == area %>">
-                <%= avatar(area, 'small') %>
                 <%= link_to area.name, area_path(area), :class => :title %></li>
             <% end if @areas %>
           </ul>

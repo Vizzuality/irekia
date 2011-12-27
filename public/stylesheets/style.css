@@ -290,7 +290,7 @@ header nav .content .areas_selector .popover .scroll-pane { height: 232px; width
 header nav .content .areas_selector .popover .scroll-pane ul { margin: 0; padding: 0; width: 210px; }
 header nav .content .areas_selector .popover .scroll-pane ul li { text-shadow: none; color: #333; border-bottom: 1px solid #f1f1f1; padding: 8px 0; }
 header nav .content .areas_selector .popover .scroll-pane ul li.last { border: none; }
-header nav .content .areas_selector .popover .scroll-pane ul li a { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; padding: 5px 0 0 0; }
+header nav .content .areas_selector .popover .scroll-pane ul li a { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; padding: 0; }
 header nav .content .areas_selector .popover .scroll-pane ul li a.title { float: left; width: 177px; }
 header nav .content .areas_selector .popover .scroll-pane ul li a img { width: 28px; height: 28; }
 header nav .content .areas_selector .popover .scroll-pane ul li a.avatar { float: left; width: 33px; padding: 0; }
