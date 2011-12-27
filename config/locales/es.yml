@@ -949,6 +949,7 @@
       view_map: Ver mapa
       more: Ver calendario completo
       next_month: Siguiente mes
+      ical: Exportar para iCal
 
     nav_bar_buttons:
       settings:
