@@ -49,11 +49,16 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
 
   create_table "areas", :force => true do |t|
     t.string   "name"
+    t.string   "name_es"
+    t.string   "name_eu"
+    t.string   "name_en"
     t.text     "description"
     t.text     "description_1"
     t.text     "description_2"
     t.integer  "external_id"
-    t.string   "slug"
+    t.string   "slug_es"
+    t.string   "slug_eu"
+    t.string   "slug_en"
     t.integer  "areas_users_count",     :default => 0
     t.integer  "follows_count",         :default => 0
     t.integer  "proposals_count",       :default => 0
@@ -74,7 +79,9 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
   end
 
   add_index "areas", ["external_id"], :name => "index_areas_on_external_id"
-  add_index "areas", ["slug"], :name => "index_areas_on_slug", :unique => true
+  add_index "areas", ["slug_en"], :name => "index_areas_on_slug_en", :unique => true
+  add_index "areas", ["slug_es"], :name => "index_areas_on_slug_es", :unique => true
+  add_index "areas", ["slug_eu"], :name => "index_areas_on_slug_eu", :unique => true
 
   create_table "areas_contents", :force => true do |t|
     t.integer  "area_id"
@@ -332,6 +339,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.string   "postal_code"
     t.string   "salary"
     t.string   "phone_number"
+    t.string   "contact_email"
     t.string   "twitter_username"
     t.string   "facebook_username"
     t.string   "facebook_url"

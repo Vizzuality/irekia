@@ -18,6 +18,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :postal_code
       t.string   :salary
       t.string   :phone_number
+      t.string   :contact_email
       t.string   :twitter_username
       t.string   :facebook_username
       t.string   :facebook_url
