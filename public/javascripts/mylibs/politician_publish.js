@@ -165,6 +165,8 @@
   function _hasContent($section) {
     if (_video()) {
       return $section.find("input").val();
+    } else if (_photo()) {
+      return true;
     } else return !isEmpty($section.find(":text, textarea").val());
   }
 
@@ -465,6 +467,10 @@
     if ($currentSection.hasClass("photo"))     return "photo";
   }
 
+  function _photo() {
+    return $currentSection.hasClass("photo");
+  }
+
   function _video() {
     return $currentSection.hasClass("video");
   }
@@ -493,11 +499,8 @@
   }
 
   function _do(data) {
+    console.log("a", _getCurrentSectionName());
     switch(_getCurrentSectionName()) {
-      case 'dashboard':
-        _doMessage(data);
-      break;
-
       case 'proposal':
         _doProposal(data);
       break;
