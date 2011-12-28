@@ -53,8 +53,9 @@
 
   <% else -%>
   <ul class="events">
+
     <% day_events.each do |event| -%>
-      <li>
+      <li<%= " class='area_#{event.content_area.id}'" if event.content_area %>>
       <%= link_to (raw (event.title.truncate(19, :omission => "&hellip;"))), event, :id => "event-#{event.id}", :class => :show_event %>
       </li>
     <% end -%>

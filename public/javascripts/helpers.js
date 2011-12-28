@@ -1,6 +1,7 @@
 // General spinner configuration
 var SPINNER_OPTIONS = { lines: 12, length: 0, width: 3, radius: 6, color: '#333', speed: 1, trail: 100, shadow: false };
 var IrekiaSpinner = new Spinner(SPINNER_OPTIONS);
+var filterArea = 0;
 
 // String methods
 String.prototype.trim=function(){return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');};
@@ -1261,14 +1262,22 @@ jQuery.fn.enablePagination = function(opt){
     $.ajax({url: url, method: 'GET', data:{ next_month: currentPage++ }, success:function(response, xhr, status) {
       IrekiaSpinner.stop();
 
-      var $content = $($(response).html());
       var $ul = $article.find(".agenda_map ul.agenda");
+      var h = $ul.parent().height();
+      var $content = $($(response).html());
 
       $content.hide();
       $ul.append($content);
-      var height = ($(response).find("li").length / 7) * cellHeight + $ul.parent().height();
 
-      $ul.parent().animate({height: height }, 500);
+      var height = (Math.floor($(response).find("li").length / 7)) * cellHeight + h;
+
+      $ul.parent().animate({ height: height + 8 }, 500);
+
+      if (filterArea != 0) {
+        $content.find("li").hide();
+        $content.find("li.area_" + filterArea).show();
+      }
+
       $content.slideDown(speed);
       $ul.find(".show_event").infoEventPopover();
     }});
@@ -1493,7 +1502,6 @@ jQuery.fn.enableTargetEditing = function(opt){
     _setup();
   });
 } // jQuery.fn.enableTargetEditing
-
 
 jQuery.fn.enableNotificationSelector = function(opt){
   var speed  = (opt && opt.speed) || 200;

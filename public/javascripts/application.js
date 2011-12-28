@@ -47,6 +47,8 @@ $(function() {
   $('.radios').enableRadio();
   $('select.dropkick').dropkick();
 
+  $('.area_filter').dropkick({ filterEvents: true });
+
   // Dropboxes
   $('form .field.born_at select[name="user[birthday(1i)]"]').dropkick({width:-10});
   $('form .field.born_at select[name="user[birthday(2i)]"]').dropkick({width:77});

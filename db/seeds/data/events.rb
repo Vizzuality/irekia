@@ -61,6 +61,17 @@ create_event :title    => 'Charlas sobre la Convivencia Multicultural',
              :users_tagged => User.politicians.sample((1..5).to_a.sample),
              :tags     => %w(Charla Congreso Convivencia\ multicultural).join(',')
 
+create_event :title    => 'Test',
+             :body     => 'Un año más celebramos los premios Ciudadanía Ejemplar. Este año la entrega de premios se realizará en el Ayuntamiento de Vitoria. La entrega se realizará el 18 de diciembre de 2011 a las 18:00 horas. Contamos con todos vosotros para lograr que sea un éxito.
+
+             Al finalizar la entrega , tomaremos unos vinos de la tierra cortesía de Bodegas Elorriaga.',
+             :location => 'Ayuntamiento de Vitoria',
+             :user     => @javier,
+             :image    => Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', 'event_05.jpg'))),
+             :date     => this_week.advance(:days => rand(135), :hours => rand(24)),
+             :users_tagged => User.politicians.sample((1..5).to_a.sample),
+             :tags     => %w(Premios Ciudadanía Bodegas\ Elorriaga).join(',')
+
 create_event :title    => 'Entrega de premios de Ciudadania Ejemplar',
              :body     => 'Un año más celebramos los premios Ciudadanía Ejemplar. Este año la entrega de premios se realizará en el Ayuntamiento de Vitoria. La entrega se realizará el 18 de diciembre de 2011 a las 18:00 horas. Contamos con todos vosotros para lograr que sea un éxito.
 

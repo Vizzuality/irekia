@@ -50,7 +50,7 @@
     ].join(''),
 
     // HTML template for dropdown options
-    optionTemplate = '<li class="{{ current }}"><a data-dk-dropdown-value="{{ value }}">{{ text }}</a></li>',
+    optionTemplate = '<li class="{{ current }}"><a data-id="{{ id }}" data-dk-dropdown-value="{{ value }}">{{ text }}</a></li>',
 
     // Some nice default values
     defaults = {
@@ -340,6 +340,7 @@
 
         oTemplate = oTemplate.replace('{{ value }}', $option.val());
         oTemplate = oTemplate.replace('{{ current }}', (_notBlank($option.val()) === view.value) ? current : '');
+        oTemplate = oTemplate.replace('{{ id }}', $option.attr("data-id"));
         oTemplate = oTemplate.replace('{{ text }}', $option.text());
 
         options[options.length] = oTemplate;
@@ -388,6 +389,19 @@
       $dk     = $option.parents('.dk_container').first(),
       data    = $dk.data('dropkick')
       ;
+
+      if (data.settings.filterEvents) {
+        var id = $(this).attr("data-id");
+        if (id != 0) {
+          filterArea = id;
+          $("ul.events li").fadeOut(150);
+          $("ul.events li.area_" + id).fadeIn(150);
+
+        } else {
+          filterArea = 0;
+          $("ul.events li").fadeIn(250);
+        }
+      }
 
       _closeDropdown($dk);
       _updateFields($option, $dk);

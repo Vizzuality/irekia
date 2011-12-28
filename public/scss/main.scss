@@ -1984,6 +1984,17 @@ div#main.show div.left img {margin:4px 0 7px;}
     .bfooter .right { right: 0; width:auto}
   }
 
+  &.with_filter {
+    header { margin: 0 0 10px 0; }
+    .inner .content .agenda_map .map { top:136px; }
+  }
+
+
+  .agenda_filter {
+    margin: 20px 0 0 0;
+    span.title { float:left; margin: 8px 10px 0 0; }
+  }
+
   .inner .content ul li.day ul.events {
     margin: 9px 0 0 0;
 
@@ -6111,4 +6122,5 @@ Slideshow
 // #container .article.popover.publish .triangle {
 //   height:20px;
 // }
+
 

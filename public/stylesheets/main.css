@@ -544,6 +544,10 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.agenda .inner .content ul li.day span { padding: 0 0 0 5px; font-size: 15px; color: #bbb; color: rgba(70, 88, 102, 0.3); }
 #container .article.agenda.with_footer .inner { width: 928px; }
 #container .article.agenda.with_footer .bfooter .right { right: 0; width: auto; }
+#container .article.agenda.with_filter header { margin: 0 0 10px 0; }
+#container .article.agenda.with_filter .inner .content .agenda_map .map { top: 136px; }
+#container .article.agenda .agenda_filter { margin: 20px 0 0 0; }
+#container .article.agenda .agenda_filter span.title { float: left; margin: 8px 10px 0 0; }
 #container .article.agenda .inner .content ul li.day ul.events { margin: 9px 0 0 0; }
 #container .article.agenda .inner .content ul li.day ul.events li { width: 121px; height: 22px; float: none; margin: 0 0 1px 0; padding: 0; }
 #container .article.agenda .inner .content ul li.day ul.events li a { display: block; color: white; font-size: 12px; padding: 4px 7px; text-shadow: 1px 1px 1px #0F4869; background: url("/images/events_sprite.png") no-repeat; background-position: 0 -425px; }
