@@ -1,7 +1,6 @@
 // General spinner configuration
 var SPINNER_OPTIONS = { lines: 12, length: 0, width: 3, radius: 6, color: '#333', speed: 1, trail: 100, shadow: false };
 var IrekiaSpinner = new Spinner(SPINNER_OPTIONS);
-var BlueSpinner   = new Spinner($.extend(SPINNER_OPTIONS, { color : '#3786C0'}));
 
 // String methods
 String.prototype.trim=function(){return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');};

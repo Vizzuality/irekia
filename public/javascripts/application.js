@@ -98,10 +98,10 @@ $(function() {
   // Follow forms
 
   $(".follow.basic form").live('submit', function(){
-    BlueSpinner.stop();
-    BlueSpinner.spin();
-    $(BlueSpinner.el).css({ bottom:"-8px", position:"absolute", right:'0', height:'15px', width:'15px', 'z-index':'1000'});
-    $(this).closest('div.content').append(BlueSpinner.el);
+    IrekiaSpinner.stop();
+    IrekiaSpinner.spin();
+    $(IrekiaSpinner.el).css({ bottom:"-8px", position:"absolute", right:'0', height:'15px', width:'15px', 'z-index':'1000'});
+    $(this).closest('div.content').append(IrekiaSpinner.el);
   }).live('ajax:success', function(evt, xhr, status) {
     var $el = $(this).parent();
     $el.fadeOut(150, function() {
@@ -109,21 +109,21 @@ $(function() {
       $(this).html(xhr);
       $(this).fadeIn(150);
     });
-    BlueSpinner.stop();
+    IrekiaSpinner.stop();
   }).live('ajax:error', function(evt, xhr, status) {
     $(this).effect("shake", { times:4 }, 100);
-    BlueSpinner.stop();
+    IrekiaSpinner.stop();
   });
 
   $("form.follow_button, form.follow_ribbon").live('submit',function(ev){
-    BlueSpinner.stop();
-    BlueSpinner.spin();
-    $(BlueSpinner.el).css({position:"relative", float:'none', display:'inline', right:'-20px', top:'27px', height:'15px', width:'15px'});
+    IrekiaSpinner.stop();
+    IrekiaSpinner.spin();
+    $(IrekiaSpinner.el).css({position:"relative", float:'none', display:'inline', right:'-20px', top:'27px', height:'15px', width:'15px'});
 
     if ($(this).closest('div.content').find('h1').children().length>0) {
-      $(this).closest('div.content').find('h1 a').append(BlueSpinner.el);
+      $(this).closest('div.content').find('h1 a').append(IrekiaSpinner.el);
     } else {
-      $(this).closest('div.content').find('h1').append(BlueSpinner.el);
+      $(this).closest('div.content').find('h1').append(IrekiaSpinner.el);
     }
 
   }).live('ajax:success', function(evt, xhr, status) {
@@ -150,10 +150,10 @@ $(function() {
     // Hide tooltip in any case
     $('input.ribbon').tipsy("hide");
 
-    BlueSpinner.stop();
+    IrekiaSpinner.stop();
   }).live('ajax:error', function(evt, xhr, status) {
     $(this).effect("shake", { times:4 }, 100);
-    BlueSpinner.stop();
+    IrekiaSpinner.stop();
   });
 
   // Grow ribbon

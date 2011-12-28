@@ -252,7 +252,7 @@
         _close(data.$password, data, true);
       });
 
-      data.$password.find(".recover-password").bind('click', function(e) {
+      data.$password.find('button[type="submit"]').bind('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
         _close(data.$password, data, true);
