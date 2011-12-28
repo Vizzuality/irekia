@@ -31,6 +31,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :twitter_oauth_token
       t.string   :twitter_oauth_token_secret
 
+      t.string   :salt
       t.boolean  :inactive,                                                      :default => false
       t.boolean  :first_time,                                                    :default => true
       t.string   :locale,                                                        :default => 'es'

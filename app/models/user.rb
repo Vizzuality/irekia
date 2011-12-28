@@ -592,6 +592,24 @@ class User < ActiveRecord::Base
     comments.moderated.joins(:proposal)
   end
 
+  #################################
+  # COMPATIBILITY FOR IMPORTED USERS
+  #################################
+
+  def valid_password?(password)
+    valid = super(password)
+    valid = old_user_authenticated?(password) unless valid
+    valid
+  end
+
+  def old_user_authenticated?(password)
+    encrypted_password == Digest::SHA1.hexdigest("--#{salt}--#{password}--")
+  end
+
+  #################################
+  # END - COMPATIBILITY FOR IMPORTED USERS
+  #################################
+
   def check_blank_name
     name = email if name.blank?
   end

@@ -49,4 +49,9 @@ namespace :irekia do
   task :import_areas_and_politicians => :environment do
     Irekia::Importer.get_areas_and_politicians
   end
+
+  desc "Loads users from old irekia"
+  task :import_users => :environment do
+    Irekia::Importer.import_users
+  end
 end
