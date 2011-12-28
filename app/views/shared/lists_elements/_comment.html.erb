@@ -1,10 +1,11 @@
 <%= avatar data.author %>
 <div class="content">
-  <p><%= t('.title', :content_type => t(".#{data.content.type}")) %> <strong>&quot;<%= link_to data.content.text, send("#{data.content.type}_path", data.content.slug) %>&quot;</strong>
+  <p><%= t('.title', :content_type => t(".#{data.content.content_type.underscore}")) %> <strong>&quot;<%= link_to data.content.text, send("#{data.content.content_type.underscore}_path", data.content.slug) %>&quot;</strong>
   </p>
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words_to_now(data.published_at)) %>
     </span>
   </div>
+  <%= render 'shared/lists_elements/last_comments', :data => data.content %>
 </div>

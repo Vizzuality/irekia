@@ -153,11 +153,22 @@ class Content < ActiveRecord::Base
       :id              => id,
       :slug            => slug,
       :content_type    => type,
+      :text            => text,
       :published_at    => published_at,
       :tags            => tags,
       :moderated       => moderated,
       :comments_count  => comments_count,
-      :last_comments   => last_comments
+      :last_comments   => last_comments.map do |comment|
+        {
+          :author => {
+            :id       => comment.author.id,
+            :slug     => comment.author.slug,
+            :fullname => comment.author.fullname
+          },
+          :published_at => comment.published_at,
+          :body         => comment.body
+        }
+      end
     }
 
     default.merge(options)

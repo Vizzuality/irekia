@@ -2,11 +2,16 @@ class CreateAreas < ActiveRecord::Migration
   def self.up
     create_table :areas do |t|
       t.string  :name
+      t.string  :name_es
+      t.string  :name_eu
+      t.string  :name_en
       t.text    :description
       t.text    :description_1
       t.text    :description_2
       t.integer :external_id
-      t.string  :slug
+      t.string  :slug_es
+      t.string  :slug_eu
+      t.string  :slug_en
 
       t.integer :areas_users_count,        :default => 0
       t.integer :follows_count,            :default => 0
@@ -28,7 +33,9 @@ class CreateAreas < ActiveRecord::Migration
     end
 
     add_index :areas, :external_id
-    add_index :areas, :slug,        :unique => true
+    add_index :areas, :slug_es,        :unique => true
+    add_index :areas, :slug_eu,        :unique => true
+    add_index :areas, :slug_en,        :unique => true
   end
 
   def self.down

@@ -2,7 +2,7 @@ class Area < ActiveRecord::Base
   include PgSearch
   extend FriendlyId
 
-  friendly_id :name, :use => :slugged
+  friendly_id :name, :use => [:slugged, :simple_i18n]
 
   has_many :areas_users,
            :class_name => 'AreaUser'
@@ -48,12 +48,12 @@ class Area < ActiveRecord::Base
   accepts_nested_attributes_for :follows, :allow_destroy => true
 
   pg_search_scope :search_by_name,
-                  :against => [:name],
+                  :against => [:name, :name_es, :name_eu, :name_en],
                   :using => {
                     :tsearch => {:prefix => true, :any_word => true}
                   }
   pg_search_scope :search_by_name_and_description,
-                  :against => [:name, :description],
+                  :against => [:name, :name_es, :name_eu, :name_en, :description],
                   :using => {
                     :tsearch => {:prefix => true, :any_word => true}
                   }
@@ -61,10 +61,15 @@ class Area < ActiveRecord::Base
   def self.by_id(id)
     scoped.select([:id,
                    :name,
+                   :name_es,
+                   :name_eu,
+                   :name_en,
                    :description,
                    :description_1,
                    :description_2,
-                   :slug,
+                   :slug_es,
+                   :slug_eu,
+                   :slug_en,
                    :news_count,
                    :questions_count,
                    :answers_count,
@@ -79,21 +84,25 @@ class Area < ActiveRecord::Base
   end
 
   def self.names_and_ids
-    select([:id, :name, :slug]).order('name asc')
+    select([:id, :name, :name_es, :name_eu, :name_en, :slug_es, :slug_eu, :slug_en]).order('name asc')
   end
 
   def self.for_footer
-    select([:id, :name, :slug]).order('external_id asc')
+    select([:id, :name,:name_es, :name_eu, :name_en, :slug_es, :slug_eu, :slug_en]).order('external_id asc')
   end
 
   def self.areas_for_homepage
-    select([:'areas.id', :name, :slug, :questions_count, :proposals_count])
+    select([:'areas.id', :name,:name_es, :name_eu, :name_en, :slug_es, :slug_eu, :slug_en, :questions_count, :proposals_count])
     .order('created_at asc')
     .all
   end
 
   def self.presidencia
     where('external_id = ? OR name = ?', 1, 'Lehendakaritza').first
+  end
+
+  def name
+    send("name_#{I18n.locale.to_s}")
   end
 
   def create_action(item)

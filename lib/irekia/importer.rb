@@ -2,6 +2,7 @@ module Irekia
     class Importer
 
       def self.get_news_from_rss
+        puts ''
         puts 'Importing news from Irekia'
         puts '============================'
 
@@ -64,6 +65,7 @@ module Irekia
       def self.get_events_from_ics
         require 'open-uri'
 
+        puts ''
         puts 'Importing events from Irekia'
         puts '============================'
 
@@ -102,6 +104,7 @@ module Irekia
       end
 
       def self.get_areas_and_politicians
+        puts ''
         puts "Importing politicians' data from communication guide"
         puts '===================================================='
         require 'open-uri'
@@ -137,13 +140,15 @@ module Irekia
             areas.each do |area|
               area_id = area['id']
               area_detail = get_json(area_detail_url.call(lang, area_id), server_options)
+              area_name = area['name'].gsub(/^Departamento de /, '').gsub(/ saila$/, '')
 
-              Area.where(:name => area['name']).each do |area|
-                area.external_id = area_id
-                area.save!
+              Area.where(:external_id => area_id).each do |area_model|
+                area_model.send("name_#{lang}=", area_name)
+                area_model.set_friendly_id(area_name, lang.to_sym)
+                area_model.save!
               end
 
-              puts "=> getting politicians data for #{area['name']}"
+              puts "=> getting politicians data for #{area_id} - #{area_name}"
 
               politicians_ids = area_detail['people'].map(&:first)
 
@@ -155,7 +160,8 @@ module Irekia
 
                   user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ')
                   user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')
-                  user.email                 =  politician['email'].try(:first).present?? politician['email'].try(:first) : "#{politician_id}@ej-gv.es"
+                  user.email                 = "#{user.fullname.underscore}@ej-gv.es"
+                  user.contact_email         =  politician['email'].try(:first)
                   user.password              = 'virekia'
                   user.password_confirmation = 'virekia'
                   user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
