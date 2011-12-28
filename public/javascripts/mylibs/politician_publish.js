@@ -499,7 +499,6 @@
   }
 
   function _do(data) {
-    console.log("a", _getCurrentSectionName());
     switch(_getCurrentSectionName()) {
       case 'proposal':
         _doProposal(data);
@@ -570,8 +569,6 @@
         onSubmit: function(id, fileName){
           data.spinner.spin(spin_element);
 
-          //console.log("Submit", $section);
-
           $section.find(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
           $uploader.find("input").blur();
@@ -582,9 +579,6 @@
           var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
           var width = parseInt(665 * parseInt(p, 10) / 100, 10);
 
-          console.log("uploading…");
-          //console.debug(p, width, arguments, arguments[2], arguments[3]);
-
           if (parseInt(p) >= 75) $section.find(".uploader").find(".loading").fadeOut(speed);
           if (parseInt(p) >= 46) $section.find(".uploader").find(".percentage").css("color", "#fff");
 
@@ -593,9 +587,6 @@
         },
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();
-
-          console.log("complete", $section);
-          //console.debug(fileName, responseJSON, responseJSON.image_cache_name);
 
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".holder").fadeIn(speed);

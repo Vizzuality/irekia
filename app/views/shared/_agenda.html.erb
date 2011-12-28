@@ -11,13 +11,13 @@
       <h2><%= title %></h2>
       <%= link_to 'iCal', link_for_agenda(:format => :ics), :"data-label" => t(".ical"), :class=> 'share ical' %>
 
-      <br clear="both" />
-      <select class="dropkick">
-        <option class="">Uno</option>
-        <option class="">Dos</option>
-        <option class="">Tres</option>
-        <option class="">Cuatro</option>
-      </select>
+      <div class="clearfix">
+        <select class="dropkick">
+          <% @areas.each do |area| %>
+            <option class="<%= area.id %>"><%= area.name %></option>
+          <% end %>
+        </select>
+      </div>
 
     </div>
 

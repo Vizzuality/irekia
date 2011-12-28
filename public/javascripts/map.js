@@ -32,9 +32,8 @@ function toggleBounce() {
 
 
 function startMap() {
-    var center = new google.maps.LatLng(59.327383, 18.07747);
     var defaultZoom = 15;
-    var latlng = center;
+    var latlng = new google.maps.LatLng(42.8464027, -2.6716728);
     var myOptions = {
         zoom: defaultZoom,
         center: latlng,
@@ -55,7 +54,6 @@ function startMap() {
 	 		dblclick = true;
 	  });
 
-
     // zoomIn
     var zoomInControlDiv = document.createElement('DIV');
     var zoomInControl = new ZoomInControl(zoomInControlDiv, map);
@@ -68,23 +66,25 @@ function startMap() {
     zoomOutControlDiv.index = 2;
     map.controls[google.maps.ControlPosition.LEFT].push(zoomOutControlDiv);
 
-    var mapBounds = new google.maps.LatLngBounds();
+    if (events.length > 0) {
+      var mapBounds = new google.maps.LatLngBounds();
 
-    function addPoints() {
+      function addPoints() {
         for (var i = 0; i < events.length; i++) {
-            var event = events[i][0];
-            var events_data = events[i];
-            var center = new google.maps.LatLng(event.lat, event.lon);
-						if (events_data.title && events_data.title.length>50) {
-							events_data.title = events_data.title.substr(0,47) + '...';
-						}
-            new IrekiaMarker(center, events_data, map);
-            mapBounds.extend(center);
+          var event = events[i][0];
+          var events_data = events[i];
+          var center = new google.maps.LatLng(event.lat, event.lon);
+          if (events_data.title && events_data.title.length>50) {
+            events_data.title = events_data.title.substr(0,47) + '...';
+          }
+          new IrekiaMarker(center, events_data, map);
+          mapBounds.extend(center);
         };
-    }
+      }
 
-    addPoints();
-    map.fitBounds(mapBounds);
+      addPoints();
+      map.fitBounds(mapBounds);
+    }
 }
 
 function startMiniMap (mapID, lat, lng, enableZoom) {

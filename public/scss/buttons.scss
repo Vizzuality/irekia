@@ -1173,8 +1173,7 @@ form.editable,
 /* Applied whenever the dropdown is open */
 .dk_open { z-index: 1000; }
 .dk_open .dk_toggle {
-  /// background-color: #fff;
-  background:#fff url('/images/icons/test.png') no-repeat top right;
+  background:#fff url('/images/select_bkg.png') no-repeat top right;
   border-color: #8c8c8c;
   color: #ccc;
   border-radius: 5px 5px 0 0;
