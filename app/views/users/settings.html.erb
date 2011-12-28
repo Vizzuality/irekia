@@ -31,7 +31,7 @@
 <div class="article settings with_form with_footer">
   <%= form_for current_user, :html => {:novalidate => 'novalidate'} do |form| %>
     <div class="inner">
-      <header>
+      <header class="clearfix">
       <div class="left">
         <h2><%= t(".your_profile") %></h2>
         <h4><%= t(".remember_this_information_is_public") %></h4>
@@ -211,7 +211,7 @@
 <div id="settings_password" class="article settings with_form with_footer">
   <%= form_for current_user, :html => {:novalidate => 'novalidate'} do |form| %>
     <div class="inner">
-      <header>
+      <header class="clearfix">
       <div class="left">
         <h2><%= t(".account_configuration") %></h2>
         <h4><%= t(".access_data") %></h3>

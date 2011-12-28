@@ -2,7 +2,7 @@
   <div id="question-popover" class="article mini popover with_footer initialy_hidden">
     <%= form_for @question, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
       <div class="inner">
-        <header><h2><%= t(".make_a_question.title") %></h2></header>
+        <header class="clearfix"><h2><%= t(".make_a_question.title") %></h2></header>
         <div class="content">
           <p><%= t(".remember_to_be_concise") %></p>
 

@@ -6,11 +6,11 @@
       <div class="frame"></div>
     </div>
     <div class="left">
-      <header>
-        <h1><%= @politician.fullname %></h1>
-        <p class="position">
-        <%= raw t('.title', :title => get_politician_title(@politician), :areas => @politician.areas.map{|area| link_to area.name, area_path(area)}.join(', ')) %>
-        </p>
+      <header class="clearfix">
+      <h1><%= @politician.fullname %></h1>
+      <p class="position">
+      <%= raw t('.title', :title => get_politician_title(@politician), :areas => @politician.areas.map{|area| link_to area.name, area_path(area)}.join(', ')) %>
+      </p>
       </header>
       <div class="margin30">
         <h3><%= t(".description.title") %></h3>
@@ -20,31 +20,31 @@
         <h3><%= t(".description.activity") %></h3>
         <ul class="stats">
           <li>
-            <div class="top">
-              <h5><%= @actions %></h5>
-              <label><%= t(".stats.actions") %></label>
-            </div>
-            <div class="bottom">
-              <p><%= t(".stats.week", :count => @actions_this_week) %></p>
-            </div>
+          <div class="top">
+            <h5><%= @actions %></h5>
+            <label><%= t(".stats.actions") %></label>
+          </div>
+          <div class="bottom">
+            <p><%= t(".stats.week", :count => @actions_this_week) %></p>
+          </div>
           </li>
           <li>
-            <div class="top">
-              <h5><%= @questions_answered %></h5>
-              <label><%= t(".stats.questions") %></label>
-            </div>
-            <div class="bottom">
-              <p><%= t(".stats.respond", :time => @time_to_answer) %></p>
-            </div>
+          <div class="top">
+            <h5><%= @questions_answered %></h5>
+            <label><%= t(".stats.questions") %></label>
+          </div>
+          <div class="bottom">
+            <p><%= t(".stats.respond", :time => @time_to_answer) %></p>
+          </div>
           </li>
           <li>
-            <div class="top">
-              <h5><%= @comments_in_proposals %></h5>
-              <label><%= t(".stats.comments") %></label>
-            </div>
-            <div class="bottom">
-              <p><%= t(".stats.week", :count => @comments_in_proposals_this_week) %></p>
-            </div>
+          <div class="top">
+            <h5><%= @comments_in_proposals %></h5>
+            <label><%= t(".stats.comments") %></label>
+          </div>
+          <div class="bottom">
+            <p><%= t(".stats.week", :count => @comments_in_proposals_this_week) %></p>
+          </div>
           </li>
         </ul>
       </div>
@@ -53,7 +53,7 @@
         <%= politician_address %>
         <%= politician_mail_and_phone %>
         <%= politician_twitter_and_facebook %>
-       </div>
+      </div>
     </div>
   </div>
   <!-- content footer -->

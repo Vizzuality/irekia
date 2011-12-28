@@ -5,45 +5,58 @@
   </script>
 <% end %>
 <div class="article agenda with_footer">
-<div class="inner">
-  <header>
-  <div class="left"><h2><%= title %></h2><%= link_to 'iCal', link_for_agenda(:format => :ics), :"data-label" => t(".ical"), :class=> 'share ical' %></div>
-  <div class="right">
+  <div class="inner">
+    <header class="clearfix">
+    <div class="left">
+      <h2><%= title %></h2>
+      <%= link_to 'iCal', link_for_agenda(:format => :ics), :"data-label" => t(".ical"), :class=> 'share ical' %>
 
-    <ul class="switch">
-      <li class="selected"><%= link_to "Ver calendario", '#', :class => :view_calendar %></li>
-      <li><%= link_to "Ver mapa", '#', :class => :view_map %></li>
-    </ul>
+      <br clear="both" />
+      <select class="dropkick">
+        <option class="">Uno</option>
+        <option class="">Dos</option>
+        <option class="">Tres</option>
+        <option class="">Cuatro</option>
+      </select>
+
+    </div>
+
+    <div class="right">
+
+      <ul class="switch">
+        <li class="selected"><%= link_to t(".view_calendar"), '#', :class => :view_calendar %></li>
+        <li><%= link_to t(".view_map"), '#', :class => :view_map %></li>
+      </ul>
+
+    </div>
+    </header>
+    <div class="content">
+      <div class="agenda_map clearfix">
+        <div id="map_canvas" class="map"></div>
+        <%= render 'shared/agenda_list' %>
+      </div>
+    </div>
 
   </div>
-  </header>
-  <div class="content">
-    <div class="agenda_map clearfix">
-      <div id="map_canvas" class="map"></div>
-      <%= render 'shared/agenda_list' %>
+
+  <div class="bfooter">
+    <div class="separator"></div>
+    <div class="inner with_spinner">
+
+      <% if controller.action_name == "agenda" %>
+        <div class="right">
+          <%= link_to t(".next_month"), link_for_agenda(:anchor => :agenda), :class => "down_arrow right more_months"  %>
+          <span id="months_spinner" class="spinner"></span>
+        </div>
+      <% else %>
+        <div class="right">
+          <%= link_to t(".more"), link_for_agenda(:anchor => :agenda), :class => "right right_arrow"  %>
+        </div>
+      <% end %>
+
     </div>
   </div>
-
-</div>
-
-<div class="bfooter">
-<div class="separator"></div>
-<div class="inner with_spinner">
-
-  <% if controller.action_name == "agenda" %>
-    <div class="right">
-      <%= link_to t(".next_month"), link_for_agenda(:anchor => :agenda), :class => "down_arrow right more_months"  %>
-      <span id="months_spinner" class="spinner"></span>
-    </div>
-  <% else %>
-    <div class="right">
-      <%= link_to t(".more"), link_for_agenda(:anchor => :agenda), :class => "right right_arrow"  %>
-    </div>
-  <% end %>
-
-</div>
-</div>
-<div class="t"></div>
-<div class="f"></div>
+  <div class="t"></div>
+  <div class="f"></div>
 </div>
 <!-- Agenda -->

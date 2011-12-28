@@ -913,6 +913,7 @@ var GOD = (function() {
 
       // Save the updated $ps reference into our data object
       data.$ps = $ps;
+      data.$this = $this;
 
       // Save the notificationPopover data
       $this.data(store, data);
@@ -974,6 +975,7 @@ var GOD = (function() {
 
     _triggerOpenAnimation($ps, data);
     $ps.find('.scroll-pane').jScrollPane();
+    // Submitting the hidden form = notifications were read
     $ps.find("li.submit form").submit();
 
     $ps.find(".jspDrag").bind('click', function(e) {
@@ -981,17 +983,17 @@ var GOD = (function() {
     });
   }
 
-  function _getTopPosition($ps) {
-    return $ps.height() + 12;
+  function _getTopPosition(data) {
+    return data.$this.offset().top + 32;
   }
 
-  function _getLeftPosition($ps) {
-    return $ps.offset().left;
+  function _getLeftPosition(data) {
+    return data.$this.offset().left - data.$ps.width() / 2 - 14;
   }
 
   function _triggerOpenAnimation($ps, data) {
-    var top  = _getTopPosition($ps);
-    var left = 175;
+    var top  = _getTopPosition(data);
+    var left = _getLeftPosition(data);
 
     $(".notification_selector").css({"top":(top) + "px", "left": left + "px"});
     $(".notification_selector").find(".popover").fadeIn(data.settings.transitionSpeed, data.settings.easingMethod);

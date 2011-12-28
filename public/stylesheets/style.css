@@ -267,7 +267,7 @@ header nav .content form .input_field input[type="text"], header nav .content fo
 header nav .content form .input_field input[type="submit"] { right: 10px; top: 10px; position: absolute; width: 14px; height: 14px; background: url("/images/icons/magnifier.png") no-repeat; border: 0; z-index: 10; }
 header nav .content form .input_field span#autocomplete_spinner { position: absolute; right: 17px; top: 17px; }
 header nav .content .sign_out { float: right; }
-header nav .content .notification_selector { float: left; position: relative; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 0; }
+header nav .content .notification_selector { position: absolute; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 0; }
 header nav .content .notification_selector.open { display: block; }
 header nav .content .notification_selector.open .popover { display: block; }
 header nav .content .notification_selector.open .handle { background-position: 0 -141px; }
@@ -340,7 +340,7 @@ Articles
 #container .article .inner div.right { position: none; margin-left: 29px; float: left; width: 291px; z-index: 0; }
 #container .article .inner div.right p { margin: 0 0 25px 0; padding: 0; font-size: 15px; color: #465866; }
 #container .article .inner .content.centered { text-align: center; }
-#container .article .inner header { clear: both; overflow: hidden; height: auto; padding: 0; margin: 0 0 25px 0; background: none; }
+#container .article .inner header { clear: both; height: auto; padding: 0; margin: 0 0 25px 0; background: none; }
 #container .article .inner header h1, #container .article .inner header h2 { margin: 0; }
 #container .article .inner header h3 { font-size: 17px; }
 #container .article .inner header h2 { font-size: 31px; line-height: normal; }
@@ -684,6 +684,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 .avatar:before { content: ''; display: block; position: absolute; left: 0; right: 0; width: 100%; height: 100%; margin: -10em; border: 10em solid white; -moz-border-radius: 100em; -webkit-border-radius: 100em; -o-border-radius: 100em; -ms-border-radius: 100em; -khtml-border-radius: 100em; border-radius: 100em; }
 
 #container .article.agenda .inner { padding: 15px 33px 38px 33px; }
+#container .article.agenda .inner header { clear: both; overflow: none!important; }
 #container .article.agenda .inner div.left h2 { display: inline; width: auto; }
 #container .article.agenda .inner div.left a.ical { float: none!important; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; height: 28px; width: 29px; margin: 3px 0 0 16px; text-indent: -999em; background: url("/images/icons/share.png") no-repeat -176px 0; }
 #container .article.agenda .inner div.left a.ical:hover { background-position: -176px -30px; }

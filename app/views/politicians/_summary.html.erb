@@ -1,6 +1,6 @@
 <div class="article profile summary with_footer">
   <div class="inner">
-    <header>
+    <header class="clearfix">
     <h1><%= @politician.truncated_fullname(30) %></h1>
     <p class="position">
     <%= raw t('.title', :title => get_politician_title(@politician), :areas => @politician.areas.map{|area| link_to area.name, area_path(area)}.join(', ')) %>

@@ -262,8 +262,10 @@ header {
       // Notification selector
 
       .notification_selector {
-        float: left;
-        position:relative;
+        // float: left;
+        //position:relative;
+        position: absolute;
+        //right: 212px;
         display:none;
         width:247px;
         height:auto;
@@ -500,7 +502,7 @@ Articles
 
     header {
       clear: both;
-      overflow: hidden;
+      //overflow: hidden;
       height: auto;
       padding: 0;
       margin: 0 0 25px 0;
@@ -1921,6 +1923,12 @@ div#main.show div.left img {margin:4px 0 7px;}
 
 #container .article.agenda .inner {
   padding: 15px 33px 38px 33px;
+
+  header {
+    clear:both;
+    overflow:none!important;
+  }
+
 
   div.left {
     h2 {

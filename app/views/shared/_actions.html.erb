@@ -1,6 +1,6 @@
 <div id="actions" class="article actions with_filters<%= " with_footer" if viewing_dashboard? or controller.action_name == "home" or (@area) %>">
   <div class="inner">
-    <header>
+    <header class="clearfix">
     <div class="left">
       <h2><%= raw title rescue t('.title') %></h2>
       <% if defined?(description) -%>

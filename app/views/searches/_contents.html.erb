@@ -1,7 +1,7 @@
 <% if @contents_count[:total] > 0 %>
 <div class="article <%= "activity " if @contents_count[:total] > 0 %>results with_footer with_filters">
 <div class="inner">
-  <header>
+  <header class="clearfix">
   <div class="left">
     <h2><%= t(".results.title.#{params[:type] || 'total'}", :count => @contents_count[:"#{params[:type].try(:pluralize) || 'total'}"]) %></h2>
   </div>
