@@ -1,3 +1,4 @@
+#encoding: UTF-8
 module Irekia
     class Importer
 
@@ -70,24 +71,51 @@ module Irekia
         puts '============================'
 
         puts '=> reading feeds'
+
         events_ics_url = 'http://www.irekia.euskadi.net/es/events/myfeed.ics?dept_label=all'
+        event_detail_url = lambda{|event_id| "http://www.irekia.euskadi.net/es/events/#{event_id}.xml"}
+
         open(events_ics_url) do |ical_file|
           puts '=> parsing calendar file'
           calendar = RiCal.parse_string(ical_file.read).first rescue nil
           events = calendar.events
           puts "=> loading #{events.count} events found"
           events.each do |event_data|
-            begin
-              event = Event.new
-              event.event_data = EventData.new(:title      => event_data.summary,
-                                               :body       => event_data.description,
-                                               :event_date => event_data.dtstart,
-                                               :duration   => event_data.dtend - event_data.dtstart)
+            event_uid = event_data.uid[/uid_(\d*)_irekia_euskadi_net/, 1]
+            event_data_detail = Nokogiri::Slop(open(event_detail_url.call(event_uid)).read)
 
-              event.location  = event_data.location
-              event.moderated = true
+            begin
+              event_data_model = EventData.find_by_external_id(event_uid) || EventData.new
+
+              event_data_model.title       = event_data.summary
+              event_data_model.body        = event_data.description
+              event_data_model.event_date  = event_data.dtstart
+              event_data_model.duration    = event_data.dtend - event_data.dtstart
+              event_data_model.external_id = event_uid
+              event_data_model.place       = event_data_detail.event.lugar.text
+
+              case event_data_detail.event.cobertura.estado.text
+              when 'anunciado'
+                event_data_model.image.remote_image_url = event_data_detail.event.cobertura.imagen.text
+              when 'emitiendo'
+                event_data_model.html                   = open(event_data_detail.event.cobertura.iframe_src.text).read
+              when 'noticia'
+                event_data_model.news_url               = event_data_detail.event.cobertura.url.text
+              end
+
+              event = event_data_model.event || Event.new
+
               event.users << [User.patxi_lopez, User.politicians.sample].sample
+
+              event.event_data = event_data_model
+              event.location   = event_data.location
+              event.latitude   = event_data_detail.event.lat.text
+              event.longitude  = event_data_detail.event.lng.text
+              event.location   = event_data_detail.event.direccion.text
+              event.moderated  = true
+
               event.save!
+
               print '.'
             rescue Exception => e
               puts e
@@ -191,6 +219,43 @@ module Irekia
         end
 
         puts '=> import complete!'
+      end
+
+      #id;Email;Contraseña;Salt;Twitter screen_name;Twitter atoken;Twitter asecret;Facebook ID;Nombre;Apellidos;Tipo;Departamento;Lugar;Código postal;Provincia;Ciudad
+      def self.import_users
+        puts ''
+        puts 'Importing users'
+        puts '==============='
+        require 'csv'
+
+        CSV.foreach(Rails.root.join('db/seeds/support/datos_usuarios.csv'), :col_sep => ';', :headers => :first_row) do |row|
+
+          begin
+
+            user = User.new
+            user.email                      = row['Email']
+            user.encrypted_password         = row['Password']
+            user.salt                       = row['Salt']
+            user.twitter_username           = row['Twitter screen_name'] if row['Twitter screen_name'].present?
+            user.twitter_oauth_token        = row['Twitter atoken'] if row['Twitter atoken'].present?
+            user.twitter_oauth_token_secret = row['Twitter asecret'] if row['Twitter asecret'].present?
+            user.facebook_oauth_token       = row['Facebook ID'] if row['Facebook ID'].present?
+            user.name                       = row['Nombre']
+            user.lastname                   = row['Apellidos']
+            user.postal_code                = row['Codigo postal']
+            user.province                   = row['Provincia']
+            user.city                       = row['Ciudad']
+            user.external_id                = row['id']
+
+            user.save(false)
+
+            print '.'
+          rescue Exception => ex
+            puts ex
+            puts ex.backtrace
+          end
+
+        end
       end
 
       private

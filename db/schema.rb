@@ -22,15 +22,6 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
 
   add_index "answer_data", ["answer_id"], :name => "index_answer_data_on_answer_id"
 
-  create_table "answer_opinion_data", :force => true do |t|
-    t.integer  "answer_opinion_id"
-    t.boolean  "satisfactory",      :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "answer_opinion_data", ["answer_opinion_id"], :name => "index_answer_opinion_data_on_answer_opinion_id"
-
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
     t.integer  "author_id"
@@ -156,9 +147,13 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.integer  "event_id"
     t.datetime "event_date"
     t.integer  "duration"
+    t.string   "place"
     t.string   "title"
     t.string   "subtitle"
     t.text     "body"
+    t.text     "html"
+    t.string   "news_url"
+    t.string   "external_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -349,6 +344,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.string   "facebook_oauth_token_secret"
     t.string   "twitter_oauth_token"
     t.string   "twitter_oauth_token_secret"
+    t.string   "salt"
     t.boolean  "inactive",                                     :default => false
     t.boolean  "first_time",                                   :default => true
     t.string   "locale",                                       :default => "es"
