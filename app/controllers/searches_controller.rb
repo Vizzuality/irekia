@@ -47,6 +47,7 @@ class SearchesController < ApplicationController
     users        = User.search_by_name_description_province_and_city @search.query
     @citizens    = users.citizens
     @politicians = users.politicians
+    @politicians = User.politicians if params[:all_politicians]
 
     @contents_count    = {
       :total     => @contents.count,
