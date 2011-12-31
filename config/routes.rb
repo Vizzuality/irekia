@@ -17,9 +17,10 @@ Irekia::Application.routes.draw do
     localized do
 
       devise_for :users, :controllers => {
-        :sessions => 'sessions',
-        :registrations => 'users',
-        :omniauth_callbacks => 'users/omniauth_callbacks'
+        :sessions           => 'sessions',
+        :registrations      => 'users',
+        :omniauth_callbacks => 'users/omniauth_callbacks',
+        :passwords          => 'users/passwords'
       }
 
       resources :users, :except => [:index] do
