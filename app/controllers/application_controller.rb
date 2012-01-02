@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user_valid?
-    redirect_to edit_user_path(current_user) if current_user && current_user.invalid?
+    redirect_to edit_user_path(current_user.id) if current_user && current_user.invalid?
   end
 
   def get_areas

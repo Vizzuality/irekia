@@ -1,7 +1,7 @@
 <div class="cycle extra <%= 'extra-margin' if current_user.invalid? && current_user.errors[:email].present? %>">
   <div class="inner-cycle">
     <div class="article thin with_footer with_remark with_form signup step2">
-    <%= form_for current_user, { :remote => true, :html => { :novalidate => :novalidate, "data-type" => :html }} do |f| %>
+      <%= form_for current_user, :remote => true, :html => { :novalidate => :novalidate, "data-type" => :html } do |f| %>
       <div class="inner clearfix">
         <div class="content">
 

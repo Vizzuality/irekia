@@ -5,7 +5,7 @@
     <div class="inner">
       <div class="content">
         <h2><%= t(".access_irekia") %></h2>
-        <p><%= t(".forgotten_password") %> <a href="#" class="password_reminder"><%= t(".get_it_here") %></a></p>
+        <p><%= t(".forgotten_password") %> <%= link_to t('.get_it_here'), new_password_path(resource_name), :class => :password_reminder %></p>
         <p><%= f.label :email %> <%= f.email_field :email, :class => :mInput %></p>
         <p><%= f.label :password %> <%= f.password_field :password, :class => :mInput %></p>
 
@@ -32,13 +32,13 @@
 </div>
 
 <div id="password_reminder" class="article password_reminder popover micro with_footer">
-  <form accept-charset="UTF-8" action="/users/sign_in" class="user_new" id="user_new" method="post" novalidate="novalidate">
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
     <div class="inner">
       <div class="content">
         <h2><%= t(".password_reminder.title") %></h2>
         <p><%= t(".password_reminder.description") %></p>
         <p><label for="user_email"><%= t(".password_reminder.email") %></label><br />
-        <input class="mInput" id="user_email" name="user[email]" size="30" type="email" value="" /></p>
+        <%= f.email_field :email, :id => :user_email, :class => 'mInput', :size => 30 %>
       </div>
     </div>
     <span class="close"></span>
@@ -51,5 +51,5 @@
     </div>
 
     <div class="t"></div><div class="f"></div>
-  </form>
+  <% end -%>
 </div>
