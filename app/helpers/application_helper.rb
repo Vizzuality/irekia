@@ -233,8 +233,10 @@ module ApplicationHelper
   # end
 
   def message_for_twitter(content)
+    if content and content.text
     twitter_message_link = polymorphic_url(content.parent || content)
     content.text.truncate(139 - twitter_message_link.length) + ' ' + twitter_message_link
+    end
   end
 
   def message_for_facebook(content)
