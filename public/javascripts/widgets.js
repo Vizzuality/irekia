@@ -496,8 +496,6 @@ var GOD = (function() {
 
 
 
-
-
 /* FILTER WIDGET */
 (function($, window, document) {
 
@@ -505,14 +503,14 @@ var GOD = (function() {
 
   var
   store = "filter-widget",
-  // Public methods exposed to $.fn.filterWidget()
+  // Public methods exposed to $.fn.enableFiltering()
   methods = {},
   // Some nice default values
   defaults = {
     transitionSpeed: 250
   };
 
-  // Called by using $('foo').filterWidget();
+  // Called by using $('foo').enableFiltering();
   methods.init = function(settings) {
     settings = $.extend({}, defaults, settings);
 
@@ -522,7 +520,7 @@ var GOD = (function() {
       var id = $this.attr('id');
       var data = $this.data(store + "_" + id) || {};
 
-      // Dont do anything if we've already setup filterWidget on this element
+      // Dont do anything if we've already setup enableFiltering on this element
       if (data.id) {
         return $this;
       } else {
@@ -539,7 +537,7 @@ var GOD = (function() {
       // Let's create the spinner dom element
       if ($(this).find('div.right ul.selector').length > 0) {
         var filter_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: 'white',speed: 1,trail: 100,shadow: false});
-        var switch_spinner = new Spinner({lines: 12,length: 0,width: 3,radius: 6,color: '#3786C0',speed: 1,trail: 100,shadow: false});
+        var switch_spinner = new Spinner(SPINNER_OPTIONS);
       }
 
       $(this).find(".filter").unbind("click");
@@ -550,7 +548,7 @@ var GOD = (function() {
         filter_spinner.stop();
         switch_spinner.stop();
 
-        if ($(this).closest('ul.switch').length==0) {
+        if ($(this).closest('ul.switch').length == 0) {
           filter_spinner.spin();
           var top = $(this).position().top;
           var right = 3;
@@ -582,6 +580,12 @@ var GOD = (function() {
 
         var settings = data.settings;
 
+        // Let's store the filter using the classes of the current article as a key
+        var c = document.getElementById($this.attr("id")).className.replace(/ /g, "_");
+
+        filterUrl[c]  = data.url;
+        filterSort[c] = data.sort;
+
         $.ajax({ url: data.url, data: data.sort, type: "GET", success: function(data){
           $ps.find(".listing").fadeOut(settings.transitionSpeed, function() {
 
@@ -605,14 +609,14 @@ var GOD = (function() {
         }});
       });
 
-      // Save the filterWidget data onto the <select> element
+      // Save the enableFiltering data onto the <select> element
       $this.data(store, data);
 
     });
   };
 
   // Expose the plugin
-  $.fn.filterWidget = function(method) {
+  $.fn.enableFiltering = function(method) {
     if (methods[method]) {
       return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
     } else if (typeof method === 'object' || !method) {

@@ -88,8 +88,8 @@ $(function() {
   $(".create_proposal").proposalPopover();
   $(".auth a.login").loginPopover();
 
-  $(".with_filters").filterWidget();
-  $(".with_filters").filterWidget();
+  $(".with_filters").enableFiltering();
+  $(".with_filters").enableFiltering();
 
   $(".areas_selector").areasPopover();
   $(".toggle_notifications").notificationPopover();

@@ -4,7 +4,7 @@
     var events = <%= @agenda_json %>;
   </script>
 <% end %>
-<div class="article agenda with_footer<%= ' with_filter' if controller.controller_name == 'home' and controller.action_name == 'agenda' %>">
+<div id="events-<%= params[:id] %>" class="article agenda with_footer<%= ' with_filter' if controller.controller_name == 'home' and controller.action_name == 'agenda' %>">
   <div class="inner">
     <header class="clearfix">
     <div class="left">

@@ -420,6 +420,10 @@ class User < ActiveRecord::Base
     fullname.truncate(length)
   end
 
+  def location
+    [city, province].compact!.join(", ")
+  end
+
   def thumbnail
     profile_image
   end

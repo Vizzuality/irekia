@@ -169,13 +169,13 @@ IrekiaMarker.prototype.draw = function() {
 
     var templates = {
       marker:[
-        '  <a class="marker<%= (count > 1) ? " with_counter" : "" %>">',
+        '  <a class="icon<%= (count > 1) ? " with_counter" : "" %>">',
         '   <% if (count > 1) {%>',
           '   <div class="counter"><%= count %></div> ',
           ' <% } %>',
           '</a>'].join(''),
           event:[
-            '    <li>',
+            '    <li class="area_<%= area_id %>">',
             '      <strong class="date"><%= date %></strong>',
             '      <a href="/events/<%= event_id %>" class="event"><%= title %></a>',
             '      <ul class="details">',
@@ -202,19 +202,26 @@ IrekiaMarker.prototype.draw = function() {
                 '</div>'].join(' ')};
 
                 var count = this.info.length;
-                var markerTemplate = _.template(templates.marker, {count:count});
 
                 var events = "";
                 var event;
+                var areaClasses = "";
 
                 for (var i = 0; i <= this.info.length - 1 ; i++) {
                   event = this.info[i];
                   var addSeparator = (count > 1 && i < count - 1) ? true : false;
-                  events +=  _.template(templates.event, {event_id:event.event_id ,title:event.title, date:event.date, where:event.where, when:event.when, separator:addSeparator});
+                  events +=  _.template(templates.event, {area_id:event.area_id,event_id:event.event_id ,title:event.title, date:event.date, where:event.where, when:event.when, separator:addSeparator});
+                  if (event.area_id && event.area_id != undefined) {
+                    areaClasses += "area_" + event.area_id
+                  }
                 }
 
+
+                var markerTemplate = _.template(templates.marker, {count:count});
+                var m = $(div).append(markerTemplate);
+                $(m).addClass(areaClasses);
+
                 var contentTemplate = _.template(templates.infowindow, {count:count, events:events});
-                $(div).append(markerTemplate);
                 $(div).append(contentTemplate);
 
                 $(div).find('span.close').click(function(ev){
@@ -224,7 +231,7 @@ IrekiaMarker.prototype.draw = function() {
 
 
 								var interval;
-                $(div).find('a.marker').click(function(ev){
+                $(div).find('a.icon').click(function(ev){
 									clearTimeout(interval);
 									interval = setTimeout(function(){
 										if (!dblclick) {

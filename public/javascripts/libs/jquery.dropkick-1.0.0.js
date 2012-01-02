@@ -85,7 +85,7 @@
         id = $select.attr('id') || $select.attr('name'),
 
         // This gets updated to be equal to the longest <option> element
-        width  = settings.width || $select.outerWidth(),
+        width  = settings.width || $select.outerWidth() + 5,
 
         // Check if we have a tabindex set or not
         tabindex  = $select.attr('tabindex') ? $select.attr('tabindex') : '',
@@ -394,12 +394,18 @@
         var id = $(this).attr("data-id");
         if (id != 0) {
           filterArea = id;
+
           $("ul.events li").fadeOut(150);
           $("ul.events li.area_" + id).fadeIn(150);
+
+          $(".marker, .marker .infowindow").fadeOut(150);
+          $(".marker.area_" + id).fadeIn(150);
 
         } else {
           filterArea = 0;
           $("ul.events li").fadeIn(250);
+          $(".marker").fadeIn(150);
+          $('div.infowindow').hide();
         }
       }
 

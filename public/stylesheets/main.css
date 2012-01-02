@@ -1048,9 +1048,9 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .map .zoom_out:hover { background: transparent url("/images/maps_sprite.png") no-repeat -31px -32px; }
 #container .article .map .infowindow { display: none; }
 #container .article .map .infowindow span.close { right: 10px; }
-#container .article .map a.marker { position: relative; display: block; background: url("/images/maps_sprite.png") no-repeat 0 -67px; width: 25px; height: 34px; cursor: pointer; }
-#container .article .map a.marker.with_counter { background-position: -26px -67px; }
-#container .article .map a.marker .counter { position: absolute; display: block; top: 6px; width: 25px; text-align: center; color: white; font-size: 11px; font-weight: bold; }
+#container .article .map a.icon { position: relative; display: block; background: url("/images/maps_sprite.png") no-repeat 0 -67px; width: 25px; height: 34px; cursor: pointer; }
+#container .article .map a.icon.with_counter { background-position: -26px -67px; }
+#container .article .map a.icon .counter { position: absolute; display: block; top: 6px; width: 25px; text-align: center; color: white; font-size: 11px; font-weight: bold; }
 #container .article .input_field { position: relative; clear: both; height: 39px; }
 #container .article .input_field.grow { height: auto; }
 #container .article .input_field span.holder { position: absolute; left: 11px; top: 8px; width: auto; color: #D7D8DD; }

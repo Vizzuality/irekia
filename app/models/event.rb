@@ -95,7 +95,8 @@ class Event < Content
       :where      => event.try(:location),
       :lat        => event.latitude,
       :lon        => event.longitude,
-      :event_id   => event.id
+      :event_id   => event.id,
+      :area_id    => event.try(:content_area).try(:id)
     }}.group_by{|event| [event[:lat], event[:lon]]}.values).html_safe
 
     return agenda, days, agenda_json

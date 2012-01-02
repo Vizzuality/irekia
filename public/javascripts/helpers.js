@@ -1,7 +1,12 @@
 // General spinner configuration
 var SPINNER_OPTIONS = { lines: 12, length: 0, width: 3, radius: 6, color: '#333', speed: 1, trail: 100, shadow: false };
 var IrekiaSpinner = new Spinner(SPINNER_OPTIONS);
+
+// Filtering global vars
 var filterArea = 0;
+var filterUrl  = [];
+var filterSort = [];
+
 
 // String methods
 String.prototype.trim=function(){return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');};
@@ -907,7 +912,6 @@ jQuery.fn.enableImageEditing = function(opt){
 
   _setupRemove();
   _setupAdd();
-
 }
 
 /* Enables date editing */
@@ -1252,11 +1256,12 @@ jQuery.fn.enableGotoComments = function(opt){
 }
 
 jQuery.fn.enablePagination = function(opt){
+  var $this;
   var speed      = (opt && opt.speed) || 200;
   var name       = (opt && opt.name)  || "proposals";
   var cellHeight = (opt && opt.cellHeight)  || 132;
   var currentPage = 1;
-  var url, id, $article, spin_element;
+  var url, sort, id, $article, spin_element;
 
   function paginateMonths() {
     $.ajax({url: url, method: 'GET', data:{ next_month: currentPage++ }, success:function(response, xhr, status) {
@@ -1284,7 +1289,21 @@ jQuery.fn.enablePagination = function(opt){
   }
 
   function paginate() {
-    $.ajax({url: url, method: 'GET', data:{ page: ++currentPage }, success:function(response, xhr, status) {
+    // Let's retrieve the filter using the classes of the current article as a key
+    var c = document.getElementById($this.attr("id")).className.replace(/ /g, "_");
+
+    if (filterUrl[c] != "") {
+      url = filterUrl[c];
+    }
+
+    if (filterSort[c] != "") {
+      sort = filterSort[c];
+    }
+
+    var params = { page: ++currentPage };
+    params = $.extend({}, params, sort);
+
+    $.ajax({url: url, method: 'GET', data: params, success:function(response, xhr, status) {
 
       IrekiaSpinner.stop();
 
@@ -1293,8 +1312,11 @@ jQuery.fn.enablePagination = function(opt){
         $content.hide();
 
         var $ul = $article.find(".listing_" + name  + "_" + id + " > ul");
-        $ul.append($content);
-        $content.slideDown(250);
+
+        if (!$ul.find("span.empty").length > 0 && !$this.find("span.empty").length > 0) {
+          $ul.append($content);
+          $content.slideDown(250);
+        }
       } catch(err) { }
     }});
   }
@@ -1303,7 +1325,7 @@ jQuery.fn.enablePagination = function(opt){
 
     $(this).click(function(e) {
       e.preventDefault();
-
+      $this = $(this).parents(".article");
       url = $(this).attr("href");
 
       if (name != "months") {
@@ -1996,9 +2018,6 @@ jQuery.fn.enableAvatarUpload = function(opt){
       };
 
       var onComplete = function(id, fileName, responseJSON){
-
-        _gobackToInitialState();
-
         // Adds the image to the page
         var cacheImage = document.createElement('img');
         cacheImage.src = "/uploads/tmp/" + responseJSON.image_cache_name;
@@ -2008,8 +2027,9 @@ jQuery.fn.enableAvatarUpload = function(opt){
         $(cacheImage).bind("load", function () {
           $(".avatar_uploader_form").submit();
 
+          _gobackToInitialState();
           var src = $(cacheImage).attr("src");
-          $(".avatar_box a img").attr("src", src);
+          $(".avatar_box img").attr("src", src);
         });
       };
 
@@ -2022,4 +2042,3 @@ jQuery.fn.enableAvatarUpload = function(opt){
       uploader = setupUploader({ element: $element, action: action, params: params, debug: debug, template: template, onSubmit:  onSubmit, onProgress: onProgress, onComplete: onComplete, onCancel:  onCancel });
   })
 }
-
