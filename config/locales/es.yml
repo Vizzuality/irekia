@@ -1869,7 +1869,7 @@
         area: Área
     private:
       welcome:
-        hello: 'Bienvenido %{name}'
+        hello: 'Hola, %{name}'
         hi_again: 'Hola de nuevo, %{name}.'
         configure_your_account: Configura tu cuenta
         following_nobody: No estás siguiendo a nadie todavía.
