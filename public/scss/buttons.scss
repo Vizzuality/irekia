@@ -327,7 +327,7 @@ White buttons
     height:15px;
     background:url('/images/icons/icon_sprite.png') no-repeat 0 -104px;
     padding: 0;
-    margin: 0 7px 0 -5px;
+    margin: 0 7px 0 -2px;
   }
 
   &:hover { color: $white; }
@@ -342,32 +342,32 @@ White buttons
   }
 } // .remove_person
 
-.ie8 .white_button.remove_person,
-.ie7 .white_button.remove_person {
-  color:$white;
-  text-shadow:1px 1px 1px #0F4869;
-  background:url('/images/buttons_sprite.png') repeat-x right -83px!important;
 
-  span {
-    color:$white;
-    background:url('/images/buttons_sprite.png') no-repeat left -120px;
-
-    span.remove { // icon
-      float:left;
-      width:18px;
-      height:15px;
-      padding: 0;
-      margin: 0 7px 0 -5px;
-      background:url('/images/icons/icon_sprite.png') no-repeat 0 -104px;
-    }
-  } // span
-
-  &:hover { color: $white; span { color: $white; } }
-} // .remove_person
+// .ie7 .white_button.remove_person,
+// .ie7 .article .white_button.remove_person,
+// .ie8 .white_button.remove_person,
+// .ie8 .article .white_button.remove_person {
+//   padding: 0; margin: 0 10px;
+//   background:url('/images/buttons_sprite.png') repeat-x right -320!important;
+//
+//   span {
+//     color: $white;
+//     background:url('/images/buttons_sprite.png') repeat-x right -320!important;
+//     background-position:left -360px;
+//
+//     .remove { // icon
+//       float:left;
+//       width:18px; height:15px;
+//       padding: 0;
+//       margin: 0 7px 0 -5px;
+//       background:url('/images/icons/icon_sprite.png') no-repeat 0 -104px;
+//     }
+//   } // span
+//
+//   &:hover { color: $white; span { color: $white; } }
+// } // .remove_person
 
 /* add person icon */
-.ie8 .white_button.add_person,
-.ie7 .white_button.add_person,
 .white_button.add_person {
 
   &:hover { color: $pink; }
@@ -379,10 +379,11 @@ White buttons
       height:15px;
       background:url('/images/icons/icon_sprite.png') no-repeat 0 -69px;
       padding: 0;
-      margin: 0 7px 0 -5px;
+      margin: 0 7px 0 0px;
     }
   } // span
 } // .add_person
+
 
 /* =============================================================================
 Hacks and fixes
@@ -411,6 +412,14 @@ Hacks and fixes
   line-height:29px;
 }
 
+// Fixes left outter margin and right inner margin of buttons in ie7 and ie8
+.ie7 #container .article.login .bfooter .inner div.right .white_button,
+.ie8 #container .article.login .bfooter .inner div.right .white_button,
+.ie7 #container .article.publish.with_footer .bfooter .inner div.right .publish,
+.ie8 #container .article.publish.with_footer .bfooter .inner div.right .publish {
+  margin-left: 10px;
+  span { margin-right: 0px; }
+}
 
 /* --------------------------------------------------------------------------------- Calendar days */
 .ie7 #container .article.agenda .inner .content ul li.day {
@@ -424,9 +433,6 @@ Hacks and fixes
 .ie8 #container .article .bfooter .right .question {
   color:$gray;
 }
-
-
-
 
 .ie7 .avatar,
 .ie8 .avatar {
@@ -492,8 +498,6 @@ Hacks and fixes
   height: $avatar_small_size;
   background: url('/images/avatar_frame.png') no-repeat 0 -115px;
 }
-
-
 
 @-moz-document url-prefix() {
   header nav ul.auth li .count  { line-height:16px!important; }
@@ -604,6 +608,19 @@ Hacks and fixes
   }
 }
 
+
+.ie7 button.white_button,
+.ie7 .article button.white_button,
+.ie7  #container .article .my_opinion button.white_button,
+.ie8 button.white_button,
+.ie8 .article button.white_button,
+.ie8 #container .article .my_opinion button.white_button {
+  margin-left: 2px;
+  span {
+    left:7px;
+     margin-right: 10px;
+  }
+}
 .ie7 button.white_button,
 .ie7 .article button.white_button,
 .ie7  #container .article .my_opinion button.white_button,
@@ -615,6 +632,18 @@ Hacks and fixes
     left:7px;
     // margin-right: 10px;
   }
+}
+
+
+.ie7 #container .article .comments li.comment form button.white_button,
+.ie8 #container .article .comments li.comment form button.white_button {
+  span { margin-right: 0; }
+
+}
+
+.ie7 #container .article .my_opinion form button.white_button,
+.ie8 #container .article .my_opinion form button.white_button {
+  margin: 0; padding:0;
 }
 
 .ie7 .white_button,
@@ -647,6 +676,54 @@ Hacks and fixes
       }
     }
   } // against
+
+  &.add_person {
+    span {
+      color: $pink;
+      margin-right: 5px;
+
+      &.add {
+        float:left;
+        width:18px;
+        height:15px;
+        background:url('/images/icons/icon_sprite.png') no-repeat 0 -69px;
+        padding: 0;
+        margin: 0 15px 0 -10px;
+      }
+    }
+
+    &.selected, &.selected:hover, &:hover {
+      background-position:right 0px!important;
+      span {
+        color: $pink;
+        text-decoration: underline;
+      }
+    }
+  } // remove
+
+  &.remove_person {
+    background:url('/images/buttons_sprite.png') repeat-x right -83px!important;
+    span {
+      color: $white;
+    background:url('/images/buttons_sprite.png') no-repeat left -120px;
+      margin-right: 5px;
+
+      &.remove { // icon
+        float:left;
+        width:18px; height:15px;
+        padding: 0;
+        margin: 0 15px 0 -10px;
+        background:url('/images/icons/icon_sprite.png') no-repeat 0 -104px!important;
+      }
+    }
+
+    &.selected, &.selected:hover, &:hover {
+      span {
+        color: $white;
+      }
+    }
+  } // remove
+
 
   &.in_favor {
     span { color: $agree_color; }
@@ -1344,8 +1421,8 @@ form.editable,
 
 .qq-upload-button {
   width:120px;
-  margin: 0 0 0 0px;
-  display:inline-block;
+  margin: 0;
+  @include inline-block();
   color:#1D79B0;
   font-size:15px;
 }
@@ -1354,11 +1431,6 @@ form.editable,
 
 .qq-upload-drop-area {
   display: none;
-  top: 0;
-  position: relative;
-  width: 200px;
-  float: right;
-  background:red;
 }
 
 .qq-upload-drop-area span {
@@ -1375,13 +1447,11 @@ form.editable,
 }
 
 .qq-upload-file {}
-//.qq-upload-spinner {display:inline-block; background: url("loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
 .qq-upload-size,.qq-upload-cancel {font-size:11px;}
 
 .qq-upload-fail .qq-upload-failed-text { display:none; }
 .qq-upload-failed-text {display:none;}
 .qq-upload-fail .qq-upload-failed-text {display:inline;}
-
 
 .demo_separator {
  clear:both; height:20px;
