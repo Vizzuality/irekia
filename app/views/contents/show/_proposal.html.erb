@@ -50,7 +50,7 @@
         <% end %>
       </div>
 
-        <%= form_for @vote, :remote => true do |form| %>
+        <%= form_for @vote, :remote => true, :html => {:class => :last } do |form| %>
           <%= form.hidden_field :id %>
           <%= form.hidden_field :content_id %>
           <%= form.hidden_field :user_id %>

@@ -116,11 +116,13 @@
     _bindSubmit(data, "Continuar", true, "continue");
     data.$ps.find("input,:text,textarea").attr("tabindex", "-1");
 
+    // Autosuggest binding
     data.$ps.find(".autosuggest_field span.all a").unbind();
     data.$ps.find(".autosuggest_field span.all a").click(function(e) {
       e.preventDefault();
-      data.spinner.spin(spin_element);
+      e.stopPropagation();
       _showAllAreas(data);
+      data.spinner.spin(spin_element);
     });
 
     data.questionStep = 0;
@@ -500,6 +502,8 @@
           $(cacheImage).bind("load", function () {
             $ps.find(".image_container").prepend(cacheImage);
             $ps.find(".image_container").fadeIn(speed);
+            $ps.find(".image_container img").css("height", "72px");
+            $ps.find(".image_container img").css("width", "auto");
             $ps.find(".image_container img").fadeIn(speed);
 
             $uploader.fadeOut(speed, function() {

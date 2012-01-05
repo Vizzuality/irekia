@@ -1595,9 +1595,3 @@ Slideshow
 #container .article.popover.publish.showme { position: relative!important; top: 0!Important; z-index: 10px!important; }
 #container .article.popover.publish.showme .section .extra { clear: both; float: left; display: block!important; }
 #container .article.popover.publish.showme .inner .content .container { height: 400px; }
-
-.ie7 #container .article.publish .inner .content .section.proposal .triangle, .ie8 #container .article.publish .inner .content .section.proposal .triangle { display: none; }
-
-.ie7 #container .article.publish .inner .content .section.proposal .input_field.textarea, .ie8 #container .article.publish .inner .content .section.proposal .input_field.textarea { background: url("/images/user_proposal_title_bkg.png") no-repeat 0 0; width: 687px; top: -10px; padding: 0; margin: 0; height: 69px; border: none; }
-.ie7 #container .article.publish .inner .content .section.proposal .input_field.textarea .counter, .ie8 #container .article.publish .inner .content .section.proposal .input_field.textarea .counter { top: 7px; }
-.ie7 #container .article.publish .inner .content .section.proposal .input_field.textarea textarea, .ie8 #container .article.publish .inner .content .section.proposal .input_field.textarea textarea { border: 1px solid red; background: none; height: 52px; width: 670px; padding: 0; margin: 15px 0 0 10px; }

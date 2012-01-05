@@ -386,8 +386,145 @@ White buttons
 
 
 /* =============================================================================
-Hacks and fixes
+Hacks (mostly ie7 and ie8 fixes)
 ========================================================================== */
+
+/* ------------------------------------------------------------------------------ Publishing tools */
+
+.ie7 #container .article.publish .inner .content .section.question,
+.ie8 #container .article.publish .inner .content .section.question,
+.ie7 #container .article.publish .inner .content .section.proposal,
+.ie8 #container .article.publish .inner .content .section.proposal{
+  .triangle { display:none; }
+}
+
+.ie8 #container .article.publish .inner .content .section,
+.ie7 #container .article.publish .inner .content .section,
+.ie8 #container .article.publish .inner .content .section {
+
+  &.question .question_field.textarea,
+  &.question .question_field.textarea {
+    background:url('/images/user_proposal_title_bkg.png') no-repeat 0 0;
+  }
+
+  &.proposal .proposal_field.textarea,
+  &.proposal .proposal_field.textarea {
+    background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -80px;
+  }
+
+  &.question .question_field.textarea,
+  &.question .question_field.textarea,
+  &.proposal .proposal_field.textarea,
+  &.proposal .proposal_field.textarea {
+    width: 687px;
+    top: -10px;
+    padding: 0; margin: 0 0 10px 0!important;
+    height: 69px;
+    border:none;
+
+    .counter { right: -5px; top: -5px; }
+    .holder { top: 21px; }
+
+    textarea {
+      border:none;
+      background:none;
+      height: 42px;
+      width: 670px;
+      padding: 7px 0 0 0;
+      margin: 15px 0 0 10px;
+    }
+  }
+}
+
+.ie7 #container .article .autosuggest.small .popover,
+.ie8 #container .article .autosuggest.small .popover {
+}
+
+.ie7 #container .article.publish .inner .content .section.question .body_field.textarea,
+.ie8 #container .article.publish .inner .content .section.question .body_field.textarea,
+.ie7 #container .article.publish .inner .content .section.proposal .body_field.textarea,
+.ie8 #container .article.publish .inner .content .section.proposal .body_field.textarea {
+  background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -158px;
+  width: 687px;
+  padding: 0; margin: 0;
+  height: 75px!Important;
+  border:none;
+
+  textarea {
+    border:none;
+    background:none;
+    height: 75px - 8!Important;
+    width: 670px;
+    padding: 8px 0 0 0;
+    margin: 0 0 0 10px;
+  }
+}
+
+.ie7 #container .article.publish .inner .content .section.question .autosuggest_field .search_box,
+.ie8 #container .article.publish .inner .content .section.question .autosuggest_field .search_box,
+.ie7 #container .article.publish .inner .content .section.proposal .autosuggest_field .search_box,
+.ie8 #container .article.publish .inner .content .section.proposal .autosuggest_field .search_box {
+  background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -245px;
+  width: 687px;
+  padding: 0; margin: 0;
+  height: 60px!Important;
+  border:none;
+
+  input.search {
+    border:none;
+    background:none;
+    height: 60px - 5!Important;
+    width: 670px;
+    padding: 5px 0 0 0;
+    margin: 0 0 0 10px;
+  }
+}
+
+.ie7 #container .article.publish .inner .content .extra,
+.ie8 #container .article.publish .inner .content .extra {
+  //background:green;
+}
+
+.ie7 #container .article.publish .inner .content .section.proposal .image_placeholder.uploader.image_placeholder,
+.ie8 #container .article.publish .inner .content .section.proposal .image_placeholder.uploader.image_placeholder {
+  background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -245px;
+  width: 687px!important;
+  padding: 0; margin: 0 0 10px 0!important;
+  height: 60px!important;
+  border:none!important;
+}
+
+
+.ie7 #container .article.publish .inner .content,
+.ie8 #container .article.publish .inner .content,
+.ie7 #container .article.publish .inner .content,
+.ie8 #container .article.publish .inner .content {
+  ul.menu {
+    width:686px;
+    margin:0 0 0 0;
+
+    li {
+      margin-right:6px;
+      &.last { margin: 0;}
+
+      &.selected {
+        a {
+          background-position: 0 -215px;
+          &:hover { color:$white; }
+        }
+      }
+
+      a {
+        background-position: 0 -170px;
+        height:40px -12*2;
+        padding:12px 0 16px 0;
+        width: 106px;
+        font-size:15px;
+        &:hover { color:$link_color; }
+      }
+    } // li
+  } // ul.menu
+}
 
 /* ------------------------------------------------------------------------------ Inputs line-height */
 

@@ -6102,7 +6102,6 @@ Slideshow
 /*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
 
 .tipsy-arrow { position: absolute; width: 0; height: 0; line-height: 0; border: 5px dashed #000; }
-
 /* Rules to colour arrows */
 .tipsy-arrow-n { border-bottom-color: #000; }
 .tipsy-arrow-s { border-top-color: #000; }
@@ -6126,41 +6125,4 @@ Slideshow
   .inner .content .container { height:400px;}
 }
 
-// #container .article.popover.publish .container {
-//   clear:both; float:left; background:green;
-// }
-// #container .article.popover.publish ul.menu {
-//   clear:both; float:left; background:red;
-// }
-// #container .article.popover.publish .triangle {
-//   height:20px;
-// }
 
-
-
-.ie7 #container .article.publish .inner .content .section.proposal,
-.ie8 #container .article.publish .inner .content .section.proposal{
-  .triangle { display:none; }
-}
-
-
-.ie7 #container .article.publish .inner .content .section.proposal .input_field.textarea,
-.ie8 #container .article.publish .inner .content .section.proposal .input_field.textarea {
-  background:url('/images/user_proposal_title_bkg.png') no-repeat 0 0;
-  width: 687px;
-  top: -10px;
-  padding: 0;
-  margin: 0;
-  height: 69px;
-  border:none;
-  .counter { top: 7px; }
-
-  textarea {
-    border:1px solid red;
-    background:none;
-    height: 52px;
-    width: 670px;
-    padding: 0;
-    margin: 15px 0 0 10px;
-  }
-}
