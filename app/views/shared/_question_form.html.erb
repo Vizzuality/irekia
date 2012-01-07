@@ -1,5 +1,5 @@
 <% if @question.present? %>
-  <div id="question-popover" class="article mini popover with_footer initialy_hidden">
+  <div id="question-popover" class="article mini question popover with_footer initialy_hidden">
     <%= form_for @question, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
       <div class="inner">
         <header class="clearfix"><h2><%= t(".make_a_question.title") %></h2></header>
@@ -14,7 +14,7 @@
               <h3><%= t(".your_question") %></h3>
               <div id="123" class="input-counter">
                 <span class="counter">140</span>
-                <%= question_data.text_area :question_text, :class => "title grow" %>
+                <div class="body_field"><%= question_data.text_area :question_text, :class => "title grow" %></div>
               </div>
             </div>
 

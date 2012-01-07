@@ -35,9 +35,6 @@
       // This gets applied to the 'ps_container' element
       id = $this.attr('id') || $this.attr('name'),
 
-      // This gets updated to be equal to the longest <option> element
-      width = settings.width || $this.outerWidth(),
-
       // The completed ps_container element
       $ps = false;
 
@@ -333,6 +330,7 @@
               $response.css({position:"relative"});
               $response.css("top", 0);
 
+              _clearAutosuggest(data);
               $ps.find('.content').append($response);
               $response.fadeIn(150);
 

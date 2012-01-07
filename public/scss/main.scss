@@ -127,8 +127,10 @@ span {
 
 header {
   padding-top: 45px;
-  margin-bottom: 53px;
+  //margin-bottom: 53px;
   background: $white;
+  margin-bottom: 103px;
+  height: 79px;
 
   .content {
     clear: both;
@@ -2001,6 +2003,7 @@ div#main.show div.left img {margin:4px 0 7px;}
 
   .agenda_filter {
     margin: 20px 0 0 0;
+    width:650px;
     span.title { float:left; margin: 8px 10px 0 0; }
   }
 

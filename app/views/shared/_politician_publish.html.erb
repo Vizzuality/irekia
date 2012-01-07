@@ -23,10 +23,8 @@
               <div class="form clearfix">
                 <%= form.fields_for :status_message_data, @status_message.status_message_data do |status_message_data| %>
                   <div class="input_field placeholder textarea">
-                    <div id="question-counter" class="input-counter">
-                      <%= status_message_data.text_area :message %>
-                      <span class="holder"><%= t(".section.status_message.label") %></span>
-                    </div>
+                    <%= status_message_data.text_area :message %>
+                    <span class="holder"><%= t(".section.status_message.label") %></span>
                   </div>
                 <% end %>
               <% end -%>
@@ -43,9 +41,7 @@
                 <%= image.hidden_field :image_cache, :class => :image_cache_name %>
 
               <div class="form clearfix">
-                <div class="input_field placeholder uploader">
-
-                  <%= image.text_field :remote_image_url %>
+                <div class="input_field image_placeholder uploader">
                   <span class="holder"><span class="upload" id="upload_photo" data-url="<%= photos_path %>"><%= t(".section.photo.upload") %></span></span>
                   <span class="percentage">0%</span>
                   <span class="loading"><%= t(".section.photo.loading") %></span>
@@ -129,15 +125,12 @@
 
                 <div class="form clearfix">
 
-                  <div class="input_field placeholder textarea clearfix">
-                    <div id="proposal-counter" class="input-counter">
-                      <%= proposal_data.text_area :title, :class => :title %>
-                      <span class="holder"><%= t(".section.status_message.label") %></span>
-                    </div>
+                  <div class="input_field placeholder proposal_field textarea clearfix">
+                    <%= proposal_data.text_area :title, :class => :title %>
+                    <span class="holder"><%= t(".section.status_message.label") %></span>
                   </div>
 
-                  <div class="input_field placeholder uploader">
-                    <input type="text" />
+                  <div class="input_field image_placeholder uploader">
                     <span class="holder"><span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>"><%= t(".section.proposal.upload") %></span></span>
                     <span class="percentage">0%</span>
                     <span class="loading"><%= t(".section.photo.loading") %></span>
@@ -150,7 +143,7 @@
                   </div>
 
                   <strong><%= t(".section.proposal.explanation") %></strong>
-                  <div class="input_field description placeholder textarea">
+                  <div class="input_field description body_field placeholder textarea">
                     <%= proposal_data.text_area :body, :class => :body %>
                     <span class="holder"><%= t(".section.proposal.label") %></span>
                   </div>

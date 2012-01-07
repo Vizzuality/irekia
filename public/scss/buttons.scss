@@ -391,13 +391,6 @@ Hacks (mostly ie7 and ie8 fixes)
 
 /* ------------------------------------------------------------------------------ Publishing tools */
 
-.ie7 #container .article.publish .inner .content .section.question,
-.ie8 #container .article.publish .inner .content .section.question,
-.ie7 #container .article.publish .inner .content .section.proposal,
-.ie8 #container .article.publish .inner .content .section.proposal{
-  .triangle { display:none; }
-}
-
 .ie8 #container .article.publish .inner .content .section,
 .ie7 #container .article.publish .inner .content .section,
 .ie8 #container .article.publish .inner .content .section {
@@ -436,94 +429,183 @@ Hacks (mostly ie7 and ie8 fixes)
   }
 }
 
-.ie7 #container .article .autosuggest.small .popover,
-.ie8 #container .article .autosuggest.small .popover {
-}
 
-.ie7 #container .article.publish .inner .content .section.question .body_field.textarea,
-.ie8 #container .article.publish .inner .content .section.question .body_field.textarea,
-.ie7 #container .article.publish .inner .content .section.proposal .body_field.textarea,
-.ie8 #container .article.publish .inner .content .section.proposal .body_field.textarea {
-  background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -158px;
-  width: 687px;
-  padding: 0; margin: 0;
-  height: 75px!Important;
-  border:none;
+.ie7 #container .article.mini.popover.question,
+.ie8 #container .article.mini.popover.question,
+.ie7 #container .article.mini.popover.proposal,
+.ie8 #container .article.mini.popover.proposal {
 
-  textarea {
+  .bfooter {
+    .white_button { padding-right: 0; margin-right: 0; }
+  }
+
+  .autosuggest_field {
+    .search_box {
+      background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -356px;
+      width: 552px!important;
+      height: 39px!important;
+      padding: 0; margin: 0;
+      input[type="text"] { background:none; border:none!important; }
+    }
+  }
+
+  .image_placeholder {
+    background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -356px;
+    width: 552px!important;
+    height: 39px!important;
+    padding: 0; margin: 0;
     border:none;
-    background:none;
-    height: 75px - 8!Important;
-    width: 670px;
-    padding: 8px 0 0 0;
-    margin: 0 0 0 10px;
+  }
+
+  .extra .field .input_field.textarea, .body_field {
+    background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -294px!Important;
+    width: 552px;
+    height: 54px;
+    border:none!important;
+
+    textarea {
+      border:none!important;
+      background:none;
+      height: 54px;
+      width: 552px;
+    }
   }
 }
 
-.ie7 #container .article.publish .inner .content .section.question .autosuggest_field .search_box,
-.ie8 #container .article.publish .inner .content .section.question .autosuggest_field .search_box,
-.ie7 #container .article.publish .inner .content .section.proposal .autosuggest_field .search_box,
-.ie8 #container .article.publish .inner .content .section.proposal .autosuggest_field .search_box {
-  background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -245px;
-  width: 687px;
-  padding: 0; margin: 0;
-  height: 60px!Important;
-  border:none;
+// Politician/User publishing tool
+.ie7 #container .article.publish,
+.ie8 #container .article.publish  {
 
-  input.search {
-    border:none;
-    background:none;
-    height: 60px - 5!Important;
-    width: 670px;
-    padding: 5px 0 0 0;
-    margin: 0 0 0 10px;
-  }
-}
+  // POLITICIANS
+  &.politician .inner .content {
+    .section.photo {
+      .form { margin-bottom: 10px; }
+      form .form .input_field.image_placeholder.uploader {
+        background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -553px;
+        width: 687px;
+        padding: 0; margin: 0 0 10px 0;
+        height: 53px!important;
+        border:none;
+        .loading, .percentage, .holder { top: 23px; }
+      }
+    } // photo
 
-.ie7 #container .article.publish .inner .content .extra,
-.ie8 #container .article.publish .inner .content .extra {
-  //background:green;
-}
-
-.ie7 #container .article.publish .inner .content .section.proposal .image_placeholder.uploader.image_placeholder,
-.ie8 #container .article.publish .inner .content .section.proposal .image_placeholder.uploader.image_placeholder {
-  background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -245px;
-  width: 687px!important;
-  padding: 0; margin: 0 0 10px 0!important;
-  height: 60px!important;
-  border:none!important;
-}
-
-
-.ie7 #container .article.publish .inner .content,
-.ie8 #container .article.publish .inner .content,
-.ie7 #container .article.publish .inner .content,
-.ie8 #container .article.publish .inner .content {
-  ul.menu {
-    width:686px;
-    margin:0 0 0 0;
-
-    li {
-      margin-right:6px;
-      &.last { margin: 0;}
-
-      &.selected {
-        a {
-          background-position: 0 -215px;
-          &:hover { color:$white; }
+    .section.video {
+      form ul li .input_field {
+        width:283px!important; height:39px;
+        background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -501px;
+        border:none;
+        input[type="text"] {
+          width:257px!Important; height:30px;
+          margin: 5px 0 0 3px;
+          border:none;
+          background:none;
         }
       }
+    } // proposal
 
-      a {
-        background-position: 0 -170px;
-        height:40px -12*2;
-        padding:12px 0 16px 0;
-        width: 106px;
-        font-size:15px;
-        &:hover { color:$link_color; }
+    .section.proposal {
+      .proposal_field.textarea {
+        background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -415px;
       }
-    } // li
-  } // ul.menu
+    } // proposal
+
+    .section.dashboard {
+      .form { margin: 0 0 10px 0; }
+      form .form .input_field.textarea {
+        background:url('/images/user_proposal_title_bkg.png') no-repeat 0 0;
+        width: 687px;
+        padding: 0!important; margin: 0 0 10px 0!important;
+        height: 69px!important;
+        border:none;
+
+        .holder { top: 21px; }
+
+        textarea {
+          border:none;
+          background:none;
+          height: 42px!important;
+          width: 670px;
+          padding: 7px 0 0 0;
+          margin: 15px 0 0 10px!important;
+        }
+      }
+    } // dashboard
+  } // content
+
+  .inner .content {
+
+    .triangle { display:none!important; }
+
+    ul.menu {
+      width:686px;
+      margin:0 0 0 0;
+
+      li {
+        margin-right:6px;
+        &.last { margin: 0;}
+
+        &.selected {
+          a {
+            background-position: 0 -215px;
+            &:hover { color:$white; }
+          }
+        }
+
+        a {
+          background-position: 0 -170px;
+          height:40px -12*2;
+          padding:12px 0 16px 0;
+          width: 106px;
+          font-size:15px;
+          &:hover { color:$link_color; }
+        }
+      } // li
+    } // ul.menu
+
+    .uploader.image_placeholder {
+      background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -245px;
+      width: 687px!important;
+      padding: 0; margin: 0 0 10px 0!important;
+      height: 39px!important;
+      border:none!important;
+    }
+
+    .section .body_field.textarea {
+      background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -158px;
+      width: 687px;
+      padding: 0; margin: 0;
+      height: 75px!Important;
+      border:none;
+
+      textarea {
+        border:none;
+        background:none;
+        height: 75px - 8!Important;
+        width: 670px;
+        padding: 8px 0 0 0;
+        margin: 0 0 0 10px;
+      }
+    }
+
+    .section.question .autosuggest_field .search_box,
+    .section.proposal .autosuggest_field .search_box {
+      background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -245px;
+      width: 687px;
+      padding: 0; margin: 0;
+      height: 60px!Important;
+      border:none;
+
+      input.search {
+        border:none;
+        background:none;
+        height: 60px - 5!Important;
+        width: 670px;
+        padding: 5px 0 0 0;
+        margin: 0 0 0 10px;
+      }
+    }
+  }
 }
 
 /* ------------------------------------------------------------------------------ Inputs line-height */
@@ -659,8 +741,8 @@ Hacks (mostly ie7 and ie8 fixes)
 } // ie7, ie8
 
 .ie9 {
- //  a { background:#ccc; width:300px; }
- //  .qq-uploader { width:500px; background:#f1f1f1; }
+  //  a { background:#ccc; width:300px; }
+  //  .qq-uploader { width:500px; background:#f1f1f1; }
 }
 
 .ie7 #container .article.mini.popover.with_footer,
@@ -695,13 +777,13 @@ Hacks (mostly ie7 and ie8 fixes)
 .ie8 #container .article.thin.connect .bfooter .inner {
   position:relative;
   .white_button.center {
-  position:absolute;
-  padding: 0;
-  margin:0 auto;
-  float:left;
-  left: 300px;
-  top: 10px;
-}
+    position:absolute;
+    padding: 0;
+    margin:0 auto;
+    float:left;
+    left: 300px;
+    top: 10px;
+  }
 }
 
 .ie7 #container .article.thin.signup .bfooter .inner .white_button,
@@ -755,7 +837,7 @@ Hacks (mostly ie7 and ie8 fixes)
   margin-left: 2px;
   span {
     left:7px;
-     margin-right: 10px;
+    margin-right: 10px;
   }
 }
 .ie7 button.white_button,
@@ -842,7 +924,7 @@ Hacks (mostly ie7 and ie8 fixes)
     background:url('/images/buttons_sprite.png') repeat-x right -83px!important;
     span {
       color: $white;
-    background:url('/images/buttons_sprite.png') no-repeat left -120px;
+      background:url('/images/buttons_sprite.png') no-repeat left -120px;
       margin-right: 5px;
 
       &.remove { // icon
@@ -957,15 +1039,15 @@ a.checkbox {
   line-height:normal;
 
   &:hover {
-   cursor:pointer;
+    cursor:pointer;
   }
 
   &.selected {
     background-position:0 -14px;
 
     &:hover {
-     cursor:pointer;
-     text-decoration:none;
+      cursor:pointer;
+      text-decoration:none;
     }
   }
 }
@@ -976,7 +1058,7 @@ a.radio {
   color:#666666;
 
   &:hover {
-   cursor:pointer;
+    cursor:pointer;
     background-position:0 -53px;
   }
 
@@ -984,8 +1066,8 @@ a.radio {
     background-position:0 -73px;
 
     &:hover {
-     cursor:pointer;
-     text-decoration:none;
+      cursor:pointer;
+      text-decoration:none;
     }
   }
 }
@@ -1040,10 +1122,10 @@ form.editable,
 
   &.target {
 
-   -webkit-text-size-adjust: 100%;
-   -ms-text-size-adjust: 100%;
-   -webkit-perspective: 1000;
-   -webkit-backface-visibility: hidden;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
 
     float:left;
     width:auto;
@@ -1591,5 +1673,5 @@ form.editable,
 .qq-upload-fail .qq-upload-failed-text {display:inline;}
 
 .demo_separator {
- clear:both; height:20px;
+  clear:both; height:20px;
 }

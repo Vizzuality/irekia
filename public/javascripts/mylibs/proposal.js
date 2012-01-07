@@ -570,6 +570,8 @@
           $(cacheImage).bind("load", function () {
             $ps.find(".image_container").prepend(cacheImage);
             $ps.find(".image_container").fadeIn(speed);
+            $ps.find(".image_container img").css("height", "72px");
+            $ps.find(".image_container img").css("width", "auto");
             $ps.find(".image_container img").fadeIn(speed);
             _center(data);
 

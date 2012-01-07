@@ -34,9 +34,6 @@
       // This gets applied to the 'ps_container' element
       id = $this.attr('id') || $this.attr('name'),
 
-      // This gets updated to be equal to the longest <option> element
-      width = settings.width || $this.outerWidth(),
-
       // The completed ps_container element
       $ps = false;
 
@@ -355,6 +352,8 @@
             if ($response.find("li").length > 0) {
               $response.hide();
               $response.css("top", $currentSection.find(".autosuggest_field").position().top + 220);
+
+              _clearAutosuggest(data);
               $ps.find('.content').append($response);
               $response.fadeIn(150);
             }
@@ -601,6 +600,8 @@
 
             $section.find(".image_container").prepend(cacheImage);
             $section.find(".image_container").fadeIn(speed);
+            $section.find(".image_container img").css("height", "72px");
+            $section.find(".image_container img").css("width", "auto");
             $section.find(".image_container img").fadeIn(speed);
 
             $uploader.fadeOut(speed, function() {

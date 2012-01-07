@@ -18,14 +18,13 @@
               <h3><%= t(".title") %></h3>
               <div id="124" class="input-counter">
                 <span class="counter">140</span>
-                <%= proposal_data.text_area :title, :class => "grow title" -%>
+                <div class="body_field"><%= proposal_data.text_area :title, :class => "grow title" -%></div>
               </div>
             </div>
 
             <div class="extra">
               <div class="field clearfix">
-                <div class="input_field placeholder clearfix uploader">
-                  <input type="text" />
+                <div class="input_field image_placeholder clearfix uploader">
                   <span class="holder"><span class="upload" id="upload_image" data-url="<%= proposals_path -%>"><%= t(".upload_a_photo") %></span></span>
                   <span class="percentage">0%</span>
                   <span class="loading"><%= t(".loading") %></span>
