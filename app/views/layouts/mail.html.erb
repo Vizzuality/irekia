@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= @subject %></title>
+    <style type="text/css">
+
+      #outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
+      body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; font-family: "Arial", sans-serif}
+
+      .ExternalClass {width:100%;} /* Force Hotmail to display emails at full width */
+      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */
+      #backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+      img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;}
+      a img {border:none;}
+      .image_fix {display:block;}
+
+      p {margin: 1em 0; font-size:13px; color: #5E5E5E;}
+      p.footer { font-size:13px; color: #999999; }
+      p.footer a { font-size:13px; color: #999999; }
+
+      h1, h2, h3, h4, h5, h6 {margin: 0; font-weight:bold; color: #465766 !important;}
+      h1 { font-size: 24px; }
+      h2, h2 a { font-size: 17px; }
+
+      h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {color: #1D79B0 !important;}
+
+      h1 a:active, h2 a:active,  h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+        color: red !important; /* Preferably not the same color as the normal header link color.  There is limited support for psuedo classes in email clients, this was added just for good measure. */
+      }
+
+      h1 a:visited, h2 a:visited,  h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
+        color: purple !important; /* Preferably not the same color as the normal header link color. There is limited support for psuedo classes in email clients, this was added just for good measure. */
+      }
+
+      table td {border-collapse: collapse; color:#5E5E5E; }
+
+      a {color: #1D79B0;}
+      a:link { color: #1D79B0; }
+      a:visited { color: #1D79B0;; }
+      a:hover { color: #1D79B0; }
+
+    </style>
+
+  </head>
+  <body>
+    <table cellpadding="0" cellspacing="0" border="0" id="backgroundTable" width="635px">
+      <tr>
+        <td>
+
+          <table cellpadding="0" cellspacing="0" border="0" align="center" height="70px"><tr><td width="635px" height="70px" valign="top"><%= image_tag 'mail/header.jpg' %></td></tr></table><%= yield %>
+
+          <table cellpadding="0" cellspacing="0" border="0" align="center">
+            <tr><td width="635px" height="25px" valign="top"></td></tr>
+            <tr><td width="635px" height="1px" valign="top"><%= image_tag 'mail/light_line.jpg' %></td></tr>
+            <tr>
+              <td width="635px" valign="top">
+                <% if @show_notifications_link %>
+                <p class="footer" style="margin: 5px 0 20px 0; font-size:13px; color: #999999;">¿No quieres recibir emails de Irekia? <a href="#" target ="_blank" title="Gestiona tus notificaciones" style="font-size:13px; color: #999999;">Gestiona tus notificaciones</a></p>
+              <% else %>
+                <p class="footer" style="margin: 5px 0 20px 0; font-size:13px; color: #999999;"><a href="#" target ="_blank" title="Irekia" style="font-size:13px; color: #999999;">Irekia</a></p>
+              <% end %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

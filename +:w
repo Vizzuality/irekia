@@ -1,0 +1,73 @@
+# encoding: utf-8
+
+class Tmailer < ActionMailer::Base
+  default :from => "from@example.com"
+  layout 'mail'
+
+  def prueba
+
+    Tmailer.deliver_welcome("javierarce@gmail.com")
+
+  end
+
+  def welcome(to = "javierarce@gmail.com")
+    @title = "Bienvenido a Irekia, Javier :-)"
+    @subject = @title
+    @text = "Gracias por registrarte en Irekia. ¡Ya puedes empezar a participar!"
+    mail(:to => to, :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+  end
+
+  def comment
+    @title = "Tu comentario ha sido aprobado :-)"
+    @subject = @title
+    @text = "El comentario que dejaste ayer en la noticia 'Carril bici en Getxo' ha sido aprobado."
+    mail(:to => "javierarce@gmail.com", :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+  end
+
+  def reset_password
+    @title = "¿No te acuerdas de tu contraseña?"
+    @subject = @title
+    @text = "Simplemente pulsa el enlace “Regenerar contraseña”. Irekia te pedirá a continuación el nuevo valor."
+    mail(:to => "javierarce@gmail.com", :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+  end
+
+  def new_question
+    @title = "Nueva pregunta en Irekia"
+    @subject = @title
+    @text = "Ramón Iratxi Pérez te hace la siguiente pregunta:"
+    mail(:to => "javierarce@gmail.com", :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+  end
+
+  def new_follower
+    @title = "¡Un nuevo seguidor! :-)"
+    @subject = @title
+    @text = "Ramón Iratxi Pérez ha comenzado a seguirte en Irekia. ¿Quieres conocerle mejor?"
+    mail(:to => "javierarce@gmail.com", :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+  end
+
+
+  def deleted_account
+    @title = "Cuenta eliminada :-("
+    @subject = @title
+    mail(:to => "javierarce@gmail.com", :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+  end
+
+  def comment_approved
+    @title = "Tu comentario ha sido aprobado :-)"
+    @subject = @title
+    @text = "El comentario que dejaste ayer en la noticia “Carril bici en Getxo” ha sido aprobado."
+    mail(:to => "javierarce@gmail.com", :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+  end
+
+  def question_answered
+    @title = "Pregunta contestada en Irekia"
+    @subject = @title
+    mail(:to => "javierarce@gmail.com", :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+  end
+
+  def content_rejected
+    @title = "Tu comentario ha sido rechazado :-("
+    @subject = @title
+    mail(:to => "javierarce@gmail.com", :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+  end
+end
