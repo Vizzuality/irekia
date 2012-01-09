@@ -391,8 +391,23 @@ Hacks (mostly ie7 and ie8 fixes)
 
 .ie8 #container .article .avatar-uploader {
   .avatar_box .avatar .ieframe { display: none!important; }
-
 }
+
+.ie8 .white_button#avatar_uploader_button {
+  display:none;
+}
+
+#ie_avatar_uploader_button {
+  display:none;
+}
+
+.ie8 #ie_avatar_uploader_button {
+  display:block;
+  .qq-upload-drop-area, .qq-upload-list { display:none; }
+  .progress { width: 0; display:none;}
+  .qq-upload-button { width: 300px; }
+}
+
 /* ------------------------------------------------------------------------------ Publishing tools */
 
 .ie7 #container .article.publish .inner .content .section,

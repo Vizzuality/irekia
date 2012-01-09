@@ -1975,6 +1975,15 @@ Hacks (mostly ie7 and ie8 fixes)
 ========================================================================== */
 .ie8 #container .article .avatar-uploader .avatar_box .avatar .ieframe { display: none!important; }
 
+.ie8 .white_button#avatar_uploader_button { display: none; }
+
+#ie_avatar_uploader_button { display: none; }
+
+.ie8 #ie_avatar_uploader_button { display: block; }
+.ie8 #ie_avatar_uploader_button .qq-upload-drop-area, .ie8 #ie_avatar_uploader_button .qq-upload-list { display: none; }
+.ie8 #ie_avatar_uploader_button .progress { width: 0; display: none; }
+.ie8 #ie_avatar_uploader_button .qq-upload-button { width: 300px; }
+
 /* ------------------------------------------------------------------------------ Publishing tools */
 .ie7 #container .article.publish .inner .content .section.question .question_field.textarea, .ie7 #container .article.publish .inner .content .section.question .question_field.textarea, .ie8 #container .article.publish .inner .content .section.question .question_field.textarea, .ie8 #container .article.publish .inner .content .section.question .question_field.textarea { background: url("/images/user_proposal_title_bkg.png") no-repeat 0 0; }
 .ie7 #container .article.publish .inner .content .section.proposal .proposal_field.textarea, .ie7 #container .article.publish .inner .content .section.proposal .proposal_field.textarea, .ie8 #container .article.publish .inner .content .section.proposal .proposal_field.textarea, .ie8 #container .article.publish .inner .content .section.proposal .proposal_field.textarea { background: url("/images/user_proposal_title_bkg.png") no-repeat 0 -80px; }

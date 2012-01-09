@@ -151,7 +151,8 @@
               <%= profile_picture.hidden_field :image_cache, :class => :image_cache_name %>
             <% end %>
 
-            <%= button t(".avatar.upload_an_image"), :id => :avatar_uploader, :class => "white_button clear blue", :'data-url' => photos_path %>
+            <a href="#" id="ie_avatar_uploader_button" data-url= "<%= photos_path %>"><span><%= t(".avatar.upload_an_image") %></span></a>
+            <%= button t(".avatar.upload_an_image"), :id => :avatar_uploader_button, :class => "white_button clear blue", :'data-url' => photos_path %>
             <div class="small"><%= t(".avatar.size") %></div>
           </div>
         </div>

@@ -7,7 +7,6 @@ var filterArea = 0;
 var filterUrl  = [];
 var filterSort = [];
 
-
 // String methods
 String.prototype.trim=function(){return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');};
 String.prototype.ltrim=function(){return this.replace(/^\s+/,'');}
@@ -1957,14 +1956,18 @@ jQuery.fn.enableAvatarUpload = function(opt){
     uploader,
     debug = false;
 
+    var ie = ($.browser.msie && $.browser.version.substr(0, 1) < 9);
+
+    var avatar_button_class = ie ? "ie_avatar_uploader_button" : "avatar_uploader_button";
+
     var
-    $element = document.getElementById("avatar_uploader");
+    $element = document.getElementById(avatar_button_class);
     var params = {
-      utf8: $("#avatar_uploader").closest("form").find('input[name=utf8]').val(),
-      authenticity_token: $("#avatar_uploader").closest("form").find('input[name=authenticity_token]').val()
+      utf8: $("#" + avatar_button_class).closest("form").find('input[name=utf8]').val(),
+      authenticity_token: $("#" + avatar_button_class).closest("form").find('input[name=authenticity_token]').val()
     };
 
-    var buttonTitle = $("#avatar_uploader span").html();
+    var buttonTitle = $("#" + avatar_button_class + " span").html();
     var template = [
       '<span class="qq-uploader">',
       '<span class="qq-upload-drop-area"></span>',
@@ -1982,7 +1985,7 @@ jQuery.fn.enableAvatarUpload = function(opt){
 
         // Sets the original button title
         var buttonTitle = $this.attr("data-t-button");
-        $("#avatar_uploader span.title").html(buttonTitle);
+        $("#" + avatar_button_class + " span.title").html(buttonTitle);
 
         $this.find(".percentage").fadeOut(250);
         $this.find(".progress").fadeOut(250, function() {
@@ -1993,9 +1996,9 @@ jQuery.fn.enableAvatarUpload = function(opt){
       // Event definition: onSubmit, onProgress, onComplete, onCancel
 
       var onSubmit = function(id, fileName) {
-        var width = $("#avatar_uploader .qq-upload-button").outerWidth(true);
+        var width = $("#" + avatar_button_class + " .qq-upload-button").outerWidth(true);
 
-        $("#avatar_uploader .qq-upload-button").css("width", width);
+        $("#" + avatar_button_class + " .qq-upload-button").css("width", width);
 
         $this.find(".percentage").fadeIn(250);
         $this.find(".progress").fadeIn(250);
@@ -2005,7 +2008,7 @@ jQuery.fn.enableAvatarUpload = function(opt){
         $this.find(".explanation .small").html(uploadingMessage);
 
         // Removes the button title
-        $("#avatar_uploader span.title").html("");
+        $("#" + avatar_button_class + " span.title").html("");
       };
 
       var onProgress = function(id, fileName, loaded, total) {
@@ -2037,7 +2040,7 @@ jQuery.fn.enableAvatarUpload = function(opt){
         _gobackToInitialState();
       };
 
-      var action = $("#avatar_uploader").attr("data-url");
+      var action = $("#" + avatar_button_class).attr("data-url");
 
       uploader = setupUploader({ element: $element, action: action, params: params, debug: debug, template: template, onSubmit:  onSubmit, onProgress: onProgress, onComplete: onComplete, onCancel:  onCancel });
   })
