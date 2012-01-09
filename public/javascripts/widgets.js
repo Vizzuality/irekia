@@ -323,7 +323,8 @@ var GOD = (function() {
         data.id = id;
         data.$handler = $this;
         data.settings = settings;
-        data.$submit = $(this).next(".sharebox.email").find('input[type="submit"]');
+        data.$submit = $(this).next(".sharebox.email").find('a.share.submit');
+        data.$form = $(this).next(".sharebox.email").find('form');
         data.$input = $(this).next(".sharebox.email").find('input[type="text"]');
       }
 
@@ -334,6 +335,9 @@ var GOD = (function() {
 
       data.$submit.click(function(e) {
         e.stopPropagation();
+        e.preventDefault();
+
+        data.$form.submit();
 
         if (isEmpty(data.$input.val())) {
           data.$input.parent().addClass("error");
@@ -349,6 +353,7 @@ var GOD = (function() {
 
       $ps.next(".sharebox .share.twitter").bind('click', function(e) {
         e.stopPropagation();
+        e.preventDefault();
 
           var width  = 611,
           height = 400,
@@ -407,8 +412,9 @@ var GOD = (function() {
 
     function success(argument) {
       spinner.stop();
-			$form.fadeOut('fast',function(){
-				$form.find('input[type="submit"]').fadeIn(speed);
+			$form.parent().fadeOut('fast',function(){
+			  $ps.removeClass('open');
+				$form.find('.submit').fadeIn(speed);
 	      $form.find('input[type="text"]').val("");
 	      $form.find('.holder').fadeIn(speed);
 			});
@@ -416,15 +422,13 @@ var GOD = (function() {
       $ok = $('<div class="ok" />');
       $el.parents("li").find(".share.email").append($ok)
       $ok.animate({opacity:1, top:"-2px"}, speed, easing);
-
       return true;
     }
 
     function error(event, xhr, status) {
       spinner.stop();
       $form.find(".input_field").addClass("error");
-      $form.find('input[type="submit"]').fadeIn(speed);
-      return true;
+      $form.find('.submit').fadeIn(speed);
     }
 
     function removeOk($ok) {
