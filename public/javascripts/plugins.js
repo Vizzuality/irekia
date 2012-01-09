@@ -2136,7 +2136,7 @@ qq.FileUploaderBasic = function(o) {
     multiple: false,
     maxConnections: 3,
     // validation
-    allowedExtensions: [],
+    allowedExtensions: ['jpg', 'jpeg', 'png', 'gif'],
     sizeLimit: 0,
     minSizeLimit: 0,
     // events

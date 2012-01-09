@@ -389,9 +389,12 @@ White buttons
 Hacks (mostly ie7 and ie8 fixes)
 ========================================================================== */
 
+.ie8 #container .article .avatar-uploader {
+  .avatar_box .avatar .ieframe { display: none!important; }
+
+}
 /* ------------------------------------------------------------------------------ Publishing tools */
 
-.ie8 #container .article.publish .inner .content .section,
 .ie7 #container .article.publish .inner .content .section,
 .ie8 #container .article.publish .inner .content .section {
 
@@ -819,7 +822,7 @@ Hacks (mostly ie7 and ie8 fixes)
   &.right {
     float:right;
     right: 0;
-    // margin: 0 0 0 10px;
+    margin: 0 0 0 10px;
   }
 
   &.blue span {

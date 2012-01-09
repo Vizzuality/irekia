@@ -94,20 +94,23 @@ module ApplicationHelper
         avatar_html = link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area), :title => area.name, :class => "avatar #{size}"
       end
     else
-      if user_or_area.present? && user_or_area.profile_image.present?
-        user = user_or_area
-        image_url = size == 'big' ? user.profile_image_big : user.profile_image
-        avatar_html = link_to (image_tag(image_url) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
-      elsif user_or_area.present? && user_or_area.thumbnail.present?
-        area = user_or_area
-        avatar_html = link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => area.name, :class => "avatar #{size}"
-      elsif user_or_area.present? && user_or_area.id.present? && user_or_area.fullname.present?
-        user = user_or_area
-        profile_image = Image.for(user)
-        if profile_image.present?
-          image_url = size == 'big' ? profile_image.image.url : profile_image.image.thumb.url
+      begin
+        if user_or_area.present? && user_or_area.profile_image.present?
+          user = user_or_area
+          image_url = size == 'big' ? user.profile_image_big : user.profile_image
           avatar_html = link_to (image_tag(image_url) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
+        elsif user_or_area.present? && user_or_area.thumbnail.present?
+          area = user_or_area
+          avatar_html = link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => area.name, :class => "avatar #{size}"
+        elsif user_or_area.present? && user_or_area.id.present? && user_or_area.fullname.present?
+          user = user_or_area
+          profile_image = Image.for(user)
+          if profile_image.present?
+            image_url = size == 'big' ? profile_image.image.url : profile_image.image.thumb.url
+            avatar_html = link_to (image_tag(image_url) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
+          end
         end
+      rescue
       end
 
       avatar_html
@@ -180,10 +183,10 @@ module ApplicationHelper
     when 'Comment'
 
       i18n_key, i18n_scope = if notification.parent && notification.parent.author == current_user
-        ['.notifications.comments_content_author', 'shared.nav_bar_buttons.notifications.your_content']
-      else
-        ['.notifications.comments_content', 'shared.nav_bar_buttons.notifications.a_content']
-      end
+                               ['.notifications.comments_content_author', 'shared.nav_bar_buttons.notifications.your_content']
+                             else
+                               ['.notifications.comments_content', 'shared.nav_bar_buttons.notifications.a_content']
+                             end
 
       content_tag :li, raw(t(i18n_key, :count => count, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     when 'Proposal'
@@ -191,28 +194,28 @@ module ApplicationHelper
     when 'Argument'
 
       i18n_key, i18n_scope = if notification.parent && notification.parent.author == current_user
-        ['.notifications.argument_proposal_author', 'shared.nav_bar_buttons.notifications.your_content']
-      else
-        ['.notifications.argument_proposal', 'shared.nav_bar_buttons.notifications.a_content']
-      end
+                               ['.notifications.argument_proposal_author', 'shared.nav_bar_buttons.notifications.your_content']
+                             else
+                               ['.notifications.argument_proposal', 'shared.nav_bar_buttons.notifications.a_content']
+                             end
 
       content_tag :li, raw(t(i18n_key, :count => count, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     when 'Vote'
 
       i18n_key, i18n_scope = if notification.parent && notification.parent.author == current_user
-        ['.notifications.vote_proposal_author', 'shared.nav_bar_buttons.notifications.your_content']
-      else
-        ['.notifications.vote_proposal', 'shared.nav_bar_buttons.notifications.a_content']
-      end
+                               ['.notifications.vote_proposal_author', 'shared.nav_bar_buttons.notifications.your_content']
+                             else
+                               ['.notifications.vote_proposal', 'shared.nav_bar_buttons.notifications.a_content']
+                             end
 
       content_tag :li, raw(t(i18n_key, :count => count, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     when 'ContentUser'
 
       i18n_scope = if notification.parent && notification.parent.author == current_user
-        'shared.nav_bar_buttons.notifications.your_content'
-      else
-        'shared.nav_bar_buttons.notifications.a_content'
-      end
+                     'shared.nav_bar_buttons.notifications.your_content'
+                   else
+                     'shared.nav_bar_buttons.notifications.a_content'
+                   end
 
       content_tag :li, raw(t('.notifications.content_users', :count => count, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     end
@@ -234,8 +237,8 @@ module ApplicationHelper
 
   def message_for_twitter(content)
     if content and content.text
-    twitter_message_link = polymorphic_url(content.parent || content)
-    content.text.truncate(139 - twitter_message_link.length) + ' ' + twitter_message_link
+      twitter_message_link = polymorphic_url(content.parent || content)
+      content.text.truncate(139 - twitter_message_link.length) + ' ' + twitter_message_link
     end
   end
 
