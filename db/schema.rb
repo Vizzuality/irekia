@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
     t.string   "subtitle"
     t.text     "body"
     t.string   "source_url"
+    t.string   "iframe_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

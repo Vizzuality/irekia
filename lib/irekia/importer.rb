@@ -9,37 +9,43 @@ module Irekia
 
         last_news_date = 1.month.ago #News.maximum('published_at')
 
-        puts '=> reading and parsing the rss feed'
-        news_feed_url        = 'http://www.irekia.euskadi.net/es/news/news.rss'
-        news_feed_url        = news_feed_url + "?since=#{last_news_date.strftime('%Y%m%d')}" if last_news_date.present?
-        news_photos_feed_url = lambda{|news_id| "http://www.irekia.euskadi.net/api/photos/#{news_id}"}
+        news_feed_url        = lambda{|lang| "http://www.irekia.euskadi.net/#{lang}/news/news.rss"}
 
-        feed = Feedzirra::Feed.fetch_and_parse(news_feed_url)
-        news_entries = feed.entries
-        news_entries = feed.entries.select{|news| news.published > last_news_date} if last_news_date.present?
+        %w(es eu en).each do |lang|
+          puts ''
+          puts "=> reading and parsing the rss feed for language '#{lang}'"
 
-        puts "=> loading #{news_entries.count} news found"
-        news_entries.each do |news_item|
-          begin
-            news_images    = get_json(news_photos_feed_url.call(news_item.entry_id))
-            news_image_url = news_images.first['original'] if news_images.present?
+          url                  = news_feed_url.call(lang) + "?since=#{last_news_date.strftime('%Y%m%d')}" if last_news_date.present?
+          news_photos_feed_url = lambda{|news_id| "http://www.irekia.euskadi.net/api/photos/#{news_id}"}
 
-            news = News.new
-            news.news_data = NewsData.create(:title      => news_item.title.sanitize,
-                                             :body          => news_item.summary.sanitize,
-                                             :source_url    => news_item.url)
-            news.external_id = news_item.entry_id
-            news.moderated = true
-            news.news_data.image = Image.new({
-              :remote_image_url => news_image_url
-            }) if news_image_url.present?
-            news.areas << Area.all.sample
-            news.users << [User.patxi_lopez, User.politicians.sample].sample
-            news.save!
-            print '.'
-          rescue Exception => ex
-            puts ex
-            puts ex.backtrace
+          feed = Feedzirra::Feed.fetch_and_parse(url)
+          news_entries = feed.entries
+          news_entries = feed.entries.select{|news| news.published.present? && news.published > last_news_date} if last_news_date.present?
+
+          puts "=> loading #{news_entries.count} news found"
+          news_entries.each do |news_item|
+            begin
+              news_images    = get_json(news_photos_feed_url.call(news_item.entry_id))
+              news_image_url = news_images.first['original'] if news_images.present?
+
+              news = News.new
+              news.news_data = NewsData.create(:title      => (news_item.title.sanitize rescue nil),
+                                               :body       => (news_item.summary.sanitize rescue nil),
+                                               :source_url => (news_item.url rescue nil),
+                                               :iframe_url => (news_item.multimedia_iframe_src rescue nil))
+              news.external_id = news_item.entry_id
+              news.moderated = true
+              news.news_data.image = Image.new({
+                :remote_image_url => news_image_url
+              }) if news_image_url.present?
+              news.areas << Area.all.sample
+              news.users << [User.patxi_lopez, User.politicians.sample].sample
+              news.save!
+              print '.'
+            rescue Exception => ex
+              puts ex
+              puts ex.backtrace
+            end
           end
         end
       puts ''
@@ -137,15 +143,6 @@ module Irekia
         puts '===================================================='
         require 'open-uri'
 
-        communication_guide_server = {
-          :production => {:url => 'http://www2.irekia.euskadi.net'},
-          :others     => {
-            :url      => 'http://gc.efaber.net',
-            :options  => {
-              :http_basic_authentication => ['direcciones', 'helbideak']
-            }
-          }
-        }
         languages             = %w(es eu)
         server                = 'http://www2.irekia.euskadi.net'
         categories_url        = lambda{ |language| "#{server}/#{language}/categories.json" }
