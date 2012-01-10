@@ -57,8 +57,8 @@
 <div id="password_response" class="article password_reminder popover micro with_footer">
     <div class="inner">
       <div class="content">
-        <h2>Ahora, mira tu correo</h2>
-        <p>Te hemos mandado un email con instrucciones para recuperar tu contraseña. Síguelas para entrar en Irekia.</p>
+        <h2><%= t(".password_response.title") %></h2>
+        <p><%= t(".password_response.description") %></p>
       </div>
     </div>
     <span class="close"></span>
@@ -66,7 +66,7 @@
     <div class="bfooter">
       <div class="separator"></div>
       <div class="inner">
-        <%= link_to (content_tag :span, t(".password_reminder.accept")), "#", :class => "white_button close right" %>
+        <%= link_to (content_tag :span, t(".password_response.accept")), "#", :class => "white_button close right" %>
       </div>
     </div>
 

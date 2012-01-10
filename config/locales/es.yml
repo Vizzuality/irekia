@@ -496,6 +496,10 @@
       remember_me: Recordar mis datos
       login: Entra
       remember_me: Recordar mis datos
+      password_response:
+        title: Ahora, mira tu correo
+        description: Te hemos mandado un email con instrucciones para recuperar tu contraseña. Síguelas para entrar en Irekia.
+        accept: Aceptar
       password_reminder:
         title: Introduce tu email
         description: y te mandaremos instrucciones para recuperar tu contraseña
