@@ -56,6 +56,7 @@
       // Update the reference to $ps and the password popover
       $ps = $('#' + store);
       data.$password = $("#password_reminder");
+      data.$response = $("#password_response");
 
       _setupCallback(data, $this.attr('class'));
 
@@ -252,17 +253,26 @@
         _close(data.$password, data, true);
       });
 
-      data.$password.find('button[type="submit"]').bind('click', function(e) {
+      data.$password.find('a.white_button').bind('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
-        _close(data.$password, data, true);
+        _close(data.$password, data, false);
+        data.$password.find('form').submit();
+        _triggerOpenAnimation(data.$response, data);
+        _addResponsePasswordAction(data);
       });
 
       $(window).unbind(data.event);
       $(window).bind(data.event, function() {
         _close(data.$password, data, true);
       });
+    });
+  }
 
+  function _addResponsePasswordAction(data) {
+    $(window).unbind(data.event);
+    $(window).bind(data.event, function() {
+      _close(data.$response, data, true);
     });
   }
 
@@ -353,6 +363,7 @@
       $ps.data(store, data);
 
       data.$password = $("#password_reminder");
+      data.$response = $("#password_response");
 
       if ($ps.attr('class') == 'error') {
         _open($this);
@@ -457,17 +468,51 @@
         _closePassword(data.$password, data, true);
       });
 
-      data.$password.find(".recover-password").bind('click', function(e) {
+      data.$password.find('a.white_button').bind('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
-        _closePassword(data.$password, data, true);
+        _closePassword(data.$password, data, false);
+        data.$password.find('form').submit();
+        _triggerOpenAnimation(data.$response, data);
+        _addResponsePasswordAction(data);
       });
+
 
       $(window).unbind(data.event);
       $(window).bind("_close.password_reminder", function() {
         _closePassword(data.$password, data, true);
       });
     });
+  }
+
+  function _addResponsePasswordAction(data) {
+
+    data.$response.find(".close").bind('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      _closeResponse(data.$response, data, true);
+    });
+
+    $(window).unbind(data.event);
+    $(window).bind(data.event, function() {
+      _close(data.$response, data, true);
+    });
+  }
+
+  function _closeResponse($ps, data, hideLockScreen, callback) {
+
+    if (ie) {
+      $ps.fadeOut(data.settings.transitionSpeed, function() {
+        hideLockScreen && LockScreen.hide();
+        callback && callback();
+      });
+    } else {
+      $ps.animate({opacity:0, top:$ps.position().top - 100}, { duration: data.settings.transitionSpeed, specialEasing: { top: data.settings.easingMethod }, complete: function(){
+        $ps.hide();
+        hideLockScreen && LockScreen.hide();
+        callback && callback();
+      }});
+    }
   }
 
   function _closePassword($ps, data, hideLockScreen, callback) {

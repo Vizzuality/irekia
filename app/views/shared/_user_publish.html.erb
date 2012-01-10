@@ -3,7 +3,8 @@
     <header class="clearfix"><h2><%= t(".publish") %></h2></header>
 
     <div class="content">
-      <p>¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!</p>
+
+      <p><%= t(".description") %></p>
 
       <%= menu ([
                 { :link => (link_to t(".question"), "#"), :class => :selected},
@@ -35,7 +36,7 @@
 
                   <div class="extra">
 
-                    <strong>¿Quieres explicar la pregunta con más detalle?</strong>
+                    <strong><%= t(".section.proposal.explanation") %></strong>
                     <div class="input_field placeholder body_field textarea">
                       <%= question_data.text_area :body, :class => :body %>
                       <span class="holder">Describe la pregunta en pocas palabras</span>

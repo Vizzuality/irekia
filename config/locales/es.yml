@@ -458,7 +458,7 @@
           label: Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.
           upload: Sube una foto
           this_photo_will_be_published: Se publicará esta imagen.
-          explanation: ¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?
+          explanation: ¿Quieres explicar la propuesta con más detalle?
           label: Describe la propuesta en pocas palabras
           success:
             title: Tu propuesta ha sido publicada
@@ -486,6 +486,7 @@
       proposal: Propuesta
       continue: Continuar
       publish: Publicar
+      description: ¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!
     floating_login:
       not_yet_registered: ¿No tienes cuenta en Irekia?
       register_here: Regístrate aquí

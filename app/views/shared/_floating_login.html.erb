@@ -32,7 +32,7 @@
 </div>
 
 <div id="password_reminder" class="article password_reminder popover micro with_footer">
-  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :"data-remote" => true, :method => :post }) do |f| %>
     <div class="inner">
       <div class="content">
         <h2><%= t(".password_reminder.title") %></h2>
@@ -46,10 +46,29 @@
     <div class="bfooter">
       <div class="separator"></div>
       <div class="inner">
-        <button type="submit" class="white_button right"><span><%= t(".password_reminder.recover_password") %></span></button>
+        <%= link_to (content_tag :span, t(".password_reminder.recover_password")), "#", :class => "white_button right" %>
       </div>
     </div>
 
     <div class="t"></div><div class="f"></div>
   <% end -%>
+</div>
+
+<div id="password_response" class="article password_reminder popover micro with_footer">
+    <div class="inner">
+      <div class="content">
+        <h2>Ahora, mira tu correo</h2>
+        <p>Te hemos mandado un email con instrucciones para recuperar tu contraseña. Síguelas para entrar en Irekia.</p>
+      </div>
+    </div>
+    <span class="close"></span>
+
+    <div class="bfooter">
+      <div class="separator"></div>
+      <div class="inner">
+        <%= link_to (content_tag :span, t(".password_reminder.accept")), "#", :class => "white_button close right" %>
+      </div>
+    </div>
+
+    <div class="t"></div><div class="f"></div>
 </div>
