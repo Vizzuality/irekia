@@ -201,8 +201,9 @@ end
 
 def create_news(params)
 
-  news_data = NewsData.find_or_create_by_title(params[:title])
+  news_data = NewsData.new
 
+  news_data.title    = params[:title]
   news_data.subtitle = params[:subtitle]
   news_data.body     = params[:body]
   news_data.image    = Image.create :image => params[:image]
