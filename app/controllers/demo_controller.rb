@@ -10,4 +10,9 @@ class DemoController < ApplicationController
     render :layout => "slideshow"
   end
 
+  def datamapper
+    render :layout => "datamapper"
+  end
+
 end
+
