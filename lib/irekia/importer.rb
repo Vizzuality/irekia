@@ -147,27 +147,26 @@ module Irekia
           }
         }
         languages             = %w(es eu)
-        server                = communication_guide_server[Rails.env.production?? :production : :others]
-        server_options        = server[:options] || {}
-        categories_url        = lambda{ |language| "#{server[:url]}/#{language}/categories.json" }
-        areas_url             = lambda{ |language, id| "#{server[:url]}/#{language}/categories/#{id}.json" }
-        area_detail_url       = lambda{ |language, id| "#{server[:url]}/#{language}/entities/#{id}.json" }
-        politician_detail_url = lambda{ |language, id| "#{server[:url]}/#{language}/people/#{id}.json" }
+        server                = 'http://www2.irekia.euskadi.net'
+        categories_url        = lambda{ |language| "#{server}/#{language}/categories.json" }
+        areas_url             = lambda{ |language, id| "#{server}/#{language}/categories/#{id}.json" }
+        area_detail_url       = lambda{ |language, id| "#{server}/#{language}/entities/#{id}.json" }
+        politician_detail_url = lambda{ |language, id| "#{server}/#{language}/people/#{id}.json" }
 
         languages.each do |lang|
           puts "=> getting data for #{lang} language"
           puts "=> getting all categories"
-          categories = get_json(categories_url.call(lang), server_options)['categories']
+          categories = get_json(categories_url.call(lang))['categories']
 
           basque_government = categories.select{|c| ['gobierno vasco', 'eusko jaurlaritza'].include?((c['name'] || '').downcase.strip)}.first
           if basque_government.present?
 
             puts '=> getting all government areas'
-            areas = get_json(areas_url.call(lang, basque_government['id']), server_options)['categories']
+            areas = get_json(areas_url.call(lang, basque_government['id']))['categories']
 
             areas.each do |area|
               area_id = area['id']
-              area_detail = get_json(area_detail_url.call(lang, area_id), server_options)
+              area_detail = get_json(area_detail_url.call(lang, area_id))
               area_name = area['name'].gsub(/^Departamento de /, '').gsub(/ saila$/, '')
 
               Area.where(:external_id => area_id).each do |area_model|
@@ -181,7 +180,7 @@ module Irekia
               politicians_ids = area_detail['people'].map(&:first)
 
               politicians_ids.each do |politician_id|
-                politician = get_json(politician_detail_url.call(lang, politician_id), server_options)['person']
+                politician = get_json(politician_detail_url.call(lang, politician_id))['person']
 
                 begin
                   user = User.find_or_initialize_by_external_id(politician_id)
