@@ -4,6 +4,19 @@ puts ''
 puts 'Creating users...'
 puts '================='
 
+#############
+# Wadus
+#############
+
+create_user :name                  => 'usuario dado',
+            :lastname              => 'de baja',
+            :email                 => 'wadus@irekia.com',
+            :is_woman              => false
+
+#############
+# Admin
+#############
+
 @admin = create_user :name                  => 'Administrator',
                      :lastname              => 'Administrator',
                      :email                 => 'admin@example.com',
@@ -144,11 +157,3 @@ puts '================='
                     :users_following       => [@joel]
 
 
-#############
-# Wadus
-#############
-
-create_user :name                  => 'Wadus',
-            :lastname              => 'Wadus',
-            :email                 => 'wadus@irekia.com',
-            :is_woman              => false

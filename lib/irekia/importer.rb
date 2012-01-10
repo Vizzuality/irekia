@@ -11,6 +11,12 @@ module Irekia
 
         news_feed_url        = lambda{|lang| "http://www.irekia.euskadi.net/#{lang}/news/news.rss"}
 
+          #:others     => {
+            #:url      => 'http://gc.efaber.net',
+            #:options  => {
+              #:http_basic_authentication => ['direcciones', 'helbideak']
+            #}
+
         %w(es eu en).each do |lang|
           puts ''
           puts "=> reading and parsing the rss feed for language '#{lang}'"
@@ -25,6 +31,8 @@ module Irekia
           puts "=> loading #{news_entries.count} news found"
           news_entries.each do |news_item|
             begin
+              require 'ruby-debug'; debugger
+
               news_images    = get_json(news_photos_feed_url.call(news_item.entry_id))
               news_image_url = news_images.first['original'] if news_images.present?
 
@@ -111,7 +119,12 @@ module Irekia
 
               event = event_data_model.event || Event.new
 
-              event.users << [User.patxi_lopez, User.politicians.sample].sample
+              #event.users << [User.patxi_lopez, User.politicians.sample].sample
+              event.areas << Area.find_by_name(event_data_detail.event.organismo.title.text.strip) rescue nil
+              event_data_detail.event.tags.search('tag').each do |tag|
+                event.areas << Area.find_by_name(tag.text.strip) rescue nil
+                event.users << User.where('name || ' ' || lastname = ?', tag.text.strip).first rescue nil
+              end
 
               event.event_data = event_data_model
               event.location   = event_data.location

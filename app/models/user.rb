@@ -198,7 +198,7 @@ class User < ActiveRecord::Base
   end
 
   def self.citizens
-    joins(:role).where('roles.name' => 'Citizen').readonly(false)
+    joins(:role).where('roles.name' => 'Citizen').where('users.id <> ?', User.wadus.id).readonly(false)
   end
 
   def self.by_id(id)
@@ -269,7 +269,7 @@ class User < ActiveRecord::Base
   end
 
   def self.wadus
-    where('name = ? AND lastname = ?', 'Wadus', 'Wadus').first
+    where(:name => 'usuario dado', :lastname => 'de baja').first
   end
 
   def update_with_email_and_password(attributes = {})
