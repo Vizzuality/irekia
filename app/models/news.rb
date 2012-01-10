@@ -21,16 +21,10 @@ class News < Content
     } if areas.present?
 
     super({
-      :title_es           => title_es,
-      :title_eu           => title_eu,
-      :title_en           => title_en,
-      :subtitle_es        => subtitle_es,
-      :subtitle_eu        => subtitle_eu,
-      :subtitle_en        => subtitle_en,
-      :body_es            => body_es,
-      :body_eu            => body_eu,
-      :body_en            => body_en,
-      :area               => area
+      :title           => title,
+      :subtitle        => subtitle,
+      :body            => body,
+      :area            => area
     })
   end
 
