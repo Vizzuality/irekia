@@ -250,7 +250,7 @@
         name: Nombre
         lastname: Apellidos
         email: Email
-        password: Contraseña
+        password: La contraseña
         password_confirmation: Repetir contraseña
         current_password: Contraseña actual
         role_id: Rol
@@ -1767,6 +1767,12 @@
             other: '%{count} contenidos encontrados'
 
   users:
+    passwords:
+      edit:
+        title: Cambiar contraseña
+        new_password: Nueva contraseña
+        confirm_new_password: Repetir contraseña
+        save: Guardar
     settings:
       avatar:
         title: Tu avatar

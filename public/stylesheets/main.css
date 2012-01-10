@@ -18,7 +18,7 @@ header .content, header nav .content { width: 996px; margin: auto; }
 
 #main.content { margin: 60px; }
 
-#main.users.intro { background: url("/images/bubbles.png") no-repeat center top; padding: 20px 0 104px 0; }
+#main.passwords.update, #main.passwords.edit, #main.users.intro { background: url("/images/bubbles.png") no-repeat center top; padding: 20px 0 104px 0; }
 
 /* =============================================================================
 Basics
@@ -744,7 +744,14 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .social-links .twitter.disabled a { background-position: right -572px; }
 #container .article .social-links .twitter.disabled a:hover { text-decoration: none; cursor: default; }
 
-#container .article.with_form.change_password h1 { margin: 0 0 20px 0; }
+#container .article.thin.with_form.change_password { text-align: center; }
+#container .article.thin.with_form.change_password form .inner .content { width: 570px; padding: 30px 0 0 0; }
+#container .article.thin.with_form.change_password form .inner .content h1 { margin: 0 0 30px 0; }
+#container .article.thin.with_form.change_password form .inner .content a { font-size: 15px; }
+#container .article.thin.with_form.change_password form .inner .content p.errors { text-align: center; margin: 0; padding: 0; font-size: 17px; color: #E96F5F; }
+#container .article.thin.with_form.change_password form .inner fieldset { margin: auto; width: 415px; border: none!important; }
+#container .article.thin.with_form.change_password form .inner fieldset .bfooter .inner .white_button { padding-left: 40px; padding-right: 40px; }
+#container .article.thin.with_form.change_password form .inner fieldset .bfooter .inner div.center { padding: 17px 0; }
 
 #container .article.connect.with_remark { margin-bottom: 40px!important; }
 #container .article.connect.with_remark .remark { position: absolute; width: 100%; bottom: -35px; text-align: center; }
@@ -1236,8 +1243,7 @@ input.xlInput { width: 508px; height: 32px; padding: 0 9px; border: 1px solid rg
 #container .article.with_form .inner .field.error .input_field input[type="text"], #container .article.with_form .inner .field.error .input_field input[type="email"], #container .article.with_form .inner .field.error .input_field input[type="password"] { border: 1px solid #E96F5F; }
 #container .article.with_form .inner .field.error label { color: #E96F5F; }
 
-.search_box { float: left; padding-left: 10px; position: relative; margin-top: 10px; background: url("/images/inputs_sprite.png") no-repeat left -112px; /*input[type="submit"]:hover {
-background:url('/images/icons/magnifier.png') no-repeat 0 top;
+.search_box { float: left; padding-left: 10px; position: relative; margin-top: 10px; background: url("/images/inputs_sprite.png") no-repeat left -112px;   /*input[type="submit"]:hover { background:url('/images/icons/magnifier.png') no-repeat 0 top;
 } */ }
 .search_box input[type="submit"] { position: absolute; right: 10px; top: 11px; width: 14px; height: 14px; border: none; text-indent: -999em; background: url("/images/icons/magnifier.png") no-repeat 0 bottom; }
 .search_box input[type="text"], .search_box input[type="email"], .search_box input[type="password"] { display: block; width: 638px; height: 35px; background: url("/images/inputs_sprite.png") no-repeat right -75px; border: none; font-size: 15px; color: #666666; outline: none; }

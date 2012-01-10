@@ -1,16 +1,46 @@
-<h2>Change your password</h2>
+<div class="article thin change_password with_form with_footer">
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+    <div class="inner">
+      <div class="content">
+        <h1><%= t(".title") %></h1>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+        <%= f.hidden_field :reset_password_token %>
 
-  <p><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password %></p>
+        <fieldset>
 
-  <p><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.submit "Change my password" %></p>
-<% end %>
+          <div class="field pull-left<%= ' error' if resource.errors.size > 0 and resource.errors[:password] %>">
+            <%= f.label :password, t(".new_password") %>
+            <div class="input_field">
+              <%= f.password_field :password %>
+            </div>
+          </div>
 
-<%= render "devise/shared/links" %>
+          <div class="field pull-right<%= ' error' if resource.errors.size > 0 and resource.errors[:password_confirmation] %>">
+            <%= f.label :password_confirmation, t(".confirm_new_password") %>
+            <div class="input_field">
+              <%= f.password_field :password_confirmation %>
+            </div>
+          </div>
+
+          <% if resource.errors.size > 0 and resource.errors[:password] %>
+            <p class="errors"><%= resource.errors.full_messages.first %></p>
+          <% end %>
+
+        </fieldset>
+
+      </div>
+    </div>
+
+    <div class="bfooter">
+      <div class="separator"></div>
+      <div class="inner">
+        <div class="center">
+          <%= button t(".save"), :class => "white_button center" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="t"></div><div class="f"></div>
+</div>
