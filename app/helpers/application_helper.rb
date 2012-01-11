@@ -77,6 +77,8 @@ module ApplicationHelper
   end
 
   def path_for_user(user, params = {})
+    return '#' if user.id == User.wadus.id
+
     if user.is_politician
       politician_path(user.slug, params)
     else
