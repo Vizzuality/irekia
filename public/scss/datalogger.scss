@@ -287,6 +287,8 @@ form.signin {
     border: 1px solid #ccc;
     background:white;
 
+    &.error { border: 1px solid $error_color; }
+
     input {
       @include border-radius(0px);
       margin: 0; padding:7px;
@@ -297,6 +299,8 @@ form.signin {
       border: 0;
       -webkit-appearance: none;
       &.email { border-bottom: 1px solid #ccc; }
+      &.error { color: $error_color; }
+      &.email.error { border-bottom: 1px solid $error_color; }
     }
   }
 }

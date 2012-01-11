@@ -11,15 +11,15 @@ class DemoController < ApplicationController
   end
 
   def datalogger_login
-    render :layout => "datalogger"
+    render :layout => "datalogger.iphone"
   end
 
   def datalogger_publish
-    render :layout => "datalogger"
+    render :layout => "datalogger.iphone"
   end
 
   def datalogger_home
-    render :layout => "datalogger"
+    render :layout => "datalogger.iphone"
   end
 
 end

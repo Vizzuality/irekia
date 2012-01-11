@@ -2,9 +2,9 @@
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => :signin, :novalidate => "novalidate"}) do |f| %>
 
-  <fieldset>
-  <%= " class='error'" if flash and flash[:alert] %><%= content_tag 'span', flash[:alert] if flash %> <%= f.email_field :email, :placeholder => "Email", :class => :email  %>
-  <%= " class='error'" if flash and flash[:alert] %><%= f.password_field :password, :placeholder => "Password" %>
+  <fieldset<%= " class='error'" if flash and flash[:alert] %>>
+  <%= f.email_field :email, :placeholder => "Email", :class => "email#{' error' if flash and flash[:alert]}"  %>
+  <%= f.password_field :password, :placeholder => "Password", :class => "#{'error' if flash and flash[:alert]}" %>
   </fieldset>
 
   <button class="white_button center"><%= t('.sign_in') %></button>
