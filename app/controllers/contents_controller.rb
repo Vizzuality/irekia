@@ -126,7 +126,7 @@ class ContentsController < ApplicationController
     when Question
 
       if @content.answer.blank?
-        @user_has_requested_answer = current_user && current_user.has_requested_answer(params[:id])
+        @user_has_requested_answer = current_user && current_user.has_requested_answer(@content.id)
 
         if current_user.present? && current_user.politician?
           @new_answer = @content.build_answer
