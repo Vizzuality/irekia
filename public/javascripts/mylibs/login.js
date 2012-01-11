@@ -253,6 +253,7 @@
         _close(data.$password, data, true);
       });
 
+      data.$password.find('a.white_button').unbind('click');
       data.$password.find('a.white_button').bind('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
@@ -368,7 +369,6 @@
       if ($ps.attr('class') == 'error') {
         _open($this);
       }
-
     });
   };
 
@@ -411,7 +411,6 @@
       e.preventDefault();
       e.stopPropagation();
     }
-
     _open($(this));
   }
 
@@ -439,7 +438,6 @@
       $ps.fadeIn(data.settings.transitionSpeed, function() {
         callback && callback();
       });
-
     } else {
       $ps.css({"top":(top + 100) + "px", "left": left + "px"});
       $ps.show();
@@ -468,6 +466,7 @@
         _closePassword(data.$password, data, true);
       });
 
+      data.$password.find('a.white_button').unbind();
       data.$password.find('a.white_button').bind('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
