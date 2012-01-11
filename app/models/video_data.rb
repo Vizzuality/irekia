@@ -2,6 +2,8 @@ class VideoData < ActiveRecord::Base
   belongs_to :video
   belongs_to :answer_data
 
+  validates :html, :presence => true
+
   def video_url
     youtube_url || vimeo_url
   end
