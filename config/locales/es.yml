@@ -223,6 +223,10 @@
         <<: *errors_messages
       template:
         <<: *errors_template
+      models:
+        attributes:
+          user:
+            password: "La contraseña"
 
       full_messages:
         format: "%{attribute} %{message}"
@@ -250,7 +254,7 @@
         name: Nombre
         lastname: Apellidos
         email: Email
-        password: La contraseña
+        password: Contraseña
         password_confirmation: Repetir contraseña
         current_password: Contraseña actual
         role_id: Rol
