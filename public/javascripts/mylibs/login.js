@@ -245,7 +245,9 @@
       e.preventDefault();
       _close(data.$ps, data);
 
-      _triggerOpenAnimation(data.$password, data);
+      _triggerOpenAnimation(data.$password, data, function() {
+        data.$password.find("input[type='email']").focus();
+      });
 
       data.$password.find(".close").bind('click', function(e) {
         e.stopPropagation();
@@ -457,7 +459,9 @@
 
       LockScreen.show(function(){
         GOD.subscribe("_close.password_reminder");
-        _triggerOpenAnimation(data.$password, data);
+        _triggerOpenAnimation(data.$password, data, function() {
+          data.$password.find("input[type='email']").focus();
+        });
       });
 
       data.$password.find(".close").bind('click', function(e) {
