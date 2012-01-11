@@ -1,23 +1,28 @@
 class ApplicationController < ActionController::Base
   DEMO_USER = {'virekia' => 'gub5mar'}
 
-  unless Rails.application.config.consider_all_requests_local
+  #unless Rails.application.config.consider_all_requests_local
     rescue_from Exception,                           :with => :render_error
     rescue_from AbstractController::ActionNotFound,  :with => :render_not_found
     rescue_from ActiveRecord::RecordNotFound,        :with => :render_not_found
     rescue_from ActionController::RoutingError,      :with => :render_not_found
     rescue_from ActionController::UnknownController, :with => :render_not_found
     rescue_from ActionController::UnknownAction,     :with => :render_not_found
-  end
+  #end
 
   clear_helpers
   protect_from_forgery
+  before_filter :valid_locale?
   before_filter :set_locale
   before_filter :authentication_check
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
   before_filter :current_user_valid?
   before_filter :get_areas
   before_filter :setup_search
+
+  def valid_locale?
+    raise ActionController::RoutingError, 'invalid locale' unless params[:locale].blank? || I18n.available_locales.include?(params[:locale].to_sym)
+  end
 
   def set_locale
     user_locale    = current_user.locale if user_signed_in? && current_user.locale.present?
@@ -56,6 +61,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_not_found
+    @areas_footer ||= Area.for_footer.all
     render :partial => 'shared/not_found', :status => 404
   end
 
