@@ -118,11 +118,11 @@ Irekia::Application.routes.draw do
       resources :images, :only => [:create, :update, :destroy]
 
 
-      match "datamapper" => 'demo#datamapper'
+      match "datalogger/login" => 'demo#datalogger_login'
+      match "datalogger/home" => 'demo#datalogger_home'
 
       resources :demo do
         member do
-          get :datamapper
           get :user_publish
           get :politician_publish
           get :event_edit
