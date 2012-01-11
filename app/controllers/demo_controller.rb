@@ -10,4 +10,17 @@ class DemoController < ApplicationController
     render :layout => "slideshow"
   end
 
+  def datalogger_login
+    render :layout => "datalogger"
+  end
+
+  def datalogger_publish
+    render :layout => "datalogger"
+  end
+
+  def datalogger_home
+    render :layout => "datalogger"
+  end
+
 end
+

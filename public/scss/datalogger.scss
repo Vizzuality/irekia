@@ -1,0 +1,454 @@
+@import "compass/css3";
+@import "helpers";
+
+body {
+  background: $silver;
+  padding: 0; margin: 0;
+  font-family: "Helvetica", sans-serif;
+}
+
+#container {
+  width:320px;
+  text-align:center;
+  .content {
+    width:298px;
+    margin: 60px auto;
+    text-align:left;
+    overflow:hidden;
+  }
+}
+
+a { color: #A0ABB2; text-decoration:none; }
+ul { list-style:none; margin: 0; padding: 0; }
+p { padding: 0; margin:0; }
+
+.loader {
+  padding: 20px 0 40px 0;
+  text-align: center;
+  color: #9FABB2;
+  font-size:13px;
+}
+
+.logo {
+  background:url('/images/datalogger/logo.png') no-repeat;
+  width: 180px; height: 57px;
+}
+
+header {
+  height:64px;
+  background: white;
+  border-bottom: 1px solid #C6CCD1;
+  position:fixed;
+  top:0;
+  width:320px;
+  z-index: 300;
+
+  .white_button, .icon { z-index: 300; }
+  .white_button {
+    position:relative;
+    float:left;
+    margin: 10px 0 0 9px;
+    padding:12px 14px;
+  }
+
+  h2 { position:absolute; width:100%; float: left; line-height: 30px;
+  color: #465866; font-size:21px; z-index: 310; }
+
+  .icon {
+    position:relative;
+    display:block;
+    float:right;
+    text-indent:-9999px;
+    margin: 10px 9px 0 0;
+
+    &.edit {
+      background:url('/images/datalogger/edit.png') no-repeat;
+      width: 42px; height: 43px;
+    }
+
+    &.settings {
+      background:url('/images/datalogger/settings.png') no-repeat;
+      width: 41px; height: 42px;
+    }
+  }
+}
+
+.paper {
+  text-align:left;
+  position:relative;
+  background: url('/images/datalogger/paper_bkg.png');
+  margin-top: 210px;
+  padding: 7px 25px;
+
+  textarea {
+    border:none;
+    background:none;
+    outline: none;
+    width:280px;
+    height:400px;
+    color: #465866;
+    font-size:17px;
+    font-family: "Helvetica";
+    font-weight:100;
+    z-index:50;
+  }
+}
+
+.header {
+  background: white;
+  position:fixed;
+  width:320px - 13*2;
+  padding: 10px 13px 15px 13px;
+  border-bottom: 1px solid #E7EAED;
+  text-align: left;
+  z-index: 300;
+
+  top: 65px;
+
+  .shadow {
+    background: url('/images/datalogger/shadow.png') repeat-x;
+    bottom:-30px;
+    position:relative;
+    height: 14px;
+    z-index:100;
+    width:320px;
+    left:-13px;
+  }
+
+
+
+  h1 {
+    padding:0;
+    margin: 0 0 13px 0;
+    font-size: 23px;
+    color: #465866;
+  }
+  .footer {
+    font-size:11px;
+    color: #465866;
+    a { color: $pink; }
+  }
+}
+
+.article {
+  position: relative;
+  width: 297px;
+  margin: 0px auto 40px auto;
+
+  .t, .f { height: 10px; width: 100%; position: absolute; }
+  .t { top: -10px; background: url('/images/datalogger/box_header.png') no-repeat; }
+  .f { bottom: -10px; background: url('/images/datalogger/box_footer.png') no-repeat; }
+
+  .inner {
+    clear: both;
+    width: 297px;
+    padding: 0px;
+    background: url('/images/datalogger/box_body.png');
+
+    .content {
+      ul {
+        width:296px;
+        li {
+          padding: 15px 15px 15px 15px;
+          color: #465866;
+          font-size:13px;
+          border-bottom: 1px solid #E7EAED;
+          &:last-child { border:none; }
+          .footer { margin: 10px 0 0 0; font-size: 11px; color: #465866; }
+        }
+      }
+    }
+  }
+}
+
+.article .inner .content ul.filter {
+  clear:both;
+  overflow:hidden;
+    border:none;
+  background: #F6F6F7;
+  @include border-radius(4px);
+  margin: auto;
+  padding: 0;
+  width:271px;
+  li {
+    float:left;
+    font-size: 15px;
+    color: #465866;
+    width:120px;
+    margin: 0;
+    padding:3px;
+    border:none;
+
+    a {
+      display:block;
+      text-align:center;
+      padding: 12px 3px;
+      font-size: 15px;
+      color: $pink;
+      border:none;
+      background:none;
+    }
+
+    &.selected {
+        width:130px;
+      a {
+        border: 1px solid #E7EAED;
+        @include border-radius(4px);
+        background:white;
+        color: #465866;
+      }
+    }
+  }
+}
+
+.article .inner .content ul.counters {
+  clear:both;
+  overflow:hidden;
+  border-bottom: 1px solid #E7EAED;
+  margin: 0;
+  top: -10px;
+  position:relative;
+  z-index: 100;
+
+  li {
+    float:left;
+    width: 98px;
+    padding: 16px 0px;
+    border: none;
+    border-right: 1px solid #E7EAED;
+    text-align: center;
+    font-size: 13px; color: #465866;
+    strong { display: block; margin: 0 0 0px 0; font-size: 37px; color: #EB005F; }
+    &:last-child { border:none;}
+  }
+}
+
+ul.menu {
+  clear:both;
+  overflow:hidden;
+  margin-bottom: 20px;
+
+  li {
+    padding:0;
+    margin: 0;
+    float:left;
+    text-align:center;
+
+    a {
+      display:block;
+      height:96px;
+      text-decoration:none;
+      color: #465866;
+      font-size:13px;
+      line-height:160px;
+      &.checkin { width: 102px; background:url('/images/datalogger/menu_checkin.png') no-repeat; }
+      &.comment { width:98px; background:url('/images/datalogger/menu_comment.png') no-repeat;}
+      &.photo { width:98px;  background:url('/images/datalogger/menu_photo.png') no-repeat; }
+    }
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+
+  .article .t { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_header@2x.png') no-repeat; }
+  .article .f { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_footer@2x.png') no-repeat; }
+  .article .inner { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_body@2x.png') repeat; }
+
+  .paper {
+    background: url('/images/datalogger/paper_bkg@2x.png');
+    -webkit-background-size: 315px 316px;
+  }
+
+  header .icon {
+    &.settings {
+      background:url('/images/datalogger/settings@2x.png') no-repeat;
+      -webkit-background-size: 41px 42px;
+    }
+    &.edit {
+      background:url('/images/datalogger/edit@2x.png') no-repeat;
+      -webkit-background-size: 42px 43px;
+    }
+  }
+  ul.menu li a {
+    &.checkin { -webkit-background-size: 102px 96px; background:url('/images/datalogger/menu_checkin@2x.png') no-repeat; }
+    &.comment { -webkit-background-size: 98px  96px; background:url('/images/datalogger/menu_comment@2x.png') no-repeat;}
+    &.photo   { -webkit-background-size: 98px  96px; background:url('/images/datalogger/menu_photo@2x.png') no-repeat; }
+  }
+}
+
+
+
+.white_button, .article .white_button, #container .article .my_opinion .white_button {
+  /* ------------------------------------------------------------------------------ Colors */
+  &.pink   { color:$pink; }
+  &.blue   { color:$link_color; }
+  &.orange { color:$orange; }
+  &.green  { color:$agree_color; }
+  &.in_favor {
+    color: $agree_color;
+
+    &.selected {
+      background: #75B100;
+      color: $white;
+      text-shadow: #4E7500 1px 1px 0;
+    }
+
+    &.selected:hover {
+      background:#75B100;
+      color:$white;
+      span { color: $white; }
+      text-shadow: #4E7500 1px 1px 0;
+    }
+
+    &:hover {
+      background:#75B100;
+      color:$white;
+      span { color: white; }
+      text-shadow: none;
+    }
+  }
+
+  &.against   {
+    color: $against_color;
+
+    &.selected {
+      background:#FF6600;
+      color:$white;
+      text-shadow: #B74400 1px 1px 0;
+    }
+
+    &.selected:hover {
+      background:#FF6600;
+      color:$white;
+      span { color: $white; }
+      text-shadow: #B74400 1px 1px 0;
+    }
+
+    &:hover {
+      background:#FF6600;
+      color:$white;
+      span { color: white; }
+      text-shadow: none;
+    }
+  }
+
+  &.remove {
+    color: $white;
+    background: $pink;
+    text-shadow: #AC0743 1px 1px 0;
+
+    &:hover {
+      color: $white;
+      background: $pink;
+    }
+  }
+
+  float:left;
+  padding:8px 14px;
+  color:$pink;
+  font-weight:bold;
+  font-size:15px;
+
+  text-decoration: none;
+
+  border:1px solid rgba(0,0,0,.2);
+
+  @include border-radius(5px);
+  @include box-shadow(0 1px 1px 0 $white);
+  @include transition-property(all);
+  @include transition-duration(300ms);
+
+  background: rgb(255,255,255); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(244,246,249,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(244,246,249,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* Opera11.10+ */
+  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* IE10+ */
+  background: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* W3C */
+}
+
+// white button right-aligned
+#container .article .bfooter .white_button.right,
+#container .article .white_button.right,
+#container .article .article .white_button.right {
+  float:right;
+  right:0;
+  width:auto;
+}
+
+// white button left-aligned
+#container .article .bfooter .white_button.left,
+#container .article .white_button.left,
+#container .article .article .white_button.left {
+  float:left;
+  left:0;
+  width:auto;
+}
+
+// white button centered
+#container .article .bfooter .white_button.center,
+#container .article .white_button.center,
+#container .article .article .white_button.center {
+  float:none;
+  margin:auto;
+}
+
+.white_button.disabled,
+.article .white_button.disabled {
+  color:#bbb; border: 1px solid #eee;
+  background: rgb(255,255,255); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(244,246,249,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(244,246,249,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* Opera11.10+ */
+  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* IE10+ */
+  background: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* W3C */
+}
+
+.white_button.disabled:hover,
+.article .white_button.disabled:hover {
+  color:#bbb;
+  border: 1px solid #eee;
+
+  background: rgb(255,255,255); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(244,246,249,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(244,246,249,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* Opera11.10+ */
+  background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* IE10+ */
+  background: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(244,246,249,1) 100%); /* W3C */
+
+  @include box-shadow(none);
+}
+
+.white_button:hover, .article .white_button:hover, li.publish a:hover {
+  color:#333;
+  background-color:rgba(244,246,249,0.76);
+  @include box-shadow(0 0 7px rgba(43, 140, 194, .3));
+  text-decoration: none;
+}
+
+.white_button:active,
+.article .white_button:active {
+  color:#333;
+  font-weight:bold;
+  font-size:15px;
+
+  border:1px solid rgba(0,0,0,.2);
+
+  @include border-radius(5px);
+  @include box-shadow(0 1px 1px 0 $white);
+
+  background: -moz-linear-gradient(top, rgba(244,246,249,0.76) 0%, rgba(255,255,255,0.76) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,246,249,0.76)), color-stop(100%,rgba(255,255,255,0.76))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(244,246,249,0.76) 0%,rgba(255,255,255,0.76) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(244,246,249,0.76) 0%, rgba(255,255,255,0.76) 100%); /* Opera11.10+ */
+  background: -ms-linear-gradient(top, rgba(244,246,249,0.76) 0%, rgba(255,255,255,0.76) 100%); /* IE10+ */
+  background: linear-gradient(top,rgba(244,246,249,0.76) 0%,rgba(255,255,255,0.76)  100%); /* W3C */
+
+  span {background-position:0 0;}
+}
+
+
+
+
