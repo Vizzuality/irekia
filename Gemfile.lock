@@ -29,6 +29,7 @@ GEM
       activesupport (= 3.0.10)
     activesupport (3.0.10)
     addressable (2.2.6)
+    agent_orange (0.1.3)
     alias (0.2.2)
     archive-tar-minitar (0.5.2)
     arel (2.0.10)
@@ -285,6 +286,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  agent_orange (= 0.1.3)
   bullet
   capistrano
   capistrano-ext
@@ -297,7 +299,7 @@ DEPENDENCIES
   escape_utils
   feedzirra (= 0.1.1)
   ffaker (= 1.8.1)
-  friendly_id (~> 4.0.0.rc2)
+  friendly_id (= 4.0.0)
   i18n_routing (= 0.5.0)
   irbtools
   json (= 1.6.1)

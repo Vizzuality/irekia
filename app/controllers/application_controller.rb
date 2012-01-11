@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   clear_helpers
+
   protect_from_forgery
   before_filter :valid_locale?
   before_filter :set_locale
@@ -19,6 +20,8 @@ class ApplicationController < ActionController::Base
   before_filter :current_user_valid?
   before_filter :get_areas
   before_filter :setup_search
+
+  layout :irekia_layout
 
   def valid_locale?
     raise ActionController::RoutingError, 'invalid locale' unless params[:locale].blank? || I18n.available_locales.include?(params[:locale].to_sym)
@@ -34,6 +37,11 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options = {})
     {:locale => I18n.locale}
+  end
+
+  def irekia_layout
+    ua = AgentOrange::UserAgent.new(request.user_agent)
+    ua.device.platform.to_s == 'Apple iPhone' ? 'datalogger' : 'application'
   end
 
   def authentication_check

@@ -18,7 +18,8 @@ gem 'feedzirra', '0.1.1'
 gem 'ri_cal', '0.8.8'
 gem 'rdoc', '3.11'
 gem 'i18n_routing', '0.5.0'
-gem 'friendly_id', '~> 4.0.0.rc2'
+gem 'friendly_id', '4.0.0'
+gem 'agent_orange', '0.1.3'
 
 group :development do
   gem 'capistrano'
