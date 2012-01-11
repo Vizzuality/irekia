@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
   skip_before_filter :authenticate_user!, :only => [:index, :agenda, :change_locale]
 
-  respond_to :html, :json, :ics
+  respond_to :html, :json, :ics, :iphone
 
   def index
     get_areas

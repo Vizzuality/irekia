@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :valid_locale?
   before_filter :set_locale
+  before_filter :analyze_useragent
   before_filter :authentication_check
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
   before_filter :current_user_valid?
@@ -39,9 +40,9 @@ class ApplicationController < ActionController::Base
     {:locale => I18n.locale}
   end
 
-  def irekia_layout
-    ua = AgentOrange::UserAgent.new(request.user_agent)
-    ua.device.platform.to_s == 'Apple iPhone' ? 'datalogger' : 'application'
+  def analyze_useragent
+    @ua = AgentOrange::UserAgent.new(request.user_agent)
+    request.format = :iphone if iphone_request?
   end
 
   def authentication_check
@@ -80,6 +81,15 @@ class ApplicationController < ActionController::Base
   def current_user_valid?
     redirect_to edit_user_path(current_user.id) if current_user && current_user.invalid?
   end
+
+  def iphone_request?
+    @ua.device.platform.to_s == 'Apple iPhone'
+  end
+
+  def irekia_layout
+    iphone_request?? 'datalogger' : 'application'
+  end
+  private :irekia_layout
 
   def get_areas
     @areas = Area.names_and_ids.all
