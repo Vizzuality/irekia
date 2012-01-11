@@ -9,7 +9,7 @@
 body { background: #f2f5f8; padding: 0; margin: 0; font-family: "Helvetica", sans-serif; }
 
 #container { width: 320px; text-align: center; }
-#container .content { width: 298px; margin: 8px auto; text-align: left; }
+#container .content { width: 298px; margin: 60px auto; text-align: left; overflow: hidden; }
 
 a { color: #A0ABB2; text-decoration: none; }
 
@@ -21,13 +21,22 @@ p { padding: 0; margin: 0; }
 
 .logo { background: url("/images/datalogger/logo.png") no-repeat; width: 180px; height: 57px; }
 
-header { height: 64px; background: white; border-bottom: 1px solid #C6CCD1; position: relative; }
-header .white_button, header .icon { z-index: 100; }
+header { height: 64px; background: white; border-bottom: 1px solid #C6CCD1; position: fixed; top: 0; width: 320px; z-index: 300; }
+header .white_button, header .icon { z-index: 300; }
 header .white_button { position: relative; float: left; margin: 10px 0 0 9px; padding: 12px 14px; }
-header h2 { position: absolute; width: 100%; float: left; line-height: 30px; color: #465866; font-size: 21px; z-index: 10; }
+header h2 { position: absolute; width: 100%; float: left; line-height: 30px; color: #465866; font-size: 21px; z-index: 310; }
 header .icon { position: relative; display: block; float: right; text-indent: -9999px; margin: 10px 9px 0 0; }
 header .icon.edit { background: url("/images/datalogger/edit.png") no-repeat; width: 42px; height: 43px; }
 header .icon.settings { background: url("/images/datalogger/settings.png") no-repeat; width: 41px; height: 42px; }
+
+.paper { text-align: left; position: relative; background: url("/images/datalogger/paper_bkg.png"); margin-top: 210px; padding: 7px 25px; }
+.paper textarea { border: none; background: none; outline: none; width: 280px; height: 400px; color: #465866; font-size: 17px; font-family: "Helvetica"; font-weight: 100; z-index: 50; }
+
+.header { background: white; position: fixed; width: 294px; padding: 10px 13px 15px 13px; border-bottom: 1px solid #E7EAED; text-align: left; z-index: 300; top: 65px; }
+.header .shadow { background: url("/images/datalogger/shadow.png") repeat-x; bottom: -30px; position: relative; height: 14px; z-index: 100; width: 320px; left: -13px; }
+.header h1 { padding: 0; margin: 0 0 13px 0; font-size: 23px; color: #465866; }
+.header .footer { font-size: 11px; color: #465866; }
+.header .footer a { color: #f10063; }
 
 .article { position: relative; width: 297px; margin: 0px auto 40px auto; }
 .article .t, .article .f { height: 10px; width: 100%; position: absolute; }
@@ -60,6 +69,7 @@ ul.menu li a.photo { width: 98px; background: url("/images/datalogger/menu_photo
 @media only screen and (-webkit-min-device-pixel-ratio: 2) { .article .t { -webkit-background-size: 297px 10px; background: url("/images/datalogger/box_header@2x.png") no-repeat; }
   .article .f { -webkit-background-size: 297px 10px; background: url("/images/datalogger/box_footer@2x.png") no-repeat; }
   .article .inner { -webkit-background-size: 297px 10px; background: url("/images/datalogger/box_body@2x.png") repeat; }
+  .paper { background: url("/images/datalogger/paper_bkg@2x.png"); -webkit-background-size: 315px 316px; }
   header .icon.settings { background: url("/images/datalogger/settings@2x.png") no-repeat; -webkit-background-size: 41px 42px; }
   header .icon.edit { background: url("/images/datalogger/edit@2x.png") no-repeat; -webkit-background-size: 42px 43px; }
   ul.menu li a.checkin { -webkit-background-size: 102px 96px; background: url("/images/datalogger/menu_checkin@2x.png") no-repeat; }

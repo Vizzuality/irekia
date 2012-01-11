@@ -12,8 +12,9 @@ body {
   text-align:center;
   .content {
     width:298px;
-    margin: 8px auto;
+    margin: 60px auto;
     text-align:left;
+    overflow:hidden;
   }
 }
 
@@ -37,9 +38,12 @@ header {
   height:64px;
   background: white;
   border-bottom: 1px solid #C6CCD1;
-  position:relative;
+  position:fixed;
+  top:0;
+  width:320px;
+  z-index: 300;
 
-  .white_button, .icon { z-index: 100; }
+  .white_button, .icon { z-index: 300; }
   .white_button {
     position:relative;
     float:left;
@@ -48,7 +52,7 @@ header {
   }
 
   h2 { position:absolute; width:100%; float: left; line-height: 30px;
-  color: #465866; font-size:21px; z-index: 10; }
+  color: #465866; font-size:21px; z-index: 310; }
 
   .icon {
     position:relative;
@@ -66,6 +70,63 @@ header {
       background:url('/images/datalogger/settings.png') no-repeat;
       width: 41px; height: 42px;
     }
+  }
+}
+
+.paper {
+  text-align:left;
+  position:relative;
+  background: url('/images/datalogger/paper_bkg.png');
+  margin-top: 210px;
+  padding: 7px 25px;
+
+  textarea {
+    border:none;
+    background:none;
+    outline: none;
+    width:280px;
+    height:400px;
+    color: #465866;
+    font-size:17px;
+    font-family: "Helvetica";
+    font-weight:100;
+    z-index:50;
+  }
+}
+
+.header {
+  background: white;
+  position:fixed;
+  width:320px - 13*2;
+  padding: 10px 13px 15px 13px;
+  border-bottom: 1px solid #E7EAED;
+  text-align: left;
+  z-index: 300;
+
+  top: 65px;
+
+  .shadow {
+    background: url('/images/datalogger/shadow.png') repeat-x;
+    bottom:-30px;
+    position:relative;
+    height: 14px;
+    z-index:100;
+    width:320px;
+    left:-13px;
+  }
+
+
+
+  h1 {
+    padding:0;
+    margin: 0 0 13px 0;
+    font-size: 23px;
+    color: #465866;
+  }
+  .footer {
+    font-size:11px;
+    color: #465866;
+    a { color: $pink; }
   }
 }
 
@@ -192,6 +253,11 @@ ul.menu {
   .article .t { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_header@2x.png') no-repeat; }
   .article .f { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_footer@2x.png') no-repeat; }
   .article .inner { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_body@2x.png') repeat; }
+
+  .paper {
+    background: url('/images/datalogger/paper_bkg@2x.png');
+    -webkit-background-size: 315px 316px;
+  }
 
   header .icon {
     &.settings {

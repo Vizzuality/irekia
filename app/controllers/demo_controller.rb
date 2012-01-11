@@ -14,6 +14,10 @@ class DemoController < ApplicationController
     render :layout => "datalogger"
   end
 
+  def datalogger_publish
+    render :layout => "datalogger"
+  end
+
   def datalogger_home
     render :layout => "datalogger"
   end

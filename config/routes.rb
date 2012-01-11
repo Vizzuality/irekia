@@ -120,6 +120,7 @@ Irekia::Application.routes.draw do
 
       match "datalogger/login" => 'demo#datalogger_login'
       match "datalogger/home" => 'demo#datalogger_home'
+      match "datalogger/publish" => 'demo#datalogger_publish'
 
       resources :demo do
         member do
