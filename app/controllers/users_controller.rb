@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   before_filter :get_agenda,                   :only => [:agenda]
   before_filter :paginate,                     :only => [:show, :actions, :questions, :proposals]
 
-  respond_to :html, :json, :ics
+  respond_to :html, :json, :ics, :iphone
 
   def show
     redirect_to_politician_page?
