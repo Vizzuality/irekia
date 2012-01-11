@@ -1,6 +1,6 @@
 <% content_for :facebook_meta do -%>
   <meta property="og:title" content="Irekia - <%= @content.title %>" />
-  <meta property="og:description" content="<%= @content.body.strip.truncate(128) %>" />
+  <meta property="og:description" content="<%= @content.body.strip.truncate(128) if @content.body.present? %>" />
   <meta property="og:image" content="<%= image_url @content.news_data.image.content_url if @content.news_data.image.present? %>" />
 <% end -%>
 
