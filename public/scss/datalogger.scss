@@ -32,6 +32,7 @@ p { padding: 0; margin:0; }
 .logo {
   background:url('/images/datalogger/logo.png') no-repeat;
   width: 180px; height: 57px;
+  margin:30px auto 18px auto;
 }
 
 header {
@@ -164,7 +165,7 @@ header {
 .article .inner .content ul.filter {
   clear:both;
   overflow:hidden;
-    border:none;
+  border:none;
   background: #F6F6F7;
   @include border-radius(4px);
   margin: auto;
@@ -190,7 +191,7 @@ header {
     }
 
     &.selected {
-        width:130px;
+      width:130px;
       a {
         border: 1px solid #E7EAED;
         @include border-radius(4px);
@@ -277,6 +278,28 @@ ul.menu {
 }
 
 
+form.signin {
+  fieldset {
+    width:240px;
+    margin: 0 auto 20px auto;
+    padding:0;
+    @include border-radius(4px);
+    border: 1px solid #ccc;
+    background:white;
+
+    input {
+      @include border-radius(0px);
+      margin: 0; padding:7px;
+      width:240px - 7*2;
+      font-size: 15px;
+      color: #465866;
+      background:none;
+      border: 0;
+      -webkit-appearance: none;
+      &.email { border-bottom: 1px solid #ccc; }
+    }
+  }
+}
 
 .white_button, .article .white_button, #container .article .my_opinion .white_button {
   /* ------------------------------------------------------------------------------ Colors */
@@ -387,7 +410,7 @@ ul.menu {
 
 // white button centered
 #container .article .bfooter .white_button.center,
-#container .article .white_button.center,
+#container .white_button.center,
 #container .article .article .white_button.center {
   float:none;
   margin:auto;

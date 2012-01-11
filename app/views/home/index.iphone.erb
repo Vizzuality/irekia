@@ -1,23 +1,11 @@
-<div id="sign_in"<%= " class='error'" if flash and flash[:alert] %>>
-  <div class="content">
-    <h1><%= t('.access_irekia') %></h1>
-    <p><%= t('.forgotten_password') %> <%= link_to t('.get_it_here'), new_password_path(resource_name), :class => :password_reminder %></p>
-    <!-- <p><%= t('.not_yet_registered') %> <%= link_to t('.register_here'), intro_users_path %></p> -->
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:novalidate => "novalidate"}) do |f| %>
+<div class="logo"></div>
 
-      <p<%= " class='error'" if flash and flash[:alert] %>><%= f.label :email %> <%= content_tag 'span', flash[:alert] if flash %> <%= f.email_field :email, :class => :mInput %>
-      <p<%= " class='error'" if flash and flash[:alert] %>><%= f.label :password %> <%= f.password_field :password, :class => :mInput %></p>
-      <p class="remember_me"><%= f.check_box :remember_me, :class => "hidden" %> <a class="checkbox">Recordar mis datos</a></p>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => :signin, :novalidate => "novalidate"}) do |f| %>
 
-      <div class="bfooter clearfix">
-      <div class="left">
-        <%= link_to t('.facebook_signin'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin, :class => :facebook %>
-        <%= link_to t('.twitter_signin'), user_omniauth_authorize_path(:twitter), :id => :twitter_signin, :class => :twitter %>
-      </div>
-      <div class="right">
-        <button class="white_button right"><span><%= t('.sign_in') %></span></button>
-      </div>
-      </div>
-    <% end %>
-  </div>
-</div>
+  <fieldset>
+  <%= " class='error'" if flash and flash[:alert] %><%= content_tag 'span', flash[:alert] if flash %> <%= f.email_field :email, :placeholder => "Email", :class => :email  %>
+  <%= " class='error'" if flash and flash[:alert] %><%= f.password_field :password, :placeholder => "Password" %>
+  </fieldset>
+
+  <button class="white_button center"><%= t('.sign_in') %></button>
+<% end %>

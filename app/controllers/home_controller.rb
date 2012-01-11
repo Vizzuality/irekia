@@ -8,6 +8,7 @@ class HomeController < ApplicationController
     get_areas
     get_actions
     get_site_counters
+
     render :partial => 'shared/actions_list' and return if request.xhr?
   end
 

@@ -89,6 +89,7 @@ class ApplicationController < ActionController::Base
   def irekia_layout
     iphone_request?? 'datalogger' : 'application'
   end
+
   private :irekia_layout
 
   def get_areas
