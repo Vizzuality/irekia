@@ -171,15 +171,13 @@ $(function() {
   $('div.answering form').live('ajax:success',function(evt, xhr, status) {
     var parent = $(this).closest('div.answering');
     var response = $(xhr);
-    response.hide();
 
-   // var $span = response.find("span.answered");
-   // console.log(response, $span);
-   // $.find("span.not_answered").html($span);
-   // response.find("span.answered").hide();
+    $("span.not_answered").html(response[0]);
+    $("span.not_answered").addClass("answered");
+    $("span.not_answered").removeClass("not_answered");
 
     parent.fadeOut(function(){
-      parent.before(response);
+      parent.before(response[2]);
       response.fadeIn();
     });
   });
