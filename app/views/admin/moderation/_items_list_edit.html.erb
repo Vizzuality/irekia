@@ -1,0 +1,8 @@
+<%= render 'moderation_info' if @show_moderation_info %>
+<% @items.each do |item| -%>
+<li class="content">
+  <div class="left">
+    <%= render "admin/moderation/lists_elements/edit/#{item.type.downcase}", :data => item %>
+  </div>
+</li>
+<% end -%>

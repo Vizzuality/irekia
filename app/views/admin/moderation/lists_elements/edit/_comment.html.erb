@@ -1,0 +1,7 @@
+<p>
+  <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
+    <%= form.text_field :body %>
+    <%= button t('admin.moderation.items_list_edit.reject') %>
+    <%= button t('admin.moderation.items_list_edit.validate') %>
+  <% end %>
+</p>

@@ -42,6 +42,7 @@ Irekia::Application.routes.draw do
       namespace :admin do
         match '/' => 'admin#index'
         match '/moderation' => 'moderation#index'
+        match '/moderation/edit' => 'moderation#edit'
         match '/moderation/validate_all/:type' => 'moderation#validate_all', :as => :moderate_all
         resources :users
         resources :proposals,       :controller => 'contents',       :type => 'Proposal'

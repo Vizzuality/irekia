@@ -21,7 +21,7 @@ class Admin::ContentsController < Admin::AdminController
   end
 
   def destroy
-    @content     = Content.where(:id => params[:id]).first
+    @content     = Content.find(params[:id])
     content_type = params[:type].downcase
 
     @content.destroy
