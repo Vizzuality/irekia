@@ -8,7 +8,7 @@ class ProposalData < ActiveRecord::Base
              :class_name => 'Area',
              :foreign_key => :area_id
 
-  accepts_nested_attributes_for :image
+  accepts_nested_attributes_for :image, :allow_destroy => true
 
   delegate :content_url, :to => :image
 

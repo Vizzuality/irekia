@@ -2158,6 +2158,10 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
       items_list:
         validate: 'aceptar'
         rejected: 'rechazar'
+      items_list_edit:
+        validate: 'Guardar y aceptar'
+        reject: 'rechazar'
+        reject_image: 'Eliminar imagen'
 
 #######################################
 # IREKIA - Models

@@ -1,0 +1,21 @@
+<h4>
+  <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
+    <%= form.text_field :title %>
+    <%= button t('admin.moderation.items_list_edit.reject') %>
+    <%= button t('admin.moderation.items_list_edit.validate') %>
+  <% end %>
+</h4>
+<span>
+  <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
+    <%= form.text_field :subtitle %>
+    <%= button t('admin.moderation.items_list_edit.reject') %>
+    <%= button t('admin.moderation.items_list_edit.validate') %>
+  <% end %>
+</span>
+<p>
+  <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
+    <%= form.text_field :body %>
+    <%= button t('admin.moderation.items_list_edit.reject') %>
+    <%= button t('admin.moderation.items_list_edit.validate') %>
+  <% end %>
+</p>
