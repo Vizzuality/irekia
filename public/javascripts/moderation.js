@@ -12,6 +12,7 @@ $(document).ready(function(){
   }
 
   checkModeration();
+  enableModerationWithEditing();
 
   $('div.order span.buttons a').click(function(ev){
     var order = $(this).closest('div.order');
@@ -154,3 +155,18 @@ function checkModeration() {
     move.css({left:p+'px',width:w_n+'px'});
   });
 }
+
+
+function enableModerationWithEditing() {
+  $(".content.edit button").click(function() {
+  });
+
+  $(".content.edit form").bind('ajax:success',function(ev,data,obj){
+    console.log('sended');
+  });
+
+  $(".content.edit form").bind('ajax:error',function(ev,data,obj){
+    $(this).effect("shake", { times: 4 }, 100);
+  });
+}
+
