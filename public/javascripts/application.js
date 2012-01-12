@@ -173,7 +173,10 @@ $(function() {
     var response = $(xhr);
     response.hide();
 
-    console.log("Response", evt, xhr, status);
+   // var $span = response.find("span.answered");
+   // console.log(response, $span);
+   // $.find("span.not_answered").html($span);
+   // response.find("span.answered").hide();
 
     parent.fadeOut(function(){
       parent.before(response);

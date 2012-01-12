@@ -1910,7 +1910,7 @@ jQuery.fn.enableQuestion = function(opt){
 
       $(".notice").fadeOut(speed);
       disableElement($form.find('button'));
-      disableElement($form.find('input[type="text"]'));
+      //disableElement($form.find('input[type="text"]'));
     });
 
     // onSuccess: show the success message, enable the send button
