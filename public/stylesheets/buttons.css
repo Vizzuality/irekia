@@ -272,7 +272,7 @@ form.editable.date .dk_container li a, #container .article .inner .left form.edi
 form.editable.target, #container .article .inner .left form.editable.target { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-perspective: 1000; -webkit-backface-visibility: hidden; float: left; width: auto; position: relative; top: -12px; }
 form.editable.target .content, #container .article .inner .left form.editable.target .content { float: left; }
 form.editable.target .add_target, #container .article .inner .left form.editable.target .add_target { clear: both; float: left; display: none; top: -7px; position: relative; width: 255px; height: 59px; }
-form.editable.target .add_target .spinner, #container .article .inner .left form.editable.target .add_target .spinner { top: 28px; right: 35px; }
+form.editable.target .add_target .spinner, #container .article .inner .left form.editable.target .add_target .spinner { top: 20px; right: 35px; }
 form.editable.target .add_target .input_field, #container .article .inner .left form.editable.target .add_target .input_field { display: block; width: 195px; border: none; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; height: auto; margin: 0 0 0 -7px; }
 form.editable.target .add_target .input_field .holder, #container .article .inner .left form.editable.target .add_target .input_field .holder { width: 215px; left: 19px; top: 18px; }
 form.editable.target .add_target .input_field input[type="text"], #container .article .inner .left form.editable.target .add_target .input_field input[type="text"] { border: 1px solid #ccc; width: 100%; outline: none; }
