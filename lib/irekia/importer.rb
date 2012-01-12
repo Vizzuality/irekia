@@ -41,9 +41,6 @@ module Irekia
         news_entries.each do |news_item|
           begin
 
-            news_images    = get_json(news_photos_feed_url.call(news_item.entry_id))
-            news_image_url = news_images.first['original'] if news_images.present?
-
             news = News.new
             news.news_data = NewsData.create(:title      => (news_item.title.sanitize rescue nil),
                                              :body       => (news_item.summary.sanitize rescue nil),
@@ -51,9 +48,6 @@ module Irekia
                                              :iframe_url => (news_item.multimedia_iframe_src rescue nil))
             news.external_id = news_item.entry_id
             news.moderated = true
-            news.news_data.image = Image.new({
-              :remote_image_url => news_image_url
-            }) if news_image_url.present?
 
             news.areas << Area.where("name_#{lang} like ? OR name like ?", "%#{news_item.organization.title}%", "%#{news_item.organization.title}%").first rescue puts "Invalid área name: #{news_item.organization.title}"
             news_item.categories.each do |category|
