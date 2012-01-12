@@ -2227,6 +2227,11 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
   irekia_mailer:
     layout:
       settings: 'Gestiona tus notificaciones'
+    new_question:
+      subject: "Nueva pregunta en Irekia"
+      user_asks_you: '%{user} te hace la siguiente pregunta:'
+      user_asks_your_area: '%{user} le hace la siguiente pregunta a tu área:'
+      answer_question: 'Responder pregunta'
     question_answered:
       subject: 'Pregunta contestada en Irekia'
       your_question: 'Tu pregunta'

@@ -13,7 +13,7 @@ class Area < ActiveRecord::Base
   has_many :team,
            :through => :areas_users,
            :source => :user,
-           :select => 'users.id, users.name, users.lastname, users.title_id, users.role_id, users.slug, display_order',
+           :select => 'users.id, users.email, users.name, users.lastname, users.title_id, users.role_id, users.slug, users.locale, display_order',
            :order => 'display_order ASC, external_id ASC'
 
   has_many :areas_contents,

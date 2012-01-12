@@ -55,7 +55,6 @@ class Answer < Content
 
   def send_mail
     IrekiaMailer.deliver_question_answered(self)
-
   end
 
   def mark_question_as_answered
