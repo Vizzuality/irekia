@@ -7,10 +7,10 @@
         <%= hidden_field_tag :provider, :email %>
         <%= hidden_field_tag :email_message, message_for_email(@content) %>
         <%= text_field_tag :email, "", :placeholder => "", :autocomplete => :off  %>
-        <span class="holder">Escribe la dirección de email</span>
+        <span class="holder"><%= t(".label") %></span>
       </div>
       <span class="spinner" id="share_via_email"></span>
-      <%= link_to 'Enviar', "#", :class => "submit share" %>
+      <%= link_to t(".send"), "#", :class => "submit share" %>
       <div class="arrow"></div>
     <% end -%>
   </div>

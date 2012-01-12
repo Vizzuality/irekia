@@ -450,6 +450,8 @@
       no_content:
         area: No hay contenido en este área
     sharing:
+      label: Escribe la dirección de email
+      send: 'Enviar'
       ical: Exportar para iCal
       twitter: 'Compartir vía twitter'
       facebook: 'Compartir vía facebook'

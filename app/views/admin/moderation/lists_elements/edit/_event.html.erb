@@ -1,25 +1,23 @@
-<h4>
   <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
-    <%= form.text_field :title %>
+    <%= form.text_area :title %>
     <div class="actions">
       <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
       <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>
     </div>
   <% end %>
-</h4>
 
-<%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
-  <%= form.text_area :subtitle %>
-  <div class="actions">
-    <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
-    <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>
-  </div>
-<% end %>
+  <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
+    <%= form.text_area :subtitle %>
+    <div class="actions">
+      <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
+      <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>
+    </div>
+  <% end %>
 
-<%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
-  <%= form.text_area :body %>
-  <div class="actions">
-    <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
-    <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>
-  </div>
-<% end %>
+  <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
+    <%= form.text_area :body %>
+    <div class="actions">
+      <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
+      <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>
+    </div>
+  <% end %>
