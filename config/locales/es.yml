@@ -436,7 +436,16 @@
         other: '%{count} propuestas'
       no_activity: Sin actividad
   shared:
-  shared:
+    error:
+      title: Irekia - Se ha producido un error (500)
+      error_title: Algo se ha roto en Irekia.
+      home_page: Página de inicio de Irekia
+    not_found:
+      home_page: Página de inicio de Irekia
+      title: Irekia - La página que buscas no existe (404)
+      error:
+        title: Página no encontrada.
+        solution: 'Revisa la dirección de la página,<br />o <a href="%{url}">reporta el error</a> si crees que es problema de Irekia.'
     actions_list:
       no_content:
         area: No hay contenido en este área
