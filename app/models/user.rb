@@ -198,7 +198,7 @@ class User < ActiveRecord::Base
   end
 
   def self.citizens
-    joins(:role).where('roles.name' => 'Citizen').where('users.id <> ?', User.wadus.id).readonly(false)
+    joins(:role).where('roles.name' => 'Citizen').readonly(false)
   end
 
   def self.by_id(id)
