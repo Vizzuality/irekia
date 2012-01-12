@@ -195,7 +195,7 @@ class ContentsController < ApplicationController
   def update
     render :json => @image and return if @image.present?
 
-    @content        = @content_class.moderated.where(:id => params[:id]).first
+    @content        = @content_class.moderated.find(params[:id])
     @content_params = params[@content_type]
     @content.update_attributes(@content_params)
 
