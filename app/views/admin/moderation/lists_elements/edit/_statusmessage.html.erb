@@ -1,5 +1,7 @@
 <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
-  <%= form.text_area :message %>
+  <%= form.fields_for :status_message_data do |status_message_data_form| %>
+    <%= status_message_data_form.text_area :message %>
+  <% end -%>
   <div class="actions">
     <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
     <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>

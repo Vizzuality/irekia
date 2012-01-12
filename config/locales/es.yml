@@ -2225,3 +2225,19 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
     rejected:
       rejected: 'El contenido que has enviado ha sido rechazado.'
       thanks: Gracias por participar en Irekia.
+  irekia_mailer:
+    layout:
+      settings: 'Gestiona tus notificaciones'
+    new_question:
+      subject: "Nueva pregunta en Irekia"
+      user_asks_you: '%{user} te hace la siguiente pregunta:'
+      user_asks_your_area: '%{user} le hace la siguiente pregunta a tu área:'
+      answer_question: 'Responder pregunta'
+    question_answered:
+      subject: 'Pregunta contestada en Irekia'
+      your_question: 'Tu pregunta'
+      politician_title: '%{title} en el área de %{area}'
+      answered_by: 'ha sido contestada por %{politician_with_title}'
+      opinion: '¿Qué te parece la respuesta? Puedes comentar la respuesta en Irekia.'
+      question_link: 'Ver pregunta en Irekia'
+

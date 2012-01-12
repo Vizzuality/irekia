@@ -1,9 +1,10 @@
-
 <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
-  <%= form.text_area :answer_text %>
+  <%= form.fields_for :answer_data do |answer_data_form| %>
+    <%= answer_data_form.text_area :answer_text %>
+  <% end -%>
   <div class="actions">
+    <%= form.hidden_field :moderated, :value => false, :disabled => true %>
     <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
     <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>
   </div>
 <% end %>
-

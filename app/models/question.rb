@@ -117,6 +117,10 @@ class Question < Content
     end
   end
 
+  def send_mail
+    IrekiaMailer.deliver_new_question(question)
+  end
+
   def notify_of_new_participation(participation)
     super(participation)
     if answer.present?

@@ -1,0 +1,55 @@
+
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px"  background="<%= path_to_image('mail/question.jpg') %>" style="background-repeat:no-repeat;">
+  <tr>
+    <td width="635px" height="20px" valign="top"></td>
+  </tr>
+  <tr>
+    <td width="635px" valign="top"><h1 style="margin: 0; font-weight:bold; font-size: 24px; color:#465766"><%= @title %></h1></td>
+  </tr>
+  <tr>
+    <td width="635px" height="20px" valign="top"></td>
+  </tr>
+  <tr>
+    <td width="635px" valign="top"><span style="color: #5E5E5E;"><%= t('irekia_mailer.question_answered.your_question') %></span></td>
+  </tr>
+  <tr> <td width="635px" height="10px" valign="top"></td> </tr>
+</table>
+
+<table cellpadding="15px" cellspacing="0" border="0" align="center" width="635px" >
+  <tr>
+    <td width="635px" valign="top" background="<%= path_to_image('mail/question_bkg.jpg') %>" style="border: 1px solid #f0d1b2">
+      <span style="color: #5E5E5E;"><%= @question_text %></span>
+    </td>
+  </tr>
+</table>
+
+
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px" >
+  <tr> <td width="635px" height="20px" valign="top"></td> </tr>
+  <tr>
+    <td width="635px" valign="top"><span style="color: #5E5E5E;"><%= t('irekia_mailer.question_answered.answered_by', :politician_with_title => @politician_with_title) %></span></td>
+  </tr>
+  <tr> <td width="635px" height="15px" valign="top"></td> </tr>
+</table>
+
+<table cellpadding="15px" cellspacing="0" border="0" align="center" width="635px" >
+  <tr>
+    <td width="635px" valign="top" background="<%= path_to_image('mail/question_bkg.jpg') %>" style="border: 1px solid #f0d1b2">
+      <span style="color: #5E5E5E;"><%= @answer %></span>
+    </td>
+  </tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px" >
+  <tr> <td width="635px" height="15px" valign="top"></td> </tr>
+  <tr>
+    <td width="635px" valign="top"><span style="color: #5E5E5E;"><%= t('irekia_mailer.question_answered.opinion') %></span></td>
+  </tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px">
+  <tr> <td width="635px" height="20px" valign="top"></td> </tr>
+  <tr>
+    <td width="635px" valign="top"><h2 style="margin:0"><a href="<%= @question_url %>" target="_blank" style="font-size:17px; color:#1D79B0"><%= t('irekia_mailer.question_answered.question_link') %></a></h2></td>
+  </tr>
+</table>

@@ -12,16 +12,18 @@
         <%= button t('admin.moderation.items_list_edit.reject_image'), :class => "white_button reject" %>
       </div>
     <% end %>
-
   <% rescue %>
   <% end %>
 </div>
 
 <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
-  <%= form.text_area :title %>
+  <%= form.fields_for :proposal_data do |proposal_data_form| %>
+    <%= proposal_data_form.text_area :title %>
+    <%= proposal_data_form.text_area :body %>
+  <% end -%>
 
-  <%= form.text_area :body %>
   <div class="actions">
+    <%= form.hidden_field :moderated, :value => false, :disabled => true %>
     <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
     <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>
   </div>

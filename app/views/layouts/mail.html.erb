@@ -50,17 +50,17 @@
       <tr>
         <td>
 
-          <table cellpadding="0" cellspacing="0" border="0" align="center" height="70px"><tr><td width="635px" height="70px" valign="top"><%= image_tag 'mail/header.jpg' %></td></tr></table><%= yield %>
+          <table cellpadding="0" cellspacing="0" border="0" align="center" height="70px"><tr><td width="635px" height="70px" valign="top"><%= image_tag(path_to_image('mail/header.jpg')) %></td></tr></table><%= yield %>
 
           <table cellpadding="0" cellspacing="0" border="0" align="center">
             <tr><td width="635px" height="15px" valign="top"></td></tr>
-            <tr><td width="635px" height="1px" valign="top"><%= image_tag 'mail/light_line.jpg' %></td></tr>
+            <tr><td width="635px" height="1px" valign="top"><%= image_tag(path_to_image('mail/light_line.jpg')) %></td></tr>
             <tr>
               <td width="635px" valign="top">
                 <% if @show_notifications_link %>
-                <p class="footer" style="margin: 5px 0 20px 2px; font-size:13px; color: #999999;">¿No quieres recibir emails de Irekia? <a href="#" target ="_blank" title="Gestiona tus notificaciones" style="font-size:13px; color: #999999;">Gestiona tus notificaciones</a></p>
+                <p class="footer" style="margin: 5px 0 20px 2px; font-size:13px; color: #999999;">¿No quieres recibir emails de Irekia? <a href="<%= @user_settings_url %>" target ="_blank" title="<%= t('irekia_mailer.layout.settings') %>" style="font-size:13px; color: #999999;"><%= t('irekia_mailer.layout.settings') %></a></p>
               <% else %>
-                <p class="footer" style="margin: 5px 0 20px 2px; font-size:13px; color: #999999;"><a href="#" target ="_blank" title="Irekia" style="font-size:13px; color: #999999;">Irekia</a></p>
+                <p class="footer" style="margin: 5px 0 20px 2px; font-size:13px; color: #999999;"><a href="root_url" target ="_blank" title="Irekia" style="font-size:13px; color: #999999;">Irekia</a></p>
               <% end %>
               </td>
             </tr>
