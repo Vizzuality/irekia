@@ -223,8 +223,8 @@ module ApplicationHelper
     end
   end
 
-  def image_url(image_path)
-    request.protocol + request.host_with_port + image_path
+  def image_url(path)
+    request.protocol + request.host_with_port + path
   end
 
   # def inline_sharing_partial_for_contents(content, content_type, url, message)

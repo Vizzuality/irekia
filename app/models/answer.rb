@@ -53,6 +53,11 @@ class Answer < Content
     question.answer_requests.map(&:author).each{|user| user.create_private_action(self)}
   end
 
+  def send_mail
+    IrekiaMailer.deliver_question_answered(self)
+
+  end
+
   def mark_question_as_answered
     question.mark_as_answered(published_at) if question
   end

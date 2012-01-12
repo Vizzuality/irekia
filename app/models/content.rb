@@ -218,6 +218,10 @@ class Content < ActiveRecord::Base
     end
   end
 
+  def send_mail
+
+  end
+
   def notify_of_new_participation(participation, force_notification_creation = false)
     publish
 
