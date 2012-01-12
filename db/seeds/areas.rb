@@ -76,7 +76,7 @@ Area.create :name => 'Cultura',
             :description => 'A este departamento le corresponden las siguientes funciones y áreas de actuación: deportes, juventud, gestión y protección del Patrimonio Artístico, museos, política linguística, promoción del euskera, actividades artísticas y culturales. Dirigir los organismos autónomos, entes públicos de derecho privado y sociedades públicas adscritos o dependientes del Departamento.',
             :description_1 => 'A este departamento le corresponden las siguientes funciones y áreas de actuación: deportes, juventud, gestión y protección del Patrimonio Artístico, museos, política linguística, promoción del euskera, actividades artísticas y culturales. Dirigir los organismos autónomos, entes',
             :description_2 => 'públicos de derecho privado y sociedades públicas adscritos o dependientes del Departamento.',
-            :image    => Image.create(:image => File.open(Rails.root.join('db/seeds/support/images/area_05.png'))),
+            :image    => Image.create(:image => File.open(Rails.root.join('db/seeds/support/images/area_11.png'))),
             :external_id => 11
 
 puts '=> areas loaded'
