@@ -306,7 +306,7 @@
     $dk.toggleClass('dk_open');
 
     if (!data.scrollbar) {
-      data.scrollbar = $dk.find(".scrollpane").jScrollPane();
+      data.scrollbar = $dk.find(".scrollpane").jScrollPane({verticalDragMinHeight: 20});
 
       $dk.find('.dk_options').css({
         'width' : ($dk.find('.dk_options').width() - 2) + 'px'
