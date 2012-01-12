@@ -1971,6 +1971,7 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
         follow: Seguir
         more_politicians: Buscar más políticos
       navigation_menu:
+        edit: Editar perfil
         show: Dashboard
         questions: Tus preguntas
         proposals: Tus propuestas
