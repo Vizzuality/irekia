@@ -505,7 +505,7 @@
           loading_photo: Cargando imagen...
           image_will_be_included: Se incluirá esta imagen en la propuesta.
           remove: Eliminar
-          explain: ¿Quieres explicar la propuesta con más detalle?
+          explanation: ¿Quieres explicar la propuesta con más detalle?
           description: Describe la propuesta en pocas palabras
           target: ¿A qué area le quieres dirigir la pregunta?
           target_name: Nombre de área...
