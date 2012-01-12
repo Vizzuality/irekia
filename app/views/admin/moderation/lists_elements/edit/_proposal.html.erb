@@ -9,14 +9,14 @@
         <% end -%>
       <% end -%>
       <div class="actions">
-        <%= button t('admin.moderation.items_list_edit.reject_image'), :class => "reject" %>
+        <%= button t('admin.moderation.items_list_edit.reject_image'), :class => "white_button reject" %>
       </div>
     <% end %>
 
   <% rescue %>
   <% end %>
   <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
-    <h4><%= form.text_field :title %></h4>
+    <%= form.text_area :title %>
 
     <%= form.text_area :body %>
     <div class="actions">
