@@ -2,7 +2,7 @@
   <% begin %>
     <%= link_to image_tag(data.image.image_url), proposal_path(data.id) %>
 
-    <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
+    <%= form_for [:admin, data], :remote => true, :html => {:class => "photo", :'data-type' => 'html' } do |form| %>
       <%= form.fields_for :proposal_data do |proposal_data_form| %>
         <%= proposal_data_form.fields_for :image do |image_form| %>
           <%= image_form.hidden_field :_destroy %>
@@ -15,13 +15,14 @@
 
   <% rescue %>
   <% end %>
-  <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
-    <%= form.text_area :title %>
-
-    <%= form.text_area :body %>
-    <div class="actions">
-      <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
-      <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>
-    </div>
-  <% end %>
 </div>
+
+<%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
+  <%= form.text_area :title %>
+
+  <%= form.text_area :body %>
+  <div class="actions">
+    <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
+    <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>
+  </div>
+<% end %>

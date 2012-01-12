@@ -1,3 +1,20 @@
+<div class="photo_moderation">
+  <% begin %>
+    <%= link_to image_tag(data.image.image_url), proposal_path(data.id) %>
+    <%= form_for [:admin, data], :remote => true, :html => {:class => :photo, :'data-type' => 'html' } do |form| %>
+      <%= form.fields_for :proposal_data do |proposal_data_form| %>
+        <%= proposal_data_form.fields_for :image do |image_form| %>
+          <%= image_form.hidden_field :_destroy %>
+        <% end -%>
+      <% end -%>
+      <div class="actions">
+        <%= button t('admin.moderation.items_list_edit.reject_image'), :class => "white_button reject" %>
+      </div>
+    <% end %>
+  <% rescue %>
+  <% end %>
+</div>
+
 <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
   <%= form.text_area :title %>
   <div class="actions">

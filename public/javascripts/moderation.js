@@ -158,15 +158,22 @@ function checkModeration() {
 
 
 function enableModerationWithEditing() {
-  $(".content.edit button").click(function() {
+  $(".content.edit button").live("click", function() {
+
   });
 
-  $(".content.edit form").bind('ajax:success',function(ev,data,obj){
+  $(".content.edit form").live('ajax:success',function(ev,data,obj){
     console.log('sended');
+    $(this).parents("li").fadeOut(250);
   });
 
-  $(".content.edit form").bind('ajax:error',function(ev,data,obj){
-    $(this).effect("shake", { times: 4 }, 100);
+  $(".content.edit form").live('ajax:error',function(ev,data,obj){
+    // $(this).effect("shake", { times: 4 }, 100);
+    if ($(this).hasClass("photo")) {
+      $(this).parents(".photo_moderation").fadeOut(250);
+    } else {
+      $(this).parents("li").fadeOut(250);
+    }
   });
 }
 
