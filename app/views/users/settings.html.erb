@@ -98,7 +98,7 @@
           </div>
 
           <div class="field clearfix social">
-            <label for="">Conexión con redes sociales</label>
+            <label for=""><%= t(".connection_with_social_networks") %></label>
 
             <div class="social-links">
               <div class="facebook <%='disabled' if current_user.connected_with_facebook? %>"><%= link_to t('.connect_with', :name => 'Facebook'), user_omniauth_authorize_path(:facebook), :id => :facebook_signin %></div>
@@ -108,8 +108,8 @@
         </fieldset>
 
         <div class="delete_profile">
-          <p>Por supuesto, si lo deseas puedes <a href="/in_development" class="remove_account" id="remove_account">borrar tu perfil</a> de Irekia en cualquier momento.</p>
-          <p class="last">Esperamos que no sea así :-)</p>
+          <p><%= raw t(".remove_your_profile", :class => "remove_account") %></p>
+          <p class="last"><%= t(".we_hope_you_dont_go") %></p>
         </div>
 
       </div>
