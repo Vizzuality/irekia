@@ -177,13 +177,13 @@ module Irekia
       languages.each do |lang|
         puts "=> getting data for #{lang} language"
         puts "=> getting all categories"
-        categories = get_json(categories_url.call(lang))['categories']
+        categories = get_json(categories_url.call(lang), 'categories')
 
         basque_government = categories.select{|c| ['gobierno vasco', 'eusko jaurlaritza'].include?((c['name'] || '').downcase.strip)}.first
         if basque_government.present?
 
           puts '=> getting all government areas'
-          areas = get_json(areas_url.call(lang, basque_government['id']))['categories']
+          areas = get_json(areas_url.call(lang, basque_government['id']), 'categories')
 
           areas.each do |area|
             area_id = area['id']
@@ -201,7 +201,7 @@ module Irekia
             politicians_ids = area_detail['people'].map(&:first)
 
             politicians_ids.each do |politician_id|
-              politician = get_json(politician_detail_url.call(lang, politician_id))['person']
+              politician = get_json(politician_detail_url.call(lang, politician_id), 'person')
 
               begin
                 user = User.find_or_initialize_by_external_id(politician_id)
@@ -280,8 +280,33 @@ module Irekia
 
     private
 
-    def self.get_json(url, server_options = {})
-      JSON.parse(open(url, server_options).read)
+    def self.get_json(url, server_options = {}, items_key = nil)
+      if server_options.present? && server_options.is_a?(String)
+        items_key      = server_options
+        server_options = {}
+      end
+
+      json_data = nil
+      page = 1
+
+      data = JSON.parse(open(url, server_options).read)
+      json_data = items_key ? data[items_key] : data
+      pagination = data['pagination'] rescue nil
+
+      if pagination.present?
+        pending_items = pagination[0]
+
+        while pending_items > 0 do
+          page += 1
+          data = JSON.parse(open(url + "?page=#{page}", server_options).read)
+          json_data += (items_key ? data[items_key] : data)
+          pagination = data['pagination']
+
+          pending_items = pending_items - (pagination[1] * page)
+        end
+      end
+
+      json_data
     end
 
   end
