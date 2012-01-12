@@ -4,6 +4,6 @@
       <%= render_list_element(action.item, action.event_type, :class => "#{'loop' if i > 4}", :inline => true) %>
     <% end %>
   <% else %>
-    <span class="empty">No hay contenido en este área.</span>
+    <span class="empty"><%= t(".no_content.area") %></span>
   <% end %>
 </ul>

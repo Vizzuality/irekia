@@ -436,6 +436,10 @@
         other: '%{count} propuestas'
       no_activity: Sin actividad
   shared:
+  shared:
+    actions_list:
+      no_content:
+        area: No hay contenido en este área
     sharing:
       ical: Exportar para iCal
       twitter: 'Compartir vía twitter'
