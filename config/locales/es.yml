@@ -491,6 +491,27 @@
       continue: Continuar
       publish: Publicar
       description: ¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!
+      section:
+        question:
+          label: Introduce el texto que quieras publicar aquí.
+          description: Describe la pregunta en pocas palabras
+          target: ¿A quién le quieres dirigir la pregunta?
+          explanation: ¿Quieres explicar la pregunta con más detalle?
+          target_name: Nombre de persona o área...
+          or: o
+          see_all: ver todas las áreas
+        proposal:
+          label: Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.
+          loading_photo: Cargando imagen...
+          image_will_be_included: Se incluirá esta imagen en la propuesta.
+          remove: Eliminar
+          explain: ¿Quieres explicar la propuesta con más detalle?
+          description: Describe la propuesta en pocas palabras
+          target: ¿A qué area le quieres dirigir la pregunta?
+          target_name: Nombre de área...
+          see_all: ver todas las áreas
+          or: o
+
     floating_login:
       not_yet_registered: ¿No tienes cuenta en Irekia?
       register_here: Regístrate aquí

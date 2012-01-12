@@ -29,7 +29,7 @@
                     <div id="question-counter" class="input-counter">
                       <span class="counter">140</span>
                       <%= question_data.text_area :question_text %>
-                      <span class="holder">Introduce el texto que quieras publicar aquí.</span>
+                      <span class="holder"><%= t(".section.question.label") %></span>
                     </div>
                   </div>
 
@@ -39,16 +39,15 @@
                     <strong><%= t(".section.proposal.explanation") %></strong>
                     <div class="input_field placeholder body_field textarea">
                       <%= question_data.text_area :body, :class => :body %>
-                      <span class="holder">Describe la pregunta en pocas palabras</span>
+                      <span class="holder"><%= t(".section.question.description") %></span>
                     </div>
 
-                    <strong>¿A quién le quieres dirigir la pregunta?</strong>
+                    <strong><%= t(".section.question.target") %></strong>
                     <div class="input_field autosuggest_field placeholder clearfix">
                       <div class="search_box clearfix">
                         <input type="text" class="search" />
-                        <span class="holder">
-                          Nombre de persona o área...
-                          <span class="all">... o <a href="#">ver todas las áreas</a></span>
+                        <span class="holder"> <%= t(".section.question.target_name") %>
+                          <span class="all">... <%= t(".section.question.or") %> <a href="#"><%= t(".section.question.see_all") %></a></span>
                         </span>
                         <span class="spinner" id="search_question_spinner"></span>
                       </div>
@@ -79,7 +78,7 @@
                     <div id="proposal-counter" class="input-counter">
                       <span class="counter">140</span>
                       <%= proposal_data.text_area :title, :class => :title %>
-                      <span class="holder">Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.</span>
+                      <span class="holder"><%= t(".section.proposal.label") %></span>
                     </div>
                   </div>
 
@@ -87,29 +86,28 @@
                     <div class="input_field image_placeholder uploader">
                       <span class="holder"><span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>">Sube una imagen.</span></span>
                       <span class="percentage">0%</span>
-                      <span class="loading">Cargando imagen...</span>
+                      <span class="loading"><%= t(".section.proposal.loading_photo") %></span>
                       <div class="progress"></div>
                     </div>
 
                     <div class="image_container clearfix">
-                      <p>Se incluirá esta imagen en la propuesta.</p>
-                      <a href="#" class="remove">Eliminar</a>
+                      <p><%= t(".section.proposal.image_will_be_included") %></p>
+                      <a href="#" class="remove"><%= t(".remove") %></a>
                     </div>
 
-                    <strong>¿Quieres explicar la propuesta con más detalle?</strong>
+                    <strong><%= t(".section.proposal.explain") %></strong>
                     <div class="input_field placeholder body_field textarea">
                       <%= proposal_data.text_area :body, :class => :body %>
-                      <span class="holder">Describe la propuesta en pocas palabras</span>
+                      <span class="holder"><%= t(".section.proposal.description") %></span>
                     </div>
 
-
-                    <strong>¿A qué area le quieres dirigir la pregunta?</strong>
+                    <strong><%= t(".section.proposal.target") %></strong>
                     <div class="input_field autosuggest_field placeholder clearfix">
                       <div class="search_box clearfix">
                         <input type="text" class="search" />
                         <span class="holder">
-                          Nombre de área...
-                          <span class="all">... o <a href="#">ver todas las áreas</a></span>
+                          <%= t(".section.proposal.target_name") %>
+                          <span class="all">... <%= t(".section.proposal.or") %> <a href="#"><%= t(".section.proposal.see_all") %></a></span>
                         </span>
                         <span class="spinner" id="search_question_spinner"></span>
                       </div>
