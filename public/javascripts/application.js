@@ -173,6 +173,8 @@ $(function() {
     var response = $(xhr);
     response.hide();
 
+    console.log("Response", evt, xhr, status);
+
     parent.fadeOut(function(){
       parent.before(response);
       response.fadeIn();

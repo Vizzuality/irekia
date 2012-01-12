@@ -1,7 +1,7 @@
 class Admin::ContentsController < Admin::AdminController
 
   def update
-    @content           = Content.where(:id => params[:id]).first
+    @content           = Content.find(params[:id])
     content_type       = params[:type].downcase.to_sym
     @content.moderated = params[content_type][:moderated]
     @content.rejected  = params[content_type][:rejected]

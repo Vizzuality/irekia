@@ -1312,7 +1312,7 @@ jQuery.fn.enablePagination = function(opt){
 
         var $ul = $article.find(".listing_" + name  + "_" + id + " > ul");
 
-        if (!$ul.find("span.empty").length > 0 && !$this.find("span.empty").length > 0) {
+        if (!$ul.find("span.empty").length > 0 && !$this.find("span.empty").length > 0 && !$content.hasClass("empty")) {
           $ul.append($content);
           $content.slideDown(250);
         }
