@@ -2,7 +2,26 @@
   @import "compass/css3";
   @import "helpers";
 
+  #container #main.moderation .content .article.activity .content.edit {
+    width:935px;
+    .left {
+      width:935px!important;
 
+      textarea {
+        width:935px - 11*2;
+        margin: 0 0 10px 0;
+      }
+
+      .actions {
+        float:right;
+        .reject {
+          background:none;
+          border:none;
+          @include box-shadow(none);
+        }
+      }
+    }
+  }
 
   @mixin mobile($w) {
     #main .content, header .content, .bfooter .content {
@@ -313,7 +332,7 @@
     .article.activity {
       div.inner {padding-top:0!important; padding-bottom:0!important;}
 
-       ul li.content {
+      ul li.content {
         float:left;
         padding:30px 0;
         border-bottom:1px solid #e5e5e5;
