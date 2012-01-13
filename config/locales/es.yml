@@ -223,13 +223,24 @@
         <<: *errors_messages
       template:
         <<: *errors_template
-      models:
-        attributes:
-          user:
-            password: "La contraseña"
 
       full_messages:
         format: "%{attribute} %{message}"
+
+      models:
+        user:
+          attributes:
+            password:
+              invalid: "no es válida"
+              blank: "no puede estar vacía."
+              confirmation: " no coincide con la confirmación."
+              too_short: "ha de tener más de 6 caracteres"
+              too_long: "ha de tener menos de 20 caracteres"
+            current_password:
+              blank: "no puede estar vacía."
+              invalid: "no es válida"
+            reset_password_token:
+              blank: "no puede estar vacía."
     models:
       answer: Respuesta
       area: Area
