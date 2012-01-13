@@ -1,5 +1,5 @@
 desc "Setup Irekia Project for first time"
-task :setup => %w(irekia:setup_database irekia:validate_all_not_moderated irekia:randomize_all irekia:import_areas_and_politicians irekia:import_news irekia:import_events irekia:import_users)
+task :setup => %w(irekia:setup_database irekia:import_areas_and_politicians irekia:load_test_data irekia:import_news irekia:import_events irekia:import_users)
 
 namespace :irekia do
   desc "Setup Irekia Database"
@@ -17,22 +17,9 @@ namespace :irekia do
     end
   end
 
-  desc "Accepts all non moderated contents/participations"
-  task :validate_all_not_moderated => :environment do
-    Content.validate_all_not_moderated
-    Participation.validate_all_not_moderated
-  end
-
-  desc "Randomizes publishing dates in all contents/participations"
-  task :randomize_all => :environment do
-    Content.find_each do |content|
-      content.published_at =  Time.current.advance(:days => -rand(5), :hours => -rand(24), :minutes => -rand(60))
-      content.save!
-    end
-    Participation.find_each do |participation|
-      participation.published_at =  Time.current.advance(:days => -rand(5), :hours => -rand(24), :minutes => -rand(60))
-      participation.save!
-    end
+  desc "Loads fake data for testing purposes"
+  task :load_test_data => :environment do
+    load Rails.root.join('db/seeds/seeds.rb')
   end
 
   desc "Loads news from the official Irekia news feed"

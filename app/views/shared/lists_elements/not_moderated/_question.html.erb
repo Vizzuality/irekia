@@ -1,6 +1,6 @@
 <%= avatar data.author %>
 <div class="content">
-  <%= content_tag 'p', t(".title", :receiver => data.target_area.name) if data.target_area %>
+  <%= content_tag 'p', t(".title", :receiver => data.target_area.send("name_#{I18n.locale}")) if data.target_area %>
   <%= content_tag 'p', t(".title", :receiver => data.target_user.fullname) if data.target_user %>
 
   <% if data.target_user %>
