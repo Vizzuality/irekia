@@ -49,10 +49,24 @@ $(function() {
 
   $('.municipalities_dropdown').dropkick();
 
+  if ($('.provinces_dropdown').length > 0) {
+    var selected_territory = $(".provinces_dropdown option[selected='selected']").attr("data-id");
+    $("#dk_container_user_city_id li a").hide();
+    $("#dk_container_user_city_id li a[data-id='" + selected_territory + "']").show();
+    $("#dk_container_user_city_id li a[data-id='undefined']").show();
+  }
+
   $('.provinces_dropdown').dropkick({ callback: function(e) {
+
     var territory_id = e.attr("data-dk-dropdown-value");
+
+    $("#dk_container_user_city_id .dk_label").html('');
+    $(".provinces_dropdown option[selected='selected']").removeAttr('selected');
+    $(".provinces_dropdown option:first-child").attr('selected', 'selected');
+
     $("#dk_container_user_city_id li a").hide();
     $("#dk_container_user_city_id li a[data-id='territory_" + territory_id + "']").show();
+    $("#dk_container_user_city_id li a[data-id='undefined']").show();
   }});
 
   $('.area_filter').dropkick({ filterEvents: true });

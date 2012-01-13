@@ -140,7 +140,6 @@
 
       lists[lists.length] = $select;
 
-
        $(window).bind('blur.dropkick.', function() {
          $dk.removeClass('dk_open dk_focus');
        });

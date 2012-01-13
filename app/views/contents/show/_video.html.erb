@@ -4,47 +4,47 @@
   <meta property="og:video" content="<%= @content.video_url if @content.video_url.present? %>" />
 <% end -%>
 <div class="article videos with_footer">
-<div class="inner">
-  <div class="left">
+  <div class="inner">
+    <div class="left">
 
-    <div class="context">
-      <h3><%= link_to t(@content.content_type), "javascript: history.go(-1)" %></h3>
-      <% if @content.author %> <span class="middot">&middot;</span> <%= t(".published_by") %> <%= link_to @content.author.fullname, @content.author %> <% end %>
-    </div>
+      <div class="context">
+        <h3><%= link_to t(@content.content_type), "javascript: history.go(-1)" %></h3>
+        <% if @content.author %> <span class="middot">&middot;</span> <%= t(".published_by") %> <%= link_to @content.author.fullname, @content.author %> <% end %>
+      </div>
 
-    <h1><%= @content.title %></h1>
+      <h1><%= @content.title %></h1>
 
-    <div class="meta">
-    <span><%= l @content.published_at.to_date, :format => :long -%></span>
-    &middot;
-    <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments -%></span>
-    </div>
+      <div class="meta">
+        <span><%= l @content.published_at.to_date, :format => :long -%></span>
+        &middot;
+        <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments -%></span>
+      </div>
 
-    <%= raw @content.html if @content.html.present? -%>
-    <div class="caption"><%= simple_format @content.description -%></div>
+      <%= raw @content.html if @content.html.present? -%>
+      <div class="caption"><%= simple_format @content.description -%></div>
 
-    <%= render "participations/comments" %>
-
-  </div>
-  <div class="right">
-    <div class="content left-border">
-
-      <%= render "shared/sharing" %>
-      <%= render "shared/sidebar/tags" %>
-      <%= render "shared/sidebar/location" %>
-      <%= render "shared/sidebar/related_politicians" %>
+      <%= render "participations/comments" %>
 
     </div>
-  </div>
-</div>
+    <div class="right">
+      <div class="content left-border">
 
-<div class="bfooter">
-<div class="separator"></div>
-<div class="inner">
-  <div class="left">
-    <%= link_to t(".back"), "javascript: history.go(-1)", :class => :left_arrow %>
+        <%= render "shared/sharing" %>
+        <%= render "shared/sidebar/tags" %>
+        <%= render "shared/sidebar/location" %>
+        <%= render "shared/sidebar/related_politicians" %>
+
+      </div>
+    </div>
   </div>
-</div>
-</div>
-<div class="t"></div><div class="f"></div>
+
+  <div class="bfooter">
+    <div class="separator"></div>
+    <div class="inner">
+      <div class="left">
+        <%= link_to t(".back"), "javascript: history.go(-1)", :class => :left_arrow %>
+      </div>
+    </div>
+  </div>
+  <div class="t"></div><div class="f"></div>
 </div>
