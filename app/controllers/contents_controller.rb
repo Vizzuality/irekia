@@ -57,12 +57,12 @@ class ContentsController < ApplicationController
     when Question
 
       if @content.answer.blank?
-        @user_has_requested_answer = current_user && current_user.has_requested_answer(params[:id])
+        @user_has_requested_answer = current_user && current_user.has_requested_answer(@content.id)
 
         if current_user.present? && current_user.politician?
           @new_answer = @content.build_answer
           @new_answer.answer_data = @new_answer.build_answer_data
-        elsif current_user.blank? || current_user.has_not_requested_answer(params[:id])
+        elsif current_user.blank? || current_user.has_not_requested_answer(@content.id)
           @new_request = @content.answer_requests.build
 
         end
@@ -131,7 +131,7 @@ class ContentsController < ApplicationController
         if current_user.present? && current_user.politician?
           @new_answer = @content.build_answer
           @new_answer.answer_data = @new_answer.build_answer_data
-        elsif current_user.blank? || current_user.has_not_requested_answer(params[:id])
+        elsif current_user.blank? || current_user.has_not_requested_answer(@content.id)
           @new_request = @content.answer_requests.build
 
         end
@@ -187,7 +187,7 @@ class ContentsController < ApplicationController
     @author_role = 'politician' if current_user.politician?
     @partial     = params[:partial] || @content_type
 
-    head :error and return unless @content.save
+    render :text => @content.errors.full_messages.join('<br/>'), :status => :error and return unless @content.save
     share_content
     render :layout => !request.xhr?
   end
@@ -203,7 +203,7 @@ class ContentsController < ApplicationController
     @author_role = 'administrator' if current_user.administrator?
     @partial     = params[:partial] || @content_type
 
-    head :error and return unless @content.save
+    render :text => @content.errors.full_messages.join('<br/>'), :status => :error and return unless @content.save
     share_content
     render :partial => "contents/edit/#{@partial}"
   end

@@ -421,7 +421,7 @@ class User < ActiveRecord::Base
   end
 
   def location
-    [city, province].compact!.join(", ")
+    [city, province].compact.join(", ") if city.present? && province.present?
   end
 
   def thumbnail

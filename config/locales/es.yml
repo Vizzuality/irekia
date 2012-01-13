@@ -258,7 +258,7 @@
       Role: Rol
       Title: Título
       user: Usuario
-      vide: Vídeo
+      video: Vídeo
 
     attributes:
       user:
@@ -278,6 +278,15 @@
         area_id: Área
       image:
         image: Imagen
+      video_data: &video_data_attributes
+        youtube_url: 'El vídeo de Youtube'
+        vimeo_url: 'El vídeo de Vimeo'
+      answer_data:
+        video_data:
+          <<: *video_data_attributes
+      video:
+        video_data:
+          <<: *video_data_attributes
     values:
       role:
         name:
