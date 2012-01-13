@@ -71,8 +71,8 @@ class UserPrivateStream < ActiveRecord::Base
         FROM contents c
         LEFT JOIN participations p ON p.content_id = c.id AND p.type = 'Comment'
         GROUP BY p.content_id
-      ) comments_count ON comments_count.content_id = user_public_streams.event_id
-                       AND user_public_streams.event_type IN ('Question', 'Answer', 'Proposal', 'Event', 'News', 'Tweet')
+      ) comments_count ON comments_count.content_id = user_private_streams.event_id
+                       AND user_private_streams.event_type IN ('Question', 'Answer', 'Proposal', 'Event', 'News', 'Tweet')
     SQL
     ).order('comments_count.count desc, published_at desc')
   end

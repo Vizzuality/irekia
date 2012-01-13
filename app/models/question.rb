@@ -77,7 +77,9 @@ class Question < Content
 
     target_area = {
       :id   => self.target_area.try(:id),
-      :name => self.target_area.try(:name)
+      :name_es => self.target_area.try(:name_es),
+      :name_eu => self.target_area.try(:name_eu),
+      :name_en => self.target_area.try(:name_en)
     } if self.target_area
 
     super({
