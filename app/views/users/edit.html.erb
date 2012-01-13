@@ -15,7 +15,7 @@
               <div class="input_field">
                 <%= f.text_field :name, :placeholder => "", :autocomplete => :off %>
               </div>
-              <span class="mandatory">obligatorio</span>
+              <span class="mandatory"><%= t(".mandatory") %></span>
             </div>
 
             <div class="field lastname">
@@ -23,7 +23,7 @@
               <div class="input_field">
                 <%= f.text_field :lastname, :placeholder => "",:autocomplete => :off %>
               </div>
-              <span class="mandatory">obligatorio</span>
+              <span class="mandatory"><%= t(".mandatory") %></span>
             </div>
 
             <% if current_user.invalid? && current_user.errors[:email].present? %>
@@ -32,7 +32,7 @@
                 <div class="input_field">
                   <%= f.text_field :email, :value => nil, :placeholder => "", :autocomplete => :off %>
                 </div>
-                <span class="mandatory">obligatorio</span>
+                <span class="mandatory"><%= t(".mandatory") %></span>
               </div>
             <% end -%>
 
