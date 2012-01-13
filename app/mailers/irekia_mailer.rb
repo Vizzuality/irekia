@@ -70,14 +70,6 @@ class IrekiaMailer < ActionMailer::Base
     mail(:to => to, :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
   end
 
-  def comment_approved(to)
-    @title = "Tu comentario ha sido aprobado :-)"
-    @subject = @title
-    @text = "El comentario que dejaste ayer en la noticia “Carril bici en Getxo” ha sido aprobado."
-    @show_notifications_link = true
-    mail(:to => to, :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
-  end
-
   def question_answered(answer)
     question_author = answer.question.author
 
@@ -95,11 +87,43 @@ class IrekiaMailer < ActionMailer::Base
     end
   end
 
-  def content_rejected(to)
-    @title = "Tu comentario ha sido rechazado :-("
-    @subject = @title
+  def moderation_approved(item)
+    @user_settings_url       = settings_user_url(item.author, :locale => I18n.locale)
+    @item_type               = item.class.model_name.human.downcase
+    @subject = @title        = t("irekia_mailer.moderation_approved.subject.#{item.class.name.downcase}")
+    @detail                  = if item.parent.present?
+      t("irekia_mailer.moderation_approved.detail_with_parent.#{item.parent.class.name.downcase}", :item => @item_type, :parent_text => item.parent.text)
+    else
+      t('irekia_mailer.moderation_approved.detail', :item => @item_type, :item_text => item.text)
+    end
     @show_notifications_link = true
-    mail(:to => to, :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+
+    mail(:to => item.author.email, :subject => @subject)
+  end
+
+  def moderation_rejected(item)
+    @user_settings_url       = settings_user_url(item.author, :locale => I18n.locale)
+    @item_type               = item.class.model_name.human.downcase
+    @subject = @title        = t("irekia_mailer.moderation_rejected.subject.#{item.class.name.downcase}")
+    @detail                  = if item.parent.present?
+      t("irekia_mailer.moderation_rejected.detail.#{item.parent.class.name.downcase}", :item => @item_type, :parent_text => item.parent.text)
+    end
+    @item_was = t("irekia_mailer.moderation_rejected.item_was.#{item.class.name.downcase}")
+    @contents = []
+    case item
+    when Comment
+      @contents << item.body
+    when Argument
+      @contents << item.reason
+    when Question
+      @contents << item.question_text
+      @contents << item.body
+    when Proposal
+      @contents << item.title
+      @contents << item.body
+    end
+
+    mail(:to => item.author.email, :subject => @subject)
   end
 
 end

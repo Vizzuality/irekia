@@ -4,7 +4,7 @@ class Question < Content
   has_one :question_data,
           :foreign_key => :question_id,
           :include => :target_user,
-          :select => 'id, question_id, user_id, area_id, question_text, answered_at'
+          :select => 'id, question_id, user_id, area_id, question_text, body, answered_at'
 
   has_one :answer,
           :foreign_key => :related_content_id,
@@ -23,7 +23,7 @@ class Question < Content
 
   accepts_nested_attributes_for :question_data, :answer_requests
 
-  delegate :target_area, :target_user, :question_text, :answered_at, :to => :question_data, :allow_nil => true
+  delegate :target_area, :target_user, :question_text, :body, :answered_at, :to => :question_data, :allow_nil => true
 
   after_save :answer_request_from_author
 

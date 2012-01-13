@@ -7,8 +7,8 @@ class Admin::ContentsController < Admin::AdminController
     @content.rejected  = params[content_type][:rejected] || params[content_type][:moderated].blank?
 
     if @content.update_attributes(params[content_type])
-      #ModerationMailer.accepted(@content).deliver if @content.moderated
-      #ModerationMailer.rejected(@content).deliver if @content.rejected
+      IrekiaMailer.moderation_approved(@content).deliver if @content.moderated
+      IrekiaMailer.moderation_rejected(@content).deliver if @content.moderated
 
       @items_count          = Moderation.not_moderated_count
       @moderation_time      = Moderation.get_moderation_time

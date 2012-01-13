@@ -2242,17 +2242,51 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
 # IREKIA - Mailers
 #######################################
 
-  moderation_mailer:
-    accepted:
-      accepted: 'El %{link} ha sido aceptado.'
-      content_link: contenido que has enviado
-      thanks: Gracias por participar en Irekia.
-    rejected:
-      rejected: 'El contenido que has enviado ha sido rechazado.'
-      thanks: Gracias por participar en Irekia.
   irekia_mailer:
     layout:
       settings: 'Gestiona tus notificaciones'
+    moderation_approved:
+      subject:
+        comment: 'Tu  comentario ha sido aprobado :-)'
+        argument: 'Tu argumento ha sido aprobado :-)'
+        question: 'Tu pregunta ha sido aprobada :-)'
+        proposal: 'Tu propuesta ha sido aprobada :-)'
+      detail: 'La %{item} “%{item_text}” ha sido aprobada.'
+      detail_with_parent:
+        event: 'El %{item} que dejaste en el evento “%{parent_text}” ha sido aprobado.'
+        news: 'El %{item} que dejaste en la noticia “%{parent_text}” ha sido aprobado.'
+        photo: 'El %{item} que dejaste en la foto “%{parent_text}” ha sido aprobado.'
+        proposal: 'El %{item} que dejaste en la propuesta “%{parent_text}” ha sido aprobado.'
+        question: 'El %{item} que dejaste en la pregunta “%{parent_text}” ha sido aprobado.'
+        status_message: 'El %{item} que dejaste en el mensaje de estado “%{parent_text}” ha sido aprobado.'
+        tweet: 'El %{item} que dejaste en el tweet “%{parent_text}” ha sido aprobado.'
+        video: 'El %{item} que dejaste en el video “%{parent_text}” ha sido aprobado.'
+      show_item: 'Ver %{item} en Irekia'
+    moderation_rejected:
+      subject:
+        comment: 'Tu  comentario ha sido rechazado :-('
+        argument: 'Tu argumento ha sido rechazado :-('
+        question: 'Tu pregunta ha sido rechazada :-('
+        proposal: 'Tu propuesta ha sido rechazada :-('
+      detail:
+        event: 'El %{item} que dejaste en el evento “%{parent_text}” ha sido rechazado.'
+        news: 'El %{item} que dejaste en la noticia “%{parent_text}” ha sido rechazado.'
+        photo: 'El %{item} que dejaste en la foto “%{parent_text}” ha sido rechazado.'
+        proposal: 'El %{item} que dejaste en la propuesta “%{parent_text}” ha sido rechazado.'
+        question: 'El %{item} que dejaste en la pregunta “%{parent_text}” ha sido rechazado.'
+        status_message: 'El %{item} que dejaste en el mensaje de estado “%{parent_text}” ha sido rechazado.'
+        tweet: 'El %{item} que dejaste en el tweet “%{parent_text}” ha sido rechazado.'
+        video: 'El %{item} que dejaste en el video “%{parent_text}” ha sido rechazado.'
+      item_was:
+        comment: 'El mensaje era el siguiente:'
+        argument: 'El argumento era el siguiente:'
+        question: 'La pregunta era la siguiente:'
+        proposal: 'La propuesta era la siguiente:'
+      reasons: 'Posibles motivos para el rechazo:'
+      first_reason: 'Tu mensaje contenía palabras malsonantes o insultos, o faltaba el respeto a alguna persona o colectivo.'
+      second_reason: 'Tu mensaje se considera spam, por publicitar un producto o servicio.'
+      third_reason: 'Tu mensaje no guarda relación con el tema tratado. '
+      not_agree_html: 'Puedes <a href="#" target="_blank" style="color:#1D79B0">leer más sobre el sistema de moderación de Irekia</a>. Si no estás de acuerdo, <a href="#" target="_blank" style="color:#1D79B0">escríbenos</a> y lo hablamos.'
     new_question:
       subject: "Nueva pregunta en Irekia"
       user_asks_you: '%{user} te hace la siguiente pregunta:'

@@ -1,0 +1,41 @@
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px"  background="<%= path_to_image('mail/rejected.jpg') %>" style="background-repeat:no-repeat;">
+  <tr>
+    <td width="635px" height="20px" valign="top"></td>
+  </tr>
+  <tr>
+    <td width="635px" valign="top"><h1 style="margin: 0; font-weight:bold; font-size: 24px; color:#465766"><%= @title %></h1></td>
+  </tr>
+  <tr>
+    <td width="635px" height="20px" valign="top"></td>
+  </tr>
+  <% if @detail.present? -%>
+  <tr> <td width="635px" valign="top"><span style="color: #5E5E5E;"><%= @detail %></span></td> </tr>
+  <% end -%>
+  <tr> <td width="635px" height="10px" valign="top"></td> </tr>
+  <tr> <td width="635px" valign="top"><span style="color: #5E5E5E;"><%= @item_was %></span></td> </tr>
+  <tr> <td width="635px" height="10px" valign="top"></td> </tr>
+</table>
+
+<table cellpadding="15px" cellspacing="0" border="0" align="center" width="635px" >
+  <tr>
+    <td width="635px" valign="top" background="<%= path_to_image('mail/question_bkg.jpg') %>" style="border: 1px solid #f0d1b2; margin: 10px 0;">
+      <% @contents.compact.each_with_index do |content, index| -%>
+        <p style="color: #5E5E5E;"><%= content %></p>
+      <% end -%>
+    </td>
+  </tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px" >
+  <tr> <td width="635px" height="15px" valign="top"></td> </tr>
+  <tr><td width="635px" valign="top"><span style="color: #5E5E5E;"><%= t('irekia_mailer.moderation_rejected.reasons') %></span></td></tr>
+  <tr> <td width="635px" height="15px" valign="top"></td> </tr>
+  <tr><td width="635px" valign="top">
+      <ul style="margin: 0 0 25px 17px; padding: 0; list-style:square;">
+        <li style="margin: 0 0 5px 0; padding: 0; color: #5E5E5E;"><%= t('irekia_mailer.moderation_rejected.first_reason') %></li>
+        <li style="margin: 0 0 5px 0; padding: 0; color: #5E5E5E;"><%= t('irekia_mailer.moderation_rejected.second_reason') %></li>
+        <li style="margin: 0 0 5px 0; padding: 0; color: #5E5E5E;"><%= t('irekia_mailer.moderation_rejected.third_reason') %></li>
+      </ul>
+  </td></tr>
+  <tr><td width="635px" valign="top"><span style="color: #5E5E5E;"><%= t('irekia_mailer.moderation_rejected.not_agree_html') %></span></td></tr>
+</table>
