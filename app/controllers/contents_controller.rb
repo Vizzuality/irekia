@@ -187,7 +187,7 @@ class ContentsController < ApplicationController
     @author_role = 'politician' if current_user.politician?
     @partial     = params[:partial] || @content_type
 
-    head :error and return unless @content.save
+    render :text => @content.errors.full_messages.join('<br/>'), :status => :error and return unless @content.save
     share_content
     render :layout => !request.xhr?
   end
@@ -203,7 +203,7 @@ class ContentsController < ApplicationController
     @author_role = 'administrator' if current_user.administrator?
     @partial     = params[:partial] || @content_type
 
-    head :error and return unless @content.save
+    render :text => @content.errors.full_messages.join('<br/>'), :status => :error and return unless @content.save
     share_content
     render :partial => "contents/edit/#{@partial}"
   end
