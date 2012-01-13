@@ -1314,6 +1314,13 @@ div#main.show div.left img {margin:4px 0 7px;}
 
                     .radio { float:left; position:relative; height:16px; width:13px; top:15px; padding:0; }
 
+                    .error {
+                      width: 180px;
+                      height: 20px;
+                      position: absolute;
+                      color: $error_color;
+                    }
+
                     &.selected {
                       @include box-shadow (0 0px 5px rgba(0, 0, 0, 0.3));
                       @include opacity(1);
@@ -1329,11 +1336,14 @@ div#main.show div.left img {margin:4px 0 7px;}
                     &.vimeo {
                       margin:10px 10px 10px 0;
                       height:111px;
+                      .error { right: -10px; top: 22px; }
                     } // li.vimeo
 
                     &.youtube {
                       margin: 10px;
                       height:111px;
+
+                      .error { right: 0px; top: 22px; }
                       .logo {
                         width:125px;
                         height:46px;

@@ -244,6 +244,7 @@
 
     var data = $popover.data(store);
 
+    data.$ps.find("li.selected input").val('');
     $(this).siblings("li").removeClass("selected");
     $(this).addClass("selected");
     data.$ps.find(".radio.selected").removeClass("selected");
@@ -450,12 +451,17 @@
     var $ps = data.$ps;
     var $response = $(xhr);
     data.spinner.stop();
-    console.log(data, $form, xhr);
+    data.$ps.find(".section.video li .error").html("");
+    data.$ps.find(".section.video li.selected .error").html(xhr.responseText);
+    data.$ps.find(".section.video li.selected .error").fadeIn(data.settings.transitionSpeed);
+
   }
 
   function _successMessage(data, $form, xhr) {
     var $ps = data.$ps;
     var $response = $(xhr);
+
+    data.$ps.find(".section.video li .error").fadeOut(data.settings.transitionSpeed);
 
     data.spinner.stop();
     $response.hide();
