@@ -85,7 +85,7 @@ $(document).ready(function(){
     }
   });
 
-  $('form').live('ajax:success',function(ev,data,obj){
+  $('form:not(.photo)').live('ajax:success',function(ev,data,obj){
     $('.article.total_info ul.info').remove();
     $('.article.total_info div.content').prepend(data);
   });
