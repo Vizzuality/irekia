@@ -231,7 +231,10 @@
 
             <% if current_user.errors.present? %>
               <ul class="errors">
-                <% if current_user.errors[:email].present? %><li><%= current_user.errors[:email].first %></li><% end %>
+                <% if current_user.errors[:email].present? %><li>
+                  <%= t(".error.email") %>
+                  <%= current_user.errors[:email].first %>
+                  </li><% end %>
               </ul>
             <% end %>
 
@@ -246,8 +249,11 @@
             <% if current_user.errors.present? %>
               <ul class="errors">
                 <% if current_user.errors[:password].present? or current_user.errors[:current_password].present? %>
-                  <% current_user.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
+                  <% current_user.errors[:password].each do |message| %>
+                    <li><%= t(".error.password") %> <%= message %></li>
+                  <% end %>
+                  <% if current_user.errors[:current_password].present? %>
+                    <li><%= t(".error.current_password") %> <%= current_user.errors[:current_password].first %></li>
                   <% end %>
                 <% end %>
               </ul>

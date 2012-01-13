@@ -1830,6 +1830,10 @@
         confirm_new_password: Repetir contraseña
         save: Guardar
     settings:
+      error:
+        current_password: La contraseña
+        email: El email
+        password: La contraseña
       remove_your_profile: 'Por supuesto, si lo deseas puedes <a href="#" class="%{class}" id="%{class}">borrar tu perfil</a> de Irekia en cualquier momento.'
       we_hope_you_dont_go: 'Esperamos que no sea así :-)'
       connection_with_social_networks: Conexión con redes sociales
