@@ -10,7 +10,7 @@
     <div class="left">
 
       <div class="context">
-        <h3><%= t(@content.content_type) %></h3>
+        <h3><%= link_to t(@content.content_type), "javascript: history.go(-1)" %></h3>
 
         <% if !@content.areas.blank? %>
           <span class="middot">&middot;</span>

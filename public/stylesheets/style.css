@@ -1095,6 +1095,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .inner .context a { line-height: normal; }
 #container .article .inner .context .middot { float: left; margin: 0 3px 0 0; color: #ccc; }
 #container .article .inner .context h3 { float: left; margin: 0 4px 0 0; padding: 0; line-height: 19px; font-size: 12px; }
+#container .article .inner .context h3 a { color: #465866; text-decoration: none; }
 
 /* info */
 #container .article .inner p.info { margin: 0 0 1px 0; padding: 0; font-size: 15px; }

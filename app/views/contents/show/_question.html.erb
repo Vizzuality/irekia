@@ -5,104 +5,110 @@
 <div class="article questions with_footer">
   <%= link_to '', edit_question_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
 
-<div class="inner">
-  <div class="left">
+  <div class="inner">
+    <div class="left">
 
-    <div class="context">
-      <h3><%= t(@content.content_type) %></h3>
-      <% if @content.target_area %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_area.name, @content.target_area %> <% end %>
-      <% if @content.target_user %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_user.fullname, @content.target_user %> <% end %>
-    </div>
+      <div class="context">
 
-    <h2><%= @content.question_text %></h2>
+        <% if @content.target_user -%>
+          <h3><%= link_to t(@content.content_type), questions_politician_path(@content.target_user, :anchor => :questions) %></h3>
+        <% else -%>
+          <h3><%= link_to t(@content.content_type), questions_area_path(@content.target_area, :anchor => :questions) %></h3>
+        <% end -%>
 
-    <div class="meta">
-      <%= link_to @content.author.try(:fullname), path_for_user(@content.author) %>
-      <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
-      <% if @answer.blank? %>
-        &middot;
-        <span class="requests positive"><%= @content.answer_requests_count %></span>
-      <% end -%>
-      &middot;
-      <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
-      &middot;
-      <% if @answer.blank? %>
-        <span class="not_answered"><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
-      <% else %>
-        <span class="<%= @answer ? 'answered' : 'not_answered' %>"><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words(@content.published_at, @content.answered_at)) %></span>
-      <% end %>
-    </div>
-
-    <% if @answer %>
-      <div class="answer">
-        <%= simple_format @answer.answer_text %>
-        <%= raw @content.answer.video_data.html if @content.answer.video_data && @content.answer.video_data.html.present? %>
+        <% if @content.target_area %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_area.name, @content.target_area %> <% end %>
+        <% if @content.target_user %> &middot; <%= t(".addressed_to") %> <%= link_to @content.target_user.fullname, @content.target_user %> <% end %>
       </div>
-    <% else %>
-      <% if can_i_answer_the_question? -%>
-        <div class="answering clearfix">
-          <span class="peak"></span>
-          <%= form_for @new_answer, :remote => true, :html => {:'data-type' => :html} do |form| %>
-            <%= form.hidden_field :related_content_id %>
-            <%= form.fields_for :answer_data, @new_answer.answer_data do |answer_data| -%>
 
-              <h3><%= t(".answer_this_question") %></h3>
-              <div id="counter_answer" data-limit="-1" class="input-counter">
-                <%= answer_data.text_area :answer_text, :class => :grow %>
-              </div>
+      <h2><%= @content.question_text %></h2>
 
-              <h3><%= t(".add_a_video") %></h3>
-              <div class="input_field placeholder">
-                <%= answer_data.fields_for :video_data, @new_answer.answer_data.build_video_data do |video_data| %>
-                  <%= video_data.text_field :video_url %>
-                <% end -%>
-                <span class="holder"><%= t(".youtube_or_vimeo_url") %></span>
-              </div>
+      <div class="meta">
+        <%= link_to @content.author.try(:fullname), path_for_user(@content.author) %>
+        <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %>
+        <% if @answer.blank? %>
+          &middot;
+          <span class="requests positive"><%= @content.answer_requests_count %></span>
+        <% end -%>
+        &middot;
+        <span class="comments"><%= link_to @comments_count, '#', :class => :goto_comments %></span>
+        &middot;
+        <% if @answer.blank? %>
+          <span class="not_answered"><%= t('.question_content.author_and_comments.not_answered', :count => @content.answer_requests_count) %></span>
+        <% else %>
+          <span class="<%= @answer ? 'answered' : 'not_answered' %>"><%= t('.question_content.author_and_comments.answered', :time => distance_of_time_in_words(@content.published_at, @content.answered_at)) %></span>
+        <% end %>
+      </div>
 
-            <% end -%>
-
-            <div class="footer clearfix">
-              <div class="left">
-                <div class="checkbox_button facebook">
-                  <%= check_box_tag :share_in_facebook %>
-                  <%= hidden_field_tag :facebook_message, message_for_facebook(@content) %>
-                  <a href="#" class="checkbox">
-                    <div class="icon"></div>
-                  </a>
-                </div>
-                <div class="checkbox_button twitter">
-                  <%= check_box_tag :share_in_twitter %>
-                  <%= hidden_field_tag :twitter_message, message_for_twitter(@content) %>
-                  <a href="#" class="checkbox">
-                    <div class="icon"></div>
-                  </a>
-                </div>
-              </div>
-              <div class="right"><%= form.submit t(".publish"), :id => "submit-counter_answer", :class => 'white_button pink disabled', :disabled => :disabled %></div>
-            </div>
-
-          <% end -%>
+      <% if @answer %>
+        <div class="answer">
+          <%= simple_format @answer.answer_text %>
+          <%= raw @content.answer.video_data.html if @content.answer.video_data && @content.answer.video_data.html.present? %>
         </div>
-      <% else -%>
-        <div class="answer_placeholder">
-          <p><strong><%= t('.not_answered_yet') %></strong></p>
-          <p class="has_requested_answer">
+      <% else %>
+        <% if can_i_answer_the_question? -%>
+          <div class="answering clearfix">
+            <span class="peak"></span>
+            <%= form_for @new_answer, :remote => true, :html => {:'data-type' => :html} do |form| %>
+              <%= form.hidden_field :related_content_id %>
+              <%= form.fields_for :answer_data, @new_answer.answer_data do |answer_data| -%>
 
-          <% if @user_has_requested_answer -%>
-            <% if @content.answer_requests_count <= 2 -%>
-              <%= t('.you_and_other', :count => @content.answer_requests_count) -%>
-            <% else -%>
-              <%= t('.you_and_thousands', :count => @content.answer_requests_count - 1) -%>&#44;
+                <h3><%= t(".answer_this_question") %></h3>
+                <div id="counter_answer" data-limit="-1" class="input-counter">
+                  <%= answer_data.text_area :answer_text, :class => :grow %>
+                </div>
+
+                <h3><%= t(".add_a_video") %></h3>
+                <div class="input_field placeholder">
+                  <%= answer_data.fields_for :video_data, @new_answer.answer_data.build_video_data do |video_data| %>
+                    <%= video_data.text_field :video_url %>
+                  <% end -%>
+                  <span class="holder"><%= t(".youtube_or_vimeo_url") %></span>
+                </div>
+
+              <% end -%>
+
+              <div class="footer clearfix">
+                <div class="left">
+                  <div class="checkbox_button facebook">
+                    <%= check_box_tag :share_in_facebook %>
+                    <%= hidden_field_tag :facebook_message, message_for_facebook(@content) %>
+                    <a href="#" class="checkbox">
+                      <div class="icon"></div>
+                    </a>
+                  </div>
+                  <div class="checkbox_button twitter">
+                    <%= check_box_tag :share_in_twitter %>
+                    <%= hidden_field_tag :twitter_message, message_for_twitter(@content) %>
+                    <a href="#" class="checkbox">
+                      <div class="icon"></div>
+                    </a>
+                  </div>
+                </div>
+                <div class="right"><%= form.submit t(".publish"), :id => "submit-counter_answer", :class => 'white_button pink disabled', :disabled => :disabled %></div>
+              </div>
+
             <% end -%>
-          <% else -%>
-            <%= t('.people_demanding_answer', :count => @content.answer_requests_count) -%>&#44;
-          <% end -%>
+          </div>
+        <% else -%>
+          <div class="answer_placeholder">
+            <p><strong><%= t('.not_answered_yet') %></strong></p>
+            <p class="has_requested_answer">
 
-          <% if @new_request -%>
-            &nbsp;
-            <%= form_for @new_request, :remote => true, :html => {:'data-type' => :html} do |f| -%>
-              <%= f.hidden_field :content_id -%>
-              <%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
+            <% if @user_has_requested_answer -%>
+              <% if @content.answer_requests_count <= 2 -%>
+                <%= t('.you_and_other', :count => @content.answer_requests_count) -%>
+              <% else -%>
+                <%= t('.you_and_thousands', :count => @content.answer_requests_count - 1) -%>&#44;
+              <% end -%>
+            <% else -%>
+              <%= t('.people_demanding_answer', :count => @content.answer_requests_count) -%>&#44;
+            <% end -%>
+
+            <% if @new_request -%>
+              &nbsp;
+              <%= form_for @new_request, :remote => true, :html => {:'data-type' => :html} do |f| -%>
+                <%= f.hidden_field :content_id -%>
+                <%= f.submit_with_login t('.join_them', :count => @content.answer_requests_count) -%>
               <% end
           end -%>&#46;
           </p>
@@ -122,16 +128,16 @@
 </div>
 
 <div class="bfooter">
-<div class="separator"></div>
-<div class="inner">
-  <div class="left">
-    <% if @content.target_user -%>
-      <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user, :anchor => :questions), :class => :left_arrow %>
-    <% else -%>
-      <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area, :anchor => :questions), :class => :left_arrow %>
-    <% end -%>
+  <div class="separator"></div>
+  <div class="inner">
+    <div class="left">
+      <% if @content.target_user -%>
+        <%= link_to t('.footer.all_questions_to_user', :name => @content.target_user.fullname), questions_politician_path(@content.target_user, :anchor => :questions), :class => :left_arrow %>
+      <% else -%>
+        <%= link_to t('.footer.all_questions_to_area', :name => @content.target_area.name), questions_area_path(@content.target_area, :anchor => :questions), :class => :left_arrow %>
+      <% end -%>
+    </div>
   </div>
-</div>
 </div>
 <div class="t"></div><div class="f"></div>
 </div>

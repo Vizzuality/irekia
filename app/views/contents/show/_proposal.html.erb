@@ -9,7 +9,8 @@
   <div class="left">
 
     <div class="context">
-      <h3><%= t(@content.content_type) %></h3>
+      <h3><%= link_to t(@content.content_type), proposals_area_path(@content.target_area, :anchor => :proposals) %></h3>
+
       <% if @content.target_area %>
         <span class="middot">&middot;</span> <%= t(".addressed_to") %> <%= link_to @content.target_area.name, @content.target_area %>
         <% elsif @content.target_user %>
