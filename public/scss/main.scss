@@ -1220,6 +1220,13 @@ div#main.show div.left img {margin:4px 0 7px;}
                   width:100%;
                   margin:0 0 20px 0;
 
+                  &.image_placeholder {
+                    border: 1px solid #ccc;
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    @include border-radius(3px);
+                    width: 680px;
+                  }
+
                   .holder { width:600px; }
                   input[type="text"] { width:666px; font-size:15px; }
                 }
