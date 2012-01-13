@@ -44,11 +44,11 @@
             <label for=""><%= t(".gender") %></label>
 
             <div class="radios">
-              <a href="#" class="radio gender male<%= ' selected' if !current_user.is_woman %>">Hombre
+              <a href="#" class="radio gender male<%= ' selected' if !current_user.is_woman %>"><%= t(".man") %>
                 <%= form.radio_button :is_woman, false, :checked => !current_user.is_woman %>
               </a>
 
-              <a href="#" class="radio gender female<%= ' selected' if current_user.is_woman %>">Mujer
+              <a href="#" class="radio gender female<%= ' selected' if current_user.is_woman %>"><%= t(".woman") %>
                 <%= form.radio_button :is_woman, true, :checked => current_user.is_woman %>
               </a>
             </div>
