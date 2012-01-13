@@ -4,11 +4,11 @@ class Admin::ContentsController < Admin::AdminController
     @content           = Content.find(params[:id])
     content_type       = params[:type].downcase.to_sym
     @content.moderated = params[content_type][:moderated]
-    @content.rejected  = params[content_type][:rejected]
+    @content.rejected  = params[content_type][:rejected] || params[content_type][:moderated].blank?
 
     if @content.update_attributes(params[content_type])
-      ModerationMailer.accepted(@content).deliver if params[content_type][:moderated] == 'true'
-      ModerationMailer.rejected(@content).deliver if params[content_type][:rejected] == 'true'
+      #ModerationMailer.accepted(@content).deliver if @content.moderated
+      #ModerationMailer.rejected(@content).deliver if @content.rejected
 
       @items_count          = Moderation.not_moderated_count
       @moderation_time      = Moderation.get_moderation_time

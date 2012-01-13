@@ -3,8 +3,8 @@
     <%= argument_data_form.text_area :reason %>
   <% end -%>
   <div class="actions">
-    <%= form.hidden_field :moderated, :value => false, :class => 'moderated', :disabled => true %>
+    <%= form.hidden_field :moderated, :value => true, :class => 'moderated', :disabled => true %>
     <%= button t('admin.moderation.items_list_edit.reject'), :class => "reject white_button" %>
-    <%= button t('admin.moderation.items_list_edit.validate'), :class => "white_button" %>
+    <%= button t('admin.moderation.items_list_edit.validate'), :class => "accept white_button" %>
   </div>
 <% end %>

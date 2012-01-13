@@ -83,7 +83,7 @@ class UserPrivateStream < ActiveRecord::Base
   end
 
   def send_notification
-    Notification.for(user, event)
+    Notification.for(user, event) if event.moderated
   end
   private :send_notification
 
