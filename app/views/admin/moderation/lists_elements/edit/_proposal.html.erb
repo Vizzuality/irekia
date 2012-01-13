@@ -1,19 +1,13 @@
 <div class="photo_moderation">
-  <% begin %>
+  <% if data.image.present? -%>
     <%= link_to image_tag(data.image.image_url), proposal_path(data.id) %>
 
-    <%= form_for [:admin, data], :remote => true, :html => {:class => "photo", :'data-type' => 'html' } do |form| %>
-      <%= form.fields_for :proposal_data do |proposal_data_form| %>
-        <%= proposal_data_form.fields_for :image do |image_form| %>
-          <%= image_form.hidden_field :_destroy %>
-        <% end -%>
-      <% end -%>
+    <%= form_for data.image, :remote => true, :html => {:'data-type' => 'html', :method => :delete, :class => 'remove'} do |form| %>
       <div class="actions">
         <%= button t('admin.moderation.items_list_edit.reject_image'), :class => "white_button reject" %>
       </div>
-    <% end %>
-  <% rescue %>
-  <% end %>
+    <% end -%>
+  <% end -%>
 </div>
 
 <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
