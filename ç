@@ -47,12 +47,13 @@ $(function() {
   $('.radios').enableRadio();
   $('select.dropkick').dropkick();
 
-  $('.municipalities_dropdown').dropkick();
-
   $('.provinces_dropdown').dropkick({ callback: function(e) {
-    var territory_id = e.attr("data-dk-dropdown-value");
-    $("#dk_container_user_city_id li a").hide();
-    $("#dk_container_user_city_id li a[data-id='territory_" + territory_id + "']").show();
+    var $a = e;
+    var id = $a.attr("data-dk-dropdown-value");
+    console.log(id);
+    $("option").show();
+    $("option.territory_"+id).hide();
+    console.log($("option.territory_"+id));
   }});
 
   $('.area_filter').dropkick({ filterEvents: true });

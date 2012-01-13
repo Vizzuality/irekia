@@ -145,14 +145,6 @@
          $dk.removeClass('dk_open dk_focus');
        });
 
-      // // Focus events
-      // $dk.bind('focus.dropkick', function (e) {
-      //   $dk.addClass('dk_focus');
-      // }).bind('blur.dropkick', function (e) {
-      //   $dk.removeClass('dk_open dk_focus');
-      // });
-
-
       setTimeout(function () {
         $select.hide();
       }, 0);
@@ -389,6 +381,10 @@
       $dk     = $option.parents('.dk_container').first(),
       data    = $dk.data('dropkick')
       ;
+
+      if (data.settings.callback) {
+        data.settings.callback($(this));
+      }
 
       if (data.settings.filterEvents) {
         var id = $(this).attr("data-id");
