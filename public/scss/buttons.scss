@@ -415,12 +415,12 @@ Hacks (mostly ie7 and ie8 fixes)
 
   &.question .question_field.textarea,
   &.question .question_field.textarea {
-    background:url('/images/user_proposal_title_bkg.png') no-repeat 0 0;
+    background:url('/images/publish_boxes_sprite.png') no-repeat 0 0;
   }
 
   &.proposal .proposal_field.textarea,
   &.proposal .proposal_field.textarea {
-    background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -80px;
+    background:url('/images/publish_boxes_sprite.png') no-repeat 0 -80px;
   }
 
   &.question .question_field.textarea,
@@ -459,7 +459,7 @@ Hacks (mostly ie7 and ie8 fixes)
 
   .autosuggest_field {
     .search_box {
-      background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -356px;
+      background:url('/images/publish_boxes_sprite.png') no-repeat 0 -356px;
       width: 552px!important;
       height: 39px!important;
       padding: 0; margin: 0;
@@ -468,7 +468,7 @@ Hacks (mostly ie7 and ie8 fixes)
   }
 
   .image_placeholder {
-    background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -356px;
+    background:url('/images/publish_boxes_sprite.png') no-repeat 0 -356px;
     width: 552px!important;
     height: 39px!important;
     padding: 0; margin: 0;
@@ -476,7 +476,7 @@ Hacks (mostly ie7 and ie8 fixes)
   }
 
   .extra .field .input_field.textarea, .body_field {
-    background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -294px!Important;
+    background:url('/images/publish_boxes_sprite.png') no-repeat 0 -294px!Important;
     width: 552px;
     height: 54px;
     border:none!important;
@@ -499,7 +499,7 @@ Hacks (mostly ie7 and ie8 fixes)
     .section.photo {
       .form { margin-bottom: 10px; }
       form .form .input_field.image_placeholder.uploader {
-        background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -553px;
+        background:url('/images/publish_boxes_sprite.png') no-repeat 0 -553px;
         width: 687px;
         padding: 0; margin: 0 0 10px 0;
         height: 53px!important;
@@ -511,7 +511,7 @@ Hacks (mostly ie7 and ie8 fixes)
     .section.video {
       form ul li .input_field {
         width:283px!important; height:39px;
-        background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -501px;
+        background:url('/images/publish_boxes_sprite.png') no-repeat 0 -501px;
         border:none;
         input[type="text"] {
           width:257px!Important; height:30px;
@@ -524,14 +524,14 @@ Hacks (mostly ie7 and ie8 fixes)
 
     .section.proposal {
       .proposal_field.textarea {
-        background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -415px;
+        background:url('/images/publish_boxes_sprite.png') no-repeat 0 -415px;
       }
     } // proposal
 
     .section.dashboard {
       .form { margin: 0 0 10px 0; }
       form .form .input_field.textarea {
-        background:url('/images/user_proposal_title_bkg.png') no-repeat 0 0;
+        background:url('/images/publish_boxes_sprite.png') no-repeat 0 0;
         width: 687px;
         padding: 0!important; margin: 0 0 10px 0!important;
         height: 69px!important;
@@ -582,7 +582,7 @@ Hacks (mostly ie7 and ie8 fixes)
     } // ul.menu
 
     .uploader.image_placeholder {
-      background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -245px;
+      background:url('/images/publish_boxes_sprite.png') no-repeat 0 -245px;
       width: 687px!important;
       padding: 0; margin: 0 0 10px 0!important;
       height: 39px!important;
@@ -590,7 +590,7 @@ Hacks (mostly ie7 and ie8 fixes)
     }
 
     .section .body_field.textarea {
-      background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -158px;
+      background:url('/images/publish_boxes_sprite.png') no-repeat 0 -158px;
       width: 687px;
       padding: 0; margin: 0;
       height: 75px!Important;
@@ -608,7 +608,7 @@ Hacks (mostly ie7 and ie8 fixes)
 
     .section.question .autosuggest_field .search_box,
     .section.proposal .autosuggest_field .search_box {
-      background:url('/images/user_proposal_title_bkg.png') no-repeat 0 -245px;
+      background:url('/images/publish_boxes_sprite.png') no-repeat 0 -245px;
       width: 687px;
       padding: 0; margin: 0;
       height: 60px!Important;
