@@ -8,7 +8,7 @@
   <div class="left">
 
     <div class="context">
-      <h3><%= t(@content.content_type) %></h3>
+      <h3><%= link_to t(@content.content_type), "javascript: history.go(-1)" %></h3>
       <% if @content.author %> <span class="middot">&middot;</span> <%= t(".published_by") %> <%= link_to @content.author.fullname, @content.author %> <% end %>
     </div>
 
