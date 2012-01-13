@@ -2,7 +2,7 @@ class News < Content
   has_one :news_data,
           :dependent => :destroy
 
-  delegate :title, :subtitle, :body, :source_url, :image, :build_image, :to => :news_data, :allow_nil => true
+  delegate :title, :subtitle, :body, :source_url, :iframe_url, :image, :build_image, :to => :news_data, :allow_nil => true
   accepts_nested_attributes_for :news_data
 
   def self.from_area(area)

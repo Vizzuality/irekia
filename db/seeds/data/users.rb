@@ -11,7 +11,8 @@ puts '================='
 create_user :name                  => 'usuario dado',
             :lastname              => 'de baja',
             :email                 => 'wadus@irekia.com',
-            :is_woman              => false
+            :is_woman              => false,
+            :role                  => Role.find_by_name('Removed')
 
 #############
 # Admin
