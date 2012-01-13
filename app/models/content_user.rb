@@ -11,6 +11,8 @@ class ContentUser < ActiveRecord::Base
   belongs_to :tweet,          :foreign_key => :content_id
   belongs_to :status_message, :foreign_key => :content_id
 
+  delegate :moderated, :to => :content, :allow_nil => true
+
   accepts_nested_attributes_for :question, :user
 
   def published_at

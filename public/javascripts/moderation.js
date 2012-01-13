@@ -158,7 +158,7 @@ function checkModeration() {
 
 function enableModerationWithEditing() {
   $(".content.edit button").live("click", function() {
-    if ($(this).hasClass("reject")) {
+    if ($(this).hasClass("accept")) {
       var $moderated = $(this).parent().find(".moderated");
       $moderated.removeAttr("disabled");
     }
