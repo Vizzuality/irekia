@@ -156,24 +156,34 @@ function checkModeration() {
   });
 }
 
-
 function enableModerationWithEditing() {
   $(".content.edit button").live("click", function() {
-
+    if ($(this).hasClass("reject")) {
+      var $moderated = $(this).parent().find(".moderated");
+      $moderated.removeAttr("disabled");
+    }
   });
 
   $(".content.edit form").live('ajax:success',function(ev,data,obj){
-    console.log('sended');
-    $(this).parents("li").fadeOut(250);
+    if ($(this).hasClass("photo")) {
+      $(this).parents(".photo_moderation").fadeOut(250, function() {
+        $(this).remove();
+      });
+    } else {
+      $(this).parents("li").fadeOut(250, function() {
+        $(this).remove();
+
+        if ($("li.content.edit").length == 1) {
+          $(".content.edit li").css("border", "none");
+        } else if ($("li.content.edit").length == 0) {
+          $(".article.activity").fadeOut(250);
+        }
+      });
+    }
   });
 
   $(".content.edit form").live('ajax:error',function(ev,data,obj){
-    // $(this).effect("shake", { times: 4 }, 100);
-    if ($(this).hasClass("photo")) {
-      $(this).parents(".photo_moderation").fadeOut(250);
-    } else {
-      $(this).parents("li").fadeOut(250);
-    }
+     $(this).effect("shake", { times: 4 }, 100);
   });
 }
 

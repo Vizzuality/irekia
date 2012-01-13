@@ -105,7 +105,7 @@ GEM
     ffi (1.0.11)
     friendly_id (4.0.0)
     fssm (0.2.8.1)
-    g (1.5.0)
+    g (1.6.0)
       ruby_gntp
     hashie (1.1.0)
     highline (1.6.9)

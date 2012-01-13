@@ -633,6 +633,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.popover.proposal .loading { display: none; position: absolute; top: 10px; right: 10px; font-size: 15px; color: #CCCCCC; z-index: 2010; }
 #container .article.popover.proposal .progress { position: absolute; top: 10px; left: 10px; height: 16px; width: 0px; background: #FF0066; -moz-border-radius: 2px; -webkit-border-radius: 2px; -o-border-radius: 2px; -ms-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; z-index: 2000; }
 #container .article.popover.proposal .uploader { float: left; width: 534px; }
+#container .article.popover.proposal .uploader.image_placeholder { border: 1px solid #ccc; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; width: 554px; }
 #container .article.popover.proposal .uploader .qq-upload-button { margin: 0; }
 #container .article.popover.proposal .uploader input[type="text"] { width: 534px; }
 #container .article.popover.proposal .uploader .holder { left: 10px; }

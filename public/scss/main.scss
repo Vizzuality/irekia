@@ -1677,6 +1677,13 @@ div#main.show div.left img {margin:4px 0 7px;}
 
         width:534px;
 
+        &.image_placeholder {
+          border: 1px solid #ccc;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          @include border-radius(3px);
+          width: 554px;
+        }
+
         .qq-upload-button { margin: 0; }
 
         input[type="text"] { width: 534px; }
