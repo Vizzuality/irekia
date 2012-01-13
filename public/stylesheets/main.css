@@ -1533,9 +1533,10 @@ Slideshow
 .slideshow .inner_slideshow ul.contents, #container .article .slideshow .inner_slideshow ul.contents { margin: 0; padding: 0; width: 90000px; }
 .slideshow .inner_slideshow ul.contents li.section, #container .article .slideshow .inner_slideshow ul.contents li.section { margin: 0; padding: 0; position: relative; float: left; width: 610px; }
 .slideshow .inner_slideshow ul.contents li.section textarea, #container .article .slideshow .inner_slideshow ul.contents li.section textarea { display: none; }
-.slideshow .inner_slideshow ul.contents li.section .caption, #container .article .slideshow .inner_slideshow ul.contents li.section .caption { margin-top: 7px; width: 490px; color: #7D8A92; font-size: 13px; }
-.slideshow .inner_slideshow ul.contents li.section .caption p, #container .article .slideshow .inner_slideshow ul.contents li.section .caption p { margin: 0; font-size: 13px; }
+.slideshow .inner_slideshow ul.contents li.section .caption, #container .article .slideshow .inner_slideshow ul.contents li.section .caption { margin-top: 7px; width: 600px; color: #7D8A92; font-size: 13px; }
+.slideshow .inner_slideshow ul.contents li.section .caption p, #container .article .slideshow .inner_slideshow ul.contents li.section .caption p { margin: 0; font-size: 13px; line-height: normal; }
 .slideshow .inner_slideshow ul.contents li.section .caption p.source, #container .article .slideshow .inner_slideshow ul.contents li.section .caption p.source { color: #7D8A92; margin: 0; }
+.slideshow .inner_slideshow ul.contents li.section .caption p a, #container .article .slideshow .inner_slideshow ul.contents li.section .caption p a { color: #1d79b0; }
 .slideshow ul.navigation, #container .article .slideshow ul.navigation { display: none; position: absolute; top: 0; right: 0; z-index: 200; }
 .slideshow ul.navigation li, #container .article .slideshow ul.navigation li { float: left; margin-left: 5px!important; }
 .slideshow ul.navigation li.selected a, #container .article .slideshow ul.navigation li.selected a { background-position: 0 -71px; }

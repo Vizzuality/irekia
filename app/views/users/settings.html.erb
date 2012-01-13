@@ -246,10 +246,9 @@
             <% if current_user.errors.present? %>
               <ul class="errors">
                 <% if current_user.errors[:password].present? or current_user.errors[:current_password].present? %>
-                  <% current_user.errors[:password].each do |message| %>
+                  <% current_user.errors.full_messages.each do |message| %>
                     <li><%= message %></li>
                   <% end %>
-                <% if current_user.errors[:current_password].present? %><li><%= current_user.errors[:current_password].first %></li><% end %>
                 <% end %>
               </ul>
             <% end %>

@@ -5879,14 +5879,16 @@ Slideshow
 
         .caption {
           margin-top: 7px;
-          width:490px;
+          width:600px;
           color: #7D8A92;
           font-size: 13px;
 
           p {
             margin: 0;
             font-size: 13px;
+            line-height:normal;
             &.source { color: #7D8A92; margin: 0; }
+            a { color: $link_color; }
           }
         }
       }
