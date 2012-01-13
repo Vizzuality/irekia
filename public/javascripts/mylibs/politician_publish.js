@@ -406,6 +406,7 @@
 
     $form.unbind();
     $form.bind('ajax:success', function(event, xhr, status) { _successMessage(data, $form, xhr); })
+    $form.bind('ajax:error', function(event, xhr, status)   { _errorMessage(data, $form, xhr); })
   }
 
   function _publishMessage(data) {
@@ -443,6 +444,13 @@
     data.$ps.find(":text, textarea").val("");
 
     _showMessage(data, "success");
+  }
+
+  function _errorMessage(data, $form, xhr) {
+    var $ps = data.$ps;
+    var $response = $(xhr);
+    data.spinner.stop();
+    console.log(data, $form, xhr);
   }
 
   function _successMessage(data, $form, xhr) {

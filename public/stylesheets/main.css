@@ -319,12 +319,15 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.publish.event .inner .content .container .map { width: 685px; }
 #container .article.publish.politician .inner .content .container { height: 79px; }
 #container .article.publish.politician .inner .content .container .inner_container .section .image_container { width: 667px; }
+#container .article.publish.politician .inner .content .container .inner_container .section .photo .form { margin-bottom: 10px; }
+#container .article.publish.politician .inner .content .container .inner_container .section.dashboard .form { margin: 0 0 10px 0; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal { display: block; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .triangle { left: 388px; }
-#container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0; }
+#container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.textarea { margin: 0 0 20px 0; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.uploader { margin-bottom: 20px; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .input_field.description { margin-bottom: 20px; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .uploader { width: 100%; margin: 0 0 20px 0; }
+#container .article.publish.politician .inner .content .container .inner_container .section.proposal .uploader.image_placeholder { border: 1px solid #ccc; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; width: 684px; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .uploader .holder { left: 0; }
 #container .article.publish.politician .inner .content .container .inner_container .section.proposal .uploader .qq-upload-button { margin: 0 0 0 10px; }
 #container .article.publish.user .inner .content .container { height: 79px; }

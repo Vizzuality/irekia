@@ -1015,15 +1015,31 @@ div#main.show div.left img {margin:4px 0 7px;}
 
           .image_container { width: 667px; }
 
+          .photo {
+            .form { margin-bottom: 10px; }
+          } // photo
+
+          &.dashboard {
+            .form { margin: 0 0 10px 0; }
+          }
+
           &.proposal {
             display:block;
 
             .triangle { left:388px; }
-            .input_field.textarea    { margin:0; }
+            .input_field.textarea    { margin:0 0 20px 0; }
             .input_field.uploader    { margin-bottom: 20px; }
             .input_field.description { margin-bottom: 20px; }
 
             .uploader {
+
+              &.image_placeholder {
+                border: 1px solid #ccc;
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                @include border-radius(3px);
+                width: 684px;
+              }
+
               width:100%;
               margin:0 0 20px 0;
               .holder { left: 0; }
