@@ -44,28 +44,6 @@ header nav .content ul.auth li a.blue_button,
 header nav .content ul li .blue_button a,
 .article .blue_button a { padding:7px 14px; }
 
-.ie9 .white_button.disabled:hover,
-.ie9 .article .white_button.disabled:hover,
-.ie9 .white_button, .ie9 .article .white_button {
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f6f9',GradientType=0 ); /* IE6-9 */
-}
-
-.ie9 .white_button.disabled,
-.ie9 .article .white_button.disabled {
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f6f9',GradientType=0 ); /* IE6-9 */
-}
-
-.ie9 .article .blue_button,
-.ie9 header nav .content .blue_button,
-.ie9 header nav .content ul li .blue_button {
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3396cd', endColorstr='#2080b5',GradientType=0 ); /* IE6-9 */
-}
-
-.ie9 .article .blue_button:active,
-.ie9 header nav .content ul li .blue_button:active {
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2080b5', endColorstr='#3396cd',GradientType=0 ); /* IE6-9 */
-}
-
 /* Blue buttons */
 .article .blue_button,
 header nav .content .blue_button, header nav .content ul li .blue_button {
