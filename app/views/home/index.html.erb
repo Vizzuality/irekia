@@ -1,6 +1,6 @@
 <%= content_for :rss_feeds do %>
-  <%= auto_discovery_link_tag(:rss, {:action => 'index'}, {:title => 'Irekia'}) %>
-  <%= auto_discovery_link_tag(:rss, {:action => 'index', :type => 'news'}, {:title => "Irekia - #{t('.rss.title.news')}"}) %>
+  <%= auto_discovery_link_tag(:rss, root_url(:format => 'rss'), {:title => 'Irekia'}) %>
+  <%= auto_discovery_link_tag(:rss, root_url(:type => 'news', :format => 'rss'), {:title => "Irekia - #{t('.rss.title.news')}"}) %>
 <% end -%>
 
   <div class="article participation">
