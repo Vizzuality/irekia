@@ -1,8 +1,10 @@
 class HomeController < ApplicationController
+  include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::TagHelper
 
   skip_before_filter :authenticate_user!, :only => [:index, :agenda, :change_locale]
 
-  respond_to :html, :json, :ics, :iphone
+  respond_to :html, :json, :ics, :rss, :iphone
 
   def index
     get_areas
@@ -62,6 +64,7 @@ class HomeController < ApplicationController
 
     @actions = @actions.where(:event_type => [params[:type]].flatten.map(&:camelize)) if params[:type]
     @actions = @actions.page(1).per(10).sort{|a, b| b.published_at <=> a.published_at}
+    @rss_actions = @actions.map{|a| OpenStruct.new(:type => a.event_type.underscore, :id => a.event_id, :text => text_for_rss_title(a), :body => text_for_rss_body(a), :published_at => a.published_at)} if request.format.rss?
   end
   private :get_actions
 
@@ -74,4 +77,75 @@ class HomeController < ApplicationController
     @all_votes              = Vote.count
   end
   private :get_site_counters
+
+  def text_for_rss_title(action)
+    case action.event_type
+      when 'News'
+        action.item.area.name if action.item.area.present?
+      when 'StatusMessage'
+        action.item.author.fullname
+      when 'Tweet'
+        action.item.author.fullname
+      when 'Vote'
+        action.item.title
+      when 'Photo'
+        action.item.author.fullname
+      when 'Comment'
+        action.item.content.text
+      when 'Answer'
+        action.item.question_text
+      when 'Argument'
+        action.item.title
+    end
+  end
+  private :text_for_rss_title
+
+  def text_for_rss_body(action)
+    case action.event_type
+      when 'News'
+        news = action.item
+        <<-HTML
+          <p>#{news.title}</p>
+          <p>#{news.subtitle}</p>
+          #{simple_format news.body}
+        HTML
+      when 'StatusMessage'
+        action.item.message
+      when 'Tweet'
+        action.item.message
+      when 'Photo'
+        photo = action.item
+        <<-HTML
+          <p>#{photo.title}</p>
+          <img src="#{photo.content_url}" alt="#{photo.title}"/>
+        HTML
+      when 'Event'
+        event = action.item
+        <<-HTML
+          <p>#{event.title}</p>
+          #{simple_format event.body}
+        HTML
+      when 'Comment'
+        action.item.body
+      when 'Proposal'
+        proposal = action.item
+        <<-HTML
+          <p>#{proposal.title}</p>
+        HTML
+      when 'Answer'
+        action.item.answer_text
+      when 'Question'
+        question = action.item
+        target = if question.target_user.present?
+          t('home.index.rss.items.body.question_for_politician', :name => question.target_user.fullname)
+        else
+          t('home.index.rss.items.body.question_for_area', :name => question.target_area.send("name_#{I18n.locale}"))
+        end
+        <<-HTML
+          <p>#{target}</p>
+          #{simple_format action.item.question_text}
+        HTML
+    end
+  end
+  private :text_for_rss_body
 end

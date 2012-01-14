@@ -442,6 +442,26 @@
         transparency: Transparencia
         guide: Guía de comunicación abierta
         opendata: Open data euskadi
+      rss:
+        title:
+          news: Noticias
+        items:
+          title:
+            news: 'Nueva noticia en el área de %{text}'
+            status_message: 'Nuevo mensaje de estado de %{text}'
+            tweet: 'Nuevo tweet de %{text}”'
+            vote: 'Nuevo voto en la propuesta “%{text}”'
+            photo: 'Nueva foto de %{text}'
+            event: 'Nuevo evento'
+            comment: 'Nuevo comentario en “%{text}”'
+            proposal: 'Nueva propuesta'
+            answer: 'Nueva respuesta a la pregunta “%{text}”'
+            argument: 'Nuevo argumento para la propuesta “%{text}”'
+            question: 'Nueva pregunta'
+            answer_request: 'Nueva solicitud de respuesta'
+          body:
+            question_for_politician: 'Pregunta para %{name}'
+            question_for_area: 'Pregunta para el área de %{name}'
     agenda:
       title: 'Agenda de Irekia'
     areas:
