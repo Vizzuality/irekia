@@ -2323,4 +2323,10 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
       subject: '¡Un nuevo seguidor! :-)'
       text: '%{name} ha comenzado a seguirte en Irekia. ¿Quieres conocerle mejor?'
       see_profile: 'Ver el perfil de %{name}'
+    deleted_account:
+      subject: "Cuenta eliminada :-("
+      as_requested: 'Como nos has pedido, hemos procedido a eliminar tu cuenta de Irekia, incluido todo tu contenido en la medida que ha sido posible. Hay algunos comentarios que no han podido ser retirados por formar parte de un debate con otros usuarios, pero tu nombre se ha eliminado de ellos.'
+      come_back: 'Lamentamos tu decisión. Por supuesto, <a href="%{url}" target="_blank" style="color:#1D79B0">puedes volver a Irekia y empezar de nuevo cuando quieras</a>.'
+      cheers: 'Saludos,'
+      irekia_team: 'El equipo de Irekia'
 

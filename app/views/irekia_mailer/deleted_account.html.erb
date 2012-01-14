@@ -1,5 +1,5 @@
 
-<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px"  background="http://localhost:3000/images/mail/accepted.jpg?23423432" style="background-repeat:no-repeat;">
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px"  background="<%= path_to_image('mail/accepted.jpg') %>" style="background-repeat:no-repeat;">
   <tr>
     <td width="635px" height="20px" valign="top"></td>
   </tr>
@@ -11,24 +11,24 @@
   </tr>
   <tr>
     <td width="635px" valign="top">
-      <p style="margin: 5px 0; color: #5E5E5E;">Como nos has pedido, hemos procedido a eliminar tu cuenta de Irekia, incluido todo tu contenido en la medida que ha sido posible. Hay algunos comentarios que no han podido ser retirados por formar parte de un debate con otros usuarios, pero tu nombre se ha eliminado de ellos.</p>
+      <p style="margin: 5px 0; color: #5E5E5E;"><%= @as_requested %></p>
     </td>
   </tr>
   <tr>
     <td width="635px" valign="top">
-      <p style="margin: 5px 0; color: #5E5E5E;">Lamentamos tu decisión. Por supuesto, <a href="#" target="_blank" style="color:#1D79B0">puedes volver a Irekia y empezar de nuevo cuando quieras</a>.</p>
-    </td>
-  </tr>
-
-  <tr>
-    <td width="635px" valign="top">
-      <p style="margin: 5px 0; color: #5E5E5E;">Saludos,</p>
+      <p style="margin: 5px 0; color: #5E5E5E;"><%= raw @come_back %></p>
     </td>
   </tr>
 
   <tr>
     <td width="635px" valign="top">
-      <p style="margin: 5px 0; color: #5E5E5E;">El equipo de Irekia</p>
+      <p style="margin: 5px 0; color: #5E5E5E;"><%= @cheers %></p>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="635px" valign="top">
+      <p style="margin: 5px 0; color: #5E5E5E;"><%= @irekia_team %></p>
     </td>
   </tr>
 </table>

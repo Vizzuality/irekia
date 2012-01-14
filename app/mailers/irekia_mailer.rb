@@ -71,11 +71,18 @@ class IrekiaMailer < ActionMailer::Base
   end
 
 
-  def deleted_account(to)
-    @title = "Cuenta eliminada :-("
-    @subject = @title
-    @show_notifications_link = false
-    mail(:to => to, :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+  def deleted_account(user)
+
+    I18n.with_locale user.locale || I18n.default_locale do
+      @subject = @title        = t('irekia_mailer.deleted_account.subject')
+      @as_requested            = t('irekia_mailer.deleted_account.as_requested')
+      @come_back               = t('irekia_mailer.deleted_account.come_back', :url => root_url)
+      @cheers                  = t('irekia_mailer.deleted_account.cheers')
+      @irekia_team             = t('irekia_mailer.deleted_account.irekia_team')
+      @show_notifications_link = false
+
+      mail(:to => user.email, :subject => @subject)
+    end
   end
 
   def question_answered(answer)
