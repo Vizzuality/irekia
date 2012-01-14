@@ -2319,4 +2319,8 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
       answered_by: 'ha sido contestada por %{politician_with_title}'
       opinion: '¿Qué te parece la respuesta? Puedes comentar la respuesta en Irekia.'
       question_link: 'Ver pregunta en Irekia'
+    new_follower:
+      subject: '¡Un nuevo seguidor! :-)'
+      text: '%{name} ha comenzado a seguirte en Irekia. ¿Quieres conocerle mejor?'
+      see_profile: 'Ver el perfil de %{name}'
 
