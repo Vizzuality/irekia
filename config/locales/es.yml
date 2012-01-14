@@ -345,7 +345,9 @@
       confirmation_instructions:
         subject: 'Confirmation instructions'
       reset_password_instructions:
-        subject: 'Reset password instructions'
+        subject: '¿No te acuerdas de tu contraseña?'
+        text: 'Simplemente pulsa el enlace “Regenerar contraseña”. Irekia te pedirá a continuación el nuevo valor.'
+        reset_password: 'Regenerar contraseña'
       unlock_instructions:
         subject: 'Unlock Instructions'
 
@@ -2323,6 +2325,7 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
       subject: '¡Un nuevo seguidor! :-)'
       text: '%{name} ha comenzado a seguirte en Irekia. ¿Quieres conocerle mejor?'
       see_profile: 'Ver el perfil de %{name}'
+    reset_password_instructions:
     deleted_account:
       subject: "Cuenta eliminada :-("
       as_requested: 'Como nos has pedido, hemos procedido a eliminar tu cuenta de Irekia, incluido todo tu contenido en la medida que ha sido posible. Hay algunos comentarios que no han podido ser retirados por formar parte de un debate con otros usuarios, pero tu nombre se ha eliminado de ellos.'

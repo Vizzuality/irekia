@@ -1,25 +1,18 @@
 # encoding: utf-8
 
 class IrekiaMailer < ActionMailer::Base
+  include Devise::Mailers::Helpers
 
   default :from => "from@example.com"
 
   layout 'mail'
 
-  def welcome(to)
+  def welcome(user)
     @title = "Bienvenido a Irekia, Javier :-)"
     @subject = @title
     @text = "Gracias por registrarte en Irekia. ¡Ya puedes empezar a participar!"
     @show_notifications_link = false
-    mail(:to => to, :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
-  end
-
-  def reset_password(to)
-    @title = "¿No te acuerdas de tu contraseña?"
-    @subject = @title
-    @text = "Simplemente pulsa el enlace “Regenerar contraseña”. Irekia te pedirá a continuación el nuevo valor."
-    @show_notifications_link = false
-    mail(:to => to, :bcc => ['aitor_garcia_ibarra@hotmail.com', 'aitana_muguzola@yahoo.es'], :subject => @subject)
+    mail(:to => user.email, :subject => @subject)
   end
 
   def new_question(question)
