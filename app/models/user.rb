@@ -614,6 +614,10 @@ class User < ActiveRecord::Base
   # END - COMPATIBILITY FOR IMPORTED USERS
   #################################
 
+  def just_created?
+    name_was.nil? && lastname_was.nil? && valid?
+  end
+
   def check_blank_name
     name = email if name.blank?
   end

@@ -1,4 +1,4 @@
-<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px"  background="http://localhost:3000/images/mail/info.jpg?23423432" style="background-repeat:no-repeat;">
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px"  background="<%= path_to_image('mail/info.jpg') %>" style="background-repeat:no-repeat;">
   <tr><td width="635px" height="20px" valign="top"></td></tr>
 
   <tr>
@@ -14,24 +14,24 @@
   <tr><td width="635px" height="20px" valign="top"></td></tr>
 
 
-  <tr><td width="635px" valign="top"><h2 style="margin:0"><a href="#" target="_blank" style="font-size:17px; color:#1D79B0">1. Sigue a los cargos o áreas que te interesen</a></h2></td></tr>
+  <tr><td width="635px" valign="top"><h2 style="margin:0"><a href="#" target="_blank" style="font-size:17px; color:#1D79B0"><%= @step_1 %></a></h2></td></tr>
   <tr><td width="635px" valign="top">
-      <p style="margin: 5px 0 0 0; color: #5E5E5E;">Busca los perfiles o áreas que más te interesen y síguelos. A partir de ese momento su actividad aparecerá en <a href="#" target="_blank" style="color:#1D79B0">tu página de inicio de Irekia</a>.</p>
+      <p style="margin: 5px 0 0 0; color: #5E5E5E;"><%= raw @step_1_detail %></p>
   </td></tr>
   <tr><td width="635px" height="20px" valign="top"></td></tr>
 
-  <tr><td width="635px" valign="top"><h2 style="margin:0"><a href="#" target="_blank" style="font-size:17px; color:#1D79B0">2. Participa!</a></h2></td></tr>
+  <tr><td width="635px" valign="top"><h2 style="margin:0"><a href="#" target="_blank" style="font-size:17px; color:#1D79B0"><%= @step_2 %></a></h2></td></tr>
   <tr><td width="635px" valign="top">
-      <p style="margin: 5px 0 0 0; color: #5E5E5E;"><a href="#" target="_blank" style="color:#1D79B0">Haz preguntas</a> a los responsables del Gobierno Vasco, <a href="#" target="_blank" style="color:#1D79B0">lanza tus propuestas</a> a los ciudadanos, o participa en las propuestas de otros. Todo con un simple click.</p>
+      <p style="margin: 5px 0 0 0; color: #5E5E5E;"><%= raw @step_2_detail %></p>
   </td></tr>
   <tr><td width="635px" height="20px" valign="top"></td></tr>
 
-  <tr><td width="635px" valign="top"><h2 style="margin:0"><a href="#" target="_blank" style="font-size:17px; color:#1D79B0">3. Configura tu cuenta</a></h2></td></tr>
+  <tr><td width="635px" valign="top"><h2 style="margin:0"><a href="#" target="_blank" style="font-size:17px; color:#1D79B0"><%= @step_3 %></a></h2></td></tr>
   <tr><td width="635px" valign="top">
-      <p style="margin: 5px 0 0 0; color: #5E5E5E;">Sube tu ávatar o modifica tus datos. También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia.actividad aparecerá en tu página de inicio de Irekia.</p>
+      <p style="margin: 5px 0 0 0; color: #5E5E5E;"><%= @step_3_detail %></p>
   </td></tr>
   <tr><td width="635px" height="20px" valign="top"></td></tr>
 
-  <tr><td width="635px" valign="top"><h2 style="margin:0"><a href="#" target="_blank" style="font-size:17px; color:#1D79B0">Acceder a Irekia</a></h2></td></tr>
+  <tr><td width="635px" valign="top"><h2 style="margin:0"><a href="#" target="_blank" style="font-size:17px; color:#1D79B0"><%= @access_irekia %></a></h2></td></tr>
 
 </table>

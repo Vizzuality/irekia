@@ -2325,7 +2325,16 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
       subject: '¡Un nuevo seguidor! :-)'
       text: '%{name} ha comenzado a seguirte en Irekia. ¿Quieres conocerle mejor?'
       see_profile: 'Ver el perfil de %{name}'
-    reset_password_instructions:
+    welcome:
+      subject: "Bienvenido a Irekia, %{name} :-)"
+      text: "Gracias por registrarte en Irekia. ¡Ya puedes empezar a participar!"
+      step_1: '1. Sigue a los cargos o áreas que te interesen'
+      step_1_detail: 'Busca los perfiles o áreas que más te interesen y síguelos. A partir de ese momento su actividad aparecerá en <a href="%{url}" target="_blank" style="color:#1D79B0">tu página de inicio de Irekia</a>.'
+      step_2: '2. Participa!'
+      step_2_detail: '<a href="%{url_questions}" target="_blank" style="color:#1D79B0">Haz preguntas</a> a los responsables del Gobierno Vasco, <a href="%{url_proposals}" target="_blank" style="color:#1D79B0">lanza tus propuestas</a> a los ciudadanos, o participa en las propuestas de otros. Todo con un simple click.'
+      step_3: '3. Configura tu cuenta'
+      step_3_detail: 'Sube tu ávatar o modifica tus datos. También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia.actividad aparecerá en tu página de inicio de Irekia.'
+      access_irekia: 'Acceder a Irekia'
     deleted_account:
       subject: "Cuenta eliminada :-("
       as_requested: 'Como nos has pedido, hemos procedido a eliminar tu cuenta de Irekia, incluido todo tu contenido en la medida que ha sido posible. Hay algunos comentarios que no han podido ser retirados por formar parte de un debate con otros usuarios, pero tu nombre se ha eliminado de ellos.'
