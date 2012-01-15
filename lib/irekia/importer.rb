@@ -221,6 +221,7 @@ module Irekia
                 user.areas                 = Area.where(:external_id => area['id'])
                 user.last_import           = Time.at(politician['update_date'])
                 user.profile_picture       = Image.create(:remote_image_url => "http://www2.irekia.euskadi.net/#{politician['image']}") if politician['image']
+                user.skip_welcome          = true
                 user.save!
               rescue Exception => ex
                 puts politician.inspect

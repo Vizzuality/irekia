@@ -20,20 +20,11 @@ Irekia::Application.configure do
 
   config.action_mailer.default_url_options = {
   }
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = {
     :host      => "localhost",
     :port      => 3000,
     :only_path => false
-  }
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'ferdev.com',
-    :user_name            => 'test@ferdev.com',
-    :password             => 'vizzuality',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true
   }
 
   # Print deprecation notices to the Rails logger
@@ -42,12 +33,4 @@ Irekia::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
-  Bullet.enable = false
-  Bullet.bullet_logger = true
-  Bullet.console = true
-  Bullet.rails_logger = true
-  Bullet.disable_browser_cache = true
-
-  # config.slowgrowl.warn = 500    # growl any action which takes > 1000ms (1s)
-  # config.slowgrowl.sticky = true  # make really slow (2x warn) alerts sticky
 end

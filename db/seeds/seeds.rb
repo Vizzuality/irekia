@@ -17,6 +17,7 @@ load Rails.root.join('db/seeds/data/tweets.rb')
 
 
 # Validates all contents and participation
+puts 'Validating all not moderated items'
 Content.validate_all_not_moderated
 Participation.validate_all_not_moderated
 

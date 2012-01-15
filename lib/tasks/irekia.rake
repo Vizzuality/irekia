@@ -39,6 +39,6 @@ namespace :irekia do
 
   desc "Loads users from old irekia"
   task :import_users => :environment do
-    Irekia::Importer.import_users
+    Irekia::Importer.import_users if Rails.env.production?
   end
 end

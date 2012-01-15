@@ -4,7 +4,7 @@ class UserPrivateStream < ActiveRecord::Base
              :class_name => 'User'
   belongs_to :event,
              :polymorphic => true
-  after_create  :send_notification
+  after_save  :send_notification
   after_create  :increment_user_counter
   after_destroy :decrement_user_counter
 
@@ -83,7 +83,9 @@ class UserPrivateStream < ActiveRecord::Base
   end
 
   def send_notification
-    Notification.for(user, event) if event.moderated
+    return if notification_sent || event.not_moderated?
+    Notification.for(user, event)
+    update_attribute(:notification_sent, true)
   end
   private :send_notification
 

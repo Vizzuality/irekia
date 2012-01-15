@@ -36,9 +36,6 @@ group :development, :test do
   gem 'irbtools', :require => 'irbtools/configure'
   gem 'escape_utils'
   gem 'compass'
-  gem 'rails-footnotes', '>= 3.7.5.rc4'
-  gem 'bullet'
-  gem 'newrelic_rpm'
 end
 
 group :development, :test, :staging do
@@ -46,7 +43,6 @@ group :development, :test, :staging do
   gem 'ffaker', '1.8.1'
   gem 'colored', '~> 1.2'
   gem 'kss'
-  gem 'mail_view'
   gem 'tilt'
   gem 'translate-rails3', :require => 'translate'
 end

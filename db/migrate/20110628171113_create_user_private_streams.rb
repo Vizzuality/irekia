@@ -7,7 +7,8 @@ class CreateUserPrivateStreams < ActiveRecord::Migration
       t.string     :event_type
       t.integer    :event_id
       t.datetime   :published_at
-      t.boolean    :moderated,   :default => false
+      t.boolean    :moderated,         :default => false
+      t.boolean    :notification_sent, :default => false
 
       t.timestamps
     end

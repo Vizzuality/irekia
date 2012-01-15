@@ -50,6 +50,10 @@ class Participation < ActiveRecord::Base
     moderated.select('extract(epoch from avg(moderated_at - published_at)) as moderation_time').first.moderation_time.try(:to_f) || 0
   end
 
+  def not_moderated?
+    !moderated
+  end
+
   def update_published_at
     self.published_at = Time.now
   end

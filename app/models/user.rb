@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
                   :follows_attributes,
                   :notifications_attributes
 
-  attr_accessor :terms_of_service
+  attr_accessor :terms_of_service, :skip_welcome
 
   before_validation :check_blank_name, :on => :create
   before_create :check_user_role
@@ -331,7 +331,7 @@ class User < ActiveRecord::Base
     end
     private_action.published_at = item.published_at
     private_action.message      = item.to_json
-    private_action.author       = item.author
+    private_action.author       = item.author if item.author.present?
     private_action.moderated    = item.moderated
     private_action.save!
   end

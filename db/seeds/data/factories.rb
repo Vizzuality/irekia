@@ -39,6 +39,7 @@ def create_user(params)
   user.birthday              = params[:birthday]
   user.role                  = params[:role]
   user.title                 = params[:title]
+  user.skip_welcome          = true
   user.areas.clear
   if params[:area]
     user.areas << params[:area]

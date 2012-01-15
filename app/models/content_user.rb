@@ -51,7 +51,7 @@ class ContentUser < ActiveRecord::Base
   end
 
   def publish
-    return if content.blank? || content.author.blank?
+    return if content.blank? || self.destroyed?
 
     content.tagged_politicians.each{|politician| politician.create_private_action(self)}
 

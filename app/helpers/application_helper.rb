@@ -186,6 +186,8 @@ module ApplicationHelper
 
       i18n_key, i18n_scope = if notification.parent && notification.parent.author == current_user
                                ['.notifications.comments_content_author', 'shared.nav_bar_buttons.notifications.your_content']
+                             elsif notification.parent && notification.parent.tagged_politicians.include?(current_user)
+                               ['.notifications.comments_tagged', 'shared.nav_bar_buttons.notifications.a_content']
                              else
                                ['.notifications.comments_content', 'shared.nav_bar_buttons.notifications.a_content']
                              end
@@ -213,11 +215,7 @@ module ApplicationHelper
       content_tag :li, raw(t(i18n_key, :count => count, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     when 'ContentUser'
 
-      i18n_scope = if notification.parent && notification.parent.author == current_user
-                     'shared.nav_bar_buttons.notifications.your_content'
-                   else
-                     'shared.nav_bar_buttons.notifications.a_content'
-                   end
+      i18n_scope = 'shared.nav_bar_buttons.notifications.a_content'
 
       content_tag :li, raw(t('.notifications.content_users', :count => count, :content => link_to(t(notification.parent.class.name.underscore, :scope => i18n_scope).downcase, send("#{notification.parent.class.name.underscore}_path", notification.parent)))), :class => li_class
     end

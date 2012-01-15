@@ -28,15 +28,6 @@ Irekia::Application.configure do
     :host => "127.0.0.1",
     :port => 3000
   }
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'ferdev.com',
-    :user_name            => 'test@ferdev.com',
-    :password             => 'vizzuality',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true
-  }
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,

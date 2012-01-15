@@ -1079,6 +1079,10 @@
           zero: 'Ningún comentario en %{content}'
           one: 'Nuevo comentario en %{content}'
           other: '%{count} nuevos comentarios en %{content}'
+        comments_tagged:
+          zero: 'Ningún comentario en %{content} en la que has sido etiquetado'
+          one: 'Nuevo comentario en %{content} en la que has sido etiquetado'
+          other: '%{count} nuevos comentarios en %{content} en la que has sido etiquetado'
         comments_content:
           zero: 'Ningún comentario en %{content} en la que has participado'
           one: 'Nuevo comentario en %{content} en la que has participado'
