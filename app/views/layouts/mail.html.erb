@@ -55,7 +55,7 @@
 
           <table cellpadding="0" cellspacing="0" border="0" align="center">
             <tr><td width="635px" height="15px" valign="top"></td></tr>
-            <tr><td width="635px" height="1px" valign="top"><%= image_tag(path_to_image('mail/light_line.jpg')) %></td></tr>
+            <tr><td width="635px" height="1px" valign="top"><%= image_tag("http://#{url_options[:host]}" + path_to_image('mail/light_line.jpg')) %></td></tr>
             <tr>
               <td width="635px" valign="top">
                 <% if @show_notifications_link %>
