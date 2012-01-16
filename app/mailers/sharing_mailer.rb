@@ -1,5 +1,5 @@
 class SharingMailer < ActionMailer::Base
-  default :from => "irekia@euskadi.net"
+  default :from => "Lehendakaritza, Irekia <irekia@ej-gv.es>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
