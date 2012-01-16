@@ -1,0 +1,18 @@
+java -jar script/compiler.jar \
+--js public/javascripts/rails.js \
+--js public/javascripts/libs/spin.min.js \
+--js public/javascripts/helpers.js \
+--js public/javascripts/temp.js \
+--js public/javascripts/widgets.js \
+--js public/javascripts/mylibs/remove_account.js \
+--js public/javascripts/mylibs/politician_publish.js \
+--js public/javascripts/mylibs/user_publish.js \
+--js public/javascripts/mylibs/question.js \
+--js public/javascripts/mylibs/proposal.js \
+--js public/javascripts/mylibs/login.js \
+--js public/javascripts/map.js \
+--js public/javascripts/libs/jquery-ui-1.8.16.custom.min.js \
+--js public/javascripts/plugins.js \
+--js public/javascripts/libs/jquery.dropkick-1.0.0.js \
+--js public/javascripts/application.js \
+--js_output_file public/javascripts/all.js

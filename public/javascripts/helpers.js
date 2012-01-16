@@ -853,7 +853,7 @@ jQuery.fn.enableImageEditing = function(opt){
           utf8: $span.closest('form').find('input[name=utf8]').val(),
           authenticity_token: $span.closest('form').find('input[name=authenticity_token]').val()
         },
-        debug: true,
+        debug: false,
         text: $span.html(),
         onSubmit: function(id, fileName){
 

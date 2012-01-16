@@ -538,7 +538,6 @@
         text:$span.html(),
         onSubmit: function(id, fileName){
           data.spinner.spin(spin_element);
-          //console.log($ps, $ps.find(".uploader").find(".holder").fadeOut(speed));
           $ps.find(".progress").show();
           $uploader.find(".percentage").css("color", "#FF0066");
           $uploader.find(".holder").fadeOut(speed);

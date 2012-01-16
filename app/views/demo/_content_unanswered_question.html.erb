@@ -1,0 +1,43 @@
+<div class="article activity with_footer">
+<div class="inner">
+  <div class="left">
+
+    <h2>Hola Virginia, ¿Cuando tenéis pensado publicar el nuevo plan de estudios de la Universidad de Deusto?</h2>
+    <p class="info"><%= link_to "Adrián López", "#" %> hace 2 horas &middot; <span class="positive">+4</span> &middot; <%= link_to '1 comentario', "#" %> &middot; <span class="not_answered">No contestada</span></p>
+
+    <div class="answer_placeholder">
+      <p><strong>Esta pregunta aún no ha sido contestada.</strong></p>
+      <p>3 personas quieren que sea contestada, <%= link_to "súmate a ellos", "#" %></p>
+    </div>
+
+      <%= render "shared/demo/comments" %>
+
+  </div>
+  <div class="right">
+    <div class="content left-border">
+      <%= render "shared/demo/sharing" %>
+      <%= render "shared/demo/tags" %>
+      <%= render "shared/demo/politicians" %>
+      <%= render "shared/demo/related_events" %>
+      <%= render "shared/demo/previously" %>
+    </div>
+  </div>
+</div>
+
+<div class="bfooter">
+<div class="separator"></div>
+<div class="inner">
+  <div class="left">
+    <%= link_to "ver todas las preguntas", "#", :class => :left_arrow %>
+    <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
+  </div>
+
+  <div class="right">
+    <%= link_to "siguiente pregunta", "#", :class => :right_arrow %>
+    <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
+  </div>
+</div>
+</div>
+<div class="t"></div><div class="f"></div>
+</div>
+

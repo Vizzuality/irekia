@@ -145,7 +145,7 @@ $(function() {
   $("form.follow_button, form.follow_ribbon").live('submit',function(ev){
     IrekiaSpinner.stop();
     IrekiaSpinner.spin();
-    $(IrekiaSpinner.el).css({position:"relative", float:'none', display:'inline', right:'-20px', top:'27px', height:'15px', width:'15px'});
+    $(IrekiaSpinner.el).css({position:"relative", 'float':'none', display:'inline', right:'-20px', top:'27px', height:'15px', width:'15px'});
 
     if ($(this).closest('div.content').find('h1').children().length>0) {
       $(this).closest('div.content').find('h1 a').append(IrekiaSpinner.el);

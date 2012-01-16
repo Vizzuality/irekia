@@ -1,0 +1,41 @@
+<!-- Article -->
+<div class="article">
+<div class="inner">
+  <div class="content">
+    <header class="clearfix">
+    <h1>Educación, Universidades e Investigación</h1>
+    </header>
+    <div class="left">
+      <h3>Qué hacemos</h3>
+
+      <div class="description two_columns">
+        <p>El área de Educación, Universidades e Investigación agrega toda la actividad e información sobre los ámbitos que su nombre indican. Entre otras, las competencias principales de este área son la toma de decisiones presupuestarias de Educación Universidades e Investigación
+        a va en la linea del punto de vista que en el Gobierno Vasco tenemos de la educación siempre ligada a la innovación y la creatividad.</p>
+        <p><%= link_to raw( "<span class='add'></span>") + "Seguir este área (122)", "#", :class => "white_button add_person" %></p>
+      </div>
+
+    </div>
+    <div class="right">
+      <ul class="people">
+        <li>
+        <%= link_to (content_tag 'div', (image_tag 'temp/avatar_001_small.png'), :class => "avatar small"), "#" %>
+        <%= link_to "Virginia Uriarte Rodriguez", "#", :class => :name %>
+        Consejera
+        </li>
+        <li>
+        <%= link_to (content_tag 'div', (image_tag 'temp/avatar_003_small.png'), :class => "avatar small"), "#" %>
+        <%= link_to "Alberto de Zárate López", "#", :class => :name %>
+        Vice-Consejero
+        </li>
+        <li class="more">
+        <%= link_to (content_tag 'div', (image_tag 'icons/more_people_avatar.png'), :class => "avatar small"), "#" %>
+        <%= link_to "3 personas mas en este área", "#", :class => :name %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<%= link_to "", "#", {:class => :ribbon} %>
+<div class="t"></div><div class="f"></div>
+</div>
+<!-- /Article -->

@@ -1,0 +1,75 @@
+<div class="article proposal with_footer">
+<div class="inner">
+  <div class="left">
+
+    <h2>Aplicar un descuento del 15% en el abono transporte de los turistas.</h2>
+    <p class="info"><%= link_to "Adrián López", "#" %> hace 2 horas &middot; <%= link_to '1 comentario', "#" %> &middot; <span class="not_answered">No contestada</span></p>
+
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+
+    <div class="proposals">
+        <div class="proposal in_favor">
+          <h3>A favor</h3>
+          <ul>
+            <li>No estará presente en los presupuestos generales del estado.</li>
+            <li>Es mejor para la juventud.</li>
+            <li>La juventud es el futuro.</li>
+            <li class="add"><%= link_to "Añadir", "#" %></li>
+          </ul>
+          <div class="footer">
+
+            <%= link_to (raw "<span>A favor</span>"), "#", :class => "white_button blue" %>
+
+            <div class="sparkline positive">
+              <div class="graph" values="1,1,1,1,1,1,1,4,2,3,1,1,1,2,2,3,1,1,1,2,1,3,1,1,1,2,1,3,1,1,1,1"></div>
+              <span class="legend"><div class="count">33</div> a favor</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="proposal against">
+          <h3>En contra</h3>
+          <ul>
+            <li>Estamos en crisis, y eso afecta.</li>
+            <li class="add"><%= link_to "Añadir", "#" %></li>
+          </ul>
+          <div class="footer">
+            <%= link_to (raw "<span>En contra</span>"), "#", :class => "white_button blue" %>
+            <div class="sparkline negative">
+              <div class="graph" values="1,1,3,2,1,4,1"></div>
+              <span class="legend"><div class="count">5</div> en contra</span>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <%= render "shared/demo/comments" %>
+  </div>
+  <div class="right">
+    <div class="content left-border">
+
+        <%= render "shared/demo/sharing" %>
+        <%= render "shared/demo/tags" %>
+        <%= render "shared/demo/related_events" %>
+        <%= render "shared/demo/previously" %>
+
+    </div>
+  </div>
+</div>
+
+<div class="bfooter">
+<div class="separator"></div>
+<div class="inner">
+  <div class="left">
+    <%= link_to "ver todas las preguntas", "#", :class => :left_arrow %>
+    <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
+  </div>
+
+  <div class="right">
+    <%= link_to "siguiente pregunta", "#", :class => :right_arrow %>
+    <span class="question">Hola Virginia, ¿qué pasa con Mary...?</span>
+  </div>
+</div>
+</div>
+<div class="t"></div><div class="f"></div>
+</div>

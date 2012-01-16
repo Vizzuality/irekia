@@ -1504,7 +1504,7 @@ var GOD = (function() {
       mapTypeControl:    false,
       navigationControlOptions: {
         style: google.maps.NavigationControlStyle.SMALL
-      },
+      }
     };
 
 

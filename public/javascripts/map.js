@@ -185,7 +185,7 @@ IrekiaMarker.prototype.draw = function() {
             '      <% if (separator) { %>',
               '        <div class="separator"></div>',
               '      <% } %>',
-              '    </li>',
+              '    </li>'
           ].join(' '),
           infowindow:[
             '<div class="info infowindow<%= (count > 1) ? \" large\" : \"\" %>">',

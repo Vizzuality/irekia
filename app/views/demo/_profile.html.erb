@@ -1,0 +1,40 @@
+<!-- Profile -->
+<div class="article profile with_footer">
+<div class="inner">
+  <header>
+
+  <h1>Virginia Uriarte Rodriguez</h1>
+  <p class="position">Consejera de <%= link_to "Educación, Universidades e Investigación", "#" %></p>
+  </header>
+
+  <div class="left">
+    <div class="description two_columns">
+      <h3>Quién es y qué hace</h3>
+      <p>Virginia es Licenciada en Ciencias del Deporte y en Ciencias políticas por la Universidad Complutense de Madrid. En el Gobierno Vasco, Virgnia.</p>
+      <p>Investigación, y en solo un año, ha conseguido que su papel se... <%= link_to "Leer más", "#" %></p>
+      <p><%=link_to raw( "<span class='add'></span>") +"Seguir a Virginia (24)", "#", :class => "white_button add_person" %></p>
+    </div>
+  </div>
+</div>
+
+<div class="bfooter">
+<div class="separator"></div>
+<div class="inner with_avatar with_question">
+  <h3>Pregunta a Virginia</h3>
+  <%= image_tag 'temp/avatar_big.png', :class => :big %>
+
+  <form action="#">
+    <div id="counter-124" class="input-counter placeholder">
+      <span class="counter">140</span>
+      <input type="text" value="" class="xlInput" />
+      <span class="holder large">Haz una pregunta a Virginia...</span>
+    </div>
+    <input type="submit" value="Preguntar" id="submit-counter-124" class="disabled white_button" disabled="disabled" />
+  </form>
+
+</div>
+</div>
+<%= link_to "", "#", {:class => :ribbon} %>
+<div class="t"></div><div class="f"></div>
+</div>
+<!-- /Profile -->
