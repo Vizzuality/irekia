@@ -766,6 +766,8 @@
         proposals: Propuestas
         sign_up: Regístrate
         sign_in: Accede a tu cuenta
+        rss_all: RSS todo el contenido
+        rss_news: RSS noticias
       areas:
         title: Áreas
         vasque_government: Gobierno Vasco
