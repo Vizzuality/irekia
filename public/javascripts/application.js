@@ -51,9 +51,12 @@ $(function() {
 
   if ($('.provinces_dropdown').length > 0) {
     var selected_territory = $(".provinces_dropdown option[selected='selected']").attr("data-id");
-    $("#dk_container_user_city_id li a").hide();
-    $("#dk_container_user_city_id li a[data-id='" + selected_territory + "']").show();
-    $("#dk_container_user_city_id li a[data-id='undefined']").show();
+    if (selected_territory) {
+      $("#dk_container_user_city_id li a").hide();
+
+      $("#dk_container_user_city_id li a[data-id='" + selected_territory + "']").show();
+      $("#dk_container_user_city_id li a[data-id='undefined']").show();
+    }
   }
 
   $('.provinces_dropdown').dropkick({ callback: function(e) {
