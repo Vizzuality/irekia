@@ -19,7 +19,7 @@ module Irekia
       puts 'Importing news from Irekia'
       puts '============================'
 
-      last_news_date = 1.month.ago #News.maximum('published_at')
+      last_news_date = 1.month.ago
 
       Feedzirra::Feed.add_common_feed_entry_element('organization', :as => :organization, :class => Irekia::XMLEntities::Organization)
       Feedzirra::Feed.add_common_feed_entry_element('multimedia_iframe_src', :as => :multimedia_iframe_src)
@@ -261,6 +261,7 @@ module Irekia
           user.province                   = row['Provincia']
           user.city                       = row['Ciudad']
           user.external_id                = row['id']
+          user.skip_welcome               = true
 
           user.save(false)
 
