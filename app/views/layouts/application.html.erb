@@ -33,7 +33,8 @@
 
   <%= csrf_meta_tag %>
   <%= yield :facebook_meta %>
-  <%= yield :rss_feeds %>
+  <%= auto_discovery_link_tag(:rss, root_url(:format => 'rss'), {:title => 'Irekia'}) %>
+  <%= auto_discovery_link_tag(:rss, root_url(:type => 'news', :format => 'rss'), {:title => "Irekia - #{t('.rss.title.news')}"}) %>
 </head>
 <body class="<%= 'home' if homepage? %>">
 
