@@ -302,6 +302,8 @@
       $dk.find('.dk_options').css({
         'width' : ($dk.find('.dk_options').width() - 2) + 'px'
       });
+    } else {
+      $dk.find(".scrollpane").data('jsp').reinitialise();
     }
   }
 
