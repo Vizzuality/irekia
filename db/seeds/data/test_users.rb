@@ -1,31 +1,8 @@
 #encoding: UTF-8
 
 puts ''
-puts 'Creating users...'
+puts 'Creating test users...'
 puts '================='
-
-#############
-# Wadus
-#############
-
-create_user :name                  => 'usuario dado',
-            :lastname              => 'de baja',
-            :email                 => 'wadus@irekia.com',
-            :is_woman              => false,
-            :role                  => Role.find_by_name('Removed')
-
-#############
-# Admin
-#############
-
-@admin = create_user :name                  => 'Administrator',
-                     :lastname              => 'Administrator',
-                     :email                 => 'admin@example.com',
-                     :password              => 'example',
-                     :password_confirmation => 'example',
-                     :inactive              => false,
-                     :title                 => nil,
-                     :role                  => Role.find_by_name('Administrator')
 
 #############
 # Politicians

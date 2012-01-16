@@ -4,7 +4,7 @@ puts ''
 puts "- Loading testing data"
 
 load Rails.root.join('db/seeds/data/factories.rb')
-load Rails.root.join('db/seeds/data/users.rb')
+load Rails.root.join('db/seeds/data/test_users.rb')
 load Rails.root.join('db/seeds/data/proposals.rb')
 load Rails.root.join('db/seeds/data/votes.rb')
 load Rails.root.join('db/seeds/data/arguments.rb')
