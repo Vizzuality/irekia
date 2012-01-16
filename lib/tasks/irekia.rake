@@ -19,7 +19,7 @@ namespace :irekia do
 
   desc "Loads fake data for testing purposes"
   task :load_test_data => :environment do
-    load Rails.root.join('db/seeds/seeds.rb')
+    load Rails.root.join('db/seeds/seeds.rb') unless Rails.env.production?
   end
 
   desc "Loads news from the official Irekia news feed"
