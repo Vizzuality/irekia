@@ -78,9 +78,8 @@ function goTo($el, opt, callback) {
     var delay  = (opt && opt.delay)  || 500;
     var margin = (opt && opt.margin) || 30;
 
-    $('html, body').delay(delay).animate({scrollTop:$el.offset().top - margin}, speed, function() {
-      callback && callback();
-    });
+    $('html, body').delay(delay).animate({scrollTop:$el.offset().top - margin}, speed);
+    callback && callback();
   }
 }
 
