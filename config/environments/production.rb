@@ -36,8 +36,10 @@ Irekia::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_url_options = {
-    :only_path => false
+    :only_path => false,
+    :host      => 'www3.irekia.euskadi.net'
   }
 
   # Enable threaded mode
