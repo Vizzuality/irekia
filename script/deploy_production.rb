@@ -62,10 +62,6 @@ rsync_cmd = 'rsync -vrlptz --progress --human-readable --progress'
 
 system "#{rsync_cmd} #{DEPLOYMENT_DIR}/* #{PRODUCTION_RSYNC}"
 
-puts '=> Running pending database migrations'
-
-system "ssh #{PRODUCTION_CONNECTION} 'cd #{PRODUCTION_FOLDER}; bundle exec rake db:migrate'"
-
 puts '=> Restarting server'
 
 system "ssh #{PRODUCTION_CONNECTION} 'cd #{PRODUCTION_FOLDER}; touch tmp/restart.txt'"
