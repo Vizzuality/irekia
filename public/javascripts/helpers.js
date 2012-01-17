@@ -348,6 +348,7 @@ jQuery.fn.enableRegistration = function(opt){
   }
 
   function validateErrors(evt, xhr, status) {
+    console.log(xhr.responseText);
     var errors = $.parseJSON(xhr.responseText);
 
     _.each(errors, function(message, field) {

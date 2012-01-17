@@ -2167,6 +2167,12 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
       terms_of_service: 'Acepto las %{link}'
       terms_of_service_link: condiciones de uso
       sign_up: Continuar
+    register:
+      mandatory: obligatorio
+      tell_us_more_about_you: Cuéntanos más de tí.
+      we_want_to_know_you_better: Queremos conocerte mejor.
+      continue: Continuar
+      with_this_data: ¿Qué vamos a hacer con estos datos?
     edit:
       mandatory: obligatorio
       tell_us_more_about_you: Cuéntanos más de tí.

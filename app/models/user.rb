@@ -624,9 +624,9 @@ class User < ActiveRecord::Base
 
   def lastname_if_new_user
     if external_id.present?
-      errors.on(:lastname, :blank) if lastname.nil? || lastname.length < 1
+      errors.add(:lastname, :blank) if lastname.nil? || lastname.length < 1
     else
-      errors.on(:lastname, :blank) if lastname.blank?
+      errors.add(:lastname, :blank) if lastname.blank?
     end
   end
 
