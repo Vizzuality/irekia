@@ -601,8 +601,13 @@ class User < ActiveRecord::Base
   #################################
 
   def valid_password?(password)
-    valid = super(password)
-    valid = old_user_authenticated?(password) unless valid
+    require 'ruby-debug'; debugger
+    valid = false
+    begin
+      valid = super(password)
+    rescue BCrypt::Errors::InvalidHash
+      valid = old_user_authenticated?(password)
+    end
     valid
   end
 
