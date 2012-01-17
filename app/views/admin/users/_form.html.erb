@@ -20,12 +20,7 @@
 
   <p>
     <%= f.label :role_id %><br />
-    <%= f.select :role_id, @roles.map{|r| [t("activerecord.values.role.name.#{r.name_i18n_key}"), r.id]}, :include_blank => true %>
-  </p>
-
-  <p>
-    <%= f.label :title_id %><br />
-    <%= f.select :title_id, @titles.map{|r| [t("activerecord.values.title.name.#{r.name_i18n_key}.male") + '/' + t("activerecord.values.title.name.#{r.name_i18n_key}.female"), r.id]}, :include_blank => true %>
+    <%= f.select :role_id, @roles.map{|r| [t("activerecord.values.role.name.#{r.name_i18n_key}"), r.id]}, {:include_blank => true}, :class => 'dropkick' %>
   </p>
 
   <%= f.fields_for :areas_users, @user.areas_users.first do |area_user_field| %>
