@@ -10,7 +10,7 @@
 
   <p>
     <%= t(".title.#{am_I?(data.author) ? 'you' : 'other'}", :name => data.author.name) %>
-    <%= content_tag 'strong', content_tag(:span, %Q{"#{data.title}"}) %>
+    <%= content_tag 'strong', content_tag(:span, '"' + data.send("title_#{I18n.locale}") + '"') %>
   </p>
 
   <%= render 'shared/lists_elements/not_moderated/footer', :data => data %>

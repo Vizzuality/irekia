@@ -26,7 +26,6 @@ Irekia::Application.configure do
     :port      => 3000,
     :only_path => false
   }
-
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
