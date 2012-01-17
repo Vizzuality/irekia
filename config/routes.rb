@@ -24,6 +24,8 @@ Irekia::Application.routes.draw do
         resources :follows
         collection do
           get 'intro'
+          post 'preregister'
+          get 'register'
         end
         member do
           get :connect
