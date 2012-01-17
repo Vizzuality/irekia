@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <ul class="auth">
-    <li><span class="username"><%= raw t('.hello', :name => link_to(current_user.name, user_path(current_user))) %>.</span></li>
+    <li><span class="username"><%= raw t('.hello', :name => link_to(current_user.name, user_path(current_user.id))) %>.</span></li>
     <li>
     <div class="blue_button">
       <%= link_to notifications_count, '#show_notifications', :class => "toggle_notifications #{'empty_' if notifications_count.zero? }count", :"data-label" => t(".notifications.pending", :count => notifications_count) %>

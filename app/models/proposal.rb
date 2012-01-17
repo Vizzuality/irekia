@@ -2,7 +2,8 @@ class Proposal < Content
   include PgSearch
 
   has_one :proposal_data,
-          :select => 'id, proposal_id, area_id, title, body, close, participation, in_favor, against'
+          :select => 'id, proposal_id, area_id, title_es, title_eu, title_en, body_es, body_eu, body_en, close, participation, in_favor, against, external_id',
+          :dependent => :destroy
   has_many :votes,
            :foreign_key => :content_id,
            :dependent   => :destroy,
@@ -23,7 +24,7 @@ class Proposal < Content
 
   accepts_nested_attributes_for :proposal_data, :arguments, :votes
 
-  delegate :in_favor, :against, :participation, :title, :body, :target_area, :image, :build_image, :to => :proposal_data, :allow_nil => true
+  delegate :in_favor, :against, :participation, :title, :title_es, :title_eu, :title_en, :body, :body_es, :body_eu, :body_en, :target_area, :external_id, :image, :build_image, :to => :proposal_data, :allow_nil => true
 
   def self.by_id(id)
     scoped.includes([{:author => :profile_picture}, :proposal_data, { :comments => [:author, :comment_data] }]).find(id)
@@ -110,7 +111,9 @@ class Proposal < Content
 
   def as_json(options = {})
     super({
-      :title            => title,
+      :title_es         => title_es,
+      :title_eu         => title_eu,
+      :title_en         => title_en,
       :participation    => participation,
       :in_favor         => in_favor,
       :against          => against,

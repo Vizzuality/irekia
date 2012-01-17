@@ -36,6 +36,7 @@ group :development, :test do
   gem 'irbtools', :require => 'irbtools/configure'
   gem 'escape_utils'
   gem 'compass'
+  gem 'railroady'
 end
 
 group :development, :test, :staging do
