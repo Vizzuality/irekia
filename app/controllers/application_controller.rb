@@ -58,8 +58,8 @@ class ApplicationController < ActionController::Base
       session['user_return_to'] = nil
       nav_bar_buttons_path
     else
-      return_to = session['user_return_to'] || root_path
-      session['user_return_to'] = nil
+      return_to = session['unauthorized_url'] || session['user_return_to'] || root_path
+      session['user_return_to'] = session['unauthorized_url'] = nil
       return_to.to_s
     end
   end
