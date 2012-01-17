@@ -12,7 +12,7 @@
 
 <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
   <%= form.fields_for :proposal_data do |proposal_data_form| %>
-    <%= proposal_data_form.text_area :title %>
+    <%= proposal_data_form.text_area :"title_{I18n.locale}" %>
     <%= proposal_data_form.text_area :body %>
   <% end -%>
 
