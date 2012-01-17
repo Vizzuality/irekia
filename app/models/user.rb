@@ -601,7 +601,6 @@ class User < ActiveRecord::Base
   #################################
 
   def valid_password?(password)
-    require 'ruby-debug'; debugger
     valid = false
     begin
       valid = super(password)
