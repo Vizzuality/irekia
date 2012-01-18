@@ -280,6 +280,8 @@ module Irekia
       puts '======================='
       require 'csv'
 
+      culture_area = Area.find_by_name('Cultura')
+
       rows = CSV.read(Rails.root.join('db/seeds/support/proposals.csv'), :headers => :first_row)
       rows.each do |row|
 
@@ -297,7 +299,7 @@ module Irekia
           proposal_data.body_es     = row["body_es"]
           proposal_data.body_eu     = row["body_eu"]
           proposal_data.body_en     = row["body_en"]
-          proposal_data.target_area = Area.find_by_name('Lehendakaritza')
+          proposal_data.target_area = culture_area
 
           if proposal_data.proposal.blank?
             proposal = Proposal.new
