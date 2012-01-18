@@ -1,231 +1,24 @@
 #######################################
 # Rails
 #######################################
-# Spanish translations for Rails
-# by Francisco Fernando García Nieto (ffgarcianieto@gmail.com)
-# contributors:
-#  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
-# Corrected by Eloy Serra Labán: http://goo.gl/i9Kts, /nQ928, /XfKaX
 
 "en":
-  date:
-    formats:
-      default: "%d/%m/%Y"
-      short: "%d de %b"
-      long: "%d de %B de %Y"
-
-    day_names:
-      - domingo
-      - lunes
-      - martes
-      - miércoles
-      - jueves
-      - viernes
-      - sábado
-    abbr_day_names:
-      - dom
-      - lun
-      - mar
-      - mié
-      - jue
-      - vie
-      - sáb
-
-    month_names:
-      - ~
-      - enero
-      - febrero
-      - marzo
-      - abril
-      - mayo
-      - junio
-      - julio
-      - agosto
-      - septiembre
-      - octubre
-      - noviembre
-      - diciembre
-    abbr_month_names:
-      - ~
-      - ene
-      - feb
-      - mar
-      - abr
-      - may
-      - jun
-      - jul
-      - ago
-      - sep
-      - oct
-      - nov
-      - dic
-    order:
-      - :day
-      - :month
-      - :year
-
-  time:
-    formats:
-      default: "%A, %d de %B de %Y %H:%M:%S %z"
-      short: "%d de %b %H:%M"
-      long: "%d de %B de %Y %H:%M"
-    am: "am"
-    pm: "pm"
-
-  support:
-    array:
-      words_connector: ", "
-      two_words_connector: " y "
-      last_word_connector: ", y "
-
-    select:
-      prompt: "Por favor seleccione"
-
-  number:
-    format:
-      separator: ","
-      delimiter: "."
-      precision: 3
-      significant: false
-      strip_insignificant_zeros: false
-
-    currency:
-      format:
-        format: "%n %u"
-        unit: "€"
-        separator: ","
-        delimiter: "."
-        precision: 2
-        significant: false
-        strip_insignificant_zeros: false
-
-    percentage:
-      format:
-        delimiter: ""
-
-    precision:
-      format:
-        delimiter: ""
-
-    human:
-      format:
-        delimiter: ""
-        precision: 1
-        significant: true
-        strip_insignificant_zeros: true
-      storage_units:
-        format: "%n %u"
-        units:
-          byte:
-            one:   "Byte"
-            other: "Bytes"
-          kb: "KB"
-          mb: "MB"
-          gb: "GB"
-          tb: "TB"
-      decimal_units:
-        format: "%n %u"
-        units:
-          unit: ""
-          thousand: "mil"
-          million: "millón"
-          billion: "mil millones"
-          trillion: "billón"
-          quadrillion: "mil billones"
-
-  datetime:
-    distance_in_words:
-      half_a_minute: "medio minuto"
-      less_than_x_seconds:
-        one:  "menos de 1 segundo"
-        other: "menos de %{count} segundos"
-      x_seconds:
-        one:  "1 segundo"
-        other: "%{count} segundos"
-      less_than_x_minutes:
-        one:  "menos de 1 minuto"
-        other: "menos de %{count} minutos"
-      x_minutes:
-        one:  "1 minuto"
-        other: "%{count} minutos"
-      about_x_hours:
-        one:  "alrededor de 1 hora"
-        other: "alrededor de %{count} horas"
-      x_days:
-        one:  "1 día"
-        other: "%{count} días"
-      about_x_months:
-        one:  "alrededor de 1 mes"
-        other: "alrededor de %{count} meses"
-      x_months:
-        one:  "1 mes"
-        other: "%{count} meses"
-      about_x_years:
-        one:  "alrededor de 1 año"
-        other: "alrededor de %{count} años"
-      over_x_years:
-        one:  "más de 1 año"
-        other: "más de %{count} años"
-      almost_x_years:
-        one: "casi 1 año"
-        other: "casi %{count} años"
-    prompts:
-      year:   "Año"
-      month:  "Mes"
-      day:    "Día"
-      hour:   "Hora"
-      minute: "Minutos"
-      second: "Segundos"
-
-  helpers:
-    select:
-      prompt: "Por favor seleccione"
-
-    submit:
-      create: 'Crear %{model}'
-      update: 'Actualizar %{model}'
-      submit: 'Guardar %{model}'
-
-  errors:
-    format: "%{attribute} %{message}"
-
-    messages: &errors_messages
-      inclusion: "no está incluido en la lista"
-      exclusion: "está reservado"
-      invalid: "no es válido"
-      confirmation: "no coincide con la confirmación"
-      accepted: "debe ser aceptado"
-      empty: "no puede estar vacío"
-      blank: "no puede estar en blanco"
-      too_long: "es demasiado largo"
-      too_short: "es demasiado corto"
-      wrong_length: "no tiene la longitud correcta (%{count} caracteres exactos)"
-      not_a_number: "no es un número"
-      not_an_integer: "debe ser un entero"
-      greater_than: "debe ser mayor que %{count}"
-      greater_than_or_equal_to: "debe ser mayor que o igual a %{count}"
-      equal_to: "debe ser igual a %{count}"
-      less_than: "debe ser menor que %{count}"
-      less_than_or_equal_to: "debe ser menor que o igual a %{count}"
-      odd: "debe ser impar"
-      even: "debe ser par"
-      taken: "ya está en uso"
-      record_invalid: "La validación falló: %{errors}"
-    template: &errors_template
-      header:
-        one:   "No se pudo guardar este/a %{model} porque se encontró 1 error"
-        other:  "No se pudo guardar este/a %{model} porque se encontraron %{count} errores"
-      body: "Se encontraron problemas con los siguientes campos:"
-
   activerecord:
     errors:
-      messages:
-        <<: *errors_messages
-      template:
-        <<: *errors_template
-
-      full_messages:
-        format: "%{attribute} %{message}"
+      models:
+        user:
+          attributes:
+            password:
+              invalid: "no es válida"
+              blank: "no puede estar vacía."
+              confirmation: " no coincide con la confirmación."
+              too_short: "es muy corta (mín. 6 caracteres)"
+              too_long: "es muy larga (máx. 20 caracteres)"
+            current_password:
+              blank: "no puede estar vacía."
+              invalid: "no es válida"
+            reset_password_token:
+              blank: "no puede estar vacía."
     models:
       answer: Respuesta
       area: Area
@@ -243,7 +36,7 @@
       Role: Rol
       Title: Título
       user: Usuario
-      vide: Vídeo
+      video: Vídeo
 
     attributes:
       user:
@@ -263,6 +56,15 @@
         area_id: Área
       image:
         image: Imagen
+      video_data: &video_data_attributes
+        youtube_url: 'El vídeo de Youtube'
+        vimeo_url: 'El vídeo de Vimeo'
+      answer_data:
+        video_data:
+          <<: *video_data_attributes
+      video:
+        video_data:
+          <<: *video_data_attributes
     values:
       role:
         name:
@@ -321,9 +123,63 @@
       confirmation_instructions:
         subject: 'Confirmation instructions'
       reset_password_instructions:
-        subject: 'Reset password instructions'
+        subject: '¿No te acuerdas de tu contraseña?'
+        text: 'Simplemente pulsa el enlace “Regenerar contraseña”. Irekia te pedirá a continuación el nuevo valor.'
+        reset_password: 'Regenerar contraseña'
       unlock_instructions:
         subject: 'Unlock Instructions'
+
+#######################################
+# IREKIA - Routes
+#######################################
+  routes:
+    users:
+      as: usuarios
+      path_names:
+        connect: 'conectar'
+        settings: 'preferencias'
+    areas:
+      as: areas
+      path_names:
+        team: 'equipo'
+    politicians:
+      as: politicos
+      path_names:
+        detail: 'detalle'
+    search:
+      as: buscar
+      path_names:
+        contents: 'contenidos'
+        areas: 'areas'
+        politicians: 'politicos'
+        politicians_and_areas: 'politicos_y_areas'
+        citizens: 'ciudadanos'
+
+  resources:
+    users: usuarios
+    areas: areas
+    politicians: politicos
+    proposals: 'propuestas'
+    questions: 'preguntas'
+    answers: 'respuestas'
+    news: 'noticias'
+    events: 'eventos'
+    tweets: 'tweets'
+    status_messages: 'cambios_de_estado'
+    photos: 'fotos'
+    videos: 'videos'
+    images: 'imagenes'
+    arguments: 'argumentos'
+    votes: 'votos'
+    comments: 'comentarios'
+    answer_requests: 'solicitudes_de_respuesta'
+  resource:
+    search: buscar
+  path_names:
+    actions: 'acciones'
+    questions: 'preguntas'
+    proposals: 'propuestas'
+    agenda: 'agenda'
 
 #######################################
 # IREKIA - Views
@@ -335,6 +191,8 @@
   Video: Vídeo
   Proposal: Propuesta
   unknown_user: Invitado
+  title:
+    search: 'Búsqueda'
   menu:
     dashboard: Dashboard
     your_questions: Tus preguntas
@@ -364,6 +222,26 @@
         transparency: Transparencia
         guide: Guía de comunicación abierta
         opendata: Open data euskadi
+      rss:
+        title:
+          news: Noticias
+        items:
+          title:
+            news: 'Nueva noticia en el área de %{text}'
+            status_message: 'Nuevo mensaje de estado de %{text}'
+            tweet: 'Nuevo tweet de %{text}”'
+            vote: 'Nuevo voto en la propuesta “%{text}”'
+            photo: 'Nueva foto de %{text}'
+            event: 'Nuevo evento'
+            comment: 'Nuevo comentario en “%{text}”'
+            proposal: 'Nueva propuesta'
+            answer: 'Nueva respuesta a la pregunta “%{text}”'
+            argument: 'Nuevo argumento para la propuesta “%{text}”'
+            question: 'Nueva pregunta'
+            answer_request: 'Nueva solicitud de respuesta'
+          body:
+            question_for_politician: 'Pregunta para %{name}'
+            question_for_area: 'Pregunta para el área de %{name}'
     agenda:
       title: 'Agenda de Irekia'
     areas:
@@ -378,6 +256,26 @@
         other: '%{count} propuestas'
       no_activity: Sin actividad
   shared:
+    error:
+      title: Irekia - Se ha producido un error (500)
+      error_title: Algo se ha roto en Irekia.
+      home_page: Página de inicio de Irekia
+    not_found:
+      home_page: Página de inicio de Irekia
+      title: Irekia - La página que buscas no existe (404)
+      error:
+        title: Página no encontrada.
+        solution: 'Revisa la dirección de la página,<br />o <a href="%{url}">reporta el error</a> si crees que es problema de Irekia.'
+    actions_list:
+      no_content:
+        area: No hay contenido en este área
+    sharing:
+      label: Escribe la dirección de email
+      send: 'Enviar'
+      ical: Exportar para iCal
+      twitter: 'Compartir vía twitter'
+      facebook: 'Compartir vía facebook'
+      email: 'Compartir vía email'
     questions_list:
       no_content: No hay preguntas en este área
     proposals_list:
@@ -399,7 +297,7 @@
           label: Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.
           upload: Sube una foto
           this_photo_will_be_published: Se publicará esta imagen.
-          explanation: ¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?
+          explanation: ¿Quieres explicar la propuesta con más detalle?
           label: Describe la propuesta en pocas palabras
           success:
             title: Tu propuesta ha sido publicada
@@ -427,6 +325,28 @@
       proposal: Propuesta
       continue: Continuar
       publish: Publicar
+      description: ¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!
+      section:
+        question:
+          label: Introduce el texto que quieras publicar aquí.
+          description: Describe la pregunta en pocas palabras
+          target: ¿A quién le quieres dirigir la pregunta?
+          explanation: ¿Quieres explicar la pregunta con más detalle?
+          target_name: Nombre de persona o área...
+          or: o
+          see_all: ver todas las áreas
+        proposal:
+          label: Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.
+          loading_photo: Cargando imagen...
+          image_will_be_included: Se incluirá esta imagen en la propuesta.
+          remove: Eliminar
+          explanation: ¿Quieres explicar la propuesta con más detalle?
+          description: Describe la propuesta en pocas palabras
+          target: ¿A qué area le quieres dirigir la pregunta?
+          target_name: Nombre de área...
+          see_all: ver todas las áreas
+          or: o
+
     floating_login:
       not_yet_registered: ¿No tienes cuenta en Irekia?
       register_here: Regístrate aquí
@@ -436,6 +356,10 @@
       remember_me: Recordar mis datos
       login: Entra
       remember_me: Recordar mis datos
+      password_response:
+        title: Ahora, mira tu correo
+        description: Te hemos mandado un email con instrucciones para recuperar tu contraseña. Síguelas para entrar en Irekia.
+        accept: Aceptar
       password_reminder:
         title: Introduce tu email
         description: y te mandaremos instrucciones para recuperar tu contraseña
@@ -620,6 +544,8 @@
         proposals: Propuestas
         sign_up: Regístrate
         sign_in: Accede a tu cuenta
+        rss_all: RSS todo el contenido
+        rss_news: RSS noticias
       areas:
         title: Áreas
         vasque_government: Gobierno Vasco
@@ -890,16 +816,25 @@
       view_map: Ver mapa
       more: Ver calendario completo
       next_month: Siguiente mes
+      ical: Exportar para iCal
 
     nav_bar_buttons:
-      settings: Configuración
+      settings:
+        title: Configuración
+        label: Tu perfil
       sign_up: Regístrate
       sign_in: Login
       hello: 'Hola, %{name}'
-      sign_out: Salir
+      sign_out:
+        title: Salir
+        label: Cerrar sesión
       facebook: Facebook
       twitter: Twitter
       notifications:
+        pending:
+          zero: 'No tienes notificaciones'
+          one: '1 notificación'
+          other: '%{count} notificaciones'
         a_content:
           news: una noticia
           photo: una foto
@@ -924,6 +859,10 @@
           zero: 'Ningún comentario en %{content}'
           one: 'Nuevo comentario en %{content}'
           other: '%{count} nuevos comentarios en %{content}'
+        comments_tagged:
+          zero: 'Ningún comentario en %{content} en la que has sido etiquetado'
+          one: 'Nuevo comentario en %{content} en la que has sido etiquetado'
+          other: '%{count} nuevos comentarios en %{content} en la que has sido etiquetado'
         comments_content:
           zero: 'Ningún comentario en %{content} en la que has participado'
           one: 'Nuevo comentario en %{content} en la que has participado'
@@ -1411,7 +1350,7 @@
   areas:
     navigation_menu:
       menu:
-        summary: Resumen
+        show: Resumen
         actions: Actividad
         questions: Preguntas
         proposals: Propuestas
@@ -1464,13 +1403,14 @@
 
   politicians:
     menu:
-      summary: Resumen
+      show: Resumen
       actions: Actividad
       questions: Preguntas
       proposals: Propuestas
       agenda: Agenda
+      detail: Detalle
     summary:
-      title: '%{title}'
+      title: '%{title} en el área de %{areas}'
       description:
         title: Quién es y qué hace
         read_more: Leer más
@@ -1518,7 +1458,7 @@
         title: 'Agenda de %{name}'
     detail:
       back: 'volver'
-      title: '%{title} de %{areas}'
+      title: '%{title} en el área de %{areas}'
       description:
         title: Quién es y qué hace
         activity: Actividad en IREKIA
@@ -1698,7 +1638,20 @@
             other: '%{count} contenidos encontrados'
 
   users:
+    passwords:
+      edit:
+        title: Cambiar contraseña
+        new_password: Nueva contraseña
+        confirm_new_password: Repetir contraseña
+        save: Guardar
     settings:
+      error:
+        current_password: La contraseña
+        email: El email
+        password: La contraseña
+      remove_your_profile: 'Por supuesto, si lo deseas puedes <a href="#" class="%{class}" id="%{class}">borrar tu perfil</a> de Irekia en cualquier momento.'
+      we_hope_you_dont_go: 'Esperamos que no sea así :-)'
+      connection_with_social_networks: Conexión con redes sociales
       avatar:
         title: Tu avatar
         pick_your_avatar: Selecciona tu avatar
@@ -1759,9 +1712,9 @@
         follow: Seguir
         more: Más sugerencias
       navigation_menu:
-        his_activity: Su actividad
-        his_questions: Sus preguntas
-        his_proposals: Sus propuestas
+        show: Su actividad
+        questions: Sus preguntas
+        proposals: Sus propuestas
         following: Siguiendo
       actions:
         title: Sus últimas acciones
@@ -1800,7 +1753,7 @@
         area: Área
     private:
       welcome:
-        hello: 'Bienvenido %{name}'
+        hello: 'Hola, %{name}'
         hi_again: 'Hola de nuevo, %{name}.'
         configure_your_account: Configura tu cuenta
         following_nobody: No estás siguiendo a nadie todavía.
@@ -1848,11 +1801,12 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
         follow: Seguir
         more_politicians: Buscar más políticos
       navigation_menu:
-        dashboard: Dashboard
-        your_questions: Tus preguntas
-        your_proposals: Tus propuestas
-        your_activity: Tu actividad
-        what_to_follow: Siguiendo
+        edit: Editar perfil
+        show: Dashboard
+        questions: Tus preguntas
+        proposals: Tus propuestas
+        actions: Tu actividad
+        followings: Siguiendo
         publish: Publicar
       questions:
         title:
@@ -1926,11 +1880,11 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
           other: '%{count} nuevos desde la última vez que entraste.'
         configure_your_account: Configura tu cuenta
       navigation_menu:
-        dashboard: Dashboard
-        your_questions: Preguntas
-        your_proposals: Propuestas
-        your_activity: Tu actividad
-        your_agenda: Tu agenda
+        show: Dashboard
+        questions: Preguntas
+        proposals: Propuestas
+        actions: Tu actividad
+        agenda: Tu agenda
         publish: Publicar
       questions:
         title:
@@ -1991,7 +1945,14 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
       terms_of_service: 'Acepto las %{link}'
       terms_of_service_link: condiciones de uso
       sign_up: Continuar
+    register:
+      mandatory: obligatorio
+      tell_us_more_about_you: Cuéntanos más de tí.
+      we_want_to_know_you_better: Queremos conocerte mejor.
+      continue: Continuar
+      with_this_data: ¿Qué vamos a hacer con estos datos?
     edit:
+      mandatory: obligatorio
       tell_us_more_about_you: Cuéntanos más de tí.
       we_want_to_know_you_better: Queremos conocerte mejor.
       continue: Continuar
@@ -2008,6 +1969,9 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
         follow: 'Seguir a este área'
       user:
         follow: 'Seguir a %{name}'
+    create_ribbon:
+      user: Seguir a este político
+      area: Seguir a este área
     create_mini:
       follow: Seguir
     destroy:
@@ -2071,6 +2035,10 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
       items_list:
         validate: 'aceptar'
         rejected: 'rechazar'
+      items_list_edit:
+        validate: 'Guardar y aceptar'
+        reject: 'rechazar'
+        reject_image: 'Eliminar imagen'
 
 #######################################
 # IREKIA - Models
@@ -2086,11 +2054,81 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
 # IREKIA - Mailers
 #######################################
 
-  moderation_mailer:
-    accepted:
-      accepted: 'El %{link} ha sido aceptado.'
-      content_link: contenido que has enviado
-      thanks: Gracias por participar en Irekia.
-    rejected:
-      rejected: 'El contenido que has enviado ha sido rechazado.'
-      thanks: Gracias por participar en Irekia.
+  irekia_mailer:
+    layout:
+      settings: 'Gestiona tus notificaciones'
+    moderation_approved:
+      subject:
+        comment: 'Tu  comentario ha sido aprobado :-)'
+        argument: 'Tu argumento ha sido aprobado :-)'
+        question: 'Tu pregunta ha sido aprobada :-)'
+        proposal: 'Tu propuesta ha sido aprobada :-)'
+      detail: 'La %{item} “%{item_text}” ha sido aprobada.'
+      detail_with_parent:
+        event: 'El %{item} que dejaste en el evento “%{parent_text}” ha sido aprobado.'
+        news: 'El %{item} que dejaste en la noticia “%{parent_text}” ha sido aprobado.'
+        photo: 'El %{item} que dejaste en la foto “%{parent_text}” ha sido aprobado.'
+        proposal: 'El %{item} que dejaste en la propuesta “%{parent_text}” ha sido aprobado.'
+        question: 'El %{item} que dejaste en la pregunta “%{parent_text}” ha sido aprobado.'
+        status_message: 'El %{item} que dejaste en el mensaje de estado “%{parent_text}” ha sido aprobado.'
+        tweet: 'El %{item} que dejaste en el tweet “%{parent_text}” ha sido aprobado.'
+        video: 'El %{item} que dejaste en el video “%{parent_text}” ha sido aprobado.'
+      show_item: 'Ver %{item} en Irekia'
+    moderation_rejected:
+      subject:
+        comment: 'Tu  comentario ha sido rechazado :-('
+        argument: 'Tu argumento ha sido rechazado :-('
+        question: 'Tu pregunta ha sido rechazada :-('
+        proposal: 'Tu propuesta ha sido rechazada :-('
+      detail:
+        event: 'El %{item} que dejaste en el evento “%{parent_text}” ha sido rechazado.'
+        news: 'El %{item} que dejaste en la noticia “%{parent_text}” ha sido rechazado.'
+        photo: 'El %{item} que dejaste en la foto “%{parent_text}” ha sido rechazado.'
+        proposal: 'El %{item} que dejaste en la propuesta “%{parent_text}” ha sido rechazado.'
+        question: 'El %{item} que dejaste en la pregunta “%{parent_text}” ha sido rechazado.'
+        status_message: 'El %{item} que dejaste en el mensaje de estado “%{parent_text}” ha sido rechazado.'
+        tweet: 'El %{item} que dejaste en el tweet “%{parent_text}” ha sido rechazado.'
+        video: 'El %{item} que dejaste en el video “%{parent_text}” ha sido rechazado.'
+      item_was:
+        comment: 'El mensaje era el siguiente:'
+        argument: 'El argumento era el siguiente:'
+        question: 'La pregunta era la siguiente:'
+        proposal: 'La propuesta era la siguiente:'
+      reasons: 'Posibles motivos para el rechazo:'
+      first_reason: 'Tu mensaje contenía palabras malsonantes o insultos, o faltaba el respeto a alguna persona o colectivo.'
+      second_reason: 'Tu mensaje se considera spam, por publicitar un producto o servicio.'
+      third_reason: 'Tu mensaje no guarda relación con el tema tratado. '
+      not_agree_html: 'Puedes <a href="#" target="_blank" style="color:#1D79B0">leer más sobre el sistema de moderación de Irekia</a>. Si no estás de acuerdo, <a href="#" target="_blank" style="color:#1D79B0">escríbenos</a> y lo hablamos.'
+    new_question:
+      subject: "Nueva pregunta en Irekia"
+      user_asks_you: '%{user} te hace la siguiente pregunta:'
+      user_asks_your_area: '%{user} le hace la siguiente pregunta a tu área:'
+      answer_question: 'Responder pregunta'
+    question_answered:
+      subject: 'Pregunta contestada en Irekia'
+      your_question: 'Tu pregunta'
+      politician_title: '%{title} en el área de %{area}'
+      answered_by: 'ha sido contestada por %{politician_with_title}'
+      opinion: '¿Qué te parece la respuesta? Puedes comentar la respuesta en Irekia.'
+      question_link: 'Ver pregunta en Irekia'
+    new_follower:
+      subject: '¡Un nuevo seguidor! :-)'
+      text: '%{name} ha comenzado a seguirte en Irekia. ¿Quieres conocerle mejor?'
+      see_profile: 'Ver el perfil de %{name}'
+    welcome:
+      subject: "Bienvenido a Irekia, %{name} :-)"
+      text: "Gracias por registrarte en Irekia. ¡Ya puedes empezar a participar!"
+      step_1: '1. Sigue a los cargos o áreas que te interesen'
+      step_1_detail: 'Busca los perfiles o áreas que más te interesen y síguelos. A partir de ese momento su actividad aparecerá en <a href="%{url}" target="_blank" style="color:#1D79B0">tu página de inicio de Irekia</a>.'
+      step_2: '2. Participa!'
+      step_2_detail: '<a href="%{url_questions}" target="_blank" style="color:#1D79B0">Haz preguntas</a> a los responsables del Gobierno Vasco, <a href="%{url_proposals}" target="_blank" style="color:#1D79B0">lanza tus propuestas</a> a los ciudadanos, o participa en las propuestas de otros. Todo con un simple click.'
+      step_3: '3. Configura tu cuenta'
+      step_3_detail: 'Sube tu ávatar o modifica tus datos. También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia.actividad aparecerá en tu página de inicio de Irekia.'
+      access_irekia: 'Acceder a Irekia'
+    deleted_account:
+      subject: "Cuenta eliminada :-("
+      as_requested: 'Como nos has pedido, hemos procedido a eliminar tu cuenta de Irekia, incluido todo tu contenido en la medida que ha sido posible. Hay algunos comentarios que no han podido ser retirados por formar parte de un debate con otros usuarios, pero tu nombre se ha eliminado de ellos.'
+      come_back: 'Lamentamos tu decisión. Por supuesto, <a href="%{url}" target="_blank" style="color:#1D79B0">puedes volver a Irekia y empezar de nuevo cuando quieras</a>.'
+      cheers: 'Saludos,'
+      irekia_team: 'El equipo de Irekia'
+
