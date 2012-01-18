@@ -316,5 +316,5 @@ DEPENDENCIES
   selenium-webdriver (= 2.7.0)
   spork
   tilt
-  translate-rails3
+  translate-rails3 (= 0.2.0)
   twitter (= 1.7.2)
