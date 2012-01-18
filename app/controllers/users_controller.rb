@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     @user.password_confirmation = params[:user][:password_confirmation]
 
     @user.valid?
-    unless @user.errors.on(:email) || @user.errors.on(:password)
+    unless @user.errors.on(:email) || @user.errors.on(:password) || @user.errors.on(:terms_of_service)
       session[:new_user] = {
         :email                 => @user.email,
         :password              => @user.password,
