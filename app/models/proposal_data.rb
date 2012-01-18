@@ -21,7 +21,7 @@ class ProposalData < ActiveRecord::Base
   end
 
   def body
-    read_attribute("title_#{I18n.locale}")
+    read_attribute("body_#{I18n.locale}")
   end
 
   def body=(new_body)
