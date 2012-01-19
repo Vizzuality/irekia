@@ -17,6 +17,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 p { padding: 0; margin: 0; }
 
+form.signin input[type="checkbox"] { display: none; }
+
 .loader { padding: 20px 0 40px 0; text-align: center; color: #9FABB2; font-size: 13px; }
 
 .logo { background: url("/images/datalogger/logo.png") no-repeat; width: 180px; height: 57px; margin: 30px auto 18px auto; }

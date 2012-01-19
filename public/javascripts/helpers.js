@@ -1967,12 +1967,12 @@ jQuery.fn.enableAvatarUpload = function(opt){
       authenticity_token: $("#" + avatar_button_class).closest("form").find('input[name=authenticity_token]').val()
     };
 
-    var buttonTitle = $("#" + avatar_button_class + " span").html();
+    var buttonTitle = $("#" + avatar_button_class).html();
     var template = [
       '<span class="qq-uploader">',
       '<span class="qq-upload-drop-area"></span>',
       '<span class="qq-upload-button"><span class="progress"></span>',
-      '<span class="title">' + buttonTitle +'</span>',
+      '<div class="title">' + buttonTitle +'</div>',
       '<span class="percentage"></span></span>',
       '<span class="qq-upload-list"></span>',
       '</span>'].join(' ');
@@ -1985,7 +1985,12 @@ jQuery.fn.enableAvatarUpload = function(opt){
 
         // Sets the original button title
         var buttonTitle = $this.attr("data-t-button");
-        $("#" + avatar_button_class + " span.title").html(buttonTitle);
+        $("#" + avatar_button_class + " .title").css("display", "block");
+
+        // We set the width of the title (this prevents a bug in Firefox)
+        var buttonWidth = $("#" + avatar_button_class).outerWidth(true);
+        $("#" + avatar_button_class + " .title").css("width", buttonWidth + "px");
+        $("#" + avatar_button_class + " .title").show();
 
         $this.find(".percentage").fadeOut(250);
         $this.find(".progress").fadeOut(250, function() {
@@ -2008,7 +2013,7 @@ jQuery.fn.enableAvatarUpload = function(opt){
         $this.find(".explanation .small").html(uploadingMessage);
 
         // Removes the button title
-        $("#" + avatar_button_class + " span.title").html("");
+        $("#" + avatar_button_class + " .title").hide();
       };
 
       var onProgress = function(id, fileName, loaded, total) {

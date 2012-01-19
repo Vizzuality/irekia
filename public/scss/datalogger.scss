@@ -24,6 +24,10 @@ a { color: #A0ABB2; text-decoration:none; }
 ul { list-style:none; margin: 0; padding: 0; }
 p { padding: 0; margin:0; }
 
+form.signin {
+input[type="checkbox"] { display:none; }
+}
+
 .loader {
   padding: 20px 0 40px 0;
   text-align: center;
