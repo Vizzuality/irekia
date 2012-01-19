@@ -51,8 +51,8 @@ class Vote < Participation
     if proposal.target_area
       proposal.target_area.team.each do |politician|
         politician.create_public_action(self)
-        politician.create_private_action(self)
       end
+      @users_to_notificate += proposal.target_area.team
     end
   end
 

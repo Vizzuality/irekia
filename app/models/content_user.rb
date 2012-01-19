@@ -53,9 +53,21 @@ class ContentUser < ActiveRecord::Base
   def publish
     return if content.blank? || self.destroyed?
 
-    content.tagged_politicians.each{|politician| politician.create_private_action(self)}
+    # This notification shouldn't be sent
+    # Notification.for(user, self)
+  end
 
-    Notification.for(user, self)
+  def send_notifications
+    item_json = to_json
+
+    content.tagged_politicians.uniq.each do |user|
+      private_action = user.private_actions.find_or_create_by_event_id_and_event_type id, self.class.name
+      private_action.published_at = published_at
+      private_action.message      = item_json
+      private_action.author       = author if author.present?
+      private_action.moderated    = moderated
+      private_action.save!
+    end
   end
 
 end

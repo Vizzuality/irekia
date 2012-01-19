@@ -39,7 +39,7 @@ class Content < ActiveRecord::Base
   accepts_nested_attributes_for :areas_contents, :contents_users, :allow_destroy => true
 
   attr_accessor :parent
-  attr_reader :tag, :image, :build_image
+  attr_reader :tag, :image, :build_image, :users_to_notificate
 
   def self.find_or_initialize(params = nil)
     new(params)
@@ -203,18 +203,46 @@ class Content < ActiveRecord::Base
 
     return if author.blank?
 
+    @users_to_notificate = []
+
     author.create_public_action(self)
 
     author.areas.each do |area|
       area.create_action(self)
-      area.followers.each{|follower| follower.create_private_action(self)}
+      @users_to_notificate += area.followers
     end
 
-    author.followers.each{|follower| follower.create_private_action(self)}
+    @users_to_notificate += author.followers
 
     tagged_politicians.each do |politician|
       politician.create_public_action(self)
-      politician.create_private_action(self)
+      @users_to_notificate << politician
+    end
+  end
+
+  def send_notifications
+    item_json = to_json
+
+    to_update = UserPrivateStream.select(:id).where(%Q{event_id = ? AND event_type = ? AND (#{@users_to_notificate.map{"user_id = ?"}.join(' OR ')})}, id, self.class.name, *@users_to_notificate.map(&:id))
+
+    if to_update.size > 0
+      UserPrivateStream.where(:id => to_update).update_all(
+        :published_at => published_at,
+        :message      => item_json,
+        :author_id    => author.id,
+        :moderated    => moderated
+      )
+    else
+      insert_sql = <<-SQL
+        INSERT INTO user_private_streams
+        (event_id, event_type, user_id, published_at, message, author_id, moderated)
+        VALUES
+        #{@users_to_notificate.map{|user| %Q{(#{id},#{self.class.name},#{user.id},#{published_at},#{item_json},#{author.id},#{moderated})}}.join(', ')}
+        ;
+      SQL
+
+      ActiveRecord::Base.connection.execute insert_sql
+
     end
   end
 

@@ -143,10 +143,8 @@ class Proposal < Content
 
     if target_area
       target_area.create_action(self)
-      target_area.followers.each{|follower| follower.create_private_action(self)}
-      target_area.team.each do |politician|
-        politician.create_private_action(self)
-      end
+      @users_to_notificate += target_area.followers
+      @users_to_notificate += target_area.team
     end
 
   end
