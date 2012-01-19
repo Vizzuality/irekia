@@ -80,9 +80,9 @@ module ApplicationHelper
     return '#' if user.id == User.wadus.id
 
     if user.is_politician
-      politician_path(user, params)
+      politician_path(user.slug || user.id, params)
     else
-      user_path(user, params)
+      user_path(user.slug || user.id, params)
     end
   end
 
