@@ -14,12 +14,12 @@ module Irekia
 
   class Importer
 
-    def self.get_news_from_rss
+    def self.get_news_from_rss(since = nil)
       puts ''
       puts 'Importing news from Irekia'
       puts '============================'
 
-      last_news_date = 1.day.ago
+      last_news_date = since || 1.day.ago
 
       Feedzirra::Feed.add_common_feed_entry_element('organization', :as => :organization, :class => Irekia::XMLEntities::Organization)
       Feedzirra::Feed.add_common_feed_entry_element('multimedia_iframe_src', :as => :multimedia_iframe_src)
@@ -41,13 +41,12 @@ module Irekia
         news_entries.each do |news_item|
           begin
 
-            news = News.new
-            news.news_data = NewsData.create(:title      => (news_item.title.sanitize rescue nil),
-                                             :body       => (news_item.summary.sanitize rescue nil),
-                                             :source_url => (news_item.url rescue nil),
-                                             :iframe_url => (news_item.multimedia_iframe_src rescue nil))
-            news.external_id = news_item.entry_id
-            news.moderated = true
+            news = News.find_or_initialize_by_external_id(news_item.entry_id)
+            news.news_data            = NewsData.new if news.news_data.blank?
+            news.news_data.body       = news_item.summary.sanitize rescue nil
+            news.news_data.source_url = news_item.url rescue nil
+            news.news_data.iframe_url = news_item.multimedia_iframe_src rescue nil
+            news.moderated            = true
 
             news.areas << Area.where("name_#{lang} like ? OR name like ?", "%#{news_item.organization.title}%", "%#{news_item.organization.title}%").first rescue puts "Invalid área name: #{news_item.organization.title}"
             news_item.categories.each do |category|
