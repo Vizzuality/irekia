@@ -6,7 +6,7 @@
   <%= f.email_field :email, :placeholder => "Email", :class => "email#{' error' if flash and flash[:alert]}"  %>
   <%= f.password_field :password, :placeholder => "Password", :class => "#{'error' if flash and flash[:alert]}" %>
   </fieldset>
-  <%= f.check_box :remember_me, :class => "hidden" %> Remember
+  <%= f.check_box :remember_me, :class => "hidden", :checked => true %>
 
   <button class="white_button center"><%= t('.sign_in') %></button>
 <% end %>

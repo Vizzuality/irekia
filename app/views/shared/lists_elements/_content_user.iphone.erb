@@ -1,0 +1,13 @@
+<%= link_to "", (send("#{data.content.type}_path", data.content.slug)), :class => "icon tag" %>
+
+<div class="content">
+  <%= content_tag 'p', raw(t('.title', :name => data.author.name, :content_type => t(".#{data.content.type}"), :content => content_tag('strong', link_to(data.content.title, send("#{data.content.type}_path", data.content.slug))))) %>
+
+  <div class="footer">
+    <span class="published_at">
+      <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
+    </span>
+    <%#= inline_sharing_partial_for_contents(data, data.content.type, send("#{data.content.type}_path", data.content.slug), data.content.title) %>
+  </div>
+  <%= render 'shared/lists_elements/last_comments', :data => data %>
+</div>

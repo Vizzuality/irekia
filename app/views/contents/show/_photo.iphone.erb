@@ -1,0 +1,44 @@
+<div class="article photos with_footer">
+<div class="inner">
+  <div class="left">
+
+    <div class="context">
+      <h3><%= link_to t(@content.content_type), "javascript: history.go(-1)" %></h3>
+      <% if @content.author %> <span class="middot">&middot;</span> <%= t(".published_by") %> <%= link_to @content.author.fullname, @content.author %> <% end %>
+    </div>
+
+    <h1><%= @content.title %></h1>
+
+    <div class="meta">
+    <span><%= l @content.published_at.to_date, :format => :long %></span>
+    &middot;
+    <span class="comments">    <%= link_to @comments_count, '#', :class => :goto_comments %></span>
+    </div>
+
+    <%= image_tag @content.content_url %>
+    <div class="caption"><%= simple_format @content.description %></div>
+
+    <%#= render "participations/comments" %>
+
+  </div>
+  <div class="right">
+    <div class="content left-border">
+
+      <%#= render "shared/sidebar/tags" %>
+      <%#= render "shared/sidebar/location" %>
+      <%#= render "shared/sidebar/related_politicians" %>
+
+    </div>
+  </div>
+</div>
+
+<div class="bfooter">
+<div class="separator"></div>
+<div class="inner">
+  <div class="left">
+    <%= link_to t(".back"), "javascript: history.go(-1)", :class => :left_arrow %>
+  </div>
+</div>
+</div>
+<div class="t"></div><div class="f"></div>
+</div>

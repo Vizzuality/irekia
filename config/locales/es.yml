@@ -729,7 +729,7 @@
       accessibility: Accesibilidad
       accessibility_url: "http://www.euskadi.net/r33-2288/es/contenidos/informacion/cabecera_accesibilidad/es_6144/politica_accesibilidad.html"
       management: Mis gestiones
-      management_url: "https://xlnets.servicios.euskadi.net/n38a/N38LoginEuskadiOMA.jsp?n38id=-902481386"
+      management_url: "https://www6.euskadi.net/s06-9512x/eu/r02nConsultationSistemWar/consultation/r02nExpedientList.do"
       euskadi_net_url: "http://www.euskadi.net/r33-2220/es/"
 
     nav_bar:
@@ -828,6 +828,8 @@
       question:
         title: 'Pregunta para %{receiver}:'
         author: '%{author} hace %{time}'
+        iphone:
+          author: 'Hace %{time}'
         answered: 'Contestada tras %{time}'
         not_answered: 'Aún no contestada'
         read_more: 'Leer más'
@@ -898,6 +900,8 @@
           in_favor: '%{name} ha votado a favor de la propuesta "%{proposal}"'
           against: '%{name} ha votado en contra de la propuesta "%{proposal}"'
         author: '%{author} participó hace %{time}'
+        iphone:
+          author: 'Hace %{time}'
       event:
         author: '%{author} hace %{time}'
       content_user:
@@ -922,6 +926,8 @@
         tweet: el tweet
         event: el evento
         author: 'Publicado por %{author} hace %{time}'
+        iphone:
+          author: 'Hace %{time}'
       comments:
         zero: Todavía no hay comentarios
         one: 1 comentario
@@ -1663,8 +1669,8 @@
         title: 'Pregunta a %{name}'
         label: 'Haz una pregunta a %{name}'
       success:
-        title: Comentario enviado.
-        description: Te avisaremos en cuanto sea aprobado.
+        title: Pregunta enviada.
+        description: Te avisaremos en cuanto sea aprobada.
       error:
         title: Error técnico.
         description: Lo sentimos, no se ha podido guardar :-(
@@ -2030,6 +2036,7 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
         actions: Tu actividad
         followings: Siguiendo
         publish: Publicar
+        settings: Tu perfil
       questions:
         title:
           zero: Ninguna pregunta contestada
@@ -2353,4 +2360,9 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
       come_back: 'Lamentamos tu decisión. Por supuesto, <a href="%{url}" target="_blank" style="color:#1D79B0">puedes volver a Irekia y empezar de nuevo cuando quieras</a>.'
       cheers: 'Saludos,'
       irekia_team: 'El equipo de Irekia'
-
+  layouts:
+    application:
+      title: ¿Tienes un smartphone?
+      subtitle: Accede a IREKIA a través de la aplicación Android o iPhone
+      available_in_app_store: "DISPONIBLE EN <span>App Store</span>"
+      available_in_android_market: "DISPONIBLE EN <span>Android Market</span>"

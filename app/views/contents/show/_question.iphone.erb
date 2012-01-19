@@ -1,0 +1,35 @@
+<% content_for :header do %>
+  <header>
+  <%= link_to 'volver', "/", :class => :white_button %>
+  <h2>pregunta</h2>
+  </header>
+<% end %>
+
+<% content_for :title do %>
+  <div class="header">
+  <h1><%= @content.question_text %></h1>
+  <div class="footer when"><%= link_to @content.author.try(:fullname), path_for_user(@content.author) %> <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %></div>
+  <div class="shadow"></div>
+  </div>
+<% end %>
+
+<% if @answer %>
+  <!-- <div class="answer paper">
+  <%#= simple_format @answer.answer_text %>
+  <%#= raw @content.answer.video_data.html if @content.answer.video_data && @content.answer.video_data.html.present? %>
+  </div> -->
+<% else %>
+  <% if can_i_answer_the_question? -%>
+    <%= form_for @new_answer, :remote => true, :html => {:class => :publish} do |form| %>
+      <%= form.hidden_field :related_content_id %>
+      <%= form.fields_for :answer_data, @new_answer.answer_data do |answer_data| -%>
+        <div class="paper">
+        <div class="placeholder">Contestar a esta pregunta...</div>
+        <%= answer_data.text_area :answer_text, :class => :grow %>
+        </div>
+      <% end -%>
+      <%= form.submit t(".publish"), :class => 'white_button pink' %>
+    <% end -%>
+  <% end -%>
+<% end %>
+<%= render "participations/comments" %>

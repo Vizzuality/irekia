@@ -119,6 +119,39 @@ module ApplicationHelper
     end
   end
 
+  def avatar_image(user_or_area, size = nil)
+    avatar_html = image_tag "icons/faceless#{ "_#{size}" unless size.blank? }_avatar.png", :class => "avatar #{size}", :title => t('unknown_user')
+    size = size.present?? size.to_s : ''
+
+    if user_or_area.is_a?(Area)
+      area = user_or_area
+      if area.present? && area.image.present?
+        avatar_html = (image_tag(area.thumbnail, :title => area.name, :class => "avatar #{size}" ) + (raw(content_tag :div, " ", :class => :ieframe)))
+      end
+    else
+      begin
+        if user_or_area.present? && user_or_area.profile_image.present?
+          user = user_or_area
+          image_url = size == 'big' ? user.profile_image_big : user.profile_image
+          avatar_html = (image_tag(image_url, :title => user.fullname, :class => "avatar #{size}") + (raw(content_tag :div, " ", :class => :ieframe)))
+        elsif user_or_area.present? && user_or_area.thumbnail.present?
+          area = user_or_area
+          avatar_html = (image_tag(area.thumbnail, :title => area.name, :class => "avatar #{size}") + (raw(content_tag :div, " ", :class => :ieframe)))
+        elsif user_or_area.present? && user_or_area.id.present? && user_or_area.fullname.present?
+          user = user_or_area
+          profile_image = Image.for(user)
+          if profile_image.present?
+            image_url = size == 'big' ? profile_image.image.url : profile_image.image.thumb.url
+            avatar_html = (image_tag(image_url, :title => user.fullname, :class => "avatar #{size}") + (raw(content_tag :div, " ", :class => :ieframe)))
+          end
+        end
+      rescue
+      end
+
+      avatar_html
+    end
+  end
+
   def only_logged_class
     :only_logged unless user_signed_in?
   end

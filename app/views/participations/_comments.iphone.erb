@@ -1,0 +1,49 @@
+<% if @comments and @comments.size > 0 %>
+<div id="main">
+    <div class="article comments">
+      <div class="inner">
+        <div class="content">
+
+  <ul>
+    <% @comments.reject{|c| c.new_record?}.each do |comment| %>
+      <li class="clearfix <%= 'not_moderated' unless comment.moderated %>">
+      <%= avatar comment.author %>
+      <div class="comment">
+      <p>
+      <%= link_to comment.author.fullname, user_path(comment.author), :class => :author %> dice
+       "<%= comment.body %>"
+       </p>
+
+        <div class="footer when">
+          <% if comment.moderated -%>
+            <%= t('.time', :time => distance_of_time_in_words_to_now(comment.published_at)) %>
+          <% else -%>
+            <span class="published_at">
+              <%= raw t('.not_moderated.author', :author_url => user_path(comment.author), :time => distance_of_time_in_words_to_now(comment.published_at)) %>
+            </span>
+            &middot;
+            <span class="moderation_pending">
+              <%= t('.not_moderated.moderation_pending') %>
+            </span>
+          <% end -%>
+        </div>
+      </div>
+      </li>
+    <% end %>
+    <li class="comment <%= 'first' if @comments.blank? %>">
+    <%= form_for @comment, :remote => true, :html => {:'data-type' => 'html', :class => :add_comment }  do |form| %>
+      <%= form.hidden_field :content_id %>
+      <%= avatar current_user %>
+        <%= form.fields_for :comment_data do |comment_data| %>
+          <%= comment_data.text_field :body, :id => :comment, :placeholder => "Comenta esta pregunta" %>
+        <% end %>
+    <% end -%>
+    </li>
+  </ul>
+
+        </div>
+      </div>
+      <div class="t"></div><div class="f"></div>
+    </div>
+    </div>
+  <% end %>

@@ -1,0 +1,22 @@
+<%= avatar data.author %>
+
+<div class="content">
+  <%= content_tag 'p', t(".title", :receiver => data.target_area.send("name_#{I18n.locale}")) if data.target_area %>
+  <%= content_tag 'p', t(".title", :receiver => data.target_user.fullname) if data.target_user %>
+
+  <% if data.target_user %>
+    <p class="excerpt"><%= link_to %Q{"#{data.question_text}"}, question_path(data.slug) %></p>
+  <% else %>
+    <p class="excerpt"><%= link_to %Q{"#{data.question_text}"}, question_path(data.slug) %></p>
+  <% end %>
+
+  <div class="footer">
+    <% if data.answered_at.present? %>
+      <span class="answered"><%= link_to t('.answered', :time => distance_of_time_in_words(data.published_at, data.answered_at)), question_path(data.slug) %></span>
+    <% else %>
+      <span class="published_at">
+        <%= raw t('.iphone.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
+      </span>
+    <% end %>
+  </div>
+</div>

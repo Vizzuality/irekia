@@ -401,7 +401,10 @@
                 <% end %>
 
                 <a href="#" id="ie_avatar_uploader_button" data-url= "<%= photos_path %>"><span><%= t(".avatar.upload_an_image") %></span></a>
-                <%= button t(".avatar.upload_an_image"), :id => :avatar_uploader_button, :class => "white_button clear blue", :'data-url' => photos_path %>
+                <%#= button t(".avatar.upload_an_image"), :id => :avatar_uploader_button, :class => "white_button clear blue", :'data-url' => photos_path %>
+                <%= content_tag 'div', (t(".avatar.upload_an_image")), :id => :avatar_uploader_button, :class => "white_button clear blue", :'data-url' => photos_path %>
+                <%#= link_to (raw "<span>"+ t(".avatar.upload_an_image") + "</span>"), "#", :id => :avatar_uploader_button, :class => "white_button clear blue", :'data-url' => photos_path %>
+
                 <div class="small"><%= t(".avatar.size") %></div>
               </div>
             </div>

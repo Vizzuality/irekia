@@ -1,0 +1,78 @@
+<div class="proposals clearfix">
+
+  <div class="proposal in_favor">
+    <h3><%= t(".in_favor") %> <sup>(<%= @arguments_in_favor.count %>)</sup></h3>
+    <ul>
+      <% @arguments_in_favor.each do |argument| %>
+        <li><%= argument.reason %></li>
+      <% end %>
+    </ul>
+    <div class="footer">
+      <%= form_for @argument_in_favor, :remote => true do |form| %>
+        <%= form.hidden_field :id %>
+        <%= form.hidden_field :content_id %>
+        <%= form.hidden_field :user_id %>
+        <div class="input_text placeholder">
+          <%= form.fields_for :argument_data do |argument_data_form| %>
+            <%= argument_data_form.hidden_field :id, :value => '' %>
+            <%= argument_data_form.text_field :reason, :value => '' %>
+            <%= argument_data_form.hidden_field :in_favor, :value => true %>
+          <% end -%>
+          <%= form.submit_with_login t('.add') %>
+          <span id="spinner_in_favor" class="spinner"></span>
+          <span class="holder"><%= t(".write_here") %></span>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+
+  <div class="proposal against">
+    <h3><%= t(".against") %> <sup>(<%= @arguments_against.count %>)</sup></h3>
+    <ul>
+      <% @arguments_against.each do |argument| %>
+        <li><%= argument.reason %></li>
+      <% end %>
+    </ul>
+    <div class="footer">
+      <%= form_for @argument_against, :remote => true do |form| %>
+        <%= form.hidden_field :id %>
+        <%= form.hidden_field :content_id %>
+        <%= form.hidden_field :user_id %>
+        <div class="input_text placeholder">
+          <%= form.fields_for :argument_data do |argument_data_form| %>
+            <%= argument_data_form.hidden_field :id, :value => '' %>
+            <%= argument_data_form.text_field :reason, :value => '' %>
+            <%= argument_data_form.hidden_field :in_favor, :value => false %>
+          <% end -%>
+          <%= form.submit_with_login t('.add') %>
+          <span id="spinner_against" class="spinner"></span>
+          <span class="holder"><%= t(".write_here") %></span>
+        </div>
+      <% end -%>
+    </div>
+  </div>
+
+  <div id="notice_in_favor" class="article notice">
+    <div class="inner">
+      <div class="content">
+        <p>
+        <strong><%= t(".success.title") %></strong>
+        <%= t(".success.description") %>
+        </p>
+      </div>
+      <div class="t"></div><div class="f"></div>
+    </div>
+  </div>
+
+  <div id="notice_against" class="article notice">
+    <div class="inner">
+      <div class="content">
+        <p>
+        <strong><%= t(".error.title") %></strong>
+        <strong><%= t(".error.description") %></strong>
+        </p>
+      </div>
+      <div class="t"></div><div class="f"></div>
+    </div>
+  </div>
+</div>

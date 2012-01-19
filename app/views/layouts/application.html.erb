@@ -60,13 +60,13 @@
       <section class="get_mobile_app">
         <div class="inner">
           <div class="left">
-            <h5>¿Tienes un smartphone?</h5>
-            <p>Accede a IREKIA a través de la aplicación Android o iPhone</p>
+            <h5><%= t(".title") %></h5>
+            <p><%= t(".subtitle") %></p>
           </div>
           <div class="right">
             <ul>
-              <li><a class="iphone" href="#iphone!">DISPONIBLE EN <span>App Store</span></a></li>
-              <li><a class="android" href="#android!">DISPONIBLE EN <span>Android Market</span></a></li>
+              <li><a class="iphone" href="http://itunes.apple.com/es/app/irekia/id383327242?mt=8"><%= raw t(".available_in_app_store") %></a></li>
+              <li><a class="android" href="https://market.android.com/details?id=net.efaber.irekia"><%= raw t(".available_in_android_market") %></a></li>
             </ul>
           </div>
         </div>
@@ -83,8 +83,8 @@
     <%= javascript_include_tag 'libs/soundmanager2' %>
     <script type="text/javascript">soundManager.url = '/swf/'; soundManager.debugMode = false; </script>
 
-    <%= javascript_include_tag 'all' %>
-    <%#= javascript_include_tag 'rails', 'libs/spin.min', 'helpers', 'temp', 'widgets', 'mylibs/remove_account', 'mylibs/politician_publish', 'mylibs/user_publish', 'mylibs/question', 'mylibs/proposal', 'mylibs/login',  'map', 'libs/jquery-ui-1.8.16.custom.min', 'plugins', 'libs/jquery.dropkick-1.0.0', 'application' %>
+    <%#= javascript_include_tag 'all' %>
+    <%= javascript_include_tag 'rails', 'libs/spin.min', 'helpers', 'temp', 'widgets', 'mylibs/remove_account', 'mylibs/politician_publish', 'mylibs/user_publish', 'mylibs/question', 'mylibs/proposal', 'mylibs/login',  'map', 'libs/jquery-ui-1.8.16.custom.min', 'plugins', 'libs/jquery.dropkick-1.0.0', 'application' %>
 
     <%= yield :js_data %>
 

@@ -1,0 +1,9 @@
+<li class="clearfix">
+  <%= avatar @participation.user -%>
+  <div class="comment">
+    <blockquote><span class="bqstart">&#8220;</span><span class="quote"><%= @participation.body %><span class="bqend">&#8221;</span></span></blockquote>
+    <div class="footer when">
+      <%= link_to @participation.user.fullname, path_for_user(@participation.user), :class => :author %> <%= t('.time', :time => distance_of_time_in_words_to_now(@participation.published_at)) %>
+    </div>
+  </div>
+</li>

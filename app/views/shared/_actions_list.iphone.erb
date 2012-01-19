@@ -1,0 +1,9 @@
+<ul>
+  <% if @actions.count > 0 %>
+    <% @actions.each_with_index do |action,i| %>
+      <%= render_list_element(action.item, action.event_type, :class => "#{'loop' if i > 4}", :inline => true) %>
+    <% end %>
+  <% else %>
+    <span class="empty"><%= t(".no_content.area") %></span>
+  <% end %>
+</ul>
