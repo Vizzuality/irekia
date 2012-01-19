@@ -2036,6 +2036,7 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
         actions: Tu actividad
         followings: Siguiendo
         publish: Publicar
+        settings: Tu perfil
       questions:
         title:
           zero: Ninguna pregunta contestada
@@ -2359,4 +2360,9 @@ De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: t
       come_back: 'Lamentamos tu decisión. Por supuesto, <a href="%{url}" target="_blank" style="color:#1D79B0">puedes volver a Irekia y empezar de nuevo cuando quieras</a>.'
       cheers: 'Saludos,'
       irekia_team: 'El equipo de Irekia'
-
+  layouts:
+    application:
+      title: ¿Tienes un smartphone?
+      subtitle: Accede a IREKIA a través de la aplicación Android o iPhone
+      available_in_app_store: "DISPONIBLE EN <span>App Store</span>"
+      available_in_android_market: "DISPONIBLE EN <span>Android Market</span>"
