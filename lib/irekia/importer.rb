@@ -160,7 +160,7 @@ module Irekia
       puts '===================================================='
       require 'open-uri'
 
-      languages             = %w(es eu)
+      languages             = %w(es eu en)
       server                = 'http://www2.irekia.euskadi.net'
       categories_url        = lambda{ |language| "#{server}/#{language}/categories.json" }
       areas_url             = lambda{ |language, id| "#{server}/#{language}/categories/#{id}.json" }
@@ -222,6 +222,12 @@ module Irekia
                 user.profile_picture       = Image.create(:remote_image_url => "http://www2.irekia.euskadi.net/#{politician['image']}") if politician['image']
                 user.skip_welcome          = true
                 user.save!
+
+                if File.exists?(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg"))
+                  user.profile_picture.destroy
+                  user.profile_picture = Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg")))
+                  user.save!
+                end
               rescue Exception => ex
                 puts politician.inspect
                 puts ex
