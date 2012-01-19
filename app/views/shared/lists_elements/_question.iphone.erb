@@ -12,16 +12,10 @@
 
   <div class="footer">
     <% if data.answered_at.present? %>
-      <span class="published_at">
-        <%= link_to(data.author.fullname, path_for_user(data.author)) %>
-        &middot;
-      </span>
-
       <span class="answered"><%= link_to t('.answered', :time => distance_of_time_in_words(data.published_at, data.answered_at)), question_path(data.slug) %></span>
     <% else %>
       <span class="published_at">
-        <%= raw t('.author_short', :time => distance_of_time_in_words_to_now(data.published_at)) %>
-        <!--, :author => link_to(data.author.fullname, path_for_user(data.author)) -->
+        <%= raw t('.iphone.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>
       </span>
     <% end %>
   </div>

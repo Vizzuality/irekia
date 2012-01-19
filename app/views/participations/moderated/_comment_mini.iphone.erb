@@ -1,0 +1,4 @@
+<li class="clearfix">
+  <%= avatar @content.last_comments.last.author, 'small' %>
+  <p><%= link_to @content.last_comments.last.author.fullname, path_for_user(@content.last_comments.last.author) %> - <%= truncate(@content.last_comments.last.body, :length => 150) %></p>
+</li>

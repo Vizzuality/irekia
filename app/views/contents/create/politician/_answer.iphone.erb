@@ -1,0 +1,5 @@
+<span class="answered"><%= t('contents.show.question.question_content.author_and_comments.answered', :time => distance_of_time_in_words(@content.question.published_at, @content.question.answered_at)) %></span>
+<div class="answer">
+  <%= simple_format @content.answer_text %>
+  <%#= raw @content.video_data.html if @content.video_data && @content.video_data.html.present? %>
+</div>

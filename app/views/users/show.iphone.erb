@@ -9,7 +9,7 @@
   <header>
   <%= avatar_image current_user %>
   <h2><%= current_user.name %></h2>
-  <%= link_to 'Editar', "#", :class => "icon settings" %>
+  <%= link_to 'Editar', destroy_user_session_path, :method => 'delete', :class => "icon settings" %>
   </header>
 <% end %>
 

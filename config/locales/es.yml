@@ -828,7 +828,8 @@
       question:
         title: 'Pregunta para %{receiver}:'
         author: '%{author} hace %{time}'
-        author_short: 'Hace %{time}'
+        iphone:
+          author: 'Hace %{time}'
         answered: 'Contestada tras %{time}'
         not_answered: 'Aún no contestada'
         read_more: 'Leer más'
@@ -899,7 +900,8 @@
           in_favor: '%{name} ha votado a favor de la propuesta "%{proposal}"'
           against: '%{name} ha votado en contra de la propuesta "%{proposal}"'
         author: '%{author} participó hace %{time}'
-        author_short: 'Hace %{time}'
+        iphone:
+          author: 'Hace %{time}'
       event:
         author: '%{author} hace %{time}'
       content_user:
@@ -924,6 +926,8 @@
         tweet: el tweet
         event: el evento
         author: 'Publicado por %{author} hace %{time}'
+        iphone:
+          author: 'Hace %{time}'
       comments:
         zero: Todavía no hay comentarios
         one: 1 comentario

@@ -6,7 +6,7 @@
   <div class="footer">
 
     <span class="published_at">
-      <span class="when"><%= raw t('.author', :author => data.author.fullname, :time => distance_of_time_in_words_to_now(data.published_at)) %></span>
+      <span class="when"><%= raw t('.iphone.author', :time => distance_of_time_in_words_to_now(data.published_at)) %></span>
       &middot;
 
     <% if data.answered_at.present? %>

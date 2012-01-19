@@ -9,9 +9,8 @@
     </span>
     &middot;
     <% if data.percent_in_favor > 50 -%>
-      <%= t('.votes_in_favor', :percent => data.percent_in_favor, :count => data.participation) %>
+      <%= t('.iphone.votes_in_favor', :percent => data.percent_in_favor, :count => data.participation) %>
     <% else -%>
-      <%= t('.votes_against', :percent => data.percent_against, :count => data.participation) %>
     <% end -%>
   </div>
 </div>
