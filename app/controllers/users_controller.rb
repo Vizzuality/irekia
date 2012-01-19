@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :authenticate_user!,      :only => [:intro, :new, :create, :show, :questions, :proposals, :actions, :followings, :edit]
-  skip_before_filter :current_user_valid?,     :only => [:edit, :update]
+  skip_before_filter :authenticate_user!,      :only => [:intro, :preregister, :register, :new, :create, :show, :questions, :proposals, :actions, :followings, :edit]
   before_filter :per_page,                     :only => [:show, :actions, :questions, :proposals]
   before_filter :get_user,                     :only => [:show, :edit, :update, :connect, :questions, :proposals, :actions, :followings, :agenda, :settings]
   before_filter :get_follow_suggestions,       :only => [:show, :followings]
@@ -78,21 +77,57 @@ class UsersController < ApplicationController
   end
 
   def new
+    session[:new_user] = {}
     @user = User.new
     render :layout => !request.xhr?
   end
 
-  def create
-    @user = User.new params[:user]
-    @user.password = params[:user][:password]
+  def preregister
+    @user                       = User.new(params[:user])
+    @user.password              = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
 
-    if @user.save
-      env['warden'].set_user(@user)
-      redirect_to edit_user_path(@user)
+    @user.valid?
+    unless @user.errors.on(:email) || @user.errors.on(:password) || @user.errors.on(:terms_of_service)
+      session[:new_user] = {
+        :email                 => @user.email,
+        :password              => @user.password,
+        :password_confirmation => @user.password_confirmation,
+        :terms_of_service      => @user.terms_of_service
+      }
+      redirect_to register_users_path
     else
       render :json => @user.errors.to_json, :status => :error
     end
+  end
+
+  def register
+    @user = User.new(session[:new_user])
+    render :layout => !request.xhr?
+  end
+
+  def create
+    @user = User.new(session[:new_user])
+    @user.password              = session[:new_user][:password]
+    @user.password_confirmation = session[:new_user][:password_confirmation]
+    @user.email                 = params[:user][:email] if params[:user][:email].present?
+    @user.name                  = params[:user][:name]
+    @user.lastname              = params[:user][:lastname]
+    @user.postal_code           = params[:user][:postal_code]
+    @user.birthday              = params[:user][:birthday]
+
+    if @user.save
+      sign_in(@user, :bypass => true)
+      session[:new_user] = nil
+
+      respond_with(@user) do |format|
+        format.html
+        format.json
+      end
+    else
+      render :json => @user.errors, :status => :error
+    end
+
   end
 
   def edit

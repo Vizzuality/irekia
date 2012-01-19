@@ -19,7 +19,7 @@ module Irekia
       puts 'Importing news from Irekia'
       puts '============================'
 
-      last_news_date = 1.month.ago
+      last_news_date = 1.day.ago
 
       Feedzirra::Feed.add_common_feed_entry_element('organization', :as => :organization, :class => Irekia::XMLEntities::Organization)
       Feedzirra::Feed.add_common_feed_entry_element('multimedia_iframe_src', :as => :multimedia_iframe_src)
@@ -272,6 +272,54 @@ module Irekia
         end
 
       end
+    end
+
+    def self.import_proposals
+      puts ''
+      puts 'Importing old proposals'
+      puts '======================='
+      require 'csv'
+
+      culture_area = Area.find_by_name('Cultura')
+
+      rows = CSV.read(Rails.root.join('db/seeds/support/proposals.csv'), :headers => :first_row)
+      rows.each do |row|
+
+        begin
+          next if row['status'].downcase == 'pendiente'
+
+          author = User.find_by_external_id(row['user_id'])
+
+          next if author.blank?
+
+          proposal_data = ProposalData.find_or_initialize_by_external_id(row['id'])
+          proposal_data.title_es    = row["title_es"]
+          proposal_data.title_eu    = row["title_eu"]
+          proposal_data.title_en    = row["title_en"]
+          proposal_data.body_es     = row["body_es"]
+          proposal_data.body_eu     = row["body_eu"]
+          proposal_data.body_en     = row["body_en"]
+          proposal_data.target_area = culture_area
+
+          if proposal_data.proposal.blank?
+            proposal = Proposal.new
+            proposal.author = author
+            proposal.proposal_data = proposal_data
+            proposal.moderated = true
+            proposal.save!
+          end
+
+          proposal_data.save!
+
+          print '.'
+
+        rescue Exception => ex
+          puts ex
+          puts ex.backtrace
+        end
+
+      end
+
     end
 
     private

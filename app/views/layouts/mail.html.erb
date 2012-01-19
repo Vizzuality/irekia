@@ -7,12 +7,12 @@
     <title><%= @subject %></title>
     <style type="text/css">
 
-      #outlook a {padding:0;} 
+      #outlook a {padding:0;}
       body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; font-family: "Arial", sans-serif}
 
-      .ExternalClass {width:100%;} 
-      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} 
-	  
+      .ExternalClass {width:100%;}
+      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+
       #backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
       img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;}
       a img {border:none;}
@@ -29,11 +29,11 @@
       h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {color: #1D79B0 !important;}
 
       h1 a:active, h2 a:active,  h3 a:active, h4 a:active, h5 a:active, h6 a:active {
-        color: red !important; 
+        color: red !important;
       }
 
       h1 a:visited, h2 a:visited,  h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
-        color: purple !important; 
+        color: purple !important;
       }
 
       table td {border-collapse: collapse; color:#5E5E5E; }
@@ -51,11 +51,11 @@
       <tr>
         <td>
 
-          <table cellpadding="0" cellspacing="0" border="0" align="center" height="70px"><tr><td width="635px" height="70px" valign="top"><%= image_tag(path_to_image('mail/header.jpg')) %></td></tr></table><%= yield %>
+          <table cellpadding="0" cellspacing="0" border="0" align="center" height="70px"><tr><td width="635px" height="70px" valign="top"><%= image_tag("http://#{url_options[:host]}" + path_to_image('mail/header.jpg')) %></td></tr></table><%= yield %>
 
           <table cellpadding="0" cellspacing="0" border="0" align="center">
             <tr><td width="635px" height="15px" valign="top"></td></tr>
-            <tr><td width="635px" height="1px" valign="top"><%= image_tag(path_to_image('mail/light_line.jpg')) %></td></tr>
+            <tr><td width="635px" height="1px" valign="top"><%= image_tag("http://#{url_options[:host]}" + path_to_image('mail/light_line.jpg')) %></td></tr>
             <tr>
               <td width="635px" valign="top">
                 <% if @show_notifications_link %>

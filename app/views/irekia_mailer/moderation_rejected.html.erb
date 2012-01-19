@@ -1,4 +1,4 @@
-<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px"  background="<%= path_to_image('mail/rejected.jpg') %>" style="background-repeat:no-repeat;">
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="635px"  background="<%= "http://#{url_options[:host]}" + path_to_image('mail/rejected.jpg') %>" style="background-repeat:no-repeat;">
   <tr>
     <td width="635px" height="20px" valign="top"></td>
   </tr>
@@ -18,7 +18,7 @@
 
 <table cellpadding="15px" cellspacing="0" border="0" align="center" width="635px" >
   <tr>
-    <td width="635px" valign="top" background="<%= path_to_image('mail/question_bkg.jpg') %>" style="border: 1px solid #f0d1b2; margin: 10px 0;">
+    <td width="635px" valign="top" background="<%= "http://#{url_options[:host]}" + path_to_image('mail/question_bkg.jpg') %>" style="border: 1px solid #f0d1b2; margin: 10px 0;">
       <% @contents.compact.each_with_index do |content, index| -%>
         <p style="color: #5E5E5E;"><%= content %></p>
       <% end -%>

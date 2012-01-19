@@ -63,8 +63,8 @@ class User < ActiveRecord::Base
   before_destroy :reassign_contents
 
   validates           :terms_of_service,  :acceptance => true
-  validates           :name,              :presence   => true,        :on => :update
-  validates           :lastname,          :presence   => true,        :on => :update
+  validates           :name,              :presence   => true
+  validate            :lastname_if_new_user
   validates_format_of :email,             :with       => email_regexp
 
   belongs_to :role,
@@ -601,8 +601,12 @@ class User < ActiveRecord::Base
   #################################
 
   def valid_password?(password)
-    valid = super(password)
-    valid = old_user_authenticated?(password) unless valid
+    valid = false
+    begin
+      valid = super(password)
+    rescue BCrypt::Errors::InvalidHash
+      valid = old_user_authenticated?(password)
+    end
     valid
   end
 
@@ -616,6 +620,14 @@ class User < ActiveRecord::Base
 
   def just_created?
     name_was.nil? && lastname_was.nil? && valid?
+  end
+
+  def lastname_if_new_user
+    if external_id.present?
+      errors.add(:lastname, :blank) if lastname.nil? || lastname.length < 1
+    else
+      errors.add(:lastname, :blank) if lastname.blank?
+    end
   end
 
   def check_blank_name

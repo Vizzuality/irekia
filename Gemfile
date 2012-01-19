@@ -20,6 +20,7 @@ gem 'rdoc', '3.11'
 gem 'i18n_routing', '0.5.0'
 gem 'friendly_id', '4.0.0'
 gem 'agent_orange', '0.1.3'
+gem 'translate-rails3', '0.2.0', :require => 'translate'
 
 group :development do
   gem 'capistrano'
@@ -36,6 +37,7 @@ group :development, :test do
   gem 'irbtools', :require => 'irbtools/configure'
   gem 'escape_utils'
   gem 'compass'
+  gem 'railroady'
 end
 
 group :development, :test, :staging do
@@ -44,5 +46,4 @@ group :development, :test, :staging do
   gem 'colored', '~> 1.2'
   gem 'kss'
   gem 'tilt'
-  gem 'translate-rails3', :require => 'translate'
 end

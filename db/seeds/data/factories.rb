@@ -58,7 +58,8 @@ end
 
 def create_proposal(params)
 
-  proposal_data = ProposalData.find_or_initialize_by_title(params[:title])
+  proposal_data = ProposalData.new
+  proposal_data.title = params[:title]
   proposal_data.body = params[:body]
   proposal_data.image = params[:image]
   proposal_data.target_area = params[:target]

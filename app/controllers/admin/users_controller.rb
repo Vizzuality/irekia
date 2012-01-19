@@ -1,7 +1,6 @@
 class Admin::UsersController < Admin::AdminController
   before_filter :get_user, :only => [:show, :edit, :update, :destroy]
   before_filter :get_roles, :only => [:new, :create, :edit, :update]
-  before_filter :get_areas, :only => [:new, :create, :edit, :update]
   before_filter :get_titles, :only => [:new, :create, :edit, :update]
 
   def index
@@ -57,11 +56,7 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def get_roles
-    @roles = Role.all
-  end
-
-  def get_areas
-    @areas = Area.all
+    @roles = Role.where(:name_i18n_key => [:administrator, :politician, :citizen])
   end
 
   def get_titles

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111128124203) do
+ActiveRecord::Schema.define(:version => 20120116170852) do
 
   create_table "answer_data", :force => true do |t|
     t.integer  "answer_id"
@@ -244,14 +244,19 @@ ActiveRecord::Schema.define(:version => 20111128124203) do
   create_table "proposal_data", :force => true do |t|
     t.integer  "proposal_id"
     t.integer  "area_id"
-    t.string   "title"
-    t.text     "body"
     t.boolean  "close",         :default => false
     t.integer  "participation", :default => 0
     t.integer  "in_favor",      :default => 0
     t.integer  "against",       :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title_es"
+    t.string   "title_eu"
+    t.string   "title_en"
+    t.text     "body_es"
+    t.text     "body_eu"
+    t.text     "body_en"
+    t.string   "external_id"
   end
 
   add_index "proposal_data", ["proposal_id"], :name => "index_proposal_data_on_proposal_id"

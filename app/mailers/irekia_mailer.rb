@@ -3,7 +3,7 @@
 class IrekiaMailer < ActionMailer::Base
   include Devise::Mailers::Helpers
 
-  default :from => "irekia@euskadi.net"
+  default :from => "Lehendakaritza, Irekia <irekia@ej-gv.es>"
 
   layout 'mail'
 

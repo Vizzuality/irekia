@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
   before_filter :analyze_useragent
   before_filter :authentication_check
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
-  before_filter :current_user_valid?
   before_filter :get_areas
   before_filter :setup_search
 
@@ -58,8 +57,8 @@ class ApplicationController < ActionController::Base
       session['user_return_to'] = nil
       nav_bar_buttons_path
     else
-      return_to = session['user_return_to'] || root_path
-      session['user_return_to'] = nil
+      return_to = session['unauthorized_url'] || session['user_return_to'] || root_path
+      session['user_return_to'] = session['unauthorized_url'] = nil
       return_to.to_s
     end
   end
@@ -76,10 +75,6 @@ class ApplicationController < ActionController::Base
 
   def in_development
     render :partial => 'shared/in_development'
-  end
-
-  def current_user_valid?
-    redirect_to edit_user_path(current_user.id) if current_user && current_user.invalid?
   end
 
   def iphone_request?

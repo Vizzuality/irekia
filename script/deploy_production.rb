@@ -64,7 +64,7 @@ system "#{rsync_cmd} #{DEPLOYMENT_DIR}/* #{PRODUCTION_RSYNC}"
 
 puts '=> Restarting server'
 
-system "ssh #{PRODUCTION_CONNECTION} 'cd #{PRODUCTION_FOLDER} && touch tmp/restart.txt'"
+system "ssh #{PRODUCTION_CONNECTION} 'cd #{PRODUCTION_FOLDER}; touch tmp/restart.txt'"
 
 puts '=> Checking-in to master branch'
 
