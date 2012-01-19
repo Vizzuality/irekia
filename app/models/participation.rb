@@ -7,6 +7,7 @@ class Participation < ActiveRecord::Base
   belongs_to :content
 
   attr_protected :moderated, :rejected
+  attr_accessor :users_to_notificate
 
   before_save   :update_published_at
   before_save   :update_moderated_at
@@ -95,19 +96,36 @@ class Participation < ActiveRecord::Base
   def publish
     return unless content.present?
 
+    @users_to_notificate = []
+
     user.create_public_action(self)
 
     user.areas.each do |area|
       area.create_action(self)
-      area.users.each{|user| user.create_private_action(self)}
-      area.followers.each{|follower| follower.create_private_action(self)}
+      @users_to_notificate += area.users
+      @users_to_notificate += area.followers
     end
 
-    user.followers.each{|follower| follower.create_private_action(self)}
+    @users_to_notificate += user.followers
   end
 
   def notify_content
     content.notify_of_new_participation(self)
   end
 
+  def send_notifications
+    return if user_id == id || content.user_id == user_id
+
+    participation_json = to_json
+
+    @users_to_notificate.uniq.each do |user|
+      private_action = private_actions.find_or_create_by_event_id_and_event_type id, self.class.name
+      private_action.published_at = published_at
+      private_action.message      = participation_json
+      private_action.author       = author if author.present?
+      private_action.moderated    = moderated
+      private_action.save!
+    end
+
+  end
 end

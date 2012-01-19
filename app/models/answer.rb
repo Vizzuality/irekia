@@ -50,7 +50,7 @@ class Answer < Content
 
     return if self.author.blank?
 
-    question.answer_requests.map(&:author).each{|user| user.create_private_action(self)}
+    @users_to_notificate += question.answer_requests.map(&:author)
   end
 
   def send_mail

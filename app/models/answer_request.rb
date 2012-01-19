@@ -30,8 +30,8 @@ class AnswerRequest < Participation
     case
     when question.target_user
       question.target_user.create_public_action(self)
-      question.target_user.create_private_action(self)
       question.target_user.areas.each{|area| area.create_action(self)}
+      @users_to_notificate << question.target_user
     when question.target_area
       question.target_area.create_action(self)
       question.target_area.team.each{|politician| politician.create_public_action(self)}
