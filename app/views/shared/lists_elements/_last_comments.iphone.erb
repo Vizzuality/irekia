@@ -1,0 +1,35 @@
+<% if show_last_comments?(data) %>
+  <div class="comment-box">
+    <% if data.comments_count > 1 -%>
+      <p class="previous">
+      <%= raw t('.previous', :count => (data.comments_count - 1), :previous_link => link_to(t('.previous_link', :count => (data.comments_count - 1)), send("#{data.content_type.downcase}_path", data.slug, :anchor => :comments)), :authors => data.last_comments.first.author.fullname ) %>
+      </p>
+    <% end -%>
+    <% if data.comments_count > 0 -%>
+      <ul>
+        <li class="clearfix">
+        <%= avatar data.last_comments.last.author, 'small' %>
+        <p><%= link_to data.last_comments.last.author.fullname, path_for_user(data.last_comments.last.author) %> - <%= truncate(data.last_comments.last.body, :length => 150) %></p>
+        </li>
+      </ul>
+    <% end -%>
+    <%= form_for Comment.new, :remote => true, :html => {:id => "comment_#{data.id}", :class => "clearfix", :'data-type' => 'html'} do |form| %>
+      <%= hidden_field_tag :partial, 'comment_mini' %>
+      <div class="input_field textarea placeholder">
+        <% if user_signed_in? -%>
+          <%= form.hidden_field :user_id, :value => current_user.id %>
+        <% end -%>
+        <%= form.hidden_field :content_id, :value => data.id %>
+        <%= form.fields_for :comment_data, CommentData.new do |comment_data_form| %>
+          <div class="input_field">
+            <%= comment_data_form.text_field :body %>
+          </div>
+          <span class="holder"><%= t('.write_your_comment')%></span>
+          <span id="spinner_comment_<%= data.id %>" class="spinner"></span>
+        <% end -%>
+      </div>
+      <%= submit_tag :send, :class => class_for_modal_login, :value => t('.Send') %>
+
+    <% end -%>
+  </div>
+<% end -%>

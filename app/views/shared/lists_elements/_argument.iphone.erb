@@ -1,0 +1,15 @@
+<% position = data.percent_in_favor >= data.percent_against ? "in_favor" : "against" %>
+
+<%= link_to raw("<strong>#{data.percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>"), proposal_path(data.content.slug), :class => "icon #{ position }" %>
+<div class="content">
+
+  <p>
+    <%= raw t('.title', :proposal => content_tag('strong', link_to(%Q{"#{data.title}"}, proposal_path(data.content.slug)))) %>
+  </p>
+
+  <div class="footer">
+    <span class="author">
+      <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)).capitalize %>
+    </span>
+  </div>
+</div>

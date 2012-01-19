@@ -5,6 +5,8 @@ body {
   background: $silver;
   padding: 0; margin: 0;
   font-family: "Helvetica", sans-serif;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 #container {
@@ -35,6 +37,10 @@ p { padding: 0; margin:0; }
   margin:30px auto 18px auto;
 }
 
+// =============================================================================
+// Main header
+// =============================================================================
+
 header {
   height:64px;
   background: white;
@@ -42,7 +48,7 @@ header {
   position:fixed;
   top:0;
   width:320px;
-  z-index: 300;
+  z-index: 310;
 
   .white_button, .icon { z-index: 300; }
   .white_button {
@@ -50,6 +56,11 @@ header {
     float:left;
     margin: 10px 0 0 9px;
     padding:12px 14px;
+  }
+
+  .avatar {
+    float:left;
+    margin: 12px 0 0 14px;
   }
 
   h2 { position:absolute; width:100%; float: left; line-height: 30px;
@@ -74,12 +85,16 @@ header {
   }
 }
 
+form.publish .white_button { position:relative; }
+
 .paper {
   text-align:left;
   position:relative;
-  background: url('/images/datalogger/paper_bkg.png');
-  margin-top: 210px;
+  background: url('/images/datalogger/paper_bkg.png') repeat-y;
+  top: 215px;
   padding: 7px 25px;
+
+  .placeholder { position:relative; top: 6px; left: 3px; color: #465866; font-style:italic; }
 
   textarea {
     border:none;
@@ -100,7 +115,7 @@ header {
   position:fixed;
   width:320px - 13*2;
   padding: 10px 13px 15px 13px;
-  border-bottom: 1px solid #E7EAED;
+  border-bottom: 1px solid #ccc;
   text-align: left;
   z-index: 300;
 
@@ -116,14 +131,13 @@ header {
     left:-13px;
   }
 
-
-
   h1 {
     padding:0;
     margin: 0 0 13px 0;
     font-size: 23px;
     color: #465866;
   }
+
   .footer {
     font-size:11px;
     color: #465866;
@@ -131,10 +145,11 @@ header {
   }
 }
 
-.article {
+#main .article {
   position: relative;
   width: 297px;
   margin: 0px auto 40px auto;
+  top: -10px;
 
   .t, .f { height: 10px; width: 100%; position: absolute; }
   .t { top: -10px; background: url('/images/datalogger/box_header.png') no-repeat; }
@@ -151,16 +166,70 @@ header {
         width:296px;
         li {
           padding: 15px 15px 15px 15px;
-          color: #465866;
+          color: #9FABB2;
           font-size:13px;
           border-bottom: 1px solid #E7EAED;
+          a { color: #465866; font-weight:normal;}
+          p { color: #9FABB2; }
+          .avatar { float:left; margin-right: 10px; }
+          .content { width: 205px; margin: 0; padding: 0; }
           &:last-child { border:none; }
-          .footer { margin: 10px 0 0 0; font-size: 11px; color: #465866; }
+
+          .footer {
+            margin: 10px 0 0 0;
+            padding-left: 16px;
+            background: url('/images/icons/icon_sprite.png') no-repeat 0 -35px;
+            color: #465866;
+            font-size: 11px;
+          }
         }
       }
     }
   }
 }
+.article {
+
+  ul li {
+    &.proposal, &.argument, &.content_user, &.answer_request {
+      a.icon, span.icon {
+        display:block;
+        float:left;
+        background:url('/images/icons/in_favor_against.png') no-repeat right 0;
+        width:65px; height:65px;
+        margin: 0 13px 0 0;
+        text-align:center;
+        font-size:11px;
+        color:#666666;
+        text-decoration:none;
+        line-height:12px;
+
+        strong {
+          display:block;
+          margin:18px 0 0 2px;
+          font-size:18px;
+          .percentage { font-size:11px; }
+        }
+
+        &.plus {
+          margin: 0 13px 0 36px;
+          background:url('/images/icons/icon_sprite.png') no-repeat 0 -704px;
+          width:28px; height:14px;
+          padding: 7px 0;
+        }
+
+        &.tag {
+          margin: 0 13px 0 36px;
+          background:url('/images/icons/icon_sprite.png') no-repeat 0 -669px;
+          width:28px; height:28px;
+        }
+
+        &.against { background-position: -68px 0; color:$against_color; }
+        &.in_favor { background-position: left 0; color:$agree_color; }
+      }
+    }
+  }
+}
+
 
 .article .inner .content ul.filter {
   clear:both;
@@ -171,6 +240,7 @@ header {
   margin: auto;
   padding: 0;
   width:271px;
+
   li {
     float:left;
     font-size: 15px;
@@ -202,7 +272,7 @@ header {
   }
 }
 
-.article .inner .content ul.counters {
+#main .article .inner .content ul.counters {
   clear:both;
   overflow:hidden;
   border-bottom: 1px solid #E7EAED;
@@ -219,7 +289,7 @@ header {
     border-right: 1px solid #E7EAED;
     text-align: center;
     font-size: 13px; color: #465866;
-    strong { display: block; margin: 0 0 0px 0; font-size: 37px; color: #EB005F; }
+    strong { display: block; margin: 0; font-size: 37px; color: #EB005F; }
     &:last-child { border:none;}
   }
 }
@@ -227,7 +297,8 @@ header {
 ul.menu {
   clear:both;
   overflow:hidden;
-  margin-bottom: 20px;
+  margin-bottom:10px;
+  margin-top:15px;
 
   li {
     padding:0;
@@ -251,13 +322,13 @@ ul.menu {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
 
-  .article .t { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_header@2x.png') no-repeat; }
-  .article .f { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_footer@2x.png') no-repeat; }
-  .article .inner { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_body@2x.png') repeat; }
+  #main .article .t { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_header@2x.png') no-repeat; }
+  #main .article .f { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_footer@2x.png') no-repeat; }
+  #main .article .inner { -webkit-background-size: 297px 10px; background: url('/images/datalogger/box_body@2x.png') repeat; }
 
   .paper {
-    background: url('/images/datalogger/paper_bkg@2x.png');
-    -webkit-background-size: 315px 316px;
+    background: url('/images/datalogger/paper_bkg@2x.png') repeat-y;
+    -webkit-background-size: 315px 41px;
   }
 
   header .icon {
@@ -304,6 +375,10 @@ form.signin {
     }
   }
 }
+
+// =============================================================================
+// Buttons
+// =============================================================================
 
 .white_button, .article .white_button, #container .article .my_opinion .white_button {
   /* ------------------------------------------------------------------------------ Colors */
@@ -476,6 +551,34 @@ form.signin {
   span {background-position:0 0;}
 }
 
+// =============================================================================
+// Avatars
+// =============================================================================
 
+.avatar {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
 
+  width: $avatar_iphone_size;
+  height: auto;
+
+  @include border-radius(100em);
+
+  &>img { width: $avatar_iphone_size; height: auto; @include border-radius(100em); }
+  &.small, &.small>img { width: $avatar_small_size; height: auto; }
+  &.medium, &.medium>img { width: $avatar_medium_size; height: auto; }
+  &.big, &.big>img { width: $avatar_big_size; height: auto; }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0; right: 0;
+    width: 100%; height: 100%;
+    margin: -10em;
+    border: 10em solid $white;
+    @include border-radius(100em);
+  }
+}
 

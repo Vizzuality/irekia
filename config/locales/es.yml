@@ -828,6 +828,7 @@
       question:
         title: 'Pregunta para %{receiver}:'
         author: '%{author} hace %{time}'
+        author_short: 'Hace %{time}'
         answered: 'Contestada tras %{time}'
         not_answered: 'Aún no contestada'
         read_more: 'Leer más'
@@ -898,6 +899,7 @@
           in_favor: '%{name} ha votado a favor de la propuesta "%{proposal}"'
           against: '%{name} ha votado en contra de la propuesta "%{proposal}"'
         author: '%{author} participó hace %{time}'
+        author_short: 'Hace %{time}'
       event:
         author: '%{author} hace %{time}'
       content_user:

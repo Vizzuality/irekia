@@ -1,0 +1,19 @@
+<%= avatar data.author, :small %>
+
+<div class="content">
+  <p><strong><%= data.question_text.truncate(60) %></strong></p>
+
+  <div class="footer">
+
+    <span class="published_at">
+      <span class="when"><%= raw t('.author', :author => data.author.fullname, :time => distance_of_time_in_words_to_now(data.published_at)) %></span>
+      &middot;
+
+    <% if data.answered_at.present? %>
+      <span class="answered"><%= link_to t('.answered', :time => distance_of_time_in_words(data.published_at, data.answered_at)), question_path(data.slug) %></span>
+    <% else %>
+      <span class="not_answered"><%= link_to t('.not_answered'), question_path(data.slug) %></span>
+    <% end %>
+
+  </div>
+</div>

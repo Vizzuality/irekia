@@ -1,0 +1,21 @@
+<%= avatar data.author %>
+
+<div class="content">
+  <p><%= link_to(raw(t(".title.#{am_I?(data.author) ? 'you' : 'other'}", :author => data.author.name, :question => content_tag(:strong, data.question_text))), question_path(data.question_slug)) %></p>
+
+  <p class="excerpt">
+
+  <%= %Q{"#{data.answer_text}"} %>
+
+  <div class="footer">
+    <span class="published_at">
+      <%= raw t('.author', :author => link_to(data.author.fullname, path_for_user(data.author)), :time => distance_of_time_in_words(data.question_published_at, data.published_at)) %>
+    </span>
+    <% unless show_last_comments?(data) -%>
+    &middot;
+    <span class="comments"><%= link_to data.comments_count, question_path(data.question_slug, :anchor => :comments), :class => "comment-count" %></span>
+    <% end -%>
+    <%#= inline_sharing_partial(data, 'answer', answer_url(data.slug), data.answer_text) %>
+  </div>
+  <%= render 'shared/lists_elements/last_comments', :data => data %>
+</div>

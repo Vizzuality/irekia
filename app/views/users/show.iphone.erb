@@ -1,6 +1,3 @@
-<%#= render "users/#{@viewing_access}/welcome" %>
-<%#= render "users/#{@viewing_access}/navigation_menu" %>
-
 <%
   @actions_description = if viewing_dashboard?
     i18n_scope = 'users.private.show.activity'
@@ -8,24 +5,14 @@
   end
 -%>
 
+<% content_for :header do %>
+  <header>
+  <%= avatar_image current_user %>
+  <h2><%= current_user.name %></h2>
+  <%= link_to 'Editar', "#", :class => "icon settings" %>
+  </header>
+<% end %>
+
 <% if @actions.present? %>
-	<%#= render "shared/actions", :title => t(viewing_dashboard?? 'show.activity.title' : 'actions.title', :scope => "users.#{@viewing_access}"), :description => @actions_description %>
-<% else %>
-	<% if public_profile?  %>
-		<div class="article help">
-	  <div class="inner">
-	    <div class="content centered clearfix">
-	      <div class="info icon"></div>
-	      <div class="message">
-	        <h2><%= t('users.actions.no_activity.other_title',:user => @user.name) %></h2>
-	        <p><%= t('users.actions.no_activity.other_description',:user => @user.name) %></p>
-	        <% if @viewing_access != "public" %>
-	          <%= link_to (content_tag :span, t('.no_activity.homepage')), '/', :class => "white_button pink" %>
-	        <% end %>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="t"></div><div class="f"></div>
-	  </div>
-	<% end %>
+	<%= render "shared/actions", :title => t(viewing_dashboard?? 'show.activity.title' : 'actions.title', :scope => "users.#{@viewing_access}"), :description => @actions_description %>
 <% end %>

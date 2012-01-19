@@ -1,0 +1,17 @@
+<%= avatar data.author %>
+<div class="content">
+
+  <p>
+  <% if data.in_favor %>
+    <%= raw t('.title.in_favor', :name => data.author.name, :proposal => (content_tag 'strong', (link_to data.title, proposal_path(data.content.slug)))) %>
+  <% else %>
+    <%= raw t('.title.against', :name => data.author.name, :proposal => (content_tag 'strong', (link_to data.title, proposal_path(data.content.slug)))) %>
+  <% end %>
+  </p>
+
+  <div class="footer">
+    <span class="published_at">
+    <%= raw t('.author_short', :time => distance_of_time_in_words_to_now(data.published_at)) %>
+    </span>
+  </div>
+</div>
