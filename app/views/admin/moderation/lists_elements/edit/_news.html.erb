@@ -1,6 +1,8 @@
 <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
   <%= form.fields_for :news_data do |news_data_form| %>
-    <%= news_data_form.text_area :title %>
+    <%= news_data_form.text_area :title_es %>
+    <%= news_data_form.text_area :title_eu %>
+    <%= news_data_form.text_area :title_en %>
   <% end -%>
   <div class="actions">
     <%= form.hidden_field :moderated, :value => true, :class => 'moderated', :disabled => true %>
@@ -22,7 +24,9 @@
 
 <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
   <%= form.fields_for :news_data do |news_data_form| %>
-    <%= news_data_form.text_area :body %>
+    <%= news_data_form.text_area :body_es %>
+    <%= news_data_form.text_area :body_eu %>
+    <%= news_data_form.text_area :body_en %>
   <% end -%>
   <div class="actions">
     <%= form.hidden_field :moderated, :value => true, :class => 'moderated', :disabled => true %>

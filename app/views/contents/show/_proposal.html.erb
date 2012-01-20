@@ -1,7 +1,7 @@
 <% content_for :facebook_meta do -%>
   <meta property="og:title" content="Irekia - <%= @content.title %>" />
   <meta property="og:description" content="<%= @content.body.strip.truncate(128) %>" />
-  <meta property="og:image" content="<%#= image_url @content.proposal_data.image.content_url %>" />
+  <meta property="og:image" content="<%= image_url @content.proposal_data.image.content_url if @content.proposal_data.image.present? %>" />
 <% end -%>
 <div class="article proposal with_footer">
   <%= link_to '', edit_proposal_path(@content), :class => 'editable' if current_user && current_user.administrator? %>
@@ -84,15 +84,15 @@
       </div>
     <% end %>
     <%= simple_format @content.body %>
-    <%#= render "arguments" %>
-    <%#= render "participations/comments" %>
+    <%= render "arguments" %>
+    <%= render "participations/comments" %>
   </div>
   <div class="right">
     <div class="content left-border">
 
-      <%#= render "shared/sharing" %>
-      <%#= render "shared/sidebar/tags" %>
-      <%#= render "shared/sidebar/related_proposals" %>
+      <%= render "shared/sharing" %>
+      <%= render "shared/sidebar/tags" %>
+      <%= render "shared/sidebar/related_proposals" %>
 
     </div>
   </div>

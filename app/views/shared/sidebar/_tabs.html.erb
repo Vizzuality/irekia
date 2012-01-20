@@ -1,51 +1,64 @@
+<% if audios.present? || videos.present? || files.present? -%>
 <h3>Descargas</h3>
-
+<% active_classes = ['first active'] -%>
 <ul class="tabs">
-  <li class="first active"><a href="#home">Audio</a></li>
-  <li><a href="#profile">Video</a></li>
-  <li class="last"><a href="#messages">Documentos</a></li>
+  <% if audios.present? -%>
+  <li class="<%= active_classes.pop %>"><a href="#home">Audio</a></li>
+  <% end -%>
+  <% if videos.present? -%>
+  <li class="<%= active_classes.pop %>"><a href="#profile">Video</a></li>
+  <% end -%>
+  <% if files.present? -%>
+  <li><a href="#messages">Documentos</a></li>
+  <% end -%>
 </ul>
 
+<% active_classes = ['active'] -%>
 <div class="pill-content">
-  <div class="active" id="home">
+<% if audios.present? -%>
+  <div class="<%= active_classes.pop %>" id="home">
     <ul class="playlist">
-      <li class="clearfix">
-      <div class="icon"></div>
-      <a href="/mp3/test.mp3">Intervención de S.A.R.</a>
-      <span class="footer">MP3, 23 min., 6.2.MB</span>
-      </li>
-      <li class="clearfix">
-      <div class="icon"></div>
-      <a href="/mp3/test2.mp3">Himno de la Universidad de...</a>
-      <span class="footer">MP3, 23 min., 6.2.MB</span>
-      </li>
+      <% audios.each do |audio| -%>
+        <li class="clearfix">
+          <div class="icon"></div>
+          <a href="<%= audio.url %>" alt="<%= audio.name %>"><%= truncate(audio.name, :length => 30) %></a>
+          <span class="footer"><%= audio.size %></span>
+        </li>
+      <% end -%>
     </ul>
   </div>
-  <div id="profile">
+<% end -%>
+<% if videos.present? -%>
+  <div id="profile" class="<%= active_classes.pop %>">
     <ul>
-      <li class="clearfix">
-      <div class="icon pdf"></div>
-      <a href="/pdf/" target="_blank">Transcripción de la intervención</a>
-      <span class="footer">PDF, 6.2MB</span>
-      </li>
-      <li class="clearfix">
-      <div class="icon pdf"></div>
-      <a href="/pdf/" target="_blank">Transcripción de la intervención</a>
-      <span class="footer">PDF, 6.2MB</span>
-      </li>
-      <li class="clearfix">
-      <div class="icon pdf"></div>
-      <a href="/pdf/" target="_blank">Transcripción de la intervención</a>
-      <span class="footer">PDF, 6.2MB</span>
-      </li>
+      <% videos.each do |video| -%>
+        <li class="clearfix">
+          <div class="icon"></div>
+          <a href="<%= video.url %>" alt="<%= video.name %>"><%= truncate(video.name, :length => 30) %></a>
+          <span class="footer"><%= video.size %></span>
+        </li>
+      <% end -%>
     </ul>
   </div>
-  <div id="messages">Messages</div>
+<% end -%>
+<% if files.present? -%>
+  <div id="messages" class="<%= active_classes.pop %>">
+    <ul>
+      <% files.each do |file| -%>
+        <li class="clearfix">
+          <div class="icon"></div>
+          <a href="<%= file.url %>" alt="file.name"><%= truncate(file.name, :length => 30) %></a>
+          <span class="footer"><%= [file.file_type, file.size].compact.join(', ') %></span>
+        </li>
+      <% end -%>
+    </ul>
+  </div>
 </div>
+<% end -%>
 
 <h3>Cobertura por Irekia</h3>
 <p>Imagen, video, audio, streaming</p>
 
 <h3>Acceso al evento</h3>
 <p>Permitido para medios gráficos</p>
-
+<% end -%>

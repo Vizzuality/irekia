@@ -1,0 +1,3 @@
+class VideoAttachment < Attachment
+
+end

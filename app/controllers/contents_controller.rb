@@ -170,6 +170,10 @@ class ContentsController < ApplicationController
       @argument_against               = @content.arguments.against.build
       @argument_against.user          = current_user if current_user.present?
       @argument_against.argument_data = @argument_against.build_argument_data
+    when News
+      @audios = @content.audio_attachments
+      @videos = @content.video_attachments
+      @files  = @content.file_attachments
     end
 
     respond_with(@content) do |format|
