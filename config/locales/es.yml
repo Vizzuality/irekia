@@ -666,7 +666,10 @@
       and_more: "y %{count} más"
     demo:
       footer:
-        legal_info: Información legal
+        basque_government: Gobierno Vasco
+        legal_info:
+          title: Información legal
+          url: "http://www.euskadi.net/r33-2288/es/contenidos/informacion/informacion_legal/es_6303/informacion_legal.html"
         home:
           title: Inicio
           agenda: Agenda
@@ -759,7 +762,10 @@
       get_back_password: Recuperar contraseña
 
     footer:
-      legal_info: Información legal
+      basque_government: Gobierno Vasco
+      legal_info:
+        title: Información legal
+        url: 'http://www.euskadi.net/r33-2288/es/contenidos/informacion/informacion_legal/es_6303/informacion_legal.html'
       home:
         title: Inicio
         agenda: Agenda
@@ -786,10 +792,18 @@
         culture: Cultura y Deporte
       about:
         title: ¿Qué es Irekia?
-        help: Ayuda
-        faq: FAQ
-        use: Condiciones de uso
-        privacy: Política de privacidad
+        help:
+          title: Ayuda
+          url: ""
+        faq:
+          title: FAQ
+          url: ""
+        use:
+          title: Condiciones de uso
+          url: 'http://www.irekia.euskadi.net/es/site/tos'
+        privacy:
+          title: Política de privacidad
+          url: 'http://www.irekia.euskadi.net/es/site/privacy'
 
     actions:
       title: Últimas acciones
