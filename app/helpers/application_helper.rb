@@ -302,4 +302,9 @@ module ApplicationHelper
       render "shared/lists_elements/#{relative_path}#{item_type.underscore}#{options[:path_suffix]}", :data => item, :inline => options[:inline]
     end
   end
+
+  def translate_field(model, field)
+    model.send(:"#{field}_#{I18n.locale}") || (I18n.available_locales).map{|lang| model.send(:"#{field}_#{lang}")}.compact.first || ''
+  end
+
 end

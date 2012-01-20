@@ -64,7 +64,10 @@ class ApplicationController < ActionController::Base
   end
 
   def render_error(exception)
-    logger.error exception
+    logger.fatal '#################################################'
+    logger.fatal exception
+    exception.backtrace.each { |line| logger.fatal line }
+    logger.fatal '#################################################'
     render :partial => 'shared/error', :status => 500
   end
 
