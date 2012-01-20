@@ -294,7 +294,7 @@ module Irekia
               end
             end
           end
-        rescue Exception => es
+        rescue Exception => ex
           puts ex
           puts ex.backtrace
         end
