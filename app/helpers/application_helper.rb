@@ -304,7 +304,7 @@ module ApplicationHelper
   end
 
   def translate_field(model, field)
-    model.send(:"#{field}_#{I18n.locale}") || (I18n.available_locales).map{|lang| model.send(:"#{field}_#{lang}")}.compact.first || ''
+    model.send(:"#{field}_#{I18n.locale}") || (I18n.available_locales).map{|lang| model.send(:"#{field}_#{lang}")}.compact.first || model.send(field) || '' rescue ''
   end
 
 end

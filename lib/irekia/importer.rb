@@ -295,7 +295,6 @@ module Irekia
             end
           end
         rescue Exception => es
-          puts politician.inspect
           puts ex
           puts ex.backtrace
         end

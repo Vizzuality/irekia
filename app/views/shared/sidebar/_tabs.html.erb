@@ -1,22 +1,15 @@
 <% if audios.present? || videos.present? || files.present? -%>
 <h3>Descargas</h3>
-<% active_classes = ['first active'] -%>
+
 <ul class="tabs">
-  <% if audios.present? -%>
-  <li class="<%= active_classes.pop %>"><a href="#home">Audio</a></li>
-  <% end -%>
-  <% if videos.present? -%>
-  <li class="<%= active_classes.pop %>"><a href="#profile">Video</a></li>
-  <% end -%>
-  <% if files.present? -%>
-  <li><a href="#messages">Documentos</a></li>
-  <% end -%>
+  <li class="first active"><a href="#home">Audio</a></li>
+  <li><a href="#profile">Video</a></li>
+  <li class="last"><a href="#messages">Documentos</a></li>
 </ul>
 
-<% active_classes = ['active'] -%>
 <div class="pill-content">
 <% if audios.present? -%>
-  <div class="<%= active_classes.pop %>" id="home">
+  <div class="active" id="home">
     <ul class="playlist">
       <% audios.each do |audio| -%>
         <li class="clearfix">
@@ -27,9 +20,11 @@
       <% end -%>
     </ul>
   </div>
+<% else -%>
+  <div class="active" id="home">No hay audios disponible</div>
 <% end -%>
 <% if videos.present? -%>
-  <div id="profile" class="<%= active_classes.pop %>">
+  <div id="profile">
     <ul>
       <% videos.each do |video| -%>
         <li class="clearfix">
@@ -40,21 +35,25 @@
       <% end -%>
     </ul>
   </div>
+<% else -%>
+  <div id="profile">No hay videos disponibles</div>
 <% end -%>
 <% if files.present? -%>
-  <div id="messages" class="<%= active_classes.pop %>">
+  <div id="messages">
     <ul>
       <% files.each do |file| -%>
         <li class="clearfix">
-          <div class="icon"></div>
+          <div class="icon pdf"></div>
           <a href="<%= file.url %>" alt="file.name"><%= truncate(file.name, :length => 30) %></a>
           <span class="footer"><%= [file.file_type, file.size].compact.join(', ') %></span>
         </li>
       <% end -%>
     </ul>
   </div>
-</div>
+<% else -%>
+  <div id="messages">No hay documentos disponibles</div>
 <% end -%>
+</div>
 
 <%#<h3>Cobertura por Irekia</h3>%>
 <%#<p>Imagen, video, audio, streaming</p>%>
