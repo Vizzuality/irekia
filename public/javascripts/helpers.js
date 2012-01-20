@@ -1762,6 +1762,8 @@ jQuery.fn.inputCounter = function(opt){
 
 jQuery.fn.autogrow = function(){
 
+
+    if (!$.browser.msie) {
   var resizing = false;
   this.filter('textarea').each(function() {
 
@@ -1811,6 +1813,7 @@ jQuery.fn.autogrow = function(){
     $(this).change(update).keyup(update).keydown(update);
     update.apply(this);
   });
+    }
   return this;
 }
 
