@@ -724,8 +724,8 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .autosuggest.small .popover .scroll-pane ul li { width: 511px; padding: 10px 0 10px 0; margin: 0; height: auto; text-shadow: none; font-size: 13px; border-bottom: 1px solid #f1f1f1; color: #666666; background: none; }
 #container .article .autosuggest.small .popover .scroll-pane ul li p { width: 460px; }
 #container .article .autosuggest.small .popover .scroll-pane ul li p, #container .article .autosuggest.small .popover .scroll-pane ul li span { font-size: 15px; }
-#container .article .autosuggest.small .popover .scroll-pane ul li.last { border: none; }
 #container .article .autosuggest.small .popover .scroll-pane ul li:last-child { border: none; }
+#container .article .autosuggest.small .popover .scroll-pane ul li.last { border: none; }
 #container .article .autosuggest.small .a_t, #container .article .autosuggest.small .a_f { display: none; }
 #container .article .autosuggest.mini { width: 264px; }
 #container .article .autosuggest.mini li { background: url("/images/box_autosuggest_mini_bkg.png") repeat-y -305px 0; font-size: 15px; }

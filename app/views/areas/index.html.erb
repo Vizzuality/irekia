@@ -4,7 +4,7 @@
       <ul>
         <% if @all_areas.present? %>
           <% @all_areas.each do |area| %>
-            <li id="item_<%= area.id %>" class="area clearfix">
+            <li id="item_<%= area.id %>" class="area clearfix<%= ' last' if @all_areas.last == area %>">
             <%= avatar area, 'small' %>
             <p>
             <span class="name"><%= area.name %></span>

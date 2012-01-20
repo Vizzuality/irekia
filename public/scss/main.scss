@@ -2690,8 +2690,8 @@ span.where, .map .infowindow ul.details li.where {
               p { width:460px; }
               p, span { font-size: 15px; }
 
-              &.last { border:none; }
               &:last-child { border:none; }
+              &.last { border:none; }
             }
           } // ul
         } // scroll-pane
