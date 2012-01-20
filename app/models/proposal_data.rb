@@ -13,7 +13,7 @@ class ProposalData < ActiveRecord::Base
   delegate :content_url, :to => :image
 
   def title
-    read_attribute("title_#{I18n.locale}")
+    read_attribute("title_#{I18n.locale}") || (I18n.available_locales - [I18n.locale]).map{|lang| read_attribute("title_#{lang}")}.compact.first || ''
   end
 
   def title=(new_title)
@@ -21,7 +21,7 @@ class ProposalData < ActiveRecord::Base
   end
 
   def body
-    read_attribute("body_#{I18n.locale}")
+    read_attribute("body_#{I18n.locale}") || (I18n.available_locales - [I18n.locale]).map{|lang| read_attribute("body_#{lang}")}.compact.first || ''
   end
 
   def body=(new_body)

@@ -266,10 +266,8 @@ header {
       // Notification selector
 
       .notification_selector {
-        // float: left;
-        //position:relative;
-        position: absolute;
-        //right: 212px;
+        top: 0;
+        position:relative;
         display:none;
         width:247px;
         height:auto;
@@ -2692,8 +2690,8 @@ span.where, .map .infowindow ul.details li.where {
               p { width:460px; }
               p, span { font-size: 15px; }
 
-              &.last { border:none; }
               &:last-child { border:none; }
+              &.last { border:none; }
             }
           } // ul
         } // scroll-pane

@@ -111,7 +111,7 @@ header nav .content form .input_field input[type="text"], header nav .content fo
 header nav .content form .input_field input[type="submit"] { right: 10px; top: 10px; position: absolute; width: 14px; height: 14px; background: url("/images/icons/magnifier.png") no-repeat; border: 0; z-index: 10; }
 header nav .content form .input_field span#autocomplete_spinner { position: absolute; right: 17px; top: 17px; }
 header nav .content .sign_out { float: right; }
-header nav .content .notification_selector { position: absolute; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 0; }
+header nav .content .notification_selector { top: 0; position: relative; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 0; }
 header nav .content .notification_selector.open { display: block; }
 header nav .content .notification_selector.open .popover { display: block; }
 header nav .content .notification_selector.open .handle { background-position: 0 -141px; }
@@ -724,8 +724,8 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .autosuggest.small .popover .scroll-pane ul li { width: 511px; padding: 10px 0 10px 0; margin: 0; height: auto; text-shadow: none; font-size: 13px; border-bottom: 1px solid #f1f1f1; color: #666666; background: none; }
 #container .article .autosuggest.small .popover .scroll-pane ul li p { width: 460px; }
 #container .article .autosuggest.small .popover .scroll-pane ul li p, #container .article .autosuggest.small .popover .scroll-pane ul li span { font-size: 15px; }
-#container .article .autosuggest.small .popover .scroll-pane ul li.last { border: none; }
 #container .article .autosuggest.small .popover .scroll-pane ul li:last-child { border: none; }
+#container .article .autosuggest.small .popover .scroll-pane ul li.last { border: none; }
 #container .article .autosuggest.small .a_t, #container .article .autosuggest.small .a_f { display: none; }
 #container .article .autosuggest.mini { width: 264px; }
 #container .article .autosuggest.mini li { background: url("/images/box_autosuggest_mini_bkg.png") repeat-y -305px 0; font-size: 15px; }

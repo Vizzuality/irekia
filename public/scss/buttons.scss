@@ -425,7 +425,6 @@ Hacks (mostly ie7 and ie8 fixes)
   }
 }
 
-
 .ie7 #container .article.mini.popover.question,
 .ie8 #container .article.mini.popover.question,
 .ie7 #container .article.mini.popover.proposal,
@@ -441,7 +440,7 @@ Hacks (mostly ie7 and ie8 fixes)
       width: 552px!important;
       height: 39px!important;
       padding: 0; margin: 0;
-      input[type="text"] { background:none; border:none!important; }
+      input[type="text"] { margin-top: 2px; background:none; border:none!important; }
     }
   }
 
@@ -451,19 +450,22 @@ Hacks (mostly ie7 and ie8 fixes)
     height: 39px!important;
     padding: 0; margin: 0;
     border:none;
+    .holder { top: 12px; }
   }
 
-  .extra .field .input_field.textarea, .body_field {
+  .extra .field .input_field.textarea,
+  .body_field {
     background:url('/images/publish_boxes_sprite.png') no-repeat 0 -294px!Important;
     width: 552px;
     height: 54px;
     border:none!important;
 
     textarea {
+      margin-top: 5px;
       border:none!important;
       background:none;
-      height: 54px;
-      width: 552px;
+      height: 25px;
+      width: 525px;
     }
   }
 }

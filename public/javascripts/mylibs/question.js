@@ -443,7 +443,10 @@
 
           var params = { name : query };
 
-          $.ajax({ url: "/search/politicians_and_areas", data: { search: params }, type: "GET", success: function(response) {
+          $.ajax({ url: "/search/politicians_and_areas", data: { search: params }, type: "GET", error: function(response) {
+            data.spinner.stop();
+          },
+          success: function(response) {
 
             var $response = $(response);
 
