@@ -429,7 +429,7 @@ class User < ActiveRecord::Base
   end
 
   def profile_image_big
-    @profile_image_big ||= self.profile_picture.image.url if self.profile_picture.present?
+    @profile_image_big ||= self.profile_picture.image.thumb_big.url if self.profile_picture.present?
   end
 
   def sex
