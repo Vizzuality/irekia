@@ -1,5 +1,5 @@
 <div class="photo_moderation">
-  <h4><%= data.send("title_#{I18n.locale}") %></h4>
+  <h4><%= translate_field(data, 'title') %></h4>
 	<% begin %>
 		<%= link_to image_tag(data.image.image_url), proposal_path(data.id) %>
 		<% rescue %>

@@ -1,7 +1,7 @@
 <%= avatar data.author, :small %>
 
 <div class="content">
-  <p><strong><%= data.send("title_#{I18n.locale}").truncate(60) %></strong></p>
+  <p><strong><%= translate_field(data, 'title').truncate(60) %></strong></p>
 
   <div class="footer">
     <span class="when">
