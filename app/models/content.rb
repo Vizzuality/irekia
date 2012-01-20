@@ -29,6 +29,11 @@ class Content < ActiveRecord::Base
              :include => [{:author => :profile_picture}, :comment_data],
              :order => 'published_at asc'
 
+  has_many :attachments
+  has_many :file_attachments
+  has_many :video_attachments
+  has_many :audio_attachments
+
   attr_protected :moderated, :rejected
 
   before_create :update_published_at

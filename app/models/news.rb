@@ -2,7 +2,7 @@ class News < Content
   has_one :news_data,
           :dependent => :destroy
 
-  delegate :title, :subtitle, :body, :source_url, :iframe_url, :image, :build_image, :to => :news_data, :allow_nil => true
+  delegate :title, :title_es, :title_eu, :title_en, :subtitle, :body, :body_es, :body_eu, :body_en, :source_url, :iframe_url, :image, :build_image, :to => :news_data, :allow_nil => true
   accepts_nested_attributes_for :news_data
 
   def self.from_area(area)
@@ -21,9 +21,13 @@ class News < Content
     } if areas.present?
 
     super({
-      :title           => title,
+      :title_es        => title_es,
+      :title_eu        => title_eu,
+      :title_en        => title_en,
       :subtitle        => subtitle,
-      :body            => body,
+      :body_es         => body_es,
+      :body_eu         => body_eu,
+      :body_en         => body_en,
       :area            => area
     })
   end

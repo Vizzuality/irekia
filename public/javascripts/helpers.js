@@ -1722,6 +1722,7 @@ jQuery.fn.enableCommentBox = function(opt){
 jQuery.fn.inputCounter = function(opt){
 
   var limit  = (opt && opt.limit) || $(this).attr("data-limit") || 140;
+  var $other = (opt && opt.other);
 
   if (limit == -1) limit = 999999;
 
@@ -1733,16 +1734,27 @@ jQuery.fn.inputCounter = function(opt){
       if (count < 0 || count == limit) {
         if (count < 0) $counter.addClass("error");
         if (count == limit) $counter.removeClass("error");
+
+        if ($other){
+          if (isEmpty($other.find(":text,textarea").val())) {
+            disableElement($("#submit-" + id));
+          }
+      } else {
         disableElement($("#submit-" + id));
+      }
+
       } else {
         $counter.removeClass("error");
-        enableElement($("#submit-" + id));
+
+        if ($other && !isEmpty($other.val())) {
+          enableElement($("#submit-" + id));
+        } else enableElement($("#submit-" + id));
       }
 
       $counter.html(count);
     }
 
-    var id = $(this).attr('id') || $(this).attr('name');
+    var id = $(this).attr('id') || $(this).attr('name') || $(this).attr('data-target') ;
     var $counter  = $(this).find(".counter");
     var $input = $(this).find(":text, textarea");
 
