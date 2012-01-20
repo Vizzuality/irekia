@@ -1590,6 +1590,8 @@
           one: 1 persona quiere que sea contestada,
           other: '%{count} personas quieren que sea contestada,'
   areas:
+    index:
+      area_description: Área del Gobierno Vasco
     navigation_menu:
       menu:
         show: Resumen
