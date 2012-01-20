@@ -480,7 +480,7 @@
   shared:
     error:
       title: Irekia - Se ha producido un error (500)
-      error_title: Algo se ha roto en Irekia.
+      error_title: Ha ocurrido un error inesperado. Disculpas.
       home_page: Página de inicio de Irekia
     not_found:
       home_page: Página de inicio de Irekia
