@@ -1,5 +1,7 @@
 $(function() {
 
+var loading = false,
+
   function redirectToRoot() {
 //    alert('Question answered');
   }
