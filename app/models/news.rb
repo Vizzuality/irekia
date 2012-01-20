@@ -39,10 +39,11 @@ class News < Content
       user.areas.each do |area|
         area.create_action(self)
 
-        area.followers.each{|follower| follower.create_private_action(self)}
+        @users_to_notificate += area.followers
       end
 
-      user.followers.each{|follower| follower.create_private_action(self)}
+      @users_to_notificate += user.followers
+      user.followers.notify_all(self)
     end
   end
 

@@ -4,6 +4,7 @@ class ContentsObserver < ActiveRecord::Observer
   def after_commit(model)
     if model.present?
       model.publish
+      model.send_notifications
       model.send_mail
     end
   end

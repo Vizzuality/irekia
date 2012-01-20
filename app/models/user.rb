@@ -320,15 +320,11 @@ class User < ActiveRecord::Base
     public_action.save!
   end
 
-  def create_private_action(item, force_create = false)
+  def create_private_action(item)
     return if item && item.is_a?(Content)       && item.author.id == id
     return if item && item.is_a?(Participation) && (item.author.id == id || item.content.author.id == item.author.id)
 
-    private_action = if force_create
-      private_actions.new :event_id => item.id, :event_type => item.class.name
-    else
-      private_actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
-    end
+    private_action = private_actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
     private_action.published_at = item.published_at
     private_action.message      = item.to_json
     private_action.author       = item.author if item.author.present?

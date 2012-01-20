@@ -101,21 +101,21 @@ class Question < Content
     author.create_public_action(self)
 
     if target_user
-      target_user.create_private_action(self)
+      @users_to_notificate << target_user
 
       target_user.areas.each do |area|
         area.create_action(self)
-        area.followers.each{|follower| follower.create_private_action(self)}
+        @users_to_notificate += area.followers
       end
-      target_user.followers.each{|follower| follower.create_private_action(self)}
+      @users_to_notificate += target_user.followers
 
     elsif target_area
       target_area.create_action(self)
 
       target_area.team.each do |politician|
         politician.create_public_action(self)
-        politician.create_private_action(self)
       end
+      @users_to_notificate += target_area.team
     end
   end
 
@@ -126,7 +126,7 @@ class Question < Content
   def notify_of_new_participation(participation)
     super(participation)
     if answer.present?
-      answer.author.create_private_action(participation)
+      @users_to_notificate << answer.author
     end
   end
 
