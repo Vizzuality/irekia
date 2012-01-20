@@ -836,6 +836,8 @@
           you: 'Has contestado a "%{question}"'
           other: '%{author} ha contestado a "%{question}"'
         author: '%{author} &middot; <span class="answered">Contestada tras %{time}</span>'
+        iphone:
+          author: 'Hace %{time}'
       answer_request:
         title: 'Ha sido reclamada la pregunta %{question}'
         author: '%{author} hace %{time}'
