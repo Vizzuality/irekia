@@ -779,6 +779,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .inner .left .answering .footer .right { width: 200px; float: right; }
 #container .article .inner .left .answering .footer .right .white_button { float: right; }
 #container .article .inner .left .answering .input_field.textarea { margin: 0 0 10px 0; }
+#container .article .inner .left .answering .input-counter-question { margin: 0 0 20px 0; }
 #container .article .inner .left .answering .input_field { width: 570px; margin: 0 0 10px 0; }
 #container .article .inner .left .answering .input_field .holder { top: 10px; }
 #container .article .inner .left .answering .input_field input[type="text"] { width: 570px; }

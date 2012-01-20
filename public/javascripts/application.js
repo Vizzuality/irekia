@@ -96,6 +96,9 @@ $(function() {
   $(".placeholder").smartPlaceholder();
   $(".input-counter").inputCounter();
 
+  $(".input-counter-question").inputCounter({other:$(".input-counter-video")});
+  $(".input-counter-video").inputCounter({other:$(".input-counter-question")});
+
   // Sharing
   $(".share.more, .share.email").sharePopover();
   $(".share.inline").inlineSharePopover();
