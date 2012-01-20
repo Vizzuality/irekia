@@ -2,7 +2,7 @@ class Proposal < Content
   include PgSearch
 
   has_one :proposal_data,
-          :select => 'id, proposal_id, area_id, title_es, title_eu, title_en :body, body_es, body_eu, body_en, close, participation, in_favor, against, external_id',
+          :select => 'id, proposal_id, area_id, title_es, title_eu, title_en, body_es, body_eu, body_en, close, participation, in_favor, against, external_id',
           :dependent => :destroy
   has_many :votes,
            :foreign_key => :content_id,
