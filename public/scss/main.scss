@@ -266,10 +266,9 @@ header {
       // Notification selector
 
       .notification_selector {
-        // float: left;
-        //position:relative;
-        position: absolute;
-        //right: 212px;
+        top: 0;
+        //float: right;
+        position:relative;
         display:none;
         width:247px;
         height:auto;

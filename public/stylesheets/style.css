@@ -267,7 +267,7 @@ header nav .content form .input_field input[type="text"], header nav .content fo
 header nav .content form .input_field input[type="submit"] { right: 10px; top: 10px; position: absolute; width: 14px; height: 14px; background: url("/images/icons/magnifier.png") no-repeat; border: 0; z-index: 10; }
 header nav .content form .input_field span#autocomplete_spinner { position: absolute; right: 17px; top: 17px; }
 header nav .content .sign_out { float: right; }
-header nav .content .notification_selector { position: absolute; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 0; }
+header nav .content .notification_selector { top: 0; position: relative; display: none; width: 247px; height: auto; padding: 14px 0 0 0; background: url("/images/box_notifications_selector.png") no-repeat 0 0; }
 header nav .content .notification_selector.open { display: block; }
 header nav .content .notification_selector.open .popover { display: block; }
 header nav .content .notification_selector.open .handle { background-position: 0 -141px; }

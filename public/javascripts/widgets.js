@@ -992,19 +992,18 @@ var GOD = (function() {
   }
 
   function _getTopPosition(data) {
-    return data.$this.offset().top + 32;
+    return data.$this.position().top + data.$this.outerHeight(true) ;
   }
 
   function _getLeftPosition(data) {
-    return data.$this.offset().left - data.$ps.width() / 2 - 14;
+    return data.$this.position().left - data.$ps.width() ;
   }
 
   function _triggerOpenAnimation($ps, data) {
     var top  = _getTopPosition(data);
     var left = _getLeftPosition(data);
 
-    $(".notification_selector").css({"top":(top) + "px", "left": left + "px"});
-    $(".notification_selector").find(".popover").fadeIn(data.settings.transitionSpeed, data.settings.easingMethod);
+     $(".notification_selector").css({"top":(top) + "px", "right": -750 + "px"});
   }
 
   // Close popover
