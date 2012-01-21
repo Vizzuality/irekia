@@ -102,7 +102,7 @@ class Area < ActiveRecord::Base
   end
 
   def name
-    send("name_#{I18n.locale.to_s}")
+    send("name_#{I18n.locale.to_s}") || send("name_#{I18n.default_locale.to_s}")
   end
 
   def create_action(item)
