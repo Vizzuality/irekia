@@ -66,7 +66,7 @@ module Irekia
             news.news_data.send(:"body_#{lang}=",(news_item.summary.sanitize rescue nil))
             news.news_data.source_url = news_item.url rescue nil
             news.news_data.iframe_url = news_item.multimedia_iframe_src rescue nil
-            news.tags                 = news_item.categories.join(',')
+            news.tags                 = news_item.categories.reject{|t| t.match(/^_/)}.join(',')
             news.moderated            = true
 
             news.areas = []
@@ -173,18 +173,20 @@ module Irekia
             when 'anunciado'
               event_data_model.create_image(:remote_image_url => event_data_detail.event.cobertura.imagen.text)
             when 'emitiendo'
-              event_data_model.html                   = open(event_data_detail.event.cobertura.iframe_src.text).read
+              event_data_model.html = open(event_data_detail.event.cobertura.iframe_src.text).read
             when 'noticia'
-              event_data_model.news_url               = event_data_detail.event.cobertura.url.text
+              event_data_model.news_url = event_data_detail.event.cobertura.url.text
             end
 
             event = event_data_model.event || Event.new
 
-            #event.users << [User.patxi_lopez, User.politicians.sample].sample
             event.areas << Area.where("name like ? OR name_es like ? OR name_eu like ? OR name_en like ?", *(["%#{event_data_detail.event.organismo.title.text.strip}%"] * 4)).first rescue puts "Invalid área name: #{event_data_detail.event.organismo.title.text.strip}"
             event_data_detail.event.tags.search('tag').each do |tag|
               event.areas << Area.find_by_name(tag.text.strip) rescue nil
               event.users << User.where('name || ' ' || lastname = ?', tag.text.strip).first rescue nil
+            end
+            event_data_detail.event.asisten.text.split(',').each do |politician|
+              event.users << User.where('name || ' ' || lastname like ? AND id not in (?)', "%#{category}%", event.users_ids).first rescue nil
             end
 
             event.event_data = event_data_model
@@ -192,6 +194,7 @@ module Irekia
             event.latitude   = event_data_detail.event.lat.text
             event.longitude  = event_data_detail.event.lng.text
             event.location   = event_data_detail.event.direccion.text
+            event.tags       = event_data_detail.event.tags.tag.map{|tag| tag.text.strip }.reject{|t| t.match(/^_/)}.join(',')
             event.moderated  = true
 
             event.save!

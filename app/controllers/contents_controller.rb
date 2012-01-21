@@ -5,7 +5,7 @@ class ContentsController < ApplicationController
   before_filter :check_edition_permission, :only => [:edit]
   before_filter :process_file_upload, :only => [:create, :update]
 
-  respond_to :html, :json
+  respond_to :html, :json, :ics
 
   def index
     contents = params[:type].constantize.moderated
@@ -179,6 +179,9 @@ class ContentsController < ApplicationController
     respond_with(@content) do |format|
       format.html{ render :layout => !request.xhr?}
       format.json
+      format.ics do
+        render :text => @content.to_calendar
+      end
     end
   end
 
