@@ -28,7 +28,7 @@
 
   <% if @content_type == 'event' %>
     <li>
-    <%= link_to '', '/in_development', :class => 'share ical', :type => 'icon', :"data-label" => t(".ical")  %>
+    <%= link_to '', event_path(@content, :format => :ics), :class => 'share ical', :type => 'icon', :"data-label" => t(".ical")  %>
     </li>
   <% end %>
 </ul>

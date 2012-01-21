@@ -13,7 +13,7 @@
 
         </li>
       <% else %>
-        <li><%= link_to tag.strip, search_path(:search => {:query => tag}), :class => :content %></li>
+        <li><%= link_to tag.strip.truncate(40), search_path(:search => {:query => tag}), :class => :content, :title => tag.strip %></li>
       <% end %>
     <% end -%>
 
