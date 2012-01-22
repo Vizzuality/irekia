@@ -33,10 +33,10 @@ class Follow < ActiveRecord::Base
   end
 
   def update_follower_activity
-    follow_item.contents.where('published_at > ?', 1.day.ago).each do |content|
+    follow_item.contents.where('published_at > ?', 5.day.ago).each do |content|
       user.create_private_action(content)
     end
-    follow_item.participations.where('published_at > ?', 1.day.ago).each do |participation|
+    follow_item.participations.where('published_at > ?', 5.day.ago).each do |participation|
       user.create_private_action(participation)
     end
   end
