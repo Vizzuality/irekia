@@ -220,7 +220,7 @@ module Irekia
       puts '===================================================='
       require 'open-uri'
 
-      languages             = %w(es eu en)
+      languages             = %w(es eu)
       server                = 'http://www2.irekia.euskadi.net'
       categories_url        = lambda{ |language| "#{server}/#{language}/categories.json" }
       areas_url             = lambda{ |language, id| "#{server}/#{language}/categories/#{id}.json" }
@@ -245,7 +245,11 @@ module Irekia
               area_name = area['name'].gsub(/^Departamento de /, '').gsub(/ saila$/, '')
 
               Area.where(:external_id => area_id).each do |area_model|
-                area_model.send("name_#{lang}=", area_name)
+                if area_model.lehendakaritza?
+                  area_model.send("name_#{lang}=", 'Lehendakaritza')
+                else
+                  area_model.send("name_#{lang}=", area_name)
+                end
                 area_model.set_friendly_id(area_name, lang.to_sym)
                 area_model.save!
               end
