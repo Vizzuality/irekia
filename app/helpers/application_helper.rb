@@ -44,6 +44,14 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def viewing_homepage?
+    controller_name == 'home' && action_name == 'index'
+  end
+
+  def viewing_area_homepage?
+    controller_name == 'areas' && action_name == 'show'
+  end
+
   def viewing_dashboard?
     controller_name == 'users' && action_name == 'show' && current_user && @user == current_user
   end

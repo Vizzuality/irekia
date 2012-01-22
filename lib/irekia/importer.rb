@@ -220,7 +220,7 @@ module Irekia
       puts '===================================================='
       require 'open-uri'
 
-      languages             = %w(es eu en)
+      languages             = %w(es eu)
       server                = 'http://www2.irekia.euskadi.net'
       categories_url        = lambda{ |language| "#{server}/#{language}/categories.json" }
       areas_url             = lambda{ |language, id| "#{server}/#{language}/categories/#{id}.json" }
@@ -245,7 +245,11 @@ module Irekia
               area_name = area['name'].gsub(/^Departamento de /, '').gsub(/ saila$/, '')
 
               Area.where(:external_id => area_id).each do |area_model|
-                area_model.send("name_#{lang}=", area_name)
+                if area_model.lehendakaritza?
+                  area_model.send("name_#{lang}=", 'Lehendakaritza')
+                else
+                  area_model.send("name_#{lang}=", area_name)
+                end
                 area_model.set_friendly_id(area_name, lang.to_sym)
                 area_model.save!
               end
@@ -262,13 +266,15 @@ module Irekia
 
                   user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ')
                   user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')
-                  user.email                 = "#{user.fullname.underscore}@ej-gv.es"
                   user.contact_email         =  politician['email'].try(:first)
-                  user.password              = 'virekia'
-                  user.password_confirmation = 'virekia'
                   user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
                   user.city                  = (politician['address'][2] || '').split(' ').map(&:capitalize).join(' ')
                   user.role                  = Role.politician.first
+                  if user.new_record?
+                    user.email                 = "#{user.fullname.underscore}@ej-gv.es"
+                    user.password              = 'virekia'
+                    user.password_confirmation = 'virekia'
+                  end
 
                   title_name = politician['works_for'].first.first.try(:capitalize)
                   if user.title.present?
