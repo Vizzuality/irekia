@@ -21,7 +21,7 @@ class Event < Content
          .where('event_data.event_date >= ? AND event_data.event_date <= ?', start_date, end_date)
          .order('event_data.event_date asc')
 
-         events_to_agenda(events, start_date, end_date)
+    events_to_agenda(events, start_date, end_date)
   end
 
   def self.from_area(area, weeks, filters)
@@ -121,4 +121,7 @@ class Event < Content
     calendar.to_s if calendar.present?
   end
 
+  def to_calendar
+    self.class.to_calendar(event_date.day => self)
+  end
 end

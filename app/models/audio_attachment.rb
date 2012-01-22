@@ -1,0 +1,3 @@
+class AudioAttachment < Attachment
+
+end

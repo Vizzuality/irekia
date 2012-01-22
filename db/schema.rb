@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120116170852) do
+ActiveRecord::Schema.define(:version => 20120120195648) do
 
   create_table "answer_data", :force => true do |t|
     t.integer  "answer_id"
@@ -21,15 +21,6 @@ ActiveRecord::Schema.define(:version => 20120116170852) do
   end
 
   add_index "answer_data", ["answer_id"], :name => "index_answer_data_on_answer_id"
-
-  create_table "answer_opinion_data", :force => true do |t|
-    t.integer  "answer_opinion_id"
-    t.boolean  "satisfactory",      :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "answer_opinion_data", ["answer_opinion_id"], :name => "index_answer_opinion_data_on_answer_opinion_id"
 
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
@@ -110,6 +101,17 @@ ActiveRecord::Schema.define(:version => 20120116170852) do
 
   add_index "argument_data", ["argument_id"], :name => "index_argument_data_on_argument_id"
 
+  create_table "attachments", :force => true do |t|
+    t.integer  "content_id"
+    t.string   "type"
+    t.string   "name"
+    t.string   "url"
+    t.string   "file_type"
+    t.string   "size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comment_data", :force => true do |t|
     t.integer  "comment_id"
     t.string   "subject"
@@ -124,7 +126,7 @@ ActiveRecord::Schema.define(:version => 20120116170852) do
     t.integer  "user_id"
     t.integer  "related_content_id"
     t.string   "type"
-    t.string   "tags"
+    t.text     "tags"
     t.datetime "published_at"
     t.boolean  "moderated",             :default => false
     t.boolean  "rejected",              :default => false
@@ -205,6 +207,12 @@ ActiveRecord::Schema.define(:version => 20120116170852) do
     t.string   "iframe_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title_es"
+    t.string   "title_eu"
+    t.string   "title_en"
+    t.text     "body_es"
+    t.text     "body_eu"
+    t.text     "body_en"
   end
 
   add_index "news_data", ["news_id"], :name => "index_news_data_on_news_id"

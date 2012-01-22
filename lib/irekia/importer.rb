@@ -10,6 +10,21 @@ module Irekia
       element :link
     end
 
+    class AttachmentItem
+      include SAXMachine
+
+      element :file_type
+      element :url
+      element :utl
+      element :size
+    end
+
+    class Attachment
+      include SAXMachine
+
+      elements :item, :class => AttachmentItem
+    end
+
   end
 
   class Importer
@@ -21,12 +36,17 @@ module Irekia
 
       last_news_date = since || 1.day.ago
 
-      Feedzirra::Feed.add_common_feed_entry_element('organization', :as => :organization, :class => Irekia::XMLEntities::Organization)
+      Feedzirra::Feed.add_common_feed_entry_element('organization',          :as => :organization,          :class => Irekia::XMLEntities::Organization)
       Feedzirra::Feed.add_common_feed_entry_element('multimedia_iframe_src', :as => :multimedia_iframe_src)
+      Feedzirra::Feed.add_common_feed_entry_element('attached_files',        :as => :attached_files,        :class => Irekia::XMLEntities::Attachment)
+      Feedzirra::Feed.add_common_feed_entry_element('audios',                :as => :audios,                :class => Irekia::XMLEntities::Attachment)
+      Feedzirra::Feed.add_common_feed_entry_element('videos_hq',             :as => :videos_hq,             :class => Irekia::XMLEntities::Attachment)
 
       news_feed_url        = lambda{|lang| "http://www.irekia.euskadi.net/#{lang}/news/news.rss"}
 
-      %w(es eu en).each do |lang|
+
+      %w(en eu es).each do |lang|
+
         puts ''
         puts "=> reading and parsing the rss feed for language '#{lang}'"
 
@@ -35,7 +55,6 @@ module Irekia
 
         feed = Feedzirra::Feed.fetch_and_parse(url)
         news_entries = feed.entries
-        news_entries = feed.entries.select{|news| news.published.present? && news.published > last_news_date} if last_news_date.present?
 
         puts "=> loading #{news_entries.count} news found"
         news_entries.each do |news_item|
@@ -43,15 +62,53 @@ module Irekia
 
             news = News.find_or_initialize_by_external_id(news_item.entry_id)
             news.news_data            = NewsData.new if news.news_data.blank?
-            news.news_data.body       = news_item.summary.sanitize rescue nil
+            news.news_data.send(:"title_#{lang}=", (news_item.title.sanitize rescue nil))
+            news.news_data.send(:"body_#{lang}=",(news_item.summary.sanitize rescue nil))
             news.news_data.source_url = news_item.url rescue nil
             news.news_data.iframe_url = news_item.multimedia_iframe_src rescue nil
+            news.tags                 = news_item.categories.reject{|t| t.match(/^_/)}.join(',')
             news.moderated            = true
 
-            news.areas << Area.where("name_#{lang} like ? OR name like ?", "%#{news_item.organization.title}%", "%#{news_item.organization.title}%").first rescue puts "Invalid área name: #{news_item.organization.title}"
+            news.areas = []
+            news.areas << Area.where("name_#{lang} like ? OR name like ?", "%#{news_item.organization.title}%", "%#{news_item.organization.title}%").first rescue puts "Invalid área name: #{news_item.organization.title}" if news_item.organization.present?
             news_item.categories.each do |category|
-              news.users << User.where('name || ' ' || lastname = ?', category).first rescue nil
+              news.users << User.where('name || ' ' || lastname = ? AND id not in (?)', category, news.users_ids).first rescue nil
             end
+
+            if news_item.audios.present?
+              news.audio_attachments.destroy_all
+              (news_item.audios.item || []).each do |attachment|
+                news.audio_attachments << AudioAttachment.create(
+                  :name      => (URI.parse(attachment.url).path.split(%r{/+}, -1).last rescue nil),
+                  :url       => attachment.url,
+                  :size      => attachment.size
+                )
+              end
+            end
+
+            if news_item.videos_hq.present?
+              news.video_attachments.destroy_all
+              (news_item.videos_hq.item || []).each do |attachment|
+                news.video_attachments << VideoAttachment.create(
+                  :name      => (URI.parse(attachment.utl).path.split(%r{/+}, -1).last rescue nil),
+                  :url       => attachment.utl,
+                  :size      => attachment.size
+                )
+              end
+            end
+
+            if news_item.attached_files.present?
+              news.file_attachments.destroy_all
+              (news_item.attached_files.item || []).each do |attachment|
+                news.file_attachments << FileAttachment.create(
+                  :name      => (URI.parse(attachment.url).path.split(%r{/+}, -1).last rescue nil),
+                  :file_type => attachment.file_type,
+                  :url       => attachment.url,
+                  :size      => attachment.size
+                )
+              end
+            end
+
             news.save!
             print '.'
           rescue Exception => ex
@@ -116,18 +173,20 @@ module Irekia
             when 'anunciado'
               event_data_model.create_image(:remote_image_url => event_data_detail.event.cobertura.imagen.text)
             when 'emitiendo'
-              event_data_model.html                   = open(event_data_detail.event.cobertura.iframe_src.text).read
+              event_data_model.html = open(event_data_detail.event.cobertura.iframe_src.text).read
             when 'noticia'
-              event_data_model.news_url               = event_data_detail.event.cobertura.url.text
+              event_data_model.news_url = event_data_detail.event.cobertura.url.text
             end
 
             event = event_data_model.event || Event.new
 
-            #event.users << [User.patxi_lopez, User.politicians.sample].sample
             event.areas << Area.where("name like ? OR name_es like ? OR name_eu like ? OR name_en like ?", *(["%#{event_data_detail.event.organismo.title.text.strip}%"] * 4)).first rescue puts "Invalid área name: #{event_data_detail.event.organismo.title.text.strip}"
             event_data_detail.event.tags.search('tag').each do |tag|
               event.areas << Area.find_by_name(tag.text.strip) rescue nil
               event.users << User.where('name || ' ' || lastname = ?', tag.text.strip).first rescue nil
+            end
+            event_data_detail.event.asisten.text.split(',').each do |politician|
+              event.users << User.where('name || ' ' || lastname like ? AND id not in (?)', "%#{category}%", event.users_ids).first rescue nil
             end
 
             event.event_data = event_data_model
@@ -135,6 +194,7 @@ module Irekia
             event.latitude   = event_data_detail.event.lat.text
             event.longitude  = event_data_detail.event.lng.text
             event.location   = event_data_detail.event.direccion.text
+            event.tags       = event_data_detail.event.tags.tag.map{|tag| tag.text.strip }.reject{|t| t.match(/^_/)}.join(',')
             event.moderated  = true
 
             event.save!
@@ -168,73 +228,78 @@ module Irekia
       politician_detail_url = lambda{ |language, id| "#{server}/#{language}/people/#{id}.json" }
 
       languages.each do |lang|
-        puts "=> getting data for #{lang} language"
-        puts "=> getting all categories"
-        categories = get_json(categories_url.call(lang), 'categories')
+        begin
+          puts "=> getting data for #{lang} language"
+          puts "=> getting all categories"
+          categories = get_json(categories_url.call(lang), 'categories')
 
-        basque_government = categories.select{|c| ['gobierno vasco', 'eusko jaurlaritza'].include?((c['name'] || '').downcase.strip)}.first
-        if basque_government.present?
+          basque_government = categories.select{|c| ['gobierno vasco', 'eusko jaurlaritza'].include?((c['name'] || '').downcase.strip)}.first
+          if basque_government.present?
 
-          puts '=> getting all government areas'
-          areas = get_json(areas_url.call(lang, basque_government['id']), 'categories')
+            puts '=> getting all government areas'
+            areas = get_json(areas_url.call(lang, basque_government['id']), 'categories')
 
-          areas.each do |area|
-            area_id = area['id']
-            area_detail = get_json(area_detail_url.call(lang, area_id))
-            area_name = area['name'].gsub(/^Departamento de /, '').gsub(/ saila$/, '')
+            areas.each do |area|
+              area_id = area['id']
+              area_detail = get_json(area_detail_url.call(lang, area_id))
+              area_name = area['name'].gsub(/^Departamento de /, '').gsub(/ saila$/, '')
 
-            Area.where(:external_id => area_id).each do |area_model|
-              area_model.send("name_#{lang}=", area_name)
-              area_model.set_friendly_id(area_name, lang.to_sym)
-              area_model.save!
-            end
+              Area.where(:external_id => area_id).each do |area_model|
+                area_model.send("name_#{lang}=", area_name)
+                area_model.set_friendly_id(area_name, lang.to_sym)
+                area_model.save!
+              end
 
-            puts "=> getting politicians data for #{area_id} - #{area_name}"
+              puts "=> getting politicians data for #{area_id} - #{area_name}"
 
-            politicians_ids = area_detail['people'].map(&:first)
+              politicians_ids = area_detail['people'].map(&:first)
 
-            politicians_ids.each do |politician_id|
-              politician = get_json(politician_detail_url.call(lang, politician_id), 'person')
+              politicians_ids.each do |politician_id|
+                politician = get_json(politician_detail_url.call(lang, politician_id), 'person')
 
-              begin
-                user = User.find_or_initialize_by_external_id(politician_id)
+                begin
+                  user = User.find_or_initialize_by_external_id(politician_id)
 
-                user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ')
-                user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')
-                user.email                 = "#{user.fullname.underscore}@ej-gv.es"
-                user.contact_email         =  politician['email'].try(:first)
-                user.password              = 'virekia'
-                user.password_confirmation = 'virekia'
-                user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
-                user.city                  = (politician['address'][2] || '').split(' ').map(&:capitalize).join(' ')
-                user.role                  = Role.politician.first
+                  user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ')
+                  user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')
+                  user.email                 = "#{user.fullname.underscore}@ej-gv.es"
+                  user.contact_email         =  politician['email'].try(:first)
+                  user.password              = 'virekia'
+                  user.password_confirmation = 'virekia'
+                  user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
+                  user.city                  = (politician['address'][2] || '').split(' ').map(&:capitalize).join(' ')
+                  user.role                  = Role.politician.first
 
-                title_name = politician['works_for'].first.first.try(:capitalize)
-                if user.title.present?
-                  user.title.update_attribute('translated_name', (user.title.translated_name || {}).merge({"#{lang}" => title_name}))
-                else
-                  user.title = Title.create(:translated_name => {"#{lang}" => title_name}, :name => title_name)
-                end
+                  title_name = politician['works_for'].first.first.try(:capitalize)
+                  if user.title.present?
+                    user.title.update_attribute('translated_name', (user.title.translated_name || {}).merge({"#{lang}" => title_name}))
+                  else
+                    user.title = Title.create(:translated_name => {"#{lang}" => title_name}, :name => title_name)
+                  end
 
-                user.facebook_username     = politician[''].first.delete('http://facebook.com/') rescue nil
-                user.areas                 = Area.where(:external_id => area['id'])
-                user.last_import           = Time.at(politician['update_date'])
-                user.profile_picture       = Image.create(:remote_image_url => "http://www2.irekia.euskadi.net/#{politician['image']}") if politician['image']
-                user.skip_welcome          = true
-                user.save!
-
-                if File.exists?(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg"))
-                  user.profile_picture.destroy
-                  user.profile_picture = Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg")))
+                  user.facebook_username     = politician[''].first.delete('http://facebook.com/') rescue nil
+                  user.areas                 = Area.where(:external_id => area['id'])
+                  user.last_import           = Time.at(politician['update_date'])
+                  user.profile_picture       = Image.create(:remote_image_url => "http://www2.irekia.euskadi.net/#{politician['image']}") if politician['image']
+                  user.skip_welcome          = true
                   user.save!
+
+                  if File.exists?(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg"))
+                    user.profile_picture.destroy
+                    user.profile_picture = Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg")))
+                    user.save!
+                  end
+                rescue Exception => ex
+                  puts politician.inspect
+                  puts ex
+                  puts ex.backtrace
                 end
-              rescue Exception => ex
-                puts politician.inspect
-                puts ex
-                puts ex.backtrace
               end
             end
           end
+        rescue Exception => ex
+          puts ex
+          puts ex.backtrace
         end
       end
 

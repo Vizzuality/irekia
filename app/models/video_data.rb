@@ -9,8 +9,10 @@ class VideoData < ActiveRecord::Base
   end
 
   def video_url=(url)
-    self.youtube_url = url
-    self.vimeo_url   = url
+    return if url.blank?
+
+    self.youtube_url = url if url.match(/\A(http:\/\/)?(www.)?youtube.com/)
+    self.vimeo_url   = url if url.match(/\A(http:\/\/)?(www.)?vimeo.com/)
   end
 
   def youtube_url=(url)

@@ -114,7 +114,7 @@ class UsersController < ApplicationController
     @user.name                  = params[:user][:name]
     @user.lastname              = params[:user][:lastname]
     @user.postal_code           = params[:user][:postal_code]
-    @user.birthday              = Date.civil(params[:user][:"birthday(1i)"].to_i,params[:user][:"birthday(2i)"].to_i,params[:user][:"birthday(3i)"].to_i)
+    @user.birthday              = Date.civil(params[:user][:"birthday(1i)"].to_i,params[:user][:"birthday(2i)"].to_i,params[:user][:"birthday(3i)"].to_i) rescue nil
 
     if @user.save
       sign_in(@user, :bypass => true)

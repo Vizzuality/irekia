@@ -33,11 +33,16 @@ class Follow < ActiveRecord::Base
   end
 
   def update_follower_activity
-    follow_item.contents.where('published_at > ?', 1.day.ago).each do |content|
-      user.create_private_action(content)
-    end
-    follow_item.participations.where('published_at > ?', 1.day.ago).each do |participation|
-      user.create_private_action(participation)
+    follow_item.actions.where('published_at > ?', 1.day.ago).each do |action|
+      UserPrivateStream.transaction do
+        user.private_actions.create(
+          :event_type   => action.event_type,
+          :event_id     => action.event_id,
+          :published_at => action.published_at,
+          :message      => action.message,
+          :moderated    => action.moderated
+        )
+      end
     end
   end
   private :update_follower_activity
