@@ -83,7 +83,7 @@ class UserPrivateStream < ActiveRecord::Base
   end
 
   def send_notification
-    return if notification_sent || event.not_moderated?
+    return if notification_sent || event.blank? || event.not_moderated?
     Notification.for(user, event)
     update_attribute(:notification_sent, true)
   end
