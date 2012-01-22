@@ -1,7 +1,7 @@
 <%= avatar data.area %>
 <div class="content">
-  <p><strong><%= data.title %></strong></p>
-  <p class="excerpt"><%= strip_tags raw(truncate(data.body.try(:strip), :length => 66))  %></p>
+  <p><strong><%= translate_field(data, 'title') %></strong></p>
+  <p class="excerpt"><%= strip_tags raw(truncate(translate_field(data, 'body').try(:strip), :length => 66))  %></p>
 
   <%= render 'shared/lists_elements/not_moderated/footer', :data => data %>
 </div>

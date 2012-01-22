@@ -33,7 +33,6 @@
       <% end -%>
 
       <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil %>
-      <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
 
       <%= render "participations/comments" %>
 
@@ -42,7 +41,7 @@
       <div class="content left-border">
 
         <%= render "shared/sharing" %>
-        <%#= render "shared/sidebar/tabs" %>
+        <%= render "shared/sidebar/tabs", :audios => @audios, :videos => @videos, :files => @files %>
         <%= render "shared/sidebar/tags" %>
         <%= render "shared/sidebar/politicians" %>
         <%= render "shared/sidebar/related_content" %>

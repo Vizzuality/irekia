@@ -101,8 +101,12 @@ class Area < ActiveRecord::Base
     where('external_id = ? OR name = ?', 1, 'Lehendakaritza').first
   end
 
+  def lehendakaritza?
+    external_id == 1
+  end
+
   def name
-    send("name_#{I18n.locale.to_s}")
+    send("name_#{I18n.locale.to_s}") || send("name_#{I18n.default_locale.to_s}")
   end
 
   def create_action(item)
