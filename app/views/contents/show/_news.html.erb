@@ -33,7 +33,6 @@
       <% end -%>
 
       <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil %>
-      <p><%= link_to 'Leer noticia completa', @content.source_url, :class => :more %></p>
 
       <%= render "participations/comments" %>
 
