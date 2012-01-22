@@ -266,13 +266,15 @@ module Irekia
 
                   user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ')
                   user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')
-                  user.email                 = "#{user.fullname.underscore}@ej-gv.es"
                   user.contact_email         =  politician['email'].try(:first)
-                  user.password              = 'virekia'
-                  user.password_confirmation = 'virekia'
                   user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
                   user.city                  = (politician['address'][2] || '').split(' ').map(&:capitalize).join(' ')
                   user.role                  = Role.politician.first
+                  if user.new_record?
+                    user.email                 = "#{user.fullname.underscore}@ej-gv.es"
+                    user.password              = 'virekia'
+                    user.password_confirmation = 'virekia'
+                  end
 
                   title_name = politician['works_for'].first.first.try(:capitalize)
                   if user.title.present?
