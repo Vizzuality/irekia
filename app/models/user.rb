@@ -639,7 +639,7 @@ class User < ActiveRecord::Base
   def follow_presidencia
     if citizen?
       areas_following << Area.presidencia
-      save(false)
+      save
     end
   end
   private :follow_presidencia
