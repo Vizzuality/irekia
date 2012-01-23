@@ -60,7 +60,12 @@ header {
     position:relative;
     float:left;
     margin: 10px 0 0 9px;
-    padding:12px 14px;
+    padding:12px 8px;
+    &.hidden { display:none; }
+    &.right {
+      float:right;
+      margin: 10px 9px 0 0;
+    }
   }
 
   .avatar {
@@ -131,12 +136,25 @@ header {
 form.publish .white_button { position:relative; }
 
 .paper {
-  opacity:0;
   top:0;
   text-align:left;
   position:relative;
+  left:0;
+  width:320 - 25*2;
   background: url('/images/datalogger/paper_bkg.png') repeat-y;
   padding: 7px 25px;
+  &.broken {
+  padding-bottom: 30px;
+    background: url('/images/datalogger/paper_broken.png') no-repeat bottom;
+  }
+
+  .footer {
+    margin: 10px 0 0 0;
+    padding-left: 16px;
+    background: url('/images/icons/icon_sprite.png') no-repeat 0 -35px;
+    color: #465866;
+    font-size: 11px;
+  }
 
   .placeholder { position:relative; top: 6px; left: 3px; color: #465866; font-style:italic; }
 
@@ -370,7 +388,10 @@ ul.menu {
 
   .paper {
     background: url('/images/datalogger/paper_bkg@2x.png') repeat-y;
-    -webkit-background-size: 315px 41px;
+    -webkit-background-size: 320px 41px;
+    &.broken {
+      background: url('/images/datalogger/paper_broken_bkg@2x.png')  no-repeat;
+    }
   }
 
 .logo {

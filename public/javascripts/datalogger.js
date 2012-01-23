@@ -1,34 +1,34 @@
 $(function() {
 
-var loading = false,
 
-  function redirectToRoot() {
-//    alert('Question answered');
-  }
+  var headerHeight = $("header").outerHeight(true) + $(".title").outerHeight(true);
+    setTimeout(function() {
 
-  $("form.publish").bind('ajax:success', redirectToRoot);
+  $(".paper").animate({top: headerHeight + "px"}, 250);
+    }, 200);
+
+  $("form.publish").bind('ajax:success', function() {
+    window.location.reload();
+  });
 
   $("textarea").on("blur", function() {
-    $("header, .title").css("position", "fixed");
-    $(".paper").css({top:0, opacity:0});
-    $(".title").css("top", "65px");
-    window.scroll(0, 0)
 
-    setTimeout(function() {
-      var top = $(".title").position().top + $(".title").outerHeight(true);
-      $(".paper").animate({top:top, opacity:1}, 200);
-    }, 500);
+    $("header").show();
+    $(".paper").css({top:headerHeight});
 
     if ($(this).val().length == 0) {
       $(".placeholder").show();
+      $("input.publish").hide();
+    } else {
+      $("input.publish").show();
     }
   });
 
   $("textarea").on("focus", function() {
-    $(".placeholder").hide();
-    window.scroll(0, 50)
-    $("header, .title").css("position", "relative");
-    $(".paper, .title").css("top", "-70px");
+    $(".paper .placeholder").hide();
+    $("header").hide();
+    $(".paper").css({top:0});
+    window.scroll(0,0);
   });
 
   if ($(".article.comments").length > 0) {
@@ -37,7 +37,7 @@ var loading = false,
     $("#main").css("height", height + "px");
 
     setTimeout(function() {
-      var top = $(".title").position().top + $(".title").outerHeight(true) - 40;
+      var top = headerHeight;
       $(".article").animate({top:top, opacity:1}, 350);
     }, 500);
   }
