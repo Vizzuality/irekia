@@ -7,9 +7,5 @@
     <span class="when">
       <%= raw t('.author', :author => data.author.fullname, :time => distance_of_time_in_words_to_now(data.published_at)) %>
     </span>
-    &middot;
-    <% if data.percent_in_favor > 50 -%>
-      <%= t('.iphone.votes_in_favor', :percent => data.percent_in_favor, :count => data.participation) %>
-    <% end -%>
   </div>
 </div>
