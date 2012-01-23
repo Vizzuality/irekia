@@ -100,6 +100,7 @@ class Participation < ActiveRecord::Base
 
     @to_update_public_streams  = (to_update_public_streams || [])
     @to_update_private_streams = (to_update_private_streams || [])
+    @to_notificate             = (to_notificate || [])
 
     @to_update_public_streams << user
     @to_update_public_streams += user.areas
