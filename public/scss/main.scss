@@ -2221,6 +2221,10 @@ span.where, .map .infowindow ul.details li.where {
     .input-counter-question { margin: 0 0 20px 0; }
 
     .input_field {
+      &.error {
+        input { color: #E96F5F; border:1px solid #E96F5F;}
+      }
+
       width:570px;
       margin: 0 0 10px 0;
       .holder { top: 10px; }

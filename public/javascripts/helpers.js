@@ -217,12 +217,25 @@ jQuery.fn.enableSeeAllAreas = function(opt){
 jQuery.fn.enableAnsweringQuestion = function(opt){
 
   this.each(function(){
-    var speed = (opt && opt.speed)      || 250,
+    var
+    $form = $(this).find("form"),
+    speed = (opt && opt.speed)      || 250,
     spin_element   = document.getElementById('question_spinner'),
     spinner        = new Spinner(SPINNER_OPTIONS);
 
     $(this).find("button").click(function(e) {
       spinner.spin(spin_element);
+      $form.find(".input_field").removeClass("error");
+    });
+
+    $(this).find("form").bind('ajax:error',function(evt, xhr, status) {
+      spinner.stop();
+      var videoURL = $(this).find("input[type='text']").val();
+      var text = $(this).find("textarea").val();
+
+      if (isEmpty(text) && !isEmpty(videoURL)) {
+        $(this).find("input[type='text']").parent().addClass('error');
+      }
     });
 
     $(this).find("form").bind('ajax:success',function(evt, xhr, status) {

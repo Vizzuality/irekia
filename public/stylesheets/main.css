@@ -626,6 +626,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .inner .left .answering .input_field.textarea { margin: 0 0 10px 0; }
 #container .article .inner .left .answering .input-counter-question { margin: 0 0 20px 0; }
 #container .article .inner .left .answering .input_field { width: 570px; margin: 0 0 10px 0; }
+#container .article .inner .left .answering .input_field.error input { color: #E96F5F; border: 1px solid #E96F5F; }
 #container .article .inner .left .answering .input_field .holder { top: 10px; }
 #container .article .inner .left .answering .input_field input[type="text"] { width: 570px; }
 #container .article .inner .left .answering textarea { resize: none; overflow-y: none; width: 570px; position: relative; height: 132px; padding: 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); outline: none; }
