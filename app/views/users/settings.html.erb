@@ -57,7 +57,7 @@
 
           <div class="field clearfix name pull-left<%= ' error' if current_user.errors[:name].present? %>">
             <%= form.label :name, t('.name') %>
-            <div class="input_field">
+            <div class="input_field name">
               <%= form.text_field :name %>
             </div>
 
@@ -67,13 +67,11 @@
                 <% if current_user.errors[:lastname].present? %> <li><%= current_user.errors[:lastname].first %></li> <% end %>
               </ul>
             <% end %>
-
           </div>
-
 
           <div class="field clearfix lastname pull-right<%= ' error' if current_user.errors[:lastname].present? %>">
             <%= form.label :lastname, t('.lastname') %>
-            <div class="input_field">
+            <div class="input_field lastname">
               <%= form.text_field :lastname %>
             </div>
           </div>
@@ -478,7 +476,7 @@
             <fieldset>
               <div class="field email<%= ' error' if current_user.errors[:email].present? %>">
                 <%= form.label :email, t('.email') %>
-                <div class="input_field">
+                <div class="input_field email">
                   <%= form.text_field :email, :autocomplete => :off %>
                 </div>
 
@@ -495,7 +493,7 @@
 
               <div class="field password pull-left<%= ' error' if current_user.errors[:current_password].present? %>">
                 <%= form.label :current_password, t('.current_password') %>
-                <div class="input_field">
+                <div class="input_field current_password">
                   <%= form.password_field :current_password %>
                 </div>
 
@@ -516,7 +514,7 @@
 
               <div class="field confirm_password pull-right<%= ' error' if current_user.errors[:password].present? %>">
                 <%= form.label :password, t('.password') %>
-                <div class="input_field">
+                <div class="input_field password">
                   <%= form.password_field :password, :autocomplete => :off %>
                 </div>
               </div>

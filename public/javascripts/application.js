@@ -145,7 +145,7 @@ $(function() {
     IrekiaSpinner.stop();
   });
 
-  $("form.follow_button, form.follow_ribbon").live('submit',function(ev){
+  $("form.follow_button, form.follow_ribbon").live('submit',function(ev) {
     IrekiaSpinner.stop();
     IrekiaSpinner.spin();
     $(IrekiaSpinner.el).css({position:"relative", 'float':'none', display:'inline', right:'-20px', top:'27px', height:'15px', width:'15px'});
@@ -159,6 +159,7 @@ $(function() {
   }).live('ajax:success', function(evt, xhr, status) {
     // Button
     var $el1 = $("div.column form.follow_button");
+
     $el1.fadeOut(150, function() {
       var parent = $(this).parent();
       $(this).remove();

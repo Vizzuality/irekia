@@ -800,6 +800,8 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .cycle.extra-margin { height: 800px; }
 #container .cycle .inner-cycle { position: relative; clear: both; width: 9000px; height: 333px; }
 #container .cycle .inner-cycle .article { float: left; clear: none; margin: 10px 100px 0 0; }
+#container .cycle .inner-cycle .article .field.email.error label { float: left; }
+#container .cycle .inner-cycle .article .error_field { float: left; color: #E96F5F; margin: -2px 0 0 5px; font-size: 14px; }
 #container .cycle .inner-cycle .article.step1 .inner .content { padding: 30px 0 0 0; }
 #container .cycle .inner-cycle .article.step1 .inner fieldset .field.email { width: 415px; }
 #container .cycle .inner-cycle .article.step1 .inner fieldset .field.email .input_field { width: 415px; }
@@ -923,6 +925,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* answer */
 #container .article div.answer { margin: 20px 0 0 0; background: url("/images/notebook_bkg.png") repeat-y 0 16px; }
 #container .article div.answer p { margin: 0 0 20px 0; font-size: 17px; color: #465866; line-height: 20px; }
+#container .article div.answer iframe { width: 100%; }
 
 /* answer placeholder */
 #container .article .inner .left .answer_placeholder { margin: 20px 0 0 0; border: 3px dashed #f1f1f1; text-align: center; padding: 55px 0; }
@@ -1439,6 +1442,7 @@ body.home #container section.banners ul li a { position: absolute; left: 2px; wi
 body.home #container section.banners ul li a.guia_com { top: 1px; background-position: -220px 0; }
 body.home #container section.banners ul li a.opacity { top: 1px; background-position: -409px -9px; }
 body.home #container section.banners ul li a.press { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -617px -1px; }
+body.home #container section.banners ul li a.agenda { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -807px -1px; }
 
 /* =============================================================================
 Tabs

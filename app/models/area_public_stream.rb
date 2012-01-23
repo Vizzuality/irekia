@@ -106,7 +106,7 @@ class AreaPublicStream < ActiveRecord::Base
   end
 
   def increment_user_counter
-    Area.increment_counter("#{event_type.underscore.pluralize}_count", area_id)
+    Area.increment_counter("#{event_type.underscore.pluralize}_count", area_id) if moderated_changed? && moderated
   end
   private :increment_user_counter
 

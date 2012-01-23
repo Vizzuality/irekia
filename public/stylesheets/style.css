@@ -956,6 +956,8 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .cycle.extra-margin { height: 800px; }
 #container .cycle .inner-cycle { position: relative; clear: both; width: 9000px; height: 333px; }
 #container .cycle .inner-cycle .article { float: left; clear: none; margin: 10px 100px 0 0; }
+#container .cycle .inner-cycle .article .field.email.error label { float: left; }
+#container .cycle .inner-cycle .article .error_field { float: left; color: #E96F5F; margin: -2px 0 0 5px; font-size: 14px; }
 #container .cycle .inner-cycle .article.step1 .inner .content { padding: 30px 0 0 0; }
 #container .cycle .inner-cycle .article.step1 .inner fieldset .field.email { width: 415px; }
 #container .cycle .inner-cycle .article.step1 .inner fieldset .field.email .input_field { width: 415px; }
@@ -1079,6 +1081,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* answer */
 #container .article div.answer { margin: 20px 0 0 0; background: url("/images/notebook_bkg.png") repeat-y 0 16px; }
 #container .article div.answer p { margin: 0 0 20px 0; font-size: 17px; color: #465866; line-height: 20px; }
+#container .article div.answer iframe { width: 100%; }
 
 /* answer placeholder */
 #container .article .inner .left .answer_placeholder { margin: 20px 0 0 0; border: 3px dashed #f1f1f1; text-align: center; padding: 55px 0; }
@@ -1595,6 +1598,7 @@ body.home #container section.banners ul li a { position: absolute; left: 2px; wi
 body.home #container section.banners ul li a.guia_com { top: 1px; background-position: -220px 0; }
 body.home #container section.banners ul li a.opacity { top: 1px; background-position: -409px -9px; }
 body.home #container section.banners ul li a.press { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -617px -1px; }
+body.home #container section.banners ul li a.agenda { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -807px -1px; }
 
 /* =============================================================================
 Tabs
@@ -1984,6 +1988,15 @@ White buttons
 .white_button.remove_person:hover { color: white; }
 .white_button.remove_person:active { background: #3396cd; /* Old browsers */ background: -moz-linear-gradient(top, #3396cd 0%, #2485ba 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3396cd), color-stop(100%, #2485ba)); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top, #3396cd 0%, #2485ba 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top, #3396cd 0%, #2485ba 100%); /* Opera 11.10+ */ background: -ms-linear-gradient(top, #3396cd 0%, #2485ba 100%); /* IE10+ */ background: linear-gradient(top, #3396cd 0%, #2485ba 100%); /* W3C */ }
 
+.ie8 #container .article.settings form .inner .left fieldset .field.error .input_field.name, .ie8 #container .article.settings form .inner .left fieldset .field.error .input_field.current_password, .ie8 #container .article.settings form .inner .left fieldset .field.error .input_field.password { background: url("/images/text_fields_sprite.png") no-repeat 0 -143px; width: 198px; height: 37px; }
+.ie8 #container .article.settings form .inner .left fieldset .field.error .input_field.name input, .ie8 #container .article.settings form .inner .left fieldset .field.error .input_field.current_password input, .ie8 #container .article.settings form .inner .left fieldset .field.error .input_field.password input { color: #E96F5F; }
+.ie8 #container .article.settings form .inner .left fieldset .field.error .input_field.email, .ie8 #container .article.settings form .inner .left fieldset .field.error .input_field.lastname { background: url("/images/text_fields_sprite.png") no-repeat 0 -92px; width: 405px; height: 37px; }
+.ie8 #container .article.settings form .inner .left fieldset .field.error .input_field.email input, .ie8 #container .article.settings form .inner .left fieldset .field.error .input_field.lastname input { color: #E96F5F; }
+.ie8 #container .article.settings form .inner .left fieldset .input_field.name, .ie8 #container .article.settings form .inner .left fieldset .input_field.current_password, .ie8 #container .article.settings form .inner .left fieldset .input_field.password { border: none; background: url("/images/text_fields_sprite.png") no-repeat 0 0; width: 198px; height: 35px; }
+.ie8 #container .article.settings form .inner .left fieldset .input_field.name input[type="text"], .ie8 #container .article.settings form .inner .left fieldset .input_field.name input[type="password"], .ie8 #container .article.settings form .inner .left fieldset .input_field.current_password input[type="text"], .ie8 #container .article.settings form .inner .left fieldset .input_field.current_password input[type="password"], .ie8 #container .article.settings form .inner .left fieldset .input_field.password input[type="text"], .ie8 #container .article.settings form .inner .left fieldset .input_field.password input[type="password"] { line-height: 34px; border: none; outline: none; background: none; }
+.ie8 #container .article.settings form .inner .left fieldset .input_field.email, .ie8 #container .article.settings form .inner .left fieldset .input_field.lastname { background: url("/images/text_fields_sprite.png") no-repeat 0 -46px; width: 405px; height: 35px; }
+.ie8 #container .article.settings form .inner .left fieldset .input_field.email input[type="text"], .ie8 #container .article.settings form .inner .left fieldset .input_field.lastname input[type="text"] { line-height: 34px; border: none; outline: none; background: none; }
+
 /* add person icon */
 .white_button.add_person:hover { color: #f10063; }
 .white_button.add_person span .add { float: left; width: 18px; height: 15px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -69px; padding: 0; margin: 0 7px 0 0px; }
@@ -2219,7 +2232,7 @@ form.editable .input_field textarea, form.editable .input_field input[type="text
 /** Default DropKick theme  Feel free to edit the default theme or even add your own.  See the readme for themeing help  */
 /***** Begin Theme, feel free to edit in here! ******/
 /* One container to bind them... */
-.dk_container { background: -webkit-gradient(linear, left top, left bottom, from(white), to(#f5f5f5)); background: -moz-linear-gradient(top, white, #f5f5f5); background: -o-linear-gradient(top, white, #f5f5f5); background-color: #f5f5f5; font-family: 'Helvetica', Arial, sans-serif; font-size: 17px; font-weight: bold; line-height: 14px; margin-bottom: 18px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+.dk_container { background: -webkit-gradient(linear, left top, left bottom, from(white), to(#f5f5f5)); background: -moz-linear-gradient(top, white, #f5f5f5); background: -o-linear-gradient(top, white, #f5f5f5); background-color: #fff; font-family: 'Helvetica', Arial, sans-serif; font-size: 17px; font-weight: bold; line-height: 14px; margin-bottom: 18px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
 .dk_container.dk_open { background: white; }
 .dk_container:focus { outline: 0; }
 .dk_container a { cursor: pointer; text-decoration: none; }

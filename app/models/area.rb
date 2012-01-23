@@ -110,13 +110,14 @@ class Area < ActiveRecord::Base
   end
 
   def create_action(item)
-    public_action              = actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
+    public_action              = actions.find_or_create_by_event_id_and_event_type item.event_id, item.event_type
     public_action.published_at = item.published_at
-    public_action.message      = item.to_json
-    public_action.author       = item.author
+    public_action.message      = item.message
+    public_action.author_id    = item.author_id
     public_action.moderated    = item.moderated
     public_action.save!
   end
+  alias create_public_action create_action
 
   def contents
     Content.joins(:author => :areas).where('areas.id' => self.id)

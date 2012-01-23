@@ -3,7 +3,7 @@
     <header class="clearfix">
     <h1><%= @politician.truncated_fullname(30) %></h1>
     <p class="position">
-    <%= raw t('.title', :title => get_politician_title(@politician), :areas => @politician.areas.map{|area| link_to area.name, area_path(area)}.join(', ')) %>
+    <%= raw t('.title', :title => truncate(get_politician_title(@politician), :length => 35), :areas => @politician.areas.map{|area| link_to area.name, area_path(area)}.join(', ')) %>
     </p>
     </header>
 
@@ -15,11 +15,13 @@
         </div>
         <div class="last column">
           <%= simple_format("#{@politician.description_2.try(:strip)} #{link_to(t('.description.read_more'), detail_politician_path(@politician))}") %>
+          <% if !current_user or current_user != @politician %>
           <% if @follow.new_record? -%>
             <%= render 'follows/create' %>
           <% else -%>
             <%= render 'follows/destroy' %>
           <% end -%>
+        <% end %>
         </div>
       </div>
     </div>

@@ -5,7 +5,12 @@
 
   <p class="excerpt">
 
-  <%= %Q{"#{data.answer_text}"} %>
+  <% if data.answer_text.blank? && data.has_video %>
+
+  <%= t(".title.answer_with_video.#{am_I?(data.author) ? 'you' : 'other'}") %>
+  <% else %>
+    <%= %Q{"#{data.answer_text}"} %>
+  <% end %>
 
   <div class="footer">
     <span class="published_at">

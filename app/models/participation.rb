@@ -1,4 +1,6 @@
 class Participation < ActiveRecord::Base
+  include Irekia::StreamsUpdater
+
   belongs_to :user
   belongs_to :author,
              :class_name => 'User',
@@ -7,7 +9,7 @@ class Participation < ActiveRecord::Base
   belongs_to :content
 
   attr_protected :moderated, :rejected
-  attr_accessor :users_to_notificate
+  attr_accessor :to_update_public_streams, :to_update_private_streams
 
   before_save   :update_published_at
   before_save   :update_moderated_at
@@ -96,36 +98,25 @@ class Participation < ActiveRecord::Base
   def publish
     return unless content.present?
 
-    @users_to_notificate = []
+    @to_update_public_streams  = (to_update_public_streams || [])
+    @to_update_private_streams = (to_update_private_streams || [])
 
-    user.create_public_action(self)
+    @to_update_public_streams << user
+    @to_update_public_streams += user.areas
 
-    user.areas.each do |area|
-      area.create_action(self)
-      @users_to_notificate += area.users
-      @users_to_notificate += area.followers
-    end
+    @to_update_private_streams += user.areas.map(&:users).flatten
+    @to_update_private_streams += user.areas.map(&:followers).flatten
+    @to_update_private_streams += user.followers
 
-    @users_to_notificate += user.followers
+    update_streams
+  end
+
+  def send_mail
+
   end
 
   def notify_content
     content.notify_of_new_participation(self)
   end
 
-  def send_notifications
-    return if user_id == id || content.user_id == user_id
-
-    participation_json = to_json
-
-    @users_to_notificate.uniq.each do |user|
-      private_action = private_actions.find_or_create_by_event_id_and_event_type id, self.class.name
-      private_action.published_at = published_at
-      private_action.message      = participation_json
-      private_action.author       = author if author.present?
-      private_action.moderated    = moderated
-      private_action.save!
-    end
-
-  end
 end

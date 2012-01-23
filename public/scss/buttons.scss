@@ -320,6 +320,52 @@ White buttons
   }
 } // .remove_person
 
+.ie8 #container .article.settings form .inner .left fieldset{
+
+  .field.error {
+    .input_field.name,
+    .input_field.current_password,
+    .input_field.password {
+      background:url('/images/text_fields_sprite.png') no-repeat 0 -143px;
+      width:198px; height:37px;
+      input { color:#E96F5F; }
+    }
+
+    .input_field.email,
+    .input_field.lastname {
+      background:url('/images/text_fields_sprite.png') no-repeat 0 -92px;
+      width:405px; height:37px;
+      input { color:#E96F5F; }
+    }
+  }
+
+  .input_field.name,
+  .input_field.current_password,
+  .input_field.password {
+    border:none;
+    background:url('/images/text_fields_sprite.png') no-repeat 0 0;
+    width:198px; height:35px;
+    input[type="text"],
+    input[type="password"] {
+      line-height: 34px;
+      border:none;
+      outline:none;
+      background:none;
+    }
+  }
+  .input_field.email,
+  .input_field.lastname {
+    background:url('/images/text_fields_sprite.png') no-repeat 0 -46px;
+    width:405px; height:35px;
+    input[type="text"] {
+      line-height: 34px;
+      border:none;
+      outline:none;
+      background:none;
+    }
+  }
+
+}
 
 // .ie7 .white_button.remove_person,
 // .ie7 .article .white_button.remove_person,
@@ -1412,7 +1458,7 @@ form.editable,
   background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f5f5f5));
   background: -moz-linear-gradient(top, #fff, #f5f5f5);
   background: -o-linear-gradient(top, #fff, #f5f5f5);
-  background-color: #f5f5f5;
+  background-color: #fff;
   font-family: 'Helvetica', Arial, sans-serif;
   font-size: 17px;
   font-weight: bold;

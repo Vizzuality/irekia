@@ -1,26 +1,15 @@
-<div id="main" class="<%= controller_name %> <%= action_name %>">
-  <div class="content">
-
-    <ul class="menu">
-      <li><a href="#" class="checkin">checkin</a></li>
-      <li><a href="#" class="comment">publicación</a></li>
-      <li><a href="#" class="photo">foto/vídeo</a></li>
-    </ul>
-
     <div class="article">
       <div class="inner">
         <div class="content">
 
-          <ul class="counters">
-          <li><strong><%= current_user.answer_requests.count %></strong>preguntas<br />por contestar</li>
-            <li><strong>06</strong>contenidos comentados</li>
-            <li><strong>11</strong>nuevas etiquetas</li>
-          </ul>
+        <ul class="counters">
+        <li><strong><%= current_user.answer_requests.count %></strong>preguntas<br />por contestar</li>
+        <li><strong>06</strong>contenidos comentados</li>
+        <li><strong>11</strong>nuevas etiquetas</li>
+        </ul>
 
         <% if @actions.present? %>
           <%= render 'shared/actions_list' %>
-        <% else %>
-          <span class="empty"><%= t((@area || @user).class.name.downcase, :scope => 'shared.actions.no_content', :target => (@area || @user).name ) %></span>
         <% end %>
 
         </div>
@@ -31,5 +20,3 @@
     <div class="loader">
       <a href="#">Cargando mas contenidos</a>
     </div>
-  </div>
-</div>

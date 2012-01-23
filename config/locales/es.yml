@@ -444,6 +444,7 @@
         transparency: Transparencia
         guide: Guía de comunicación abierta
         opendata: Open data euskadi
+        agenda: Agenda de Irekia
       rss:
         title:
           news: Noticias
@@ -835,10 +836,17 @@
         title:
           you: 'Has contestado a "%{question}"'
           other: '%{author} ha contestado a "%{question}"'
+          answer_with_video:
+            you:  'Has contestado con un vídeo.'
+            other: 'Ha contestado con un vídeo.'
         author: '%{author} &middot; <span class="answered">Contestada tras %{time}</span>'
+        iphone:
+          author: 'Hace %{time}'
       answer_request:
         title: 'Ha sido reclamada la pregunta %{question}'
         author: '%{author} hace %{time}'
+        iphone:
+          date: 'Hace %{time}'
       question:
         title: 'Pregunta para %{receiver}:'
         author: '%{author} hace %{time}'

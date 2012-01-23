@@ -2,9 +2,9 @@
 <h3>Descargas</h3>
 
 <ul class="tabs">
-  <li class="first active"><a href="#home">Audio</a></li>
-  <li><a href="#profile">Video</a></li>
-  <li class="last"><a href="#messages">Documentos</a></li>
+  <li class="first active"><a href="#tab-audio">Audio</a></li>
+  <li><a href="#tab-video">Video</a></li>
+  <li class="last"><a href="#tab-documents">Documentos</a></li>
 </ul>
 
 <div class="pill-content">
@@ -23,6 +23,7 @@
 <% else -%>
   <div class="active" id="home">No hay audios disponible</div>
 <% end -%>
+
 <% if videos.present? -%>
   <div id="profile">
     <ul>
@@ -34,10 +35,12 @@
         </li>
       <% end -%>
     </ul>
+
   </div>
 <% else -%>
   <div id="profile">No hay videos disponibles</div>
 <% end -%>
+
 <% if files.present? -%>
   <div id="messages">
     <ul>

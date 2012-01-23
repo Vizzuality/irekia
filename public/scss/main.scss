@@ -3002,6 +3002,15 @@ span.where, .map .infowindow ul.details li.where {
       clear:none;
       margin: 10px 100px 0 0;
 
+      .field.email.error label { float:left; }
+
+      .error_field {
+        float: left;
+        color: #E96F5F;
+        margin: -2px 0 0 5px;
+        font-size: 14px;
+      }
+
       &.step1 {
         .inner {
           //padding: 15px 31px 0px 35px;
@@ -3507,6 +3516,7 @@ a.editable {
   margin: 20px 0 0 0;
   background:url('/images/notebook_bkg.png') repeat-y 0 16px;
   p { margin: 0 0 20px 0; font-size:17px; color:$dark_blue; line-height:20px; }
+  iframe { width: 100%; }
 }
 
 /* answer placeholder */
@@ -5548,6 +5558,7 @@ body.home {
             &.guia_com {top:1px; background-position:-220px 0;}
             &.opacity {top:1px; background-position:-409px -9px;}
             &.press {bottom:0; left:2px; width:180px; height:124px; background-position:-617px -1px;}
+            &.agenda {bottom:0; left:2px; width:180px; height:124px; background-position:-807px -1px;}
             z-index:5;
           }
         }

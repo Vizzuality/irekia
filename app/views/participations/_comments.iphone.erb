@@ -1,10 +1,10 @@
-<% if @comments and @comments.size > 0 %>
 <div id="main">
     <div class="article comments">
       <div class="inner">
         <div class="content">
 
   <ul>
+  <% if @comments and @comments.size > 0 %>
     <% @comments.reject{|c| c.new_record?}.each do |comment| %>
       <li class="clearfix <%= 'not_moderated' unless comment.moderated %>">
       <%= avatar comment.author %>
@@ -30,6 +30,7 @@
       </div>
       </li>
     <% end %>
+  <% end %>
     <li class="comment <%= 'first' if @comments.blank? %>">
     <%= form_for @comment, :remote => true, :html => {:'data-type' => 'html', :class => :add_comment }  do |form| %>
       <%= form.hidden_field :content_id %>
@@ -46,4 +47,3 @@
       <div class="t"></div><div class="f"></div>
     </div>
     </div>
-  <% end %>

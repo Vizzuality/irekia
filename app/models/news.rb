@@ -33,22 +33,18 @@ class News < Content
   end
 
   def publish
+    @to_update_public_streams  = (to_update_public_streams || [])
+    @to_update_private_streams = (to_update_private_streams || [])
+
+    @to_update_public_streams += areas
+    @to_update_public_streams += users
+    @to_update_public_streams += users.map(&:areas).flatten
+
+    @to_update_private_streams += areas.map(&:followers).flatten
+    @to_update_private_streams += users.map(&:followers).flatten
+    @to_update_private_streams += users.map(&:areas).flatten.map(&:followers).flatten
+
     super
-
-    areas.each{|area| area.create_action(self)}
-
-    users.each do |user|
-      user.create_public_action(self)
-
-      user.areas.each do |area|
-        area.create_action(self)
-
-        @users_to_notificate += area.followers
-      end
-
-      @users_to_notificate += user.followers
-      user.followers.notify_all(self)
-    end
   end
 
 end
