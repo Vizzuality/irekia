@@ -348,7 +348,6 @@ jQuery.fn.enableRegistration = function(opt){
   }
 
   function validateErrors(evt, xhr, status) {
-    console.log(xhr.responseText);
     var errors = $.parseJSON(xhr.responseText);
 
     _.each(errors, function(message, field) {
@@ -1287,11 +1286,12 @@ jQuery.fn.enablePagination = function(opt){
     }});
   }
 
-  function paginate() {
+  function paginate(paginationURL) {
+    var url = paginationURL;
     // Let's retrieve the filter using the classes of the current article as a key
     var c = document.getElementById($this.attr("id")).className.replace(/ /g, "_");
 
-    if (filterUrl[c] != "") {
+    if (filterUrl[c] != "" && filterUrl[c] != undefined) {
       url = filterUrl[c];
     }
 
@@ -1337,7 +1337,7 @@ jQuery.fn.enablePagination = function(opt){
       IrekiaSpinner.spin(spin_element);
 
       if (name == "months") paginateMonths();
-      else paginate();
+      else paginate(url);
 
     });
   })
