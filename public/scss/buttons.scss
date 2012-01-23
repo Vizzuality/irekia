@@ -395,6 +395,7 @@ Hacks (mostly ie7 and ie8 fixes)
     textarea { border: 1px solid #ccc; }
     input[type="text"] { border: 1px solid #ccc; }
     .input_field {
+      line-height: 16px;
       .holder { position:relative; top: 7px!Important; }
     }
   }

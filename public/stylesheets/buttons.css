@@ -95,9 +95,10 @@ White buttons
 /* =============================================================================
 Hacks (mostly ie7 and ie8 fixes)
 ========================================================================== */
-.ie8 #container .article .answering form textarea { border: 1px solid #ccc; }
-.ie8 #container .article .answering form input[type="text"] { border: 1px solid #ccc; }
-.ie8 #container .article .answering form .input_field .holder { position: relative; top: 7px!Important; }
+.ie7 #container .article .answering form textarea, .ie8 #container .article .answering form textarea { border: 1px solid #ccc; }
+.ie7 #container .article .answering form input[type="text"], .ie8 #container .article .answering form input[type="text"] { border: 1px solid #ccc; }
+.ie7 #container .article .answering form .input_field, .ie8 #container .article .answering form .input_field { line-height: 16px; }
+.ie7 #container .article .answering form .input_field .holder, .ie8 #container .article .answering form .input_field .holder { position: relative; top: 7px!Important; }
 
 .ie8 #container .article .avatar-uploader .avatar_box .avatar .ieframe { display: none!important; }
 
