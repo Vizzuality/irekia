@@ -292,8 +292,13 @@ form.publish .white_button { position:relative; }
           width:28px; height:28px;
         }
 
-        &.against { background:url('/images/datalogger/against_icon.png') no-repeat; color:#FF6600; font-weight:bold; font-size:17px; }
-        &.in_favor { background:url('/images/datalogger/in_favor_icon.png') no-repeat; color:$agree_color; font-weight:bold; font-size:17px; }
+        &.neutral, &.against, &.in_favor {
+          line-height: 7px;
+        }
+
+        &.neutral { background:url('/images/datalogger/neutral_icon.png') no-repeat; color:#333; font-weight:bold; font-size:15px;a { font-size: 15px;} }
+        &.against { background:url('/images/datalogger/against_icon.png') no-repeat; color:#FF6600; font-weight:bold; font-size:15px;a { font-size: 15px; } }
+        &.in_favor { background:url('/images/datalogger/in_favor_icon.png') no-repeat; color:$agree_color; font-weight:bold; font-size:15px; a { font-size: 15px;} }
       }
     }
   }
@@ -449,6 +454,7 @@ ul.menu {
             -webkit-background-size: 28px 28px;
           }
 
+        &.neutral { background:url('/images/datalogger/neutral_icon@2x.png') no-repeat; -webkit-background-size:42px 42px; }
         &.against { background:url('/images/datalogger/against_icon@2x.png') no-repeat; -webkit-background-size:42px 42px; }
         &.in_favor { background:url('/images/datalogger/in_favor_icon@2x.png') no-repeat;  -webkit-background-size:42px 42px;}
 

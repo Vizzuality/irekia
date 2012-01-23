@@ -29,7 +29,7 @@
       </div>
 
       <% if @content.iframe_url.present? -%>
-        <iframe src="<%= @content.iframe_url %>" width="650" height="400" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+        <iframe src="<%= @content.iframe_url %>" width="650" height="420" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
       <% end -%>
 
       <%= sanitize @content.body.try(:strip), :tags => %w(p strong), :attributes => nil %>

@@ -1,7 +1,7 @@
 <% if @tags.present? || @editable %>
   <h4><%= t('.title') %></h4>
   <ul class="tags clearfix<%= " editable" if @editable %>">
-    <% @tags.each do |tag| -%>
+    <% @tags.reject{|t| t.match(/^_/) || t.match(/::/)}.each do |tag| -%>
       <% if @editable %>
         <li<%=" class='editable'" if @editable %>>
         <%= link_to tag.strip, search_path(:search => {:query => tag}), :class => :content %>

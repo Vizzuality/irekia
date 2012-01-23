@@ -3,7 +3,7 @@
         <div class="content">
 
         <ul class="counters">
-          <li><strong><%= current_user.questions_count %></strong>preguntas<br />por contestar</li>
+          <li><strong><%= @unanswered_questions_count %></strong>preguntas<br />por contestar</li>
         <li><strong>06</strong>contenidos comentados</li>
         <li><strong>11</strong>nuevas etiquetas</li>
         </ul>
@@ -18,5 +18,5 @@
     </div>
 
     <div class="loader">
-      <a href="#">Cargando mas contenidos</a>
+    <%= link_to "Recargar página", root_path  %>
     </div>
