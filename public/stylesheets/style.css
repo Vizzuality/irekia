@@ -772,11 +772,12 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article.agenda .inner .content ul li.day .info ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; -o-text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 #container .article .inner .left .answering { position: relative; padding: 12px; margin: 25px 0 0 0; background: #F6F6F7; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
 #container .article .inner .left .answering span.peak { position: absolute; top: -14px; left: 30px; width: 28px; height: 14px; background: url("/images/icons/triangle.png") no-repeat 0 -181px; }
+#container .article .inner .left .answering .spinner { position: relative; float: left; top: 15px; }
 #container .article .inner .left .answering h3 { float: left; }
 #container .article .inner .left .answering .footer .left { float: left; width: 300px; }
 #container .article .inner .left .answering .footer .left .checkbox_button { height: 20px; }
 #container .article .inner .left .answering .footer .left .checkbox_button .checkbox { float: left; }
-#container .article .inner .left .answering .footer .right { width: 200px; float: right; }
+#container .article .inner .left .answering .footer .right { width: 190px; float: right; }
 #container .article .inner .left .answering .footer .right .white_button { float: right; }
 #container .article .inner .left .answering .input_field.textarea { margin: 0 0 10px 0; }
 #container .article .inner .left .answering .input-counter-question { margin: 0 0 20px 0; }

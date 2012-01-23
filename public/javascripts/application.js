@@ -196,20 +196,7 @@ $(function() {
     form_.stop(true).animate({height:'75px'},300);
   });
 
-  // Answer form
-  $('div.answering form').live('ajax:success',function(evt, xhr, status) {
-    var parent = $(this).closest('div.answering');
-    var response = $(xhr);
-
-    $("span.not_answered").html(response[0]);
-    $("span.not_answered").addClass("answered");
-    $("span.not_answered").removeClass("not_answered");
-
-    parent.fadeOut(function(){
-      parent.before(response[2]);
-      response.fadeIn();
-    });
-  });
+  $('div.answering').enableAnsweringQuestion();
 
   $(".share.twitter").live("click", function() {
     var width  = 611,
