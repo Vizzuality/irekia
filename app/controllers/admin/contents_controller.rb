@@ -8,7 +8,7 @@ class Admin::ContentsController < Admin::AdminController
 
     if @content.update_attributes(params[content_type])
       IrekiaMailer.moderation_approved(@content).deliver if @content.moderated
-      IrekiaMailer.moderation_rejected(@content).deliver if @content.moderated
+      IrekiaMailer.moderation_rejected(@content).deliver if @content.rejected
 
       @items_count          = Moderation.not_moderated_count
       @moderation_time      = Moderation.get_moderation_time
