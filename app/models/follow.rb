@@ -7,6 +7,7 @@ class Follow < ActiveRecord::Base
 
   validate :user_already_following_this_item?
 
+  after_create   :send_notification
   after_create   :update_follower_activity
   after_destroy  :destroy_exfollower_activity
 

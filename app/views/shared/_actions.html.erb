@@ -1,4 +1,4 @@
-<div id="actions-<%= params[:id] %>" class="article actions with_filters<%= " with_footer" if viewing_dashboard? || controller.action_name == "home" || (@area) %>">
+<div id="actions-<%= params[:id] %>" class="article actions with_filters with_footer">
   <div class="inner">
     <header class="clearfix">
     <div class="left">
@@ -91,13 +91,14 @@
 
         <% if viewing_dashboard? || controller.action_name == "actions" %>
           <div class="left">
-            <%= link_for_actions %>
             <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" if @actions.present? %>
             <span id="actions_spinner" class="spinner"></span>
           </div>
         <% else %>
           <div class="right">
-            <%= link_to t('.more'), link_for_actions(:anchor => :actions), :id => "actions_#{params[:id]}", :class => "right_arrow right" %>
+            <% if !viewing_homepage? %>
+              <%= link_to t('.more'), link_for_actions(:anchor => :actions), :id => "actions_#{params[:id]}", :class => "right_arrow right" %>
+            <% end %>
           </div>
         <% end %>
 
