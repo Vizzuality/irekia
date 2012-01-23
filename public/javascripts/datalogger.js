@@ -1,10 +1,16 @@
 $(function() {
 
-  var headerHeight = $("header").outerHeight(true) + $(".title").outerHeight(true);
-  setTimeout(function() {
 
-    $(".paper").animate({top: headerHeight + "px"}, 250);
-  }, 200);
+  $("a.reload").click(function(e){
+    e.preventDefault();
+    window.location.reload();
+  });
+
+  var headerHeight = $("header").outerHeight(true) + $(".title").outerHeight(true);
+    setTimeout(function() {
+
+  $(".paper").animate({top: headerHeight + "px"}, 250);
+    }, 200);
 
   $("form.publish").bind('ajax:success', function() {
     window.location.reload();
