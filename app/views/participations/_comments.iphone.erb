@@ -31,6 +31,7 @@
       </li>
     <% end %>
   <% end %>
+  <% if false %>
     <li class="comment <%= 'first' if @comments.blank? %>">
     <%= form_for @comment, :remote => true, :html => {:'data-type' => 'html', :class => :add_comment }  do |form| %>
       <%= form.hidden_field :content_id %>
@@ -40,6 +41,7 @@
         <% end %>
     <% end -%>
     </li>
+  <% end %>
   </ul>
 
         </div>
