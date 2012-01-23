@@ -876,6 +876,8 @@
           you: 'Has creado una nueva propuesta: '
           other: '%{name} ha creado una nueva propuesta: '
         author: '%{author} hace %{time}'
+        iphone:
+          date: 'Hace %{time}'
         against: en contra
         in_favor: a favor
         neutral: a favor
