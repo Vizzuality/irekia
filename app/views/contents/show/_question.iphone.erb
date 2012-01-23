@@ -11,6 +11,7 @@
         <h1><%= @content.question_text %></h1>
         <div class="footer when"><%= link_to @content.author.try(:fullname), path_for_user(@content.author) %> <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %></div>
         <div class="shadow"></div>
+        <div class="uq"></div><div class="bq"></div>
         </div>
         </header>
 
@@ -30,6 +31,7 @@
         <div class="title">
         <h1><%= @content.question_text %></h1>
         <div class="footer when"><%= link_to @content.author.try(:fullname), path_for_user(@content.author) %> <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %></div>
+        <div class="uq"></div><div class="bq"></div>
         <div class="shadow"></div>
         </div>
         </header>
