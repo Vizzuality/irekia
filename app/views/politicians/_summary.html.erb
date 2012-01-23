@@ -3,7 +3,7 @@
     <header class="clearfix">
     <h1><%= @politician.truncated_fullname(30) %></h1>
     <p class="position">
-    <%= raw t('.title', :title => get_politician_title(@politician), :areas => @politician.areas.map{|area| link_to area.name, area_path(area)}.join(', ')) %>
+    <%= raw t('.title', :title => truncate(get_politician_title(@politician), :length => 35), :areas => @politician.areas.map{|area| link_to area.name, area_path(area)}.join(', ')) %>
     </p>
     </header>
 
