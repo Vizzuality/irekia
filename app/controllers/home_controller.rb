@@ -63,7 +63,7 @@ class HomeController < ApplicationController
     @tweets_count          = @actions.tweets.count          || 0
 
     @actions = @actions.where(:event_type => [params[:type]].flatten.map(&:camelize)) if params[:type]
-    @actions = @actions.page(1).per(10).sort{|a, b| b.published_at <=> a.published_at}
+    @actions = @actions.page(1).per(20).sort{|a, b| b.published_at <=> a.published_at}
     @rss_actions = @actions.map{|a| OpenStruct.new(:type => a.event_type.underscore, :id => a.event_id, :text => text_for_rss_title(a), :body => text_for_rss_body(a), :published_at => a.published_at)} if request.format.rss?
   end
   private :get_actions
