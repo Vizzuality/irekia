@@ -47,15 +47,20 @@ class Answer < Content
   end
 
   def publish
-    super
-
     return if self.author.blank?
 
-    @users_to_notificate += question.answer_requests.map(&:author)
+    @to_update_public_streams  = (to_update_public_streams || [])
+    @to_update_private_streams = (to_update_private_streams || [])
+
+    @to_update_private_streams = (to_update_private_streams || [])
+    @to_update_private_streams << question.author
+    @to_update_private_streams += question.answer_requests.map(&:author)
+
+    super
   end
 
   def send_mail
-    IrekiaMailer.deliver_question_answered(self)
+    IrekiaMailer.deliver_question_answered(self) if moderated?
   end
 
   def mark_question_as_answered

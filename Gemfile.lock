@@ -24,6 +24,9 @@ GEM
       activesupport (= 3.0.10)
       arel (~> 2.0.10)
       tzinfo (~> 0.3.23)
+    activerecord-import (0.2.9)
+      activerecord (~> 3.0)
+      activerecord (~> 3.0)
     activeresource (3.0.10)
       activemodel (= 3.0.10)
       activesupport (= 3.0.10)
@@ -289,6 +292,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import
   agent_orange (= 0.1.3)
   capistrano
   capistrano-ext

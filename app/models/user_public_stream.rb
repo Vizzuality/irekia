@@ -87,7 +87,7 @@ class UserPublicStream < ActiveRecord::Base
   end
 
   def increment_user_counter
-    User.increment_counter("#{event_type.underscore.pluralize}_count", user_id)
+    User.increment_counter("#{event_type.underscore.pluralize}_count", user_id) if moderated_changed? && moderated
   end
   private :increment_user_counter
 

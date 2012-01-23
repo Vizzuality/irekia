@@ -46,14 +46,16 @@ class Vote < Participation
   end
 
   def publish
-    super
+
+    @to_update_public_streams  = (to_update_public_streams || [])
+    @to_update_private_streams = (to_update_private_streams || [])
 
     if proposal.target_area
-      proposal.target_area.team.each do |politician|
-        politician.create_public_action(self)
-      end
-      @users_to_notificate += proposal.target_area.team
+      @to_update_public_streams  += proposal.target_area.team
+      @to_update_private_streams += proposal.target_area.team
     end
+
+    super
   end
 
   def notify_content

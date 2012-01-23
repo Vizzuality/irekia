@@ -1,5 +1,6 @@
 class Content < ActiveRecord::Base
   extend FriendlyId
+  include Irekia::StreamsUpdater
 
   friendly_id :text_for_slug, :use => :slugged
 
@@ -44,7 +45,7 @@ class Content < ActiveRecord::Base
   accepts_nested_attributes_for :areas_contents, :contents_users, :allow_destroy => true
 
   attr_accessor :parent
-  attr_reader :tag, :image, :build_image, :users_to_notificate
+  attr_reader :tag, :image, :build_image
 
   def self.find_or_initialize(params = nil)
     new(params)
@@ -205,64 +206,38 @@ class Content < ActiveRecord::Base
   private :author_is_politician?
 
   def publish
-
     return if author.blank?
 
-    @users_to_notificate = []
+    @to_update_public_streams  = (@to_update_public_streams || [])
+    @to_update_private_streams = (@to_update_private_streams || [])
 
-    author.create_public_action(self)
+    @to_update_public_streams << author
+    @to_update_public_streams += author.areas
+    @to_update_public_streams += tagged_politicians
 
-    author.areas.each do |area|
-      area.create_action(self)
-      @users_to_notificate += area.followers
-    end
+    @to_update_private_streams += author.areas.map(&:followers).flatten
+    @to_update_private_streams += author.followers
+    @to_update_private_streams += tagged_politicians
 
-    @users_to_notificate += author.followers
-
-    tagged_politicians.each do |politician|
-      politician.create_public_action(self)
-      @users_to_notificate << politician
-    end
-  end
-
-  def send_notifications
-    item_json = to_json
-
-    to_update = UserPrivateStream.select(:id).where(%Q{event_id = ? AND event_type = ? AND (#{@users_to_notificate.map{"user_id = ?"}.join(' OR ')})}, id, self.class.name, *@users_to_notificate.map(&:id))
-
-    if to_update.size > 0
-      UserPrivateStream.where(:id => to_update).update_all(
-        :published_at => published_at,
-        :message      => item_json,
-        :author_id    => author.id,
-        :moderated    => moderated
-      )
-    else
-      insert_sql = <<-SQL
-        INSERT INTO user_private_streams
-        (event_id, event_type, user_id, published_at, message, author_id, moderated)
-        VALUES
-        #{@users_to_notificate.map{|user| %Q{(#{id},#{self.class.name},#{user.id},#{published_at},#{item_json},#{author.id},#{moderated})}}.join(', ')}
-        ;
-      SQL
-
-      ActiveRecord::Base.connection.execute insert_sql
-
-    end
+    update_streams
   end
 
   def send_mail
 
   end
 
-  def notify_of_new_participation(participation, force_notification_creation = false)
-    publish
+  def notify_of_new_participation(participation)
+    @to_update_public_streams  = @to_update_private_streams = []
 
-    areas.each{|area| area.create_action(participation)}
+    @to_update_public_streams += areas
+    @to_update_private_streams += users
+    @to_update_private_streams << author
+    @to_update_private_streams += participers(author)
 
-    users.each{|user| user.create_private_action(participation, force_notification_creation)}
-    author.create_private_action(participation, force_notification_creation) if author.present?
-    participers(author).each{|user| user.create_private_action(participation, force_notification_creation)}
+    participation.to_update_public_streams = @to_update_public_streams
+    participation.to_update_private_streams = @to_update_private_streams
+
+    update_streams(participation)
   end
 
 end

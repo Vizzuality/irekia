@@ -50,8 +50,7 @@ module Irekia
         puts ''
         puts "=> reading and parsing the rss feed for language '#{lang}'"
 
-        url                  = news_feed_url.call(lang) + "?since=#{last_news_date.strftime('%Y%m%d')}" if last_news_date.present?
-        news_photos_feed_url = lambda{|news_id| "http://www.irekia.euskadi.net/api/photos/#{news_id}"}
+        url = news_feed_url.call(lang) + "?since=#{last_news_date.strftime('%Y%m%d')}" if last_news_date.present?
 
         feed = Feedzirra::Feed.fetch_and_parse(url)
         news_entries = feed.entries
@@ -180,6 +179,8 @@ module Irekia
 
             event = event_data_model.event || Event.new
 
+            event.areas = []
+            event.users = []
             event.areas << Area.where("name like ? OR name_es like ? OR name_eu like ? OR name_en like ?", *(["%#{event_data_detail.event.organismo.title.text.strip}%"] * 4)).first rescue puts "Invalid área name: #{event_data_detail.event.organismo.title.text.strip}"
             event_data_detail.event.tags.search('tag').each do |tag|
               event.areas << Area.find_by_name(tag.text.strip) rescue nil

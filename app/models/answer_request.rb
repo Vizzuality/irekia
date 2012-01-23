@@ -25,17 +25,21 @@ class AnswerRequest < Participation
   end
 
   def publish
-    super
+    @to_update_public_streams  = (to_update_public_streams || [])
+    @to_update_private_streams = (to_update_private_streams || [])
 
     case
     when question.target_user
-      question.target_user.create_public_action(self)
-      question.target_user.areas.each{|area| area.create_action(self)}
-      @users_to_notificate << question.target_user
+      @to_update_public_streams << question.target_user
+      @to_update_public_streams += question.target_user.areas
+
+      @to_update_private_streams << question.target_user
     when question.target_area
-      question.target_area.create_action(self)
-      question.target_area.team.each{|politician| politician.create_public_action(self)}
+      @to_update_public_streams << question.target_area
+      @to_update_public_streams += question.target_area.team
     end
+
+    super
   end
 
   def set_as_moderated

@@ -1,4 +1,6 @@
 class ContentUser < ActiveRecord::Base
+  include Irekia::StreamsUpdater
+
   belongs_to :content
   belongs_to :user
   belongs_to :news,           :foreign_key => :content_id
@@ -53,21 +55,14 @@ class ContentUser < ActiveRecord::Base
   def publish
     return if content.blank? || self.destroyed?
 
-    # This notification shouldn't be sent
-    # Notification.for(user, self)
+    @to_update_private_streams = content.tagged_politicians
+
+    update_streams
   end
 
   def send_notifications
-    item_json = to_json
-
-    content.tagged_politicians.uniq.each do |user|
-      private_action = user.private_actions.find_or_create_by_event_id_and_event_type id, self.class.name
-      private_action.published_at = published_at
-      private_action.message      = item_json
-      private_action.author       = author if author.present?
-      private_action.moderated    = moderated
-      private_action.save!
-    end
+    # This notification shouldn't be sent
+    # Notification.for(user, self)
   end
 
 end
