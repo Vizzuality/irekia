@@ -8,6 +8,7 @@ $(function() {
     }, 200);
 
   $("a.reload").click(function(e){
+    e.preventDefault();
     window.location.reload();
   });
 
