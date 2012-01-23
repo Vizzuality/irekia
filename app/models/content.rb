@@ -241,7 +241,6 @@ class Content < ActiveRecord::Base
     @to_notificate << author
     @to_notificate += participers(author)
 
-    require 'ruby-debug'; debugger
     participation.to_update_public_streams  = @to_update_public_streams
     participation.to_update_private_streams = @to_update_private_streams
     participation.to_notificate             = @to_notificate
