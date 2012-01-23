@@ -5,7 +5,6 @@ class ParticipationsObserver < ActiveRecord::Observer
     if model.present?
       model.publish
       model.notify_content
-      model.send_notifications
     end
   end
 

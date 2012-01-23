@@ -21,6 +21,7 @@ gem 'i18n_routing', '0.5.0'
 gem 'friendly_id', '4.0.0'
 gem 'agent_orange', '0.1.3'
 gem 'translate-rails3', '0.2.0', :require => 'translate'
+gem 'activerecord-import'
 
 group :development do
   gem 'capistrano'

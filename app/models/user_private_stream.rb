@@ -4,8 +4,7 @@ class UserPrivateStream < ActiveRecord::Base
              :class_name => 'User'
   belongs_to :event,
              :polymorphic => true
-  after_save  :send_notification
-  after_create  :increment_user_counter
+  after_save  :increment_user_counter
   after_destroy :decrement_user_counter
 
   def self.moderated
@@ -90,7 +89,7 @@ class UserPrivateStream < ActiveRecord::Base
   private :send_notification
 
   def increment_user_counter
-    User.increment_counter("private_#{event_type.underscore.pluralize}_count", user_id)
+    User.increment_counter("private_#{event_type.underscore.pluralize}_count", user_id) if moderated_changed? && moderated
   end
   private :increment_user_counter
 

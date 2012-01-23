@@ -96,38 +96,41 @@ class Question < Content
   end
 
   def publish
-    super
 
-    author.create_public_action(self)
+    @to_update_public_streams = (to_update_public_streams || [])
+    @to_update_public_streams << author
+
+    @to_update_private_streams = (to_update_private_streams || [])
 
     if target_user
-      @users_to_notificate << target_user
+      @to_update_public_streams += target_user.areas
 
-      target_user.areas.each do |area|
-        area.create_action(self)
-        @users_to_notificate += area.followers
-      end
-      @users_to_notificate += target_user.followers
+      @to_update_private_streams << target_user
+      @to_update_private_streams += target_user.areas.map(&:followers).flatten
+      @to_update_private_streams += target_user.followers
 
     elsif target_area
-      target_area.create_action(self)
+      @to_update_public_streams << target_area
+      @to_update_public_streams += target_area.team
 
-      target_area.team.each do |politician|
-        politician.create_public_action(self)
-      end
-      @users_to_notificate += target_area.team
+      @to_update_private_streams += target_area.team
     end
+
+    super
   end
 
   def send_mail
-    IrekiaMailer.deliver_new_question(question)
+    IrekiaMailer.deliver_new_question(self) if moderated?
   end
 
   def notify_of_new_participation(participation)
-    super(participation)
+    @to_update_private_streams = (to_update_private_streams || [])
+
     if answer.present?
-      @users_to_notificate << answer.author
+      @to_update_private_streams << answer.author
     end
+
+    super(participation)
   end
 
   def answer_request_from_author

@@ -45,12 +45,15 @@ class Argument < Participation
   end
 
   def publish
-    super
 
     return if self.author.blank?
 
-    @users_to_notificate += content.participers(author).where('participations.type' => 'Argument')
-    @users_to_notificate += proposal.target_area.team.reject{|politician| politician == author}
+    @to_update_private_streams = (to_update_private_streams || [])
+
+    @to_update_private_streams += content.participers(author).where('participations.type' => 'Argument')
+    @to_update_private_streams += proposal.target_area.team.reject{|politician| politician == author}
+
+    super
   end
 
 end

@@ -312,22 +312,22 @@ class User < ActiveRecord::Base
   end
 
   def create_public_action(item)
-    public_action              = actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
+    public_action              = actions.find_or_create_by_event_id_and_event_type item.event_id, item.event_type
     public_action.published_at = item.published_at
-    public_action.message      = item.to_json
-    public_action.author       = item.author
+    public_action.message      = item.message
+    public_action.author_id    = item.author_id
     public_action.moderated    = item.moderated
     public_action.save!
   end
 
   def create_private_action(item)
-    return if item && item.is_a?(Content)       && item.author.id == id
-    return if item && item.is_a?(Participation) && (item.author.id == id || item.content.author.id == item.author.id)
+    return if item && item.is_content?       && item.author.id == id
+    return if item && item.is_participation? && (item.author.id == id || item.content.author.id == item.author.id)
 
-    private_action = private_actions.find_or_create_by_event_id_and_event_type item.id, item.class.name
+    private_action = private_actions.find_or_create_by_event_id_and_event_type item.event_id, item.event_type
     private_action.published_at = item.published_at
-    private_action.message      = item.to_json
-    private_action.author       = item.author if item.author.present?
+    private_action.message      = item.message
+    private_action.author_id    = item.author_id if item.author_id.present?
     private_action.moderated    = item.moderated
     private_action.save!
   end

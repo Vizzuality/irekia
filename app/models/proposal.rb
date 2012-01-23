@@ -137,16 +137,20 @@ class Proposal < Content
   end
 
   def publish
-    super
 
-    author.create_public_action(self)
+    @to_update_public_streams  = (to_update_public_streams || [])
+    @to_update_private_streams = (to_update_private_streams || [])
+
+    @to_update_public_streams << author
 
     if target_area
-      target_area.create_action(self)
-      @users_to_notificate += target_area.followers
-      @users_to_notificate += target_area.team
+      @to_update_public_streams << target_area
+
+      @to_update_private_streams += target_area.followers
+      @to_update_private_streams += target_area.team
     end
 
+    super
   end
 
 end
