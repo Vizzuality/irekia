@@ -153,7 +153,6 @@ module Irekia
     def send_notifications(item)
       return unless item.moderated?
 
-      require 'ruby-debug'; debugger
       to_notificate_ids = item.to_notificate.map(&:id)
 
       columns = [:user_id, :item_type, :item_id, :parent_id, :parent_type]

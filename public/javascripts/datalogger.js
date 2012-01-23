@@ -7,6 +7,10 @@ $(function() {
   $(".paper").animate({top: headerHeight + "px"}, 250);
     }, 200);
 
+  $("a.reload").click(function(e){
+    window.location.reload();
+  });
+
   $("form.publish").bind('ajax:success', function() {
     window.location.reload();
   });
