@@ -314,7 +314,11 @@ class UsersController < ApplicationController
   def per_page
     @page = params[:page] || 0
     @per_page = if action_name == 'show' || params[:referer] == 'show'
-      5
+                  if request.format.iphone?
+                    120
+                  else
+                    5
+                  end
     else
       10
     end

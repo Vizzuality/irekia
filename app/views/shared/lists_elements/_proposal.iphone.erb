@@ -5,7 +5,7 @@
   end
 %>
 
-  <%= link_to raw("<strong>#{data.percentage}<span class='percentage'>%</span></strong><span>#{t("." + position )}</span>"), proposal_path(data.slug), :class => "icon #{ position }" %>
+  <%= link_to raw("<strong>#{data.percentage}<span class='percentage'>%</span></strong>"), proposal_path(data.slug), :class => "icon #{ position }" %>
   <div class="content">
 
   <p>
