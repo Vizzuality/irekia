@@ -366,7 +366,8 @@ form.editable .input_field textarea, form.editable .input_field input[type="text
 
 .dk_toggle { display: -moz-inline-stack; display: inline-block; *display: inline; position: relative; zoom: 1; }
 
-.scrollpane .jspVerticalBar { right: 13px; background: none; }
+.scrollpane .jspVerticalBar { right: 5px; width: 30px; background: none; }
+.scrollpane .jspVerticalBar .jspDrag { margin-left: 14px; width: 5px; }
 
 .dk_open { position: relative; outline: none; }
 
