@@ -3,8 +3,8 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => :signin, :novalidate => "novalidate"}) do |f| %>
 
   <fieldset<%= " class='error'" if flash and flash[:alert] %>>
-  <%= f.email_field :email, :placeholder => "Email", :class => "email#{' error' if flash and flash[:alert]}"  %>
-  <%= f.password_field :password, :placeholder => "Password", :class => "#{'error' if flash and flash[:alert]}" %>
+  <%= f.email_field :email, :placeholder => t(".email"), :class => "email#{' error' if flash and flash[:alert]}"  %>
+  <%= f.password_field :password, :placeholder => t(".password"), :class => "#{'error' if flash and flash[:alert]}" %>
   </fieldset>
   <%= f.check_box :remember_me, :class => "hidden", :checked => true %>
 

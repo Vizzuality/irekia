@@ -425,6 +425,9 @@
     configure_your_account: Configura tu cuenta
   home:
     index:
+      sign_in: Entrar
+      email: Email
+      password: Contraseña
       title: Participa en tu gobierno.
       description: Irekia es la plataforma que te permite hacer oir tu voz en la toma de decisiones de Euskadi. Haz tus propuestas, reclama respuestas, contribuye y opina.
       login: Accede a tu cuenta
