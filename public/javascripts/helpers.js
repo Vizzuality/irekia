@@ -221,7 +221,7 @@ jQuery.fn.enableAnsweringQuestion = function(opt){
     spin_element   = document.getElementById('question_spinner'),
     spinner        = new Spinner(SPINNER_OPTIONS);
 
-    $(this).find("input[type='submit']").click(function(e) {
+    $(this).find("button").click(function(e) {
       spinner.spin(spin_element);
     });
 
