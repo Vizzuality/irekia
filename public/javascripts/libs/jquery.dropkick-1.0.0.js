@@ -298,6 +298,7 @@
 
     if (!data.scrollbar) {
       data.scrollbar = $dk.find(".scrollpane").jScrollPane({verticalDragMinHeight: 20});
+      $dk.find(".scrollpane").find(".jspVerticalBar").click(function(e) { e.preventDefault(); e.stopPropagation(); });
 
       $dk.find('.dk_options').css({
         'width' : ($dk.find('.dk_options').width() - 2) + 'px'

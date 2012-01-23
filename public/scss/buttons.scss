@@ -1602,8 +1602,10 @@ form.editable,
 .dk_toggle { display: -moz-inline-stack; display: inline-block; *display: inline; position: relative; zoom: 1; }
 
 .scrollpane .jspVerticalBar {
-  right:13px;
+  right:5px;
+  width: 30px;
   background:none;
+  .jspDrag { margin-left: 14px; width: 5px; }
 
 }
 .dk_open {
