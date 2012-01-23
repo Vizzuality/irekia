@@ -15,11 +15,13 @@
         </div>
         <div class="last column">
           <%= simple_format("#{@politician.description_2.try(:strip)} #{link_to(t('.description.read_more'), detail_politician_path(@politician))}") %>
+          <% if !current_user or current_user != @politician %>
           <% if @follow.new_record? -%>
             <%= render 'follows/create' %>
           <% else -%>
             <%= render 'follows/destroy' %>
           <% end -%>
+        <% end %>
         </div>
       </div>
     </div>
