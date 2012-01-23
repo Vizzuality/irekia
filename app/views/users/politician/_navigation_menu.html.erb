@@ -1,5 +1,5 @@
 <%= menu [
-  { :link => link_to(t(".show"), path_for_user(@user, :anchor => :actions)), :class => current_action?('show') },
+  { :link => link_to(t(".show"), user_path(@user, :anchor => :actions)), :class => current_action?('show') },
   { :link => link_to(t(".questions"), questions_user_path(@user, :anchor => :questions)), :class => current_action?('questions'), :count => @questions_notifications },
   { :link => link_to(t(".proposals"), proposals_user_path(@user, :anchor => :proposals)), :class => current_action?('proposals'), :count => @proposals_notifications },
   { :link => link_to(t(".actions"), actions_user_path(@user,  :anchor => :actions)), :class => current_action?('actions')  },
