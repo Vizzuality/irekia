@@ -65,7 +65,7 @@ module Irekia
             news.news_data.send(:"body_#{lang}=",(news_item.summary.sanitize rescue nil))
             news.news_data.source_url = news_item.url rescue nil
             news.news_data.iframe_url = news_item.multimedia_iframe_src rescue nil
-            news.tags                 = news_item.categories.reject{|t| t.match(/^_/)}.join(',')
+            news.tags                 = news_item.categories.reject{|t| t.match(/^_/) || t.match(/::/)}.join(',')
             news.moderated            = true
 
             news.areas = []
@@ -195,7 +195,7 @@ module Irekia
             event.latitude   = event_data_detail.event.lat.text
             event.longitude  = event_data_detail.event.lng.text
             event.location   = event_data_detail.event.direccion.text
-            event.tags       = event_data_detail.event.tags.tag.map{|tag| tag.text.strip }.reject{|t| t.match(/^_/)}.join(',')
+            event.tags       = event_data_detail.event.tags.tag.map{|tag| tag.text.strip }.reject{|t| t.match(/^_/) || t.match(/::/)}.join(',')
             event.moderated  = true
 
             event.save!
