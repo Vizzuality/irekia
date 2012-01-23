@@ -1,11 +1,11 @@
 #encoding: UTF-8
 module Irekia
   module StreamsUpdater
-    attr_accessor :to_update_public_streams, :to_update_private_streams
+    attr_accessor :to_update_public_streams, :to_update_private_streams, :to_notificate
 
     @just_created = false
     @just_created = true
-    @to_update_public_streams = @to_update_private_streams = @to_update_private_streams_ids = nil
+    @to_update_public_streams = @to_update_private_streams = @to_notificate = @to_update_private_streams_ids = nil
 
 
     def just_created=(value)
@@ -144,8 +144,7 @@ module Irekia
       User
       .where(:id => item.to_update_private_streams_ids)
       .update_all(<<-SQL
-        private_#{item.class.name.underscore.pluralize}_count = (private_#{item.class.name.underscore.pluralize}_count + 1),
-        new_#{item.class.name.underscore.pluralize}_count = (new_#{item.class.name.underscore.pluralize}_count + 1)
+        private_#{item.class.name.underscore.pluralize}_count = (private_#{item.class.name.underscore.pluralize}_count + 1)
       SQL
       )
 
@@ -154,10 +153,21 @@ module Irekia
     def send_notifications(item)
       return unless item.moderated?
 
+      require 'ruby-debug'; debugger
+      to_notificate_ids = item.to_notificate.map(&:id)
+
       columns = [:user_id, :item_type, :item_id, :parent_id, :parent_type]
-      values = item.to_update_private_streams_ids.map{|user_id| [user_id, item.class.name, item.id, item.parent.try(:id), item.parent.try(:class).try(:name)]}
+      values = to_notificate_ids.map{|user_id| [user_id, item.class.name, item.id, item.parent.try(:id), item.parent.try(:class).try(:name)]}
 
       Notification.import columns, values, :validate => false
+
+      User
+      .where(:id => to_notificate_ids)
+      .update_all(<<-SQL
+        new_#{item.class.name.underscore.pluralize}_count = (new_#{item.class.name.underscore.pluralize}_count + 1)
+      SQL
+      )
+
     end
 
   end

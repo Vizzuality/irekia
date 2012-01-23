@@ -51,10 +51,13 @@ class Answer < Content
 
     @to_update_public_streams  = (to_update_public_streams || [])
     @to_update_private_streams = (to_update_private_streams || [])
+    @to_notificate             = (to_notificate || [])
 
     @to_update_private_streams = (to_update_private_streams || [])
     @to_update_private_streams << question.author
     @to_update_private_streams += question.answer_requests.map(&:author)
+
+    @to_notificate << question.author
 
     super
   end

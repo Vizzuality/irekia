@@ -210,6 +210,7 @@ class Content < ActiveRecord::Base
 
     @to_update_public_streams  = (@to_update_public_streams || [])
     @to_update_private_streams = (@to_update_private_streams || [])
+    @to_notificate             = (@to_notificate || [])
 
     @to_update_public_streams << author
     @to_update_public_streams += author.areas
@@ -219,6 +220,8 @@ class Content < ActiveRecord::Base
     @to_update_private_streams += author.followers
     @to_update_private_streams += tagged_politicians
 
+    @to_notificate += tagged_politicians
+
     update_streams
   end
 
@@ -227,15 +230,21 @@ class Content < ActiveRecord::Base
   end
 
   def notify_of_new_participation(participation)
-    @to_update_public_streams  = @to_update_private_streams = []
+    @to_update_public_streams  = @to_update_private_streams = @to_notificate = []
 
     @to_update_public_streams += areas
     @to_update_private_streams += users
     @to_update_private_streams << author
     @to_update_private_streams += participers(author)
 
-    participation.to_update_public_streams = @to_update_public_streams
+    @to_notificate += users
+    @to_notificate << author
+    @to_notificate += participers(author)
+
+    require 'ruby-debug'; debugger
+    participation.to_update_public_streams  = @to_update_public_streams
     participation.to_update_private_streams = @to_update_private_streams
+    participation.to_notificate             = @to_notificate
 
     update_streams(participation)
   end

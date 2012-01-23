@@ -58,10 +58,6 @@ class Vote < Participation
     super
   end
 
-  def notify_content
-    content.notify_of_new_participation(self, true)
-  end
-
   def set_as_moderated
     self.moderated = true
   end

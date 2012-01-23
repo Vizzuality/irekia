@@ -140,6 +140,7 @@ class Proposal < Content
 
     @to_update_public_streams  = (to_update_public_streams || [])
     @to_update_private_streams = (to_update_private_streams || [])
+    @to_notificate             = (to_notificate || [])
 
     @to_update_public_streams << author
 
@@ -148,6 +149,8 @@ class Proposal < Content
 
       @to_update_private_streams += target_area.followers
       @to_update_private_streams += target_area.team
+
+      @to_notificate += target_area.team
     end
 
     super
