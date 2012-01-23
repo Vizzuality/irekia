@@ -800,6 +800,8 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .cycle.extra-margin { height: 800px; }
 #container .cycle .inner-cycle { position: relative; clear: both; width: 9000px; height: 333px; }
 #container .cycle .inner-cycle .article { float: left; clear: none; margin: 10px 100px 0 0; }
+#container .cycle .inner-cycle .article .field.email.error label { float: left; }
+#container .cycle .inner-cycle .article .error_field { float: left; color: #E96F5F; margin: -2px 0 0 5px; font-size: 14px; }
 #container .cycle .inner-cycle .article.step1 .inner .content { padding: 30px 0 0 0; }
 #container .cycle .inner-cycle .article.step1 .inner fieldset .field.email { width: 415px; }
 #container .cycle .inner-cycle .article.step1 .inner fieldset .field.email .input_field { width: 415px; }

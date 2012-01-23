@@ -324,7 +324,11 @@ jQuery.fn.enableRegistration = function(opt){
     $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
 
     $form.submit(function() {
-      $(this).find(".error").removeClass("error");
+      var $that = $(this);
+      $(this).find(".error_field").fadeOut(250, function() {
+        $(this).html("");
+        $that.find(".error").removeClass("error");
+      });
     });
 
     $form.bind('ajax:success', redirectToRoot);
@@ -338,7 +342,11 @@ jQuery.fn.enableRegistration = function(opt){
     $form.find('a.checkbox').enableCheckbox();
 
     $form.submit(function() {
-      $(this).find(".error").removeClass("error");
+      var $that = $(this);
+      $(this).find(".error_field").fadeOut(250, function() {
+        $(this).html("");
+        $that.find(".error").removeClass("error");
+      });
     });
 
     $form.bind('ajax:success', step2);
@@ -351,6 +359,11 @@ jQuery.fn.enableRegistration = function(opt){
     var errors = $.parseJSON(xhr.responseText);
 
     _.each(errors, function(message, field) {
+      if (field == "email") {
+        $currentArticle.find(".field.email .error_field").html(message[0]);
+        $currentArticle.find(".field.email .error_field").fadeIn(250);
+      }
+
       $currentArticle.find("form ." + field).addClass("error");
     });
 

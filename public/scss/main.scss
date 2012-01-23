@@ -3002,6 +3002,15 @@ span.where, .map .infowindow ul.details li.where {
       clear:none;
       margin: 10px 100px 0 0;
 
+      .field.email.error label { float:left; }
+
+      .error_field {
+        float: left;
+        color: #E96F5F;
+        margin: -2px 0 0 5px;
+        font-size: 14px;
+      }
+
       &.step1 {
         .inner {
           //padding: 15px 31px 0px 35px;
