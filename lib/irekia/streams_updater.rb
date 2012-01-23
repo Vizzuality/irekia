@@ -123,10 +123,11 @@ module Irekia
 
         UserPrivateStream.import columns, values, :validate => false
 
-        update_counters(item)
-        send_notifications(item)
-        send_mail
       end
+
+      update_counters(item)
+      send_notifications(item)
+      send_mail
     end
 
     def update_counters(item)
