@@ -91,7 +91,6 @@
 
         <% if viewing_dashboard? || controller.action_name == "actions" %>
           <div class="left">
-            <%= link_for_actions %>
             <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" if @actions.present? %>
             <span id="actions_spinner" class="spinner"></span>
           </div>
