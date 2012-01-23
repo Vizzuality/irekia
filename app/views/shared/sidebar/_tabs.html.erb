@@ -9,7 +9,7 @@
 
 <div class="pill-content">
 <% if audios.present? -%>
-  <div class="active" id="home">
+  <div class="active" id="tab-audio">
     <ul class="playlist">
       <% audios.each do |audio| -%>
         <li class="clearfix">
@@ -21,11 +21,11 @@
     </ul>
   </div>
 <% else -%>
-  <div class="active" id="home">No hay audios disponible</div>
+  <div class="active" id="tab-audio">No hay audios disponible</div>
 <% end -%>
 
 <% if videos.present? -%>
-  <div id="profile">
+  <div id="tab-video">
     <ul>
       <% videos.each do |video| -%>
         <li class="clearfix">
@@ -38,11 +38,11 @@
 
   </div>
 <% else -%>
-  <div id="profile">No hay videos disponibles</div>
+  <div id="tab-video">No hay videos disponibles</div>
 <% end -%>
 
 <% if files.present? -%>
-  <div id="messages">
+  <div id="tab-documents">
     <ul>
       <% files.each do |file| -%>
         <li class="clearfix">
@@ -54,7 +54,7 @@
     </ul>
   </div>
 <% else -%>
-  <div id="messages">No hay documentos disponibles</div>
+  <div id="tab-documents">No hay documentos disponibles</div>
 <% end -%>
 </div>
 
