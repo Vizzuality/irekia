@@ -1,6 +1,6 @@
 <%= avatar data.author %>
 <div class="content">
-  <p><%= t('.title', :content_type => t(".#{data.content.type}")) %> <strong>&quot;<%= data.content.text %>&quot;</strong>
+  <p><%= t('.title', :content_type => t(".#{data.content.content_type.underscore}")) %> <strong>&quot;<%= data.content.text %>&quot;</strong>
   </p>
 
   <%= render 'shared/lists_elements/not_moderated/footer', :data => data %>
