@@ -836,6 +836,9 @@
         title:
           you: 'Has contestado a "%{question}"'
           other: '%{author} ha contestado a "%{question}"'
+          answer_with_video:
+            you:  'Has contestado con un vídeo.'
+            other: 'Ha contestado con un vídeo.'
         author: '%{author} &middot; <span class="answered">Contestada tras %{time}</span>'
         iphone:
           author: 'Hace %{time}'

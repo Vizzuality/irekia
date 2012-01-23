@@ -41,6 +41,7 @@ class Answer < Content
       :question_slug         => question.try(:slug),
       :question_text         => question_text,
       :question_published_at => question_published_at,
+      :has_video             => (video_data.present? rescue nil),
       :answer_text           => answer_text
     })
   end
