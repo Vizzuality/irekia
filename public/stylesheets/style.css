@@ -1079,6 +1079,7 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* answer */
 #container .article div.answer { margin: 20px 0 0 0; background: url("/images/notebook_bkg.png") repeat-y 0 16px; }
 #container .article div.answer p { margin: 0 0 20px 0; font-size: 17px; color: #465866; line-height: 20px; }
+#container .article div.answer iframe { width: 100%; }
 
 /* answer placeholder */
 #container .article .inner .left .answer_placeholder { margin: 20px 0 0 0; border: 3px dashed #f1f1f1; text-align: center; padding: 55px 0; }

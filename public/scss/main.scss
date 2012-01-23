@@ -3507,6 +3507,7 @@ a.editable {
   margin: 20px 0 0 0;
   background:url('/images/notebook_bkg.png') repeat-y 0 16px;
   p { margin: 0 0 20px 0; font-size:17px; color:$dark_blue; line-height:20px; }
+  iframe { width: 100%; }
 }
 
 /* answer placeholder */

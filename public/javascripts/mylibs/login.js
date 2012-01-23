@@ -546,12 +546,15 @@
   function _position($this) {
     var data = $this.data(store);
     var $ps = $("#sign_in");
-    var $link = data.$this;
-    var x = $link.offset().left - $ps.width()  + 30;
-    var y = $link.offset().top + 20;
 
-    $ps.css("left", x);
-    $ps.css("top", y);
+    if (data.$this) {
+      var $link = data.$this;
+      var x = $link.offset().left - $ps.width()  + 30;
+      var y = $link.offset().top + 20;
+
+      $ps.css("left", x);
+      $ps.css("top", y);
+    }
   }
 
   $(function() {});
