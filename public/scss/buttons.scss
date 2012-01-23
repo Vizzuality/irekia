@@ -364,32 +364,7 @@ White buttons
       background:none;
     }
   }
-
 }
-
-// .ie7 .white_button.remove_person,
-// .ie7 .article .white_button.remove_person,
-// .ie8 .white_button.remove_person,
-// .ie8 .article .white_button.remove_person {
-//   padding: 0; margin: 0 10px;
-//   background:url('/images/buttons_sprite.png') repeat-x right -320!important;
-//
-//   span {
-//     color: $white;
-//     background:url('/images/buttons_sprite.png') repeat-x right -320!important;
-//     background-position:left -360px;
-//
-//     .remove { // icon
-//       float:left;
-//       width:18px; height:15px;
-//       padding: 0;
-//       margin: 0 7px 0 -5px;
-//       background:url('/images/icons/icon_sprite.png') no-repeat 0 -104px;
-//     }
-//   } // span
-//
-//   &:hover { color: $white; span { color: $white; } }
-// } // .remove_person
 
 /* add person icon */
 .white_button.add_person {
@@ -412,6 +387,18 @@ White buttons
 /* =============================================================================
 Hacks (mostly ie7 and ie8 fixes)
 ========================================================================== */
+
+
+.ie7 #container .article .answering,
+.ie8 #container .article .answering {
+  form {
+    textarea { border: 1px solid #ccc; }
+    input[type="text"] { border: 1px solid #ccc; }
+    .input_field {
+      .holder { position:relative; top: 7px!Important; }
+    }
+  }
+}
 
 .ie8 #container .article .avatar-uploader {
   .avatar_box .avatar .ieframe { display: none!important; }
@@ -678,6 +665,8 @@ Hacks (mostly ie7 and ie8 fixes)
 }
 
 // Fixes left outter margin and right inner margin of buttons in ie7 and ie8
+.ie7 #container .article .answering .white_button,
+.ie8 #container .article .answering .white_button,
 .ie7 #container .article.login .bfooter .inner div.right .white_button,
 .ie8 #container .article.login .bfooter .inner div.right .white_button,
 .ie7 #container .article.publish.with_footer .bfooter .inner div.right .publish,
@@ -685,6 +674,7 @@ Hacks (mostly ie7 and ie8 fixes)
   margin-left: 10px;
   span { margin-right: 0px; }
 }
+
 
 /* --------------------------------------------------------------------------------- Calendar days */
 .ie7 #container .article.agenda .inner .content ul li.day {
