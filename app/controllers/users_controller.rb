@@ -228,6 +228,7 @@ class UsersController < ApplicationController
     @videos_count          = @user.send("#{'private_' if show_private_actions?}videos_count")          || 0
     @status_messages_count = @user.send("#{'private_' if show_private_actions?}status_messages_count") || 0
     @tweets_count          = @user.send("#{'private_' if show_private_actions?}tweets_count")          || 0
+    @unanswered_questions_count = @user.get_questions(params.slice(:to_you, :to_your_area)).not_answered.length if @user.politician? && request.format.iphone?
 
     if politician_profile?
       @followers_count         = @user.followers.count
@@ -298,6 +299,8 @@ class UsersController < ApplicationController
 
   def get_actions
     if (action_name == 'show' || params[:referer] == 'show') && (private_profile? || politician_profile?)
+      params[:type] = ["question", "answer", "answer_request"] if request.format.iphone?
+
       @actions = @user.get_private_actions(params.slice(:type, :referer, :more_polemic, :page), current_user)
     else
       @actions = @user.get_actions(params.slice(:type, :referer, :more_polemic, :page), current_user)
