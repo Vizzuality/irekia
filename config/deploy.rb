@@ -85,3 +85,6 @@ namespace :db do
     run "cd #{current_release} && RAILS_ENV=#{stage} bundle exec rake db:reset"
   end
 end
+
+        require './config/boot'
+        require 'airbrake/capistrano'
