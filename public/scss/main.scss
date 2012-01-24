@@ -2787,7 +2787,7 @@ span.where, .map .infowindow ul.details li.where {
 
 #container .article .social-links {
   margin: 0 auto 40px auto;
-  width: 447px;
+  width: 456px;
   clear:both;
   overflow: hidden;
 
@@ -3009,7 +3009,7 @@ span.where, .map .infowindow ul.details li.where {
 
       .field.email.error label { float:left; }
       .field.confirm_password.error label { float:left; }
-      .field label.long { float:left; }
+      .field label.long { float:left; clear:both; }
 
       .error_field {
         float: left;
@@ -3071,8 +3071,8 @@ span.where, .map .infowindow ul.details li.where {
 
             &.password {
               width: 100%; margin: 0 15px 10px 0;
-              .input_field { float:left; clear:none; margin:0 10px 0 0; }
-              .input_field.right { float:right; margin:0; }
+              .input_field { float:left; clear:left; margin:0 10px 0 0; }
+              .input_field.right { float:right; margin:0; clear:none; }
               .error_field { font-size: 13px; }
             }
 
@@ -3138,7 +3138,7 @@ span.where, .map .infowindow ul.details li.where {
             &.lastname {
               clear:both;
               overflow:hidden;
-              width:415px;
+              width:425px;
 
               .input_field {
                 float:left;

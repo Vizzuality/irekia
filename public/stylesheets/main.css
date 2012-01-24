@@ -745,7 +745,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .autosuggest .a_t { background: url("/images/box_autosuggest_bkg.png") no-repeat -1px top; height: 20px; z-index: 1000; position: absolute; top: -20px; width: 691px; }
 #container .article .autosuggest .a_f { background: url("/images/box_autosuggest_bkg.png") no-repeat -1px bottom; height: 10px; z-index: 1000; position: absolute; bottom: 0px; width: 691px; }
 
-#container .article .social-links { margin: 0 auto 40px auto; width: 447px; clear: both; overflow: hidden; }
+#container .article .social-links { margin: 0 auto 40px auto; width: 456px; clear: both; overflow: hidden; }
 #container .article .social-links .facebook { margin: 0 29px 0 0; }
 #container .article .social-links .facebook, #container .article .social-links .twitter { float: left; height: 36px; background: url("/images/icons/share.png") no-repeat left -154px; }
 #container .article .social-links .facebook a, #container .article .social-links .twitter a { display: block; height: 35px; margin-left: 35px; padding: 9px 10px 0 10px; line-height: normal; color: #fff; font-size: 15px; text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3); background: url("/images/icons/share.png") repeat-x right -192px; }
@@ -804,7 +804,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .cycle .inner-cycle .article { float: left; clear: none; margin: 10px 100px 0 0; }
 #container .cycle .inner-cycle .article .field.email.error label { float: left; }
 #container .cycle .inner-cycle .article .field.confirm_password.error label { float: left; }
-#container .cycle .inner-cycle .article .field label.long { float: left; }
+#container .cycle .inner-cycle .article .field label.long { float: left; clear: both; }
 #container .cycle .inner-cycle .article .error_field { float: left; color: #E96F5F; margin: -2px 0 0 5px; font-size: 14px; }
 #container .cycle .inner-cycle .article.step1 .inner .content { padding: 30px 0 0 0; }
 #container .cycle .inner-cycle .article.step1 .inner fieldset .field.email { width: 415px; }
@@ -816,8 +816,8 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .cycle .inner-cycle .article form { clear: both; }
 #container .cycle .inner-cycle .article form .inner fieldset, #container .cycle .inner-cycle .article .inner fieldset { margin: auto; width: 415px; border: none!important; }
 #container .cycle .inner-cycle .article form .inner fieldset .field.password, #container .cycle .inner-cycle .article .inner fieldset .field.password { width: 100%; margin: 0 15px 10px 0; }
-#container .cycle .inner-cycle .article form .inner fieldset .field.password .input_field, #container .cycle .inner-cycle .article .inner fieldset .field.password .input_field { float: left; clear: none; margin: 0 10px 0 0; }
-#container .cycle .inner-cycle .article form .inner fieldset .field.password .input_field.right, #container .cycle .inner-cycle .article .inner fieldset .field.password .input_field.right { float: right; margin: 0; }
+#container .cycle .inner-cycle .article form .inner fieldset .field.password .input_field, #container .cycle .inner-cycle .article .inner fieldset .field.password .input_field { float: left; clear: left; margin: 0 10px 0 0; }
+#container .cycle .inner-cycle .article form .inner fieldset .field.password .input_field.right, #container .cycle .inner-cycle .article .inner fieldset .field.password .input_field.right { float: right; margin: 0; clear: none; }
 #container .cycle .inner-cycle .article form .inner fieldset .field.password .error_field, #container .cycle .inner-cycle .article .inner fieldset .field.password .error_field { font-size: 13px; }
 #container .cycle .inner-cycle .article form .inner fieldset .field span.mandatory, #container .cycle .inner-cycle .article .inner fieldset .field span.mandatory { float: left; color: rgba(125, 138, 146, 0.4); font-size: 13px; margin-top: 10px; margin-left: 5px; }
 #container .cycle .inner-cycle .article form .inner fieldset .field.territory, #container .cycle .inner-cycle .article .inner fieldset .field.territory { width: 174px; z-index: 1000; }
@@ -832,7 +832,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .cycle .inner-cycle .article form .inner fieldset .field.born_at, #container .cycle .inner-cycle .article .inner fieldset .field.born_at { float: left; width: 415px; clear: both; }
 #container .cycle .inner-cycle .article form .inner fieldset .field.born_at .input_field, #container .cycle .inner-cycle .article .inner fieldset .field.born_at .input_field { width: 415px; }
 #container .cycle .inner-cycle .article form .inner fieldset .field.born_at .input_field select, #container .cycle .inner-cycle .article form .inner fieldset .field.born_at .input_field .dk_container, #container .cycle .inner-cycle .article .inner fieldset .field.born_at .input_field select, #container .cycle .inner-cycle .article .inner fieldset .field.born_at .input_field .dk_container { float: left; margin: 0 5px 0 0; }
-#container .cycle .inner-cycle .article form .inner fieldset .field.name, #container .cycle .inner-cycle .article form .inner fieldset .field.lastname, #container .cycle .inner-cycle .article .inner fieldset .field.name, #container .cycle .inner-cycle .article .inner fieldset .field.lastname { clear: both; overflow: hidden; width: 415px; }
+#container .cycle .inner-cycle .article form .inner fieldset .field.name, #container .cycle .inner-cycle .article form .inner fieldset .field.lastname, #container .cycle .inner-cycle .article .inner fieldset .field.name, #container .cycle .inner-cycle .article .inner fieldset .field.lastname { clear: both; overflow: hidden; width: 425px; }
 #container .cycle .inner-cycle .article form .inner fieldset .field.name .input_field, #container .cycle .inner-cycle .article form .inner fieldset .field.lastname .input_field, #container .cycle .inner-cycle .article .inner fieldset .field.name .input_field, #container .cycle .inner-cycle .article .inner fieldset .field.lastname .input_field { float: left; clear: none; width: 350px; }
 #container .cycle .inner-cycle .article form .inner fieldset .field.name .input_field input[type="text"], #container .cycle .inner-cycle .article form .inner fieldset .field.lastname .input_field input[type="text"], #container .cycle .inner-cycle .article .inner fieldset .field.name .input_field input[type="text"], #container .cycle .inner-cycle .article .inner fieldset .field.lastname .input_field input[type="text"] { width: 328px; }
 #container .cycle .inner-cycle .article.thin { margin-left: 164px!important; }
