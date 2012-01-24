@@ -4,6 +4,4 @@
       <%= render_list_element(question, question.class.name, :path_sufix => defined?(mini) ? '_mini' : nil) %>
     <% end %>
   </ul>
-<% else %>
-  <span class="empty"><%= t(".no_content") %></span>
 <% end %>

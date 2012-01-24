@@ -250,6 +250,7 @@ form.publish .white_button { position:relative; }
             padding-left: 16px;
             background: url('/images/icons/icon_sprite.png') no-repeat 0 -35px;
             color: #465866;
+      opacity:.5;
             font-size: 11px;
           }
         }
@@ -708,5 +709,4 @@ form.signin {
   color:#7A858B;
   p { margin-bottom: 25px; }
   a.white_button { font-size:17px; }
-
 }

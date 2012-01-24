@@ -13,7 +13,12 @@
       <div class="inner">
         <div class="content">
 
-        <%= render 'shared/questions_list', :questions => @unanswered_questions %>
+
+        <ul>
+        <% @unanswered_questions.each do |question| %>
+          <%= render_list_element(question, "question_unanswered") %>
+        <% end %>
+        </ul>
 
 
         </div>

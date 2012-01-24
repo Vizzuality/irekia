@@ -67,7 +67,7 @@ form.publish .white_button { position: relative; }
 #main .article .inner .content ul li .avatar { float: left; margin-right: 10px; }
 #main .article .inner .content ul li .content { width: 205px; margin: 0; padding: 0; }
 #main .article .inner .content ul li:last-child { border: none; }
-#main .article .inner .content ul li .footer { float: left; margin: 10px 0 0 0; padding-left: 16px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -35px; color: #465866; font-size: 11px; }
+#main .article .inner .content ul li .footer { float: left; margin: 10px 0 0 0; padding-left: 16px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -35px; color: #465866; opacity: .5; font-size: 11px; }
 
 #main .article ul li.proposal a.icon, #main .article ul li.proposal span.icon, #main .article ul li.argument a.icon, #main .article ul li.argument span.icon, #main .article ul li.content_user a.icon, #main .article ul li.content_user span.icon, #main .article ul li.answer_request a.icon, #main .article ul li.answer_request span.icon { display: block; float: left; width: 43px; height: 43px; margin: 0 13px 0 0; text-align: center; font-size: 11px; color: #666666; text-decoration: none; line-height: 10px; }
 #main .article ul li.proposal a.icon strong, #main .article ul li.proposal span.icon strong, #main .article ul li.argument a.icon strong, #main .article ul li.argument span.icon strong, #main .article ul li.content_user a.icon strong, #main .article ul li.content_user span.icon strong, #main .article ul li.answer_request a.icon strong, #main .article ul li.answer_request span.icon strong { display: block; margin: 18px 0 0 2px; font-size: 18px; }
