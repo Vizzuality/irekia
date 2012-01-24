@@ -906,10 +906,10 @@ eu:
       available_in_android_market: "ESKURAGARRI <span>Android Market</span>en"
       available_in_app_store: "ESKURAGARRI <span>App Store</span>n"
       subtitle: "Sartu IREKIAra Android aplikazioarekin edo iPhone-arekin"
-      title: "Smatphone bat daukazu?"
+      title: "Smartphone bat daukazu?"
   menu: 
     configure_your_account: "Konfiguratu zure kontua"
-    dashboard: Dashboard
+    dashboard: Laburpena
     publish: Argitaratu
     what_to_follow: Jarraitzen
     your_activity: "Zure jarduera"
@@ -1182,7 +1182,7 @@ eu:
           questions: Galderak
           videos: Bideoak
         main_filters: 
-          more_polemic: Polemikoenak
+          more_polemic: Eztabaidatuenak
           more_recent: Azkenak
         more: "emaitza gehiago ikusi"
         no_content_filters: 
@@ -1312,7 +1312,7 @@ eu:
         statuses: Egoera-aldaketak
         videos: Bideoak
       main_filters: 
-        more_polemic: Polemikoenak
+        more_polemic: Eztabaidatuenak
         more_recent: Azkenak
       more: "jarduera gehiago ikusi"
       no_content: 
@@ -1798,7 +1798,7 @@ eu:
             description: "Errore bat egon da bideoa argitaratzerakoan. Mesedez, saiatu berriz minutu batzuk barru."
             title: Errorea
           success: 
-            description: "Gogoan izan zure dashboard-ean horren inguruko jarduera guztia ikusi ahalko duzula."
+            description: "Gogoan izan zure laburpenean horren inguruko jarduera guztia ikusi ahalko duzula."
             title: "Zure bideoa argitaratu egin da"
           vimeo_url: "Vimeoko URLa"
           youtube_url: "Youtubeko URLa"
@@ -1832,7 +1832,7 @@ eu:
       create_proposal: "Sortu proposamen bat"
       in_favor: "%{percentage}% alde (%{count} boto)"
       main_filters: 
-        more_polemic: Polemikoenak
+        more_polemic: Eztabaidatuenak
         more_recent: Azkenak
       more: "proposamen gehiago ikusi"
       no_proposals: 
@@ -1858,7 +1858,7 @@ eu:
         answered: Erantzunda
       create_question: "Egin galdera bat"
       main_filters: 
-        more_polemic: Polemikoenak
+        more_polemic: Eztabaidatuenak
         more_recent: Azkenak
       make_a_question: 
         hint: "Labur eta zehatz adierazi, mesedez. Horrela, lehenago erantzungo dizute."
@@ -1986,7 +1986,7 @@ eu:
   users: 
     actions: 
       no_activity: 
-        description: "Irekiako beste erabiltzaile batzuen proposamenen inguruko eztabaidan parte hartzera gonbidatzen zaitugu, baita EAEko kargu politikoekin hitz egitera, albisteen inguruko iritzia ematera, etab. ere. Zure jarduera guztia hemen agertuko da."
+        description: "Irekiako beste erabiltzaile batzuen proposamenen inguruko eztabaidan parte hartzera gonbidatzen zaitugu, baita Eusko Jaurlaritzako kargu politikoekin hitz egitera, albisteen inguruko iritzia ematera, etab. ere. Zure jarduera guztia hemen agertuko da."
         homepage: "Hasiera orria"
         other_description: "%{user} erabiltzaileak Irekiako beste erabiltzaile batzuen proposamenen inguruko eztabaidan parte hartu ahalko du, baita EAEko kargu politikoekin hitz egin, albisteen inguruko iritzia eman, etab. ere. Bere jarduera guztia hemen agertuko da."
         other_title: "Oraindik ez dago %{user} erabiltzailearen jarduerarik"
@@ -2033,7 +2033,7 @@ eu:
           questions: Galderak
           videos: Bideoak
         main_filters: 
-          more_polemic: Polemikoenak
+          more_polemic: Eztabaidatuenak
           more_recent: Azkenak
         more: "jarduera gehiago ikusi"
         title: "Zure azken ekintzak"
@@ -2051,7 +2051,7 @@ eu:
         proposals: Proposamenak
         publish: Argitaratu
         questions: Galderak
-        show: Dashboard-a
+        show: Laburpena
       proposals: 
         filters: 
           all: Guztiak
@@ -2070,7 +2070,7 @@ eu:
           answered: Erantzunda
           to_you: "Zuri zuzenduta"
           to_your_area: "Arloari zuenduta"
-        more_polemic: Polemikoenak
+        more_polemic: Eztabaidatuenak
         more_recent: Azkenak
         title: 
           one: "Galdera 1 erantzun gabe"
@@ -2101,7 +2101,7 @@ eu:
           questions: Galderak
           videos: Bideoak
         main_filters: 
-          more_polemic: Polemikoenak
+          more_polemic: Eztabaidatuenak
           more_recent: Azkenak
         more: "jarduera gehiago ikusi"
         title: "Zure azken ekintzak"
@@ -2111,7 +2111,7 @@ eu:
         title: 
           one: "Gehiago nahi duzu? Honakoa iradokitzen dizugu..."
           other: "Gehiago nahi duzu? Honakoa iradokitzen dizugu..."
-          zero: "Zure dashboard-a hutsik dago."
+          zero: "Zure laburpena hutsik dago."
         title_and_area: "%{area}(e)ko %{title}"
         we_suggest_you_the_most_active: "Ziurrenik ez zara behar beste politikari edo arloren jarraitzaile. Hona hemen aktiboenak:"
       followings: 
@@ -2131,7 +2131,7 @@ eu:
         publish: Argitaratu
         questions: "Zure galderak"
         settings: "Zure profila"
-        show: Dashboard-a
+        show: Laburpena
       proposals: 
         filters: 
           all: Guztiak
@@ -2140,7 +2140,7 @@ eu:
         more_recent: Azkenak
         no_proposals: 
           create_proposal: "Sortu proposamen bat"
-          description: "Zure ustez Euskal Herria hobe lezakeen edozer proposa dezakezu: administrazioa arintzeko ideiak nahiz lege eta araudien aldaketak edo hobekuntzak."
+          description: "Zure ustez Euskadi hobe lezakeen edozer proposa dezakezu: administrazioa arintzeko ideiak nahiz lege eta araudien aldaketak edo hobekuntzak."
           title: "Oraindik ez duzu proposamenik egin."
         proposal_support: "Zure proposamenek &hellip;(e)ko babesa dute Irekiako erabiltzaileen artean"
         proposal_support_count: 
@@ -2155,7 +2155,7 @@ eu:
         filters: 
           all: Guztiak
           answered: Erantzunda
-        more_polemic: Polemikoenak
+        more_polemic: Eztabaidatuenak
         more_recent: Azkenak
         no_questions: 
           create_question: "Garldera bat sortu"
@@ -2167,13 +2167,13 @@ eu:
           zero: "Ez dago erantzundako galderarik"
       show: 
         activity: 
-          profiles_or_areas_following: "Profilak edo arlo hauen jarraitzailea zara"
-          subtitle: "Hau da zure edukiekin edo %{link}ekin lotutako jarduera."
+          profiles_or_areas_following: "jarraitzen dituzun profil edo eremuekin"
+          subtitle: "Hau da zure edukiekin edo %{link} lotutako jarduera."
           title: "Azken jarduera"
       welcome: 
         areas_following: 
-          one: "Arlo 1"
-          other: "%{count} arlo"
+          one: "arlo batena"
+          other: "%{count} arlorena"
           zero: "ez zara inolako arloren jarraitzailea"
         configure_your_account: "Konfiguratu zure kontua"
         currently: "Gaur egun %{politicians} eta %{areas}"
@@ -2186,7 +2186,7 @@ eu:
             link: "Edozein arlotara joan"
             text: |-
                 Bilatu interesatzen zaizkizun Eusko Jaurlaritzako politikariak edo arloak, eta egin haien jarraitzaile.<br/>
-                Horrela, gertatzen den guztiaren berri izango duzu inolako ahaleginik egin gabe: jarraitzen dituzun politikari eta arlo guztien jarduera zure dashboard-ean agertuko da.
+                Horrela, gertatzen den guztiaren berri izango duzu inolako ahaleginik egin gabe: jarraitzen dituzun politikari eta arlo guztien jarduera zure laburpenean agertuko da.
             title: "Egin interesatzen zaizunaren jarraitzaile"
           participate: 
             launch_proposals: "egin zure proposamenak"
@@ -2200,7 +2200,7 @@ eu:
         hello: "Kaixo, %{name}"
         hi_again: "Kaixo berriro, %{name}."
         politicians_following: 
-          one: "politikari 1en jarraitzailea zara"
+          one: "politikari baten jarraitzailea zara"
           other: "%{count} politikariren jarraitzailea zara"
           zero: "ez zara inolako politikariren jarraitzaile"
     public: 
@@ -2214,7 +2214,7 @@ eu:
           questions: Galderak
           videos: Bideoak
         main_filters: 
-          more_polemic: Polemikoenak
+          more_polemic: Eztabaidatuenak
           more_recent: Azkenak
         more: "jarduera gehiago ikusi"
         title: "Bere azken ekintzak"
@@ -2246,7 +2246,7 @@ eu:
         more_recent: Azkenak
         title: "%{name}(r)en proposamenak"
       questions: 
-        more_polemic: Polemikoenak
+        more_polemic: Eztabaidatuenak
         more_recent: Azkenak
         title: "%{name}(e)k egindako galdera guztiak"
       welcome: 
