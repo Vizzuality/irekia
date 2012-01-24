@@ -3008,6 +3008,8 @@ span.where, .map .infowindow ul.details li.where {
       margin: 10px 100px 0 0;
 
       .field.email.error label { float:left; }
+      .field.confirm_password.error label { float:left; }
+      .field label.long { float:left; }
 
       .error_field {
         float: left;
@@ -3067,7 +3069,12 @@ span.where, .map .infowindow ul.details li.where {
 
           .field {
 
-            &.password { margin: 0 15px 0 0; }
+            &.password {
+              width: 100%; margin: 0 15px 10px 0;
+              .input_field { float:left; clear:none; margin:0 10px 0 0; }
+              .input_field.right { float:right; margin:0; }
+              .error_field { font-size: 13px; }
+            }
 
             span.mandatory {
               float:left;

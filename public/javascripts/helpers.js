@@ -413,6 +413,11 @@ function loginInLinks() {
                 $currentArticle.find(".field.email .error_field").fadeIn(250);
               }
 
+              if (field == "password" || field == "password_confirmation") {
+                $currentArticle.find(".field.password .error_field").html(message[0]);
+                $currentArticle.find(".field.password .error_field").fadeIn(250);
+              }
+
               $currentArticle.find("form ." + field).addClass("error");
             });
 

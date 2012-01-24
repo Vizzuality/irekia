@@ -15,16 +15,13 @@
           </div>
         </div>
 
-        <div class="field password left">
-          <%= f.label :password %>
-          <div class="input_field">
+        <div class="field password clearfix">
+          <%= f.label :password_twice, :class => :long %>
+          <div class="error_field"></div>
+          <div class="input_field left">
             <%= f.password_field :password, :autocomplete => :off %>
           </div>
-        </div>
-
-        <div class="field confirm_password right">
-          <%= f.label :password_confirmation %>
-          <div class="input_field">
+          <div class="input_field right">
             <%= f.password_field :password_confirmation, :autocomplete => :off %>
           </div>
         </div>

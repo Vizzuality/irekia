@@ -803,6 +803,8 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .cycle .inner-cycle { position: relative; clear: both; width: 9000px; height: 333px; }
 #container .cycle .inner-cycle .article { float: left; clear: none; margin: 10px 100px 0 0; }
 #container .cycle .inner-cycle .article .field.email.error label { float: left; }
+#container .cycle .inner-cycle .article .field.confirm_password.error label { float: left; }
+#container .cycle .inner-cycle .article .field label.long { float: left; }
 #container .cycle .inner-cycle .article .error_field { float: left; color: #E96F5F; margin: -2px 0 0 5px; font-size: 14px; }
 #container .cycle .inner-cycle .article.step1 .inner .content { padding: 30px 0 0 0; }
 #container .cycle .inner-cycle .article.step1 .inner fieldset .field.email { width: 415px; }
@@ -813,7 +815,10 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .cycle .inner-cycle .article.step2 .inner .content fieldset .field.email .input_field input[type="text"], #container .cycle .inner-cycle .article.step2 .inner .content fieldset .field.email .input_field input[type="email"] { width: 328px; }
 #container .cycle .inner-cycle .article form { clear: both; }
 #container .cycle .inner-cycle .article form .inner fieldset, #container .cycle .inner-cycle .article .inner fieldset { margin: auto; width: 415px; border: none!important; }
-#container .cycle .inner-cycle .article form .inner fieldset .field.password, #container .cycle .inner-cycle .article .inner fieldset .field.password { margin: 0 15px 0 0; }
+#container .cycle .inner-cycle .article form .inner fieldset .field.password, #container .cycle .inner-cycle .article .inner fieldset .field.password { width: 100%; margin: 0 15px 10px 0; }
+#container .cycle .inner-cycle .article form .inner fieldset .field.password .input_field, #container .cycle .inner-cycle .article .inner fieldset .field.password .input_field { float: left; clear: none; margin: 0 10px 0 0; }
+#container .cycle .inner-cycle .article form .inner fieldset .field.password .input_field.right, #container .cycle .inner-cycle .article .inner fieldset .field.password .input_field.right { float: right; margin: 0; }
+#container .cycle .inner-cycle .article form .inner fieldset .field.password .error_field, #container .cycle .inner-cycle .article .inner fieldset .field.password .error_field { font-size: 13px; }
 #container .cycle .inner-cycle .article form .inner fieldset .field span.mandatory, #container .cycle .inner-cycle .article .inner fieldset .field span.mandatory { float: left; color: rgba(125, 138, 146, 0.4); font-size: 13px; margin-top: 10px; margin-left: 5px; }
 #container .cycle .inner-cycle .article form .inner fieldset .field.territory, #container .cycle .inner-cycle .article .inner fieldset .field.territory { width: 174px; z-index: 1000; }
 #container .cycle .inner-cycle .article form .inner fieldset .field.municipality, #container .cycle .inner-cycle .article .inner fieldset .field.municipality { width: 174px; float: left; clear: none; }
