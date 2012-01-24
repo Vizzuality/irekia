@@ -98,9 +98,8 @@ class Participation < ActiveRecord::Base
   def publish
     return unless content.present?
 
-    @to_update_public_streams  = (to_update_public_streams || [])
-    @to_update_private_streams = (to_update_private_streams || [])
-    @to_notificate             = (to_notificate || [])
+    @to_update_public_streams  = (@to_update_public_streams || [])
+    @to_update_private_streams = (@to_update_private_streams || [])
 
     @to_update_public_streams << user
     @to_update_public_streams += user.areas

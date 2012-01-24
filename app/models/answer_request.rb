@@ -37,6 +37,8 @@ class AnswerRequest < Participation
     when question.target_area
       @to_update_public_streams << question.target_area
       @to_update_public_streams += question.target_area.team
+
+      @to_update_private_streams += question.target_area.team
     end
 
     super

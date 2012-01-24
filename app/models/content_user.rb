@@ -56,6 +56,7 @@ class ContentUser < ActiveRecord::Base
     return if content.blank? || self.destroyed?
 
     @to_update_private_streams = content.tagged_politicians
+    @to_notificate             = content.tagged_politicians
 
     update_streams
   end

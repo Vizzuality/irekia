@@ -49,9 +49,13 @@ class Argument < Participation
     return if self.author.blank?
 
     @to_update_private_streams = (to_update_private_streams || [])
+    @to_notificate             = (to_notificate || [])
 
     @to_update_private_streams += content.participers(author).where('participations.type' => 'Argument')
     @to_update_private_streams += proposal.target_area.team.reject{|politician| politician == author}
+
+    @to_notificate += content.participers(author).where('participations.type' => 'Argument')
+    @to_notificate += proposal.target_area.team.reject{|politician| politician == author}
 
     super
   end
