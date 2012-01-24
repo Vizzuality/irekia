@@ -268,6 +268,22 @@ class User < ActiveRecord::Base
     where('(name = ? AND lastname = ?) OR external_id = ?', 'Patxi', 'Lopez Alvarez', 8080).first
   end
 
+  def self.advisers
+    advisers_slugs = %w(
+      rodolfo-ares-taboada
+      pilar-unzalu-perez-de-eulate
+      idoia-mendia-cueva
+      inaki-arriola-lopez
+      javier-rafael-bengoa-renteria
+      maria-isabel-celaa-dieguez
+      carlos-aguirre-arana
+      gemma-zabaleta-areta
+      bernabe-unda-barturen
+      blanca-urgell-lazaro
+    )
+    User.where(:slug => advisers_slugs)
+  end
+
   def self.wadus
     where(:name => 'usuario dado', :lastname => 'de baja').first
   end
@@ -639,6 +655,8 @@ class User < ActiveRecord::Base
   def follow_presidencia
     if citizen?
       areas_following << Area.presidencia
+      users_following = User.advisers.all
+      users_following << User.patxi_lopez
       save!
     end
   end
