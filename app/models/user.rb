@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
                   :follows_attributes,
                   :notifications_attributes
 
-  attr_accessor :terms_of_service, :skip_welcome
+  attr_accessor :terms_of_service, :skip_mailing
 
   before_validation :check_blank_name, :on => :create
   before_create :check_user_role
@@ -639,7 +639,7 @@ class User < ActiveRecord::Base
   def follow_presidencia
     if citizen?
       areas_following << Area.presidencia
-      save
+      save!
     end
   end
   private :follow_presidencia

@@ -290,7 +290,7 @@ module Irekia
                   user.areas                 = Area.where(:external_id => area['id'])
                   user.last_import           = Time.at(politician['update_date'])
                   user.profile_picture       = Image.create(:remote_image_url => "http://www2.irekia.euskadi.net/#{politician['image']}") if politician['image']
-                  user.skip_welcome          = true
+                  user.skip_mailing          = true
                   user.save!
 
                   if File.exists?(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg"))
@@ -326,23 +326,22 @@ module Irekia
 
         begin
 
-          user = User.new
-          user.email                      = row['Email']
-          user.encrypted_password         = row['Password']
-          user.salt                       = row['Salt']
-          user.twitter_username           = row['Twitter screen_name'] if row['Twitter screen_name'].present?
-          user.twitter_oauth_token        = row['Twitter atoken'] if row['Twitter atoken'].present?
-          user.twitter_oauth_token_secret = row['Twitter asecret'] if row['Twitter asecret'].present?
-          user.facebook_oauth_token       = row['Facebook ID'] if row['Facebook ID'].present?
-          user.name                       = row['Nombre']
-          user.lastname                   = row['Apellidos']
-          user.postal_code                = row['Codigo postal']
-          user.province                   = row['Provincia']
-          user.city                       = row['Ciudad']
-          user.external_id                = row['id']
-          user.skip_welcome               = true
+          user = User.find_or_initialize_by_external_id(row['id'])
+          user.email                      = user.email.present??                       user.email                      : row['Email']
+          user.encrypted_password         = user.encrypted_password.present??          user.encrypted_password         : row['Password']
+          user.salt                       = user.salt.present??                        user.salt                       : row['Salt']
+          user.twitter_username           = user.twitter_username.present??            user.twitter_username           : row['Twitter screen_name'] if row['Twitter screen_name'].present?
+          user.twitter_oauth_token        = user.twitter_oauth_token.present??         user.twitter_oauth_token        : row['Twitter atoken'] if row['Twitter atoken'].present?
+          user.twitter_oauth_token_secret = user.twitter_oauth_token_secret.present??  user.twitter_oauth_token_secret : row['Twitter asecret'] if row['Twitter asecret'].present?
+          user.facebook_oauth_token       = user.facebook_oauth_token.present??        user.facebook_oauth_token       : row['Facebook ID'] if row['Facebook ID'].present?
+          user.name                       = user.name.present??                        user.name                       : row['Nombre']
+          user.lastname                   = user.lastname.present??                    user.lastname                   : (row['Apellidos'].present?? row['Apellidos'] : ' ')
+          user.postal_code                = user.postal_code.present??                 user.postal_code                : row['Codigo postal']
+          user.province                   = user.province.present??                    user.province                   : row['Provincia']
+          user.city                       = user.city.present??                        user.city                       : row['Ciudad']
+          user.skip_mailing               = true
 
-          user.save(false)
+          user.save(:validate => false)
 
           print '.'
         rescue Exception => ex
