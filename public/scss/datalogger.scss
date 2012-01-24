@@ -363,7 +363,7 @@ form.publish .white_button { position:relative; }
     border-right: 1px solid #E7EAED;
     text-align: center;
     font-size: 13px; color: #465866;
-    strong { display: block; margin: 0; font-size: 37px; color: #EB005F; }
+    a, strong { display: block; margin: 0; font-size: 37px; color: #EB005F; font-weight:bold; }
     &:last-child { border:none;}
   }
 }
@@ -698,3 +698,15 @@ form.signin {
   }
 }
 
+
+.no_questions {
+  position:relative;
+  top: 170px;
+  text-align:center;
+  font-size:21px;
+  font-weight:bold;
+  color:#7A858B;
+  p { margin-bottom: 25px; }
+  a.white_button { font-size:17px; }
+
+}

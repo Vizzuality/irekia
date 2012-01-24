@@ -1,0 +1,31 @@
+<% content_for :header do %>
+  <header>
+  <%= link_to 'Volver', root_path, :class => "white_button left" %>
+  <h2><%= pluralize(@unanswered_questions_count, "pregunta", "preguntas") %> </h2>
+  </header>
+<% end %>
+
+<% if @unanswered_questions_count > 0 %>
+<div id="main" class="<%= controller_name %> <%= action_name %>">
+  <div class="content">
+
+    <div class="article">
+      <div class="inner">
+        <div class="content">
+
+        <%= render 'shared/questions_list', :questions => @unanswered_questions %>
+
+
+        </div>
+      </div>
+      <div class="t"></div><div class="f"></div>
+    </div>
+
+  </div>
+</div>
+<% else %>
+  <div class="no_questions">
+  <p>No tienes más<br />preguntas pendientes</p>
+  <%= link_to "Volver al inicio", root_path, :class => "white_button centered center" %>
+  </div>
+<% end %>
