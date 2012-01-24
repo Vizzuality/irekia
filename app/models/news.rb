@@ -44,6 +44,9 @@ class News < Content
     @to_update_private_streams += users.map(&:followers).flatten
     @to_update_private_streams += users.map(&:areas).flatten.map(&:followers).flatten
 
+    to_update_public_streams  = @to_update_public_streams
+    to_update_private_streams = @to_update_private_streams
+
     super
   end
 

@@ -206,18 +206,18 @@ class Content < ActiveRecord::Base
   private :author_is_politician?
 
   def publish
-    return if author.blank?
+    return if author.blank? && (!self.is_a?(News) && !self.is_a?(Event))
 
     @to_update_public_streams  = (@to_update_public_streams || [])
     @to_update_private_streams = (@to_update_private_streams || [])
     @to_notificate             = (@to_notificate || [])
 
-    @to_update_public_streams << author
-    @to_update_public_streams += author.areas
+    @to_update_public_streams << author if author.present?
+    @to_update_public_streams += author.areas if author.present?
     @to_update_public_streams += tagged_politicians
 
-    @to_update_private_streams += author.areas.map(&:followers).flatten
-    @to_update_private_streams += author.followers
+    @to_update_private_streams += author.areas.map(&:followers).flatten if author.present?
+    @to_update_private_streams += author.followers if author.present?
     @to_update_private_streams += tagged_politicians
 
     @to_notificate += tagged_politicians
