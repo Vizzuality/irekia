@@ -146,6 +146,7 @@ class Proposal < Content
 
     if target_area
       @to_update_public_streams << target_area
+      @to_update_public_streams += target_area.map(&:team).flatten
 
       @to_update_private_streams += target_area.followers
       @to_update_private_streams += target_area.team

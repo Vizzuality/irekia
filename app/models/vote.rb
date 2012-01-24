@@ -49,10 +49,15 @@ class Vote < Participation
 
     @to_update_public_streams  = (to_update_public_streams || [])
     @to_update_private_streams = (to_update_private_streams || [])
+    @to_notificate             = (to_notificate || [])
+
+    @to_update_private_streams += content.participers(author).where('participations.type' => 'Vote')
+    @to_notificate             += content.participers(author).where('participations.type' => 'Vote')
 
     if proposal.target_area
       @to_update_public_streams  += proposal.target_area.team
-      @to_update_private_streams += proposal.target_area.team
+      @to_update_private_streams += proposal.target_area.team.reject{|politician| politician == author}
+      @to_notificate             += proposal.target_area.team.reject{|politician| politician == author}
     end
 
     super
