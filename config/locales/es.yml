@@ -1,27 +1,607 @@
-#######################################
-# Rails
-#######################################
-# Spanish translations for Rails
-# by Francisco Fernando García Nieto (ffgarcianieto@gmail.com)
-# contributors:
-#  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
-# Corrected by Eloy Serra Labán: http://goo.gl/i9Kts, /nQ928, /XfKaX
-
-"es":
+---
+es:
+  Event: Evento
+  News: Noticia
+  Photo: Foto
+  Proposal: Propuesta
+  Question: Pregunta
+  Video: Vídeo
+  activerecord:
+    attributes:
+      answer_data:
+        video_data:
+          vimeo_url: "El vídeo de Vimeo"
+          youtube_url: "El vídeo de Youtube"
+      area_user:
+        area_id: Área
+      image:
+        image: Imagen
+      user:
+        birthday: "Fecha de nacimiento"
+        city_id: Municipio
+        current_password: "Contraseña actual"
+        email: Email
+        lastname: Apellidos
+        name: Nombre
+        password: Contraseña
+        password_confirmation: "Repetir contraseña"
+        postal_code: "Código postal"
+        province_id: Territorio
+        role_id: Rol
+        title_id: Título
+      video:
+        video_data:
+          vimeo_url: "El vídeo de Vimeo"
+          youtube_url: "El vídeo de Youtube"
+      video_data:
+        vimeo_url: "El vídeo de Vimeo"
+        youtube_url: "El vídeo de Youtube"
+    errors:
+      full_messages:
+        format: "%{attribute} %{message}"
+      messages:
+        accepted: "debe ser aceptado"
+        blank: "no puede estar en blanco"
+        confirmation: "no coincide con la confirmación"
+        empty: "no puede estar vacío"
+        equal_to: "debe ser igual a %{count}"
+        even: "debe ser par"
+        exclusion: "está reservado"
+        greater_than: "debe ser mayor que %{count}"
+        greater_than_or_equal_to: "debe ser mayor que o igual a %{count}"
+        inclusion: "no está incluido en la lista"
+        invalid: "no es válido"
+        less_than: "debe ser menor que %{count}"
+        less_than_or_equal_to: "debe ser menor que o igual a %{count}"
+        not_a_number: "no es un número"
+        not_an_integer: "debe ser un entero"
+        odd: "debe ser impar"
+        record_invalid: "La validación falló: %{errors}"
+        taken: "ya está en uso"
+        too_long: "es demasiado largo"
+        too_short: "es demasiado corto"
+        wrong_length: "no tiene la longitud correcta (%{count} caracteres exactos)"
+      models:
+        user:
+          attributes:
+            current_password:
+              blank: "no puede estar vacía."
+              invalid: "no es válida"
+            password:
+              blank: "no puede estar vacía."
+              confirmation: " no coincide con la confirmación."
+              invalid: "no es válida"
+              too_long: "es muy larga (máx. 20 caracteres)"
+              too_short: "es muy corta (mín. 6 caracteres)"
+            reset_password_token:
+              blank: "no puede estar vacía."
+      template:
+        body: "Se encontraron problemas con los siguientes campos:"
+        header:
+          one: "No se pudo guardar este/a %{model} porque se encontró 1 error"
+          other: "No se pudo guardar este/a %{model} porque se encontraron %{count} errores"
+    models:
+      Role: Rol
+      Title: Título
+      answer: Respuesta
+      area: Area
+      argument: Argumento
+      comment: Comentario
+      content: Contenido
+      document: Documento
+      event: Evento
+      image: Imagen
+      like: "Me gusta"
+      news: Noticia
+      participation: Participación
+      proposal: Propuesta
+      question: Pregunta
+      user: Usuario
+      video: Vídeo
+    values:
+      role:
+        name:
+          administrator: Administrador
+          citizen: Ciudadano
+          politician: Político
+  admin:
+    moderation:
+      index:
+        contents: Contenidos
+        list_item:
+          answer:
+            author: "%{author} contesto hace %{time}"
+            title: "Contestando a \"%{question}\""
+          argument:
+            author: "%{author} participó hace %{time}"
+            title:
+              against: "En contra de la propuesta \"%{proposal}\""
+              in_favor: "A favor de la propuesta \"%{proposal}\""
+          comment:
+            author: "Comentado por %{author} hace %{time}"
+          comments:
+            one: "1 comentario"
+            other: "%{count} comentarios"
+            zero: "Todavía no hay comentarios"
+          news:
+            author: "Publicado hace %{time}"
+          proposal:
+            against: "%{count} en contra"
+            author: "%{author} hace %{time}"
+            in_favor: "%{count} a favor"
+          question:
+            area: "el área"
+            author: "%{author} hace %{time}"
+            title: "Pregunta para %{receiver}..."
+        participations: Participación
+      items_list:
+        rejected: rechazar
+        validate: aceptar
+      items_list_edit:
+        reject: rechazar
+        reject_image: "Eliminar imagen"
+        validate: "Guardar y aceptar"
+    shared:
+      navigation:
+        admin_users: "Administrar usuarios"
+        moderate_contents: "Moderar contenidos"
+    users:
+      create:
+        submit: "Crear usuario"
+      edit:
+        submit: "Editar usuario"
+      form:
+        random_password: "Generar contraseña aleatoria"
+      index:
+        delete_user: "Eliminar usuario"
+        edit_user: "Editar usuario"
+        new_user: "Nuevo usuario"
+      new:
+        submit: "Crear usuario"
+      update:
+        submit: "Editar usuario"
+  areas:
+    agenda:
+      title: "Agenda del área"
+    index:
+      area_description: "Área del Gobierno Vasco"
+    navigation_menu:
+      menu:
+        actions: Actividad
+        agenda: Agenda
+        proposals: Propuestas
+        questions: Preguntas
+        show: Resumen
+        team: Equipo
+    show:
+      agenda:
+        title: "Agenda del área"
+    summary:
+      description:
+        read_more: "Leer más"
+        title: "Qué hacemos"
+      status:
+        area:
+          actions_this_week:
+            one: "1 acción esta semana"
+            other: "%{count} acciones esta semana"
+            zero: "Ninguna acción esta semana"
+          follow_this_area: "Sigue a este área"
+        proposals:
+          make_a_proposal: "Lanza tu propuesta"
+          open:
+            one: "1 propuesta abierta"
+            other: "%{count} propuestas abiertas"
+            zero: "Ninguna propuesta abierta"
+        questions:
+          answered:
+            one: "1 pregunta contestada"
+            other: "%{count} preguntas contestadas"
+            zero: "Ninguna pregunta contestada"
+          make_a_question: "Haz una pregunta"
+      team:
+        other_members:
+          one: "1 persona más en este área"
+          other: "%{count} personas más en este área"
+        title: "Equipo principal"
+    team:
+      actions_this_week:
+        one: "Una acción esta semana"
+        other: "%{count} acciones esta semana"
+        zero: "Ninguna acción esta semana"
+      follow: Seguir
+      inactive: "No está registrado en Irekia"
+      title:
+        one: "Una persona implicada en este área"
+        other: "%{count} personas implicadas en este área"
+        zero: "Ninguna persona implicada en este área"
+  contents:
+    arguments:
+      add: Añadir
+      against: "Argumentos en contra"
+      error:
+        description: "Lo sentimos, no se ha podido guardar :-("
+        title: "Error técnico."
+      in_favor: "Argumentos a favor"
+      success:
+        description: "Te avisaremos en cuanto sea aprobado."
+        title: "Comentario enviado."
+      write_here: "Escribe aquí"
+    create:
+      politician:
+        photo:
+          description: "Fotografía publicada correctamente."
+          title: "Tu fotografía ha sido publicada"
+        proposal:
+          description: "Propuesta publicada correctamente."
+          title: "Tu propuesta ha sido publicada"
+        question:
+          description: "Pregunta publicada correctamente."
+          title: "Tu pregunta ha sido publicada"
+        status_message:
+          description: "Mensaje de estado publicado correctamente."
+          title: "Tu mensaje ha sido publicado"
+        video:
+          description: "Vídeo publicado correctamente."
+          title: "Tu vídeo ha sido publicado"
+      proposal:
+        description: "En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email."
+        moderation_pending: "Propuesta pendiente de moderación"
+        title: "Tu propuesta ha sido enviada"
+      question:
+        description: "En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email."
+        moderation_pending: "Pregunta pendiente de moderación"
+        title: "Tu pregunta ha sido enviada"
+    edit:
+      event:
+        add_subtitle: "Añadir subtítulo"
+        back: volver
+        save: Guardar
+      image:
+        add_caption: "Añadir pie de foto"
+        add_photo: "Añadir foto"
+        loading: "Cargando imagen..."
+        save: Guardar
+        upload_a_new_one: "Sube una nueva"
+      news:
+        add_body: "Añadir texto"
+        add_subtitle: "Añadir subtítulo"
+        add_title: "Añadir título"
+        back: volver
+        save: Guardar
+      proposal:
+        addressed_to: "Dirigida a"
+        against:
+          one: "%{percentage}% en contra (%{count} voto)"
+          other: "%{percentage}% en contra (%{count} votos)"
+          zero: "%{percentage}% en contra (%{count} votos)"
+        back: volver
+        content:
+          add: Añadir
+          against: "En contra"
+          in_favor: "A favor"
+          your_opinion:
+            subtitle: "Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión."
+            title: "¿Qué opinas tú?"
+            vote_against: "Votar en contra"
+            vote_in_favor: "Votar a favor"
+        in_favor:
+          one: "%{percentage}% a favor (%{count} voto)"
+          other: "%{percentage}% a favor (%{count} votos)"
+          zero: "%{percentage}% a favor (%{count} votos)"
+        insert_the_new_target: "Introduce el nuevo destinatario"
+        see_all_proposals: "Ver todas las propuestas a este área"
+        sidebar:
+          related_content:
+            comments:
+              one: "Un comentario"
+              other: "%{count} comentarios"
+              zero: "Aún no hay comentarios"
+            title: "Últimos contenidos"
+          sharing_links:
+            facebook: Facebook
+            mail: Mail
+            twitter: Twitter
+          tags:
+            title: Tags
+        title_author_and_comments:
+          comments:
+            one: "Un comentario"
+            other: "%{count} comentarios"
+            zero: "Todavía no hay comentarios"
+          time: "hace %{time}"
+          total_in_favor: "%{percent}% a favor (de %{total})"
+      question:
+        add_a_video: "Añade un video si quieres"
+        address_the_question: "Dirige la pregunta"
+        addressed_to: "Dirigida a"
+        answer_this_question: "Contesta a esta pregunta"
+        back: volver
+        footer:
+          all_questions_to_area: "Todas las preguntas para el área de %{name}"
+          all_questions_to_user: "Todas las preguntas para %{name}"
+        insert_the_new_target: "Introduce el nuevo destinatario"
+        join_them:
+          one: "únete a ella"
+          other: "sumáte a ellos"
+          zero: "sé el primero"
+        not_answered_yet: "Esta pregunta aún no ha sido contestada."
+        people_demanding_answer:
+          one: "1 persona quiere que sea contestada"
+          other: "%{count} personas quieren que sea contestada"
+          zero: "Nadie ha pedido que sea contestada"
+        publish: "Publicar respuesta"
+        question_content:
+          answer:
+            has_answered: "Ha contestado %{name}"
+          answer_not_satisfactory: "No satisfactoria"
+          answer_opinion: "¿Qué te parece la respuesta?"
+          answer_requests:
+            do_request: "Solicitar respuesta"
+          answer_satisfactory: Satisfactoria
+          author_and_comments:
+            answered: "Contestada tras %{time}"
+            comments:
+              one: "Un comentario"
+              other: "%{count} comentarios"
+              zero: "Todavía no hay comentarios"
+            not_answered:
+              one: "No contestada, solicitada por 1"
+              other: "No contestada, solicitada por %{count}"
+              zero: "No contestada"
+            time: "hace %{time}"
+        save: Guardar
+        sidebar:
+          related_questions:
+            comments:
+              one: "Un comentario"
+              other: "%{count} comentarios"
+              zero: "Aún no hay comentarios"
+            time: "Hace %{time}"
+            title: "Otras preguntas similares"
+          sharing_links:
+            facebook: Facebook
+            mail: Mail
+            twitter: Twitter
+          tags:
+            title: Tags
+        you_and_other:
+          one: "Por ahora sólo tú quieres que sea contestada"
+          other: "Por ahora sólo tú y otra persona queréis que sea contestada"
+          zero: "Nadie ha pedido que sea contestada"
+        you_and_thousands: "Por ahora sólo tú y otras %{count} personas queréis que sea contestada"
+        youtube_or_vimeo_url: "Dirección de YouTube o Vimeo"
+    show:
+      event:
+        back: volver
+        back_to_the_agenda: "volver a la agenda"
+        date_area_and_comments:
+          comments:
+            one: "Un comentario"
+            other: "%{count} comentarios"
+            zero: "Todavía no hay comentarios"
+        sidebar:
+          related_events:
+            comments:
+              one: "Un comentario"
+              other: "%{count} comentarios"
+              zero: "Aún no hay comentarios"
+            title: "Últimos eventos"
+          related_politicians:
+            title: "Políticos relacionados"
+          sharing_links:
+            facebook: Facebook
+            mail: Mail
+            twitter: Twitter
+          tags:
+            title: Tags
+        title:
+          comments:
+            one: "Un comentario"
+            other: "%{count} comentarios"
+            zero: "Todavía no hay comentarios"
+          time: "%{day} a partir de las %{hour}"
+      news:
+        back: volver
+        date_area_and_comments:
+          comments:
+            one: "Un comentario"
+            other: "%{count} comentarios"
+            zero: "Todavía no hay comentarios"
+        sidebar:
+          related_content:
+            comments:
+              one: "Un comentario"
+              other: "%{count} comentarios"
+              zero: "Aún no hay comentarios"
+            title: "Últimos contenidos"
+          related_politicians:
+            title: "Políticos relacionados"
+          sharing_links:
+            facebook: Facebook
+            mail: Mail
+            twitter: Twitter
+          tags:
+            add_tags: "Añadir tag"
+            title: Tags
+      photo:
+        back: volver
+        published_by: "Publicada por"
+        sidebar:
+          related_photos:
+            comments:
+              one: "Un comentario"
+              other: "%{count} comentarios"
+              zero: "Aún no hay comentarios"
+            title: "Últimas fotos"
+          related_politicians:
+            title: "Políticos relacionados"
+          sharing_links:
+            facebook: Facebook
+            mail: Mail
+            twitter: Twitter
+          tags:
+            title: Tags
+        title:
+          comments:
+            one: "Un comentario"
+            other: "%{count} comentarios"
+            zero: "Todavía no hay comentarios"
+        title_author_and_comments:
+          comments:
+            one: "Un comentario"
+            other: "%{count} comentarios"
+            zero: "Todavía no hay comentarios"
+          time: "hace %{time}"
+      proposal:
+        addressed_to: "Dirigida a"
+        against:
+          one: "%{percentage}% en contra (%{count} voto)"
+          other: "%{percentage}% en contra (%{count} votos)"
+          zero: "%{percentage}% en contra (nadie ha votado todavía)"
+        back: volver
+        content:
+          add: Añadir
+          against: "En contra"
+          in_favor: "A favor"
+          your_opinion:
+            subtitle: "Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión."
+            title: "¿Qué opinas tú?"
+            vote_against: "Votar en contra"
+            vote_in_favor: "Votar a favor"
+        in_favor:
+          one: "%{percentage}% a favor (%{count} voto)"
+          other: "%{percentage}% a favor (%{count} votos)"
+          zero: "%{percentage}% a favor (nadie ha votado todavía)"
+        see_all_proposals: "Ver todas las propuestas a este área"
+        sidebar:
+          related_content:
+            comments:
+              one: "Un comentario"
+              other: "%{count} comentarios"
+              zero: "Aún no hay comentarios"
+            title: "Últimos contenidos"
+          sharing_links:
+            facebook: Facebook
+            mail: Mail
+            twitter: Twitter
+          tags:
+            title: Tags
+        title_author_and_comments:
+          comments:
+            one: "Un comentario"
+            other: "%{count} comentarios"
+            zero: "Todavía no hay comentarios"
+          time: "hace %{time}"
+          total_in_favor: "%{percent}% a favor (de %{total})"
+      question:
+        add_a_video: "Añade un video si quieres"
+        addressed_to: "Dirigida a"
+        answer_this_question: "Contesta a esta pregunta"
+        footer:
+          all_questions_to_area: "Todas las preguntas para el área de %{name}"
+          all_questions_to_user: "Todas las preguntas para %{name}"
+        join_them:
+          one: "únete a ella"
+          other: "sumáte a ellos"
+          zero: "sé el primero"
+        not_answered_yet: "Esta pregunta aún no ha sido contestada."
+        people_demanding_answer:
+          one: "1 persona quiere que sea contestada"
+          other: "%{count} personas quieren que sea contestada"
+          zero: "Nadie ha pedido que sea contestada"
+        publish: "Publicar respuesta"
+        question_content:
+          answer:
+            has_answered: "Ha contestado %{name}"
+          answer_not_satisfactory: "No satisfactoria"
+          answer_opinion: "¿Qué te parece la respuesta?"
+          answer_requests:
+            do_request: "Solicitar respuesta"
+          answer_satisfactory: Satisfactoria
+          author_and_comments:
+            answered: "Contestada tras %{time}"
+            comments:
+              one: "Un comentario"
+              other: "%{count} comentarios"
+              zero: "Todavía no hay comentarios"
+            not_answered:
+              one: "No contestada, solicitada por 1"
+              other: "No contestada, solicitada por %{count}"
+              zero: "No contestada"
+            time: "hace %{time}"
+        sidebar:
+          related_questions:
+            comments:
+              one: "Un comentario"
+              other: "%{count} comentarios"
+              zero: "Aún no hay comentarios"
+            time: "Hace %{time}"
+            title: "Otras preguntas similares"
+          sharing_links:
+            facebook: Facebook
+            mail: Mail
+            twitter: Twitter
+          tags:
+            title: Tags
+        you_and_other:
+          one: "Por ahora sólo tú quieres que sea contestada"
+          other: "Por ahora sólo tú y otra persona queréis que sea contestada"
+          zero: "Nadie ha pedido que sea contestada"
+        you_and_thousands: "Por ahora sólo tú y otras %{count} personas queréis que sea contestada"
+        youtube_or_vimeo_url: "Dirección de YouTube o Vimeo"
+      status_message:
+        author: "Publicado por %{name} hace %{time}"
+        back: volver
+        sidebar:
+          last_tweets:
+            time: "hace %{time}"
+            title: "Últimos tweets de %{name}"
+          sharing_links:
+            facebook: Facebook
+            mail: Mail
+            twitter: Twitter
+      tweet:
+        author: "Twitteado por %{name} hace %{time}"
+        back: volver
+        sidebar:
+          last_tweets:
+            time: "hace %{time}"
+            title: "Últimos tweets de %{name}"
+          sharing_links:
+            facebook: Facebook
+            mail: Mail
+            twitter: Twitter
+      video:
+        back: volver
+        published_by: "Publicado por"
+        sidebar:
+          related_photos:
+            comments:
+              one: "Un comentario"
+              zero: "Aún no hay comentarios"
+            title: "Últimas fotos"
+          related_politicians:
+            title: "Políticos relacionados"
+          sharing_links:
+            facebook: Facebook
+            mail: Mail
+            twitter: Twitter
+          tags:
+            title: Tags
+        title:
+          comments:
+            one: "Un comentario"
+            other: "%{count} comentarios"
+            zero: "Todavía no hay comentarios"
+        title_author_and_comments:
+          comments:
+            one: "Un comentario"
+            other: "%{count} comentarios"
+            zero: "Todavía no hay comentarios"
+          time: "hace %{time}"
+    update: ~
   date:
-    formats:
-      default: "%d/%m/%Y"
-      short: "%d de %b"
-      long: "%d de %B de %Y"
-
-    day_names:
-      - domingo
-      - lunes
-      - martes
-      - miércoles
-      - jueves
-      - viernes
-      - sábado
     abbr_day_names:
       - dom
       - lun
@@ -30,21 +610,6 @@
       - jue
       - vie
       - sáb
-
-    month_names:
-      - ~
-      - enero
-      - febrero
-      - marzo
-      - abril
-      - mayo
-      - junio
-      - julio
-      - agosto
-      - septiembre
-      - octubre
-      - noviembre
-      - diciembre
     abbr_month_names:
       - ~
       - ene
@@ -59,55 +624,327 @@
       - oct
       - nov
       - dic
-    order:
-      - :day
-      - :month
-      - :year
-
-  time:
+    day_names:
+      - domingo
+      - lunes
+      - martes
+      - miércoles
+      - jueves
+      - viernes
+      - sábado
     formats:
-      default: "%A, %d de %B de %Y %H:%M:%S %z"
-      short: "%d de %b %H:%M"
-      long: "%d de %B de %Y %H:%M"
-    am: "am"
-    pm: "pm"
-
-  support:
-    array:
-      words_connector: ", "
-      two_words_connector: " y "
-      last_word_connector: ", y "
-
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d de %b"
+    month_names:
+      - ~
+      - enero
+      - febrero
+      - marzo
+      - abril
+      - mayo
+      - junio
+      - julio
+      - agosto
+      - septiembre
+      - octubre
+      - noviembre
+      - diciembre
+    order:
+      - !ruby/symbol day
+      - !ruby/symbol month
+      - !ruby/symbol year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: "alrededor de 1 hora"
+        other: "alrededor de %{count} horas"
+      about_x_months:
+        one: "alrededor de 1 mes"
+        other: "alrededor de %{count} meses"
+      about_x_years:
+        one: "alrededor de 1 año"
+        other: "alrededor de %{count} años"
+      almost_x_years:
+        one: "casi 1 año"
+        other: "casi %{count} años"
+      half_a_minute: "medio minuto"
+      less_than_x_minutes:
+        one: "menos de 1 minuto"
+        other: "menos de %{count} minutos"
+      less_than_x_seconds:
+        one: "menos de 1 segundo"
+        other: "menos de %{count} segundos"
+      over_x_years:
+        one: "más de 1 año"
+        other: "más de %{count} años"
+      x_days:
+        one: "1 día"
+        other: "%{count} días"
+      x_minutes:
+        one: "1 minuto"
+        other: "%{count} minutos"
+      x_months:
+        one: "1 mes"
+        other: "%{count} meses"
+      x_seconds:
+        one: "1 segundo"
+        other: "%{count} segundos"
+    prompts:
+      day: Día
+      hour: Hora
+      minute: Minutos
+      month: Mes
+      second: Segundos
+      year: Año
+  devise:
+    confirmations:
+      confirmed: "Your account was successfully confirmed. You are now signed in."
+      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      send_paranoid_instructions: "If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes."
+    failure:
+      already_authenticated: "You are already signed in."
+      inactive: "Your account was not activated yet."
+      invalid: "Email o contraseña incorrectos"
+      invalid_token: "Invalid authentication token."
+      locked: "Your account is locked."
+      timeout: "Your session expired, please sign in again to continue."
+      unauthenticated: "You need to sign in or sign up before continuing."
+      unconfirmed: "You have to confirm your account before continuing."
+    mailer:
+      confirmation_instructions:
+        subject: "Confirmation instructions"
+      reset_password_instructions:
+        reset_password: "Regenerar contraseña"
+        subject: "¿No te acuerdas de tu contraseña?"
+        text: "Simplemente pulsa el enlace “Regenerar contraseña”. Irekia te pedirá a continuación el nuevo valor."
+      unlock_instructions:
+        subject: "Unlock Instructions"
+    omniauth_callbacks:
+      failure: "Could not authorize you from %{kind} because \"%{reason}\"."
+      success: "Successfully authorized from %{kind} account."
+    passwords:
+      send_instructions: "You will receive an email with instructions about how to reset your password in a few minutes."
+      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
+      updated: "Your password was changed successfully. You are now signed in."
+    registrations:
+      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      inactive_signed_up: "You have signed up successfully. However, we could not sign you in because your account is %{reason}."
+      signed_up: "Welcome! You have signed up successfully."
+      updated: "You updated your account successfully."
+    sessions:
+      signed_in: "Signed in successfully."
+      signed_out: "Signed out successfully."
+    unlocks:
+      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
+      unlocked: "Your account was successfully unlocked. You are now signed in."
+  errors:
+    messages:
+      already_confirmed: "was already confirmed, please try signing in"
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      not_locked: "was not locked"
+      not_saved:
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"
+  follows:
+    create:
+      area:
+        follow: "Seguir a este área"
+      user:
+        follow: "Seguir a %{name}"
+    create_mini:
+      follow: Seguir
+    create_ribbon:
+      area: "Seguir a este área"
+      user: "Seguir a este político"
+    destroy:
+      stop_follow: "Dejar de seguir"
+    destroy_mini:
+      stop_follow: "Dejar de seguir"
+  helpers:
     select:
       prompt: "Por favor seleccione"
-
+    submit:
+      create: "Crear %{model}"
+      submit: "Guardar %{model}"
+      update: "Actualizar %{model}"
+  home:
+    agenda:
+      title: "Agenda de Irekia"
+    areas:
+      all_the_areas: "Todas las áreas"
+      no_activity: "Sin actividad"
+      proposals:
+        one: "1 propuesta"
+        other: "%{count} propuestas"
+        zero: "Ninguna propuesta"
+      questions:
+        one: "1 pregunta"
+        other: "%{count} preguntas"
+        zero: "Ninguna pregunta"
+    index:
+      answered: respondidas
+      banners:
+        agenda: "Agenda de Irekia"
+        guide: "Guía de comunicación abierta"
+        opendata: "Open data euskadi"
+        press: "Prensa :)"
+        transparency: Transparencia
+      button: Buscar
+      citizens: ciudadanos
+      description: "Irekia es la plataforma que te permite hacer oir tu voz en la toma de decisiones de Euskadi. Haz tus propuestas, reclama respuestas, contribuye y opina."
+      email: Email
+      login: "Accede a tu cuenta"
+      or: o
+      password: Contraseña
+      politicians: políticos
+      proposals: propuestas
+      questions: preguntas
+      register_now: "Regístrate ya"
+      rss:
+        items:
+          body:
+            question_for_area: "Pregunta para el área de %{name}"
+            question_for_politician: "Pregunta para %{name}"
+          title:
+            answer: "Nueva respuesta a la pregunta “%{text}”"
+            answer_request: "Nueva solicitud de respuesta"
+            argument: "Nuevo argumento para la propuesta “%{text}”"
+            comment: "Nuevo comentario en “%{text}”"
+            event: "Nuevo evento"
+            news: "Nueva noticia en el área de %{text}"
+            photo: "Nueva foto de %{text}"
+            proposal: "Nueva propuesta"
+            question: "Nueva pregunta"
+            status_message: "Nuevo mensaje de estado de %{text}"
+            tweet: "Nuevo tweet de %{text}”"
+            vote: "Nuevo voto en la propuesta “%{text}”"
+        title:
+          news: Noticias
+      search: "¿Qué buscas?"
+      sign_in: Entrar
+      title: "Participa en tu gobierno."
+      view_all_the_areas: "ver todas las áreas"
+      votes: votos
+  irekia_mailer:
+    deleted_account:
+      as_requested: "Como nos has pedido, hemos procedido a eliminar tu cuenta de Irekia, incluido todo tu contenido en la medida que ha sido posible. Hay algunos comentarios que no han podido ser retirados por formar parte de un debate con otros usuarios, pero tu nombre se ha eliminado de ellos."
+      cheers: "Saludos,"
+      come_back: "Lamentamos tu decisión. Por supuesto, <a href=\"%{url}\" target=\"_blank\" style=\"color:#1D79B0\">puedes volver a Irekia y empezar de nuevo cuando quieras</a>."
+      irekia_team: "El equipo de Irekia"
+      subject: "Cuenta eliminada :-("
+    layout:
+      settings: "Gestiona tus notificaciones"
+    moderation_approved:
+      detail: "La %{item} “%{item_text}” ha sido aprobada."
+      detail_with_parent:
+        event: "El %{item} que dejaste en el evento “%{parent_text}” ha sido aprobado."
+        news: "El %{item} que dejaste en la noticia “%{parent_text}” ha sido aprobado."
+        photo: "El %{item} que dejaste en la foto “%{parent_text}” ha sido aprobado."
+        proposal: "El %{item} que dejaste en la propuesta “%{parent_text}” ha sido aprobado."
+        question: "El %{item} que dejaste en la pregunta “%{parent_text}” ha sido aprobado."
+        status_message: "El %{item} que dejaste en el mensaje de estado “%{parent_text}” ha sido aprobado."
+        tweet: "El %{item} que dejaste en el tweet “%{parent_text}” ha sido aprobado."
+        video: "El %{item} que dejaste en el video “%{parent_text}” ha sido aprobado."
+      show_item: "Ver %{item} en Irekia"
+      subject:
+        argument: "Tu argumento ha sido aprobado :-)"
+        comment: "Tu  comentario ha sido aprobado :-)"
+        proposal: "Tu propuesta ha sido aprobada :-)"
+        question: "Tu pregunta ha sido aprobada :-)"
+    moderation_rejected:
+      detail:
+        event: "El %{item} que dejaste en el evento “%{parent_text}” ha sido rechazado."
+        news: "El %{item} que dejaste en la noticia “%{parent_text}” ha sido rechazado."
+        photo: "El %{item} que dejaste en la foto “%{parent_text}” ha sido rechazado."
+        proposal: "El %{item} que dejaste en la propuesta “%{parent_text}” ha sido rechazado."
+        question: "El %{item} que dejaste en la pregunta “%{parent_text}” ha sido rechazado."
+        status_message: "El %{item} que dejaste en el mensaje de estado “%{parent_text}” ha sido rechazado."
+        tweet: "El %{item} que dejaste en el tweet “%{parent_text}” ha sido rechazado."
+        video: "El %{item} que dejaste en el video “%{parent_text}” ha sido rechazado."
+      first_reason: "Tu mensaje contenía palabras malsonantes o insultos, o faltaba el respeto a alguna persona o colectivo."
+      item_was:
+        argument: "El argumento era el siguiente:"
+        comment: "El mensaje era el siguiente:"
+        proposal: "La propuesta era la siguiente:"
+        question: "La pregunta era la siguiente:"
+      not_agree_html: "Puedes <a href=\"#\" target=\"_blank\" style=\"color:#1D79B0\">leer más sobre el sistema de moderación de Irekia</a>. Si no estás de acuerdo, <a href=\"#\" target=\"_blank\" style=\"color:#1D79B0\">escríbenos</a> y lo hablamos."
+      reasons: "Posibles motivos para el rechazo:"
+      second_reason: "Tu mensaje se considera spam, por publicitar un producto o servicio."
+      subject:
+        argument: "Tu argumento ha sido rechazado :-("
+        comment: "Tu  comentario ha sido rechazado :-("
+        proposal: "Tu propuesta ha sido rechazada :-("
+        question: "Tu pregunta ha sido rechazada :-("
+      third_reason: "Tu mensaje no guarda relación con el tema tratado. "
+    new_follower:
+      see_profile: "Ver el perfil de %{name}"
+      subject: "¡Un nuevo seguidor! :-)"
+      text: "%{name} ha comenzado a seguirte en Irekia. ¿Quieres conocerle mejor?"
+    new_question:
+      answer_question: "Responder pregunta"
+      subject: "Nueva pregunta en Irekia"
+      user_asks_you: "%{user} te hace la siguiente pregunta:"
+      user_asks_your_area: "%{user} le hace la siguiente pregunta a tu área:"
+    question_answered:
+      answered_by: "ha sido contestada por %{politician_with_title}"
+      opinion: "¿Qué te parece la respuesta? Puedes comentar la respuesta en Irekia."
+      politician_title: "%{title} en el área de %{area}"
+      question_link: "Ver pregunta en Irekia"
+      subject: "Pregunta contestada en Irekia"
+      your_question: "Tu pregunta"
+    welcome:
+      access_irekia: "Acceder a Irekia"
+      step_1: "1. Sigue a los cargos o áreas que te interesen"
+      step_1_detail: "Busca los perfiles o áreas que más te interesen y síguelos. A partir de ese momento su actividad aparecerá en <a href=\"%{url}\" target=\"_blank\" style=\"color:#1D79B0\">tu página de inicio de Irekia</a>."
+      step_2: "2. Participa!"
+      step_2_detail: "<a href=\"%{url_questions}\" target=\"_blank\" style=\"color:#1D79B0\">Haz preguntas</a> a los responsables del Gobierno Vasco, <a href=\"%{url_proposals}\" target=\"_blank\" style=\"color:#1D79B0\">lanza tus propuestas</a> a los ciudadanos, o participa en las propuestas de otros. Todo con un simple click."
+      step_3: "3. Configura tu cuenta"
+      step_3_detail: "Sube tu ávatar o modifica tus datos. También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia.actividad aparecerá en tu página de inicio de Irekia."
+      subject: "Bienvenido a Irekia, %{name} :-)"
+      text: "Gracias por registrarte en Irekia. ¡Ya puedes empezar a participar!"
+  layouts:
+    application:
+      available_in_android_market: "DISPONIBLE EN <span>Android Market</span>"
+      available_in_app_store: "DISPONIBLE EN <span>App Store</span>"
+      subtitle: "Accede a IREKIA a través de la aplicación Android o iPhone"
+      title: "¿Tienes un smartphone?"
+  menu:
+    configure_your_account: "Configura tu cuenta"
+    dashboard: Resumen
+    publish: Publicar
+    what_to_follow: Siguiendo
+    your_activity: "Tu actividad"
+    your_proposals: "Tus propuestas"
+    your_questions: "Tus preguntas"
   number:
-    format:
-      separator: ","
-      delimiter: "."
-      precision: 3
-      significant: false
-      strip_insignificant_zeros: false
-
     currency:
       format:
-        format: "%n %u"
-        unit: "€"
-        separator: ","
         delimiter: "."
+        format: "%n %u"
         precision: 2
+        separator: ","
         significant: false
         strip_insignificant_zeros: false
-
-    percentage:
-      format:
-        delimiter: ""
-
-    precision:
-      format:
-        delimiter: ""
-
+        unit: €
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
     human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: "mil millones"
+          million: millón
+          quadrillion: "mil billones"
+          thousand: mil
+          trillion: billón
+          unit: ""
       format:
         delimiter: ""
         precision: 1
@@ -117,2291 +954,1367 @@
         format: "%n %u"
         units:
           byte:
-            one:   "Byte"
-            other: "Bytes"
-          kb: "KB"
-          mb: "MB"
-          gb: "GB"
-          tb: "TB"
-      decimal_units:
-        format: "%n %u"
-        units:
-          unit: ""
-          thousand: "mil"
-          million: "millón"
-          billion: "mil millones"
-          trillion: "billón"
-          quadrillion: "mil billones"
-
-  datetime:
-    distance_in_words:
-      half_a_minute: "medio minuto"
-      less_than_x_seconds:
-        one:  "menos de 1 segundo"
-        other: "menos de %{count} segundos"
-      x_seconds:
-        one:  "1 segundo"
-        other: "%{count} segundos"
-      less_than_x_minutes:
-        one:  "menos de 1 minuto"
-        other: "menos de %{count} minutos"
-      x_minutes:
-        one:  "1 minuto"
-        other: "%{count} minutos"
-      about_x_hours:
-        one:  "alrededor de 1 hora"
-        other: "alrededor de %{count} horas"
-      x_days:
-        one:  "1 día"
-        other: "%{count} días"
-      about_x_months:
-        one:  "alrededor de 1 mes"
-        other: "alrededor de %{count} meses"
-      x_months:
-        one:  "1 mes"
-        other: "%{count} meses"
-      about_x_years:
-        one:  "alrededor de 1 año"
-        other: "alrededor de %{count} años"
-      over_x_years:
-        one:  "más de 1 año"
-        other: "más de %{count} años"
-      almost_x_years:
-        one: "casi 1 año"
-        other: "casi %{count} años"
-    prompts:
-      year:   "Año"
-      month:  "Mes"
-      day:    "Día"
-      hour:   "Hora"
-      minute: "Minutos"
-      second: "Segundos"
-
-  helpers:
-    select:
-      prompt: "Por favor seleccione"
-
-    submit:
-      create: 'Crear %{model}'
-      update: 'Actualizar %{model}'
-      submit: 'Guardar %{model}'
-
-  errors:
-    format: "%{attribute} %{message}"
-
-    messages: &errors_messages
-      inclusion: "no está incluido en la lista"
-      exclusion: "está reservado"
-      invalid: "no es válido"
-      confirmation: "no coincide con la confirmación"
-      accepted: "debe ser aceptado"
-      empty: "no puede estar vacío"
-      blank: "no puede estar en blanco"
-      too_long: "es demasiado largo"
-      too_short: "es demasiado corto"
-      wrong_length: "no tiene la longitud correcta (%{count} caracteres exactos)"
-      not_a_number: "no es un número"
-      not_an_integer: "debe ser un entero"
-      greater_than: "debe ser mayor que %{count}"
-      greater_than_or_equal_to: "debe ser mayor que o igual a %{count}"
-      equal_to: "debe ser igual a %{count}"
-      less_than: "debe ser menor que %{count}"
-      less_than_or_equal_to: "debe ser menor que o igual a %{count}"
-      odd: "debe ser impar"
-      even: "debe ser par"
-      taken: "ya está en uso"
-      record_invalid: "La validación falló: %{errors}"
-    template: &errors_template
-      header:
-        one:   "No se pudo guardar este/a %{model} porque se encontró 1 error"
-        other:  "No se pudo guardar este/a %{model} porque se encontraron %{count} errores"
-      body: "Se encontraron problemas con los siguientes campos:"
-
-  activerecord:
-    errors:
-      messages:
-        <<: *errors_messages
-      template:
-        <<: *errors_template
-
-      full_messages:
-        format: "%{attribute} %{message}"
-
-      models:
-        user:
-          attributes:
-            password:
-              invalid: "no es válida"
-              blank: "no puede estar vacía."
-              confirmation: " no coincide"
-              too_short: "es muy corta (mínimo 6 c.)"
-              too_long:  "es muy larga (máximo 20 c.)"
-            current_password:
-              blank: "no puede estar vacía."
-              invalid: "no es válida"
-            reset_password_token:
-              blank: "no puede estar vacía."
-    models:
-      answer: Respuesta
-      area: Area
-      argument: Argumento
-      comment: Comentario
-      content: Contenido
-      document: Documento
-      event: Evento
-      image: Imagen
-      like: Me gusta
-      news: Noticia
-      participation: Participación
-      proposal: Propuesta
-      question: Pregunta
-      Role: Rol
-      Title: Título
-      user: Usuario
-      video: Vídeo
-
-    attributes:
-      user:
-        name: Nombre
-        lastname: Apellidos
-        email: Email
-        password: Contraseña
-        password_twice: Escribe la contraseña dos veces
-        password_confirmation: Repetir contraseña
-        current_password: Contraseña actual
-        role_id: Rol
-        title_id: Título
-        province_id: Territorio
-        city_id: Municipio
-        birthday: Fecha de nacimiento
-        postal_code: Código postal
-      area_user:
-        area_id: Área
-      image:
-        image: Imagen
-      video_data: &video_data_attributes
-        youtube_url: 'El vídeo de Youtube'
-        vimeo_url: 'El vídeo de Vimeo'
-      answer_data:
-        video_data:
-          <<: *video_data_attributes
-      video:
-        video_data:
-          <<: *video_data_attributes
-    values:
-      role:
-        name:
-          administrator: Administrador
-          politician: Político
-          citizen: Ciudadano
-
-#######################################
-# Devise
-#######################################
-
-  errors:
-    messages:
-      expired: "has expired, please request a new one"
-      not_found: "not found"
-      already_confirmed: "was already confirmed, please try signing in"
-      not_locked: "was not locked"
-      not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
-
-  devise:
-    failure:
-      already_authenticated: 'You are already signed in.'
-      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
-      invalid: 'Email o contraseña incorrectos'
-      invalid_token: 'Invalid authentication token.'
-      timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account was not activated yet.'
-    sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
-    passwords:
-      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
-      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
-    confirmations:
-      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
-      send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
-    registrations:
-      signed_up: 'Welcome! You have signed up successfully.'
-      inactive_signed_up: 'You have signed up successfully. However, we could not sign you in because your account is %{reason}.'
-      updated: 'You updated your account successfully.'
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
-    unlocks:
-      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
-      unlocked: 'Your account was successfully unlocked. You are now signed in.'
-      send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
-    omniauth_callbacks:
-      success: 'Successfully authorized from %{kind} account.'
-      failure: 'Could not authorize you from %{kind} because "%{reason}".'
-    mailer:
-      confirmation_instructions:
-        subject: 'Confirmation instructions'
-      reset_password_instructions:
-        subject: '¿No te acuerdas de tu contraseña?'
-        text: 'Simplemente pulsa el enlace “Regenerar contraseña”. Irekia te pedirá a continuación el nuevo valor.'
-        reset_password: 'Regenerar contraseña'
-      unlock_instructions:
-        subject: 'Unlock Instructions'
-
-#######################################
-# IREKIA - Routes
-#######################################
-  routes:
-    users:
-      as: usuarios
-      path_names:
-        connect: 'conectar'
-        settings: 'preferencias'
-    areas:
-      as: areas
-      path_names:
-        team: 'equipo'
-    politicians:
-      as: politicos
-      path_names:
-        detail: 'detalle'
-    search:
-      as: buscar
-      path_names:
-        contents: 'contenidos'
-        areas: 'areas'
-        politicians: 'politicos'
-        politicians_and_areas: 'politicos_y_areas'
-        citizens: 'ciudadanos'
-
-  resources:
-    users: usuarios
-    areas: areas
-    politicians: politicos
-    proposals: 'propuestas'
-    questions: 'preguntas'
-    answers: 'respuestas'
-    news: 'noticias'
-    events: 'eventos'
-    tweets: 'tweets'
-    status_messages: 'cambios_de_estado'
-    photos: 'fotos'
-    videos: 'videos'
-    images: 'imagenes'
-    arguments: 'argumentos'
-    votes: 'votos'
-    comments: 'comentarios'
-    answer_requests: 'solicitudes_de_respuesta'
-  resource:
-    search: buscar
-  path_names:
-    actions: 'acciones'
-    questions: 'preguntas'
-    proposals: 'propuestas'
-    agenda: 'agenda'
-
-#######################################
-# IREKIA - Views
-#######################################
-  News: Noticia
-  Event: Evento
-  Photo: Foto
-  Question: Pregunta
-  Video: Vídeo
-  Proposal: Propuesta
-  unknown_user: Invitado
-  title:
-    search: 'Búsqueda'
-  menu:
-    dashboard: Dashboard
-    your_questions: Tus preguntas
-    your_proposals: Tus propuestas
-    your_activity: Tu actividad
-    what_to_follow: Siguiendo
-    publish: Publicar
-    configure_your_account: Configura tu cuenta
-  home:
-    index:
-      sign_in: Entrar
-      email: Email
-      password: Contraseña
-      title: Participa en tu gobierno.
-      description: Irekia es la plataforma que te permite hacer oir tu voz en la toma de decisiones de Euskadi. Haz tus propuestas, reclama respuestas, contribuye y opina.
-      login: Accede a tu cuenta
-      or: o
-      register_now: Regístrate ya
-      view_all_the_areas: ver todas las áreas
-      search: ¿Qué buscas?
-      button: Buscar
-      citizens: ciudadanos
-      politicians: políticos
-      questions: preguntas
-      answered: respondidas
-      proposals: propuestas
-      votes: votos
-      banners:
-        press: Prensa :)
-        transparency: Transparencia
-        guide: Guía de comunicación abierta
-        opendata: Open data euskadi
-        agenda: Agenda de Irekia
-      rss:
-        title:
-          news: Noticias
-        items:
-          title:
-            news: 'Nueva noticia en el área de %{text}'
-            status_message: 'Nuevo mensaje de estado de %{text}'
-            tweet: 'Nuevo tweet de %{text}”'
-            vote: 'Nuevo voto en la propuesta “%{text}”'
-            photo: 'Nueva foto de %{text}'
-            event: 'Nuevo evento'
-            comment: 'Nuevo comentario en “%{text}”'
-            proposal: 'Nueva propuesta'
-            answer: 'Nueva respuesta a la pregunta “%{text}”'
-            argument: 'Nuevo argumento para la propuesta “%{text}”'
-            question: 'Nueva pregunta'
-            answer_request: 'Nueva solicitud de respuesta'
-          body:
-            question_for_politician: 'Pregunta para %{name}'
-            question_for_area: 'Pregunta para el área de %{name}'
-    agenda:
-      title: 'Agenda de Irekia'
-    areas:
-      all_the_areas: Todas las áreas
-      questions:
-        zero: Ninguna pregunta
-        one: 1 pregunta
-        other: '%{count} preguntas'
-      proposals:
-        zero: Ninguna propuesta
-        one: 1 propuesta
-        other: '%{count} propuestas'
-      no_activity: Sin actividad
-  shared:
-    error:
-      title: Irekia - Se ha producido un error (500)
-      error_title: Ha ocurrido un error inesperado. Disculpas.
-      home_page: Página de inicio de Irekia
-    not_found:
-      home_page: Página de inicio de Irekia
-      title: Irekia - La página que buscas no existe (404)
-      error:
-        title: Página no encontrada.
-        solution: 'Revisa la dirección de la página,<br />o <a href="%{url}">reporta el error</a> si crees que es problema de Irekia.'
-    actions_list:
-      no_content:
-        area: No hay contenido en este área
-    sharing:
-      label: Escribe la dirección de email
-      send: 'Enviar'
-      ical: Exportar para iCal
-      twitter: 'Compartir vía twitter'
-      facebook: 'Compartir vía facebook'
-      email: 'Compartir vía email'
-    questions_list:
-      no_content: No hay preguntas en este área
-    proposals_list:
-      no_content: No hay propuestas en este área
-    politician_publish:
-      description: ¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!
-      photo: Foto
-      video: Vídeo
-      title: Publicar
-      publish: Publicar
-      continue: Continuar
-      close: Cerrar
-      dashboard: Estado
-      proposal: Propuesta
-      photos: Fotos
-      remove: Eliminar
-      section:
-        proposal:
-          label: Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.
-          upload: Sube una foto
-          this_photo_will_be_published: Se publicará esta imagen.
-          explanation: ¿Quieres explicar la propuesta con más detalle?
-          label: Describe la propuesta en pocas palabras
-          success:
-            title: Tu propuesta ha sido publicada
-            description: Propuesta publicada correctamente.
-        status_message:
-          label: Introduce el texto que quieras publicar aquí.
-        photo:
-          upload: Sube una foto
-          loading: Cargando imagen...
-          this_photo_will_be_published: Se publicará esta imagen.
-          error:
-            title: Error
-            description: Ha ocurrido un error al publicar la foto, por favor vuelve a intentarlo en un momento.
-        video:
-          youtube_url: URL de Youtube
-          vimeo_url: URL de Vimeo
-          success:
-            title: Tu video ha sido publicado
-            description: Recuerda que podrás ver toda la actividad que ocurra alrededor de él en tu dashboard.
-          error:
-            title: Error
-            description: Ha ocurrido un error al publicar el video, por favor vuelve a intentarlo en un momento.
-    user_publish:
-      question: Pregunta
-      proposal: Propuesta
-      continue: Continuar
-      publish: Publicar
-      description: ¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!
-      section:
-        question:
-          label: Introduce el texto que quieras publicar aquí.
-          description: Describe la pregunta en pocas palabras
-          target: ¿A quién le quieres dirigir la pregunta?
-          explanation: ¿Quieres explicar la pregunta con más detalle?
-          target_name: Nombre de persona o área...
-          or: o
-          see_all: ver todas las áreas
-        proposal:
-          label: Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.
-          loading_photo: Cargando imagen...
-          image_will_be_included: Se incluirá esta imagen en la propuesta.
-          remove: Eliminar
-          explanation: ¿Quieres explicar la propuesta con más detalle?
-          description: Describe la propuesta en pocas palabras
-          target: ¿A qué area le quieres dirigir la pregunta?
-          target_name: Nombre de área...
-          see_all: ver todas las áreas
-          or: o
-
-    floating_login:
-      not_yet_registered: ¿No tienes cuenta en Irekia?
-      register_here: Regístrate aquí
-      access_irekia: Accede a Irekia
-      forgotten_password: ¿Olvidaste tu contraseña?
-      get_it_here: Recupérala aquí
-      remember_me: Recordar mis datos
-      login: Entra
-      remember_me: Recordar mis datos
-      password_response:
-        title: Ahora, mira tu correo
-        description: Te hemos mandado un email con instrucciones para recuperar tu contraseña. Síguelas para entrar en Irekia.
-        accept: Aceptar
-      password_reminder:
-        title: Introduce tu email
-        description: y te mandaremos instrucciones para recuperar tu contraseña
-        email: Tu email
-        recover_password: Recuperar contraseña
-    sidebar:
-      location:
-        title: "Localización del evento"
-      previous_tweets:
-        title: 'Tweets anteriores de %{name}'
-        time: 'Hace %{time}'
-      previous_statuses:
-        title: 'Publicaciones anteriores de %{name}'
-        time: 'Hace %{time}'
-      related_proposals:
-        time: 'Hace %{time}'
-        title: Propuestas relacionadas
-        in_favor:
-          zero: No votada aún
-          one: '%{percentage}% a favor (%{count} voto)'
-          other: '%{percentage}% a favor (%{count} votos)'
-        against:
-          zero: No votada aún
-          one: '%{percentage}% en contra (%{count} voto)'
-          other: '%{percentage}% en contra (%{count} votos)'
-      related_events:
-        title: 'Otros eventos de este área'
-        time: 'Hace %{time}'
-        comments:
-          zero: Aún no hay comentarios
-          one: Un comentario
-          other: '%{count} comentarios'
-      related_questions:
-        title: 'Otras preguntas similares'
-        time: 'Hace %{time}'
-        comments:
-          zero: Aún no hay comentarios
-          one: Un comentario
-          other: '%{count} comentarios'
-      politicians:
-        title: Políticos etiquetados en la noticia
-        tag: Etiquetar político
-      tags:
-        title: Tags
-        add_tags: "Añadir tags"
-      related_content:
-        title: Contenidos similares
-        comments:
-          zero: Todavía no hay comentarios
-          one: Un comentario
-          other: '%{count} comentarios'
-    question_form:
-      describe_the_question: Describe la pregunta en pocas palabras
-      remember_to_be_concise: Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo.
-      your_question: Tu pregunta
-      who_is_the_target: ¿A quién le quieres dirigir la pregunta?
-      name_of_the_area_or_politician: Nombre de área o político...
-      do_you_want_to_explain_the_question: ¿Quieres explicar la pregunta con más detalle?
-      make_a_question:
-        title: Haz una pregunta
-        submit: Enviar pregunta
-    proposal_form:
-      write_the_photo_url_or: Introduce la URL de la foto o
-      do_you_want_to_explain_the_proposal: ¿Quieres explicar la propuesta con más detalle?
-      describe_the_proposal: Describe la propuesta en pocas palabras
-      the_image_will_be_included_in_the_proposal: Se incluirá esta imagen en la propuesta.
-      who_is_the_target: ¿A qué area le quieres dirigir la pregunta?
-      name_of_the_area: Nombre de área...
-      loading: Cargando imagen...
-      upload_a_new_one: Sube una nueva
-      title: Título de la propuesta
-      subtitle: Recuerda ser breve y conciso.
-      upload_a_photo: Sube una foto
-      see_all_the_areas: ver todas las áreas
-      remove: Eliminar
-      or: o
-      make_a_proposal:
-        title: Haz una propuesta.
-        continue: Continuar
-        submit: Enviar propuesta
-    agenda_for_day:
-      and_more: "y %{count} más"
-    demo:
-      footer:
-        basque_government: Gobierno Vasco
-        legal_info:
-          title: Información legal
-          url: "http://www.euskadi.net/r33-2288/es/contenidos/informacion/informacion_legal/es_6303/informacion_legal.html"
-        home:
-          title: Inicio
-          agenda: Agenda
-          proposals: Propuestas
-          sign_up: Regístrate
-          sign_in: Accede a tu cuenta
-        areas:
-          title: Áreas
-          vasque_government: Gobierno Vasco
-          presidence: Presidencia
-          interior: Interior
-          education: Educación e Investigación
-          economy: Economía y Hacienda
-          justice: Justicia y Admon. Pública
-          housing: Vivienda
-          public_works: Obras Públicas y Transportes
-          industry: Industria e Innovación
-          comerce: Comercio y Turismo
-          employment: Empleo y Asuntos Sociales
-          health: Sanidad y Consumo
-          environment: Medio Ambiente
-          culture: Cultura y Deporte
-        about:
-          title: ¿Qué es Irekia?
-          help: Ayuda
-          faq: FAQ
-      header:
-        contact: Contacto
-        help: Ayuda
-        map: Mapa
-        accessibility: Accesibilidad
-        management: Mis gestiones
-      nav_bar:
-        areas: "Áreas"
-        search: Busca lo que necesitas&hellip;
-        choose_an_area: Elige un área
-
-      sign_in:
-        access_irekia: Accede a Irekia
-        get_it_here: Recupérala aquí
-        forgotten_password: ¿Olvidaste tu contraseña?
-        get_it_here: Recupérala aquí
-        remember_me: Recordar mis datos
-        sign_in: Entra
-        facebook_signin: Facebook
-        twitter_signin: Twitter
-      sign_up:
-        new_in_irekia: ¿Nuevo en Irekia?
-        fill_in_your_data: Rellena tus datos y comienza tu participación en Irekia.
-        terms_of_service: 'Acepto las %{use_conditions_link}'
-        terms_of_service_link: Condiciones de uso
-        sign_up: Crear mi cuenta
-    header:
-      contact: Contacto
-      contact_url: "http://www.ej-gv.net/o53/visualizador/o53BuzonEuskadi.jsp?por=2&lenguaje=1"
-      help: Ayuda
-      help_url: "http://www.irekia.euskadi.net/es/pages/781-ayuda"
-      map: Mapa
-      map_url: "http://www.irekia.euskadi.net/es/site/sitemap"
-      accessibility: Accesibilidad
-      accessibility_url: "http://www.euskadi.net/r33-2288/es/contenidos/informacion/cabecera_accesibilidad/es_6144/politica_accesibilidad.html"
-      management: Mis gestiones
-      management_url: "https://www6.euskadi.net/s06-9512x/eu/r02nConsultationSistemWar/consultation/r02nExpedientList.do"
-      euskadi_net_url: "http://www.euskadi.net/r33-2220/es/"
-
-    nav_bar:
-      areas: "Áreas"
-      search: Busca lo que necesitas&hellip;
-      choose_an_area: Elige un área
-      sign_up: Regístrate
-      sign_in: Login
-      sign_out: Salir
-      register: Regístrate en Irekia
-      facebook: facebook
-      twitter: twitter
-
-    sign_in:
-      not_yet_registered: ¿No tienes cuenta en Irekia?
-      register_here: Regístrate aquí
-      access_irekia: Accede a Irekia
-      forgotten_password: ¿Olvidaste tu contraseña?
-      get_it_here: Recupérala aquí
-      remember_me: Recordar mis datos
-      sign_in: Entra
-      facebook_signin: Facebook
-      twitter_signin: Twitter
-
-    forgot_password:
-      fill_in_your_email: Introduce tu email
-      will_send_your_data: Y te mandaremos instrucciones para recuperar tu contraseña
-      get_back_password: Recuperar contraseña
-
-    footer:
-      basque_government: Gobierno Vasco
-      legal_info:
-        title: Información legal
-        url: 'http://www.euskadi.net/r33-2288/es/contenidos/informacion/informacion_legal/es_6303/informacion_legal.html'
-      home:
-        title: Inicio
-        agenda: Agenda
-        proposals: Propuestas
-        sign_up: Regístrate
-        sign_in: Accede a tu cuenta
-        rss_all: RSS todo el contenido
-        rss_news: RSS noticias
-      areas:
-        title: Áreas
-        vasque_government: Gobierno Vasco
-        presidence: Presidencia
-        interior: Interior
-        education: Educación e Investigación
-        economy: Economía y Hacienda
-        justice: Justicia y Admon. Pública
-        housing: Vivienda
-        public_works: Obras Públicas y Transportes
-        industry: Industria e Innovación
-        comerce: Comercio y Turismo
-        employment: Empleo y Asuntos Sociales
-        health: Sanidad y Consumo
-        environment: Medio Ambiente
-        culture: Cultura y Deporte
-      about:
-        title: ¿Qué es Irekia?
-        help:
-          title: Ayuda
-          url: ""
-        faq:
-          title: FAQ
-          url: ""
-        use:
-          title: Condiciones de uso
-          url: 'http://www.irekia.euskadi.net/es/site/tos'
-        privacy:
-          title: Política de privacidad
-          url: 'http://www.irekia.euskadi.net/es/site/privacy'
-
-    actions:
-      title: Últimas acciones
-      main_filters:
-        more_recent: Más recientes
-        more_polemic: Más polémicas
-      no_content:
-        area: No hay contenido en este área.
-        user: 'No hay contenido para %{target}'
-      content_type_filters:
-       all: Todos los tipos
-       news: Noticias
-       questions: Preguntas
-       proposals: Propuestas
-       images: Fotos
-       videos: Vídeos
-       statuses: Cambios de estado
-      no_content_filters:
-       news: Noticias
-       questions: Preguntas
-       proposals: Propuestas
-       images: Fotos
-       videos: Vídeos
-       statuses: Cambios de estado
-      more: ver más acciones
-
-    lists_elements:
-      answer:
-        title:
-          you: 'Has contestado a "%{question}"'
-          other: '%{author} ha contestado a "%{question}"'
-          answer_with_video:
-            you:  'Has contestado con un vídeo.'
-            other: 'Ha contestado con un vídeo.'
-        author: '%{author} &middot; <span class="answered">Contestada tras %{time}</span>'
-        iphone:
-          author: 'Hace %{time}'
-      answer_request:
-        title: 'Ha sido reclamada la pregunta %{question}'
-        author: '%{author} hace %{time}'
-        iphone:
-          date: 'Hace %{time}'
-      question:
-        title: 'Pregunta para %{receiver}:'
-        author: '%{author} hace %{time}'
-        iphone:
-          author: 'Hace %{time}'
-        answered: 'Contestada tras %{time}'
-        not_answered: 'Aún no contestada'
-        read_more: 'Leer más'
-      question_unanswered:
-        title: '%{author} te ha hecho una'
-        new_question: 'nueva pregunta'
-        author: 'Hace %{time}'
-        answered: 'Contestada hace %{time}'
-        not_answered: 'Aún no contestada'
-      question_mini:
-        author: '%{author} hace %{time}'
-        answered: 'Contestada hace %{time}'
-        not_answered: 'Aún no contestada'
-      status_message:
-        author: '%{author} hace %{time}'
-        read_more: 'Leer más'
-      tweet:
-        author: '%{author} hace %{time} vía %{twitter}'
-        read_more: 'Leer más'
-      news:
-        author: 'Publicado hace %{time}'
-        read_more: 'Leer más'
-      proposal:
-        title:
-          you: 'Has creado una nueva propuesta: '
-          other: '%{name} ha creado una nueva propuesta: '
-        author: '%{author} hace %{time}'
-        iphone:
-          date: 'Hace %{time}'
-        against: en contra
-        in_favor: a favor
-        neutral: a favor
-        votes:
-          zero: 0 votos
-          one: 1 voto
-          other: '%{count} votos'
-        participation:
-          zero: Ningún usuario ha participado
-          one: Un usuario ha participado
-          other: '%{count} usuarios han participado'
-      photo:
-        title:
-          you: 'Has subido una foto:'
-          other: '%{name} ha subido una foto:'
-        author: '%{author} hace %{time}'
-      video:
-        published_by: 'Publicado por'
-        title:
-          you: 'Has subido un vídeo:'
-          other: '%{name} ha subido un vídeo:'
-        author: '%{author} hace %{time}'
-      proposal_mini:
-        author: '%{author} hace %{time}'
-        votes_in_favor:
-          zero: '%{percent}% a favor (ningún voto)'
-          one: '%{percent}% a favor (1 voto)'
-          other: '%{percent}% a favor (%{count} votos)'
-        votes_against:
-          zero: '%{percent}% en contra (ningún voto)'
-          one: '%{percent}% en contra (1 voto)'
-          other: '%{percent}% en contra (%{count} votos)'
-      argument:
-        title: Nuevo argumento en la propuesta %{proposal}
-        author: 'hace %{time}'
-        against: en contra
-        in_favor: a favor
-        votes:
-          zero: 0 votos
-          one: 1 voto
-          other: '%{count} votos'
-        arguments:
-          in_favor: 'Nuevos argumentos a favor:'
-          against: 'Nuevos argumentos en contra:'
-      vote:
-        title:
-          in_favor: '%{name} ha votado a favor de la propuesta "%{proposal}"'
-          against: '%{name} ha votado en contra de la propuesta "%{proposal}"'
-        author: '%{author} participó hace %{time}'
-        iphone:
-          author: 'Hace %{time}'
-      event:
-        author: 'Publicado hace %{time}'
-      content_user:
-        title: 'Has sido etiquetado en %{content_type} &quot;%{content}&quot;'
-        proposal: la propuesta
-        question: la pregunta
-        news: la noticia
-        photo: la foto
-        video: el vídeo
-        tweet: el tweet
-        event: el evento
-        author: 'hace %{time}'
-      comment:
-        title: 'Nuevo comentario en %{content_type}'
-        status_message: un mensaje de estado
-        proposal: la propuesta
-        question: la pregunta
-        answer: la respuesta
-        news: la noticia
-        photo: la foto
-        video: el vídeo
-        tweet: el tweet
-        event: el evento
-        author: 'Publicado por %{author} hace %{time}'
-        iphone:
-          author: 'Hace %{time}'
-      comments:
-        zero: Todavía no hay comentarios
-        one: 1 comentario
-        other: '%{count} comentarios'
-      share: Compartir
-      last_comments:
-        previous:
-          zero: ''
-          one: '%{previous_link} de %{authors}'
-          other: '%{previous_link}'
-        previous_link:
-          zero: Ningún comentario anterior
-          one: 1 comentario anterior
-          other: '%{count} comentarios anteriores'
-        write_your_comment: 'Escribe tu comentario...'
-        Send: Enviar
-      not_moderated:
-        answer:
-          title:
-            you: 'Has contestado a "%{question}"'
-            other: '%{author} ha contestado a "%{question}"'
-        answer_request:
-          title: 'Ha sido reclamada la pregunta %{question}'
-        question:
-          title: 'Pregunta para %{receiver}:'
-        question_mini:
-        status_message:
-        tweet:
-        news:
-        proposal:
-          title:
-            you: 'Has creado una nueva propuesta: '
-            other: '%{name} ha creado una nueva propuesta: '
-        photo:
-          title:
-            you: 'Has subido una foto:'
-            other: '%{name} ha subido una foto:'
-        video:
-          title:
-            you: 'Has subido un vídeo:'
-            other: '%{name} ha subido un vídeo:'
-        proposal_mini:
-        argument:
-          title: Nuevo argumento en la propuesta %{proposal}
-        vote:
-          title:
-            in_favor: '%{name} ha votado a favor de la propuesta "%{proposal}"'
-            against: '%{name} ha votado en contra de la propuesta "%{proposal}"'
-        event:
-        content_user:
-          title: 'Has sido etiquetado en %{content_type} &quot;%{content}&quot;'
-          proposal: la propuesta
-          question: la pregunta
-          news: la noticia
-          photo: la foto
-          video: el vídeo
-          tweet: el tweet
-          event: el evento
-        comment:
-          title: 'Nuevo comentario en %{content_type}'
-          status_message: un mensaje de estado
-          proposal: la propuesta
-          question: la pregunta
-          answer: la respuesta
-          news: la noticia
-          photo: la foto
-          video: el vídeo
-          tweet: el tweet
-          event: el evento
-        footer:
-          author: '<a href="%{author_url}">Tú</a> hace %{time}'
-          moderation_pending: 'Pendiente de moderar'
-          rest_of_users: ': el resto de usuarios no lo puede ver aún.'
-
-    questions:
-      no_questions:
-        user: "No hay preguntas para %{target}"
-        area: "No hay preguntas en este área"
-      title: Preguntas de los ciudadanos
-      main_filters:
-        more_recent: Más recientes
-        more_polemic: Más polémicas
-      content_type_filters:
-       all: Todas
-       answered: Contestadas
-      create_question: Haz una pregunta
-      make_a_question:
-        title: Haz una pregunta
-        hint: Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo
-        your_question: Tu pregunta
-        submit: Enviar pregunta
-      more: ver más preguntas
-
-    proposals:
-      no_proposals:
-        user: "No hay propuestas para %{target}"
-        area: "No hay propuestas en este área"
-      title: Propuestas
-      politician_proposals: Propuestas en las que participa
-      in_favor: '%{percentage}% a favor (%{count} votos)'
-      against: '%{percentage}% en contra (%{count} votos)'
-      main_filters:
-        more_recent: Más recientes
-        more_polemic: Más polémicas
-      content_type_filters:
-       all: Todas
-       from_politicians: Propuestas del gobierno
-       from_citizens: Propuestas ciudadanas
-      create_proposal: Crea una propuesta
-      more: ver más propuestas
-
-    agenda:
-      view_calendar: Ver calendario
-      view_map: Ver mapa
-      more: Ver calendario completo
-      next_month: Siguiente mes
-      ical: Exportar para iCal
-      showing: 'Mostrando'
-      all_events: 'Todos los eventos'
-
-    nav_bar_buttons:
-      settings:
-        title: Configuración
-        label: Tu perfil
-      sign_up: Regístrate
-      sign_in: Login
-      hello: 'Hola, %{name}'
-      sign_out:
-        title: Salir
-        label: Cerrar sesión
-      facebook: Facebook
-      twitter: Twitter
-      notifications:
-        pending:
-          zero: 'No tienes notificaciones'
-          one: '1 notificación'
-          other: '%{count} notificaciones'
-        a_content:
-          news: una noticia
-          photo: una foto
-          event: un evento
-          proposal: una propuesta
-          question: una pregunta
-          answer: una respuesta
-          tweet: un tweet
-          status_message: un cambio de estado
-          video: un video
-        your_content:
-          news: Tu noticia
-          photo: Tu foto
-          event: Tu evento
-          proposal: Tu propuesta
-          question: Tu pregunta
-          answer: Tu respuesta
-          tweet: Tu tweet
-          status_message: Tu cambio de estado
-          video: Tu video
-        comments_content_author:
-          zero: 'Ningún comentario en %{content}'
-          one: 'Nuevo comentario en %{content}'
-          other: '%{count} nuevos comentarios en %{content}'
-        comments_tagged:
-          zero: 'Ningún comentario en %{content} en la que has sido etiquetado'
-          one: 'Nuevo comentario en %{content} en la que has sido etiquetado'
-          other: '%{count} nuevos comentarios en %{content} en la que has sido etiquetado'
-        comments_content:
-          zero: 'Ningún comentario en %{content} en la que has participado'
-          one: 'Nuevo comentario en %{content} en la que has participado'
-          other: '%{count} nuevos comentarios en %{content} en la que has participado'
-        content_users:
-          zero: 'No te han etiquetado aún'
-          one: 'Te han etiquetado en %{content}'
-          other: 'Te han etiquetado en %{count} nuevos contenidos'
-        follow:
-          zero: 'Ningún nuevo seguidor'
-          one: '%{name} te ha empezado a seguir'
-          other: '%{count} te han empezado a seguir'
-        question:
-          zero: 'Ninguna pregunta nueva'
-          one: 'Tienes una nueva %{question}'
-          other: 'Tienes %{count} nuevas preguntas'
-        answer:
-          zero: 'Ninguna respuesta nueva a tus preguntas'
-          one: '%{question} ha sido contestada'
-          other: 'Tus preguntas han sido contestadas'
-        proposal:
-          zero: 'Ninguna propuesta nueva'
-          one: 'Tienes una nueva %{proposal}'
-          other: 'Tienes %{count} nuevas propuestas'
-        vote_proposal_author:
-          zero: 'Ningún voto nuevo'
-          one: 'Nuevo voto en %{content}'
-          other: '%{count} nuevos votos en %{content}'
-        argument_proposal_author:
-          zero: 'Ningún argumento nuevo'
-          one: 'Nuevo argumento en %{content}'
-          other: '%{count} nuevos argumentos en %{content}'
-        vote_proposal:
-          zero: 'Ningún voto nuevo'
-          one: 'Un voto nuevo en %{content} en la que has participado'
-          other: '%{count} nuevos votos en %{content} en la que has participado'
-        argument_proposal:
-          zero: 'Ningún argumento nuevo'
-          one: 'Un nuevo argumento en %{content} en la que has participado'
-          other: '%{count} nuevos argumentos en %{content} en la que has participado'
-  contents:
-    edit:
-      proposal:
-        addressed_to: 'Dirigida a'
-        insert_the_new_target: Introduce el nuevo destinatario
-        back: volver
-        see_all_proposals: Ver todas las propuestas a este área
-        in_favor:
-            zero: '%{percentage}% a favor (%{count} votos)'
-            one:  '%{percentage}% a favor (%{count} voto)'
-            other: '%{percentage}% a favor (%{count} votos)'
-        against:
-            zero: '%{percentage}% en contra (%{count} votos)'
-            one:  '%{percentage}% en contra (%{count} voto)'
-            other: '%{percentage}% en contra (%{count} votos)'
-        title_author_and_comments:
-          time: 'hace %{time}'
-          comments:
-            zero: Todavía no hay comentarios
-            one: Un comentario
-            other: '%{count} comentarios'
-          total_in_favor: '%{percent}% a favor (de %{total})'
-        content:
-          in_favor: A favor
-          against: En contra
-          add: Añadir
-          your_opinion:
-            title: ¿Qué opinas tú?
-            subtitle: Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión.
-            vote_in_favor: Votar a favor
-            vote_against: Votar en contra
-        sidebar:
-          sharing_links:
-            mail: Mail
-            twitter: Twitter
-            facebook: Facebook
-          tags:
-            title: Tags
-          related_content:
-            title: Últimos contenidos
-            comments:
-              zero: Aún no hay comentarios
-              one: Un comentario
-              other: '%{count} comentarios'
-      event:
-        save: Guardar
-        back: volver
-        add_subtitle: Añadir subtítulo
-      news:
-        save: Guardar
-        back: volver
-        add_title: Añadir título
-        add_body: Añadir texto
-        add_subtitle: Añadir subtítulo
-      image:
-        add_caption: Añadir pie de foto
-        save: Guardar
-        add_photo: Añadir foto
-        loading: Cargando imagen...
-        upload_a_new_one: Sube una nueva
-      question:
-        save: Guardar
-        back: volver
-        addressed_to: 'Dirigida a'
-        address_the_question: Dirige la pregunta
-        insert_the_new_target: Introduce el nuevo destinatario
-        not_answered_yet: Esta pregunta aún no ha sido contestada.
-        you_and_other:
-          zero: Nadie ha pedido que sea contestada
-          one: Por ahora sólo tú quieres que sea contestada
-          other: Por ahora sólo tú y otra persona queréis que sea contestada
-        you_and_thousands: Por ahora sólo tú y otras %{count} personas queréis que sea contestada
-        answer_this_question: Contesta a esta pregunta
-        add_a_video:  Añade un video si quieres
-        publish: 'Publicar respuesta'
-        youtube_or_vimeo_url: Dirección de YouTube o Vimeo
-        people_demanding_answer:
-          zero: Nadie ha pedido que sea contestada
-          one: 1 persona quiere que sea contestada
-          other: '%{count} personas quieren que sea contestada'
-        join_them:
-          zero: sé el primero
-          one: únete a ella
-          other: sumáte a ellos
-        question_content:
-          author_and_comments:
-            time: 'hace %{time}'
-            answered: 'Contestada tras %{time}'
-            not_answered:
-              zero: No contestada
-              one: 'No contestada, solicitada por 1'
-              other: 'No contestada, solicitada por %{count}'
-            comments:
-              zero: Todavía no hay comentarios
-              one: Un comentario
-              other: '%{count} comentarios'
-          answer_requests:
-            do_request: Solicitar respuesta
-          answer:
-            has_answered: 'Ha contestado %{name}'
-          answer_opinion: ¿Qué te parece la respuesta?
-          answer_satisfactory: 'Satisfactoria'
-          answer_not_satisfactory: 'No satisfactoria'
-        sidebar:
-          sharing_links:
-            mail: Mail
-            twitter: Twitter
-            facebook: Facebook
-          tags:
-            title: Tags
-          related_questions:
-            title: 'Otras preguntas similares'
-            time: 'Hace %{time}'
-            comments:
-              zero: Aún no hay comentarios
-              one: Un comentario
-              other: '%{count} comentarios'
-        footer:
-          all_questions_to_user: 'Todas las preguntas para %{name}'
-          all_questions_to_area: 'Todas las preguntas para el área de %{name}'
-    arguments:
-      in_favor: Argumentos a favor
-      against: Argumentos en contra
-      add: Añadir
-      write_here: Escribe aquí
-      success:
-        title: Comentario enviado.
-        description: Te avisaremos en cuanto sea aprobado.
-      error:
-        title: Error técnico.
-        description: Lo sentimos, no se ha podido guardar :-(
-    create:
-      proposal:
-        title: Tu propuesta ha sido enviada
-        moderation_pending: Propuesta pendiente de moderación
-        description: En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.
-      question:
-        title: Tu pregunta ha sido enviada
-        moderation_pending: Pregunta pendiente de moderación
-        description: En cuanto nuestros moderadores la aprueben, te notificaremos su publicación mediante email.
-      politician:
-        status_message:
-          title: Tu mensaje ha sido publicado
-          description: Mensaje de estado publicado correctamente.
-        photo:
-          title: Tu fotografía ha sido publicada
-          description: Fotografía publicada correctamente.
-        video:
-          title: Tu vídeo ha sido publicado
-          description: Vídeo publicado correctamente.
-        question:
-          title: Tu pregunta ha sido publicada
-          description: Pregunta publicada correctamente.
-        proposal:
-          title: Tu propuesta ha sido publicada
-          description: Propuesta publicada correctamente.
-    update:
-
-    show:
-      news:
-        back: volver
-        date_area_and_comments:
-          comments:
-            zero: Todavía no hay comentarios
-            one: Un comentario
-            other: '%{count} comentarios'
-        sidebar:
-          sharing_links:
-            mail: Mail
-            twitter: Twitter
-            facebook: Facebook
-          tags:
-            title: Tags
-            add_tags: 'Añadir tag'
-          related_politicians:
-            title: Políticos relacionados
-          related_content:
-            title: Últimos contenidos
-            comments:
-              zero: Aún no hay comentarios
-              one: Un comentario
-              other: '%{count} comentarios'
-      photo:
-        published_by: 'Publicada por'
-        back: volver
-        title_author_and_comments:
-          time: 'hace %{time}'
-          comments:
-            zero: Todavía no hay comentarios
-            one: Un comentario
-            other: '%{count} comentarios'
-        title:
-          comments:
-            zero: Todavía no hay comentarios
-            one: Un comentario
-            other: '%{count} comentarios'
-        sidebar:
-          sharing_links:
-            mail: Mail
-            twitter: Twitter
-            facebook: Facebook
-          tags:
-            title: Tags
-          related_politicians:
-            title: Políticos relacionados
-          related_photos:
-            title: Últimas fotos
-            comments:
-              zero: Aún no hay comentarios
-              one: Un comentario
-              other: '%{count} comentarios'
-      video:
-        published_by: 'Publicado por'
-        back: volver
-        title_author_and_comments:
-          time: 'hace %{time}'
-          comments:
-            zero: Todavía no hay comentarios
-            one: Un comentario
-            other: '%{count} comentarios'
-        title:
-          comments:
-            zero: Todavía no hay comentarios
-            one: Un comentario
-            other: '%{count} comentarios'
-        sidebar:
-          sharing_links:
-            mail: Mail
-            twitter: Twitter
-            facebook: Facebook
-          tags:
-            title: Tags
-          related_politicians:
-            title: Políticos relacionados
-          related_photos:
-            title: Últimas fotos
-            comments:
-              zero: Aún no hay comentarios
-              one: Un comentario
-      event:
-        back: volver
-        back_to_the_agenda: "volver a la agenda"
-        title:
-          time: '%{day} a partir de las %{hour}'
-          comments:
-            zero: Todavía no hay comentarios
-            one: Un comentario
-            other: '%{count} comentarios'
-        date_area_and_comments:
-          comments:
-            zero: Todavía no hay comentarios
-            one: Un comentario
-            other: '%{count} comentarios'
-        sidebar:
-          sharing_links:
-            mail: Mail
-            twitter: Twitter
-            facebook: Facebook
-          tags:
-            title: Tags
-          related_politicians:
-            title: Políticos relacionados
-          related_events:
-            title: Últimos eventos
-            comments:
-              zero: Aún no hay comentarios
-              one: Un comentario
-              other: '%{count} comentarios'
-      question:
-        addressed_to: 'Dirigida a'
-        not_answered_yet: Esta pregunta aún no ha sido contestada.
-        you_and_other:
-          zero: Nadie ha pedido que sea contestada
-          one: Por ahora sólo tú quieres que sea contestada
-          other: Por ahora sólo tú y otra persona queréis que sea contestada
-        you_and_thousands: Por ahora sólo tú y otras %{count} personas queréis que sea contestada
-        answer_this_question: Contesta a esta pregunta
-        add_a_video:  Añade un video si quieres
-        publish: 'Publicar respuesta'
-        youtube_or_vimeo_url: Dirección de YouTube o Vimeo
-        people_demanding_answer:
-          zero: Nadie ha pedido que sea contestada
-          one: 1 persona quiere que sea contestada
-          other: '%{count} personas quieren que sea contestada'
-        join_them:
-          zero: sé el primero
-          one: únete a ella
-          other: sumáte a ellos
-        question_content:
-          author_and_comments:
-            time: 'hace %{time}'
-            answered: 'Contestada tras %{time}'
-            not_answered:
-              zero: No contestada
-              one: 'No contestada, solicitada por 1'
-              other: 'No contestada, solicitada por %{count}'
-            comments:
-              zero: Todavía no hay comentarios
-              one: Un comentario
-              other: '%{count} comentarios'
-          answer_requests:
-            do_request: Solicitar respuesta
-          answer:
-            has_answered: 'Ha contestado %{name}'
-          answer_opinion: ¿Qué te parece la respuesta?
-          answer_satisfactory: 'Satisfactoria'
-          answer_not_satisfactory: 'No satisfactoria'
-        sidebar:
-          sharing_links:
-            mail: Mail
-            twitter: Twitter
-            facebook: Facebook
-          tags:
-            title: Tags
-          related_questions:
-            title: 'Otras preguntas similares'
-            time: 'Hace %{time}'
-            comments:
-              zero: Aún no hay comentarios
-              one: Un comentario
-              other: '%{count} comentarios'
-        footer:
-          all_questions_to_user: 'Todas las preguntas para %{name}'
-          all_questions_to_area: 'Todas las preguntas para el área de %{name}'
-      proposal:
-        addressed_to: 'Dirigida a'
-        back: volver
-        see_all_proposals: Ver todas las propuestas a este área
-        in_favor:
-            zero: '%{percentage}% a favor (nadie ha votado todavía)'
-            one:  '%{percentage}% a favor (%{count} voto)'
-            other: '%{percentage}% a favor (%{count} votos)'
-        against:
-            zero: '%{percentage}% en contra (nadie ha votado todavía)'
-            one:  '%{percentage}% en contra (%{count} voto)'
-            other: '%{percentage}% en contra (%{count} votos)'
-        title_author_and_comments:
-          time: 'hace %{time}'
-          comments:
-            zero: Todavía no hay comentarios
-            one: Un comentario
-            other: '%{count} comentarios'
-          total_in_favor: '%{percent}% a favor (de %{total})'
-        content:
-          in_favor: A favor
-          against: En contra
-          add: Añadir
-          your_opinion:
-            title: ¿Qué opinas tú?
-            subtitle: Dinos si estás a favor o en contra de esta propuesta. Tendremos en cuenta los resultados a la hora de tomar una decisión.
-            vote_in_favor: Votar a favor
-            vote_against: Votar en contra
-        sidebar:
-          sharing_links:
-            mail: Mail
-            twitter: Twitter
-            facebook: Facebook
-          tags:
-            title: Tags
-          related_content:
-            title: Últimos contenidos
-            comments:
-              zero: Aún no hay comentarios
-              one: Un comentario
-              other: '%{count} comentarios'
-      tweet:
-        author: 'Twitteado por %{name} hace %{time}'
-        back: volver
-        sidebar:
-          sharing_links:
-            mail: Mail
-            twitter: Twitter
-            facebook: Facebook
-          last_tweets:
-            title: 'Últimos tweets de %{name}'
-            time: 'hace %{time}'
-      status_message:
-        author: 'Publicado por %{name} hace %{time}'
-        back: volver
-        sidebar:
-          sharing_links:
-            mail: Mail
-            twitter: Twitter
-            facebook: Facebook
-          last_tweets:
-            title: 'Últimos tweets de %{name}'
-            time: 'hace %{time}'
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
   participations:
-    show:
-      time: 'hace %{time}'
     comments:
-      title:
-        zero: Todavía no hay comentarios
-        one: Un comentario
-        other: '%{count} comentarios'
       answer_this:
-        question: '¿Algo que decir?&hellip; comenta esta pregunta'
-        news:  '¿Algo que decir?&hellip; comenta esta noticia'
-        tweet: '¿Algo que decir?&hellip; comenta este tweet'
-        event: '¿Algo que decir?&hellip; comenta este evento'
-        video: '¿Algo que decir?&hellip; comenta este vídeo'
-        statusmessage: '¿Algo que decir?&hellip; comenta este estado'
-        proposal: '¿Algo que decir?&hellip; comenta esta propuesta'
-        photo: '¿Algo que decir?&hellip; comenta esta foto'
-      time: 'hace %{time}'
+        event: "¿Algo que decir?&hellip; comenta este evento"
+        news: "¿Algo que decir?&hellip; comenta esta noticia"
+        photo: "¿Algo que decir?&hellip; comenta esta foto"
+        proposal: "¿Algo que decir?&hellip; comenta esta propuesta"
+        question: "¿Algo que decir?&hellip; comenta esta pregunta"
+        statusmessage: "¿Algo que decir?&hellip; comenta este estado"
+        tweet: "¿Algo que decir?&hellip; comenta este tweet"
+        video: "¿Algo que decir?&hellip; comenta este vídeo"
+      label:
+        news: "¿Algo que decir?&hellip; comenta esta noticia"
       new:
         submit: Comentar
-      label:
-        news: ¿Algo que decir?&hellip; comenta esta noticia
       not_moderated:
-          author: '<a href="%{author_url}">Tú</a> hace %{time}'
-          moderation_pending: 'Pendiente de moderar'
-          rest_of_users: ': el resto de usuarios no lo puede ver aún.'
+        author: "<a href=\"%{author_url}\">Tú</a> hace %{time}"
+        moderation_pending: "Pendiente de moderar"
+        rest_of_users: ": el resto de usuarios no lo puede ver aún."
+      time: "hace %{time}"
+      title:
+        one: "Un comentario"
+        other: "%{count} comentarios"
+        zero: "Todavía no hay comentarios"
+    moderated:
+      answer_request:
+        people_demanding_answer:
+          one: "1 persona quiere que sea contestada,"
+          other: "%{count} personas quieren que sea contestada,"
+          zero: "Nadie ha pedido que sea contestada,"
+        you_and_other:
+          one: "Por ahora sólo tú quieres que sea contestada"
+          other: "Por ahora sólo tú y otra persona queréis que sea contestada"
+          zero: "Nadie ha pedido que sea contestada"
+        you_and_thousands: "Por ahora sólo tú y otras %{count} personas queréis que sea contestada"
+      comment:
+        time: "hace %{time}"
+      vote:
+        against:
+          one: "%{percentage}% en contra (%{count} voto)"
+          other: "%{percentage}% en contra (%{count} votos)"
+          zero: "%{percentage}% en contra (%{count} votos)"
+        in_favor:
+          one: "%{percentage}% a favor (%{count} voto)"
+          other: "%{percentage}% a favor (%{count} votos)"
+          zero: "%{percentage}% a favor (%{count} votos)"
     not_moderated:
+      argument:
+        moderation_pending: "Argumento pendiente de moderación"
       comment:
         comment_sent: "Tu comentario ha sido enviado :)"
         the_comment_will_be_published_soon: "Será publicado en cuanto nuestros <u>moderadores</u> puedan revisarlo"
       comment_mini:
         comment_sent: "Tu comentario ha sido enviado :)"
         the_comment_will_be_published_soon: "Será publicado en cuanto nuestros <u>moderadores</u> puedan revisarlo"
-      argument:
-        moderation_pending: Argumento pendiente de moderación
-    moderated:
-      comment:
-        time: 'hace %{time}'
-      vote:
-        in_favor:
-            zero: '%{percentage}% a favor (%{count} votos)'
-            one:  '%{percentage}% a favor (%{count} voto)'
-            other: '%{percentage}% a favor (%{count} votos)'
-        against:
-            zero: '%{percentage}% en contra (%{count} votos)'
-            one:  '%{percentage}% en contra (%{count} voto)'
-            other: '%{percentage}% en contra (%{count} votos)'
-      answer_request:
-        you_and_other:
-          zero: Nadie ha pedido que sea contestada
-          one: Por ahora sólo tú quieres que sea contestada
-          other: Por ahora sólo tú y otra persona queréis que sea contestada
-        you_and_thousands: Por ahora sólo tú y otras %{count} personas queréis que sea contestada
-        people_demanding_answer:
-          zero: Nadie ha pedido que sea contestada,
-          one: 1 persona quiere que sea contestada,
-          other: '%{count} personas quieren que sea contestada,'
-  areas:
-    index:
-      area_description: Área del Gobierno Vasco
-    navigation_menu:
-      menu:
-        show: Resumen
-        actions: Actividad
-        questions: Preguntas
-        proposals: Propuestas
-        agenda: Agenda
-        team: Equipo
-    summary:
-      description:
-        title: Qué hacemos
-        read_more: Leer más
-      team:
-        title: Equipo principal
-        other_members:
-          one: 1 persona más en este área
-          other: '%{count} personas más en este área'
-      status:
-        area:
-          actions_this_week:
-            zero: Ninguna acción esta semana
-            one: 1 acción esta semana
-            other: '%{count} acciones esta semana'
-          follow_this_area: Sigue a este área
-        questions:
-          answered:
-            zero: Ninguna pregunta contestada
-            one: 1 pregunta contestada
-            other: '%{count} preguntas contestadas'
-          make_a_question: Haz una pregunta
-        proposals:
-          open:
-            zero: Ninguna propuesta abierta
-            one: 1 propuesta abierta
-            other: '%{count} propuestas abiertas'
-          make_a_proposal: Lanza tu propuesta
-    agenda:
-      title: Agenda del área
-    team:
-      title:
-        zero: Ninguna persona implicada en este área
-        one: Una persona implicada en este área
-        other: '%{count} personas implicadas en este área'
-      follow: Seguir
-      actions_this_week:
-        zero: Ninguna acción esta semana
-        one: Una acción esta semana
-        other: '%{count} acciones esta semana'
-      inactive: No está registrado en Irekia
     show:
-      agenda:
-        title: Agenda del área
-
+      time: "hace %{time}"
+  path_names:
+    actions: acciones
+    agenda: agenda
+    proposals: propuestas
+    questions: preguntas
   politicians:
+    agenda:
+      title: "Agenda de %{name}"
+    detail:
+      back: volver
+      description:
+        activity: "Actividad en IREKIA"
+        contact: "Información de contacto"
+        title: "Quién es y qué hace"
+      stats:
+        actions: "Acciones en IREKIA"
+        comments: "comentarios en propuestas"
+        questions: "preguntas contestadas"
+        respond: "tarda en responder %{time}"
+        week: "%{count} esta semana"
+      title: "%{title} en el área de %{areas}"
     menu:
-      show: Resumen
       actions: Actividad
-      questions: Preguntas
-      proposals: Propuestas
       agenda: Agenda
       detail: Detalle
-    summary:
-      title: '%{title} en el área de %{areas}'
-      description:
-        title: Quién es y qué hace
-        read_more: Leer más
-      menu:
-        proposals: Propuestas
-        agenda: Agenda
-        actions: Actividad
-        questions: Preguntas
-        documents: Documentos
-        summary: Resumen
-      actions:
-        this_week:
-          zero: Ninguna acción esta semana
-          one: Una acción esta semana
-          other: '%{count} acciones esta semana'
-        follow: 'Sigue a %{name}'
-      questions:
-        answered:
-          zero: Ninguna pregunta contestada
-          one: Una pregunta contestada
-          other: '%{count} preguntas contestadas'
-        ask: 'Pregunta a %{name}'
-      make_a_question:
-        label: 'Haz una pregunta a %{name}'
-        submit: Preguntar
-      ask:
-        button: Preguntar
-        title: 'Pregunta a %{name}'
-        label: 'Haz una pregunta a %{name}'
-      success:
-        title: Pregunta enviada.
-        description: Te avisaremos en cuanto sea aprobada.
-      error:
-        title: Error técnico.
-        description: Lo sentimos, no se ha podido guardar :-(
-      question_sent:
-        success: Tu pregunta se ha enviado correctamente
-        waiting_moderation: 'y será publicada en cuanto nuestro equipo de moderación la haya %{review_link}. También te avisaremos cuando recibas respuesta.'
-        review_link: revisado
-        fail: Hubo un error al enviar tu pregunta
-    agenda:
-      title: 'Agenda de %{name}'
+      proposals: Propuestas
+      questions: Preguntas
+      show: Resumen
     show:
       agenda:
-        title: 'Agenda de %{name}'
-    detail:
-      back: 'volver'
-      title: '%{title} en el área de %{areas}'
+        title: "Agenda de %{name}"
+    summary:
+      actions:
+        follow: "Sigue a %{name}"
+        this_week:
+          one: "Una acción esta semana"
+          other: "%{count} acciones esta semana"
+          zero: "Ninguna acción esta semana"
+      ask:
+        button: Preguntar
+        label: "Haz una pregunta a %{name}"
+        title: "Pregunta a %{name}"
       description:
-        title: Quién es y qué hace
-        activity: Actividad en IREKIA
-        contact: Información de contacto
-      stats:
-        actions: 'Acciones en IREKIA'
-        week: '%{count} esta semana'
-        questions: 'preguntas contestadas'
-        comments: 'comentarios en propuestas'
-        respond: 'tarda en responder %{time}'
-  searches:
-    header:
-      your_search_results: Resultados de tu búsqueda
-    show:
-      your_search_results: Resultados de tu búsqueda
-    navigation_menu:
-      no_results: No hay resultados
-      change_the_search_terms: Cambia los términos utilizados para realizar la búsqueda.
-      you_can_also: O también puedes
-      explore_irekia_contents: explorar los contenidos de Irekia
-      tabs:
+        read_more: "Leer más"
+        title: "Quién es y qué hace"
+      error:
+        description: "Lo sentimos, no se ha podido guardar :-("
+        title: "Error técnico."
+      make_a_question:
+        label: "Haz una pregunta a %{name}"
+        submit: Preguntar
+      menu:
+        actions: Actividad
+        agenda: Agenda
+        documents: Documentos
+        proposals: Propuestas
+        questions: Preguntas
         summary: Resumen
-        contents:
-          zero: Ningún contenido
-          one: 1 contenido
-          other: '%{count} contenidos'
-        areas:
-          zero: Ningún área
-          one: 1 área
-          other: '%{count} áreas'
-        politicians:
-          zero: Ningún político
-          one: 1 político
-          other: '%{count} políticos'
-        users:
-          zero: Ningún usuario
-          one: 1 usuario
-          other: '%{count} usuarios'
+      question_sent:
+        fail: "Hubo un error al enviar tu pregunta"
+        review_link: revisado
+        success: "Tu pregunta se ha enviado correctamente"
+        waiting_moderation: "y será publicada en cuanto nuestro equipo de moderación la haya %{review_link}. También te avisaremos cuando recibas respuesta."
+      questions:
+        answered:
+          one: "Una pregunta contestada"
+          other: "%{count} preguntas contestadas"
+          zero: "Ninguna pregunta contestada"
+        ask: "Pregunta a %{name}"
+      success:
+        description: "Te avisaremos en cuanto sea aprobada."
+        title: "Pregunta enviada."
+      title: "%{title} en el área de %{areas}"
+  resource:
+    search: buscar
+  resources:
+    answer_requests: solicitudes_de_respuesta
+    answers: respuestas
+    areas: areas
+    arguments: argumentos
+    comments: comentarios
+    events: eventos
+    images: imagenes
+    news: noticias
+    photos: fotos
+    politicians: politicos
+    proposals: propuestas
+    questions: preguntas
+    status_messages: cambios_de_estado
+    tweets: tweets
+    users: usuarios
+    videos: videos
+    votes: votos
+  routes:
+    areas:
+      as: areas
+      path_names:
+        team: equipo
+    politicians:
+      as: politicos
+      path_names:
+        detail: detalle
+    search:
+      as: buscar
+      path_names:
+        areas: areas
+        citizens: ciudadanos
+        contents: contenidos
+        politicians: politicos
+        politicians_and_areas: politicos_y_areas
+    users:
+      as: usuarios
+      path_names:
+        connect: conectar
+        settings: preferencias
+  searches:
     areas:
       results:
-        title:
-          zero: Ningún área
-          one: 1 área
-          other: '%{count} áreas'
-        all: 'ver los %{count} áreas encontradas'
-        more: ver más resultados
+        all: "ver los %{count} áreas encontradas"
         follow: Seguir
-    users:
-      results:
+        more: "ver más resultados"
         title:
-          zero: Ningún area
-          one: 1 usuario
-          other: '%{count} usuarios'
-        all: 'ver los %{count} usuarios encontrados'
-        more: ver más resultados
-        follow: Seguir
-        main_filters:
-          more_recent: Más recientes
-          more_active: Más activos
-        look_city: Buscar un municipio
-    contents:
-      results:
-        title:
-          total:
-            zero: Ningún contenido
-            one: 1 contenido
-            other: '%{count} contenidos'
-          news:
-            zero: Ninguna noticia
-            one: 1 noticia
-            other: '%{count} noticias'
-          questions:
-            zero: Ninguna pregunta
-            one: 1 pregunta
-            other: '%{count} preguntas'
-          proposals:
-            zero: Ninguna propuesta
-            one: 1 propuesta
-            other: '%{count} propuestas'
-          photos:
-            zero: Ninguna foto
-            one: 1 foto
-            other: '%{count} fotos'
-          videos:
-            zero: Ningún vídeo
-            one: 1 vídeo
-            other: '%{count} vídeos'
-        no_content_filters:
-          news: Noticias
-          questions: Preguntas
-          proposals: Propuestas
-          photos: Fotos
-          videos: Vídeos
-        all: 'ver los %{count} contenidos encontrados'
-        more: ver más resultados
-        main_filters:
-          more_recent: Más recientes
-          more_polemic: Más polémicas
-        content_type_filters:
-         all: Todos los tipos
-         news: Noticias
-         politicians_activity: Actividad de los políticos
-         questions: Preguntas
-         proposals: Propuestas
-         images: Fotos
-         videos: Vídeos
-    contents_list:
-      results:
-        title:
-          total:
-            zero: Ningún contenido
-            one: 1 contenido
-            other: '%{count} contenidos'
-          news:
-            zero: Ninguna noticia
-            one: 1 noticia
-            other: '%{count} noticias'
-          questions:
-            zero: Ninguna pregunta
-            one: 1 pregunta
-            other: '%{count} preguntas'
-          proposals:
-            zero: Ninguna propuesta
-            one: 1 propuesta
-            other: '%{count} propuestas'
-          photos:
-            zero: Ninguna foto
-            one: 1 foto
-            other: '%{count} fotos'
-          videos:
-            zero: Ningún vídeo
-            one: 1 vídeo
-            other: '%{count} vídeos'
-    politicians:
-      results:
-        title:
-          zero: Ningún político
-          one: 1 político
-          other: '%{count} políticos'
-        all: 'ver los %{count} político encontrados'
-        more: ver más resultados
-        title_area: '%{title} de %{area}'
-        follow: Seguir
-        main_filters:
-          more_recent: Más recientes
-          more_active: Más activos
-        area_filters:
-         all: Todas las áreas
-    politicians_and_areas:
-      area_description: Área del Gobierno Vasco
-      title_area: '%{title} de %{area}'
+          one: "1 área"
+          other: "%{count} áreas"
+          zero: "Ningún área"
     autocomplete:
-      politicians:
-        summary:
-          title: Políticos
-          count:
-            zero: Ninguno encontrado
-            one: 1 encontrado
-            other: '%{count} encontrados'
-        title_area: '%{title} de %{area}'
       areas:
         summary:
           title: Áreas
-      users:
-        summary:
-          title: Usuarios
-          count:
-            zero: Ninguno encontrado
-            one: 1 encontrado
-            other: '%{count} encontrados'
       contents:
+        count:
+          one: "1 contenido encontrado"
+          other: "%{count} contenidos encontrados"
+          zero: "Ninguno contenido encontrado"
         summary:
           title: Contenidos
-        count:
-            zero: Ninguno contenido encontrado
-            one: 1 contenido encontrado
-            other: '%{count} contenidos encontrados'
-
-  users:
-    passwords:
-      edit:
-        title: Cambiar contraseña
-        new_password: Nueva contraseña
-        confirm_new_password: Repetir contraseña
-        save: Guardar
-    settings:
-      error:
-        current_password: La contraseña
-        email: El email
-        password: La contraseña
-      remove_your_profile: 'Por supuesto, si lo deseas puedes <a href="#" class="%{class}" id="%{class}">borrar tu perfil</a> de Irekia en cualquier momento.'
-      we_hope_you_dont_go: 'Esperamos que no sea así :-)'
-      connection_with_social_networks: Conexión con redes sociales
-      avatar:
-        title: Tu avatar
-        pick_your_avatar: Selecciona tu avatar
-        upload_an_image: Subir una nueva imagen
-        uploading: Subiendo nuevo avatar...
-        subtitle: Necesitas una imagen que te represente en Irekia. Los usuarios con avatar son mas populares
-        size: Tamaño máximo 500x500.
-      man: 'Hombre'
-      woman: 'Mujer'
-      name: 'Nombre'
-      lastname: 'Apellidos'
-      province: 'Territorio'
-      city: 'Municipio'
-      birthday: 'Fecha de nacimiento'
-      connect_with: "Conectar con %{name}"
-      save_changes: 'Guardar cambios'
-      can_we_change_your_mind: "¿Podemos hacer algo para<br />que cambies de idea?"
-      if_you_had_a_bad_experience: Si has tenido una mala experiencia en Irekia,
-      get_in_touch_with_us: contacta con nosotros
-      and_well_fix_it: y lo arreglaremos
-      remove_profile: Eliminar perfil
-      cancel: Cancelar
-      your_profile: Tu perfil
-      remember_this_information_is_public: Recuerda que son datos públicos y visibles en Irekia.
-      gender: Sexo
-      account_configuration: Configuración de tu cuenta
-      access_data: Datos de acceso a Irekia
+      politicians:
+        summary:
+          count:
+            one: "1 encontrado"
+            other: "%{count} encontrados"
+            zero: "Ninguno encontrado"
+          title: Políticos
+        title_area: "%{title} de %{area}"
+      users:
+        summary:
+          count:
+            one: "1 encontrado"
+            other: "%{count} encontrados"
+            zero: "Ninguno encontrado"
+          title: Usuarios
+    contents:
+      results:
+        all: "ver los %{count} contenidos encontrados"
+        content_type_filters:
+          all: "Todos los tipos"
+          images: Fotos
+          news: Noticias
+          politicians_activity: "Actividad de los políticos"
+          proposals: Propuestas
+          questions: Preguntas
+          videos: Vídeos
+        main_filters:
+          more_polemic: "Más debatidas"
+          more_recent: "Más recientes"
+        more: "ver más resultados"
+        no_content_filters:
+          news: Noticias
+          photos: Fotos
+          proposals: Propuestas
+          questions: Preguntas
+          videos: Vídeos
+        title:
+          news:
+            one: "1 noticia"
+            other: "%{count} noticias"
+            zero: "Ninguna noticia"
+          photos:
+            one: "1 foto"
+            other: "%{count} fotos"
+            zero: "Ninguna foto"
+          proposals:
+            one: "1 propuesta"
+            other: "%{count} propuestas"
+            zero: "Ninguna propuesta"
+          questions:
+            one: "1 pregunta"
+            other: "%{count} preguntas"
+            zero: "Ninguna pregunta"
+          total:
+            one: "1 contenido"
+            other: "%{count} contenidos"
+            zero: "Ningún contenido"
+          videos:
+            one: "1 vídeo"
+            other: "%{count} vídeos"
+            zero: "Ningún vídeo"
+    contents_list:
+      results:
+        title:
+          news:
+            one: "1 noticia"
+            other: "%{count} noticias"
+            zero: "Ninguna noticia"
+          photos:
+            one: "1 foto"
+            other: "%{count} fotos"
+            zero: "Ninguna foto"
+          proposals:
+            one: "1 propuesta"
+            other: "%{count} propuestas"
+            zero: "Ninguna propuesta"
+          questions:
+            one: "1 pregunta"
+            other: "%{count} preguntas"
+            zero: "Ninguna pregunta"
+          total:
+            one: "1 contenido"
+            other: "%{count} contenidos"
+            zero: "Ningún contenido"
+          videos:
+            one: "1 vídeo"
+            other: "%{count} vídeos"
+            zero: "Ningún vídeo"
+    header:
+      your_search_results: "Resultados de tu búsqueda"
+    navigation_menu:
+      change_the_search_terms: "Cambia los términos utilizados para realizar la búsqueda."
+      explore_irekia_contents: "explorar los contenidos de Irekia"
+      no_results: "No hay resultados"
+      tabs:
+        areas:
+          one: "1 área"
+          other: "%{count} áreas"
+          zero: "Ningún área"
+        contents:
+          one: "1 contenido"
+          other: "%{count} contenidos"
+          zero: "Ningún contenido"
+        politicians:
+          one: "1 político"
+          other: "%{count} políticos"
+          zero: "Ningún político"
+        summary: Resumen
+        users:
+          one: "1 usuario"
+          other: "%{count} usuarios"
+          zero: "Ningún usuario"
+      you_can_also: "O también puedes"
+    politicians:
+      results:
+        all: "ver los %{count} político encontrados"
+        area_filters:
+          all: "Todas las áreas"
+        follow: Seguir
+        main_filters:
+          more_active: "Más activos"
+          more_recent: "Más recientes"
+        more: "ver más resultados"
+        title:
+          one: "1 político"
+          other: "%{count} políticos"
+          zero: "Ningún político"
+        title_area: "%{title} de %{area}"
+    politicians_and_areas:
+      area_description: "Área del Gobierno Vasco"
+      title_area: "%{title} de %{area}"
+    show:
+      your_search_results: "Resultados de tu búsqueda"
+    users:
+      results:
+        all: "ver los %{count} usuarios encontrados"
+        follow: Seguir
+        look_city: "Buscar un municipio"
+        main_filters:
+          more_active: "Más activos"
+          more_recent: "Más recientes"
+        more: "ver más resultados"
+        title:
+          one: "1 usuario"
+          other: "%{count} usuarios"
+          zero: "Ningún area"
+  shared:
+    actions:
+      content_type_filters:
+        all: "Todos los tipos"
+        images: Fotos
+        news: Noticias
+        proposals: Propuestas
+        questions: Preguntas
+        statuses: "Cambios de estado"
+        videos: Vídeos
+      main_filters:
+        more_polemic: "Más debatidas"
+        more_recent: "Más recientes"
+      more: "ver más acciones"
+      no_content:
+        area: "No hay contenido en este área."
+        user: "No hay contenido para %{target}"
+      no_content_filters:
+        images: Fotos
+        news: Noticias
+        proposals: Propuestas
+        questions: Preguntas
+        statuses: "Cambios de estado"
+        videos: Vídeos
+      title: "Últimas acciones"
+    actions_list:
+      no_content:
+        area: "No hay contenido en este área"
+    agenda:
+      ical: "Exportar para iCal"
+      more: "Ver calendario completo"
+      next_month: "Siguiente mes"
+      view_calendar: "Ver calendario"
+      view_map: "Ver mapa"
+      showing: 'Mostrando'
+      all_events: 'Todos los eventos'
+    agenda_for_day:
+      and_more: "y %{count} más"
+    demo:
+      footer:
+        about:
+          faq: FAQ
+          help: Ayuda
+          title: "¿Qué es Irekia?"
+        areas:
+          comerce: "Comercio y Turismo"
+          culture: "Cultura y Deporte"
+          economy: "Economía y Hacienda"
+          education: "Educación e Investigación"
+          employment: "Empleo y Asuntos Sociales"
+          environment: "Medio Ambiente"
+          health: "Sanidad y Consumo"
+          housing: Vivienda
+          industry: "Industria e Innovación"
+          interior: Interior
+          justice: "Justicia y Admon. Pública"
+          presidence: Presidencia
+          public_works: "Obras Públicas y Transportes"
+          title: Áreas
+          vasque_government: "Gobierno Vasco"
+        basque_government: "Gobierno Vasco"
+        home:
+          agenda: Agenda
+          proposals: Propuestas
+          sign_in: "Accede a tu cuenta"
+          sign_up: Regístrate
+          title: Inicio
+        legal_info:
+          title: "Información legal"
+          url: "http://www.euskadi.net/r33-2288/es/contenidos/informacion/informacion_legal/es_6303/informacion_legal.html"
+      header:
+        accessibility: Accesibilidad
+        contact: Contacto
+        help: Ayuda
+        management: "Mis gestiones"
+        map: Mapa
+      nav_bar:
+        areas: Áreas
+        choose_an_area: "Elige un área"
+        search: "Busca lo que necesitas&hellip;"
+      sign_in:
+        access_irekia: "Accede a Irekia"
+        facebook_signin: Facebook
+        forgotten_password: "¿Olvidaste tu contraseña?"
+        get_it_here: "Recupérala aquí"
+        remember_me: "Recordar mis datos"
+        sign_in: Entra
+        twitter_signin: Twitter
+      sign_up:
+        fill_in_your_data: "Rellena tus datos y comienza tu participación en Irekia."
+        new_in_irekia: "¿Nuevo en Irekia?"
+        sign_up: "Crear mi cuenta"
+        terms_of_service: "Acepto las %{use_conditions_link}"
+        terms_of_service_link: "Condiciones de uso"
+    error:
+      error_title: "Ha ocurrido un error inesperado. Disculpas."
+      home_page: "Página de inicio de Irekia"
+      title: "Irekia - Se ha producido un error (500)"
+    floating_login:
+      access_irekia: "Accede a Irekia"
+      forgotten_password: "¿Olvidaste tu contraseña?"
+      get_it_here: "Recupérala aquí"
+      login: Entra
+      not_yet_registered: "¿No tienes cuenta en Irekia?"
+      password_reminder:
+        description: "y te mandaremos instrucciones para recuperar tu contraseña"
+        email: "Tu email"
+        recover_password: "Recuperar contraseña"
+        title: "Introduce tu email"
+      password_response:
+        accept: Aceptar
+        description: "Te hemos mandado un email con instrucciones para recuperar tu contraseña. Síguelas para entrar en Irekia."
+        title: "Ahora, mira tu correo"
+      register_here: "Regístrate aquí"
+      remember_me: "Recordar mis datos"
+    footer:
+      about:
+        faq:
+          title: FAQ
+          url: ""
+        help:
+          title: Ayuda
+          url: ""
+        privacy:
+          title: "Política de privacidad"
+          url: "http://www.irekia.euskadi.net/es/site/privacy"
+        title: "¿Qué es Irekia?"
+        use:
+          title: "Condiciones de uso"
+          url: "http://www.irekia.euskadi.net/es/site/tos"
+      areas:
+        comerce: "Comercio y Turismo"
+        culture: "Cultura y Deporte"
+        economy: "Economía y Hacienda"
+        education: "Educación e Investigación"
+        employment: "Empleo y Asuntos Sociales"
+        environment: "Medio Ambiente"
+        health: "Sanidad y Consumo"
+        housing: Vivienda
+        industry: "Industria e Innovación"
+        interior: Interior
+        justice: "Justicia y Admon. Pública"
+        presidence: Presidencia
+        public_works: "Obras Públicas y Transportes"
+        title: Áreas
+        vasque_government: "Gobierno Vasco"
+      basque_government: "Gobierno Vasco"
+      home:
+        agenda: Agenda
+        proposals: Propuestas
+        rss_all: "RSS todo el contenido"
+        rss_news: "RSS noticias"
+        sign_in: "Accede a tu cuenta"
+        sign_up: Regístrate
+        title: Inicio
+      legal_info:
+        title: "Información legal"
+        url: "http://www.euskadi.net/r33-2288/es/contenidos/informacion/informacion_legal/es_6303/informacion_legal.html"
+    forgot_password:
+      fill_in_your_email: "Introduce tu email"
+      get_back_password: "Recuperar contraseña"
+      will_send_your_data: "Y te mandaremos instrucciones para recuperar tu contraseña"
+    header:
+      accessibility: Accesibilidad
+      accessibility_url: "http://www.euskadi.net/r33-2288/es/contenidos/informacion/cabecera_accesibilidad/es_6144/politica_accesibilidad.html"
+      contact: Contacto
+      contact_url: "http://www.ej-gv.net/o53/visualizador/o53BuzonEuskadi.jsp?por=2&lenguaje=1"
+      euskadi_net_url: "http://www.euskadi.net/r33-2220/es/"
+      help: Ayuda
+      help_url: "http://www.irekia.euskadi.net/es/pages/781-ayuda"
+      management: "Mis gestiones"
+      management_url: "https://www6.euskadi.net/s06-9512x/eu/r02nConsultationSistemWar/consultation/r02nExpedientList.do"
+      map: Mapa
+      map_url: "http://www.irekia.euskadi.net/es/site/sitemap"
+    lists_elements:
+      answer:
+        author: "%{author} &middot; <span class=\"answered\">Contestada tras %{time}</span>"
+        iphone:
+          author: "Hace %{time}"
+        title:
+          answer_with_video:
+            other: "Ha contestado con un vídeo."
+            you: "Has contestado con un vídeo."
+          other: "%{author} ha contestado a \"%{question}\""
+          you: "Has contestado a \"%{question}\""
+      answer_request:
+        author: "%{author} hace %{time}"
+        iphone:
+          date: "Hace %{time}"
+        title: "Ha sido reclamada la pregunta %{question}"
+      argument:
+        against: "en contra"
+        arguments:
+          against: "Nuevos argumentos en contra:"
+          in_favor: "Nuevos argumentos a favor:"
+        author: "hace %{time}"
+        in_favor: "a favor"
+        title: "Nuevo argumento en la propuesta %{proposal}"
+        votes:
+          one: "1 voto"
+          other: "%{count} votos"
+          zero: "0 votos"
+      comment:
+        answer: "la respuesta"
+        author: "Publicado por %{author} hace %{time}"
+        event: "el evento"
+        iphone:
+          author: "Hace %{time}"
+        news: "la noticia"
+        photo: "la foto"
+        proposal: "la propuesta"
+        question: "la pregunta"
+        status_message: "un mensaje de estado"
+        title: "Nuevo comentario en %{content_type}"
+        tweet: "el tweet"
+        video: "el vídeo"
+      comments:
+        one: "1 comentario"
+        other: "%{count} comentarios"
+        zero: "Todavía no hay comentarios"
+      content_user:
+        author: "hace %{time}"
+        event: "el evento"
+        news: "la noticia"
+        photo: "la foto"
+        proposal: "la propuesta"
+        question: "la pregunta"
+        title: "Has sido etiquetado en %{content_type} &quot;%{content}&quot;"
+        tweet: "el tweet"
+        video: "el vídeo"
+      event:
+        author: "Publicado hace %{time}"
+      last_comments:
+        Send: Enviar
+        previous:
+          one: "%{previous_link} de %{authors}"
+          other: "%{previous_link}"
+          zero: ""
+        previous_link:
+          one: "1 comentario anterior"
+          other: "%{count} comentarios anteriores"
+          zero: "Ningún comentario anterior"
+        write_your_comment: "Escribe tu comentario..."
+      news:
+        author: "Publicado hace %{time}"
+        read_more: "Leer más"
+      not_moderated:
+        answer:
+          title:
+            other: "%{author} ha contestado a \"%{question}\""
+            you: "Has contestado a \"%{question}\""
+        answer_request:
+          title: "Ha sido reclamada la pregunta %{question}"
+        argument:
+          title: "Nuevo argumento en la propuesta %{proposal}"
+        comment:
+          answer: "la respuesta"
+          event: "el evento"
+          news: "la noticia"
+          photo: "la foto"
+          proposal: "la propuesta"
+          question: "la pregunta"
+          status_message: "un mensaje de estado"
+          title: "Nuevo comentario en %{content_type}"
+          tweet: "el tweet"
+          video: "el vídeo"
+        content_user:
+          event: "el evento"
+          news: "la noticia"
+          photo: "la foto"
+          proposal: "la propuesta"
+          question: "la pregunta"
+          title: "Has sido etiquetado en %{content_type} &quot;%{content}&quot;"
+          tweet: "el tweet"
+          video: "el vídeo"
+        event: ~
+        footer:
+          author: "<a href=\"%{author_url}\">Tú</a> hace %{time}"
+          moderation_pending: "Pendiente de moderar"
+          rest_of_users: ": el resto de usuarios no lo puede ver aún."
+        news: ~
+        photo:
+          title:
+            other: "%{name} ha subido una foto:"
+            you: "Has subido una foto:"
+        proposal:
+          title:
+            other: "%{name} ha creado una nueva propuesta: "
+            you: "Has creado una nueva propuesta: "
+        proposal_mini: ~
+        question:
+          title: "Pregunta para %{receiver}:"
+        question_mini: ~
+        status_message: ~
+        tweet: ~
+        video:
+          title:
+            other: "%{name} ha subido un vídeo:"
+            you: "Has subido un vídeo:"
+        vote:
+          title:
+            against: "%{name} ha votado en contra de la propuesta \"%{proposal}\""
+            in_favor: "%{name} ha votado a favor de la propuesta \"%{proposal}\""
+      photo:
+        author: "%{author} hace %{time}"
+        title:
+          other: "%{name} ha subido una foto:"
+          you: "Has subido una foto:"
+      proposal:
+        against: "en contra"
+        author: "%{author} hace %{time}"
+        in_favor: "a favor"
+        iphone:
+          date: "Hace %{time}"
+        neutral: "a favor"
+        participation:
+          one: "Un usuario ha participado"
+          other: "%{count} usuarios han participado"
+          zero: "Ningún usuario ha participado"
+        title:
+          other: "%{name} ha creado una nueva propuesta: "
+          you: "Has creado una nueva propuesta: "
+        votes:
+          one: "1 voto"
+          other: "%{count} votos"
+          zero: "0 votos"
+      proposal_mini:
+        author: "%{author} hace %{time}"
+        votes_against:
+          one: "%{percent}% en contra (1 voto)"
+          other: "%{percent}% en contra (%{count} votos)"
+          zero: "%{percent}% en contra (ningún voto)"
+        votes_in_favor:
+          one: "%{percent}% a favor (1 voto)"
+          other: "%{percent}% a favor (%{count} votos)"
+          zero: "%{percent}% a favor (ningún voto)"
+      question:
+        answered: "Contestada tras %{time}"
+        author: "%{author} hace %{time}"
+        iphone:
+          author: "Hace %{time}"
+        not_answered: "Aún no contestada"
+        read_more: "Leer más"
+        title: "Pregunta para %{receiver}:"
+      question_mini:
+        answered: "Contestada hace %{time}"
+        author: "%{author} hace %{time}"
+        not_answered: "Aún no contestada"
+      share: Compartir
+      status_message:
+        author: "%{author} hace %{time}"
+        read_more: "Leer más"
+      tweet:
+        author: "%{author} hace %{time} vía %{twitter}"
+        read_more: "Leer más"
+      video:
+        author: "%{author} hace %{time}"
+        published_by: "Publicado por"
+        title:
+          other: "%{name} ha subido un vídeo:"
+          you: "Has subido un vídeo:"
+      vote:
+        author: "%{author} participó hace %{time}"
+        iphone:
+          author: "Hace %{time}"
+        title:
+          against: "%{name} ha votado en contra de la propuesta \"%{proposal}\""
+          in_favor: "%{name} ha votado a favor de la propuesta \"%{proposal}\""
+    nav_bar:
+      areas: Áreas
+      choose_an_area: "Elige un área"
+      facebook: facebook
+      search: "Busca lo que necesitas&hellip;"
+      sign_in: Login
+      sign_out: Salir
+      sign_up: Regístrate
+      twitter: twitter
+      register: Regístrate en Irekia
+    nav_bar_buttons:
+      facebook: Facebook
+      hello: "Hola, %{name}"
       notifications:
-        title: Notificaciones
-        minimal:
-          title: Mínimas
-          description: Recibirás los emails estrictamente necesarios para la gestión de tu cuenta.
-        basic:
-          title: Básicas
-          description: Recibirás los resultados finales de las propuestas y preguntas en las que has participado.
-        all:
-          title: Todas
-          description: Te avisaremos también cuando haya novedades en un hilo en el que has participado.
-      email: 'Tu email'
-      current_password: 'Tu contraseña actual'
-      password: 'Tu nueva contraseña'
+        a_content:
+          answer: "una respuesta"
+          event: "un evento"
+          news: "una noticia"
+          photo: "una foto"
+          proposal: "una propuesta"
+          question: "una pregunta"
+          status_message: "un cambio de estado"
+          tweet: "un tweet"
+          video: "un video"
+        answer:
+          one: "%{question} ha sido contestada"
+          other: "Tus preguntas han sido contestadas"
+          zero: "Ninguna respuesta nueva a tus preguntas"
+        argument_proposal:
+          one: "Un nuevo argumento en %{content} en la que has participado"
+          other: "%{count} nuevos argumentos en %{content} en la que has participado"
+          zero: "Ningún argumento nuevo"
+        argument_proposal_author:
+          one: "Nuevo argumento en %{content}"
+          other: "%{count} nuevos argumentos en %{content}"
+          zero: "Ningún argumento nuevo"
+        comments_content:
+          one: "Nuevo comentario en %{content} en la que has participado"
+          other: "%{count} nuevos comentarios en %{content} en la que has participado"
+          zero: "Ningún comentario en %{content} en la que has participado"
+        comments_content_author:
+          one: "Nuevo comentario en %{content}"
+          other: "%{count} nuevos comentarios en %{content}"
+          zero: "Ningún comentario en %{content}"
+        comments_tagged:
+          one: "Nuevo comentario en %{content} en la que has sido etiquetado"
+          other: "%{count} nuevos comentarios en %{content} en la que has sido etiquetado"
+          zero: "Ningún comentario en %{content} en la que has sido etiquetado"
+        content_users:
+          one: "Te han etiquetado en %{content}"
+          other: "Te han etiquetado en %{count} nuevos contenidos"
+          zero: "No te han etiquetado aún"
+        follow:
+          one: "%{name} te ha empezado a seguir"
+          other: "%{count} te han empezado a seguir"
+          zero: "Ningún nuevo seguidor"
+        pending:
+          one: "1 notificación"
+          other: "%{count} notificaciones"
+          zero: "No tienes notificaciones"
+        proposal:
+          one: "Tienes una nueva %{proposal}"
+          other: "Tienes %{count} nuevas propuestas"
+          zero: "Ninguna propuesta nueva"
+        question:
+          one: "Tienes una nueva %{question}"
+          other: "Tienes %{count} nuevas preguntas"
+          zero: "Ninguna pregunta nueva"
+        vote_proposal:
+          one: "Un voto nuevo en %{content} en la que has participado"
+          other: "%{count} nuevos votos en %{content} en la que has participado"
+          zero: "Ningún voto nuevo"
+        vote_proposal_author:
+          one: "Nuevo voto en %{content}"
+          other: "%{count} nuevos votos en %{content}"
+          zero: "Ningún voto nuevo"
+        your_content:
+          answer: "Tu respuesta"
+          event: "Tu evento"
+          news: "Tu noticia"
+          photo: "Tu foto"
+          proposal: "Tu propuesta"
+          question: "Tu pregunta"
+          status_message: "Tu cambio de estado"
+          tweet: "Tu tweet"
+          video: "Tu video"
+      settings:
+        label: "Tu perfil"
+        title: Configuración
+      sign_in: Login
+      sign_out:
+        label: "Cerrar sesión"
+        title: Salir
+      sign_up: Regístrate
+      twitter: Twitter
+    not_found:
+      error:
+        solution: "Revisa la dirección de la página,<br />o <a href=\"%{url}\">reporta el error</a> si crees que es problema de Irekia."
+        title: "Página no encontrada."
+      home_page: "Página de inicio de Irekia"
+      title: "Irekia - La página que buscas no existe (404)"
+    politician_publish:
+      close: Cerrar
+      continue: Continuar
+      dashboard: Estado
+      description: "¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!"
+      photo: Foto
+      photos: Fotos
+      proposal: Propuesta
+      publish: Publicar
+      remove: Eliminar
+      section:
+        photo:
+          error:
+            description: "Ha ocurrido un error al publicar la foto, por favor vuelve a intentarlo en un momento."
+            title: Error
+          loading: "Cargando imagen..."
+          this_photo_will_be_published: "Se publicará esta imagen."
+          upload: "Sube una foto"
+        proposal:
+          explanation: "¿Quieres explicar la propuesta con más detalle?"
+          label: "Describe la propuesta en pocas palabras"
+          success:
+            description: "Propuesta publicada correctamente."
+            title: "Tu propuesta ha sido publicada"
+          this_photo_will_be_published: "Se publicará esta imagen."
+          upload: "Sube una foto"
+        status_message:
+          label: "Introduce el texto que quieras publicar aquí."
+        video:
+          error:
+            description: "Ha ocurrido un error al publicar el video, por favor vuelve a intentarlo en un momento."
+            title: Error
+          success:
+            description: "Recuerda que podrás ver toda la actividad que ocurra alrededor de él en tu resumen."
+            title: "Tu video ha sido publicado"
+          vimeo_url: "URL de Vimeo"
+          youtube_url: "URL de Youtube"
+      title: Publicar
+      video: Vídeo
+    proposal_form:
+      describe_the_proposal: "Describe la propuesta en pocas palabras"
+      do_you_want_to_explain_the_proposal: "¿Quieres explicar la propuesta con más detalle?"
+      loading: "Cargando imagen..."
+      make_a_proposal:
+        continue: Continuar
+        submit: "Enviar propuesta"
+        title: "Haz una propuesta."
+      name_of_the_area: "Nombre de área..."
+      or: o
+      remove: Eliminar
+      see_all_the_areas: "ver todas las áreas"
+      subtitle: "Recuerda ser breve y conciso."
+      the_image_will_be_included_in_the_proposal: "Se incluirá esta imagen en la propuesta."
+      title: "Título de la propuesta"
+      upload_a_new_one: "Sube una nueva"
+      upload_a_photo: "Sube una foto"
+      who_is_the_target: "¿A qué area le quieres dirigir la pregunta?"
+      write_the_photo_url_or: "Introduce la URL de la foto o"
+    proposals:
+      against: "%{percentage}% en contra (%{count} votos)"
+      content_type_filters:
+        all: Todas
+        from_citizens: "Propuestas ciudadanas"
+        from_politicians: "Propuestas del gobierno"
+      create_proposal: "Crea una propuesta"
+      in_favor: "%{percentage}% a favor (%{count} votos)"
+      main_filters:
+        more_polemic: "Más debatidas"
+        more_recent: "Más recientes"
+      more: "ver más propuestas"
+      no_proposals:
+        area: "No hay propuestas en este área"
+        user: "No hay propuestas para %{target}"
+      politician_proposals: "Propuestas en las que participa"
+      title: Propuestas
+    proposals_list:
+      no_content: "No hay propuestas en este área"
+    question_form:
+      describe_the_question: "Describe la pregunta en pocas palabras"
+      do_you_want_to_explain_the_question: "¿Quieres explicar la pregunta con más detalle?"
+      make_a_question:
+        submit: "Enviar pregunta"
+        title: "Haz una pregunta"
+      name_of_the_area_or_politician: "Nombre de área o político..."
+      remember_to_be_concise: "Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo."
+      who_is_the_target: "¿A quién le quieres dirigir la pregunta?"
+      your_question: "Tu pregunta"
+    questions:
+      content_type_filters:
+        all: Todas
+        answered: Contestadas
+      create_question: "Haz una pregunta"
+      main_filters:
+        more_polemic: "Más debatidas"
+        more_recent: "Más recientes"
+      make_a_question:
+        hint: "Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo"
+        submit: "Enviar pregunta"
+        title: "Haz una pregunta"
+        your_question: "Tu pregunta"
+      more: "ver más preguntas"
+      no_questions:
+        area: "No hay preguntas en este área"
+        user: "No hay preguntas para %{target}"
+      title: "Preguntas de los ciudadanos"
+    questions_list:
+      no_content: "No hay preguntas en este área"
+    sharing:
+      email: "Compartir vía email"
+      facebook: "Compartir vía facebook"
+      ical: "Exportar para iCal"
+      label: "Escribe la dirección de email"
+      send: Enviar
+      twitter: "Compartir vía twitter"
+    sidebar:
+      location:
+        title: "Localización del evento"
+      politicians:
+        tag: "Etiquetar político"
+        title: "Políticos etiquetados en la noticia"
+      previous_statuses:
+        time: "Hace %{time}"
+        title: "Publicaciones anteriores de %{name}"
+      previous_tweets:
+        time: "Hace %{time}"
+        title: "Tweets anteriores de %{name}"
+      related_content:
+        comments:
+          one: "Un comentario"
+          other: "%{count} comentarios"
+          zero: "Todavía no hay comentarios"
+        title: "Contenidos similares"
+      related_events:
+        comments:
+          one: "Un comentario"
+          other: "%{count} comentarios"
+          zero: "Aún no hay comentarios"
+        time: "Hace %{time}"
+        title: "Otros eventos de este área"
+      related_proposals:
+        against:
+          one: "%{percentage}% en contra (%{count} voto)"
+          other: "%{percentage}% en contra (%{count} votos)"
+          zero: "No votada aún"
+        in_favor:
+          one: "%{percentage}% a favor (%{count} voto)"
+          other: "%{percentage}% a favor (%{count} votos)"
+          zero: "No votada aún"
+        time: "Hace %{time}"
+        title: "Propuestas relacionadas"
+      related_questions:
+        comments:
+          one: "Un comentario"
+          other: "%{count} comentarios"
+          zero: "Aún no hay comentarios"
+        time: "Hace %{time}"
+        title: "Otras preguntas similares"
+      tags:
+        add_tags: "Añadir tags"
+        title: Tags
+    sign_in:
+      access_irekia: "Accede a Irekia"
+      facebook_signin: Facebook
+      forgotten_password: "¿Olvidaste tu contraseña?"
+      get_it_here: "Recupérala aquí"
+      not_yet_registered: "¿No tienes cuenta en Irekia?"
+      register_here: "Regístrate aquí"
+      remember_me: "Recordar mis datos"
+      sign_in: Entra
+      twitter_signin: Twitter
+    user_publish:
+      continue: Continuar
+      description: "¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!"
+      proposal: Propuesta
+      publish: Publicar
+      question: Pregunta
+      section:
+        proposal:
+          description: "Describe la propuesta en pocas palabras"
+          explanation: "¿Quieres explicar la propuesta con más detalle?"
+          image_will_be_included: "Se incluirá esta imagen en la propuesta."
+          label: "Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso."
+          loading_photo: "Cargando imagen..."
+          or: o
+          remove: Eliminar
+          see_all: "ver todas las áreas"
+          target: "¿A qué area le quieres dirigir la pregunta?"
+          target_name: "Nombre de área..."
+        question:
+          description: "Describe la pregunta en pocas palabras"
+          explanation: "¿Quieres explicar la pregunta con más detalle?"
+          label: "Introduce el texto que quieras publicar aquí."
+          or: o
+          see_all: "ver todas las áreas"
+          target: "¿A quién le quieres dirigir la pregunta?"
+          target_name: "Nombre de persona o área..."
+  sharing:
+    facebook:
+      answer: "He respondido a la pregunta: %{question}"
+    twitter:
+      answer: "He respondido a la pregunta: %{question}"
+  support:
+    array:
+      last_word_connector: ", y "
+      two_words_connector: " y "
+      words_connector: ", "
+    select:
+      prompt: "Por favor seleccione"
+  time:
+    am: am
+    formats:
+      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      long: "%d de %B de %Y %H:%M"
+      short: "%d de %b %H:%M"
+    pm: pm
+  title:
+    search: Búsqueda
+  unknown_user: Invitado
+  users:
     actions:
       no_activity:
-        title: 'Aún no hay actividad tuya en Irekia.'
+        description: "Te invitamos a participar en el debate sobre las propuestas de otros usuarios de Irekia, a conversar con los cargos políticos del Gobierno Vasco, opinar sobre las noticias, etc. Toda tu actividad aparecerá aquí."
+        homepage: "Página de inicio"
+        other_description: "%{user} podrá participar en el debate sobre las propuestas de otros usuarios de Irekia, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí."
         other_title: "Aún no hay actividad de %{user}"
-        description: 'Te invitamos a participar en el debate sobre las propuestas de otros usuarios de Irekia, a conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda tu actividad aparecerá aquí.'
-        other_description: '%{user} podrá participar en el debate sobre las propuestas de otros usuarios de Irekia, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí.'
-        homepage: Página de inicio
-    public:
-      welcome:
-        address: 'Residente en %{city}, %{province}.'
-        birthday:
-          man: 'Nacido el %{birthday}.'
-          woman: 'Nacida el %{birthday}.'
-      follow_suggestions:
-        title: ¿Quieres más? Te sugerimos&hellip;
-        title_and_area: '%{title} de %{area}'
-        follow: Seguir
-        more: Más sugerencias
-      navigation_menu:
-        show: Su actividad
-        questions: Sus preguntas
-        proposals: Sus propuestas
-        following: Siguiendo
+        title: "Aún no hay actividad tuya en Irekia."
+    connect:
+      connect: "Bienvenido a irekia."
+      continue: Continuar
+      discover: "Descubre por qué queremos que te conectes."
+      signin: "Conectar con <strong>%{name}</strong>"
+      works_better: "A partir de ahora podrás seguir a los políticos o áreas que mas te interesen, crear propuestas, preguntar al gobierno o comentar los contenidos con tus vecinos."
+    edit:
+      continue: Continuar
+      mandatory: obligatorio
+      tell_us_more_about_you: "Cuéntanos más de tí."
+      we_want_to_know_you_better: "Queremos conocerte mejor."
+      with_this_data: "¿Qué vamos a hacer con estos datos?"
+    intro:
+      continue: Continuar
+      dont_you_have_fb_or_twitter: "¿No tienes cuenta de Facebook ni de Twitter?"
+      mandatory: obligatorio
+      new_in_irekia: "¿Nuevo en Irekia?"
+      signin: "Conectar con <strong>%{name}</strong>"
+      use_facebook_or_twitter: "Utiliza Facebook o Twitter para registrarte"
+    new:
+      fill_in_your_data: "Rellena tus datos y comienza a participar."
+      new_in_irekia: "¿Nuevo en Irekia?"
+      sign_up: Continuar
+      terms_of_service: "Acepto las %{link}"
+      terms_of_service_link: "condiciones de uso"
+    passwords:
+      edit:
+        confirm_new_password: "Repetir contraseña"
+        new_password: "Nueva contraseña"
+        save: Guardar
+        title: "Cambiar contraseña"
+    politician:
       actions:
-        title: Sus últimas acciones
-        main_filters:
-          more_recent: Más recientes
-          more_polemic: Más polémicas
         content_type_filters:
-         all: Todos los tipos
-         news: Noticias
-         politicians_activity: Actividad de los políticos
-         questions: Preguntas
-         proposals: Propuestas
-         images: Fotos
-         videos: Vídeos
-        more: ver más acciones
-      questions:
-        title: 'Todas las preguntas hechas por %{name}'
-        more_recent: Más recientes
-        more_polemic: Más polémicas
-      no_questions:
-        title: "Aún no hay preguntas de %{user}"
-        description: '%{user} puede participar en el debate sobre las propuestas de otros usuarios de Irekia, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí.'
-        homepage: Página de inicio
-      proposals:
-        title: 'Propuestas de %{name}'
-        more_recent: Más recientes
-        more_commented: Más comentadas
-      no_proposals:
-        title: 'Aún no hay propuestas de %{user}.'
-        description: '%{user} puede participar en el debate sobre las propuestas de otros usuarios de Irekia, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí.'
-        homepage: Página de inicio
+          all: "Todos los tipos"
+          images: Fotos
+          news: Noticias
+          politicians_activity: "Actividad de los políticos"
+          proposals: Propuestas
+          questions: Preguntas
+          videos: Vídeos
+        main_filters:
+          more_polemic: "Más debatidas"
+          more_recent: "Más recientes"
+        more: "ver más acciones"
+        title: "Tus últimas acciones"
+      agenda:
+        next_month: "Siguiente mes"
+        title: "Tu agenda"
       followings:
-        title: 'A quien sigue %{name} en Irekia'
-        all_profiles: 'Ver todos los perfiles a los que sigue %{name}'
-        title_and_area: '%{title} de %{area}'
+        all_profiles: "Ver todos los perfiles a los que sigues"
         area: Área
-    private:
-      welcome:
-        hello: 'Hola, %{name}'
-        hi_again: 'Hola de nuevo, %{name}.'
-        configure_your_account: Configura tu cuenta
-        following_nobody: No estás siguiendo a nadie todavía.
-        currently: 'Actualmente %{politicians} y %{areas}'
-        politicians_following:
-          zero: no sigues a ningún político
-          one: sigues a 1 político
-          other: 'sigues a %{count} políticos'
-        areas_following:
-          zero: no sigues a ningún área
-          one: 1 área
-          other: '%{count} áreas'
-        first_time:
-          follow:
-            title: Sigue lo que te interese
-            text: "Busca los políticos o áreas que mas te interesen del Gobierno Vasco y síguelos.<br/>
-
-De esta manera estarás informado de todo lo que pase con el mínimo esfuerzo: toda la actividad de los políticos y áreas que sigas aparecerá en tu dashboard."
-            link: Ir a un área cualquiera
-          participate:
-            title: Participa y aprende
-            text: "%{make_questions_link} a los responsables del Gobierno Vasco, %{launch_proposals_link} a los ciudadanos, o participa en las propuestas de otros.<br/>
-
-            Todo con un simple click."
-            make_questions: Haz preguntas
-            launch_proposals: lanza tus propuestas
-            link: Crear una pregunta
-          configure:
-            title: Configura tu cuenta
-            text: "Sube tu ávatar o modifica tus datos.
-            También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia."
-            link: Configura tu cuenta
-      show:
-        activity:
-          title: Última actividad
-          subtitle: 'Esta es la actividad relacionada con tus contenidos, o con los %{link}.'
-          profiles_or_areas_following: perfiles o áreas que sigues
-      follow_suggestions:
-        title:
-          zero: Tu dashboard está vacío.
-          one: ¿Quieres más? Te sugerimos...
-          other: ¿Quieres más? Te sugerimos...
-        we_suggest_you_the_most_active: "Seguramente no sigues al número suficiente de políticos o áreas. Te sugerimos los más activos:"
-        title_and_area: '%{title} de %{area}'
-        follow: Seguir
-        more_politicians: Buscar más políticos
+        title: "A quién sigues en Irekia"
+        title_and_area: "%{title} de %{area}"
       navigation_menu:
-        edit: Editar perfil
-        show: Dashboard
-        questions: Tus preguntas
-        proposals: Tus propuestas
-        actions: Tu actividad
-        followings: Siguiendo
+        actions: "Tu actividad"
+        agenda: "Tu agenda"
+        proposals: Propuestas
         publish: Publicar
-        settings: Tu perfil
+        questions: Preguntas
+        show: Resumen
+      proposals:
+        filters:
+          all: Todas
+          by_you: "Propuestas creadas por ti"
+        more_commented: "Más comentadas"
+        more_recent: "Más recientes"
+        proposal_support: "Estas propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;"
+        proposal_support_count:
+          one: "1 a favor"
+          other: "%{count} a favor"
+          zero: "Ninguna a favor"
+        title: "Propuestas en las que participas"
       questions:
-        title:
-          zero: Ninguna pregunta contestada
-          one: 1 pregunta contestada
-          other: '%{count} preguntas contestadas'
-        more_recent: Más recientes
-        more_polemic: Más polémicas
         filters:
           all: Todas
           answered: Contestadas
-        no_questions:
-          title: 'No has hecho ninguna pregunta aún.'
-          description: 'Puedes preguntar cualquier cosa relacionada con el Gobierno Vasco: el presupuesto de un área, el motivo para tomar una decisión, el sueldo de un cargo político, etc.'
-          create_question: Crea una pregunta
-      proposals:
+          to_you: "Dirigidas a ti"
+          to_your_area: "Dirigidas al área"
+        more_polemic: "Más debatidas"
+        more_recent: "Más recientes"
         title:
-          zero: No has hecho ninguna propuesta
-          one: Has hecho 1 propuesta
-          other: 'Has hecho %{count} propuestas'
-        filters:
-          all: 'Todas'
-          by_you: 'Propuestas creadas por ti'
-        proposal_support: Tus propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;
-        proposal_support_count:
-          zero: Ninguna a favor
-          one: 1 a favor
-          other: '%{count} a favor'
-        more_recent: Más recientes
-        more_commented: Más comentadas
-        no_proposals:
-          title: 'No has hecho ninguna propuesta aún.'
-          description: 'Puedes proponer cualquier cosa que creas que mejore el País Vasco. Desde ideas para agilizar la administración hasta propuestas de cambio o mejora de leyes y normativas.'
-          create_proposal: Crea una propuesta
-      actions:
-        title: Tus últimas acciones
-        main_filters:
-          more_recent: Más recientes
-          more_polemic: Más polémicas
-        content_type_filters:
-         all: Todos los tipos
-         news: Noticias
-         politicians_activity: Actividad de los políticos
-         questions: Preguntas
-         proposals: Propuestas
-         images: Fotos
-         videos: Vídeos
-        more: ver más acciones
-      followings:
-        title:
-          zero: Actualmente no sigues a nadie en Irekia.
-          one: A quién sigues en Irekia.
-          other: A quién sigues en Irekia.
-        subtitle: Esta es una lista de los políticos más activos en Irekia a quienes puedes seguir.
-        all_profiles: Ver todos los perfiles a los que sigues.
-        title_and_area: '%{title} de %{area}'
-        area: Área
-    politician:
+          one: "1 pregunta sin contestar"
+          other: "%{count} preguntas sin contestar"
+          zero: "Ninguna pregunta sin contestar"
       show:
         activity:
-          title: Última actividad
+          title: "Última actividad"
       welcome:
-        hi_again: 'Hola de nuevo %{name}.'
+        configure_your_account: "Configura tu cuenta"
         followers_count:
-          zero: No te sigue nadie todavía
-          one: Te sigue 1 usuario
-          other: 'Te siguen %{count} usuarios'
+          one: "Te sigue 1 usuario"
+          other: "Te siguen %{count} usuarios"
+          zero: "No te sigue nadie todavía"
+        hi_again: "Hola de nuevo %{name}."
         new_followers_count:
-          zero: ninguno nuevo desde la última vez que entraste.
-          one: 1 nuevo desde la última vez que entraste.
-          other: '%{count} nuevos desde la última vez que entraste.'
-        configure_your_account: Configura tu cuenta
-      navigation_menu:
-        show: Dashboard
-        questions: Preguntas
-        proposals: Propuestas
-        actions: Tu actividad
-        agenda: Tu agenda
-        publish: Publicar
-      questions:
-        title:
-          zero: Ninguna pregunta sin contestar
-          one: 1 pregunta sin contestar
-          other: '%{count} preguntas sin contestar'
-        filters:
-          all: 'Todas'
-          answered: 'Contestadas'
-          to_you: 'Dirigidas a ti'
-          to_your_area: 'Dirigidas al área'
-        more_recent: Más recientes
-        more_polemic: Más polémicas
-      proposals:
-        title: "Propuestas en las que participas"
-        filters:
-          all: 'Todas'
-          by_you: 'Propuestas creadas por ti'
-        proposal_support: Estas propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;
-        proposal_support_count:
-          zero: Ninguna a favor
-          one: 1 a favor
-          other: '%{count} a favor'
-        more_recent: Más recientes
-        more_commented: Más comentadas
-      agenda:
-        title: Tu agenda
-        next_month: Siguiente mes
+          one: "1 nuevo desde la última vez que entraste."
+          other: "%{count} nuevos desde la última vez que entraste."
+          zero: "ninguno nuevo desde la última vez que entraste."
+    private:
       actions:
-        title: 'Tus últimas acciones'
-        main_filters:
-          more_recent: Más recientes
-          more_polemic: Más polémicas
         content_type_filters:
-         all: Todos los tipos
-         news: Noticias
-         politicians_activity: Actividad de los políticos
-         questions: Preguntas
-         proposals: Propuestas
-         images: Fotos
-         videos: Vídeos
-        more: ver más acciones
+          all: "Todos los tipos"
+          images: Fotos
+          news: Noticias
+          politicians_activity: "Actividad de los políticos"
+          proposals: Propuestas
+          questions: Preguntas
+          videos: Vídeos
+        main_filters:
+          more_polemic: "Más debatidas"
+          more_recent: "Más recientes"
+        more: "ver más acciones"
+        title: "Tus últimas acciones"
+      follow_suggestions:
+        follow: Seguir
+        more_politicians: "Buscar más políticos"
+        title:
+          one: "¿Quieres más? Te sugerimos..."
+          other: "¿Quieres más? Te sugerimos..."
+          zero: "Tu resumen está vacío."
+        title_and_area: "%{title} de %{area}"
+        we_suggest_you_the_most_active: "Seguramente no sigues al número suficiente de políticos o áreas. Te sugerimos los más activos:"
       followings:
-        title: A quién sigues en Irekia
-        all_profiles: Ver todos los perfiles a los que sigues
-        title_and_area: '%{title} de %{area}'
+        all_profiles: "Ver todos los perfiles a los que sigues."
         area: Área
-    intro:
-      new_in_irekia: ¿Nuevo en Irekia?
-      use_facebook_or_twitter: Utiliza Facebook o Twitter para registrarte
-      signin: "Conectar con <strong>%{name}</strong>"
-      dont_you_have_fb_or_twitter: ¿No tienes cuenta de Facebook ni de Twitter?
-      mandatory: obligatorio
-      continue: Continuar
-    new:
-      new_in_irekia: ¿Nuevo en Irekia?
-      fill_in_your_data: Rellena tus datos y comienza a participar.
-      terms_of_service: 'Acepto las %{link}'
-      terms_of_service_link: condiciones de uso
-      sign_up: Continuar
+        subtitle: "Esta es una lista de los políticos más activos en Irekia a quienes puedes seguir."
+        title:
+          one: "A quién sigues en Irekia."
+          other: "A quién sigues en Irekia."
+          zero: "Actualmente no sigues a nadie en Irekia."
+        title_and_area: "%{title} de %{area}"
+      navigation_menu:
+        actions: "Tu actividad"
+        edit: "Editar perfil"
+        followings: Siguiendo
+        proposals: "Tus propuestas"
+        publish: Publicar
+        questions: "Tus preguntas"
+        settings: "Tu perfil"
+        show: Resumen
+      proposals:
+        filters:
+          all: Todas
+          by_you: "Propuestas creadas por ti"
+        more_commented: "Más comentadas"
+        more_recent: "Más recientes"
+        no_proposals:
+          create_proposal: "Crea una propuesta"
+          description: "Puedes proponer cualquier cosa que creas que mejore el País Vasco. Desde ideas para agilizar la administración hasta propuestas de cambio o mejora de leyes y normativas."
+          title: "No has hecho ninguna propuesta aún."
+        proposal_support: "Tus propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;"
+        proposal_support_count:
+          one: "1 a favor"
+          other: "%{count} a favor"
+          zero: "Ninguna a favor"
+        title:
+          one: "Has hecho 1 propuesta"
+          other: "Has hecho %{count} propuestas"
+          zero: "No has hecho ninguna propuesta"
+      questions:
+        filters:
+          all: Todas
+          answered: Contestadas
+        more_polemic: "Más debatidas"
+        more_recent: "Más recientes"
+        no_questions:
+          create_question: "Crea una pregunta"
+          description: "Puedes preguntar cualquier cosa relacionada con el Gobierno Vasco: el presupuesto de un área, el motivo para tomar una decisión, el sueldo de un cargo político, etc."
+          title: "No has hecho ninguna pregunta aún."
+        title:
+          one: "1 pregunta contestada"
+          other: "%{count} preguntas contestadas"
+          zero: "Ninguna pregunta contestada"
+      show:
+        activity:
+          profiles_or_areas_following: "perfiles o áreas que sigues"
+          subtitle: "Esta es la actividad relacionada con tus contenidos, o con los %{link}."
+          title: "Última actividad"
+      welcome:
+        areas_following:
+          one: "1 área"
+          other: "%{count} áreas"
+          zero: "no sigues a ningún área"
+        configure_your_account: "Configura tu cuenta"
+        currently: "Actualmente %{politicians} y %{areas}"
+        first_time:
+          configure:
+            link: "Configura tu cuenta"
+            text: "Sube tu ávatar o modifica tus datos. También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia."
+            title: "Configura tu cuenta"
+          follow:
+            link: "Ir a un área cualquiera"
+            text: |-
+                Busca los políticos o áreas que más te interesan del Gobierno Vasco y síguelos.<br/>
+                De esta manera, estarás informado de todo lo que pase con el mínimo esfuerzo: toda la actividad de los políticos y áreas que sigas aparecerá en tu resumen.
+            title: "Sigue lo que te interese"
+          participate:
+            launch_proposals: "lanza tus propuestas"
+            link: "Crear una pregunta"
+            make_questions: "Haz preguntas"
+            text: |-
+                %{make_questions_link} a los responsables del Gobierno Vasco, %{launch_proposals_link} a los ciudadanos, o participa en las propuestas de otros.<br/>
+                Todo con un simple click.
+            title: "Participa y aprende"
+        following_nobody: "No estás siguiendo a nadie todavía."
+        hello: "Hola, %{name}"
+        hi_again: "Hola de nuevo, %{name}."
+        politicians_following:
+          one: "sigues a 1 político"
+          other: "sigues a %{count} políticos"
+          zero: "no sigues a ningún político"
+    public:
+      actions:
+        content_type_filters:
+          all: "Todos los tipos"
+          images: Fotos
+          news: Noticias
+          politicians_activity: "Actividad de los políticos"
+          proposals: Propuestas
+          questions: Preguntas
+          videos: Vídeos
+        main_filters:
+          more_polemic: "Más debatidas"
+          more_recent: "Más recientes"
+        more: "ver más acciones"
+        title: "Sus últimas acciones"
+      follow_suggestions:
+        follow: Seguir
+        more: "Más sugerencias"
+        title: "¿Quieres más? Te sugerimos&hellip;"
+        title_and_area: "%{title} de %{area}"
+      followings:
+        all_profiles: "Ver todos los perfiles a los que sigue %{name}"
+        area: Área
+        title: "A quien sigue %{name} en Irekia"
+        title_and_area: "%{title} de %{area}"
+      navigation_menu:
+        following: Siguiendo
+        proposals: "Sus propuestas"
+        questions: "Sus preguntas"
+        show: "Su actividad"
+      no_proposals:
+        description: "%{user} puede participar en el debate sobre las propuestas de otros usuarios de Irekia, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí."
+        homepage: "Página de inicio"
+        title: "Aún no hay propuestas de %{user}."
+      no_questions:
+        description: "%{user} puede participar en el debate sobre las propuestas de otros usuarios de Irekia, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí."
+        homepage: "Página de inicio"
+        title: "Aún no hay preguntas de %{user}"
+      proposals:
+        more_commented: "Más comentadas"
+        more_recent: "Más recientes"
+        title: "Propuestas de %{name}"
+      questions:
+        more_polemic: "Más debatidas"
+        more_recent: "Más recientes"
+        title: "Todas las preguntas hechas por %{name}"
+      welcome:
+        address: "Residente en %{city}, %{province}."
+        birthday:
+          man: "Nacido el %{birthday}."
+          woman: "Nacida el %{birthday}."
     register:
+      continue: Continuar
       mandatory: obligatorio
-      tell_us_more_about_you: Cuéntanos más de tí.
-      we_want_to_know_you_better: Queremos conocerte mejor.
-      continue: Continuar
-      with_this_data: ¿Qué vamos a hacer con estos datos?
-    edit:
-      mandatory: obligatorio
-      tell_us_more_about_you: Cuéntanos más de tí.
-      we_want_to_know_you_better: Queremos conocerte mejor.
-      continue: Continuar
-      with_this_data: ¿Qué vamos a hacer con estos datos?
-    connect:
-      connect: Bienvenido a irekia.
-      works_better: A partir de ahora podrás seguir a los políticos o áreas que mas te interesen, crear propuestas, preguntar al gobierno o comentar los contenidos con tus vecinos.
-      signin: "Conectar con <strong>%{name}</strong>"
-      continue: Continuar
-      discover: Descubre por qué queremos que te conectes.
-  follows:
-    create:
-      area:
-        follow: 'Seguir a este área'
-      user:
-        follow: 'Seguir a %{name}'
-    create_ribbon:
-      user: Seguir a este político
-      area: Seguir a este área
-    create_mini:
-      follow: Seguir
-    destroy:
-      stop_follow: Dejar de seguir
-    destroy_mini:
-      stop_follow: Dejar de seguir
-
-#######################################
-# IREKIA - Admin views
-#######################################
-
-  admin:
-    shared:
-      navigation:
-        admin_users: Administrar usuarios
-        moderate_contents: Moderar contenidos
-    users:
-      form:
-        random_password: Generar contraseña aleatoria
-      new:
-        submit: Crear usuario
-      create:
-        submit: Crear usuario
-      edit:
-        submit: Editar usuario
-      update:
-        submit: Editar usuario
-      index:
-        new_user: Nuevo usuario
-        edit_user: Editar usuario
-        delete_user: Eliminar usuario
-    moderation:
-      index:
-        contents: Contenidos
-        participations: Participación
-        list_item:
-          answer:
-            title: 'Contestando a "%{question}"'
-            author: '%{author} contesto hace %{time}'
-          question:
-            title: 'Pregunta para %{receiver}...'
-            area: el área
-            author: '%{author} hace %{time}'
-          news:
-            author: 'Publicado hace %{time}'
-          proposal:
-            in_favor: '%{count} a favor'
-            against: '%{count} en contra'
-            author: '%{author} hace %{time}'
-          argument:
-            title:
-              in_favor: 'A favor de la propuesta "%{proposal}"'
-              against: 'En contra de la propuesta "%{proposal}"'
-            author: '%{author} participó hace %{time}'
-          comment:
-            author: 'Comentado por %{author} hace %{time}'
-          comments:
-            zero: Todavía no hay comentarios
-            one: 1 comentario
-            other: '%{count} comentarios'
-      items_list:
-        validate: 'aceptar'
-        rejected: 'rechazar'
-      items_list_edit:
-        validate: 'Guardar y aceptar'
-        reject: 'rechazar'
-        reject_image: 'Eliminar imagen'
-
-#######################################
-# IREKIA - Models
-#######################################
-
-  sharing:
-    facebook:
-      answer: 'He respondido a la pregunta: %{question}'
-    twitter:
-      answer: 'He respondido a la pregunta: %{question}'
-
-#######################################
-# IREKIA - Mailers
-#######################################
-
-  irekia_mailer:
-    layout:
-      settings: 'Gestiona tus notificaciones'
-    moderation_approved:
-      subject:
-        comment: 'Tu  comentario ha sido aprobado :-)'
-        argument: 'Tu argumento ha sido aprobado :-)'
-        question: 'Tu pregunta ha sido aprobada :-)'
-        proposal: 'Tu propuesta ha sido aprobada :-)'
-      detail: 'La %{item} “%{item_text}” ha sido aprobada.'
-      detail_with_parent:
-        event: 'El %{item} que dejaste en el evento “%{parent_text}” ha sido aprobado.'
-        news: 'El %{item} que dejaste en la noticia “%{parent_text}” ha sido aprobado.'
-        photo: 'El %{item} que dejaste en la foto “%{parent_text}” ha sido aprobado.'
-        proposal: 'El %{item} que dejaste en la propuesta “%{parent_text}” ha sido aprobado.'
-        question: 'El %{item} que dejaste en la pregunta “%{parent_text}” ha sido aprobado.'
-        status_message: 'El %{item} que dejaste en el mensaje de estado “%{parent_text}” ha sido aprobado.'
-        tweet: 'El %{item} que dejaste en el tweet “%{parent_text}” ha sido aprobado.'
-        video: 'El %{item} que dejaste en el video “%{parent_text}” ha sido aprobado.'
-      show_item: 'Ver %{item} en Irekia'
-    moderation_rejected:
-      subject:
-        comment: 'Tu  comentario ha sido rechazado :-('
-        argument: 'Tu argumento ha sido rechazado :-('
-        question: 'Tu pregunta ha sido rechazada :-('
-        proposal: 'Tu propuesta ha sido rechazada :-('
-      detail:
-        event: 'El %{item} que dejaste en el evento “%{parent_text}” ha sido rechazado.'
-        news: 'El %{item} que dejaste en la noticia “%{parent_text}” ha sido rechazado.'
-        photo: 'El %{item} que dejaste en la foto “%{parent_text}” ha sido rechazado.'
-        proposal: 'El %{item} que dejaste en la propuesta “%{parent_text}” ha sido rechazado.'
-        question: 'El %{item} que dejaste en la pregunta “%{parent_text}” ha sido rechazado.'
-        status_message: 'El %{item} que dejaste en el mensaje de estado “%{parent_text}” ha sido rechazado.'
-        tweet: 'El %{item} que dejaste en el tweet “%{parent_text}” ha sido rechazado.'
-        video: 'El %{item} que dejaste en el video “%{parent_text}” ha sido rechazado.'
-      item_was:
-        comment: 'El mensaje era el siguiente:'
-        argument: 'El argumento era el siguiente:'
-        question: 'La pregunta era la siguiente:'
-        proposal: 'La propuesta era la siguiente:'
-      reasons: 'Posibles motivos para el rechazo:'
-      first_reason: 'Tu mensaje contenía palabras malsonantes o insultos, o faltaba el respeto a alguna persona o colectivo.'
-      second_reason: 'Tu mensaje se considera spam, por publicitar un producto o servicio.'
-      third_reason: 'Tu mensaje no guarda relación con el tema tratado. '
-      not_agree_html: 'Puedes <a href="#" target="_blank" style="color:#1D79B0">leer más sobre el sistema de moderación de Irekia</a>. Si no estás de acuerdo, <a href="#" target="_blank" style="color:#1D79B0">escríbenos</a> y lo hablamos.'
-    new_question:
-      subject: "Nueva pregunta en Irekia"
-      user_asks_you: '%{user} te hace la siguiente pregunta:'
-      user_asks_your_area: '%{user} le hace la siguiente pregunta a tu área:'
-      answer_question: 'Responder pregunta'
-    question_answered:
-      subject: 'Pregunta contestada en Irekia'
-      your_question: 'Tu pregunta'
-      politician_title: '%{title} en el área de %{area}'
-      answered_by: 'ha sido contestada por %{politician_with_title}'
-      opinion: '¿Qué te parece la respuesta? Puedes comentar la respuesta en Irekia.'
-      question_link: 'Ver pregunta en Irekia'
-    new_follower:
-      subject: '¡Un nuevo seguidor! :-)'
-      text: '%{name} ha comenzado a seguirte en Irekia. ¿Quieres conocerle mejor?'
-      see_profile: 'Ver el perfil de %{name}'
-    welcome:
-      subject: "Bienvenido a Irekia, %{name} :-)"
-      text: "Gracias por registrarte en Irekia. ¡Ya puedes empezar a participar!"
-      step_1: '1. Sigue a los cargos o áreas que te interesen'
-      step_1_detail: 'Busca los perfiles o áreas que más te interesen y síguelos. A partir de ese momento su actividad aparecerá en <a href="%{url}" target="_blank" style="color:#1D79B0">tu página de inicio de Irekia</a>.'
-      step_2: '2. Participa!'
-      step_2_detail: '<a href="%{url_questions}" target="_blank" style="color:#1D79B0">Haz preguntas</a> a los responsables del Gobierno Vasco, <a href="%{url_proposals}" target="_blank" style="color:#1D79B0">lanza tus propuestas</a> a los ciudadanos, o participa en las propuestas de otros. Todo con un simple click.'
-      step_3: '3. Configura tu cuenta'
-      step_3_detail: 'Sube tu ávatar o modifica tus datos. También puedes conectar tus cuentas de facebook y twitter para integrar tu actividad en las redes sociales con el nuevo irekia.actividad aparecerá en tu página de inicio de Irekia.'
-      access_irekia: 'Acceder a Irekia'
-    deleted_account:
-      subject: "Cuenta eliminada :-("
-      as_requested: 'Como nos has pedido, hemos procedido a eliminar tu cuenta de Irekia, incluido todo tu contenido en la medida que ha sido posible. Hay algunos comentarios que no han podido ser retirados por formar parte de un debate con otros usuarios, pero tu nombre se ha eliminado de ellos.'
-      come_back: 'Lamentamos tu decisión. Por supuesto, <a href="%{url}" target="_blank" style="color:#1D79B0">puedes volver a Irekia y empezar de nuevo cuando quieras</a>.'
-      cheers: 'Saludos,'
-      irekia_team: 'El equipo de Irekia'
-  layouts:
-    application:
-      title: ¿Tienes un smartphone?
-      subtitle: Accede a IREKIA a través de la aplicación Android o iPhone
-      available_in_app_store: "DISPONIBLE EN <span>App Store</span>"
-      available_in_android_market: "DISPONIBLE EN <span>Android Market</span>"
+      tell_us_more_about_you: "Cuéntanos más de tí."
+      we_want_to_know_you_better: "Queremos conocerte mejor."
+      with_this_data: "¿Qué vamos a hacer con estos datos?"
+    settings:
+      access_data: "Datos de acceso a Irekia"
+      account_configuration: "Configuración de tu cuenta"
+      and_well_fix_it: "y lo arreglaremos"
+      avatar:
+        pick_your_avatar: "Selecciona tu avatar"
+        size: "Tamaño máximo 500x500."
+        subtitle: "Necesitas una imagen que te represente en Irekia. Los usuarios con avatar son mas populares"
+        title: "Tu avatar"
+        upload_an_image: "Subir una nueva imagen"
+        uploading: "Subiendo nuevo avatar..."
+      birthday: "Fecha de nacimiento"
+      can_we_change_your_mind: "¿Podemos hacer algo para<br />que cambies de idea?"
+      cancel: Cancelar
+      city: Municipio
+      connect_with: "Conectar con %{name}"
+      connection_with_social_networks: "Conexión con redes sociales"
+      current_password: "Tu contraseña actual"
+      email: "Tu email"
+      error:
+        current_password: "La contraseña"
+        email: "El email"
+        password: "La contraseña"
+      gender: Sexo
+      get_in_touch_with_us: "contacta con nosotros"
+      if_you_had_a_bad_experience: "Si has tenido una mala experiencia en Irekia,"
+      lastname: Apellidos
+      man: Hombre
+      name: Nombre
+      notifications:
+        all:
+          description: "Te avisaremos también cuando haya novedades en un hilo en el que has participado."
+          title: Todas
+        basic:
+          description: "Recibirás los resultados finales de las propuestas y preguntas en las que has participado."
+          title: Básicas
+        minimal:
+          description: "Recibirás los emails estrictamente necesarios para la gestión de tu cuenta."
+          title: Mínimas
+        title: Notificaciones
+      password: "Tu nueva contraseña"
+      province: Territorio
+      remember_this_information_is_public: "Recuerda que son datos públicos y visibles en Irekia."
+      remove_profile: "Eliminar perfil"
+      remove_your_profile: "Por supuesto, si lo deseas puedes <a href=\"#\" class=\"%{class}\" id=\"%{class}\">borrar tu perfil</a> de Irekia en cualquier momento."
+      save_changes: "Guardar cambios"
+      we_hope_you_dont_go: "Esperamos que no sea así :-)"
+      woman: Mujer
+      your_profile: "Tu perfil"

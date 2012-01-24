@@ -9,7 +9,7 @@
   user.password_confirmation = "wadus1234"
   user.is_woman              = false
   user.role                  = Role.find_by_name('Removed')
-  user.skip_welcome          = true
+  user.skip_mailing          = true
   user.save!
 
 #############
@@ -21,7 +21,7 @@
   user.password_confirmation = "example"
   user.is_woman              = false
   user.role                  = Role.find_by_name('Administrator')
-  user.skip_welcome          = true
+  user.skip_mailing          = true
   user.save!
 
 puts '=> areas loaded'

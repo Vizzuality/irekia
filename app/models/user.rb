@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
                   :follows_attributes,
                   :notifications_attributes
 
-  attr_accessor :terms_of_service, :skip_welcome
+  attr_accessor :terms_of_service, :skip_mailing
 
   before_validation :check_blank_name, :on => :create
   before_create :check_user_role
@@ -266,6 +266,22 @@ class User < ActiveRecord::Base
 
   def self.patxi_lopez
     where('(name = ? AND lastname = ?) OR external_id = ?', 'Patxi', 'Lopez Alvarez', 8080).first
+  end
+
+  def self.advisers
+    advisers_slugs = %w(
+      rodolfo-ares-taboada
+      pilar-unzalu-perez-de-eulate
+      idoia-mendia-cueva
+      inaki-arriola-lopez
+      javier-rafael-bengoa-renteria
+      maria-isabel-celaa-dieguez
+      carlos-aguirre-arana
+      gemma-zabaleta-areta
+      bernabe-unda-barturen
+      blanca-urgell-lazaro
+    )
+    User.where(:slug => advisers_slugs)
   end
 
   def self.wadus
@@ -639,7 +655,9 @@ class User < ActiveRecord::Base
   def follow_presidencia
     if citizen?
       areas_following << Area.presidencia
-      save
+      users_following = User.advisers.all
+      users_following << User.patxi_lopez
+      save!
     end
   end
   private :follow_presidencia
