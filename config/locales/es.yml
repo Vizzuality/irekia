@@ -891,7 +891,7 @@ es:
     question_answered:
       answered_by: "ha sido contestada por %{politician_with_title}"
       opinion: "¿Qué te parece la respuesta? Puedes comentar la respuesta en Irekia."
-      politician_title: "%{title} en el área de %{area}"
+      politician_title: "%{title}, %{area}"
       question_link: "Ver pregunta en Irekia"
       subject: "Pregunta contestada en Irekia"
       your_question: "Tu pregunta"
@@ -1043,7 +1043,7 @@ es:
         questions: "preguntas contestadas"
         respond: "tarda en responder %{time}"
         week: "%{count} esta semana"
-      title: "%{title} en el área de %{areas}"
+      title: "%{title}, %{areas}"
     menu:
       actions: Actividad
       agenda: Agenda
@@ -1095,7 +1095,7 @@ es:
       success:
         description: "Te avisaremos en cuanto sea aprobada."
         title: "Pregunta enviada."
-      title: "%{title} en el área de %{areas}"
+      title: "%{title}, %{areas}"
   resource:
     search: buscar
   resources:
