@@ -46,6 +46,10 @@ FileUtils.rm_f File.join(DEPLOYMENT_DIR, 'config/app_config.staging.yml')
 FileUtils.mv   File.join(DEPLOYMENT_DIR, 'config/database.production.yml'),   File.join(DEPLOYMENT_DIR, 'config/database.yml')
 FileUtils.mv   File.join(DEPLOYMENT_DIR, 'config/app_config.production.yml'), File.join(DEPLOYMENT_DIR, 'config/app_config.yml')
 
+FileUtils.rm_f File.join(DEPLOYMENT_DIR, 'config/locales/es.yml')
+FileUtils.rm_f File.join(DEPLOYMENT_DIR, 'config/locales/eu.yml')
+FileUtils.rm_f File.join(DEPLOYMENT_DIR, 'config/locales/en.yml')
+
 puts '=> Updating Gemfile'
 
 system "bundle --gemfile=#{File.join(DEPLOYMENT_DIR, 'Gemfile')}"
