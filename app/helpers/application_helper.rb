@@ -101,7 +101,7 @@ module ApplicationHelper
     if user_or_area.is_a?(Area)
       area = user_or_area
       if area.present? && area.image.present?
-        avatar_html = link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area), :title => area.name, :class => "avatar #{size}"
+        avatar_html = link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area), :title => translate_field(area, "name"), :class => "avatar #{size}"
       end
     else
       begin
@@ -111,7 +111,7 @@ module ApplicationHelper
           avatar_html = link_to (image_tag(image_url) + (raw(content_tag :div, " ", :class => :ieframe))), path_for_user(user), :title => user.fullname, :class => "avatar #{size}"
         elsif user_or_area.present? && user_or_area.thumbnail.present?
           area = user_or_area
-          avatar_html = link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => area.name, :class => "avatar #{size}"
+          avatar_html = link_to (image_tag(area.thumbnail) + (raw(content_tag :div, " ", :class => :ieframe))), area_path(area.id), :title => translate_field(area, "name"), :class => "avatar #{size}"
         elsif user_or_area.present? && user_or_area.id.present? && user_or_area.fullname.present?
           user = user_or_area
           profile_image = Image.for(user)
@@ -134,7 +134,7 @@ module ApplicationHelper
     if user_or_area.is_a?(Area)
       area = user_or_area
       if area.present? && area.image.present?
-        avatar_html = (image_tag(area.thumbnail, :title => area.name, :class => "avatar #{size}" ) + (raw(content_tag :div, " ", :class => :ieframe)))
+        avatar_html = (image_tag(area.thumbnail, :title => translate_field(area,"name"), :class => "avatar #{size}" ) + (raw(content_tag :div, " ", :class => :ieframe)))
       end
     else
       begin
@@ -144,7 +144,7 @@ module ApplicationHelper
           avatar_html = (image_tag(image_url, :title => user.fullname, :class => "avatar #{size}") + (raw(content_tag :div, " ", :class => :ieframe)))
         elsif user_or_area.present? && user_or_area.thumbnail.present?
           area = user_or_area
-          avatar_html = (image_tag(area.thumbnail, :title => area.name, :class => "avatar #{size}") + (raw(content_tag :div, " ", :class => :ieframe)))
+          avatar_html = (image_tag(area.thumbnail, :title => translate_field(area,"name"), :class => "avatar #{size}") + (raw(content_tag :div, " ", :class => :ieframe)))
         elsif user_or_area.present? && user_or_area.id.present? && user_or_area.fullname.present?
           user = user_or_area
           profile_image = Image.for(user)
