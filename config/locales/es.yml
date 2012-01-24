@@ -936,7 +936,7 @@
         iphone:
           author: 'Hace %{time}'
       event:
-        author: '%{author} hace %{time}'
+        author: 'Publicado hace %{time}'
       content_user:
         title: 'Has sido etiquetado en %{content_type} &quot;%{content}&quot;'
         proposal: la propuesta
