@@ -235,11 +235,9 @@ class Content < ActiveRecord::Base
     @to_update_public_streams += areas
     @to_update_private_streams += users
     @to_update_private_streams << author
-    @to_update_private_streams += participers(author)
 
     @to_notificate += users
     @to_notificate << author
-    @to_notificate += participers(author)
 
     participation.to_update_public_streams  = @to_update_public_streams
     participation.to_update_private_streams = @to_update_private_streams
