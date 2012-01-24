@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   include ActionView::Helpers::TextHelper
   include ActionView::Helpers::TagHelper
+  include ApplicationHelper
 
   skip_before_filter :authenticate_user!, :only => [:index, :agenda, :change_locale]
 
@@ -81,13 +82,13 @@ class HomeController < ApplicationController
   def text_for_rss_title(action)
     case action.event_type
       when 'News'
-        action.item.area.name if action.item.area.present?
+        translate_field(action.item.area, 'name') if action.item.area.present?
       when 'StatusMessage'
         action.item.author.fullname
       when 'Tweet'
         action.item.author.fullname
       when 'Vote'
-        action.item.title
+        action.item.author.fullname
       when 'Photo'
         action.item.author.fullname
       when 'Comment'
@@ -105,9 +106,8 @@ class HomeController < ApplicationController
       when 'News'
         news = action.item
         <<-HTML
-          <p>#{news.title}</p>
-          <p>#{news.subtitle}</p>
-          #{simple_format news.body}
+          <p>#{translate_field(news, 'title')}</p>
+          #{simple_format translate_field(news, 'body')}
         HTML
       when 'StatusMessage'
         action.item.message
@@ -122,15 +122,15 @@ class HomeController < ApplicationController
       when 'Event'
         event = action.item
         <<-HTML
-          <p>#{event.title}</p>
-          #{simple_format event.body}
+          <p>#{translate_field(event, 'title')}</p>
+          #{simple_format translate_field(event, 'body')}
         HTML
       when 'Comment'
         action.item.body
       when 'Proposal'
         proposal = action.item
         <<-HTML
-          <p>#{proposal.title}</p>
+          <p>#{translate_field(proposal, 'title')}</p>
         HTML
       when 'Answer'
         action.item.answer_text
