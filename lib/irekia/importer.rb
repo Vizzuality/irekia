@@ -245,7 +245,7 @@ module Irekia
             areas.each do |area|
               area_id = area['id']
               area_detail = get_json(area_detail_url.call(lang, area_id))
-              area_name = area['name'].gsub(/^Departamento de /, '').gsub(/ saila$/, '')
+              area_name = area['name'].gsub(/^Departamento de /, '')
 
               Area.where(:external_id => area_id).each do |area_model|
                 if area_model.lehendakaritza?
