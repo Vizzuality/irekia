@@ -79,4 +79,13 @@ Area.create :name => 'Cultura',
             :image    => Image.create(:image => File.open(Rails.root.join('db/seeds/support/images/area_11.png'))),
             :external_id => 11
 
+Area.create :name => 'Gobierno Abierto',
+            :name_es => 'Gobierno Abierto',
+            :name_eu => 'Gobierno Abierto',
+            :name_en => 'Gobierno Abierto',
+            :description => '',
+            :description_1 => '',
+            :description_2 => '',
+            :image    => Image.create(:image => File.open(Rails.root.join('db/seeds/support/images/area_12.png')))
+
 puts '=> areas loaded'
