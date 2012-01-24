@@ -746,6 +746,7 @@
       sign_up: Regístrate
       sign_in: Login
       sign_out: Salir
+      register: Regístrate en Irekia
       facebook: facebook
       twitter: twitter
 
@@ -1078,6 +1079,8 @@
       more: Ver calendario completo
       next_month: Siguiente mes
       ical: Exportar para iCal
+      showing: 'Mostrando'
+      all_events: 'Todos los eventos'
 
     nav_bar_buttons:
       settings:
