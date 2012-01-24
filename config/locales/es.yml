@@ -858,6 +858,12 @@
         answered: 'Contestada tras %{time}'
         not_answered: 'Aún no contestada'
         read_more: 'Leer más'
+      question_unanswered:
+        title: '%{author} te ha hecho una'
+        new_question: 'nueva pregunta'
+        author: 'Hace %{time}'
+        answered: 'Contestada hace %{time}'
+        not_answered: 'Aún no contestada'
       question_mini:
         author: '%{author} hace %{time}'
         answered: 'Contestada hace %{time}'
@@ -930,7 +936,7 @@
         iphone:
           author: 'Hace %{time}'
       event:
-        author: '%{author} hace %{time}'
+        author: 'Publicado hace %{time}'
       content_user:
         title: 'Has sido etiquetado en %{content_type} &quot;%{content}&quot;'
         proposal: la propuesta

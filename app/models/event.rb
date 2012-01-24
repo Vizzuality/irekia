@@ -62,6 +62,12 @@ class Event < Content
   end
 
   def as_json(options = {})
+    area = {
+      :id            => areas.first.id,
+      :name          => areas.first.name,
+      :thumbnail     => areas.first.thumbnail
+    } if areas.present?
+
     super({
       :event_date      => event_date,
       :duration        => duration,
@@ -70,7 +76,8 @@ class Event < Content
       :body            => body,
       :location        => location,
       :latitude        => latitude,
-      :longitude       => longitude
+      :longitude       => longitude,
+      :area            => area
     })
   end
 

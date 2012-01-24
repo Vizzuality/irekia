@@ -1,0 +1,14 @@
+<%= avatar data.author, :small %>
+
+<div class="content">
+<%= t(".title", :author => data.author.fullname ) %>
+  <p><%= link_to t(".new_question"), question_path(data.slug) %></p>
+
+  <div class="footer">
+
+    <span class="published_at">
+      <span class="when"><%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %></span>
+      &middot;
+      <strong> +<%= data.answer_requests_count %> </strong>
+  </div>
+</div>

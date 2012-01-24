@@ -274,7 +274,8 @@ class UsersController < ApplicationController
     end
 
     if @questions
-      @unanswered_questions_count = @questions.not_answered.length if @user.politician?
+      @unanswered_questions       = @questions.not_answered if @user.politician?
+      @unanswered_questions_count = @unanswered_questions.length if @user.politician?
       @answered_questions_count   = @questions.answered.length     unless @user.politician?
       @questions                  = @questions.answered            if params[:answered].present?
 

@@ -1565,7 +1565,7 @@ body.home #container .article.participation div.wrap div.login_block { width: 10
 body.home #container .article.participation div.wrap div.login_block p { float: right; font-size: 18px; }
 body.home #container .article.participation div.wrap div.login_block p a { font: bold 18px "Helvetica",Arial; }
 body.home #container .article.participation div.wrap div.login_block p a.blue_button { padding: 11px 30px; text-align: center; margin: 0 0 0 10px; }
-body.home #container .article#areas div.areas_list { position: relative; display: block; width: 994px; height: 366px; padding: 0; margin: 0; background: white; border-left: 1px solid #B5BDC4; border-right: 1px solid #B5BDC4; }
+body.home #container .article#areas div.areas_list { position: relative; display: block; width: 994px; height: 488px; padding: 0; margin: 0; background: white; border-left: 1px solid #B5BDC4; border-right: 1px solid #B5BDC4; }
 body.home #container .article#areas div.areas_list ul { position: absolute; top: -9px; left: 0; width: 100%; margin: 0; background: none; border: none; }
 body.home #container .article#areas div.areas_list ul li { float: left; width: 270px; height: 74px; padding: 25px 30px; border-right: 1px solid #ECEDEF; border-bottom: 1px solid #ECEDEF; background: none; }
 body.home #container .article#areas div.areas_list ul li div.avatar { float: left; width: 67px; }

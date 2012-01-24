@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  DEMO_USER = {'virekia' => 'gub5mar'}
 
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception,                           :with => :render_error
@@ -16,7 +15,6 @@ class ApplicationController < ActionController::Base
   before_filter :valid_locale?
   before_filter :set_locale
   before_filter :analyze_useragent
-  before_filter :authentication_check
   before_filter :authenticate_user!, :except => [:render_error, :render_not_found, :in_development]
   before_filter :get_areas
   before_filter :setup_search
@@ -42,14 +40,6 @@ class ApplicationController < ActionController::Base
   def analyze_useragent
     @ua = AgentOrange::UserAgent.new(request.user_agent)
     request.format = :iphone if iphone_request?
-  end
-
-  def authentication_check
-    return unless Rails.env.production?
-
-    authenticate_or_request_with_http_basic do |user, password|
-      DEMO_USER[user] == password
-    end
   end
 
   def after_sign_in_path_for(resource)

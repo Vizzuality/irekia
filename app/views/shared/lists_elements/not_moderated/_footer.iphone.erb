@@ -1,0 +1,9 @@
+<div class="footer">
+    <span class="published_at">
+    	<%= raw t('.author', :author_url => path_for_user(data.author), :time => distance_of_time_in_words_to_now(data.published_at)) %>
+    </span>
+    &middot;
+    <span class="moderation_pending">
+      <%= t('.moderation_pending') %>
+    </span>
+</div>

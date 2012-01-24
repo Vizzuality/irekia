@@ -67,7 +67,7 @@ form.publish .white_button { position: relative; }
 #main .article .inner .content ul li .avatar { float: left; margin-right: 10px; }
 #main .article .inner .content ul li .content { width: 205px; margin: 0; padding: 0; }
 #main .article .inner .content ul li:last-child { border: none; }
-#main .article .inner .content ul li .footer { float: left; margin: 10px 0 0 0; padding-left: 16px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -35px; color: #465866; font-size: 11px; }
+#main .article .inner .content ul li .footer { float: left; margin: 10px 0 0 0; padding-left: 16px; background: url("/images/icons/icon_sprite.png") no-repeat 0 -35px; color: #465866; opacity: .5; font-size: 11px; }
 
 #main .article ul li.proposal a.icon, #main .article ul li.proposal span.icon, #main .article ul li.argument a.icon, #main .article ul li.argument span.icon, #main .article ul li.content_user a.icon, #main .article ul li.content_user span.icon, #main .article ul li.answer_request a.icon, #main .article ul li.answer_request span.icon { display: block; float: left; width: 43px; height: 43px; margin: 0 13px 0 0; text-align: center; font-size: 11px; color: #666666; text-decoration: none; line-height: 10px; }
 #main .article ul li.proposal a.icon strong, #main .article ul li.proposal span.icon strong, #main .article ul li.argument a.icon strong, #main .article ul li.argument span.icon strong, #main .article ul li.content_user a.icon strong, #main .article ul li.content_user span.icon strong, #main .article ul li.answer_request a.icon strong, #main .article ul li.answer_request span.icon strong { display: block; margin: 18px 0 0 2px; font-size: 18px; }
@@ -90,7 +90,7 @@ form.publish .white_button { position: relative; }
 
 #main .article .inner .content ul.counters { clear: both; overflow: hidden; border-bottom: 1px solid #E7EAED; margin: 0; top: -10px; position: relative; z-index: 100; }
 #main .article .inner .content ul.counters li { float: left; width: 98px; padding: 16px 0px; border: none; border-right: 1px solid #E7EAED; text-align: center; font-size: 13px; color: #465866; }
-#main .article .inner .content ul.counters li strong { display: block; margin: 0; font-size: 37px; color: #EB005F; }
+#main .article .inner .content ul.counters li a, #main .article .inner .content ul.counters li strong { display: block; margin: 0; font-size: 37px; color: #EB005F; font-weight: bold; }
 #main .article .inner .content ul.counters li:last-child { border: none; }
 
 ul.menu { clear: both; overflow: hidden; margin-bottom: 10px; margin-top: 15px; }
@@ -165,3 +165,7 @@ form.signin fieldset input.email.error { border-bottom: 1px solid #ff3300; }
 .avatar.medium, .avatar.medium > img { width: 40px; height: auto; }
 .avatar.big, .avatar.big > img { width: 280px; height: auto; }
 .avatar:before { content: ''; display: block; position: absolute; left: 0; right: 0; width: 100%; height: 100%; margin: -10em; border: 10em solid white; -moz-border-radius: 100em; -webkit-border-radius: 100em; -o-border-radius: 100em; -ms-border-radius: 100em; -khtml-border-radius: 100em; border-radius: 100em; }
+
+.no_questions { position: relative; top: 170px; text-align: center; font-size: 21px; font-weight: bold; color: #7A858B; }
+.no_questions p { margin-bottom: 25px; }
+.no_questions a.white_button { font-size: 17px; }

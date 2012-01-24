@@ -1,0 +1,7 @@
+<% if @questions.size > 0 %>
+  <ul>
+    <% (defined?(questions) ? questions : @questions).each do |question| %>
+      <%= render_list_element(question, question.class.name, :path_sufix => defined?(mini) ? '_mini' : nil) %>
+    <% end %>
+  </ul>
+<% end %>
