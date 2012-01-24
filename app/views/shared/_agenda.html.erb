@@ -13,9 +13,9 @@
 
       <% if controller.controller_name == 'home' and controller.action_name == 'agenda' %>
         <div class="agenda_filter clearfix">
-<span class="title">          Mostrando</span>
+<span class="title">          <%=t(".showing")%></span>
           <select class="area_filter">
-              <option data-id="0">Todos los eventos</option>
+              <option data-id="0"><%=t(".all_events")%></option>
             <% @areas.each do |area| %>
               <option data-id="<%= area.id %>"><%= area.name %></option>
             <% end %>
