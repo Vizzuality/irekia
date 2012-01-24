@@ -1,22 +1,22 @@
----
-eu:
-  Event: Ekitaldia
+--- 
+eu: 
+  Event: Jarduera
   News: Albistea
   Photo: Argazkia
   Proposal: Proposamena
   Question: Galdera
   Video: Bideoa
-  activerecord:
-    attributes:
-      answer_data:
-        video_data:
+  activerecord: 
+    attributes: 
+      answer_data: 
+        video_data: 
           vimeo_url: "Vimeoko bideoa"
           youtube_url: "Youtubeko bideoa"
-      area_user:
+      area_user: 
         area_id: Eremua
-      image:
+      image: 
         image: Irudia
-      user:
+      user: 
         birthday: Jaioteguna
         city_id: Udalerria
         current_password: "Egungo pasahitza"
@@ -29,17 +29,17 @@ eu:
         province_id: Lurraldea
         role_id: Rola
         title_id: Izenburua
-      video:
-        video_data:
+      video: 
+        video_data: 
           vimeo_url: "Vimeoko bideoa"
           youtube_url: "Youtubeko bideoa"
-      video_data:
+      video_data: 
         vimeo_url: "Vimeoko bideoa"
         youtube_url: "Youtubeko bideoa"
-    errors:
-      full_messages:
+    errors: 
+      full_messages: 
         format: "%{attribute} %{message}"
-      messages:
+      messages: 
         accepted: "onartua izan behar da"
         blank: "ezin da zuriz utzi"
         confirmation: "ez dator bat konfirmazioarekin"
@@ -61,26 +61,26 @@ eu:
         too_long: "luzeegia da"
         too_short: "laburregia da"
         wrong_length: "ez du luzeera zuzena (%{count} karaktere izan behar ditu)"
-      models:
-        user:
-          attributes:
-            current_password:
+      models: 
+        user: 
+          attributes: 
+            current_password: 
               blank: "ezin da hutsik utzi."
               invalid: "ez da zuzena"
-            password:
+            password: 
               blank: "ezin da hutsik utzi."
               confirmation: "ez dator bat konfirmazioarekin."
               invalid: "ez da baliozkoa"
               too_long: "oso luzea da (20 karak. gehienez)"
               too_short: "oso laburra da (6 karak. gutxienez)"
-            reset_password_token:
+            reset_password_token: 
               blank: "ezin da hutsik utzi."
-      template:
+      template: 
         body: "Arazoak egon dira ondoko eremuekin:"
-        header:
+        header: 
           one: "Errore baten ondorioz ezinezkoa izan da %{model} hau gordetzea"
           other: "%{count} erroreren ondorioz ezinezkoa izan da %{model} hau gordetzea"
-    models:
+    models: 
       Role: Rola
       Title: Izenburua
       answer: Erantzuna
@@ -98,511 +98,511 @@ eu:
       question: Galdera
       user: Erabiltzailea
       video: Bideoa
-    values:
-      role:
-        name:
+    values: 
+      role: 
+        name: 
           administrator: Administratzailea
           citizen: Herritarra
           politician: Politikaria
-  admin:
-    moderation:
-      index:
+  admin: 
+    moderation: 
+      index: 
         contents: Edukiak
-        list_item:
-          answer:
+        list_item: 
+          answer: 
             author: "%{author}(e)k duela %{time} erantzun zuen"
             title: "\"%{question}\" galderari erantzuten"
-          argument:
+          argument: 
             author: "%{author}(e)k duela %{time} parte hartu zuen"
-            title:
+            title: 
               against: "\"%{proposal}\" proposamenaren kontra"
               in_favor: "\"%{proposal}\" proposamenaren alde"
-          comment:
+          comment: 
             author: "%{author}(e)k ohar bat argitaratu zuen duela %{time}"
-          comments:
+          comments: 
             one: "Ohar 1"
             other: "%{count} ohar"
             zero: "Oraindik ez dago oharrik"
-          news:
+          news: 
             author: "Duela %{time} argitaratua"
-          proposal:
+          proposal: 
             against: "%{count} kontra"
             author: "%{author} duela %{time}"
             in_favor: "%{count} alde"
-          question:
-            area: eremua
+          question: 
+            area: arloa
             author: "%{author} duela %{time}"
             title: "Galdera nori zuzendua: %{receiver}..."
         participations: Parte-hartzea
-      items_list:
+      items_list: 
         rejected: "ez onartu"
         validate: onartu
-      items_list_edit:
+      items_list_edit: 
         reject: "ez onartu"
         reject_image: "Irudia ezabatu"
         validate: "Gorde eta onartu"
-    shared:
-      navigation:
+    shared: 
+      navigation: 
         admin_users: "Erabiltzaileak administratu"
         moderate_contents: "Edukiak moderatu"
-    users:
-      create:
+    users: 
+      create: 
         submit: "Erabiltzailea sortu"
-      edit:
+      edit: 
         submit: "Erabiltzailea editatu"
-      form:
+      form: 
         random_password: "Zorizko pasahitza sortu"
-      index:
+      index: 
         delete_user: "Erabiltzailea ezabatu"
         edit_user: "Erabiltzailea editatu"
         new_user: "Erabiltzaile berria"
-      new:
+      new: 
         submit: "Erabiltzailea sortu"
-      update:
+      update: 
         submit: "Erabiltzailea editatu"
-  areas:
-    agenda:
-      title: "Eremuaren agenda"
-    index:
+  areas: 
+    agenda: 
+      title: "Arloaren agenda"
+    index: 
       area_description: "Eusko Jaurlaritzaren eremua"
-    navigation_menu:
-      menu:
+    navigation_menu: 
+      menu: 
         actions: Jarduera
         agenda: Agenda
         proposals: Proposamenak
         questions: Galderak
         show: Laburpena
         team: Taldea
-    show:
-      agenda:
-        title: "Eremuko Agenda"
-    summary:
-      description:
+    show: 
+      agenda: 
+        title: "Arloaren Agenda"
+    summary: 
+      description: 
         read_more: "Gehiago irakurri"
         title: "Zer egiten dugu"
-      status:
-        area:
-          actions_this_week:
-            one: "Jarduera 1 aste honetan"
+      status: 
+        area: 
+          actions_this_week: 
+            one: "Ekintza 1 aste honetan"
             other: "%{count} jarduera aste honetan"
-            zero: "Jarduerarik ez aste honetan"
-          follow_this_area: "Eremu honi jarraitu"
-        proposals:
+            zero: "Ekintzarik ez aste honetan"
+          follow_this_area: "Egin arlo honen jarraitzaile"
+        proposals: 
           make_a_proposal: "Egin zure proposamena"
-          open:
+          open: 
             one: "Proposamen 1 irekita"
             other: "%{count} proposamen irekita"
             zero: "Ez dago proposamenik irekita"
-        questions:
-          answered:
+        questions: 
+          answered: 
             one: "Galdera 1 erantzunda"
-            other: "%{count} galdera erantzuna"
+            other: "%{count} galdera erantzunda"
             zero: "Ez dago galderarik erantzunda"
           make_a_question: "Egin zure galdera"
-      team:
-        other_members:
-          one: "Pertsona 1 gehiago eremu honetan"
-          other: "%{count} pertsona gehiago eremu honetan"
+      team: 
+        other_members: 
+          one: "Pertsona 1 gehiago arlo honetan"
+          other: "%{count} pertsona gehiago arlo honetan"
         title: "Talde nagusia"
-    team:
-      actions_this_week:
-        one: "Jarduera bat aste honetan"
+    team: 
+      actions_this_week: 
+        one: "Ekintza bat aste honetan"
         other: "%{count} jarduera aste honetan"
-        zero: "Jarduerarik ez aste honetan"
+        zero: "Ekintzarik ez aste honetan"
       follow: Jarraitu
       inactive: "Ez duzu izena eman Irekian"
-      title:
-        one: "Eremu honetan pertsona bat ari da parte hartzen"
-        other: "%{count} pertsona ari dira parte hartzen eremu honetan"
-        zero: "Inor ere ez da ari parte hartzen eremu honetan"
-  contents:
-    arguments:
+      title: 
+        one: "Arlo honetan pertsona bat ari da parte hartzen"
+        other: "%{count} pertsona ari dira parte hartzen arlo honetan"
+        zero: "Inor ere ez da ari parte hartzen arlo honetan"
+  contents: 
+    arguments: 
       add: Gehitu
       against: "Kontrako argudioak"
-      error:
+      error: 
         description: "Sentitzen dugu, ezin izan da gorde :-("
         title: "Errore teknikoa."
       in_favor: "Aldeko argudioak"
-      success:
+      success: 
         description: "Onartzen denean jakinaraziko dizugu."
         title: "Oharra bidali da."
       write_here: "Idatzi hemen"
-    create:
-      politician:
-        photo:
+    create: 
+      politician: 
+        photo: 
           description: "Argazkia behar bezala argitaratu da."
           title: "Zure argazkia argitaratu egin da."
-        proposal:
+        proposal: 
           description: "Proposamena behar bezala argitaratu da."
           title: "Zure proposamena argitaratu egin da."
-        question:
+        question: 
           description: "Galdera behar bezala argitaratu da."
           title: "Zure galdera argitaratu egin da."
-        status_message:
+        status_message: 
           description: "Egoera-mezua behar bezala argitaratu da."
           title: "Zure mezua argitaratu egin da."
-        video:
+        video: 
           description: "Bideoa behar bezala argitaratu da."
           title: "Zure bideoa argitaratu egin da."
-      proposal:
+      proposal: 
         description: "Gure moderatzaileek onartu bezain laster, emailez jakinaraziko dizugu argitaratu egin dela."
         moderation_pending: "Proposamena moderatzaileen onarpenaren zain dago."
         title: "Zure proposamena bidali egin da."
-      question:
+      question: 
         description: "Gure moderatzaileek onartu bezain laster, emailez jakinaraziko dizugu argitaratu egin dela."
         moderation_pending: "Galdera moderatzaileen onarpenaren zain dago."
         title: "Zure galdera bidali egin da."
-    edit:
-      event:
+    edit: 
+      event: 
         add_subtitle: "Azpititulua erantsi"
         back: itzuli
         save: Gorde
-      image:
+      image: 
         add_caption: "Argazkiaren azpiko oharra erantsi"
         add_photo: "Argazkia erantsi"
         loading: "Irudia kargatzen ari da..."
         save: Gorde
         upload_a_new_one: "Berri bat igo"
-      news:
+      news: 
         add_body: "Testua sartu"
         add_subtitle: "Azpititulua erantsi"
         add_title: "Izenburua erantsi"
         back: itzuli
         save: Gorde
-      proposal:
+      proposal: 
         addressed_to: "Nori zuzendua"
-        against:
+        against: 
           one: "%{percentage}% kontra (%{count} botoa)"
           other: "%{percentage}% kontra (%{count} botoa)"
           zero: "%{percentage}% kontra (%{count} botoa)"
         back: itzuli
-        content:
+        content: 
           add: Erantsi
           against: Kontra
           in_favor: Alde
-          your_opinion:
+          your_opinion: 
             subtitle: "Esan proposamen honen alde ala kontra zauden. Erabakia hartzerakoan emaitzak kontuan hartuko ditugu."
             title: "Zein da zure iritzia?"
             vote_against: "Kontra bozkatu"
             vote_in_favor: "Alde bozkatu"
-        in_favor:
+        in_favor: 
           one: "%{percentage}% alde (%{count} boto)"
           other: "%{percentage}% alde (%{count} boto)"
           zero: "%{percentage}% alde (%{count} boto)"
         insert_the_new_target: "Sartu hartzaile berria"
-        see_all_proposals: "Eremu honetako erantzun guztiak ikusi"
-        sidebar:
-          related_content:
-            comments:
+        see_all_proposals: "Arlo honetako erantzun guztiak ikusi"
+        sidebar: 
+          related_content: 
+            comments: 
               one: "Ohar bat"
               other: "%{count} ohar"
               zero: "Oraindik ez dago oharrik"
             title: "Azken edukiak"
-          sharing_links:
+          sharing_links: 
             facebook: Facebook
             mail: Emaila
             twitter: Twitter
-          tags:
+          tags: 
             title: Tag-ak
-        title_author_and_comments:
-          comments:
+        title_author_and_comments: 
+          comments: 
             one: "Ohar bat"
             other: "%{count} ohar"
             zero: "Oraindik ez dago oharrik"
           time: "duela %{time}"
           total_in_favor: "%{percent}% alde (guztira %{total})"
-      question:
+      question: 
         add_a_video: "Erantsi bideo bat nahi baduzu"
         address_the_question: "Galdera norbaiti zuzendu"
         addressed_to: "Nori zuzendua"
         answer_this_question: "Erantzun galdera honi"
         back: itzuli
-        footer:
-          all_questions_to_area: "%{name} eremurako galdera guztiak"
+        footer: 
+          all_questions_to_area: "%{name} arlorako galdera guztiak"
           all_questions_to_user: "%{name}(e)rako galdera guztiak"
         insert_the_new_target: "Sartu hartzaile berria"
-        join_them:
+        join_them: 
           one: "egin bat"
           other: "egin bat"
           zero: "izan lehenengoa"
         not_answered_yet: "Galdera honek ez du erantzunik jaso oraindik."
-        people_demanding_answer:
+        people_demanding_answer: 
           one: "Pertsona 1ek galderari erantzutea nahi du"
           other: "%{count} pertsonak nahi dute galderari erantzutea"
           zero: "Inork ere ez du eskatu erantzuteko"
         publish: "Erantzuna argitaratu"
-        question_content:
-          answer:
+        question_content: 
+          answer: 
             has_answered: "%{name}(e)k erantzun du"
           answer_not_satisfactory: "Ez da behar bezalakoa"
           answer_opinion: "Zer deritzozu erantzunari?"
-          answer_requests:
+          answer_requests: 
             do_request: "Erantzuna eskatu"
           answer_satisfactory: "Behar bezalakoa da"
-          author_and_comments:
+          author_and_comments: 
             answered: "Erantzuna %{time} ondoren eman da"
-            comments:
+            comments: 
               one: "Ohar bat"
               other: "%{count} ohar"
               zero: "Oraindik ez dago oharrik"
-            not_answered:
+            not_answered: 
               one: "Erantzunik gabe, 1ek eskatu du"
               other: "Erantzunik gabe, %{count}(e)k eskatu dute"
               zero: "Erantzunik gabe"
             time: "duela %{time}"
         save: Gorde
-        sidebar:
-          related_questions:
-            comments:
+        sidebar: 
+          related_questions: 
+            comments: 
               one: "Ohar bat"
               other: "%{count} ohar"
               zero: "Oraindik ez dago oharrik"
             time: "Duela %{time}"
             title: "Antzeko beste galdera batzuk"
-          sharing_links:
+          sharing_links: 
             facebook: Facebook
             mail: Emaila
             twitter: Twitter
-          tags:
+          tags: 
             title: Tag-ak
-        you_and_other:
+        you_and_other: 
           one: "Momentuz zuk bakarrik nahi duzu erantzutea"
           other: "Momentuz zuk eta beste pertsona batek bakarrik nahi duzue erantzutea"
           zero: "Inork ere ez du eskatu erantzutea"
         you_and_thousands: "Momentuz zuk eta beste %{count} pertsonak bakarrik nahi duzue erantzutea"
         youtube_or_vimeo_url: "YouTubeko edo Vimeoko helbidea"
-    show:
-      event:
+    show: 
+      event: 
         back: itzuli
         back_to_the_agenda: "agendara itzuli"
-        date_area_and_comments:
-          comments:
+        date_area_and_comments: 
+          comments: 
             one: "Ohar bat"
             other: "%{count} ohar"
             zero: "Oraindik ez dago oharrik"
-        sidebar:
-          related_events:
-            comments:
+        sidebar: 
+          related_events: 
+            comments: 
               one: "Ohar bat"
               other: "%{count} ohar"
               zero: "Oraindik ez dago oharrik"
             title: "Azken jarduerak"
-          related_politicians:
+          related_politicians: 
             title: "Gaiarekin lotutako politikariak"
-          sharing_links:
+          sharing_links: 
             facebook: Facebook
             mail: Emaila
             twitter: Twitter
-          tags:
+          tags: 
             title: Tag-ak
-        title:
-          comments:
+        title: 
+          comments: 
             one: "Ohar bat"
             other: "%{count} ohar"
             zero: "Oraindik ez dago oharrik"
           time: "%{day} %{hour}(e)tik aurrera"
-      news:
+      news: 
         back: itzuli
-        date_area_and_comments:
-          comments:
+        date_area_and_comments: 
+          comments: 
             one: "Ohar bat"
             other: "%{count} ohar"
             zero: "Oraindik ez dago oharrik"
-        sidebar:
-          related_content:
-            comments:
+        sidebar: 
+          related_content: 
+            comments: 
               one: "Ohar bat"
               other: "%{count} ohar"
               zero: "Oraindik ez dago oharrik"
             title: "Azken edukiak"
-          related_politicians:
+          related_politicians: 
             title: "Gaiarekin lotutako politikariak"
-          sharing_links:
+          sharing_links: 
             facebook: Facebook
             mail: Emaila
             twitter: Twitter
-          tags:
+          tags: 
             add_tags: "Tag bat erantsi"
             title: Tag-ak
-      photo:
+      photo: 
         back: itzuli
         published_by: "Argitaratu du"
-        sidebar:
-          related_photos:
-            comments:
+        sidebar: 
+          related_photos: 
+            comments: 
               one: "Ohar bat"
               other: "%{count} ohar"
               zero: "Oraindik ez dago oharrik"
             title: "Azken argazkiak"
-          related_politicians:
+          related_politicians: 
             title: "Gaiarekin lotutako politikariak"
-          sharing_links:
+          sharing_links: 
             facebook: Facebook
             mail: Emaila
             twitter: Twitter
-          tags:
+          tags: 
             title: Tag-ak
-        title:
-          comments:
+        title: 
+          comments: 
             one: "Ohar bat"
             other: "%{count} ohar"
             zero: "Oraindik ez dago oharrik"
-        title_author_and_comments:
-          comments:
+        title_author_and_comments: 
+          comments: 
             one: "Ohar bat"
             other: "%{count} ohar"
             zero: "Oraindik ez dago oharrik"
           time: "duela %{time}"
-      proposal:
+      proposal: 
         addressed_to: "Nori zuzendua"
-        against:
+        against: 
           one: "%{percentage}% kontra (%{count} boto)"
           other: "%{percentage}% kontra (%{count} boto)"
           zero: "%{percentage}% kontra (oraindik ez du inork bozkatu)"
         back: itzuli
-        content:
+        content: 
           add: Erantsi
           against: Kontra
           in_favor: Alde
-          your_opinion:
+          your_opinion: 
             subtitle: "Esan proposamen honen alde ala kontra zauden. Erabakia hartzerakoan emaitzak kontuan hartuko ditugu."
             title: "Zein da zure iritzia?"
             vote_against: "Kontra bozkatu"
             vote_in_favor: "Alde bozkatu"
-        in_favor:
+        in_favor: 
           one: "%{percentage}% alde (%{count} boto)"
           other: "%{percentage}% alde (%{count} boto)"
           zero: "%{percentage}% alde (oraindik ez du inork bozkatu)"
-        see_all_proposals: "Eremu honetako erantzun guztiak ikusi"
-        sidebar:
-          related_content:
-            comments:
+        see_all_proposals: "Arlo honetako erantzun guztiak ikusi"
+        sidebar: 
+          related_content: 
+            comments: 
               one: "Ohar bat"
               other: "%{count} ohar"
               zero: "Oraindik ez dago oharrik"
             title: "Azken edukiak"
-          sharing_links:
+          sharing_links: 
             facebook: Facebook
             mail: Emaila
             twitter: Twitter
-          tags:
+          tags: 
             title: Tag-ak
-        title_author_and_comments:
-          comments:
+        title_author_and_comments: 
+          comments: 
             one: "Ohar bat"
             other: "%{count} ohar"
             zero: "Oraindik ez dago oharrik"
           time: "duela %{time}"
           total_in_favor: "%{percent}% alde (guztira %{total})"
-      question:
+      question: 
         add_a_video: "Erantsi bideo bat nahi baduzu"
         addressed_to: "Nori zuzendua"
         answer_this_question: "Erantzun galdera honi"
-        footer:
-          all_questions_to_area: "%{name} eremurako galdera guztiak"
+        footer: 
+          all_questions_to_area: "%{name} arlorako galdera guztiak"
           all_questions_to_user: "%{name}(e)rako galdera guztiak"
-        join_them:
+        join_them: 
           one: "egin bat"
           other: "egin bat"
           zero: "izan lehenengoa"
         not_answered_yet: "Galdera honek ez du erantzunik jaso oraindik."
-        people_demanding_answer:
+        people_demanding_answer: 
           one: "Pertsona 1ek galderari erantzutea nahi du"
           other: "%{count} pertsonak nahi dute galderari erantzutea"
           zero: "Inork ere ez du eskatu erantzuteko"
         publish: "Erantzuna argitaratu"
-        question_content:
-          answer:
+        question_content: 
+          answer: 
             has_answered: "%{name}(e)k erantzun du"
           answer_not_satisfactory: "Ez da behar bezalakoa"
           answer_opinion: "Zer deritzozu erantzunari?"
-          answer_requests:
+          answer_requests: 
             do_request: "Erantzuna eskatu"
           answer_satisfactory: "Behar bezalakoa"
-          author_and_comments:
+          author_and_comments: 
             answered: "Erantzuna %{time} ondoren eman da"
-            comments:
+            comments: 
               one: "ohar bat"
               other: "%{count} ohar"
               zero: "Oraindik ez dago oharrik"
-            not_answered:
+            not_answered: 
               one: "Erantzunik gabe, 1ek eskatu du"
               other: "Erantzunik gabe, %{count} pertsonak eskatu dute"
               zero: "Erantzunik gabe"
             time: "duela %{time}"
-        sidebar:
-          related_questions:
-            comments:
+        sidebar: 
+          related_questions: 
+            comments: 
               one: "Ohar bat"
               other: "%{count} ohar"
               zero: "Oraindik ez dago oharrik"
             time: "Duela %{time}"
             title: "Antzeko beste galdera batzuk"
-          sharing_links:
+          sharing_links: 
             facebook: Facebook
             mail: Emaila
             twitter: Twitter
-          tags:
+          tags: 
             title: Tag-ak
-        you_and_other:
+        you_and_other: 
           one: "Momentuz zuk bakarrik nahi duzu erantzutea"
           other: "Momentuz zuk eta beste pertsona batek bakarrik nahi duzue erantzutea"
           zero: "Inork ere ez du eskatu erantzutea"
         you_and_thousands: "Momentuz zuk eta beste %{count} pertsonak bakarrik nahi duzue erantzutea"
         youtube_or_vimeo_url: "YouTubeko edo Vimeoko helbidea"
-      status_message:
+      status_message: 
         author: "%{name}(e)k argitaratu du duela %{time}"
         back: itzuli
-        sidebar:
-          last_tweets:
+        sidebar: 
+          last_tweets: 
             time: "duela %{time}"
             title: " %{name}ren azken tweet-ak"
-          sharing_links:
+          sharing_links: 
             facebook: Facebook
             mail: Email
             twitter: Twitter
-      tweet:
+      tweet: 
         author: "%{name}(e)k Twitteatu du duela %{time}"
         back: itzuli
-        sidebar:
-          last_tweets:
+        sidebar: 
+          last_tweets: 
             time: "duela %{time}"
             title: " %{name}ren azken tweet-ak"
-          sharing_links:
+          sharing_links: 
             facebook: Facebook
             mail: Emaila
             twitter: Twitter
-      video:
+      video: 
         back: itzuli
         published_by: "Nork argitaratua"
-        sidebar:
-          related_photos:
-            comments:
+        sidebar: 
+          related_photos: 
+            comments: 
               one: "Ohar bat"
               zero: "Oraindik ez dago oharrik"
             title: "Azken argazkiak"
-          related_politicians:
+          related_politicians: 
             title: "Gaiarekin lotutako politikariak"
-          sharing_links:
+          sharing_links: 
             facebook: Facebook
             mail: Emaila
             twitter: Twitter
-          tags:
+          tags: 
             title: Tag-ak
-        title:
-          comments:
+        title: 
+          comments: 
             one: "Ohar bat"
             other: "%{count} ohar"
             zero: "Oraindik ez dago oharrik"
-        title_author_and_comments:
-          comments:
+        title_author_and_comments: 
+          comments: 
             one: "Ohar bat"
             other: "%{count} ohar"
             zero: "Oraindik ez dago oharrik"
           time: "duela %{time}"
     update: ~
-  date:
-    abbr_day_names:
+  date: 
+    abbr_day_names: 
       - Igan
       - Astel
       - Astear
@@ -610,7 +610,7 @@ eu:
       - Oste
       - Osti
       - Lar
-    abbr_month_names:
+    abbr_month_names: 
       - ""
       - Urt
       - Ots
@@ -624,7 +624,7 @@ eu:
       - Urr
       - Aza
       - Aben
-    day_names:
+    day_names: 
       - Igandea
       - Astelehena
       - Asteartea
@@ -632,11 +632,11 @@ eu:
       - Osteguna
       - Ostirala
       - Larunbata
-    formats:
+    formats: 
       default: "%Y/%m/%e"
       long: "%Y(e)ko %Bk %e"
       short: "%b %e"
-    month_names:
+    month_names: 
       - ~ 
       - Urtarrila
       - Otsaila
@@ -650,59 +650,59 @@ eu:
       - Urria
       - Azaroa
       - Abendua
-    order:
+    order: 
       - year
       - month
       - day
-  datetime:
-    distance_in_words:
-      about_x_hours:
-        one: "ordubete, gutxi gorabehera"
-        other: "%{count} ordu, gutxi gorabehera"
-      about_x_months:
-        one: "hilabete, gutxi gorabehera"
-        other: "%{count} hilabete, gutxi gorabehera"
-      about_x_years:
-        one: "urtebete, gutxi gorabehera"
-        other: "%{count} urte, gutxi gorabehera"
-      almost_x_years:
+  datetime: 
+    distance_in_words: 
+      about_x_hours: 
+        one: "ordubete inguru"
+        other: "%{count} ordu inguru"
+      about_x_months: 
+        one: "hilabete inguru"
+        other: "%{count} hilabete inguru"
+      about_x_years: 
+        one: "urtebete inguru"
+        other: "%{count} urte inguru"
+      almost_x_years: 
         one: "ia urtebete"
         other: "ia %{count} urte"
       half_a_minute: "minutu erdi"
-      less_than_x_minutes:
+      less_than_x_minutes: 
         one: "minutu bat baino gutxiago"
         other: "%{count} minutu baino gutxiago"
-      less_than_x_seconds:
+      less_than_x_seconds: 
         one: "segundu bat baino gutxiago"
         other: "%{count} segundu baino gutxiago"
-      over_x_years:
+      over_x_years: 
         one: "urte bat baino gehiago"
         other: "%{count} urte baino gehiago"
-      x_days:
+      x_days: 
         one: "egun bat"
         other: "%{count} egun"
-      x_minutes:
+      x_minutes: 
         one: "minutu bat"
         other: "%{count} minutu"
-      x_months:
+      x_months: 
         one: "hilabete bat"
         other: "%{count} hilabete"
-      x_seconds:
+      x_seconds: 
         one: "segundu bat"
         other: "%{count} segundu"
-    prompts:
+    prompts: 
       day: Egun
       hour: Ordu
       minute: Minutu
       month: Hilabete
       second: Segundu
       year: Urte
-  devise:
-    confirmations:
+  devise: 
+    confirmations: 
       confirmed: "Zure kontua behar bezala berretsi da. Orain saioa hasi duzu."
       send_instructions: "Minutu gutxi barru, zure kontua berresteko jarraibideak jasoko dituzu emailez."
       send_paranoid_instructions: "Zure emaila dagoeneko gure datu-basean sartuta badago, laster zure kontua berresteko jarraibideak jasoko dituzu emailez."
-    failure:
+    failure: 
       already_authenticated: "Dagoeneko saioa hasi duzu."
       inactive: "Zure kontua ez dago aktibatuta oraindik."
       invalid: "Okerreko emaila edo pasahitza"
@@ -711,82 +711,82 @@ eu:
       timeout: "Saioa iraungi egin da. Mesedez, hasi saioa berriro."
       unauthenticated: "Jarraitu aurretik, saioa hasi edo izena eman behar duzu."
       unconfirmed: "Jarraitu aurretik zure kontua berretsi behar duzu."
-    mailer:
-      confirmation_instructions:
+    mailer: 
+      confirmation_instructions: 
         subject: "Berrespena egiteko jarraibideak"
-      reset_password_instructions:
+      reset_password_instructions: 
         reset_password: "Beste pasahitz bat sortu"
         subject: "Ez duzu zure pasahitza gogoratzen?"
         text: "Egin klik “Beste pasahitz bat sortu” dioen tokian. Gero Irekiak balio berria eskatuko dizu."
-      unlock_instructions:
+      unlock_instructions: 
         subject: "Desblokeatzeko jarraibideak"
-    omniauth_callbacks:
+    omniauth_callbacks: 
       failure: "Ezin izan dizugu %{kind}tik sartzen utzi. Arrazoia: \"%{reason}\"."
       success: "Behar bezala baimendua %{kind} kontutik."
-    passwords:
+    passwords: 
       send_instructions: "Minutu gutxi barru, beste pasahitz bat sortzeko jarraibideak jasoko dituzu emailez."
       send_paranoid_instructions: "Zure emaila dagoeneko gure datu-basean sartuta badago, pasahitza berreskuratzeko esteka bat jasoko duzu emailez."
       updated: "Zure pasahitza behar bezala aldatu da. Orain saioa hasi duzu."
-    registrations:
+    registrations: 
       destroyed: "Agur! Zure kontua behar bezala ezeztatu da. Laster berriro zure parte-hartzea izatea espero dugu."
       inactive_signed_up: "Behar bezala eman duzu izena. Hala ere, ezin izan da saioa hasi; izan ere, zure kontua %{reason}."
       signed_up: "Ongi etorri! Behar bezala eman duzu izena."
       updated: "Behar bezala eguneratu duzu zure kontua."
-    sessions:
+    sessions: 
       signed_in: "Behar bezala hasi duzu saioa."
       signed_out: "Behar bezala irten zara."
-    unlocks:
+    unlocks: 
       send_instructions: "Minutu gutxi barru, zure kontua desblokeatzeko jarraibideak jasoko dituzu emailez."
       send_paranoid_instructions: "Zure kontua existitzen bada, laster kontua desblokeatzeko jarraibideak jasoko dituzu emailez."
       unlocked: "Zure kontua behar bezala desblokeatu da. Orain saioa hasi duzu."
-  errors:
-    messages:
+  errors: 
+    messages: 
       already_confirmed: "behar bezala berretsirik zegoen. Mesedez, saiatu saioa hasten"
       expired: "iraungi egin da. Mesedez, eskatu beste bat"
       not_found: "ez da aurkitu"
       not_locked: "ez zegoen blokeaturik"
-      not_saved:
+      not_saved: 
         one: "Errore baten ondorioz ezinezkoa izan da %{resource} hau gordetzea:"
         other: "%{count} erroreren ondorioz ezinezkoa izan da %{resource} hau gordetzea:"
-  follows:
-    create:
-      area:
-        follow: "Eremu hau jarraitu"
-      user:
+  follows: 
+    create: 
+      area: 
+        follow: "Arlo honen jarraitzaile egin"
+      user: 
         follow: "%{name}(r)i jarraitu"
-    create_mini:
+    create_mini: 
       follow: Jarraitu
-    create_ribbon:
-      area: "Eremu honi jarraitu"
+    create_ribbon: 
+      area: "Arlo honen jarraitzaile egin"
       user: "Politikari honi jarraitu"
-    destroy:
+    destroy: 
       stop_follow: "Jarraitzeari utzi"
-    destroy_mini:
+    destroy_mini: 
       stop_follow: "Jarraitzeari utzi"
-  helpers:
-    select:
+  helpers: 
+    select: 
       prompt: "Mesedez, aukeratu"
-    submit:
+    submit: 
       create: "%{model}a eratu"
       submit: "%{model}a gorde"
       update: "%{model}a eguneratu"
-  home:
-    agenda:
+  home: 
+    agenda: 
       title: "Irekiaren agenda"
-    areas:
-      all_the_areas: "Eremu guztiak"
+    areas: 
+      all_the_areas: "Arlo guztiak"
       no_activity: "Jarduerarik gabe"
-      proposals:
+      proposals: 
         one: "proposamen 1"
         other: "%{count} proposamen"
         zero: "Ez dago proposamenik"
-      questions:
+      questions: 
         one: "Galdera 1"
         other: "%{count} galdera"
         zero: "Ez dago galderarik"
-    index:
+    index: 
       answered: erantzunda
-      banners:
+      banners: 
         guide: "Komunikazio irekirako gida"
         opendata: "Open data euskadi"
         press: "Prentsa :)"
@@ -800,42 +800,42 @@ eu:
       proposals: proposamen
       questions: galdera
       register_now: "Eman izena orain"
-      rss:
-        items:
-          body:
-            question_for_area: "%{name} eremurako galdera"
+      rss: 
+        items: 
+          body: 
+            question_for_area: "%{name} arlorako galdera"
             question_for_politician: "%{name}(e)rako galdera"
-          title:
+          title: 
             answer: "“%{text}” galderaren beste erantzun bat"
             answer_request: "Beste erantzun-eskaera bat"
             argument: "“%{text}” proposamenerako argudio berri bat"
             comment: "Beste ohar bat hemen: “%{text}”"
             event: "Jarduera berri bat"
-            news: "Albiste berri bat eremu honetan: %{text}"
+            news: "Albiste berri bat dago arlo honetan: %{text}"
             photo: "%{text}(r)en argazki berri bat"
             proposal: "Proposamen berri bat"
             question: "Galdera berri bat"
             status_message: "%{text}(r)en egoerari buruzko mezu berri bat"
             tweet: "%{text}(r)en tweet berri bat"
             vote: "Beste boto bat “%{text}” proposamenean"
-        title:
+        title: 
           news: Albisteak
       search: "Zer ari zara bilatzen?"
       title: "Parte hartu zure gobernuan."
-      view_all_the_areas: "eremu guztiak ikusi"
+      view_all_the_areas: "arlo guztiak ikusi"
       votes: boto
-  irekia_mailer:
-    deleted_account:
+  irekia_mailer: 
+    deleted_account: 
       as_requested: "Eskatu duzun bezala, Irekian zenuen kontua ezeztatu dugu, eta zure eduki guztia ezabatu dugu, ahal izan den neurrian. Ohar batzuk ezin izan dira ezabatu, eztabaida baten parte baitziren (beste erabiltzaile batzuen oharrekin batera), baina zure izena ezabatu egin da."
       cheers: "Agur,"
       come_back: "Zure erabakia sentitzen dugu. Jakina, <a href=\"%{url}\" target=\"_blank\" style=\"color:#1D79B0\">nahi duzunean itzultzeko eta berriro hasteko aukera duzu</a>."
       irekia_team: "Irekiaren taldea"
       subject: "Kontua ezabatu egin da :-("
-    layout:
+    layout: 
       settings: "Kudeatu zure jakinarazpenak"
-    moderation_approved:
+    moderation_approved: 
       detail: "“%{item_text}” %{item} onartua izan da."
-      detail_with_parent:
+      detail_with_parent: 
         event: "“%{parent_text}” jardueran utzi zenuen %{item} onartua izan da."
         news: "“%{parent_text}” albistean utzi zenuen %{item} onartua izan da."
         photo: "“%{parent_text}” argazkian utzi zenuen %{item} onartua izan da."
@@ -845,13 +845,13 @@ eu:
         tweet: "“%{parent_text}” tweet-ean utzi zenuen %{item} onartua izan da."
         video: "“%{parent_text}” bideoan utzi zenuen %{item} onartua izan da."
       show_item: "Ikusi %{item} Irekian"
-      subject:
+      subject: 
         argument: "Zure argudioa onartua izan da :-)"
         comment: "Zure oharra onartua izan da :-)"
         proposal: "Zure proposamena onartua izan da :-)"
         question: "Zure galdera onartua izan da :-)"
-    moderation_rejected:
-      detail:
+    moderation_rejected: 
+      detail: 
         event: "“%{parent_text}” jardueran utzi zenuen %{item} ez da onartua izan."
         news: "“%{parent_text}” albistean utzi zenuen %{item} ez da onartua izan."
         photo: "“%{parent_text}” argazkian utzi zenuen %{item} ez da onartua izan."
@@ -861,7 +861,7 @@ eu:
         tweet: "“%{parent_text}” tweet-ean utzi zenuen %{item} ez da onartua izan."
         video: "“%{parent_text}” bideoan utzi zenuen %{item} ez da onartua izan."
       first_reason: "Zure mezuak hitz itsusiak edo iraingarriak zituen, edo pertsona edo kolektiboren batentzat iraingarria zen."
-      item_was:
+      item_was: 
         argument: "Argudioa honakoa zen:"
         comment: "Mezua honakoa zen:"
         proposal: "Proposamena honakoa zen:"
@@ -869,45 +869,45 @@ eu:
       not_agree_html: "<a href=\"#\" target=\"_blank\" style=\"color:#1D79B0\">Irekiaren moderazio-sistemari buruz gehiago irakur dezakezu</a>. Ez baldin bazaude ados, <a href=\"#\" target=\"_blank\" style=\"color:#1D79B0\">helarazi mezu bat</a> eta eztabaidatuko dugu."
       reasons: "Onartua ez izateko arrazoi posibleak:"
       second_reason: "Zure mezua spam-tzat jo da, produktu edo zerbitzu baten publizitatea egiten duelako."
-      subject:
+      subject: 
         argument: "Zure argudioa ez da onartu :-("
         comment: "Zure oharra ez da onartu :-("
         proposal: "Zure proposamena ez da onartu :-("
         question: "Zure galdera ez da onartu :-("
       third_reason: "Zure mezuak ez du zerikusirik eztabaidatzen ari den gaiarekin. "
-    new_follower:
+    new_follower: 
       see_profile: "%{name}(r)en profila ikusi"
       subject: "Jarraitzaile berri bat! :-)"
       text: "%{name} Irekian zuri jarraitzen hasi da. Hobeto ezagutu nahi duzu?"
-    new_question:
+    new_question: 
       answer_question: "Galderari erantzun"
       subject: "Galdera berria Irekian"
       user_asks_you: "%{user}(e)k galdera hau egin nahi dizu:"
-      user_asks_your_area: "%{user}(e)k galdera hau egin nahi dio zure eremuari:"
-    question_answered:
+      user_asks_your_area: "%{user}(e)k galdera hau egin nahi dio zure arloari:"
+    question_answered: 
       answered_by: "%{politician_with_title}(e)k erantzun du"
       opinion: "Zer deritzozu erantzunari? Irekian erantzunari buruzko ohar bat argitara dezakezu."
-      politician_title: "%{title} %{area} eremuan"
+      politician_title: "%{title} %{area} arloan"
       question_link: "Galdera ikusi Irekian"
       subject: "Galderari Irekian erantzun diote"
       your_question: "Zure galdera"
-    welcome:
+    welcome: 
       access_irekia: "Irekiara sartu"
-      step_1: "1. Egin interesatzen zaizkizun eremuen edo karguen jarraitzaile"
-      step_1_detail: "Bilatu eta jarraitu gehien interesatzen zaizkizun profilak edo eremuak. Une horretatik aurrera, beren jarduera <a href=\"%{url}\" target=\"_blank\" style=\"color:#1D79B0\">Irekian duzun hasiera-orrian agertuko da</a>."
+      step_1: "1. Egin interesatzen zaizkizun arloen edo karguen jarraitzaile"
+      step_1_detail: "Bilatu eta jarraitu gehien interesatzen zaizkizun profilak edo arloak. Une horretatik aurrera, beren jarduera <a href=\"%{url}\" target=\"_blank\" style=\"color:#1D79B0\">Irekian duzun hasiera-orrian agertuko da</a>."
       step_2: "2. Parte hartu!"
       step_2_detail: "<a href=\"%{url_questions}\" target=\"_blank\" style=\"color:#1D79B0\">Egin galderak</a> Euko Jaurlaritzako arduradunei, <a href=\"%{url_proposals}\" target=\"_blank\" style=\"color:#1D79B0\">helarazi zure proposamenak</a> herritarrei, edo parte hartu beste batzuen proposamenetan. Guztia klik batekin."
       step_3: "3. Konfiguratu zure kontua"
       step_3_detail: "Igo zure avatar-a edo aldatu zure datuak. Gainera, Irekian duzun hasiera-orrian agertuko den irekia.jarduera-rekin facebook-en eta twitter-en dituzun kontuekin konekta zaitezke. Horrela, zure jarduera sare sozialetan jaso ahalko duzu."
       subject: "Ongi etorri Irekiara, %{name} :-)"
       text: "Eskerrik asko Irekian izena emateagatik. Parte hartzen has zaitezke!"
-  layouts:
-    application:
+  layouts: 
+    application: 
       available_in_android_market: "ESKURAGARRI <span>Android Market</span>en"
       available_in_app_store: "ESKURAGARRI <span>App Store</span>n"
       subtitle: "Sartu IREKIAra Android aplikazioarekin edo iPhone-arekin"
       title: "Smatphone bat daukazu?"
-  menu:
+  menu: 
     configure_your_account: "Konfiguratu zure kontua"
     dashboard: Dashboard
     publish: Argitaratu
@@ -915,9 +915,9 @@ eu:
     your_activity: "Zure jarduera"
     your_proposals: "Zure proposamenak"
     your_questions: "Zure galderak"
-  number:
-    currency:
-      format:
+  number: 
+    currency: 
+      format: 
         delimiter: "."
         format: "%n %u"
         precision: 2
@@ -925,46 +925,46 @@ eu:
         significant: false
         strip_insignificant_zeros: false
         unit: €
-    format:
+    format: 
       delimiter: "."
       precision: 3
       separator: ","
       significant: false
       strip_insignificant_zeros: false
-    human:
-      decimal_units:
+    human: 
+      decimal_units: 
         format: "%n %u"
-        units:
+        units: 
           billion: "mila milioi"
           million: milioi
           quadrillion: "mila bilioi"
           thousand: mila
           trillion: bilioi
           unit: ""
-      format:
+      format: 
         delimiter: ""
         precision: 3
         significant: true
         strip_insignificant_zeros: true
-      storage_units:
+      storage_units: 
         format: "%n %u"
-        units:
-          byte:
+        units: 
+          byte: 
             one: Byte
             other: Byte
           gb: GB
           kb: KB
           mb: MB
           tb: TB
-    percentage:
-      format:
+    percentage: 
+      format: 
         delimiter: ""
-    precision:
-      format:
+    precision: 
+      format: 
         delimiter: ""
-  participations:
-    comments:
-      answer_this:
+  participations: 
+    comments: 
+      answer_this: 
         event: "Zerbait esan nahi duzu?&hellip; egin jarduera honi buruzko ohar bat"
         news: "Zerbait esan nahi duzu?&hellip; egin albiste honi buruzko ohar bat"
         photo: "Zerbait esan nahi duzu?&hellip; egin argazki honi buruzko ohar bat"
@@ -973,128 +973,128 @@ eu:
         statusmessage: "Zerbait esan nahi duzu?&hellip; egin egoera honi buruzko ohar bat"
         tweet: "Zerbait esan nahi duzu?&hellip; egin tweet honi buruzko ohar bat"
         video: "Zerbait esan nahi duzu?&hellip; egin bideo honi buruzko ohar bat"
-      label:
+      label: 
         news: "Zerbait esan nahi duzu?&hellip; egin albiste honi buruzko ohar bat"
-      new:
+      new: 
         submit: "Ohar bat helarazi"
-      not_moderated:
+      not_moderated: 
         author: "<a href=\"%{author_url}\">Zu</a> duela%{time}"
         moderation_pending: "Moderatzailearen onarpenaren zain"
         rest_of_users: ": gainerako erabiltzaileek ezin dute ikusi oraindik."
       time: "duela %{time}"
-      title:
+      title: 
         one: "Ohar bat"
         other: "%{count} ohar"
         zero: "Oraindik ez dago oharrik"
-    moderated:
-      answer_request:
-        people_demanding_answer:
+    moderated: 
+      answer_request: 
+        people_demanding_answer: 
           one: "Pertsona 1ek erantzutea nahi du,"
           other: "%{count} pertsonak nahi dute erantzutea,"
           zero: "Inork ere ez du eskatu erantzuteko,"
-        you_and_other:
+        you_and_other: 
           one: "Momentuz zuk bakarrik nahi duzu erantzutea"
           other: "Momentuz zuk eta beste pertsona batek bakarrik nahi duzue erantzutea"
           zero: "Inork ere ez du eskatu erantzuteko"
         you_and_thousands: "Momentuz zuk eta beste %{count} pertsonak bakarrik nahi duzue erantzutea"
-      comment:
+      comment: 
         time: "duela %{time}"
-      vote:
-        against:
+      vote: 
+        against: 
           one: "%{percentage}% kontra (%{count} boto)"
           other: "%{percentage}% kontra (%{count} boto)"
           zero: "%{percentage}% kontra (%{count} boto)"
-        in_favor:
+        in_favor: 
           one: "%{percentage}% alde (%{count} boto)"
           other: "%{percentage}% alde (%{count} boto)"
           zero: "%{percentage}% alde (%{count} boto)"
-    not_moderated:
-      argument:
+    not_moderated: 
+      argument: 
         moderation_pending: "Argudioa moderatzaileen onarpenaren zain dago."
-      comment:
+      comment: 
         comment_sent: "Zure oharra bidali egin da :)"
         the_comment_will_be_published_soon: "Gure <u>moderatzaileek</u> berrikusi bezain laster argitaratuko da"
-      comment_mini:
+      comment_mini: 
         comment_sent: "Zure oharra bidali egin da :)"
         the_comment_will_be_published_soon: "Gure <u>moderatzaileek</u> berrikusi bezain laster argitaratuko da"
-    show:
+    show: 
       time: "duela %{time}"
-  path_names:
-    actions: ekintzak
+  path_names: 
+    actions: jarduerak
     agenda: agenda
     proposals: proposamenak
     questions: galderak
-  politicians:
-    agenda:
+  politicians: 
+    agenda: 
       title: "%{name}(r)en agenda"
-    detail:
+    detail: 
       back: itzuli
-      description:
+      description: 
         activity: "IREKIAko jarduera"
         contact: "Harremanetarako informazioa"
         title: "Nor da eta zer egiten du"
-      stats:
-        actions: "Ekintzak IREKIAn"
+      stats: 
+        actions: "Jarduerak IREKIAn"
         comments: "ohar proposamenetan"
         questions: "galdera erantzunda"
         respond: "%{time} behar ditu erantzuteko"
         week: "%{count} aste honetan"
-      title: "%{title} %{areas} eremuan"
-    menu:
+      title: "%{title} %{areas} arloan"
+    menu: 
       actions: Jarduera
       agenda: Agenda
       detail: Xehetasunak
       proposals: Proposamenak
       questions: Galderak
       show: Laburpena
-    show:
-      agenda:
+    show: 
+      agenda: 
         title: "%{name}(r)en agenda"
-    summary:
-      actions:
+    summary: 
+      actions: 
         follow: "%{name}(r)i jarraitu"
-        this_week:
+        this_week: 
           one: "Ekintza bat aste honetan"
-          other: "%{count} ekintza aste honetan"
+          other: "%{count} jarduera aste honetan"
           zero: "Ekintzarik ez aste honetan"
-      ask:
+      ask: 
         button: Galdetu
         label: "Egin galdera bat %{name}(r)i"
         title: "Galdetu %{name}(r)i"
-      description:
+      description: 
         read_more: "Gehiago irakurri"
         title: "Nor da eta zer egiten du"
-      error:
+      error: 
         description: "Sentitzen dugu, ezin izan da gorde :-("
         title: "Errore teknikoa."
-      make_a_question:
+      make_a_question: 
         label: "Egin galdera bat %{name}(r)i"
         submit: Galdetu
-      menu:
+      menu: 
         actions: Jarduera
         agenda: Agenda
         documents: Dokumentuak
         proposals: Proposamenak
         questions: Galderak
         summary: Laburpena
-      question_sent:
+      question_sent: 
         fail: "Errore bat egon da zure galdera bidaltzean"
         review_link: berrikusita
         success: "Zure galdera behar bezala bidali da"
         waiting_moderation: "eta gure moderazio-taldeak berrikusi bezain laster argitaratuko da %{review_link}. Erantzuna jasotzen duzunean ere jakinaraziko dizugu."
-      questions:
-        answered:
+      questions: 
+        answered: 
           one: "Galdera bat erantzunda"
           other: "%{count} galdera erantzunda"
           zero: "Ez dago galderarik erantzunda"
         ask: "%{name}(r)i galdetu"
-      success:
+      success: 
         description: "Onartzen denean jakinaraziko dizugu."
         title: "Galdera bidali egin da."
-      title: "%{title} %{areas} eremuan"
-  resource:
+      title: "%{title} %{areas} arloan"
+  resource: 
     search: bilatu
-  resources:
+  resources: 
     answer_requests: erantzun_eskaerak
     answers: erantzunak
     areas: eremuak
@@ -1112,68 +1112,68 @@ eu:
     users: erabiltzaileak
     videos: bideoak
     votes: botoak
-  routes:
-    areas:
+  routes: 
+    areas: 
       as: eremuak
-      path_names:
+      path_names: 
         team: taldea
-    politicians:
+    politicians: 
       as: politikariak
-      path_names:
+      path_names: 
         detail: xehetasunak
-    search:
+    search: 
       as: bilatu
-      path_names:
+      path_names: 
         areas: eremuak
         citizens: herritarrak
         contents: edukiak
         politicians: politikariak
         politicians_and_areas: politikariak_eta_eremuak
-    users:
+    users: 
       as: erabiltzaileak
-      path_names:
+      path_names: 
         connect: konektatu
         settings: lehentasunak
-  searches:
-    areas:
-      results:
-        all: "aurkitutako %{count} eremuak ikusi"
+  searches: 
+    areas: 
+      results: 
+        all: "aurkitutako %{count} arloak ikusi"
         follow: Jarraitu
         more: "emaitza gehiago ikusi"
-        title:
-          one: "eremu 1"
-          other: "%{count} eremu"
-          zero: "Eremurik ez"
-    autocomplete:
-      areas:
-        summary:
+        title: 
+          one: "Arlo 1"
+          other: "%{count} arlo"
+          zero: "0 arlo"
+    autocomplete: 
+      areas: 
+        summary: 
           title: Eremuak
-      contents:
-        count:
+      contents: 
+        count: 
           one: "Eduki 1 aurkitu da"
           other: "%{count} eduki aurkitu dira"
           zero: "Ez da edukirik aurkitu"
-        summary:
+        summary: 
           title: Edukiak
-      politicians:
-        summary:
-          count:
+      politicians: 
+        summary: 
+          count: 
             one: "1 aurkitu da"
             other: "%{count} aurkitu dira"
             zero: "Ez da bat ere aurkitu"
           title: Politikariak
         title_area: "%{area}(e)ko %{title} "
-      users:
-        summary:
-          count:
+      users: 
+        summary: 
+          count: 
             one: "1 aurkitu da"
             other: "%{count} aurkitu dira"
             zero: "Ez da bat ere aurkitu"
           title: Erabiltzaileak
-    contents:
-      results:
+    contents: 
+      results: 
         all: "Aurkitutako %{count} edukiak ikusi"
-        content_type_filters:
+        content_type_filters: 
           all: "Mota guztiak"
           images: Argazkiak
           news: Albisteak
@@ -1181,129 +1181,129 @@ eu:
           proposals: Proposamenak
           questions: Galderak
           videos: Bideoak
-        main_filters:
+        main_filters: 
           more_polemic: Polemikoenak
           more_recent: Azkenak
         more: "emaitza gehiago ikusi"
-        no_content_filters:
+        no_content_filters: 
           news: Albisteak
           photos: Argazkiak
           proposals: Proposamenak
           questions: Galderak
           videos: Bideoak
-        title:
-          news:
+        title: 
+          news: 
             one: "Albiste 1"
             other: "%{count} albiste"
             zero: "Ez dago albisterik"
-          photos:
+          photos: 
             one: "Argazki 1"
             other: "%{count} argazki"
             zero: "Ez dago argazkirik"
-          proposals:
+          proposals: 
             one: "proposamen 1"
             other: "%{count} proposamen"
             zero: "Ez dago proposamenik"
-          questions:
+          questions: 
             one: "Galdera 1"
             other: "%{count} galdera"
             zero: "Ez dago galderarik"
-          total:
+          total: 
             one: "Eduki 1"
             other: "%{count} eduki"
             zero: "Ez dago edukirik"
-          videos:
+          videos: 
             one: "Bideo 1"
             other: "%{count} bideo"
             zero: "Ez dago bideorik"
-    contents_list:
-      results:
-        title:
-          news:
+    contents_list: 
+      results: 
+        title: 
+          news: 
             one: "Albiste 1"
             other: "%{count} albiste"
             zero: "Ez dago albisterik"
-          photos:
+          photos: 
             one: "Argazki 1"
             other: "%{count} argazki"
             zero: "Ez dago argazkirik"
-          proposals:
+          proposals: 
             one: "proposamen 1"
             other: "%{count} proposamen"
             zero: "Ez dago proposamenik"
-          questions:
+          questions: 
             one: "Galdera 1"
             other: "%{count} galdera"
             zero: "Ez dago galderarik"
-          total:
+          total: 
             one: "Eduki 1"
             other: "%{count} eduki"
             zero: "Ez dago edukirik"
-          videos:
+          videos: 
             one: "Bideo 1"
             other: "%{count} bideo"
             zero: "Ez dago bideorik"
-    header:
+    header: 
       your_search_results: "Zure bilaketaren emaitzak"
-    navigation_menu:
+    navigation_menu: 
       change_the_search_terms: "Aldatu bilaketa egiteko erabilitako hitzak."
       explore_irekia_contents: "Irekiaren edukiak aztertu"
       no_results: "Ez dago emaitzarik"
-      tabs:
-        areas:
-          one: "Eremu 1"
-          other: "%{count} eremu"
-          zero: "Ez dago eremurik"
-        contents:
+      tabs: 
+        areas: 
+          one: "Arlo 1"
+          other: "%{count} arlo"
+          zero: "0 arlo"
+        contents: 
           one: "Eduki 1"
           other: "%{count} eduki"
           zero: "Ez dago edukirik"
-        politicians:
+        politicians: 
           one: "Politikari 1"
           other: "%{count} politikari"
           zero: "Ez dago politikaririk"
         summary: Laburpena
-        users:
+        users: 
           one: "Erabiltzaile 1"
           other: "%{count} erabiltzaile"
           zero: "Ez dago erabiltzailerik"
       you_can_also: "Edo, bestela,"
-    politicians:
-      results:
+    politicians: 
+      results: 
         all: "aurkitutako %{count} politikariak ikus ditzakezu"
-        area_filters:
-          all: "Eremu guztiak"
+        area_filters: 
+          all: "Arlo guztiak"
         follow: Jarraitu
-        main_filters:
+        main_filters: 
           more_active: Aktiboenak
           more_recent: Azkenak
         more: "emaitza gehiago ikusi"
-        title:
+        title: 
           one: "Politikari 1"
           other: "%{count} politikari"
           zero: "Ez dago politikaririk"
         title_area: "%{area}(e)ko %{title}"
-    politicians_and_areas:
+    politicians_and_areas: 
       area_description: "Eusko Jaurlaritzaren eremua"
       title_area: "%{area}(e)ko %{title}"
-    show:
+    show: 
       your_search_results: "Zure bilaketaren emaitzak"
-    users:
-      results:
+    users: 
+      results: 
         all: "aurkitutako %{count} erabiltzaileak ikusi"
         follow: Jarraitu
         look_city: "Udalerri bat bilatu"
-        main_filters:
+        main_filters: 
           more_active: Aktiboenak
           more_recent: Azkenak
         more: "emaitza gehiago"
-        title:
+        title: 
           one: "Erabiltzaile 1"
           other: "%{count} erabiltzaile"
           zero: "Eremurik ez"
-  shared:
-    actions:
-      content_type_filters:
+  shared: 
+    actions: 
+      content_type_filters: 
         all: "Mota guztiak"
         images: Argazkiak
         news: Albisteak
@@ -1311,14 +1311,14 @@ eu:
         questions: Galderak
         statuses: Egoera-aldaketak
         videos: Bideoak
-      main_filters:
+      main_filters: 
         more_polemic: Polemikoenak
         more_recent: Azkenak
       more: "jarduera gehiago ikusi"
-      no_content:
-        area: "Eremu honetan ez dago edukirik."
+      no_content: 
+        area: "Ez dago edukirik arlo honetan"
         user: "Ez dago edukirik %{target}(e)rako"
-      no_content_filters:
+      no_content_filters: 
         images: Argazkiak
         news: Albisteak
         proposals: Proposamenak
@@ -1326,24 +1326,24 @@ eu:
         statuses: Egoera-aldaketak
         videos: Bideoak
       title: "Azken jarduerak"
-    actions_list:
-      no_content:
-        area: "Ez dago edukirik eremu honetan"
-    agenda:
+    actions_list: 
+      no_content: 
+        area: "Ez dago edukirik arlo honetan"
+    agenda: 
       ical: "iCal-erako esportatu"
       more: "Egutegi osoa ikusi"
       next_month: "Hurrengo hilabetea"
       view_calendar: "Egutegia ikusi"
       view_map: "Mapa ikusi"
-    agenda_for_day:
+    agenda_for_day: 
       and_more: "eta %{count} gehiago"
-    demo:
-      footer:
-        about:
+    demo: 
+      footer: 
+        about: 
           faq: FAQ
           help: Laguntza
           title: "Zer da Irekia?"
-        areas:
+        areas: 
           comerce: "Merkataritza eta Turismoa"
           culture: "Kultura eta Kirola"
           economy: "Ekonomia eta Ogasuna"
@@ -1360,26 +1360,26 @@ eu:
           title: Eremuak
           vasque_government: "Eusko Jaurlaritza"
         basque_government: "Eusko Jaurlaritza"
-        home:
+        home: 
           agenda: Agenda
           proposals: Proposamenak
           sign_in: "Sartu zure kontura"
           sign_up: "Eman izena"
           title: Hasiera
-        legal_info:
+        legal_info: 
           title: Lege-informazioa
           url: ""
-      header:
+      header: 
         accessibility: Erabilerraztasuna
         contact: Kontaktua
         help: Laguntza
         management: "Nire gestioak"
         map: Mapa
-      nav_bar:
+      nav_bar: 
         areas: Eremuak
-        choose_an_area: "Aukeratu eremu bat"
+        choose_an_area: "Aukeratu arlo bat"
         search: "Bilatu behar duzunas&hellip;"
-      sign_in:
+      sign_in: 
         access_irekia: "Sartu Irekiara"
         facebook_signin: Facebook
         forgotten_password: "Pasahitza ahaztu duzu?"
@@ -1387,47 +1387,47 @@ eu:
         remember_me: "Nire datuak gogoratu"
         sign_in: Sartu
         twitter_signin: Twitter
-      sign_up:
+      sign_up: 
         fill_in_your_data: "Sartu zure datuak, eta hasi Irekian parte hartzen."
         new_in_irekia: "Berria zara Irekian?"
         sign_up: "Nire kontua sortu"
         terms_of_service: "%{use_conditions_link} onartzen ditut"
         terms_of_service_link: Erabilera-baldintzak
-    error:
+    error: 
       error_title: "Ezusteko errore bat egon da. Barkatu."
       home_page: "Irekiaren hasiera-orria"
       title: "Irekia - Errore bat egong da (500)"
-    floating_login:
+    floating_login: 
       access_irekia: "Sartu Irekiara"
       forgotten_password: "Pasahitza ahaztu duzu?"
       get_it_here: "Berreskuratu hemen"
       login: Sartu
       not_yet_registered: "Ez daukazu konturik Irekian?"
-      password_reminder:
+      password_reminder: 
         description: "eta zure pasahitza berreskuratzeko jarraibideak bidaliko dizkizugu"
         email: "Zure emaila"
         recover_password: "Pasahitza berreskuratu"
         title: "Sartu zure emaila"
-      password_response:
+      password_response: 
         accept: Onartu
         description: "Zure pasahitza berreskuratzeko jarraibideak emailez bidali dizkizugu. Jarrai itzazu Irekian sartzeko."
         title: "Orain, begiratu zure emaila"
       register_here: "Eman izena hemen"
       remember_me: "Nire datuak gogoratu"
-    footer:
-      about:
-        faq:
+    footer: 
+      about: 
+        faq: 
           title: FAQ
-        help:
+        help: 
           title: Laguntza
-        privacy:
+        privacy: 
           title: Pribatutasun-politika
           url: ""
         title: "Zer da Irekia?"
-        use:
+        use: 
           title: Erabilera-baldintzak
           url: ""
-      areas:
+      areas: 
         comerce: "Merkataritza eta Turismoa"
         culture: "Kultura eta Kirola"
         economy: "Ekonomia eta Ogasuna"
@@ -1444,7 +1444,7 @@ eu:
         title: Eremuak
         vasque_government: "Eusko Jaurlaritza"
       basque_government: "Eusko Jaurlaritza"
-      home:
+      home: 
         agenda: Agenda
         proposals: Proposamenak
         rss_all: "RSS eduki osoa"
@@ -1452,14 +1452,14 @@ eu:
         sign_in: "Sartu zure kontura"
         sign_up: "Eman izena"
         title: Hasiera
-      legal_info:
+      legal_info: 
         title: Lege-informazioa
         url: ""
-    forgot_password:
+    forgot_password: 
       fill_in_your_email: "Sartu zure emaila"
       get_back_password: "Pasahitza berreskuratu"
       will_send_your_data: "Eta zure pasahitza berreskuratzeko jarraibideak bidaliko dizkizugu"
-    header:
+    header: 
       accessibility: Erabilerraztasuna
       accessibility_url: "http://www.euskadi.net/r33-2288/es/contenidos/informacion/cabecera_accesibilidad/es_6144/politica_accesibilidad.html"
       contact: Kontaktua
@@ -1471,32 +1471,39 @@ eu:
       management_url: "https://xlnets.servicios.euskadi.net/n38a/N38LoginEuskadiOMA.jsp?n38id=-902481386"
       map: Mapa
       map_url: "http://www.irekia.euskadi.net/es/site/sitemap"
-    lists_elements:
-      answer:
-        author: "%{author} &middot; <span class=\"answered\">Erantzunda %{time} ondoren</span>"
-        title:
+    lists_elements: 
+      answer: 
+        author: "%{author} &middot; <span class=\"answered\">Erantzuna %{time} ondoren eman da</span>"
+        iphone: 
+          author: "Duela %{time}"
+        title: 
+          answer_with_video: 
+            other: "Bideo batekin erantzun du."
+            you: "Bideo batekin erantzun duzu."
           other: "%{author}(e)k \"%{question}\" galderari erantzun dio"
           you: "\"%{question}\" galderari erantzun diozu"
-      answer_request:
+      answer_request: 
         author: "%{author} duela %{time}"
+        iphone: 
+          date: "Duela %{time}"
         title: "%{question} galderak erreklamazioa jaso du"
-      argument:
+      argument: 
         against: kontra
-        arguments:
+        arguments: 
           against: "Kontrako argudio berriak:"
           in_favor: "Aldeko argudio berriak:"
         author: "duela %{time}"
         in_favor: alde
         title: "Argudio berria %{proposal} proposamenean"
-        votes:
+        votes: 
           one: "Boto 1"
           other: "%{count} boto"
           zero: "0 boto"
-      comment:
+      comment: 
         answer: erantzuna
         author: "%{author}(e)k argitaratua duela %{time}"
         event: ekitaldia
-        iphone:
+        iphone: 
           author: "Duela %{time}"
         news: albistea
         photo: argazkia
@@ -1506,11 +1513,11 @@ eu:
         title: "Ohar berria hemen: %{content_type}"
         tweet: tweet-a
         video: bideoa
-      comments:
+      comments: 
         one: "Ohar 1"
         other: "%{count} ohar"
         zero: "Oraindik ez dago oharrik"
-      content_user:
+      content_user: 
         author: "duela %{time}"
         event: ekitaldia
         news: albistea
@@ -1520,595 +1527,603 @@ eu:
         title: "Hemen etiketatu zaituzte: %{content_type} &quot;%{content}&quot;"
         tweet: tweet-a
         video: bideoa
-      event:
+      event: 
         author: "Duela %{time} argitaratua"
-      last_comments:
+      last_comments: 
         Send: Bidali
-        previous:
+        previous: 
           one: "%{previous_link} %{authors}(r)ena"
           other: "%{previous_link}"
           zero: ""
-        previous_link:
+        previous_link: 
           one: "Ohar 1 argitaratu da lehenago"
           other: "%{count} ohar argitaratu dira lehenago"
           zero: "Lehenago ez da oharrik argitaratu"
         write_your_comment: "Idatzi zure oharra..."
-      news:
+      news: 
         author: "Duela %{time} argitaratua"
         read_more: "Gehiago irakurri"
-      not_moderated:
-        answer:
-          title:
+      not_moderated: 
+        answer: 
+          title: 
             other: "%{author}(e)k \"%{question}\" galderari erantzun dio"
             you: "\"%{question}\" galderari erantzun diozu"
-        answer_request:
+        answer_request: 
           title: "%{question} galderak erreklamazioa jaso du"
-        argument:
+        argument: 
           title: "Argudio berria %{proposal} proposamenean"
-        comment:
+        comment: 
           answer: erantzuna
           event: ekitaldia
           news: albistea
           photo: argazkia
           proposal: proposamena
-          question: "la pregunta"
-          status_message: "un mensaje de estado"
-          title: "Nuevo comentario en %{content_type}"
-          tweet: "el tweet"
-          video: "el vídeo"
-        content_user:
-          event: "el evento"
-          news: "la noticia"
-          photo: "la foto"
-          proposal: "la propuesta"
-          question: "la pregunta"
-          title: "Has sido etiquetado en %{content_type} &quot;%{content}&quot;"
-          tweet: "el tweet"
-          video: "el vídeo"
+          question: galdera
+          status_message: "egoera-mezu bat"
+          title: "Ohar berri bat hemen: %{content_type}"
+          tweet: tweet-a
+          video: bideoa
+        content_user: 
+          event: jarduera
+          news: albistea
+          photo: argazkia
+          proposal: proposamena
+          question: galdera
+          title: "Hemen etiketatu zaituzte: %{content_type} &quot;%{content}&quot;"
+          tweet: tweet-a
+          video: bideoa
         event: ~
-        footer:
-          author: "<a href=\"%{author_url}\">Tú</a> hace %{time}"
-          moderation_pending: "Pendiente de moderar"
-          rest_of_users: ": el resto de usuarios no lo puede ver aún."
+        footer: 
+          author: "<a href=\"%{author_url}\">Zu</a> duela %{time}"
+          moderation_pending: "Moderatzaileen onarpenaren zain"
+          rest_of_users: ": gainerako erabiltzaileek ezin dute ikusi oraindik."
         news: ~
-        photo:
-          title:
-            other: "%{name} ha subido una foto:"
-            you: "Has subido una foto:"
-        proposal:
-          title:
-            other: "%{name} ha creado una nueva propuesta: "
-            you: "Has creado una nueva propuesta: "
+        photo: 
+          title: 
+            other: "%{name}(e)k argazki bat igo du:"
+            you: "Argazki bat igo duzu:"
+        proposal: 
+          title: 
+            other: "%{name}(e)k proposamen berri bat sortu du:"
+            you: "Proposamen berri bat sortu duzu:"
         proposal_mini: ~
-        question:
-          title: "Pregunta para %{receiver}:"
+        question: 
+          title: "Galdera nori zuzendua: %{receiver}"
         question_mini: ~
         status_message: ~
         tweet: ~
-        video:
-          title:
-            other: "%{name} ha subido un vídeo:"
-            you: "Has subido un vídeo:"
-        vote:
-          title:
-            against: "%{name} ha votado en contra de la propuesta \"%{proposal}\""
-            in_favor: "%{name} ha votado a favor de la propuesta \"%{proposal}\""
-      photo:
-        author: "%{author} hace %{time}"
-        title:
-          other: "%{name} ha subido una foto:"
-          you: "Has subido una foto:"
-      proposal:
-        against: "en contra"
-        author: "%{author} hace %{time}"
-        in_favor: "a favor"
-        neutral: "a favor"
-        participation:
-          one: "Un usuario ha participado"
-          other: "%{count} usuarios han participado"
-          zero: "Ningún usuario ha participado"
-        title:
-          other: "%{name} ha creado una nueva propuesta: "
-          you: "Has creado una nueva propuesta: "
-        votes:
-          one: "1 voto"
-          other: "%{count} votos"
-          zero: "0 votos"
-      proposal_mini:
-        author: "%{author} hace %{time}"
-        votes_against:
-          one: "%{percent}% en contra (1 voto)"
-          other: "%{percent}% en contra (%{count} votos)"
-          zero: "%{percent}% en contra (ningún voto)"
-        votes_in_favor:
-          one: "%{percent}% a favor (1 voto)"
-          other: "%{percent}% a favor (%{count} votos)"
-          zero: "%{percent}% a favor (ningún voto)"
-      question:
-        answered: "Contestada tras %{time}"
-        author: "%{author} hace %{time}"
-        not_answered: "Aún no contestada"
-        read_more: "Leer más"
-        title: "Pregunta para %{receiver}:"
-      question_mini:
-        answered: "Contestada hace %{time}"
-        author: "%{author} hace %{time}"
-        not_answered: "Aún no contestada"
-      share: Compartir
-      status_message:
-        author: "%{author} hace %{time}"
-        read_more: "Leer más"
-      tweet:
-        author: "%{author} hace %{time} vía %{twitter}"
-        read_more: "Leer más"
-      video:
-        author: "%{author} hace %{time}"
-        published_by: "Publicado por"
-        title:
-          other: "%{name} ha subido un vídeo:"
-          you: "Has subido un vídeo:"
-      vote:
-        author: "%{author} participó hace %{time}"
-        title:
-          against: "%{name} ha votado en contra de la propuesta \"%{proposal}\""
-          in_favor: "%{name} ha votado a favor de la propuesta \"%{proposal}\""
-    nav_bar:
-      areas: Áreas
-      choose_an_area: "Elige un área"
+        video: 
+          title: 
+            other: "%{name}(e)k bideo bat igo du:"
+            you: "Bideo bat igo duzu:"
+        vote: 
+          title: 
+            against: "%{name}(e)k \"%{proposal}\" proposamenaren kontra bozkatu du"
+            in_favor: "%{name}(e)k \"%{proposal}\" proposamenaren alde bozkatu du"
+      photo: 
+        author: "%{author} duela %{time}"
+        title: 
+          other: "%{name}(e)k argazki bat igo du:"
+          you: "Argazki bat igo duzu:"
+      proposal: 
+        against: kontra
+        author: "%{author} duela %{time}"
+        in_favor: alde
+        iphone: 
+          date: "Duela %{time}"
+        neutral: alde
+        participation: 
+          one: "Erabiltzaile batek parte hartu du"
+          other: "%{count} erabiltzailek parte hartu dute"
+          zero: "Ez du inork parte hartu"
+        title: 
+          other: "%{name}(e)k proposamen berri bat sortu du:"
+          you: "Proposamen berri bat sortu duzu:"
+        votes: 
+          one: "Boto 1"
+          other: "%{count} boto"
+          zero: "0 boto"
+      proposal_mini: 
+        author: "%{author} duela %{time}"
+        votes_against: 
+          one: "%{percent}% kontra (boto 1)"
+          other: "%{percent}% kontra (%{count} boto)"
+          zero: "%{percent}% kontra (0 boto)"
+        votes_in_favor: 
+          one: "%{percent}% alde (boto 1)"
+          other: "%{percent}% alde (%{count} boto)"
+          zero: "%{percent}% alde (0 boto)"
+      question: 
+        answered: "Erantzuna %{time} ondoren eman da"
+        author: "%{author} duela %{time}"
+        iphone: 
+          author: "Duela %{time}"
+        not_answered: "Oraindik ez dute erantzun"
+        read_more: "Gehiago irakurri"
+        title: "Galdera nori zuzendua: %{receiver}"
+      question_mini: 
+        answered: "Duela %{time} erantzunda"
+        author: "%{author} duela %{time}"
+        not_answered: "Oraindik ez dute erantzun"
+      share: Konpartitu
+      status_message: 
+        author: "%{author} duela %{time}"
+        read_more: "Gehiago irakurri"
+      tweet: 
+        author: "%{author} duela %{time} %{twitter} bidez"
+        read_more: "Gehiago irakurri"
+      video: 
+        author: "%{author} duela %{time}"
+        published_by: "Nork argitaratua"
+        title: 
+          other: "%{name}(e)k bideo bat igo du:"
+          you: "Bideo bat igo duzu:"
+      vote: 
+        author: "%{author}(e)k duela %{time} parte hartu zuen"
+        iphone: 
+          author: "Duela %{time}"
+        title: 
+          against: "%{name}(e)k \"%{proposal}\" proposamenaren kontra bozkatu du"
+          in_favor: "%{name}(e)k \"%{proposal}\" proposamenaren alde bozkatu du"
+    nav_bar: 
+      areas: Eremuak
+      choose_an_area: "Aukeratu arlo bat"
       facebook: facebook
-      search: "Busca lo que necesitas&hellip;"
+      search: "Bilatu behar duzuna&hellip;"
       sign_in: Login
-      sign_out: Salir
-      sign_up: Regístrate
+      sign_out: Irten
+      sign_up: "Eman izena"
       twitter: twitter
-    nav_bar_buttons:
+    nav_bar_buttons: 
       facebook: Facebook
-      hello: "Hola, %{name}"
-      notifications:
-        a_content:
-          answer: "una respuesta"
-          event: "un evento"
-          news: "una noticia"
-          photo: "una foto"
-          proposal: "una propuesta"
-          question: "una pregunta"
-          status_message: "un cambio de estado"
-          tweet: "un tweet"
-          video: "un video"
-        answer:
-          one: "%{question} ha sido contestada"
-          other: "Tus preguntas han sido contestadas"
-          zero: "Ninguna respuesta nueva a tus preguntas"
-        argument_proposal:
+      hello: "Kaixo, %{name}"
+      notifications: 
+        a_content: 
+          answer: "erantzun bat"
+          event: "jarduera bat"
+          news: "albiste bat"
+          photo: "argazki bat"
+          proposal: "proposamen  bat"
+          question: "galdera bat"
+          status_message: "egoera-aldaketa bat"
+          tweet: "tweet bat"
+          video: "bideo bat"
+        answer: 
+          one: "%{question} galderak erantzuna jaso du"
+          other: "Zure galderek erantzuna jaso dute"
+          zero: "Zure galderek ez dute erantzun berririk jaso"
+        argument_proposal: 
           one: "Parte hartu duzun %{content}(e)an argudio berri bat argitaratu da"
           other: "Parte hartu duzun %{content}(e)an %{count} argudio berri argitaratu dira"
           zero: "Ez dago argudio berririk"
-        argument_proposal_author:
+        argument_proposal_author: 
           one: "Argudio berria %{content}(e)an"
           other: "%{count} argudio berri %{content}(e)an"
           zero: "Ez dago argudio berririk"
-        comments_content:
-          one: "Nuevo comentario en %{content} en la que has participado"
-          other: "%{count} nuevos comentarios en %{content} en la que has participado"
-          zero: "Ningún comentario en %{content} en la que has participado"
-        comments_content_author:
-          one: "Nuevo comentario en %{content}"
-          other: "%{count} nuevos comentarios en %{content}"
-          zero: "Ningún comentario en %{content}"
-        comments_tagged:
-          one: "Nuevo comentario en %{content} en la que has sido etiquetado"
-          other: "%{count} nuevos comentarios en %{content} en la que has sido etiquetado"
-          zero: "Ningún comentario en %{content} en la que has sido etiquetado"
-        content_users:
-          one: "Te han etiquetado en %{content}"
-          other: "Te han etiquetado en %{count} nuevos contenidos"
-          zero: "No te han etiquetado aún"
-        follow:
-          one: "%{name} te ha empezado a seguir"
-          other: "%{count} te han empezado a seguir"
-          zero: "Ningún nuevo seguidor"
-        pending:
-          one: "1 notificación"
-          other: "%{count} notificaciones"
-          zero: "No tienes notificaciones"
-        proposal:
-          one: "Tienes una nueva %{proposal}"
-          other: "Tienes %{count} nuevas propuestas"
-          zero: "Ninguna propuesta nueva"
-        question:
-          one: "Tienes una nueva %{question}"
-          other: "Tienes %{count} nuevas preguntas"
-          zero: "Ninguna pregunta nueva"
-        vote_proposal:
-          one: "Un voto nuevo en %{content} en la que has participado"
-          other: "%{count} nuevos votos en %{content} en la que has participado"
-          zero: "Ningún voto nuevo"
-        vote_proposal_author:
-          one: "Nuevo voto en %{content}"
-          other: "%{count} nuevos votos en %{content}"
-          zero: "Ningún voto nuevo"
-        your_content:
-          answer: "Tu respuesta"
-          event: "Tu evento"
-          news: "Tu noticia"
-          photo: "Tu foto"
-          proposal: "Tu propuesta"
-          question: "Tu pregunta"
-          status_message: "Tu cambio de estado"
-          tweet: "Tu tweet"
-          video: "Tu video"
-      settings:
-        label: "Tu perfil"
-        title: Configuración
+        comments_content: 
+          one: "Parte hartu duzun %{content}(e)an ohar berri bat argitaratu da"
+          other: "Parte hartu duzun %{content}(e)an %{count} ohar berri argitaratu dira"
+          zero: "Parte hartu duzun %{content}(e)an ez da ohar berririk argitaratu"
+        comments_content_author: 
+          one: "Ohar berria %{content}(e)an"
+          other: "%{count} ohar berri %{content}(e)an"
+          zero: "Ez dago oharrik %{content}(e)an"
+        comments_tagged: 
+          one: "Etiketatuta zauden %{content}(e)an ohar berri bat dago"
+          other: "Etiketatuta zauden %{content}(e)an %{count} ohar berri daude"
+          zero: "Etiketatuta zauden %{content}(e)an ez dago oharrik"
+        content_users: 
+          one: "%{content}(e)an etiketatu zaituzte"
+          other: "%{count} eduki berritan etiketatu zaituzte"
+          zero: "Oraindik ez zaituzte etiketatu"
+        follow: 
+          one: "%{name} zure jarraitzailea da orain"
+          other: "%{count} erabiltzaile egin dira zure jarraitzaile"
+          zero: "Ez duzu jarraitzaile berririk"
+        pending: 
+          one: "Jakinarazpen 1"
+          other: "%{count} jakinarazpen"
+          zero: "Ez duzu aldaketarik"
+        proposal: 
+          one: "%{proposal} berri bat duzu"
+          other: "%{count} proposamen berri dituzu"
+          zero: "Ez dago proposamen berririk"
+        question: 
+          one: "%{question} berri bat duzu"
+          other: "%{count} galdera berri dituzu"
+          zero: "Ez dago galdera berririk"
+        vote_proposal: 
+          one: "Parte hartu duzun %{content}(e)an boto berri bat dago"
+          other: "%{count} boto berri daude parte hartu duzun %{content}(e)an"
+          zero: "Ez dago boto berririk"
+        vote_proposal_author: 
+          one: "Boto berri bat %{content}(e)an"
+          other: "%{count} boto berri %{content}(e)an"
+          zero: "Ez dago boto berririk"
+        your_content: 
+          answer: "Zure erantzuna"
+          event: "Zure jarduera"
+          news: "Zure albistea"
+          photo: "Zure argazkia"
+          proposal: "Zure proposamena"
+          question: "Zure galdera"
+          status_message: Egoera-aldaketa
+          tweet: "Zure tweet-a"
+          video: "Zure bideoa"
+      settings: 
+        label: "Zure profila"
+        title: Konfigurazioa
       sign_in: Login
-      sign_out:
-        label: "Cerrar sesión"
-        title: Salir
-      sign_up: Regístrate
+      sign_out: 
+        label: "Amaitu saioa"
+        title: Irten
+      sign_up: "Eman izena"
       twitter: Twitter
-    not_found:
-      error:
-        solution: "Revisa la dirección de la página,<br />o <a href=\"%{url}\">reporta el error</a> si crees que es problema de Irekia."
-        title: "Página no encontrada."
-      home_page: "Página de inicio de Irekia"
-      title: "Irekia - La página que buscas no existe (404)"
-    politician_publish:
-      close: Cerrar
-      continue: Continuar
-      dashboard: Estado
-      description: "¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!"
-      photo: Foto
+    not_found: 
+      error: 
+        solution: "Berrikusi web orriaren helbidea,<br />edo <a href=\"%{url}\">eman errorearen berri</a> arazoa Irekiarena dela uste baduzu."
+        title: "Ez da orria aurkitu."
+      home_page: "Irekiaren hasiera orria"
+      title: "Irekia - Bilatzen ari zaren orria ez da existitzen (404)"
+    politician_publish: 
+      close: Itxi
+      continue: Jarraitu
+      dashboard: Egoera
+      description: "Aukeratu eduki mota, eta konpartitu gainerako erabiltzaileekin!"
+      photo: Argazkia
       photos: Argazkiak
-      proposal: Propuesta
-      publish: Publicar
-      remove: Eliminar
-      section:
-        photo:
-          error:
-            description: "Ha ocurrido un error al publicar la foto, por favor vuelve a intentarlo en un momento."
-            title: Error
-          loading: "Cargando imagen..."
-          this_photo_will_be_published: "Se publicará esta imagen."
-          upload: "Sube una foto"
-        proposal:
-          explanation: "¿Quieres explicar la propuesta con más detalle?"
-          label: "Describe la propuesta en pocas palabras"
-          success:
-            description: "Propuesta publicada correctamente."
-            title: "Tu propuesta ha sido publicada"
-          this_photo_will_be_published: "Se publicará esta imagen."
-          upload: "Sube una foto"
-        status_message:
-          label: "Introduce el texto que quieras publicar aquí."
-        video:
-          error:
-            description: "Ha ocurrido un error al publicar el video, por favor vuelve a intentarlo en un momento."
-            title: Error
-          success:
-            description: "Recuerda que podrás ver toda la actividad que ocurra alrededor de él en tu dashboard."
-            title: "Tu video ha sido publicado"
-          vimeo_url: "URL de Vimeo"
-          youtube_url: "URL de Youtube"
-      title: Publicar
-      video: Vídeo
-    proposal_form:
-      describe_the_proposal: "Describe la propuesta en pocas palabras"
-      do_you_want_to_explain_the_proposal: "¿Quieres explicar la propuesta con más detalle?"
-      loading: "Cargando imagen..."
-      make_a_proposal:
-        continue: Continuar
-        submit: "Enviar propuesta"
-        title: "Haz una propuesta."
-      name_of_the_area: "Nombre de área..."
-      or: o
-      remove: Eliminar
-      see_all_the_areas: "ver todas las áreas"
-      subtitle: "Recuerda ser breve y conciso."
-      the_image_will_be_included_in_the_proposal: "Se incluirá esta imagen en la propuesta."
-      title: "Título de la propuesta"
-      upload_a_new_one: "Sube una nueva"
-      upload_a_photo: "Sube una foto"
-      who_is_the_target: "¿A qué area le quieres dirigir la pregunta?"
-      write_the_photo_url_or: "Introduce la URL de la foto o"
-    proposals:
-      against: "%{percentage}% en contra (%{count} votos)"
-      content_type_filters:
-        all: Todas
-        from_citizens: "Propuestas ciudadanas"
-        from_politicians: "Propuestas del gobierno"
-      create_proposal: "Crea una propuesta"
-      in_favor: "%{percentage}% a favor (%{count} votos)"
-      main_filters:
-        more_polemic: "Más polémicas"
-        more_recent: "Más recientes"
-      more: "ver más propuestas"
-      no_proposals:
-        area: "No hay propuestas en este área"
-        user: "No hay propuestas para %{target}"
-      politician_proposals: "Propuestas en las que participa"
-      title: Propuestas
-    proposals_list:
-      no_content: "No hay propuestas en este área"
-    question_form:
-      describe_the_question: "Describe la pregunta en pocas palabras"
-      do_you_want_to_explain_the_question: "¿Quieres explicar la pregunta con más detalle?"
-      make_a_question:
-        submit: "Enviar pregunta"
-        title: "Haz una pregunta"
-      name_of_the_area_or_politician: "Nombre de área o político..."
-      remember_to_be_concise: "Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo."
-      who_is_the_target: "¿A quién le quieres dirigir la pregunta?"
-      your_question: "Tu pregunta"
-    questions:
-      content_type_filters:
-        all: Todas
-        answered: Contestadas
-      create_question: "Haz una pregunta"
-      main_filters:
-        more_polemic: "Más polémicas"
-        more_recent: "Más recientes"
-      make_a_question:
-        hint: "Recuerda ser breve y conciso. Así te asegurarás una respuesta en menos tiempo"
-        submit: "Enviar pregunta"
-        title: "Haz una pregunta"
-        your_question: "Tu pregunta"
-      more: "ver más preguntas"
-      no_questions:
-        area: "No hay preguntas en este área"
-        user: "No hay preguntas para %{target}"
-      title: "Preguntas de los ciudadanos"
-    questions_list:
-      no_content: "No hay preguntas en este área"
-    sharing:
-      email: "Compartir vía email"
-      facebook: "Compartir vía facebook"
-      ical: "Exportar para iCal"
-      label: "Escribe la dirección de email"
-      send: Enviar
-      twitter: "Compartir vía twitter"
-    sidebar:
-      location:
-        title: "Localización del evento"
-      politicians:
-        tag: "Etiquetar político"
-        title: "Políticos etiquetados en la noticia"
-      previous_statuses:
-        time: "Hace %{time}"
-        title: "Publicaciones anteriores de %{name}"
-      previous_tweets:
-        time: "Hace %{time}"
-        title: "Tweets anteriores de %{name}"
-      related_content:
-        comments:
-          one: "Un comentario"
-          other: "%{count} comentarios"
-          zero: "Todavía no hay comentarios"
-        title: "Contenidos similares"
-      related_events:
-        comments:
-          one: "Un comentario"
-          other: "%{count} comentarios"
-          zero: "Aún no hay comentarios"
-        time: "Hace %{time}"
-        title: "Otros eventos de este área"
-      related_proposals:
-        against:
-          one: "%{percentage}% en contra (%{count} voto)"
-          other: "%{percentage}% en contra (%{count} votos)"
-          zero: "No votada aún"
-        in_favor:
-          one: "%{percentage}% a favor (%{count} voto)"
-          other: "%{percentage}% a favor (%{count} votos)"
-          zero: "No votada aún"
-        time: "Hace %{time}"
-        title: "Propuestas relacionadas"
-      related_questions:
-        comments:
-          one: "Un comentario"
-          other: "%{count} comentarios"
-          zero: "Aún no hay comentarios"
-        time: "Hace %{time}"
-        title: "Otras preguntas similares"
-      tags:
-        add_tags: "Añadir tags"
-        title: Tags
-    sign_in:
-      access_irekia: "Accede a Irekia"
+      proposal: Proposamena
+      publish: Argitaratu
+      remove: Ezabatu
+      section: 
+        photo: 
+          error: 
+            description: "Errore bat egon da argazkia argitaratzerakoan. Mesedez, saiatu berriz minutu batzuk barru."
+            title: Errorea
+          loading: "Irudia kargatzen ari da..."
+          this_photo_will_be_published: "Irudi hau argitaratu egingo da."
+          upload: "Igo argazki bat"
+        proposal: 
+          explanation: "Proposamena xehetasun gehiagorekin azaldu nahi duzu?"
+          label: "Deskribatu proposamena hitz gutxitan"
+          success: 
+            description: "Proposamena behar bezala argitaratu da."
+            title: "Zure proposamena argitaratu egin da"
+          this_photo_will_be_published: "Irudi hau argitaratu egingo da."
+          upload: "Igo argazki bat"
+        status_message: 
+          label: "Sartu hemen argitaratu nahi duzun testua."
+        video: 
+          error: 
+            description: "Errore bat egon da bideoa argitaratzerakoan. Mesedez, saiatu berriz minutu batzuk barru."
+            title: Errorea
+          success: 
+            description: "Gogoan izan zure dashboard-ean horren inguruko jarduera guztia ikusi ahalko duzula."
+            title: "Zure bideoa argitaratu egin da"
+          vimeo_url: "Vimeoko URLa"
+          youtube_url: "Youtubeko URLa"
+      title: Argitaratu
+      video: Bideoa
+    proposal_form: 
+      describe_the_proposal: "Deskribatu proposamena hitz gutxitan"
+      do_you_want_to_explain_the_proposal: "Proposamena xehetasun gehiagorekin azaldu nahi duzu?"
+      loading: "Irudia kargatzen ari da..."
+      make_a_proposal: 
+        continue: Jarraitu
+        submit: "Proposamena bidali"
+        title: "Egin proposamen bat."
+      name_of_the_area: "Arloaren izena..."
+      or: edo
+      remove: Ezabatu
+      see_all_the_areas: "arlo guztiak ikusi"
+      subtitle: "Labur eta zehatz adierazi, mesedez."
+      the_image_will_be_included_in_the_proposal: "Proposamenean irudi hau sartuko da."
+      title: "Proposamenaren izenburua"
+      upload_a_new_one: "Igo beste bat"
+      upload_a_photo: "Igo argazki bat"
+      who_is_the_target: "Zein eremutara zuzendu nahi duzu galdera?"
+      write_the_photo_url_or: "Sartu argazkiaren URLa edo"
+    proposals: 
+      against: "%{percentage}% kontra (%{count} boto)"
+      content_type_filters: 
+        all: Guztiak
+        from_citizens: "Herritarren proposamenak"
+        from_politicians: "Jaurlaritzaren proposamenak"
+      create_proposal: "Sortu proposamen bat"
+      in_favor: "%{percentage}% alde (%{count} boto)"
+      main_filters: 
+        more_polemic: Polemikoenak
+        more_recent: Azkenak
+      more: "proposamen gehiago ikusi"
+      no_proposals: 
+        area: "Ez dago proposamenik arlo honetan"
+        user: "%{target}(e)rako proposamenak"
+      politician_proposals: "Proposamen hauetan parte hartzen duzu"
+      title: Proposamenak
+    proposals_list: 
+      no_content: "Ez dago proposamenik arlo honetan"
+    question_form: 
+      describe_the_question: "Deskribatu galdera hitz gutxitan"
+      do_you_want_to_explain_the_question: "Galdera xehetasun gehiagorekin azaldu nahi duzu?"
+      make_a_question: 
+        submit: "Galdera bidali"
+        title: "Egin galdera bat"
+      name_of_the_area_or_politician: "Arloaren edo politikariaren izena..."
+      remember_to_be_concise: "Labur eta zehatz adierazi, mesedez. Horrela, lehenago erantzungo dizute."
+      who_is_the_target: "Nori zuzendu nahi diozu galdera?"
+      your_question: "Zure galdera"
+    questions: 
+      content_type_filters: 
+        all: Guztiak
+        answered: Erantzunda
+      create_question: "Egin galdera bat"
+      main_filters: 
+        more_polemic: Polemikoenak
+        more_recent: Azkenak
+      make_a_question: 
+        hint: "Labur eta zehatz adierazi, mesedez. Horrela, lehenago erantzungo dizute."
+        submit: "Galdera bidali"
+        title: "Egin galdera bat"
+        your_question: "Zure galdera"
+      more: "galdera gehiago ikusi"
+      no_questions: 
+        area: "Ez dago galderarik arlo honetan"
+        user: "Ez dago galderarik %{target}(e)rako "
+      title: "Herritarren galderak"
+    questions_list: 
+      no_content: "Ez dago galderarik arlo honetan"
+    sharing: 
+      email: "Emailez konpartitu"
+      facebook: "Facebook bidez konpartitu"
+      ical: "iCal-erako esportatu"
+      label: "Idatzi helbide elektronikoa"
+      send: Bidali
+      twitter: "Twitter bidez konpartitu"
+    sidebar: 
+      location: 
+        title: "Jardueraren kokapena"
+      politicians: 
+        tag: "Politikari bat etiketatu"
+        title: "Albistean etiketatutako politikariak"
+      previous_statuses: 
+        time: "Duela %{time}"
+        title: "%{name}(r)en lehenagoko argitalpenak"
+      previous_tweets: 
+        time: "Duela %{time}"
+        title: "%{name}(r)en lehenagoko tweet-ak"
+      related_content: 
+        comments: 
+          one: "Ohar bat"
+          other: "%{count} ohar"
+          zero: "Oraindik ez dago oharrik"
+        title: "Antzeko edukiak"
+      related_events: 
+        comments: 
+          one: "Ohar bat"
+          other: "%{count} ohar"
+          zero: "Oraindik ez dago oharrik"
+        time: "Duela %{time}"
+        title: "Arlo honetako beste jarduera batzuk"
+      related_proposals: 
+        against: 
+          one: "%{percentage}% kontra (%{count} boto)"
+          other: "%{percentage}% kontra (%{count} boto)"
+          zero: "Oraindik ez da bozkatu"
+        in_favor: 
+          one: "%{percentage}% alde (%{count} boto)"
+          other: "%{percentage}% alde (%{count} boto)"
+          zero: "Oraindik ez da bozkatu"
+        time: "Duela %{time}"
+        title: "Gaiarekin lotutako proposamenak"
+      related_questions: 
+        comments: 
+          one: "Ohar bat"
+          other: "%{count} ohar"
+          zero: "Oraindik ez dago oharrik"
+        time: "Duela %{time}"
+        title: "Antzeko beste galdera batzuk"
+      tags: 
+        add_tags: "Tag-ak erantsi"
+        title: Tag-ak
+    sign_in: 
+      access_irekia: "Sartu Irekiara"
       facebook_signin: Facebook
       forgotten_password: "Pasahitza ahaztu duzu?"
-      get_it_here: "Recupérala aquí"
-      not_yet_registered: "¿No tienes cuenta en Irekia?"
-      register_here: "Regístrate aquí"
-      remember_me: "Recordar mis datos"
-      sign_in: Entra
+      get_it_here: "Berreskuratu hemen"
+      not_yet_registered: "Ez duzu konturik Irekian?"
+      register_here: "Eman izena hemen"
+      remember_me: "Nire datuak gogoratu"
+      sign_in: Sartu
       twitter_signin: Twitter
-    user_publish:
-      continue: Continuar
-      description: "¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!"
-      proposal: Propuesta
-      publish: Publicar
-      question: Pregunta
-      section:
-        proposal:
-          description: "Describe la propuesta en pocas palabras"
-          explanation: "¿Quieres explicar la propuesta con más detalle?"
-          image_will_be_included: "Se incluirá esta imagen en la propuesta."
-          label: "Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso."
-          loading_photo: "Cargando imagen..."
-          or: o
-          remove: Eliminar
-          see_all: "ver todas las áreas"
-          target: "¿A qué area le quieres dirigir la pregunta?"
-          target_name: "Nombre de área..."
-        question:
-          description: "Describe la pregunta en pocas palabras"
-          explanation: "¿Quieres explicar la pregunta con más detalle?"
-          label: "Introduce el texto que quieras publicar aquí."
-          or: o
-          see_all: "ver todas las áreas"
-          target: "¿A quién le quieres dirigir la pregunta?"
-          target_name: "Nombre de persona o área..."
-  sharing:
-    facebook:
-      answer: "He respondido a la pregunta: %{question}"
-    twitter:
-      answer: "He respondido a la pregunta: %{question}"
-  support:
-    array:
-      last_word_connector: " eta "
+    user_publish: 
+      continue: Jarraitu
+      description: "Aukeratu eduki mota, eta konpartitu gainerako erabiltzaileekin!"
+      proposal: Proposamena
+      publish: Argitaratu
+      question: Galdera
+      section: 
+        proposal: 
+          description: "Deskribatu proposamena hitz gutxitan"
+          explanation: "Proposamena xehetasun gehiagorekin azaldu nahi duzu?"
+          image_will_be_included: "Proposamenean irudi hau sartuko da."
+          label: "Sartu hemen egin nahi duzun proposamenaren izenburua. Saiatu labur eta zehatz adierazten."
+          loading_photo: "Irudia kargatzen ari da..."
+          or: edo
+          remove: Ezabatu
+          see_all: "arlo guztiak ikusi"
+          target: "Zein eremutara zuzendu nahi duzu galdera?"
+          target_name: "Arloaren izena..."
+        question: 
+          description: "Deskribatu galdera hitz gutxitan"
+          explanation: "Galdera xehetasun gehiagorekin azaldu nahi duzu?"
+          label: "Sartu hemen argitaratu nahi duzun testua."
+          or: edo
+          see_all: "arlo guztiak ikusi"
+          target: "Nori zuzendu nahi diozu galdera?"
+          target_name: "Pertsonaren izena edo arloa..."
+  sharing: 
+    facebook: 
+      answer: "Galdera honi erantzun diot: %{question}"
+    twitter: 
+      answer: "Galdera honi erantzun diot: %{question}"
+  support: 
+    array: 
+      last_word_connector: ", eta "
       two_words_connector: " eta "
       words_connector: ", "
-  time:
+    select: 
+      prompt: "Mesedez, aukeratu"
+  time: 
     am: am
-    formats:
+    formats: 
       default: "%A, %Y(e)ko %Bren %e %H:%M:%S %z"
       long: "%Y(e)ko %Bren %e,  %H:%M"
       short: "%b %e, %H:%M"
     pm: pm
-  title:
-    search: Búsqueda
-  unknown_user: Invitado
-  users:
-    actions:
-      no_activity:
-        description: "Te invitamos a participar en el debate sobre las propuestas de otros usuarios de Irekia, a conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda tu actividad aparecerá aquí."
-        homepage: "Página de inicio"
-        other_description: "%{user} podrá participar en el debate sobre las propuestas de otros usuarios de Irekia, conversar con los cargos políticos del País Vasco, opinar sobre las noticias, etc. Toda su actividad aparecerá aquí."
-        other_title: "Aún no hay actividad de %{user}"
-        title: "Aún no hay actividad tuya en Irekia."
-    connect:
-      connect: "Bienvenido a irekia."
-      continue: Continuar
-      discover: "Descubre por qué queremos que te conectes."
-      signin: "Conectar con <strong>%{name}</strong>"
-      works_better: "A partir de ahora podrás seguir a los políticos o áreas que mas te interesen, crear propuestas, preguntar al gobierno o comentar los contenidos con tus vecinos."
-    edit:
-      continue: Continuar
-      mandatory: obligatorio
-      tell_us_more_about_you: "Cuéntanos más de tí."
-      we_want_to_know_you_better: "Queremos conocerte mejor."
-      with_this_data: "¿Qué vamos a hacer con estos datos?"
-    intro:
-      continue: Continuar
-      dont_you_have_fb_or_twitter: "¿No tienes cuenta de Facebook ni de Twitter?"
-      mandatory: obligatorio
-      new_in_irekia: "¿Nuevo en Irekia?"
-      signin: "Conectar con <strong>%{name}</strong>"
-      use_facebook_or_twitter: "Utiliza Facebook o Twitter para registrarte"
-    new:
-      fill_in_your_data: "Rellena tus datos y comienza a participar."
-      new_in_irekia: "¿Nuevo en Irekia?"
-      sign_up: Continuar
-      terms_of_service: "Acepto las %{link}"
-      terms_of_service_link: "condiciones de uso"
-    passwords:
-      edit:
-        confirm_new_password: "Repetir contraseña"
-        new_password: "Nueva contraseña"
-        save: Guardar
-        title: "Cambiar contraseña"
-    politician:
-      actions:
-        content_type_filters:
-          all: "Todos los tipos"
-          images: Argazkiak
-          news: Noticias
-          politicians_activity: "Actividad de los políticos"
-          proposals: Propuestas
-          questions: Preguntas
-          videos: Vídeos
-        main_filters:
-          more_polemic: "Más polémicas"
-          more_recent: "Más recientes"
-        more: "ver más acciones"
-        title: "Tus últimas acciones"
-      agenda:
-        next_month: "Siguiente mes"
-        title: "Tu agenda"
-      followings:
-        all_profiles: "Ver todos los perfiles a los que sigues"
-        area: Área
-        title: "A quién sigues en Irekia"
-        title_and_area: "%{title} de %{area}"
-      navigation_menu:
-        actions: "Tu actividad"
-        agenda: "Tu agenda"
-        proposals: Propuestas
-        publish: Publicar
-        questions: Preguntas
-        show: Dashboard
-      proposals:
-        filters:
-          all: Todas
-          by_you: "Propuestas creadas por ti"
-        more_commented: "Más comentadas"
-        more_recent: "Más recientes"
-        proposal_support: "Estas propuestas tienen un apoyo entre los usuarios de Irekia de&hellip;"
-        proposal_support_count:
-          one: "1 a favor"
-          other: "%{count} a favor"
-          zero: "Ninguna a favor"
-        title: "Propuestas en las que participas"
-      questions:
-        filters:
-          all: Todas
-          answered: Contestadas
-          to_you: "Dirigidas a ti"
-          to_your_area: "Dirigidas al área"
-        more_polemic: "Más polémicas"
-        more_recent: "Más recientes"
-        title:
-          one: "1 pregunta sin contestar"
-          other: "%{count} preguntas sin contestar"
-          zero: "Ninguna pregunta sin contestar"
-      show:
-        activity:
-          title: "Última actividad"
-      welcome:
-        configure_your_account: "Configura tu cuenta"
-        followers_count:
-          one: "Te sigue 1 usuario"
-          other: "Te siguen %{count} usuarios"
-          zero: "No te sigue nadie todavía"
-        hi_again: "Hola de nuevo %{name}."
-        new_followers_count:
-          one: "1 nuevo desde la última vez que entraste."
-          other: "%{count} nuevos desde la última vez que entraste."
-          zero: "ninguno nuevo desde la última vez que entraste."
-    private:
-      actions:
-        content_type_filters:
-          all: "Todos los tipos"
+  title: 
+    search: Bilaketa
+  unknown_user: Gonbidatua
+  users: 
+    actions: 
+      no_activity: 
+        description: "Irekiako beste erabiltzaile batzuen proposamenen inguruko eztabaidan parte hartzera gonbidatzen zaitugu, baita EAEko kargu politikoekin hitz egitera, albisteen inguruko iritzia ematera, etab. ere. Zure jarduera guztia hemen agertuko da."
+        homepage: "Hasiera orria"
+        other_description: "%{user} erabiltzaileak Irekiako beste erabiltzaile batzuen proposamenen inguruko eztabaidan parte hartu ahalko du, baita EAEko kargu politikoekin hitz egin, albisteen inguruko iritzia eman, etab. ere. Bere jarduera guztia hemen agertuko da."
+        other_title: "Oraindik ez dago %{user} erabiltzailearen jarduerarik"
+        title: "Oraindik ez dago zure jarduerarik Irekian."
+    connect: 
+      connect: "Ongi etorri Irekiara."
+      continue: Jarraitu
+      discover: "Zergatik nahi dugu konekta zaitezela?"
+      signin: "<strong>%{name}</strong>-ekin konektatu"
+      works_better: "Aurrerantzean gehien interesatzen zaizkizun politikari edo arloen jarraitzaile egiteko, proposamenak sortzeko, Jaurlaritzari galdetzeko nahiz edukiak zure besteekin eztabaidatzeko aukera izango duzu."
+    edit: 
+      continue: Jarraitu
+      mandatory: nahitaezkoa
+      tell_us_more_about_you: "Kontatu zerbait gehiago zeure buruari buruz."
+      we_want_to_know_you_better: "Hobeto ezagutu nahi zaitugu."
+      with_this_data: "Zer egingo dugu datu hauekin?"
+    intro: 
+      continue: Jarraitu
+      dont_you_have_fb_or_twitter: "Ez duzu konturik ez Facebook-en ez Twitter-en?"
+      mandatory: nahitaezkoa
+      new_in_irekia: "Berria zara Irekian?"
+      signin: "<strong>%{name}</strong>-ekin konektatu"
+      use_facebook_or_twitter: "Erabili Facebook edo Twitter izena emateko"
+    new: 
+      fill_in_your_data: "Sartu zure datuak eta hasi parte hartzen."
+      new_in_irekia: "Berria zara Irekian?"
+      sign_up: Jarraitu
+      terms_of_service: "Ados nago %{link}"
+      terms_of_service_link: "erabilera baldintzekin"
+    passwords: 
+      edit: 
+        confirm_new_password: "Pasahitza errepikatu"
+        new_password: "Pasahitz berria"
+        save: Gorde
+        title: "Pasahitza aldatu"
+    politician: 
+      actions: 
+        content_type_filters: 
+          all: "Mota guztiak"
           images: Argazkiak
           news: Albisteak
           politicians_activity: "Politikarien jarduera"
           proposals: Proposamenak
           questions: Galderak
           videos: Bideoak
-        main_filters:
+        main_filters: 
           more_polemic: Polemikoenak
           more_recent: Azkenak
         more: "jarduera gehiago ikusi"
-        title: "Zure azken jarduerak"
-      follow_suggestions:
+        title: "Zure azken ekintzak"
+      agenda: 
+        next_month: "Hurrengo hilabetea"
+        title: "Zure agenda"
+      followings: 
+        all_profiles: "Jarraitzen dituzun profil guztiak ikusi"
+        area: Eremua
+        title: "Noren jarraitzaile zara Irekian"
+        title_and_area: "%{area}(e)ko %{title} "
+      navigation_menu: 
+        actions: "Zure jarduera"
+        agenda: "Zure agenda"
+        proposals: Proposamenak
+        publish: Argitaratu
+        questions: Galderak
+        show: Dashboard-a
+      proposals: 
+        filters: 
+          all: Guztiak
+          by_you: "Zuk sortutako proposamenak"
+        more_commented: "Ohar gehien dituztenak"
+        more_recent: Azkenak
+        proposal_support: "Proposamen hauek &hellip;(e)ko babesa dute Irekiako erabiltzaileen artean"
+        proposal_support_count: 
+          one: "1 alde"
+          other: "%{count} alde"
+          zero: "0 alde"
+        title: "Proposamen hauetan parte hartzen duzu"
+      questions: 
+        filters: 
+          all: Guztiak
+          answered: Erantzunda
+          to_you: "Zuri zuzenduta"
+          to_your_area: "Arloari zuenduta"
+        more_polemic: Polemikoenak
+        more_recent: Azkenak
+        title: 
+          one: "Galdera 1 erantzun gabe"
+          other: "%{count} galdera erantzun gabe"
+          zero: "Ez dago erantzun gabeko galderarik"
+      show: 
+        activity: 
+          title: "Azken jarduera"
+      welcome: 
+        configure_your_account: "Konfiguratu zure kontua"
+        followers_count: 
+          one: "Jarraitzaile 1 duzu"
+          other: "%{count} jarraitzaile dituzu"
+          zero: "Oraindik ez dizu inork jarraitzen"
+        hi_again: "Kaixo berriro, %{name}."
+        new_followers_count: 
+          one: "Berri 1 sartu zinen azken alditik."
+          other: "%{count} berri sartu zinen azken alditik."
+          zero: "ez dago berririk sartu zinen azken alditik."
+    private: 
+      actions: 
+        content_type_filters: 
+          all: "Mota guztiak"
+          images: Argazkiak
+          news: Albisteak
+          politicians_activity: "Politikarien jarduera"
+          proposals: Proposamenak
+          questions: Galderak
+          videos: Bideoak
+        main_filters: 
+          more_polemic: Polemikoenak
+          more_recent: Azkenak
+        more: "jarduera gehiago ikusi"
+        title: "Zure azken ekintzak"
+      follow_suggestions: 
         follow: Jarraitu
         more_politicians: "Politikari gehiago bilatu"
-        title:
-          one: "¿Quieres más? Te sugerimos..."
+        title: 
+          one: "Gehiago nahi duzu? Honakoa iradokitzen dizugu..."
           other: "Gehiago nahi duzu? Honakoa iradokitzen dizugu..."
           zero: "Zure dashboard-a hutsik dago."
         title_and_area: "%{area}(e)ko %{title}"
-        we_suggest_you_the_most_active: "Ziurrenik ez zara behar beste politikari edo eremuren jarraitzaile. Aktiboenak iradokitzen dizkizugu:"
-      followings:
+        we_suggest_you_the_most_active: "Ziurrenik ez zara behar beste politikari edo arloren jarraitzaile. Hona hemen aktiboenak:"
+      followings: 
         all_profiles: "Jarraitzen dituzun profil guztiak ikusi."
         area: Eremua
         subtitle: "Zerrenda honetan dituzu Irekiako politikaririk aktiboenak. Haien jarraitzaile egin zaitezke."
-        title:
+        title: 
           one: "Noren jarraitzaile zara Irekian."
           other: "Noren jarraitzaile zara Irekian."
           zero: "Une honetan ez zara inoren jarraitzaile Irekian."
         title_and_area: "%{area}(e)ko %{title}"
-      navigation_menu:
+      navigation_menu: 
         actions: "Zure jarduera"
         edit: "Profila editatu"
         followings: Jarraitzen
@@ -2117,63 +2132,63 @@ eu:
         questions: "Zure galderak"
         settings: "Zure profila"
         show: Dashboard-a
-      proposals:
-        filters:
+      proposals: 
+        filters: 
           all: Guztiak
           by_you: "Zuk sortutako proposamenak"
         more_commented: "Ohar gehien dituztenak"
         more_recent: Azkenak
-        no_proposals:
+        no_proposals: 
           create_proposal: "Sortu proposamen bat"
-          description: "Zure ustez Euskal Herria hobetuko lukeen edozer proposa dezakezu. Administrazioa arintzeko ideiak nahiz lege eta araudien aldaketak edo hobekuntzak."
+          description: "Zure ustez Euskal Herria hobe lezakeen edozer proposa dezakezu: administrazioa arintzeko ideiak nahiz lege eta araudien aldaketak edo hobekuntzak."
           title: "Oraindik ez duzu proposamenik egin."
         proposal_support: "Zure proposamenek &hellip;(e)ko babesa dute Irekiako erabiltzaileen artean"
-        proposal_support_count:
+        proposal_support_count: 
           one: "1 alde"
           other: "%{count} alde"
           zero: "0 alde"
-        title:
+        title: 
           one: "Proposamen 1 egin duzu"
           other: "%{count} proposamen egin dituzu"
           zero: "Ez duzu proposamenik egin"
-      questions:
-        filters:
+      questions: 
+        filters: 
           all: Guztiak
           answered: Erantzunda
         more_polemic: Polemikoenak
         more_recent: Azkenak
-        no_questions:
+        no_questions: 
           create_question: "Garldera bat sortu"
           description: "Eusko Jaurlaritzarekin lotutako edozer galdetu ahal duzu: arlo baten aurrekontua, erabaki bat jartzeko arrazoiak, kargu politiko baten soldata..."
           title: "Oraindik ez duzu galderarik egin."
-        title:
+        title: 
           one: "Galdera 1 erantzunda"
           other: "%{count} galdera erantzunda"
           zero: "Ez dago erantzundako galderarik"
-      show:
-        activity:
-          profiles_or_areas_following: "jarraitzen dituzun profilak edo eremuak"
-          subtitle: "Hauda zure edukiekin edo %{link}ekin lotutako jarduera."
+      show: 
+        activity: 
+          profiles_or_areas_following: "Profilak edo arlo hauen jarraitzailea zara"
+          subtitle: "Hau da zure edukiekin edo %{link}ekin lotutako jarduera."
           title: "Azken jarduera"
-      welcome:
-        areas_following:
-          one: "Eremu 1"
-          other: "%{count} eremu"
-          zero: "ez zara inolako eremuren jarraitzailea"
+      welcome: 
+        areas_following: 
+          one: "Arlo 1"
+          other: "%{count} arlo"
+          zero: "ez zara inolako arloren jarraitzailea"
         configure_your_account: "Konfiguratu zure kontua"
         currently: "Gaur egun %{politicians} eta %{areas}"
-        first_time:
-          configure:
+        first_time: 
+          configure: 
             link: "Konfiguratu zure kontua"
-            text: "Igo zure avatar-a edo aldatu zure datuak. Gainera, Facebook-en eta Twitter-en dituzun kontuak ere konekta ditzakezu Irekia berriko jarduerasare sozialetan ere jasotzeko."
+            text: "Igo zure avatar-a edo aldatu zure datuak. Gainera, Facebook-en eta Twitter-en dituzun kontuak ere konekta ditzakezu Irekia berriko jarduera sare sozialetan ere jasotzeko."
             title: "Konfiguratu zure kontua"
-          follow:
+          follow: 
             link: "Edozein arlotara joan"
             text: |-
-                Bilatu interesatzen zaizkizun Eusko Jaurlaritzako politikariak edo arloak eta egin haien jarraitzaile.<br/>
+                Bilatu interesatzen zaizkizun Eusko Jaurlaritzako politikariak edo arloak, eta egin haien jarraitzaile.<br/>
                 Horrela, gertatzen den guztiaren berri izango duzu inolako ahaleginik egin gabe: jarraitzen dituzun politikari eta arlo guztien jarduera zure dashboard-ean agertuko da.
             title: "Egin interesatzen zaizunaren jarraitzaile"
-          participate:
+          participate: 
             launch_proposals: "egin zure proposamenak"
             link: "Galdera bat sortu"
             make_questions: "Egin galderak"
@@ -2184,13 +2199,13 @@ eu:
         following_nobody: "Oraindik ez zara inoren jarraitzaile."
         hello: "Kaixo, %{name}"
         hi_again: "Kaixo berriro, %{name}."
-        politicians_following:
-          one: "politikari 1en jarraitzaile zara"
-          other: "%{count} politikariren jarraitzaile zara"
+        politicians_following: 
+          one: "politikari 1en jarraitzailea zara"
+          other: "%{count} politikariren jarraitzailea zara"
           zero: "ez zara inolako politikariren jarraitzaile"
-    public:
-      actions:
-        content_type_filters:
+    public: 
+      actions: 
+        content_type_filters: 
           all: "Mota guztiak"
           images: Argazkiak
           news: Albisteak
@@ -2198,58 +2213,58 @@ eu:
           proposals: Proposamenak
           questions: Galderak
           videos: Bideoak
-        main_filters:
+        main_filters: 
           more_polemic: Polemikoenak
           more_recent: Azkenak
         more: "jarduera gehiago ikusi"
-        title: "Zure azken jarduerak"
-      follow_suggestions:
+        title: "Bere azken ekintzak"
+      follow_suggestions: 
         follow: Jarraitu
         more: "Iradokizun gehiago"
         title: "Gehiago nahi duzu? Honakoa iradokitzen dizugu&hellip;"
         title_and_area: "%{area}(e)ko %{title}"
-      followings:
+      followings: 
         all_profiles: "Ikusi zein profilen jarraitzaile den %{name}"
         area: Eremua
         title: "Noren jarraitzaile da %{name} Irekian"
         title_and_area: "%{area}(e)ko %{title}"
-      navigation_menu:
+      navigation_menu: 
         following: Jarraitzen
         proposals: "Zure proposamenak"
         questions: "Zure galderak"
         show: "Zure jarduera"
-      no_proposals:
-        description: "%{user} erabiltzaileak Irekiako beste erabiltzaile batzuen proposamenen inguruko eztabaidan parte har dezake, baita EAEko kargu politikoekin hitz egin, albisteen inguruko iritzia eman, etab.ere. Bere jarduera guztia hemen agertuko da."
+      no_proposals: 
+        description: "%{user} erabiltzaileak Irekiako beste erabiltzaile batzuen proposamenen inguruko eztabaidan parte har dezake, baita EAEko kargu politikoekin hitz egin, albisteen inguruko iritzia eman, etab. ere. Bere jarduera guztia hemen agertuko da."
         homepage: "Hasiera orria"
         title: "Hemen ez dago %{user} erabiltzailearen proposamenik."
-      no_questions:
-        description: "%{user} erabiltzaileak Irekiako beste erabiltzaile batzuen proposamenen inguruko eztabaidan parte har dezake, baita EAEko kargu politikoekin hitz egin, albisteen inguruko iritzia eman, etab.ere. Bere jarduera guztia hemen agertuko da."
+      no_questions: 
+        description: "%{user} erabiltzaileak Irekiako beste erabiltzaile batzuen proposamenen inguruko eztabaidan parte har dezake, baita EAEko kargu politikoekin hitz egin, albisteen inguruko iritzia eman, etab. ere. Bere jarduera guztia hemen agertuko da."
         homepage: "Hasiera orria"
         title: "Oraindik ez dago %{user} erabiltzailearen galderarik"
-      proposals:
+      proposals: 
         more_commented: "Ohar gehien dituztenak"
         more_recent: Azkenak
         title: "%{name}(r)en proposamenak"
-      questions:
+      questions: 
         more_polemic: Polemikoenak
         more_recent: Azkenak
         title: "%{name}(e)k egindako galdera guztiak"
-      welcome:
+      welcome: 
         address: "Bizilekua: %{city}, %{province}."
-        birthday:
+        birthday: 
           man: "Jaioteguna: %{birthday}."
           woman: "Jaioteguna: %{birthday}."
-    register:
+    register: 
       continue: Jarraitu
-      mandatory: derrigorrezkoa
+      mandatory: nahitaezkoa
       tell_us_more_about_you: "Kontatu zerbait gehiago zeure buruari buruz."
       we_want_to_know_you_better: "Hobeto ezagutu nahi zaitugu."
       with_this_data: "Zer egingo dugu datu hauekin?"
-    settings:
+    settings: 
       access_data: "Irekiara sartzeko datuak"
       account_configuration: "Zure kontuaren konfigurazioa"
       and_well_fix_it: "eta konpondu egingo dugu"
-      avatar:
+      avatar: 
         pick_your_avatar: "Aukeratu zure avatar-a"
         size: "Gehienezko neurria 500x500."
         subtitle: "Irekiarako irudi bat behar duzu. Avatar bat duten erabiltzaileak arrakastatsuagoak izan ohi dira"
@@ -2260,11 +2275,11 @@ eu:
       can_we_change_your_mind: "Zerbait egin dezakegu<br /> iritziz alda zaitezen?"
       cancel: Utzi
       city: Udalerria
-      connect_with: "%{name}(r)ekin konektatu"
+      connect_with: "%{name}-ekin konektatu"
       connection_with_social_networks: "Sare sozialetarako konexioa"
       current_password: "Zure egungo pasahitza"
       email: "Zure emaila"
-      error:
+      error: 
         current_password: "Zure pasahitza"
         email: Emaila
         password: Pasahitza
@@ -2274,14 +2289,14 @@ eu:
       lastname: Abizenak
       man: Gizonezkoa
       name: Izena
-      notifications:
-        all:
+      notifications: 
+        all: 
           description: "Parte hartu duzun gai batean nobedadeak daudenean ere jakinaraziko dizugu."
           title: Guztiak
-        basic:
-          description: "Parte hartu duzun proposamenen eta galderen azken emaitzak jasoko dituzu."
+        basic: 
+          description: "Proposamen edo galdera batean parte hartzen duzunean, horien inguruko azken emaitzak jasoko dituzu."
           title: Oinarrizkoak
-        minimal:
+        minimal: 
           description: "Zure kontua kudeatzeko behar-beharrezkoak diren emailak bakarrik jasoko dituzu."
           title: Gutxienekoak
         title: Jakinarazpenak
