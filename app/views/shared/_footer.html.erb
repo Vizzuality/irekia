@@ -16,7 +16,6 @@
   <div class="areas">
     <h4><%= t('.areas.title') %></h4>
     <ul>
-      <li><%= link_to t('.areas.vasque_government'), 'http://www.euskadi.net' %></li>
       <% @areas_footer.first(6).each do |area| %>
         <li><%= link_to area.name, area %></li>
       <% end %>
