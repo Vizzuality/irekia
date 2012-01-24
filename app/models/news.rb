@@ -37,6 +37,7 @@ class News < Content
     @to_update_private_streams = (to_update_private_streams || [])
 
     @to_update_public_streams += areas
+    @to_update_public_streams += areas.map(&:team).flatten
     @to_update_public_streams += users
     @to_update_public_streams += users.map(&:areas).flatten
 
