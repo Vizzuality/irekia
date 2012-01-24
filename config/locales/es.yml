@@ -233,9 +233,9 @@
             password:
               invalid: "no es válida"
               blank: "no puede estar vacía."
-              confirmation: " no coincide con la confirmación."
-              too_short: "es muy corta (mín. 6 caracteres)"
-              too_long: "es muy larga (máx. 20 caracteres)"
+              confirmation: " no coincide"
+              too_short: "es muy corta (mínimo 6 c.)"
+              too_long:  "es muy larga (máximo 20 c.)"
             current_password:
               blank: "no puede estar vacía."
               invalid: "no es válida"
@@ -266,6 +266,7 @@
         lastname: Apellidos
         email: Email
         password: Contraseña
+        password_twice: Escribe la contraseña dos veces
         password_confirmation: Repetir contraseña
         current_password: Contraseña actual
         role_id: Rol
@@ -746,6 +747,7 @@
       sign_up: Regístrate
       sign_in: Login
       sign_out: Salir
+      register: Regístrate en Irekia
       facebook: facebook
       twitter: twitter
 
@@ -1078,6 +1080,8 @@
       more: Ver calendario completo
       next_month: Siguiente mes
       ical: Exportar para iCal
+      showing: 'Mostrando'
+      all_events: 'Todos los eventos'
 
     nav_bar_buttons:
       settings:

@@ -16,7 +16,9 @@ class News < Content
   def as_json(options = {})
     area = {
       :id            => areas.first.id,
-      :name          => areas.first.name,
+      :name_es          => areas.first.name_es,
+      :name_eu          => areas.first.name_eu,            
+      :name_en          => areas.first.name_en,      
       :thumbnail     => areas.first.thumbnail
     } if areas.present?
 

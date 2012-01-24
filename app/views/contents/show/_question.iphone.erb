@@ -39,7 +39,7 @@
 
       <div class="answer paper broken">
       <%= simple_format @answer.answer_text %>
-        <div class="footer when"><%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %></div>
+        <div class="footer when"><%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.answered_at)) %></div>
       </div>
 
       <%= render "participations/comments" %>
