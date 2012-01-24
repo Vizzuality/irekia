@@ -28,7 +28,7 @@ class Admin::ParticipationsController < Admin::AdminController
 
     if @participation.update_attributes(params[participation_type])
       IrekiaMailer.moderation_approved(@participation).deliver if @participation.moderated
-      IrekiaMailer.moderation_rejected(@participation).deliver if @participation.moderated
+      IrekiaMailer.moderation_rejected(@participation).deliver if @participation.rejected
 
       @items_count          = Moderation.not_moderated_count
       @moderation_time      = Moderation.get_moderation_time

@@ -772,15 +772,17 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article.agenda .inner .content ul li.day .info ul.details li.where { width: 207px; max-height: 26px; padding: 0 0 0 17px; background: url("/images/maps_sprite.png") no-repeat -51px -65px; text-overflow: ellipsis; -o-text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
 #container .article .inner .left .answering { position: relative; padding: 12px; margin: 25px 0 0 0; background: #F6F6F7; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
 #container .article .inner .left .answering span.peak { position: absolute; top: -14px; left: 30px; width: 28px; height: 14px; background: url("/images/icons/triangle.png") no-repeat 0 -181px; }
+#container .article .inner .left .answering .spinner { position: relative; float: left; top: 17px; }
 #container .article .inner .left .answering h3 { float: left; }
 #container .article .inner .left .answering .footer .left { float: left; width: 300px; }
 #container .article .inner .left .answering .footer .left .checkbox_button { height: 20px; }
 #container .article .inner .left .answering .footer .left .checkbox_button .checkbox { float: left; }
-#container .article .inner .left .answering .footer .right { width: 200px; float: right; }
+#container .article .inner .left .answering .footer .right { width: 190px; float: right; }
 #container .article .inner .left .answering .footer .right .white_button { float: right; }
 #container .article .inner .left .answering .input_field.textarea { margin: 0 0 10px 0; }
 #container .article .inner .left .answering .input-counter-question { margin: 0 0 20px 0; }
 #container .article .inner .left .answering .input_field { width: 570px; margin: 0 0 10px 0; }
+#container .article .inner .left .answering .input_field.error input { color: #E96F5F; border: 1px solid #E96F5F; }
 #container .article .inner .left .answering .input_field .holder { top: 10px; }
 #container .article .inner .left .answering .input_field input[type="text"] { width: 570px; }
 #container .article .inner .left .answering textarea { resize: none; overflow-y: none; width: 570px; position: relative; height: 132px; padding: 9px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); outline: none; }
@@ -2004,6 +2006,11 @@ White buttons
 /* =============================================================================
 Hacks (mostly ie7 and ie8 fixes)
 ========================================================================== */
+.ie7 #container .article .answering form textarea, .ie8 #container .article .answering form textarea { border: 1px solid #ccc; }
+.ie7 #container .article .answering form input[type="text"], .ie8 #container .article .answering form input[type="text"] { border: 1px solid #ccc; }
+.ie7 #container .article .answering form .input_field, .ie8 #container .article .answering form .input_field { line-height: 16px; }
+.ie7 #container .article .answering form .input_field .holder, .ie8 #container .article .answering form .input_field .holder { position: relative; top: 7px!Important; }
+
 .ie8 #container .article .avatar-uploader .avatar_box .avatar .ieframe { display: none!important; }
 
 .ie8 .white_button#avatar_uploader_button { display: none; }
@@ -2058,8 +2065,8 @@ Hacks (mostly ie7 and ie8 fixes)
 /* ------------------------------------------------------------------------------ Inputs line-height */
 .ie7 #search_query, .ie8 #search_query, .ie7 .xlInput, .ie8 .xlInput, .ie7 .input_field input[type="email"], .ie7 .input_field input[type="text"], .ie7 .article.micro input[type="email"], .ie7 .article.micro input[type="text"], .ie7 .article.micro input[type="password"], .ie7 #sign_in input[type="email"], .ie7 #sign_in input[type="text"], .ie7 #sign_in input[type="password"], .ie8 .input_field input[type="email"], .ie8 .input_field input[type="text"], .ie8 .article.micro input[type="email"], .ie8 .article.micro input[type="text"], .ie8 .article.micro input[type="password"], .ie8 #sign_in input[type="email"], .ie8 #sign_in input[type="text"], .ie8 #sign_in input[type="password"], .ie7 #container .article.change_password input[type="password"], .ie8 #container .article.change_password input[type="password"] { line-height: 29px; }
 
-.ie7 #container .article.login .bfooter .inner div.right .white_button, .ie8 #container .article.login .bfooter .inner div.right .white_button, .ie7 #container .article.publish.with_footer .bfooter .inner div.right .publish, .ie8 #container .article.publish.with_footer .bfooter .inner div.right .publish { margin-left: 10px; }
-.ie7 #container .article.login .bfooter .inner div.right .white_button span, .ie8 #container .article.login .bfooter .inner div.right .white_button span, .ie7 #container .article.publish.with_footer .bfooter .inner div.right .publish span, .ie8 #container .article.publish.with_footer .bfooter .inner div.right .publish span { margin-right: 0px; }
+.ie7 #container .article .answering .white_button, .ie8 #container .article .answering .white_button, .ie7 #container .article.login .bfooter .inner div.right .white_button, .ie8 #container .article.login .bfooter .inner div.right .white_button, .ie7 #container .article.publish.with_footer .bfooter .inner div.right .publish, .ie8 #container .article.publish.with_footer .bfooter .inner div.right .publish { margin-left: 10px; }
+.ie7 #container .article .answering .white_button span, .ie8 #container .article .answering .white_button span, .ie7 #container .article.login .bfooter .inner div.right .white_button span, .ie8 #container .article.login .bfooter .inner div.right .white_button span, .ie7 #container .article.publish.with_footer .bfooter .inner div.right .publish span, .ie8 #container .article.publish.with_footer .bfooter .inner div.right .publish span { margin-right: 0px; }
 
 /* --------------------------------------------------------------------------------- Calendar days */
 .ie7 #container .article.agenda .inner .content ul li.day.disabled h3, .ie7 #container .article.agenda .inner .content ul li.day span { color: #bbb; }

@@ -84,7 +84,9 @@
                     </a>
                   </div>
                 </div>
-                <div class="right"><%= form.submit t(".publish"), :id => "submit-counter_answer", :class => 'white_button pink disabled', :disabled => :disabled %></div>
+                <div class="right">
+                  <span class="spinner" id="question_spinner"></span>
+                  <%= button t(".publish"), :id => "submit-counter_answer", :class => 'white_button pink disabled', :disabled => :disabled %></div>
               </div>
 
             <% end -%>

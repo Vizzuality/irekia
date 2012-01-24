@@ -69,7 +69,8 @@ module Irekia
             news.moderated            = true
 
             news.areas = []
-            news.areas << Area.where("name_#{lang} like ? OR name like ?", "%#{news_item.organization.title}%", "%#{news_item.organization.title}%").first rescue puts "Invalid área name: #{news_item.organization.title}" if news_item.organization.present?
+            area_name = news_item.organization.title == 'Presidencia' ? 'Lehendakaritza' : news_item.organization.title if news_item.organization.title.present?
+            news.areas << Area.where("name_#{lang} like ? OR name like ?", "%#{area_name.present?}%", "%#{area_name.present?}%").first rescue puts "Invalid área name: #{area_name.present?}" if area_name.present?
             news_item.categories.each do |category|
               news.users << User.where('name || ' ' || lastname = ? AND id not in (?)', category, news.users_ids).first rescue nil
             end
@@ -181,7 +182,8 @@ module Irekia
 
             event.areas = []
             event.users = []
-            event.areas << Area.where("name like ? OR name_es like ? OR name_eu like ? OR name_en like ?", *(["%#{event_data_detail.event.organismo.title.text.strip}%"] * 4)).first rescue puts "Invalid área name: #{event_data_detail.event.organismo.title.text.strip}"
+            area_name = event_data_detail.event.organismo.title.text.strip == 'Presidencia' ? 'Lehendakaritza' : event_data_detail.event.organismo.title.text.strip if event_data_detail.event.organismo.title.text.strip.present?
+            event.areas << Area.where("name like ? OR name_es like ? OR name_eu like ? OR name_en like ?", *(["%#{area_name}%"] * 4)).first rescue puts "Invalid área name: #{area_name}"
             event_data_detail.event.tags.search('tag').each do |tag|
               event.areas << Area.find_by_name(tag.text.strip) rescue nil
               event.users << User.where('name || ' ' || lastname = ?', tag.text.strip).first rescue nil
@@ -370,12 +372,12 @@ module Irekia
           next if author.blank?
 
           proposal_data = ProposalData.find_or_initialize_by_external_id(row['id'])
-          proposal_data.title_es    = row["title_es"]
-          proposal_data.title_eu    = row["title_eu"]
-          proposal_data.title_en    = row["title_en"]
-          proposal_data.body_es     = row["body_es"]
-          proposal_data.body_eu     = row["body_eu"]
-          proposal_data.body_en     = row["body_en"]
+          proposal_data.title_es    = row["title_es"].force_encoding('utf-8')
+          proposal_data.title_eu    = row["title_eu"].force_encoding('utf-8')
+          proposal_data.title_en    = row["title_en"].force_encoding('utf-8')
+          proposal_data.body_es     = row["body_es"].force_encoding('utf-8')
+          proposal_data.body_eu     = row["body_eu"].force_encoding('utf-8')
+          proposal_data.body_en     = row["body_en"].force_encoding('utf-8')
           proposal_data.target_area = culture_area
 
           if proposal_data.proposal.blank?

@@ -2191,6 +2191,7 @@ span.where, .map .infowindow ul.details li.where {
     @include border-radius(3px);
 
     span.peak { position:absolute; top:-14px; left:30px; width:28px; height:14px; background:url('/images/icons/triangle.png') no-repeat 0 -181px; }
+    .spinner { position:relative; float:left; top: 17px; }
 
     h3 { float:left; }
 
@@ -2207,7 +2208,7 @@ span.where, .map .infowindow ul.details li.where {
       }
 
       .right {
-        width:200px;
+        width:190px;
         float:right;
         .white_button { float:right; }
       }
@@ -2220,6 +2221,10 @@ span.where, .map .infowindow ul.details li.where {
     .input-counter-question { margin: 0 0 20px 0; }
 
     .input_field {
+      &.error {
+        input { color: #E96F5F; border:1px solid #E96F5F;}
+      }
+
       width:570px;
       margin: 0 0 10px 0;
       .holder { top: 10px; }
