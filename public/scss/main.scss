@@ -5574,10 +5574,18 @@ body.home {
             font-size:0;
             line-height:0;
             background:url('/images/banners_example.png') no-repeat 0 -4px;
-            &.guia_com {top:1px; background-position:-220px 0;}
-            &.opacity {top:1px; background-position:-409px -9px;}
-            &.press {bottom:0; left:2px; width:180px; height:124px; background-position:-617px -1px;}
-            &.agenda {bottom:0; left:2px; width:180px; height:124px; background-position:-807px -1px;}
+
+            &.guia_com_es { top:1px; background-position:-220px 0; }
+            &.opacity_es  { top:1px; background-position:-409px -9px; }
+            &.press_es    { bottom:0; left:2px; width:180px; height:124px; background-position:-617px -1px; }
+            &.agenda_es   { bottom:0; left:2px; width:180px; height:124px; background-position:-807px -1px; }
+
+            &.open_data_eu { top:1px; background-position: 0 -130px; }
+            &.guia_com_eu { top:1px; background-position:-220px -130px; }
+            &.opacity_eu  { top:1px; background-position:-409px -139px; }
+            &.press_eu    { bottom:0; left:2px; height:126px; background-position:-617px -129px; }
+            &.agenda_eu   { background-position:-807px -138px; }
+
             z-index:5;
           }
         }

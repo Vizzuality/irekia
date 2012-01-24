@@ -1605,10 +1605,15 @@ body.home #container section.banners ul li { float: left; position: relative; wi
 body.home #container section.banners ul li.last { margin: 0; }
 body.home #container section.banners ul li:last-child { margin: 0; }
 body.home #container section.banners ul li a { position: absolute; left: 2px; width: 171px; height: 115px; text-indent: -9999px; font-size: 0; line-height: 0; background: url("/images/banners_example.png") no-repeat 0 -4px; z-index: 5; }
-body.home #container section.banners ul li a.guia_com { top: 1px; background-position: -220px 0; }
-body.home #container section.banners ul li a.opacity { top: 1px; background-position: -409px -9px; }
-body.home #container section.banners ul li a.press { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -617px -1px; }
-body.home #container section.banners ul li a.agenda { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -807px -1px; }
+body.home #container section.banners ul li a.guia_com_es { top: 1px; background-position: -220px 0; }
+body.home #container section.banners ul li a.opacity_es { top: 1px; background-position: -409px -9px; }
+body.home #container section.banners ul li a.press_es { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -617px -1px; }
+body.home #container section.banners ul li a.agenda_es { bottom: 0; left: 2px; width: 180px; height: 124px; background-position: -807px -1px; }
+body.home #container section.banners ul li a.open_data_eu { top: 1px; background-position: 0 -130px; }
+body.home #container section.banners ul li a.guia_com_eu { top: 1px; background-position: -220px -130px; }
+body.home #container section.banners ul li a.opacity_eu { top: 1px; background-position: -409px -139px; }
+body.home #container section.banners ul li a.press_eu { bottom: 0; left: 2px; height: 126px; background-position: -617px -129px; }
+body.home #container section.banners ul li a.agenda_eu { background-position: -807px -138px; }
 
 /* =============================================================================
 Tabs
