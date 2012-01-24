@@ -5227,6 +5227,7 @@ section.get_mobile_app {
       &.iphone {background-position:-186px 12px;}
 
       span {
+        display:block;
         font:normal 15px "Helvetica",Arial;
         color:white;
         @include textShadow(0,1px,#0F4768);
