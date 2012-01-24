@@ -40,6 +40,7 @@ form.signin {
   background:url('/images/datalogger/logo.png') no-repeat;
   width: 180px; height: 57px;
   margin:30px auto 18px auto;
+  padding-right:10px;
 }
 
 // =============================================================================
@@ -250,7 +251,7 @@ form.publish .white_button { position:relative; }
             padding-left: 16px;
             background: url('/images/icons/icon_sprite.png') no-repeat 0 -35px;
             color: #465866;
-      opacity:.5;
+            opacity:.5;
             font-size: 11px;
           }
         }

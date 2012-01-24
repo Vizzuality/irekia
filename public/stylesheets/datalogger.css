@@ -21,7 +21,7 @@ form.signin input[type="checkbox"] { display: none; }
 
 .loader { padding: 20px 0 40px 0; text-align: center; color: #9FABB2; font-size: 13px; }
 
-.logo { background: url("/images/datalogger/logo.png") no-repeat; width: 180px; height: 57px; margin: 30px auto 18px auto; }
+.logo { background: url("/images/datalogger/logo.png") no-repeat; width: 180px; height: 57px; margin: 30px auto 18px auto; padding-right: 10px; }
 
 header { height: 64px; background: white; border-bottom: 1px solid #C6CCD1; position: fixed; top: 0; width: 320px; z-index: 310; }
 header .white_button, header .icon { z-index: 300; }
