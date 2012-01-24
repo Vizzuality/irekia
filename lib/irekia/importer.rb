@@ -69,8 +69,8 @@ module Irekia
             news.moderated            = true
 
             news.areas = []
-            area_name = news_item.organization.title == 'Presidencia' ? 'Lehendakaritza' : news_item.organization.title if news_item.organization.title.present?
-            news.areas << Area.where("name_#{lang} like ? OR name like ?", "%#{area_name.present?}%", "%#{area_name.present?}%").first rescue puts "Invalid área name: #{area_name.present?}" if area_name.present?
+            area_name = news_item.organization.title == 'Presidencia' ? 'Lehendakaritza' : news_item.organization.title if news_item.organization.present? && news_item.organization.title.present?
+            news.areas << Area.where("name_#{lang} like ? OR name like ?", "%#{area_name}%", "%#{area_name}%").first rescue puts "Invalid área name: #{area_name}" if area_name.present?
             news_item.categories.each do |category|
               news.users << User.where('name || ' ' || lastname = ? AND id not in (?)', category, news.users_ids).first rescue nil
             end
@@ -182,7 +182,7 @@ module Irekia
 
             event.areas = []
             event.users = []
-            area_name = event_data_detail.event.organismo.title.text.strip == 'Presidencia' ? 'Lehendakaritza' : event_data_detail.event.organismo.title.text.strip if event_data_detail.event.organismo.title.text.strip.present?
+            area_name = event_data_detail.event.organismo.title.text.strip == 'Presidencia' ? 'Lehendakaritza' : event_data_detail.event.organismo.title.text.strip if event_data_detail.event.organismo.title.text.strip.present? rescue nil
             event.areas << Area.where("name like ? OR name_es like ? OR name_eu like ? OR name_en like ?", *(["%#{area_name}%"] * 4)).first rescue puts "Invalid área name: #{area_name}"
             event_data_detail.event.tags.search('tag').each do |tag|
               event.areas << Area.find_by_name(tag.text.strip) rescue nil

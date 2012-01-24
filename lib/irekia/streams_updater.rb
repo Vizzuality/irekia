@@ -37,7 +37,7 @@ module Irekia
       data_for_streams = OpenStruct.new(
         :event_id         => item.id,
         :event_type       => item.class.name,
-        :author_id        => item.author.id,
+        :author_id        => (item.author.id rescue nil),
         :published_at     => item.published_at,
         :moderated        => item.moderated,
         :message          => item.to_json
