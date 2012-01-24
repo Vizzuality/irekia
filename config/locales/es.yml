@@ -24,7 +24,7 @@ es:
         lastname: Apellidos
         name: Nombre
         password: Contraseña
-        password_confirmation: "Repetir contraseña"
+        password_twice: Escribe la contraseña dos veces
         postal_code: "Código postal"
         province_id: Territorio
         role_id: Rol
@@ -69,10 +69,10 @@ es:
               invalid: "no es válida"
             password:
               blank: "no puede estar vacía."
-              confirmation: " no coincide con la confirmación."
+              confirmation: " no coincide"
               invalid: "no es válida"
-              too_long: "es muy larga (máx. 20 caracteres)"
-              too_short: "es muy corta (mín. 6 caracteres)"
+              too_long:  "es muy larga (máx. 20 car.)"
+              too_short: "es muy corta (mín. 6 car.)"
             reset_password_token:
               blank: "no puede estar vacía."
       template:
