@@ -1,6 +1,6 @@
 <ul>
   <% @areas.each_with_index do |area,i| %>
-    <li class="<% if ((i+1) % 3) == 0 %>last<% end %>  <% if ((i+1) % 3) == 1 %>first<% end %> <%= 'small' if area.name.length > 50 %>  ">
+    <li class="clearfix<%= ' last'if ((i+1) % 3) == 0 %><%= ' first' if ((i+1) % 3) == 1 %><%= ' last-row' if (i + 3 >= @areas.count) %><%= ' small' if area.name and area.name.length > 50 %>">
     <div class="avatar">
       <%= avatar(area) %>
     </div>
