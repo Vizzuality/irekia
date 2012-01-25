@@ -13,7 +13,13 @@ class ProposalData < ActiveRecord::Base
   delegate :content_url, :to => :image
 
   def title
-    read_attribute("title_#{I18n.locale}") || (I18n.available_locales - [I18n.locale]).map{|lang| read_attribute("title_#{lang}")}.compact.first || ''
+    current_locale_title = read_attribute("title_#{I18n.locale}")
+    alt_locale_title = (I18n.available_locales - [I18n.locale]).map{|lang| read_attribute("title_#{lang}")}.select{|v| v.present?}.first
+    return current_locale_title if current_locale_title.present?
+    return alt_locale_title if alt_locale_title.present?
+    ''
+  rescue
+    ''
   end
 
   def title=(new_title)
