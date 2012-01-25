@@ -1139,6 +1139,8 @@ es:
         connect: conectar
         settings: preferencias
   searches:
+    no_result:
+      title: No hay resultados para esta búsqueda.
     areas:
       results:
         all: "ver los %{count} áreas encontradas"
