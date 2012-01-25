@@ -19,7 +19,7 @@
    '  <div class="bfooter">',
    '  <div class="separator"></div>',
    '  <div class="inner">',
-   '    <a href="#" class="white_button pink close right"><span>Aceptar</span></a>',
+   '    <a href="#" class="white_button pink close right"><span><%= accept %></span></a>',
    '  </div>',
    '  </div>',
    '  <div class="t"></div><div class="f"></div>',
@@ -56,6 +56,7 @@
       // The completed ps_container element
       $ps = false;
 
+
       // Dont do anything if we've already setup proposalPopover on this element
       if (data.id) {
         return $this;
@@ -67,6 +68,7 @@
         data.name = store;
         data.event = "_close." + store + "_" + id;
         data.spinner = spinner;
+        data.translations = {};
       }
 
       // Update the reference to $ps
@@ -82,6 +84,9 @@
       // Save the proposalPopover data
       $this.data(store, data);
       $ps.data(store, data);
+
+      // Translation
+      data.translations.accept = $("div#"+store).attr("data-t-accept");
 
       // Autolaunch of the widget
       if (settings.open == true) {
@@ -102,7 +107,7 @@
   };
 
   function _build(data, response, templateName, extraParams) {
-    var params = _.extend({id:data.id + "_success", name:data.name, content:response }, extraParams);
+    var params = _.extend({id:data.id + "_success", name:data.name, content:response, accept:data.translations.accept }, extraParams);
     var $ps = $(_.template(data.templates[templateName], params ));
     return $ps;
   }

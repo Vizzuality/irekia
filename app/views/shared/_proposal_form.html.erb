@@ -1,5 +1,5 @@
 <% if @proposal.present? %>
-  <div id="proposal-popover" class="article mini popover proposal with_footer initialy_hidden">
+  <div id="proposal-popover" class="article mini popover proposal with_footer initialy_hidden" data-t-accept="<%= t(".accept") %>">
     <%= form_for @proposal, :remote => true, :html => {:'data-type' => 'html'} do |form| %>
       <div class="inner">
         <header class="clearfix"><h2><%= t(".make_a_proposal.title") %> </h2></header>
