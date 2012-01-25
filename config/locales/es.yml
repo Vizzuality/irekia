@@ -24,7 +24,7 @@ es:
         lastname: Apellidos
         name: Nombre
         password: Contraseña
-        password_confirmation: "Repetir contraseña"
+        password_twice: Escribe la contraseña dos veces
         postal_code: "Código postal"
         province_id: Territorio
         role_id: Rol
@@ -69,10 +69,10 @@ es:
               invalid: "no es válida"
             password:
               blank: "no puede estar vacía."
-              confirmation: " no coincide con la confirmación."
+              confirmation: " no coincide"
               invalid: "no es válida"
-              too_long: "es muy larga (máx. 20 caracteres)"
-              too_short: "es muy corta (mín. 6 caracteres)"
+              too_long:  "es muy larga (máx. 20 car.)"
+              too_short: "es muy corta (mín. 6 car.)"
             reset_password_token:
               blank: "no puede estar vacía."
       template:
@@ -891,7 +891,7 @@ es:
     question_answered:
       answered_by: "ha sido contestada por %{politician_with_title}"
       opinion: "¿Qué te parece la respuesta? Puedes comentar la respuesta en Irekia."
-      politician_title: "%{title} en el área de %{area}"
+      politician_title: "%{title}, %{area}"
       question_link: "Ver pregunta en Irekia"
       subject: "Pregunta contestada en Irekia"
       your_question: "Tu pregunta"
@@ -1043,7 +1043,7 @@ es:
         questions: "preguntas contestadas"
         respond: "tarda en responder %{time}"
         week: "%{count} esta semana"
-      title: "%{title} en el área de %{areas}"
+      title: "%{title}, %{areas}"
     menu:
       actions: Actividad
       agenda: Agenda
@@ -1095,7 +1095,7 @@ es:
       success:
         description: "Te avisaremos en cuanto sea aprobada."
         title: "Pregunta enviada."
-      title: "%{title} en el área de %{areas}"
+      title: "%{title}, %{areas}"
   resource:
     search: buscar
   resources:
@@ -1139,6 +1139,8 @@ es:
         connect: conectar
         settings: preferencias
   searches:
+    no_result:
+      title: No hay resultados para esta búsqueda.
     areas:
       results:
         all: "ver los %{count} áreas encontradas"

@@ -5227,7 +5227,6 @@ section.get_mobile_app {
       &.iphone {background-position:-186px 12px;}
 
       span {
-        display:block;
         font:normal 15px "Helvetica",Arial;
         color:white;
         @include textShadow(0,1px,#0F4768);
@@ -5328,7 +5327,7 @@ body.home {
       div.wrap {
         width:575px;
 
-        h1 {width:685px;font-size:48px; color:#465866; letter-spacing:-2px;}
+        h1 {width:655px;font-size:48px; color:#465866; letter-spacing:-2px;}
         p {font:normal 17px "Helvetica",Arial; color:#465866; line-height:18px;}
 
         form {

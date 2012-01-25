@@ -2,7 +2,7 @@
   <div class="top_nav">
     <ul class="languages">
       <% %w(es eu).each_with_index do |locale, i| %>
-        <% if locale == I18n.locale -%>
+        <% if locale.to_sym == I18n.locale -%>
           <li class="selected <%= 'last' if (i + 1) == %w(es eu).length %>"><span><%= I18n.locale.upcase %></span></li>
         <% else -%>
           <li class="<%= 'last' if (i + 1) == %w(es eu).length %>"><%= button_to locale.upcase, change_locale_path(:new_locale => locale) %></li>

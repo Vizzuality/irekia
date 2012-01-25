@@ -17,8 +17,8 @@ class News < Content
     area = {
       :id            => areas.first.id,
       :name_es          => areas.first.name_es,
-      :name_eu          => areas.first.name_eu,            
-      :name_en          => areas.first.name_en,      
+      :name_eu          => areas.first.name_eu,
+      :name_en          => areas.first.name_en,
       :thumbnail     => areas.first.thumbnail
     } if areas.present?
 
@@ -39,13 +39,12 @@ class News < Content
     @to_update_private_streams = (to_update_private_streams || [])
 
     @to_update_public_streams += areas
-    @to_update_public_streams += areas.map(&:team).flatten
     @to_update_public_streams += users
-    @to_update_public_streams += users.map(&:areas).flatten
 
+    @to_update_private_streams += areas.map(&:team).flatten
+    @to_update_private_streams += users.map(&:areas).flatten
     @to_update_private_streams += areas.map(&:followers).flatten
     @to_update_private_streams += users.map(&:followers).flatten
-    @to_update_private_streams += users.map(&:areas).flatten.map(&:followers).flatten
 
     to_update_public_streams  = @to_update_public_streams
     to_update_private_streams = @to_update_private_streams

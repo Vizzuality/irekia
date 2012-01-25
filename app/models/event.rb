@@ -137,13 +137,12 @@ class Event < Content
     @to_update_private_streams = (to_update_private_streams || [])
 
     @to_update_public_streams += areas
-    @to_update_public_streams += areas.map(&:team).flatten
     @to_update_public_streams += users
-    @to_update_public_streams += users.map(&:areas).flatten
 
+    @to_update_private_streams += areas.map(&:team).flatten
+    @to_update_private_streams += users.map(&:areas).flatten
     @to_update_private_streams += areas.map(&:followers).flatten
     @to_update_private_streams += users.map(&:followers).flatten
-    @to_update_private_streams += users.map(&:areas).flatten.map(&:followers).flatten
 
     to_update_public_streams  = @to_update_public_streams
     to_update_private_streams = @to_update_private_streams

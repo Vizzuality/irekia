@@ -9,7 +9,7 @@
       <% if @content && (area = @content.content_area) %>
         <span><%= area.try(:name) %></span>
       <% else %>
-        <span><%= @area ? truncate(@area.name, :length => 50) : (content_tag :span, t(".choose_an_area")) %></span>
+        <span><%= @area ? truncate(@area.name, :length => 40) : (content_tag :span, t(".choose_an_area")) %></span>
       <% end %>
 
       <span class="handle"></span>
