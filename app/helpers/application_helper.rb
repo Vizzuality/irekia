@@ -312,7 +312,16 @@ module ApplicationHelper
   end
 
   def translate_field(model, field)
-    model.send(:"#{field}_#{I18n.locale}") || (I18n.available_locales).map{|lang| model.send(:"#{field}_#{lang}")}.compact.first || model.send(field) || '' rescue ''
+    current_locale_value   = model.send(:"#{field}_#{i18n.locale}")
+    alternate_locale_value = (i18n.available_locales).map{|lang| model.send(:"#{field}_#{lang}")}.select{|v| v.present?}.first
+    no_translated_value    = model.send(field)
+
+    return current_locale_value   if current_locale_value.present?
+    return alternate_locale_value if alternate_locale_value.present?
+    return no_translated_value    if no_translated_value.present?
+    ''
+  rescue
+    ''
   end
 
 end
