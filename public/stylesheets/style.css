@@ -1560,7 +1560,7 @@ body.home header ul.languages { top: -30px !important; }
 body.home #container { background: url("/images/illustration.png") no-repeat center 0 #f2f5f8; }
 body.home #container .article.participation { height: 255px; padding: 0; margin: 0 auto!important; }
 body.home #container .article.participation div.wrap { width: 575px; }
-body.home #container .article.participation div.wrap h1 { width: 655px; font-size: 48px; color: #465866; letter-spacing: -2px; }
+body.home #container .article.participation div.wrap h1 { width: 685px; font-size: 48px; color: #465866; letter-spacing: -2px; }
 body.home #container .article.participation div.wrap p { font: normal 17px "Helvetica",Arial; color: #465866; line-height: 18px; }
 body.home #container .article.participation div.wrap form { margin: 20px 0 0 0; }
 body.home #container .article.participation div.wrap form span.holder { top: 6px; font-size: 15px; }
