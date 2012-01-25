@@ -2118,6 +2118,8 @@ Hacks (mostly ie7 and ie8 fixes)
 
 .ie7 #container .article .right .content ul.tags li.new input[type="text"], .ie8 #container .article .right .content ul.tags li.new input[type="text"] { line-height: 26px; }
 
+.ie7 #container .article.thin.signup input[type="password"], .ie7 #container .article.thin.signup input[type="text"], .ie8 #container .article.thin.signup input[type="text"], .ie8 #container .article.thin.signup input[type="password"], .ie7 #container .article.thin.signup input[type="email"], .ie8 #container .article.thin.signup input[type="email"] { border: 1px solid #ccc; }
+
 .ie7 #container .article.thin.signup input[type="password"], .ie8 #container .article.thin.signup input[type="password"] { line-height: 30px; }
 
 .ie7 #container .article.thin.connect .bfooter .inner, .ie8 #container .article.thin.connect .bfooter .inner { position: relative; }
