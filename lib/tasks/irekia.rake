@@ -47,7 +47,7 @@ namespace :irekia do
     Irekia::Importer.import_proposals
   end
 
-  task :update_areas_and_politicians do
+  task :update_areas_and_politicians => :environment do
     Irekia::Importer.update_areas_and_politicians_descriptions
   end
 end

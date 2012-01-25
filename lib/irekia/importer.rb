@@ -460,8 +460,6 @@ module Irekia
       politicians_texts.each do |politician_text|
         politician = User.find_by_external_id(politician_text[1])
         %w(es eu).each do |lang|
-          puts politician_text[2][lang][0]
-          puts politician_text[2][lang][1]
           politician.send("description_1_#{lang}=", politician_text[2][lang][0])
           politician.send("description_2_#{lang}=", politician_text[2][lang][1])
         end
