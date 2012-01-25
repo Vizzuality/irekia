@@ -24,6 +24,10 @@ class UserPublicStream < ActiveRecord::Base
     where(:event_type => 'Answer')
   end
 
+  def self.answer_requests
+    where(:event_type => 'AnswerRequest')
+  end
+
   def self.proposals
     where(:event_type => 'Proposal')
   end
@@ -56,8 +60,16 @@ class UserPublicStream < ActiveRecord::Base
     where(:event_type => %w(StatusMessage Tweet))
   end
 
+  def self.tweets
+    where(:event_type => 'Tweet')
+  end
+
   def self.comments
     where(:event_type => 'Comment')
+  end
+
+  def self.contents_users
+    where(:event_type => 'ContentUser')
   end
 
   def self.this_week

@@ -42,6 +42,10 @@ class AreaPublicStream < ActiveRecord::Base
     where(:event_type => 'Answer')
   end
 
+  def self.answer_requests
+    where(:event_type => 'AnswerRequest')
+  end
+
   def self.proposals
     where(:event_type => 'Proposal')
   end
