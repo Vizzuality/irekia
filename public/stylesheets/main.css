@@ -966,6 +966,8 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 #container .article .inner p.info { margin: 0 0 1px 0; padding: 0; font-size: 15px; }
 #container .article .inner p.info.extra-margin-bottom { margin-bottom: 10px; }
 
+#container .article .inner .success.message p { float: left; width: 437px; }
+
 /* comments */
 #container .article .inner .left div.comments { position: relative; float: left; margin: 40px 0 0 0; }
 #container .article .inner .left div.comments .count { padding: 0; font-size: 17px; color: #465866; font-weight: bold; }

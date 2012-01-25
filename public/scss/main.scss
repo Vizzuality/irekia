@@ -3625,6 +3625,7 @@ a.editable {
             margin: 0 0 1px 0; padding:0; font-size:15px;
             &.extra-margin-bottom { margin-bottom:10px; }
           }
+          #container .article .inner .success.message p { float: left; width: 437px; }
 
           /* comments */
           #container .article .inner .left div.comments {
