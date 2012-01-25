@@ -327,23 +327,26 @@ module Irekia
         begin
 
           user = User.find_or_initialize_by_external_id(row['id'])
-          user.email                      = user.email.present??                       user.email                      : row['Email']
-          user.encrypted_password         = user.encrypted_password.present??          user.encrypted_password         : row['Password']
-          user.salt                       = user.salt.present??                        user.salt                       : row['Salt']
-          user.twitter_username           = user.twitter_username.present??            user.twitter_username           : row['Twitter screen_name'] if row['Twitter screen_name'].present?
-          user.twitter_oauth_token        = user.twitter_oauth_token.present??         user.twitter_oauth_token        : row['Twitter atoken'] if row['Twitter atoken'].present?
-          user.twitter_oauth_token_secret = user.twitter_oauth_token_secret.present??  user.twitter_oauth_token_secret : row['Twitter asecret'] if row['Twitter asecret'].present?
-          user.facebook_oauth_token       = user.facebook_oauth_token.present??        user.facebook_oauth_token       : row['Facebook ID'] if row['Facebook ID'].present?
-          user.name                       = user.name.present??                        user.name                       : row['Nombre']
-          user.lastname                   = user.lastname.present??                    user.lastname                   : (row['Apellidos'].present?? row['Apellidos'] : ' ')
-          user.postal_code                = user.postal_code.present??                 user.postal_code                : row['Codigo postal']
-          user.province                   = user.province.present??                    user.province                   : row['Provincia']
-          user.city                       = user.city.present??                        user.city                       : row['Ciudad']
-          user.skip_mailing               = true
 
-          user.save(:validate => false)
+          if user.new_record?
+            user.email                      = user.email.present??                       user.email                      : row['Email']
+            user.encrypted_password         = user.encrypted_password.present??          user.encrypted_password         : row['Password']
+            user.salt                       = user.salt.present??                        user.salt                       : row['Salt']
+            user.twitter_username           = user.twitter_username.present??            user.twitter_username           : row['Twitter screen_name'] if row['Twitter screen_name'].present?
+            user.twitter_oauth_token        = user.twitter_oauth_token.present??         user.twitter_oauth_token        : row['Twitter atoken'] if row['Twitter atoken'].present?
+            user.twitter_oauth_token_secret = user.twitter_oauth_token_secret.present??  user.twitter_oauth_token_secret : row['Twitter asecret'] if row['Twitter asecret'].present?
+            user.facebook_oauth_token       = user.facebook_oauth_token.present??        user.facebook_oauth_token       : row['Facebook ID'] if row['Facebook ID'].present?
+            user.name                       = user.name.present??                        user.name                       : row['Nombre']
+            user.lastname                   = user.lastname.present??                    user.lastname                   : (row['Apellidos'].present?? row['Apellidos'] : ' ')
+            user.postal_code                = user.postal_code.present??                 user.postal_code                : row['Codigo postal']
+            user.province                   = user.province.present??                    user.province                   : row['Provincia']
+            user.city                       = user.city.present??                        user.city                       : row['Ciudad']
+            user.skip_mailing               = true
 
-          print '.'
+            user.save(:validate => false)
+
+            print '.'
+          end
         rescue Exception => ex
           puts ex
           puts ex.backtrace
@@ -371,25 +374,27 @@ module Irekia
           next if author.blank?
 
           proposal_data = ProposalData.find_or_initialize_by_external_id(row['id'])
-          proposal_data.title_es    = row["title_es"].force_encoding('utf-8')
-          proposal_data.title_eu    = row["title_eu"].force_encoding('utf-8')
-          proposal_data.title_en    = row["title_en"].force_encoding('utf-8')
-          proposal_data.body_es     = row["body_es"].force_encoding('utf-8')
-          proposal_data.body_eu     = row["body_eu"].force_encoding('utf-8')
-          proposal_data.body_en     = row["body_en"].force_encoding('utf-8')
-          proposal_data.target_area = culture_area
+          if proposal_data.new_record?
+            proposal_data.title_es    = row["title_es"].force_encoding('utf-8')
+            proposal_data.title_eu    = row["title_eu"].force_encoding('utf-8')
+            proposal_data.title_en    = row["title_en"].force_encoding('utf-8')
+            proposal_data.body_es     = row["body_es"].force_encoding('utf-8')
+            proposal_data.body_eu     = row["body_eu"].force_encoding('utf-8')
+            proposal_data.body_en     = row["body_en"].force_encoding('utf-8')
+            proposal_data.target_area = culture_area
 
-          if proposal_data.proposal.blank?
-            proposal = Proposal.new
-            proposal.author = author
-            proposal.proposal_data = proposal_data
-            proposal.moderated = true
-            proposal.save!
+            if proposal_data.proposal.blank?
+              proposal = Proposal.new
+              proposal.author = author
+              proposal.proposal_data = proposal_data
+              proposal.moderated = true
+              proposal.save!
+            end
+
+            proposal_data.save!
+
+            print '.'
           end
-
-          proposal_data.save!
-
-          print '.'
 
         rescue Exception => ex
           puts ex
