@@ -31,7 +31,7 @@ module Irekia
       # private streams. We just need to update the content author private
       # stream
       if item.not_moderated?
-        item.to_update_private_streams = [author]
+        item.to_update_private_streams = item.to_update_private_streams.select{|user| user.id == author.id}
       end
 
       data_for_streams = OpenStruct.new(
