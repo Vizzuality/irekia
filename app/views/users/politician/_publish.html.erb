@@ -3,7 +3,7 @@
   <div class="content">
 
     <h2><%= t(".publish") %></h2>
-    <p>¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!</p>
+    <p><%= t(".description") %></p>
 
     <%= menu ([
               { :link => (link_to t(".question"), "#"), :class => :selected},
@@ -28,18 +28,18 @@
                   <div id="question-counter" class="input-counter">
                     <span class="counter">140</span>
                     <%= question_data.text_area :question_text %>
-                    <span class="holder">Introduce el texto que quieras publicar aquí.</span>
+                    <span class="holder"><%= t(".section.question.label") %></span>
                   </div>
                 </div>
 
               <% end %>
 
               <div class="extra">
-                <strong>¿A QUIÉN LE QUIERES DIRIGIR LA PREGUNTA?</strong>
+                <strong><%= t(".section.question.target") %></strong>
                 <div class="input_field autosuggest_field placeholder">
                   <div class="search_box">
                     <input type="text" class="search" />
-                    <span class="holder">Nombre de persona o área...</span>
+                    <span class="holder"><%= t(".section.question.target_name") %></span>
                     <span class="spinner" id="search_question_spinner"></span>
                   </div>
                 </div>
@@ -68,28 +68,28 @@
                   <div id="proposal-counter" class="input-counter">
                     <span class="counter">140</span>
                     <%= proposal_data.text_area :title, :class => :title %>
-                    <span class="holder">Introduce aquí el título de la propuesta que quieres realizar. Procura ser breve y conciso.</span>
+                    <span class="holder"><%= t(".section.proposal.label") %></span>
                   </div>
                 </div>
 
                 <div class="extra">
 
                     <div class="input_field uploader">
-                      <span class="holder"><span class="upload" id="upload_image" data-url="<%= proposals_path %>">Sube una imagen.</span></span>
+                      <span class="holder"><span class="upload" id="upload_image" data-url="<%= proposals_path %>"><%= t(".section.proposal.upload_image") %></span></span>
                       <span class="percentage">0%</span>
-                      <span class="loading">Cargando imagen...</span>
+                      <span class="loading"><%= t(".section.photo.loading") %></span>
                       <div class="progress"></div>
                     </div>
 
                   <div class="image_container clearfix">
-                    <p>Se incluirá esta imagen en la propuesta.</p>
-                    <a href="#" class="remove">Eliminar</a>
+                    <p><%= t(".section.proposal.this_photo_will_be_published") %></p>
+                    <a href="#" class="remove"><%= t(".remove") %></a>
                   </div>
 
-                  <strong>¿QUIERES EXPLICAR LA PROPUESTA CON MÁS DETALLE?</strong>
+                  <strong><%= t(".section.proposal.explanation") %></strong>
                   <div class="input_field placeholder textarea">
                     <%= proposal_data.text_area :body, :class => :body %>
-                    <span class="holder">Describe la propuesta en pocas palabras</span>
+                    <span class="holder"><%= t(".section.proposal.label") %></span>
                   </div>
                 </div>
               <% end -%>
@@ -97,10 +97,10 @@
 
             <div class="extra">
 
-              <strong>¿A QUÉ ÁREA QUIERES DIRIGIR LA PROPUESTA?</strong>
+              <strong><%= t(".section.proposal.target") %></strong>
               <div class="input_field autosuggest_field placeholder">
                 <input type="text" />
-                <span class="holder">Nombre de área...</span>
+                <span class="holder"><%= t(".section.proposal.target_name") %></span>
               </div>
 
             </div>
@@ -119,7 +119,7 @@
 <div class="inner">
   <div class="left"></div>
   <div class="right">
-    <a href="#" class="white_button pink publish right disabled"><span>Continuar</span></a>
+    <a href="#" class="white_button pink publish right disabled"><span><%= t(".continue") %></span></a>
     <span class="spinner" id="publish_spinner"></span>
   </div>
 </div>

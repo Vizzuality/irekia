@@ -51,6 +51,7 @@
         data.questionStep = 0;
         data.sectionID = 0;
         data.spinner = spinner;
+        data.translations = {};
       }
 
       // Update the reference to $ps
@@ -69,12 +70,17 @@
       $ps.data(store, data);
       data.$submit = $ps.find(".bfooter .publish");
 
+      // Translation
+      data.translations.continue = $ps.attr("data-t-continue");
+      data.translations.publish  = $ps.attr("data-t-publish");
+      data.translations.close    = $ps.attr("data-t-close");
+
       // bindings
       _addCloseAction(data);
       _addDefaultAction(data);
       _addAllAreasAction(data);
       _bindMenu(data);
-      _bindSubmit(data, "Continuar", true, "continue");
+      _bindSubmit(data, data.translations.continue, true, "continue");
       _bindActions(data);
       _enableInputCounter(data, $ps.find("#question_question_data_attributes_question_text"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
       _enableInputCounter(data, $ps.find("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
@@ -110,7 +116,7 @@
   function _open(data) {
     var $ps = data.$ps;
 
-    _bindSubmit(data, "Continuar", true, "continue");
+    _bindSubmit(data, data.translations.continue, true, "continue");
     data.$ps.find("input,:text,textarea").attr("tabindex", "-1");
 
     // Autosuggest binding
@@ -319,7 +325,7 @@
               $currentSection.find('.autosuggest_field input[type="text"]').val(name);
               $(this).hasClass("user") ? _updateHiddenTarget("user", id) : _updateHiddenTarget("area", id);
 
-              _bindSubmit(data, "Publicar", true, "publish");
+              _bindSubmit(data, data.translations.publish, true, "publish");
               _clearAutosuggest(data);
               _enableSubmit(data.$submit);
             });
@@ -361,7 +367,7 @@
       });
 
     _disableSubmit(data.$submit);
-    _changeSubmitTitle(data.$submit, "Publicar");
+    _changeSubmitTitle(data.$submit, data.translations.publish);
     data.$submit.unbind();
   }
 
@@ -560,7 +566,7 @@
         $currentSection.find('.autosuggest_field input[type="text"]').val(name);
         $(this).hasClass("user") ? _updateHiddenTarget("user", id) : _updateHiddenTarget("area", id);
 
-        _bindSubmit(data, "Publicar", true, "publish");
+        _bindSubmit(data, data.translations.publish, true, "publish");
         _clearAutosuggest(data);
         _enableSubmit(data.$submit);
       });
@@ -626,7 +632,7 @@
           $currentSection = $section;
 
           _gotoSection(data);
-          _bindSubmit(data, "Continuar", true, "continue");
+          _bindSubmit(data, data.translations.continue, true, "continue");
           _center(data);
         });
 
@@ -650,7 +656,7 @@
       $error.hide();
 
       $success.show(0, function() {
-        _changeSubmitTitle(data.$submit, "Cerrar");
+        _changeSubmitTitle(data.$submit, data.translations.close);
         _enableSubmit(data.$submit);
 
         data.$submit.unbind("click");

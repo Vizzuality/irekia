@@ -650,6 +650,40 @@ class User < ActiveRecord::Base
     end
   end
 
+  def update_counters
+    update_attributes(
+      :follows_count                 => follows.count,
+      :areas_users_count             => areas_users.count,
+      :proposals_count               => actions.proposals.count,
+      :arguments_count               => actions.arguments.count,
+      :votes_count                   => actions.votes.count,
+      :questions_count               => actions.questions.count,
+      :answers_count                 => actions.answers.count,
+      :answer_requests_count         => actions.answer_requests.count,
+      :events_count                  => actions.events.count,
+      :news_count                    => actions.news.count,
+      :photos_count                  => actions.photos.count,
+      :videos_count                  => actions.videos.count,
+      :status_messages_count         => actions.status_messages.count,
+      :tweets_count                  => actions.tweets.count,
+      :comments_count                => actions.comments.count,
+      :private_proposals_count       => private_actions.proposals.count,
+      :private_arguments_count       => private_actions.arguments.count,
+      :private_votes_count           => private_actions.votes.count,
+      :private_questions_count       => private_actions.questions.count,
+      :private_answers_count         => private_actions.answers.count,
+      :private_answer_requests_count => private_actions.answer_requests.count,
+      :private_events_count          => private_actions.events.count,
+      :private_news_count            => private_actions.news.count,
+      :private_photos_count          => private_actions.photos.count,
+      :private_videos_count          => private_actions.videos.count,
+      :private_status_messages_count => private_actions.status_messages.count,
+      :private_tweets_count          => private_actions.tweets.count,
+      :private_comments_count        => private_actions.comments.count,
+      :private_contents_users_count  => private_actions.contents_users.count
+    )
+  end
+
   def check_blank_name
     name = email if name.blank?
   end

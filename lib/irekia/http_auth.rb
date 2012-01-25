@@ -4,7 +4,7 @@ module Irekia
     DEMO_USER = {'virekia' => 'gub5mar'}
 
     def self.included(base)
-      #base.before_filter :authentication_check
+      base.before_filter :authentication_check
     end
 
     def authentication_check

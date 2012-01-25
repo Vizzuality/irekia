@@ -872,7 +872,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .article .my_opinion.against { background: #FFF3E1; }
 #container .article .my_opinion.in_favor { background: #EDF3E5; }
 #container .article .my_opinion .result { float: left; padding: 8px 0; width: 310px; font-size: 15px; }
-#container .article .my_opinion form { float: right; margin: 0 0 0 10px; }
+#container .article .my_opinion form { float: right; margin: 0 0 0 8px; }
 
 #container .article .inner .content form.notifications ul { float: left; margin: 10px 0 20px 0; }
 #container .article .inner .content form.notifications ul li { width: 241px; height: 175px; margin-right: 30px; padding: 20px; background: #fff; border: 1px solid #E2E5E8; cursor: pointer; filter: alpha(opacity=60); -khtml-opacity: 0.6; -moz-opacity: 0.6; opacity: 0.6; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; -moz-border-radius: 4px; -webkit-border-radius: 4px; -o-border-radius: 4px; -ms-border-radius: 4px; -khtml-border-radius: 4px; border-radius: 4px; -moz-transition-property: all; -webkit-transition-property: all; -o-transition-property: all; transition-property: all; -moz-transition-duration: 300ms; -webkit-transition-duration: 300ms; -o-transition-duration: 300ms; transition-duration: 300ms; position: relative; }
@@ -965,6 +965,8 @@ a.editable:hover { width: 65px; height: 65px; background: url("/images/box_simpl
 /* info */
 #container .article .inner p.info { margin: 0 0 1px 0; padding: 0; font-size: 15px; }
 #container .article .inner p.info.extra-margin-bottom { margin-bottom: 10px; }
+
+#container .article .inner .success.message p { float: left; width: 437px; }
 
 /* comments */
 #container .article .inner .left div.comments { position: relative; float: left; margin: 40px 0 0 0; }

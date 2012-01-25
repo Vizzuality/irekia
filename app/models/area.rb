@@ -222,4 +222,23 @@ class Area < ActiveRecord::Base
     end
   end
 
+  def update_counters
+    update_attributes(
+      :areas_users_count     => areas_users.count,
+      :follows_count         => follows.count,
+      :proposals_count       => actions.proposals.count,
+      :arguments_count       => actions.arguments.count,
+      :votes_count           => actions.votes.count,
+      :questions_count       => actions.questions.count,
+      :answers_count         => actions.answers.count,
+      :answer_requests_count => actions.answer_requests.count,
+      :events_count          => actions.events.count,
+      :news_count            => actions.news.count,
+      :photos_count          => actions.photos.count,
+      :videos_count          => actions.videos.count,
+      :status_messages_count => actions.status_messages.count,
+      :tweets_count          => actions.tweets.count
+    )
+  end
+
 end

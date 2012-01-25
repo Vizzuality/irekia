@@ -1820,6 +1820,7 @@ es:
       title: Publicar
       video: Vídeo
     proposal_form:
+      accept: Aceptar
       describe_the_proposal: "Describe la propuesta en pocas palabras"
       do_you_want_to_explain_the_proposal: "¿Quieres explicar la propuesta con más detalle?"
       loading: "Cargando imagen..."
@@ -1858,6 +1859,9 @@ es:
     proposals_list:
       no_content: "No hay propuestas en este área"
     question_form:
+      accept: Aceptar
+      or: o
+      see_all_the_areas: "ver todas las áreas"
       describe_the_question: "Describe la pregunta en pocas palabras"
       do_you_want_to_explain_the_question: "¿Quieres explicar la pregunta con más detalle?"
       make_a_question:
@@ -1952,12 +1956,14 @@ es:
       twitter_signin: Twitter
     user_publish:
       continue: Continuar
+      close: Cerrar
       description: "¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!"
       proposal: Propuesta
       publish: Publicar
       question: Pregunta
       section:
         proposal:
+          upload: "Sube una foto"
           description: "Describe la propuesta en pocas palabras"
           explanation: "¿Quieres explicar la propuesta con más detalle?"
           image_will_be_included: "Se incluirá esta imagen en la propuesta."
