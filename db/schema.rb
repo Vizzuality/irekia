@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120120195648) do
+ActiveRecord::Schema.define(:version => 20120125023400) do
 
   create_table "answer_data", :force => true do |t|
     t.integer  "answer_id"
@@ -21,15 +21,6 @@ ActiveRecord::Schema.define(:version => 20120120195648) do
   end
 
   add_index "answer_data", ["answer_id"], :name => "index_answer_data_on_answer_id"
-
-  create_table "answer_opinion_data", :force => true do |t|
-    t.integer  "answer_opinion_id"
-    t.boolean  "satisfactory",      :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "answer_opinion_data", ["answer_opinion_id"], :name => "index_answer_opinion_data_on_answer_opinion_id"
 
   create_table "area_public_streams", :force => true do |t|
     t.integer  "area_id"
@@ -76,6 +67,12 @@ ActiveRecord::Schema.define(:version => 20120120195648) do
     t.integer  "comments_count",        :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description_1_es"
+    t.text     "description_1_eu"
+    t.text     "description_1_en"
+    t.text     "description_2_es"
+    t.text     "description_2_eu"
+    t.text     "description_2_en"
   end
 
   add_index "areas", ["external_id"], :name => "index_areas_on_external_id"
@@ -439,6 +436,12 @@ ActiveRecord::Schema.define(:version => 20120120195648) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description_1_es"
+    t.text     "description_1_eu"
+    t.text     "description_1_en"
+    t.text     "description_2_es"
+    t.text     "description_2_eu"
+    t.text     "description_2_en"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
