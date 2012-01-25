@@ -1,0 +1,25 @@
+--- 
+activerecord: 
+  attributes: 
+    user: 
+      email: Email
+contents: 
+  edit: 
+    image: 
+      upload_a_new_one: "Sube una nueva"
+home: 
+  index: 
+    email: Email
+shared: 
+  floating_login: 
+    password_reminder: 
+      email: "Tu email"
+  forgot_password: 
+    fill_in_your_email: "Introduce tu email"
+  sharing: 
+    email: "Compartir vía email"
+users: 
+  settings: 
+    email: "Tu email"
+    error: 
+      email: "El email"
