@@ -1268,6 +1268,8 @@ eu:
           other: "%{count} erabiltzaile"
           zero: "Ez dago erabiltzailerik"
       you_can_also: "Edo, bestela,"
+    no_result: 
+      title: "Ez dago emaitzarik"
     politicians: 
       results: 
         all: "aurkitutako %{count} politikariak ikus ditzakezu"
@@ -2158,7 +2160,7 @@ eu:
         more_polemic: Eztabaidatuenak
         more_recent: Azkenak
         no_questions: 
-          create_question: "Garldera bat sortu"
+          create_question: "Galdera bat sortu"
           description: "Eusko Jaurlaritzarekin lotutako edozer galdetu ahal duzu: arlo baten aurrekontua, erabaki bat jartzeko arrazoiak, kargu politiko baten soldata..."
           title: "Oraindik ez duzu galderarik egin."
         title: 
