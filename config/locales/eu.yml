@@ -25,6 +25,7 @@ eu:
         name: Izena
         password: Pasahitza
         password_confirmation: "Errepikatu pasahitza"
+        password_twice: ""
         postal_code: Posta-kutxa
         province_id: Lurraldea
         role_id: Rola
@@ -787,6 +788,7 @@ eu:
     index: 
       answered: erantzunda
       banners: 
+        agenda: ""
         guide: "Komunikazio irekirako gida"
         opendata: "Open data euskadi"
         press: "Prentsa :)"
@@ -794,8 +796,10 @@ eu:
       button: Bilatu
       citizens: herritar
       description: "Irekia Euskadin erabakiak hartzerakoan zure ahotsa entzunarazteko aukera ematen dizun plataforma da. Egin zure proposamenak, eskatu erantzunak, egin zure ekarpenak eta helarazi zure iritzia."
+      email: Emaila
       login: "Sartu zure kontura"
       or: edo
+      password: ""
       politicians: politikari
       proposals: proposamen
       questions: galdera
@@ -821,6 +825,7 @@ eu:
         title: 
           news: Albisteak
       search: "Zer ari zara bilatzen?"
+      sign_in: ""
       title: "Parte hartu zure gobernuan."
       view_all_the_areas: "arlo guztiak ikusi"
       votes: boto
@@ -1332,9 +1337,11 @@ eu:
       no_content: 
         area: "Ez dago edukirik arlo honetan"
     agenda: 
+      all_events: ""
       ical: "iCal-erako esportatu"
       more: "Egutegi osoa ikusi"
       next_month: "Hurrengo hilabetea"
+      showing: ""
       view_calendar: "Egutegia ikusi"
       view_map: "Mapa ikusi"
     agenda_for_day: 
@@ -1647,6 +1654,10 @@ eu:
         answered: "Duela %{time} erantzunda"
         author: "%{author} duela %{time}"
         not_answered: "Oraindik ez dute erantzun"
+      question_unanswered: 
+        author: ""
+        new_question: ""
+        title: ""
       share: Konpartitu
       status_message: 
         author: "%{author} duela %{time}"
@@ -1671,6 +1682,7 @@ eu:
       areas: Eremuak
       choose_an_area: "Aukeratu arlo bat"
       facebook: facebook
+      register: ""
       search: "Bilatu behar duzuna&hellip;"
       sign_in: Login
       sign_out: Irten
@@ -1807,6 +1819,7 @@ eu:
       title: Argitaratu
       video: Bideoa
     proposal_form: 
+      accept: Onartu
       describe_the_proposal: "Deskribatu proposamena hitz gutxitan"
       do_you_want_to_explain_the_proposal: "Proposamena xehetasun gehiagorekin azaldu nahi duzu?"
       loading: "Irudia kargatzen ari da..."
@@ -1845,13 +1858,16 @@ eu:
     proposals_list: 
       no_content: "Ez dago proposamenik arlo honetan"
     question_form: 
+      accept: Onartu
       describe_the_question: "Deskribatu galdera hitz gutxitan"
       do_you_want_to_explain_the_question: "Galdera xehetasun gehiagorekin azaldu nahi duzu?"
       make_a_question: 
         submit: "Galdera bidali"
         title: "Egin galdera bat"
       name_of_the_area_or_politician: "Arloaren edo politikariaren izena..."
+      or: edo
       remember_to_be_concise: "Labur eta zehatz adierazi, mesedez. Horrela, lehenago erantzungo dizute."
+      see_all_the_areas: "arlo guztiak ikusi"
       who_is_the_target: "Nori zuzendu nahi diozu galdera?"
       your_question: "Zure galdera"
     questions: 
@@ -1938,6 +1954,7 @@ eu:
       sign_in: Sartu
       twitter_signin: Twitter
     user_publish: 
+      close: Itxi
       continue: Jarraitu
       description: "Aukeratu eduki mota, eta konpartitu gainerako erabiltzaileekin!"
       proposal: Proposamena
@@ -1955,6 +1972,7 @@ eu:
           see_all: "arlo guztiak ikusi"
           target: "Zein eremutara zuzendu nahi duzu galdera?"
           target_name: "Arloaren izena..."
+          upload: "Berri bat igo"
         question: 
           description: "Deskribatu galdera hitz gutxitan"
           explanation: "Galdera xehetasun gehiagorekin azaldu nahi duzu?"
