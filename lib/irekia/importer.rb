@@ -257,53 +257,53 @@ module Irekia
                 area_model.save!
               end
 
-              puts "=> getting politicians data for #{area_id} - #{area_name}"
+              #puts "=> getting politicians data for #{area_id} - #{area_name}"
 
-              politicians_ids = area_detail['people'].map(&:first)
+              #politicians_ids = area_detail['people'].map(&:first)
 
-              politicians_ids.each do |politician_id|
-                politician = get_json(politician_detail_url.call(lang, politician_id), 'person')
+              #politicians_ids.each do |politician_id|
+                #politician = get_json(politician_detail_url.call(lang, politician_id), 'person')
 
-                begin
-                  user = User.find_or_initialize_by_external_id(politician_id)
+                #begin
+                  #user = User.find_or_initialize_by_external_id(politician_id)
 
-                  user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ')
-                  user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')
-                  user.contact_email         =  politician['email'].try(:first)
-                  user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
-                  user.city                  = (politician['address'][2] || '').split(' ').map(&:capitalize).join(' ')
-                  user.role                  = Role.politician.first
-                  if user.new_record?
-                    user.email                 = "#{user.fullname.underscore}@ej-gv.es"
-                    user.password              = 'virekia'
-                    user.password_confirmation = 'virekia'
-                  end
+                  #user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ')
+                  #user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')
+                  #user.contact_email         =  politician['email'].try(:first)
+                  #user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
+                  #user.city                  = (politician['address'][2] || '').split(' ').map(&:capitalize).join(' ')
+                  #user.role                  = Role.politician.first
+                  #if user.new_record?
+                    #user.email                 = "#{user.fullname.underscore}@ej-gv.es"
+                    #user.password              = 'virekia'
+                    #user.password_confirmation = 'virekia'
+                  #end
 
-                  title_name = politician['works_for'].first.first.try(:capitalize)
-                  if user.title.present?
-                    user.title.update_attribute('translated_name', (user.title.translated_name || {}).merge({"#{lang}" => title_name}))
-                  else
-                    user.title = Title.create(:translated_name => {"#{lang}" => title_name}, :name => title_name)
-                  end
+                  #title_name = politician['works_for'].first.first.try(:capitalize)
+                  #if user.title.present?
+                    #user.title.update_attribute('translated_name', (user.title.translated_name || {}).merge({"#{lang}" => title_name}))
+                  #else
+                    #user.title = Title.create(:translated_name => {"#{lang}" => title_name}, :name => title_name)
+                  #end
 
-                  user.facebook_username     = politician[''].first.delete('http://facebook.com/') rescue nil
-                  user.areas                 = Area.where(:external_id => area['id'])
-                  user.last_import           = Time.at(politician['update_date'])
-                  user.profile_picture       = Image.create(:remote_image_url => "http://www2.irekia.euskadi.net/#{politician['image']}") if politician['image']
-                  user.skip_mailing          = true
-                  user.save!
+                  #user.facebook_username     = politician[''].first.delete('http://facebook.com/') rescue nil
+                  #user.areas                 = Area.where(:external_id => area['id'])
+                  #user.last_import           = Time.at(politician['update_date'])
+                  #user.profile_picture       = Image.create(:remote_image_url => "http://www2.irekia.euskadi.net/#{politician['image']}") if politician['image']
+                  #user.skip_mailing          = true
+                  #user.save!
 
-                  if File.exists?(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg"))
-                    user.profile_picture.destroy
-                    user.profile_picture = Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg")))
-                    user.save!
-                  end
-                rescue Exception => ex
-                  puts politician.inspect
-                  puts ex
-                  puts ex.backtrace
-                end
-              end
+                  #if File.exists?(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg"))
+                    #user.profile_picture.destroy
+                    #user.profile_picture = Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg")))
+                    #user.save!
+                  #end
+                #rescue Exception => ex
+                  #puts politician.inspect
+                  #puts ex
+                  #puts ex.backtrace
+                #end
+              #end
             end
           end
         rescue Exception => ex
@@ -442,6 +442,30 @@ module Irekia
         end
         area.image = Image.create(:image => File.open(Rails.root.join("db/seeds/support/images/area_#{"%02d" % area.external_id}.png")))
         area.save!
+      end
+
+      politicians_texts = [
+        ["Isabel Celaá", 6928, {"es"=>["Nacida en Bilbao en 1949. Ha promovido la renovación del sistema educativo vasco, tanto en el ámbito lingüístico, gracias al Marco de Educación Trilingüe, como en el tecnológico, con la introducción del proyecto Eskola 2.0. Su gestión también se caracteriza por una apuesta firme por la Formación Profesional, vertiente en la que ", "destacan la aprobación del III plan vasco de FP y la nueva ley de aprendizaje a lo largo de la vida, y por su apoyo a la investigación científica."], "eu"=>["Bilbon jaio zen 1949an. Euskal hezkuntza sistemaren berrikuntza bultzatu du, bai hizkuntzaren alorrean, Hezkuntza Hirueledunaren Esparruari esker, eta bai alor teknologikoan, Eskola 2.0 proiektua abiatzearen bidez. Beraren kudeaketaren beste ezaugarri bat Lanbide Heziketaren aldeko apustu irmoa da; arlo  horretan,", " nabarmentzekoak dira LHaren III. euskal planaren onarpena eta bizitza osorako ikaskuntzari buruzko lege berria, eta baita ikerketa zientifikoari emandako sostengua ere."]}],
+        ["Rodolfo Ares", 953, {"es"=>["Nacido en Orense en 1954. Su prioridad ha sido acabar con el terrorismo y consolidar la paz, la libertad y la convivencia en Euskadi. Una política que ha permitido, en colaboración con la ciudadanía, dar pasos hacia el final del terrorismo y de la amenaza permanente de ETA tras 30 años de actividad. Terminar con la violencia machista es otro objetivo prioritario, a", "través de la Dirección de Atención a las Víctimas de la Violencia de Género. Además, se ha impulsado un plan para modernizar la Ertzaintza, garantizando la seguridad en las calles."], "eu"=>["Rodolfo Ares (Ourense, 1954). Bere helburu nagusia terrorismoa ezabatzea izan da, bakea, askatasuna eta elkarbizitza Euskadin behin betiko finkatzeko. Politika horri esker, herritarren lankidetzarekin, urratsak egin ahal izan dira terrorismoaren eta ETAren etengabeko mehatxuaren amaierarantz, 30 urteko jardueraren ostean. Lehentasuna duen beste helburu ", "bat indarkeria matxista desagerraraztea da, Genero Indarkeriaren Biktimei Laguntzeko Zuzendaritzaren bidez. Gainera, Ertzaintza modernizatzeko plan bat bultzatu da, kaleetako segurtasuna bermatzeko xedez. "]}],
+        ["Carlos Aguirre", 169, {"es"=>["Nacido en Bilbao, 1956. Impulsó la Ley de Medidas Presupuestarias Urgentes (aprobada en septiembre de 2009), las Leyes de  Presupuestos Generales de la CAPV del 2009, 2010 y 2011 y la Ley de Cajas, de Tasas y Precios,  de Entidades Participadas y de EPSVs. Asimismo ha", "impulsado herramientas de Transparencia Económico-Administrativa como el Perfil del Contratante, una experiencia pionera en el ámbito de la contratación pública."], "eu"=>["Bilbo, 1956. Premiazko Aurrekontu Neurriei buruzko Legea (2009ko irailean onartua), EAEko 2009, 2010 eta 2011ko Aurrekontu Orokorren onarpena eta Kutxen Legea, Tasa eta Prezioen Legea, Partaidetzazko Erakundeena eta BGAEen Legea bultzatu ditu. Orobat, Gardentasun Ekonomiko-", "administratiborako tresnak bultzatu ditu, hala nola Kontratatzailearen Profila, esperientzia aurrendari bat kontratazio publikoaren alorrean."]}],
+        ["Blanca Urgell", 6936, {"es"=>["Nacida en Vitoria-Gasteiz en 1962. En esta primera parte de la legislatura se ha presentado el Proyecto de Ley de Juventud, se está trabajando en el III Plan Joven, se ha aprobado el Proyecto de Ley contra del dopaje en el deporte y se ha impulsado la candidatura del Camino del Norte", "a Patrimonio de la Humanidad. Se ha consolidado el Instituto Etxepare como promotor de la lengua y cultura vascas en un mundo global. "], "eu"=>["Vitoria-Gasteizen jaio zen 1962an. Legealdiaren lehenengo zati honetan, Gazteriaren Legearen Proiektua aurkeztu da, III. Gazte Plana lantzen ari da, kirolean dopatzearen aurkako Lege Proiektua onartu da, eta Iparraldeko Bidearen hautagaitza bultzatu da Gizateriaren", "Ondare izateko. Etxepare Institutua sendotu da, euskararen eta euskal kulturaren eragile bezala, mundu globalean."]}],
+        ["Patxi López", 8080, {"es"=>["Nacido en Portugalete en 1959. Tomó posesión de su cargo el 7 de mayo de 2009.  Sus objetivos han sido dar normalidad a la política vasca, luchar contra el terrorismo hacer frente a la crisis ayudando a la generación de empleo y al crecimiento de la economía, y poner las bases de una Euskadi solidaria, sostenible y competitiva.", "Una de las prioridades del Lehendakari es la consolidación de la libertad y la convivencia democrática en la sociedad vasca desde las bases de la unidad, la concordia y la memoria."], "eu"=>["Portugalete, 1959. 2009ko maiatzaren 7an hartu zuen bere kargua. Bere helburu nagusiak euskal politikari normaltasuna ematea, terrorismoaren aurka borrokatzea, krisiari aurre egitea, enpleguaren sorrerari eta ekonomiaren hazkundeari lagunduz, eta Euskadi solidario, iraunkor eta lehiakorraren oinarriak jartzea.", "Lehendakariaren lehentasunetako bat da askatasuna eta elkarbizitza demokratikoa euskal gizartean sendotzea, batasuna, adostasuna eta oroimena oinarritzat hartuta."]}],
+        ["Iñaki Arriola", 7552, {"es"=>["Nacido en EIbar en 1959. Durante su mandato como consejero se ha dado un fuerte impulso a las obras del Tren de Alta Velocidad en Gipuzkoa y ha promovido el Metro de Donostialdea, un proyecto con el que se pretende llegar a 30 millones de viajeros y dar servicio directo o indirecto a", "más del 70% de la población guipuzcoana. Este año presentará en el consejo de Gobierno el Anteproyecto de Ley de Vivienda."], "eu"=>["Eibar, 1959. Sailburua izan den garaian, bultzada handia eman zaie Abiadura Handiko Trenaren obrei, Gipuzkoako tartean, eta Donostialdeako Metroa sustatu da; proiektu horren asmoa da 30 milioi bidaiarirengana iristea eta zuzeneko edo zeharkako zerbitzua ematea Gipuzkoako ", "biztanleriaren %70ri. Aurten, Etxebizitzaren Legearen Aurreproiektua aurkeztuko du Gobernu kontseiluan. "]}],
+        ["Gemma Zabaleta", 7335, {"es"=>["Nacida en Donostia en 1957. Su principal apuesta es ligar la prestación de las ayudas sociales con la activación por el empleo, para lo que Lanbide se ha hecho cargo de la gestión de la Renta de Garantía de Ingresos, que hasta ahora estaba en manos de los servicios sociales de los ayuntamientos y de las diputaciones. En cuanto a las", "políticas activas de empleo, el empeño es que  Lanbide ofrezca una orientación personalizada a todos los ciudadanos que lo demanden, lo que supone una de sus principales señas de identidad."], "eu"=>["Donostian jaio zen 1957ean. Bere apustu nagusia da gizarte laguntzen prestazioa enpleguaren aktibazioarekin uztartzea; horri begira, Lanbidek bere gain hartu du Diru-sarrerak Bermatzeko Errentaren kudeaketa, orain arte udal eta aldundien gizarte zerbitzuen eskuetan baitzeuden. Enplegurako politika aktiboei dagokienez,", "asmoa da Lanbidek orientabide pertsonalizatua eskaintzea hori eskatzen dute hiritar guztiei. Izan ere, hori da beraren identitatearen ezaugarri nagusietako bat. "]}],
+        ["Idoia Mendia", 3955, {"es"=>["Nacida en Bilbao en 1965. Ejerce las labores de portavoz del Gobierno Vasco y está al frente del departamento de Justicia y Administración Pública. La modernización de la Administración de Justicia es uno de sus objetivos prioritarios. Es responsable de la gestión de las webs gubernamentales. Entre sus", "iniciativas destacan proyectos como Open Data Euskadi, el Plan de Innovación Pública 2011 - 2013 y la novedosa experiencia de teletrabajo."], "eu"=>["Bilbo, 1965. Eusko Jaurlaritzako bozeramailea ere bada. Justizia Administrazioaren modernizazioa bere lehentasunezko helburuetako bat da. Jaurlaritzaren webguneen kudeaketaz arduratzen da. Bere ekimenen artean azpimarratzekoa da Open Data Euskadi", "proiektua, Eusko Jaurlaritzaren Berrikuntza Publikorako Plana (2011-2013) telelan esperientzia berritzailea martxan jarri ditu. "]}],
+        ["Bernabé Unda", 7299, {"es"=>["", ""], "eu"=>["", ""]}],
+        ["Rafael Bengoa", 6934, {"es"=>["Nacido en Bilbao en 1952. Doctor en Medicina de la Universidad del País Vasco, máster en Gestión de Sistemas de Salud y Master en Salud Comunitaria de la Universidad de Londres en Inglaterra, Senior Fellow de la Business School de la Universidad de Manchester en Inglaterra y Diploma Gestión Hospitalaria en Deusto.", "Impulsor de la Estrategia para Afrontar el Reto de la Cronicidad en Euskadi, referencia en todo el Estado como modelo de transformación del sistema sanitario basado en la integración asistencial."], "eu"=>["Bilbon jaio zen 1952an. Medikuntzako Doktorea Euskal Herriko Unibertsitatetik, Osasun Sistemen Kudeaketaren Masterra eta Osasun Komunitarioaren Masterra Ingalaterrako Londresko Unibertsitatetik, Ingalaterrako Manchesterko Unibertsitateko Business Schooleko Senior Fellow, eta Ospitale Kudeaketaren Diploma Deustun. Kronikotasunaren Erronkari", "Euskadin Heltzeko Estrategiaren bultzatzailea; estrategia hori erreferentziazkoa da estatu osoan, osasun sistemaren eraldaketa bideratzen baitu asistentziaren integrazioan oinarrituta. "]}]]
+
+      # updates descriptions and icons for all areas
+      politicians_texts.each do |politician_text|
+        politician = User.find_by_external_id(politician_text[1])
+        %w(es eu).each do |lang|
+          puts politician_text[2][lang][0]
+          puts politician_text[2][lang][1]
+          politician.send("description_1_#{lang}=", politician_text[2][lang][0])
+          politician.send("description_2_#{lang}=", politician_text[2][lang][1])
+        end
+        politician.save!
       end
     end
 
