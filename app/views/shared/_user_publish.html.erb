@@ -1,4 +1,4 @@
-<div id="publish-popover" class="article user publish with_footer popover">
+<div id="publish-popover" class="article user publish with_footer popover" data-t-continue="<%= t(".continue") %>" data-t-publish="<%= t(".publish") %>" data-t-continue="<%= t(".continue") %>" data-t-close="<%= t(".close") %>">
   <div class="inner clearfix">
     <header class="clearfix"><h2><%= t(".publish") %></h2></header>
 
@@ -84,7 +84,7 @@
 
                   <div class="extra">
                     <div class="input_field image_placeholder uploader">
-                      <span class="holder"><span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>">Sube una imagen.</span></span>
+                      <span class="holder"><span class="upload" id="upload_proposal_image" data-url="<%= proposals_path %>"><%= t(".section.proposal.upload") %></span></span>
                       <span class="percentage">0%</span>
                       <span class="loading"><%= t(".section.proposal.loading_photo") %></span>
                       <div class="progress"></div>

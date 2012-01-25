@@ -1952,12 +1952,14 @@ es:
       twitter_signin: Twitter
     user_publish:
       continue: Continuar
+      close: Cerrar
       description: "¡Elige el tipo de contenido, y compártelo con el resto de los usuarios!"
       proposal: Propuesta
       publish: Publicar
       question: Pregunta
       section:
         proposal:
+          upload: "Sube una foto"
           description: "Describe la propuesta en pocas palabras"
           explanation: "¿Quieres explicar la propuesta con más detalle?"
           image_will_be_included: "Se incluirá esta imagen en la propuesta."
