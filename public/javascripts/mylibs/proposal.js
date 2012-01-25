@@ -552,7 +552,7 @@
           var p = ((parseFloat(arguments[2]) / parseFloat(arguments[3])) * 100);
           var width = parseInt(534 * parseInt(p, 10) / 100, 10);
 
-          console.debug(p, width, arguments, arguments[2], arguments[3]);
+          //console.debug(p, width, arguments, arguments[2], arguments[3]);
 
           if (parseInt(p) >= 75) $ps.find(".uploader").find(".loading").fadeOut(speed);
           if (parseInt(p) >= 46) $ps.find(".uploader").find(".percentage").css("color", "#fff");
@@ -563,7 +563,7 @@
         onComplete: function(id, fileName, responseJSON){
           data.spinner.stop();
 
-          console.debug(fileName, responseJSON, responseJSON.image_cache_name);
+          //console.debug(fileName, responseJSON, responseJSON.image_cache_name);
           $uploader.find(".loading").fadeOut(speed);
           $uploader.find(".percentage").fadeOut(speed);
 

@@ -88,7 +88,6 @@
 
       // Translation
       data.translations.accept = $("div#"+store).attr("data-t-accept");
-      console.log(data.translations.accept);
 
       // Autolaunch of the widget
       if (settings.open == true) {
