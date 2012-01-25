@@ -104,18 +104,21 @@ class Question < Content
     @to_update_public_streams << author
 
     if target_user
+
       @to_update_public_streams += target_user.areas
 
       @to_update_private_streams << target_user
-      @to_update_private_streams += target_user.areas.map(&:followers).flatten
       @to_update_private_streams += target_user.followers
+      @to_update_private_streams += target_user.areas.map(&:followers).flatten
 
       @to_notificate << target_user
     elsif target_area
+
       @to_update_public_streams << target_area
       @to_update_public_streams += target_area.team
 
       @to_update_private_streams += target_area.team
+      @to_update_private_streams += target_area.followers
 
       @to_notificate += target_area.team
     end
