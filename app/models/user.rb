@@ -288,6 +288,14 @@ class User < ActiveRecord::Base
     where(:name => 'usuario dado', :lastname => 'de baja').first
   end
 
+  def description_1
+    send("description_1_#{I18n.locale.to_s}") || send("description_1_#{I18n.default_locale.to_s}")
+  end
+
+  def description_2
+    send("description_2_#{I18n.locale.to_s}") || send("description_2_#{I18n.default_locale.to_s}")
+  end
+
   def update_with_email_and_password(attributes = {})
     from_twitter = email == twitter_username
     if attributes.slice(:email, :password).present? && !from_twitter

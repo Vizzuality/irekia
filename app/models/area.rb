@@ -67,6 +67,12 @@ class Area < ActiveRecord::Base
                    :description,
                    :description_1,
                    :description_2,
+                   :description_1_es,
+                   :description_2_es,
+                   :description_1_eu,
+                   :description_2_eu,
+                   :description_1_en,
+                   :description_2_en,
                    :slug_es,
                    :slug_eu,
                    :slug_en,
@@ -107,6 +113,14 @@ class Area < ActiveRecord::Base
 
   def name
     send("name_#{I18n.locale.to_s}") || send("name_#{I18n.default_locale.to_s}")
+  end
+
+  def description_1
+    send("description_1_#{I18n.locale.to_s}") || send("description_1_#{I18n.default_locale.to_s}")
+  end
+
+  def description_2
+    send("description_2_#{I18n.locale.to_s}") || send("description_2_#{I18n.default_locale.to_s}")
   end
 
   def create_action(item)

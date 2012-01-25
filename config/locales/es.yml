@@ -1651,6 +1651,10 @@ es:
         not_answered: "Aún no contestada"
         read_more: "Leer más"
         title: "Pregunta para %{receiver}:"
+      question_unanswered:
+        title: "%{author} te ha hecho una"
+        author: "hace %{time}"
+        new_question: "nueva pregunta"
       question_mini:
         answered: "Contestada hace %{time}"
         author: "%{author} hace %{time}"
