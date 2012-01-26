@@ -1672,6 +1672,8 @@ function loginInLinks() {
               $(this).parent().toggleClass("selected");
               $(".view_map").parent().toggleClass("selected");
 
+              $(".agenda .more_months").show();
+
               $(".agenda_map .map").animate({opacity:0, height:"200px"}, speed);
               $(".agenda_map").animate({height:$(".agenda_map .agenda").height()}, speed);
               $(".agenda_map .agenda").fadeIn("fast");
@@ -1700,6 +1702,7 @@ function loginInLinks() {
               $(".view_calendar").parent().toggleClass("selected");
               $(".agenda_map .map, .agenda_map").animate({height:mapHeight}, speed);
               $(".agenda_map .map").animate({opacity:1}, speed);
+              $(".agenda .more_months").hide();
               $(".agenda_map .agenda").fadeOut("fast");
 
               if (!preloaded) { setTimeout(function() { preloaded = true; startMap(); }, 100); }
