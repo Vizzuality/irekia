@@ -1,0 +1,19 @@
+<div class="article static with_sidebar">
+  <div class="inner">
+    <header>
+    <div class="left">
+      <h1><%= t(".title") %></h1>
+    </div>
+    </header>
+    <div class="left">
+      <%= raw t(".text") %>
+    </div>
+    <div class="right">
+      <ul class="selector">
+        <li class="selected"><%= link_to t(".title"), privacy_police_path %></li>
+        <li><%= link_to t(".use_conditions"), use_conditions_path %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="t"></div><div class="f"></div>
+</div>
