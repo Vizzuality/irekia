@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
 
   before_validation :check_blank_name, :on => :create
   before_create :check_user_role
-  after_create :follow_presidencia
+  after_create :default_follow
   before_destroy :reassign_contents
 
   validates           :terms_of_service,  :acceptance => true
@@ -265,7 +265,7 @@ class User < ActiveRecord::Base
   end
 
   def self.patxi_lopez
-    where('(name = ? AND lastname = ?) OR external_id = ?', 'Patxi', 'Lopez Alvarez', 8080).first
+    find_by_external_id('8080')
   end
 
   def self.advisers
@@ -694,14 +694,14 @@ class User < ActiveRecord::Base
   end
   private :check_user_role
 
-  def follow_presidencia
+  def default_follow
     if citizen?
-      areas_following << Area.presidencia
-      users_following = User.advisers.all
-      users_following << User.patxi_lopez
+      self.areas_following << Area.presidencia
+      self.users_following = User.advisers.all
+      self.users_following << User.patxi_lopez
       save!
     end
   end
-  private :follow_presidencia
+  private :default_follow
 
 end
