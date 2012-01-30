@@ -149,10 +149,13 @@ Irekia::Application.routes.draw do
       authenticated :user do
         root :to => "users#show"
       end
+
       root :to                 => 'home#index'
 
       match '/agenda'          => 'home#agenda'
       match '/nav_bar_buttons' => 'home#nav_bar_buttons'
+      match '/privacy_police'  => 'statics#privacy_police', :as => :privacy_police
+      match '/use_conditions'  => 'statics#use_conditions', :as => :use_conditions
       post  '/change_locale'   => 'home#change_locale'
 
     end

@@ -206,5 +206,9 @@ Devise.setup do |config|
   # end
   config.warden do |manager|
     manager.failure_app = IrekiaLoginFailure
+    manager.strategies.add(:irekia_mobile, Irekia::Strategies::Mobile)
+
+    strategies = manager.default_strategies(:scope => :user)
+    strategies[strategies.index(:database_authenticatable)] = :irekia_mobile
   end
 end

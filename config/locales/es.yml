@@ -1138,6 +1138,9 @@ es:
       path_names:
         connect: conectar
         settings: preferencias
+  named_routes_path:
+    privacy_police: 'politica_de_privacidad'
+    use_conditions: 'condiciones_de_uso'
   searches:
     no_result:
       title: No hay resultados para esta búsqueda.
