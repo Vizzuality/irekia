@@ -1704,7 +1704,7 @@ es:
         in_favor: "a favor"
         iphone:
           date: "Hace %{time}"
-        neutral: "a favor"
+        neutral: "neutral"
         participation:
           one: "Un usuario ha participado"
           other: "%{count} usuarios han participado"
