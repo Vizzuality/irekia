@@ -14,7 +14,7 @@ class IrekiaMailer < ActionMailer::Base
       @step_1                  =  t('irekia_mailer.welcome.step_1')
       @step_1_detail           =  t('irekia_mailer.welcome.step_1_detail', :url => root_url)
       @step_2                  =  t('irekia_mailer.welcome.step_2')
-      @step_2_detail           =  t('irekia_mailer.welcome.step_2_detail', :url_questions => root_url, :url_proposals => root_url)
+      @step_2_detail           =  t('irekia_mailer.welcome.step_2_detail')
       @step_3                  =  t('irekia_mailer.welcome.step_3')
       @step_3_detail           =  t('irekia_mailer.welcome.step_3_detail')
       @access_irekia           =  t('irekia_mailer.welcome.access_irekia')
