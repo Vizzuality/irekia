@@ -23,13 +23,14 @@ namespace :irekia do
   end
 
   desc "Loads news from the official Irekia news feed"
+  task :import_news => :environment do
+    Irekia::Importer.get_news_from_rss
+  end
+
+  desc "Loads news from the official Irekia news feed"
   task :import_news_and_events => :environment do
-    begin
-      Irekia::Importer.get_news_from_rss
-      Irekia::Importer.get_events_from_ics
-    ensure
-      ActiveRecord::Base.connection.execute 'VACUUM;'
-    end
+    Irekia::Importer.get_news_from_rss
+    Irekia::Importer.get_events_from_ics
   end
 
   desc "Loads areas and politicians from the official Irekia communication guide"
