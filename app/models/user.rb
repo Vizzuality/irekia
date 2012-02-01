@@ -698,7 +698,7 @@ class User < ActiveRecord::Base
     if citizen?
       self.areas_following << Area.presidencia
       self.users_following = User.advisers.all
-      self.users_following << User.patxi_lopez
+      self.users_following << User.patxi_lopez if User.patxi_lopez.present?
       save!
     end
   end

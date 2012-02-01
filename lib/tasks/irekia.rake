@@ -1,5 +1,5 @@
 desc "Setup Irekia Project for first time"
-task :setup => %w(irekia:setup_database irekia:import_areas_and_politicians irekia:load_test_data irekia:import_news irekia:import_events irekia:import_users)
+task :setup => %w(irekia:setup_database irekia:import_areas_and_politicians irekia:load_test_data irekia:import_news_and_events irekia:import_users)
 
 namespace :irekia do
   desc "Setup Irekia Database"

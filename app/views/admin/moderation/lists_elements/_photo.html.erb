@@ -1,2 +1,2 @@
-<h4><%= data.title %></h4>
-<p><%= data.description %></p>
+<h4><%= link_to data.title, admin_moderation_edit_path(:type => data.type, :id => data.id) %></h4>
+<p><%= link_to data.description, admin_moderation_edit_path(:type => data.type, :id => data.id) %></p>
