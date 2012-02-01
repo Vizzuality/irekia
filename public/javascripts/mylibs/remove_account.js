@@ -134,34 +134,12 @@
     GOD.subscribe(event);
   }
 
-  function _addSubmitAction(data) {
-    data.$ps.find("form").die();
-
-    data.$ps.find("form").submit(function(e) {
-      spinner.spin(spin_element);
-      disableSending(data.$ps);
-    });
-
-    data.$ps.find("form").live('ajax:success', function(event, response, status) {
-      spinner.stop();
-      enableSending(data.$ps);
-
-      _close(data, false, function() {
-        _gotoSuccess(data, response);
-      });
-    });
-
-    data.$ps.find("form").live('ajax:error', function(event, response, status) {
-      spinner.stop();
-      enableSending(data.$ps);
-    });
-  }
-
   function _addCloseAction(data) {
     data.$ps.find(".close").unbind("click");
     data.$ps.find(".close").bind('click', function(e) {
       e.stopPropagation();
       e.preventDefault();
+      spinner.stop();
       _close(data, true);
     });
   }
@@ -170,6 +148,7 @@
     data.$ps.unbind("click");
     data.$ps.bind('click', function(e) {
       e.stopPropagation();
+      spinner.spin(spin_element);
     });
   }
 
