@@ -1483,6 +1483,11 @@ div#main.show div.left img {margin:4px 0 7px;}
     }
   } // publish
 
+  &.byebye {
+    .inner { text-align: left; } 
+    .bfooter .inner { text-align:left; } 
+  } 
+
   // Thin article
   &.thin {
     width: 636px;
