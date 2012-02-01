@@ -152,7 +152,7 @@ class UsersController < ApplicationController
 
   def destroy
     if current_user.destroy
-      redirect_to root_path
+      redirect_to byebye_path
     else
       render :settings
     end

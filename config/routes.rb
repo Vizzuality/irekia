@@ -154,9 +154,10 @@ Irekia::Application.routes.draw do
 
       match '/agenda'          => 'home#agenda'
       match '/nav_bar_buttons' => 'home#nav_bar_buttons'
+      post  '/change_locale'   => 'home#change_locale'
+      match '/byebye'          => 'home#byebye', :as => :byebye
       match '/privacy_police'  => 'statics#privacy_police', :as => :privacy_police
       match '/use_conditions'  => 'statics#use_conditions', :as => :use_conditions
-      post  '/change_locale'   => 'home#change_locale'
 
     end
 

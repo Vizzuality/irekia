@@ -1141,6 +1141,7 @@ es:
   named_routes_path:
     privacy_police: 'politica_de_privacidad'
     use_conditions: 'condiciones_de_uso'
+    byebye: 'usuario_eliminado'
   statics:
     privacy_police:
       title: Política de privacidad
