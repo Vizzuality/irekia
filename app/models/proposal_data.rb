@@ -27,7 +27,13 @@ class ProposalData < ActiveRecord::Base
   end
 
   def body
-    read_attribute("body_#{I18n.locale}") || (I18n.available_locales - [I18n.locale]).map{|lang| read_attribute("body_#{lang}")}.compact.first || ''
+    current_locale_body = read_attribute("body_#{I18n.locale}")
+    alt_locale_body = (I18n.available_locales - [I18n.locale]).map{|lang| read_attribute("body_#{lang}")}.select{|v| v.present?}.first
+    return current_locale_body if current_locale_body.present?
+    return alt_locale_body if alt_locale_body.present?
+    ''
+  rescue
+    ''
   end
 
   def body=(new_body)
