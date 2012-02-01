@@ -14,18 +14,17 @@
   <div class="t"></div><div class="f"></div>
 </div>
 
-<% if (@items.size>0) %>
 <div class="article activity">
   <div class="inner">
     <div class="content">
       <ul>
-        <%= render 'admin/moderation/items_list_edit' %>
+        <li class="content edit">
+          <div class="left">
+            <%= render "admin/moderation/lists_elements/edit/#{@item.type.downcase}", :data => @item %>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
   <div class="t"></div><div class="f"></div>
 </div>
-<% end %>
-
-<span class="no_content" <% if (@items.blank?) %>style="display:block"<% end %>>No hay más contenidos<br/>pendientes de ser<br/>moderados</span>
-<span class="loader">Cargando más contenido</span>

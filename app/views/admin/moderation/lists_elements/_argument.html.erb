@@ -1,1 +1,1 @@
-<p><%= data.reason %></p>
+<p><%= link_to data.reason, admin_moderation_edit_path(:type => data.type, :id => data.id) %></p>

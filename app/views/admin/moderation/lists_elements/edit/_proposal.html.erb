@@ -12,8 +12,12 @@
 
 <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
   <%= form.fields_for :proposal_data do |proposal_data_form| %>
-    <%= proposal_data_form.text_area :"title_{I18n.locale}" %>
-    <%= proposal_data_form.text_area :body %>
+    <%= proposal_data_form.text_area :"title_es" if data.title_es.present? %>
+    <%= proposal_data_form.text_area :"body_es"  if data.body_es.present? %>
+    <%= proposal_data_form.text_area :"title_eu" if data.title_eu.present? %>
+    <%= proposal_data_form.text_area :"body_eu"  if data.body_eu.present? %>
+    <%= proposal_data_form.text_area :"title_en" if data.title_en.present? %>
+    <%= proposal_data_form.text_area :"body_en"  if data.body_en.present? %>
   <% end -%>
 
   <div class="actions">
