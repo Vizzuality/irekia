@@ -7,6 +7,7 @@ module Irekia
     @just_created = true
     @to_update_public_streams = @to_update_private_streams = @to_notificate = @to_update_private_streams_ids = nil
 
+    protected
 
     def just_created=(value)
       @just_created = value
@@ -125,9 +126,11 @@ module Irekia
 
       end
 
-      update_counters(item)
-      send_notifications(item)
-      send_mail
+      unless item.cancel_notifications
+        update_counters(item)
+        send_notifications(item)
+        send_mail
+      end
     end
 
     def update_counters(item)

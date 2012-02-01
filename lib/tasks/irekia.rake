@@ -51,4 +51,8 @@ namespace :irekia do
   task :update_areas_and_politicians => :environment do
     Irekia::Importer.update_areas_and_politicians_descriptions
   end
+
+  task :repair_encoding_in_external_proposals => :environment do
+    Irekia::Importer.repair_encoding_in_external_proposals
+  end
 end

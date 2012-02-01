@@ -9,7 +9,7 @@ class Participation < ActiveRecord::Base
   belongs_to :content
 
   attr_protected :moderated, :rejected
-  attr_accessor :to_update_public_streams, :to_update_private_streams
+  attr_accessor :to_update_public_streams, :to_update_private_streams, :cancel_notifications
 
   before_save   :update_published_at
   before_save   :update_moderated_at
