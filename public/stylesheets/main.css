@@ -208,6 +208,7 @@ div#main.show div.left img { margin: 4px 0 7px; }
 
 /* Static .article */
 #container .article.static .inner header h3 { text-transform: none; font-size: 19px; font-family: "Helvetica", sans-serif; font-weight: normal; }
+#container .article.static .inner li { margin: 0 0 20px 0; }
 
 #container .article.with_filters div.left span.empty { display: block; width: 100%; margin: 80px 0 80px 0; color: #7D8A92; font: normal 17px Arial; text-align: center; }
 #container .article.with_filters .bfooter .inner .more_actions.hide { display: none; }

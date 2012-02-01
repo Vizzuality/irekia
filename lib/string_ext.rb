@@ -13,6 +13,7 @@ module StringExt
     def sanitize_sql!
       self.gsub(/\\/, '\&\&').gsub(/'/, "''")
     end
+
   end
 
   def self.included(receiver)

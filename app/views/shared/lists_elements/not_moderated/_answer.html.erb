@@ -5,7 +5,7 @@
 
   <p class="excerpt">
 
-  <%= %Q{"#{data.answer_text}"} %>
+  <%= %Q{"#{truncate(data.answer_text, :length => 160)}"} %>
 
   <%= render 'shared/lists_elements/not_moderated/footer', :data => data %>
 </div>

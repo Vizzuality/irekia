@@ -14,7 +14,7 @@ class IrekiaMailer < ActionMailer::Base
       @step_1                  =  t('irekia_mailer.welcome.step_1')
       @step_1_detail           =  t('irekia_mailer.welcome.step_1_detail', :url => root_url)
       @step_2                  =  t('irekia_mailer.welcome.step_2')
-      @step_2_detail           =  t('irekia_mailer.welcome.step_2_detail', :url_questions => root_url, :url_proposals => root_url)
+      @step_2_detail           =  t('irekia_mailer.welcome.step_2_detail')
       @step_3                  =  t('irekia_mailer.welcome.step_3')
       @step_3_detail           =  t('irekia_mailer.welcome.step_3_detail')
       @access_irekia           =  t('irekia_mailer.welcome.access_irekia')
@@ -110,6 +110,7 @@ class IrekiaMailer < ActionMailer::Base
     I18n.with_locale author.locale || I18n.default_locale do
       @user_settings_url       = settings_user_url(author, :locale => I18n.locale)
       @item_type               = item.class.model_name.human.downcase
+      @item_url                = polymorphic_url(item, :locale => I18n.locale)
       @subject = @title        = t("irekia_mailer.moderation_approved.subject.#{item.class.name.downcase}")
       @detail                  = if item.parent.present?
         t("irekia_mailer.moderation_approved.detail_with_parent.#{item.parent.class.name.downcase}", :item => @item_type, :parent_text => item.parent.text)

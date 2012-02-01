@@ -116,14 +116,13 @@ Irekia::Application.routes.draw do
       resources :images, :only => [:create, :update, :destroy]
 
 
-      match "datalogger/login" => 'demo#datalogger_login'
-      match "datalogger/home" => 'demo#datalogger_home'
-      match "datalogger/publish" => 'demo#datalogger_publish'
+      match "demo/static" => 'demo#static'
 
       resources :demo do
         member do
           get :user_publish
           get :politician_publish
+          get :static
           get :event_edit
           # TODO: delete this
           get :news

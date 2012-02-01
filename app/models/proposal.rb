@@ -96,9 +96,9 @@ class Proposal < Content
   end
 
   def percent_in_favor
-    return 100 if participation.blank?
-    return 100 if participation == 0
-    (in_favor * 100 / participation).round || 100
+    return 0 if participation.blank?
+    return 0 if participation == 0
+    (in_favor * 100 / participation).round || 0
   end
 
   def percent_against

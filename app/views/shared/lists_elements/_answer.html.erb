@@ -9,7 +9,7 @@
 
   <%= t(".title.answer_with_video.#{am_I?(data.author) ? 'you' : 'other'}") %>
   <% else %>
-    <%= %Q{"#{data.answer_text}"} %>
+    <%= %Q{"#{truncate(data.answer_text, :length => 160)}"} %>
   <% end %>
 
   <div class="footer">
