@@ -858,15 +858,18 @@ div#main.show div.left img {margin:4px 0 7px;}
     .bfooter .inner div.left {margin-left:0}
   } // detail .inner
 
-  &.remove_account {
+  &.remove_account.popover {
+
     .inner .content {
       padding: 49px 0 6px 0;
       a { color: $standard_gray; }
     }
+
     .bfooter .inner {
       padding: 26px 0 24px 0!important;
-      form { @include inline-block; }
       .white_button { width:130px; }
+      form { @include inline-block; }
+      span.spinner { float:left; position: relative; width: 33px; height: 33px; margin: 0; z-index: 1000; top: 3px; left: 20px; } 
     }
   }
 
@@ -1642,6 +1645,7 @@ div#main.show div.left img {margin:4px 0 7px;}
     z-index: 1000;
 
     .bfooter .inner .spinner { float:right; display:block; width:33px; height:33px; margin-top: 7px; z-index:1000; }
+    
     .bfooter .inner .white_button { margin-left:5px; }
 
     .input_field.textarea.grow.placeholder,

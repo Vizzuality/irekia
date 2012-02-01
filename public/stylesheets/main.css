@@ -284,11 +284,12 @@ div#main.show div.left img { margin: 4px 0 7px; }
 #container .article.detail .inner .stats li .bottom { display: block; height: 28px; }
 #container .article.detail .inner .stats li .bottom p { width: 100%; padding: 7px 0 0 0; margin: 0; text-align: center; font: bold 11px Arial; text-transform: uppercase; color: #8C97A2; }
 #container .article.detail .bfooter .inner div.left { margin-left: 0; }
-#container .article.remove_account .inner .content { padding: 49px 0 6px 0; }
-#container .article.remove_account .inner .content a { color: #7d8a92; }
-#container .article.remove_account .bfooter .inner { padding: 26px 0 24px 0!important; }
-#container .article.remove_account .bfooter .inner form { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
-#container .article.remove_account .bfooter .inner .white_button { width: 130px; }
+#container .article.remove_account.popover .inner .content { padding: 49px 0 6px 0; }
+#container .article.remove_account.popover .inner .content a { color: #7d8a92; }
+#container .article.remove_account.popover .bfooter .inner { padding: 26px 0 24px 0!important; }
+#container .article.remove_account.popover .bfooter .inner .white_button { width: 130px; }
+#container .article.remove_account.popover .bfooter .inner form { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; }
+#container .article.remove_account.popover .bfooter .inner span.spinner { float: left; position: relative; width: 33px; height: 33px; margin: 0; z-index: 1000; top: 3px; left: 20px; }
 #container .article.micro { width: 390px; margin: 0 auto 40px auto; }
 #container .article.micro .inner header { margin: 0; }
 #container .article.micro .inner .content p { margin: 0 0 20px 0; padding: 0; font-size: 15px; color: #7d8a92; }
