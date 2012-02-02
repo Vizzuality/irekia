@@ -10,9 +10,10 @@ class IrekiaMailer < ActionMailer::Base
   def welcome(user)
     I18n.with_locale user.locale || I18n.default_locale do
       @subject =  @title       =  t('irekia_mailer.welcome.subject', :name => user.name)
+      @profile_url             = root_url
       @text                    =  t('irekia_mailer.welcome.text')
       @step_1                  =  t('irekia_mailer.welcome.step_1')
-      @step_1_detail           =  t('irekia_mailer.welcome.step_1_detail', :url => root_url)
+      @step_1_detail           =  t('irekia_mailer.welcome.step_1_detail')
       @step_2                  =  t('irekia_mailer.welcome.step_2')
       @step_2_detail           =  t('irekia_mailer.welcome.step_2_detail')
       @step_3                  =  t('irekia_mailer.welcome.step_3')
