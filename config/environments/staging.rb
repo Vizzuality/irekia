@@ -40,8 +40,17 @@ Irekia::Application.configure do
     :host      => "irekia-staging.ipq.co",
     :only_path => false
   }
-  config.action_mailer.delivery_method = :test
-
+  #config.action_mailer.delivery_method = :test
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'ferdev.com',
+    :user_name            => 'test@ferdev.com',
+    :password             => 'vizzuality',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+  }
   # Enable threaded mode
   # config.threadsafe!
 

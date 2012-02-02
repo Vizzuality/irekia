@@ -14,6 +14,6 @@
   </tr>
   <tr> <td width="635px" height="20px" valign="top"></td> </tr>
   <tr>
-    <td width="635px" valign="top"><h2 style="margin:0"><a href="#" target="_blank" style="font-size:17px; color:#1D79B0"><%= t('irekia_mailer.moderation_approved.show_item', :item => link_to(@item_type, @item_url)) %></a></h2></td>
+    <td width="635px" valign="top"><h2 style="margin:0"><a href="#" target="_blank" style="font-size:17px; color:#1D79B0"><%= raw t('irekia_mailer.moderation_approved.show_item', :item => link_to(@item_type, @item_url)) %></a></h2></td>
   </tr>
 </table>

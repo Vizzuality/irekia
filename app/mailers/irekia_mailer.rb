@@ -110,7 +110,7 @@ class IrekiaMailer < ActionMailer::Base
     I18n.with_locale author.locale || I18n.default_locale do
       @user_settings_url       = settings_user_url(author, :locale => I18n.locale)
       @item_type               = item.class.model_name.human.downcase
-      @item_url                = polymorphic_url(item, :locale => I18n.locale)
+      @item_url                = polymorphic_url(item.parent || item, :locale => I18n.locale)
       @subject = @title        = t("irekia_mailer.moderation_approved.subject.#{item.class.name.downcase}")
       @detail                  = if item.parent.present?
         t("irekia_mailer.moderation_approved.detail_with_parent.#{item.parent.class.name.downcase}", :item => @item_type, :parent_text => item.parent.text)
