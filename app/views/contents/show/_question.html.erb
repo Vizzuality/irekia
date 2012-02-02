@@ -59,7 +59,7 @@
                   <%= answer_data.text_area :answer_text, :class => :grow %>
                 </div>
 
-                <h3><%= t(".add_a_video") %></h3>
+                <h3 class="url"><%= t(".add_a_video") %></h3>
                 <div class="input_field placeholder input-counter-video" data-target="counter_answer">
                   <%= answer_data.fields_for :video_data, @new_answer.answer_data.build_video_data do |video_data| %>
                     <%= video_data.text_field :video_url %>

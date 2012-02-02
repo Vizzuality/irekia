@@ -2206,7 +2206,9 @@ span.where, .map .infowindow ul.details li.where {
     span.peak { position:absolute; top:-14px; left:30px; width:28px; height:14px; background:url('/images/icons/triangle.png') no-repeat 0 -181px; }
     .spinner { position:relative; float:left; top: 17px; }
 
-    h3 { float:left; }
+    h3 { float:left; width:100%; }
+    h3 .error { float:right; color: $error_color; }
+
 
     .footer {
 

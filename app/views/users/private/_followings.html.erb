@@ -9,7 +9,7 @@
   <div class="content">
     <ul class="suggestions">
       <%#// AREAS%>
-      <% @areas_following.first(9).each do |area| %>
+      <% @areas_following.each do |area| %>
         <li class="selected">
           <%= avatar area %>
           <div class="content">
@@ -25,7 +25,7 @@
         <hr/>
       <% end -%>
       <%#// USERS%>
-      <% @users_following.first(9).each do |user| %>
+      <% @users_following.each do |user| %>
         <li class="selected">
           <%= link_to avatar(user), path_for_user(user) %>
           <div class="content">
@@ -67,9 +67,6 @@
 <div class="bfooter">
 <div class="separator"></div>
 <div class="inner">
-  <div class="left">
-    <%= link_to t('.all_profiles'), '/in_development', :class => "down_arrow" if @users_following.size > 9 or @areas_following.size > 9 %>
-  </div>
 </div>
 </div>
 <div class="t"></div><div class="f"></div>
