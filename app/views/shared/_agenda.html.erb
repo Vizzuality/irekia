@@ -46,17 +46,15 @@
   <div class="bfooter">
     <div class="separator"></div>
     <div class="inner with_spinner">
+      <div class="left">
+        <%= link_to t(".agenda", :date => l(@previous_month, :format => '%B de %Y')), link_for_agenda(:anchor => :agenda, :next_month => @previous_month_counter), :class => "left_arrow left more_months"  %>
+        <span id="months_spinner" class="spinner"></span>
+      </div>
 
-      <% if controller.action_name == "agenda" %>
-        <div class="right">
-          <%= link_to t(".next_month"), link_for_agenda(:anchor => :agenda), :class => "down_arrow right more_months"  %>
-          <span id="months_spinner" class="spinner"></span>
-        </div>
-      <% else %>
-        <div class="right">
-          <%= link_to t(".more"), link_for_agenda(:anchor => :agenda), :class => "right right_arrow"  %>
-        </div>
-      <% end %>
+      <div class="right">
+        <%= link_to t(".agenda", :date => l(@next_month, :format => '%B de %Y')), link_for_agenda(:anchor => :agenda, :next_month => @next_month_counter), :class => "right_arrow right more_months"  %>
+        <span id="months_spinner" class="spinner"></span>
+      </div>
 
     </div>
   </div>

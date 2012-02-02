@@ -131,6 +131,15 @@ class AreasController < ApplicationController
   def get_agenda
     weeks = action_name == 'show' ? 1 : 3
 
+    @previous_month_counter = -1
+    @next_month_counter     = 1
+    @previous_month_counter -= params[:next_month].to_i
+    @next_month_counter     += params[:next_month].to_i
+
+    @current_date   = Date.current.advance(:months  => params[:next_month].to_i)
+    @next_month     = @current_date.advance(:months => 1)
+    @previous_month = @current_date.advance(:months => -1)
+
     @agenda, @days, @agenda_json = @area.agenda_between(weeks, params.slice(:next_month))
   end
   private :get_agenda

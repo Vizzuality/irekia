@@ -1398,7 +1398,7 @@ es:
     agenda:
       ical: "Exportar para iCal"
       more: "Ver calendario completo"
-      next_month: "Siguiente mes"
+      agenda: "agenda %{date}"
       view_calendar: "Ver calendario"
       view_map: "Ver mapa"
       showing: 'Mostrando'

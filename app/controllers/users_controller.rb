@@ -311,6 +311,15 @@ class UsersController < ApplicationController
   private :get_actions
 
   def get_agenda
+    @previous_month_counter = -1
+    @next_month_counter     = 1
+    @previous_month_counter -= params[:next_month].to_i
+    @next_month_counter     += params[:next_month].to_i
+
+    @current_date   = Date.current.advance(:months  => params[:next_month].to_i)
+    @next_month     = @current_date.advance(:months => 1)
+    @previous_month = @current_date.advance(:months => -1)
+
     @agenda, @days, @agenda_json = @user.agenda_between(4, params.slice(:next_month))
   end
   private :get_agenda
