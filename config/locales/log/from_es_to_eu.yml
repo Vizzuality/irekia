@@ -8,8 +8,12 @@ contents:
     image: 
       upload_a_new_one: "Sube una nueva"
 home: 
-  index: 
-    email: Email
+  byebye: 
+    back: "Página de inicio de Irekia"
+    description: "<p>Como nos has pedido, hemos procedido a eliminar tu cuenta de Irekia, incluido todo tu contenido en la medida que ha sido posible. Hay algunos comentarios que no han podido ser retirados por formar parte de un debate con otros usuarios, pero tu nombre se ha eliminado de ellos.</p> <p>Lamentamos tu decisión. Por supuesto, <a href='%{url}'>puedes volver a Irekia y empezar de nuevo</a> cuando quieras.</p> <p>Saludos,<br /> El equipo de Irekia</p>"
+    title: "Cuenta eliminada :-("
+named_routes_path: 
+  byebye: usuario_eliminado
 shared: 
   floating_login: 
     password_reminder: 
