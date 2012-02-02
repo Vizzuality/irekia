@@ -20,6 +20,15 @@ class HomeController < ApplicationController
   end
 
   def agenda
+    @previous_month_counter = -1
+    @next_month_counter     = 1
+    @previous_month_counter -= params[:next_month].to_i
+    @next_month_counter     += params[:next_month].to_i
+
+    @current_date   = Date.current.advance(:months  => params[:next_month].to_i)
+    @next_month     = @current_date.advance(:months => 1)
+    @previous_month = @current_date.advance(:months => -1)
+
     @agenda, @days, @agenda_json = Event.general_agenda(params.slice(:next_month))
 
     render :partial => 'shared/agenda_list',
