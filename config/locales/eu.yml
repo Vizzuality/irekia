@@ -1997,6 +1997,99 @@ eu:
       answer: "Galdera honi erantzun diot: %{question}"
     twitter: 
       answer: "Galdera honi erantzun diot: %{question}"
+  statics: 
+    privacy_police: 
+      text: |-
+          <ol> <li><p>Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak datu pertsonalak babesten ditu, Datuak Babesteko Lege Organikoan, beraren Garapen Araudian eta Datuak Babesteko Euskal Legean ezarritakoaren arabera.
+          </p></li>
+          
+          <li><p>Eusko Jaurlaritzako Lehendakaritzaren Idazkaritza Nagusiak IREKIA - Gobierno Abierto izeneko webgune bat sortu du, hiritarrek parte hartu ahal izan dezaten Jaurlaritzaren jardunean. Bi atal ditu: lehenengoak bidea ematen du erabiltzaileek iruzkinak egin ditzaten Eusko Jaurlaritzaren IREKIA webgunean argitaratzen diren albisteei buruz; bigarrenak, berriz, aukera eskaintzen die pertsona erabiltzaileei proposamenak egiteko eta beren iruzkinak argitaratzeko, Berritzaileen Euskal Komunitateak garatu duen eta IREKIArekiko elkarlotura duen plataforma informatikoaren bitartez. Hau da, erakunde horrek tresna informatiko bat jartzen du Komunikaziorako Idazkaritza Nagusiaren esku, xede honekin: Eusko Jaurlaritzak elkarreraginean aritu ahal izatea hiritarrekin, haien iruzkin, iritzi eta ekarpenak ezagutzeko xedez, Berritzaileen Euskal Komunitatearen webgunean IREKIA izenez horri begira sortutako lankidetzazko lan-foro batean.</p></li>
+          
+          <li><p>Erabiltzaileak ematen dituen datuak Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiaren IREKIA - Gobierno Abierto webgunean aurreikusitako helburuetarako soilik erabiliko dira.</p>
+          <p>Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak IREKIA - Gobierno Abierto izeneko fitxategi bat sortu du horretarako, lehen deskribatutako helburuekin. Fitxategi hori erregistratuta dago Datuen Babeserako Euskal Agentzian (ikus Xedapena eta/edo erregistroa).</p></li>
+          
+          <li><p>Baimena ematen zaio Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiari -eta erabiltzaileak espresuki onartzen du- datu pertsonalak uzteko Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiaren Berritzaileen Euskal Komunitatearen Webguneari, Eusko Jaurlaritzaren lankidea baita IREKIA - Gobierno Vasco webgunean, lehen adierazitako helburuarekin, hau da, hiritarrekin elkarreraginean aritzeko lan-foro ireki batean.
+          </p></li>
+          <li><p>Datu Pertsonalak Babesteari buruzko abenduaren 13ko 15/1999 Legean (DPBL) ezarritakoa betez, datuen titularrak diren pertsonek, datuek ukitutako pertsonek edo datuengatik interesatzen diren pertsonek datuak ikusteko, zuzentzeko, ezeztatzeko eta haien aurka agertzeko eskubideak erabili ahal izango dituzte edozein unetan, posta bidez helbide honetara joz: Nafarroa kalea, 2, 01007 Vitoria-Gasteiz.</p></li>
+          
+          <li><p>Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak eta INNOBASQUEk konpromiso hau hartzen dute: beharrezkoak diren neurri teknikoak eta antolakuntza-neurriak hartzea izaera pertsonaleko datuen segurtasuna bermatzeko eta haien aldaketa, galera, tratamendua edo baimendu gabeko atzipena eragozteko, kontuan hartuta bai teknologiaren egoera eta bai gordetako datuen izaera eta jasan ditzaketen arriskuak, dela giza jardunetik datozenak dela ingurune fisiko edo naturaletik datozenak, eta bereziki datu pertsonalak babesteari buruzko abenduaren 13ko 15/1999 Lege Organikoaren garapen Araudia onartzen duen abenduaren 21eko 1720/2007 Errege Dekretuan aurreikusitakoak.
+          </p></li>
+          <li><p>Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak IP helbideak gorde eta erabil ditzake trafikoa aztertzeko, ataria administratzeko eta atariaren erabileraren jarraipen orokorra egiteko, eta horri begira webgunea aztertzeko zerbitzuak erabil ditzake (adibidez: Google Analytics edo gisa bereko tresnak), baina beti ere deskribatutako helburuetarako soilik, ez beste ezein helburutarako.
+          </p></li>
+          <li><p>Web orrialde honek Google Analytics erabiltzen du, Google, Inc. enpresak eskainitako web analitikoaren zerbitzu bat. Enpresa hau Delawerekoa da eta bulego nagusiaren helbidea ondokoa da: 1600 Amphitheatre Parkway, Mountain View (California), CA 94043, Estatu Batuak ("Google"). Google Analytics-ek "cookie"ak erabiltzen ditu, zure ordenagailuan dauden testu fitxategiak, website-ari webgunearen erabiltzaileek zein erabilera ematen dioten aztertzen laguntzeko. Cookie-ak website-ari ematen diozun erabilerari buruz sortzen duen informazioa (zure IP helbidea barne) zuzenean Google-ek Estatu Batuetako zerbitzarietara igorri eta bertan artxibatuko du. Google-ek informazio hori gure kontura erabiliko du, website-a nola erabiltzen dugun jarraitzeko asmoz, website-aren jardueraren txostenak bilduz eta website-aren jarduerarekin eta Interneten erabilerarekin lotuta beste zerbitzu batzuk eskainiz. Google-ek informazio hori hirugarren batzuei igorri ahalko die, legediak hala eskatzen badu edo hirugarren horiek Google-en kontura informazioa prozesatzen badute. Google-ek ez du zure IP helbidea Google-ek duen beste edozein daturekin lotuko. Zuk datuen edo informazioaren tratamenduari uko egin ahalko diozu cookie-ak erabiltzeari uko eginez, zure nabigatzailearen konfigurazio egokia aukeratuz. Hala ere, jakin behar duzu hori eginez gero balitekeela website honen funtzionaltasun osoa erabili ahal ez izatea. Website hau erabiltzean zuk baimena ematen diozu Google-i zuri buruzko informazioa tratatzeko, goian adierazitako moduan eta helburu horietarako.
+          </p></li>
+           </ol>
+      title: Pribatutasun-politika
+      use_conditions: Erabilera-baldintzak
+    use_conditions: 
+      privacy_policy: Pribatutasun-politika
+      text: |
+          <p>Ongi etorri <strong>IREKIA</strong>ra, Eusko Jaurlaritzaren webgune ofiziala, hiritarren parte-hartzea sustatzeko eta hiritarrek herri administrazioarekin duten harremana hobetzeko xedez diseinatua.</p>
+          
+          <p>Lehenik eta behin, <strong>IREKIA</strong>tik eskerrak eman nahi dizkizugu proiektu elkarreragile honetan parte hartzea erabakitzeagatik eta berarekin bat egiteagatik; halaber, etorkizunean ere hori egiten jarraitzera animatzen zaitugu, zeren <strong>IREKIA</strong>ren helburu nagusia hiritarren eta instituzioen arteko harremana hobetzea baita, Interneten zuzenean parte hartzearen bidez. Horregatik, eskertzen dizugu espazio hau erabiltzea edozein gairi buruz duzun iritzia emateko; bereziki interesatzen zaigu zeure iradokizunak eta zalantzak azaltzea, zeure proposamen propioak aurkeztea, zeu eragile hiritar aktiboa izatea. Hori lortzearren, Eusko Jaurlaritzak apustu irmoa egin du gardentasuna sustatzeko eta hiritarrei tresna egokiak eskaintzeko Jaurlaritza kontrolatzeko eginkizuna gauzatu dezaten; era horretan, hiritarren zuzeneko parte-hartzea bultzatzen da euskal politikaren eguneroko jardunean, eta horrek hobetzen ditu gure demokraziaren kalitatea eta eraginkortasuna.</p>
+          
+          <p>Erabilerarako Baldintza hauek <strong>IREKIA</strong>rako sarbidea eta erabilera arautzen dituzte, kontuan hartuta bai edukiak eta bai <strong>IREKIA</strong>ren bitartez Erabiltzaileen esku jarritako zerbitzuak, dela Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiaren aldetik, dela Erabiltzaileen aldetik edo hirugarrenen aldetik.</p>
+          
+          <h3>LEHENENGOA: ZERBITZUAREN HELBURUA</h3>
+          
+          <p><strong>IREKIA</strong>ren erabilerarako baldintzek bermatu nahi dute edozein hiritarrek iritzia eman eta ekarpenak egin ditzakeela, horren eraginez mehatxu edo irainak jasaten dituela sentitu gabe. Horregatik, dei egiten diegu pertsona erabiltzaile guztiei begirunezko hizkuntzez komunikatzera, bai <strong>IREKIA</strong>ko gainerako erabiltzaileekin eta bai berton parte hartzen duten instituzio, enpresa eta pertsona publikoekin.</p>
+          
+          <h3>BIGARRENA: BALDINTZAK</h3>
+          
+          <p><strong>IREKIA</strong>ren erabilera Baldintza hauen araberakoa izango da. Baldintzak aldizka eguneratu daitezke; dena dela, Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak jakinaraziko ditu Erabilerarako Baldintzen edo Pribatutasun Politikaren aldaketak, horrelakorik egonez gero. Erabiltzaileak erabakitzen badu Baldintzak ez onartzea, uko egin beharko dio <strong>IREKIA</strong>n sartzeri, bertan erregistratzeari eta beraren edukiak eta/edo zerbitzuak erabiltzeari.</p>
+          
+          <p>Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak badu eskubidea <strong>IREKIA</strong>ren zerbitzuak eta/edo edukiak bere aldetik hobetzeko, aldatzeko edo ezabatzeko, askotariko irizpideak kontuan hartuta.</p>
+          
+          <p>Ataria modu egokian erabiltzeko betebeharra: erabiltzaileak ataria modu egokian erabiltzeko konpromisoa hartzen du, eta, halaber, legearen, fede onaren eta lege-ordenamenduaren aurkako ekintzarik ez abiatzeko konpromisoa ere (adibide moduan, aukera guzti-guztiak aipatu gabe): kalteak sortzea arduradunaren, hornitzailearen edo hirugarren pertsonen sistema fisiko eta logikoetan; birus informatikoak edo lehen aipatutako kalteak sor ditzaketen sistema fisiko edo logikoak sarean sartzea edo hedatzea, honako hauek barne sartuta: ohorea, intimitate pertsonala edo familiarra eta pertsonen irudia urratzen dutenak eta hirugarrenen jabetza-eskubideak eta bestelako eskubideak urratzen dituztenak, edukiak edo irudia transmititzearen, hedatzearen, gordetzearen, eskura jartzearen, jasotzearen, lortzearen edo haietara iristearen ondorioz; lehia desleialeko eta publizitate ez-zilegiko ekintzak gauzatzea, edukiak transmititzearen, hedatzearen, gordetzearen, eskura jartzearen, jasotzearen, lortzearen edo haietara iristearen ondorioz; edukien egiazkotasun, zehaztasun exhaustibotasun, egokitasun eta/edo gaurkotasunik eza; kasu horietan guztietan, Erabiltzaileak kaltegabe uzten du Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusia edozein erreklamazio judizial edo ez-judizialaren aurrean.</p>
+          
+          <p>Iruzkinak edo iritziak ez diren ekarpen guztiak (adibidez: eskaerak, informazio-eskariak, eta abar) hiritarren Arretarako Zerbitzura bideratuko dira (ZUZENEAN), berak tramitatu ditzan eta/edo erantzuna eman diezaien.</p>
+          
+          <p>Erabiltzailea da <strong>IREKIA</strong>ren bidez eskura jar ditzakeen eduki, iruzkin eta fitxategien erantzule bakarra, eta, hortaz, ezin argitaratu dezake (edo igo) hirugarrenen jabetza intelektualaren (edo industrial) eskubideen mende dagoen ezein fitxategirik (alegia, bideoa, audioa, testua, eta abar), salbu eta eskubide horien titularrak lizentzia edo baimen formala eman badio, atari honetan indarrean dagoen lizentziarekin bat etorriz.</p>
+          
+          <p><strong>IREKIA</strong>k badu iruzkinak moderatzeko sistema bat, Erabilerarako Baldintza hauek hausten dituzten iruzkien/edukien argitalpena eragozteko.</p>
+          
+          <p>Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak ez du inolako erantzukizunik hartzen berarengandik kanpoko hirugarrenek utzitako edo hornitutako edukiengatik sor litezkeen era guztietako kalteengatik, eta baita erabiltzaileek adierazitako iritziengatik ere.</p>
+          
+          <p>Erabiltzailearen izena eta pasahitza Erabiltzea eta Gordetzea. Erabiltzaileak pasahitza eta Erabiltzaile izena modu egokian erabiltzeko konpromisoa hartzen du, eta baita biak sekretuan gordetzeko konpromisoa ere. Bere pasahitzaren konfidentzialtasuna gordetzea Erabiltzailearen erantzukizun esklusiboa izango da, eta, beraz, bere gain hartuko ditu betebehar hori urratzetik edo pasahitza jakinaraztetik ondoriozta litezkeen kalte, gastu eta/edo eragozpen guztiak, eta, halaber, bere zaintza-betebeharra ez betetzearen eraginez hirugarrenek egin lezaketen erabilera txarraren kalte, gastu eta/edo eragozpen guztiak.</p>
+          
+          <p>Atzipena, zerbitzuak eta edukiak ezeztatzea. Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak erabaki ahal izango du, bere kabuz, Baldintza hauek betetzen ez dituzten erabiltzaileei ezezkoa ematea, kanpo uztea, etetea eta/edo blokeatzea, aurretik abisatu behar izan gabe; horri lotuta, haien kontua eta berari buruzko informazio guztia ezabatu ahal izango du, edo, hala dagokionean, artxibo horietara edo <strong>IREKIA</strong>ra bertara iristeko bidea itxi. Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak ez du inongo erantzukizunik hartuko <strong>IREKIA</strong>rako sarbidea ezeztatzeagatik. Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak badu eskumena Erabiltzaile jakin batzuen sarbidea osorik edo modu partzialean mugatzeko, eta baita eduki jakin batzuk ezeztatzeko, eteteko, blokeatzeko edo ezabatzeko eskumena ere, horretarako egokiak diren tresna teknologikoak erabiliz, baldin eta jakitun badago, modu frogagarrian, bildutako eta/edo hedatutako jarduera edo informazioa ez-zilegia dela edo kalte egiten diela hirugarrenen baten ondasun edo eskubideei.</p>
+          
+          <p>Orobat, egokitzat joz gero, Erabiltzaileek erabilera-baldintza horiek urratzen dituzten eduki/iruzkin/erabiltzaileen berri eman diezaiokete Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiari. Salaketa horien egiazkotasuna frogatzen baldin bada, salatutako edukiak/erabiltzaileak ezabatu/ezeztatu ahal izango ditu, aurreko paragrafoetan ezarritakoarekin bat etorriz.</p>
+          
+          <p>Komunikazioak eta jakinarazpenak: egiten diren komunikazio eta jakinarazpen guztiak eraginkortzat joko dira ondorio guztietarako, Erabiltzaileak eman duen e-mailera zuzendutako posta elektronikoaren bidez egiten direnean. Erabiltzaileak aitortzen du espresuki datu horiek berak emandakoak direla eta guztiz egiazkoak direla.</p>
+          
+          <h3>HIRUGARRENA: JABETZA INTELEKTUAL ETA INDUSTRIALA</h3>
+          
+          <p><strong>IREKIA</strong> atariaren bidez eskaintzen diren edukiak eta informazioa jabetza intelektualeko eskubideen mende daudenean eta haien titulartasuna Euskal Autonomia Erkidegoaren Administrazio Orokorrari dagokionean, bere orrialde nagusian agertzen den Creative Commons lizentziaren mende egongo dira. Edukiren batek espezifikotasunen bat baldin badu, jabetza intelektualeko eskubideei dagokienez, modu garbian eta espresuki informatuko da aplikatzekoa den lizentziari buruz edo, hala dagokionean, eskubide guztien erreserbari buruz.</p>
+          
+          <p>Egon litezkeen jabetza industrialeko eskubideei dagokienez, Euskal Autonomia Erkidegoko Administrazioarenak dira edo beraren jabe legitimoenak, eta, hortaz, haien gaineko eskubide guztiak erreserbatuta geratzen dira.</p>
+          
+          <p>Webgune honetan eskaintzen den informazioaren erabilerak urratzen baldin badu Erabilerarako Baldintza hauetan ezarritakoa, edo kalte egiten badie Euskal Autonomia Erkidegoko Administrazioaren jabetza intelektual eta industrialeko eskubideei, Administrazio horri legez dagozkion ekintzak abiatuko dira, eta, hala dagokionean, ekintza horietatik ondoriozta daitezkeen erantzukizunak sortuko dira.</p>
+          
+          
+          
+          <h3>LAUGARRENA: ADINGABEAK</h3>
+          
+          <p>Adingabeek eskura ditzaketen eduki eta zerbitzu konkretuak determinatzeari dagokionez, horren osoko erantzukizuna adingabe horien ardura duten adindunena izango da. Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak ulertzen du ezen, adingabe bat Atarira sartzen unetik aurrera, bere gurasoen, tutorearen edo legezko ordezkariaren baimena duela.</p>
+          
+          <p>Internetek bidea ematen duenez adingabeentzat egokiak ez diren edukietara iristeko, Erabiltzaileei jakinarazten zaie badaudela mekanismoak, bereziki iragazki- eta blokeo-programa informatikoak, eskura dauden edukiak mugatzea ahalbidetzen dutenak. Programa horiek, hutsezinak ez badira ere, oso erabilgarriak dira adingabeen eskuetara irits daitezkeen materialak kontrolatzeko eta murrizteko.</p>
+          
+           
+          
+          <h3>BOSGARRENA: COOKIEAK ETA ESTEKAK</h3>
+          
+          <p>Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak Cookieak erabiltzen dituela jakinarazten dio erabiltzaileari; Erabiltzailearen terminalean bertan gordetako informazio-fitxategiak dira, Erabiltzaileari errazten diotenak ataritik nabigatzea (adibidez: ez eskatzea berriro Erabiltzailea eta/edo pasahitza). Cookiek ez dute inoiz ere izaera pertsonaleko daturik jasoko, ezta tratatuko ere. Nolanahi ere, Erabiltzaileak badu aukera nabigatzailea modu jakin batean konfiguratzeko, alegia, artxibo horien instalazioa eragotziz.</p>
+          
+          <p>Atariak estekak eskain ditzake bere kontrolpean ez dauden kanpo-orrialdeekin; horiei dagokienez, Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak ez du inolako erantzukizun hartzen, eta, beraz, webgune honen erabiltzaileak esteka horien erabilera-baldintza espezifikoen arabera jokatu beharko du.</p>
+          
+          <h3>SEIGARRENA: PRIBATUTASUN POLITIKA</h3>
+          
+          <p>Eusko Jaurlaritzako Lehendakaritzaren Komunikaziorako Idazkaritza Nagusiak datu pertsonalak babesten ditu, Datuak Babesteko Lege Organikoan, beraren Garapen Araudian eta Datuak Babesteko Euskal Legean ezarritakoaren arabera. Datu pertsonalen babesari buruzko informazioa Pribatutasun Politikan ikus daiteke.</p>
+          
+          <p>Horri begira, beharrezkoak diren neurriak hartu dira datu pertsonalen aldaketa, galera, tratamendua edo baimendu gabeko atzipena eragozteko, teknologiaren egoera une orotan kontuan hartuta; dena dela, Erabiltzaileak jakin behar du Interneteko segurtasun-neurriak ez direla gaindiezinak.</p>
+          
+          <p><strong>IREKIA</strong>n sartzen baldin badira pertsona fisikoei buruzko datuak, eta datu horiek ez badira datuak sartzen dituen pertsonari buruzkoak, pertsona horrek Pribatutasun Politikaren baldintzei buruzko informazioa eman behar die ukitutako pertsonei, datuak sartu baino lehen.</p>
+      title: Erabilera-baldintzak
   support: 
     array: 
       last_word_connector: ", eta "
