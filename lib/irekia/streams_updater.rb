@@ -7,8 +7,6 @@ module Irekia
     @just_created = true
     @to_update_public_streams = @to_update_private_streams = @to_notificate = @to_update_private_streams_ids = nil
 
-    protected
-
     def just_created=(value)
       @just_created = value
     end
