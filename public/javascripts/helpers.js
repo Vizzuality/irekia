@@ -1646,7 +1646,15 @@ function loginInLinks() {
 
             $(this).bind('ajax:success', function(evt, xhr, status) {
               var $el = $(this).parents("ul").find("li.comment");
-              var $comment = $(xhr);
+              var response = $(xhr);
+              var $comment = $(response[2]);
+              var $count = $(response[0]);
+
+              // If the response contains the counter div, update the counter in the page 
+              if ($(xhr).length > 1) { 
+                $(".comments .count").html($count.html());
+              }
+
               $comment.hide();
               $el.before($comment);
               spinner.stop();

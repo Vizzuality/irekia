@@ -467,6 +467,20 @@ module Irekia
       end
     end
 
+    def self.repair_encoding_in_external_proposals
+      ProposalData.where('external_id is not null').each do |proposal_data|
+        proposal_data.update_attributes :title_es => proposal_data.title_es.force_encoding('utf-8'),
+                                        :title_eu => proposal_data.title_eu.force_encoding('utf-8'),
+                                        :title_en => proposal_data.title_en.force_encoding('utf-8'),
+                                        :body_es  => proposal_data.body_es.force_encoding('utf-8'),
+                                        :body_eu  => proposal_data.body_eu.force_encoding('utf-8'),
+                                        :body_en  => proposal_data.body_en.force_encoding('utf-8')
+
+        proposal_data.proposal.cancel_notifications = true
+        proposal_data.proposal.publish
+      end
+    end
+
     private
 
     def self.get_json(url, server_options = {}, items_key = nil)

@@ -771,6 +771,13 @@ es:
       submit: "Guardar %{model}"
       update: "Actualizar %{model}"
   home:
+    byebye:
+      back: Página de inicio de Irekia
+      title: Cuenta eliminada :-(
+      description: "<p>Como nos has pedido, hemos procedido a eliminar tu cuenta de Irekia, incluido todo tu contenido en la medida que ha sido posible. Hay algunos comentarios que no han podido ser retirados por formar parte de un debate con otros usuarios, pero tu nombre se ha eliminado de ellos.</p>
+      <p>Lamentamos tu decisión. Por supuesto, <a href='%{url}'>puedes volver a Irekia y empezar de nuevo</a> cuando quieras.</p>
+      <p>Saludos,<br />
+      El equipo de Irekia</p>"
     agenda:
       title: "Agenda de Irekia"
     areas:
@@ -1141,6 +1148,7 @@ es:
   named_routes_path:
     privacy_police: 'politica_de_privacidad'
     use_conditions: 'condiciones_de_uso'
+    byebye: 'usuario_eliminado'
   statics:
     privacy_police:
       title: Política de privacidad

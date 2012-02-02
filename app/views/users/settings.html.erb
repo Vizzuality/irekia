@@ -20,6 +20,7 @@
     <div class="separator"></div>
     <div class="inner">
       <div class="center clearfix">
+        <span id="remove_account_spinner" class="spinner"></span>
         <%= button_to t(".remove_profile"), user_path(current_user), :method => :delete, :class => "white_button remove" %>
         <%= button t(".cancel"), :class => "white_button close pink" %>
       </div>

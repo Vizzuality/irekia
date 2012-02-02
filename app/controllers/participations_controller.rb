@@ -7,6 +7,7 @@ class ParticipationsController < ApplicationController
   def show
     @moderation_status = @participation.moderated?? 'moderated' : 'not_moderated'
     @content           = @participation.content
+    @comments_count    = @content.comments_count
 
     @partial = params[:partial] || @participation_type
 

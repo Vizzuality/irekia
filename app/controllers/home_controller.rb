@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   include ActionView::Helpers::TagHelper
   include ApplicationHelper
 
-  skip_before_filter :authenticate_user!, :only => [:index, :agenda, :change_locale]
+  skip_before_filter :authenticate_user!, :only => [:index, :agenda, :change_locale, :byebye]
 
   respond_to :html, :json, :ics, :rss, :iphone
 
@@ -42,6 +42,10 @@ class HomeController < ApplicationController
     end
 
     redirect_to root_path
+  end
+
+  def byebye
+
   end
 
   def get_areas

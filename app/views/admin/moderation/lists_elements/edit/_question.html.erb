@@ -1,6 +1,7 @@
 <%= form_for [:admin, data], :remote => true, :html => {:'data-type' => 'html' } do |form| %>
   <%= form.fields_for :question_data do |question_data_form| %>
     <%= question_data_form.text_area :question_text %>
+    <%= question_data_form.text_area :body %>
   <% end -%>
   <div class="actions">
     <%= form.hidden_field :moderated, :value => true, :class => 'moderated', :disabled => true %>
