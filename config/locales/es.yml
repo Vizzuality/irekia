@@ -905,7 +905,7 @@ es:
     welcome:
       access_irekia: "Acceder a Irekia"
       step_1: "1. Sigue a los cargos o áreas que te interesen"
-      step_1_detail: "Busca los perfiles o áreas que más te interesen y síguelos. A partir de ese momento su actividad aparecerá en <a href=\"%{url}\" target=\"_blank\" style=\"color:#1D79B0\">tu página de inicio de Irekia</a>."
+      step_1_detail: "Busca los perfiles o áreas que más te interesen y síguelos. A partir de ese momento su actividad aparecerá en tu página de inicio de Irekia."
       step_2: "2. Participa!"
       step_2_detail: "Haz preguntas a los responsables del Gobierno Vasco, lanza tus propuestas a los ciudadanos, o participa en las propuestas de otros. Todo con un simple click."
       step_3: "3. Configura tu cuenta"
