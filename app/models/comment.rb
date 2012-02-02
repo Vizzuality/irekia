@@ -3,7 +3,7 @@ class Comment < Participation
   belongs_to :proposal,
              :foreign_key => 'content_id'
   has_one :comment_data,
-          :select => 'comment_id, body'
+          :select => 'id, comment_id, body'
 
   delegate :subject, :body, :to => :comment_data, :allow_nil => true
 

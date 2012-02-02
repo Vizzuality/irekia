@@ -1,5 +1,5 @@
 <div class="photo_moderation">
-  <% if data.image.present? -%>
+  <% if data.image.present? && data.image.image_url.present? -%>
     <%= link_to image_tag(data.image.image_url), proposal_path(data.id) %>
 
     <%= form_for data.image, :remote => true, :html => {:'data-type' => 'html', :method => :delete, :class => 'photo remove'} do |form| %>
