@@ -92,6 +92,8 @@ module ApplicationHelper
     else
       user_path(user.slug || user.id, params)
     end
+  rescue
+    '#'
   end
 
   def avatar(user_or_area, size = nil)
