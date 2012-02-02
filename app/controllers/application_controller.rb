@@ -35,7 +35,8 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options = {})
     user_locale = current_user.locale if user_signed_in? && current_user.locale.present?
-    {:locale => user_locale || I18n.locale}
+    cookie_locale  = cookies[:current_locale] || {}
+    {:locale => user_locale || cookie_locale || I18n.locale}
   end
 
   def analyze_useragent
