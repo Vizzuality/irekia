@@ -226,6 +226,7 @@ jQuery.fn.enableAnsweringQuestion = function(opt){
     $(this).find("button").click(function(e) {
       spinner.spin(spin_element);
       $form.find(".input_field").removeClass("error");
+      $form.find("h3.url .error").remove();
     });
 
     $(this).find("form").bind('ajax:error',function(evt, xhr, status) {
@@ -233,7 +234,12 @@ jQuery.fn.enableAnsweringQuestion = function(opt){
       var videoURL = $(this).find("input[type='text']").val();
       var text = $(this).find("textarea").val();
 
-      if (isEmpty(text) && !isEmpty(videoURL)) {
+      if (!isEmpty(videoURL)) {
+        var error = xhr.responseText;
+
+        var $errorDiv = $("<div class='error' />");
+        $errorDiv.html(error);
+        $(this).find("h3.url").append($errorDiv);
         $(this).find("input[type='text']").parent().addClass('error');
       }
     });
