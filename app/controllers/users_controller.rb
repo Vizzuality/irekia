@@ -339,9 +339,9 @@ class UsersController < ApplicationController
   protected :per_page
 
   def paginate
-    @actions   = @actions.page(1).per(@per_page).all   if @actions
-    @proposals = @proposals.page(1).per(@per_page).all if @proposals
-    @questions = @questions.page(1).per(@per_page).all if @questions
+    @actions   = @actions.page(1).per(@per_page + 1).all   if @actions
+    @proposals = @proposals.page(1).per(@per_page + 1).all if @proposals
+    @questions = @questions.page(1).per(@per_page + 1).all if @questions
   end
   protected :paginate
 
