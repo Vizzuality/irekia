@@ -38,7 +38,7 @@
 <div class="separator"></div>
 <div class="inner with_spinner">
 
-  <% if @questions_count > @per_page %>
+  <% if show_pagination?(@questions) -%>
     <% if controller.action_name == "questions" %>
       <div class="left">
         <%= link_to t('.more'), link_for_questions, :id => "questions_#{params[:id]}", :class => "more_questions left down_arrow" %>

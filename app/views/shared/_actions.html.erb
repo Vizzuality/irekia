@@ -84,23 +84,25 @@
     </div>
   </div>
 
-  <% if viewing_dashboard? || viewing_homepage? || viewing_area_homepage?  %>
+  <% if viewing_dashboard? || viewing_homepage? || viewing_area_homepage? || viewing_actions_page? %>
     <div class="bfooter">
       <div class="separator"></div>
       <div class="inner with_spinner">
 
-        <% if viewing_dashboard? || controller.action_name == "actions" %>
-          <div class="left">
-            <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" if @actions.present? %>
-            <span id="actions_spinner" class="spinner"></span>
-          </div>
-        <% else %>
-          <div class="right">
-            <% if !viewing_homepage? %>
-              <%= link_to t('.more'), link_for_actions(:anchor => :actions), :id => "actions_#{params[:id]}", :class => "right_arrow right" %>
-            <% end %>
-          </div>
-        <% end %>
+        <% if show_pagination?(@actions) -%>
+          <% if viewing_dashboard? || viewing_actions_page? %>
+            <div class="left">
+              <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" if @actions.present? %>
+              <span id="actions_spinner" class="spinner"></span>
+            </div>
+          <% else %>
+            <div class="right">
+              <% if !viewing_homepage? %>
+                <%= link_to t('.more'), link_for_actions(:anchor => :actions), :id => "actions_#{params[:id]}", :class => "right_arrow right" %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end -%>
 
       </div>
     </div>

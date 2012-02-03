@@ -38,7 +38,7 @@ class VideoData < ActiveRecord::Base
 
   def a_valid_video_must_be_present
     errors.add(:video_url, :blank)   and return if @video_url.blank? && vimeo_url.blank? && youtube_url.blank?
-    errors.add(:video_url, :invalid) and return if @video_url.present? && not_vimeo_url? && not_youtube_url? && oembed_json.blank?
+    errors.add(:video_url, :invalid) and return if @video_url.present? && not_vimeo_url? && not_youtube_url? && html.blank?
     errors.add(:video_url, :invalid) and return if html.blank?
     if vimeo_url.present?
       errors.add(:vimeo_url, :invalid) unless vimeo_url?

@@ -98,13 +98,15 @@ class SearchesController < ApplicationController
   private :get_contents
 
   def paginate
+    @per_page = 10
     if action_name == 'show' || params[:referer] == 'show'
-      @contents   = @contents.page(1).per(4) if @contents
+      @per_page = 4
+      @contents   = @contents.page(1).per(4 + 1) if @contents
     else
-      @contents   = @contents.page(params[:page]).per(10) if @contents
+      @contents   = @contents.page(params[:page]).per(10 + 1) if @contents
     end
-    @politicians = @politicians.page(params[:page]).per(10) if @politicians
-    @citizens    = @citizens.page(params[:page]).per(10) if @citizens
+    @politicians = @politicians.page(params[:page]).per(10 + 1) if @politicians
+    @citizens    = @citizens.page(params[:page]).per(10 + 1) if @citizens
   end
   private :paginate
 

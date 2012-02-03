@@ -68,6 +68,14 @@ module ApplicationHelper
     controller_name == 'users' && action_name == 'show' && (@user != current_user || current_user.blank?)
   end
 
+  def viewing_actions_page?
+    action_name == "actions"
+  end
+
+  def show_pagination?(items)
+    items.present? && items.count > @per_page
+  end
+
   def current_action?(action)
     'selected' if action_name.eql?(action.to_s)
   end
