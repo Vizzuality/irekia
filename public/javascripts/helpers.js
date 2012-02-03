@@ -1359,8 +1359,10 @@ function loginInLinks() {
             }});
           }
 
+          // Default pagination
           function paginate(paginationURL) {
             var url = paginationURL;
+            var per_page = $this.attr("data-perpage");
             // Let's retrieve the filter using the classes of the current article as a key
             var c = document.getElementById($this.attr("id")).className.replace(/ /g, "_");
 
@@ -1383,6 +1385,10 @@ function loginInLinks() {
                 var $content = $($(response).html());
                 $content.hide();
 
+                if ($(response).find("li").length < per_page) {
+                  $this.find("a.paginate").fadeOut(250);
+                } 
+  
                 var $ul = $article.find(".listing_" + name  + "_" + id + " > ul");
 
                 if (!$ul.find("span.empty").length > 0 && !$this.find("span.empty").length > 0 && !$content.hasClass("empty")) {

@@ -1,4 +1,4 @@
-<div id="actions-<%= params[:id] %>" class="article actions with_filters<%= ' with_footer' %>">
+<div id="actions-<%= params[:id] %>" class="article actions with_filters<%= ' with_footer' %>" data-perpage="<%= @per_page %>">
   <div class="inner">
     <header class="clearfix">
     <div class="left">
@@ -92,7 +92,7 @@
         <% if show_pagination?(@actions) -%>
           <% if viewing_dashboard? || viewing_actions_page? %>
             <div class="left">
-              <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions left down_arrow" if @actions.present? %>
+              <%= link_to t('.more'), link_for_actions, :id => "actions_#{params[:id]}", :class => "more_actions paginate left down_arrow" if @actions.present? %>
               <span id="actions_spinner" class="spinner"></span>
             </div>
           <% else %>

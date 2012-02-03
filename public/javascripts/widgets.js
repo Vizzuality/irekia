@@ -548,6 +548,7 @@ var GOD = (function() {
       $(this).find(".filter").bind('click', function(e) {
         e.preventDefault();
 
+
         // Place spinner and show it (if exists)
         filter_spinner.stop();
         switch_spinner.stop();
@@ -593,13 +594,18 @@ var GOD = (function() {
         $.ajax({ url: data.url, data: data.sort, type: "GET", success: function(data){
           $ps.find(".listing").fadeOut(settings.transitionSpeed, function() {
 
+            if ($(data).find("li").length < $ps.attr("data-perpage"))
+              $ps.find("a.paginate").fadeOut(250);
+             else 
+              $ps.find("a.paginate").fadeIn(250);
+
             $ps.find(".listing").html(data);
 
-						if ($ps.find(".listing h2").length>0) {
-							var $place = $ps.find('header div.left');
-							$place.find('h2').remove();
-							$place.append($ps.find(".listing h2"));
-						}
+            if ($ps.find(".listing h2").length>0) {
+              var $place = $ps.find('header div.left');
+              $place.find('h2').remove();
+              $place.append($ps.find(".listing h2"));
+            }
 
             $ps.find(".listing").slideDown(settings.transitionSpeed, function() {
               filter_spinner.stop();

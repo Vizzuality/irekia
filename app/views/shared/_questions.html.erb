@@ -1,4 +1,4 @@
-<div id="questions-<%= params[:id] %>" class="article questions with_filters with_footer">
+<div id="questions-<%= params[:id] %>" class="article questions with_filters with_footer" data-perpage="<%= @per_page %>">
 <div class="inner">
   <header class="clearfix">
   <div class="left">
@@ -41,7 +41,7 @@
   <% if show_pagination?(@questions) -%>
     <% if controller.action_name == "questions" %>
       <div class="left">
-        <%= link_to t('.more'), link_for_questions, :id => "questions_#{params[:id]}", :class => "more_questions left down_arrow" %>
+        <%= link_to t('.more'), link_for_questions, :id => "questions_#{params[:id]}", :class => "more_questions paginate left down_arrow" %>
         <span id="questions_spinner" class="spinner"></span>
       </div>
     <% else %>
