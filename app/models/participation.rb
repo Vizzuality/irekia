@@ -101,10 +101,9 @@ class Participation < ActiveRecord::Base
     @to_update_public_streams  = (@to_update_public_streams || [])
     @to_update_private_streams = (@to_update_private_streams || [])
 
-    @to_update_public_streams << user
-    @to_update_public_streams += user.areas
+    @to_update_public_streams << author
+    @to_update_public_streams += author.areas
 
-    @to_update_private_streams += user.areas.map(&:users).flatten
     @to_update_private_streams += user.areas.map(&:followers).flatten
     @to_update_private_streams += user.followers
 
