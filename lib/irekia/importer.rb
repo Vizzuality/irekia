@@ -60,7 +60,7 @@ module Irekia
           begin
 
             news = News.find_or_initialize_by_external_id(news_item.entry_id)
-            news.published_at         = news_item.published
+            news.published_at         = news_item.published || Time.now
             news.news_data            = NewsData.new if news.news_data.blank?
             news.news_data.send(:"title_#{lang}=", (news_item.title.sanitize rescue nil))
             news.news_data.send(:"body_#{lang}=",(news_item.summary.sanitize rescue nil))
