@@ -11,8 +11,9 @@ class VideoData < ActiveRecord::Base
   def video_url=(url)
     return if url.blank?
 
-    self.youtube_url = url if url.match(/\A(http:\/\/)?(www.)?youtube.com/)
-    self.vimeo_url   = url if url.match(/\A(http:\/\/)?(www.)?vimeo.com/)
+    @video_url = url
+    self.youtube_url = url if youtube_url?(url)
+    self.vimeo_url   = url if vimeo_url?(url)
   end
 
   def youtube_url=(url)
@@ -35,6 +36,33 @@ class VideoData < ActiveRecord::Base
     end
   end
 
+  def a_valid_video_must_be_present
+    errors.add(:video_url, :blank)   and return if @video_url.blank? && vimeo_url.blank? && youtube_url.blank?
+    errors.add(:video_url, :invalid) and return if @video_url.present? && not_vimeo_url? && not_youtube_url? && oembed_json.blank?
+    errors.add(:video_url, :invalid) and return if html.blank?
+    if vimeo_url.present?
+      errors.add(:vimeo_url, :invalid) unless vimeo_url?
+    elsif youtube_url.present?
+      errors.add(:youtube_url, :invalid) unless youtube_url?
+    end
+  end
+
+  def youtube_url?(url = nil)
+    (url.present? || youtube_url.present?) && (url || youtube_url).match(/\A(http:\/\/)?(www.)?youtube.com/)
+  end
+
+  def vimeo_url?(url = nil)
+    (url.present? || vimeo_url.present?) && (url || vimeo_url).match(/\A(http:\/\/)?(www.)?vimeo.com/)
+  end
+
+  def not_youtube_url?(url = nil)
+    !youtube_url?(url)
+  end
+
+  def not_vimeo_url?(url = nil)
+    !vimeo_url?(url)
+  end
+
   def store_oembed(oembed_json)
     if oembed_json.present?
       self.title         = oembed_json['title']
@@ -44,12 +72,4 @@ class VideoData < ActiveRecord::Base
   end
   private :store_oembed
 
-  def a_valid_video_must_be_present
-    errors.add(:video, :blank) and return if vimeo_url.blank? && youtube_url.blank?
-    if vimeo_url.present?
-      errors.add(:vimeo_url, :invalid) unless vimeo_url.match(/\A(http:\/\/)?(www.)?vimeo.com/)
-    elsif youtube_url.present?
-      errors.add(:youtube_url, :invalid) unless youtube_url.match(/\A(http:\/\/)?(www.)?youtube.com/)
-    end
-  end
 end

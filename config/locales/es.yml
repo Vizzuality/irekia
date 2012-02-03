@@ -8,10 +8,12 @@ es:
   Video: Vídeo
   activerecord:
     attributes:
-      answer_data:
-        video_data:
-          vimeo_url: "El vídeo de Vimeo"
-          youtube_url: "El vídeo de Youtube"
+      answer:
+        answer_data:
+          video_data:
+            video_url: "El vídeo"
+            vimeo_url: "El vídeo de Vimeo"
+            youtube_url: "El vídeo de Youtube"
       area_user:
         area_id: Área
       image:
@@ -31,9 +33,11 @@ es:
         title_id: Título
       video:
         video_data:
+          video_url: 'El vídeo'
           vimeo_url: "El vídeo de Vimeo"
           youtube_url: "El vídeo de Youtube"
       video_data:
+        video_url: 'El vídeo'
         vimeo_url: "El vídeo de Vimeo"
         youtube_url: "El vídeo de Youtube"
     errors:
