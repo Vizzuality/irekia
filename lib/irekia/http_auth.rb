@@ -1,7 +1,7 @@
 module Irekia
 
   module HttpAuth
-    DEMO_USER = {'virekia' => 'gub5mar'}
+    DEMO_USER = {'virekia' => 'rud3mib'}
 
     def self.included(base)
       base.before_filter :authentication_check
