@@ -42,7 +42,6 @@ module Irekia
         :message          => item.to_json
       )
 
-
       # new content, created by citizens or politicians from the regular
       # application layout
       if item.just_created?
