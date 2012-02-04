@@ -361,7 +361,6 @@ function loginInLinks() {
           }
 
           function redirectToRoot(evt, xhr, status) {
-            spinner.stop();
             window.location.href = '/';
           }
 
