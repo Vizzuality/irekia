@@ -969,6 +969,7 @@ span.where, .map .infowindow ul.details li.where { display: block; width: 207px;
 #container .cycle .inner-cycle .article .field.confirm_password.error label { float: left; }
 #container .cycle .inner-cycle .article .field label.long { float: left; clear: both; }
 #container .cycle .inner-cycle .article .error_field { float: left; color: #E96F5F; margin: -2px 0 0 5px; font-size: 14px; }
+#container .cycle .inner-cycle .article .bfooter .inner .center span.spinner { position: relative; display: block; top: 7px; right: 20px; width: 20px; height: 20px; z-index: 10; }
 #container .cycle .inner-cycle .article.step1 .inner .content { padding: 30px 0 0 0; }
 #container .cycle .inner-cycle .article.step1 .inner fieldset .field.email { width: 415px; }
 #container .cycle .inner-cycle .article.step1 .inner fieldset .field.email .input_field { width: 415px; }

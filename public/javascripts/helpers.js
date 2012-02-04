@@ -342,12 +342,13 @@ function loginInLinks() {
           speed      = (opt && opt.speed)  || 200,
           margin     = (opt && opt.margin) || 20;
 
-          var
-          $form      = $(".cycle form"),
-          $container = $(".cycle .inner-cycle"),
-          $article,
-          $newArticle,
-          $currentArticle;
+          var spinner      = new Spinner(SPINNER_OPTIONS);
+          var $form        = $(".cycle form"),
+              $container   = $(".cycle .inner-cycle"),
+              $article,
+              $newArticle,
+              $currentArticle;
+
 
           function error($article) {
             $article.effect("shake", { times: 4 }, 100);
@@ -360,6 +361,7 @@ function loginInLinks() {
           }
 
           function redirectToRoot(evt, xhr, status) {
+            spinner.stop();
             window.location.href = '/';
           }
 
@@ -379,6 +381,16 @@ function loginInLinks() {
             $('form .field.born_at select[name="user[birthday(3i)]"]').dropkick({width:-20});
 
             $form.submit(function() {
+
+              var spin_element = document.getElementById('register_spinner');
+              spinner.spin(spin_element);
+
+              setTimeout(function() {
+                $form.find(".advance").addClass('disabled');
+                $form.find(".advance").attr('disabled', 'disabled');
+
+              }, 100);
+
               var $that = $(this);
               $(this).find(".error_field").fadeOut(250, function() {
                 $(this).html("");
@@ -411,6 +423,11 @@ function loginInLinks() {
           }
 
           function validateErrors(evt, xhr, status) {
+            spinner.stop();
+
+            $currentArticle.find(".advance").removeClass('disabled');
+            $currentArticle.find(".advance").removeAttr('disabled');
+
             var errors = $.parseJSON(xhr.responseText);
 
             _.each(errors, function(message, field) {
