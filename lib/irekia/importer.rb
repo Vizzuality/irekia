@@ -486,17 +486,22 @@ module Irekia
       puts '=> Updating news publishing dates'
       news_detail_url = lambda{|news_id| "http://www.irekia.euskadi.net/es/news/#{news_id}.xml"}
 
-      i          = 0
-      news_count = News.where('external_id IS NOT NULL').count
+      i           = 0
+      news_count  = News.where('external_id IS NOT NULL').count
+      news_detail = nil
 
-      News.where('external_id IS NOT NULL').find_each do |news|
+      News.select('id, published_at, external_id').where('external_id IS NOT NULL').find_each do |news|
         news.cancel_notifications = true
 
-        news_detail = Nokogiri::XML(open(news_detail_url.call(news.external_id)).read)
-        news.update_attributes(:published_at => DateTime.parse(news_detail.xpath('//pubDate').text))
+        news_detail = Nokogiri::XML::Reader(open(news_detail_url.call(news.external_id)).read)
+        news_detail.each do |node|
+          news.update_column(:published_at, DateTime.parse(node.value)) if node.name == 'pubDate' && node.value.present?
+        end
         i += 1
 
         puts "#{i}/#{news_count}"
+
+        GC.start
       end
     end
 
