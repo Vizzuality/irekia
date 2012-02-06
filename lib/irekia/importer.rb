@@ -490,16 +490,25 @@ module Irekia
       news_count  = News.where('external_id IS NOT NULL').count
       news_detail = nil
 
-      News.select('id, published_at, external_id').where('external_id IS NOT NULL').find_each do |news|
-        news.cancel_notifications = true
+      News.select('id, published_at, external_id, slug').where('external_id IS NOT NULL').find_each do |news|
 
-        news_detail = Nokogiri::XML::Reader(open(news_detail_url.call(news.external_id)).read)
-        news_detail.each do |node|
-          news.update_column(:published_at, DateTime.parse(node.value)) if node.name == 'pubDate' && node.value.present?
+        begin
+          news_detail = Nokogiri::XML::Reader(open(news_detail_url.call(news.external_id)).read)
+          news_detail.each do |node|
+            if node.name == 'pubDate' && node.node_type == 1 && node.inner_xml.present?
+              puts "Updating publishing date for news #{news.external_id} to #{node.inner_xml}"
+              News.where(:external_id => news.external_id).update_all(:published_at => DateTime.parse(node.inner_xml))
+              break
+            end
+          end
+        rescue Exception => ex
+          puts ex
+          puts ex.backtrace
         end
+
         i += 1
 
-        puts "#{i}/#{news_count}"
+        print " #{i}/#{news_count}"
 
         GC.start
       end
