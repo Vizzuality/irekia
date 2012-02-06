@@ -5758,6 +5758,11 @@ ul.playlist {
     height:28px;
     margin: 0 10px 0 0;
     background: url('/images/icons/icon_sprite.png') no-repeat 0 -450px;
+
+    &.video {
+      background-position: 0 -782px;
+    }
+
     &.pdf {
       background-position: 0 -520px;
     }

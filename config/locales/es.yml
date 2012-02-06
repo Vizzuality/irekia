@@ -1963,6 +1963,14 @@ es:
       send: Enviar
       twitter: "Compartir vía twitter"
     sidebar:
+      tabs:
+        downloads: Descargas
+        audio: Audio
+        video: Video
+        documents: Documentos
+        no_videos: No hay vídeos disponibles
+        no_documents: No hay documentos disponibles
+        no_audios: No hay audios disponibles
       location:
         title: "Localización del evento"
       politicians:

@@ -1503,6 +1503,7 @@ ul.playlist { list-style-type: none; margin: 0px; padding: 0px; }
 .pill-content ul li a { font-size: 15px; }
 .pill-content ul li a.download { display: inline; width: auto; padding: 0 8px 0 0px; font-size: 12px; background: url("/images/icons/download.png") no-repeat right 5px; }
 .pill-content ul li .icon { float: left; width: 28px; height: 28px; margin: 0 10px 0 0; background: url("/images/icons/icon_sprite.png") no-repeat 0 -450px; }
+.pill-content ul li .icon.video { background-position: 0 -782px; }
 .pill-content ul li .icon.pdf { background-position: 0 -520px; }
 
 .pill-content ul li a { display: block; text-decoration: none; font-weight: normal; font-size: 120%; outline: none; position: relative; z-index: 2; }

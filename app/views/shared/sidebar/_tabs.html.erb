@@ -1,10 +1,10 @@
 <% if audios.present? || videos.present? || files.present? -%>
-<h3>Descargas</h3>
+  <h3><%= t(".downloads") %></h3>
 
 <ul class="tabs">
-  <li class="first active"><a href="#tab-audio">Audio</a></li>
-  <li><a href="#tab-video">Video</a></li>
-  <li class="last"><a href="#tab-documents">Documentos</a></li>
+  <li class="first active"><a href="#tab-audio"><%= t(".audio") %></a></li>
+  <li><a href="#tab-video"><%= t(".video") %></a></li>
+  <li class="last"><a href="#tab-documents"><%= t(".documents") %></a></li>
 </ul>
 
 <div class="pill-content">
@@ -21,7 +21,7 @@
     </ul>
   </div>
 <% else -%>
-  <div class="active" id="tab-audio">No hay audios disponible</div>
+  <div class="active" id="tab-audio"><%= t(".no_audios") %></div>
 <% end -%>
 
 <% if videos.present? -%>
@@ -38,7 +38,7 @@
 
   </div>
 <% else -%>
-  <div id="tab-video">No hay videos disponibles</div>
+  <div id="tab-video"><%= t(".no_videos") %></div>
 <% end -%>
 
 <% if files.present? -%>
@@ -54,7 +54,7 @@
     </ul>
   </div>
 <% else -%>
-  <div id="tab-documents">No hay documentos disponibles</div>
+  <div id="tab-documents"><%= t(".no_documents") %></div>
 <% end -%>
 </div>
 
