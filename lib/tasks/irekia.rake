@@ -55,4 +55,8 @@ namespace :irekia do
   task :repair_encoding_in_external_proposals => :environment do
     Irekia::Importer.repair_encoding_in_external_proposals
   end
+
+  task :update_news_publishing_date => :environment do
+    Irekia::Importer.update_news_publishing_dates
+  end
 end
