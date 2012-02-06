@@ -71,7 +71,7 @@
       data.$submit = $ps.find(".bfooter .publish");
 
       // Translation
-      data.translations.continue = $ps.attr("data-t-continue");
+      data.translations.next = $ps.attr("data-t-continue");
       data.translations.publish  = $ps.attr("data-t-publish");
       data.translations.close    = $ps.attr("data-t-close");
 
@@ -80,7 +80,7 @@
       _addDefaultAction(data);
       _addAllAreasAction(data);
       _bindMenu(data);
-      _bindSubmit(data, data.translations.continue, true, "continue");
+      _bindSubmit(data, data.translations.next, true, "continue");
       _bindActions(data);
       _enableInputCounter(data, $ps.find("#question_question_data_attributes_question_text"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
       _enableInputCounter(data, $ps.find("#proposal_proposal_data_attributes_title"), function() { _enableSubmit(data.$submit)} , function() { _disableSubmit(data.$submit)});
@@ -116,7 +116,7 @@
   function _open(data) {
     var $ps = data.$ps;
 
-    _bindSubmit(data, data.translations.continue, true, "continue");
+    _bindSubmit(data, data.translations.next, true, "continue");
     data.$ps.find("input,:text,textarea").attr("tabindex", "-1");
 
     // Autosuggest binding
@@ -632,7 +632,7 @@
           $currentSection = $section;
 
           _gotoSection(data);
-          _bindSubmit(data, data.translations.continue, true, "continue");
+          _bindSubmit(data, data.translations.next, true, "continue");
           _center(data);
         });
 
