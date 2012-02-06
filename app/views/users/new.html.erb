@@ -27,7 +27,8 @@
         </div>
 
         <div class="field legal">
-          <p class="terms_of_service"><%= f.check_box :terms_of_service, :class => :hidden %> <a class="checkbox big"><%= raw(t('.terms_of_service', :link => link_to(t('.terms_of_service_link'), use_conditions_path))) %></a></p>
+          <p class="terms_of_service"><%= f.check_box :terms_of_service, :class => :hidden %> 
+          <a class="checkbox big"><%= raw(t('.terms_of_service', :link => link_to(t('.terms_of_service_link'), use_conditions_path, :target => "_blank"))) %></a></p>
         </div>
       </fieldset>
 
