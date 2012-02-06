@@ -483,6 +483,7 @@ module Irekia
     end
 
     def self.update_news_publishing_dates
+      puts '=> Updating news publishing dates'
       news_detail_url = lambda{|news_id| "http://www.irekia.euskadi.net/es/news/#{news_id}.xml"}
 
       News.where('external_id IS NOT NULL').find_each do |news|
@@ -490,6 +491,7 @@ module Irekia
 
         news_detail = Nokogiri::XML(open(news_detail_url.call(news.external_id)).read)
         news.update_attributes(:published_at => DateTime.parse(news_detail.xpath('//pubDate').text))
+        print '.'
       end
     end
 
