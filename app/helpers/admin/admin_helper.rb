@@ -5,7 +5,7 @@ module Admin::AdminHelper
     hours = @moderation_time[:hours]
     minutes = @moderation_time[:minutes]
     if hours.to_i >= 100
-      distance_of_time_in_words(Time.at(0), Time.at(hours.hours))
+      distance_of_time_in_words(Time.at(0), Time.at(hours.to_i * 3600))
     else
     "#{hours}:#{minutes}h"
     end
