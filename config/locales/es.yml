@@ -2064,6 +2064,7 @@ es:
       default: "%A, %d de %B de %Y %H:%M:%S %z"
       long: "%d de %B de %Y %H:%M"
       short: "%d de %b %H:%M"
+      event: "%d de %B de %Y a partir de las %H:%M"
     pm: pm
   title:
     search: Búsqueda
