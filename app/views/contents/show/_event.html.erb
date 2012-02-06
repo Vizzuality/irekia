@@ -17,7 +17,7 @@
       <%= content_tag :p, (content_tag :strong, @content.subtitle), :class => :subtitle if @content.subtitle %>
 
       <div class="meta">
-        <span class="date"><%= l @content.published_at.to_date, :format => :long %></span>
+        <span class="date"><%= l @content.event_date, :format => :event %></span>
         &middot;
         <% if !@content.areas.blank? %>
           <%= raw @content.areas.map{|a| link_to a.name, area_path(a)}.join(', ') %>
