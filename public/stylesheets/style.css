@@ -1828,7 +1828,7 @@ body.admin .article.total_info div.inner { padding: 20px; }
 body.admin .article.total_info ul.info { float: left; width: auto; }
 body.admin .article.total_info ul.info li { float: left; width: auto; height: 51px; border-right: 1px solid #E5E5E5; }
 body.admin .article.total_info ul.info li:last-child, body.admin .article.total_info ul.info li.last { margin: 0 0 0 20px; border: none; }
-body.admin .article.total_info ul.info li h3 { float: left; margin: 0; padding: 0; font: bold 67px "Helvetica",Arial!important; color: #9FA923; line-height: 50px!important; text-transform: lowercase!important; }
+body.admin .article.total_info ul.info li h3 { float: left; margin: 0; padding: 0; font: bold 17px "Helvetica",Arial!important; color: #9FA923; line-height: 50px!important; text-transform: lowercase!important; }
 body.admin .article.total_info ul.info li h3.time { color: #A1ABB2; }
 body.admin .article.total_info ul.info li p { float: left; padding: 0 20px 0 8px; margin: 6px 0 0; font: bold 17px "Helvetica",Arial; color: #A3ABB2!important; }
 body.admin .article.total_info div.order { position: relative; float: right; width: 300px; height: 51px; margin: 0; padding: 0; background: #F6F6F7; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
@@ -1845,7 +1845,7 @@ body.admin .article.activity ul li.content div.left div.photo_moderation a img {
 body.admin .article.activity ul li.content div.left div.photo_moderation p { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; width: 480px; }
 body.admin .article.activity ul li.content div.left h4 { display: block; font: bold 17px "Helvetica",Arial; color: #465866; }
 body.admin .article.activity ul li.content div.left p { margin: 0!important; padding: 0!important; font: normal 17px "Helvetica",Arial; color: #465866; }
-body.admin .article.activity ul li.content div.left p.time { display: block; margin: 5px 0 0 0; padding: 6px 0 0 16px!important; font: normal 13px "Helvetica",Arial; color: #919AA3!important; background: url("/images/admin/clock.png") no-repeat 0 7px; }
+body.admin .article.activity ul li.content div.left p.time { display: block; margin: 5px 0 0 0; padding: 6px 0 0 16px!important; font: normal 13px "Helvetica", Arial; color: #919AA3!important; background: url("/images/admin/clock.png") no-repeat 0 7px; }
 body.admin .article.activity ul li.content div.left p.time a { color: #7D8700!important; }
 body.admin .article.activity ul li.content div.left img { display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; width: 190px; margin: 0 10px 0 0; padding: 3px; border: 1px solid #BEB5C9; background: white; }
 body.admin .article.activity ul li.content div.right { width: 240px!important; margin: 0!important; padding: 0!important; }

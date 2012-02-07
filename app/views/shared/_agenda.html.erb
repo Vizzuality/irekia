@@ -47,13 +47,13 @@
     <div class="separator"></div>
     <div class="inner with_spinner">
       <div class="left">
-        <%= link_to t(".agenda", :date => l(@previous_month, :format => '%B de %Y')), link_for_agenda(:anchor => :agenda, :next_month => @previous_month_counter), :class => "left_arrow left more_months"  %>
-        <span id="months_spinner" class="spinner"></span>
+        <%= link_to t(".previous"), link_for_agenda(:anchor => :agenda, :next_month => @previous_month_counter), :class => "left_arrow left paginate_months previous_month"  %>
+        <span id="previous_spinner" class="spinner"></span>
       </div>
 
       <div class="right">
-        <%= link_to t(".agenda", :date => l(@next_month, :format => '%B de %Y')), link_for_agenda(:anchor => :agenda, :next_month => @next_month_counter), :class => "right_arrow right more_months"  %>
-        <span id="months_spinner" class="spinner"></span>
+        <%= link_to t(".next", :date => l(@next_month, :format => '%B de %Y')), link_for_agenda(:anchor => :agenda, :next_month => @next_month_counter), :class => "right_arrow right paginate_months next_month"  %>
+        <span id="next_spinner" class="spinner"></span>
       </div>
 
     </div>

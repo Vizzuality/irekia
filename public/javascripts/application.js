@@ -26,7 +26,7 @@ $(function() {
 
   // Pagination
   $(".more_proposals").enablePagination({name: "proposals"});
-  $(".more_months").enablePagination({name: "months"});
+  $(".agenda").enableMonthPagination();
   $(".more_questions").enablePagination({name: "questions"});
   $(".more_actions").enablePagination({name: "actions"});
 

@@ -1342,6 +1342,64 @@ function loginInLinks() {
           });
         }
 
+        jQuery.fn.enableMonthPagination = function(opt){
+          var $this = $(this);
+          var $article = $(this);
+          var speed      = (opt && opt.speed) || 200;
+          var cellHeight = (opt && opt.cellHeight)  || 132;
+          var currentPage = 0;
+          var url, sort, id, $article, spin_element;
+
+          function paginate(paginateUrl, page) {
+            $.ajax({url: paginateUrl, method: 'GET', data:{next_month: page }, success:function(response, xhr, status) {
+              IrekiaSpinner.stop();
+
+              var $ul = $article.find(".agenda_map ul.agenda");
+              var $content = $($(response).html());
+
+              var height = (Math.floor($(response).find("li").length / 7)) * cellHeight;
+              $ul.html($content);
+
+              if (filterArea != 0) {
+                $content.find("li").hide();
+                $content.find("li.area_" + filterArea).show();
+              }
+
+              $ul.parent().animate({ height: height + 8 }, 500);
+              //$content.slideDown(speed);
+              $ul.find(".show_event").infoEventPopover();
+            }});
+          }
+
+          this.each(function(){
+
+            $(this).find(".previous_month").unbind();
+            $(this).find(".previous_month").click(function(e) {
+              e.preventDefault();
+              url = $(this).attr("href");
+
+              previous_spin_element = document.getElementById('previous_spinner');
+              IrekiaSpinner.spin(previous_spin_element);
+
+              currentPage -=1;
+              paginate(url, currentPage);
+            });
+
+            $(this).find(".next_month").unbind();
+            $(this).find(".next_month").click(function(e) {
+              e.preventDefault();
+              url = $(this).attr("href");
+
+              next_spin_element = document.getElementById('next_spinner');
+              IrekiaSpinner.spin(next_spin_element);
+              
+              currentPage +=1;
+              paginate(url, currentPage);
+            });
+
+          })
+        }
+
         jQuery.fn.enablePagination = function(opt){
           var $this;
           var speed      = (opt && opt.speed) || 200;
@@ -1349,31 +1407,6 @@ function loginInLinks() {
           var cellHeight = (opt && opt.cellHeight)  || 132;
           var currentPage = 1;
           var url, sort, id, $article, spin_element;
-
-          function paginateMonths() {
-            $.ajax({url: url, method: 'GET', data:{ next_month: currentPage++ }, success:function(response, xhr, status) {
-              IrekiaSpinner.stop();
-
-              var $ul = $article.find(".agenda_map ul.agenda");
-              var h = $ul.parent().height();
-              var $content = $($(response).html());
-
-              $content.hide();
-              $ul.append($content);
-
-              var height = (Math.floor($(response).find("li").length / 7)) * cellHeight + h;
-
-              $ul.parent().animate({ height: height + 8 }, 500);
-
-              if (filterArea != 0) {
-                $content.find("li").hide();
-                $content.find("li.area_" + filterArea).show();
-              }
-
-              $content.slideDown(speed);
-              $ul.find(".show_event").infoEventPopover();
-            }});
-          }
 
           // Default pagination
           function paginate(paginationURL) {
@@ -1422,18 +1455,13 @@ function loginInLinks() {
               $this = $(this).parents(".article");
               url = $(this).attr("href");
 
-              if (name != "months") {
-                id = $(this).attr("id").replace(name + '_', '');
-              }
-
+              id = $(this).attr("id").replace(name + '_', '');
               $article = $(this).parents(".article");
 
               spin_element = document.getElementById(name + '_spinner');
               IrekiaSpinner.spin(spin_element);
 
-              if (name == "months") paginateMonths();
-              else paginate(url);
-
+              paginate(url);
             });
           })
         }
@@ -1710,7 +1738,7 @@ function loginInLinks() {
               $(this).parent().toggleClass("selected");
               $(".view_map").parent().toggleClass("selected");
 
-              $(".agenda .more_months").show();
+              $(".agenda .paginate_months").show();
 
               $(".agenda_map .map").animate({opacity:0, height:"200px"}, speed);
               $(".agenda_map").animate({height:$(".agenda_map .agenda").height()}, speed);
@@ -1740,7 +1768,7 @@ function loginInLinks() {
               $(".view_calendar").parent().toggleClass("selected");
               $(".agenda_map .map, .agenda_map").animate({height:mapHeight}, speed);
               $(".agenda_map .map").animate({opacity:1}, speed);
-              $(".agenda .more_months").hide();
+              $(".agenda .paginate_months").hide();
               $(".agenda_map .agenda").fadeOut("fast");
 
               if (!preloaded) { setTimeout(function() { preloaded = true; startMap(); }, 100); }
