@@ -36,18 +36,19 @@ class ApplicationController < ActionController::Base
   def default_url_options(options = {})
     user_locale = current_user.locale if user_signed_in? && current_user.locale.present?
     cookie_locale  = cookies[:current_locale] || {}
-    {:locale => user_locale || cookie_locale || I18n.locale}
+    url_options = {:locale => user_locale || cookie_locale || I18n.locale}
+    url_options[:datalogger] = true if request.params[:datalogger].present?
+    url_options
   end
 
   def analyze_useragent
-    @ua = AgentOrange::UserAgent.new(request.user_agent)
-    request.format = :iphone if iphone_request?
+    request.format = :iphone if datalogger_request?
   end
 
   def after_sign_in_path_for(resource)
     if request.xhr?
       session['user_return_to'] = nil
-      nav_bar_buttons_path
+      nav_bar_buttons_path(request.params.slice(:datalogger))
     else
       return_to = session['unauthorized_url'] || session['user_return_to'] || root_path
       session['user_return_to'] = session['unauthorized_url'] = nil
@@ -72,12 +73,12 @@ class ApplicationController < ActionController::Base
     render :partial => 'shared/in_development'
   end
 
-  def iphone_request?
-    @ua.device.platform.to_s == 'Apple iPhone'
+  def datalogger_request?
+    request.params[:datalogger].present?
   end
 
   def irekia_layout
-    iphone_request?? 'datalogger' : 'application'
+    datalogger_request?? 'datalogger' : 'application'
   end
 
   private :irekia_layout

@@ -1,7 +1,7 @@
 class IrekiaLoginFailure < Devise::FailureApp
   def redirect_url
     session['unauthorized_url'] = session['user_return_to']
-    root_path
+    root_path(request.params.slice(:datalogger))
   end
 
   def respond

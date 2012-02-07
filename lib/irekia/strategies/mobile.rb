@@ -3,8 +3,7 @@ module Irekia
     class Mobile < Devise::Strategies::DatabaseAuthenticatable
 
       def authenticate!
-        device = AgentOrange::UserAgent.new(request.user_agent).device
-        authentication_hash[:role_id] = Role.politician.first.id if device.is_mobile?
+        authentication_hash[:role_id] = Role.politician.first.id if request.params[:datalogger].present?
         super
       end
 
