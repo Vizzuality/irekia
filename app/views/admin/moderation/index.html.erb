@@ -29,3 +29,17 @@
 
 <span class="no_content" <% if (@items.blank?) %>style="display:block"<% end %>>No hay más contenidos<br/>pendientes de ser<br/>moderados</span>
 <span class="loader">Cargando más contenido</span>
+
+<% content_for :js_data do %>
+<script>
+$(document).ready(function(){
+
+  $(window).scroll(function(ev){
+    if (!loading && (($(document).scrollTop() + $(window).height() + (mobile?60:0)) >= $(document).height())) {
+      loadMore(page,older_first);
+    }
+  });
+});
+</script>
+
+<% end %>

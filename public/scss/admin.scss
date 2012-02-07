@@ -2,6 +2,12 @@
   @import "compass/css3";
   @import "helpers";
 
+  body { background:#F6F6F7; }
+
+  #container #main.moderation .content .article.activity {
+    margin-left:3px;
+  }
+
   #container #main.moderation .content .article.activity .content.edit {
     width:935px;
     .left {
@@ -11,7 +17,6 @@
         width:935px - 11*2;
         margin: 0 0 10px 0;
       }
-
       .actions {
         float:right;
         .reject {
@@ -22,8 +27,18 @@
       }
     }
   }
-
   @mixin mobile($w) {
+
+    span.no_content {
+      margin-top:20px;
+      font:bold 17px "Helvetica",Arial!important;
+    }
+
+    .article.activity ul li.content.edit .left {
+      form { width:260px; }
+      textarea { width:260px!important; }
+    }
+
     #main .content, header .content, .bfooter .content {
       width:$w + px;
       overflow:hidden;
@@ -66,20 +81,21 @@
     .article.total_info {
       margin:5px auto 0!important;
       div.inner {padding:20px;}
+      clear:both;
+      overflow:hidden;
 
       ul.info {
         float:left;
         width:auto;
-        padding:15px;
+        padding:10px;
+        width:290px;
 
         li {
           float:left;
-          width:auto;
           height:44px;
           border-right:1px solid #E5E5E5;
 
-
-          &:last-child, &.last {margin:0 0 0 15px; border:none; p {padding:0 0 0 4px;}}
+          &:last-child, &.last {margin:0 0 0 10px; border:none; p {padding:0 0 0 4px;}}
 
           h3 {
             float:left;
@@ -221,7 +237,7 @@
       text-align:center;
     }
 
-    .bfooter {display:none;}
+    footer {display:none;}
   }
 
 
@@ -268,11 +284,11 @@
             float:left;
             margin:0;
             padding:0;
-            font:bold 17px "Helvetica",Arial!important;
-            color:#9FA923;
+            font:bold 37px "Helvetica",Arial!important;
+            color:#9FA923!important;
             line-height:50px!important;
             text-transform:lowercase!important;
-            &.time {color:#A1ABB2;}
+            &.time {color:#A1ABB2!important;}
           }
           p {
             float:left;
@@ -337,6 +353,7 @@
         padding:30px 0;
         border-bottom:1px solid #e5e5e5;
         &:last-child {border:none}
+
 
         div.left {
           width:685px!important;
@@ -450,7 +467,7 @@
       left:50%;
       height:42px;
       padding:7px 0 8px 42px;
-      margin:0 0 0 -125px;
+      margin:20px 0 0 -125px;
       font:normal 17px "Helvetica",Arial;
       color:#7D7F80;
       background:url('/images/admin/ajax-loader.gif') no-repeat 0 0;
@@ -470,11 +487,35 @@
 
 
 
-    @media screen and (max-width:320px) {
+    @media only screen and (max-width:320px) {
       @include mobile(320);
     }
 
-    @media screen and (min-width: 321px) and (max-width:480px) {
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    // Header
+    header {
+      padding:12px 0 0;
+      margin:0 0 10px 0;
+
+      .content {height:51px;}
+
+      div.top_nav {
+        a.logo {
+          width:201px;
+          height:39px;
+          margin:0 0 0 7px;
+          -webkit-background-size: 201px 39px;
+          background:url('/images/admin/logo@2x.jpg') no-repeat 0 0;
+          img {display:none;}
+        }
+
+        a.net_logo {display:none;}
+      }
+      }
+
+    }
+
+    @media only screen and (min-width: 321px) and (max-width:480px) {
       @include mobile(480);
     }
   }

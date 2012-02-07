@@ -1,0 +1,25 @@
+
+<div class="content">
+  <div class="top_nav">
+    <ul class="languages">
+      <% %w(es eu).each_with_index do |locale, i| %>
+        <% if locale.to_sym == I18n.locale -%>
+          <li class="selected <%= 'last' if (i + 1) == %w(es eu).length %>"><span><%= I18n.locale.upcase %></span></li>
+        <% else -%>
+          <li class="<%= 'last' if (i + 1) == %w(es eu).length %>"><%= button_to locale.upcase, change_locale_path(:new_locale => locale) %></li>
+        <% end -%>
+      <% end  %>
+    </ul>
+
+    <ul class="user_options">
+      <li><%= link_to t('.contact'), t('.contact_url') %></li>
+      <li><%= link_to t('.help'), t('.contact_url') %></li>
+      <li><%= link_to t('.map'), t('.map_url') %></li>
+      <li><%= link_to t('.accessibility'), t('.accessibility_url') %></li>
+      <li class="last"><%= link_to t('.management'), t('.management_url') %></li>
+    </ul>
+
+    <%= link_to (content_tag(:span, "", :class =>'white' ) + image_tag('logo.png')), admin_moderation_path, :class => "logo" %>
+    <%= link_to (image_tag 'euskadi_net_logo.png'), t('.euskadi_net_url'), :class => :net_logo %>
+  </div>
+</div>

@@ -1376,6 +1376,19 @@ es:
           other: "%{count} usuarios"
           zero: "Ningún area"
   shared:
+    admin:
+      header:
+        accessibility: Accesibilidad
+        accessibility_url: "http://www.euskadi.net/r33-2288/es/contenidos/informacion/cabecera_accesibilidad/es_6144/politica_accesibilidad.html"
+        contact: Contacto
+        contact_url: "http://www.ej-gv.net/o53/visualizador/o53BuzonEuskadi.jsp?por=2&lenguaje=1"
+        euskadi_net_url: "http://www.euskadi.net/r33-2220/es/"
+        help: Ayuda
+        help_url: "http://www.irekia.euskadi.net/es/pages/781-ayuda"
+        management: "Mis gestiones"
+        management_url: "https://www6.euskadi.net/s06-9512x/eu/r02nConsultationSistemWar/consultation/r02nExpedientList.do"
+        map: Mapa
+        map_url: "http://www.irekia.euskadi.net/es/site/sitemap"
     actions:
       content_type_filters:
         all: "Todos los tipos"
