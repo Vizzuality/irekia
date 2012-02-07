@@ -14,7 +14,8 @@
       </header>
       <div class="margin30">
         <h3><%= t(".description.title") %></h3>
-        <%= @politician.description %>
+        <%= simple_format @politician.description_1 %>
+        <%= simple_format @politician.description_2 %>
       </div>
       <div class="margin30">
         <h3><%= t(".description.activity") %></h3>
@@ -53,6 +54,9 @@
         <%= politician_address %>
         <%= politician_mail_and_phone %>
         <%= politician_twitter_and_facebook %>
+        <% @politician.webs.split('|').each do |web| -%>
+          <%= content_tag :p, link_to(web, web) %>
+        <% end -%>
       </div>
     </div>
   </div>

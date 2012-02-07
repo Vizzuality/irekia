@@ -58,4 +58,5 @@ module PoliticiansHelper
 
     content_tag :p, raw(arr.join(' | '))
   end
+
 end

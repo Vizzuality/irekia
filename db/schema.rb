@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131113500) do
+ActiveRecord::Schema.define(:version => 20120207130027) do
 
   create_table "answer_data", :force => true do |t|
     t.integer  "answer_id"
@@ -442,6 +442,7 @@ ActiveRecord::Schema.define(:version => 20120131113500) do
     t.text     "description_2_es"
     t.text     "description_2_eu"
     t.text     "description_2_en"
+    t.string   "webs"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -284,6 +284,10 @@ class User < ActiveRecord::Base
     User.where(:slug => advisers_slugs)
   end
 
+  def self.patxi_and_advisers
+    where(:id => [User.patxi_lopez.id, User.advisers.map(&:id)].flatten)
+  end
+
   def self.wadus
     where(:name => 'usuario dado', :lastname => 'de baja').first
   end

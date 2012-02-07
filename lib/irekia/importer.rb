@@ -229,8 +229,14 @@ module Irekia
       categories_url        = lambda{ |language| "#{server}/#{language}/categories.json" }
       areas_url             = lambda{ |language, id| "#{server}/#{language}/categories/#{id}.json" }
       area_detail_url       = lambda{ |language, id| "#{server}/#{language}/entities/#{id}.json" }
-      politician_detail_url = lambda{ |language, id| "#{server}/#{language}/people/#{id}.json" }
 
+      politicians_inserted = areas_processed = []
+      politicians_ids    = Area.where('external_id is not null').inject({}){|h, a| h[a.external_id] = []; h}
+      area_relationships = Area.where('external_id is not null').inject({}){|h, a| h[a.external_id] = []; h}
+
+      puts ''
+      puts '* Loading areas...'
+      puts ''
       languages.each do |lang|
         begin
           puts "=> getting data for #{lang} language"
@@ -248,6 +254,9 @@ module Irekia
               area_detail = get_json(area_detail_url.call(lang, area_id))
               area_name = area['name'].gsub(/^Departamento de /, '')
 
+              politicians_ids[area_id]    += (area_detail['people'].map(&:first) || []) if politicians_ids.has_key?(area_id)
+              area_relationships[area_id] << area_detail['relationships'] if area_relationships.has_key?(area_id)
+
               Area.where(:external_id => area_id).each do |area_model|
                 if area_model.lehendakaritza?
                   area_model.send("name_#{lang}=", 'Lehendakaritza')
@@ -258,53 +267,6 @@ module Irekia
                 area_model.save!
               end
 
-              #puts "=> getting politicians data for #{area_id} - #{area_name}"
-
-              #politicians_ids = area_detail['people'].map(&:first)
-
-              #politicians_ids.each do |politician_id|
-                #politician = get_json(politician_detail_url.call(lang, politician_id), 'person')
-
-                #begin
-                  #user = User.find_or_initialize_by_external_id(politician_id)
-
-                  #user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ')
-                  #user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')
-                  #user.contact_email         =  politician['email'].try(:first)
-                  #user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ')
-                  #user.city                  = (politician['address'][2] || '').split(' ').map(&:capitalize).join(' ')
-                  #user.role                  = Role.politician.first
-                  #if user.new_record?
-                    #user.email                 = "#{user.fullname.underscore}@ej-gv.es"
-                    #user.password              = 'virekia'
-                    #user.password_confirmation = 'virekia'
-                  #end
-
-                  #title_name = politician['works_for'].first.first.try(:capitalize)
-                  #if user.title.present?
-                    #user.title.update_attribute('translated_name', (user.title.translated_name || {}).merge({"#{lang}" => title_name}))
-                  #else
-                    #user.title = Title.create(:translated_name => {"#{lang}" => title_name}, :name => title_name)
-                  #end
-
-                  #user.facebook_username     = politician[''].first.delete('http://facebook.com/') rescue nil
-                  #user.areas                 = Area.where(:external_id => area['id'])
-                  #user.last_import           = Time.at(politician['update_date'])
-                  #user.profile_picture       = Image.create(:remote_image_url => "http://www2.irekia.euskadi.net/#{politician['image']}") if politician['image']
-                  #user.skip_mailing          = true
-                  #user.save!
-
-                  #if File.exists?(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg"))
-                    #user.profile_picture.destroy
-                    #user.profile_picture = Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg")))
-                    #user.save!
-                  #end
-                #rescue Exception => ex
-                  #puts politician.inspect
-                  #puts ex
-                  #puts ex.backtrace
-                #end
-              #end
             end
           end
         rescue Exception => ex
@@ -312,6 +274,31 @@ module Irekia
           puts ex.backtrace
         end
       end
+
+      puts ''
+      puts '* Loading politicians...'
+      puts ''
+      Area.where('external_id is not null').order('external_id asc').each do |area_model|
+        next if area_model.nil?
+
+        puts "=> getting politicians data for #{area_model.id} - #{area_model.name}"
+
+        area_relationships[area_model.external_id].flatten.map{|r| r['items']}.flatten.compact.uniq.reject{|r| Area.all.map(&:external_id).include?(r['id']) || areas_processed.include?(r['id'])}.each do |area_relationship|
+          puts "\t=> getting politicians data for area relationship #{area_relationship['id']}"
+          area_relationship_detail = get_json(area_detail_url.call('es', area_relationship['id']))
+          politicians_ids[area_model.external_id] += area_relationship_detail['people'].map(&:first)
+          areas_processed                         << area_relationship['id']
+        end
+
+        politicians_ids[area_model.external_id].flatten.uniq.compact.reject{|id| politicians_inserted.include?(id)}.each do |politician_id|
+          languages.each do |lang|
+            create_politician(lang, politician_id, area_model)
+          end
+          politicians_inserted << politician_id
+        end
+      end
+
+      AreaUser.where(:user_id => User.patxi_and_advisers.map(&:id)).update_all(:display_order => 1)
 
       puts '=> import complete!'
     end
@@ -515,6 +502,59 @@ module Irekia
     end
 
     private
+
+    def self.create_politician(lang, politician_id, area_model)
+      server                = 'http://www2.irekia.euskadi.net'
+      politician_detail_url = lambda{ |language, id| "#{server}/#{language}/people/#{id}.json" }
+
+      begin
+        politician = get_json(politician_detail_url.call(lang, politician_id), 'person')
+
+        user = User.find_or_initialize_by_external_id(politician_id)
+
+        user.name                  = (politician['first_name'] || '').split(' ').map(&:capitalize).join(' ') if user.name.blank?
+        user.lastname              = (politician['last_name'] || '').split(' ').map(&:capitalize).join(' ')  if user.lastname.blank?
+        user.lastname              = ' '                                                                     if user.lastname.blank?
+        user.contact_email         =  politician['email'].try(:first)                                        if user.contact_email.blank?
+        user.province              = (politician['address'][3] || '').split(' ').map(&:capitalize).join(' ') if user.province.blank?
+        user.city                  = (politician['address'][2] || '').split(' ').map(&:capitalize).join(' ') if user.city.blank?
+        user.role                  = Role.politician.first                                                   if user.role.blank?
+        user.areas                 = [area_model]
+        if user.new_record?
+          user.email                 = "#{user.fullname.underscore}@ej-gv.es"
+          user.password              = 'virekia'
+          user.password_confirmation = 'virekia'
+        end
+
+        title_name = politician['works_for'].first.first.try(:capitalize)
+        if user.title.present?
+          user.title.update_attribute('translated_name', (user.title.translated_name || {}).merge({"#{lang}" => title_name}))
+        else
+          user.title = Title.create(:translated_name => {"#{lang}" => title_name}, :name => title_name)
+        end
+
+        user.facebook_url          = politician[''].first rescue nil if user.facebook_url.blank?
+        user.webs                  = (politician['web'] || []).join('|')     if user.webs.blank?
+        user.last_import           = Time.at(politician['update_date'])
+        user.profile_picture       = Image.create(:remote_image_url => "http://www2.irekia.euskadi.net/#{politician['image']}") if politician['image'] && user.profile_picture.blank?
+        user.skip_mailing          = true
+
+        if File.exists?(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg"))
+          user.profile_picture.destroy
+          user.profile_picture = Image.create(:image => File.open(Rails.root.join('db', 'seeds', 'support', 'images', "#{user.slug}.jpg")))
+        end
+        user.save!
+
+        unless AreaUser.exists?(:user_id => user.id, :area_id => area_model.id)
+          user.areas_users.create(:area_id => area_model.id, :display_order => (area_model.areas_users.maximum('display_order') || 0) + 1)
+        end
+
+      rescue Exception => ex
+        puts politician.inspect if politician.present?
+        puts ex
+        puts ex.backtrace
+      end
+    end
 
     def self.get_json(url, server_options = {}, items_key = nil)
       if server_options.present? && server_options.is_a?(String)
