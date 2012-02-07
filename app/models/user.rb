@@ -269,19 +269,7 @@ class User < ActiveRecord::Base
   end
 
   def self.advisers
-    advisers_slugs = %w(
-      rodolfo-ares-taboada
-      pilar-unzalu-perez-de-eulate
-      idoia-mendia-cueva
-      inaki-arriola-lopez
-      javier-rafael-bengoa-renteria
-      maria-isabel-celaa-dieguez
-      carlos-aguirre-arana
-      gemma-zabaleta-areta
-      bernabe-unda-barturen
-      blanca-urgell-lazaro
-    )
-    User.where(:slug => advisers_slugs)
+    User.where(:external_id => [6928, 953, 3955, 7552, 7335, 6934, 7419, 6936, 169, 7299])
   end
 
   def self.patxi_and_advisers
