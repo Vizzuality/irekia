@@ -1042,6 +1042,8 @@ es:
   politicians:
     agenda:
       title: "Agenda de %{name}"
+      next: "Mes siguiente"
+      previous: "Mes anterior"
     detail:
       back: volver
       description:
@@ -1065,6 +1067,8 @@ es:
     show:
       agenda:
         title: "Agenda de %{name}"
+        next: "Mes siguiente"
+        previous: "Mes anterior"
     summary:
       actions:
         follow: "Sigue a %{name}"
@@ -1403,6 +1407,8 @@ es:
       ical: "Exportar para iCal"
       more: "Ver calendario completo"
       agenda: "agenda %{date}"
+      next: "Mes siguiente"
+      previous: "Mes anterior"
       view_calendar: "Ver calendario"
       view_map: "Ver mapa"
       showing: 'Mostrando'
