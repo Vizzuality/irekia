@@ -7,6 +7,10 @@ class ContentsController < ApplicationController
 
   respond_to :html, :json, :ics
 
+  def new
+    @new_content = params[:type].constantize.new
+  end
+
   def index
     contents = params[:type].constantize.moderated
 
