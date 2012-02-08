@@ -17,7 +17,7 @@
 
       <%= form.fields_for :answer_data, @new_answer.answer_data do |answer_data| -%>
         <div class="paper">
-        <div class="placeholder">Contestar a esta pregunta...</div>
+        <div class="placeholder"><%= t(".answer_this_question") %></div>
         <%= answer_data.text_area :answer_text, :class => :grow %>
         </div>
       <% end -%>
