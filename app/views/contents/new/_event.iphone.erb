@@ -1,0 +1,14 @@
+<%= form_for @new_content, :remote => true, :html => {:'data-type' => :html} do |form| %>
+  <%= form.hidden_field :type, :value => 'Event' %>
+  <%= form.hidden_field :latitude %>
+  <%= form.hidden_field :longitude %>
+  <%= hidden_field_tag :share_in_twitter, '1' %>
+  <%= hidden_field_tag :share_in_facebook, '1' %>
+
+  <%= form.fields_for :event_data, @new_content.build_event_data do |event_data_form| -%>
+    <%= event_data_form.text_area :body, :class => :grow %>
+  <% end -%>
+
+  <%= form.submit 'Check-in'%>
+
+<% end -%>
