@@ -499,6 +499,8 @@ es:
           time: "hace %{time}"
           total_in_favor: "%{percent}% a favor (de %{total})"
       question:
+        cancel: Cancelar
+        publish_answer: "Publicar"
         add_a_video: "Añade un video si quieres"
         addressed_to: "Dirigida a"
         answer_this_question: "Contesta a esta pregunta"

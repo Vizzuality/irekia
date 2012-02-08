@@ -3,9 +3,9 @@
       <%= form.hidden_field :related_content_id %>
 
         <header>
-        <%= link_to 'Cancelar', root_path, :class => :white_button %>
+        <%= link_to t(".cancel"), root_path, :class => :white_button %>
         <h2>pregunta</h2>
-        <%= form.submit "Publicar", :class => 'white_button right publish hidden' %>
+        <%= form.submit t(".publish_answer"), :class => 'white_button right publish hidden' %>
 
         <div class="title">
         <h1><%= @content.question_text %></h1>
@@ -26,8 +26,8 @@
 
       <% content_for :header do %>
         <header class="clearfix">
-        <%= link_to 'volver', root_path(:datalogger => true), :class => :white_button %>
-        <h2>pregunta</h2>
+        <%= link_to t(".back"), root_path(:datalogger => true), :class => :white_button %>
+        <h2><%= t(".question") %></h2>
         <div class="title">
         <h1><%= @content.question_text %></h1>
         <div class="footer when"><%= link_to @content.author.try(:fullname), path_for_user(@content.author) %> <%= t('.question_content.author_and_comments.time', :time => distance_of_time_in_words_to_now(@content.published_at)) %></div>
