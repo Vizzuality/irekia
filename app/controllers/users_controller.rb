@@ -151,8 +151,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    user_locale = current_user.locale
     if current_user.destroy
-      redirect_to byebye_path
+      redirect_to byebye_path(:locale => user_locale)
     else
       render :settings
     end

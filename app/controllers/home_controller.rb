@@ -50,7 +50,7 @@ class HomeController < ApplicationController
     end
 
     previous_url = URI.parse(request.referer)
-    previous_url.path = previous_url.path.gsub(/^\/\w\w\//, "/#{I18n.locale}/")
+    previous_url.path = previous_url.path.gsub(/^\/(es)|(eu)|(en)/, "/#{I18n.locale}")
 
     redirect_to previous_url.to_s
   end

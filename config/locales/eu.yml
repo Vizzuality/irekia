@@ -930,7 +930,7 @@ eu:
     your_proposals: Proposamenak
     your_questions: Galderak
   named_routes_path:
-    byebye: ""
+    byebye: "usuario_eliminado"
   number:
     currency:
       format:
