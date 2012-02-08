@@ -29,7 +29,7 @@
     <ul>
       <% videos.each do |video| -%>
         <li class="clearfix">
-          <div class="icon"></div>
+          <div class="icon pdf"></div>
           <a href="<%= video.url %>" alt="<%= video.name %>"><%= truncate(video.name, :length => 30) %></a>
           <span class="footer"><%= video.size %></span>
         </li>
