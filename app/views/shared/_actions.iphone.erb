@@ -3,7 +3,7 @@
         <div class="content">
 
         <ul class="counters">
-          <li><strong><%= link_to @unanswered_questions_count, questions_user_path(@user) %></strong>preguntas<br />por contestar</li>
+        <li><%= raw t(".unanswered_questions", :count => @unanswered_questions_count, :link => questions_user_path(@user)) %></li>
         <li><strong>06</strong>contenidos comentados</li>
         <li><strong>11</strong>nuevas etiquetas</li>
         </ul>
@@ -18,5 +18,5 @@
     </div>
 
     <div class="loader">
-    <%= link_to "Recargar página", root_path  %>
+    <%= link_to t(".reload"), root_path(:datalogger => true) %>
     </div>
