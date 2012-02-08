@@ -109,6 +109,11 @@ es:
           citizen: Ciudadano
           politician: Político
   admin:
+    admin:
+      index:
+        email: Email
+        password: Contraseña
+        sign_in: Entrar
     moderation:
       index:
         contents: Contenidos
@@ -2201,12 +2206,12 @@ es:
         title: "Propuestas en las que participas"
       questions:
         back: Volver
-        question: 
+        question:
           one: "1 pregunta"
           other: "%{count} preguntas"
           zero: "0 preguntas"
         back_home: Volver al inicio
-        no_more_questions: "No tienes más<br />preguntas pendientes" 
+        no_more_questions: "No tienes más<br />preguntas pendientes"
         filters:
           all: Todas
           answered: Contestadas

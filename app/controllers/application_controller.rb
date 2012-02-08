@@ -38,11 +38,12 @@ class ApplicationController < ActionController::Base
     cookie_locale  = cookies[:current_locale] || {}
     url_options = {:locale => user_locale || cookie_locale || I18n.locale}
     url_options[:datalogger] = true if request.params[:datalogger].present?
+    url_options[:moderatorapp] = true if request.params[:moderatorapp].present?
     url_options
   end
 
   def analyze_useragent
-    request.format = :iphone if datalogger_request?
+    request.format = :iphone if datalogger_request? || moderatorapp_request?
   end
 
   def after_sign_in_path_for(resource)
@@ -77,10 +78,13 @@ class ApplicationController < ActionController::Base
     request.params[:datalogger].present?
   end
 
+  def moderatorapp_request?
+    request.params[:moderatorapp].present?
+  end
+
   def irekia_layout
     datalogger_request?? 'datalogger' : 'application'
   end
-
   private :irekia_layout
 
   def get_areas
