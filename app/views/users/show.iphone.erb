@@ -25,34 +25,6 @@
     -->
 <% if @actions.present? %>
 	<%= render "shared/actions", :title => t(viewing_dashboard?? 'show.activity.title' : 'actions.title', :scope => "users.#{@viewing_access}"), :description => @actions_description %>
-<% else %>
-
-    <div class="article">
-      <div class="inner">
-        <div class="content">
-
-          <ul class="counters">
-          <li><strong><%= current_user.questions_count %></strong>preguntas<br />por contestar</li>
-            <li><strong>06</strong>contenidos comentados</li>
-            <li><strong>11</strong>nuevas etiquetas</li>
-          </ul>
-
-          <ul><li>
-
-<div class="content">
-  <span class="empty"><%= t((@area || @user).class.name.downcase, :scope => 'shared.actions.no_content', :target => (@area || @user).name ) %></span>
-  </div>
-  </li></ul>
-
-        </div>
-      </div>
-      <div class="t"></div><div class="f"></div>
-    </div>
-
-    <div class="loader">
-      <a href="#" class="reload">Recargar página</a>
-    </div>
-
 <% end %>
 
   </div>
