@@ -17,9 +17,6 @@
 	      <div class="message">
 	        <h2><%= t('users.actions.no_activity.other_title',:user => @user.name) %></h2>
 	        <p><%= t('users.actions.no_activity.other_description',:user => @user.name) %></p>
-	        <% if @viewing_access != "public" %>
-	          <%= link_to (content_tag :span, t('.no_activity.homepage')), '/', :class => "white_button pink" %>
-	        <% end %>
 	      </div>
 	    </div>
 	  </div>
