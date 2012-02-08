@@ -1,4 +1,6 @@
 class ContentsController < ApplicationController
+  include ApplicationHelper
+
   skip_before_filter :authenticate_user!, :only => [:index, :show]
   before_filter :get_content_class
   before_filter :get_content, :only => [:show, :edit]
@@ -247,21 +249,27 @@ class ContentsController < ApplicationController
   private :process_file_upload
 
   def share_content
-    if params[:share_in_facebook] == '1' && params[:facebook_message]
+    if params[:share_in_facebook] == '1'
       begin
-        MiniFB.post(current_user.facebook_oauth_token, 'me', :type => 'feed', :message => params[:facebook_message])
+        message = params[:facebook_message]
+        message = message_for_facebook(@content) if message.blank?
+
+        MiniFB.post(current_user.facebook_oauth_token, 'me', :type => 'feed', :message => message)
       rescue => e
         Rails.logger.error e
       end
     end
 
-    if params[:share_in_twitter] == '1' && params[:twitter_message].present?
+    if params[:share_in_twitter] == '1'
       begin
+        message = params[:twitter_message]
+        message = message_for_twitter(@content) if message.blank?
+
         Twitter.configure do |config|
           config.oauth_token        = current_user.twitter_oauth_token
           config.oauth_token_secret = current_user.twitter_oauth_token_secret
         end
-        Twitter.update(params[:twitter_message])
+        Twitter.update(message)
       rescue => e
         Rails.logger.error e
       end
