@@ -13,9 +13,6 @@
         <% else %>
           <h2><%= t('.no_activity.title') %></h2>
           <p><%= t('.no_activity.description') %></p>
-        <% end %>      
-        <% if @viewing_access != "public" %>
-          <%= link_to (content_tag :span, t('.no_activity.homepage')), '/', :class => "white_button pink" %>
         <% end %>
       </div>
     </div>
