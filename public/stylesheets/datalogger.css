@@ -93,12 +93,15 @@ form.publish .white_button { position: relative; }
 #main .article .inner .content ul.counters li a, #main .article .inner .content ul.counters li strong { display: block; margin: 0; font-size: 37px; color: #EB005F; font-weight: bold; }
 #main .article .inner .content ul.counters li:last-child { border: none; }
 
-ul.menu { clear: both; overflow: hidden; margin-bottom: 10px; margin-top: 15px; }
+ul.menu { clear: both; overflow: hidden; margin-top: 15px; margin-bottom: 0; }
 ul.menu li { padding: 0; margin: 0; float: left; text-align: center; }
 ul.menu li a { display: block; height: 96px; text-decoration: none; color: #465866; font-size: 13px; line-height: 150px; }
 ul.menu li a.checkin { width: 102px; background: url("/images/datalogger/menu_checkin.png") no-repeat; }
 ul.menu li a.comment { width: 98px; background: url("/images/datalogger/menu_comment.png") no-repeat; }
 ul.menu li a.photo { width: 98px; background: url("/images/datalogger/menu_photo.png") no-repeat; }
+ul.menu li.question { float: left; height: 64px; width: 98px; background: url("/images/datalogger/menu_question.png") no-repeat; padding: 16px 0px; border: none; text-align: center; font-size: 13px; color: #465866; }
+ul.menu li.question a { margin-bottom: 5px; }
+ul.menu li.question a, ul.menu li.question strong { width: auto; height: auto; line-height: 30px; display: block; font-size: 37px; color: #EB005F; font-weight: bold; }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) { #main .article .t { -webkit-background-size: 297px 10px; background: url("/images/datalogger/box_header@2x.png") no-repeat; }
   #main .article .f { -webkit-background-size: 297px 10px; background: url("/images/datalogger/box_footer@2x.png") no-repeat; }

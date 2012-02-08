@@ -2114,6 +2114,11 @@ es:
     search: Búsqueda
   unknown_user: Invitado
   users:
+    show:
+     unanswered_questions:
+       one: "<a href='%{link}'><strong>1</strong></a> pregunta<br />por contestar"
+       other: "<a href='%{link}'><strong>%{count}</strong></a> preguntas<br />por contestar"
+       zero: "<a href='%{link}'><strong>0</strong></a> preguntas<br />por contestar"
     actions:
       no_activity:
         description: "Te invitamos a participar en el debate sobre las propuestas de otros usuarios de Irekia, a conversar con los cargos políticos del Gobierno Vasco, opinar sobre las noticias, etc. Toda tu actividad aparecerá aquí."
