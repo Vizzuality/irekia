@@ -1,6 +1,8 @@
   <% if !@answer and can_i_answer_the_question? -%>
     <%= form_for @new_answer, :remote => true, :html => {:class => :publish} do |form| %>
       <%= form.hidden_field :related_content_id %>
+      <%= form.hidden_field :share_in_twitter, :value => 1 %>
+      <%= form.hidden_field :twitter_message, :value => message_for_twitter(@content) %>
 
         <header>
         <%= link_to t(".cancel"), root_path, :class => :white_button %>
