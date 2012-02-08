@@ -1,6 +1,6 @@
 <% content_for :header do %>
   <header>
-  <%= link_to 'Volver', root_path, :class => "white_button left" %>
+  <%= link_to 'Volver', root_path(:datalogger => true), :class => "white_button left" %>
   <h2><%= pluralize(@unanswered_questions_count, "pregunta", "preguntas") %> </h2>
   </header>
 <% end %>
@@ -31,6 +31,6 @@
 <% else %>
   <div class="no_questions">
   <p>No tienes más<br />preguntas pendientes</p>
-  <%= link_to "Volver al inicio", root_path, :class => "white_button centered center" %>
+  <%= link_to "Volver al inicio", root_path(:datalogger => true), :class => "white_button centered center" %>
   </div>
 <% end %>

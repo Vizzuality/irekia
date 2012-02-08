@@ -3,7 +3,7 @@
       <%= form.hidden_field :related_content_id %>
 
         <header>
-        <%= link_to 'Cancelar', "/", :class => :white_button %>
+        <%= link_to 'Cancelar', root_path, :class => :white_button %>
         <h2>pregunta</h2>
         <%= form.submit "Publicar", :class => 'white_button right publish hidden' %>
 
@@ -26,7 +26,7 @@
 
       <% content_for :header do %>
         <header class="clearfix">
-        <%= link_to 'volver', "/", :class => :white_button %>
+        <%= link_to 'volver', root_path(:datalogger => true), :class => :white_button %>
         <h2>pregunta</h2>
         <div class="title">
         <h1><%= @content.question_text %></h1>
