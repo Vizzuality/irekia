@@ -1,0 +1,12 @@
+<%= form_for @new_content, :remote => true, :html => {:'data-type' => :html} do |form| %>
+  <%= form.hidden_field :type, :value => 'StatusMessage' %>
+  <%= hidden_field_tag :share_in_twitter, '1' %>
+  <%= hidden_field_tag :share_in_facebook, '1' %>
+
+  <%= form.fields_for :status_message_data, @new_content.build_status_message_data do |status_message_data_form| -%>
+    <%= status_message_data_form.text_area :message, :class => :grow %>
+  <% end -%>
+
+  <%= form.submit 'Check-in'%>
+
+<% end -%>
