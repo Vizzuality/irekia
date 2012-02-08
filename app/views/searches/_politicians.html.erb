@@ -1,8 +1,8 @@
-<% if @politicians.count > 0  %>
+<% if @politicians_count > 0  %>
   <div id="politicians" class="article results with_footer">
     <div class="inner">
       <header class="clearfix">
-      <h2><%= t('.results.title', :count => @politicians.count) %></h2>
+      <h2><%= t('.results.title', :count => @politicians_count) %></h2>
       </header>
       <div class="content">
         <ul class="suggestions">
@@ -31,12 +31,12 @@
         <div class="left">
 
           <% if action_name == 'show' %>
-            <% if @politicians.count > 10 %>
-              <%= link_to t('.results.all', :count => @politicians.count), '/in_development', :right_arrow %>
+            <% if @politicians_count > 9 %>
+              <%= link_to t('.results.all', :count => @politicians_count), politicians_search_path(search_params), :class => :right_arrow %>
             <% end %>
           <% else %>
-            <% if @politicians.count > 10 %>
-              <%= link_to t('.results.more'), '/in_development', :class => :down_arrow %>
+            <% if @politicians_count > 9 %>
+              <%= link_to t('.results.more'), politicians_search_path(search_params), :class => :down_arrow %>
             <% end %>
           <% end %>
 

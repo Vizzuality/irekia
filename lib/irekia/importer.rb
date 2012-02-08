@@ -310,37 +310,41 @@ module Irekia
       puts '==============='
       require 'csv'
 
+      columns = %w(email encrypted_password salt twitter_username twitter_oauth_token twitter_oauth_token_secret facebook_oauth_token name lastname postal_code province city external_id)
+
       CSV.foreach(Rails.root.join('db/seeds/support/datos_usuarios.csv'), :col_sep => ';', :headers => :first_row) do |row|
 
         begin
 
-          user = User.find_or_initialize_by_external_id(row['id'])
+          next if User.find_by_external_id(row['id'])
 
-          if user.new_record?
-            user.email                      = user.email.present??                       user.email                      : row['Email']
-            user.encrypted_password         = user.encrypted_password.present??          user.encrypted_password         : row['Password']
-            user.salt                       = user.salt.present??                        user.salt                       : row['Salt']
-            user.twitter_username           = user.twitter_username.present??            user.twitter_username           : row['Twitter screen_name'] if row['Twitter screen_name'].present?
-            user.twitter_oauth_token        = user.twitter_oauth_token.present??         user.twitter_oauth_token        : row['Twitter atoken'] if row['Twitter atoken'].present?
-            user.twitter_oauth_token_secret = user.twitter_oauth_token_secret.present??  user.twitter_oauth_token_secret : row['Twitter asecret'] if row['Twitter asecret'].present?
-            user.facebook_oauth_token       = user.facebook_oauth_token.present??        user.facebook_oauth_token       : row['Facebook ID'] if row['Facebook ID'].present?
-            user.name                       = user.name.present??                        user.name                       : row['Nombre']
-            user.lastname                   = user.lastname.present??                    user.lastname                   : (row['Apellidos'].present?? row['Apellidos'] : ' ')
-            user.postal_code                = user.postal_code.present??                 user.postal_code                : row['Codigo postal']
-            user.province                   = user.province.present??                    user.province                   : row['Provincia']
-            user.city                       = user.city.present??                        user.city                       : row['Ciudad']
-            user.skip_mailing               = true
+          user = {}
 
-            user.save(:validate => false)
+          user[:email]                      = row['Email']
+          user[:encrypted_password]         = row['Password']
+          user[:salt]                       = row['Salt']
+          user[:twitter_username]           = row['Twitter screen_name']
+          user[:twitter_oauth_token]        = row['Twitter atoken']
+          user[:twitter_oauth_token_secret] = row['Twitter asecret']
+          user[:facebook_oauth_token]       = row['Facebook ID']
+          user[:name]                       = row['Nombre']
+          user[:lastname]                   = row['Apellidos'] || ' '
+          user[:postal_code]                = row['Codigo postal']
+          user[:province]                   = row['Provincia']
+          user[:city]                       = row['Ciudad']
+          user[:external_id]                = row['id']
 
-            print '.'
-          end
+          User.import user.reject{|k,v| v.blank?}.keys, [user.reject{|k,v| v.blank?}.values], :validate => false
+
+          print '.'
+
         rescue Exception => ex
           puts ex
           puts ex.backtrace
         end
 
       end
+
     end
 
     def self.import_proposals

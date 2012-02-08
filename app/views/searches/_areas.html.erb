@@ -1,8 +1,8 @@
-<% if @areas_found.count > 0  %>
+<% if @areas_found_count > 0  %>
   <div id="areas" class="article results with_footer">
     <div class="inner">
       <header class="clearfix">
-      <h2><%= t('.results.title', :count => @areas_found.count) %></h2>
+      <h2><%= t('.results.title', :count => @areas_found_count) %></h2>
       </header>
       <div class="content">
         <ul class="suggestions">
@@ -29,12 +29,12 @@
       <div class="inner">
         <div class="left">
           <% if action_name == 'show' %>
-            <% if @areas_found.count > 10 %>
-              <%= link_to t('.results.all', :count => @areas_found.count), '/in_development', :class => :right_arrow %>
+            <% if @areas_found_count > 9 %>
+              <%= link_to t('.results.all', :count => @areas_found_count), areas_search_path(search_params), :class => :right_arrow %>
             <% end %>
           <% else %>
-            <% if @areas_found.count > 10 %>
-              <%= link_to t('.results.more'), '/in_development', :class => :right_arrow %>
+            <% if @areas_found_count > 9 %>
+              <%= link_to t('.results.more'), areas_search_path(search_params), :class => :right_arrow %>
             <% end %>
           <% end %>
         </div>

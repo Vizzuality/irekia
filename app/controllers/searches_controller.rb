@@ -2,7 +2,7 @@ class SearchesController < ApplicationController
   skip_before_filter :authenticate_user!
   before_filter :get_search_results, :except => [:politicians_and_areas]
   before_filter :get_contents, :only => [:show, :contents]
-  before_filter :paginate, :only => [:show, :contents]
+  before_filter :paginate, :only => [:show, :contents, :areas, :politicians, :citizens]
 
   def show
     @contents = @contents.limit(10)
@@ -98,15 +98,16 @@ class SearchesController < ApplicationController
   private :get_contents
 
   def paginate
-    @per_page = 10
+    params[:page] = (params[:page] || 0).to_i + 1
+
+    @per_page = 9
     if action_name == 'show' || params[:referer] == 'show'
-      @per_page = 4
-      @contents   = @contents.page(1).per(4 + 1) if @contents
-    else
-      @contents   = @contents.page(params[:page]).per(10 + 1) if @contents
+      @contents    = @contents.page(params[:page]).per(4)    if @contents
     end
-    @politicians = @politicians.page(params[:page]).per(10 + 1) if @politicians
-    @citizens    = @citizens.page(params[:page]).per(10 + 1) if @citizens
+
+    @contents    = @contents.page(params[:page]).per(@per_page)    if @contents
+    @politicians = @politicians.page(params[:page]).per(@per_page) if @politicians
+    @citizens    = @citizens.page(params[:page]).per(@per_page)    if @citizens
   end
   private :paginate
 
