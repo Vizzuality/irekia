@@ -1391,10 +1391,18 @@ es:
         map_url: "http://www.irekia.euskadi.net/es/site/sitemap"
     actions:
       reload: Recargar página
+      new_tags:
+        one: "<a href='%{link}'><strong>1</strong></a> nuevas<br />etiquetas"
+        other: "<a href='%{link}'><strong>%{count}</strong></a> nuevas<br />etiquetas"
+        zero: "<a href='%{link}'><strong>0</strong></a> nuevas<br />etiquetas"
+      commented_content:
+        one: "<a href='%{link}'><strong>1</strong></a> contenidos<br />comentados"
+        other: "<a href='%{link}'><strong>%{count}</strong></a> contenidos<br />comentados"
+        zero: "<a href='%{link}'><strong>0</strong></a> contenidos<br />comentados"
       unanswered_questions:
         one: "<a href='%{link}'><strong>1</strong></a> pregunta<br />por contestar"
         other: "<a href='%{link}'><strong>%{count}</strong></a> preguntas<br />por contestar"
-        other: "<a href='%{link}'><strong>0</strong></a> preguntas<br />por contestar"
+        zero: "<a href='%{link}'><strong>0</strong></a> preguntas<br />por contestar"
       content_type_filters:
         all: "Todos los tipos"
         images: Fotos

@@ -4,8 +4,8 @@
 
         <ul class="counters">
         <li><%= raw t(".unanswered_questions", :count => @unanswered_questions_count, :link => questions_user_path(@user)) %></li>
-        <li><strong>06</strong>contenidos comentados</li>
-        <li><strong>11</strong>nuevas etiquetas</li>
+        <li><%= raw t(".commented_content", :count => 0, :link => "#") %></li>
+        <li><%= raw t(".new_tags", :count => 0, :link => "#") %></li>
         </ul>
 
         <% if @actions.present? %>
