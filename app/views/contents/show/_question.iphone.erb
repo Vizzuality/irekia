@@ -1,5 +1,5 @@
   <% if !@answer and can_i_answer_the_question? -%>
-    <%= form_for @new_answer, :remote => true, :html => {:class => :publish_question} do |form| %>
+    <%= form_for @new_answer, :remote => true, :html => {:class => :publish} do |form| %>
       <%= form.hidden_field :related_content_id %>
 
       <%= hidden_field_tag :share_in_twitter, '1' %>
