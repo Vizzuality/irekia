@@ -188,7 +188,7 @@ ul li { margin: 0; padding: 0; }
 
 a { text-decoration: none; color: #1d79b0; }
 a:active, a:visited { color: #1d79b0; }
-a.avatar:active, a.avatar:visited { color: #fff; }
+a.avatar:visited { color: #fff; }
 a:hover { text-decoration: underline; color: #114c6e; }
 a.left_arrow { background: url("/images/icons/arrow_left.png") no-repeat left 7px; padding-left: 12px; }
 a.left_arrow:hover { background-position: 0 -13px; }
