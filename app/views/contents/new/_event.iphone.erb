@@ -27,8 +27,7 @@
           </div>
         </div>
       </div>
-      <%= event_data_form.hidden_field :title, :id => :location_title %>
-      <%= event_data_form.text_area :body, :placeholder => t('.add_comment') %>
+      <%= event_data_form.text_area :title, :placeholder => t('.add_comment') %>
       <%= event_data_form.hidden_field :event_date, :value => Time.now %>
     </fieldset>
   <% end -%>
@@ -84,7 +83,6 @@ function gelocatePosition(position) {
     var locationName = e[0].formatted_address;
     $(".location .place").html(locationName);
     $("#location_name").val(locationName);
-    $("#location_title").val(locationName);
     $("#latitude").val(latLng.lat());
     $("#longitude").val(latLng.lng());
   });
@@ -104,7 +102,6 @@ function gelocate() {
       var locationName = e[0].formatted_address;
       $(".location .place").html(locationName);
       $("#location_name").val(locationName);
-      $("#location_title").val(locationName);
       $("#latitude").val(lat);
       $("#longitude").val(lng);
     });
