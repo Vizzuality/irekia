@@ -17,7 +17,7 @@
   <div class="content">
     <ul class="menu">
     <li><%= link_to 'checkin', new_event_path, :class => :checkin %></li>
-    <li><a href="#" class="comment">publicación</a></li>
+    <li><%= link_to 'publicación', new_status_message_path, :class => :comment %></li>
     <li class="question"><%= raw t(".unanswered_questions", :count => @unanswered_questions_count, :link => questions_user_path(@user)) %></li>
     </ul>
 

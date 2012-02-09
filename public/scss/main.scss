@@ -56,6 +56,10 @@ a {
     color: $link_color;
   }
 
+  &.avatar:visited {
+    color:#fff; 
+  }
+
   &:hover {
     text-decoration: underline;
     color: $link_color_hover;

@@ -31,7 +31,7 @@
 <% else %>
   <div class="no_questions">
   
-  <p><%= t(".no_more_questions") %></p>
+  <p><%= raw t(".no_more_questions") %></p>
   <%= link_to t(".back_home"), root_path(:datalogger => true), :class => "white_button centered center" %>
   </div>
 <% end %>

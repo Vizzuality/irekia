@@ -225,6 +225,11 @@ es:
         other: "%{count} personas implicadas en este área"
         zero: "Ninguna persona implicada en este área"
   contents:
+    new:
+      status_message:
+        publish_answer: publicar
+        write_status_message: Escribe tu mensaje de estado
+        cancel: cancelar
     arguments:
       add: Añadir
       against: "Argumentos en contra"

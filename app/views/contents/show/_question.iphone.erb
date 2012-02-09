@@ -6,7 +6,7 @@
 
         <header>
         <%= link_to t(".cancel"), root_path, :class => :white_button %>
-        <h2>pregunta</h2>
+        <h2><%= t(".question") %></h2>
         <%= form.submit t(".publish_answer"), :class => 'white_button right publish hidden' %>
 
         <div class="title">
@@ -20,7 +20,7 @@
       <%= form.fields_for :answer_data, @new_answer.answer_data do |answer_data| -%>
         <div class="paper">
         <div class="placeholder"><%= t(".answer_this_question") %></div>
-        <%= answer_data.text_area :answer_text, :class => :grow %>
+        <%= answer_data.text_area :answer_text, :class => :toggle_header %>
         </div>
       <% end -%>
     <% end -%>

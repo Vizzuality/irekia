@@ -3,10 +3,19 @@
   <%= hidden_field_tag :share_in_twitter, '1' %>
   <%= hidden_field_tag :share_in_facebook, '1' %>
 
+        <header>
+        <%= link_to t(".cancel"), root_path, :class => :white_button %>
+        <h2>publicación</h2>
+        <%= form.submit t(".publish_answer"), :class => 'white_button right publish hidden' %>
+        </header>
+
   <%= form.fields_for :status_message_data, @new_content.build_status_message_data do |status_message_data_form| -%>
+
+    <div class="paper">
+    <div class="placeholder"><%= t(".write_status_message") %></div>
     <%= status_message_data_form.text_area :message, :class => :grow %>
+    </div>
   <% end -%>
 
-  <%= form.submit 'Check-in'%>
 
 <% end -%>
