@@ -64,7 +64,7 @@ system "bundle --gemfile=#{File.join(DEPLOYMENT_DIR, 'Gemfile')}"
 
 puts '=> Backing up current version'
 
-FileUtils.mkdir_p "#{HISTORY_DIR}/public"
+FileUtils.mkdir_p HISTORY_DIR
 
 scp_commands =  <<-CMD
 

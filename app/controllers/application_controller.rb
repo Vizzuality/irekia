@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
   end
 
   def analyze_useragent
-    request.format = :iphone if datalogger_request? || moderatorapp_request?
+    request.format = :iphone if datalogger_request?
   end
 
   def after_sign_in_path_for(resource)
