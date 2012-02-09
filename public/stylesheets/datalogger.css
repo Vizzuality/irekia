@@ -189,6 +189,6 @@ form#new_event .submit { background: white; border: none; text-align: center; pa
 form#new_event .submit .white_button { width: 266px; }
 form#new_event textarea { height: 20px; resize: none; overflow-y: none; width: 256px; height: 20px; position: relative; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); outline: none; }
 
-.mamufas { background: black; opacity: .79; width: 100%; height: 900px; position: absolute; top: 0; left: 0; z-index: 1000; }
+.mamufas { background: black; opacity: .77; width: 100%; height: 900px; position: absolute; top: 0; left: 0; z-index: 1000; }
 
-.spinner { display: none; position: absolute; top: 220px; left: 140px; z-index: 2000; }
+form .spinner { display: none; position: absolute; top: 200px; left: 140px; z-index: 2000; }

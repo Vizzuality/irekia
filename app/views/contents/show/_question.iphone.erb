@@ -1,6 +1,5 @@
   <% if !@answer and can_i_answer_the_question? -%>
-    <%= form_for @new_answer, :remote => true, :html => {:class => :publish} do |form| %>
-    <div class="spinner"><%= image_tag "datalogger/spinner.gif" %></div>
+    <%= form_for @new_answer, :remote => true, :html => {:class => :publish_question} do |form| %>
       <%= form.hidden_field :related_content_id %>
 
       <%= hidden_field_tag :share_in_twitter, '1' %>
@@ -25,6 +24,8 @@
         <%= answer_data.text_area :answer_text, :class => :toggle_header %>
         </div>
       <% end -%>
+
+    <div class="spinner"><%= image_tag "datalogger/spinner.gif" %></div>
     <% end -%>
     <% else if @answer %>
 
