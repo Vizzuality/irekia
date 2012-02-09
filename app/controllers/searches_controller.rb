@@ -98,8 +98,6 @@ class SearchesController < ApplicationController
   private :get_contents
 
   def paginate
-    params[:page] = (params[:page] || 0).to_i + 1
-
     @per_page = 9
     if action_name == 'show' || params[:referer] == 'show'
       @contents    = @contents.page(params[:page]).per(4)    if @contents
@@ -108,6 +106,8 @@ class SearchesController < ApplicationController
     @contents    = @contents.page(params[:page]).per(@per_page)    if @contents
     @politicians = @politicians.page(params[:page]).per(@per_page) if @politicians
     @citizens    = @citizens.page(params[:page]).per(@per_page)    if @citizens
+
+    @page = (params[:page] || 0).to_i + 1
   end
   private :paginate
 

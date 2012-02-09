@@ -28,8 +28,8 @@ module SearchesHelper
     @contents.size > 0
   end
 
-  def search_params
-    params.except(:action)
+  def search_params(extra_params = {})
+    params.except(:action, :page).merge(extra_params)
   end
 
   def link_for_contents(filters = {})

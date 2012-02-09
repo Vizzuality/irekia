@@ -30,11 +30,11 @@
         <div class="left">
           <% if action_name == 'show' %>
             <% if @areas_found_count > 9 %>
-              <%= link_to t('.results.all', :count => @areas_found_count), areas_search_path(search_params), :class => :right_arrow %>
+              <%= link_to t('.results.all', :count => @areas_found_count), areas_search_path(search_params(:page => @page)), :class => :right_arrow %>
             <% end %>
           <% else %>
             <% if @areas_found_count > 9 %>
-              <%= link_to t('.results.more'), areas_search_path(search_params), :class => :right_arrow %>
+              <%= link_to t('.results.more'), areas_search_path(search_params(:page => @page)), :class => :right_arrow %>
             <% end %>
           <% end %>
         </div>

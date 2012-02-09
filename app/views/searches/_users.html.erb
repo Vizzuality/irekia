@@ -25,11 +25,11 @@
         <div class="left">
           <% if action_name == 'show' %>
             <% if @citizens_count > 9 %>
-              <%= link_to t('.results.all', :count => @citizens_count), citizens_search_path(search_params), :class => :right_arrow %>
+              <%= link_to t('.results.all', :count => @citizens_count), citizens_search_path(search_params(:page => @page)), :class => :right_arrow %>
             <% end %>
           <% else %>
             <% if @citizens_count > 9 %>
-              <%= link_to t('.results.more'), citizens_search_path(search_params), :class => :down_arrow %>
+              <%= link_to t('.results.more'), citizens_search_path(search_params(:page => @page)), :class => :down_arrow %>
             <% end %>
           <% end %>
         </div>
