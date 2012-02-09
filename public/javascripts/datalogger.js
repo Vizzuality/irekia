@@ -1,5 +1,32 @@
 $(function() {
 
+  
+	function getGeolocation(){
+	  alert('a');
+		if (google.loader.ClientLocation) {
+			userLatLng = new google.maps.LatLng(google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude);
+			showRoad(userLatLng,calculateNearOffice(userLatLng));
+	  } else {
+			bounds.extend(vizzuality_mad);
+			bounds.extend(vizzuality_ny);
+			map.fitBounds(bounds);
+			
+			vizz_marker = new google.maps.Marker({
+			    position: vizzuality_mad,
+					icon: vizz_icon,
+			    map: map
+			});
+			user_marker = new google.maps.Marker({
+			    position: vizzuality_ny,
+			    icon: vizz_icon,
+			    map: map
+			});
+			 
+			window.onresize = function(event) {
+			   map.setCenter(bounds.getCenter());
+			}      
+	  }
+	}
 
   $("a.reload").click(function(e){
     e.preventDefault();

@@ -116,6 +116,7 @@ ul.menu li.question a, ul.menu li.question strong { width: auto; height: auto; l
   ul.menu li a.checkin { -webkit-background-size: 102px 96px; background: url("/images/datalogger/menu_checkin@2x.png") no-repeat; }
   ul.menu li a.comment { -webkit-background-size: 98px  96px; background: url("/images/datalogger/menu_comment@2x.png") no-repeat; }
   ul.menu li a.photo { -webkit-background-size: 98px  96px; background: url("/images/datalogger/menu_photo@2x.png") no-repeat; }
+  ul.menu li.question { -webkit-background-size: 98px  96px; background: url("/images/datalogger/menu_question@2x.png") no-repeat; }
   #main .article ul li.proposal a.icon.plus, #main .article ul li.proposal span.icon.plus, #main .article ul li.argument a.icon.plus, #main .article ul li.argument span.icon.plus, #main .article ul li.content_user a.icon.plus, #main .article ul li.content_user span.icon.plus, #main .article ul li.answer_request a.icon.plus, #main .article ul li.answer_request span.icon.plus { background: url("/images/datalogger/plus_icon@2x.png") no-repeat; -webkit-background-size: 28px 28px; }
   #main .article ul li.proposal a.icon.neutral, #main .article ul li.proposal span.icon.neutral, #main .article ul li.argument a.icon.neutral, #main .article ul li.argument span.icon.neutral, #main .article ul li.content_user a.icon.neutral, #main .article ul li.content_user span.icon.neutral, #main .article ul li.answer_request a.icon.neutral, #main .article ul li.answer_request span.icon.neutral { background: url("/images/datalogger/neutral_icon@2x.png") no-repeat; -webkit-background-size: 42px 42px; }
   #main .article ul li.proposal a.icon.against, #main .article ul li.proposal span.icon.against, #main .article ul li.argument a.icon.against, #main .article ul li.argument span.icon.against, #main .article ul li.content_user a.icon.against, #main .article ul li.content_user span.icon.against, #main .article ul li.answer_request a.icon.against, #main .article ul li.answer_request span.icon.against { background: url("/images/datalogger/against_icon@2x.png") no-repeat; -webkit-background-size: 42px 42px; }
@@ -172,3 +173,11 @@ form.signin fieldset input.email.error { border-bottom: 1px solid #ff3300; }
 .no_questions { position: relative; top: 170px; text-align: center; font-size: 21px; font-weight: bold; color: #7A858B; }
 .no_questions p { margin-bottom: 25px; }
 .no_questions a.white_button { font-size: 17px; }
+
+html { height: 100%; }
+
+body { height: 100%; margin: 0; padding: 0; }
+
+#map_canvas { width: 296px; height: 197px; }
+
+form#new_event textarea { height: 20px; resize: none; overflow-y: none; width: 258px; height: 24px; position: relative; padding: 4px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); outline: none; }

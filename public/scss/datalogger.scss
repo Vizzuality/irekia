@@ -454,10 +454,13 @@ ul.menu {
       -webkit-background-size: 42px 43px;
     }
   }
-  ul.menu li a {
-    &.checkin { -webkit-background-size: 102px 96px; background:url('/images/datalogger/menu_checkin@2x.png') no-repeat; }
-    &.comment { -webkit-background-size: 98px  96px; background:url('/images/datalogger/menu_comment@2x.png') no-repeat;}
-    &.photo   { -webkit-background-size: 98px  96px; background:url('/images/datalogger/menu_photo@2x.png') no-repeat; }
+  ul.menu li {
+    a {
+      &.checkin { -webkit-background-size: 102px 96px; background:url('/images/datalogger/menu_checkin@2x.png') no-repeat; }
+      &.comment { -webkit-background-size: 98px  96px; background:url('/images/datalogger/menu_comment@2x.png') no-repeat;}
+      &.photo   { -webkit-background-size: 98px  96px; background:url('/images/datalogger/menu_photo@2x.png') no-repeat; }
+    }
+    &.question { -webkit-background-size: 98px  96px; background:url('/images/datalogger/menu_question@2x.png') no-repeat; }
   }
 
   #main .article {
@@ -723,4 +726,27 @@ form.signin {
   color:#7A858B;
   p { margin-bottom: 25px; }
   a.white_button { font-size:17px; }
+}
+
+// Maps
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0 }
+#map_canvas { width:296px; height: 197px;}
+
+form#new_event {
+  textarea { height: 20px;
+  
+      resize: none;
+      overflow-y:none;
+      width:266px - 4*2;
+      height:32px - 4*2;
+      position: relative;
+      padding: 4px;
+      font-size: 13px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      @include border-radius(5px);
+      @include box-shadow(inset 0 5px 5px rgba(0, 0, 0, 0.05));
+      outline: none;
+  }
+
 }

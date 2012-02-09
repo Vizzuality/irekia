@@ -1,3 +1,12 @@
+
+      <% content_for :header do %>
+        <header class="clearfix">
+        <%= link_to t(".back"), root_path(:datalogger => true), :class => :white_button %>
+        <h2><%= t(".check_in") %></h2>
+        <div class="shadow"></div>
+        </header>
+      <% end %>
+
 <%= form_for @new_content, :remote => true, :html => {:'data-type' => :html} do |form| %>
   <%= form.hidden_field :type, :value => 'Event' %>
   <%= form.hidden_field :latitude %>
@@ -6,9 +15,25 @@
   <%= hidden_field_tag :share_in_facebook, '1' %>
 
   <%= form.fields_for :event_data, @new_content.build_event_data do |event_data_form| -%>
-    <%= event_data_form.text_area :body, :class => :grow %>
+    <div id="map_canvas"></div>
+    <%= event_data_form.text_area :title %>
+    <%= event_data_form.text_area :body %>
   <% end -%>
 
-  <%= form.submit 'Check-in'%>
+   <%= form.submit 'Hacer check-in aquí', :class => :white_button %>
 
 <% end -%>
+
+<% content_for :js_data do %>
+   <script type="text/javascript">
+   $(function() {
+        var myOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            myOptions);
+      });
+    </script>
+<% end %>
