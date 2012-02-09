@@ -13,11 +13,14 @@
   <%= form.hidden_field :longitude %>
   <%= hidden_field_tag :share_in_twitter, '1' %>
   <%= hidden_field_tag :share_in_facebook, '1' %>
+  <%= hidden_field_tag :share_in_facebook, '1' %>
 
   <%= form.fields_for :event_data, @new_content.build_event_data do |event_data_form| -%>
+     <p>Finding your location: <span id="status">checking...</span></p>
     <div id="map_canvas"></div>
     <%= event_data_form.text_area :title %>
     <%= event_data_form.text_area :body %>
+    <%= event_data_form.hidden_field :event_date, :value => Time.now %>
   <% end -%>
 
    <%= form.submit 'Hacer check-in aquí', :class => :white_button %>
@@ -25,15 +28,51 @@
 <% end -%>
 
 <% content_for :js_data do %>
-   <script type="text/javascript">
-   $(function() {
-        var myOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
-            myOptions);
-      });
-    </script>
+  <script>
+function success(position) {
+  var s = document.querySelector('#status');
+  
+  if (s.className == 'success') {
+    // not sure why we're hitting this twice in FF, I think it's to do with a cached result coming back    
+    return;
+  }
+  
+  s.innerHTML = "found you!";
+  s.className = 'success';
+  
+  var mapcanvas = document.createElement('div');
+  mapcanvas.id = 'map_canvas';
+    
+  var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  var myOptions = {
+    zoom: 15,
+    center: latlng,
+    mapTypeControl: false,
+    navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  
+  var marker = new google.maps.Marker({
+      position: latlng, 
+      map: map, 
+      title:"You are here! (at least within a "+position.coords.accuracy+" meter radius)"
+  });
+}
+
+function error(msg) {
+  var s = document.querySelector('#status');
+  s.innerHTML = typeof msg == 'string' ? msg : "failed";
+  s.className = 'fail';
+  
+  // console.log(arguments);
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(success, error);
+} else {
+  error('not supported');
+}
+
+</script>
 <% end %>

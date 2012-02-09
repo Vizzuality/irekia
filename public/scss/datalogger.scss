@@ -731,7 +731,7 @@ form.signin {
 // Maps
 html { height: 100% }
 body { height: 100%; margin: 0; padding: 0 }
-#map_canvas { width:296px; height: 197px;}
+#map_canvas { width:320px; height: 197px; margin: 0 0 20px 0;}
 
 form#new_event {
   textarea { height: 20px;

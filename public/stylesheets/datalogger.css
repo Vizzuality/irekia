@@ -178,6 +178,6 @@ html { height: 100%; }
 
 body { height: 100%; margin: 0; padding: 0; }
 
-#map_canvas { width: 296px; height: 197px; }
+#map_canvas { width: 320px; height: 197px; margin: 0 0 20px 0; }
 
 form#new_event textarea { height: 20px; resize: none; overflow-y: none; width: 258px; height: 24px; position: relative; padding: 4px; font-size: 13px; border: 1px solid rgba(0, 0, 0, 0.2); -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; -ms-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; -moz-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); -o-box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.05); outline: none; }
