@@ -86,7 +86,7 @@ class Area < ActiveRecord::Base
                    :videos_count,
                    :status_messages_count,
                    :tweets_count
-                   ]).find(id)
+                   ]).where('slug_es = ? OR slug_eu = ? OR slug_en = ?', *([id] * 3)).first
   end
 
   def self.names_and_ids
