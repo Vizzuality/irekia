@@ -780,13 +780,22 @@ form#new_event {
       resize: none;
       overflow-y:none;
       width:266px - 10;
-      height:14px;
+      height:20px;
       position: relative;
-      padding: 4px 6px;
       font-size: 13px;
       border: 1px solid rgba(0, 0, 0, 0.2);
       @include border-radius(5px);
       @include box-shadow(inset 0 5px 5px rgba(0, 0, 0, 0.05));
       outline: none;
   }
+}
+.mamufas {
+  background:black;
+  opacity:.3;
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1000;
 }

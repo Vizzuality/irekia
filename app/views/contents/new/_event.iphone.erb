@@ -1,12 +1,12 @@
 <% content_for :header do %>
   <header class="clearfix">
   <%= link_to t(".back"), root_path(:datalogger => true), :class => :white_button %>
-  <h2><%= t(".check_in") %></h2>
+  <h2><%= t(".title") %></h2>
   <div class="shadow"></div>
   </header>
 <% end %>
 
-<%= form_for @new_content, :html => {:'data-type' => :html} do |form| %>
+<%= form_for @new_content, :remote => true, :html => {:'data-type' => :html, :'data-success' => t(".success_message")} do |form| %>
   <%= form.hidden_field :type, :value => 'Event' %>
   <%= form.hidden_field :latitude, :id => :latitude %>
   <%= form.hidden_field :longitude, :id => :longitude %>
@@ -23,17 +23,17 @@
         <div class="info">
           <div class="place"></div>
           <div class="help">
-            Mueve el icono para actualizar tu posición
+            <%= t(".move_the_marker") %>
           </div>
         </div>
       </div>
       <%= event_data_form.hidden_field :title, :id => :location_title %>
-      <%= event_data_form.text_area :body, :placeholder => 'Añade un comentario' %>
+      <%= event_data_form.text_area :body, :placeholder => t('.add_comment') %>
       <%= event_data_form.hidden_field :event_date, :value => Time.now %>
     </fieldset>
   <% end -%>
    <div class="submit clearfix">
-     <%= form.submit 'Hacer check-in aquí', :class => "white_button center" %>
+     <%= form.submit t('.check_in_here'), :class => "white_button publish center" %>
    </div>
 <% end -%>
 

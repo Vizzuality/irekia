@@ -226,7 +226,16 @@ es:
         zero: "Ninguna persona implicada en este área"
   contents:
     new:
+      event:
+        back: volver
+        title: Check-in
+        add_comment: Añade un comentario
+        success_message: Check-in enviado
+        move_the_marker: Mueve el icono para actualizar tu posición  
+        check_in_here: Hacer check-in aquí
       status_message:
+        status_message: publicación
+        success_message: Mensaje publicado
         publish_answer: publicar
         write_status_message: Escribe tu mensaje de estado
         cancel: cancelar

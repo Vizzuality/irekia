@@ -11,11 +11,24 @@ $(function() {
   $(".paper").animate({top: headerHeight + "px"}, 250);
     }, 200);
 
+  $("form.new_event").bind('ajax:success', function() {
+    alert($(this).attr("data-success"));
+    window.location = '/?datalogger=true';
+  });
+
+  $("form.new_status_message").bind('ajax:success', function() {
+    alert($(this).attr("data-success"));
+    window.location = '/?datalogger=true';
+  });
+
   $("form.publish").bind('ajax:success', function() {
-    alert('a');
     window.location.reload();
   });
 
+  $(".publish").click(function() {
+    $(this).parents("form").append("<div class='mamufas'/>");
+  });
+    
   $("textarea.toggle_header").on("blur", function() {
 
     $("header").show();

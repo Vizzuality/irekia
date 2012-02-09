@@ -1,11 +1,11 @@
-<%= form_for @new_content, :remote => true, :html => {:'data-type' => :html} do |form| %>
+<%= form_for @new_content, :remote => true, :html => {:'data-type' => :html, :'data-success' => t(".success_message")} do |form| %>
   <%= form.hidden_field :type, :value => 'StatusMessage' %>
   <%= hidden_field_tag :share_in_twitter, '1' %>
   <%= hidden_field_tag :share_in_facebook, '1' %>
 
         <header>
         <%= link_to t(".cancel"), root_path, :class => :white_button %>
-        <h2>publicación</h2>
+        <h2><%= t(".status_message") %></h2>
         <%= form.submit t(".publish_answer"), :class => 'white_button right publish hidden' %>
         </header>
 
@@ -13,7 +13,7 @@
 
     <div class="paper">
     <div class="placeholder"><%= t(".write_status_message") %></div>
-    <%= status_message_data_form.text_area :message, :class => :grow %>
+    <%= status_message_data_form.text_area :message, :class => :toggle_header %>
     </div>
   <% end -%>
 
