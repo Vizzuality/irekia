@@ -26,6 +26,7 @@ $(function() {
   });
 
   $(".publish").click(function() {
+    $(".spinner").fadeIn(250);
     $(this).parents("form").append("<div class='mamufas'/>");
   });
     
