@@ -54,6 +54,9 @@ FileUtils.rm_f File.join(DEPLOYMENT_DIR, 'config/app_config.yml')
 FileUtils.rm_f File.join(DEPLOYMENT_DIR, 'config/app_config.staging.yml')
 FileUtils.mv   File.join(DEPLOYMENT_DIR, 'config/database.production.yml'),   File.join(DEPLOYMENT_DIR, 'config/database.yml')
 FileUtils.mv   File.join(DEPLOYMENT_DIR, 'config/app_config.production.yml'), File.join(DEPLOYMENT_DIR, 'config/app_config.yml')
+FileUtils.rm_f File.join(DEPLOYMENT_DIR, 'config/locales/es.yml')
+FileUtils.rm_f File.join(DEPLOYMENT_DIR, 'config/locales/eu.yml')
+FileUtils.rm_f File.join(DEPLOYMENT_DIR, 'config/locales/en.yml')
 
 puts '=> Updating Gemfile'
 
@@ -65,17 +68,10 @@ FileUtils.mkdir_p HISTORY_DIR
 
 scp_commands =  <<-CMD
 
-scp -r #{PRODUCTION_CONNECTION}:"#{PRODUCTION_FOLDER}/config.rb \
-                                 #{PRODUCTION_FOLDER}/config.ru \
-                                 #{PRODUCTION_FOLDER}/Rakefile  \
-                                 #{PRODUCTION_FOLDER}/README.md \
-                                 #{PRODUCTION_FOLDER}/app       \
+scp -r #{PRODUCTION_CONNECTION}:"#{PRODUCTION_FOLDER}/app       \
                                  #{PRODUCTION_FOLDER}/config    \
                                  #{PRODUCTION_FOLDER}/db        \
-                                 #{PRODUCTION_FOLDER}/lib       \
-                                 #{PRODUCTION_FOLDER}/script    \
-                                 #{PRODUCTION_FOLDER}/vendor" #{HISTORY_DIR}/
-
+                                 #{PRODUCTION_FOLDER}/lib" #{HISTORY_DIR}/
 CMD
 
 #system scp_commands
