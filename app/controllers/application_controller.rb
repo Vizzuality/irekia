@@ -28,14 +28,14 @@ class ApplicationController < ActionController::Base
   def set_locale
     user_locale    = current_user.locale if user_signed_in? && current_user.locale.present?
     params_locale  = params[:locale]
-    cookie_locale  = cookies[:current_locale] || {}
+    cookie_locale  = cookies[:current_locale] || nil
 
     I18n.locale = params_locale || user_locale || cookie_locale || I18n.default_locale
   end
 
   def default_url_options(options = {})
     user_locale = current_user.locale if user_signed_in? && current_user.locale.present?
-    cookie_locale  = cookies[:current_locale] || {}
+    cookie_locale  = cookies[:current_locale]
     url_options = {:locale => user_locale || cookie_locale || I18n.locale}
     url_options[:datalogger] = true if request.params[:datalogger].present?
     url_options[:moderatorapp] = true if request.params[:moderatorapp].present?
