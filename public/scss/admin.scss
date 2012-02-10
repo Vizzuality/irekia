@@ -1,8 +1,15 @@
 
   @import "compass/css3";
   @import "helpers";
+  @import "fonts";
+  @import "boilerplate";
+  @import "main";
+  @import "buttons";
+  @import "scrollpane";
+  @import "boilerplate_footer";
 
   body { background:#F6F6F7; }
+  footer { display:none; }
 
   #container #main.moderation .content .article.activity {
     margin-left:3px;
