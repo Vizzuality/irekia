@@ -1,5 +1,5 @@
 <% if @contents_count[:total] > 0 %>
-<div id="contents" class="article <%= "activity " if @contents_count[:total] > 0 %>results with_footer with_filters">
+<div id="contents search_results" class="article <%= "activity " if @contents_count[:total] > 0 %>results with_footer with_filters" data-current-page="<%= @page %>" data-perpage="<%= @per_page %>">
 <div class="inner">
   <header class="clearfix">
   <div class="left">
@@ -56,15 +56,16 @@
 </div>
 <div class="bfooter">
 <div class="separator"></div>
-<div class="inner">
+<div class="inner with_spinner">
 
-  <div class="left">
+  <div class="left clearfix">
     <% if action_name == 'show' %>
       <% if @contents_count[:total] > 5 %>
         <%= link_to t('.results.all', :count => @contents_count[:total]), contents_search_path(search_params(:page => @page)), :class => 'right_arrow' %>
       <% end %>
     <% else %>
-      <%= link_to t('.results.more'), contents_search_path(search_params(:page => @page)), :class => :right_arrow %>
+      <%= link_to t('.results.more'), contents_search_path(search_params), :id => "search_results", :class => "more_actions paginate left down_arrow" %>
+      <span id="actions_spinner" class="spinner"></span>
     <% end %>
   </div>
 

@@ -1405,7 +1405,7 @@ function loginInLinks() {
           var speed      = (opt && opt.speed) || 200;
           var name       = (opt && opt.name)  || "proposals";
           var cellHeight = (opt && opt.cellHeight)  || 132;
-          var currentPage = 1;
+          var currentPage = $(this).closest(".article").attr("data-current-page") - 1 || 1;
           var url, sort, id, $article, spin_element;
 
           // Default pagination
