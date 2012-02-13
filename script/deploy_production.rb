@@ -74,7 +74,7 @@ scp -r #{PRODUCTION_CONNECTION}:"#{PRODUCTION_FOLDER}/app       \
                                  #{PRODUCTION_FOLDER}/lib" #{HISTORY_DIR}/
 CMD
 
-#system scp_commands
+system scp_commands
 
 puts '=> Syncing production server'
 
