@@ -115,6 +115,7 @@ class UsersController < ApplicationController
     @user.lastname              = params[:user][:lastname]
     @user.postal_code           = params[:user][:postal_code]
     @user.birthday              = Date.civil(params[:user][:"birthday(1i)"].to_i,params[:user][:"birthday(2i)"].to_i,params[:user][:"birthday(3i)"].to_i) rescue nil
+    @user.locale = I18n.locale
 
     if @user.save
       sign_in(@user, :bypass => true)
