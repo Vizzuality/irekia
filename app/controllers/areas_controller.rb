@@ -147,9 +147,9 @@ class AreasController < ApplicationController
   def paginate
     if action_name == 'show' || params[:referer] == 'show'
       @per_page = 5
-      @actions   = @actions.page(1).per(@per_page + 1).all   if @actions
-      @questions = @questions.page(1).per(@per_page + 1).all if @questions
-      @proposals = @proposals.page(1).per(@per_page + 1).all if @proposals
+      @actions   = @actions.page(params[:page]).per(@per_page + 1).all   if @actions
+      @questions = @questions.page(params[:page]).per(@per_page + 1).all if @questions
+      @proposals = @proposals.page(params[:page]).per(@per_page + 1).all if @proposals
     else
       @per_page = 10
       @actions   = @actions.page(params[:page]).per(@per_page + 1).all   if @actions
