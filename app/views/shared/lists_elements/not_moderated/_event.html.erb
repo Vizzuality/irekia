@@ -1,6 +1,6 @@
 <%= avatar data.author %>
 <div class="content">
-  <p><strong><%= link_to data.title, event_path(data.id) %></strong></p>
+  <p><strong><%= link_to translate_field(data, 'title'), event_path(data.id) %></strong></p>
 
   <%= render 'shared/lists_elements/not_moderated/footer', :data => data %>
 </div>

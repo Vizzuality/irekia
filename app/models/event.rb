@@ -1,7 +1,7 @@
 class Event < Content
   has_one :event_data
 
-  delegate :event_date, :duration, :title, :subtitle, :body, :image, :build_image, :to => :event_data, :allow_nil => true
+  delegate :event_date, :duration, :title, :title_es, :title_eu, :title_en, :subtitle, :body, :body_es, :body_eu, :body_en, :image, :build_image, :to => :event_data, :allow_nil => true
 
   accepts_nested_attributes_for :event_data
 
@@ -63,17 +63,23 @@ class Event < Content
 
   def as_json(options = {})
     area = {
-      :id            => areas.first.id,
-      :name          => areas.first.name,
-      :thumbnail     => areas.first.thumbnail
+      :id        => areas.first.id,
+      :name_es   => areas.first.name_es,
+      :name_eu   => areas.first.name_eu,
+      :name_en   => areas.first.name_en,
+      :thumbnail => areas.first.thumbnail
     } if areas.present?
 
     super({
       :event_date      => event_date,
       :duration        => duration,
-      :title           => title,
+      :title_es        => title_es,
+      :title_eu        => title_eu,
+      :title_en        => title_en,
       :subtitle        => subtitle,
-      :body            => body,
+      :body_es         => body_es,
+      :body_eu         => body_eu,
+      :body_en         => body_en,
       :location        => location,
       :latitude        => latitude,
       :longitude       => longitude,

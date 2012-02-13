@@ -1,6 +1,6 @@
 <%= avatar data.area %>
 <div class="content">
-  <p><strong><%= link_to data.title, event_path(data.slug) %></strong></p>
+  <p><strong><%= link_to translate_field(data, 'title'), event_path(data.slug) %></strong></p>
   <div class="footer">
     <span class="published_at">
       <%= raw t('.author', :time => distance_of_time_in_words_to_now(data.published_at)) %>

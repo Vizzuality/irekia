@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120207130027) do
+ActiveRecord::Schema.define(:version => 20120213100631) do
 
   create_table "answer_data", :force => true do |t|
     t.integer  "answer_id"
@@ -173,6 +173,12 @@ ActiveRecord::Schema.define(:version => 20120207130027) do
     t.string   "external_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title_es"
+    t.string   "title_eu"
+    t.string   "title_en"
+    t.text     "body_es"
+    t.text     "body_eu"
+    t.text     "body_en"
   end
 
   add_index "event_data", ["event_date"], :name => "index_event_data_on_event_date"

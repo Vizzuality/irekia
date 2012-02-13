@@ -27,6 +27,11 @@ namespace :irekia do
     Irekia::Importer.get_news_from_rss
   end
 
+  desc "Loads events from the official Irekia calendar"
+  task :import_events => :environment do
+    Irekia::Importer.get_events_from_ics
+  end
+
   desc "Loads news from the official Irekia news feed"
   task :import_news_and_events => :environment do
     Irekia::Importer.get_news_from_rss

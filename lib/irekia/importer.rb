@@ -45,7 +45,7 @@ module Irekia
       news_feed_url        = lambda{|lang| "http://www.irekia.euskadi.net/#{lang}/news/news.rss"}
 
 
-      %w(en eu es).each do |lang|
+      %w(es eu en).each do |lang|
 
         puts ''
         puts "=> reading and parsing the rss feed for language '#{lang}'"
@@ -60,18 +60,21 @@ module Irekia
           begin
 
             news = News.find_or_initialize_by_external_id(news_item.entry_id)
-            news.published_at         = news_item.published || Time.now
             news.news_data            = NewsData.new if news.news_data.blank?
             news.news_data.send(:"title_#{lang}=", (news_item.title.sanitize rescue nil))
             news.news_data.send(:"body_#{lang}=",(news_item.summary.sanitize rescue nil))
+            news.published_at         = news_item.published || Time.now
             news.news_data.source_url = news_item.url rescue nil
             news.news_data.iframe_url = news_item.multimedia_iframe_src rescue nil
             news.tags                 = news_item.categories.reject{|t| t.match(/^_/) || t.match(/::/)}.join(',')
             news.moderated            = true
 
-            news.areas = []
-            area_name = news_item.organization.title == 'Presidencia' ? 'Lehendakaritza' : news_item.organization.title if news_item.organization.present? && news_item.organization.title.present?
-            news.areas << Area.where("name_#{lang} like ? OR name like ?", "%#{area_name}%", "%#{area_name}%").first rescue puts "Invalid área name: #{area_name}" if area_name.present?
+            if news.new_record?
+              news.areas = []
+              area_name = news_item.organization.title == 'Presidencia' ? 'Lehendakaritza' : news_item.organization.title if news_item.organization.present? && news_item.organization.title.present?
+              news.areas << Area.where("name_#{lang} like ? OR name like ?", "%#{area_name}%", "%#{area_name}%").first rescue puts "Invalid área name: #{area_name}" if area_name.present?
+            end
+
             news_item.categories.each do |category|
               news.users << User.where('name || ' ' || lastname = ? AND id not in (?)', category, news.users_ids).first rescue nil
             end
@@ -148,65 +151,68 @@ module Irekia
 
       puts '=> reading feeds'
 
-      events_ics_url = 'http://www.irekia.euskadi.net/es/events/myfeed.ics?dept_label=all'
+      events_ics_url   = lambda{|lang| "http://www.irekia.euskadi.net/#{lang}/events/myfeed.ics?dept_label=all"}
       event_detail_url = lambda{|event_id| "http://www.irekia.euskadi.net/es/events/#{event_id}.xml"}
 
-      open(events_ics_url) do |ical_file|
-        puts '=> parsing calendar file'
-        calendar = RiCal.parse_string(ical_file.read).first rescue nil
-        events = calendar.events
-        puts "=> loading #{events.count} events found"
-        events.each do |event_data|
-          event_uid = event_data.uid[/uid_(\d*)_irekia_euskadi_net/, 1]
-          event_data_detail = Nokogiri::Slop(open(event_detail_url.call(event_uid)).read)
+      %w(es eu en).each do |lang|
+        open(events_ics_url.call(lang)) do |ical_file|
+          I18n.locale = lang
+          puts '=> parsing calendar file'
+          calendar = RiCal.parse_string(ical_file.read).first rescue nil
+          events = calendar.events
+          puts "=> loading #{events.count} events found"
+          events.each do |event_data|
+            event_uid = event_data.uid[/uid_(\d*)_irekia_euskadi_net/, 1]
+            event_data_detail = Nokogiri::Slop(open(event_detail_url.call(event_uid)).read)
 
-          begin
-            event_data_model = EventData.find_by_external_id(event_uid) || EventData.new
+            begin
+              event_data_model = EventData.find_by_external_id(event_uid) || EventData.new
 
-            event_data_model.title       = event_data.summary
-            event_data_model.body        = event_data.description
-            event_data_model.event_date  = event_data.dtstart
-            event_data_model.duration    = event_data.dtend - event_data.dtstart
-            event_data_model.external_id = event_uid
-            event_data_model.place       = event_data_detail.event.lugar.text
+              event_data_model.send(:"title_#{lang}=", (event_data.summary.sanitize rescue nil))
+              event_data_model.send(:"body_#{lang}=",(event_data.description.sanitize rescue nil))
+              event_data_model.event_date  = event_data.dtstart
+              event_data_model.duration    = event_data.dtend - event_data.dtstart
+              event_data_model.external_id = event_uid
+              event_data_model.place       = event_data_detail.event.lugar.text
 
-            case event_data_detail.event.cobertura.estado.text
-            when 'anunciado'
-              event_data_model.create_image(:remote_image_url => event_data_detail.event.cobertura.imagen.text)
-            when 'emitiendo'
-              event_data_model.html = open(event_data_detail.event.cobertura.iframe_src.text).read
-            when 'noticia'
-              event_data_model.news_url = event_data_detail.event.cobertura.url.text
+              case event_data_detail.event.cobertura.estado.text
+              when 'anunciado'
+                event_data_model.create_image(:remote_image_url => event_data_detail.event.cobertura.imagen.text)
+              when 'emitiendo'
+                event_data_model.html = open(event_data_detail.event.cobertura.iframe_src.text).read
+              when 'noticia'
+                event_data_model.news_url = event_data_detail.event.cobertura.url.text
+              end
+
+              event = event_data_model.event || Event.new
+
+              if event.new_record?
+                area_name = event_data_detail.event.organismo.title.text.strip == 'Presidencia' ? 'Lehendakaritza' : event_data_detail.event.organismo.title.text.strip if event_data_detail.event.organismo.title.text.strip.present? rescue nil
+                event.areas << Area.where("name like ? OR name_es like ? OR name_eu like ? OR name_en like ?", *(["%#{area_name}%"] * 4)).first rescue puts "Invalid área name: #{area_name}"
+                event_data_detail.event.tags.search('tag').each do |tag|
+                  event.areas << Area.find_by_name(tag.text.strip) rescue nil
+                  event.users << User.where('name || ' ' || lastname = ?', tag.text.strip).first rescue nil
+                end
+                event_data_detail.event.asisten.text.split(',').each do |politician|
+                  event.users << User.where('name || ' ' || lastname like ? AND id not in (?)', "%#{category}%", event.users_ids).first rescue nil
+                end
+              end
+
+              event.event_data = event_data_model
+              event.location   = event_data.location
+              event.latitude   = event_data_detail.event.lat.text
+              event.longitude  = event_data_detail.event.lng.text
+              event.location   = event_data_detail.event.direccion.text
+              event.tags       = event_data_detail.event.tags.tag.map{|tag| tag.text.strip }.reject{|t| t.match(/^_/) || t.match(/::/)}.join(',')
+              event.moderated  = true
+
+              event.save!
+
+              print '.'
+            rescue Exception => e
+              puts e
+              puts e.backtrace
             end
-
-            event = event_data_model.event || Event.new
-
-            event.areas = []
-            event.users = []
-            area_name = event_data_detail.event.organismo.title.text.strip == 'Presidencia' ? 'Lehendakaritza' : event_data_detail.event.organismo.title.text.strip if event_data_detail.event.organismo.title.text.strip.present? rescue nil
-            event.areas << Area.where("name like ? OR name_es like ? OR name_eu like ? OR name_en like ?", *(["%#{area_name}%"] * 4)).first rescue puts "Invalid área name: #{area_name}"
-            event_data_detail.event.tags.search('tag').each do |tag|
-              event.areas << Area.find_by_name(tag.text.strip) rescue nil
-              event.users << User.where('name || ' ' || lastname = ?', tag.text.strip).first rescue nil
-            end
-            event_data_detail.event.asisten.text.split(',').each do |politician|
-              event.users << User.where('name || ' ' || lastname like ? AND id not in (?)', "%#{category}%", event.users_ids).first rescue nil
-            end
-
-            event.event_data = event_data_model
-            event.location   = event_data.location
-            event.latitude   = event_data_detail.event.lat.text
-            event.longitude  = event_data_detail.event.lng.text
-            event.location   = event_data_detail.event.direccion.text
-            event.tags       = event_data_detail.event.tags.tag.map{|tag| tag.text.strip }.reject{|t| t.match(/^_/) || t.match(/::/)}.join(',')
-            event.moderated  = true
-
-            event.save!
-
-            print '.'
-          rescue Exception => e
-            puts e
-            puts e.backtrace
           end
         end
         puts ''
