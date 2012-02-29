@@ -24,7 +24,7 @@ class Follow < ActiveRecord::Base
   end
 
   def user_already_following_this_item?
-    return if user.not_following(follow_item)
+    return if user.present? && user.not_following(follow_item)
     errors[:already_following] = "You're already following this item"
   end
   private :user_already_following_this_item?

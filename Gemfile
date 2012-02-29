@@ -23,6 +23,7 @@ gem 'agent_orange', '0.1.3'
 gem 'translate-rails3', '0.2.0', :require => 'translate'
 gem 'activerecord-import', '0.2.9'
 gem 'airbrake', '3.0.9'
+gem 'multipart-post', '1.1.5'
 
 group :development do
   gem 'capistrano'
@@ -31,9 +32,9 @@ end
 
 group :development, :test do
   gem 'ruby-debug19'
-  gem 'rspec-rails', '~> 2.6'
-  gem 'capybara', '~> 1.0.1'
-  gem 'selenium-webdriver', '2.7.0'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'capybara-webkit'
   gem 'spork'
   gem 'launchy'
   gem 'irbtools', :require => 'irbtools/configure'
