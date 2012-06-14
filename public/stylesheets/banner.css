@@ -1,4 +1,4 @@
 body .banner { background: transparent url("/images/banner_irekia.png") repeat-x 0 0; height: 65px; }
-body .banner p { width: 996px; margin: 0 auto; color: #B0003B; text-shadow: 0 1px 0 #FE5D9C; line-height: 3; }
+body .banner p { width: 996px; margin: 0 auto; font-size: 15px; color: #B0003B; text-shadow: 0 1px 0 #FE5D9C; line-height: 3; }
 body .banner p a { color: #B0003B; text-shadow: 0 1px 0 #FE5D9C; text-decoration: underline; }
-body .banner strong { color: white; font-weight: bold; text-shadow: 0 1px 0 #B0003B; }
+body .banner strong { color: white; font-size: 18px; font-weight: bold; text-shadow: 0 1px 0 #B0003B; margin-right: 5px; }
