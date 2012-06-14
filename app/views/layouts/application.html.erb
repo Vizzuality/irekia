@@ -38,6 +38,12 @@
   <%= auto_discovery_link_tag(:rss, root_url(:type => 'news', :format => 'rss'), {:title => "Irekia - #{t('.rss.title.news')}"}) %>
 </head>
 <body class="<%= 'home' if homepage? %>">
+  <div class="banner">
+    <p>
+    	<strong>Atención, esto es sólo un prototipo</strong>
+      Demo de lo que hicimos en <%= link_to 'Vizzuality', 'http://www.vizzuality.com/' %> para el proyecto <%= link_to 'Irekia 2.0', 'http://www.irekia.euskadi.net/' %> del Gobierno Vasco.
+    </p>
+  </div>
 
   <%= render 'shared/sign_in' %>
 

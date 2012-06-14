@@ -57,7 +57,7 @@ a {
   }
 
   &.avatar:visited {
-    color:#fff; 
+    color:#fff;
   }
 
   &:hover {
@@ -873,7 +873,7 @@ div#main.show div.left img {margin:4px 0 7px;}
       padding: 26px 0 24px 0!important;
       .white_button { width:130px; }
       form { @include inline-block; }
-      span.spinner { float:left; position: relative; width: 33px; height: 33px; margin: 0; z-index: 1000; top: 3px; left: 20px; } 
+      span.spinner { float:left; position: relative; width: 33px; height: 33px; margin: 0; z-index: 1000; top: 3px; left: 20px; }
     }
   }
 
@@ -1491,9 +1491,9 @@ div#main.show div.left img {margin:4px 0 7px;}
   } // publish
 
   &.byebye {
-    .inner { text-align: left; } 
-    .bfooter .inner { text-align:left; } 
-  } 
+    .inner { text-align: left; }
+    .bfooter .inner { text-align:left; }
+  }
 
   // Thin article
   &.thin {
@@ -1654,7 +1654,7 @@ div#main.show div.left img {margin:4px 0 7px;}
     z-index: 1000;
 
     .bfooter .inner .spinner { float:right; display:block; width:33px; height:33px; margin-top: 7px; z-index:1000; }
-    
+
     .bfooter .inner .white_button { margin-left:5px; }
 
     .input_field.textarea.grow.placeholder,
@@ -3049,7 +3049,7 @@ span.where, .map .infowindow ul.details li.where {
         height:20px;
         z-index:10;
       }
-        
+
 
       &.step1 {
         .inner {
@@ -6215,5 +6215,4 @@ Slideshow
   .section .extra { clear:both; float:left; display:block!important; }
   .inner .content .container { height:400px;}
 }
-
 

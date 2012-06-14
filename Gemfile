@@ -31,7 +31,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'ruby-debug19'
+  gem 'debugger'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-webkit'

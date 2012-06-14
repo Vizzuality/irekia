@@ -29,10 +29,10 @@ body { margin: 0; font-size: 13px; line-height: 1.231; font-family: sans-serif; 
 .slideshow .embed_window .input_field { top: 40px; margin: auto; width: 431px; height: 110px; overflow-y: none; position: relative; padding: 9px; font-size: 13px; background: url("/images/slideshow_sprite.png") no-repeat 0 -349px; }
 .slideshow .embed_window .input_field textarea { resize: none; width: 420px; height: 110px; padding: 0 10px 0 0; outline: none; border: none; font-family: "Courier"; color: #999; font-size: 12px; background: transparent; }
 .slideshow .embed_window .footer { position: absolute; bottom: 30px; left: 20px; font-size: 13px; color: #999; width: auto; }
-.slideshow .selector { clear: both; overflow: hidden; position: absolute; top: 10px; right: 10px; background: #666; background: rgba(0, 0, 0, 0.6); -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
+.slideshow .selector { clear: both; overflow: hidden; position: absolute; top: 10px; right: 10px; background: #666; background: rgba(0, 0, 0, 0.6); -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
 .slideshow .selector li { padding: 3px; float: left; }
 .slideshow .selector li.photo { float: right; }
-.slideshow .selector li.selected a { color: #666; background: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
+.slideshow .selector li.selected a { color: #666; background: #fff; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
 .slideshow .selector li a { display: block; padding: 0 3px; height: 20px; line-height: 15px; color: #fff; font-size: 13px; text-decoration: none; }
 .slideshow .options { display: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -o-user-select: none; user-select: none; }
 .slideshow .options .handle { position: absolute; display: block; top: 10px; left: 10px; width: 20px; height: 21px; background: url("/images/slideshow_sprite.png") no-repeat 0 -44px; z-index: 100; cursor: pointer; }

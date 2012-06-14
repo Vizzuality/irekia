@@ -21,7 +21,7 @@
         <% if @actions.present? %>
           <%= render 'shared/actions_list' %>
         <% else %>
-          <span class="empty"><%= t((@area || @user).class.name.downcase, :scope => 'shared.actions.no_content', :target => (@area || @user).name ) %></span>
+          <span class="empty"><%#= t((@area || @user).class.name.downcase, :scope => 'shared.actions.no_content', :target => (@area || @user).name ) %></span>
         <% end %>
       </div>
       &nbsp;
